@@ -1,0 +1,108 @@
+/* Design tokens. The only file with raw colour values; components consume var() only.
+   Colour has fixed roles, taken over from the narrated film of the same project:
+   the stage is dark, the edition's source text lies on warm paper, what a machine wrote
+   is in cool light, the red pen is a person pointing or deciding, authored text is light. */
+@layer reset, base, tokens, layout, components, utilities;
+
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-500.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-600.woff2") format("woff2");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../fonts/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer tokens {
+  :root {
+    color-scheme: dark light;
+
+    --font-source: "Junicode", "Iowan Old Style", Georgia, serif;
+    --font-ui: "Instrument Sans", system-ui, sans-serif;
+    --font-code: "Space Mono", ui-monospace, "Cascadia Mono", monospace;
+
+    /* Stage and authored text. light-dark(light, dark). */
+    --stage: light-dark(oklch(0.955 0.004 80), oklch(0.175 0.008 265));
+    --text: light-dark(oklch(0.24 0.01 265), oklch(0.93 0.005 265));
+    --muted: light-dark(oklch(0.46 0.01 265), oklch(0.72 0.01 265));
+    --hairline: light-dark(oklch(0.84 0.006 265), oklch(0.33 0.01 265));
+
+    /* Paper of the edition: warm in both schemes, so source text keeps one look. */
+    --paper: light-dark(oklch(0.995 0.006 85), oklch(0.925 0.02 85));
+    --paper-ink: oklch(0.24 0.012 60);
+    --paper-muted: oklch(0.45 0.015 60);
+
+    /* What the machine wrote. */
+    --machine: light-dark(oklch(0.4 0.085 230), oklch(0.84 0.07 215));
+    --machine-faint: light-dark(oklch(0.62 0.06 230), oklch(0.6 0.05 220));
+
+    /* The red pen: pointing, selecting, and the open human decision. */
+    --pen: light-dark(oklch(0.53 0.21 27), oklch(0.68 0.19 27));
+    --pen-on-paper: oklch(0.53 0.21 27);
+
+    /* A missing basis: amber, always with a word. */
+    --warn: light-dark(oklch(0.52 0.13 65), oklch(0.82 0.13 80));
+
+    --focus: light-dark(oklch(0.45 0.16 260), oklch(0.86 0.09 250));
+
+    /* Background distribution in the timeline, the same blue-grey as in the film. */
+    --bars: light-dark(oklch(0.87 0.025 225), oklch(0.33 0.035 225));
+
+    --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+    --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+    --step-1: clamp(1.125rem, 1.07rem + 0.3vw, 1.3125rem);
+    --step-2: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2.25rem;
+    --space-7: 3.5rem;
+
+    --measure: 62ch;
+    --radius: 2px;
+  }
+  /* An explicit light preference of the reader still wins over the dark default. */
+  @media (prefers-color-scheme: light) {
+    :root { color-scheme: light; }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { color-scheme: dark; }
+  }
+}

@@ -1,0 +1,1159 @@
+{
+ "run": "pilot-2026-11-09",
+ "rdflib": "7.6.0",
+ "questions": [
+  {
+   "id": "ehen",
+   "title": "Welche Ehen werden geschlossen, bestehen oder werden aufgelöst?",
+   "sparql": "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>\nPREFIX reg: <https://example.org/regesta/ontology/>\nPREFIX v: <https://example.org/regesta/vocab/>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?rec ?assertion ?event ?type ?partner ?partnerName ?evidence WHERE {\n  GRAPH ?g {\n    ?assertion a crm:E13_Attribute_Assignment ;\n        crm:P140_assigned_attribute_to ?event ;\n        crm:P177_assigned_property_of_type crm:P2_has_type ;\n        crm:P141_assigned ?type ;\n        reg:source ?rec ;\n        reg:evidence ?evidence .\n    VALUES ?type { v:MarriageConclusion v:Marriage v:MarriageDissolution }\n    OPTIONAL {\n      { ?event crm:P11_had_participant ?partner }\n      UNION\n      { ?part reg:context ?event ; reg:role v:Spouse ; reg:actor ?partner }\n      ?partner rdfs:label ?partnerName .\n    }\n  }\n}\nORDER BY ?rec ?event ?partnerName",
+   "variables": [
+    "rec",
+    "assertion",
+    "event",
+    "type",
+    "partner",
+    "partnerName",
+    "evidence"
+   ],
+   "result": [
+    {
+     "rec": "urn:regesta:record:134441",
+     "assertion": "urn:regesta:134441:a1",
+     "event": "urn:regesta:134441:marriage",
+     "type": "https://example.org/regesta/vocab/Marriage",
+     "partner": "urn:regesta:actor:RI004-002-E000587",
+     "partnerName": "Eufemia",
+     "evidence": "Eufemia, der Witwe Heinrichs von Hegilen"
+    },
+    {
+     "rec": "urn:regesta:record:134441",
+     "assertion": "urn:regesta:134441:a1",
+     "event": "urn:regesta:134441:marriage",
+     "type": "https://example.org/regesta/vocab/Marriage",
+     "partner": "urn:regesta:actor:RI004-002-H000615",
+     "partnerName": "Heinrich von Hegilen",
+     "evidence": "Eufemia, der Witwe Heinrichs von Hegilen"
+    },
+    {
+     "rec": "urn:regesta:record:22673",
+     "assertion": "urn:regesta:22673:a1",
+     "event": "urn:regesta:22673:marriage",
+     "type": "https://example.org/regesta/vocab/MarriageConclusion",
+     "partner": "urn:regesta:actor:RI004-002-A000306",
+     "partnerName": "Adela",
+     "evidence": "Friedrich heiratet Adela, die Tochter Markgraf Diepolds von Vohburg"
+    },
+    {
+     "rec": "urn:regesta:record:22673",
+     "assertion": "urn:regesta:22673:a1",
+     "event": "urn:regesta:22673:marriage",
+     "type": "https://example.org/regesta/vocab/MarriageConclusion",
+     "partner": "urn:regesta:actor:RI004-002-F000471",
+     "partnerName": "Friedrich",
+     "evidence": "Friedrich heiratet Adela, die Tochter Markgraf Diepolds von Vohburg"
+    },
+    {
+     "rec": "urn:regesta:record:22794",
+     "assertion": "urn:regesta:22794:a1",
+     "event": "urn:regesta:22794:divorce",
+     "type": "https://example.org/regesta/vocab/MarriageDissolution",
+     "partner": "urn:regesta:actor:RI004-002-A000306",
+     "partnerName": "Adela",
+     "evidence": "Friedrich wird, nachdem schon vorher die Erzbischöfe und Bischöfe auf einer Synode darüber beraten haben, vor den päpstlichen Legaten und Bischof Hermann von Konstanz von Adela, seiner ersten Gemahlin, der Tochter des Markgrafen Diepold von Vohburg, wegen zu naher Verwandtschaft im Chor (des Domes) von Konstanz geschieden"
+    },
+    {
+     "rec": "urn:regesta:record:22794",
+     "assertion": "urn:regesta:22794:a1",
+     "event": "urn:regesta:22794:divorce",
+     "type": "https://example.org/regesta/vocab/MarriageDissolution",
+     "partner": "urn:regesta:actor:RI004-002-F000471",
+     "partnerName": "Friedrich",
+     "evidence": "Friedrich wird, nachdem schon vorher die Erzbischöfe und Bischöfe auf einer Synode darüber beraten haben, vor den päpstlichen Legaten und Bischof Hermann von Konstanz von Adela, seiner ersten Gemahlin, der Tochter des Markgrafen Diepold von Vohburg, wegen zu naher Verwandtschaft im Chor (des Domes) von Konstanz geschieden"
+    }
+   ],
+   "columns": [
+    "Regest",
+    "Vorgang",
+    "Beteiligte",
+    "Beleg"
+   ],
+   "rows": [
+    [
+     {
+      "regest": "134441",
+      "claim": "a1",
+      "label": "n. 103a"
+     },
+     "Ehe",
+     "Eufemia und Heinrich von Hegilen",
+     {
+      "source": "Eufemia, der Witwe Heinrichs von Hegilen"
+     }
+    ],
+    [
+     {
+      "regest": "22673",
+      "claim": "a1",
+      "label": "n. 46"
+     },
+     "Eheschließung",
+     "Adela und Friedrich",
+     {
+      "source": "Friedrich heiratet Adela, die Tochter Markgraf Diepolds von Vohburg"
+     }
+    ],
+    [
+     {
+      "regest": "22794",
+      "claim": "a1",
+      "label": "n. 167"
+     },
+     "Eheauflösung",
+     "Adela und Friedrich",
+     {
+      "source": "Friedrich wird, nachdem schon vorher die Erzbischöfe und Bischöfe auf einer Synode darüber beraten haben, vor den päpstlichen Legaten und Bischof Hermann von Konstanz von Adela, seiner ersten Gemahlin, der Tochter des Markgrafen Diepold von Vohburg, wegen zu naher Verwandtschaft im Chor (des Domes) von Konstanz geschieden"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "eltern",
+   "title": "Welche Eltern-Kind-Beziehungen nennen die Regesten?",
+   "sparql": "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>\nPREFIX reg: <https://example.org/regesta/ontology/>\nPREFIX v: <https://example.org/regesta/vocab/>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?rec ?assertion ?child ?childName ?parent ?parentName ?evidence WHERE {\n  GRAPH ?g {\n    ?assertion crm:P177_assigned_property_of_type crm:P152_has_parent ;\n        crm:P140_assigned_attribute_to ?child ;\n        crm:P141_assigned ?parent ;\n        reg:source ?rec ;\n        reg:evidence ?evidence .\n    ?child rdfs:label ?childName .\n    ?parent rdfs:label ?parentName .\n  }\n}\nORDER BY ?rec ?childName ?parentName",
+   "variables": [
+    "rec",
+    "assertion",
+    "child",
+    "childName",
+    "parent",
+    "parentName",
+    "evidence"
+   ],
+   "result": [
+    {
+     "rec": "urn:regesta:record:220540",
+     "assertion": "urn:regesta:220540:a1",
+     "child": "urn:regesta:actor:RI004-002-H000344",
+     "childName": "König Heinrich (VI.)",
+     "parent": "urn:regesta:actor:RI004-002-F000471",
+     "parentName": "Kaiser",
+     "evidence": "den Kaiser und dessen Sohn, König Heinrich (VI.)"
+    },
+    {
+     "rec": "urn:regesta:record:22673",
+     "assertion": "urn:regesta:22673:a4",
+     "child": "urn:regesta:actor:RI004-002-A000306",
+     "childName": "Adela",
+     "parent": "urn:regesta:actor:RI004-002-T000162",
+     "parentName": "Markgraf Diepold von Vohburg",
+     "evidence": "Adela, die Tochter Markgraf Diepolds von Vohburg"
+    },
+    {
+     "rec": "urn:regesta:record:22728",
+     "assertion": "urn:regesta:22728:a1",
+     "child": "urn:regesta:actor:RI004-002-M000434",
+     "childName": "Margareta",
+     "parent": "urn:regesta:actor:RI004-002-H000204",
+     "parentName": "Hartwig von Herrnwahlthann",
+     "evidence": "Margaretas, der Tochter des ohne männlichen Erben verstorbenen Klosterministerialen Hartwig von Herrnwahlthann"
+    },
+    {
+     "rec": "urn:regesta:record:22794",
+     "assertion": "urn:regesta:22794:a4",
+     "child": "urn:regesta:actor:RI004-002-A000306",
+     "childName": "Adela",
+     "parent": "urn:regesta:actor:22794:local:diepold",
+     "parentName": "Markgraf Diepold von Vohburg",
+     "evidence": "Adela, seiner ersten Gemahlin, der Tochter des Markgrafen Diepold von Vohburg"
+    },
+    {
+     "rec": "urn:regesta:record:23174",
+     "assertion": "urn:regesta:23174:a9",
+     "child": "urn:regesta:actor:23174:local:daughter",
+     "childName": "Ungenannte Tochter Udas",
+     "parent": "urn:regesta:actor:RI004-002-U000065",
+     "parentName": "Gräfin Uda von Deutz",
+     "evidence": "Gräfin Uda von Deutz (Tuiciensis) für ihre in dem Kloster als Nonne lebende Tochter"
+    },
+    {
+     "rec": "urn:regesta:record:25897",
+     "assertion": "urn:regesta:25897:a3",
+     "child": "urn:regesta:actor:RI004-002-B000546",
+     "childName": "Berengaria",
+     "parent": "urn:regesta:actor:RI004-002-A000647",
+     "parentName": "König Alfons von Kastilien",
+     "evidence": "der Tochter (Berengaria) des kastilischen Königs (Alfons’ VIII.)"
+    },
+    {
+     "rec": "urn:regesta:record:25897",
+     "assertion": "urn:regesta:25897:a2",
+     "child": "urn:regesta:actor:RI004-002-K000396",
+     "childName": "Konrad von Rothenburg",
+     "parent": "urn:regesta:actor:RI004-002-F000471",
+     "parentName": "Kaiser Friedrich",
+     "evidence": "dem Sohn des Kaisers (Herzog Konrad von Rothenburg)"
+    }
+   ],
+   "columns": [
+    "Regest",
+    "Kind",
+    "Elternteil",
+    "Beleg"
+   ],
+   "rows": [
+    [
+     {
+      "regest": "220540",
+      "claim": "a1",
+      "label": "n. 3166a"
+     },
+     "König Heinrich (VI.)",
+     "Kaiser",
+     {
+      "source": "den Kaiser und dessen Sohn, König Heinrich (VI.)"
+     }
+    ],
+    [
+     {
+      "regest": "22673",
+      "claim": "a4",
+      "label": "n. 46"
+     },
+     "Adela",
+     "Markgraf Diepold von Vohburg",
+     {
+      "source": "Adela, die Tochter Markgraf Diepolds von Vohburg"
+     }
+    ],
+    [
+     {
+      "regest": "22728",
+      "claim": "a1",
+      "label": "n. D101"
+     },
+     "Margareta",
+     "Hartwig von Herrnwahlthann",
+     {
+      "source": "Margaretas, der Tochter des ohne männlichen Erben verstorbenen Klosterministerialen Hartwig von Herrnwahlthann"
+     }
+    ],
+    [
+     {
+      "regest": "22794",
+      "claim": "a4",
+      "label": "n. 167"
+     },
+     "Adela",
+     "Markgraf Diepold von Vohburg",
+     {
+      "source": "Adela, seiner ersten Gemahlin, der Tochter des Markgrafen Diepold von Vohburg"
+     }
+    ],
+    [
+     {
+      "regest": "23174",
+      "claim": "a9",
+      "label": "n. 545"
+     },
+     "Ungenannte Tochter Udas",
+     "Gräfin Uda von Deutz",
+     {
+      "source": "Gräfin Uda von Deutz (Tuiciensis) für ihre in dem Kloster als Nonne lebende Tochter"
+     }
+    ],
+    [
+     {
+      "regest": "25897",
+      "claim": "a3",
+      "label": "n. 3077"
+     },
+     "Berengaria",
+     "König Alfons von Kastilien",
+     {
+      "source": "der Tochter (Berengaria) des kastilischen Königs (Alfons’ VIII.)"
+     }
+    ],
+    [
+     {
+      "regest": "25897",
+      "claim": "a2",
+      "label": "n. 3077"
+     },
+     "Konrad von Rothenburg",
+     "Kaiser Friedrich",
+     {
+      "source": "dem Sohn des Kaisers (Herzog Konrad von Rothenburg)"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "gleichnamige-eltern",
+   "title": "Personen mit mehreren Elternteilen gleichen Namens",
+   "sparql": "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>\nPREFIX reg: <https://example.org/regesta/ontology/>\nPREFIX v: <https://example.org/regesta/vocab/>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?child ?childName ?name ?parentA ?parentB ?recA ?recB ?assertionA ?assertionB WHERE {\n  ?assertionA crm:P177_assigned_property_of_type crm:P152_has_parent ;\n      crm:P140_assigned_attribute_to ?child ;\n      crm:P141_assigned ?parentA ;\n      reg:source ?recA .\n  ?assertionB crm:P177_assigned_property_of_type crm:P152_has_parent ;\n      crm:P140_assigned_attribute_to ?child ;\n      crm:P141_assigned ?parentB ;\n      reg:source ?recB .\n  FILTER (STR(?parentA) < STR(?parentB))\n  GRAPH ?gA { ?parentA rdfs:label ?name . ?child rdfs:label ?childName . }\n  GRAPH ?gB { ?parentB rdfs:label ?name . }\n}\nORDER BY ?childName ?name ?parentA ?parentB",
+   "variables": [
+    "child",
+    "childName",
+    "name",
+    "parentA",
+    "parentB",
+    "recA",
+    "recB",
+    "assertionA",
+    "assertionB"
+   ],
+   "result": [
+    {
+     "child": "urn:regesta:actor:RI004-002-A000306",
+     "childName": "Adela",
+     "name": "Markgraf Diepold von Vohburg",
+     "parentA": "urn:regesta:actor:22794:local:diepold",
+     "parentB": "urn:regesta:actor:RI004-002-T000162",
+     "recA": "urn:regesta:record:22794",
+     "recB": "urn:regesta:record:22673",
+     "assertionA": "urn:regesta:22794:a4",
+     "assertionB": "urn:regesta:22673:a4"
+    }
+   ],
+   "columns": [
+    "Person",
+    "Name des Elternteils",
+    "Erstes Regest",
+    "Kennung dort",
+    "Zweites Regest",
+    "Kennung dort"
+   ],
+   "rows": [
+    [
+     "Adela",
+     "Markgraf Diepold von Vohburg",
+     {
+      "regest": "22673",
+      "claim": "a4",
+      "label": "n. 46"
+     },
+     {
+      "iri": "urn:regesta:actor:RI004-002-T000162"
+     },
+     {
+      "regest": "22794",
+      "claim": "a4",
+      "label": "n. 167"
+     },
+     {
+      "iri": "urn:regesta:actor:22794:local:diepold"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "rollen",
+   "title": "Wer tritt in welcher Rolle auf?",
+   "sparql": "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>\nPREFIX reg: <https://example.org/regesta/ontology/>\nPREFIX v: <https://example.org/regesta/vocab/>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?rec ?assertion ?actor ?actorName ?role ?context ?contextType ?evidence WHERE {\n  GRAPH ?g {\n    ?assertion crm:P177_assigned_property_of_type reg:role ;\n        crm:P140_assigned_attribute_to ?part ;\n        crm:P141_assigned ?role ;\n        reg:source ?rec ;\n        reg:evidence ?evidence .\n    ?part reg:actor ?actor ; reg:context ?context .\n    ?actor rdfs:label ?actorName .\n    OPTIONAL { ?context crm:P2_has_type ?contextType }\n  }\n}\nORDER BY ?rec ?role ?actorName",
+   "variables": [
+    "rec",
+    "assertion",
+    "actor",
+    "actorName",
+    "role",
+    "context",
+    "contextType",
+    "evidence"
+   ],
+   "result": [
+    {
+     "rec": "urn:regesta:record:134441",
+     "assertion": "urn:regesta:134441:a2",
+     "actor": "urn:regesta:actor:RI004-002-E000587",
+     "actorName": "Eufemia",
+     "role": "https://example.org/regesta/vocab/Spouse",
+     "context": "urn:regesta:134441:marriage",
+     "contextType": "https://example.org/regesta/vocab/Marriage",
+     "evidence": "Eufemia, der Witwe Heinrichs von Hegilen"
+    },
+    {
+     "rec": "urn:regesta:record:134441",
+     "assertion": "urn:regesta:134441:a3",
+     "actor": "urn:regesta:actor:RI004-002-H000615",
+     "actorName": "Heinrich von Hegilen",
+     "role": "https://example.org/regesta/vocab/Spouse",
+     "context": "urn:regesta:134441:marriage",
+     "contextType": "https://example.org/regesta/vocab/Marriage",
+     "evidence": "Eufemia, der Witwe Heinrichs von Hegilen"
+    },
+    {
+     "rec": "urn:regesta:record:134441",
+     "assertion": "urn:regesta:134441:a10",
+     "actor": "urn:regesta:actor:RI004-002-E000440",
+     "actorName": "Erbo von Biburg",
+     "role": "https://example.org/regesta/vocab/Witness",
+     "context": "urn:regesta:134441:judgment",
+     "contextType": "https://example.org/regesta/vocab/Judgment",
+     "evidence": "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen"
+    },
+    {
+     "rec": "urn:regesta:record:134441",
+     "assertion": "urn:regesta:134441:a11",
+     "actor": "urn:regesta:actor:RI004-002-H000788",
+     "actorName": "Herbord von Hebingen",
+     "role": "https://example.org/regesta/vocab/Witness",
+     "context": "urn:regesta:134441:judgment",
+     "contextType": "https://example.org/regesta/vocab/Judgment",
+     "evidence": "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen"
+    },
+    {
+     "rec": "urn:regesta:record:134441",
+     "assertion": "urn:regesta:134441:a9",
+     "actor": "urn:regesta:actor:RI004-002-O000481",
+     "actorName": "Otto von Moos",
+     "role": "https://example.org/regesta/vocab/Witness",
+     "context": "urn:regesta:134441:judgment",
+     "contextType": "https://example.org/regesta/vocab/Judgment",
+     "evidence": "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen"
+    },
+    {
+     "rec": "urn:regesta:record:22696",
+     "assertion": "urn:regesta:22696:a3",
+     "actor": "urn:regesta:actor:RI004-002-E000011",
+     "actorName": "Bischof Eberhard II. von Bamberg",
+     "role": "https://example.org/regesta/vocab/Recipient",
+     "context": "urn:regesta:22696:donation",
+     "contextType": "https://example.org/regesta/vocab/Donation",
+     "evidence": "auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche"
+    },
+    {
+     "rec": "urn:regesta:record:22794",
+     "assertion": "urn:regesta:22794:a6",
+     "actor": "urn:regesta:actor:RI004-002-A000547",
+     "actorName": "Albernardus Alamanus",
+     "role": "https://example.org/regesta/vocab/Claimant",
+     "context": "urn:regesta:22794:complaint",
+     "contextType": "https://example.org/regesta/vocab/Dispute",
+     "evidence": "Die beiden Bürger von Lodi, Albernardus Alamanus und Magister Homobonus, die auf Bitten des Bischofs Hermann von Konstanz die Stadt Konstanz aufgesucht haben, klagen vor König Friedrich und den Fürsten über die Unterdrückung durch die Mailänder"
+    },
+    {
+     "rec": "urn:regesta:record:22794",
+     "assertion": "urn:regesta:22794:a7",
+     "actor": "urn:regesta:actor:RI004-002-H001179",
+     "actorName": "Magister Homobonus",
+     "role": "https://example.org/regesta/vocab/Claimant",
+     "context": "urn:regesta:22794:complaint",
+     "contextType": "https://example.org/regesta/vocab/Dispute",
+     "evidence": "Die beiden Bürger von Lodi, Albernardus Alamanus und Magister Homobonus, die auf Bitten des Bischofs Hermann von Konstanz die Stadt Konstanz aufgesucht haben, klagen vor König Friedrich und den Fürsten über die Unterdrückung durch die Mailänder"
+    },
+    {
+     "rec": "urn:regesta:record:23174",
+     "assertion": "urn:regesta:23174:a10",
+     "actor": "urn:regesta:actor:23174:local:daughter",
+     "actorName": "Ungenannte Tochter Udas",
+     "role": "https://example.org/regesta/vocab/Beneficiary",
+     "context": "urn:regesta:23174:donation",
+     "contextType": "https://example.org/regesta/vocab/Donation",
+     "evidence": "den zu Auenheim (Ouuenheim), den Gräfin Uda von Deutz (Tuiciensis) für ihre in dem Kloster als Nonne lebende Tochter und als Seelgerät für sich und die ihren gestiftet hat"
+    },
+    {
+     "rec": "urn:regesta:record:23174",
+     "assertion": "urn:regesta:23174:a5",
+     "actor": "urn:regesta:actor:RI004-002-R000880:community",
+     "actorName": "Nonnenkloster Rolandswerth",
+     "role": "https://example.org/regesta/vocab/Buyer",
+     "context": "urn:regesta:23174:sale",
+     "contextType": "https://example.org/regesta/vocab/Sale",
+     "evidence": "bestätigt ihm die Besitzungen, darunter den ihm von Graf Konrad von Bonn verkauften Hof zu Ober- und Niederwöllstadt"
+    },
+    {
+     "rec": "urn:regesta:record:23174",
+     "assertion": "urn:regesta:23174:a4",
+     "actor": "urn:regesta:actor:RI004-002-K000410",
+     "actorName": "Graf Konrad von Bonn",
+     "role": "https://example.org/regesta/vocab/Seller",
+     "context": "urn:regesta:23174:sale",
+     "contextType": "https://example.org/regesta/vocab/Sale",
+     "evidence": "den ihm von Graf Konrad von Bonn verkauften Hof zu Ober- und Niederwöllstadt"
+    },
+    {
+     "rec": "urn:regesta:record:24618",
+     "assertion": "urn:regesta:24618:a2",
+     "actor": "urn:regesta:actor:RI004-002-C000646",
+     "actorName": "Erzbischof Christian von Mainz",
+     "role": "https://example.org/regesta/vocab/Payee",
+     "context": "urn:regesta:24618:payment",
+     "contextType": "https://example.org/regesta/vocab/Payment",
+     "evidence": "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche und erhält von ihnen 500 Pfund"
+    },
+    {
+     "rec": "urn:regesta:record:24618",
+     "assertion": "urn:regesta:24618:a3",
+     "actor": "urn:regesta:actor:24618:local:envoys",
+     "actorName": "Gesandte der Stadt Genua: Corsus, Rogerius de Justa und Philippus Baraterius",
+     "role": "https://example.org/regesta/vocab/Payer",
+     "context": "urn:regesta:24618:payment",
+     "contextType": "https://example.org/regesta/vocab/Payment",
+     "evidence": "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche und erhält von ihnen 500 Pfund"
+    },
+    {
+     "rec": "urn:regesta:record:24821",
+     "assertion": "urn:regesta:24821:a3",
+     "actor": "urn:regesta:actor:RI004-002-E000343",
+     "actorName": "Graf Engelbert von Berg",
+     "role": "https://example.org/regesta/vocab/Pledgee",
+     "context": "urn:regesta:24821:pledge",
+     "contextType": "https://example.org/regesta/vocab/Pledge",
+     "evidence": "für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat"
+    },
+    {
+     "rec": "urn:regesta:record:24821",
+     "assertion": "urn:regesta:24821:a2",
+     "actor": "urn:regesta:actor:RI004-002-P000579",
+     "actorName": "Erzbischof Philipp von Köln",
+     "role": "https://example.org/regesta/vocab/Pledgor",
+     "context": "urn:regesta:24821:pledge",
+     "contextType": "https://example.org/regesta/vocab/Pledge",
+     "evidence": "Erzbischof Philipp von Köln auf dessen bei Hofe vorgetragene Bitten nachträglich, daß er zur Deckung seiner Aufwendungen für die Reichsheerfahrt nach Italien (pro necessitate perficiendę expeditionis, ad quam nostro fuit invitatus precepto) die Höfe des Erzstifts zu Hilden und Elberfeld (Helede et Elberuelde) für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat"
+    },
+    {
+     "rec": "urn:regesta:record:26099",
+     "assertion": "urn:regesta:26099:a3",
+     "actor": "urn:regesta:actor:26099:local:army",
+     "actorName": "(Kreuz)heer",
+     "role": "https://example.org/regesta/vocab/Obligor",
+     "context": "urn:regesta:26099:law",
+     "contextType": "https://example.org/regesta/vocab/LegalEnactment",
+     "evidence": "Gesetz über die Aufrechterhaltung des Friedens im Lager, zu dessen Einhaltung das (Kreuz)heer durch Eid verpflichtet wird"
+    }
+   ],
+   "columns": [
+    "Regest",
+    "Person oder Gruppe",
+    "Rolle",
+    "Vorgang",
+    "Beleg"
+   ],
+   "rows": [
+    [
+     {
+      "regest": "134441",
+      "claim": "a2",
+      "label": "n. 103a"
+     },
+     "Eufemia",
+     "Ehepartner",
+     "Ehe",
+     {
+      "source": "Eufemia, der Witwe Heinrichs von Hegilen"
+     }
+    ],
+    [
+     {
+      "regest": "134441",
+      "claim": "a3",
+      "label": "n. 103a"
+     },
+     "Heinrich von Hegilen",
+     "Ehepartner",
+     "Ehe",
+     {
+      "source": "Eufemia, der Witwe Heinrichs von Hegilen"
+     }
+    ],
+    [
+     {
+      "regest": "134441",
+      "claim": "a10",
+      "label": "n. 103a"
+     },
+     "Erbo von Biburg",
+     "Zeuge",
+     "Urteil",
+     {
+      "source": "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen"
+     }
+    ],
+    [
+     {
+      "regest": "134441",
+      "claim": "a11",
+      "label": "n. 103a"
+     },
+     "Herbord von Hebingen",
+     "Zeuge",
+     "Urteil",
+     {
+      "source": "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen"
+     }
+    ],
+    [
+     {
+      "regest": "134441",
+      "claim": "a9",
+      "label": "n. 103a"
+     },
+     "Otto von Moos",
+     "Zeuge",
+     "Urteil",
+     {
+      "source": "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen"
+     }
+    ],
+    [
+     {
+      "regest": "22696",
+      "claim": "a3",
+      "label": "n. 69"
+     },
+     "Bischof Eberhard II. von Bamberg",
+     "Empfänger",
+     "Schenkung",
+     {
+      "source": "auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche"
+     }
+    ],
+    [
+     {
+      "regest": "22794",
+      "claim": "a6",
+      "label": "n. 167"
+     },
+     "Albernardus Alamanus",
+     "Kläger",
+     "Streit",
+     {
+      "source": "Die beiden Bürger von Lodi, Albernardus Alamanus und Magister Homobonus, die auf Bitten des Bischofs Hermann von Konstanz die Stadt Konstanz aufgesucht haben, klagen vor König Friedrich und den Fürsten über die Unterdrückung durch die Mailänder"
+     }
+    ],
+    [
+     {
+      "regest": "22794",
+      "claim": "a7",
+      "label": "n. 167"
+     },
+     "Magister Homobonus",
+     "Kläger",
+     "Streit",
+     {
+      "source": "Die beiden Bürger von Lodi, Albernardus Alamanus und Magister Homobonus, die auf Bitten des Bischofs Hermann von Konstanz die Stadt Konstanz aufgesucht haben, klagen vor König Friedrich und den Fürsten über die Unterdrückung durch die Mailänder"
+     }
+    ],
+    [
+     {
+      "regest": "23174",
+      "claim": "a10",
+      "label": "n. 545"
+     },
+     "Ungenannte Tochter Udas",
+     "Begünstigter",
+     "Schenkung",
+     {
+      "source": "den zu Auenheim (Ouuenheim), den Gräfin Uda von Deutz (Tuiciensis) für ihre in dem Kloster als Nonne lebende Tochter und als Seelgerät für sich und die ihren gestiftet hat"
+     }
+    ],
+    [
+     {
+      "regest": "23174",
+      "claim": "a5",
+      "label": "n. 545"
+     },
+     "Nonnenkloster Rolandswerth",
+     "Käufer",
+     "Verkauf",
+     {
+      "source": "bestätigt ihm die Besitzungen, darunter den ihm von Graf Konrad von Bonn verkauften Hof zu Ober- und Niederwöllstadt"
+     }
+    ],
+    [
+     {
+      "regest": "23174",
+      "claim": "a4",
+      "label": "n. 545"
+     },
+     "Graf Konrad von Bonn",
+     "Verkäufer",
+     "Verkauf",
+     {
+      "source": "den ihm von Graf Konrad von Bonn verkauften Hof zu Ober- und Niederwöllstadt"
+     }
+    ],
+    [
+     {
+      "regest": "24618",
+      "claim": "a2",
+      "label": "n. 1986"
+     },
+     "Erzbischof Christian von Mainz",
+     "Zahlungsempfänger",
+     "Zahlung",
+     {
+      "source": "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche und erhält von ihnen 500 Pfund"
+     }
+    ],
+    [
+     {
+      "regest": "24618",
+      "claim": "a3",
+      "label": "n. 1986"
+     },
+     "Gesandte der Stadt Genua: Corsus, Rogerius de Justa und Philippus Baraterius",
+     "Zahlender",
+     "Zahlung",
+     {
+      "source": "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche und erhält von ihnen 500 Pfund"
+     }
+    ],
+    [
+     {
+      "regest": "24821",
+      "claim": "a3",
+      "label": "n. 2186"
+     },
+     "Graf Engelbert von Berg",
+     "Pfandnehmer",
+     "Verpfändung",
+     {
+      "source": "für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat"
+     }
+    ],
+    [
+     {
+      "regest": "24821",
+      "claim": "a2",
+      "label": "n. 2186"
+     },
+     "Erzbischof Philipp von Köln",
+     "Verpfänder",
+     "Verpfändung",
+     {
+      "source": "Erzbischof Philipp von Köln auf dessen bei Hofe vorgetragene Bitten nachträglich, daß er zur Deckung seiner Aufwendungen für die Reichsheerfahrt nach Italien (pro necessitate perficiendę expeditionis, ad quam nostro fuit invitatus precepto) die Höfe des Erzstifts zu Hilden und Elberfeld (Helede et Elberuelde) für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat"
+     }
+    ],
+    [
+     {
+      "regest": "26099",
+      "claim": "a3",
+      "label": "n. 3276"
+     },
+     "(Kreuz)heer",
+     "Verpflichteter",
+     "Rechtssetzung",
+     {
+      "source": "Gesetz über die Aufrechterhaltung des Friedens im Lager, zu dessen Einhaltung das (Kreuz)heer durch Eid verpflichtet wird"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "rechte",
+   "title": "Welche Rechte nennen die Regesten, und welcher Vorgang betrifft sie?",
+   "sparql": "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>\nPREFIX reg: <https://example.org/regesta/ontology/>\nPREFIX v: <https://example.org/regesta/vocab/>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?rec ?assertion ?right ?rightType ?rightLabel ?act ?actType ?holderName ?evidence WHERE {\n  GRAPH ?g {\n    ?assertion crm:P140_assigned_attribute_to ?right ;\n        crm:P177_assigned_property_of_type crm:P2_has_type ;\n        crm:P141_assigned ?rightType ;\n        reg:source ?rec ;\n        reg:evidence ?evidence .\n    ?right a crm:E30_Right .\n    OPTIONAL { ?right rdfs:label ?rightLabel }\n    OPTIONAL { ?act reg:concerns ?right . OPTIONAL { ?act crm:P2_has_type ?actType } }\n    OPTIONAL { ?holder crm:P75_possesses ?right ; rdfs:label ?holderName }\n  }\n}\nORDER BY ?rec ?rightType ?act",
+   "variables": [
+    "rec",
+    "assertion",
+    "right",
+    "rightType",
+    "rightLabel",
+    "act",
+    "actType",
+    "holderName",
+    "evidence"
+   ],
+   "result": [
+    {
+     "rec": "urn:regesta:record:22694",
+     "assertion": "urn:regesta:22694:a4",
+     "right": "urn:regesta:22694:jurisdiction",
+     "rightType": "https://example.org/regesta/vocab/JurisdictionRight",
+     "rightLabel": null,
+     "act": "urn:regesta:22694:confirmation",
+     "actType": "https://example.org/regesta/vocab/RightConfirmation",
+     "holderName": null,
+     "evidence": "die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo"
+    },
+    {
+     "rec": "urn:regesta:record:22694",
+     "assertion": "urn:regesta:22694:a7",
+     "right": "urn:regesta:22694:market",
+     "rightType": "https://example.org/regesta/vocab/MarketRight",
+     "rightLabel": null,
+     "act": "urn:regesta:22694:grant",
+     "actType": "https://example.org/regesta/vocab/RightGrant",
+     "holderName": null,
+     "evidence": "das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo"
+    },
+    {
+     "rec": "urn:regesta:record:22694",
+     "assertion": "urn:regesta:22694:a5",
+     "right": "urn:regesta:22694:mint",
+     "rightType": "https://example.org/regesta/vocab/MintingRight",
+     "rightLabel": null,
+     "act": "urn:regesta:22694:grant",
+     "actType": "https://example.org/regesta/vocab/RightGrant",
+     "holderName": null,
+     "evidence": "das Recht der Münzprägung"
+    },
+    {
+     "rec": "urn:regesta:record:22694",
+     "assertion": "urn:regesta:22694:a6",
+     "right": "urn:regesta:22694:toll",
+     "rightType": "https://example.org/regesta/vocab/TollRight",
+     "rightLabel": null,
+     "act": "urn:regesta:22694:grant",
+     "actType": "https://example.org/regesta/vocab/RightGrant",
+     "holderName": null,
+     "evidence": "das Recht der Münzprägung, des Zolls"
+    },
+    {
+     "rec": "urn:regesta:record:22696",
+     "assertion": "urn:regesta:22696:a4",
+     "right": "urn:regesta:22696:investiture",
+     "rightType": "https://example.org/regesta/vocab/InvestitureRight",
+     "rightLabel": "Recht der Investitur des Abtes",
+     "act": "urn:regesta:22696:holding",
+     "actType": "https://example.org/regesta/vocab/RightHolding",
+     "holderName": "Bischof Eberhard II. von Bamberg",
+     "evidence": "Der Bischof oder sein kanonisch gewählter Nachfolger hat das Recht der Investitur des Abtes"
+    },
+    {
+     "rec": "urn:regesta:record:23174",
+     "assertion": "urn:regesta:23174:a13",
+     "right": "urn:regesta:23174:advocacy",
+     "rightType": "https://example.org/regesta/vocab/AdvocacyRight",
+     "rightLabel": "Vogtei des Hofes zu Ober- und Niederwöllstadt",
+     "act": "urn:regesta:23174:prohibition",
+     "actType": "https://example.org/regesta/vocab/LegalEnactment",
+     "holderName": null,
+     "evidence": "dessen Vogtei von niemandem zu Erbrecht erworben werden darf"
+    }
+   ],
+   "columns": [
+    "Regest",
+    "Recht",
+    "Betroffen durch",
+    "Inhaber im Graphen",
+    "Beleg"
+   ],
+   "rows": [
+    [
+     {
+      "regest": "22694",
+      "claim": "a4",
+      "label": "n. 67"
+     },
+     "Gerichtsrecht",
+     "Rechtsbestätigung",
+     "nicht angegeben",
+     {
+      "source": "die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo"
+     }
+    ],
+    [
+     {
+      "regest": "22694",
+      "claim": "a7",
+      "label": "n. 67"
+     },
+     "Marktrecht",
+     "Rechtsverleihung",
+     "nicht angegeben",
+     {
+      "source": "das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo"
+     }
+    ],
+    [
+     {
+      "regest": "22694",
+      "claim": "a5",
+      "label": "n. 67"
+     },
+     "Münzrecht",
+     "Rechtsverleihung",
+     "nicht angegeben",
+     {
+      "source": "das Recht der Münzprägung"
+     }
+    ],
+    [
+     {
+      "regest": "22694",
+      "claim": "a6",
+      "label": "n. 67"
+     },
+     "Zollrecht",
+     "Rechtsverleihung",
+     "nicht angegeben",
+     {
+      "source": "das Recht der Münzprägung, des Zolls"
+     }
+    ],
+    [
+     {
+      "regest": "22696",
+      "claim": "a4",
+      "label": "n. 69"
+     },
+     "Investiturrecht (Recht der Investitur des Abtes)",
+     "Rechtsinhaberschaft",
+     "Bischof Eberhard II. von Bamberg",
+     {
+      "source": "Der Bischof oder sein kanonisch gewählter Nachfolger hat das Recht der Investitur des Abtes"
+     }
+    ],
+    [
+     {
+      "regest": "23174",
+      "claim": "a13",
+      "label": "n. 545"
+     },
+     "Vogteirecht (Vogtei des Hofes zu Ober- und Niederwöllstadt)",
+     "Rechtssetzung",
+     "nicht angegeben",
+     {
+      "source": "dessen Vogtei von niemandem zu Erbrecht erworben werden darf"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "bezug",
+   "title": "Welche Vorgänge beziehen sich auf einen anderen Vorgang?",
+   "sparql": "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>\nPREFIX reg: <https://example.org/regesta/ontology/>\nPREFIX v: <https://example.org/regesta/vocab/>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?rec ?assertion ?act ?actType ?earlier ?earlierType ?evidence WHERE {\n  GRAPH ?g {\n    ?assertion crm:P177_assigned_property_of_type reg:concerns ;\n        crm:P140_assigned_attribute_to ?act ;\n        crm:P141_assigned ?earlier ;\n        reg:source ?rec ;\n        reg:evidence ?evidence .\n    { ?earlier a crm:E7_Activity } UNION { ?earlier a crm:E5_Event }\n    OPTIONAL { ?act crm:P2_has_type ?actType }\n    OPTIONAL { ?earlier crm:P2_has_type ?earlierType }\n  }\n}\nORDER BY ?rec ?act",
+   "variables": [
+    "rec",
+    "assertion",
+    "act",
+    "actType",
+    "earlier",
+    "earlierType",
+    "evidence"
+   ],
+   "result": [
+    {
+     "rec": "urn:regesta:record:220540",
+     "assertion": "urn:regesta:220540:a4",
+     "act": "urn:regesta:220540:mission",
+     "actType": null,
+     "earlier": "urn:regesta:220540:dispute",
+     "earlierType": "https://example.org/regesta/vocab/Dispute",
+     "evidence": "Papst Clemens (III.) entsendet die Kardinalpresbyter Peter von S. Pietro in Vincoli und Jordan von S. Pudenziana zur Beilegung des Trierer Wahlstreites an den Kaiser und dessen Sohn, König Heinrich (VI.)"
+    },
+    {
+     "rec": "urn:regesta:record:22728",
+     "assertion": "urn:regesta:22728:a6",
+     "act": "urn:regesta:22728:confirmation",
+     "actType": null,
+     "earlier": "urn:regesta:22728:judgment",
+     "earlierType": "https://example.org/regesta/vocab/Judgment",
+     "evidence": "Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg auf Grund der Klage Margaretas, der Tochter des ohne männlichen Erben verstorbenen Klosterministerialen Hartwig von Herrnwahlthann (Danne), gegen Abt Albert wegen ihres Anspruches auf das väterliche Lehen, einen vom (Regensburger) Vitztum Ulrich formulierten Fürstenspruch"
+    },
+    {
+     "rec": "urn:regesta:record:24821",
+     "assertion": "urn:regesta:24821:a5",
+     "act": "urn:regesta:24821:assurance",
+     "actType": null,
+     "earlier": "urn:regesta:24821:pledge",
+     "earlierType": "https://example.org/regesta/vocab/Pledge",
+     "evidence": "sichert dem Grafen und seinen Erben die freie Verfügung über diese Pfandschaften bis zu deren Einlösung zu"
+    },
+    {
+     "rec": "urn:regesta:record:24821",
+     "assertion": "urn:regesta:24821:a4",
+     "act": "urn:regesta:24821:confirmation",
+     "actType": null,
+     "earlier": "urn:regesta:24821:pledge",
+     "earlierType": "https://example.org/regesta/vocab/Pledge",
+     "evidence": "Friedrich bestätigt Erzbischof Philipp von Köln auf dessen bei Hofe vorgetragene Bitten nachträglich, daß er zur Deckung seiner Aufwendungen für die Reichsheerfahrt nach Italien (pro necessitate perficiendę expeditionis, ad quam nostro fuit invitatus precepto) die Höfe des Erzstifts zu Hilden und Elberfeld (Helede et Elberuelde) für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat"
+    }
+   ],
+   "columns": [
+    "Regest",
+    "Vorgang",
+    "bezieht sich auf",
+    "Beleg"
+   ],
+   "rows": [
+    [
+     {
+      "regest": "220540",
+      "claim": "a4",
+      "label": "n. 3166a"
+     },
+     "Handlung ohne Typ",
+     "Trierer Wahlstreit",
+     {
+      "source": "Papst Clemens (III.) entsendet die Kardinalpresbyter Peter von S. Pietro in Vincoli und Jordan von S. Pudenziana zur Beilegung des Trierer Wahlstreites an den Kaiser und dessen Sohn, König Heinrich (VI.)"
+     }
+    ],
+    [
+     {
+      "regest": "22728",
+      "claim": "a6",
+      "label": "n. D101"
+     },
+     "Handlung ohne Typ",
+     "Urteil",
+     {
+      "source": "Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg auf Grund der Klage Margaretas, der Tochter des ohne männlichen Erben verstorbenen Klosterministerialen Hartwig von Herrnwahlthann (Danne), gegen Abt Albert wegen ihres Anspruches auf das väterliche Lehen, einen vom (Regensburger) Vitztum Ulrich formulierten Fürstenspruch"
+     }
+    ],
+    [
+     {
+      "regest": "24821",
+      "claim": "a5",
+      "label": "n. 2186"
+     },
+     "Handlung ohne Typ",
+     "Verpfändung",
+     {
+      "source": "sichert dem Grafen und seinen Erben die freie Verfügung über diese Pfandschaften bis zu deren Einlösung zu"
+     }
+    ],
+    [
+     {
+      "regest": "24821",
+      "claim": "a4",
+      "label": "n. 2186"
+     },
+     "Handlung ohne Typ",
+     "Verpfändung",
+     {
+      "source": "Friedrich bestätigt Erzbischof Philipp von Köln auf dessen bei Hofe vorgetragene Bitten nachträglich, daß er zur Deckung seiner Aufwendungen für die Reichsheerfahrt nach Italien (pro necessitate perficiendę expeditionis, ad quam nostro fuit invitatus precepto) die Höfe des Erzstifts zu Hilden und Elberfeld (Helede et Elberuelde) für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat"
+     }
+    ]
+   ]
+  },
+  {
+   "id": "bedingungen",
+   "title": "Welche Vorgänge stehen unter einer Bedingung oder einer Ausnahme?",
+   "sparql": "PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>\nPREFIX reg: <https://example.org/regesta/ontology/>\nPREFIX v: <https://example.org/regesta/vocab/>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?rec ?context ?contextType ?kind ?wording WHERE {\n  GRAPH ?g {\n    ?rec a crm:E31_Document .\n    { ?context reg:condition ?wording . BIND(\"Bedingung\" AS ?kind) }\n    UNION\n    { ?context reg:exception ?wording . BIND(\"Ausnahme\" AS ?kind) }\n    OPTIONAL { ?context crm:P2_has_type ?contextType }\n  }\n}\nORDER BY ?rec ?context ?kind ?wording",
+   "variables": [
+    "rec",
+    "context",
+    "contextType",
+    "kind",
+    "wording"
+   ],
+   "result": [
+    {
+     "rec": "urn:regesta:record:22696",
+     "context": "urn:regesta:22696:donation",
+     "contextType": "https://example.org/regesta/vocab/Donation",
+     "kind": "Ausnahme",
+     "wording": "wobei dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen"
+    },
+    {
+     "rec": "urn:regesta:record:22696",
+     "context": "urn:regesta:22696:holding",
+     "contextType": "https://example.org/regesta/vocab/RightHolding",
+     "kind": "Bedingung",
+     "wording": "Der Bischof oder sein kanonisch gewählter Nachfolger"
+    },
+    {
+     "rec": "urn:regesta:record:22696",
+     "context": "urn:regesta:22696:terms",
+     "contextType": "https://example.org/regesta/vocab/LegalEnactment",
+     "kind": "Ausnahme",
+     "wording": "wobei dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen"
+    },
+    {
+     "rec": "urn:regesta:record:23717",
+     "context": "urn:regesta:23717:release",
+     "contextType": "https://example.org/regesta/vocab/DebtRelease",
+     "kind": "Ausnahme",
+     "wording": "außer von denen, die nachweislich im Dienst des Reiches oder zum Nutzen der Kirche eingegangen wurden"
+    },
+    {
+     "rec": "urn:regesta:record:24821",
+     "context": "urn:regesta:24821:assurance",
+     "contextType": null,
+     "kind": "Bedingung",
+     "wording": "bis zu deren Einlösung"
+    },
+    {
+     "rec": "urn:regesta:record:25230",
+     "context": "urn:regesta:25230:permission",
+     "contextType": "https://example.org/regesta/vocab/LegalEnactment",
+     "kind": "Bedingung",
+     "wording": "kinderlosen Ministerialen"
+    }
+   ],
+   "columns": [
+    "Regest",
+    "Vorgang",
+    "Art",
+    "Wortlaut im Graphen"
+   ],
+   "rows": [
+    [
+     {
+      "regest": "22696",
+      "claim": null,
+      "label": "n. 69"
+     },
+     "Schenkung",
+     "Ausnahme",
+     {
+      "source": "wobei dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen"
+     }
+    ],
+    [
+     {
+      "regest": "22696",
+      "claim": null,
+      "label": "n. 69"
+     },
+     "Rechtsinhaberschaft",
+     "Bedingung",
+     {
+      "source": "Der Bischof oder sein kanonisch gewählter Nachfolger"
+     }
+    ],
+    [
+     {
+      "regest": "22696",
+      "claim": null,
+      "label": "n. 69"
+     },
+     "Rechtssetzung",
+     "Ausnahme",
+     {
+      "source": "wobei dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen"
+     }
+    ],
+    [
+     {
+      "regest": "23717",
+      "claim": null,
+      "label": "n. 1088"
+     },
+     "Schuldenerlass",
+     "Ausnahme",
+     {
+      "source": "außer von denen, die nachweislich im Dienst des Reiches oder zum Nutzen der Kirche eingegangen wurden"
+     }
+    ],
+    [
+     {
+      "regest": "24821",
+      "claim": null,
+      "label": "n. 2186"
+     },
+     "Handlung ohne Typ",
+     "Bedingung",
+     {
+      "source": "bis zu deren Einlösung"
+     }
+    ],
+    [
+     {
+      "regest": "25230",
+      "claim": null,
+      "label": "n. 2594"
+     },
+     "Rechtssetzung",
+     "Bedingung",
+     {
+      "source": "kinderlosen Ministerialen"
+     }
+    ]
+   ]
+  }
+ ]
+}
