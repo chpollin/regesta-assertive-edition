@@ -380,7 +380,7 @@ def factoid_html(site: Site, regest: dict, block: dict, before: dict | None, roo
     elif before is None and regest["uid"] in site.extracted and regest["notes"].get("corrected"):
         extra.append('<p class="before">Nach dem Review hinzugekommen.</p>')
     return (
-        f'<li class="factoid" id="f-{esc(claim)}" data-ev="{esc(" ".join(ids))}" tabindex="0">'
+        f'<li class="factoid" id="f-{esc(claim)}" data-ev="{esc(" ".join(ids))}">'
         f'<p class="sentence">{"".join(parts)}</p>'
         f'<p class="evq">{" … ".join(quotes)}</p>{"".join(extra)}</li>'
     )
@@ -489,24 +489,22 @@ def regest_page(site: Site, index: int) -> None:
         f'<li><a href="{root}json/{s}.json" download>JSON</a></li>'
         f'<li><a href="{root}daten/">Alle Regesten als Paket</a></li></ul></section>'
     )
-    main = f"""<div class="title-row"><h1>{esc(r["identifier"])}</h1><nav class="pager" aria-label="Blättern">{prev_link}{next_link}<span class="back-slot"></span></nav></div>
-<div class="regest-layout">
-<section class="ri" aria-label="Regest nach Regesta Imperii">
-<div class="paper"><p class="paper-meta"><span>{date}</span>{f"<span>{place}</span>" if place else ""}</p>
-<p class="regest-text">{marked_text(r)}</p></div>
+    # The page shows the shared regest card of the views app (js/regest-card.js), rendered by
+    # js/edition/regest.js into #card. The static content of #card is the reading without
+    # JavaScript; citation and downloads stand below it in both cases.
+    main = f"""<div class="title-row"><h1 class="visually-hidden">{esc(r["identifier"])}</h1><nav class="pager" aria-label="Blättern">{prev_link}{next_link}<span class="back-slot"></span></nav></div>
+<div class="card-host" id="card" data-uid="{esc(uid)}">
+<p class="paper-meta"><span>{esc(r["identifier"])}</span><span>{date}</span>{f"<span>{place}</span>" if place else ""}</p>
+<p class="regest-text">{marked_text(r)}</p>
+<h2>Aussagen</h2>
+{statements}
 <div class="fields">{"".join(fields)}</div>
-<div class="cite"><p><span class="run-in">Quelle</span> <a href="{esc(uri)}" rel="noopener">{esc(r["identifier"])} in Regesta Imperii Online</a></p>
-{f'<ul class="ext" role="list">{book}</ul>' if book else ""}
+{history_html(r)}
+</div>
+<div class="cite">{f'<ul class="ext" role="list">{book}</ul>' if book else ""}
 <p><span class="run-in">Zitierweise des Regests</span> {esc(citation_ri)}</p>
 <p><span class="run-in">Zitierweise dieser Edition</span> {esc(citation_ed)}</p></div>
-</section>
-<section class="statements" aria-labelledby="st-title">
-<h2 id="st-title">Aussagen</h2>
-{statements}
-{history_html(r)}
-{downloads}
-</section>
-</div>"""
+{downloads}"""
     site.page(
         path=f"regesten/{s}",
         key="regesten",
@@ -800,11 +798,6 @@ def copy_assets(site: Site, edition_json: Path, questions_json: Path) -> None:
     for name in ("tokens.css", "pages.css", Path(site.shell_css).name):
         _copy(HERE / "css" / name, out / "css" / name)
     _copytree(HERE / "js" / "edition", out / "js" / "edition")
-    # Deliberate shim: js/itinerary.js fetches "js/basemap.json" relative to the document, so the
-    # embedding start page needs it at the site root too. Goes once the module resolves the
-    # file against import.meta.url.
-    if (HERE / "js" / "basemap.json").is_file():
-        _copy(HERE / "js" / "basemap.json", out / "js" / "basemap.json")
     _copytree(HERE / "fonts", out / "fonts")
     app = out / "ansicht"
     _copy(HERE / "index.html", app / "index.html")
@@ -859,7 +852,12 @@ def build(source: Path, run_id: str, out: Path) -> None:
         )
         data = out / "ansicht" / "data"
         _run(["build_holdings.py", "--source", str(source), "--out", str(data)])
-        WRITTEN.update(p.resolve() for p in data.glob("holdings*.json"))
+        _run(["check_itinerary.py", "--source", str(source), "--out", str(data / "itinerary-checks.json")])
+        WRITTEN.update(p.resolve() for p in (*data.glob("holdings*.json"), data / "itinerary-checks.json"))
+        # Deliberate shim: js/itinerary.js fetches "data/itinerary-checks.json" relative to the
+        # document, so the start page that embeds it needs a copy at the site root. Goes once
+        # the module resolves the file against import.meta.url.
+        _copy(data / "itinerary-checks.json", out / "data" / "itinerary-checks.json")
         site = Site(source, run_id, out, _load(rev / "edition.json"), _load(ext / "edition.json"))
         copy_assets(site, rev / "edition.json", rev / "questions.json")
     package = write_files(site, "revised")

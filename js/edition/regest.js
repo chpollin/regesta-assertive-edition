@@ -1,61 +1,30 @@
 /**
- * Single regest: pointing at or focusing a statement underlines the words it rests on;
- * pointing at underlined words marks the statements resting on them. A click, Enter or Space
- * keeps a statement selected and writes it into the address (#f-<claim>). The `zurueck`
- * parameter becomes a link back to the view the reader came from, same origin only.
+ * Single regest page: the shared regest card of the views app (ansicht/js/regest-card.js)
+ * replaces the static reading in #card, so the citable page and the detail in every view are
+ * one component. #f-<claim> in the address selects a statement. The `zurueck` parameter
+ * becomes a link back to the view the reader came from, same origin only.
  */
+import { bridge, loadRoutes, loadStore, siteUrl } from "./views.js";
 
-export function init() {
+export async function init(root) {
   backLink();
-  const pieces = [...document.querySelectorAll(".regest-text .ev")];
-  const statements = [...document.querySelectorAll(".factoid[data-ev]")];
-  const ids = (el) => (el.dataset.ev || "").split(" ").filter(Boolean);
-  let pinned = /** @type {HTMLElement|null} */ (null);
-
-  const underline = (wanted) => {
-    const set = new Set(wanted);
-    for (const piece of pieces) piece.classList.toggle("is-on", ids(piece).some((id) => set.has(id)));
-  };
-  const show = (statement) => underline(statement ? ids(statement) : pinned ? ids(pinned) : []);
-
-  const pin = (statement, scroll = false) => {
-    pinned?.classList.remove("is-pinned");
-    pinned = statement === pinned ? null : statement;
-    pinned?.classList.add("is-pinned");
-    history.replaceState(null, "", pinned ? `#${pinned.id}` : location.pathname + location.search);
-    show(null);
-    if (pinned && scroll) pinned.scrollIntoView({ block: "center" });
-  };
-
-  for (const statement of statements) {
-    statement.addEventListener("mouseenter", () => show(statement));
-    statement.addEventListener("mouseleave", () => show(null));
-    statement.addEventListener("focus", () => show(statement));
-    statement.addEventListener("blur", () => show(null));
-    statement.addEventListener("click", (event) => {
-      if (event.target instanceof Element && event.target.closest("a")) return;
-      pin(statement);
-    });
-    statement.addEventListener("keydown", (event) => {
-      if (event.target !== statement || (event.key !== "Enter" && event.key !== " ")) return;
-      event.preventDefault();
-      pin(statement);
-    });
-  }
-  for (const piece of pieces) {
-    piece.addEventListener("mouseenter", () => {
-      const set = new Set(ids(piece));
-      underline(ids(piece));
-      for (const s of statements) s.classList.toggle("is-related", ids(s).some((id) => set.has(id)));
-    });
-    piece.addEventListener("mouseleave", () => {
-      for (const s of statements) s.classList.remove("is-related");
-      show(null);
-    });
-  }
-
-  const target = location.hash.startsWith("#f-") ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
-  if (target && statements.includes(target)) pin(target, true);
+  const host = document.getElementById("card");
+  if (!host) return;
+  const [store, routes, { renderRegestCard }] = await Promise.all([
+    loadStore(root),
+    loadRoutes(root),
+    import(siteUrl(root, "ansicht/js/regest-card.js")),
+  ]);
+  bridge(root, routes);
+  const uid = host.dataset.uid;
+  if (!store.byUid.has(uid)) return;
+  let textsPromise = null;
+  const texts = () =>
+    (textsPromise ??= fetch(siteUrl(root, "ansicht/data/holdings-texts.json"))
+      .then((r) => (r.ok ? r.json() : {}))
+      .catch(() => ({})));
+  const claim = location.hash.startsWith("#f-") ? decodeURIComponent(location.hash.slice(3)) : null;
+  host.replaceChildren(renderRegestCard(store, uid, { claim, texts }));
 }
 
 /** Validated return address: same origin, http or https, otherwise nothing is shown. */

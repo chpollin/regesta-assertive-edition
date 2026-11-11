@@ -67,35 +67,19 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .pager a { white-space: nowrap; text-decoration: none; }
 .pager a:hover { text-decoration: underline; text-decoration-color: var(--pg-accent); }
 .back-slot:empty { display: none; }
-.regest-layout { display: grid; gap: 2rem; grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 64rem) {
-  .regest-layout { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
-  .ri { position: sticky; inset-block-start: 1rem; max-block-size: calc(100dvh - 2rem); overflow-y: auto; }
-}
+.card-host { max-inline-size: 72ch; }
 .paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
 .regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
-.regest-text .ev { text-decoration: none; }
-.regest-text .ev.is-on { text-decoration: underline 3px var(--pg-accent); text-underline-offset: 0.22em; text-decoration-skip-ink: none; }
 .fields, .cite { margin-block-start: 1.5rem; max-inline-size: 72ch; }
 .cite { padding-block-start: 0.75rem; border-block-start: 1px solid var(--pg-line); overflow-wrap: anywhere; }
 .ext { list-style: none; padding: 0; margin: 0 0 0.75rem; }
 
-.statements h2 { margin-block-start: 0; }
 .review-state { max-inline-size: 64ch; }
 .factoid-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
-.factoid { padding-inline-start: 0.75rem; border-inline-start: 3px solid transparent; cursor: pointer; outline: none; }
-.factoid:hover, .factoid:focus-visible, .factoid.is-related { border-inline-start-color: var(--pg-line); }
-.factoid.is-pinned { border-inline-start-color: var(--pg-accent); }
-.factoid:focus-visible { outline: 2px solid var(--pg-accent); outline-offset: 2px; }
-.factoid.removed { cursor: default; }
 .sentence { margin: 0; max-inline-size: 64ch; }
 .act-type { font-weight: 600; }
 .evq, .lit, .case-note, .before { margin: 0.25rem 0 0; max-inline-size: 64ch; }
 .evq { font-family: var(--font-source, Georgia, serif); }
-.js .evq { display: none; }
-@media (max-width: 63.99rem) {
-  .js .factoid.is-pinned .evq { display: block; }
-}
 .history { margin-block-start: 1.5rem; }
 .history summary { cursor: pointer; font-weight: 600; }
 .history ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; margin-block-start: 0.75rem; max-inline-size: 72ch; }
