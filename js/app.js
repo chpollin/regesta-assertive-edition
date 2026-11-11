@@ -8,6 +8,8 @@
  *   #/                         flat network (Zeit und Netz), whole network
  *   #/personen/<iri>           the same around one person
  *   #/itinerar[/<place>]       the whole delivery as a cube of the places of issue
+ *   #/zeitband[/<register id>] persons of the register as rows over the years
+ *   #/jahrzehnte[/<place>]     the same map once per decade, side by side
  *   #/raum[/<iri>]             space view, corpus or around one person
  *   #/regest/<uid>[/<claim>]   reading view, optionally with one statement selected
  * Filters (time range, families) and view settings live in the query string and survive
@@ -19,6 +21,8 @@ import { renderOverview } from "./overview.js";
 import { renderRegestCard } from "./regest-card.js";
 import { renderSpace } from "./space.js";
 import { renderItinerary } from "./itinerary.js";
+import { renderTimeband } from "./timeband.js";
+import { renderDecades } from "./decades.js";
 
 /** @typedef {{edition: any, holdings: any, byUid: Map<string, any>}} Store */
 
@@ -62,7 +66,7 @@ async function loadJson(path) {
  */
 function buildNav(items) {
   const inBuild = location.pathname.includes("/ansicht/");
-  const local = { "zeit-netz": "#/", itinerar: "#/itinerar", raum: "#/raum" };
+  const local = { "zeit-netz": "#/", itinerar: "#/itinerar", zeitband: "#/zeitband", jahrzehnte: "#/jahrzehnte", raum: "#/raum" };
   nav.replaceChildren(
     ...items
       .filter((it) => inBuild || it.key in local)
@@ -98,6 +102,16 @@ function route(store, filters) {
     content = renderItinerary(store, { place: store.holdings.places[place] ? place : null, filters, detail, texts });
     navKey = "itinerar";
     title = "Itinerar";
+  } else if (view === "zeitband" && store.holdings) {
+    const person = decodeURIComponent(parts.slice(1).join("/"));
+    content = renderTimeband(store, { person: store.holdings.persons[person] ? person : null, filters, detail, texts });
+    navKey = "zeitband";
+    title = "Zeitband";
+  } else if (view === "jahrzehnte" && store.holdings) {
+    const place = decodeURIComponent(parts.slice(1).join("/"));
+    content = renderDecades(store, { place: store.holdings.places[place] ? place : null, filters, detail, texts });
+    navKey = "jahrzehnte";
+    title = "Jahrzehnte";
   } else if (view === "raum") {
     content = renderSpace(store, { actor: actorOf(parts.slice(1)), filters, detail, texts });
     navKey = "raum";
