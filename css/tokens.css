@@ -113,4 +113,43 @@
     --aside-width: 21rem;
     --detail-width: 26rem;
   }
+  /* The second data layer (statements extracted by LLM-based agents) and the weight of the
+     marks. By default the layer takes the accent. */
+  :root {
+    --layer2: var(--accent);
+    --dot-r: 2.2px;
+    --label-weight: 400;
+  }
+
+  /* Two warmer versions for the operator's choice, reached as ?farbe=w1 or ?farbe=w2, after
+     his remark that the light design felt cold (2026-11-11, ui-feedback.md). The ground stays
+     white and untinted; warmth comes from the greys, the sidebar and the lines; the second
+     layer gets a muted colour of its own. Deliberate shortcut for the comparison: the chosen
+     version replaces the default values above and the parameter goes. */
+  :root[data-palette="w1"] {
+    --side: #f7f5f1;
+    --text: #22201c;
+    --muted: #4d4741;
+    --hairline: #e0dad1;
+    --edge: #8f877c;
+    --bars: #d8d1c6;
+    --map-coast: #cfc8bc;
+    --map-river: #ddd6cb;
+    --layer2: #9c7a2e;
+    --dot-r: 2.5px;
+    --label-weight: 500;
+  }
+  :root[data-palette="w2"] {
+    --side: #f3efe8;
+    --text: #1f1c18;
+    --muted: #4d4741;
+    --hairline: #d9d2c7;
+    --edge: #857b6d;
+    --bars: #cfc6b8;
+    --map-coast: #c7bfb2;
+    --map-river: #d8d0c4;
+    --layer2: #4b4f86;
+    --dot-r: 2.7px;
+    --label-weight: 500;
+  }
 }

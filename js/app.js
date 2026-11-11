@@ -135,6 +135,9 @@ function route(store, filters) {
 }
 
 async function start() {
+  // Colour versions for the operator's comparison (?farbe=w1 or w2); see css/tokens.css.
+  const palette = new URLSearchParams(location.search).get("farbe");
+  if (palette === "w1" || palette === "w2") document.documentElement.dataset.palette = palette;
   try {
     // The whole-holdings layer is optional, so the views of the run work without it.
     const [edition, navData, holdings] = await Promise.all([loadJson("data/edition.json"), loadJson("js/nav.json"), loadJson("data/holdings.json").catch(() => null)]);
