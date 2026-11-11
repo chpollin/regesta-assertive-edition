@@ -565,7 +565,8 @@ export function renderSpace(store, options = {}) {
    */
   function placeLabels(pt, screen) {
     const { width, height } = scene;
-    const boxes = [];
+    // Every drawn mark is an obstacle, so no name lies on a node.
+    const boxes = [...screen.values()].flat().map((p) => ({ x0: p.x - 4, x1: p.x + 4, y0: p.y - 4, y1: p.y + 4 }));
     const out = [];
     const fits = (b) => b.x0 >= 0 && b.x1 <= width && b.y0 >= 0 && b.y1 <= height && !boxes.some((o) => o.x0 < b.x1 && b.x0 < o.x1 && o.y0 < b.y1 && b.y0 < o.y1);
     const tryPlace = (text, p, cls, options) => {
@@ -588,10 +589,14 @@ export function renderSpace(store, options = {}) {
     if (yearScaleShown) for (const y of scene.decades) tryPlace(String(y), pt(0, y, 0), "sp-year", ["left", "right"]);
     for (const it of first) placeItem(it);
     // Direction words on the floor: the same short words in capitals as at the rim of the 2D
-    // circle, quieter than the data.
+    // circle, quieter than the data, set outside the floor ring so they stand at the edge of
+    // the figure and not inside it.
     for (const f of model.centre ? FAMILIES : []) {
-      const w = polar(f.angle, RING);
+      const w = polar(f.angle, RING * 1.18);
       const p = pt(w.x, span.lo, w.z);
+      // Seen obliquely, the back half of the floor projects up into the figure; its words
+      // stay away there, the sidebar names every direction anyway.
+      if (state.view.pitch < 60 * DEG && p.depth > 0.2) continue;
       tryPlace(f.short, p, "sp-family", ["below", "above", "right", "left", "below-right", "above-right"]);
     }
     for (const it of ranked.filter((x) => !first.includes(x))) placeItem(it);

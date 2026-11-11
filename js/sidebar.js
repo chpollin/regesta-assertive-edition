@@ -68,6 +68,8 @@ export function createSidebar(store, filters, options) {
           class: "fam-toggle",
           "aria-pressed": String(filters.familyOn(f.key)),
           title: f.label,
+          // A family without regesta in the selection cannot change anything, so it is not pressable.
+          disabled: n === 0 ? true : null,
           onclick: () => {
             const next = new Set(filters.families);
             if (next.has(f.key)) next.delete(f.key);

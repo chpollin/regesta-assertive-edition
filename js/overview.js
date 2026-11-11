@@ -334,7 +334,7 @@ function egoLayout(graph, selectedId, width, height) {
     // second person moves a few degrees aside so neighbours stay apart.
     const step = others.length > 1 ? Math.min(0.08, 0.24 / (others.length - 1)) : 0;
     others.forEach((o, i) => {
-      const aside = step < 0.08 && i % 2 ? 4 : 0;
+      const aside = step < 0.08 && i % 2 ? 8 : 0;
       pos.set(o, { ...at(p.angle + aside, 0.55 + i * step), ring: 2, angle: p.angle });
     });
   }
