@@ -20,7 +20,7 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 :focus-visible { outline: 2px solid var(--focus, #005c64); outline-offset: 2px; }
 .site-main { max-inline-size: 76rem; margin-inline: auto; inline-size: 100%; }
 .site-main h1 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); font-weight: 600; line-height: 1.2; margin: 0 0 0.75rem; }
-.site-main h2 { font-size: 1.0625rem; font-weight: 600; margin: 2rem 0 0.5rem; }
+.site-main h2 { font-size: var(--step-0, 1rem); font-weight: 600; margin: 2rem 0 0.5rem; }
 .site-main p { margin: 0 0 0.75rem; }
 .site-main a { color: var(--pg-ink); text-decoration-color: var(--pg-accent); text-underline-offset: 0.2em; }
 .site-main a:hover { text-decoration-thickness: 2px; }
@@ -28,14 +28,14 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .intro, .lede, .site-main section > p { max-inline-size: 72ch; }
 .link-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
 .run-in { font-weight: 600; margin-inline-end: 0.35em; }
-.missing { color: var(--pg-muted); }
-.mark { color: var(--pg-muted); font-weight: 400; font-size: 0.875rem; margin-inline-start: 0.5em; }
+.missing { font-style: italic; }
+.mark { font-weight: 400; margin-inline-start: 0.35em; }
 .source, .regest-text { font-family: var(--font-source, Georgia, serif); }
 
+.visually-hidden { position: absolute !important; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
 /* Start */
-.edition-title { font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem); }
-.edition-subtitle { display: block; font-size: 0.55em; font-weight: 400; margin-block-start: 0.25rem; }
-.lede { font-size: 1.0625rem; }
+.lede { font-size: var(--step-0, 1rem); }
 .figure { margin-block: 1rem 1.5rem; min-block-size: 4rem; }
 .figure-fallback { color: var(--pg-muted); max-inline-size: 72ch; }
 .entries { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 2rem; list-style: none; padding: 0; margin: 0; }
@@ -50,7 +50,7 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .table-wrap { overflow-x: auto; max-inline-size: 100%; }
 .list { border-collapse: collapse; inline-size: 100%; max-inline-size: 64rem; }
 .list th, .list td { text-align: start; vertical-align: baseline; padding: 0.4rem 1rem 0.4rem 0; border-block-end: 1px solid var(--pg-line); }
-.list thead th { font-weight: 600; color: var(--pg-muted); font-size: 0.875rem; }
+.list thead th { font-weight: 600; }
 .list tbody th { font-weight: 600; }
 .list:not(.persons) tbody th, .list td:last-child { white-space: nowrap; }
 .persons td:last-child { inline-size: 6rem; }
@@ -72,32 +72,31 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
   .regest-layout { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
   .ri { position: sticky; inset-block-start: 1rem; max-block-size: calc(100dvh - 2rem); overflow-y: auto; }
 }
-.paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; color: var(--pg-muted); margin-block-end: 0.5rem; }
+.paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
 .regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
 .regest-text .ev { text-decoration: none; }
 .regest-text .ev.is-on { text-decoration: underline 3px var(--pg-accent); text-underline-offset: 0.22em; text-decoration-skip-ink: none; }
-.fields, .cite { margin-block-start: 1.5rem; font-size: 0.9375rem; max-inline-size: 72ch; }
+.fields, .cite { margin-block-start: 1.5rem; max-inline-size: 72ch; }
 .cite { padding-block-start: 0.75rem; border-block-start: 1px solid var(--pg-line); overflow-wrap: anywhere; }
 .ext { list-style: none; padding: 0; margin: 0 0 0.75rem; }
 
 .statements h2 { margin-block-start: 0; }
-.review-state { color: var(--pg-muted); max-inline-size: 64ch; }
+.review-state { max-inline-size: 64ch; }
 .factoid-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
 .factoid { padding-inline-start: 0.75rem; border-inline-start: 3px solid transparent; cursor: pointer; outline: none; }
 .factoid:hover, .factoid:focus-visible, .factoid.is-related { border-inline-start-color: var(--pg-line); }
 .factoid.is-pinned { border-inline-start-color: var(--pg-accent); }
 .factoid:focus-visible { outline: 2px solid var(--pg-accent); outline-offset: 2px; }
 .factoid.removed { cursor: default; }
-.sentence { font-size: 1.0625rem; margin: 0; max-inline-size: 64ch; }
+.sentence { margin: 0; max-inline-size: 64ch; }
 .act-type { font-weight: 600; }
-.evq, .lit, .case-note, .before { font-size: 0.9375rem; margin: 0.25rem 0 0; max-inline-size: 64ch; }
-.evq { font-family: var(--font-source, Georgia, serif); color: var(--pg-muted); }
+.evq, .lit, .case-note, .before { margin: 0.25rem 0 0; max-inline-size: 64ch; }
+.evq { font-family: var(--font-source, Georgia, serif); }
 .js .evq { display: none; }
 @media (max-width: 63.99rem) {
   .js .factoid.is-pinned .evq { display: block; }
 }
-.before { color: var(--pg-muted); }
-.history { margin-block-start: 1.5rem; font-size: 0.9375rem; }
+.history { margin-block-start: 1.5rem; }
 .history summary { cursor: pointer; font-weight: 600; }
 .history ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; margin-block-start: 0.75rem; max-inline-size: 72ch; }
 
@@ -108,7 +107,6 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 
 /* Persons */
 .register, .forms { max-inline-size: 72ch; }
-.figure-person { margin-block: 1.5rem; }
 .mentions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; max-inline-size: 72ch; }
 .mention-head { font-weight: 600; margin-inline-end: 0.35em; }
 
@@ -118,9 +116,6 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .step-head { margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; }
 .step-title { font-weight: 600; }
 .step-title::before { content: counter(step) ". "; }
-.producer { font-size: 0.875rem; padding-inline: 0.4rem; border: 1px solid var(--pg-line); border-radius: 2px; }
-.producer.p1 { border-color: var(--pg-accent); }
-.producer.p2 { border-style: dashed; }
 .steps li > p:last-child { margin: 0.25rem 0 0; }
 .code { white-space: pre-wrap; overflow-wrap: anywhere; padding: 0.75rem; border: 1px solid var(--pg-line); border-radius: 2px; max-inline-size: 80ch; }
 .placeholder { padding: 0.5rem 0.75rem; border: 1px dashed #8a8a8a; max-inline-size: 64ch; }
@@ -131,7 +126,7 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 
 /* Embedded views (start and person pages): drawing area and its sidebar side by side, one
    window high at wide widths, stacked below 56rem as in the shell. */
-.embed { display: grid; grid-template-columns: minmax(0, 1fr); border-block: 1px solid var(--pg-line); }
+.embed { display: grid; grid-template-columns: minmax(0, 1fr); }
 .embed-main { container: page / inline-size; min-inline-size: 0; block-size: 70dvh; }
 .embed-aside { border-inline-start: 0; }
 @media (min-width: 56.01rem) {
@@ -145,6 +140,6 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 /* Footer and skip link of the static pages; shell.css does not style them yet. */
 .skip { position: absolute; inset-inline-start: -999rem; }
 .skip:focus { inset-inline-start: 0.5rem; inset-block-start: 0.5rem; background: var(--pg-ground); padding: 0.5rem; z-index: 6; }
-.site-footer { max-inline-size: 76rem; margin-inline: auto; padding: 1rem 1.5rem 2rem; border-block-start: 1px solid var(--pg-line); color: var(--pg-muted); font-size: 0.875rem; }
+.site-footer { max-inline-size: 76rem; margin-inline: auto; padding: 1rem 1.5rem 2rem; border-block-start: 1px solid var(--pg-line); color: var(--pg-muted); font-size: var(--step--1, 0.875rem); }
 .site-footer p { margin: 0 0 0.25rem; max-inline-size: 80ch; }
 .site-footer a { color: var(--pg-ink); text-decoration-color: var(--pg-accent); margin-inline-end: 1rem; }

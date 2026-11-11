@@ -51,6 +51,7 @@ import zipfile
 from collections import Counter, defaultdict
 from itertools import pairwise
 from pathlib import Path
+from urllib.parse import quote
 
 HERE = Path(__file__).resolve().parent
 TAG_RE = re.compile(r"<[^>]+>")
@@ -296,8 +297,10 @@ def start_page(site: Site) -> None:
         '<p class="figure-fallback">Hier steht das Itinerar aller Regesten der Lieferung nach Ort und Zeit. '
         'Die Ansicht braucht JavaScript, die <a href="regesten/">Liste der Regesten</a> nicht.</p>'
     )
-    main = f"""<h1 class="edition-title">{esc(t["title"])}<span class="edition-subtitle">{esc(t["subtitle"])}</span></h1>
-<p class="lede">{esc(t["description"])}</p>
+    # The header already shows the title; the h1 stays for screen readers, and the subtitle
+    # opens the one sentence of description (measured subtractive pass of 2026-11-11).
+    main = f"""<h1 class="visually-hidden">{esc(t["title"])}. {esc(t["subtitle"])}</h1>
+<p class="lede">{esc(t["subtitle"])}. {esc(t["description"])}</p>
 <div class="figure" id="figure">{fallback}</div>
 <ul class="entries" role="list">
 <li><a href="regesten/">{len(site.regests)} Regesten</a></li>
@@ -555,7 +558,7 @@ def persons_pages(site: Site) -> None:
         role_text = ", ".join(
             f"{r} {c}" if c > 1 else r for r, c in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
         )
-        mark = ' <span class="mark">ohne Registereintrag</span>' if n["local"] else ""
+        mark = ' <span class="mark">(ohne Registereintrag)</span>' if n["local"] else ""
         q = re.sub(r"[^a-z0-9 ]", "", _fold(" ".join([n["label"], *(lb["label"] for lb in n["labels"])])))
         rows.append(
             f'<tr data-q="{esc(q)}"><th scope="row"><a href="{site.pslugs[n["id"]]}/">{esc(n["label"])}</a>{mark}</th>'
@@ -584,7 +587,7 @@ def person_page(site: Site, node: dict, rels: list[dict]) -> None:
     reg_id = _register_id(node["id"])
     register = site.register.get(reg_id) if reg_id else None
     if register:
-        entry = f'<p class="register"><span class="run-in">Register der Regesta Imperii</span> <span class="source">{esc(plain(register["label"]))}</span></p>'
+        entry = f'<p class="register">Im Register der Regesta Imperii: <span class="source">{esc(plain(register["label"]))}</span></p>'
     else:
         entry = '<p class="register">Ohne Registereintrag. Die Kennung gilt nur innerhalb ihres Regests.</p>'
     other_labels = [lb["label"] for lb in node["labels"] if lb["label"] != node["label"]]
@@ -613,7 +616,7 @@ def person_page(site: Site, node: dict, rels: list[dict]) -> None:
     main = f"""<h1>{esc(node["label"])}</h1>
 {entry}
 {forms}
-<div class="figure figure-person" id="figure" data-actor="{esc(node["id"])}"></div>
+<p><a href="{root}ansicht/#/personen/{quote(node["id"], safe="")}">Beziehungen im Netz ansehen</a></p>
 <section aria-labelledby="m-title"><h2 id="m-title">Nennungen in Aussagen</h2>
 <ul class="mentions" role="list">{"".join(items)}</ul></section>"""
     site.page(
@@ -622,7 +625,6 @@ def person_page(site: Site, node: dict, rels: list[dict]) -> None:
         kind="person",
         title=node["label"],
         main=main,
-        views=True,
     )
 
 
@@ -677,12 +679,12 @@ def method_page(site: Site, tei_excerpt: str) -> None:
         ),
     ]
     items = "".join(
-        f'<li><p class="step-head"><span class="step-title">{esc(title)}</span> <span class="producer p{who}">{STEP_PRODUCERS[who]}</span></p><p>{text}</p></li>'
+        f'<li><p class="step-head"><span class="step-title">{esc(title)}</span> <span class="producer">{STEP_PRODUCERS[who]}</span></p><p>{text}</p></li>'
         for title, who, text in steps
     )
     t = site.texts
     main = f"""<h1>Methode</h1>
-<p class="intro">Jeder Schritt nennt, wer ihn ausgeführt hat, damit erkennbar bleibt, was eine Regel und was ein LLM erzeugt hat. Die Bezeichnungen sind deterministischer Workflow, unrevidierter LLM-basierter Agent und menschlich verifiziert.</p>
+<p class="intro">Jeder Schritt nennt, wer ihn ausgeführt hat, damit erkennbar bleibt, was eine Regel und was ein LLM erzeugt hat.</p>
 <ol class="steps" role="list">{items}</ol>
 <section aria-labelledby="tei-title"><h2 id="tei-title">Umsetzung in TEI</h2>
 <p>Der Regesttext steht verlustfrei in einem Absatz. Jede Belegstelle ist ein <code>seg</code>, jeder Name ein <code>persName</code> oder <code>orgName</code> mit Verweis auf die Person in <code>standOff</code>. Jede Aussage ist ein <code>event</code> in <code>listEvent</code>, das über <code>@corresp</code> auf ihre Belege, über <code>@resp</code> auf den erzeugenden Agenten und über <code>@ana</code> auf ihren Prüfstand zeigt. Die Rollen sind <code>relation</code>-Elemente in <code>listRelation</code>. Die maßgebliche Fassung bleibt das RDF des Laufs. Was TEI davon nicht abbildet, sind die Typen der betroffenen Rechte und Sachen als eigene Knoten, sie stehen als Vermerk an der Aussage. So sieht RI IV,2,1 n. 46 aus:</p>
@@ -798,6 +800,11 @@ def copy_assets(site: Site, edition_json: Path, questions_json: Path) -> None:
     for name in ("tokens.css", "pages.css", Path(site.shell_css).name):
         _copy(HERE / "css" / name, out / "css" / name)
     _copytree(HERE / "js" / "edition", out / "js" / "edition")
+    # Deliberate shim: js/itinerary.js fetches "js/basemap.json" relative to the document, so the
+    # embedding start page needs it at the site root too. Goes once the module resolves the
+    # file against import.meta.url.
+    if (HERE / "js" / "basemap.json").is_file():
+        _copy(HERE / "js" / "basemap.json", out / "js" / "basemap.json")
     _copytree(HERE / "fonts", out / "fonts")
     app = out / "ansicht"
     _copy(HERE / "index.html", app / "index.html")

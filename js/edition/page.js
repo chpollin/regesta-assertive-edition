@@ -8,7 +8,6 @@ document.documentElement.classList.replace("no-js", "js");
 const root = document.documentElement.dataset.root ?? "";
 const loaders = {
   start: () => import("./start.js"),
-  person: () => import("./person.js"),
   regest: () => import("./regest.js"),
   personen: () => import("./persons.js"),
 };
