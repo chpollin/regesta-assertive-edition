@@ -41,6 +41,7 @@ import argparse
 import csv
 import html
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -74,10 +75,11 @@ def esc(text: object) -> str:
 
 def slug(identifier: str) -> str:
     """Same rule as build_tei.slug; the build checks that each TEI file exists under it."""
-    match = re.fullmatch(r"RI ([IVXLC]+),(\d+),(\d+) n\. (\w+)", identifier)
+    # Forgeries carry a dagger ("n. †4"); written as "f" in the address, as in build_tei.
+    match = re.fullmatch(r"RI ([IVXLC]+),(\d+),(\d+) n\. ([\w†]+)", identifier)
     if not match:
         raise BuildError(f"identifier without the RI pattern: {identifier}")
-    return "-".join(match.groups()).lower()
+    return "-".join(match.groups()).replace("†", "f").lower()
 
 
 def person_slug(iri: str) -> str:
@@ -94,7 +96,12 @@ def plain(raw: str | None) -> str | None:
 
 
 def _run(args: list[str]) -> None:
-    result = subprocess.run([sys.executable, *args], cwd=HERE, capture_output=True, text=True, encoding="utf-8")
+    # The children print German text; on Windows their default stdout encoding is the ANSI code
+    # page, so they run in UTF-8 mode to match the decoding here.
+    env = {**os.environ, "PYTHONUTF8": "1"}
+    result = subprocess.run(
+        [sys.executable, *args], cwd=HERE, capture_output=True, text=True, encoding="utf-8", env=env
+    )
     if result.returncode != 0:
         raise BuildError(f"{args[0]} failed:\n{result.stderr.strip()}")
 
@@ -866,12 +873,20 @@ def build(source: Path, run_id: str, out: Path) -> None:
     method_page(site, tei_excerpt(out / "tei" / f"{site.slugs[first]}.xml"))
     about_page(site)
     data_page(site, package)
-    WRITTEN.update(p.resolve() for p in (out / "tei").glob("*.xml"))
+    # Only the TEI files of this run's regesta count as written; a TEI file of an earlier
+    # run with other regesta is stale, even though it still lies in the folder.
+    current = set(site.slugs.values())
+    WRITTEN.update(p.resolve() for p in (out / "tei").glob("*.xml") if p.stem in current)
     WRITTEN.add((out / "daten" / package).resolve())
-    # Remove, file by file, what the previous build wrote and this one did not.
-    for stale in sorted(previous - WRITTEN):
+    # Remove, file by file, what the previous build wrote and this one did not, and stale
+    # TEI files of an earlier run; then the folders that became empty, never a full tree.
+    stale_tei = {p.resolve() for p in (out / "tei").glob("*.xml") if p.stem not in current}
+    for stale in sorted((previous - WRITTEN) | stale_tei):
         if stale.is_file() and stale.is_relative_to(out):
+            parent = stale.parent
             stale.unlink()
+            if parent != out and parent.is_relative_to(out) and not any(parent.iterdir()):
+                parent.rmdir()
     lines = sorted(p.relative_to(out).as_posix() for p in WRITTEN)
     marker.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"wrote the site for {run_id} to {out}")
@@ -880,7 +895,7 @@ def build(source: Path, run_id: str, out: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--source", type=Path, default=HERE.parent / "regesta-rdf-demo")
-    parser.add_argument("--run", default="factoid-2026-11-11")
+    parser.add_argument("--run", default="factoid-1153-2026-11-11")
     parser.add_argument("--out", type=Path, default=HERE / "site")
     args = parser.parse_args()
     if args.out.resolve().is_relative_to(args.source.resolve()):

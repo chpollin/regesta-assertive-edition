@@ -119,10 +119,12 @@ def slug(identifier: str) -> str:
 
     build_site.py derives the same slug and checks that each TEI file exists.
     """
-    match = re.fullmatch(r"RI ([IVXLC]+),(\d+),(\d+) n\. (\w+)", identifier)
+    # Forgeries carry a dagger in their number ("n. †4", "n. D†318"); the address writes it
+    # as "f", so "RI IV,2,1 n. †4" gives "iv-2-1-f4".
+    match = re.fullmatch(r"RI ([IVXLC]+),(\d+),(\d+) n\. ([\w†]+)", identifier)
     if not match:
         raise BuildError(f"identifier without the RI pattern: {identifier}")
-    return "-".join(match.groups()).lower()
+    return "-".join(match.groups()).replace("†", "f").lower()
 
 
 def _t(tag: str) -> str:
@@ -160,7 +162,10 @@ def _sha256(path: Path) -> str:
 
 def _labels(source: Path, manifest: dict) -> dict[str, str]:
     """German prefLabels of the frozen vocabulary, checked against the manifest hash."""
-    vocabulary = source / "contracts" / manifest["run_id"] / "ontology" / "vocabulary.ttl"
+    # The contract a run names (contract_dir), else contracts/<run_id>, as in build_data.py.
+    vocabulary = (
+        source / manifest.get("contract_dir", f"contracts/{manifest['run_id']}") / "ontology" / "vocabulary.ttl"
+    )
     if not vocabulary.is_file():
         raise BuildError(f"missing input file {vocabulary}")
     if manifest.get("contract_sha256", {}).get("ontology/vocabulary.ttl") != _sha256(vocabulary):
@@ -215,7 +220,8 @@ def _context(source: Path, run_id: str, stage: str, texts: dict) -> Context:
         data = _load_json(run / "revised" / "corrections.json")
         corrector = data.get("corrector")
         for rec in data["records"]:
-            corrections[rec["uid"]].append(rec["change"])
+            # One change per record in the factoid run, a list of changes in the 1153 slice.
+            corrections[rec["uid"]].extend(rec.get("changes") or [rec["change"]])
     technical = {r["uid"]: bool(validation["technical_pass"]) and not r["issues"] for r in validation["records"]}
     return Context(
         run_id=manifest["run_id"],
@@ -470,7 +476,7 @@ def _header(tei: etree._Element, ctx: Context, packet: dict, row: dict, agents: 
 def build_regest(ctx: Context, run: Path, uid: str, row: dict) -> etree._Element:
     """One TEI document for one regest of the run."""
     packet = _load_json(run / "packets" / f"{uid}.json")
-    text = packet["summary_plain"]
+    text = packet["summary_plain"] or ""  # n. 107 of the delivery has no summary
     ttl = run / ctx.stage / f"{uid}.ttl"
     if not ttl.is_file():
         raise BuildError(f"missing {ctx.stage} Turtle for {uid}")

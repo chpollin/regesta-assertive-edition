@@ -178,6 +178,7 @@ DECISION_DE = {
     "keep": "beibehalten",
     "not_required": "nicht erforderlich",
     "model_gap": "als Modelllücke vermerkt",
+    "reject": "Befund zurückgewiesen",
 }
 SEVERITY_DE = {"error": "Fehler", "warning": "Hinweis", "note": "Vermerk"}
 
@@ -206,6 +207,12 @@ ROLES_WITH = (RV.Spouse, RV.Kin)
 # so a new kind of report is never silently left out.
 FACTOID_REVIEWS = ("review-A.json", "review-B.json")
 FACTOID_REVIEW_FILES = {*FACTOID_REVIEWS, "adjudication.json"}
+
+
+def _group_key(name: str) -> tuple[int, str]:
+    """Order group files by their number, so g2 comes before g10."""
+    match = re.search(r"-g(\d+)", name)
+    return (int(match.group(1)) if match else 0, name)
 
 
 class BuildError(Exception):
@@ -1644,12 +1651,23 @@ def _factoid_notes(run: Path, stage: str) -> dict[str, dict]:
             entry["unresolved"] += [{"text": t, "lang": "en"} for t in rec.get("unresolved_identities", [])]
             entry["gaps"] += [{"text": t, "lang": "en", "stage": "Extraktion"} for t in rec.get("model_gaps", [])]
     if stage == "revised":
-        unknown = sorted(p.name for p in (run / "revised").glob("*.json") if p.name != "corrections.json")
+        # Per-group logs (corrections-gN.json, the 1153 slice) are merged into corrections.json
+        # by the run itself; any other file is unexpected and stops the build.
+        unknown = sorted(
+            p.name
+            for p in (run / "revised").glob("*.json")
+            if p.name != "corrections.json" and not re.fullmatch(r"corrections-g\d+\.json", p.name)
+        )
         if unknown:
             raise BuildError(f"correction files this build does not read: {unknown}")
         for rec in _load_json(run / "revised" / "corrections.json")["records"]:
             entry = notes[rec["uid"]]
-            entry["corrections"].append({"text": rec["change"], "lang": "en"})
+            # The factoid run logs one change per record, the 1153 slice a list per record
+            # and the outcome after correction.
+            for change in rec.get("changes") or [rec["change"]]:
+                entry["corrections"].append({"text": change, "lang": "en"})
+            if rec.get("status_after"):
+                entry["status"] = rec["status_after"]
             entry["corrected"] = True
     return notes
 
@@ -1662,9 +1680,14 @@ def _factoid_history(run: Path, texts: dict[str, str], notes: dict[str, dict]) -
     history: dict[str, dict] = defaultdict(lambda: {"findings": [], "decisions": [], "revised": None, "final": None})
     review = run / "review"
     present = {p.name for p in review.glob("*")} if review.is_dir() else set()
-    if present - FACTOID_REVIEW_FILES:
-        raise BuildError(f"review files this build does not read: {sorted(present - FACTOID_REVIEW_FILES)}")
-    for name in FACTOID_REVIEWS:
+    # The 1153 slice reviews and adjudicates per group of twenty (review-gN-A.json,
+    # adjudication-gN.json); the factoid run has one file each. Anything else stops the build.
+    group_reviews = sorted((n for n in present if re.fullmatch(r"review-g\d+-[AB]\.json", n)), key=_group_key)
+    group_adjudications = sorted((n for n in present if re.fullmatch(r"adjudication-g\d+\.json", n)), key=_group_key)
+    unknown = present - FACTOID_REVIEW_FILES - set(group_reviews) - set(group_adjudications)
+    if unknown:
+        raise BuildError(f"review files this build does not read: {sorted(unknown)}")
+    for name in [*FACTOID_REVIEWS, *group_reviews]:
         if name not in present:
             continue
         for rec in _load_json(review / name)["records"]:
@@ -1673,8 +1696,8 @@ def _factoid_history(run: Path, texts: dict[str, str], notes: dict[str, dict]) -
             notes[rec["uid"]]["gaps"] += [
                 {"text": t, "lang": "en", "stage": "Review"} for t in rec.get("model_gaps", [])
             ]
-    if "adjudication.json" in present:
-        for dec in _load_json(review / "adjudication.json")["decisions"]:
+    for name in [n for n in ("adjudication.json", *group_adjudications) if n in present]:
+        for dec in _load_json(review / name)["decisions"]:
             if dec["decision"] not in DECISION_DE:
                 raise BuildError(f"adjudication decision without German label: {dec['decision']}")
             for uid in dec["uids"]:
@@ -2071,7 +2094,9 @@ def _build_factoid(
     ds: Dataset,
     graphs: dict,
 ) -> tuple:
-    labels = _concept_labels(source / "contracts" / manifest["run_id"], manifest)
+    # A run names its contract in contract_dir when it shares one with another run (the 1153
+    # slice uses the factoid contract); older manifests fall back to contracts/<run_id>.
+    labels = _concept_labels(source / manifest.get("contract_dir", f"contracts/{manifest['run_id']}"), manifest)
     texts, shorts = src["texts"], src["shorts"]
     notes = _factoid_notes(run, stage)
     history = _factoid_history(run, texts, notes)
@@ -2175,7 +2200,8 @@ def _sources(source: Path, run: Path, order: list[str]) -> dict:
         shorts = {uid: packets[uid]["identifier"] for uid in order}
     return {
         "packets": packets,
-        "texts": {uid: p["summary_plain"] for uid, p in packets.items()},
+        # The delivery has regesta without a summary (n. 107 in the 1153 slice); they read as empty.
+        "texts": {uid: p["summary_plain"] or "" for uid, p in packets.items()},
         "rows": rows,
         "exchange_to_uid": {rows[uid]["exchange_identifier"]: uid for uid in order},
         "register": _read_register(register_csv, {p["identifier"] for p in packets.values()}),
