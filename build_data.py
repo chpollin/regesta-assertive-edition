@@ -2,25 +2,34 @@
 # requires-python = ">=3.11"
 # dependencies = ["rdflib==7.6.0", "numpy"]
 # ///
-"""Build the JSON data of the assertive edition prototype from the regesta pilot run.
+"""Build the JSON data of the assertive edition prototype from one regesta run.
 
 Regime: single-file script with inline dependencies. It reads one finished run of the
 sibling repository regesta-rdf-demo and never writes there.
 
 Data flow
     packets/<uid>.json            regest text, dating, locality, register candidates
-    revised/<uid>.ttl             candidate RDF, one named graph per file
-    validation/revised.json       technical result per record
+    <stage>/<uid>.ttl             candidate RDF, one named graph per file
+    validation/<stage>.json       technical result per record
     extracted/batch-*.json        notes of the extraction agents
     review/*.json, revised/*corrections*.json
-                                  review findings, adjudication and corrections
+                                  review findings, adjudication and corrections (pilot model)
+    contracts/<run>/ontology/vocabulary.ttl
+                                  SKOS labels of the factoid model
     source CSVs                   ordering field, commentary and transmission (apparatus)
         -> data/edition.json      reading view and overview
         -> data/questions.json    named SPARQL questions, query text and executed result
 
+Two data models are read into the same edition.json schema. The pilot model
+(pilot-2026-11-09) holds CRM events and one E13 per projected triple; the factoid model
+(factoid-2026-11-11) holds rf:ActFactoid and rf:StateFactoid nodes with references,
+evidence selectors and exact-wording literals. The model is detected from the RDF of the
+run (rf: factoid classes present or not), never from the run name.
+
 Usage
     python build_data.py
     python build_data.py --source ../regesta-rdf-demo --run pilot-2026-11-09 --out data
+    python build_data.py --run factoid-2026-11-11 --stage extracted --out <dir>
 
 Design decisions
 - Every displayed statement comes from the run files. The script aborts when an
@@ -37,12 +46,18 @@ Design decisions
   kept in VOCAB_DE. The vocabulary term itself stays visible in the RDF view.
 - Output is deterministic: queries carry ORDER BY, aggregation happens here in sorted
   order, and JSON is written with a fixed layout.
+- Factoid model: one factoid is one statement block, and every phrase of it is bound to the
+  factoid's own evidence selectors, because the factoid carries the evidence. German labels
+  come from skos:prefLabel@de of the run's frozen vocabulary, whose hash must match the
+  manifest. The same-name question compares parent names after stripping German inflection
+  endings, a deliberate interface heuristic that finds candidates and decides no identity.
 """
 
 from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import html
 import json
 import re
@@ -51,11 +66,15 @@ from collections import defaultdict
 from pathlib import Path
 
 import rdflib
-from rdflib import RDF, RDFS, Dataset, Literal, URIRef
+from rdflib import RDF, RDFS, SKOS, BNode, Dataset, Literal, URIRef
 
 CRM = rdflib.Namespace("http://www.cidoc-crm.org/cidoc-crm/")
 REG = rdflib.Namespace("https://example.org/regesta/ontology/")
 VOC = rdflib.Namespace("https://example.org/regesta/vocab/")
+RF = rdflib.Namespace("https://example.org/regesta/factoid/")
+RV = rdflib.Namespace("https://example.org/regesta/concept/")
+OA = rdflib.Namespace("http://www.w3.org/ns/oa#")
+PROV = rdflib.Namespace("http://www.w3.org/ns/prov#")
 
 PREFIXES = {
     "crm": str(CRM),
@@ -156,8 +175,37 @@ DECISION_DE = {
     "correct_conservatively": "zurückhaltend korrigiert",
     "add_context": "Kontext ergänzt",
     "not_required_as_general_rule": "als allgemeine Regel verworfen",
+    "keep": "beibehalten",
+    "not_required": "nicht erforderlich",
+    "model_gap": "als Modelllücke vermerkt",
 }
-SEVERITY_DE = {"error": "Fehler", "warning": "Hinweis"}
+SEVERITY_DE = {"error": "Fehler", "warning": "Hinweis", "note": "Vermerk"}
+
+FACTOID_PREFIXES = {
+    "rf": str(RF),
+    "rv": str(RV),
+    "crm": str(CRM),
+    "oa": str(OA),
+    "prov": str(PROV),
+    "rdfs": str(RDFS),
+}
+FACTOID_CLASSES = (RF.ActFactoid, RF.StateFactoid)
+# Labels of the exact-wording literals in the reading view, as the commission names them.
+FACTOID_LITERALS = {
+    RF.condition: "Bedingung",
+    RF.exception: "Ausnahme",
+    RF.ground: "Begründung laut Regest",
+    RF.amount: "Betrag",
+    RF.qualifier: "Wortlaut",
+}
+FACTOID_LINKS = {RF.partOf: ("partOf", "Teil von"), RF.refersToAct: ("refersToAct", "bezieht sich auf")}
+# Roles read as "durch" and "mit" in the sentence; every other role reads "als <role>".
+ROLES_BY = (RV.Grantor,)
+ROLES_WITH = (RV.Spouse, RV.Kin)
+# Run files the factoid path reads; any other review or correction file aborts the build,
+# so a new kind of report is never silently left out.
+FACTOID_REVIEWS = ("review-A.json", "review-B.json")
+FACTOID_REVIEW_FILES = {*FACTOID_REVIEWS, "adjudication.json"}
 
 
 class BuildError(Exception):
@@ -181,9 +229,9 @@ def _vocab_label(iri: URIRef | None) -> str:
     return local
 
 
-def _qname(iri: URIRef, uid: str) -> str:
+def _qname(iri: URIRef, uid: str, prefixes: dict[str, str] = PREFIXES) -> str:
     text = str(iri)
-    for prefix, ns in PREFIXES.items():
+    for prefix, ns in prefixes.items():
         if text.startswith(ns):
             return f"{prefix}:{text[len(ns) :]}"
     local_ns = f"urn:regesta:{uid}:"
@@ -192,11 +240,11 @@ def _qname(iri: URIRef, uid: str) -> str:
     return f"<{text}>"
 
 
-def _turtle_term(term: object, uid: str) -> str:
+def _turtle_term(term: object, uid: str, prefixes: dict[str, str] = PREFIXES) -> str:
     if isinstance(term, Literal):
         escaped = str(term).replace("\\", "\\\\").replace('"', '\\"')
         return f'"{escaped}"'
-    return _qname(term, uid)
+    return _qname(term, uid, prefixes)
 
 
 # Source CSVs: ordering field and the edition's apparatus.
@@ -592,8 +640,13 @@ def _join(phrases: list[dict]) -> list:
     return out
 
 
+PLURAL_DE = {"Adressat": "Adressaten", "Kind": "Kinder", "Elternteil": "Elternteile", "Lehnsmann": "Lehnsleute"}
+
+
 def _plural(role: str) -> str:
-    """Plural of a German role label from VOCAB_DE: Zeuge -> Zeugen, Begünstigter -> Begünstigte."""
+    """Plural of a German role label: Zeuge -> Zeugen, Begünstigter -> Begünstigte, Kind -> Kinder."""
+    if role in PLURAL_DE:
+        return PLURAL_DE[role]
     if role.endswith("e"):
         return role + "n"
     if role.endswith(("ter", "nder")):
@@ -1059,15 +1112,17 @@ def _identity_crossrefs(
             iri = r[f"parent{side}"]
             used = {str(n) for n in graphs[uid].all_nodes() if str(n).startswith("urn:regesta:actor:RI")}
             register = _register_entry(iri, packets[uid], used)
-            sides.append(
-                {
-                    "regest": uid,
-                    "label": short[uid],
-                    "claim": _local(r[f"assertion{side}"]),
-                    "iri": iri,
-                    "register": register,
-                }
-            )
+            entry = {
+                "regest": uid,
+                "label": short[uid],
+                "claim": _local(r[f"assertion{side}"]),
+                "iri": iri,
+                "register": register,
+            }
+            if r.get(f"name{side}"):
+                # Factoid rows carry the name form of each regest, which may differ by inflection.
+                entry["name"] = r[f"name{side}"]
+            sides.append(entry)
         refs.append({"child": r["childName"], "childIri": r["child"], "name": r["name"], "sides": sides})
     return refs
 
@@ -1234,7 +1289,14 @@ def _person_graph(graphs: dict[str, rdflib.Graph], regests: list[dict], same_nam
                     "claim": claim_for(uid, [str(child), str(CRM.P152_has_parent), str(parent)]),
                 }
             )
-    for row in same_name["result"]:
+    return _finish_graph(actors, acts, edges, same_name["result"])
+
+
+def _finish_graph(
+    actors: dict[str, dict], acts: dict[str, dict], edges: list[dict], same_name_rows: list[dict]
+) -> dict:
+    """Add the same-name edges, name each actor by its most frequent label and lay out."""
+    for row in same_name_rows:
         edges.append(
             {
                 "source": row["parentA"],
@@ -1288,95 +1350,795 @@ def _layout(nodes: list[dict], edges: list[dict]) -> None:
         node["y"] = round(float(pos[i, 1]), 4)
 
 
-def build(source: Path, run_id: str, out: Path) -> None:
+# Factoid model: one factoid, one statement block.
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _concept_labels(contract: Path, manifest: dict) -> dict[str, str]:
+    """German prefLabels of the run's frozen SKOS vocabulary, checked against the manifest hash."""
+    vocabulary = contract / "ontology" / "vocabulary.ttl"
+    if not vocabulary.is_file():
+        raise BuildError(f"missing input file {vocabulary}")
+    expected = manifest.get("contract_sha256", {}).get("ontology/vocabulary.ttl")
+    if expected != _sha256(vocabulary):
+        raise BuildError(f"{vocabulary} does not match the contract hash of the manifest")
+    g = rdflib.Graph().parse(vocabulary, format="turtle")
+    labels = {}
+    for concept, label in g.subject_objects(SKOS.prefLabel):
+        if isinstance(label, Literal) and label.language == "de":
+            labels[str(concept)] = str(label)
+    return labels
+
+
+def _concept(labels: dict[str, str], iri: object, where: str) -> str:
+    if iri is None:
+        raise BuildError(f"{where}: missing concept")
+    if str(iri) not in labels:
+        raise BuildError(f"{where}: concept without German prefLabel: {iri}")
+    return labels[str(iri)]
+
+
+def _factoids(g: rdflib.Graph) -> list[URIRef]:
+    return sorted({f for cls in FACTOID_CLASSES for f in g.subjects(RDF.type, cls)}, key=str)
+
+
+def _ft(term: object, uid: str) -> str:
+    """Turtle of one term; a blank node is written inline in brackets."""
+    return _turtle_term(term, uid, FACTOID_PREFIXES)
+
+
+def _inline(g: rdflib.Graph, node: object, uid: str) -> str:
+    if isinstance(node, BNode):
+        return "[ " + " ; ".join(_po(g, node, uid)) + " ]"
+    return _ft(node, uid)
+
+
+def _po(g: rdflib.Graph, node: object, uid: str) -> list[str]:
+    """Predicate-object pairs of a node in a fixed order, so the Turtle text is deterministic."""
+    out = []
+    types = sorted(_ft(t, uid) for t in g.objects(node, RDF.type))
+    if types:
+        out.append("a " + ", ".join(types))
+    for p in sorted({p for p in g.predicates(node) if p != RDF.type}, key=lambda p: _ft(p, uid)):
+        out.append(f"{_ft(p, uid)} " + " , ".join(sorted(_inline(g, o, uid) for o in g.objects(node, p))))
+    return out
+
+
+def _statement(g: rdflib.Graph, s: URIRef, p: URIRef, o: object, uid: str) -> str:
+    """One factoid triple, followed by the description of a named object node."""
+    text = f"{_ft(s, uid)} {_ft(p, uid)} {_inline(g, o, uid)} ."
+    if isinstance(o, URIRef) and any(True for _ in g.predicates(o)):
+        text += f"\n{_ft(o, uid)} " + " ;\n    ".join(_po(g, o, uid)) + " ."
+    return f"@prefix x: <urn:regesta:{uid}:> .\n{text}"
+
+
+def _head_turtle(g: rdflib.Graph, f: URIRef, selector: object, uid: str) -> str:
+    """The factoid's own frame: type, concept, source, first evidence, producer and status."""
+    parts = [f"{_ft(f, uid)} a " + ", ".join(sorted(_ft(t, uid) for t in g.objects(f, RDF.type)))]
+    for p in (RF.factoidType, RF.source):
+        parts += [f"    {_ft(p, uid)} {_ft(o, uid)}" for o in sorted(g.objects(f, p), key=str)]
+    parts.append(f"    {_ft(RF.evidence, uid)} {_inline(g, selector, uid)}")
+    for p in (PROV.wasAttributedTo, RF.verificationStatus):
+        parts += [f"    {_ft(p, uid)} {_ft(o, uid)}" for o in sorted(g.objects(f, p), key=str)]
+    return f"@prefix x: <urn:regesta:{uid}:> .\n" + " ;\n".join(parts) + " ."
+
+
+def _object_name(g: rdflib.Graph, node: object, labels: dict[str, str]) -> str:
+    """Readable name of a concerned right, thing, place or community: type and source label."""
+    label = g.value(node, RDFS.label)
+    node_type = g.value(node, CRM.P2_has_type)
+    type_de = _concept(labels, node_type, str(node)) if node_type is not None else None
+    if type_de and label is not None:
+        return f"{type_de} ({label})"
+    if label is not None:
+        return str(label)
+    return type_de or _local(str(node))
+
+
+def _locate_literal(text: str, literal: str, ranges: list[tuple[int, int]], where: str) -> tuple[int, int, bool]:
+    """Place an exact-wording literal inside the factoid's evidence first, else in the whole text.
+
+    A short qualifier such as "Tochter" may occur several times in the regest; inside the
+    evidence of its factoid it is usually unique.
+    """
+    for start, end in ranges:
+        at = text.find(literal, start, end)
+        if at >= 0:
+            return at, at + len(literal), text.find(literal, at + 1, end) >= 0
+    return _locate(text, literal, where)
+
+
+def _factoid_statements(g: rdflib.Graph, uid: str, text: str, technical: bool, labels: dict[str, str]) -> dict:
+    """One block per factoid; every phrase rests on the factoid's own evidence selectors."""
+    status = {"asserted": True, "technical": technical, "expert": False}
+    blocks: list[dict] = []
+    spans: list[dict] = []
+    factoids = _factoids(g)
+    titles = {str(f): _concept(labels, g.value(f, RF.factoidType), f"{uid} {f}") for f in factoids}
+    for f in factoids:
+        claim = _local(str(f))
+        selectors = []
+        for sel in g.objects(f, RF.evidence):
+            exact = g.value(sel, OA.exact)
+            if exact is None:
+                raise BuildError(f"{uid} {claim}: evidence selector without oa:exact")
+            start, end, ambiguous = _locate(text, str(exact), f"{uid} {claim}")
+            selectors.append((start, end, ambiguous, sel))
+        if not selectors:
+            raise BuildError(f"{uid} {claim}: factoid without evidence")
+        selectors.sort(key=lambda s: (s[0], s[1], str(g.value(s[3], OA.exact))))
+        ids = [claim] + [f"{claim}-{i}" for i in range(2, len(selectors) + 1)]
+        for sid, (start, end, _, _) in zip(ids, selectors, strict=True):
+            spans.append({"id": sid, "start": start, "end": end})
+        first = selectors[0]
+        evidence = {"start": first[0], "end": first[1], "ambiguous": first[2]}
+
+        def line(
+            rel: str,
+            phrase: str,
+            text_de: str,
+            pred: URIRef,
+            obj: object,
+            turtle: str,
+            f: URIRef = f,
+            claim: str = claim,
+            evidence: dict = evidence,
+        ) -> dict:
+            return {
+                "kind": "line",
+                "rel": rel,
+                "phrase": phrase,
+                "text": text_de,
+                "triple": [str(f), str(pred), str(obj) if isinstance(obj, URIRef) else None],
+                "status": status,
+                "id": claim,
+                "own": True,
+                "evidence": evidence,
+                "turtle": turtle,
+            }
+
+        title = titles[str(f)]
+        head = line("type", title, title, RF.factoidType, g.value(f, RF.factoidType), _head_turtle(g, f, first[3], uid))
+        head["kind"] = "head"
+        lines = []
+        refs = []
+        for ref in g.objects(f, RF.reference):
+            actor, role = g.value(ref, RF.actor), g.value(ref, RF.role)
+            if actor is None or role is None:
+                raise BuildError(f"{uid} {claim}: reference without actor or role")
+            name_in_source = g.value(ref, RF.nameInSource)
+            name = g.value(actor, RDFS.label) or name_in_source or _local(str(actor))
+            at = text.find(str(name_in_source)) if name_in_source is not None else -1
+            refs.append((at if at >= 0 else len(text), str(role), str(actor), ref, actor, role, str(name)))
+        for _, _, _, ref, actor, role, name in sorted(refs, key=lambda r: r[:3]):
+            role_de = _concept(labels, role, f"{uid} {claim}")
+            ln = line(
+                "role",
+                name,
+                f"{name} in der Rolle {role_de}",
+                RF.reference,
+                ref,
+                _statement(g, f, RF.reference, ref, uid),
+            )
+            ln.update(role=role_de, roleIri=str(role), actors=[str(actor)])
+            lines.append(ln)
+        for obj in sorted(g.objects(f, RF.concerns), key=str):
+            name = _object_name(g, obj, labels)
+            ln = line("concerns", name, f"betrifft {name}", RF.concerns, obj, _statement(g, f, RF.concerns, obj, uid))
+            ln["object"] = str(obj)
+            lines.append(ln)
+        for pred, (rel, words) in FACTOID_LINKS.items():
+            for obj in sorted(g.objects(f, pred), key=str):
+                target = titles.get(str(obj))
+                if target is None:
+                    raise BuildError(f"{uid} {claim}: {rel} points outside the factoids of this regest: {obj}")
+                ln = line(rel, target, f"{words} {target}", pred, obj, _statement(g, f, pred, obj, uid))
+                ln.update(object=str(obj), objectClaim=_local(str(obj)))
+                lines.append(ln)
+        for sid, (start, end, ambiguous, sel) in zip(ids[1:], selectors[1:], strict=True):
+            ln = line("evidence", "", "weiterer Beleg", RF.evidence, sel, _statement(g, f, RF.evidence, sel, uid))
+            ln.update(id=sid, evidence={"start": start, "end": end, "ambiguous": ambiguous})
+            lines.append(ln)
+        ranges = [(s[0], s[1]) for s in selectors]
+        for pred, label in FACTOID_LITERALS.items():
+            for o in sorted(g.objects(f, pred), key=str):
+                literal_text = str(o)
+                ln = {
+                    "kind": "literal",
+                    "label": label,
+                    "text": literal_text,
+                    "id": None,
+                    "own": False,
+                    "verbatim": literal_text in text,
+                    "triple": [str(f), str(pred), None],
+                    "status": status,
+                }
+                if ln["verbatim"]:
+                    start, end, ambiguous = _locate_literal(text, literal_text, ranges, f"{uid} {claim} literal")
+                    ln["evidence"] = {"start": start, "end": end, "ambiguous": ambiguous}
+                lines.append(ln)
+        kind = "state" if (f, RDF.type, RF.StateFactoid) in g else "act"
+        blocks.append({"node": str(f), "kind": kind, "title": title, "head": head, "lines": lines, "order": first[0]})
+
+    blocks.sort(key=lambda b: (b["order"], b["node"]))
+    taken = {s["id"] for s in spans}
+    counter = 0
+    for b in blocks:
+        for ln in b["lines"]:
+            if ln["kind"] == "literal" and ln.get("evidence"):
+                counter += 1
+                ln["id"] = f"t{counter}"
+                if ln["id"] in taken:
+                    raise BuildError(f"{uid}: literal span id {ln['id']} collides with a factoid name")
+                spans.append({"id": ln["id"], "start": ln["evidence"]["start"], "end": ln["evidence"]["end"]})
+        del b["order"]
+    if len({s["id"] for s in spans}) != len(spans):
+        raise BuildError(f"{uid}: two evidence spans share an id")
+    spans.sort(key=lambda s: (s["start"], -s["end"], s["id"]))
+    _compose_factoids(blocks, labels)
+    return {"blocks": blocks, "spans": spans}
+
+
+def _compose_factoids(blocks: list[dict], labels: dict[str, str]) -> None:
+    """Readable sentence for each factoid block. The template, filled from the graph only:
+
+    <type> [durch <Aussteller>] [mit <Ehepartner, Verwandte>] [, als <role> <actors>]...
+           [, betrifft <objects>] [, Teil von <act>] [, bezieht sich auf <act>].
+
+    Every phrase names its own line and the lines of further evidence selectors, so pointing
+    at any phrase underlines every passage the factoid rests on.
+    """
+    by_roles = {str(r) for r in ROLES_BY}
+    with_roles = {str(r) for r in ROLES_WITH}
+    counter = 0
+    for b in blocks:
+        for ln in [b["head"], *b["lines"]]:
+            counter += 1
+            ln["key"] = f"k{counter}"
+    for b in blocks:
+        extra = [ln["key"] for ln in b["lines"] if ln.get("rel") == "evidence"]
+
+        def phrases(lines: list[dict], extra: list[str] = extra) -> list[dict]:
+            return [{"keys": [ln["key"], *extra], "text": ln["phrase"]} for ln in lines]
+
+        parts: list = [{"keys": [b["head"]["key"], *extra], "text": b["title"]}]
+        refs = [ln for ln in b["lines"] if ln.get("rel") == "role"]
+        by = [ln for ln in refs if ln["roleIri"] in by_roles]
+        with_ = [ln for ln in refs if ln["roleIri"] in with_roles]
+        if by:
+            parts += [" durch ", *_join(phrases(by))]
+        if with_:
+            parts += [" mit ", *_join(phrases(with_))]
+        roles: dict[str, list[dict]] = defaultdict(list)
+        for ln in refs:
+            if ln["roleIri"] not in by_roles | with_roles:
+                roles[ln["role"]].append(ln)
+        for role, lines in roles.items():
+            parts += [f", als {_plural(role) if len(lines) > 1 else role} ", *_join(phrases(lines))]
+        for rel, words in (("concerns", "betrifft"), *FACTOID_LINKS.values()):
+            lines = [ln for ln in b["lines"] if ln.get("rel") == rel]
+            if lines:
+                parts += [f", {words} ", *_join(phrases(lines))]
+        last = parts[-1] if isinstance(parts[-1], str) else parts[-1]["text"]
+        if not last.endswith("."):  # "König Konrad III." already closes the sentence
+            parts.append(".")
+        b["sentence"] = parts
+    for b in blocks:
+        for ln in b["lines"]:
+            ln.pop("roleIri", None)
+
+
+def _factoid_notes(run: Path, stage: str) -> dict[str, dict]:
+    """Extraction notes of the batch reports and, for the revised stage, the corrections.
+
+    The factoid batch reports and corrections are written in English.
+    """
+    notes: dict[str, dict] = defaultdict(lambda: {"unresolved": [], "gaps": [], "corrections": []})
+    for path in sorted((run / "extracted").glob("batch-*.json")):
+        for rec in _load_json(path)["records"]:
+            entry = notes[rec["uid"]]
+            entry["status"] = rec["status"]
+            entry["unresolved"] += [{"text": t, "lang": "en"} for t in rec.get("unresolved_identities", [])]
+            entry["gaps"] += [{"text": t, "lang": "en", "stage": "Extraktion"} for t in rec.get("model_gaps", [])]
+    if stage == "revised":
+        unknown = sorted(p.name for p in (run / "revised").glob("*.json") if p.name != "corrections.json")
+        if unknown:
+            raise BuildError(f"correction files this build does not read: {unknown}")
+        for rec in _load_json(run / "revised" / "corrections.json")["records"]:
+            entry = notes[rec["uid"]]
+            entry["corrections"].append({"text": rec["change"], "lang": "en"})
+            entry["corrected"] = True
+    return notes
+
+
+def _factoid_history(run: Path, texts: dict[str, str], notes: dict[str, dict]) -> dict[str, dict]:
+    """Findings of the two reviews and the adjudication; review model gaps join the notes.
+
+    The reviews read the extracted stage, so they are shown for both stages.
+    """
+    history: dict[str, dict] = defaultdict(lambda: {"findings": [], "decisions": [], "revised": None, "final": None})
+    review = run / "review"
+    present = {p.name for p in review.glob("*")} if review.is_dir() else set()
+    if present - FACTOID_REVIEW_FILES:
+        raise BuildError(f"review files this build does not read: {sorted(present - FACTOID_REVIEW_FILES)}")
+    for name in FACTOID_REVIEWS:
+        if name not in present:
+            continue
+        for rec in _load_json(review / name)["records"]:
+            for f in rec["findings"]:
+                history[rec["uid"]]["findings"].append(_finding(f, rec["uid"], texts))
+            notes[rec["uid"]]["gaps"] += [
+                {"text": t, "lang": "en", "stage": "Review"} for t in rec.get("model_gaps", [])
+            ]
+    if "adjudication.json" in present:
+        for dec in _load_json(review / "adjudication.json")["decisions"]:
+            if dec["decision"] not in DECISION_DE:
+                raise BuildError(f"adjudication decision without German label: {dec['decision']}")
+            for uid in dec["uids"]:
+                history[uid]["decisions"].append(
+                    {
+                        "decision": DECISION_DE[dec["decision"]],
+                        "finding": dec.get("finding"),
+                        "reason": dec["reason"],
+                        "lang": "en",
+                    }
+                )
+    return history
+
+
+def _name_key(name: str) -> tuple[str, ...]:
+    """Name with German inflection endings stripped, for the same-name candidate search only.
+
+    "Markgraf Diepolds von Vohburg" and "Markgrafen Diepold von Vohburg" give the same key.
+    Tokens of four letters or fewer stay as they are. Matching keys raise a question for the
+    expert; they never merge identities.
+    """
+    out = []
+    for token in re.findall(r"\w+", name.lower()):
+        if len(token) > 4:
+            for ending in ("en", "es", "s", "n"):
+                if token.endswith(ending):
+                    token = token[: -len(ending)]
+                    break
+        out.append(token)
+    return tuple(out)
+
+
+FACTOID_SPARQL_PREFIXES = """PREFIX rf: <https://example.org/regesta/factoid/>
+PREFIX rv: <https://example.org/regesta/concept/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX oa: <http://www.w3.org/ns/oa#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+"""
+
+FACTOID_QUESTIONS = [
+    {
+        "id": "ehen",
+        "title": "Welche Ehen werden geschlossen, bestehen oder werden aufgelöst?",
+        "query": """SELECT ?rec ?factoid ?type ?partner ?partnerName WHERE {
+  GRAPH ?g {
+    ?factoid rf:factoidType ?type ; rf:source ?rec .
+    VALUES ?type { rv:MarriageConclusion rv:Marriage rv:MarriageDissolution }
+    OPTIONAL {
+      ?factoid rf:reference ?ref .
+      ?ref rf:role rv:Spouse ; rf:actor ?partner .
+      ?partner rdfs:label ?partnerName .
+    }
+  }
+}
+ORDER BY ?rec ?factoid ?partnerName ?partner ?type""",
+    },
+    {
+        "id": "eltern",
+        "title": "Welche Eltern-Kind-Beziehungen nennen die Regesten?",
+        "query": """SELECT ?rec ?factoid ?child ?childName ?parent ?parentName ?parentInSource WHERE {
+  GRAPH ?g {
+    ?factoid rf:factoidType rv:Parenthood ; rf:source ?rec ; rf:reference ?rc , ?rp .
+    ?rc rf:role rv:Child ; rf:actor ?child .
+    ?rp rf:role rv:Parent ; rf:actor ?parent .
+    OPTIONAL { ?rp rf:nameInSource ?parentInSource }
+    ?child rdfs:label ?childName .
+    ?parent rdfs:label ?parentName .
+  }
+}
+ORDER BY ?rec ?childName ?parentName ?factoid ?child ?parent ?parentInSource""",
+    },
+    {
+        "id": "gleichnamige-eltern",
+        "title": "Personen mit mehreren Elternteilen gleichen Namens",
+        "query": """SELECT ?child ?childName ?parentA ?parentB ?nameA ?nameB ?labelA ?labelB ?recA ?recB ?factoidA ?factoidB WHERE {
+  GRAPH ?gA {
+    ?factoidA rf:factoidType rv:Parenthood ; rf:source ?recA ; rf:reference ?cA , ?pA .
+    ?cA rf:role rv:Child ; rf:actor ?child .
+    ?pA rf:role rv:Parent ; rf:actor ?parentA .
+    OPTIONAL { ?pA rf:nameInSource ?nameA }
+    ?parentA rdfs:label ?labelA .
+    ?child rdfs:label ?childName .
+  }
+  GRAPH ?gB {
+    ?factoidB rf:factoidType rv:Parenthood ; rf:source ?recB ; rf:reference ?cB , ?pB .
+    ?cB rf:role rv:Child ; rf:actor ?child .
+    ?pB rf:role rv:Parent ; rf:actor ?parentB .
+    OPTIONAL { ?pB rf:nameInSource ?nameB }
+    ?parentB rdfs:label ?labelB .
+  }
+  FILTER (STR(?parentA) < STR(?parentB))
+}
+ORDER BY ?childName ?parentA ?parentB ?nameA ?nameB ?labelA ?labelB ?recA ?recB ?factoidA ?factoidB ?child""",
+        "filter": "Python keeps a pair whose parents agree by rf:nameInSource or rdfs:label after German "
+        "inflection endings are stripped (_name_key); the raw result lists every pair of distinct parent IRIs.",
+    },
+    {
+        "id": "rollen",
+        "title": "Wer tritt in welcher Rolle auf?",
+        "query": """SELECT ?rec ?factoid ?type ?actor ?actorName ?role ?nameInSource WHERE {
+  GRAPH ?g {
+    ?factoid rf:factoidType ?type ; rf:source ?rec ; rf:reference ?ref .
+    ?ref rf:role ?role ; rf:actor ?actor .
+    OPTIONAL { ?ref rf:nameInSource ?nameInSource }
+    ?actor rdfs:label ?actorName .
+  }
+}
+ORDER BY ?rec ?role ?actorName ?factoid ?actor ?nameInSource ?type""",
+    },
+    {
+        "id": "rechte",
+        "title": "Welche Rechte nennen die Regesten, und welcher Vorgang betrifft sie?",
+        "query": """SELECT ?rec ?right ?rightType ?rightLabel ?factoid ?type WHERE {
+  GRAPH ?g {
+    ?rec a crm:E31_Document .
+    ?right a crm:E30_Right .
+    OPTIONAL { ?right crm:P2_has_type ?rightType }
+    OPTIONAL { ?right rdfs:label ?rightLabel }
+    OPTIONAL { ?factoid rf:concerns ?right ; rf:factoidType ?type }
+  }
+}
+ORDER BY ?rec ?rightType ?right ?factoid ?rightLabel ?type""",
+    },
+    {
+        "id": "bezug",
+        "title": "Welche Vorgänge beziehen sich auf einen anderen Vorgang?",
+        "query": """SELECT ?rec ?factoid ?type ?relation ?other ?otherType WHERE {
+  GRAPH ?g {
+    { ?factoid rf:refersToAct ?other . BIND("bezieht sich auf" AS ?relation) }
+    UNION
+    { ?factoid rf:partOf ?other . BIND("Teil von" AS ?relation) }
+    ?factoid rf:factoidType ?type ; rf:source ?rec .
+    ?other rf:factoidType ?otherType .
+  }
+}
+ORDER BY ?rec ?relation ?factoid ?other ?type ?otherType""",
+    },
+    {
+        "id": "bedingungen",
+        "title": "Welche Faktoide tragen Bedingung, Ausnahme, Begründung, Betrag oder Wortlaut?",
+        "query": """SELECT ?rec ?factoid ?type ?kind ?wording WHERE {
+  GRAPH ?g {
+    ?factoid rf:factoidType ?type ; rf:source ?rec .
+    { ?factoid rf:condition ?wording . BIND("Bedingung" AS ?kind) }
+    UNION
+    { ?factoid rf:exception ?wording . BIND("Ausnahme" AS ?kind) }
+    UNION
+    { ?factoid rf:ground ?wording . BIND("Begründung laut Regest" AS ?kind) }
+    UNION
+    { ?factoid rf:amount ?wording . BIND("Betrag" AS ?kind) }
+    UNION
+    { ?factoid rf:qualifier ?wording . BIND("Wortlaut" AS ?kind) }
+  }
+}
+ORDER BY ?rec ?factoid ?kind ?wording ?type""",
+    },
+]
+
+
+def _same_name_rows(rows: list[dict]) -> list[dict]:
+    """Pairs of distinct parent IRIs of one child whose names agree up to inflection.
+
+    The rows take the field names of the pilot question, so the cross references and the
+    graph treat both models alike; nameA and nameB keep each regest's own wording.
+    """
+    pairs: dict[tuple, dict] = {}
+    for r in rows:
+        names_a = {_name_key(n) for n in (r["nameA"], r["labelA"]) if n}
+        names_b = {_name_key(n) for n in (r["nameB"], r["labelB"]) if n}
+        if not names_a & names_b:
+            continue
+        key = (r["child"], r["parentA"], r["parentB"], r["factoidA"], r["factoidB"])
+        pairs.setdefault(
+            key,
+            {
+                "child": r["child"],
+                "childName": r["childName"],
+                "name": r["nameA"] or r["labelA"],
+                "nameA": r["nameA"] or r["labelA"],
+                "nameB": r["nameB"] or r["labelB"],
+                "parentA": r["parentA"],
+                "parentB": r["parentB"],
+                "recA": r["recA"],
+                "recB": r["recB"],
+                "assertionA": r["factoidA"],
+                "assertionB": r["factoidB"],
+            },
+        )
+    return list(pairs.values())
+
+
+def _factoid_display_rows(qid: str, rows: list[dict], ctx: dict) -> tuple[list[str], list[list]]:
+    """Readable table for a factoid question; source wording is checked to be verbatim."""
+    short, texts, labels = ctx["short"], ctx["texts"], ctx["labels"]
+
+    def ref(r: dict, key: str = "factoid") -> dict:
+        uid = _uid_of_record(r["rec"])
+        return _ref(uid, _local(r[key]) if r.get(key) else None, short)
+
+    def wording(uid: str, value: str | None) -> dict | str:
+        if not value:
+            return ""
+        return {"source": value} if value in texts[uid] else {"agent": value}
+
+    def concept(iri: str | None) -> str:
+        return _concept(labels, iri, f"question {qid}") if iri else ""
+
+    if qid == "ehen":
+        grouped: dict[tuple, dict] = {}
+        for r in rows:
+            row = grouped.setdefault((r["rec"], r["factoid"]), {"r": r, "partners": []})
+            if r.get("partnerName") and r["partnerName"] not in row["partners"]:
+                row["partners"].append(r["partnerName"])
+        return ["Regest", "Faktoid", "Beteiligte"], [
+            [ref(v["r"]), concept(v["r"]["type"]), " und ".join(v["partners"]) or "ohne genannte Beteiligte"]
+            for v in grouped.values()
+        ]
+    if qid == "eltern":
+        return ["Regest", "Kind", "Elternteil", "Name in der Quelle"], [
+            [ref(r), r["childName"], r["parentName"], wording(_uid_of_record(r["rec"]), r.get("parentInSource"))]
+            for r in rows
+        ]
+    if qid == "gleichnamige-eltern":
+        order = ctx["order"]
+        out = []
+        for r in ctx["same_name"]:
+            sides = [("A", _uid_of_record(r["recA"])), ("B", _uid_of_record(r["recB"]))]
+            sides.sort(key=lambda s: order.index(s[1]))
+            row = [r["childName"]]
+            for side, uid in sides:
+                row += [
+                    _ref(uid, _local(r[f"assertion{side}"]), short),
+                    wording(uid, r[f"name{side}"]),
+                    {"iri": r[f"parent{side}"]},
+                ]
+            out.append(row)
+        cols = ["Person", "Erstes Regest", "Name dort", "Kennung dort", "Zweites Regest", "Name dort", "Kennung dort"]
+        return cols, out
+    if qid == "rollen":
+        return ["Regest", "Person oder Gruppe", "Rolle", "Faktoid", "Name in der Quelle"], [
+            [
+                ref(r),
+                r["actorName"],
+                concept(r["role"]),
+                concept(r["type"]),
+                wording(_uid_of_record(r["rec"]), r.get("nameInSource")),
+            ]
+            for r in rows
+        ]
+    if qid == "rechte":
+        grouped = {}
+        for r in rows:
+            row = grouped.setdefault((r["rec"], r["right"]), {"r": r, "acts": []})
+            if r.get("factoid"):
+                act = {"regest": _uid_of_record(r["rec"]), "claim": _local(r["factoid"]), "label": concept(r["type"])}
+                if act not in row["acts"]:
+                    row["acts"].append(act)
+        out = []
+        for v in grouped.values():
+            r = v["r"]
+            uid = _uid_of_record(r["rec"])
+            acts = ", ".join(a["label"] for a in v["acts"]) or "kein Faktoid im Graphen"
+            claim = v["acts"][0]["claim"] if v["acts"] else None
+            out.append([_ref(uid, claim, short), concept(r.get("rightType")), wording(uid, r.get("rightLabel")), acts])
+        return ["Regest", "Rechtstyp", "Bezeichnung", "Betroffen durch"], out
+    if qid == "bezug":
+        return ["Regest", "Faktoid", "Beziehung", "anderes Faktoid"], [
+            [ref(r), concept(r["type"]), r["relation"], concept(r["otherType"])] for r in rows
+        ]
+    if qid == "bedingungen":
+        return ["Regest", "Faktoid", "Art", "Wortlaut im Graphen"], [
+            [ref(r), concept(r["type"]), r["kind"], wording(_uid_of_record(r["rec"]), r["wording"])] for r in rows
+        ]
+    raise BuildError(f"no display rule for question {qid}")
+
+
+def _run_factoid_questions(ds: Dataset, ctx: dict) -> tuple[list[dict], list[dict]]:
+    out = []
+    same_name: list[dict] = []
+    for q in FACTOID_QUESTIONS:
+        result = ds.query(FACTOID_SPARQL_PREFIXES + q["query"])
+        variables = [str(v) for v in result.vars]
+        rows = []
+        for row in result:
+            bound = row.asdict()
+            rows.append({v: (str(bound[v]) if v in bound else None) for v in variables})
+        if q["id"] == "gleichnamige-eltern":
+            same_name = _same_name_rows(rows)
+            ctx["same_name"] = same_name
+        columns, display = _factoid_display_rows(q["id"], rows, ctx)
+        entry = {
+            "id": q["id"],
+            "title": q["title"],
+            "sparql": FACTOID_SPARQL_PREFIXES + "\n" + q["query"],
+            "variables": variables,
+            "result": rows,
+            "columns": columns,
+            "rows": display,
+        }
+        if "filter" in q:
+            entry["filter"] = q["filter"]
+        out.append(entry)
+    return out, same_name
+
+
+def _factoid_actor_kind(g: rdflib.Graph, node: object) -> str | None:
+    """Person or group; an office-bound rf:FunctionalActor is drawn as a local person."""
+    if (node, RDF.type, CRM.E74_Group) in g:
+        return "group"
+    if (node, RDF.type, CRM.E21_Person) in g or (node, RDF.type, RF.FunctionalActor) in g:
+        return "person"
+    return None
+
+
+def _factoid_graph(
+    graphs: dict[str, rdflib.Graph], regests: list[dict], same_name: list[dict], labels: dict[str, str]
+) -> dict:
+    """Actors from rf:actor, acts as act nodes linked by roles, parenthood as parent edges.
+
+    A parenthood factoid gives one edge from each child to each parent instead of an act
+    node, so kinship reads as in the pilot graph. Co-mention creates no edge.
+    """
+    actors: dict[str, dict] = {}
+    acts: dict[str, dict] = {}
+    edges: list[dict] = []
+
+    def actor(uid: str, g: rdflib.Graph, node: URIRef) -> str:
+        key = str(node)
+        entry = actors.setdefault(
+            key,
+            {"id": key, "kind": _factoid_actor_kind(g, node), "labels": {}, "regests": [], "local": ":local:" in key},
+        )
+        label = g.value(node, RDFS.label)
+        if label is not None:
+            entry["labels"].setdefault(str(label), []).append(uid)
+        if uid not in entry["regests"]:
+            entry["regests"].append(uid)
+        return key
+
+    for uid in [r["uid"] for r in regests]:
+        g = graphs[uid]
+        for f in _factoids(g):
+            claim = _local(str(f))
+            refs = sorted(
+                ((g.value(r, RF.role), g.value(r, RF.actor)) for r in g.objects(f, RF.reference)),
+                key=lambda t: (str(t[0]), str(t[1])),
+            )
+            refs = [(role, a) for role, a in refs if a is not None and _factoid_actor_kind(g, a)]
+            if g.value(f, RF.factoidType) == RV.Parenthood:
+                for child in [a for role, a in refs if role == RV.Child]:
+                    for parent in [a for role, a in refs if role == RV.Parent]:
+                        edges.append(
+                            {
+                                "source": actor(uid, g, child),
+                                "target": actor(uid, g, parent),
+                                "kind": "parent",
+                                "label": "Elternteil",
+                                "regest": uid,
+                                "claim": claim,
+                            }
+                        )
+                continue
+            if not refs:
+                continue
+            acts[str(f)] = {
+                "id": str(f),
+                "kind": "act",
+                "label": _concept(labels, g.value(f, RF.factoidType), str(f)),
+                "regest": uid,
+                "claim": claim,
+            }
+            for role, a in refs:
+                edges.append(
+                    {
+                        "source": str(f),
+                        "target": actor(uid, g, a),
+                        "kind": "role",
+                        "label": _concept(labels, role, str(f)),
+                        "regest": uid,
+                        "claim": claim,
+                    }
+                )
+    return _finish_graph(actors, acts, edges, same_name)
+
+
+def _build_factoid(
+    source: Path,
+    run: Path,
+    manifest: dict,
+    stage: str,
+    validation: dict,
+    records: dict,
+    src: dict,
+    ds: Dataset,
+    graphs: dict,
+) -> tuple:
+    labels = _concept_labels(source / "contracts" / manifest["run_id"], manifest)
+    texts, shorts = src["texts"], src["shorts"]
+    notes = _factoid_notes(run, stage)
+    history = _factoid_history(run, texts, notes)
+
+    regests = []
+    for uid in src["packets"]:  # selection order of the manifest
+        rec = records[uid]
+        technical = bool(validation["technical_pass"]) and not rec["issues"]
+        statements = _factoid_statements(graphs[uid], uid, texts[uid], technical, labels)
+        claims = len(statements["blocks"])
+        if claims != rec["factoids"]:
+            raise BuildError(f"{uid}: {claims} rendered factoids, validation counts {rec['factoids']}")
+        regests.append(
+            _regest_entry(
+                uid,
+                src,
+                rec,
+                technical,
+                claims,
+                statements,
+                notes.get(uid, {"unresolved": [], "gaps": [], "corrections": []}),
+                history.get(uid, {"findings": [], "decisions": [], "revised": None, "final": None}),
+            )
+        )
+    regests.sort(key=lambda r: r["sort"])
+
+    ctx = {"short": shorts, "texts": texts, "labels": labels, "order": [r["uid"] for r in regests]}
+    questions, same_name = _run_factoid_questions(ds, ctx)
+    crossrefs = _identity_crossrefs({"result": same_name}, src["packets"], shorts, graphs)
+    _link_case(regests, crossrefs, src)
+
+    graph = _factoid_graph(graphs, regests, same_name, labels)
+    _attach_case_to_nodes(graph, crossrefs)
+    return regests, questions, crossrefs, graph, {"dataModel": "factoid", "stage": stage}
+
+
+def build(source: Path, run_id: str, out: Path, stage: str = "revised") -> None:
+    """Read one run at one stage, detect its data model from the RDF and write both JSON files."""
     run = source / "runs" / run_id
     manifest = _load_json(run / "manifest.json")
-    validation = _load_json(run / "validation" / "revised.json")
-    if validation["stage"] != "revised":
-        raise BuildError("validation report is not the revised stage")
+    validation = _load_json(run / "validation" / f"{stage}.json")
+    if validation["stage"] != stage:
+        raise BuildError(f"validation report is not the {stage} stage")
     order = [s["uid"] for s in manifest["selection"]]
-    packets = {uid: _load_json(run / "packets" / f"{uid}.json") for uid in order}
-    texts = {uid: p["summary_plain"] for uid, p in packets.items()}
     records = {r["uid"]: r for r in validation["records"]}
     if set(records) != set(order):
         raise BuildError("validation report does not cover exactly the selected UIDs")
-
-    regest_csv = source / "source-material" / "RI_004-002-ReggBarbarossa.csv"
-    register_csv = source / "source-material" / "RI_004-002-RegisterBarbarossa.csv"
-    rows = _read_source_rows(regest_csv, set(order))
-    exchange_to_uid = {rows[uid]["exchange_identifier"]: uid for uid in order}
-    register = _read_register(register_csv, {p["identifier"] for p in packets.values()})
+    src = _sources(source, run, order)
 
     ds = Dataset(default_union=True)
     graphs = {}
     for uid in order:
-        ttl = run / "revised" / f"{uid}.ttl"
+        ttl = run / stage / f"{uid}.ttl"
         if not ttl.is_file():
-            raise BuildError(f"missing revised Turtle for {uid}")
+            raise BuildError(f"missing {stage} Turtle for {uid}")
         g = ds.graph(URIRef(f"urn:regesta:graph:{uid}"))
         g.parse(ttl, format="turtle")
         graphs[uid] = g
 
-    shorts = {uid: packets[uid]["identifier"].split(" ", 2)[-1] for uid in order}
-    if len(set(shorts.values())) != len(shorts):
-        shorts = {uid: packets[uid]["identifier"] for uid in order}
-
-    notes = _agent_notes(run)
-    history = _review_history(run, texts)
-
-    regests = []
-    node_names: dict[str, dict[str, str]] = {}
-    for uid in order:
-        rec = records[uid]
-        technical = bool(validation["technical_pass"]) and not rec["issues"]
-        g = graphs[uid]
-        statements = _build_statements(g, uid, texts[uid], technical)
-        node_names[uid] = {str(n): _node_name(g, n) for n in set(g.subjects()) if isinstance(n, URIRef)}
-        claim_count = sum(1 for ln in _all_lines(statements["blocks"]) if ln.get("own"))
-        if claim_count != len(rec["claims"]):
-            raise BuildError(f"{uid}: {claim_count} rendered claims, validation lists {len(rec['claims'])}")
-        row = rows[uid]
-        p = packets[uid]
-        regests.append(
-            {
-                "uid": uid,
-                "identifier": p["identifier"],
-                "short": shorts[uid],
-                "sort": row["sorting"],
-                "start": p["machine_start"],
-                "end": p["machine_end"],
-                "lead": _lead(texts[uid]),
-                "date": _markup_segments(p["date_string"], exchange_to_uid),
-                "place": _markup_segments(p["locality_string"], exchange_to_uid),
-                "text": texts[uid],
-                "status": rec["status"],
-                "technical": technical,
-                "claims": claim_count,
-                **statements,
-                "notes": notes.get(uid, {"unresolved": [], "gaps": [], "corrections": []}),
-                "history": history.get(uid, {"findings": [], "decisions": [], "revised": None, "final": None}),
-                "apparatus": {
-                    "commentary": _markup_segments(row["commentary"], exchange_to_uid),
-                    "transmission": _markup_segments(row["archival_history"], exchange_to_uid),
-                    "links": _markup_segments(row["external_links"], exchange_to_uid),
-                },
-                "register": sorted({r["id"]: r["origLabel"] for r in register.get(p["identifier"], [])}.items()),
-            }
+    if any((None, RDF.type, cls) in ds for cls in FACTOID_CLASSES):
+        regests, questions, crossrefs, graph, run_info = _build_factoid(
+            source, run, manifest, stage, validation, records, src, ds, graphs
         )
-    regests.sort(key=lambda r: r["sort"])
-
-    ctx = {"short": shorts, "texts": texts, "node_names": node_names, "order": [r["uid"] for r in regests]}
-    questions = _run_questions(ds, ctx)
-
-    same_name = next(q for q in questions if q["id"] == "gleichnamige-eltern")
-    crossrefs = _identity_crossrefs(same_name, packets, shorts, graphs)
-    by_uid = {r["uid"]: r for r in regests}
-    for ref in crossrefs:
-        for side in ref["sides"]:
-            other = next(s for s in ref["sides"] if s is not side)
-            _attach_crossref(by_uid[side["regest"]], side, other, ref)
-    _attach_unresolved(by_uid)
-    _verify_register(crossrefs, register, packets)
+    else:
+        if stage != "revised":
+            raise BuildError("the pilot model is read from its revised stage only")
+        regests, questions, crossrefs, graph, run_info = _build_pilot(run, validation, records, src, ds, graphs)
 
     edition = {
         "run": {
@@ -1386,10 +2148,11 @@ def build(source: Path, run_id: str, out: Path) -> None:
             "technical_pass": validation["technical_pass"],
             "expert_accepted": validation["expert_accepted"],
             "validator": validation["runtime"],
+            **run_info,
         },
         "regests": regests,
-        "delivery": _year_distribution(regest_csv),
-        "graph": _person_graph(graphs, regests, same_name),
+        "delivery": _year_distribution(src["regest_csv"]),
+        "graph": graph,
     }
     out.mkdir(parents=True, exist_ok=True)
     _write(out / "edition.json", edition)
@@ -1401,6 +2164,113 @@ def build(source: Path, run_id: str, out: Path) -> None:
         print("  same-name parents:", ref["child"], "|", ref["name"], "|", [s["iri"] for s in ref["sides"]])
 
 
+def _sources(source: Path, run: Path, order: list[str]) -> dict:
+    """Packets, the two source CSVs and the short citations, shared by both data models."""
+    packets = {uid: _load_json(run / "packets" / f"{uid}.json") for uid in order}
+    regest_csv = source / "source-material" / "RI_004-002-ReggBarbarossa.csv"
+    register_csv = source / "source-material" / "RI_004-002-RegisterBarbarossa.csv"
+    rows = _read_source_rows(regest_csv, set(order))
+    shorts = {uid: packets[uid]["identifier"].split(" ", 2)[-1] for uid in order}
+    if len(set(shorts.values())) != len(shorts):
+        shorts = {uid: packets[uid]["identifier"] for uid in order}
+    return {
+        "packets": packets,
+        "texts": {uid: p["summary_plain"] for uid, p in packets.items()},
+        "rows": rows,
+        "exchange_to_uid": {rows[uid]["exchange_identifier"]: uid for uid in order},
+        "register": _read_register(register_csv, {p["identifier"] for p in packets.values()}),
+        "shorts": shorts,
+        "regest_csv": regest_csv,
+    }
+
+
+def _regest_entry(
+    uid: str, src: dict, rec: dict, technical: bool, claims: int, statements: dict, notes: dict, history: dict
+) -> dict:
+    """One regest of edition.json; the key order is part of the byte-identical output."""
+    row = src["rows"][uid]
+    p = src["packets"][uid]
+    exchange_to_uid = src["exchange_to_uid"]
+    return {
+        "uid": uid,
+        "identifier": p["identifier"],
+        "short": src["shorts"][uid],
+        "sort": row["sorting"],
+        "start": p["machine_start"],
+        "end": p["machine_end"],
+        "proseYears": _prose_years(p["date_string"], p["machine_start"], p["machine_end"]),
+        "lead": _lead(src["texts"][uid]),
+        "date": _markup_segments(p["date_string"], exchange_to_uid),
+        "place": _markup_segments(p["locality_string"], exchange_to_uid),
+        "text": src["texts"][uid],
+        "status": rec["status"],
+        "technical": technical,
+        "claims": claims,
+        **statements,
+        "notes": notes,
+        "history": history,
+        "apparatus": {
+            "commentary": _markup_segments(row["commentary"], exchange_to_uid),
+            "transmission": _markup_segments(row["archival_history"], exchange_to_uid),
+            "links": _markup_segments(row["external_links"], exchange_to_uid),
+        },
+        "register": sorted({r["id"]: r["origLabel"] for r in src["register"].get(p["identifier"], [])}.items()),
+    }
+
+
+def _link_case(regests: list[dict], crossrefs: list[dict], src: dict) -> None:
+    """Attach the same-name case and the unresolved-identity notes to the reading view."""
+    by_uid = {r["uid"]: r for r in regests}
+    for ref in crossrefs:
+        for side in ref["sides"]:
+            other = next(s for s in ref["sides"] if s is not side)
+            _attach_crossref(by_uid[side["regest"]], side, other, ref)
+    _attach_unresolved(by_uid)
+    _verify_register(crossrefs, src["register"], src["packets"])
+
+
+def _build_pilot(run: Path, validation: dict, records: dict, src: dict, ds: Dataset, graphs: dict) -> tuple:
+    texts, shorts = src["texts"], src["shorts"]
+    notes = _agent_notes(run)
+    history = _review_history(run, texts)
+
+    regests = []
+    node_names: dict[str, dict[str, str]] = {}
+    for uid in src["packets"]:  # selection order of the manifest
+        rec = records[uid]
+        technical = bool(validation["technical_pass"]) and not rec["issues"]
+        g = graphs[uid]
+        statements = _build_statements(g, uid, texts[uid], technical)
+        node_names[uid] = {str(n): _node_name(g, n) for n in set(g.subjects()) if isinstance(n, URIRef)}
+        claim_count = sum(1 for ln in _all_lines(statements["blocks"]) if ln.get("own"))
+        if claim_count != len(rec["claims"]):
+            raise BuildError(f"{uid}: {claim_count} rendered claims, validation lists {len(rec['claims'])}")
+        regests.append(
+            _regest_entry(
+                uid,
+                src,
+                rec,
+                technical,
+                claim_count,
+                statements,
+                notes.get(uid, {"unresolved": [], "gaps": [], "corrections": []}),
+                history.get(uid, {"findings": [], "decisions": [], "revised": None, "final": None}),
+            )
+        )
+    regests.sort(key=lambda r: r["sort"])
+
+    ctx = {"short": shorts, "texts": texts, "node_names": node_names, "order": [r["uid"] for r in regests]}
+    questions = _run_questions(ds, ctx)
+
+    same_name = next(q for q in questions if q["id"] == "gleichnamige-eltern")
+    crossrefs = _identity_crossrefs(same_name, src["packets"], shorts, graphs)
+    _link_case(regests, crossrefs, src)
+
+    graph = _person_graph(graphs, regests, same_name)
+    _attach_case_to_nodes(graph, crossrefs)
+    return regests, questions, crossrefs, graph, {}
+
+
 def _attach_crossref(regest: dict, side: dict, other: dict, ref: dict) -> None:
     for block in regest["blocks"]:
         for line in block["lines"]:
@@ -1409,7 +2279,7 @@ def _attach_crossref(regest: dict, side: dict, other: dict, ref: dict) -> None:
                     {
                         "question": "gleichnamige-eltern",
                         "graphNode": ref["childIri"],
-                        "name": ref["name"],
+                        "name": side.get("name", ref["name"]),
                         "child": ref["child"],
                         "here": side,
                         "other": other,
@@ -1417,6 +2287,34 @@ def _attach_crossref(regest: dict, side: dict, other: dict, ref: dict) -> None:
                 )
                 return
     raise BuildError(f"cross reference target {side['claim']} not found in {regest['uid']}")
+
+
+def _attach_case_to_nodes(graph: dict, crossrefs: list[dict]) -> None:
+    """Give each actor node of a same-name case its regest and register entry.
+
+    Two nodes of the case carry the same agent label; what tells them apart for a reader is
+    the regest they come from and the register entry offered there, assigned or not.
+    """
+    nodes = {n["id"]: n for n in graph["nodes"]}
+    for ref in crossrefs:
+        for side in ref["sides"]:
+            node = nodes.get(side["iri"])
+            if node is None:
+                raise BuildError(f"case node {side['iri']} missing from the person graph")
+            node["case"] = {"regest": side["regest"], "short": side["label"], "register": side["register"]}
+
+
+def _prose_years(date_string: str | None, start: str, end: str) -> list[int]:
+    """Years the dating prose names outside the delivered machine interval.
+
+    "(1147 oder 1149)" with start_date 1147 yields [1149]; "(1152 Juni/Juli)" with
+    start_date 1138 yields [1152]. The timeline keeps such a second year visible.
+    """
+    if not date_string:
+        return []
+    low, high = int(start[:4]), int(end[:4])
+    years = {int(y) for y in re.findall(r"(?<!\d)(1\d{3})(?!\d)", re.sub(r"<[^>]+>", "", date_string))}
+    return sorted(y for y in years if not low <= y <= high)
 
 
 def _attach_unresolved(by_uid: dict[str, dict]) -> None:
@@ -1428,7 +2326,9 @@ def _attach_unresolved(by_uid: dict[str, dict]) -> None:
             for block in regest["blocks"]:
                 for line in block["lines"]:
                     for iri in line.get("actors", []):
-                        if ":local:" in iri and iri.rsplit(":", 1)[-1].lower() in note["text"].lower():
+                        # Whole words only: the slug "abt" must not match "Reichsabtei".
+                        slug = re.escape(iri.rsplit(":", 1)[-1].lower())
+                        if ":local:" in iri and re.search(rf"\b{slug}\b", note["text"].lower()):
                             line.setdefault("agentNotes", []).append(note)
                             placed = True
             if not placed:
@@ -1459,12 +2359,13 @@ def main() -> int:
     parser.add_argument("--source", type=Path, default=here.parent / "regesta-rdf-demo")
     parser.add_argument("--run", default="pilot-2026-11-09")
     parser.add_argument("--out", type=Path, default=here / "data")
+    parser.add_argument("--stage", choices=("extracted", "revised"), default="revised")
     args = parser.parse_args()
     if args.out.resolve().is_relative_to(args.source.resolve()):
         print("refusing to write into the source repository", file=sys.stderr)
         return 2
     try:
-        build(args.source, args.run, args.out)
+        build(args.source, args.run, args.out, args.stage)
     except BuildError as exc:
         print(f"build failed: {exc}", file=sys.stderr)
         return 1
