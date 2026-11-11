@@ -55,7 +55,7 @@
   .sp-column { stroke: var(--muted); stroke-width: 1.25; }
   .sp-hit { fill: transparent; }
   .sp-node.is-pointed .sp-person, .sp-node.is-pointed .sp-group { stroke: var(--accent, var(--pen)); stroke-width: 2.5; }
-  .sp-node.is-pointed .sp-act-mark { fill: var(--accent, var(--pen)); }
+  .sp-node.is-pointed .sp-act-mark, .sp-node.is-pinned .sp-act-mark { fill: var(--accent, var(--pen)); }
 
   /* One typeface in two sizes and two weights: names regular, the selection and the case
      semibold, numbers and direction words small. */
@@ -88,8 +88,12 @@
   .it-dot.is-evidenced { fill: var(--accent); stroke: var(--stage); stroke-width: 1; }
   .it-place { fill: var(--text); }
   .it-place-label { font-size: 12.5px; font-weight: 600; fill: var(--text); }
+  .it-flag { stroke: var(--warn); stroke-width: 0.9; opacity: 0.55; }
+  .it-flag-toggle { display: inline-block; vertical-align: -0.2em; margin: 0; }
+  .it-flag-toggle[aria-pressed="true"] { background: var(--warn); border-color: var(--warn); }
   .it-drop { stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 3 3; }
   .it-pointed { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .it-opened { fill: none; stroke: var(--accent-text); stroke-width: 2.5; }
   .it-legend { display: grid; gap: var(--space-1); }
   .it-legend .it-n { display: inline-block; min-inline-size: 3.5ch; margin-inline: var(--space-2) var(--space-1); text-align: end; font-variant-numeric: tabular-nums; font-weight: 600; }
   .it-notes { color: var(--muted); }

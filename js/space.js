@@ -8,9 +8,10 @@
  * recomputed on every rotation step; nothing animates by itself. The plan and its reasons are
  * in knowledge/space-view.md.
  */
-import { h, regestHref } from "./dom.js";
+import { h } from "./dom.js";
 import { FAMILIES, familyOf, directionOf } from "./relations.js";
 import { createSidebar } from "./sidebar.js";
+import { renderRegestCard } from "./regest-card.js";
 
 const SVG = "http://www.w3.org/2000/svg";
 const DEG = Math.PI / 180;
@@ -150,7 +151,25 @@ export function renderSpace(store, options = {}) {
     person: state.actor,
     onPerson: (id) => select(id),
     onPoint: (id) => setPreview(id && model.items.has(id) ? id : null),
+    onOpen: (uid, claim, actId) => open(uid, claim, actId),
   });
+  /** An act opens its regest as the detail on demand; the act stays marked in the scene. */
+  let openAct = null;
+  function open(uid, claim, actId) {
+    openAct = actId ?? null;
+    if (scene) for (const [id, parts] of scene.nodeEls) parts.g.classList.toggle("is-pinned", id === openAct);
+    options.detail?.show(
+      renderRegestCard(store, uid, {
+        claim,
+        texts: options.texts,
+        onClose: () => {
+          openAct = null;
+          if (scene) for (const [, parts] of scene.nodeEls) parts.g.classList.remove("is-pinned");
+          options.detail?.hide();
+        },
+      }),
+    );
+  }
 
   const element = h(
     "section",
@@ -379,7 +398,7 @@ export function renderSpace(store, options = {}) {
       g.addEventListener("mouseenter", () => setPreview(it.id));
       g.addEventListener("mouseleave", () => setPreview(null));
       g.addEventListener("click", () => {
-        if (it.kind === "act") location.hash = regestHref(n.regest, n.claim);
+        if (it.kind === "act") open(n.regest, n.claim, it.id);
         else if (!it.centre) select(it.id);
       });
       nodeEls.set(it.id, parts);

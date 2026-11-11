@@ -28,20 +28,26 @@
   .site-body { display: grid; grid-template-columns: minmax(0, 1fr); }
   /* A view is exactly one window high: header, then drawing area and sidebar. */
   body[data-layout="view"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
-  body[data-layout="view"] .site-body { grid-template-columns: minmax(0, 1fr) var(--aside-width); min-block-size: 0; }
+  /* Shneiderman: filters on the left, the drawing in the middle, the detail on the right
+     only while something is selected. */
+  body[data-layout="view"] .site-body { grid-template-columns: var(--aside-width) minmax(0, 1fr); min-block-size: 0; }
+  body[data-layout="view"][data-detail="open"] .site-body { grid-template-columns: var(--aside-width) minmax(0, 1fr) var(--detail-width); }
   .site-main { container: page / inline-size; min-inline-size: 0; }
   body[data-layout="view"] .site-main { padding: 0; overflow: hidden; }
   body[data-layout="page"] .site-main { padding: var(--space-6) var(--space-5) var(--space-7); max-inline-size: 104rem; margin-inline: auto; inline-size: 100%; }
   .site-main:focus { outline: none; }
-  .site-aside { min-inline-size: 0; overflow-y: auto; background: var(--side); border-inline-start: 1px solid var(--hairline); padding: var(--space-4); }
-  .site-aside[hidden] { display: none; }
+  .site-aside { min-inline-size: 0; overflow-y: auto; background: var(--side); border-inline-end: 1px solid var(--hairline); padding: var(--space-4); }
+  .site-aside[hidden], .site-detail[hidden] { display: none; }
+  .site-detail { min-inline-size: 0; overflow-y: auto; border-inline-start: 1px solid var(--hairline); padding: var(--space-4); background: var(--stage); }
 
   /* Narrow windows: the drawing first, the sidebar below it at its natural height. */
   @media (max-width: 56rem) {
     body[data-layout="view"] { display: block; block-size: auto; overflow: visible; }
     body[data-layout="view"] .site-body { grid-template-columns: minmax(0, 1fr); }
     body[data-layout="view"] .site-main { block-size: 70dvh; }
-    .site-aside { border-inline-start: 0; border-block-start: 1px solid var(--hairline); }
+    body[data-layout="view"][data-detail="open"] .site-body { grid-template-columns: minmax(0, 1fr); }
+    .site-aside { order: 3; border-inline-end: 0; border-block-start: 1px solid var(--hairline); }
+    .site-detail { order: 2; border-inline-start: 0; border-block-start: 1px solid var(--hairline); }
   }
 }
 
@@ -82,7 +88,7 @@
   .fam-group > summary::-webkit-details-marker { display: none; }
   .fam-group > summary::before { content: "▸"; color: var(--muted); margin-inline-end: var(--space-2); }
   .fam-group[open] > summary::before { content: "▾"; }
-  .fam-label { flex: 1; font-weight: 600; color: var(--accent-text); }
+  .fam-label { flex: 1; font-weight: 600; }
   .fam-n { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .act-rows { display: grid; gap: var(--space-1); padding: 0 0 var(--space-2) calc(1em + var(--space-2)); margin: 0; }
   .act-row summary { display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: var(--space-2); list-style: none; padding-block: 2px; }
@@ -98,4 +104,39 @@
   .canvas { position: relative; block-size: 100%; }
   .canvas-bar { position: absolute; inset-block-start: var(--space-3); inset-inline-start: var(--space-3); z-index: 2; display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
   .canvas-status { position: absolute; inset-block-end: var(--space-2); inset-inline-start: var(--space-3); z-index: 2; margin: 0; font-size: var(--step--1); color: var(--muted); background: color-mix(in srgb, var(--stage) 85%, transparent); padding: 0 var(--space-1); }
+
+  /* Family rows: a switch in front, the name and number; the row unfolds to its acts. */
+  .fam-rows { display: grid; margin: 0; padding: 0; }
+  .fam-row { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); align-items: start; border-block-end: 1px solid var(--hairline); }
+  /* The switch is drawn, not written, so it adds no text style. */
+  .fam-check { position: relative; inline-size: 1.15rem; block-size: 1.15rem; margin-block-start: 0.55rem; padding: 0; border: 1.5px solid var(--muted); border-radius: 3px; background: var(--stage); cursor: pointer; }
+  .fam-check[aria-pressed="true"] { background: var(--accent-text); border-color: var(--accent-text); }
+  .fam-check[aria-pressed="true"]::after { content: ""; position: absolute; inset-inline-start: 0.33rem; inset-block-start: 0.12rem; inline-size: 0.3rem; block-size: 0.55rem; border: solid var(--stage); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  .fam-check:disabled { opacity: 0.35; cursor: default; }
+  .fam-row.is-empty .fam-label, .fam-row.is-empty .fam-n, .fam-row.is-off .fam-label, .fam-row.is-off .fam-n { color: var(--muted); font-weight: 400; }
+  .act-open { display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: var(--space-2); inline-size: 100%; text-align: start; background: none; border: 0; padding: 2px 0; cursor: pointer; color: var(--text); font-size: inherit; }
+  .act-open:hover .act-name, .act-open:focus-visible .act-name { text-decoration: underline; }
+
+  /* The regest component, the same in the detail panel and on the citable page. */
+  .regest-card { display: grid; gap: var(--space-3); font-size: var(--step--1); }
+  .card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
+  .card-id { font-weight: 600; }
+  .card-meta { color: var(--muted); }
+  .card-ri { text-decoration-color: var(--accent); }
+  .card-state { color: var(--muted); text-decoration: underline dotted; cursor: help; }
+  .card-close { margin-inline-start: auto; background: none; border: 0; font-size: inherit; line-height: 1; cursor: pointer; color: var(--muted); padding: 0 var(--space-1); }
+  .card-text { font-size: var(--step-0); line-height: 1.6; }
+  .card-text .ev { text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 0.2em; }
+  .card-text .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
+  .card-claims { display: grid; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+  .card-claims li { padding: 2px var(--space-2); border-inline-start: 2px solid transparent; cursor: default; }
+  .card-claims li.is-on, .card-claims li:focus-visible { border-inline-start-color: var(--accent); background: var(--accent-faint); }
+  .claim-kind { font-weight: 600; }
+  .claim-flag { color: var(--warn); font-weight: 600; margin-inline-start: var(--space-1); }
+  .card-none, .card-note { color: var(--muted); }
+  .card-note.is-flag { color: var(--warn); }
+  .card-more summary { color: var(--muted); }
+  .card-more h3 { font-size: inherit; font-weight: 600; margin-block: var(--space-3) var(--space-1); }
+  .card-rdf { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.75rem; }
+  .regest-page { max-inline-size: 46rem; }
 }

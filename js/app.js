@@ -16,7 +16,7 @@
 import { h } from "./dom.js";
 import { createFilters } from "./filters.js";
 import { renderOverview } from "./overview.js";
-import { renderReading } from "./reading.js";
+import { renderRegestCard } from "./regest-card.js";
 import { renderSpace } from "./space.js";
 import { renderItinerary } from "./itinerary.js";
 
@@ -24,6 +24,28 @@ import { renderItinerary } from "./itinerary.js";
 
 const main = /** @type {HTMLElement} */ (document.getElementById("main"));
 const aside = /** @type {HTMLElement} */ (document.getElementById("aside"));
+const detailPanel = /** @type {HTMLElement} */ (document.getElementById("detail"));
+
+/**
+ * The detail on demand (Shneiderman): a narrow panel on the right that exists only while
+ * something is selected. Views open it with a regest card and close it on deselection.
+ */
+const detail = {
+  show(element) {
+    detailPanel.replaceChildren(element);
+    detailPanel.hidden = false;
+    document.body.dataset.detail = "open";
+  },
+  hide() {
+    detailPanel.replaceChildren();
+    detailPanel.hidden = true;
+    delete document.body.dataset.detail;
+  },
+};
+
+/** Regest texts of the whole delivery, loaded once on first need. */
+let textsPromise = null;
+const texts = () => (textsPromise ??= loadJson("data/holdings-texts.json").catch(() => ({})));
 const nav = /** @type {HTMLElement} */ (document.getElementById("site-nav"));
 
 async function loadJson(path) {
@@ -64,20 +86,20 @@ function route(store, filters) {
   let navKey = "zeit-netz";
   let title = "Zeit und Netz";
   if (view === "regest" && store.byUid.has(parts[1])) {
+    // The citable page of a regest shows the same component as the detail panel.
     const regest = store.byUid.get(parts[1]);
-    content = renderReading(store, regest, parts[2] ?? null);
-    content.element.prepend(h("p", { class: "back-link" }, h("a", { href: lastView }, "Zurück zur Ansicht")));
+    content = { element: h("div", { class: "regest-page" }, h("p", { class: "back-link" }, h("a", { href: lastView }, "Zurück zur Ansicht")), h("h1", { class: "visually-hidden", text: regest.identifier }), renderRegestCard(store, regest.uid, { claim: parts[2] ?? null, texts })) };
     title = regest.identifier;
     navKey = "";
   } else if (view === "" || view === "personen") {
-    content = renderOverview(store, { actor: view === "personen" ? actorOf(parts.slice(1)) : null, filters });
+    content = renderOverview(store, { actor: view === "personen" ? actorOf(parts.slice(1)) : null, filters, detail, texts });
   } else if (view === "itinerar" && store.holdings) {
     const place = decodeURIComponent(parts.slice(1).join("/"));
-    content = renderItinerary(store, { place: store.holdings.places[place] ? place : null, filters });
+    content = renderItinerary(store, { place: store.holdings.places[place] ? place : null, filters, detail, texts });
     navKey = "itinerar";
     title = "Itinerar";
   } else if (view === "raum") {
-    content = renderSpace(store, { actor: actorOf(parts.slice(1)), filters });
+    content = renderSpace(store, { actor: actorOf(parts.slice(1)), filters, detail, texts });
     navKey = "raum";
     title = "Raum";
   } else {
@@ -90,6 +112,7 @@ function route(store, filters) {
     else link.removeAttribute("aria-current");
   }
   dispose?.();
+  detail.hide();
   dispose = content.dispose ?? null;
   const previousView = main.dataset.view;
   main.dataset.view = view === "personen" ? "" : view === "raum" ? "raum" : `${view}/${parts[1] ?? ""}`;

@@ -15,8 +15,9 @@
  * Three snapping orthographic views as in the space view: the top view is the map of all
  * places, the side view is time against west and east.
  */
-import { h, regestHref } from "./dom.js";
+import { h } from "./dom.js";
 import { timeBand } from "./sidebar.js";
+import { renderRegestCard } from "./regest-card.js";
 
 const SVG = "http://www.w3.org/2000/svg";
 const DEG = Math.PI / 180;
@@ -56,7 +57,7 @@ export function renderItinerary(store, options) {
   const points = H.regesta.filter((r) => r.p && places[r.p]).map((r) => ({ ...r, y: yearOf(r.s) }));
   const params = new URLSearchParams(location.search);
   const startView = VIEWS[params.get("ansicht")] ? params.get("ansicht") : "schraeg";
-  const state = { place: options.place ?? null, view: { yaw: VIEWS[startView].yaw, pitch: VIEWS[startView].pitch, zoom: 1 }, snap: startView, pointed: null };
+  const state = { flags: false, place: options.place ?? null, view: { yaw: VIEWS[startView].yaw, pitch: VIEWS[startView].pitch, zoom: 1 }, snap: startView, pointed: null };
 
   // The map: an equirectangular projection around the median place of issue. The core that
   // holds 95 percent of the documents fills the cube; the far journeys (the crusades of 1147
@@ -108,9 +109,25 @@ export function renderItinerary(store, options) {
 
   let scene = null;
   let screen = [];
+  // The plausibility check of check_itinerary.py, optional: flagged jumps between
+  // consecutive stations, shown as a switchable state and named in the regest card.
+  let checks = null;
+  const flagsOf = new Map();
+  fetch("data/itinerary-checks.json")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      checks = data;
+      for (const f of data?.flags ?? []) for (const [me, other] of [[f.a, f.b], [f.b, f.a]]) {
+        if (!flagsOf.has(me.uid)) flagsOf.set(me.uid, []);
+        flagsOf.get(me.uid).push({ ...f, other });
+      }
+      renderSide();
+      update();
+    })
+    .catch(() => {});
   // The base map is a small local file; without it the cube still works.
   let basemap = null;
-  fetch("js/basemap.json")
+  fetch(new URL("./basemap.json", import.meta.url))
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => {
       basemap = data;
@@ -124,7 +141,7 @@ export function renderItinerary(store, options) {
     const map = s("g", { class: "it-map" });
     const line = s("polyline", { class: "it-path" });
     const dots = s("g", { class: "it-dots" });
-    const marks = s("g", { class: "it-marks" });
+    const marks = s("g", { class: "it-marks it-flags" });
     const labels = s("g", { class: "sp-labels" });
     const pointer = s("g", { class: "it-pointer" });
     svg.append(frames, map, line, dots, marks, labels, pointer);
@@ -221,6 +238,16 @@ export function renderItinerary(store, options) {
       if (inside(p.y)) path.push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`);
     });
     scene.line.setAttribute("points", path.join(" "));
+    // Flagged jumps, when switched on: a line between the two stations in the warning ink.
+    scene.marks.replaceChildren();
+    if (state.flags && checks) {
+      const at = new Map(points.map((p, i) => [p.u, i]));
+      for (const f of checks.flags) {
+        const [ia, ib] = [at.get(f.a.uid), at.get(f.b.uid)];
+        if (ia === undefined || ib === undefined || !inside(points[ia].y)) continue;
+        scene.marks.append(s("line", { class: "it-flag", x1: screen[ia].x, y1: screen[ia].y, x2: screen[ib].x, y2: screen[ib].y }));
+      }
+    }
     // The route stays faint over the whole time; a chosen time range draws it strongly.
     scene.line.classList.toggle("is-on", filters.active());
     labels(pt);
@@ -263,14 +290,20 @@ export function renderItinerary(store, options) {
 
   /** The pointed regest: drop line to its place on the floor, its place and year named. */
   function pointer() {
+    if (!scene) return;
     scene.pointer.replaceChildren();
-    const i = state.pointed;
-    if (i === null) return;
-    const p = points[i];
     const P = projector();
-    const top = screen[i];
-    const floor = P(mapX(places[p.p].lo, places[p.p].la), toY(first), mapZ(places[p.p].lo, places[p.p].la));
-    scene.pointer.append(s("line", { class: "it-drop", x1: top.x, y1: top.y, x2: floor.x, y2: floor.y }), s("circle", { class: "it-pointed", cx: top.x, cy: top.y, r: 5 }));
+    // The regest whose card is open keeps a ring and its drop line; pointing adds another.
+    for (const [i, cls] of [
+      [opened, "it-opened"],
+      [state.pointed, "it-pointed"],
+    ]) {
+      if (i === null || i === undefined || !screen[i]) continue;
+      const p = points[i];
+      const top = screen[i];
+      const floor = P(mapX(places[p.p].lo, places[p.p].la), toY(first), mapZ(places[p.p].lo, places[p.p].la));
+      scene.pointer.append(s("line", { class: "it-drop", x1: top.x, y1: top.y, x2: floor.x, y2: floor.y }), s("circle", { class: cls, cx: top.x, cy: top.y, r: 5.5 }));
+    }
   }
 
   function nearest(event) {
@@ -399,19 +432,37 @@ export function renderItinerary(store, options) {
   sceneHost.addEventListener("pointerup", (e) => {
     if (drag && !drag.moved && scene) {
       const i = nearest(e);
-      if (i !== null) select(points[i].p);
+      if (i !== null) {
+        select(points[i].p);
+        openRegest(i);
+      }
     }
     drag = null;
   });
 
-  // The sidebar: a place picker, the time band, one line saying what applies, and the
-  // regesta of the selected place unfolding to their text.
+  // The sidebar: a place picker, the time band, the legend of the two layers, and the
+  // regesta of the selected place; a regest opens as the detail on demand on the right.
   const aside = h("div", { class: "sidebar" });
-  let texts = null;
-  const loadTexts = async () => {
-    if (!texts) texts = await fetch("data/holdings-texts.json").then((r) => (r.ok ? r.json() : {}));
-    return texts;
-  };
+  /** The regest whose card is open, marked in the cube. */
+  let opened = null;
+  function openRegest(i) {
+    opened = i;
+    pointer();
+    // Where the point comes from, and what the plausibility check says about it.
+    const notes = ["Ort und Datum aus der Lieferung der Regesta Imperii, Koordinate aus ihrem Register, ohne LLM."];
+    for (const f of flagsOf.get(points[i].u) ?? []) notes.push(`Auffällig: ${f.km} km in ${f.days} ${f.days === 1 ? "Tag" : "Tagen"} zu ${f.other.identifier} (${f.other.place}). Vermutlicher Grund: ${f.class}.`);
+    options.detail?.show(
+      renderRegestCard(store, points[i].u, {
+        notes,
+        texts: options.texts,
+        onClose: () => {
+          opened = null;
+          pointer();
+          options.detail?.hide();
+        },
+      }),
+    );
+  }
 
   function renderSide() {
     const inRange = points.filter((p) => filters.inYear(Math.floor(p.y)));
@@ -426,7 +477,7 @@ export function renderItinerary(store, options) {
     );
     const evidencedCount = inRange.filter((p) => evidenced.has(p.u)).length;
     const markYears = new Set((state.place ? atPlace : []).map((p) => Math.floor(p.y)));
-    const applies = `${state.place ? places[state.place].l : "Ganzer Bestand"}, ${filters.from} bis ${filters.to}.`;
+    const applies = filters.active() ? `${filters.from === filters.to ? `nur ${filters.from}` : `${filters.from} bis ${filters.to}`}. ` : null;
     // The two layers as two lines with sign and count, each count said once and for the
     // current selection; how they arose and what the map simplifies unfolds on demand.
     const shown = state.place ? atPlace : inRange;
@@ -436,11 +487,32 @@ export function renderItinerary(store, options) {
       { class: "it-legend" },
       h("p", {}, h("span", { class: "it-key" }), h("span", { class: "it-n", text: String(shown.length) }), " Regesten mit Ausstellungsort"),
       h("p", {}, h("span", { class: "it-key is-evidenced" }), h("span", { class: "it-n", text: String(shownEvidenced) }), " davon mit belegten Aussagen"),
+      checks
+        ? h(
+            "p",
+            {},
+            h("button", {
+              type: "button",
+              class: "fam-check it-flag-toggle",
+              "aria-pressed": String(state.flags),
+              "aria-label": `Auffällige Sprünge ${state.flags ? "ausblenden" : "zeigen"}`,
+              title: `Mehr als ${checks.threshold.kmPerDay} km am Tag oder ${checks.threshold.floorKm} km zwischen zwei Stationen, Annahme ohne gelesene Quelle`,
+              onclick: () => {
+                state.flags = !state.flags;
+                renderSide();
+                update();
+              },
+            }),
+            h("span", { class: "it-n", text: String(checks.flags.length) }),
+            " auffällige Sprünge",
+          )
+        : null,
       h(
         "details",
         { class: "it-notes" },
         h("summary", { text: "Herkunft der Daten" }),
         h("p", { text: "Orte und Daten stammen aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM. Die belegten Aussagen haben LLM-basierte Agenten extrahiert; sie sind technisch geprüft und fachlich nicht abgenommen." }),
+        h("p", { text: "Ein Skript prüft aufeinanderfolgende Stationen auf unmögliche Reisen. Es findet Kandidaten für falsche Koordinaten, Datierungen ohne Tag, Fälschungen und Urkunden anderer Aussteller; dass ein Punkt stimmt, beweist es nicht." }),
         h("p", { text: "Die Fernreisen nach Osten sind zur Mitte hin gestaucht. Die Grundkarte zeigt Küsten und große Flüsse nach Natural Earth (gemeinfrei)." }),
       ),
     );
@@ -449,18 +521,18 @@ export function renderItinerary(store, options) {
           "ul",
           { class: "act-rows it-rows", role: "list" },
           atPlace.map((p) => {
-            const textEl = h("p", { class: "act-text source", text: "…" });
-            const link = evidenced.has(p.u) ? h("a", { class: "act-link", href: regestHref(p.u) }, `${p.i} mit belegten Aussagen lesen`) : p.pi ? h("a", { class: "act-link", href: `https://www.regesta-imperii.de/id/${p.pi}` }, `${p.i} in Regesta Imperii Online`) : null;
-            const details = h(
-              "details",
-              {},
-              h("summary", { onfocus: () => point(points.indexOf(p)), onblur: () => point(null) }, h("span", { class: "act-year", text: String(Math.floor(p.y)) }), h("span", { class: "act-name", text: p.i }), evidenced.has(p.u) ? h("span", { class: "act-short it-ev", text: "belegt" }) : h("span")),
-              h("div", { class: "act-regest" }, textEl, link),
+            const i = points.indexOf(p);
+            return h(
+              "li",
+              { class: "act-row" },
+              h(
+                "button",
+                { type: "button", class: "act-open", onclick: () => openRegest(i), onmouseenter: () => point(i), onmouseleave: () => point(null), onfocus: () => point(i), onblur: () => point(null) },
+                h("span", { class: "act-year", text: String(Math.floor(p.y)) }),
+                h("span", { class: "act-name", text: p.i }),
+                evidenced.has(p.u) ? h("span", { class: "it-key is-evidenced", title: "mit belegten Aussagen" }) : h("span"),
+              ),
             );
-            details.addEventListener("toggle", async () => {
-              if (details.open) textEl.textContent = (await loadTexts())[p.u] || "Kein Regesttext geliefert.";
-            });
-            return h("li", { class: "act-row", onmouseenter: () => point(points.indexOf(p)), onmouseleave: () => point(null) }, details);
           }),
         )
       : h("p", { class: "side-empty", text: "Wähle einen Ort im Würfel oder in der Liste oben, um seine Regesten zu lesen." });
@@ -470,7 +542,7 @@ export function renderItinerary(store, options) {
         { class: "side-part side-selection", "aria-label": "Auswahl und Filter" },
         picker,
         timeBand(store, filters, markYears),
-        h("p", { class: "side-applies" }, applies, filters.active() ? [" ", h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen")] : null),
+        applies ? h("p", { class: "side-applies" }, applies, h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen")) : null,
         legend,
       ),
       h("section", { class: "side-part side-acts", "aria-label": "Regesten des Ortes" }, list),

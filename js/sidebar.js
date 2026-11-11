@@ -10,7 +10,7 @@
  * the operator prefers unfolding details to subpages; the regest link still opens the full,
  * citable reading view.
  */
-import { h, regestHref } from "./dom.js";
+import { h } from "./dom.js";
 import { FAMILIES, familyOf } from "./relations.js";
 import { yearOf } from "./filters.js";
 
@@ -48,108 +48,99 @@ export function createSidebar(store, filters, options) {
     const all = relations();
     const inTime = all.filter((r) => filters.inRange(r.uid));
     const shown = inTime.filter((r) => filters.familyOn(r.family));
-    element.replaceChildren(selectionPart(inTime, shown), actsPart(shown));
+    element.replaceChildren(selectionPart(shown), familiesPart(inTime));
   }
 
-  function selectionPart(inTime, shown) {
+  /** Person, time band, and the line saying what applies only when something deviates. */
+  function selectionPart(shown) {
     const picker = h(
       "select",
       { class: "side-select", "aria-label": "Person", onchange: (e) => options.onPerson(e.target.value || null) },
       h("option", { value: "", text: "Ganzes Netz", selected: !person }),
       persons.map((p) => h("option", { value: p.id, text: p.label, selected: p.id === person })),
     );
-    const count = (key) => new Set(inTime.filter((r) => r.family === key).map((r) => r.uid)).size;
-    const familyButtons = FAMILIES.map((f) => {
-      const n = count(f.key);
-      return h(
-        "button",
-        {
-          type: "button",
-          class: "fam-toggle",
-          "aria-pressed": String(filters.familyOn(f.key)),
-          title: f.label,
-          // A family without regesta in the selection cannot change anything, so it is not pressable.
-          disabled: n === 0 ? true : null,
-          onclick: () => {
-            const next = new Set(filters.families);
-            if (next.has(f.key)) next.delete(f.key);
-            else next.add(f.key);
-            filters.set({ families: [...next] });
-          },
-        },
-        h("span", { class: "fam-name", text: f.short }),
-        h("span", { class: "fam-count", text: String(n) }),
-      );
-    });
     const regestCount = new Set(shown.map((r) => r.uid)).size;
-    const who = person ? byId.get(person)?.label : "Ganzes Netz";
-    const time = filters.from === filters.lo && filters.to === filters.hi ? "alle Jahre" : filters.from === filters.to ? `nur ${filters.from}` : `${filters.from} bis ${filters.to}`;
-    const fams = filters.families.size === FAMILIES.length ? "alle Richtungen" : `${filters.families.size} von ${FAMILIES.length} Richtungen`;
+    const time = filters.from === filters.to ? `nur ${filters.from}` : `${filters.from} bis ${filters.to}`;
+    const fams = filters.families.size === FAMILIES.length ? "" : `, ${filters.families.size} von ${FAMILIES.length} Richtungen`;
     return h(
       "section",
       { class: "side-part side-selection", "aria-label": "Auswahl und Filter" },
       picker,
       timeBand(store, filters, new Set(relations().map((r) => Math.floor(yearOf(store.byUid.get(r.uid).start))))),
-      h("div", { class: "fam-toggles", role: "group", "aria-label": "Richtungen der Beziehungen" }, familyButtons),
-      h(
-        "p",
-        { class: "side-applies" },
-        `Es gilt: ${who}, ${time}, ${fams}, ${regestCount} ${regestCount === 1 ? "Regest" : "Regesten"}.`,
-        filters.active() ? [" ", h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen")] : null,
-      ),
+      filters.active()
+        ? h("p", { class: "side-applies" }, `${time}${fams}, ${regestCount} ${regestCount === 1 ? "Regest" : "Regesten"}. `, h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen"))
+        : null,
     );
   }
 
-  function actsPart(shown) {
-    const groups = FAMILIES.map((f) => [f, shown.filter((r) => r.family === f.key)]).filter(([, rows]) => rows.length);
-    if (!groups.length) return h("p", { class: "side-empty", text: "Im gewählten Zeitraum und in den gewählten Richtungen gibt es keine Vorgänge." });
+  /**
+   * The eight families, each one row: a switch in front (shown or hidden), the name, the
+   * number of regesta in the time range; the row unfolds to its acts. The row is the filter,
+   * so the families no longer appear twice.
+   */
+  function familiesPart(inTime) {
     return h(
-      "section",
-      { class: "side-part side-acts", "aria-label": "Vorgänge" },
-      groups.map(([f, rows]) => {
+      "ul",
+      { class: "fam-rows", role: "list", "aria-label": "Richtungen der Beziehungen" },
+      FAMILIES.map((f) => {
+        const rows = inTime.filter((r) => r.family === f.key);
+        const on = filters.familyOn(f.key);
+        const uids = new Set(rows.map((r) => r.uid));
         const roles = rows.map((r) => r.role).filter(Boolean);
         const common = [...new Set(roles)].sort((a, b) => roles.filter((r) => r === b).length - roles.filter((r) => r === a).length)[0];
         rows.sort((a, b) => yearOf(store.byUid.get(a.uid).start) - yearOf(store.byUid.get(b.uid).start) || a.label.localeCompare(b.label, "de"));
-        const uids = new Set(rows.map((r) => r.uid));
+        const toggle = h(
+          "button",
+          {
+            type: "button",
+            class: "fam-check",
+            "aria-pressed": String(on),
+            "aria-label": `${f.label} ${on ? "ausblenden" : "zeigen"}`,
+            title: on ? "Ausblenden" : "Zeigen",
+            disabled: uids.size === 0 ? true : null,
+            onclick: () => {
+              const next = new Set(filters.families);
+              if (next.has(f.key)) next.delete(f.key);
+              else next.add(f.key);
+              filters.set({ families: [...next] });
+            },
+          },
+
+        );
         const details = h(
           "details",
-          { class: "fam-group", "data-family": f.key, open: open.has(f.key) },
-          h("summary", {}, h("span", { class: "fam-label", text: f.label }), h("span", { class: "fam-n", text: `${uids.size} ${uids.size === 1 ? "Regest" : "Regesten"}` })),
-          h("ul", { class: "act-rows", role: "list" }, rows.map((r) => actRow(r, common))),
+          { class: "fam-group", "data-family": f.key, open: on && open.has(f.key) && uids.size > 0 },
+          h("summary", {}, h("span", { class: "fam-label", text: f.label }), h("span", { class: "fam-n", text: String(uids.size) })),
+          on ? h("ul", { class: "act-rows", role: "list" }, rows.map((r) => actRow(r, common))) : null,
         );
         details.addEventListener("toggle", () => (details.open ? open.add(f.key) : open.delete(f.key)));
-        return details;
+        return h("li", { class: `fam-row${uids.size ? "" : " is-empty"}${on ? "" : " is-off"}` }, toggle, details);
       }),
     );
   }
 
-  /** One act: year, name, regest link; it unfolds to the regest text with the evidence marked. */
+  /** One act: year, name, regest; a click opens the regest in the detail panel. */
   function actRow(r, common) {
     const regest = store.byUid.get(r.uid);
     const claim = r.edge?.claim ?? r.act?.claim ?? null;
-    const span = regest.spans?.find((sp) => sp.id === claim);
-    const text = regest.text ?? "";
-    const body = span ? [text.slice(0, span.start), h("mark", { text: text.slice(span.start, span.end) }), text.slice(span.end)] : [text];
     const pointId = r.act?.id ?? null;
     return h(
       "li",
-      { class: "act-row", onmouseenter: () => options.onPoint(pointId), onmouseleave: () => options.onPoint(null) },
+      { class: "act-row" },
       h(
-        "details",
-        {},
-        h(
-          "summary",
-          { onfocus: () => options.onPoint(pointId), onblur: () => options.onPoint(null) },
-          h("span", { class: "act-year", text: String(Math.floor(yearOf(regest.start))) }),
-          h("span", { class: "act-name", text: r.role && r.role !== common ? `${r.label}, als ${r.role}` : r.label }),
-          h("span", { class: "act-short", text: regest.short }),
-        ),
-        h(
-          "div",
-          { class: "act-regest" },
-          h("p", { class: "act-text source" }, body),
-          h("a", { class: "act-link", href: regestHref(r.uid, claim) }, `${regest.identifier} lesen`),
-        ),
+        "button",
+        {
+          type: "button",
+          class: "act-open",
+          onclick: () => options.onOpen?.(r.uid, claim, pointId),
+          onmouseenter: () => options.onPoint(pointId),
+          onmouseleave: () => options.onPoint(null),
+          onfocus: () => options.onPoint(pointId),
+          onblur: () => options.onPoint(null),
+        },
+        h("span", { class: "act-year", text: String(Math.floor(yearOf(regest.start))) }),
+        h("span", { class: "act-name", text: r.role && r.role !== common ? `${r.label}, als ${r.role}` : r.label }),
+        h("span", { class: "act-short", text: regest.short }),
       ),
     );
   }

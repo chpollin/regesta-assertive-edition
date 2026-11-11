@@ -11,6 +11,7 @@
 import { h, regestHref } from "./dom.js";
 import { FAMILIES, familyOf } from "./relations.js";
 import { createSidebar } from "./sidebar.js";
+import { renderRegestCard } from "./regest-card.js";
 
 const SVG = "http://www.w3.org/2000/svg";
 const LABELLED_HUBS = 8;
@@ -70,7 +71,20 @@ export function renderOverview(store, options) {
     person: state.actor,
     onPerson: (id) => select(id),
     onPoint: (id) => network?.point(id),
+    onOpen: (uid, claim, actId) => open(uid, claim, actId),
   });
+  /** The selected act stays marked in the drawing while its regest is open on the right. */
+  let openAct = null;
+  function open(uid, claim, actId) {
+    openAct = actId ?? null;
+    network?.pin(openAct);
+    options.detail?.show(renderRegestCard(store, uid, { claim, texts: options.texts, onClose: closeDetail }));
+  }
+  function closeDetail() {
+    openAct = null;
+    network?.pin(null);
+    options.detail?.hide();
+  }
 
   function select(id) {
     state.actor = id;
@@ -91,9 +105,11 @@ export function renderOverview(store, options) {
         status.textContent = n ? n.label : "";
       },
       onSelect: (id) => select(state.actor === id ? null : id),
+      onOpen: (uid, claim, actId) => open(uid, claim, actId),
       onSector: (key) => sidebar.openFamily(key),
     });
     network.highlight(null, state.actor, state.actor);
+    network.pin(openAct);
   }
 
   const unsubscribe = filters.onChange(draw);
@@ -507,12 +523,14 @@ function drawGraph(host, store, graph, height, selected, handlers) {
       hover(n.id, isAct, true);
     });
     g.addEventListener("blur", () => hover(null, false, true));
-    if (!isAct) {
-      g.addEventListener("click", (event) => {
-        event.preventDefault();
-        handlers.onSelect(n.id);
-      });
-    }
+    // A person selects; an act opens its regest as the detail on demand, the link stays
+    // for opening in a new tab.
+    g.addEventListener("click", (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey) return;
+      event.preventDefault();
+      if (isAct) handlers.onOpen?.(n.regest, n.claim, n.id);
+      else handlers.onSelect(n.id);
+    });
     g.addEventListener("keydown", (event) => {
       const at = order.indexOf(n);
       let next = null;
@@ -636,6 +654,10 @@ function drawGraph(host, store, graph, height, selected, handlers) {
     sector(key) {
       sectorKey = key;
       api.highlight(...lastArgs);
+    },
+    /** Mark the act whose regest is open. */
+    pin(id) {
+      for (const [nid, el] of nodeEls) el.classList.toggle("is-pinned", nid === id);
     },
     /** Pointing from outside, the sidebar's act rows: light that act and its people. */
     point(id) {
