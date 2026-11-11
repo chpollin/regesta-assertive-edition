@@ -31,31 +31,7 @@
 }
 
 @layer layout {
-  .site {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-2) var(--space-6);
-    padding: var(--space-5) var(--space-5) 0;
-    max-inline-size: 104rem;
-    margin-inline: auto;
-  }
-  .site-name { color: var(--text); font-weight: 600; text-decoration: none; letter-spacing: 0.01em; }
-  .site-name:hover { text-decoration: underline; }
-  .site nav { display: flex; flex-wrap: wrap; gap: var(--space-5); }
-  .site nav a { color: var(--muted); text-decoration: none; padding-block: var(--space-1); }
-  .site nav a:hover { color: var(--text); }
-  .site nav a[aria-current="page"] { color: var(--text); text-decoration: underline; text-decoration-color: var(--pen); text-decoration-thickness: 2px; text-underline-offset: 0.35em; }
-
-  main {
-    container: page / inline-size;
-    padding: var(--space-6) var(--space-5) var(--space-7);
-    max-inline-size: 104rem;
-    margin-inline: auto;
-  }
-  main:focus { outline: none; }
-
+  /* Header, navigation and the main area are in css/shell.css. */
   .title-row {
     display: flex;
     flex-wrap: wrap;
@@ -270,9 +246,13 @@
     .regest-list .lead { grid-column: 2; }
   }
 
+  /* The network fills the drawing area of the shell. */
+  .graph-fill { position: absolute; inset: 0; }
   .graph-layout { display: grid; gap: var(--space-5); grid-template-columns: minmax(0, 1fr); }
   @container page (inline-size > 60rem) {
-    .graph-layout { grid-template-columns: minmax(0, 1fr) 22rem; align-items: start; }
+    /* The network fills the drawing area of the shell. */
+  .graph-fill { position: absolute; inset: 0; }
+  .graph-layout { grid-template-columns: minmax(0, 1fr) 22rem; align-items: start; }
   }
   .edges line { stroke-linecap: round; }
   .e-role { stroke: var(--edge); stroke-width: 1; }
@@ -283,9 +263,9 @@
   .n-person { fill: var(--text); stroke: var(--stage); stroke-width: 1.5; }
   .n-local { fill: var(--stage); stroke: var(--text); stroke-width: 1.75; }
   .n-group { fill: var(--text); stroke: var(--stage); stroke-width: 1; }
-  .n-act { fill: var(--machine); }
+  .n-act { fill: var(--muted); }
   .n-label { fill: var(--text); font-size: 12.5px; paint-order: stroke; stroke: var(--stage); stroke-width: 3px; stroke-linejoin: round; }
-  .node-act .n-label { fill: var(--machine); }
+  .node-act .n-label { fill: var(--muted); }
   .n-sub { fill: var(--muted); font-size: 12px; }
   .n-label.on-demand { display: none; }
   .node:hover .n-label, .node:focus-visible .n-label, .node.is-selected .n-label { display: inline; }

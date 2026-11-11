@@ -1,26 +1,49 @@
 ---
+type: design-document
 title: Design
-status: proposal, not accepted by the operator
+status: draft
+scope: ui
 language: en
 created: 2026-11-09
-updated: 2026-11-09
+updated: 2026-11-11
 ---
 
 # Design
 
-This document is a proposal by the implementing agent and has not been accepted by the operator. It records the second design state of 2026-11-09, which answers three judgements of the operator on the first state: the overview was too text-heavy, the questions to the data should not be an interface of their own but interactive visualisations of the holdings, and the reading view and the site as a whole needed better design. The rules come from the web-style skill, the vault documents "UI-Praxis für agentisch erzeugte Frontends", "Moderne CSS-Praxis" and the visualisation notes named under Sources, and from the operator's recorded judgements (few structures, no eyebrows, no decorative counters or numbering, few lines, descriptive names, no middle dot, no box around every text).
+The design document of the edition interface, after the vault convention for design documents. Every piece of the operator's feedback on the interface is kept verbatim with its consequence and status in [ui-feedback.md](ui-feedback.md); read it before every rebuild and tick it off on the rendered state afterwards. Nothing in this document is accepted by the operator until ui-feedback.md says so.
 
-## Visual language
+## Agent briefing
 
-The site speaks the language of the narrated film of the same project, as fixed in `regesta-promptotyping-video/knowledge/design.md`, section "The dark stage of the narrated film". Colour has fixed roles there, and the interface takes them over.
+No-build ES modules and plain CSS with cascade layers, prebuilt JSON, local fonts, no runtime CDN. The skill `web-style` and the vault yardstick "UI-Praxis für agentisch erzeugte Frontends" apply. Colour values live only in `css/tokens.css`; components use the tokens.
 
-- The stage is dark. Dark is the designed default, light is derived from the same tokens and follows the reader's system preference.
-- The edition's source text lies on warm paper in Junicode. The paper is the only surface on the page and keeps its light colour in both schemes, so source text always looks the same.
-- What a machine wrote is set in cool light: the statements of the extraction agent, the notes of agents, the marks of the run on the timeline, the act nodes.
-- The red pen marks what a person points at or decides: the underline of the selected evidence and phrase, the open expert decision in the review state, the selected node, and the Adela case that the operator points to in his talk.
-- Authored interface text is light grotesque. Space Mono is reserved for code, here the RDF of a statement and IRIs where they are the point.
+## Design system, since 2026-11-11
 
-The film's grain, vignette and camera are left out, because an interface is read, not watched. Contrast follows the accessibility minima: authored and machine text on the stage and ink on paper stay well above 4.5:1 by their OKLCH lightness distance; the measured check is open.
+The operator rejected the dark stage, then the two tinted looks and red as lead colour („das Rot-Stichige passt mir gar nicht. Das ist schwer zu lesen. Kommen wir zu einem einfacheren, vollen, hellen Userinterface.“). The system follows his slide scheme, white ground, black text, links in `#0097A7`, so edition and slides match.
+
+| Role | Token | Value | Use |
+|---|---|---|---|
+| Ground | `--stage` | `#ffffff` | page and drawing area |
+| Sidebar ground | `--side` | `#f6f6f6` | the one sidebar |
+| Text | `--text` | `#1a1a1a` | all reading text, 17.4:1 |
+| Muted text | `--muted` | `#4a4a4a` | secondary text, act marks and act names, 8.9:1 |
+| Hairline | `--hairline` | `#dcdcdc` | separators, rings, the shaded field |
+| Edge | `--edge` | `#8c8c8c` | relation lines, 3.4:1 as a graphic |
+| Accent | `--accent` | `#0097a7` | selection, pointing, the case, pressed controls, time marks; graphics only, 3.5:1 |
+| Accent text | `--accent-text` | `#005c64` | text in the accent hue, links, family names, 7.7:1 on white, 7.2:1 on the sidebar |
+| Accent faint | `--accent-faint` | `#e3f4f6` | the marked evidence in a regest |
+| Density | `--bars` | `#d2d2d2` | regesta per year behind the time band |
+
+Rules: light only, because no dark scheme reached the same legibility; text at least 7:1; no red anywhere, the old role names `--pen` and `--machine` point to the accent text; acts are neutral ink, the accent is reserved for what is selected or pointed at.
+
+Typography: Instrument Sans for interface and graphics in two sizes (12.5 px names, 11 px numbers and direction words) and two weights; the eight direction words in letter-spaced capitals; Junicode only for source text; Space Mono only for code. Spacing follows the `--space-*` scale. Line weights: floor and directions lightest, rings, role edges 1 to 1.1 px, parent edges 1.75 to 1.9 px, accent lines 2 to 3 px; in the oblique space view weight and opacity follow nearness to the camera.
+
+States: rest; pointed after a 90 ms dwell, ending after a 220 ms grace; selected (accent ring or accent column); dimmed (opacity 0.3); outside the time range (opacity 0.15 in the space view, absent in the flat view); pressed controls with an accent underline. Transitions only on opacity, none under reduced motion.
+
+## Shell, since 2026-11-11
+
+One frame for every view of the edition: a header with the title and the navigation from `js/nav.json` (Start, Regesten, Personen, Zeit und Netz, Raum, Methode, Daten, Über die Edition; the current place has an accent underline), the drawing area, and one sidebar. In a view header, drawing area and sidebar fill exactly one window; below 56 rem the sidebar stands under the drawing. Text pages use the same header without the sidebar.
+
+The sidebar (`js/sidebar.js`) is the same in the flat and the space view: person picker; time band with the regesta per year of the delivery as a quiet ground, the selection's years as accent ticks and two handles; the eight families as toggles with their count of regesta; one line saying what applies, with a reset; then the acts of the selection by family, each group with its count, each act unfolding to the regest text with the evidence marked and a link to the full reading view. The reading view carries a back link to the view with its address, so person, time range and families come back. Filter state lives in the query string (`von`, `bis`, `familien`), view settings too (`ansicht`, `mindestens`), the hash keeps route and person. The space view keeps a small view bar on the drawing (three views, start position, zoom, and in the corpus the minimum statements).
 
 ## Operator feedback on the holdings view, 2026-11-11
 

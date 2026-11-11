@@ -1,40 +1,10 @@
 /* The space view (#/raum). Colours come from tokens.css; shared tool and link styles from app.css. */
 
-/* Two design variants for the operator's choice, ?look=a and ?look=b. Each has one accent for
-   selection, the case and pointing; acts are neutral ink, so red and blue no longer compete.
-   The dark grounds are lifted off black and tinted, so depth has room to fade into them. */
-@layer tokens {
-  :root:has(.space[data-look="a"]) {
-    --stage: light-dark(oklch(0.975 0.008 85), oklch(0.255 0.012 60));
-    --text: light-dark(oklch(0.25 0.015 60), oklch(0.93 0.012 85));
-    --muted: light-dark(oklch(0.48 0.015 60), oklch(0.74 0.012 80));
-    --hairline: light-dark(oklch(0.82 0.01 70), oklch(0.4 0.012 60));
-    --edge: light-dark(oklch(0.6 0.012 60), oklch(0.56 0.012 70));
-    --accent: light-dark(oklch(0.53 0.2 28), oklch(0.72 0.16 32));
-    --act: light-dark(oklch(0.38 0.02 60), oklch(0.82 0.02 80));
-  }
-  :root:has(.space[data-look="b"]) {
-    --stage: light-dark(oklch(0.97 0.006 240), oklch(0.26 0.025 255));
-    --text: light-dark(oklch(0.24 0.02 255), oklch(0.94 0.01 240));
-    --muted: light-dark(oklch(0.48 0.02 250), oklch(0.75 0.02 240));
-    --hairline: light-dark(oklch(0.83 0.012 245), oklch(0.42 0.025 250));
-    --edge: light-dark(oklch(0.6 0.02 250), oklch(0.58 0.025 245));
-    --accent: light-dark(oklch(0.5 0.15 250), oklch(0.8 0.12 225));
-    --act: light-dark(oklch(0.36 0.02 255), oklch(0.85 0.015 240));
-  }
-}
-
+/* The scene fills the drawing area of the shell; the view bar sits on it (css/shell.css).
+   The two looks of 2026-11-11 are retired, the edition uses the light tokens only. */
 @layer layout {
-  .space { display: grid; gap: var(--space-2) var(--space-5); grid-template-columns: minmax(0, 1fr); grid-template-areas: "bar" "scene" "side"; }
-  @container page (inline-size > 56rem) {
-    .space { grid-template-columns: minmax(0, 1fr) 21rem; grid-template-areas: "bar bar" "scene side"; }
-    .space-side { max-block-size: var(--scene-height, 70dvh); overflow-y: auto; }
-  }
-  .space-bar { grid-area: bar; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-4); min-block-size: 2rem; }
-  .space-main { grid-area: scene; min-inline-size: 0; }
-  .space-side { grid-area: side; min-inline-size: 0; }
+  .space .space-scene { position: absolute; inset: 0; }
 }
-
 @layer components {
   .space-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
   /* The three snapping views as one segmented control; the pressed one carries the accent. */
@@ -56,7 +26,7 @@
   .space-tip { font-size: var(--step--1); color: var(--text); margin: 0; flex: 1 1 12rem; min-inline-size: 0; min-block-size: 1.5em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; visibility: hidden; }
   .space-tip.is-on { visibility: visible; }
 
-  .space-scene { block-size: var(--scene-height, 62dvh); overflow: hidden; cursor: grab; touch-action: none; border-radius: var(--radius); user-select: none; }
+  .space-scene { overflow: hidden; cursor: grab; touch-action: none; border-radius: var(--radius); user-select: none; }
   .space-scene:active { cursor: grabbing; }
   .space-scene:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
   .space-svg { display: block; font-family: var(--font-ui); }
@@ -77,7 +47,7 @@
   .sp-edges .is-on.sp-role { stroke: var(--accent, var(--machine)); --w: 2px; }
 
   .sp-node { cursor: pointer; }
-  .sp-act-mark { fill: var(--act, var(--machine)); }
+  .sp-act-mark { fill: var(--muted); }
   .sp-person { fill: var(--text); stroke: var(--stage); stroke-width: 1.25; }
   .sp-local { fill: var(--stage); stroke: var(--text); stroke-width: 1.5; }
   .sp-group { fill: var(--text); stroke: var(--stage); stroke-width: 1; }
@@ -92,8 +62,8 @@
   .sp-label { fill: var(--text); font-size: 12.5px; paint-order: stroke; stroke: var(--stage); stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
   .sp-year { fill: var(--muted); font-size: 11px; font-variant-numeric: lining-nums tabular-nums; }
   .sp-family { fill: var(--muted); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
-  .sp-act-label { fill: var(--act, var(--machine)); }
-  .sp-case-label { fill: var(--accent, var(--pen)); font-weight: 600; }
+  .sp-act-label { fill: var(--muted); }
+  .sp-case-label { fill: var(--accent-text); font-weight: 600; }
   .sp-centre-label { font-weight: 600; }
   .sp-label.is-hover { font-weight: 600; }
 
@@ -103,6 +73,6 @@
   .space-hint { color: var(--muted); }
   .space-rels { display: grid; gap: var(--space-2); }
   .space-year { color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
-  .space-act { color: var(--act, var(--machine)); font-weight: 600; }
+  .space-act { color: var(--text); font-weight: 600; }
   .space-pick { inline-size: 100%; background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); }
 }

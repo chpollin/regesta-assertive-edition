@@ -1,17 +1,16 @@
 /**
- * The holdings view: two linked visualisations of the pilot run.
+ * Zeit und Netz: the flat person network of the run, filling the drawing area of the shell.
  *
- * Timeline. Task: locate the regesta of the run in time against the whole delivery, compare
- * how many statements each carries, see which were corrected or have none, and open one.
- * Person graph. Task: find a person, follow the attested relations (kinship, marriage, roles
- * in acts) and see where the graph keeps two identities apart.
- *
- * Pointing at a regest in the timeline marks its acts and people in the graph; pointing at
- * a person in the graph marks the regesta that mention them in the timeline. Positions of
- * the graph come from build_data.py; nothing is simulated here.
+ * Task: find a person, follow the attested relations (kinship, marriage, roles in acts) in
+ * their fixed directions, and see where the graph keeps two identities apart. Time is no
+ * longer a second chart above the network: since the operator's feedback of 2026-11-11
+ * (knowledge/ui-feedback.md) the time range and the relation families are filters in the
+ * shared sidebar, and the network shows only what they let through. Positions of the whole
+ * network come from build_data.py; nothing is simulated here.
  */
 import { h, regestHref } from "./dom.js";
 import { FAMILIES, familyOf } from "./relations.js";
+import { createSidebar } from "./sidebar.js";
 
 const SVG = "http://www.w3.org/2000/svg";
 const LABELLED_HUBS = 8;
@@ -30,518 +29,100 @@ function s(tag, attrs = {}, ...children) {
 }
 
 /**
- * @param {import("./app.js").Store} store
- * @param {{actor?: string|null}} options
+ * The graph restricted by the shared filters: acts of a family that is switched on and of a
+ * regest inside the time range, the role edges to them, kinship inside the range, and the
+ * people that keep at least one relation. The selected person always stays.
  */
-export function renderOverview(store, options = {}) {
-  const { regests, delivery, graph } = store.edition;
-  const sameName = graph.edges.filter((e) => e.kind === "same-name");
-  const caseInfo = findCase();
-  // Without an address the view opens on the case, the entry the talk starts from.
-  const state = {
-    regest: /** @type {string|null} */ (null),
-    actor: /** @type {string|null} */ (options.actor ?? caseInfo?.child.id ?? null),
-    previewActor: null,
-    list: false,
-    openFamily: /** @type {string|null} */ (null),
-  };
+function filteredGraph(graph, filters, keep) {
+  const acts = new Set(graph.nodes.filter((n) => n.kind === "act" && filters.inRange(n.regest) && filters.familyOn(familyOf(n.label).key)).map((n) => n.id));
+  const edges = graph.edges.filter((e) => {
+    if (e.kind === "role") return acts.has(e.source) || acts.has(e.target);
+    if (e.kind === "parent") return filters.familyOn("kin") && filters.inRange(e.regest);
+    return true;
+  });
+  const linked = new Set([keep].filter(Boolean));
+  for (const e of edges) if (e.kind !== "same-name") linked.add(e.source).add(e.target);
+  const nodes = graph.nodes.filter((n) => (n.kind === "act" ? acts.has(n.id) : linked.has(n.id)));
+  const ids = new Set(nodes.map((n) => n.id));
+  return { nodes, edges: edges.filter((e) => ids.has(e.source) && ids.has(e.target)) };
+}
 
-  const timelineHost = h("div", { class: "vis timeline" });
-  const tip = h("p", { class: "tip", role: "status", "aria-live": "polite" });
-  const graphHost = h("div", { class: "vis graph" });
-  const panel = h("div", { class: "person-panel", "aria-live": "polite" });
-  const listButton = h("button", { type: "button", class: "tool", "aria-pressed": "false", onclick: toggleList }, "Liste");
+/**
+ * @param {import("./app.js").Store} store
+ * @param {{actor?: string|null, filters: ReturnType<import("./filters.js").createFilters>}} options
+ */
+export function renderOverview(store, options) {
+  const { filters } = options;
+  const graph = store.edition.graph;
+  const state = { actor: options.actor ?? null };
 
-  let timeline = null;
+  const graphHost = h("div", { class: "vis graph graph-fill" });
+  const status = h("p", { class: "canvas-status", role: "status", "aria-live": "polite" });
+  const element = h(
+    "section",
+    { class: "canvas", "aria-labelledby": "net-title" },
+    h("h1", { id: "net-title", class: "visually-hidden", text: "Zeit und Netz: Personen und ihre belegten Beziehungen" }),
+    graphHost,
+    status,
+  );
   let network = null;
-
-  /** Pointing only changes highlights; the panel is rebuilt when the selection changes. */
-  function sync(withPanel = true) {
-    const actorFocus = state.previewActor ?? state.actor;
-    const regestsOfActor = actorFocus ? new Set(graph.nodes.find((n) => n.id === actorFocus)?.regests ?? []) : null;
-    timeline?.highlight(state.regest, regestsOfActor);
-    network?.highlight(state.regest, actorFocus, state.actor);
-    if (withPanel) renderPanel();
-  }
-
-  /** The child and the two parent nodes of the same-name case, if the run has one. */
-  function findCase() {
-    const pair = sameName[0];
-    if (!pair) return null;
-    const parents = [pair.source, pair.target].map((id) => graph.nodes.find((n) => n.id === id)).filter((n) => n?.case);
-    const child = graph.nodes.find((n) => graph.edges.some((e) => e.kind === "parent" && e.source === n.id && e.target === pair.source));
-    if (parents.length !== 2 || !child) return null;
-    parents.sort((a, b) => store.byUid.get(a.case.regest).sort.localeCompare(store.byUid.get(b.case.regest).sort));
-    return { child, parents, ids: new Set([child.id, ...parents.map((p) => p.id)]) };
-  }
-
-  function renderPanel() {
-    if (state.list) {
-      const lists = [regestList(regests), personList(store, graph)];
-      for (const d of lists) d.open = true;
-      panel.replaceChildren(...lists);
-      return;
-    }
-    panel.replaceChildren();
-    const node = graph.nodes.find((n) => n.id === state.actor);
-    if (!node) {
-      panel.append(h("p", { class: "panel-hint", text: "Wähle ein Regest auf der Zeitleiste oder eine Person im Graphen." }));
-      return;
-    }
-    const rels = graph.edges.filter((e) => (e.source === node.id || e.target === node.id) && e.kind !== "same-name");
-    const items = [
-      h("p", { class: "panel-name" }, node.label, node.local ? h("span", { class: "panel-flag", text: " lokale Kennung" }) : null),
-      caseInfo?.ids.has(node.id) ? caseLinesEl() : null,
-      groupedRelations(rels, node.id),
-      node.labels.length > 1 ? h("p", { class: "panel-labels", text: `In den Regesten auch ${listWords(node.labels.slice(1).map((l) => l.label))}.` }) : null,
-      node.case ? h("details", { class: "panel-iri" }, h("summary", { text: "Kennung" }), h("code", { class: "iri", text: node.id })) : null,
-    ];
-    panel.append(...items.filter(Boolean));
-  }
-
-  /** The case in two lines, one per father: regest, register entry, assignment. */
-  function caseLinesEl() {
-    const line = (p) => {
-      const reg = p.case.register;
-      return h(
-        "li",
-        {},
-        h("button", { type: "button", class: "link-button", onclick: () => select(p.id) }, `Vater in ${p.case.short}`),
-        " ",
-        reg ? h("span", { class: "source", text: reg.label }) : "ohne Registereintrag",
-        reg && !reg.assigned ? h("span", { class: "panel-flag", text: ", nicht zugeordnet" }) : null,
-      );
-    };
-    return h(
-      "div",
-      { class: "case-box" },
-      h("p", { class: "case-title", text: "Zwei Väter gleichen Namens, Identität offen" }),
-      h("ul", { class: "panel-rels", role: "list" }, caseInfo.parents.map(line)),
-    );
-  }
+  const sidebar = createSidebar(store, filters, {
+    person: state.actor,
+    onPerson: (id) => select(id),
+    onPoint: (id) => network?.point(id),
+  });
 
   function select(id) {
-    if (id !== state.actor) state.openFamily = null;
     state.actor = id;
-    state.previewActor = null;
-    state.list = false;
-    listButton.setAttribute("aria-pressed", "false");
-    history.replaceState(null, "", `#/personen/${encodeURIComponent(id)}`);
-    if (lastGraphHeight) drawNetwork();
-    sync();
-    network?.focus(id);
-  }
-
-  function toggleList() {
-    state.list = !state.list;
-    listButton.setAttribute("aria-pressed", String(state.list));
-    renderPanel();
-  }
-
-  /**
-   * The compact counterpart of the circle: one row per family that has relations, in the
-   * order of the directions, with its number of regesta. A row opens in place and names the
-   * acts with their regesta; the person's role is added only where it differs from the role
-   * the person most often has in that family. Pointing at a row lights its sector.
-   */
-  function groupedRelations(rels, nodeId) {
-    const groups = new Map(FAMILIES.map((f) => [f.key, []]));
-    for (const e of rels) {
-      const other = graph.nodes.find((n) => n.id === (e.source === nodeId ? e.target : e.source));
-      if (e.kind === "parent") groups.get("kin").push({ name: e.source === nodeId ? `Kind von ${other.label}` : `Elternteil von ${other.label}`, role: null, e });
-      else groups.get(familyOf(other.label).key).push({ name: other.label, role: e.label, e });
-    }
-    const row = (f) => {
-      const items = groups.get(f.key);
-      const uids = new Set(items.map((i) => i.e.regest).filter(Boolean));
-      const roles = items.map((i) => i.role).filter(Boolean);
-      const common = roles.sort((a, b) => roles.filter((r) => r === b).length - roles.filter((r) => r === a).length)[0];
-      const byName = new Map();
-      for (const item of items) {
-        if (!byName.has(item.name)) byName.set(item.name, []);
-        byName.get(item.name).push(item);
-      }
-      const lines = [...byName].map(([name, list]) =>
-        h(
-          "li",
-          {},
-          `${name} `,
-          ...list.flatMap((item, i) => {
-            const short = store.byUid.get(item.e.regest)?.short ?? "";
-            const text = i ? short.replace(/^n\. /, "") : short;
-            const role = item.role && item.role !== common ? ` als ${item.role}` : "";
-            return [i ? ", " : "", h("a", { href: regestHref(item.e.regest, item.e.claim), text }), role];
-          }),
-        ),
-      );
-      const details = h(
-        "details",
-        { class: "rel-row", "data-family": f.key, open: state.openFamily === f.key },
-        h("summary", {}, h("span", { class: "rel-family", text: f.label }), h("span", { class: "rel-count", text: `${uids.size} ${uids.size === 1 ? "Regest" : "Regesten"}` })),
-        h("ul", { class: "panel-rels", role: "list" }, lines),
-      );
-      details.addEventListener("toggle", () => {
-        if (details.open) state.openFamily = f.key;
-        else if (state.openFamily === f.key) state.openFamily = null;
-      });
-      details.addEventListener("mouseenter", () => network?.sector(f.key));
-      details.addEventListener("mouseleave", () => network?.sector(null));
-      details.addEventListener("focusin", () => network?.sector(f.key));
-      details.addEventListener("focusout", () => network?.sector(null));
-      return details;
-    };
-    return h("div", { class: "rel-groups" }, FAMILIES.filter((f) => groups.get(f.key).length).map(row));
+    history.replaceState(null, "", `${location.search}${id ? `#/personen/${encodeURIComponent(id)}` : "#/"}`);
+    sidebar.setPerson(id);
+    draw();
+    if (id) network?.focus(id);
   }
 
   function draw() {
-    // Heights follow the window, so the strip, the graph and the panel fit one screen at
-    // working width; below it the parts stack and the graph keeps a fixed share.
-    const wide = element.clientWidth > 900;
-    const top = element.getBoundingClientRect().top + window.scrollY;
-    const below = parseFloat(getComputedStyle(element.parentElement).paddingBlockEnd) || 0;
-    const room = Math.max(420, window.innerHeight - top - below - 8);
-    const stripHeight = Math.round(Math.min(170, Math.max(120, room * 0.24)));
-    const graphHeight = wide ? Math.max(300, room - stripHeight - toolbar.offsetHeight - 12) : Math.round(window.innerHeight * 0.62);
-    element.style.setProperty("--graph-height", `${graphHeight}px`);
-    timeline = drawTimeline(timelineHost, tip, store, delivery, regests, sameName, graph, stripHeight, {
-      onPoint: (uid) => {
-        state.regest = uid;
-        sync(false);
-      },
-      onCase: (actorId) => select(actorId),
-    });
-    lastGraphHeight = graphHeight;
-    drawNetwork();
-    sync();
-  }
-
-  // The graph is drawn again whenever the selection changes, because a selected person gets
-  // its own circle of relations.
-  let lastGraphHeight = 0;
-  function drawNetwork() {
-    network = drawGraph(graphHost, store, graph, lastGraphHeight, state.actor, {
+    const width = graphHost.clientWidth;
+    const height = element.clientHeight;
+    if (!width || !height) return;
+    const shown = filteredGraph(graph, filters, state.actor);
+    network = drawGraph(graphHost, store, shown, height, state.actor, {
       onPoint: (id) => {
-        state.previewActor = id;
-        sync(false);
+        const n = id ? shown.nodes.find((x) => x.id === id) : null;
+        status.textContent = n ? n.label : "";
       },
-      onSector: (key) => {
-        state.openFamily = key;
-        renderPanel();
-        panel.querySelector(`[data-family="${key}"] summary`)?.focus({ preventScroll: false });
-      },
-      onSelect: (id) => {
-        const next = state.actor === id ? null : id;
-        if (next) select(next);
-        else {
-          state.actor = null;
-          state.previewActor = null;
-          history.replaceState(null, "", "#/");
-          drawNetwork();
-          sync();
-        }
-      },
+      onSelect: (id) => select(state.actor === id ? null : id),
+      onSector: (key) => sidebar.openFamily(key),
     });
+    network.highlight(null, state.actor, state.actor);
   }
 
-  const legend = h(
-    "details",
-    { class: "legend-pop" },
-    h("summary", { class: "tool", "aria-label": "Zeichen erklären", title: "Zeichen erklären" }, "?"),
-    h("div", { class: "legend-body" }, timelineLegend(delivery, regests, sameName.length > 0), graphLegend(sameName.length > 0, graph)),
-  );
-  const toolbar = h("div", { class: "holdings-bar" }, tip, h("div", { class: "tools" }, listButton, legend));
-
-  const element = h(
-    "section",
-    { class: "holdings", "aria-labelledby": "holdings-title" },
-    h("h1", { id: "holdings-title", class: "visually-hidden", text: store.edition.run.dataModel === "factoid" ? "Regesten des Faktoid-Laufs, Zeit und Personen" : "Regesten des Pilotlaufs, Zeit und Personen" }),
-    toolbar,
-    h("div", { class: "strip", role: "group", "aria-label": "Zeitleiste der Regesten vor der ganzen Lieferung" }, timelineHost),
-    h("div", { class: "graph-main", role: "group", "aria-label": "Personen und ihre belegten Beziehungen" }, graphHost),
-    h("aside", { class: "side", "aria-label": "Auswahl" }, panel),
-  );
-
-  // Draw once attached, so the SVG takes the real width; redraw on resize.
+  const unsubscribe = filters.onChange(draw);
+  // Draw once attached, so the SVG takes the real size; redraw on resize.
   let lastSize = "";
   const observer = new ResizeObserver(() => {
-    const size = `${Math.round(timelineHost.clientWidth)}x${window.innerHeight}`;
-    if (timelineHost.clientWidth && size !== lastSize) {
+    const size = `${graphHost.clientWidth}x${element.clientHeight}`;
+    if (graphHost.clientWidth && size !== lastSize) {
       lastSize = size;
       draw();
     }
   });
-  observer.observe(timelineHost);
+  observer.observe(element);
 
   return {
     element,
-    focus: options.actor
-      ? () => {
-          requestAnimationFrame(() => network?.focus(options.actor));
-        }
-      : null,
-  };
-}
-
-function timelineLegend(delivery, regests, hasCase) {
-  const glyph = (kind) => markGlyph(kind, 14);
-  return h(
-    "p",
-    { class: "vis-legend" },
-    h("span", { class: "legend-item" }, h("span", { class: "bar-sample", "aria-hidden": "true" }), `alle ${delivery.total} Regesten der Lieferung je Jahr`),
-    h("span", { class: "legend-item" }, glyph("plain"), "Regest des Laufs, Höhe nach Zahl der Aussagen"),
-    regests.some((r) => r.notes.corrected) ? h("span", { class: "legend-item" }, glyph("corrected"), "nach Review korrigiert") : null,
-    regests.some((r) => r.claims === 0) ? h("span", { class: "legend-item" }, glyph("empty"), "keine Aussage") : null,
-    h("span", { class: "legend-item" }, h("span", { class: "span-sample", "aria-hidden": "true" }), "Spanne der Datierung"),
-    regests.some((r) => r.proseYears?.length)
-      ? h("span", { class: "legend-item" }, s("svg", { class: "glyph", width: 14, height: 14, viewBox: "-7 -7 14 14", "aria-hidden": "true" }, s("path", { d: "M0,-5 L4.5,0 L0,5 L-4.5,0 Z", class: "m-alt" })), "anderes Jahr im Datierungstext")
-      : null,
-    hasCase ? h("span", { class: "legend-item" }, h("span", { class: "case-sample", "aria-hidden": "true" }), "Elternteil mit zwei Kennungen") : null,
-  );
-}
-
-function graphLegend(hasCase, graph) {
-  const svg = (child) => s("svg", { class: "glyph", width: 16, height: 16, viewBox: "-8 -8 16 16", "aria-hidden": "true" }, child);
-  return h(
-    "p",
-    { class: "vis-legend" },
-    h("span", { class: "legend-item" }, svg(s("circle", { r: 5, class: "n-person" })), "Person"),
-    graph.nodes.some((n) => n.kind === "group") ? h("span", { class: "legend-item" }, svg(s("rect", { x: -5, y: -5, width: 10, height: 10, class: "n-group" })), "Gruppe oder Institution") : null,
-    graph.nodes.some((n) => n.local) ? h("span", { class: "legend-item" }, svg(s("circle", { r: 4.5, class: "n-person n-local" })), "lokale Kennung, ohne Registerzuordnung") : null,
-    h("span", { class: "legend-item" }, svg(s("path", { d: "M0,-5 L5,0 L0,5 L-5,0 Z", class: "n-act" })), "Vorgang (Relation), mit Rolle verbunden"),
-    h("span", { class: "legend-item" }, "Um eine gewählte Person steht jede Relationsart in fester Richtung, beschriftet am Rand."),
-    h("span", { class: "legend-item" }, svg(s("line", { x1: -8, y1: 0, x2: 8, y2: 0, class: "e-parent" })), "Elternteil"),
-    hasCase ? h("span", { class: "legend-item" }, svg(s("line", { x1: -8, y1: 0, x2: 8, y2: 0, class: "e-same" })), "gleicher Name, andere Kennung") : null,
-  );
-}
-
-/** Small mark used in legend and list, the same form as on the axis. */
-function markGlyph(kind, size) {
-  const svg = s("svg", { class: "glyph", width: size, height: size, viewBox: "-7 -7 14 14", "aria-hidden": "true" });
-  if (kind === "corrected") svg.append(s("path", { d: "M0,-6 L5.5,4 L-5.5,4 Z", class: "m-head" }));
-  else if (kind === "empty") svg.append(s("circle", { r: 4.5, class: "m-empty" }));
-  else svg.append(s("circle", { r: 4.5, class: "m-head" }));
-  return svg;
-}
-
-function markWords(r) {
-  const parts = [r.claims === 0 ? "keine Aussage" : `${r.claims} ${r.claims === 1 ? "Aussage" : "Aussagen"}`];
-  if (r.notes.corrected) parts.push("nach Review korrigiert");
-  return parts.join(", ");
-}
-
-/** The text counterpart of the timeline, kept quiet: closed until asked for. */
-function regestList(regests) {
-  return h(
-    "details",
-    { class: "vis-text" },
-    h("summary", { text: "Die Regesten des Laufs als Liste" }),
-    h(
-      "ul",
-      { class: "regest-list", role: "list" },
-      regests.map((r) =>
-        h(
-          "li",
-          {},
-          markGlyph(r.claims === 0 ? "empty" : r.notes.corrected ? "corrected" : "plain", 12),
-          h("a", { href: regestHref(r.uid), text: r.identifier }),
-          h("span", { class: "visually-hidden", text: `, ${markWords(r)}: ` }),
-          h("span", { class: "lead source", text: r.lead }),
-        ),
-      ),
-    ),
-  );
-}
-
-function personList(store, graph) {
-  const actors = graph.nodes.filter((n) => n.kind !== "act").sort((a, b) => a.label.localeCompare(b.label, "de"));
-  return h(
-    "details",
-    { class: "vis-text" },
-    h("summary", { text: "Personen und Beziehungen als Liste" }),
-    h(
-      "ul",
-      { class: "person-list", role: "list" },
-      actors.map((a) => {
-        const rels = graph.edges.filter((e) => e.source === a.id || e.target === a.id);
-        return h(
-          "li",
-          {},
-          h("span", { class: "person-name", text: a.label }),
-          a.case ? ` (${caseLines(a)[1]})` : "",
-          " ",
-          rels.map((e, i) => {
-            const other = graph.nodes.find((n) => n.id === (e.source === a.id ? e.target : e.source));
-            const what = e.kind === "parent" ? (e.source === a.id ? `Elternteil ${other.label}` : `Elternteil von ${other.label}`) : e.kind === "same-name" ? (other.case ? `gleicher Name wie die Person aus ${other.case.short}` : "gleicher Name wie eine zweite Kennung") : `${e.label} in ${other.label}`;
-            return h("span", {}, i ? " | " : "", what, e.regest ? " " : "", e.regest ? h("a", { href: regestHref(e.regest, e.claim), text: store.byUid.get(e.regest).short }) : null);
-          }),
-        );
-      }),
-    ),
-  );
-}
-
-/** Fractional year of an ISO date. */
-function yearOf(iso) {
-  const [y, m, d] = iso.split("-").map(Number);
-  return y + ((m - 1) * 30.4 + (d - 1)) / 365;
-}
-
-function drawTimeline(host, tip, store, delivery, regests, sameName, graph, height, handlers) {
-  const width = Math.max(320, host.clientWidth);
-  const narrow = width < 640;
-  const m = { l: narrow ? 8 : 12, r: narrow ? 8 : 12, t: 34, b: 30 };
-  const iw = width - m.l - m.r;
-  const ih = height - m.t - m.b;
-  const y0 = delivery.years[0][0];
-  const y1 = delivery.years[delivery.years.length - 1][0] + 1;
-  const x = (year) => m.l + ((year - y0) / (y1 - y0)) * iw;
-  const base = m.t + ih;
-  const maxCount = Math.max(...delivery.years.map((d) => d[1]));
-  const maxClaims = Math.max(...regests.map((r) => r.claims));
-  const bw = Math.max(1, iw / (y1 - y0) - (narrow ? 1 : 2));
-
-  const svg = s("svg", { width, height, viewBox: `0 0 ${width} ${height}`, class: "vis-svg" });
-  const bars = s("g", { class: "bars", "aria-hidden": "true" });
-  for (const [year, count] of delivery.years) {
-    if (!count) continue;
-    const bh = (count / maxCount) * ih;
-    bars.append(s("rect", { x: x(year) + 0.5, y: base - bh, width: bw, height: bh }));
-  }
-  const peak = delivery.years.reduce((a, b) => (b[1] > a[1] ? b : a));
-  bars.append(s("text", { x: x(peak[0]) + bw, y: base - ih - 6, "text-anchor": "end", class: "peak", text: `${peak[1]} Regesten ${peak[0]}` }));
-  svg.append(bars);
-
-  const axis = s("g", { class: "axis", "aria-hidden": "true" });
-  axis.append(s("line", { x1: m.l, x2: width - m.r, y1: base, y2: base }));
-  const stepYears = narrow ? 20 : 10;
-  for (let year = Math.ceil(y0 / stepYears) * stepYears; year < y1; year += stepYears) {
-    axis.append(s("text", { x: x(year), y: base + 20, "text-anchor": "middle", text: String(year) }));
-  }
-  svg.append(axis);
-
-  // Every mark stands at its delivered date. Where two heads would overlap, the head moves up
-  // or down to the nearest free height, so a mark never leaves its year. The shift is small
-  // against the scale, and the exact count stays in the status line, accessible name and list.
-  const gap = 10;
-  const placed = regests
-    .map((r) => ({ r, x: x(yearOf(r.start)), ex: x(yearOf(r.end)) }))
-    .sort((a, b) => a.x - b.x || a.r.sort.localeCompare(b.r.sort));
-  const heads = [];
-  const lowest = base - 10;
-  for (const p of placed) {
-    p.top = p.r.claims === 0 ? base : base - 10 - (p.r.claims / maxClaims) * (ih - 24);
-    if (p.r.claims === 0) continue;
-    const free = (y) => y <= lowest && !heads.some((q) => Math.abs(q.x - p.x) < gap && Math.abs(q.top - y) < gap);
-    for (let d = 0; d < ih; d += 1) {
-      if (free(p.top - d)) { p.top -= d; break; }
-      if (free(p.top + d)) { p.top += d; break; }
-    }
-    heads.push(p);
-  }
-  const marks = s("g", { class: "marks" });
-  const byUid = new Map();
-  for (const p of placed) {
-    const r = p.r;
-    const kind = r.claims === 0 ? "empty" : r.notes.corrected ? "corrected" : "plain";
-    const others = r.proseYears ?? [];
-    const g = s("a", {
-      href: regestHref(r.uid),
-      class: "mark",
-      tabindex: "-1",
-      "aria-label": `${r.identifier}, ${dateText(r)}${others.length ? `, Datierungstext nennt ${others.join(" und ")}` : ""}, ${markWords(r)}`,
-    });
-    if (p.ex - p.x > 1.5) g.append(s("line", { x1: p.x, x2: p.ex, y1: base + 3, y2: base + 3, class: "m-span" }));
-    // A year the dating prose names outside the delivered interval stays visible as an open
-    // diamond on the baseline, joined to the mark by a dotted line.
-    for (const year of others) {
-      const ax = x(year + 0.5);
-      g.append(
-        s("line", { x1: p.x, x2: ax, y1: base + 9, y2: base + 9, class: "m-alt-link" }),
-        s("path", { d: `M${ax},${base + 4} L${ax + 4.5},${base + 9} L${ax},${base + 14} L${ax - 4.5},${base + 9} Z`, class: "m-alt" }),
-      );
-    }
-    if (kind !== "empty") g.append(s("line", { x1: p.x, x2: p.x, y1: base, y2: p.top, class: "m-halo" }), s("line", { x1: p.x, x2: p.x, y1: base, y2: p.top, class: "m-stem" }));
-    if (kind === "corrected") g.append(s("path", { d: `M${p.x},${p.top - 6} L${p.x + 5.5},${p.top + 4} L${p.x - 5.5},${p.top + 4} Z`, class: "m-head" }));
-    else if (kind === "empty") g.append(s("circle", { cx: p.x, cy: base - 6, r: 4.5, class: "m-empty" }));
-    else g.append(s("circle", { cx: p.x, cy: p.top, r: 4.5, class: "m-head" }));
-    g.append(s("circle", { cx: p.x, cy: kind === "empty" ? base - 6 : p.top, r: 12, class: "m-hit" }));
-    const people = graph.nodes.filter((n) => n.kind !== "act" && n.regests.includes(r.uid)).length;
-    const show = () => {
-      handlers.onPoint(r.uid);
-      // One line only: the graph itself shows who is involved.
-      tip.replaceChildren(
-        h("span", { class: "tip-id", text: r.identifier }),
-        h("span", { class: "tip-date source", text: ` ${dateText(r)}` }),
-        h("span", { class: "tip-words", text: `, ${markWords(r)}, ${people === 1 ? "eine Person" : `${people} Personen`} im Graphen` }),
-      );
-      tip.classList.add("is-on");
-    };
-    const hide = () => {
-      handlers.onPoint(null);
-      tip.classList.remove("is-on");
-    };
-    g.addEventListener("mouseenter", show);
-    g.addEventListener("mouseleave", hide);
-    g.addEventListener("focus", show);
-    g.addEventListener("blur", hide);
-    g.addEventListener("keydown", (event) => {
-      const at = placed.indexOf(p);
-      let next = null;
-      if (event.key === "ArrowRight") next = placed[Math.min(at + 1, placed.length - 1)];
-      else if (event.key === "ArrowLeft") next = placed[Math.max(at - 1, 0)];
-      else if (event.key === "Home") next = placed[0];
-      else if (event.key === "End") next = placed[placed.length - 1];
-      if (next) {
-        event.preventDefault();
-        for (const q of placed) q.el.setAttribute("tabindex", q === next ? "0" : "-1");
-        next.el.focus();
-      }
-    });
-    p.el = g;
-    byUid.set(r.uid, p);
-    marks.append(g);
-  }
-  placed[0].el.setAttribute("tabindex", "0");
-
-  // The case found by the question on same-name parents: an arc between its two regesta.
-  const caseLayer = s("g", { class: "case" });
-  for (const e of sameName) {
-    const parentEdges = graph.edges.filter((pe) => pe.kind === "parent" && (pe.target === e.source || pe.target === e.target));
-    const ends = parentEdges.map((pe) => byUid.get(pe.regest)).filter(Boolean);
-    if (ends.length !== 2) continue;
-    const [a, b] = ends.sort((p1, p2) => p1.x - p2.x);
-    const lift = Math.max(16, Math.min(a.top, b.top) - 26);
-    const child = graph.nodes.find((n) => n.id === parentEdges[0].source);
-    const link = s(
-      "a",
-      { href: `#/personen/${encodeURIComponent(child.id)}`, class: "case-link", "aria-label": `${child.label}: Elternteil mit zwei Kennungen in ${a.r.short} und ${b.r.short}` },
-      s("path", { d: `M${a.x},${a.top - 8} C${a.x},${lift} ${b.x},${lift} ${b.x},${b.top - 8}`, class: "case-arc" }),
-      s("text", { x: (a.x + b.x) / 2, y: lift - 2, "text-anchor": "middle", class: "case-label", text: child.label }),
-    );
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      handlers.onCase(child.id);
-    });
-    caseLayer.append(link);
-  }
-  svg.append(caseLayer, marks);
-  host.replaceChildren(svg);
-
-  return {
-    highlight(uid, regestSet) {
-      for (const p of placed) {
-        p.el.classList.toggle("is-pointed", p.r.uid === uid);
-        p.el.classList.toggle("is-related", !!regestSet && regestSet.has(p.r.uid));
-        p.el.classList.toggle("is-dim", !!regestSet && !regestSet.has(p.r.uid));
-      }
+    aside: sidebar.element,
+    focus: options.actor ? () => requestAnimationFrame(() => network?.focus(options.actor)) : null,
+    dispose: () => {
+      unsubscribe();
+      sidebar.dispose();
+      observer.disconnect();
     },
   };
 }
 
 /**
- * Greedy label placement: people in the same-name case first, then kin, then by degree.
- * A label goes right, left, above or below its node where it hits no other label or node;
- * a label that finds no place appears on pointing or focus.
+ * Standing labels of the whole network: the same-name case and the most connected people,
+ * placed greedily clear of each other, of nodes and of edges; the rest appear on pointing.
  */
 function placeLabels(graph, px, py, width, height, degree, segments) {
   const charWidth = 7.2;
@@ -691,20 +272,11 @@ function placeEgoLabels(graph, ego, selectedId, px, py, width, height, sectorBox
 }
 
 /** Agent label and, for a node of the same-name case, regest and register entry. */
-/** Names as a sentence part: "A", "A und B", "A, B und C". */
-function listWords(words) {
-  return words.length < 2 ? words.join("") : `${words.slice(0, -1).join(", ")} und ${words.at(-1)}`;
-}
-
 function caseLines(n) {
   const reg = n.case.register;
   const numeral = reg?.label.match(/\(([IVXLC]+\.)\)/)?.[1];
   const entry = reg ? `Register ${numeral ?? reg.label}${reg.assigned ? "" : ", nicht zugeordnet"}` : "ohne Registereintrag";
   return [n.label, `${n.case.short}, ${entry}`];
-}
-
-function dateText(r) {
-  return r.date.map((seg) => seg.t).join("") || "ohne Datierung";
 }
 
 /**
@@ -1064,6 +636,10 @@ function drawGraph(host, store, graph, height, selected, handlers) {
     sector(key) {
       sectorKey = key;
       api.highlight(...lastArgs);
+    },
+    /** Pointing from outside, the sidebar's act rows: light that act and its people. */
+    point(id) {
+      preview(id && nodeEls.has(id) ? id : null);
     },
   };
   return api;

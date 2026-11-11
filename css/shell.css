@@ -1,0 +1,100 @@
+/* The shell of the edition: header with navigation, drawing area, one sidebar. The same
+   class names are used by the static pages of the curated build. Colours from tokens.css. */
+
+@layer layout {
+  body { min-block-size: 100dvh; }
+
+  .site-header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-5);
+    min-block-size: var(--header-height);
+    padding: var(--space-1) var(--space-4);
+    background: var(--stage);
+    border-block-end: 1px solid var(--hairline);
+  }
+  .site-title { color: var(--text); font-weight: 600; text-decoration: none; font-size: var(--step--1); }
+  .site-title:hover { text-decoration: underline; }
+  .site-nav { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); font-size: var(--step--1); }
+  .site-nav a { color: var(--muted); text-decoration: none; padding-block: var(--space-1); border-block-end: 2px solid transparent; }
+  .site-nav a:hover { color: var(--text); }
+  .site-nav a[aria-current="page"] { color: var(--text); font-weight: 600; border-block-end-color: var(--accent); }
+
+  /* Views: drawing area and sidebar fill the window below the header. */
+  .site-body { display: grid; grid-template-columns: minmax(0, 1fr); }
+  /* A view is exactly one window high: header, then drawing area and sidebar. */
+  body[data-layout="view"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
+  body[data-layout="view"] .site-body { grid-template-columns: minmax(0, 1fr) var(--aside-width); min-block-size: 0; }
+  .site-main { container: page / inline-size; min-inline-size: 0; }
+  body[data-layout="view"] .site-main { padding: 0; overflow: hidden; }
+  body[data-layout="page"] .site-main { padding: var(--space-6) var(--space-5) var(--space-7); max-inline-size: 104rem; margin-inline: auto; inline-size: 100%; }
+  .site-main:focus { outline: none; }
+  .site-aside { min-inline-size: 0; overflow-y: auto; background: var(--side); border-inline-start: 1px solid var(--hairline); padding: var(--space-4); }
+  .site-aside[hidden] { display: none; }
+
+  /* Narrow windows: the drawing first, the sidebar below it at its natural height. */
+  @media (max-width: 56rem) {
+    body[data-layout="view"] { display: block; block-size: auto; overflow: visible; }
+    body[data-layout="view"] .site-body { grid-template-columns: minmax(0, 1fr); }
+    body[data-layout="view"] .site-main { block-size: 70dvh; }
+    .site-aside { border-inline-start: 0; border-block-start: 1px solid var(--hairline); }
+  }
+}
+
+@layer components {
+  .back-link { margin-block-end: var(--space-4); font-size: var(--step--1); }
+  .back-link a::before { content: "← "; }
+
+  /* Sidebar */
+  .sidebar { display: grid; gap: var(--space-5); font-size: var(--step--1); }
+  .side-part { display: grid; gap: var(--space-3); }
+  .side-select { inline-size: 100%; background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-2); }
+  .side-applies { color: var(--muted); }
+  .side-empty { color: var(--muted); }
+
+  .band { display: grid; gap: var(--space-1); }
+  .band-track { position: relative; block-size: 40px; }
+  .band-svg { position: absolute; inset: 0 0 6px; inline-size: 100%; block-size: 34px; }
+  .band-bar { fill: var(--bars); }
+  .band-bar.is-in { fill: var(--edge); }
+  .band-mark { fill: var(--accent); }
+  /* Two native range inputs over one track: only their thumbs take the pointer. */
+  .band-range { position: absolute; inset-inline: 0; inset-block-end: 0; inline-size: 100%; margin: 0; background: none; pointer-events: none; appearance: none; block-size: 16px; accent-color: var(--accent); }
+  .band-range::-webkit-slider-thumb { pointer-events: auto; appearance: none; inline-size: 14px; block-size: 14px; border-radius: 50%; background: var(--stage); border: 2px solid var(--accent); cursor: ew-resize; }
+  .band-range::-moz-range-thumb { pointer-events: auto; inline-size: 12px; block-size: 12px; border-radius: 50%; background: var(--stage); border: 2px solid var(--accent); cursor: ew-resize; }
+  .band-range::-webkit-slider-runnable-track { background: none; }
+  .band-range:focus-visible { outline: 2px solid var(--focus); }
+  .band-scale { display: flex; justify-content: space-between; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .band-label { color: var(--text); font-weight: 600; }
+
+  .fam-toggles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-1); }
+  .fam-toggle { display: flex; justify-content: space-between; gap: var(--space-1); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); cursor: pointer; font-size: 0.8125rem; color: var(--muted); }
+  .fam-toggle[aria-pressed="true"] { color: var(--text); border-color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+  .fam-count { font-variant-numeric: tabular-nums; }
+
+  .fam-group { border-block-end: 1px solid var(--hairline); }
+  .fam-group > summary { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: var(--space-2); list-style: none; }
+  .fam-group > summary::-webkit-details-marker { display: none; }
+  .fam-group > summary::before { content: "▸"; color: var(--muted); margin-inline-end: var(--space-2); }
+  .fam-group[open] > summary::before { content: "▾"; }
+  .fam-label { flex: 1; font-weight: 600; color: var(--accent-text); }
+  .fam-n { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .act-rows { display: grid; gap: var(--space-1); padding: 0 0 var(--space-2) calc(1em + var(--space-2)); margin: 0; }
+  .act-row summary { display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: var(--space-2); list-style: none; padding-block: 2px; }
+  .act-row summary::-webkit-details-marker { display: none; }
+  .act-row summary:hover .act-name { text-decoration: underline; }
+  .act-year, .act-short { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .act-regest { display: grid; gap: var(--space-2); margin: var(--space-1) 0 var(--space-2) 3.5rem; padding: var(--space-2) var(--space-3); background: var(--stage); border-inline-start: 2px solid var(--accent); }
+  .act-text { line-height: 1.55; }
+  .act-text mark { background: var(--accent-faint); color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .act-link { color: var(--accent-text); font-weight: 600; }
+
+  /* A small view bar placed on the drawing area. */
+  .canvas { position: relative; block-size: 100%; }
+  .canvas-bar { position: absolute; inset-block-start: var(--space-3); inset-inline-start: var(--space-3); z-index: 2; display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+  .canvas-status { position: absolute; inset-block-end: var(--space-2); inset-inline-start: var(--space-3); z-index: 2; margin: 0; font-size: var(--step--1); color: var(--muted); background: color-mix(in srgb, var(--stage) 85%, transparent); padding: 0 var(--space-1); }
+}
