@@ -37,6 +37,19 @@
 
 @layer components {
   .space-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+  /* The three snapping views as one segmented control; the pressed one carries the accent. */
+  .segs { display: inline-flex; align-items: center; border: 1px solid var(--hairline); border-radius: var(--radius); }
+  .seg { background: none; border: 0; color: var(--text); padding: var(--space-1) var(--space-3); font-size: var(--step--1); cursor: pointer; }
+  .seg + .seg { border-inline-start: 1px solid var(--hairline); }
+  .seg[aria-pressed="true"] { box-shadow: inset 0 -2px 0 var(--accent, var(--pen)); font-weight: 600; }
+  .seg-note { color: var(--muted); cursor: default; font-style: italic; }
+  .space-slice { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); min-inline-size: 0; max-inline-size: 100%; }
+  /* The display rule above would otherwise override the hidden attribute. */
+  .space-slice[hidden], .seg[hidden] { display: none; }
+  .space-width { max-inline-size: 100%; background: var(--stage); color: var(--text); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); font-size: var(--step--1); }
+  .space-year-range { inline-size: 9rem; accent-color: var(--accent, var(--pen)); }
+  .space-applies { flex-basis: 100%; margin: 0; font-size: var(--step--1); color: var(--muted); }
+  .sp-slice { stroke: var(--accent, var(--pen)); --w: 1.6px; stroke-linecap: round; }
   .space-flat { font-size: var(--step--1); color: var(--muted); padding-inline: var(--space-2); }
   .space-flat:hover { color: var(--text); }
   /* One line of fixed height, so pointing at a panel button never shifts the panel under the pointer. */

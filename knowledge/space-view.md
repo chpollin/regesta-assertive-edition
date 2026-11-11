@@ -110,6 +110,18 @@ After the operator's feedback on the dark scheme of 2026-11-11, verbatim: „Ja,
 - The floor and its directions are the quietest layer, with the same short direction words in capitals as the 2D circle.
 - Two looks for the operator's choice, `?look=a` (warm paper and red) and `?look=b` (slate and blue). Each has one accent for selection, case and pointing; acts are neutral ink. The dark grounds are lifted off black and tinted. The parameter is a shortcut for the comparison and goes once a look is chosen.
 
+### Snapping views, time slice and corpus mode
+
+After the space-time cube study of 2026-11-11 (seven sources read in full by the coordination; recommendation and build order relayed with the operator's words „aber nicht, dass wir es überingenieren“), draft:
+
+- Three snapping views in orthographic projection, Schräg (oblique, the overview), Aufsicht (top, time flattened into the aggregated network) and Seite (side, seen from the east so north and south spread). A segmented control switches them with a 450 ms eased transition, at once under reduced motion. Dragging or arrow keys turn the scene freely and mark it „frei gedreht“; Home returns to the oblique view. From above the year scale hides, because the time axis is a point.
+- A time slice of one, five or ten years, moved by a range control. Inside the slice everything keeps its weight, outside it steps back to 15 percent, labels outside the slice do not stand, and two accent rings bound the slice.
+- Corpus mode, a trial, replaces the former whole network: no centre person, every node at the one build-time 2D layout over all years, so a person's column stays vertical; acts at their year. The eight floor directions are hidden there, because fixed directions belong to the ego view; the family is a filter. Filters by family (with act counts) and by the minimum number of statements of a person (default two), and a coupled list of the shown acts in time order whose rows light the act in the scene.
+- One line says what applies (person or corpus with filter and count, view, years) with a reset. View, slice and corpus filters live in the query string (`ansicht`, `breite`, `jahr`, `familie`, `mindestens`) and come back on reload; the hash keeps route and person.
+- Not built, after the study: transparency of the whole cube, animation running by itself, layouts per year, lenses, VR. The time band view and juxtaposed slices wait until the operator has seen the snapping views and the slice.
+
+Checked in Chromium at 1280 × 800 light and dark and at 360 px: every view and the slice set the pressed button, the line and the address; reload restores them; no person column bends in the corpus; no console errors; no horizontal overflow. Not accepted by the operator.
+
 ## Evidence
 
 Screenshots `space-*.png` in the session scratchpad of 2026-11-11 and the Playwright assertions run there. They are the implementer's own check and not the operator's acceptance.

@@ -13,12 +13,26 @@ import { FAMILIES, familyOf, directionOf } from "./relations.js";
 
 const SVG = "http://www.w3.org/2000/svg";
 const DEG = Math.PI / 180;
-/** Starting position: slightly turned and seen from slightly above, east to the right. */
-const START = Object.freeze({ yaw: -18 * DEG, pitch: 24 * DEG, zoom: 1 });
-/** World units: acts on radius 1, the time column 2.4 high, the floor ring at radius 2.15. */
+/**
+ * Three snapping views of the same cube in orthographic projection, after the space-time
+ * cube study of 2026-11-11 (Bach et al. 2017: fewer degrees of freedom, orthographic against
+ * perspective distortion). The top view flattens time into the aggregated network, the side
+ * view sets time against one ground axis, the oblique view is the overview. Free rotation
+ * stays as an option and starts from wherever the view is.
+ */
+const VIEWS = Object.freeze({
+  schraeg: { label: "Schräg", yaw: -30 * DEG, pitch: 26 * DEG },
+  oben: { label: "Aufsicht", yaw: 0, pitch: 90 * DEG },
+  // Seen from the east, so north (kinship) and south (dispute) spread left and right; seen
+  // from the south they fell onto one line in the Adela case.
+  seite: { label: "Seite", yaw: 90 * DEG, pitch: 0 },
+});
+const START = Object.freeze({ yaw: VIEWS.schraeg.yaw, pitch: VIEWS.schraeg.pitch, zoom: 1 });
+/** Slice widths in years; 0 means no slice. */
+const SLICE_WIDTHS = [0, 1, 5, 10];
+/** World units: acts on radius 1, the time column 3.2 high, the floor ring at radius 1.75. */
 const HEIGHT = 3.2;
 const RING = 1.9;
-const CAMERA = 9;
 
 /** @param {string} tag @param {Record<string, any>} [attrs] @param {...any} children */
 function s(tag, attrs = {}, ...children) {
@@ -85,10 +99,23 @@ export function renderSpace(store, options = {}) {
   }
   const persons = graph.nodes.filter((n) => n.kind !== "act").sort((a, b) => a.label.localeCompare(b.label, "de"));
 
+  // View, slice and look live in the query string, so a view can be linked and reloaded;
+  // the hash keeps the route and the person as before.
+  const params = new URLSearchParams(location.search);
+  const startView = VIEWS[params.get("ansicht")] ? params.get("ansicht") : "schraeg";
   const state = {
     actor: /** @type {string|null} */ (options.actor ?? null),
-    view: { ...START },
+    view: { yaw: VIEWS[startView].yaw, pitch: VIEWS[startView].pitch, zoom: 1 },
+    /** The snapped view, or "frei" once the reader has turned the scene by hand. */
+    snap: startView,
+    /** Time slice: centre year and width in years; width 0 means no slice. */
+    slice: { at: Number(params.get("jahr")) || null, width: SLICE_WIDTHS.includes(Number(params.get("breite"))) ? Number(params.get("breite")) : 0 },
     preview: /** @type {string|null} */ (null),
+    /** Corpus mode filters: one relation family or all, and the minimum statements of a person. */
+    corpus: {
+      family: FAMILIES.some((f) => f.key === params.get("familie")) ? params.get("familie") : "alle",
+      min: [1, 2, 3, 5].includes(Number(params.get("mindestens"))) ? Number(params.get("mindestens")) : 2,
+    },
   };
 
   const tip = h("p", { class: "space-tip", role: "status", "aria-live": "polite" });
@@ -96,23 +123,59 @@ export function renderSpace(store, options = {}) {
     class: "space-scene",
     tabindex: "0",
     role: "group",
-    "aria-label": "Raumansicht des Personennetzes, Zeit als Höhe. Pfeiltasten drehen, Plus und Minus zoomen, Pos1 setzt zurück.",
+    "aria-label": "Raumansicht des Personennetzes, Zeit als Höhe. Pfeiltasten drehen frei, Plus und Minus zoomen, Pos1 kehrt zur Schrägansicht zurück.",
   });
   const panel = h("div", { class: "space-panel", "aria-live": "polite" });
   const wholeButton = h("button", { type: "button", class: "tool", onclick: () => select(null) }, "Ganzes Netz");
   const flatLink = h("a", { class: "space-flat", href: "#/" }, "2D-Ansicht");
+  const viewButtons = Object.entries(VIEWS).map(([key, v]) =>
+    h("button", { type: "button", class: "seg", "aria-pressed": "false", "data-view": key, onclick: () => snapTo(key) }, v.label),
+  );
+  const freeMark = h("span", { class: "seg seg-note", "data-view": "frei", text: "frei gedreht" });
+  const widthSelect = h(
+    "select",
+    { class: "space-width", "aria-label": "Breite der Zeitscheibe", onchange: (e) => setSlice({ width: Number(e.target.value) }) },
+    SLICE_WIDTHS.map((w) => h("option", { value: String(w), text: w === 0 ? "keine Zeitscheibe" : w === 1 ? "Scheibe 1 Jahr" : `Scheibe ${w} Jahre` })),
+  );
+  const yearRange = h("input", { type: "range", class: "space-year-range", "aria-label": "Lage der Zeitscheibe", step: "1", oninput: (e) => setSlice({ at: Number(e.target.value) }) });
+  // Corpus filters, shown only without a centre person. Each option carries its count.
+  const actsPerFamily = new Map(FAMILIES.map((f) => [f.key, graph.nodes.filter((n) => n.kind === "act" && familyOf(n.label) === f).length]));
+  const allActs = graph.nodes.filter((n) => n.kind === "act").length;
+  const refilter = (change) => {
+    Object.assign(state.corpus, change);
+    model = buildModel();
+    draw();
+    renderPanel();
+  };
+  const familySelect = h(
+    "select",
+    { class: "space-width", "aria-label": "Relationsfamilie", onchange: (e) => refilter({ family: e.target.value }) },
+    h("option", { value: "alle", text: `alle Vorgänge (${allActs})` }),
+    FAMILIES.filter((f) => actsPerFamily.get(f.key)).map((f) => h("option", { value: f.key, text: `${f.label} (${actsPerFamily.get(f.key)})` })),
+  );
+  const minSelect = h(
+    "select",
+    { class: "space-width", "aria-label": "Mindestzahl der Aussagen je Person", onchange: (e) => refilter({ min: Number(e.target.value) }) },
+    [1, 2, 3, 5].map((m) => h("option", { value: String(m), text: m === 1 ? "Personen ab 1 Aussage" : `Personen ab ${m} Aussagen` })),
+  );
+  const corpusControls = h("div", { class: "space-slice" }, familySelect, minSelect);
+  const appliesText = h("span", { class: "space-applies-text" });
+  const resetButton = h("button", { type: "button", class: "link-button", onclick: resetAll }, "Zurücksetzen");
   const toolbar = h(
     "div",
     { class: "space-bar" },
     h(
       "div",
       { class: "space-tools" },
-      h("button", { type: "button", class: "tool", onclick: reset }, "Zurück zur Ausgangslage"),
+      h("div", { class: "segs", role: "group", "aria-label": "Ansicht" }, viewButtons, freeMark),
+      h("div", { class: "space-slice" }, widthSelect, yearRange),
+      corpusControls,
       h("button", { type: "button", class: "tool", "aria-label": "Vergrößern", onclick: () => zoom(1.15) }, "+"),
       h("button", { type: "button", class: "tool", "aria-label": "Verkleinern", onclick: () => zoom(1 / 1.15) }, "−"),
       wholeButton,
       flatLink,
     ),
+    h("p", { class: "space-applies" }, appliesText, " ", resetButton),
     tip,
   );
 
@@ -146,32 +209,45 @@ export function renderSpace(store, options = {}) {
     return m;
   }
 
-  /** Whole network: acts on a ring in their family direction, persons at the mean of their acts. */
+  /**
+   * Corpus mode, a trial after the cube study: no centre person. Every node keeps the one
+   * build-time 2D layout over the aggregated network of all years, so a person's column
+   * stays vertical (Brandes and Corman 2002); acts stand at their year. Fixed directions
+   * belong to the ego view, here the relation family is a filter. Filters by family and by
+   * the minimum number of statements of a person keep the cube sparse.
+   */
   function wholeModel() {
     const items = new Map();
-    const acts = graph.nodes.filter((n) => n.kind === "act");
-    for (const fam of FAMILIES) {
-      const ofFam = acts.filter((a) => familyOf(a.label) === fam).sort((a, b) => regestYear(a.regest) - regestYear(b.regest) || a.id.localeCompare(b.id));
-      ofFam.forEach((a, i) => {
-        const angle = spreadAngle(fam.angle, i, ofFam.length);
-        items.set(a.id, { id: a.id, node: a, kind: "act", ...polar(angle, 1), years: [regestYear(a.regest)], angle });
-      });
+    // The layout is normalised by its 5th and 95th percentile, as in the 2D graph, and the
+    // few outliers are pressed into the rim.
+    const spread = (values) => {
+      const sorted = [...values].sort((a, b) => a - b);
+      const lo = sorted[Math.floor(sorted.length * 0.05)];
+      const hi = sorted[Math.ceil(sorted.length * 0.95) - 1];
+      return (v) => Math.max(-1.15, Math.min(1.15, ((v - lo) / (hi - lo || 1)) * 2 - 1)) * 1.45;
+    };
+    const sx = spread(graph.nodes.map((n) => n.x));
+    const sz = spread(graph.nodes.map((n) => n.y));
+    const fam = state.corpus.family;
+    const acts = graph.nodes.filter((n) => n.kind === "act" && (fam === "alle" || familyOf(n.label).key === fam));
+    const actIds = new Set(acts.map((a) => a.id));
+    for (const a of acts) items.set(a.id, { id: a.id, node: a, kind: "act", x: sx(a.x), z: -sz(a.y), years: [regestYear(a.regest)] });
+    const count = new Map();
+    for (const e of graph.edges) {
+      if (e.kind !== "role") continue;
+      const act = actIds.has(e.source) ? e.source : actIds.has(e.target) ? e.target : null;
+      if (!act) continue;
+      const pid = act === e.source ? e.target : e.source;
+      count.set(pid, (count.get(pid) ?? 0) + 1);
     }
     for (const p of persons) {
-      const own = graph.edges.filter((e) => e.kind === "role" && (e.source === p.id || e.target === p.id));
-      const actItems = own.map((e) => items.get(isAct(e.source) ? e.source : e.target)).filter(Boolean);
-      // A deterministic offset from the build-time 2D layout keeps people of one act apart.
-      const jitter = { x: (p.x - 0.5) * 0.36, z: (0.5 - p.y) * 0.36 };
-      let pos;
-      if (actItems.length) {
-        const mx = actItems.reduce((t, a) => t + a.x, 0) / actItems.length;
-        const mz = actItems.reduce((t, a) => t + a.z, 0) / actItems.length;
-        pos = { x: mx * 1.5 + jitter.x, z: mz * 1.5 + jitter.z };
-      } else {
-        const kin = polar(0, 1.5);
-        pos = { x: kin.x + jitter.x, z: kin.z + jitter.z };
-      }
-      items.set(p.id, { id: p.id, node: p, kind: "person", ...pos, years: [] });
+      if ((count.get(p.id) ?? 0) < state.corpus.min) continue;
+      items.set(p.id, { id: p.id, node: p, kind: "person", x: sx(p.x), z: -sz(p.y), years: [] });
+    }
+    // Acts left without any shown person are dropped too, so the cube shows only relations.
+    for (const a of acts) {
+      const linked = graph.edges.some((e) => e.kind === "role" && ((e.source === a.id && items.has(e.target)) || (e.target === a.id && items.has(e.source))));
+      if (!linked) items.delete(a.id);
     }
     const edges = [];
     for (const e of graph.edges) {
@@ -261,25 +337,27 @@ export function renderSpace(store, options = {}) {
     return { items, edges, centre };
   }
 
-  /** Perspective projection of a world point for the current rotation and zoom. */
+  /**
+   * Orthographic projection of a world point for the current rotation and zoom. Sizes do not
+   * shrink with distance; depth is still returned, so line weight and opacity can carry it.
+   */
   function projector(width, height) {
     const { yaw, pitch, zoom: z } = state.view;
     const cy = Math.cos(yaw);
     const sy = Math.sin(yaw);
     const cp = Math.cos(pitch);
     const sp = Math.sin(pitch);
-    // At the starting pitch the near edge of the floor ring reaches further down than the far
-    // top of the axis reaches up, so the centre sits a little above the middle.
-    const base = Math.min(width / 4.6, height / 5) * z;
+    const base = Math.min(width / 4.4, height / 4.6) * z;
     const midX = width / 2;
-    const midY = height / 2 - 0.2 * base;
+    // Seen from the side the column is centred; the more the camera looks down, the more the
+    // floor ring below needs room, so the centre moves up a little.
+    const midY = height / 2 - 0.25 * base * Math.sin(Math.max(0, Math.min(pitch, 60 * DEG)));
     return (x, y, zz) => {
       const xr = x * cy + zz * sy;
       const zr = -x * sy + zz * cy;
       const up = y * cp + zr * sp;
       const depth = zr * cp - y * sp;
-      const k = CAMERA / (CAMERA + depth);
-      return { x: midX + base * k * xr, y: midY - base * k * up, k, depth };
+      return { x: midX + base * xr, y: midY - base * up, k: 1, depth };
     };
   }
 
@@ -300,10 +378,12 @@ export function renderSpace(store, options = {}) {
     const segs = (cls) => Array.from({ length: SEGMENTS }, () => s("line", { class: cls }));
     const rings = decades.map(() => segs("sp-ring"));
     const floor = segs("sp-floor");
-    const spokes = FAMILIES.map(() => s("line", { class: "sp-spoke" }));
+    // Fixed directions belong to the ego view; in the corpus the floor carries no spokes.
+    const spokes = model.centre ? FAMILIES.map(() => s("line", { class: "sp-spoke" })) : [];
     const axis = s("line", { class: model.centre ? "sp-axis is-person" : "sp-axis" });
     const tickEls = decades.map(() => s("line", { class: "sp-tick" }));
-    guides.append(...floor, ...spokes, ...rings.flat(), axis, ...tickEls);
+    const sliceRings = [segs("sp-slice"), segs("sp-slice")];
+    guides.append(...floor, ...spokes, ...rings.flat(), axis, ...tickEls, ...sliceRings.flat());
 
     const edgeEls = model.edges.map((ed) => {
       const cls = ed.e.kind === "parent" ? "sp-parent" : ed.e.kind === "same-name" ? "sp-same" : "sp-role";
@@ -336,7 +416,7 @@ export function renderSpace(store, options = {}) {
       nodeEls.set(it.id, parts);
       nodeLayer.append(g);
     }
-    return { svg, width, height, rings, decades, floor, spokes, axis, ticks: tickEls, edgeEls, nodeEls, labelLayer, hoverLayer };
+    return { svg, width, height, rings, decades, floor, spokes, axis, ticks: tickEls, sliceRings, edgeEls, nodeEls, labelLayer, hoverLayer };
   }
 
   /** Recomputes every position for the current rotation, then places the standing labels. */
@@ -364,14 +444,24 @@ export function renderSpace(store, options = {}) {
         weight(line, a, b);
       });
     };
+    // The time slice: what lies inside keeps its weight, the rest steps far back. Its two
+    // bounding rings are drawn in the accent.
+    const range = sliceRange();
+    const inside = (y) => !range || (y >= range[0] && y <= range[1] + 0.999);
+    const SLICE_OUT = 0.15;
+    scene.sliceRings.forEach((lines, i) => {
+      for (const line of lines) line.style.display = range ? "" : "none";
+      if (range) ring(lines, i ? range[1] + 1 : range[0], 1.12);
+    });
     scene.decades.forEach((y, i) => ring(scene.rings[i], y, 1));
     ring(scene.floor, span.lo, RING - 0.15);
-    FAMILIES.forEach((f, i) => {
+    scene.spokes.forEach((spoke, i) => {
+      const f = FAMILIES[i];
       const a = pt(0, span.lo, 0);
       const w = polar(f.angle, RING - 0.15);
       const b = pt(w.x, span.lo, w.z);
-      setLine(scene.spokes[i], a, b);
-      weight(scene.spokes[i], a, b);
+      setLine(spoke, a, b);
+      weight(spoke, a, b);
     });
     const centre = model.centre ? model.items.get(model.centre) : null;
     const axisFrom = centre ? centre.years[0] : y0;
@@ -379,9 +469,12 @@ export function renderSpace(store, options = {}) {
     setLine(scene.axis, pt(0, centre ? axisFrom : span.lo, 0), pt(0, centre ? axisTo : span.hi, 0));
     // The year scale: a short tick on the axis at every decade, its number placed first by
     // placeLabels, so the scale stays readable at every rotation.
+    // From above the time axis is a point, so the scale has nothing to measure and hides.
+    const scaleShown = state.view.pitch < 70 * DEG;
     scene.decades.forEach((y, i) => {
       const p = pt(0, y, 0);
       setLine(scene.ticks[i], { x: p.x - 5, y: p.y }, { x: p.x + 5, y: p.y });
+      scene.ticks[i].style.display = scaleShown ? "" : "none";
     });
 
     const screen = new Map();
@@ -389,7 +482,7 @@ export function renderSpace(store, options = {}) {
       const parts = scene.nodeEls.get(it.id);
       const ps = it.years.map((y) => pt(it.x, y, it.z));
       screen.set(it.id, ps);
-      const op = fog(ps[0]);
+      const op = fog(ps[0]) * (it.centre || it.years.some(inside) ? 1 : SLICE_OUT);
       parts.g.setAttribute("opacity", op.toFixed(2));
       if (it.kind === "act") {
         const size = 6.5 * ps[0].k;
@@ -415,9 +508,105 @@ export function renderSpace(store, options = {}) {
       const b = pt(ed.b.x, ed.yb, ed.b.z);
       setLine(ed.line, a, b);
       weight(ed.line, a, b);
+      if (!inside(ed.ya) && !inside(ed.yb)) ed.line.setAttribute("opacity", (Number(ed.line.getAttribute("opacity")) * SLICE_OUT).toFixed(2));
     }
+    labelFilter = (it) => it.centre || it.years.some(inside);
+    yearScaleShown = scaleShown;
     placeLabels(pt, screen);
     drawPreview(screen);
+  }
+
+  /** Items whose label may stand, and whether the year numbers are drawn; set by update(). */
+  let labelFilter = (_it) => true;
+  let yearScaleShown = true;
+
+  /** The slice as [first year, last year], kept inside the current span, or null. */
+  function sliceRange() {
+    const w = state.slice.width;
+    if (!w) return null;
+    const lo = Math.floor(span.lo);
+    const hi = Math.floor(span.hi);
+    const at = Math.min(hi, Math.max(lo, state.slice.at ?? Math.round((lo + hi) / 2)));
+    const first = Math.max(lo, at - Math.floor((w - 1) / 2));
+    return [first, Math.min(hi, first + w - 1)];
+  }
+
+  /** Snap to one of the three views, animated unless the reader prefers reduced motion. */
+  function snapTo(key) {
+    const target = VIEWS[key];
+    state.snap = key;
+    syncControls();
+    const from = { ...state.view };
+    // Turn the short way round.
+    let dYaw = (target.yaw - from.yaw) % (2 * Math.PI);
+    if (dYaw > Math.PI) dYaw -= 2 * Math.PI;
+    if (dYaw < -Math.PI) dYaw += 2 * Math.PI;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      state.view = { ...state.view, yaw: from.yaw + dYaw, pitch: target.pitch };
+      update();
+      return;
+    }
+    const t0 = performance.now();
+    const DURATION = 450;
+    const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);
+    const token = (animation = {});
+    const step = (now) => {
+      if (animation !== token) return;
+      const t = Math.min(1, (now - t0) / DURATION);
+      const e = ease(t);
+      state.view = { ...state.view, yaw: from.yaw + dYaw * e, pitch: from.pitch + (target.pitch - from.pitch) * e };
+      update();
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  let animation = {};
+
+  function setSlice(change) {
+    Object.assign(state.slice, change);
+    if (state.slice.width && state.slice.at === null) state.slice.at = Math.round((span.lo + span.hi) / 2);
+    syncControls();
+    update();
+  }
+
+  function resetAll() {
+    state.slice = { at: null, width: 0 };
+    state.view.zoom = 1;
+    snapTo("schraeg");
+  }
+
+  /** Buttons, slice controls, the line saying what applies, and the address follow the state. */
+  function syncControls() {
+    for (const b of viewButtons) b.setAttribute("aria-pressed", String(b.dataset.view === state.snap));
+    freeMark.hidden = state.snap !== "frei";
+    widthSelect.value = String(state.slice.width);
+    const range = sliceRange();
+    yearRange.hidden = !range;
+    yearRange.min = String(Math.floor(span.lo));
+    yearRange.max = String(Math.floor(span.hi));
+    if (range) yearRange.value = String(state.slice.at ?? range[0]);
+    corpusControls.hidden = !!state.actor;
+    familySelect.value = state.corpus.family;
+    minSelect.value = String(state.corpus.min);
+    const famText = state.corpus.family === "alle" ? "alle Vorgänge" : FAMILIES.find((f) => f.key === state.corpus.family).label;
+    const shown = [...model.items.values()].filter((it) => it.kind === "person").length;
+    const who = state.actor ? byId.get(state.actor)?.label ?? "" : `Korpus, ${famText}, ${shown} Personen ab ${state.corpus.min} ${state.corpus.min === 1 ? "Aussage" : "Aussagen"}`;
+    const view = state.snap === "frei" ? "frei gedreht" : VIEWS[state.snap].label === "Seite" ? "Seitenansicht" : VIEWS[state.snap].label === "Schräg" ? "Schrägansicht" : "Aufsicht";
+    const time = range ? (range[0] === range[1] ? `nur ${range[0]}` : `nur ${range[0]} bis ${range[1]}`) : "alle Jahre";
+    appliesText.textContent = `Es gilt: ${who}, ${view}, ${time}.`;
+    resetButton.hidden = state.snap === "schraeg" && !range && state.view.zoom === 1;
+    const q = new URLSearchParams(location.search);
+    for (const k of ["ansicht", "breite", "jahr", "familie", "mindestens"]) q.delete(k);
+    if (!state.actor && state.corpus.family !== "alle") q.set("familie", state.corpus.family);
+    if (!state.actor && state.corpus.min !== 2) q.set("mindestens", String(state.corpus.min));
+    if (state.snap !== "schraeg" && state.snap !== "frei") q.set("ansicht", state.snap);
+    if (range) {
+      q.set("breite", String(state.slice.width));
+      q.set("jahr", String(state.slice.at));
+    }
+    const query = q.toString();
+    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
   }
 
   /** Where a node's label hangs: an act at its mark, a person at its earliest year. */
@@ -452,11 +641,11 @@ export function renderSpace(store, options = {}) {
     // The year scale comes first, so it is never dropped; then the selection and the case.
     const ranked = standing();
     const first = ranked.filter((it) => it.centre || caseIds.has(it.id));
-    for (const y of scene.decades) tryPlace(String(y), pt(0, y, 0), "sp-year", ["left", "right"]);
+    if (yearScaleShown) for (const y of scene.decades) tryPlace(String(y), pt(0, y, 0), "sp-year", ["left", "right"]);
     for (const it of first) placeItem(it);
     // Direction words on the floor: the same short words in capitals as at the rim of the 2D
     // circle, quieter than the data.
-    for (const f of FAMILIES) {
+    for (const f of model.centre ? FAMILIES : []) {
       const w = polar(f.angle, RING);
       const p = pt(w.x, span.lo, w.z);
       tryPlace(f.short, p, "sp-family", ["below", "above", "right", "left", "below-right", "above-right"]);
@@ -465,6 +654,7 @@ export function renderSpace(store, options = {}) {
     scene.labelLayer.replaceChildren(...out);
 
     function placeItem(it) {
+      if (!labelFilter(it)) return;
       const ps = screen.get(it.id);
       const cls = `${it.kind === "act" ? "sp-act-label" : ""}${caseIds.has(it.id) ? " sp-case-label" : ""}${it.centre ? " sp-centre-label" : ""}`;
       tryPlace(it.node.label, labelAnchor(it, ps), cls, ["right", "left", "above", "below", "above-right", "below-right"]);
@@ -474,8 +664,10 @@ export function renderSpace(store, options = {}) {
   /** Items with a standing label: selection, case, then neighbours in time order. */
   function standing() {
     const items = [...model.items.values()];
-    const rank = (it) => (it.centre ? 0 : caseIds.has(it.id) ? 1 : !model.centre ? 9 : it.kind === "person" && isKin(it.id) ? 2 : it.kind === "act" ? 3 : 4);
-    return items.filter((it) => rank(it) < 9).sort((a, b) => rank(a) - rank(b) || a.years[0] - b.years[0]);
+    // In the corpus the people with the longest columns get the standing names; the rest
+    // appear on pointing.
+    const rank = (it) => (it.centre ? 0 : caseIds.has(it.id) ? 1 : !model.centre ? (it.kind === "person" ? 5 : 9) : it.kind === "person" && isKin(it.id) ? 2 : it.kind === "act" ? 3 : 4);
+    return items.filter((it) => rank(it) < 9).sort((a, b) => rank(a) - rank(b) || (model.centre ? a.years[0] - b.years[0] : b.years.length - a.years.length));
   }
 
   function isKin(pid) {
@@ -548,16 +740,22 @@ export function renderSpace(store, options = {}) {
   }
 
   function reset() {
-    state.view = { ...START };
-    update();
+    snapTo("schraeg");
   }
 
   function zoom(factor) {
     state.view.zoom = Math.min(3, Math.max(0.5, state.view.zoom * factor));
+    syncControls();
     update();
   }
 
   function rotate(dYaw, dPitch) {
+    // Turning by hand stops a running snap and leaves the snapped views.
+    animation = {};
+    if (state.snap !== "frei") {
+      state.snap = "frei";
+      syncControls();
+    }
     state.view.yaw += dYaw;
     // From slightly below the floor to straight down the time axis, where the picture is
     // the 2D sector arrangement with north up.
@@ -645,8 +843,28 @@ export function renderSpace(store, options = {}) {
     if (!node) {
       const caseParents = [...caseIds].map((id) => byId.get(id)).filter((n) => n?.case);
       const child = [...caseIds].map((id) => byId.get(id)).find((n) => n && !n.case);
+      // The statement list coupled to the corpus cube: every shown act in time order; pointing
+      // at a row lights the act and its people in the scene.
+      const acts = [...model.items.values()].filter((it) => it.kind === "act").sort((a, b) => a.years[0] - b.years[0]);
+      const rows = acts.map((it) => {
+        const n = it.node;
+        const people = graph.edges
+          .filter((e) => e.kind === "role" && (e.source === n.id || e.target === n.id))
+          .map((e) => (e.source === n.id ? e.target : e.source))
+          .filter((pid) => model.items.has(pid));
+        return h(
+          "li",
+          { onmouseenter: () => setPreview(n.id), onmouseleave: () => setPreview(null) },
+          h("span", { class: "space-year", text: String(Math.floor(it.years[0])) }),
+          " ",
+          h("a", { class: "space-act", href: regestHref(n.regest, n.claim), text: n.label, onfocus: () => setPreview(n.id), onblur: () => setPreview(null) }),
+          ` ${store.byUid.get(n.regest).short}`,
+          people.length ? ", " : "",
+          ...people.flatMap((pid, i) => [i ? ", " : "", personButton(pid, byId.get(pid).label)]),
+        );
+      });
       panel.replaceChildren(
-        h("p", { class: "space-hint", text: "Höhe ist Zeit, die Richtung zeigt die Art der Beziehung. Wähle eine Person, um ihre Beziehungen in zeitlicher Folge zu sehen." }),
+        h("p", { class: "space-hint", text: "Jede Person steht an einer festen Stelle, ihre Säule reicht durch die Jahre, in denen sie belegt ist. Wähle eine Person, um ihre Beziehungen nach Richtungen geordnet zu sehen." }),
         child
           ? h(
               "ul",
@@ -656,6 +874,7 @@ export function renderSpace(store, options = {}) {
             )
           : null,
         picker,
+        h("ul", { class: "space-rels space-corpus", role: "list", "aria-label": "Vorgänge im Würfel" }, rows),
       );
       return;
     }
@@ -699,6 +918,7 @@ export function renderSpace(store, options = {}) {
     element.style.setProperty("--scene-height", `${height}px`);
     scene = buildScene(width, height);
     sceneHost.replaceChildren(scene.svg);
+    syncControls();
     update();
   }
 
