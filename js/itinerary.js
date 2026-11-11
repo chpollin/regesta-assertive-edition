@@ -113,7 +113,7 @@ export function renderItinerary(store, options) {
   // consecutive stations, shown as a switchable state and named in the regest card.
   let checks = null;
   const flagsOf = new Map();
-  fetch("data/itinerary-checks.json")
+  fetch(new URL("../data/itinerary-checks.json", import.meta.url))
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => {
       checks = data;

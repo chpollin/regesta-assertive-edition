@@ -37,7 +37,7 @@ function markedText(text, spans) {
 /**
  * @param {import("./app.js").Store} store
  * @param {string} uid
- * @param {{claim?: string|null, onClose?: () => void, texts?: () => Promise<Record<string, string>>, notes?: string[]}} [options]
+ * @param {{claim?: string|null, onClose?: () => void, texts?: () => Promise<Record<string, string>>, notes?: string[], page?: boolean}} [options]
  */
 export function renderRegestCard(store, uid, options = {}) {
   const regest = store.byUid.get(uid) ?? null;
@@ -60,7 +60,8 @@ export function renderRegestCard(store, uid, options = {}) {
 
   const textEl = h("p", { class: "card-text source" });
   const list = h("ul", { class: "card-claims", role: "list" });
-  const card = h("article", { class: "regest-card", "aria-label": `Regest ${identifier}` }, head, textEl);
+  // On its own citable page the component reads at page size, in a panel at sidebar size.
+  const card = h("article", { class: `regest-card${options.page ? " is-page" : ""}`, "aria-label": `Regest ${identifier}` }, head, textEl);
 
   // The passage and its statements light each other.
   const light = (id) => {

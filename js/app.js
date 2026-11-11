@@ -88,7 +88,7 @@ function route(store, filters) {
   if (view === "regest" && store.byUid.has(parts[1])) {
     // The citable page of a regest shows the same component as the detail panel.
     const regest = store.byUid.get(parts[1]);
-    content = { element: h("div", { class: "regest-page" }, h("p", { class: "back-link" }, h("a", { href: lastView }, "Zurück zur Ansicht")), h("h1", { class: "visually-hidden", text: regest.identifier }), renderRegestCard(store, regest.uid, { claim: parts[2] ?? null, texts })) };
+    content = { element: h("div", { class: "regest-page" }, h("p", { class: "back-link" }, h("a", { href: lastView }, "Zurück zur Ansicht")), h("h1", { class: "visually-hidden", text: regest.identifier }), renderRegestCard(store, regest.uid, { claim: parts[2] ?? null, texts, page: true })) };
     title = regest.identifier;
     navKey = "";
   } else if (view === "" || view === "personen") {
