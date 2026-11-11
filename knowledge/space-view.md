@@ -101,6 +101,15 @@ Standing labels for the year scale, the eight families, the selected person, its
 
 The scene is one tab stop. Arrow keys rotate, plus and minus zoom, Home resets. Persons are reached by keyboard through the selection field and the buttons in the panel, which also show their label in the scene on focus. Rotation follows input directly and never runs by itself, so `prefers-reduced-motion` needs no separate branch; no transition is animated. The 2D view is linked from the tool line as the full keyboard and screen-reader path.
 
+### Depth, time scale and the two looks
+
+After the operator's feedback on the dark scheme of 2026-11-11, verbatim: „Ja, mir gefällt der dunkle Hintergrund noch nicht. Ich glaube, wir können nochmal am User Interface, am Design und an der Ästhetik arbeiten. Diese 3D-Grafik geht auf jeden Fall in die richtige Richtung. Wir sollten aber auch nochmal sinnvoll durchüberlegen, wie wir sie dann vielleicht noch filtern und sortieren können, wie wir weitere Daten dort ein- und ausschalten können und wie wir das sozusagen als einen zentralen Hauptview auch direkt auf der Startseite integrieren.“ Consequences, draft:
+
+- Depth reads through weight. Rings are drawn as segments, and every ring segment, spoke and edge takes opacity and line weight from its distance to the camera, so near parts are stronger than far ones.
+- The height spans only the selected person's years, with a scale of one, two, five, ten or twenty years and at most eight ticks; the numbers are placed before any other label. Adela's case now fills the scene from 1146 to 1154 instead of a knot under empty decades.
+- The floor and its directions are the quietest layer, with the same short direction words in capitals as the 2D circle.
+- Two looks for the operator's choice, `?look=a` (warm paper and red) and `?look=b` (slate and blue). Each has one accent for selection, case and pointing; acts are neutral ink. The dark grounds are lifted off black and tinted. The parameter is a shortcut for the comparison and goes once a look is chosen.
+
 ## Evidence
 
 Screenshots `space-*.png` in the session scratchpad of 2026-11-11 and the Playwright assertions run there. They are the implementer's own check and not the operator's acceptance.

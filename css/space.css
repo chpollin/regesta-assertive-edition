@@ -1,5 +1,29 @@
 /* The space view (#/raum). Colours come from tokens.css; shared tool and link styles from app.css. */
 
+/* Two design variants for the operator's choice, ?look=a and ?look=b. Each has one accent for
+   selection, the case and pointing; acts are neutral ink, so red and blue no longer compete.
+   The dark grounds are lifted off black and tinted, so depth has room to fade into them. */
+@layer tokens {
+  :root:has(.space[data-look="a"]) {
+    --stage: light-dark(oklch(0.975 0.008 85), oklch(0.255 0.012 60));
+    --text: light-dark(oklch(0.25 0.015 60), oklch(0.93 0.012 85));
+    --muted: light-dark(oklch(0.48 0.015 60), oklch(0.74 0.012 80));
+    --hairline: light-dark(oklch(0.82 0.01 70), oklch(0.4 0.012 60));
+    --edge: light-dark(oklch(0.6 0.012 60), oklch(0.56 0.012 70));
+    --accent: light-dark(oklch(0.53 0.2 28), oklch(0.72 0.16 32));
+    --act: light-dark(oklch(0.38 0.02 60), oklch(0.82 0.02 80));
+  }
+  :root:has(.space[data-look="b"]) {
+    --stage: light-dark(oklch(0.97 0.006 240), oklch(0.26 0.025 255));
+    --text: light-dark(oklch(0.24 0.02 255), oklch(0.94 0.01 240));
+    --muted: light-dark(oklch(0.48 0.02 250), oklch(0.75 0.02 240));
+    --hairline: light-dark(oklch(0.83 0.012 245), oklch(0.42 0.025 250));
+    --edge: light-dark(oklch(0.6 0.02 250), oklch(0.58 0.025 245));
+    --accent: light-dark(oklch(0.5 0.15 250), oklch(0.8 0.12 225));
+    --act: light-dark(oklch(0.36 0.02 255), oklch(0.85 0.015 240));
+  }
+}
+
 @layer layout {
   .space { display: grid; gap: var(--space-2) var(--space-5); grid-template-columns: minmax(0, 1fr); grid-template-areas: "bar" "scene" "side"; }
   @container page (inline-size > 56rem) {
@@ -24,34 +48,39 @@
   .space-scene:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
   .space-svg { display: block; font-family: var(--font-ui); }
 
-  .sp-ring { fill: none; stroke: var(--hairline); stroke-width: 1; }
-  .sp-floor { fill: none; stroke: var(--hairline); stroke-width: 1; stroke-dasharray: 2 4; }
-  .sp-spoke { stroke: var(--hairline); stroke-width: 1; stroke-dasharray: 2 4; }
+  /* Line weights are set per element as --w and scaled by depth in space.js. The floor and its
+     directions are the quietest layer, the decade rings next, the data on top. */
+  .sp-ring { stroke: var(--hairline); --w: 1.2px; stroke-linecap: round; }
+  .sp-floor { stroke: var(--hairline); --w: 1px; stroke-dasharray: 1 5; stroke-linecap: round; }
+  .sp-spoke { stroke: var(--hairline); --w: 0.8px; stroke-dasharray: 1 5; stroke-linecap: round; }
   .sp-axis { stroke: var(--muted); stroke-width: 1.25; }
-  .sp-axis.is-person { stroke: var(--pen); stroke-width: 3; }
+  .sp-axis.is-person { stroke: var(--accent, var(--pen)); stroke-width: 3; }
+  .sp-tick { stroke: var(--muted); stroke-width: 1.25; }
 
   .sp-edges line { stroke-linecap: round; }
-  .sp-role { stroke: var(--edge); stroke-width: 1; }
-  .sp-parent { stroke: var(--text); stroke-width: 1.75; }
-  .sp-same { stroke: var(--pen); stroke-width: 2; stroke-dasharray: 5 4; }
-  .sp-edges .is-on.sp-role { stroke: var(--machine); stroke-width: 2; }
+  .sp-role { stroke: var(--edge); --w: 1.1px; }
+  .sp-parent { stroke: var(--text); --w: 1.9px; }
+  .sp-same { stroke: var(--accent, var(--pen)); --w: 2px; stroke-dasharray: 5 4; }
+  .sp-edges .is-on.sp-role { stroke: var(--accent, var(--machine)); --w: 2px; }
 
   .sp-node { cursor: pointer; }
-  .sp-act-mark { fill: var(--machine); }
+  .sp-act-mark { fill: var(--act, var(--machine)); }
   .sp-person { fill: var(--text); stroke: var(--stage); stroke-width: 1.25; }
   .sp-local { fill: var(--stage); stroke: var(--text); stroke-width: 1.5; }
   .sp-group { fill: var(--text); stroke: var(--stage); stroke-width: 1; }
-  .sp-centre { fill: var(--pen); stroke: var(--stage); }
+  .sp-centre { fill: var(--accent, var(--pen)); stroke: var(--stage); }
   .sp-column { stroke: var(--muted); stroke-width: 1.25; }
   .sp-hit { fill: transparent; }
-  .sp-node.is-pointed .sp-person, .sp-node.is-pointed .sp-group { stroke: var(--pen); stroke-width: 2.5; }
-  .sp-node.is-pointed .sp-act-mark { fill: var(--pen); }
+  .sp-node.is-pointed .sp-person, .sp-node.is-pointed .sp-group { stroke: var(--accent, var(--pen)); stroke-width: 2.5; }
+  .sp-node.is-pointed .sp-act-mark { fill: var(--accent, var(--pen)); }
 
+  /* One typeface in two sizes and two weights: names regular, the selection and the case
+     semibold, numbers and direction words small. */
   .sp-label { fill: var(--text); font-size: 12.5px; paint-order: stroke; stroke: var(--stage); stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
-  .sp-year { fill: var(--muted); font-size: 11.5px; font-variant-numeric: lining-nums tabular-nums; }
-  .sp-family { fill: var(--muted); font-size: 12px; font-style: italic; }
-  .sp-act-label { fill: var(--machine); }
-  .sp-case-label { fill: var(--pen); font-weight: 600; }
+  .sp-year { fill: var(--muted); font-size: 11px; font-variant-numeric: lining-nums tabular-nums; }
+  .sp-family { fill: var(--muted); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .sp-act-label { fill: var(--act, var(--machine)); }
+  .sp-case-label { fill: var(--accent, var(--pen)); font-weight: 600; }
   .sp-centre-label { font-weight: 600; }
   .sp-label.is-hover { font-weight: 600; }
 
@@ -61,6 +90,6 @@
   .space-hint { color: var(--muted); }
   .space-rels { display: grid; gap: var(--space-2); }
   .space-year { color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
-  .space-act { color: var(--machine); font-weight: 600; }
+  .space-act { color: var(--act, var(--machine)); font-weight: 600; }
   .space-pick { inline-size: 100%; background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); }
 }

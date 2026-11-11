@@ -62,7 +62,18 @@ export function renderSpace(store, options = {}) {
   const startYears = store.edition.regests.map((r) => yearOf(r.start));
   const y0 = Math.floor(Math.min(...startYears));
   const y1 = Math.ceil(Math.max(...startYears));
-  const toY = (year) => ((year - y0) / (y1 - y0) - 0.5) * HEIGHT;
+  // The height spans the whole run for the network and only the selected person's years for
+  // one person, so a case of a few years (Adela, 1147 to 1153) fills the scene instead of
+  // sitting in a small knot under empty decades.
+  const span = { lo: y0, hi: y1 };
+  const toY = (year) => ((year - span.lo) / (span.hi - span.lo) - 0.5) * HEIGHT;
+  /** Scale steps of 1, 2, 5, 10 or 20 years, at most eight ticks. */
+  const ticks = () => {
+    const step = [1, 2, 5, 10, 20].find((st) => (span.hi - span.lo) / st <= 8) ?? 50;
+    const out = [];
+    for (let y = Math.ceil(span.lo / step) * step; y <= span.hi; y += step) out.push(y);
+    return out;
+  };
   const isAct = (id) => byId.get(id)?.kind === "act";
 
   // The same-name case: the two parents and their child, labelled in every state.
@@ -105,9 +116,13 @@ export function renderSpace(store, options = {}) {
     tip,
   );
 
+  // Two design variants for the operator's choice, reached as ?look=a or ?look=b; without the
+  // parameter the view keeps its current look. Deliberate shortcut for the comparison: once
+  // he has chosen, the chosen tokens move into tokens.css and the parameter goes.
+  const look = new URLSearchParams(location.search).get("look");
   const element = h(
     "section",
-    { class: "space", "aria-labelledby": "space-title" },
+    { class: "space", "aria-labelledby": "space-title", "data-look": look === "a" || look === "b" ? look : null },
     h("h1", { id: "space-title", class: "visually-hidden", text: "Personen und Vorgänge im Raum, Zeit als Höhe" }),
     toolbar,
     h("div", { class: "space-main" }, sceneHost),
@@ -119,7 +134,16 @@ export function renderSpace(store, options = {}) {
   let scene = null;
 
   function buildModel() {
-    return state.actor ? egoModel(state.actor) : wholeModel();
+    const m = state.actor ? egoModel(state.actor) : wholeModel();
+    if (m.centre) {
+      const years = [...m.items.values()].flatMap((it) => it.years);
+      span.lo = Math.floor(Math.min(...years)) - 1;
+      span.hi = Math.max(span.lo + 6, Math.ceil(Math.max(...years)) + 1);
+    } else {
+      span.lo = y0;
+      span.hi = y1;
+    }
+    return m;
   }
 
   /** Whole network: acts on a ring in their family direction, persons at the mean of their acts. */
@@ -269,13 +293,17 @@ export function renderSpace(store, options = {}) {
     const hoverLayer = s("g", { class: "sp-labels sp-hover" });
     svg.append(guides, edgeLayer, nodeLayer, labelLayer, hoverLayer);
 
-    const decades = [];
-    for (let y = Math.ceil(y0 / 10) * 10; y <= y1; y += 10) decades.push(y);
-    const rings = decades.map(() => s("polyline", { class: "sp-ring" }));
-    const floor = s("polyline", { class: "sp-floor" });
+    const decades = ticks();
+    // Rings are drawn as short segments, so each segment can take the weight of its depth:
+    // the near half of a ring is stronger than the far half, which is what makes depth read.
+    const SEGMENTS = 36;
+    const segs = (cls) => Array.from({ length: SEGMENTS }, () => s("line", { class: cls }));
+    const rings = decades.map(() => segs("sp-ring"));
+    const floor = segs("sp-floor");
     const spokes = FAMILIES.map(() => s("line", { class: "sp-spoke" }));
     const axis = s("line", { class: model.centre ? "sp-axis is-person" : "sp-axis" });
-    guides.append(...rings, floor, ...spokes, axis);
+    const tickEls = decades.map(() => s("line", { class: "sp-tick" }));
+    guides.append(...floor, ...spokes, ...rings.flat(), axis, ...tickEls);
 
     const edgeEls = model.edges.map((ed) => {
       const cls = ed.e.kind === "parent" ? "sp-parent" : ed.e.kind === "same-name" ? "sp-same" : "sp-role";
@@ -308,7 +336,7 @@ export function renderSpace(store, options = {}) {
       nodeEls.set(it.id, parts);
       nodeLayer.append(g);
     }
-    return { svg, width, height, rings, decades, floor, spokes, axis, edgeEls, nodeEls, labelLayer, hoverLayer };
+    return { svg, width, height, rings, decades, floor, spokes, axis, ticks: tickEls, edgeEls, nodeEls, labelLayer, hoverLayer };
   }
 
   /** Recomputes every position for the current rotation, then places the standing labels. */
@@ -317,28 +345,44 @@ export function renderSpace(store, options = {}) {
     const { width, height } = scene;
     const P = projector(width, height);
     const pt = (x, year, z) => P(x, toY(year), z);
-    const fog = (p) => Math.max(0.45, Math.min(1, 1 - (p.depth + 1.4) * 0.14));
-    const circle = (y, r) => {
-      const pts = [];
-      for (let a = 0; a <= 360; a += 10) {
-        const w = polar(a, r);
-        const p = pt(w.x, y, w.z);
-        pts.push(`${p.x.toFixed(1)},${p.y.toFixed(1)}`);
-      }
-      return pts.join(" ");
+    // Nearness from 1 (front) to 0 (back), from the camera depth of a point. Opacity and line
+    // weight both follow it, so near rings, nodes and lines are stronger than far ones.
+    const near = (p) => Math.max(0, Math.min(1, 0.5 - p.depth / 2.6));
+    const fog = (p) => 0.28 + 0.72 * near(p);
+    const weight = (el, p, q) => {
+      const n = (near(p) + near(q)) / 2;
+      el.setAttribute("opacity", (0.28 + 0.72 * n).toFixed(2));
+      el.style.strokeWidth = `calc(var(--w, 1px) * ${(0.55 + 0.9 * n).toFixed(2)})`;
     };
-    scene.decades.forEach((y, i) => scene.rings[i].setAttribute("points", circle(y, 1)));
-    scene.floor.setAttribute("points", circle(y0, RING - 0.15));
+    const ring = (lines, y, r) => {
+      lines.forEach((line, i) => {
+        const wa = polar((360 * i) / lines.length, r);
+        const wb = polar((360 * (i + 1)) / lines.length, r);
+        const a = pt(wa.x, y, wa.z);
+        const b = pt(wb.x, y, wb.z);
+        setLine(line, a, b);
+        weight(line, a, b);
+      });
+    };
+    scene.decades.forEach((y, i) => ring(scene.rings[i], y, 1));
+    ring(scene.floor, span.lo, RING - 0.15);
     FAMILIES.forEach((f, i) => {
-      const a = pt(0, y0, 0);
+      const a = pt(0, span.lo, 0);
       const w = polar(f.angle, RING - 0.15);
-      const b = pt(w.x, y0, w.z);
+      const b = pt(w.x, span.lo, w.z);
       setLine(scene.spokes[i], a, b);
+      weight(scene.spokes[i], a, b);
     });
     const centre = model.centre ? model.items.get(model.centre) : null;
     const axisFrom = centre ? centre.years[0] : y0;
     const axisTo = centre ? centre.years[centre.years.length - 1] : y1;
-    setLine(scene.axis, pt(0, centre ? axisFrom : y0, 0), pt(0, centre ? axisTo : y1, 0));
+    setLine(scene.axis, pt(0, centre ? axisFrom : span.lo, 0), pt(0, centre ? axisTo : span.hi, 0));
+    // The year scale: a short tick on the axis at every decade, its number placed first by
+    // placeLabels, so the scale stays readable at every rotation.
+    scene.decades.forEach((y, i) => {
+      const p = pt(0, y, 0);
+      setLine(scene.ticks[i], { x: p.x - 5, y: p.y }, { x: p.x + 5, y: p.y });
+    });
 
     const screen = new Map();
     for (const it of model.items.values()) {
@@ -370,7 +414,7 @@ export function renderSpace(store, options = {}) {
       const a = pt(ed.a.x, ed.ya, ed.a.z);
       const b = pt(ed.b.x, ed.yb, ed.b.z);
       setLine(ed.line, a, b);
-      ed.line.setAttribute("opacity", Math.min(fog(a), fog(b)).toFixed(2));
+      weight(ed.line, a, b);
     }
     placeLabels(pt, screen);
     drawPreview(screen);
@@ -388,7 +432,6 @@ export function renderSpace(store, options = {}) {
    */
   function placeLabels(pt, screen) {
     const { width, height } = scene;
-    const narrow = width < 640;
     const boxes = [];
     const out = [];
     const fits = (b) => b.x0 >= 0 && b.x1 <= width && b.y0 >= 0 && b.y1 <= height && !boxes.some((o) => o.x0 < b.x1 && b.x0 < o.x1 && o.y0 < b.y1 && b.y0 < o.y1);
@@ -406,16 +449,17 @@ export function renderSpace(store, options = {}) {
       }
       return false;
     };
-    // The selection and the case come first; a year tick they cover gives way to them.
+    // The year scale comes first, so it is never dropped; then the selection and the case.
     const ranked = standing();
     const first = ranked.filter((it) => it.centre || caseIds.has(it.id));
+    for (const y of scene.decades) tryPlace(String(y), pt(0, y, 0), "sp-year", ["left", "right"]);
     for (const it of first) placeItem(it);
-    for (let y = Math.ceil(y0 / 10) * 10; y <= y1; y += 10) tryPlace(String(y), pt(0, y, 0), "sp-year", ["left", "right"]);
+    // Direction words on the floor: the same short words in capitals as at the rim of the 2D
+    // circle, quieter than the data.
     for (const f of FAMILIES) {
       const w = polar(f.angle, RING);
-      const p = pt(w.x, y0, w.z);
-      const text = narrow ? f.label.split(/[ ,]/)[0] : f.label;
-      tryPlace(text, p, "sp-family", ["below", "above", "right", "left", "below-right", "above-right"]);
+      const p = pt(w.x, span.lo, w.z);
+      tryPlace(f.short, p, "sp-family", ["below", "above", "right", "left", "below-right", "above-right"]);
     }
     for (const it of ranked.filter((x) => !first.includes(x))) placeItem(it);
     scene.labelLayer.replaceChildren(...out);
