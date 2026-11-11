@@ -28,8 +28,8 @@ const VIEWS = Object.freeze({
 const HEIGHT = 3.2;
 /** Half the width of the cube's floor; the core of the places fills radius 1.25 of it. */
 const BOX = 1.5;
-/** Standing place names on the floor: the places with most documents. */
-const NAMED_PLACES = 14;
+/** Standing place names on the floor: the places with most documents, as larger points. */
+const NAMED_PLACES = 5;
 
 /** @param {string} tag @param {Record<string, any>} [attrs] */
 function s(tag, attrs = {}) {
@@ -108,18 +108,28 @@ export function renderItinerary(store, options) {
 
   let scene = null;
   let screen = [];
+  // The base map is a small local file; without it the cube still works.
+  let basemap = null;
+  fetch("js/basemap.json")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      basemap = data;
+      update();
+    })
+    .catch(() => {});
 
   function build(width, height) {
     const svg = s("svg", { width, height, viewBox: `0 0 ${width} ${height}`, class: "space-svg", "aria-hidden": "true" });
     const frames = s("g", { class: "it-frames" });
+    const map = s("g", { class: "it-map" });
     const line = s("polyline", { class: "it-path" });
     const dots = s("g", { class: "it-dots" });
     const marks = s("g", { class: "it-marks" });
     const labels = s("g", { class: "sp-labels" });
     const pointer = s("g", { class: "it-pointer" });
-    svg.append(frames, line, dots, marks, labels, pointer);
+    svg.append(frames, map, line, dots, marks, labels, pointer);
     const dotEls = points.map((p) => dots.appendChild(s("circle", { class: evidenced.has(p.u) ? "it-dot is-evidenced" : "it-dot", r: evidenced.has(p.u) ? 3.6 : 2.2 })));
-    return { svg, width, height, frames, line, dots: dotEls, marks, labels, pointer };
+    return { svg, width, height, frames, map, line, dots: dotEls, marks, labels, pointer };
   }
 
   function projector() {
@@ -153,7 +163,8 @@ export function renderItinerary(store, options) {
   function update() {
     if (!scene) return;
     const P = projector();
-    const pt = (lon, lat, year) => P(mapX(lon, lat), toY(year), -mapZ(lon, lat));
+    // North is +z, which the projection draws upwards in the map view.
+    const pt = (lon, lat, year) => P(mapX(lon, lat), toY(year), mapZ(lon, lat));
     const inside = (y) => filters.inYear(Math.floor(y));
     // Frames: the floor and a frame every decade, quiet; the cube's edges at the ends.
     scene.frames.replaceChildren();
@@ -169,6 +180,31 @@ export function renderItinerary(store, options) {
     };
     for (let y = Math.ceil(first / 10) * 10; y <= last; y += 10) frameAt(y, "it-frame");
     frameAt(first, "it-floor");
+    // The quiet base map on the floor: coastlines and the large rivers (Natural Earth).
+    scene.map.replaceChildren();
+    if (basemap) {
+      // The map is drawn only inside the undistorted core; beyond it the projection
+      // compresses, and a compressed coastline would read as a false shape.
+      const inCore = (lon, lat) => Math.hypot((lon - midLon) * k, lat - midLat) <= core;
+      const draw = (coords, cls) => {
+        let run = [];
+        const flush = () => {
+          if (run.length > 1) scene.map.append(s("polyline", { class: cls, points: run.join(" ") }));
+          run = [];
+        };
+        for (const [lon, lat] of coords) {
+          if (!inCore(lon, lat)) {
+            flush();
+            continue;
+          }
+          const q = pt(lon, lat, first);
+          run.push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`);
+        }
+        flush();
+      };
+      for (const c of basemap.coast) draw(c, "it-coast");
+      for (const r of basemap.rivers) draw(r, "it-river");
+    }
     if (filters.active()) {
       frameAt(Math.min(last + 1, Math.max(first, filters.from)), "it-slice");
       frameAt(Math.min(last + 1, Math.max(first, filters.to + 1)), "it-slice");
@@ -185,6 +221,8 @@ export function renderItinerary(store, options) {
       if (inside(p.y)) path.push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`);
     });
     scene.line.setAttribute("points", path.join(" "));
+    // The route stays faint over the whole time; a chosen time range draws it strongly.
+    scene.line.classList.toggle("is-on", filters.active());
     labels(pt);
     pointer();
   }
@@ -217,8 +255,8 @@ export function renderItinerary(store, options) {
     for (const [id, p] of ranked) {
       if (id === state.place) continue;
       const q = pt(p.lo, p.la, first);
-      out.push(s("circle", { class: "it-place", cx: q.x.toFixed(1), cy: q.y.toFixed(1), r: 2 }));
-      place(p.l, q, "sp-family it-place-label");
+      out.push(s("circle", { class: "it-place", cx: q.x.toFixed(1), cy: q.y.toFixed(1), r: 3.5 }));
+      place(p.l, q, "it-place-label", 8, -6);
     }
     scene.labels.replaceChildren(...out);
   }
@@ -231,7 +269,7 @@ export function renderItinerary(store, options) {
     const p = points[i];
     const P = projector();
     const top = screen[i];
-    const floor = P(mapX(places[p.p].lo, places[p.p].la), toY(first), -mapZ(places[p.p].lo, places[p.p].la));
+    const floor = P(mapX(places[p.p].lo, places[p.p].la), toY(first), mapZ(places[p.p].lo, places[p.p].la));
     scene.pointer.append(s("line", { class: "it-drop", x1: top.x, y1: top.y, x2: floor.x, y2: floor.y }), s("circle", { class: "it-pointed", cx: top.x, cy: top.y, r: 5 }));
   }
 
@@ -388,16 +426,23 @@ export function renderItinerary(store, options) {
     );
     const evidencedCount = inRange.filter((p) => evidenced.has(p.u)).length;
     const markYears = new Set((state.place ? atPlace : []).map((p) => Math.floor(p.y)));
-    const applies = state.place
-      ? `Es gilt: ${places[state.place].l}, ${filters.from} bis ${filters.to}, ${atPlace.length} ${atPlace.length === 1 ? "Regest" : "Regesten"}.`
-      : `Es gilt: ganzer Bestand, ${filters.from} bis ${filters.to}, ${inRange.length} Regesten mit Ausstellungsort, davon ${evidencedCount} mit belegten Aussagen.`;
+    const applies = `${state.place ? places[state.place].l : "Ganzer Bestand"}, ${filters.from} bis ${filters.to}.`;
+    // The two layers as two lines with sign and count, each count said once and for the
+    // current selection; how they arose and what the map simplifies unfolds on demand.
+    const shown = state.place ? atPlace : inRange;
+    const shownEvidenced = state.place ? atPlace.filter((p) => evidenced.has(p.u)).length : evidencedCount;
     const legend = h(
-      "p",
+      "div",
       { class: "it-legend" },
-      h("span", { class: "it-key" }),
-      " Regest mit Ausstellungsort, aus Lieferung und Register. Die Fernreisen nach Osten sind zur Mitte hin gestaucht. ",
-      h("span", { class: "it-key is-evidenced" }),
-      ` Regest mit belegten Aussagen, von LLM-basierten Agenten extrahiert, technisch geprüft und fachlich nicht abgenommen, ${evidenced.size} Regesten.`,
+      h("p", {}, h("span", { class: "it-key" }), h("span", { class: "it-n", text: String(shown.length) }), " Regesten mit Ausstellungsort"),
+      h("p", {}, h("span", { class: "it-key is-evidenced" }), h("span", { class: "it-n", text: String(shownEvidenced) }), " davon mit belegten Aussagen"),
+      h(
+        "details",
+        { class: "it-notes" },
+        h("summary", { text: "Herkunft der Daten" }),
+        h("p", { text: "Orte und Daten stammen aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM. Die belegten Aussagen haben LLM-basierte Agenten extrahiert; sie sind technisch geprüft und fachlich nicht abgenommen." }),
+        h("p", { text: "Die Fernreisen nach Osten sind zur Mitte hin gestaucht. Die Grundkarte zeigt Küsten und große Flüsse nach Natural Earth (gemeinfrei)." }),
+      ),
     );
     const list = state.place
       ? h(

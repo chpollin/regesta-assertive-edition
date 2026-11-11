@@ -80,14 +80,21 @@
   .it-frame { fill: none; stroke: var(--hairline); stroke-width: 1; }
   .it-floor { fill: color-mix(in srgb, var(--side) 70%, transparent); stroke: var(--hairline); stroke-width: 1; }
   .it-slice { fill: none; stroke: var(--accent); stroke-width: 1.6; }
-  .it-path { fill: none; stroke: var(--edge); stroke-width: 0.8; opacity: 0.55; stroke-linejoin: round; }
+  .it-path { fill: none; stroke: var(--edge); stroke-width: 0.8; opacity: 0.18; stroke-linejoin: round; }
+  .it-path.is-on { opacity: 0.7; stroke: var(--text); }
+  .it-coast { fill: none; stroke: var(--map-coast); stroke-width: 0.9; stroke-linejoin: round; }
+  .it-river { fill: none; stroke: var(--map-river); stroke-width: 0.8; stroke-linejoin: round; }
   .it-dot { fill: var(--muted); }
   .it-dot.is-evidenced { fill: var(--accent); stroke: var(--stage); stroke-width: 1; }
   .it-place { fill: var(--text); }
-  .it-place-label { text-transform: none; letter-spacing: 0; font-size: 11.5px; fill: var(--muted); }
+  .it-place-label { font-size: 12.5px; font-weight: 600; fill: var(--text); }
   .it-drop { stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 3 3; }
   .it-pointed { fill: none; stroke: var(--accent); stroke-width: 2; }
-  .it-legend { color: var(--muted); }
+  .it-legend { display: grid; gap: var(--space-1); }
+  .it-legend .it-n { display: inline-block; min-inline-size: 3.5ch; margin-inline: var(--space-2) var(--space-1); text-align: end; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .it-notes { color: var(--muted); }
+  .it-notes summary { color: var(--muted); }
+  .it-notes p { margin-block-start: var(--space-1); }
   .it-key { display: inline-block; inline-size: 0.6em; block-size: 0.6em; border-radius: 50%; background: var(--muted); vertical-align: 0.05em; }
   .it-key.is-evidenced { background: var(--accent); }
   .it-ev { color: var(--accent-text); }
