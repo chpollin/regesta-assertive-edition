@@ -23,7 +23,7 @@ All fifteen regesta of the pilot run, including the one without an in-scope stat
 
 ## Status
 
-Built and checked by the implementing agent on 2026-11-09, redesigned the same day after three rounds of operator feedback. The design is a proposal and has not been accepted by the operator. Historical acceptance of the RDF is pending in the source run (`expert_accepted: false`), and the interface shows it that way.
+The first slice of 2026-11-09 over the pilot run is superseded. Since 2026-11-11 the edition reads the factoid run `factoid-1153-2026-11-11` (all regesta of the year 1153) and the whole delivery, in one shell with five views and a curated static site; the first curated build stands. The design is a draft and has not been accepted by the operator; next steps are in [plan.md](plan.md). Historical acceptance of the RDF is pending in the source run (`expert_accepted: false`), and the interface shows it that way.
 
 ## Sources
 

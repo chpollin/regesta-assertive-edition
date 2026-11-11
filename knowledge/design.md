@@ -39,7 +39,6 @@ Typography: Instrument Sans for interface and graphics in two sizes (12.5 px nam
 
 States: rest; pointed after a 90 ms dwell, ending after a 220 ms grace; selected (accent ring or accent column); dimmed (opacity 0.3); outside the time range (opacity 0.15 in the space view, absent in the flat view); pressed controls with an accent underline. Transitions only on opacity, none under reduced motion.
 
-## Itinerar, the whole delivery, since 2026-11-11
 ## Itinerar, the whole delivery
 
 The operator's goal for the talk on 2026-11-20, verbatim: „Ziel ist es, wirklich eine sehr spannende Informationsvisualisierung mit dem gesamten Datenbestand zu haben.“ Two honest layers in one view: the whole delivery from CSV and register, built deterministically by `build_holdings.py` (no LLM), and the regesta with evidenced statements of the run, named as extracted by LLM-based agents, technically checked and not accepted. The view `#/itinerar` (`js/itinerary.js`) answers: where and when were Friedrich's documents issued?
