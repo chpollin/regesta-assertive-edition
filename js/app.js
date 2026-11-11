@@ -9,6 +9,7 @@
 import { h } from "./dom.js";
 import { renderOverview } from "./overview.js";
 import { renderReading } from "./reading.js";
+import { renderSpace } from "./space.js";
 
 /** @typedef {{edition: any, byUid: Map<string, any>}} Store */
 
@@ -35,6 +36,11 @@ function route(store) {
   } else if (view === "" || view === "personen") {
     const actor = view === "personen" ? decodeURIComponent(parts.slice(1).join("/")) : null;
     content = renderOverview(store, { actor: store.edition.graph.nodes.some((n) => n.id === actor) ? actor : null });
+  } else if (view === "raum") {
+    const actor = decodeURIComponent(parts.slice(1).join("/"));
+    content = renderSpace(store, { actor: store.edition.graph.nodes.some((n) => n.id === actor && n.kind !== "act") ? actor : null });
+    navKey = "raum";
+    title = "Raum und Zeit";
   } else {
     content = { element: h("p", { text: "Diese Adresse führt zu keiner Ansicht. Die Navigation oben führt zur Zeitachse und zum Personengraphen." }) };
   }
@@ -44,7 +50,7 @@ function route(store) {
     else link.removeAttribute("aria-current");
   }
   const previousView = main.dataset.view;
-  main.dataset.view = view === "personen" ? "" : `${view}/${parts[1] ?? ""}`;
+  main.dataset.view = view === "personen" ? "" : view === "raum" ? "raum" : `${view}/${parts[1] ?? ""}`;
   main.replaceChildren(content.element);
   // Move focus only when the view itself changed; a selection inside a view keeps it.
   if (previousView !== main.dataset.view) {

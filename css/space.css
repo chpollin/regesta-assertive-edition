@@ -1,0 +1,66 @@
+/* The space view (#/raum). Colours come from tokens.css; shared tool and link styles from app.css. */
+
+@layer layout {
+  .space { display: grid; gap: var(--space-2) var(--space-5); grid-template-columns: minmax(0, 1fr); grid-template-areas: "bar" "scene" "side"; }
+  @container page (inline-size > 56rem) {
+    .space { grid-template-columns: minmax(0, 1fr) 21rem; grid-template-areas: "bar bar" "scene side"; }
+    .space-side { max-block-size: var(--scene-height, 70dvh); overflow-y: auto; }
+  }
+  .space-bar { grid-area: bar; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-4); min-block-size: 2rem; }
+  .space-main { grid-area: scene; min-inline-size: 0; }
+  .space-side { grid-area: side; min-inline-size: 0; }
+}
+
+@layer components {
+  .space-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+  .space-flat { font-size: var(--step--1); color: var(--muted); padding-inline: var(--space-2); }
+  .space-flat:hover { color: var(--text); }
+  /* One line of fixed height, so pointing at a panel button never shifts the panel under the pointer. */
+  .space-tip { font-size: var(--step--1); color: var(--text); margin: 0; flex: 1 1 12rem; min-inline-size: 0; min-block-size: 1.5em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; visibility: hidden; }
+  .space-tip.is-on { visibility: visible; }
+
+  .space-scene { block-size: var(--scene-height, 62dvh); overflow: hidden; cursor: grab; touch-action: none; border-radius: var(--radius); user-select: none; }
+  .space-scene:active { cursor: grabbing; }
+  .space-scene:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .space-svg { display: block; font-family: var(--font-ui); }
+
+  .sp-ring { fill: none; stroke: var(--hairline); stroke-width: 1; }
+  .sp-floor { fill: none; stroke: var(--hairline); stroke-width: 1; stroke-dasharray: 2 4; }
+  .sp-spoke { stroke: var(--hairline); stroke-width: 1; stroke-dasharray: 2 4; }
+  .sp-axis { stroke: var(--muted); stroke-width: 1.25; }
+  .sp-axis.is-person { stroke: var(--pen); stroke-width: 3; }
+
+  .sp-edges line { stroke-linecap: round; }
+  .sp-role { stroke: var(--edge); stroke-width: 1; }
+  .sp-parent { stroke: var(--text); stroke-width: 1.75; }
+  .sp-same { stroke: var(--pen); stroke-width: 2; stroke-dasharray: 5 4; }
+  .sp-edges .is-on.sp-role { stroke: var(--machine); stroke-width: 2; }
+
+  .sp-node { cursor: pointer; }
+  .sp-act-mark { fill: var(--machine); }
+  .sp-person { fill: var(--text); stroke: var(--stage); stroke-width: 1.25; }
+  .sp-local { fill: var(--stage); stroke: var(--text); stroke-width: 1.5; }
+  .sp-group { fill: var(--text); stroke: var(--stage); stroke-width: 1; }
+  .sp-centre { fill: var(--pen); stroke: var(--stage); }
+  .sp-column { stroke: var(--muted); stroke-width: 1.25; }
+  .sp-hit { fill: transparent; }
+  .sp-node.is-pointed .sp-person, .sp-node.is-pointed .sp-group { stroke: var(--pen); stroke-width: 2.5; }
+  .sp-node.is-pointed .sp-act-mark { fill: var(--pen); }
+
+  .sp-label { fill: var(--text); font-size: 12.5px; paint-order: stroke; stroke: var(--stage); stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
+  .sp-year { fill: var(--muted); font-size: 11.5px; font-variant-numeric: lining-nums tabular-nums; }
+  .sp-family { fill: var(--muted); font-size: 12px; font-style: italic; }
+  .sp-act-label { fill: var(--machine); }
+  .sp-case-label { fill: var(--pen); font-weight: 600; }
+  .sp-centre-label { font-weight: 600; }
+  .sp-label.is-hover { font-weight: 600; }
+
+  .space-panel { font-size: var(--step--1); display: grid; gap: var(--space-3); align-content: start; }
+  .space-name { font-size: var(--step-1); font-weight: 600; }
+  .space-flag { font-size: var(--step--1); font-weight: 400; color: var(--muted); }
+  .space-hint { color: var(--muted); }
+  .space-rels { display: grid; gap: var(--space-2); }
+  .space-year { color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+  .space-act { color: var(--machine); font-weight: 600; }
+  .space-pick { inline-size: 100%; background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); }
+}
