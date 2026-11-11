@@ -138,7 +138,6 @@ site/
 - The Turtle file is the run's Turtle of the shown stage with a comment header naming licence, source link and modification; the RDF itself is unchanged. The JSON file is the regest entry of edition.json with licence, attribution, source link and run. The zip holds all three folders and `LICENSE-DATA.txt` with a fixed file date.
 - With JavaScript the regest page shows the shared card of the views app (`js/regest-card.js`) and keeps citation, downloads and the `zurueck` link below and above it; its static content is the reading without JavaScript. That static reading compares the stages by factoid IRI: a factoid whose sentence differs in the extracted stage shows that sentence, a factoid of the extracted stage missing from the revised one is listed once.
 - Actor pages take the address from the IRI after `urn:regesta:actor:`, lower case. Persons and groups are listed under the source form the agent gave; the register label comes from the first register row of the entry.
-- `ansicht/data/itinerary-checks.json` is also copied to `data/` at the site root, because `js/itinerary.js` fetches it relative to the embedding document; the shim goes once the module resolves it against its own URL.
 - The build never deletes a directory. It records every file it writes in `.edition-build` and removes, file by file, what the previous build wrote and this one did not. `knowledge/` is never copied.
 
 ## Rights

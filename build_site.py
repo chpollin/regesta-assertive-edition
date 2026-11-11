@@ -854,10 +854,6 @@ def build(source: Path, run_id: str, out: Path) -> None:
         _run(["build_holdings.py", "--source", str(source), "--out", str(data)])
         _run(["check_itinerary.py", "--source", str(source), "--out", str(data / "itinerary-checks.json")])
         WRITTEN.update(p.resolve() for p in (*data.glob("holdings*.json"), data / "itinerary-checks.json"))
-        # Deliberate shim: js/itinerary.js fetches "data/itinerary-checks.json" relative to the
-        # document, so the start page that embeds it needs a copy at the site root. Goes once
-        # the module resolves the file against import.meta.url.
-        _copy(data / "itinerary-checks.json", out / "data" / "itinerary-checks.json")
         site = Site(source, run_id, out, _load(rev / "edition.json"), _load(ext / "edition.json"))
         copy_assets(site, rev / "edition.json", rev / "questions.json")
     package = write_files(site, "revised")

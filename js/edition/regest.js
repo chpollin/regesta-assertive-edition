@@ -24,7 +24,7 @@ export async function init(root) {
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({})));
   const claim = location.hash.startsWith("#f-") ? decodeURIComponent(location.hash.slice(3)) : null;
-  host.replaceChildren(renderRegestCard(store, uid, { claim, texts }));
+  host.replaceChildren(renderRegestCard(store, uid, { claim, texts, page: true }));
 }
 
 /** Validated return address: same origin, http or https, otherwise nothing is shown. */
