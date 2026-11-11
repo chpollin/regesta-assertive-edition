@@ -39,6 +39,12 @@ Typography: Instrument Sans for interface and graphics in two sizes (12.5 px nam
 
 States: rest; pointed after a 90 ms dwell, ending after a 220 ms grace; selected (accent ring or accent column); dimmed (opacity 0.3); outside the time range (opacity 0.15 in the space view, absent in the flat view); pressed controls with an accent underline. Transitions only on opacity, none under reduced motion.
 
+## Itinerar, the whole delivery, since 2026-11-11
+
+The operator's goal for the talk on 2026-11-20, verbatim: „Ziel ist es, wirklich eine sehr spannende Informationsvisualisierung mit dem gesamten Datenbestand zu haben.“ Two honest layers in one view: the whole delivery from CSV and register, built deterministically by `build_holdings.py` (no LLM), and the regesta with evidenced statements of the run, set in the accent and named as extracted by LLM-based agents, technically checked and not accepted.
+
+The view `#/itinerar` (`js/itinerary.js`) is a space-time cube of the places of issue. The ground plan is the map (register coordinates, checked against a box; skipped coordinates are logged in `holdings.json`), height is time, one point per regest with a place of issue, and the itinerary line joins them in time order. The core that holds 95 percent of the documents fills the floor; the far journeys of the crusades are compressed beyond it, and the legend says so. It has the same three snapping views as the space view (Schräg, Karte, Zeit), with the cube fitted to the drawing area in each. Pointing finds the nearest point and drops a line to its place on the floor; a click selects the place. The sidebar holds a place picker with counts, the shared time band, the line saying what applies, a legend of the two layers, and the regesta of the selected place unfolding to their text (`data/holdings-texts.json`, loaded on demand), linked to the reading view where statements exist and to Regesta Imperii Online otherwise.
+
 ## Shell, since 2026-11-11
 
 One frame for every view of the edition: a header with the title and the navigation from `js/nav.json` (Start, Regesten, Personen, Zeit und Netz, Raum, Methode, Daten, Über die Edition; the current place has an accent underline), the drawing area, and one sidebar. In a view header, drawing area and sidebar fill exactly one window; below 56 rem the sidebar stands under the drawing. Text pages use the same header without the sidebar.

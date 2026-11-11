@@ -16,13 +16,14 @@ export function yearOf(iso) {
 }
 
 /**
- * @param {{edition: any}} store
+ * @param {{edition: any, holdings?: any}} store
  * @returns {{from: number, to: number, lo: number, hi: number, families: Set<string>,
  *   onChange: (fn: () => void) => () => void, set: (change: object) => void, reset: () => void,
  *   inRange: (uid: string) => boolean, familyOn: (key: string) => boolean, active: () => boolean}}
  */
 export function createFilters(store) {
-  const starts = store.edition.regests.map((r) => Math.floor(yearOf(r.start)));
+  // The range spans the whole delivery when its layer is loaded, otherwise the run.
+  const starts = store.holdings ? store.holdings.years.map(([y]) => y) : store.edition.regests.map((r) => Math.floor(yearOf(r.start)));
   const lo = Math.min(...starts);
   const hi = Math.max(...starts);
   const params = new URLSearchParams(location.search);
@@ -56,6 +57,9 @@ export function createFilters(store) {
     inRange(uid) {
       const y = year.get(uid);
       return y === undefined || (y >= state.from && y <= state.to);
+    },
+    inYear(y) {
+      return y >= state.from && y <= state.to;
     },
     familyOn(key) {
       return state.families.has(key);

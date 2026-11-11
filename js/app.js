@@ -7,6 +7,7 @@
  * Routes (hash based, so every view is addressable and the browser history works):
  *   #/                         flat network (Zeit und Netz), whole network
  *   #/personen/<iri>           the same around one person
+ *   #/itinerar[/<place>]       the whole delivery as a cube of the places of issue
  *   #/raum[/<iri>]             space view, corpus or around one person
  *   #/regest/<uid>[/<claim>]   reading view, optionally with one statement selected
  * Filters (time range, families) and view settings live in the query string and survive
@@ -17,8 +18,9 @@ import { createFilters } from "./filters.js";
 import { renderOverview } from "./overview.js";
 import { renderReading } from "./reading.js";
 import { renderSpace } from "./space.js";
+import { renderItinerary } from "./itinerary.js";
 
-/** @typedef {{edition: any, byUid: Map<string, any>}} Store */
+/** @typedef {{edition: any, holdings: any, byUid: Map<string, any>}} Store */
 
 const main = /** @type {HTMLElement} */ (document.getElementById("main"));
 const aside = /** @type {HTMLElement} */ (document.getElementById("aside"));
@@ -38,7 +40,7 @@ async function loadJson(path) {
  */
 function buildNav(items) {
   const inBuild = location.pathname.includes("/ansicht/");
-  const local = { "zeit-netz": "#/", raum: "#/raum" };
+  const local = { "zeit-netz": "#/", itinerar: "#/itinerar", raum: "#/raum" };
   nav.replaceChildren(
     ...items
       .filter((it) => inBuild || it.key in local)
@@ -69,6 +71,11 @@ function route(store, filters) {
     navKey = "";
   } else if (view === "" || view === "personen") {
     content = renderOverview(store, { actor: view === "personen" ? actorOf(parts.slice(1)) : null, filters });
+  } else if (view === "itinerar" && store.holdings) {
+    const place = decodeURIComponent(parts.slice(1).join("/"));
+    content = renderItinerary(store, { place: store.holdings.places[place] ? place : null, filters });
+    navKey = "itinerar";
+    title = "Itinerar";
   } else if (view === "raum") {
     content = renderSpace(store, { actor: actorOf(parts.slice(1)), filters });
     navKey = "raum";
@@ -106,10 +113,11 @@ function route(store, filters) {
 
 async function start() {
   try {
-    const [edition, navData] = await Promise.all([loadJson("data/edition.json"), loadJson("js/nav.json")]);
+    // The whole-holdings layer is optional, so the views of the run work without it.
+    const [edition, navData, holdings] = await Promise.all([loadJson("data/edition.json"), loadJson("js/nav.json"), loadJson("data/holdings.json").catch(() => null)]);
     buildNav(navData.items);
     /** @type {Store} */
-    const store = { edition, byUid: new Map(edition.regests.map((r) => [r.uid, r])) };
+    const store = { edition, holdings, byUid: new Map(edition.regests.map((r) => [r.uid, r])) };
     const filters = createFilters(store);
     window.addEventListener("hashchange", () => route(store, filters));
     route(store, filters);

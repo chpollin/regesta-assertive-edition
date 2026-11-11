@@ -87,7 +87,7 @@ export function createSidebar(store, filters, options) {
       "section",
       { class: "side-part side-selection", "aria-label": "Auswahl und Filter" },
       picker,
-      timeBand(),
+      timeBand(store, filters, new Set(relations().map((r) => Math.floor(yearOf(store.byUid.get(r.uid).start))))),
       h("div", { class: "fam-toggles", role: "group", "aria-label": "Richtungen der Beziehungen" }, familyButtons),
       h(
         "p",
@@ -95,68 +95,6 @@ export function createSidebar(store, filters, options) {
         `Es gilt: ${who}, ${time}, ${fams}, ${regestCount} ${regestCount === 1 ? "Regest" : "Regesten"}.`,
         filters.active() ? [" ", h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen")] : null,
       ),
-    );
-  }
-
-  /**
-   * The time filter: regesta per year of the whole delivery as a quiet ground, the years of
-   * the selection as marks on it, and two handles for the range.
-   */
-  function timeBand() {
-    const { lo, hi } = filters;
-    const W = 320;
-    const H = 34;
-    const x = (y) => ((y - lo) / Math.max(1, hi - lo)) * W;
-    const years = store.edition.delivery.years.filter(([y]) => y >= lo && y <= hi);
-    const max = Math.max(1, ...years.map(([, c]) => c));
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    svg.setAttribute("preserveAspectRatio", "none");
-    svg.setAttribute("class", "band-svg");
-    svg.setAttribute("aria-hidden", "true");
-    const bw = W / Math.max(1, hi - lo + 1);
-    for (const [y, c] of years) {
-      const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      const bh = (c / max) * (H - 8);
-      const inside = y >= filters.from && y <= filters.to;
-      r.setAttribute("x", String(x(y)));
-      r.setAttribute("y", String(H - bh));
-      r.setAttribute("width", String(Math.max(1, bw - 0.5)));
-      r.setAttribute("height", String(bh));
-      r.setAttribute("class", inside ? "band-bar is-in" : "band-bar");
-      svg.append(r);
-    }
-    // The years of the selection's regesta as accent ticks along the top.
-    for (const uid of new Set(relations().map((r) => r.uid))) {
-      const y = Math.floor(yearOf(store.byUid.get(uid).start));
-      const t = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      t.setAttribute("x", String(x(y)));
-      t.setAttribute("y", "0");
-      t.setAttribute("width", String(Math.max(2, bw)));
-      t.setAttribute("height", "5");
-      t.setAttribute("class", "band-mark");
-      svg.append(t);
-    }
-    const range = (which) =>
-      h("input", {
-        type: "range",
-        class: `band-range band-${which}`,
-        min: String(lo),
-        max: String(hi),
-        step: "1",
-        value: String(which === "from" ? filters.from : filters.to),
-        "aria-label": which === "from" ? "Zeitraum ab" : "Zeitraum bis",
-        onchange: (e) => filters.set({ [which]: Number(e.target.value) }),
-        oninput: (e) => {
-          label.textContent = which === "from" ? `${e.target.value} bis ${filters.to}` : `${filters.from} bis ${e.target.value}`;
-        },
-      });
-    const label = h("span", { class: "band-label", text: `${filters.from} bis ${filters.to}` });
-    return h(
-      "div",
-      { class: "band", role: "group", "aria-label": "Zeitraum" },
-      h("div", { class: "band-track" }, svg, range("from"), range("to")),
-      h("div", { class: "band-scale" }, h("span", { text: String(lo) }), label, h("span", { text: String(hi) })),
     );
   }
 
@@ -232,4 +170,66 @@ export function createSidebar(store, filters, options) {
     },
     dispose: unsubscribe,
   };
+}
+
+/**
+ * The time filter shared by every view: regesta per year of the whole delivery as a quiet
+ * ground, the years of the selection as accent marks on it, and two handles for the range.
+ * @param {Set<number>|number[]} markYears
+ */
+export function timeBand(store, filters, markYears) {
+  const { lo, hi } = filters;
+  const W = 320;
+  const H = 34;
+  const x = (y) => ((y - lo) / Math.max(1, hi - lo)) * W;
+  const years = store.edition.delivery.years.filter(([y]) => y >= lo && y <= hi);
+  const max = Math.max(1, ...years.map(([, c]) => c));
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("preserveAspectRatio", "none");
+  svg.setAttribute("class", "band-svg");
+  svg.setAttribute("aria-hidden", "true");
+  const bw = W / Math.max(1, hi - lo + 1);
+  for (const [y, c] of years) {
+    const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    const bh = (c / max) * (H - 8);
+    const inside = y >= filters.from && y <= filters.to;
+    r.setAttribute("x", String(x(y)));
+    r.setAttribute("y", String(H - bh));
+    r.setAttribute("width", String(Math.max(1, bw - 0.5)));
+    r.setAttribute("height", String(bh));
+    r.setAttribute("class", inside ? "band-bar is-in" : "band-bar");
+    svg.append(r);
+  }
+  // The years of the selection's regesta as accent ticks along the top.
+  for (const y of markYears) {
+    const t = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    t.setAttribute("x", String(x(y)));
+    t.setAttribute("y", "0");
+    t.setAttribute("width", String(Math.max(2, bw)));
+    t.setAttribute("height", "5");
+    t.setAttribute("class", "band-mark");
+    svg.append(t);
+  }
+  const range = (which) =>
+    h("input", {
+      type: "range",
+      class: `band-range band-${which}`,
+      min: String(lo),
+      max: String(hi),
+      step: "1",
+      value: String(which === "from" ? filters.from : filters.to),
+      "aria-label": which === "from" ? "Zeitraum ab" : "Zeitraum bis",
+      onchange: (e) => filters.set({ [which]: Number(e.target.value) }),
+      oninput: (e) => {
+        label.textContent = which === "from" ? `${e.target.value} bis ${filters.to}` : `${filters.from} bis ${e.target.value}`;
+      },
+    });
+  const label = h("span", { class: "band-label", text: `${filters.from} bis ${filters.to}` });
+  return h(
+    "div",
+    { class: "band", role: "group", "aria-label": "Zeitraum" },
+    h("div", { class: "band-track" }, svg, range("from"), range("to")),
+    h("div", { class: "band-scale" }, h("span", { text: String(lo) }), label, h("span", { text: String(hi) })),
+  );
 }
