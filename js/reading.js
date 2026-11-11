@@ -268,6 +268,15 @@ export function renderReading(store, regest, claimId) {
   const run = store.edition.run;
   const hasInherited = phrases.some((p) => !p.own.length && p.inherited.length);
   const hasNone = phrases.some((p) => !p.own.length && !p.inherited.length);
+  const hasCase = allLines(regest.blocks).some((l) => l.crossrefs?.length);
+  // The hash router owns location.hash, so the jump scrolls and focuses instead of navigating.
+  const toCase = (event) => {
+    event.preventDefault();
+    const target = element.querySelector("#fall");
+    target?.setAttribute("tabindex", "-1");
+    target?.scrollIntoView({ block: "start" });
+    target?.focus({ preventScroll: true });
+  };
 
   const element = h(
     "article",
@@ -279,6 +288,8 @@ export function renderReading(store, regest, claimId) {
       h(
         "nav",
         { class: "pager", "aria-label": "Benachbarte Regesten" },
+        // At narrow width the case block starts several screens down; this keeps it one step away.
+        hasCase ? h("a", { href: "#fall", class: "to-case", onclick: toCase }, "zum Fall gleichnamiger Eltern") : null,
         prev ? h("a", { href: regestHref(prev.uid), rel: "prev", "aria-label": `Vorheriges Regest ${prev.identifier}` }, "← ", prev.short) : null,
         next ? h("a", { href: regestHref(next.uid), rel: "next", "aria-label": `Nächstes Regest ${next.identifier}` }, next.short, " →") : null,
       ),
@@ -401,41 +412,36 @@ function crossref(x, store) {
   for (const block of otherRegest?.blocks ?? []) {
     for (const line of block.lines) if (line.id === x.other.claim && line.agentNotes) otherNotes.push(...line.agentNotes);
   }
-  const row = (side, here) =>
-    h(
-      "tr",
-      {},
-      h("th", { scope: "row" }, here ? `${side.label} (hier)` : h("a", { href: regestHref(side.regest, side.claim), text: side.label })),
-      h("td", {}, h("code", { class: "iri", text: side.iri })),
-      h(
-        "td",
-        {},
-        side.register ? h("span", { class: "source", text: side.register.label }) : "kein Registereintrag gefunden",
-        side.register ? h("span", { class: "reg-state", text: side.register.assigned ? " zugeordnet" : " im Paket angeboten, nicht zugeordnet" }) : null,
-      ),
-    );
+  // Two sentences, one per regest: how each names the parent and what the register says there.
+  const registerPhrase = (side) => {
+    const reg = side.register;
+    if (!reg) return ["ohne Registereintrag"];
+    if (reg.assigned) return ["im Register zugeordnet als ", h("span", { class: "source", text: reg.label })];
+    return ["ohne Registerzuordnung. Das Register bietet für dieses Regest ", h("span", { class: "source", text: reg.label }), " an, der Agent hat diesen Eintrag nicht zugeordnet"];
+  };
   return h(
     "div",
-    { class: "xref" },
+    { class: "xref", id: "fall" },
+    h("p", {}, `Hier steht ${x.child}s Vater „${x.name}“, `, ...registerPhrase(x.here), "."),
     h(
       "p",
       {},
-      "Gleicher Name, andere Kennung in ",
+      "In ",
       h("a", { href: regestHref(x.other.regest, x.other.claim), text: x.other.label }),
-      ". Eine Identität ist im Graphen nicht behauptet.",
-    ),
-    h(
-      "div",
-      { class: "table-scroll" },
-      h(
-        "table",
-        { class: "xref-table" },
-        h("thead", {}, h("tr", {}, h("th", { scope: "col", text: "Regest" }), h("th", { scope: "col", text: "Kennung des Elternteils" }), h("th", { scope: "col", text: "Register" }))),
-        h("tbody", {}, row(x.here, true), row(x.other, false)),
-      ),
+      // Factoid data keep each regest's own wording; a different inflection is shown, not hidden.
+      x.other.name && x.other.name !== x.name ? ` steht ein Vater gleichen Namens („${x.other.name}“), ` : " steht ein Vater gleichen Namens, ",
+      ...registerPhrase(x.other),
+      ". Der Graph führt beide als zwei Personen, eine Identität ist nicht behauptet.",
     ),
     otherNotes.map((n) => agentNote(n, `Vermerk des Extraktionsagenten zu ${x.other.label}`)),
     x.graphNode ? h("p", {}, h("a", { href: `#/personen/${encodeURIComponent(x.graphNode)}`, text: `${x.child} im Personengraphen` })) : null,
+    h(
+      "details",
+      { class: "xref-iris" },
+      h("summary", { text: "Kennungen im Graphen" }),
+      h("p", {}, `${x.here.label}: `, h("code", { class: "iri", text: x.here.iri })),
+      h("p", {}, `${x.other.label}: `, h("code", { class: "iri", text: x.other.iri })),
+    ),
   );
 }
 
@@ -448,7 +454,7 @@ function emptyState(regest) {
   return h(
     "div",
     { class: "empty" },
-    h("p", { text: "Keine Aussage im Pilotumfang. Begründung des Extraktionsagenten:" }),
+    h("p", { text: "Keine Aussage im Umfang des Laufs. Begründung des Extraktionsagenten:" }),
     reasons.map((g) => h("p", { class: "machine", lang: g.lang, text: g.text })),
   );
 }

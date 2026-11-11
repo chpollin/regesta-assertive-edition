@@ -8,6 +8,38 @@ updated: 2026-11-09
 
 # Journal
 
+## 2026-11-11 Relation sectors and the space view
+
+After the operator's second feedback (verbatim in design.md): acts are diamonds; a selected person gets a circle with eight fixed relation sectors from `js/relations.js`, named at the frame, the other people of each act further out on its bearing; the panel groups a person's relations by the same families; labels avoid nodes, edges and other labels in both modes, and a label that finds no clean place sits on a plate or appears on pointing. Measured in Chromium at 1280 and 360 px around Adela, around Friedrich and on the whole network: no label on a label, none on a node; one act label ("Verhandlung") still touches an edge around Friedrich at 1280. In the whole network only a few names stand, the rest appear on pointing. A separate agent built the rotatable space view at `#/raum` (js/space.js, css/space.css, plan in [space-view.md](space-view.md)): time upwards, the same relation directions, keyboard and mouse rotation, reset button. Draft, not accepted, not committed.
+
+## 2026-11-11 Holdings view as one screen
+
+After the operator's screen feedback on the factoid version (verbatim in design.md), the holdings view became one connected view: time strip, person graph and selection panel fit 1280 × 800 without scrolling, legends sit behind a question mark, lists behind a switch, the Adela case is preselected and shown in two lines, standing graph labels only for the case and the eight most connected people. Checked at 1280 × 800 light and dark and at 360 px, keyboard on the timeline, console clean, unit tests and lint green, pilot build byte-identical. `checks/ui_check.py` not run; some of its assertions refer to the old layout. Draft, not accepted, not committed.
+
+## 2026-11-11 Factoid run read into the same interface
+
+The Research Coordination asked for a second reader so the interface can show `factoid-2026-11-11` beside the pilot. `build_data.py` now detects the data model from the RDF and maps factoids into the existing schema, as recorded under [Factoid model](data.md#factoid-model). The revised stage is the default after the source repository committed it, `--stage extracted` stays possible.
+
+- Pilot path unchanged. `python build_data.py` with defaults reproduced `data/edition.json` and `data/questions.json` byte for byte (SHA-256 compared against a copy secured before the change). The repository data files were not overwritten with factoid output.
+- The same-name question finds the Adela case in the factoid data only after inflection endings are stripped, because n. 46 writes "Markgraf Diepolds" and n. 167 "Markgrafen Diepold". The matching is an interface heuristic and decides no identity.
+- One frontend line: the reading-view cross reference shows the other regest's name form when it differs. The unresolved-identity notes now match a local actor's slug as a whole word, so "abt" no longer hits "Reichsabtei".
+- Checks run: `node --check`, ruff lint and format, the unit tests including the new `checks/test_factoid.py` (every span verbatim, for both stages), two factoid builds with different hash seeds identical, and the factoid build served from a scratch copy on port 8098 and read in Chromium at 1280 px dark and light and at 390 px. `checks/ui_check.py` was not run.
+
+Open: the headline still says "Regesten des Pilotlaufs" for the factoid run. The denser factoid graph crowds labels, and the case labels cross other nodes at narrow width. The reviews' `coverage_note` has no place in the schema and is not shown.
+
+## 2026-11-11 Six proposals of the interface review
+
+The Research Coordination commissioned, on the operator's go-ahead, proposals 1, 2, 3, 4, 6 and 7 of the interface review of 2026-11-11 (operator file `regesten` in the vault). Proposal 5, a resting mark on all evidence spans, touches the one-highlight rule of design.md and waits for the operator.
+
+- Case named (1, 6). `build_data.py` attaches regest and register entry to the two parent nodes of the same-name case. Graph labels carry them in a second line and stay inside the image at 360 px; the panel names them, the IRI moved into a closed detail.
+- Reading view (2). The case block is two sentences, one per regest, with the register wording at reading size; the table is gone, the IRIs sit in a closed detail. A link next to the pager jumps to the block, which at narrow width starts several screens down.
+- Timeline (3). Marks stand at their delivered date; overlapping heads move vertically to the nearest free height. Years of the dating prose outside the machine interval (`proseYears`) appear as open diamonds. The Adela arc now ends in 1147 and 1153.
+- Coupling (4). The status line under the axis names the persons lit up in the graph, the panel column shows the case without a selection, the timeline is lower.
+- Accessibility (7). Delivery bars and role edges reach 3:1 against the stage by computed OKLCH contrast; stems have a stage-coloured halo against the darker bars; hit circles are 24 px; the status line no longer cuts the regest text.
+- Checks run: `node --check`, ruff lint and format, the evidence unit test, two builds byte-identical, rendered views read at 1280 and 360 px in dark and light, keyboard step on the timeline. `checks/ui_check.py` waits for the operator's acceptance and was not run.
+
+Open: in light scheme the marks stand at about 2.6:1 against the darker bars; no screen reader test; timeline hit areas still overlap in the 1152 cluster, where the list and the arrow keys are the equivalent.
+
 ## 2026-11-09 First slice
 
 Commission by the operator: a first inspectable interface for the pilot run `pilot-2026-11-09`, with all regesta, the Diepold case findable, named questions with executed SPARQL, and a design proposal. Built by a Claude Code subagent in a new local folder; `regesta-rdf-demo` was only read and its working tree stayed clean.
