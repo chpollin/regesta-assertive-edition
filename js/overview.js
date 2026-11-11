@@ -157,6 +157,7 @@ function placeLabels(graph, px, py, width, height, degree, segments) {
   const boxes = graph.nodes.map((n) => ({ x0: px(n) - 8, x1: px(n) + 8, y0: py(n) - 8, y1: py(n) + 8, node: n.id }));
   const spots = new Map();
   const meetsBox = (b, self) => boxes.some((o) => o.node !== self && o.x0 < b.x1 && b.x0 < o.x1 && o.y0 < b.y1 && b.y0 < o.y1);
+  const meetsLabel = (b) => boxes.some((o) => o.node.startsWith("label:") && o.x0 < b.x1 && b.x0 < o.x1 && o.y0 < b.y1 && b.y0 < o.y1);
   const hits = (b, self) => meetsBox(b, self) || segments.some(([a, c]) => segmentHitsBox(a, c, b));
   // In the dense core no place is free of edges. There a label clear of nodes and labels
   // sits on a plate that covers the lines beneath it.
@@ -198,7 +199,12 @@ function placeLabels(graph, px, py, width, height, degree, segments) {
         for (const o of options.slice(0, 2)) near.push({ ...o, y: o.y + dy, box: { ...o.box, y0: o.box.y0 + dy, y1: o.box.y1 + dy } });
       }
       const all = [...options, ...near];
-      fits = all.find((o) => inside(o) && !hits(o.box, n.id)) ?? onPlate(all.find((o) => inside(o) && !meetsBox(o.box, n.id)));
+      // In a whole holding the core is so dense that no place is clear of nodes either; the
+      // hub's name then sits on a plate that keeps clear of the other names only.
+      fits =
+        all.find((o) => inside(o) && !hits(o.box, n.id)) ??
+        onPlate(all.find((o) => inside(o) && !meetsBox(o.box, n.id))) ??
+        onPlate(all.find((o) => inside(o) && !meetsLabel(o.box)));
     }
     if (fits) {
       spots.set(n.id, fits);
@@ -547,6 +553,9 @@ function drawGraph(host, store, graph, height, selected, handlers) {
     nodeLayer.append(g);
   }
   nodeEls.get(order[0].id).setAttribute("tabindex", "0");
+  // SVG paints in document order: nodes with a standing name go last, so no later node covers
+  // the name or its plate. Keyboard order follows `order`, not the DOM.
+  for (const id of labelSpots.keys()) if (nodeEls.has(id)) nodeLayer.append(nodeEls.get(id));
   svg.append(nodeLayer);
   host.replaceChildren(svg);
 
