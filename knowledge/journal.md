@@ -8,6 +8,13 @@ updated: 2026-11-09
 
 # Journal
 
+## 2026-11-11 TEI per regest and the static edition site
+
+After the operator released the edition plan (`regesta-rdf-demo/knowledge/edition-plan.md`), a subagent built the curated site of the public edition beside the views app. `build_tei.py` writes one TEI file per regest by rule, `build_site.py` builds start, regest list and pages, persons, method, data and about pages as static HTML over the prebuilt JSON, copies the views app into `ansicht/` and embeds its itinerary on the start page and its 2D circle on the person pages. Title, subtitle, provisional definition, licence line and attribution live in `edition/texts.json`. Contracts in [data.md](data.md#tei-per-regest) and [data.md](data.md#static-site).
+
+- Checks run: all TEI files of `factoid-2026-11-11` valid against tei_all 4.12.0 (`checks/test_tei.py`), the site contract (`checks/test_site.py`), ruff lint and format, `node --check`, and the build served on port 8100 and read in Chromium at 1280 × 800 and 360 × 740 with pointer, keyboard and without JavaScript. Light only, after the operator's design decision of the same day.
+- Open: the export date of the regest file, the model of the adjudicating and correcting agent (not recorded in the run), the error logs per step on the method page, the imprint, and the operator's screen review.
+
 ## 2026-11-11 Flicker, compact family list and direction words
 
 After the operator's third feedback (verbatim in design.md). Reproduced in Chromium by sweeping the pointer across the circle around Friedrich: at 1280 px the network switched between dimmed and full 38 times, 22 of them within 300 ms of the previous switch, and the panel was rebuilt 40 times. After the fix (dwell and grace on pointing, panel rebuilt only on selection) the same sweep gives 2 rapid switches and no panel rebuild. Otto von Moos shared a spot with Herbord von Hebingen because the five people of the judgment in n. 103a ran past the outer limit of their bearing; long rows now shrink their step. The panel lists eight family rows instead of the relation lines, and the rim names the directions with one short word each. Label measurement unchanged: no label on a label or a node, one act label touching an edge around Friedrich at 1280. Checked light and dark at 1280 and 800, unit tests green. Draft, not accepted.

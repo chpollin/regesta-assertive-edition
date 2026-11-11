@@ -112,6 +112,34 @@ The factoid path fills the schema above with these mappings. `run` additionally 
 - History holds the findings of both reviews and the adjudication decisions for either stage, because the reviews read the extracted stage. Review model gaps join `notes.gaps` with stage Review. Corrections set `notes.corrected` for the revised stage. A review or correction file the build does not know aborts it.
 - The other questions of `questions.json` are rewritten for the factoid vocabulary under the same ids. `rollen` lists every reference, `bezug` lists `rf:partOf` and `rf:refersToAct`, and `bedingungen` lists all five exact-wording literals.
 
+## TEI per regest
+
+`build_tei.py` writes one TEI P5 file per regest of a run (`--run`, `--stage`, default revised) from the packet text, the regest CSV row, the Turtle of the stage and the run's validation, review and correction files. The edition texts (title, subtitle, definition, licence line, attribution, modification statement) come from `edition/texts.json`. `--schema schema/tei_all-4.12.0.rng` validates every file with lxml; the schema is vendored from the TEI Consortium (CC BY and BSD-2, see its header). The file name is the slug of the RI identifier, `RI IV,2,1 n. 46` gives `iv-2-1-46.xml`.
+
+- teiHeader. `titleStmt` holds one `respStmt` per producing agent: the extraction agents from `prov:wasAttributedTo` with the run's LLM, the validator with its hash, the reviewers, the corrector where the regest was corrected, and the TEI build. `publicationStmt` carries the licence line, `sourceDesc` a `bibl` with the RI identifier, the persistent link `https://www.regesta-imperii.de/id/<persistent_identifier>`, the book-page link from `external_links` as `ref type="facsimile"`, the attribution under CC BY 4.0, the CSV row with its hash and the modification statement. `encodingDesc` holds description, provisional definition, the encoding rule and the verification status as a taxonomy. `revisionDesc` has one `change` per stage with `@who` pointing to the `respStmt` and a final change stating that no expert has checked the statements.
+- Text. `summary_plain` in one `<p>`, losslessly; the build aborts when the paragraph does not give it back character for character. The text is cut at every evidence and name boundary, each piece under evidence is a `<seg type="evidence">`, a located `rf:nameInSource` wraps its pieces in `persName` or `orgName` with `@ref` to standOff. Overlapping evidence of two factoids therefore needs no crossing elements. Dating and place stand in `<head>` with `date/@from` and `@to` from the machine dates; original dating, transmission, literature, commentary and footnotes follow as `div` elements with markup stripped.
+- standOff. Persons in `listPerson`, groups in `listOrg`, each with the RDF label, the register id where the IRI carries one and the IRI. Every factoid is an `<event>` in `listEvent`, `@type` act or state, `@subtype` the factoid type, `@corresp` its evidence pieces, `@resp` its agent, `@ana` its verification status. Each reference is a `relation` in `listRelation type="reference"` (`@name` role, `@active` actor, `@passive` factoid); `rf:partOf` and `rf:refersToAct` are relations of `listRelation type="link"`.
+- Documented loss. A state is encoded as an `event` with `@type="state"`, because TEI has no standOff container for states. Concerned rights and things are `note type="concerns"` with type and label, not nodes of their own, and exact-wording literals are notes with their kind; the RDF stays the source of truth. Markup inside the apparatus fields (italics, links) is stripped. A name that overlaps a name already marked is not marked again in the text; its reference stays complete in standOff.
+
+## Static site
+
+`build_site.py --run <run> --out site` builds the curated site of the public edition into a gitignored folder. It runs `build_data.py` for the revised and the extracted stage, `build_tei.py` with tei_all and `build_holdings.py` as subprocesses, so the scripts stay independent single-file scripts, and reads their output. The run id is the only switch between runs.
+
+```
+site/
+  index.html, regesten/, regesten/<slug>/, personen/, personen/<actor slug>/, methode/, daten/, ueber/
+  tei/<slug>.xml, ttl/<slug>.ttl, json/<slug>.json, LICENSE-DATA.txt, daten/<package>.zip
+  data/routes.json      uid -> regest page, actor IRI -> person page, for the embedded views
+  css/, js/edition/, fonts/
+  ansicht/              the views app (index.html, js/, css/, fonts/, data/edition.json,
+                        questions.json, holdings.json, holdings-texts.json)
+```
+
+- The Turtle file is the run's Turtle of the shown stage with a comment header naming licence, source link and modification; the RDF itself is unchanged. The JSON file is the regest entry of edition.json with licence, attribution, source link and run. The zip holds all three folders and `LICENSE-DATA.txt` with a fixed file date.
+- The regest page compares the stages by factoid IRI: a factoid whose sentence differs in the extracted stage shows that sentence, a factoid of the extracted stage missing from the revised one is listed once.
+- Actor pages take the address from the IRI after `urn:regesta:actor:`, lower case. Persons and groups are listed under the source form the agent gave; the register label comes from the first register row of the entry.
+- The build never deletes a directory. It records every file it writes in `.edition-build` and removes, file by file, what the previous build wrote and this one did not. `knowledge/` is never copied.
+
 ## Rights
 
-The JSON contains regest text, commentary and register labels from the supplied CSV delivery, whose source terms are unresolved in `regesta-rdf-demo/knowledge/data.md`. The data files therefore stay local.
+The rights study of 2026-11-11 (summarised in `regesta-rdf-demo/knowledge/edition-plan.md`, section Rights) found the regesta database of Regesta Imperii under CC BY 4.0 and the register file byte-identical with the public RI Lab file; for the regest export the licence follows from the database licence, without an identical public copy. The site therefore carries the attribution, the licence link, the persistent link per regest and the modification statement of `edition/texts.json`, and links third-party images only. Nothing is published until the operator decides; the export date of the regest file is still to be established.

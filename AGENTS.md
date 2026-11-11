@@ -17,6 +17,14 @@ Build the data (Python 3.11 with rdflib 7.6.0 and numpy, or `uv run build_data.p
 python build_data.py
 ```
 
+Build the TEI files and the curated edition site (both default to the run `factoid-2026-11-11`; `--run` switches the run). The site goes to the gitignored `site/` and is never committed:
+
+```
+python build_tei.py --run factoid-2026-11-11 --out site/tei --schema schema/tei_all-4.12.0.rng
+python build_site.py --run factoid-2026-11-11 --out site
+python -m http.server 8100 --bind 127.0.0.1 --directory site
+```
+
 Serve and open the prototype:
 
 ```
@@ -41,6 +49,8 @@ python checks/ui_check.py
 
 - `build_data.py` pipeline, writes `data/edition.json` (interface data) and `data/questions.json` (executed questions)
 - `index.html`, `css/tokens.css`, `css/app.css`, `js/*.js` the no-build interface (native ES modules)
-- `checks/` evidence-contract unit test and browser check
+- `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema
+- `build_site.py` curated static edition site into the gitignored `site/`; `edition/texts.json` title, definition, licence and attribution; `css/pages.css` and `js/edition/` its content pages
+- `checks/` evidence-contract unit tests (`test_tei.py`, `test_site.py` among them) and browser check
 - `review/` screenshots of the last browser check
 - `knowledge/` project knowledge; the research questions are in `knowledge/questions.md`
