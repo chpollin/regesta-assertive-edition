@@ -632,9 +632,9 @@ export function renderSpace(store, options = {}) {
   /** Items with a standing label: selection, case, then neighbours in time order. */
   function standing() {
     const items = [...model.items.values()];
-    // In the corpus the people with the longest columns get the standing names; the rest
-    // appear on pointing.
-    const rank = (it) => (it.centre ? 0 : caseIds.has(it.id) ? 1 : !model.centre ? (it.kind === "person" ? 5 : 9) : it.kind === "person" && isKin(it.id) ? 2 : it.kind === "act" ? 3 : 4);
+    // In the corpus only the open case is named; every other name appears on pointing,
+    // after the operator found the whole network too full of names (2026-11-11).
+    const rank = (it) => (it.centre ? 0 : caseIds.has(it.id) ? 1 : !model.centre ? 9 : it.kind === "person" && isKin(it.id) ? 2 : it.kind === "act" ? 3 : 4);
     return items.filter((it) => rank(it) < 9).sort((a, b) => rank(a) - rank(b) || (model.centre ? a.years[0] - b.years[0] : b.years.length - a.years.length));
   }
 
