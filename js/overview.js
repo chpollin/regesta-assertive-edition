@@ -43,6 +43,7 @@ export function renderOverview(store, options = {}) {
     actor: /** @type {string|null} */ (options.actor ?? caseInfo?.child.id ?? null),
     previewActor: null,
     list: false,
+    openFamily: /** @type {string|null} */ (null),
   };
 
   const timelineHost = h("div", { class: "vis timeline" });
@@ -54,12 +55,13 @@ export function renderOverview(store, options = {}) {
   let timeline = null;
   let network = null;
 
-  function sync() {
+  /** Pointing only changes highlights; the panel is rebuilt when the selection changes. */
+  function sync(withPanel = true) {
     const actorFocus = state.previewActor ?? state.actor;
     const regestsOfActor = actorFocus ? new Set(graph.nodes.find((n) => n.id === actorFocus)?.regests ?? []) : null;
     timeline?.highlight(state.regest, regestsOfActor);
     network?.highlight(state.regest, actorFocus, state.actor);
-    renderPanel();
+    if (withPanel) renderPanel();
   }
 
   /** The child and the two parent nodes of the same-name case, if the run has one. */
@@ -91,7 +93,7 @@ export function renderOverview(store, options = {}) {
       h("p", { class: "panel-name" }, node.label, node.local ? h("span", { class: "panel-flag", text: " lokale Kennung" }) : null),
       caseInfo?.ids.has(node.id) ? caseLinesEl() : null,
       groupedRelations(rels, node.id),
-      node.labels.length > 1 ? h("p", { class: "panel-labels" }, "auch: ", node.labels.slice(1).map((l) => l.label).join(" | ")) : null,
+      node.labels.length > 1 ? h("p", { class: "panel-labels", text: `In den Regesten auch ${listWords(node.labels.slice(1).map((l) => l.label))}.` }) : null,
       node.case ? h("details", { class: "panel-iri" }, h("summary", { text: "Kennung" }), h("code", { class: "iri", text: node.id })) : null,
     ];
     panel.append(...items.filter(Boolean));
@@ -119,6 +121,7 @@ export function renderOverview(store, options = {}) {
   }
 
   function select(id) {
+    if (id !== state.actor) state.openFamily = null;
     state.actor = id;
     state.previewActor = null;
     state.list = false;
@@ -136,44 +139,58 @@ export function renderOverview(store, options = {}) {
   }
 
   /**
-   * The relations of a person in the order of the eight families of the circle, each
-   * distinct "role in act type" once with all its regesta, so list and picture mirror.
+   * The compact counterpart of the circle: one row per family that has relations, in the
+   * order of the directions, with its number of regesta. A row opens in place and names the
+   * acts with their regesta; the person's role is added only where it differs from the role
+   * the person most often has in that family. Pointing at a row lights its sector.
    */
   function groupedRelations(rels, nodeId) {
-    const groups = new Map(FAMILIES.map((f) => [f.key, new Map()]));
+    const groups = new Map(FAMILIES.map((f) => [f.key, []]));
     for (const e of rels) {
       const other = graph.nodes.find((n) => n.id === (e.source === nodeId ? e.target : e.source));
-      let family;
-      let text;
-      if (e.kind === "parent") {
-        family = FAMILIES[0];
-        text = e.source === nodeId ? `Elternteil ist ${other.label}` : `Elternteil von ${other.label}`;
-      } else {
-        family = familyOf(other.label);
-        text = `${e.label} in ${other.label}`;
-      }
-      const entries = groups.get(family.key);
-      if (!entries.has(text)) entries.set(text, []);
-      if (e.regest) entries.get(text).push(e);
+      if (e.kind === "parent") groups.get("kin").push({ name: e.source === nodeId ? `Kind von ${other.label}` : `Elternteil von ${other.label}`, role: null, e });
+      else groups.get(familyOf(other.label).key).push({ name: other.label, role: e.label, e });
     }
-    return h(
-      "div",
-      { class: "rel-groups" },
-      FAMILIES.filter((f) => groups.get(f.key).size).map((f) =>
+    const row = (f) => {
+      const items = groups.get(f.key);
+      const uids = new Set(items.map((i) => i.e.regest).filter(Boolean));
+      const roles = items.map((i) => i.role).filter(Boolean);
+      const common = roles.sort((a, b) => roles.filter((r) => r === b).length - roles.filter((r) => r === a).length)[0];
+      const byName = new Map();
+      for (const item of items) {
+        if (!byName.has(item.name)) byName.set(item.name, []);
+        byName.get(item.name).push(item);
+      }
+      const lines = [...byName].map(([name, list]) =>
         h(
-          "section",
-          { class: "rel-group", "aria-label": f.label },
-          h("p", { class: "rel-family", text: f.label }),
-          h(
-            "ul",
-            { class: "panel-rels", role: "list" },
-            [...groups.get(f.key)].map(([text, edges]) =>
-              h("li", {}, text, " ", ...edges.flatMap((e, i) => [i ? ", " : "", h("a", { href: regestHref(e.regest, e.claim), text: store.byUid.get(e.regest).short })])),
-            ),
-          ),
+          "li",
+          {},
+          `${name} `,
+          ...list.flatMap((item, i) => {
+            const short = store.byUid.get(item.e.regest)?.short ?? "";
+            const text = i ? short.replace(/^n\. /, "") : short;
+            const role = item.role && item.role !== common ? ` als ${item.role}` : "";
+            return [i ? ", " : "", h("a", { href: regestHref(item.e.regest, item.e.claim), text }), role];
+          }),
         ),
-      ),
-    );
+      );
+      const details = h(
+        "details",
+        { class: "rel-row", "data-family": f.key, open: state.openFamily === f.key },
+        h("summary", {}, h("span", { class: "rel-family", text: f.label }), h("span", { class: "rel-count", text: `${uids.size} ${uids.size === 1 ? "Regest" : "Regesten"}` })),
+        h("ul", { class: "panel-rels", role: "list" }, lines),
+      );
+      details.addEventListener("toggle", () => {
+        if (details.open) state.openFamily = f.key;
+        else if (state.openFamily === f.key) state.openFamily = null;
+      });
+      details.addEventListener("mouseenter", () => network?.sector(f.key));
+      details.addEventListener("mouseleave", () => network?.sector(null));
+      details.addEventListener("focusin", () => network?.sector(f.key));
+      details.addEventListener("focusout", () => network?.sector(null));
+      return details;
+    };
+    return h("div", { class: "rel-groups" }, FAMILIES.filter((f) => groups.get(f.key).length).map(row));
   }
 
   function draw() {
@@ -189,7 +206,7 @@ export function renderOverview(store, options = {}) {
     timeline = drawTimeline(timelineHost, tip, store, delivery, regests, sameName, graph, stripHeight, {
       onPoint: (uid) => {
         state.regest = uid;
-        sync();
+        sync(false);
       },
       onCase: (actorId) => select(actorId),
     });
@@ -205,7 +222,12 @@ export function renderOverview(store, options = {}) {
     network = drawGraph(graphHost, store, graph, lastGraphHeight, state.actor, {
       onPoint: (id) => {
         state.previewActor = id;
-        sync();
+        sync(false);
+      },
+      onSector: (key) => {
+        state.openFamily = key;
+        renderPanel();
+        panel.querySelector(`[data-family="${key}"] summary`)?.focus({ preventScroll: false });
       },
       onSelect: (id) => {
         const next = state.actor === id ? null : id;
@@ -669,6 +691,11 @@ function placeEgoLabels(graph, ego, selectedId, px, py, width, height, sectorBox
 }
 
 /** Agent label and, for a node of the same-name case, regest and register entry. */
+/** Names as a sentence part: "A", "A und B", "A, B und C". */
+function listWords(words) {
+  return words.length < 2 ? words.join("") : `${words.slice(0, -1).join(", ")} und ${words.at(-1)}`;
+}
+
 function caseLines(n) {
   const reg = n.case.register;
   const numeral = reg?.label.match(/\(([IVXLC]+\.)\)/)?.[1];
@@ -730,8 +757,13 @@ function egoLayout(graph, selectedId, width, height) {
       .filter((e) => e.kind === "role" && (e.source === id || e.target === id))
       .map((e) => (e.source === id ? e.target : e.source))
       .filter((o) => !pos.has(o));
+    // The bearing has room from 0.55 to 0.79 of the radius. A long row shrinks its step
+    // instead of piling the last people onto one spot, and when the step gets tight every
+    // second person moves a few degrees aside so neighbours stay apart.
+    const step = others.length > 1 ? Math.min(0.08, 0.24 / (others.length - 1)) : 0;
     others.forEach((o, i) => {
-      pos.set(o, { ...at(p.angle, Math.min(0.78, 0.55 + i * 0.08)), ring: 2, angle: p.angle });
+      const aside = step < 0.08 && i % 2 ? 4 : 0;
+      pos.set(o, { ...at(p.angle + aside, 0.55 + i * step), ring: 2, angle: p.angle });
     });
   }
   return { pos, used, at };
@@ -790,39 +822,45 @@ function drawGraph(host, store, graph, height, selected, handlers) {
   // Sector names at the rim, outside the outer ring; sectors that hold relations of this
   // person are set stronger and get a faint wedge, so their direction reads at a glance.
   const sectorBoxes = [];
+  const wedgeEls = new Map();
   if (ego) {
     const rim = s("g", { class: "sectors", "aria-hidden": "true" });
     for (const family of ego.used) {
       const a = ego.at(family.angle - 22.5, 0.9);
       const b = ego.at(family.angle + 22.5, 0.9);
-      rim.append(s("path", { d: `M${width / 2},${height / 2} L${a.x},${a.y} L${b.x},${b.y} Z`, class: "sector-wedge" }));
+      wedgeEls.set(family.key, rim.appendChild(s("path", { d: `M${width / 2},${height / 2} L${a.x},${a.y} L${b.x},${b.y} Z`, class: "sector-wedge" })));
     }
     for (const family of FAMILIES) {
-      // The name sits where the sector's bearing meets the frame, so diagonal sectors are
-      // named in the corners and every name stays outside the rings.
+      // The word sits on the sector's bearing just outside the shaded field, so it stays next
+      // to the relations it names; at the frame it drifted far from the circle in tall views.
+      // At narrow width the rings fill the frame, so the word goes back to where the bearing
+      // meets the frame.
       const rad = (family.angle * Math.PI) / 180;
-      const dir = { x: Math.sin(rad), y: -Math.cos(rad) };
-      const reach = Math.min(Math.abs(dir.x) > 0.01 ? (width / 2 - 4) / Math.abs(dir.x) : Infinity, Math.abs(dir.y) > 0.01 ? (height / 2 - 4) / Math.abs(dir.y) : Infinity);
-      const p = { x: width / 2 + dir.x * reach, y: height / 2 + dir.y * reach };
-      const dx = dir.x;
-      const anchor = Math.abs(dx) < 0.3 ? "middle" : dx > 0 ? "end" : "start";
-      const name = narrow ? family.short : family.label;
-      // Long names break at the space nearest their middle, so they stay narrow at the rim.
-      const spaces = [...name.matchAll(/ /g)].map((m) => m.index);
-      const mid = spaces.sort((a, b) => Math.abs(a - name.length / 2) - Math.abs(b - name.length / 2))[0];
-      const lines = !narrow && name.length > 14 && mid ? [name.slice(0, mid), name.slice(mid + 1)] : [name];
-      const w = Math.max(...lines.map((l) => l.length)) * 7.2;
-      const h = lines.length * 13;
+      const dx = Math.sin(rad);
+      const dy = -Math.cos(rad);
+      // One short word per direction in letter-spaced capitals, set apart from the act names
+      // inside the circle, so no relation name appears twice on screen. The full name stands
+      // in the list beside.
+      const used = ego.used.includes(family);
+      const w = family.short.length * 8.8 + 4;
+      const h = 14;
+      let p;
+      if (narrow) {
+        const reach = Math.min(Math.abs(dx) > 0.01 ? (width / 2 - 4) / Math.abs(dx) : Infinity, Math.abs(dy) > 0.01 ? (height / 2 - 4) / Math.abs(dy) : Infinity);
+        p = { x: width / 2 + dx * reach, y: height / 2 + dy * reach };
+      } else p = ego.at(family.angle, 0.97);
+      // The word reaches outwards from its point, away from the rings, and is pulled back
+      // inside the frame where it would leave it.
+      const anchor = Math.abs(dx) < 0.3 ? "middle" : (dx > 0) !== narrow ? "start" : "end";
+      let x0 = anchor === "middle" ? p.x - w / 2 : anchor === "end" ? p.x - w : p.x;
+      x0 = Math.min(width - w - 2, Math.max(2, x0));
+      p.x = anchor === "middle" ? x0 + w / 2 : anchor === "end" ? x0 + w : x0;
       const top = Math.min(height - h - 2, Math.max(2, p.y - h / 2));
-      const x0 = anchor === "middle" ? p.x - w / 2 : anchor === "end" ? p.x - w : p.x;
       sectorBoxes.push({ x0, x1: x0 + w, y0: top, y1: top + h, node: `label:sector-${family.key}` });
-      rim.append(
-        s(
-          "text",
-          { x: p.x, y: top + 10, "text-anchor": anchor, class: `sector-label${ego.used.includes(family) ? " is-used" : ""}` },
-          lines.map((l, i) => s("tspan", { x: p.x, dy: i ? 13 : 0, text: l })),
-        ),
-      );
+      const label = s("text", { x: p.x, y: top + 11, "text-anchor": anchor, class: `sector-label${used ? " is-used" : ""}`, "data-family": family.key, text: family.short });
+      // Pointer shortcut to the list row; the keyboard reaches the same row in the list.
+      if (used) label.addEventListener("click", () => handlers.onSector?.(family.key));
+      rim.append(label);
     }
     svg.append(rim);
   }
@@ -889,24 +927,14 @@ function drawGraph(host, store, graph, height, selected, handlers) {
         }),
       );
     }
-    g.addEventListener("mouseenter", () => {
-      handlers.onPoint(isAct ? null : n.id);
-      preview(n.id);
-    });
-    g.addEventListener("mouseleave", () => {
-      handlers.onPoint(null);
-      preview(null);
-    });
+    g.addEventListener("mouseenter", () => hover(n.id, isAct));
+    g.addEventListener("mouseleave", () => hover(null));
     g.addEventListener("focus", () => {
       for (const [, el] of nodeEls) el.setAttribute("tabindex", "-1");
       g.setAttribute("tabindex", "0");
-      handlers.onPoint(isAct ? null : n.id);
-      preview(n.id);
+      hover(n.id, isAct, true);
     });
-    g.addEventListener("blur", () => {
-      handlers.onPoint(null);
-      preview(null);
-    });
+    g.addEventListener("blur", () => hover(null, false, true));
     if (!isAct) {
       g.addEventListener("click", (event) => {
         event.preventDefault();
@@ -933,15 +961,75 @@ function drawGraph(host, store, graph, height, selected, handlers) {
   host.replaceChildren(svg);
 
   let previewId = null;
+  let sectorKey = null;
   let lastArgs = [null, null, null];
   function preview(id) {
     previewId = id;
     api.highlight(...lastArgs);
   }
 
+  // Pointing flickered when the highlight followed every enter and leave: the gaps between
+  // dense nodes switched the whole network between dimmed and full many times a second.
+  // The highlight now starts after a short dwell and ends after a short grace, so a pass
+  // across neighbours moves the highlight from one node to the next without going dark.
+  // Keyboard focus is immediate, because it moves on purpose.
+  const DWELL = 90;
+  const GRACE = 220;
+  let enterTimer = 0;
+  let leaveTimer = 0;
+  function hover(id, isAct = false, now = false) {
+    clearTimeout(enterTimer);
+    if (id === null) {
+      const end = () => {
+        handlers.onPoint(null);
+        preview(null);
+      };
+      if (now) end();
+      else leaveTimer = setTimeout(end, GRACE);
+      return;
+    }
+    clearTimeout(leaveTimer);
+    if (id === previewId) return;
+    const start = () => {
+      handlers.onPoint(isAct ? null : id);
+      preview(id);
+    };
+    if (now) start();
+    else enterTimer = setTimeout(start, DWELL);
+  }
+
+  // Families of the acts around the centre, for highlighting one sector from the list.
+  const familyOfNode = new Map();
+  if (ego) {
+    for (const n of graph.nodes) if (n.kind === "act" && ego.pos.has(n.id) && ego.pos.get(n.id).ring === 1) familyOfNode.set(n.id, familyOf(n.label).key);
+    for (const e of graph.edges) if (e.kind === "parent" && (e.source === selected || e.target === selected)) familyOfNode.set(e.source === selected ? e.target : e.source, "kin");
+  }
+
   const api = {
     highlight(uid, actorFocus, selected) {
       lastArgs = [uid, actorFocus, selected];
+      if (sectorKey && !previewId && !uid) {
+        // A sector pointed at in the list: its acts, their people and the centre stay.
+        const keep = new Set([selected]);
+        for (const [id, key] of familyOfNode) if (key === sectorKey) keep.add(id);
+        for (const e of graph.edges) {
+          if (familyOfNode.get(e.source) === sectorKey && e.kind === "role") keep.add(e.target);
+          if (familyOfNode.get(e.target) === sectorKey && e.kind === "role") keep.add(e.source);
+        }
+        for (const [id, el] of nodeEls) {
+          el.classList.toggle("is-dim", !keep.has(id));
+          el.classList.toggle("is-near", keep.has(id));
+          el.classList.toggle("is-selected", id === selected);
+        }
+        for (const { e, line } of edgeEls) {
+          const on = keep.has(e.source) && keep.has(e.target);
+          line.classList.toggle("is-on", on);
+          line.classList.toggle("is-dim", !on);
+        }
+        for (const [key, el] of wedgeEls) el.classList.toggle("is-on", key === sectorKey);
+        return;
+      }
+      for (const [, el] of wedgeEls) el.classList.remove("is-on");
       const focusId = previewId ?? actorFocus;
       const near = new Set();
       if (focusId) {
@@ -972,6 +1060,10 @@ function drawGraph(host, store, graph, height, selected, handlers) {
     },
     focus(id) {
       nodeEls.get(id)?.focus({ preventScroll: true });
+    },
+    sector(key) {
+      sectorKey = key;
+      api.highlight(...lastArgs);
     },
   };
   return api;

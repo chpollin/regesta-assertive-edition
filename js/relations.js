@@ -15,7 +15,7 @@
 export const FAMILIES = /** @type {Family[]} */ ([
   { key: "kin", short: "Familie", label: "Verwandtschaft und Ehe", angle: 0, types: ["Elternschaft", "Verwandtschaft", "Ehe", "Eheschließung", "Ehescheidung", "Eheauflösung"] },
   { key: "transfer", short: "Besitz", label: "Übertragung und Besitz", angle: 45, types: ["Übertragung", "Schenkung", "Rechtsverleihung", "Belehnung", "Verkauf", "Verpfändung", "Rechtsinhaberschaft", "Besitz", "Lehnsverhältnis"] },
-  { key: "confirm", short: "Bestätigung", label: "Bestätigung und Zusicherung", angle: 90, types: ["Bestätigung", "Rechtsbestätigung", "Zusicherung"] },
+  { key: "confirm", short: "Zusage", label: "Bestätigung und Zusicherung", angle: 90, types: ["Bestätigung", "Rechtsbestätigung", "Zusicherung"] },
   { key: "protect", short: "Schutz", label: "Schutz", angle: 135, types: ["Schutznahme", "Schutzverleihung"] },
   { key: "dispute", short: "Streit", label: "Streit und Urteil", angle: 180, types: ["Streit", "Streit oder Klage", "Urteil"] },
   { key: "contact", short: "Kontakt", label: "Bitte, Gesandtschaft, Verhandlung", angle: 225, types: ["Bitte", "Entsendung", "Schreiben", "Mitteilung", "Verhandlung"] },

@@ -8,6 +8,10 @@ updated: 2026-11-09
 
 # Journal
 
+## 2026-11-11 Flicker, compact family list and direction words
+
+After the operator's third feedback (verbatim in design.md). Reproduced in Chromium by sweeping the pointer across the circle around Friedrich: at 1280 px the network switched between dimmed and full 38 times, 22 of them within 300 ms of the previous switch, and the panel was rebuilt 40 times. After the fix (dwell and grace on pointing, panel rebuilt only on selection) the same sweep gives 2 rapid switches and no panel rebuild. Otto von Moos shared a spot with Herbord von Hebingen because the five people of the judgment in n. 103a ran past the outer limit of their bearing; long rows now shrink their step. The panel lists eight family rows instead of the relation lines, and the rim names the directions with one short word each. Label measurement unchanged: no label on a label or a node, one act label touching an edge around Friedrich at 1280. Checked light and dark at 1280 and 800, unit tests green. Draft, not accepted.
+
 ## 2026-11-11 Relation sectors and the space view
 
 After the operator's second feedback (verbatim in design.md): acts are diamonds; a selected person gets a circle with eight fixed relation sectors from `js/relations.js`, named at the frame, the other people of each act further out on its bearing; the panel groups a person's relations by the same families; labels avoid nodes, edges and other labels in both modes, and a label that finds no clean place sits on a plate or appears on pointing. Measured in Chromium at 1280 and 360 px around Adela, around Friedrich and on the whole network: no label on a label, none on a node; one act label ("Verhandlung") still touches an edge around Friedrich at 1280. In the whole network only a few names stand, the rest appear on pointing. A separate agent built the rotatable space view at `#/raum` (js/space.js, css/space.css, plan in [space-view.md](space-view.md)): time upwards, the same relation directions, keyboard and mouse rotation, reset button. Draft, not accepted, not committed.
