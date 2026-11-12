@@ -144,6 +144,14 @@ site/
 
 `publish_site.py` turns `site/` into one commit on `gh-pages` (temporary git index with `site/` as work tree, `.nojekyll` added, `.edition-build` left out, parent `origin/gh-pages`) and pushes it as a fast-forward. Before that it aborts on files or links of internal material (knowledge, runs, review, checks, Markdown, Python). GitHub Pages serves the branch at https://chpollin.github.io/regesta-assertive-edition/.
 
+## Review sheet
+
+`build_review_sheet.py` chooses the twenty regesta of the operator's review from the edition data of the run and writes `pruefbogen/data/sheet.json`; the local page `pruefbogen/` (served from the repository root, http://127.0.0.1:8102/pruefbogen/) shows them and is never part of `site/`.
+
+- Review state of a regest, by the first that applies: no statement in scope (keine Aussage), corrections after adjudication (korrigiert), review findings with the statements kept (beibehalten), no finding (ohne Befund).
+- Choice: the Adela case (RI IV,2,1 n. 46 and n. 167) always; then six korrigiert, five beibehalten, five ohne Befund and two keine Aussage; inside a state the regest whose main relation family is least covered so far, ties by a fixed hash of the uid; at most six statements per regest. The result covers all eight families and all four states. A regest without statements is judged as one item, whether the abstention holds.
+- The result file `pruefbogen-2026-11-12-ergebnis.json` holds per regest the uid, identifier and a note, and per statement its id, kind and participants as shown, the verdict (`stimmt`, `falsch`, `unklar` or null) and a note. The page keeps a draft in browser storage; the saved file is the result, and the page can load it back.
+
 ## Empire about 1190
 
 `build_realm.py` georeferences a rough hand trace (`edition/realm-1190-trace.json`) of the Empire's border on W. R. Shepherd's map "Europe and the Mediterranean Lands about 1190" (Historical Atlas, 1926; scan of the Perry-Castañeda Library, which states its scanned maps as public domain unless marked, checked on 2026-11-12) with a quadratic fit over fifteen town control points (largest residual 0.27 degrees), softens it and writes `js/realm.json`. Corsica and Sardinia are left out. The view names the area as this project's rough interpretation.

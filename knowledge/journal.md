@@ -8,6 +8,13 @@ updated: 2026-11-12
 
 # Journal
 
+## 2026-11-12 Colour settled and the review sheet for twenty regesta
+
+The operator left the colour to the implementing agent and confirmed title and definition „Agentic Edition“. W1 became the one palette with computed contrasts, hue and colour-vision distances; the switch `?farbe=` and the raw colour fallbacks in `css/pages.css` are gone (reasons in [design.md](design.md#colour)). For his own check of twenty regesta, `build_review_sheet.py` makes a stratified, reproducible choice and the local page `pruefbogen/` takes a verdict and a note per statement and saves them as a file ([data.md](data.md#review-sheet)).
+
+- Checks run: contrasts of every token pair (text at least 7.1:1, graphics at least 3.5:1), OKLCH hue of the greys 68 to 85, OKLab distance of the evidenced ochre to grey and accent under simulated protanopia, deuteranopia and tritanopia at least 0.16; smoke walk of all pages and views, pytest, ruff, `node --check`; published as a further commit on gh-pages. Review sheet: judging, saving through the download path, loading the file in a fresh browser, keeping the draft over a reload, the abstention item, no console error; density check of `pruefansicht/tools/check_ui_density.cjs` in the work profile passes at 1280 × 800 and breaches the word limit at 360 × 740 (135 against 110), where the regest text of the first regest alone holds 87 words.
+- Open: the operator's verdicts. Draft, not accepted.
+
 ## 2026-11-12 Overview first in the circle around a dense person
 
 After the operator's feedback on the circle around Friedrich (verbatim in [ui-feedback.md](ui-feedback.md)): the ego layout used separate radii for width and height, so the octagon followed the window's shape; it now has one radius. Sectors with more than twelve relations around the centre stand as bundles with their count of regesta and their three most connected people, and open on click, Enter, Space, a single family filter or a narrow time window (`bundleSectors` in `js/overview.js`). The case nodes had lost the agents' form in the previous step because the register naming ran before the case was attached; the order is corrected. Label widths are now measured in the label font.

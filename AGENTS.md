@@ -42,9 +42,10 @@ Local servers, all bound to 127.0.0.1:
 ```
 python -m http.server 8100 --bind 127.0.0.1 --directory site
 python -m http.server 8096 --bind 127.0.0.1
+python -m http.server 8102 --bind 127.0.0.1
 ```
 
-8100 serves the curated build (views under `ansicht/`), 8096 the repository root for working on the views. Port 8091 is the operator's; checks use other ports.
+8100 serves the curated build (views under `ansicht/`), 8096 the repository root for working on the views, 8102 the repository root for the operator's review sheet at http://127.0.0.1:8102/pruefbogen/ (`python build_review_sheet.py` writes its data after `build_site.py`; never published). Port 8091 is the operator's; checks use other ports.
 
 Checks:
 
@@ -60,6 +61,7 @@ python -m pytest -q checks
 ## Layout
 
 - `build_data.py` run data into `data/edition.json` and `data/questions.json`; `build_holdings.py` the whole delivery into `data/holdings*.json`; `check_itinerary.py` into `data/itinerary-checks.json`; `build_basemap.py` into `js/basemap.json`
+- `build_review_sheet.py` and `pruefbogen/` the operator's local review sheet of twenty regesta
 - `build_realm.py` the Empire about 1190 from the trace `edition/realm-1190-trace.json` into `js/realm.json`; `publish_site.py` the publication on `gh-pages`
 - `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema

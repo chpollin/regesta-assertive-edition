@@ -16,7 +16,7 @@ Title and definition „Agentic Edition“ as on the start page, confirmed by th
 
 ## Review sheet for twenty regesta
 
-Decided on 2026-11-12: the operator checks twenty regesta against their statements himself. A usable local page shows per regest the text with marked evidence and per statement a judgement (stimmt, stimmt nicht, unklar) and a free field, and saves the result as a file the agent can read back. The twenty are chosen with reasons, stratified by statement type and review state, the Adela case among them. The page is a work tool, served locally under its own address and never published; structure measured in the work profile. Anchor: op-thm-regesten-pruefung.
+Decided on 2026-11-12: the operator checks twenty regesta against their statements himself. A usable local page shows per regest the text with marked evidence and per statement a judgement (stimmt, stimmt nicht, unklar) and a free field, and saves the result as a file the agent can read back. The twenty are chosen with reasons, stratified by statement type and review state, the Adela case among them. The page is a work tool, served locally under its own address and never published; structure measured in the work profile. Anchor: op-thm-regesten-pruefung. Built on 2026-11-12 at http://127.0.0.1:8102/pruefbogen/ (choice and file format in [data.md](data.md#review-sheet)); next: read the operator's saved file back and record the verdicts per regest.
 
 ## Review of the regesta
 
