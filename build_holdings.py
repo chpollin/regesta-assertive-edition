@@ -69,6 +69,11 @@ def _null(value: str | None) -> bool:
     return value is None or value.strip().lower() in {"", "null", "none"}
 
 
+def _plain_text(raw: str) -> str:
+    """Delivery markup as plain text with collapsed whitespace."""
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", raw))).strip()
+
+
 def _clauses(text: str) -> list[str]:
     """Split at commas outside parentheses."""
     parts, depth, current = [], 0, ""
@@ -227,8 +232,10 @@ def build(source: Path, out: Path) -> dict:
                 "i": r["identifier"],
                 "s": r["start_date"],
                 "p": issue_place.get(r["uid"]),
-                "l": r.get("locality_string") or None,
-                "pi": r.get("persistent_identifier") or None,
+                # The delivery writes a missing value as the string "null" and some localities
+                # with markup; neither may reach a page.
+                "l": None if _null(r.get("locality_string")) else _plain_text(r["locality_string"]),
+                "pi": None if _null(r.get("persistent_identifier")) else r["persistent_identifier"],
                 "rc": sorted(recipients.get(r["uid"], set()) & persons.keys()) or None,
             }
             for r in regesta
