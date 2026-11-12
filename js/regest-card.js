@@ -34,6 +34,23 @@ function reviewState(regest) {
   return h("abbr", { class: "card-state is-reviewed", title: `${done} von ${heads.length} Aussagen menschlich geprüft; das Zeichen am Tag nennt das Urteil.`, text: all ? "menschlich geprüft" : "teilweise geprüft" });
 }
 
+/** Short qualifiers for the tag, at most QUAL_MAX characters together; every other literal is glossed. */
+const QUAL_MAX = 24;
+function literalsOf(lines) {
+  const qualifiers = [];
+  const literals = [];
+  let used = 0;
+  for (const l of lines.filter((x) => x.kind === "literal")) {
+    if (l.label === "Wortlaut" && used + l.text.length <= QUAL_MAX) {
+      qualifiers.push(l.text);
+      used += l.text.length + 2;
+    } else if (l.evidence) {
+      literals.push({ label: l.label.replace(" laut Regest", ""), start: l.evidence.start, end: l.evidence.end });
+    }
+  }
+  return { qualifiers, literals };
+}
+
 /** The statements of a regest with number, passage, kind and participants. */
 export function statementsOf(regest) {
   return (regest.blocks ?? [])
@@ -48,6 +65,9 @@ export function statementsOf(regest) {
       people: (b.lines ?? [])
         .filter((l) => l.phrase && (l.rel === "role" || l.rel === "concerns"))
         .map((l) => ({ phrase: l.phrase, role: l.role ?? (l.rel === "concerns" ? "Gegenstand" : "") })),
+      // Verbatim literals of the statement: a short qualifier („Witwe“, „Oheim“, „eidlich“)
+      // belongs to the tag, a condition, ground, amount or exception is glossed in place.
+      ...literalsOf(b.lines ?? []),
     }));
 }
 
@@ -91,6 +111,13 @@ export function annotatedText(text, statements) {
     g.label = [...byRole].map(([role, ns]) => `${role} ${[...new Set(ns)].join(", ")}`).join("; ");
   }
   const nameRanges = [...names.values()].filter((g) => g.roles.length);
+  for (const st of statements) {
+    for (const lit of st.literals ?? []) {
+      const [a, b] = [clamp(lit.start), clamp(lit.end)];
+      if (b <= a || nameRanges.some((g) => g.start < b && a < g.end)) continue;
+      nameRanges.push({ key: `${a}:${b - a}`, start: a, end: b, roles: [[lit.label, st.n]], label: `${lit.label} ${st.n}` });
+    }
+  }
   // A name must not straddle a bracket; such a name is shown without its gloss.
   const bounds = new Set(statements.flatMap((st) => [clamp(st.start), clamp(st.end)]));
   const glosses = nameRanges.filter((g) => ![...bounds].some((b) => b > g.start && b < g.end));
@@ -104,6 +131,7 @@ export function annotatedText(text, statements) {
       "span",
       { class: "ann-open", "data-id": st.id, title: sign ? `menschlich geprüft: ${sign[1]}` : null },
       h("span", { class: "ann-kind", text: `${st.kind} ${st.n}` }),
+      st.qualifiers?.length ? h("span", { class: "ann-qual", text: ` (${st.qualifiers.join(", ")})` }) : null,
       sign ? h("span", { class: `ann-verdict is-${st.review.verdict}`, "aria-label": `menschlich geprüft: ${sign[1]}`, text: sign[0] }) : null,
       extra.length ? h("span", { class: "ann-extra", text: extra.map((p) => (p.role ? `${p.phrase}: ${p.role}` : p.phrase)).join(", ") }) : null,
     );
