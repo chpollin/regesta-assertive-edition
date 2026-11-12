@@ -1,0 +1,63 @@
+/* The review sheet: one header line, the list of twenty regesta on the left, one regest with
+   its statements in the middle. Colours and type come from css/tokens.css only. */
+@layer base, components;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; display: flex; flex-direction: column; background: var(--stage); color: var(--text); font-family: var(--font-ui); font-size: var(--step-0); line-height: 1.5; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  button { font: inherit; padding: var(--space-1) var(--space-3); border: 1px solid var(--edge); border-radius: var(--radius); background: var(--stage); color: var(--text); cursor: pointer; }
+  button:disabled { opacity: 0.45; cursor: default; }
+  .source { font-family: var(--font-source); }
+  .visually-hidden { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+@layer components {
+  .sheet-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border-block-end: 1px solid var(--hairline); }
+  .sheet-head h1 { margin: 0; font-size: var(--step-0); font-weight: 600; }
+  .sheet-progress { margin: 0 auto 0 0; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .sheet-body { flex: 1; min-block-size: 0; display: grid; grid-template-columns: 14rem minmax(0, 1fr); }
+  .sheet-list { overflow: auto; background: var(--side); border-inline-end: 1px solid var(--hairline); }
+  .sheet-list ol { list-style: none; margin: 0; padding: var(--space-2) 0; }
+  .sheet-row { display: flex; inline-size: 100%; justify-content: space-between; gap: var(--space-2); padding: var(--space-1) var(--space-4); border: 0; background: none; text-align: start; }
+  .sheet-row:hover .row-id { text-decoration: underline; }
+  .sheet-row[aria-current="true"] { box-shadow: inset 3px 0 0 var(--accent); font-weight: 600; }
+  /* Open: an empty ring; begun: a half-filled ring; done: a filled ring with a check. */
+  .sheet-row::after { content: ""; flex: none; inline-size: 0.8rem; block-size: 0.8rem; margin-block-start: 0.35em; border: 1.5px solid var(--edge); border-radius: 50%; }
+  .sheet-row[data-state="begun"]::after { background: linear-gradient(90deg, var(--accent-text) 50%, transparent 50%); border-color: var(--accent-text); }
+  .sheet-row[data-state="done"]::after { content: "✓"; display: grid; place-items: center; font-size: 0.6rem; color: var(--stage); background: var(--accent-text); border-color: var(--accent-text); }
+
+  .sheet-main { overflow: auto; padding: var(--space-4) var(--space-5) var(--space-6); outline: none; }
+  .sheet-main > * { max-inline-size: 48rem; }
+  .sheet-title { margin: 0 0 var(--space-2); font-size: var(--step-1); font-weight: 600; }
+  .sheet-date { margin-inline-start: var(--space-3); color: var(--muted); font-weight: 400; font-size: var(--step-0); }
+  .sheet-text { margin: 0 0 var(--space-4); font-size: var(--step-1); line-height: 1.55; }
+  .sheet-text .ev { text-decoration: underline; text-decoration-color: var(--edge); text-underline-offset: 0.2em; }
+  .sheet-text .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
+
+  .sheet-claims { margin: 0 0 var(--space-4); padding-inline-start: 1.5em; display: grid; gap: var(--space-3); }
+  .sheet-claims > li { padding-block-end: var(--space-3); border-block-end: 1px solid var(--hairline); }
+  .claim-line { margin: 0 0 var(--space-1); }
+  .claim-kind { font-weight: 600; }
+  .verdict { display: inline-flex; flex-wrap: wrap; gap: var(--space-4); margin: 0 var(--space-4) var(--space-1) 0; padding: 0; border: 0; }
+  .verdict label { display: inline-flex; align-items: center; gap: var(--space-1); cursor: pointer; }
+  .verdict input { accent-color: var(--accent-text); inline-size: 1.05rem; block-size: 1.05rem; margin: 0; }
+  .claim-note, .regest-note { font: inherit; inline-size: min(100%, 26rem); padding: var(--space-1) var(--space-2); border: 1px solid var(--edge); border-radius: var(--radius); background: var(--stage); color: var(--text); }
+  .regest-note { display: block; inline-size: 100%; resize: vertical; margin-block-end: var(--space-3); }
+
+  .sheet-nav { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin: 0; }
+  .sheet-why { color: var(--muted); }
+
+  /* Narrow: the regest comes first and the list follows it, so the work starts at the top. */
+  @media (max-width: 56rem) {
+    body { display: block; height: auto; }
+    .sheet-head { gap: var(--space-1) var(--space-2); padding: var(--space-2) var(--space-3); }
+    .sheet-progress { flex-basis: calc(100% - 7rem); }
+    .sheet-head button { padding: 2px var(--space-2); font-size: var(--step--1); }
+    .sheet-body { display: flex; flex-direction: column; }
+    .sheet-main { order: 1; overflow: visible; padding: var(--space-3) var(--space-3) var(--space-4); }
+    .sheet-list { order: 2; border-inline-end: 0; border-block-start: 1px solid var(--hairline); }
+  }
+}

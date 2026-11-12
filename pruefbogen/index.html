@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prüfbogen der Regesten</title>
+  <!-- Work tool of the operator, served locally only (http://127.0.0.1:8102/pruefbogen/); never
+       part of the published site. -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="sheet.css">
+  <script type="module" src="sheet.js"></script>
+</head>
+<body>
+  <header class="sheet-head">
+    <h1>Prüfbogen</h1>
+    <p class="sheet-progress" id="progress" role="status" aria-live="polite"></p>
+    <button type="button" id="save">Ergebnis speichern</button>
+    <button type="button" id="load">Gespeichertes laden</button>
+    <input type="file" id="file" accept="application/json,.json" hidden>
+  </header>
+  <div class="sheet-body">
+    <nav class="sheet-list" aria-label="Regesten des Prüfbogens"><ol id="list" role="list"></ol></nav>
+    <main id="main" class="sheet-main" tabindex="-1"><p>Der Prüfbogen lädt …</p></main>
+  </div>
+  <noscript><p>Der Prüfbogen braucht JavaScript.</p></noscript>
+</body>
+</html>
