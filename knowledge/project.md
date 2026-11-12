@@ -28,4 +28,4 @@ The first slice of 2026-11-09 over the pilot run is superseded. Since 2026-11-11
 ## Sources
 
 - Vogeler, G. (2019). The 'assertive edition'. *International Journal of Digital Humanities* 1, 309–322. https://doi.org/10.1007/s42803-019-00025-5. Not re-read for this prototype; the reference follows the operator's vault report on edition interfaces.
-- Source repository `regesta-rdf-demo`, knowledge documents `continuation-brief.md`, `data.md`, `domain-ontology.md`, `user-stories.md`, `annotation-guidelines.md`.
+- Source repository `regesta-rdf-demo`, knowledge documents `data.md`, `domain-ontology.md`, `user-stories.md`, `annotation-guidelines.md`.
