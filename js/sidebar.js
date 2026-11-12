@@ -23,6 +23,8 @@ export function createSidebar(store, filters, options) {
   const graph = store.edition.graph;
   const byId = new Map(graph.nodes.map((n) => [n.id, n]));
   const persons = graph.nodes.filter((n) => n.kind !== "act").sort((a, b) => a.label.localeCompare(b.label, "de"));
+  const registered = persons.filter((n) => !n.local);
+  const local = persons.filter((n) => n.local);
   let person = options.person;
   const open = new Set();
 
@@ -57,7 +59,11 @@ export function createSidebar(store, filters, options) {
       "select",
       { class: "side-select", "aria-label": "Person", onchange: (e) => options.onPerson(e.target.value || null) },
       h("option", { value: "", text: "Ganzes Netz", selected: !person }),
-      persons.map((p) => h("option", { value: p.id, text: p.label, selected: p.id === person })),
+      // Actors with a register entry first; actors the agents named only by the regest's
+      // wording („den Fürsten“, „des Abtes“) follow in their own group, each with its regest,
+      // since the same words stand for different people in different regesta.
+      h("optgroup", { label: "Im Register" }, registered.map((p) => h("option", { value: p.id, text: p.label, selected: p.id === person }))),
+      h("optgroup", { label: "Nur im Wortlaut des Regests" }, local.map((p) => h("option", { value: p.id, text: `${p.label}, ${store.byUid.get(p.regests?.[0])?.short ?? ""}`.replace(/, $/, ""), selected: p.id === person }))),
     );
     const regestCount = new Set(shown.map((r) => r.uid)).size;
     const time = filters.from === filters.to ? `nur ${filters.from}` : `${filters.from} bis ${filters.to}`;
