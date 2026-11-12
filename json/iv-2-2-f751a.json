@@ -1,0 +1,536 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/e0b09c79-3e4e-4ad0-8d37-9f06abced66f",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "220530",
+  "identifier": "RI IV,2,2 n. †751a",
+  "short": "RI IV,2,2 n. †751a",
+  "sort": "004_002_002_001261_00000#751a",
+  "start": "1143-01-01",
+  "end": "1159-08-31",
+  "proseYears": [],
+  "lead": "Bischof G(erhard) von Bologna teilt Papst A. (Hadrian IV.) mit, dass der Kaiser nach der beinahe vollständigen Unterwerfung Italiens von ihm einen Treueid gefordert habe, den er nicht ohne päpstliche Erlaubnis schwören wolle.",
+  "date": [
+   {
+    "t": "(vor 1159 September 1)"
+   }
+  ],
+  "place": [],
+  "text": "Bischof G(erhard) von Bologna teilt Papst A. (Hadrian IV.) mit, dass der Kaiser nach der beinahe vollständigen Unterwerfung Italiens von ihm einen Treueid gefordert habe, den er nicht ohne päpstliche Erlaubnis schwören wolle.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:220530:report",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:220530:report",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "report",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 62,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220530:> .\nx:report a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:220530> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof G(erhard) von Bologna teilt Papst A. (Hadrian IV.) mit\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof G(erhard) von Bologna",
+      "text": "Bischof G(erhard) von Bologna in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220530:report",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "report",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 62,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220530:> .\nx:report rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"Bischof G(erhard) von Bologna\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000351"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst A. (Hadrian IV.)",
+      "text": "Papst A. (Hadrian IV.) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:220530:report",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "report",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 62,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220530:> .\nx:report rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000026> ; rf:nameInSource \"Papst A. (Hadrian IV.)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000026"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bitte",
+      "text": "bezieht sich auf Bitte",
+      "triple": [
+       "urn:regesta:220530:report",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:220530:oath-demand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "report",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 62,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220530:> .\nx:report rf:refersToAct x:oath-demand .\nx:oath-demand a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dass der Kaiser nach der beinahe vollständigen Unterwerfung Italiens von ihm einen Treueid gefordert habe\" ] ;\n    rf:factoidType rv:Request ;\n    rf:qualifier \"nach der beinahe vollständigen Unterwerfung Italiens\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"der Kaiser\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"ihm\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:220530> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:220530:oath-demand",
+      "objectClaim": "oath-demand",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:220530:report",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "report-2",
+      "own": true,
+      "evidence": {
+       "start": 171,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220530:> .\nx:report rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den er nicht ohne päpstliche Erlaubnis schwören wolle\" ] .",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "nicht ohne päpstliche Erlaubnis",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220530:report",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 178,
+       "end": 209,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Schreiben"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Bischof G(erhard) von Bologna"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Papst A. (Hadrian IV.)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "Bitte"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:220530:oath-demand",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:220530:oath-demand",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "oath-demand",
+     "own": true,
+     "evidence": {
+      "start": 64,
+      "end": 169,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220530:> .\nx:oath-demand a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:220530> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dass der Kaiser nach der beinahe vollständigen Unterwerfung Italiens von ihm einen Treueid gefordert habe\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser",
+      "text": "Kaiser in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:220530:oath-demand",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "oath-demand",
+      "own": true,
+      "evidence": {
+       "start": 64,
+       "end": 169,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220530:> .\nx:oath-demand rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"der Kaiser\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof G(erhard) von Bologna",
+      "text": "Bischof G(erhard) von Bologna in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:220530:oath-demand",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "oath-demand",
+      "own": true,
+      "evidence": {
+       "start": 64,
+       "end": 169,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220530:> .\nx:oath-demand rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"ihm\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000351"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach der beinahe vollständigen Unterwerfung Italiens",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220530:oath-demand",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 80,
+       "end": 132,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Kaiser"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bischof G(erhard) von Bologna"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "report",
+    "start": 0,
+    "end": 62
+   },
+   {
+    "id": "oath-demand",
+    "start": 64,
+    "end": 169
+   },
+   {
+    "id": "t2",
+    "start": 80,
+    "end": 132
+   },
+   {
+    "id": "report-2",
+    "start": 171,
+    "end": 224
+   },
+   {
+    "id": "t1",
+    "start": 178,
+    "end": 209
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "nameInSource 'ihm' for the bishop in the oath demand is a pronoun resolved by the producer.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a demand (Forderung) of an oath of fealty; recorded as rv:Request with the emperor as rv:Petitioner.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act or state type for an oath of fealty or fealty relation; the bishop's stated intention not to swear without papal permission is kept only as rf:condition of the communication.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender role for a communication; rv:Grantor (Aussteller) used.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for an oath of fealty, its demand or its refusal.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the sender of a communication.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No means to mark an act as reported content of another act.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "condition",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:220530:report",
+     "description": "'nicht ohne päpstliche Erlaubnis' qualifies the bishop's unwillingness to swear the oath, not the act of informing the pope. Attached to the Communication, the condition reads as a condition of the letter. The bishop's stated stance toward the oath has no factoid of its own.",
+     "proposal": "Move the condition to a separate factoid for the bishop's stated refusal, partOf the communication, or keep it on the communication with a comment and report the missing act type for an oath or its refusal as a model gap.",
+     "quote": {
+      "start": 171,
+      "end": 224
+     }
+    },
+    {
+     "category": "reported-speech",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:220530:oath-demand",
+     "description": "The regest reports the demand only as the content of the bishop's message ('dass ... gefordert habe'). The oath-demand factoid stands as an independent act; only the rf:refersToAct from the report hints at its status. A reader of the demand factoid alone takes it as the regest's own statement.",
+     "proposal": "Link the demand to the communication with rf:partOf, or add a qualifier marking it as reported ('mit, dass'), and report the missing way to mark reported content.",
+     "quote": {
+      "start": 30,
+      "end": 169
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:220530:report",
+     "description": "The sender of the communication is given rv:Grantor, defined as one who transfers, confirms or determines. The vocabulary has no sender role. 'gefordert' is typed rv:Request, which weakens a demand.",
+     "proposal": "No change within the contract; report the missing sender role and demand type.",
+     "quote": {
+      "start": 0,
+      "end": 62
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The condition 'nicht ohne päpstliche Erlaubnis' qualifies the bishop's unwillingness to swear, not the letter; the stance has no factoid of its own.",
+     "reason": "The passage 'den er nicht ohne päpstliche Erlaubnis schwören wolle' states the bishop's intention about an oath. The contract has no act or state type for an oath of fealty or its refusal, so a separate factoid would need an invented type; rf:condition is the only exact-wording slot, and the content reported in the communication includes this stance. The condition stays on the communication with its second selector; record the oath and refusal types as gaps.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The demand is reported speech ('gefordert habe') but stands as an independent act.",
+     "reason": "rf:partOf is defined for provisions or secondary acts belonging to a main act, not for reported content, and rf:qualifier is for type or time, not for epistemic status. The link rf:refersToAct from the communication and the evidence containing the subjunctive 'gefordert habe' are what the contract allows; a way to mark reported content belongs to the next model version.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The sender is rv:Grantor and the demand is typed rv:Request.",
+     "reason": "The vocabulary has no sender role and no demand type; rv:Grantor ('Aussteller') is the closest role for the issuer of a letter and rv:Request the closest act type for 'gefordert'. No change; the reviewer asks only for gap reporting.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Fiktives Schreiben, dessen Verfasser freilich gut über die Geschehnisse der Epoche informiert war. Die Datierung wird hier nach der Nennung Papst Hadrians IV. vorgenommen, der am 1. September 1159 starb. – Vgl. auch die Antwort des Papstes im nächsten Reg. N.IV – †751b."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Briefe des Magisters Guido (Savignano sul Rubicone. Biblioteca dell’Accademia dei Filopatridi, MS. 45S [Zweite Sammlung], fol. 140v–141r.) Reg.: "
+    },
+    {
+     "t": "Hartmann, Ars dictaminis",
+     "href": "http://opac.regesta-imperii.de/id/1854872"
+    },
+    {
+     "t": ", 344 Nr. 21."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-G000351",
+    "Bischof von Bologna"
+   ],
+   [
+    "RI004-002-H000026",
+    "IV., Papst"
+   ]
+  ]
+ }
+}

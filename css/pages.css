@@ -1,0 +1,129 @@
+/* Content pages of the static edition: start text, regest list, single regest, persons,
+   method, data, about. The frame (header, navigation, footer) belongs to css/shell.css and
+   colours to css/tokens.css; the --pg names below only alias those tokens for this file.
+   Operator decision of 2026-11-11: white ground, very dark text, neutral grey lines, one
+   calm accent and no red. The accent #0097a7 marks underlines, rules and focus; text in the
+   accent hue uses --accent-text, because #0097a7 on white reaches only about 3.4:1. */
+
+:root {
+  --pg-ground: var(--stage, #fff);
+  --pg-ink: var(--text, #1a1a1a);
+  --pg-muted: var(--muted, #4a4a4a);
+  --pg-line: var(--hairline, #dcdcdc);
+  --pg-accent: var(--accent, #0097a7);
+  --pg-tint: var(--accent-faint, #e3f4f6);
+}
+
+/* Base for the static pages, which do not load the views' app.css. */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-family: var(--font-ui, system-ui, sans-serif); font-size: var(--step-0, 1rem); line-height: 1.5; }
+:focus-visible { outline: 2px solid var(--focus, #005c64); outline-offset: 2px; }
+.site-main { max-inline-size: 76rem; margin-inline: auto; inline-size: 100%; }
+.site-main h1 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); font-weight: 600; line-height: 1.2; margin: 0 0 0.75rem; }
+.site-main h2 { font-size: var(--step-0, 1rem); font-weight: 600; margin: 2rem 0 0.5rem; }
+.site-main p { margin: 0 0 0.75rem; }
+.site-main a { color: var(--pg-ink); text-decoration-color: var(--pg-accent); text-underline-offset: 0.2em; }
+.site-main a:hover { text-decoration-thickness: 2px; }
+.site-main code, .site-main pre { font-family: var(--font-code, ui-monospace, monospace); font-size: 0.8125rem; }
+.intro, .lede, .site-main section > p { max-inline-size: 72ch; }
+.link-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.run-in { font-weight: 600; margin-inline-end: 0.35em; }
+.missing { font-style: italic; }
+.mark { font-weight: 400; margin-inline-start: 0.35em; }
+.source, .regest-text { font-family: var(--font-source, Georgia, serif); }
+
+.visually-hidden { position: absolute !important; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Start */
+.lede { font-size: var(--step-0, 1rem); }
+.figure { margin-block: 1rem 1.5rem; min-block-size: 4rem; }
+.figure-fallback { color: var(--pg-muted); max-inline-size: 72ch; }
+.entries { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 2rem; list-style: none; padding: 0; margin: 0; }
+.entries > li > a { font-weight: 600; }
+.jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.jump[hidden] { display: none; }
+.jump input, .filter input { font: inherit; padding: 0.25rem 0.5rem; border: 1px solid #8a8a8a; border-radius: 2px; background: #fff; color: var(--pg-ink); }
+.jump button { font: inherit; padding: 0.25rem 0.75rem; border: 1px solid var(--pg-ink); border-radius: 2px; background: #fff; color: var(--pg-ink); cursor: pointer; }
+.jump-msg { color: var(--pg-muted); }
+
+/* Tables of regesta, persons and files */
+.table-wrap { overflow-x: auto; max-inline-size: 100%; }
+.list { border-collapse: collapse; inline-size: 100%; max-inline-size: 64rem; }
+.list th, .list td { text-align: start; vertical-align: baseline; padding: 0.4rem 1rem 0.4rem 0; border-block-end: 1px solid var(--pg-line); }
+.list thead th { font-weight: 600; }
+.list tbody th { font-weight: 600; }
+.list:not(.persons) tbody th, .list td:last-child { white-space: nowrap; }
+.persons td:last-child { inline-size: 6rem; }
+.list .num { text-align: end; font-variant-numeric: tabular-nums; }
+.list.data { max-inline-size: 40rem; }
+.filter { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.filter[hidden] { display: none; }
+.filter-count { color: var(--pg-muted); }
+
+/* Single regest */
+.title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; margin-block-end: 1rem; }
+.title-row h1 { margin: 0; }
+.pager { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.pager a { white-space: nowrap; text-decoration: none; }
+.pager a:hover { text-decoration: underline; text-decoration-color: var(--pg-accent); }
+.back-slot:empty { display: none; }
+.card-host { max-inline-size: 72ch; }
+.paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
+.regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
+.fields, .cite { margin-block-start: 1.5rem; max-inline-size: 72ch; }
+.cite { padding-block-start: 0.75rem; border-block-start: 1px solid var(--pg-line); overflow-wrap: anywhere; }
+.ext { list-style: none; padding: 0; margin: 0 0 0.75rem; }
+
+.review-state { max-inline-size: 64ch; }
+.factoid-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
+.sentence { margin: 0; max-inline-size: 64ch; }
+.act-type { font-weight: 600; }
+.evq, .lit, .case-note, .before { margin: 0.25rem 0 0; max-inline-size: 64ch; }
+.evq { font-family: var(--font-source, Georgia, serif); }
+.history { margin-block-start: 1.5rem; }
+.history summary { cursor: pointer; font-weight: 600; }
+.history ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; margin-block-start: 0.75rem; max-inline-size: 72ch; }
+
+.downloads { margin-block-start: 2rem; padding: 0.75rem 1rem; background: var(--pg-tint); border-radius: 2px; max-inline-size: 40rem; }
+.downloads h2 { margin: 0 0 0.5rem; }
+.downloads ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.downloads a { font-weight: 600; }
+
+/* Persons */
+.register, .forms { max-inline-size: 72ch; }
+.mentions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; max-inline-size: 72ch; }
+.mention-head { font-weight: 600; margin-inline-end: 0.35em; }
+
+/* Method and about */
+.steps { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; max-inline-size: 72ch; counter-reset: step; }
+.steps li { counter-increment: step; }
+.step-head { margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; }
+.step-title { font-weight: 600; }
+.step-title::before { content: counter(step) ". "; }
+.steps li > p:last-child { margin: 0.25rem 0 0; }
+.code { white-space: pre-wrap; overflow-wrap: anywhere; padding: 0.75rem; border: 1px solid var(--pg-line); border-radius: 2px; max-inline-size: 80ch; }
+.placeholder { padding: 0.5rem 0.75rem; border: 1px dashed #8a8a8a; max-inline-size: 64ch; }
+
+@media (max-width: 40rem) {
+  .list tbody th { white-space: normal; }
+}
+
+/* Embedded views (start and person pages): drawing area and its sidebar side by side, one
+   window high at wide widths, stacked below 56rem as in the shell. */
+.embed { display: grid; grid-template-columns: minmax(0, 1fr); }
+.embed-main { container: page / inline-size; min-inline-size: 0; block-size: 70dvh; }
+.embed-aside { border-inline-start: 0; }
+@media (min-width: 56.01rem) {
+  .embed { grid-template-columns: minmax(0, 1fr) var(--aside-width, 22rem); block-size: min(78dvh, 46rem); }
+  .embed-main { block-size: auto; }
+  .embed-main, .embed-aside { min-block-size: 0; overflow: hidden; }
+  .embed-aside { border-inline-start: 1px solid var(--pg-line); }
+  .embed-aside { overflow-y: auto; }
+}
+
+/* Footer and skip link of the static pages; shell.css does not style them yet. */
+.skip { position: absolute; inset-inline-start: -999rem; }
+.skip:focus { inset-inline-start: 0.5rem; inset-block-start: 0.5rem; background: var(--pg-ground); padding: 0.5rem; z-index: 6; }
+.site-footer { max-inline-size: 76rem; margin-inline: auto; padding: 1rem 1.5rem 2rem; border-block-start: 1px solid var(--pg-line); color: var(--pg-muted); font-size: var(--step--1, 0.875rem); }
+.site-footer p { margin: 0 0 0.25rem; max-inline-size: 80ch; }
+.site-footer a { color: inherit; text-decoration-color: var(--pg-accent); margin-inline-end: 1rem; }

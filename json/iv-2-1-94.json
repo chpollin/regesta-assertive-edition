@@ -1,0 +1,4223 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-06-01_1_0_4_2_1_94_94",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22721",
+  "identifier": "RI IV,2,1 n. 94",
+  "short": "RI IV,2,1 n. 94",
+  "sort": "004_002_001_000094_0000000094",
+  "start": "1152-06-01",
+  "end": "1152-06-01",
+  "proseYears": [],
+  "lead": "Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund: Der König verpflichtet sich, mit dem Herzog nach Burgund und in die Provence zu ziehen, ihm die Länder unterwerfen zu helfen und ihm zu übergeben; Graf Wilhelm von Mâcon muß über das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat, dem Herzog Rechenschaft geben; Herrschaft und Leitung beider Länder stehen dem König bei Anwesenheit zu, nach seinem Abzug verbleiben nur die Erzbistümer und Bistümer in seiner Verfügungsgewalt; Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden, empfangen ihre Investitur vom Herzog.",
+  "date": [
+   {
+    "t": "(1152 vor Juni 1)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund: Der König verpflichtet sich, mit dem Herzog nach Burgund und in die Provence zu ziehen, ihm die Länder unterwerfen zu helfen und ihm zu übergeben; Graf Wilhelm von Mâcon muß über das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat, dem Herzog Rechenschaft geben; Herrschaft und Leitung beider Länder stehen dem König bei Anwesenheit zu, nach seinem Abzug verbleiben nur die Erzbistümer und Bistümer in seiner Verfügungsgewalt; Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden, empfangen ihre Investitur vom Herzog. Bürgen des Königs: Herzog Heinrich von Sachsen, dominus Welf, Kanzler Arnold, die Grafen Ulrich von Lenzburg, Egeno (wohl von Vaihingen) und Ulrich von Herrlingen (H얏rnunge), Markward von Grumbach, Arnold von Biberbach, Pfalzgraf Otto von Wittelsbach, der Truchseß Walther, der Mundschenk Hildebrand, (der Reichsministeriale) Konrad Colbo und sein Bruder Siegfried. - Herzog Berthold verpflichtet sich, für den Burgundzug des Königs tausend Panzerreiter (loricatos equites), für den Italienzug, an dem er teilnehmen wird, für die Zeit seiner Anwesenheit fünfhundert Panzerreiter und fünfzig Armbrustschützen (arcobalistarios) zu stellen; als Pfand wird er dem König sein Allod, die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern sowie Oethlingen (Hetlingen), Wellingen (Willigen) und Erstein mit allen Pertinenzen geben. Für den Herzog schwören seine Ministerialen Burchard und Werner. - Der König wird seinen Feldzug in die genannten Länder vom nächsten 1. Juni in der 15. Indiktion (1152 Juni 1) an innerhalb eines Jahres antreten. -Vielleicht von Wibald verfaßt. Hęc est conventio .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 17,
+  "blocks": [
+   {
+    "node": "urn:regesta:22721:vertrag",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:vertrag",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vertrag",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 128,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:vertrag a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22721:vertrag",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vertrag",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 128,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:vertrag rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22721:vertrag",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vertrag",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 128,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:vertrag rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Königreich Burgund",
+      "text": "betrifft Königreich Burgund",
+      "triple": [
+       "urn:regesta:22721:vertrag",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:koenigreich-burgund"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vertrag",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 128,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:vertrag rf:concerns x:koenigreich-burgund .\nx:koenigreich-burgund a crm:E53_Place ;\n    rdfs:label \"Königreich Burgund\" .",
+      "object": "urn:regesta:22721:koenigreich-burgund",
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Vertrag",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:vertrag",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 65,
+       "end": 72,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Königreich Burgund"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:koenig-zug-uebergabe",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:koenig-zug-uebergabe",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "koenig-zug-uebergabe",
+     "own": true,
+     "evidence": {
+      "start": 130,
+      "end": 275,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-zug-uebergabe a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Der König verpflichtet sich, mit dem Herzog nach Burgund und in die Provence zu ziehen, ihm die Länder unterwerfen zu helfen und ihm zu übergeben\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:koenig-zug-uebergabe",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "koenig-zug-uebergabe",
+      "own": true,
+      "evidence": {
+       "start": 130,
+       "end": 275,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-zug-uebergabe rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Der König\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22721:koenig-zug-uebergabe",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "koenig-zug-uebergabe",
+      "own": true,
+      "evidence": {
+       "start": 130,
+       "end": 275,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-zug-uebergabe rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"dem Herzog\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Burgund",
+      "text": "betrifft Burgund",
+      "triple": [
+       "urn:regesta:22721:koenig-zug-uebergabe",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:burgund"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "koenig-zug-uebergabe",
+      "own": true,
+      "evidence": {
+       "start": 130,
+       "end": 275,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-zug-uebergabe rf:concerns x:burgund .\nx:burgund a crm:E53_Place ;\n    rdfs:label \"Burgund\" .",
+      "object": "urn:regesta:22721:burgund",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Provence",
+      "text": "betrifft Provence",
+      "triple": [
+       "urn:regesta:22721:koenig-zug-uebergabe",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:provence"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "koenig-zug-uebergabe",
+      "own": true,
+      "evidence": {
+       "start": 130,
+       "end": 275,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-zug-uebergabe rf:concerns x:provence .\nx:provence a crm:E53_Place ;\n    rdfs:label \"Provence\" .",
+      "object": "urn:regesta:22721:provence",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:koenig-zug-uebergabe",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "koenig-zug-uebergabe",
+      "own": true,
+      "evidence": {
+       "start": 130,
+       "end": 275,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-zug-uebergabe rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Burgund"
+     },
+     " und ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Provence"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:wilhelm-besitz",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22721:wilhelm-besitz",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "wilhelm-besitz",
+     "own": true,
+     "evidence": {
+      "start": 277,
+      "end": 387,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-besitz a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Graf Wilhelm von Mâcon muß über das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Wilhelm von Mâcon",
+      "text": "Graf Wilhelm von Mâcon in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22721:wilhelm-besitz",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wilhelm-besitz",
+      "own": true,
+      "evidence": {
+       "start": 277,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-besitz rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:nameInSource \"Graf Wilhelm von Mâcon\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000568"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat",
+      "text": "betrifft das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat",
+      "triple": [
+       "urn:regesta:22721:wilhelm-besitz",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:land-wilhelms"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wilhelm-besitz",
+      "own": true,
+      "evidence": {
+       "start": 277,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-besitz rf:concerns x:land-wilhelms .\nx:land-wilhelms a crm:E53_Place ;\n    rdfs:label \"das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat\" .",
+      "object": "urn:regesta:22721:land-wilhelms",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "von seiner Nichte (Beatrix, die spätere Kaiserin) her",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:wilhelm-besitz",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 326,
+       "end": 379,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Graf Wilhelm von Mâcon"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:wilhelm-nichte",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22721:wilhelm-nichte",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "wilhelm-nichte",
+     "own": true,
+     "evidence": {
+      "start": 277,
+      "end": 387,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-nichte a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Graf Wilhelm von Mâcon muß über das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Wilhelm von Mâcon",
+      "text": "Graf Wilhelm von Mâcon in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22721:wilhelm-nichte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wilhelm-nichte",
+      "own": true,
+      "evidence": {
+       "start": 277,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-nichte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:nameInSource \"Graf Wilhelm von Mâcon\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000568"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Beatrix, die spätere Kaiserin",
+      "text": "Beatrix, die spätere Kaiserin in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22721:wilhelm-nichte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wilhelm-nichte",
+      "own": true,
+      "evidence": {
+       "start": 277,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-nichte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000330> ; rf:nameInSource \"Beatrix, die spätere Kaiserin\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000330"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Nichte",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:wilhelm-nichte",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 337,
+       "end": 343,
+       "ambiguous": false
+      },
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Graf Wilhelm von Mâcon"
+     },
+     " und ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Beatrix, die spätere Kaiserin"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:wilhelm-rechenschaft",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:wilhelm-rechenschaft",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "wilhelm-rechenschaft",
+     "own": true,
+     "evidence": {
+      "start": 277,
+      "end": 418,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-rechenschaft a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Graf Wilhelm von Mâcon muß über das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat, dem Herzog Rechenschaft geben\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k20"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22721:wilhelm-rechenschaft",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wilhelm-rechenschaft",
+      "own": true,
+      "evidence": {
+       "start": 277,
+       "end": 418,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-rechenschaft rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"dem Herzog\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Wilhelm von Mâcon",
+      "text": "Graf Wilhelm von Mâcon in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:wilhelm-rechenschaft",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wilhelm-rechenschaft",
+      "own": true,
+      "evidence": {
+       "start": 277,
+       "end": 418,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-rechenschaft rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:nameInSource \"Graf Wilhelm von Mâcon\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000568"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat",
+      "text": "betrifft das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat",
+      "triple": [
+       "urn:regesta:22721:wilhelm-rechenschaft",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:land-wilhelms"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wilhelm-rechenschaft",
+      "own": true,
+      "evidence": {
+       "start": 277,
+       "end": 418,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-rechenschaft rf:concerns x:land-wilhelms .\nx:land-wilhelms a crm:E53_Place ;\n    rdfs:label \"das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat\" .",
+      "object": "urn:regesta:22721:land-wilhelms",
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:wilhelm-rechenschaft",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wilhelm-rechenschaft",
+      "own": true,
+      "evidence": {
+       "start": 277,
+       "end": 418,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:wilhelm-rechenschaft rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Graf Wilhelm von Mâcon"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:herrschaft-koenig",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:herrschaft-koenig",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "herrschaft-koenig",
+     "own": true,
+     "evidence": {
+      "start": 420,
+      "end": 492,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:herrschaft-koenig a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herrschaft und Leitung beider Länder stehen dem König bei Anwesenheit zu\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22721:herrschaft-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "herrschaft-koenig",
+      "own": true,
+      "evidence": {
+       "start": 420,
+       "end": 492,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:herrschaft-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"dem König\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (Herrschaft und Leitung beider Länder)",
+      "text": "betrifft Herrschafts- und Schutzrechte (Herrschaft und Leitung beider Länder)",
+      "triple": [
+       "urn:regesta:22721:herrschaft-koenig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:herrschaft-leitung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "herrschaft-koenig",
+      "own": true,
+      "evidence": {
+       "start": 420,
+       "end": 492,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:herrschaft-koenig rf:concerns x:herrschaft-leitung .\nx:herrschaft-leitung a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"Herrschaft und Leitung beider Länder\" .",
+      "object": "urn:regesta:22721:herrschaft-leitung",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:herrschaft-koenig",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "herrschaft-koenig",
+      "own": true,
+      "evidence": {
+       "start": 420,
+       "end": 492,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:herrschaft-koenig rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k28"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "bei Anwesenheit",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:herrschaft-koenig",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 474,
+       "end": 489,
+       "ambiguous": false
+      },
+      "key": "k29"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Herrschafts- und Schutzrechte (Herrschaft und Leitung beider Länder)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:bistuemer-koenig",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:bistuemer-koenig",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bistuemer-koenig",
+     "own": true,
+     "evidence": {
+      "start": 494,
+      "end": 582,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:bistuemer-koenig a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach seinem Abzug verbleiben nur die Erzbistümer und Bistümer in seiner Verfügungsgewalt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k30"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22721:bistuemer-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bistuemer-koenig",
+      "own": true,
+      "evidence": {
+       "start": 494,
+       "end": 582,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:bistuemer-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"seiner\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (die Erzbistümer und Bistümer in seiner Verfügungsgewalt)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (die Erzbistümer und Bistümer in seiner Verfügungsgewalt)",
+      "triple": [
+       "urn:regesta:22721:bistuemer-koenig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:verfuegungsgewalt-bistuemer"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bistuemer-koenig",
+      "own": true,
+      "evidence": {
+       "start": 494,
+       "end": 582,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:bistuemer-koenig rf:concerns x:verfuegungsgewalt-bistuemer .\nx:verfuegungsgewalt-bistuemer a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"die Erzbistümer und Bistümer in seiner Verfügungsgewalt\" .",
+      "object": "urn:regesta:22721:verfuegungsgewalt-bistuemer",
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:bistuemer-koenig",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bistuemer-koenig",
+      "own": true,
+      "evidence": {
+       "start": 494,
+       "end": 582,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:bistuemer-koenig rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k33"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "nach seinem Abzug",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:bistuemer-koenig",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 494,
+       "end": 511,
+       "ambiguous": false
+      },
+      "key": "k34"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nur",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:bistuemer-koenig",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 523,
+       "end": 526,
+       "ambiguous": false
+      },
+      "key": "k35"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (die Erzbistümer und Bistümer in seiner Verfügungsgewalt)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:fruehere-investitur",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22721:fruehere-investitur",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "fruehere-investitur",
+     "own": true,
+     "evidence": {
+      "start": 584,
+      "end": 662,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:fruehere-investitur a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k36"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden",
+      "text": "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22721:fruehere-investitur",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fruehere-investitur",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 662,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:fruehere-investitur rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22721:local:frueher-investierte-bischoefe> ; rf:nameInSource \"Bischöfe\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22721:local:frueher-investierte-bischoefe"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Wilhelm von Mâcon",
+      "text": "Graf Wilhelm von Mâcon in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22721:fruehere-investitur",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fruehere-investitur",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 662,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:fruehere-investitur rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:nameInSource \"Grafen Wilhelm\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000568"
+      ],
+      "key": "k38"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "anderen Fürsten",
+      "text": "anderen Fürsten in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22721:fruehere-investitur",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fruehere-investitur",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 662,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:fruehere-investitur rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22721:local:andere-fuersten> ; rf:nameInSource \"anderen Fürsten\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22721:local:andere-fuersten"
+      ],
+      "key": "k39"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "bisher",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:fruehere-investitur",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 598,
+       "end": 604,
+       "ambiguous": false
+      },
+      "key": "k40"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "vom Grafen Wilhelm oder anderen Fürsten",
+      "id": "t8",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:fruehere-investitur",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 605,
+       "end": 644,
+       "ambiguous": false
+      },
+      "key": "k41"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k38"
+      ],
+      "text": "Graf Wilhelm von Mâcon"
+     },
+     " und ",
+     {
+      "keys": [
+       "k39"
+      ],
+      "text": "anderen Fürsten"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:investitur-herzog",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:investitur-herzog",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "investitur-herzog",
+     "own": true,
+     "evidence": {
+      "start": 584,
+      "end": 700,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:investitur-herzog a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden, empfangen ihre Investitur vom Herzog\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k42"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22721:investitur-herzog",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur-herzog",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 700,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:investitur-herzog rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k43"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden",
+      "text": "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22721:investitur-herzog",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur-herzog",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 700,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:investitur-herzog rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22721:local:frueher-investierte-bischoefe> ; rf:nameInSource \"Bischöfe\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22721:local:frueher-investierte-bischoefe"
+      ],
+      "key": "k44"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Investiturrecht (ihre Investitur)",
+      "text": "betrifft Investiturrecht (ihre Investitur)",
+      "triple": [
+       "urn:regesta:22721:investitur-herzog",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:investitur"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur-herzog",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 700,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:investitur-herzog rf:concerns x:investitur .\nx:investitur a crm:E30_Right ;\n    crm:P2_has_type rv:Investiture ;\n    rdfs:label \"ihre Investitur\" .",
+      "object": "urn:regesta:22721:investitur",
+      "key": "k45"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:investitur-herzog",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur-herzog",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 700,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:investitur-herzog rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k46"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Einsetzung",
+      "text": "bezieht sich auf Einsetzung",
+      "triple": [
+       "urn:regesta:22721:investitur-herzog",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22721:fruehere-investitur"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur-herzog",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 700,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:investitur-herzog rf:refersToAct x:fruehere-investitur .\nx:fruehere-investitur a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden\" ] ;\n    rf:factoidType rv:Appointment ;\n    rf:qualifier \"bisher\" , \"vom Grafen Wilhelm oder anderen Fürsten\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22721:local:andere-fuersten> ; rf:nameInSource \"anderen Fürsten\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:22721:local:frueher-investierte-bischoefe> ; rf:nameInSource \"Bischöfe\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:nameInSource \"Grafen Wilhelm\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:fruehere-investitur",
+      "objectClaim": "fruehere-investitur",
+      "key": "k47"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k42"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k43"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k44"
+      ],
+      "text": "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k45"
+      ],
+      "text": "Investiturrecht (ihre Investitur)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k46"
+      ],
+      "text": "Bestimmung"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k47"
+      ],
+      "text": "Einsetzung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:buergen-koenig",
+    "kind": "state",
+    "title": "Verpflichtung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verpflichtung",
+     "text": "Verpflichtung",
+     "triple": [
+      "urn:regesta:22721:buergen-koenig",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Obligation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "buergen-koenig",
+     "own": true,
+     "evidence": {
+      "start": 702,
+      "end": 864,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig a rf:StateFactoid ;\n    rf:factoidType rv:Obligation ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bürgen des Königs: Herzog Heinrich von Sachsen, dominus Welf, Kanzler Arnold, die Grafen Ulrich von Lenzburg, Egeno (wohl von Vaihingen) und Ulrich von Herrlingen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k48"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"des Königs\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k49"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Heinrich von Sachsen",
+      "text": "Herzog Heinrich von Sachsen in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzog Heinrich von Sachsen\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k50"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "dominus Welf",
+      "text": "dominus Welf in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"dominus Welf\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k51"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kanzler Arnold",
+      "text": "Kanzler Arnold in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:nameInSource \"Kanzler Arnold\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001203"
+      ],
+      "key": "k52"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich von Lenzburg",
+      "text": "Ulrich von Lenzburg in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000179> ; rf:nameInSource \"Ulrich von Lenzburg\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000179"
+      ],
+      "key": "k53"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Egeno (wohl von Vaihingen)",
+      "text": "Egeno (wohl von Vaihingen) in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000167> ; rf:nameInSource \"Egeno (wohl von Vaihingen)\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000167"
+      ],
+      "key": "k54"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich von Herrlingen",
+      "text": "Ulrich von Herrlingen in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000176> ; rf:nameInSource \"Ulrich von Herrlingen\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000176"
+      ],
+      "key": "k55"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markward von Grumbach",
+      "text": "Markward von Grumbach in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000513> ; rf:nameInSource \"Markward von Grumbach\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000513"
+      ],
+      "key": "k56"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Arnold von Biberbach",
+      "text": "Arnold von Biberbach in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001234> ; rf:nameInSource \"Arnold von Biberbach\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001234"
+      ],
+      "key": "k57"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Pfalzgraf Otto von Wittelsbach",
+      "text": "Pfalzgraf Otto von Wittelsbach in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000441> ; rf:nameInSource \"Pfalzgraf Otto von Wittelsbach\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000441"
+      ],
+      "key": "k58"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Truchseß Walther",
+      "text": "der Truchseß Walther in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000148> ; rf:nameInSource \"der Truchseß Walther\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000148"
+      ],
+      "key": "k59"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Mundschenk Hildebrand",
+      "text": "der Mundschenk Hildebrand in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000982> ; rf:nameInSource \"der Mundschenk Hildebrand\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000982"
+      ],
+      "key": "k60"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "(der Reichsministeriale) Konrad Colbo",
+      "text": "(der Reichsministeriale) Konrad Colbo in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000492> ; rf:nameInSource \"Konrad Colbo\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000492"
+      ],
+      "key": "k61"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "sein Bruder Siegfried",
+      "text": "sein Bruder Siegfried in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000708> ; rf:nameInSource \"Siegfried\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000708"
+      ],
+      "key": "k62"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 864,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k63"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "buergen-koenig-2",
+      "own": true,
+      "evidence": {
+       "start": 877,
+       "end": 1066,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:buergen-koenig rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Markward von Grumbach, Arnold von Biberbach, Pfalzgraf Otto von Wittelsbach, der Truchseß Walther, der Mundschenk Hildebrand, (der Reichsministeriale) Konrad Colbo und sein Bruder Siegfried\" ] .",
+      "key": "k64"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Bürgen des Königs",
+      "id": "t9",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:buergen-koenig",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 702,
+       "end": 719,
+       "ambiguous": false
+      },
+      "key": "k65"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k48",
+       "k64"
+      ],
+      "text": "Verpflichtung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k49",
+       "k64"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Verpflichtete ",
+     {
+      "keys": [
+       "k50",
+       "k64"
+      ],
+      "text": "Herzog Heinrich von Sachsen"
+     },
+     ", ",
+     {
+      "keys": [
+       "k51",
+       "k64"
+      ],
+      "text": "dominus Welf"
+     },
+     ", ",
+     {
+      "keys": [
+       "k52",
+       "k64"
+      ],
+      "text": "Kanzler Arnold"
+     },
+     ", ",
+     {
+      "keys": [
+       "k53",
+       "k64"
+      ],
+      "text": "Ulrich von Lenzburg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k54",
+       "k64"
+      ],
+      "text": "Egeno (wohl von Vaihingen)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k55",
+       "k64"
+      ],
+      "text": "Ulrich von Herrlingen"
+     },
+     ", ",
+     {
+      "keys": [
+       "k56",
+       "k64"
+      ],
+      "text": "Markward von Grumbach"
+     },
+     ", ",
+     {
+      "keys": [
+       "k57",
+       "k64"
+      ],
+      "text": "Arnold von Biberbach"
+     },
+     ", ",
+     {
+      "keys": [
+       "k58",
+       "k64"
+      ],
+      "text": "Pfalzgraf Otto von Wittelsbach"
+     },
+     ", ",
+     {
+      "keys": [
+       "k59",
+       "k64"
+      ],
+      "text": "der Truchseß Walther"
+     },
+     ", ",
+     {
+      "keys": [
+       "k60",
+       "k64"
+      ],
+      "text": "der Mundschenk Hildebrand"
+     },
+     ", ",
+     {
+      "keys": [
+       "k61",
+       "k64"
+      ],
+      "text": "(der Reichsministeriale) Konrad Colbo"
+     },
+     " und ",
+     {
+      "keys": [
+       "k62",
+       "k64"
+      ],
+      "text": "sein Bruder Siegfried"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k63",
+       "k64"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:colbo-bruder",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22721:colbo-bruder",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "colbo-bruder",
+     "own": true,
+     "evidence": {
+      "start": 1028,
+      "end": 1066,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:colbo-bruder a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Konrad Colbo und sein Bruder Siegfried\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k66"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "(der Reichsministeriale) Konrad Colbo",
+      "text": "(der Reichsministeriale) Konrad Colbo in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22721:colbo-bruder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "colbo-bruder",
+      "own": true,
+      "evidence": {
+       "start": 1028,
+       "end": 1066,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:colbo-bruder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000492> ; rf:nameInSource \"Konrad Colbo\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000492"
+      ],
+      "key": "k67"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "sein Bruder Siegfried",
+      "text": "sein Bruder Siegfried in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22721:colbo-bruder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "colbo-bruder",
+      "own": true,
+      "evidence": {
+       "start": 1028,
+       "end": 1066,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:colbo-bruder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000708> ; rf:nameInSource \"Siegfried\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000708"
+      ],
+      "key": "k68"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Bruder",
+      "id": "t10",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:colbo-bruder",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1050,
+       "end": 1056,
+       "ambiguous": false
+      },
+      "key": "k69"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k66"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k67"
+      ],
+      "text": "(der Reichsministeriale) Konrad Colbo"
+     },
+     " und ",
+     {
+      "keys": [
+       "k68"
+      ],
+      "text": "sein Bruder Siegfried"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:berthold-allod",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22721:berthold-allod",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "berthold-allod",
+     "own": true,
+     "evidence": {
+      "start": 1070,
+      "end": 1103,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-allod a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Berthold verpflichtet sich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k70"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22721:berthold-allod",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-allod",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-allod rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k71"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern",
+      "text": "betrifft die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern",
+      "triple": [
+       "urn:regesta:22721:berthold-allod",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:burg-teck"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-allod",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-allod rf:concerns x:burg-teck .\nx:burg-teck a crm:E18_Physical_Thing ;\n    rdfs:label \"die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern\" .",
+      "object": "urn:regesta:22721:burg-teck",
+      "key": "k72"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22721:berthold-allod",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-allod-2",
+      "own": true,
+      "evidence": {
+       "start": 1340,
+       "end": 1403,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-allod rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"als Pfand wird er dem König sein Allod, die Burg Teck (Thecche)\" ] .",
+      "key": "k73"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "sein Allod",
+      "id": "t11",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:berthold-allod",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1368,
+       "end": 1378,
+       "ambiguous": false
+      },
+      "key": "k74"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k70",
+       "k73"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k71",
+       "k73"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k72",
+       "k73"
+      ],
+      "text": "die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:berthold-burgundzug",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:berthold-burgundzug",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "berthold-burgundzug",
+     "own": true,
+     "evidence": {
+      "start": 1070,
+      "end": 1175,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-burgundzug a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Berthold verpflichtet sich, für den Burgundzug des Königs tausend Panzerreiter (loricatos equites)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k75"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:berthold-burgundzug",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-burgundzug",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1175,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-burgundzug rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k76"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22721:berthold-burgundzug",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-burgundzug",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1175,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-burgundzug rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"des Königs\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k77"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:berthold-burgundzug",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-burgundzug",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1175,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-burgundzug rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k78"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "tausend Panzerreiter (loricatos equites)",
+      "id": "t12",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:berthold-burgundzug",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1135,
+       "end": 1175,
+       "ambiguous": false
+      },
+      "key": "k79"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "für den Burgundzug des Königs",
+      "id": "t13",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:berthold-burgundzug",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1105,
+       "end": 1134,
+       "ambiguous": false
+      },
+      "key": "k80"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k75"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k76"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k77"
+      ],
+      "text": "Friedrich"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k78"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:berthold-italienzug",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:berthold-italienzug",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "berthold-italienzug",
+     "own": true,
+     "evidence": {
+      "start": 1070,
+      "end": 1103,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-italienzug a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Berthold verpflichtet sich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k81"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:berthold-italienzug",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-italienzug",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-italienzug rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k82"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:berthold-italienzug",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-italienzug",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-italienzug rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k83"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22721:berthold-italienzug",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-italienzug-2",
+      "own": true,
+      "evidence": {
+       "start": 1177,
+       "end": 1338,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-italienzug rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"für den Italienzug, an dem er teilnehmen wird, für die Zeit seiner Anwesenheit fünfhundert Panzerreiter und fünfzig Armbrustschützen (arcobalistarios) zu stellen\" ] .",
+      "key": "k84"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "für die Zeit seiner Anwesenheit",
+      "id": "t14",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:berthold-italienzug",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1224,
+       "end": 1255,
+       "ambiguous": false
+      },
+      "key": "k85"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "fünfhundert Panzerreiter und fünfzig Armbrustschützen (arcobalistarios)",
+      "id": "t15",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:berthold-italienzug",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1256,
+       "end": 1327,
+       "ambiguous": false
+      },
+      "key": "k86"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "für den Italienzug, an dem er teilnehmen wird",
+      "id": "t16",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:berthold-italienzug",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1177,
+       "end": 1222,
+       "ambiguous": false
+      },
+      "key": "k87"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k81",
+       "k84"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k82",
+       "k84"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k83",
+       "k84"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:berthold-pfand",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:berthold-pfand",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "berthold-pfand",
+     "own": true,
+     "evidence": {
+      "start": 1070,
+      "end": 1103,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Berthold verpflichtet sich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k88"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Verpfänder",
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-pfand",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold\" ; rf:role rv:Pledgor ] .",
+      "role": "Verpfänder",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k89"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Pfandnehmer",
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-pfand",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"dem König\" ; rf:role rv:Pledgee ] .",
+      "role": "Pfandnehmer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k90"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern",
+      "text": "betrifft die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern",
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:burg-teck"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-pfand",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand rf:concerns x:burg-teck .\nx:burg-teck a crm:E18_Physical_Thing ;\n    rdfs:label \"die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern\" .",
+      "object": "urn:regesta:22721:burg-teck",
+      "key": "k91"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Erstein mit allen Pertinenzen",
+      "text": "betrifft Erstein mit allen Pertinenzen",
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:erstein"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-pfand",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand rf:concerns x:erstein .\nx:erstein a crm:E18_Physical_Thing ;\n    rdfs:label \"Erstein mit allen Pertinenzen\" .",
+      "object": "urn:regesta:22721:erstein",
+      "key": "k92"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Oethlingen (Hetlingen)",
+      "text": "betrifft Oethlingen (Hetlingen)",
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:oethlingen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-pfand",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand rf:concerns x:oethlingen .\nx:oethlingen a crm:E18_Physical_Thing ;\n    rdfs:label \"Oethlingen (Hetlingen)\" .",
+      "object": "urn:regesta:22721:oethlingen",
+      "key": "k93"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Wellingen (Willigen)",
+      "text": "betrifft Wellingen (Willigen)",
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22721:wellingen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-pfand",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand rf:concerns x:wellingen .\nx:wellingen a crm:E18_Physical_Thing ;\n    rdfs:label \"Wellingen (Willigen)\" .",
+      "object": "urn:regesta:22721:wellingen",
+      "key": "k94"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-pfand",
+      "own": true,
+      "evidence": {
+       "start": 1070,
+       "end": 1103,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k95"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berthold-pfand-2",
+      "own": true,
+      "evidence": {
+       "start": 1340,
+       "end": 1544,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:berthold-pfand rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"als Pfand wird er dem König sein Allod, die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern sowie Oethlingen (Hetlingen), Wellingen (Willigen) und Erstein mit allen Pertinenzen geben\" ] .",
+      "key": "k96"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "als Pfand",
+      "id": "t17",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:berthold-pfand",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1340,
+       "end": 1349,
+       "ambiguous": false
+      },
+      "key": "k97"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k88",
+       "k96"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Verpfänder ",
+     {
+      "keys": [
+       "k89",
+       "k96"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", als Pfandnehmer ",
+     {
+      "keys": [
+       "k90",
+       "k96"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k91",
+       "k96"
+      ],
+      "text": "die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern"
+     },
+     ", ",
+     {
+      "keys": [
+       "k92",
+       "k96"
+      ],
+      "text": "Erstein mit allen Pertinenzen"
+     },
+     ", ",
+     {
+      "keys": [
+       "k93",
+       "k96"
+      ],
+      "text": "Oethlingen (Hetlingen)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k94",
+       "k96"
+      ],
+      "text": "Wellingen (Willigen)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k95",
+       "k96"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:eid-ministerialen",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22721:eid-ministerialen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "eid-ministerialen",
+     "own": true,
+     "evidence": {
+      "start": 1546,
+      "end": 1609,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:eid-ministerialen a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Für den Herzog schwören seine Ministerialen Burchard und Werner\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k98"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Berthold (IV. von Zähringen)",
+      "text": "Herzog Berthold (IV. von Zähringen) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22721:eid-ministerialen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eid-ministerialen",
+      "own": true,
+      "evidence": {
+       "start": 1546,
+       "end": 1609,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:eid-ministerialen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"den Herzog\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000724"
+      ],
+      "key": "k99"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Burchard",
+      "text": "Burchard in der Rolle Vertreter",
+      "triple": [
+       "urn:regesta:22721:eid-ministerialen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eid-ministerialen",
+      "own": true,
+      "evidence": {
+       "start": 1546,
+       "end": 1609,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:eid-ministerialen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001610> ; rf:nameInSource \"Burchard\" ; rf:role rv:Representative ] .",
+      "role": "Vertreter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B001610"
+      ],
+      "key": "k100"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Werner",
+      "text": "Werner in der Rolle Vertreter",
+      "triple": [
+       "urn:regesta:22721:eid-ministerialen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eid-ministerialen",
+      "own": true,
+      "evidence": {
+       "start": 1546,
+       "end": 1609,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:eid-ministerialen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000357> ; rf:nameInSource \"Werner\" ; rf:role rv:Representative ] .",
+      "role": "Vertreter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000357"
+      ],
+      "key": "k101"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:eid-ministerialen",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eid-ministerialen",
+      "own": true,
+      "evidence": {
+       "start": 1546,
+       "end": 1609,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:eid-ministerialen rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k102"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "schwören",
+      "id": "t18",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:eid-ministerialen",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1561,
+       "end": 1569,
+       "ambiguous": false
+      },
+      "key": "k103"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k98"
+      ],
+      "text": "Zusicherung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k99"
+      ],
+      "text": "Herzog Berthold (IV. von Zähringen)"
+     },
+     ", als Vertrete ",
+     {
+      "keys": [
+       "k100"
+      ],
+      "text": "Burchard"
+     },
+     " und ",
+     {
+      "keys": [
+       "k101"
+      ],
+      "text": "Werner"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k102"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22721:koenig-feldzugsfrist",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22721:koenig-feldzugsfrist",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "koenig-feldzugsfrist",
+     "own": true,
+     "evidence": {
+      "start": 1613,
+      "end": 1757,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-feldzugsfrist a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Der König wird seinen Feldzug in die genannten Länder vom nächsten 1. Juni in der 15. Indiktion (1152 Juni 1) an innerhalb eines Jahres antreten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k104"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22721:koenig-feldzugsfrist",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "koenig-feldzugsfrist",
+      "own": true,
+      "evidence": {
+       "start": 1613,
+       "end": 1757,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-feldzugsfrist rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Der König\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k105"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22721:koenig-feldzugsfrist",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22721:vertrag"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "koenig-feldzugsfrist",
+      "own": true,
+      "evidence": {
+       "start": 1613,
+       "end": 1757,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22721:> .\nx:koenig-feldzugsfrist rf:partOf x:vertrag .\nx:vertrag a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:koenigreich-burgund ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Vertrag\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:nameInSource \"Herzog Berthold (IV. von Zähringen)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22721> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22721:vertrag",
+      "objectClaim": "vertrag",
+      "key": "k106"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "vom nächsten 1. Juni in der 15. Indiktion (1152 Juni 1) an innerhalb eines Jahres",
+      "id": "t19",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22721:koenig-feldzugsfrist",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1667,
+       "end": 1748,
+       "ambiguous": false
+      },
+      "key": "k107"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k104"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k105"
+      ],
+      "text": "Friedrich"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k106"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "vertrag",
+    "start": 0,
+    "end": 128
+   },
+   {
+    "id": "t1",
+    "start": 65,
+    "end": 72
+   },
+   {
+    "id": "koenig-zug-uebergabe",
+    "start": 130,
+    "end": 275
+   },
+   {
+    "id": "wilhelm-rechenschaft",
+    "start": 277,
+    "end": 418
+   },
+   {
+    "id": "wilhelm-besitz",
+    "start": 277,
+    "end": 387
+   },
+   {
+    "id": "wilhelm-nichte",
+    "start": 277,
+    "end": 387
+   },
+   {
+    "id": "t2",
+    "start": 326,
+    "end": 379
+   },
+   {
+    "id": "t3",
+    "start": 337,
+    "end": 343
+   },
+   {
+    "id": "herrschaft-koenig",
+    "start": 420,
+    "end": 492
+   },
+   {
+    "id": "t4",
+    "start": 474,
+    "end": 489
+   },
+   {
+    "id": "bistuemer-koenig",
+    "start": 494,
+    "end": 582
+   },
+   {
+    "id": "t5",
+    "start": 494,
+    "end": 511
+   },
+   {
+    "id": "t6",
+    "start": 523,
+    "end": 526
+   },
+   {
+    "id": "investitur-herzog",
+    "start": 584,
+    "end": 700
+   },
+   {
+    "id": "fruehere-investitur",
+    "start": 584,
+    "end": 662
+   },
+   {
+    "id": "t7",
+    "start": 598,
+    "end": 604
+   },
+   {
+    "id": "t8",
+    "start": 605,
+    "end": 644
+   },
+   {
+    "id": "buergen-koenig",
+    "start": 702,
+    "end": 864
+   },
+   {
+    "id": "t9",
+    "start": 702,
+    "end": 719
+   },
+   {
+    "id": "buergen-koenig-2",
+    "start": 877,
+    "end": 1066
+   },
+   {
+    "id": "colbo-bruder",
+    "start": 1028,
+    "end": 1066
+   },
+   {
+    "id": "t10",
+    "start": 1050,
+    "end": 1056
+   },
+   {
+    "id": "berthold-burgundzug",
+    "start": 1070,
+    "end": 1175
+   },
+   {
+    "id": "berthold-allod",
+    "start": 1070,
+    "end": 1103
+   },
+   {
+    "id": "berthold-italienzug",
+    "start": 1070,
+    "end": 1103
+   },
+   {
+    "id": "berthold-pfand",
+    "start": 1070,
+    "end": 1103
+   },
+   {
+    "id": "t13",
+    "start": 1105,
+    "end": 1134
+   },
+   {
+    "id": "t12",
+    "start": 1135,
+    "end": 1175
+   },
+   {
+    "id": "berthold-italienzug-2",
+    "start": 1177,
+    "end": 1338
+   },
+   {
+    "id": "t16",
+    "start": 1177,
+    "end": 1222
+   },
+   {
+    "id": "t14",
+    "start": 1224,
+    "end": 1255
+   },
+   {
+    "id": "t15",
+    "start": 1256,
+    "end": 1327
+   },
+   {
+    "id": "berthold-pfand-2",
+    "start": 1340,
+    "end": 1544
+   },
+   {
+    "id": "berthold-allod-2",
+    "start": 1340,
+    "end": 1403
+   },
+   {
+    "id": "t17",
+    "start": 1340,
+    "end": 1349
+   },
+   {
+    "id": "t11",
+    "start": 1368,
+    "end": 1378
+   },
+   {
+    "id": "eid-ministerialen",
+    "start": 1546,
+    "end": 1609
+   },
+   {
+    "id": "t18",
+    "start": 1561,
+    "end": 1569
+   },
+   {
+    "id": "koenig-feldzugsfrist",
+    "start": 1613,
+    "end": 1757
+   },
+   {
+    "id": "t19",
+    "start": 1667,
+    "end": 1748
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Egeno (wohl von Vaihingen): identified with RI004-002-E000167, but the regest itself marks the toponym as uncertain ('wohl')",
+     "lang": "en"
+    },
+    {
+     "text": "Kanzler Arnold: identified with RI004-002-A001203 (Arnold von Selenhofen, 'vorher Kanzler') by name and title",
+     "lang": "en"
+    },
+    {
+     "text": "anderen Fürsten and the bishops invested by them are regest-local functional actors",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a bilateral agreement (Vertrag, conventio); the main act is rv:Enactment with both parties as rv:Participant and rf:qualifier 'Vertrag'",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No surety role (Bürge); the sureties of the king are rv:Obligor in an rv:Obligation state with rf:qualifier 'Bürgen des Königs', and the king is rv:Participant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No oath act type; the oath of the ministeriales Burchard and Werner for the duke is rv:Assurance with rv:Representative roles",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "rv:Kin carries no direction, so 'Nichte' (Beatrix niece of Wilhelm) and 'Bruder' lose which party holds which position except through the qualifier",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the person from whom a holding derives; Wilhelm's holding 'von seiner Nichte (Beatrix ...) her' is kept only as rf:qualifier",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Disjunctive grantors in the earlier investitures ('vom Grafen Wilhelm oder anderen Fürsten') are two rv:Grantor references; the 'oder' is not expressible",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "rf:amount is used for troop contingents (Panzerreiter, Armbrustschützen), not money",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Ministerial dependency ('seine Ministerialen', 'mit allen Ministerialen') has no state type and is not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "summary_plain contains a corrupted character in the Latin form after 'Ulrich von Herrlingen'; evidence selectors avoid it by splitting the surety list into two selectors",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a bilateral agreement or contract (Vertrag); rv:Enactment with two rv:Participant references is a stand-in.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No surety role (Bürge); sureties are forced into rv:Obligor under an rv:Obligation state.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No oath act type (schwören); rv:Assurance is a stand-in.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "rv:Kinship with two rv:Kin roles cannot encode the direction of an asymmetric kinship word such as Nichte.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No means to express a disjunction of actors ('oder').",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added rf:qualifier \"vom Grafen Wilhelm oder anderen Fürsten\" to <urn:regesta:22721:fruehere-investitur>, keeping qualifier \"bisher\" and both grantor references; factoid now attributed to correction-g5.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "lost-condition",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22721:fruehere-investitur",
+     "description": "The passage names the earlier investing parties disjunctively ('oder'). Two parallel rv:Grantor references read as if Graf Wilhelm and the other princes jointly invested the same bishops; the alternative is lost.",
+     "proposal": "Keep the alternative explicitly, for example rf:qualifier \"vom Grafen Wilhelm oder anderen Fürsten\", or split into two factoids that each carry the 'oder' wording; report the disjunction as a model gap.",
+     "quote": {
+      "start": 584,
+      "end": 662
+     }
+    },
+    {
+     "category": "relation-misuse",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22721:investitur-herzog",
+     "description": "rf:refersToAct is defined for a confirmation or assurance referring to an earlier act. The investiture provision does not confirm the earlier investitures; it only identifies the bishops by them. The link overstates the relation.",
+     "proposal": "Drop rf:refersToAct here; the functional actor label already carries the identifying clause. The duke's role could be rv:Grantor (he invests), with rv:Investiture as the concerned right.",
+     "quote": {
+      "start": 584,
+      "end": 700
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22721:berthold-italienzug",
+     "description": "The parallel factoid for the Burgundy campaign names the king as beneficiary; the Italy campaign provision of the same sentence does not, although the troops are owed for the king's campaign.",
+     "proposal": "Optional: leave as is, since the passage does not name the king in this clause; otherwise state the asymmetry deliberately.",
+     "quote": {
+      "start": 1177,
+      "end": 1338
+     }
+    },
+    {
+     "category": "kinship-direction",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22721:wilhelm-nichte",
+     "description": "Both actors carry rv:Kin and the qualifier 'Nichte' does not say who is the niece of whom. The passage is clear that Beatrix is Wilhelm's niece; the graph cannot express the direction.",
+     "proposal": "No change possible within the contract; record as model gap.",
+     "quote": {
+      "start": 326,
+      "end": 387
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The disjunction 'vom Grafen Wilhelm oder anderen Fürsten' is lost; two parallel grantors read as joint investiture.",
+     "reason": "The passage says 'Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden'; the alternative can be kept in exact wording as a qualifier without changing the structure.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "rf:refersToAct to the earlier investitures overstates the relation; the duke could be rv:Grantor.",
+     "reason": "rf:refersToAct is defined for a later act 'such as' a confirmation or assurance that refers to an earlier act of the same regest; the provision does refer to the earlier investitures to define who receives investiture. rv:RightHolder with the investiture right is a defensible reading of 'empfangen ihre Investitur vom Herzog'.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The king is not named as beneficiary of the Italy campaign provision.",
+     "reason": "The clause 'für den Italienzug, an dem er teilnehmen wird' names no beneficiary, unlike 'für den Burgundzug des Königs'; the candidate follows the wording.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The direction of 'Nichte' is not expressible with two rv:Kin roles.",
+     "reason": "The contract gives rv:Kinship with rv:Kin roles and the kinship word in rf:qualifier; it has no directional kin roles.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Formlose Aufzeichnung des bereits vorher mündlich durch Eidesleistungen der genannten Personen geschlossenen Vertrages; gegen Erben, Privilegium für Österreich 41 f., aber wohl keine von Wibald für seine eigenen Zwecke aufgezeichnete Notiz, vgl. Vorbemerkung zum D. Es kam wohl nicht zur Ausfertigung eines feierlichen Diploms, vgl. zuletzt Riedmann, Verträge, SB. Wien 291/3 (1973) 139 ff. - Die zeitliche Einordnung ergibt sich aus dem Termin für den geplanten Burgundzug, der Abschluß des Vertrages ist nach der teilweisen Übereinstimmung der genannten Bürgen mit den Zeugenlisten der DD. F. I. 9-11 wohl mit Simonsfeld, Jahrbücher 78 in den Mai 1152 zu setzen. - Zum Inhalt vgl. Rauch, Bündnisse mit Reichsangehörigen (Untersuchungen zur dt. Staats- u. Rechtsgesch. N. F. 5, 1966) 5 ff., Büttner, Friedrich Barbarossa und Burgund (VuF 12, 1968) 88 f. und ders., Staufer und Zähringer (VuF 15, 1972) 468 f. - Zum Geschlecht derer von "
+    },
+    {
+     "t": "H얏rnunge",
+     "i": true
+    },
+    {
+     "t": " vgl. die Ausführungen von Jänichen, Herrschafts- und Territorialverhältnisse (Schriften zur südwestdeutschen Landeskunde 2, 1964) 4 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift aus der Mitte des 12. Jh. im Cod. Wibaldi f. 125, Staatsarchiv Lüttich (B). Drucke: Jaffé, Mon. Corb. 514 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 383; MG. Const. 1, 199 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 141; MG. DF. I. 12. Reg.: Hidber 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1982; Stumpf 3628."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=35"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_12"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in WUB-Online "
+    },
+    {
+     "t": "zum Mai",
+     "href": "http://www.wubonline.de/?wub=541"
+    },
+    {
+     "t": ", "
+    },
+    {
+     "t": "zu vor 1. Juni",
+     "href": "http://www.wubonline.de/?wub=543"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001234",
+    "von Biberbach"
+   ],
+   [
+    "RI004-002-B000330",
+    "von (Hoch-)Burgund, Königin und Kaiserin, Gemahlin Friedrich Barbarossas, voher Gräfin von Burgund"
+   ],
+   [
+    "RI004-002-B000724",
+    "(IV.), Herzog von Zähringen, Breisgau und Burgund"
+   ],
+   [
+    "RI004-002-B001610",
+    "Ministeriale Herzog Bertholds IV. von Zähringen"
+   ],
+   [
+    "RI004-002-B001643",
+    "Burgund, auch Hochburgund (sowohl das Königreich als auch der Kernraum der Grafschaft)"
+   ],
+   [
+    "RI004-002-B001645",
+    "Burgundzug"
+   ],
+   [
+    "RI004-002-E000167",
+    "Graf von Vaihingen"
+   ],
+   [
+    "RI004-002-E000504",
+    "Erstein (am Rhein, südl. Straßburg, Dép. Bas-Rhin), (Benediktinerinnen-)Abtei"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000982",
+    "Kaiserlicher Mundschenk"
+   ],
+   [
+    "RI004-002-I000220",
+    "Italienzug, Reichsheerfahrt (siehe auch: Romzug)"
+   ],
+   [
+    "RI004-002-K000492",
+    "Colbo (Kolbe) von Oberschüpf, von Klingenberg, auch <i>de Maze</i>, Reichsministeriale, kaiserlicher Mundschenk"
+   ],
+   [
+    "RI004-002-M000513",
+    "(II., der Ältere) von Grumbach (Edelfreier); <i>zu ihm siehe auch oben in der Einleitung, S. 32</i>"
+   ],
+   [
+    "RI004-002-O000367",
+    "Oethlingen (<i>heute:</i> Ötlingen, westl. Kirchheim unter Teck, Ldkr. Esslingen, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-S000708",
+    "Bruder des Konrad Colbo von Oberschüpf (<i>wohl: ebenfalls Reichsministeriale</i>)"
+   ],
+   [
+    "RI004-002-T000056",
+    "Teck (südl. Kirchheim unter Teck, Bad.-Württ.), Burg"
+   ],
+   [
+    "RI004-002-U000176",
+    "(II.) Graf bzw. Edelfreier von Herrlingen"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000148",
+    "kaiserlicher Truchsess, Reichsministeriale (der Ältere, <i>wohl:</i> Bruder des Truchsessen Arnold von Rothenburg)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000279",
+    "Wellingen (Teil von Notzingen, Ldkr. Esslingen, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-W000357",
+    "Ministeriale Herzog Bertholds (IV.) von Zähringen"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000568",
+    "Graf von Mâcon (-Vienne) und Burgund"
+   ]
+  ]
+ }
+}

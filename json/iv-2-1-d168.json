@@ -1,0 +1,679 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-03-00_1_0_4_2_1_168_D168",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22795",
+  "identifier": "RI IV,2,1 n. D168",
+  "short": "RI IV,2,1 n. D168",
+  "sort": "004_002_001_000168_000000D168",
+  "start": "1153-03-01",
+  "end": "1153-03-31",
+  "proseYears": [],
+  "lead": "Friedrich erläßt an die Mailänder nach Klagen der Bürger Albernardus Alamanus und Magister Homobonus von Lodi wegen der von ihnen gewaltsam vorgenommenen Verlegung eines Marktes der Lodesaner ein Mandat (iam dictum mercatum de burgo Placentino, in quo prius fieri solitum fuerat, abstulerunt et in quodam campo aperto, ubi nullus habitat, ipsum fieri constituerunt ac ipsos Laudenses ibi mercatum deinceps facere compulerunt).",
+  "date": [
+   {
+    "t": "(1153 März)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Konstanz)"
+   }
+  ],
+  "text": "Friedrich erläßt an die Mailänder nach Klagen der Bürger Albernardus Alamanus und Magister Homobonus von Lodi wegen der von ihnen gewaltsam vorgenommenen Verlegung eines Marktes der Lodesaner ein Mandat (iam dictum mercatum de burgo Placentino, in quo prius fieri solitum fuerat, abstulerunt et in quodam campo aperto, ubi nullus habitat, ipsum fieri constituerunt ac ipsos Laudenses ibi mercatum deinceps facere compulerunt).",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22795:mandate",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22795:mandate",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mandate",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 33,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22795:> .\nx:mandate a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22795> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich erläßt an die Mailänder\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-41> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22795:mandate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 33,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:mandate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Mailänder",
+      "text": "Mailänder in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22795:mandate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 33,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:mandate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000144:community> ; rf:nameInSource \"Mailänder\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000144:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Marktrecht (Marktes der Lodesaner)",
+      "text": "betrifft Marktrecht (Marktes der Lodesaner)",
+      "triple": [
+       "urn:regesta:22795:mandate",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22795:market-lodesaner"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 33,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:mandate rf:concerns x:market-lodesaner .\nx:market-lodesaner a crm:E30_Right ;\n    crm:P2_has_type rv:Market ;\n    rdfs:label \"Marktes der Lodesaner\" .",
+      "object": "urn:regesta:22795:market-lodesaner",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22795:mandate",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22795:complaints"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 33,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:mandate rf:refersToAct x:complaints .\nx:complaints a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-41> ;\n    rf:concerns x:market-lodesaner ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach Klagen der Bürger Albernardus Alamanus und Magister Homobonus von Lodi wegen der von ihnen gewaltsam vorgenommenen Verlegung eines Marktes der Lodesaner\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:ground \"wegen der von ihnen gewaltsam vorgenommenen Verlegung eines Marktes der Lodesaner\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000547> ; rf:nameInSource \"Albernardus Alamanus\" ; rf:role rv:Claimant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001179> ; rf:nameInSource \"Magister Homobonus von Lodi\" ; rf:role rv:Claimant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000144:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Respondent ] ;\n    rf:source <urn:regesta:record:22795> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22795:complaints",
+      "objectClaim": "complaints",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22795:mandate",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-2",
+      "own": true,
+      "evidence": {
+       "start": 192,
+       "end": 202,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:mandate rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"ein Mandat\" ] .",
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Mailänder"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "Marktrecht (Marktes der Lodesaner)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22795:complaints",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22795:complaints",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "complaints",
+     "own": true,
+     "evidence": {
+      "start": 34,
+      "end": 191,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22795:> .\nx:complaints a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22795> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach Klagen der Bürger Albernardus Alamanus und Magister Homobonus von Lodi wegen der von ihnen gewaltsam vorgenommenen Verlegung eines Marktes der Lodesaner\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-41> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Albernardus Alamanus",
+      "text": "Albernardus Alamanus in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22795:complaints",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaints",
+      "own": true,
+      "evidence": {
+       "start": 34,
+       "end": 191,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:complaints rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000547> ; rf:nameInSource \"Albernardus Alamanus\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000547"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Magister Homobonus von Lodi",
+      "text": "Magister Homobonus von Lodi in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22795:complaints",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaints",
+      "own": true,
+      "evidence": {
+       "start": 34,
+       "end": 191,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:complaints rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001179> ; rf:nameInSource \"Magister Homobonus von Lodi\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001179"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Mailänder",
+      "text": "Mailänder in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22795:complaints",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaints",
+      "own": true,
+      "evidence": {
+       "start": 34,
+       "end": 191,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:complaints rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000144:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000144:community"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Marktrecht (Marktes der Lodesaner)",
+      "text": "betrifft Marktrecht (Marktes der Lodesaner)",
+      "triple": [
+       "urn:regesta:22795:complaints",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22795:market-lodesaner"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaints",
+      "own": true,
+      "evidence": {
+       "start": 34,
+       "end": 191,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22795:> .\nx:complaints rf:concerns x:market-lodesaner .\nx:market-lodesaner a crm:E30_Right ;\n    crm:P2_has_type rv:Market ;\n    rdfs:label \"Marktes der Lodesaner\" .",
+      "object": "urn:regesta:22795:market-lodesaner",
+      "key": "k11"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen der von ihnen gewaltsam vorgenommenen Verlegung eines Marktes der Lodesaner",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22795:complaints",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 110,
+       "end": 191,
+       "ambiguous": false
+      },
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Albernardus Alamanus"
+     },
+     " und ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Magister Homobonus von Lodi"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Mailänder"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Marktrecht (Marktes der Lodesaner)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "mandate",
+    "start": 0,
+    "end": 33
+   },
+   {
+    "id": "complaints",
+    "start": 34,
+    "end": 191
+   },
+   {
+    "id": "t1",
+    "start": 110,
+    "end": 191
+   },
+   {
+    "id": "mandate-2",
+    "start": 192,
+    "end": 202
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'ihnen' in 'von ihnen gewaltsam vorgenommenen Verlegung' read as the Milanese (Respondent); grammatically it could refer to the complainants.",
+     "lang": "en"
+    },
+    {
+     "text": "The Lodesaner have no register candidate; kept only in the label of the market right, not as an actor.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a forcible seizure or relocation of a right (usurpation); the relocation of the market and the compulsion of the Laudenses (Latin quote) are not recorded as own factoids.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The content of the mandate is not stated in German; the Latin quote describes the wrong and is not used as evidence.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The genitive 'Marktes der Lodesaner' would suggest a right holding, not recorded because it rests only on the complaint.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No relation for an act occasioned by another act (mandate upon complaint).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "The Latin narratio (removal from the burgus Placentinus, relocation to an uninhabited open field, compulsion of the Lodesans) can only be kept as an exact literal; the contract has no property for the content of a mandate or the former and new location of a moved market.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-actor",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22795:complaints",
+     "description": "The Lodesans, whose market was moved and who were compelled to hold it in the open field, appear in no reference. They are the injured party of the dispute and the holders of the market right named by the passage. No community candidate exists in the packet, so a regest-local group would be needed.",
+     "proposal": "Add a local group urn:regesta:actor:22795:local:lodesaner (crm:E74_Group, label 'Lodesaner') as rv:Beneficiary of the complaint, or a StateFactoid rv:RightHolding with the Lodesans as rv:RightHolder of the market.",
+     "quote": {
+      "start": 154,
+      "end": 191
+     }
+    },
+    {
+     "category": "relation-misuse",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22795:mandate",
+     "description": "rf:refersToAct links the mandate to the complaints. The contract defines refersToAct for a later confirmation or assurance referring to an earlier act; a mandate issued upon complaints is a response, not a confirmation. The link is useful but stretches the definition.",
+     "proposal": "Keep the link but record that the contract lacks an 'occasioned by' relation, or use rf:ground with the exact wording 'nach Klagen der Bürger Albernardus Alamanus und Magister Homobonus von Lodi' on the mandate.",
+     "quote": {
+      "start": 34,
+      "end": 109
+     }
+    },
+    {
+     "category": "identification-reading",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22795:complaints",
+     "description": "The Milanese are referenced as rv:Respondent via the pronoun 'ihnen'. The German sentence is grammatically ambiguous; the reading rests on the Latin quotation and on the mandate's address. It is plausible but is an interpretive step an expert should confirm.",
+     "proposal": "No change; mark the pronoun resolution for expert review.",
+     "quote": {
+      "start": 110,
+      "end": 191
+     }
+    },
+    {
+     "category": "type-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22795:market-lodesaner",
+     "description": "The market is typed crm:E30_Right with rv:Market. The passage speaks of moving a market (an event and place), not of a market privilege. The right reading is defensible but not stated by the regest.",
+     "proposal": "Consider crm:E18_Physical_Thing or a place for the market itself, or keep the right with an editorial note.",
+     "quote": {
+      "start": 154,
+      "end": 191
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The Lodesaner, whose market was moved, appear in no reference; a local group as rv:Beneficiary or a RightHolding state is proposed.",
+     "reason": "The passage names them only in the genitive of the concerned object ('Verlegung eines Marktes der Lodesaner'), and that wording is kept in the label of urn:regesta:22795:market-lodesaner. The regest does not say the complaint is made on their behalf (Beneficiary would be a reading), and a RightHolding state would rest on the right-reading of the market that the same review questions. The claimants who are named, the two citizens of Lodi, are referenced.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "rf:refersToAct links the mandate to the complaints although refersToAct is defined for confirmations and assurances.",
+     "reason": "The definition of rf:refersToAct names confirmation and assurance as examples ('such as'), not as an exhaustive list; a mandate issued 'nach Klagen der Bürger ...' refers to the earlier act reported by the same regest and implies no date.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The Milanese as rv:Respondent rest on resolving the pronoun 'ihnen'.",
+     "reason": "The reading is supported by the address of the mandate ('Friedrich erläßt an die Mailänder') and by the Latin narratio ('abstulerunt ... constituerunt ... compulerunt'), and rf:nameInSource \"ihnen\" keeps the pronoun visible. The reviewer proposes no change.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The market is typed crm:E30_Right with rv:Market although the passage speaks of moving a market.",
+     "reason": "The guidelines allow a right as concerned object, and the label keeps the source wording 'Marktes der Lodesaner'. Retyping it as a thing would be another reading of equal strength, not a correction.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Nach Morena, a. a. O. 5 f. soll der Kanzler Arnold ("
+    },
+    {
+     "t": "cancellarium suum vocavit ac litteras, que sic dicerent, sicut Albernardus dixerat, eum statim facere precepit",
+     "i": true
+    },
+    {
+     "t": ") dieses Mandat ("
+    },
+    {
+     "t": "litteris ... sigillatis sed tamen apertis",
+     "i": true
+    },
+    {
+     "t": ") hergestellt haben, das der Legat Sicher überbrachte; vgl. auch Simonsfeld, Jahrbücher 172 sowie Reg. "
+    },
+    {
+     "t": "192",
+     "regest": "22819"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Deperditum; erwähnt bei Otto Morena, ed. Güterbock, MG. SS rer. Germ. N. S. VII, 5 f."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=60"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_46"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-46"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000547",
+    "Albernardus Alamanus, Bürger von Lodi"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-H001179",
+    "Magister, Bürger von Lodi"
+   ],
+   [
+    "RI004-002-L000550",
+    "Lodi (Vecchio, am Lambro, südöstl. Mailand, ital. Prov. Lodi Nuovo)"
+   ],
+   [
+    "RI004-002-M000144",
+    "Bewohner (Mailänder), <i>burgenses</i>, <i>cives</i>, Heer, Ritter, <i>rustici</i>, Truppen"
+   ],
+   [
+    "RI004-002-S000646",
+    "Legat Friedrich Barbarossas"
+   ]
+  ]
+ }
+}

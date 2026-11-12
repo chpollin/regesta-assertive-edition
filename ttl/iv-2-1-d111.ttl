@@ -1,0 +1,67 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-07-25_2_0_4_2_1_111_D111
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22738> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. D111" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-I000255:community> a crm:E74_Group ;
+    rdfs:label "Augustiner Chorherrenstift St. Laurentius zu Ittingen" .
+
+# No register candidate of this packet names Duke Welf VI; the candidates only describe ministeriales of his.
+<urn:regesta:actor:22738:local:welf-vi> a crm:E21_Person ;
+    rdfs:label "Herzog Welfs (VI.)" .
+
+<urn:regesta:22738:gut-ittingen> a crm:E18_Physical_Thing ;
+    rdfs:label "Gutes Ittingen" .
+
+<urn:regesta:22738:vogtei-uesslingen> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "Vogtei der Kirche in Üßlingen" .
+
+<urn:regesta:22738:donation> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22738> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Herzog Welfs (VI.) die von diesem vollzogene Schenkung des Gutes Ittingen und der Vogtei der Kirche in Üßlingen" ] ;
+    rf:reference <urn:regesta:22738:donation-ref-welf> ;
+    rf:concerns <urn:regesta:22738:gut-ittingen> , <urn:regesta:22738:vogtei-uesslingen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-27> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22738:donation-ref-welf> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22738:local:welf-vi> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Herzog Welfs (VI.)" .
+
+<urn:regesta:22738:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22738> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt auf einem Hoftag zu Ulm (in curia quę aput Vlmam in festo beati Iacobi apostoli celebrataest) dem Augustiner Chorherrenstift St. Laurentius zu Ittingen gemäß einer Urkunde Herzog Welfs (VI.) die von diesem vollzogene Schenkung des Gutes Ittingen und der Vogtei der Kirche in Üßlingen." ] ;
+    rf:reference <urn:regesta:22738:confirmation-ref-friedrich> , <urn:regesta:22738:confirmation-ref-stift> ;
+    rf:refersToAct <urn:regesta:22738:donation> ;
+    rf:concerns <urn:regesta:22738:gut-ittingen> , <urn:regesta:22738:vogtei-uesslingen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-27> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22738:confirmation-ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22738:confirmation-ref-stift> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-I000255:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Augustiner Chorherrenstift St. Laurentius zu Ittingen" .

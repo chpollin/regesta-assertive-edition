@@ -1,0 +1,439 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-06-29_2_0_4_2_1_96_96",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22723",
+  "identifier": "RI IV,2,1 n. 96",
+  "short": "RI IV,2,1 n. 96",
+  "sort": "004_002_001_000096_0000000096",
+  "start": "1152-06-29",
+  "end": "1152-06-29",
+  "proseYears": [],
+  "lead": "Auf dem Regensburger Hoftag König Friedrichs bestätigt Erzbischof Eberhard von Salzburg einen Gütertausch zwischen dem Kloster Admont und dem Pfalzgrafen Otto dem Älteren von Wittelsbach.",
+  "date": [
+   {
+    "t": "1152 Juni 29"
+   }
+  ],
+  "place": [
+   {
+    "t": "Regensburg"
+   }
+  ],
+  "text": "Auf dem Regensburger Hoftag König Friedrichs bestätigt Erzbischof Eberhard von Salzburg einen Gütertausch zwischen dem Kloster Admont und dem Pfalzgrafen Otto dem Älteren von Wittelsbach. Z.: Graf Heinrich von Wolfratshausen, Adelbert von Eurasburg (Iringispurch), Ulrich von Stein, During von Werfen, die Brüder Hartnid und Markward, Wisinto, Otto von Pongau (Bongowe), Karl von Mantelkirchen, Liupold, Wilhelm.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22723:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22723:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 45,
+      "end": 186,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22723:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22723> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt Erzbischof Eberhard von Salzburg einen Gütertausch zwischen dem Kloster Admont und dem Pfalzgrafen Otto dem Älteren von Wittelsbach\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Eberhard von Salzburg",
+      "text": "Erzbischof Eberhard von Salzburg in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22723:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 45,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22723:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000010> ; rf:nameInSource \"Erzbischof Eberhard von Salzburg\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000010"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22723:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22723:exchange"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 45,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22723:> .\nx:confirmation rf:refersToAct x:exchange .\nx:exchange a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"einen Gütertausch zwischen dem Kloster Admont und dem Pfalzgrafen Otto dem Älteren von Wittelsbach\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:qualifier \"Gütertausch\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000358:community> ; rf:nameInSource \"Kloster Admont\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000442> ; rf:nameInSource \"Pfalzgrafen Otto dem Älteren von Wittelsbach\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22723> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22723:exchange",
+      "objectClaim": "exchange",
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Erzbischof Eberhard von Salzburg"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22723:exchange",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22723:exchange",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "exchange",
+     "own": true,
+     "evidence": {
+      "start": 88,
+      "end": 186,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22723:> .\nx:exchange a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22723> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"einen Gütertausch zwischen dem Kloster Admont und dem Pfalzgrafen Otto dem Älteren von Wittelsbach\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Admont",
+      "text": "Kloster Admont in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22723:exchange",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22723:> .\nx:exchange rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000358:community> ; rf:nameInSource \"Kloster Admont\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000358:community"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Pfalzgrafen Otto dem Älteren von Wittelsbach",
+      "text": "Pfalzgrafen Otto dem Älteren von Wittelsbach in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22723:exchange",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22723:> .\nx:exchange rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000442> ; rf:nameInSource \"Pfalzgrafen Otto dem Älteren von Wittelsbach\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000442"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Gütertausch",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22723:exchange",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 94,
+       "end": 105,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Übertragung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Kloster Admont"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Pfalzgrafen Otto dem Älteren von Wittelsbach"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 45,
+    "end": 186
+   },
+   {
+    "id": "exchange",
+    "start": 88,
+    "end": 186
+   },
+   {
+    "id": "t1",
+    "start": 94,
+    "end": 105
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for an exchange of goods (Gütertausch); recorded as rv:Grant with rf:qualifier \"Gütertausch\" and both parties as rv:Participant, which loses the reciprocity.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for an exchange (Gütertausch); rv:Grant with qualifier is a stand-in and leaves both sides as rv:Participant.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "identity",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:actor:RI004-002-O000442",
+     "description": "The packet carries two Pfalzgraf Otto von Wittelsbach candidates, O000441 (Otto IV., gest. 1156) and O000442 (Otto V., 'der Ältere'). The choice of O000442 follows the literal epithet 'dem Älteren', which is a legitimate name match, but the ambiguity is not documented in the Turtle file and the epithet may distinguish a father from a son in this source rather than match the register's usage.",
+     "proposal": "Keep the identification as a reading, but record it as unresolved identity between O000441 and O000442 for expert review.",
+     "quote": {
+      "start": 138,
+      "end": 186
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "O000442 versus O000441 for 'Pfalzgrafen Otto dem Älteren von Wittelsbach' is undocumented.",
+     "reason": "Candidate O000442 carries 'Otto (V., gest. 1183) der Ältere, Pfalzgraf von Wittelsbach', matching name, title and the epithet of the passage; O000441 lacks the epithet. Documenting residual doubt is a report matter, not a graph correction.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [],
+   "transmission": [
+    {
+     "t": "Urkunde Erzbischof Eberhards I. von Salzburg von 1152 Juni 29-September 23, Hauthaler-Martin, Salzburger UB. 2, 413 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 296; Stumpf 3630."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=36"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000182",
+    "von Eurasburg"
+   ],
+   [
+    "RI004-002-A000358",
+    "Admont (im Ennstal, Steiermark), Benediktinerkloster, auch Frauenkloster"
+   ],
+   [
+    "RI004-002-E000010",
+    "Erzbischof von Salzburg"
+   ],
+   [
+    "RI004-002-H000188",
+    "[k.A.]"
+   ],
+   [
+    "RI004-002-H000563",
+    "(II.), Graf von Wolfratshausen"
+   ],
+   [
+    "RI004-002-K000084",
+    "von Mantelkirchen"
+   ],
+   [
+    "RI004-002-L000393",
+    "[k.A.]"
+   ],
+   [
+    "RI004-002-M000526",
+    "[k.A.]"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-O000442",
+    "Otto (V., gest. 1183) der Ältere, Pfalzgraf von Wittelsbach bzw. Bayern, Bannerträger Friedrich Barbarossas, dann Herzog von Bayern (<i>siehe dort</i>); <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-O000490",
+    "von Pongau"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-T000249",
+    "von Werfen"
+   ],
+   [
+    "RI004-002-U000225",
+    "von Stein, Edelfreier"
+   ],
+   [
+    "RI004-002-W000637",
+    "[k.A.]"
+   ],
+   [
+    "RI004-002-W000720",
+    "Wisinto"
+   ]
+  ]
+ }
+}

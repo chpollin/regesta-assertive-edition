@@ -1,0 +1,60 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-00-00_2_0_4_2_1_204_204
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22831> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 204" .
+
+<urn:regesta:actor:RI004-002-W000744> a crm:E21_Person ;
+    rdfs:label "Herzog Wladislaw (II. von Polen )" .
+
+# The daughter is not named in the summary. The packet candidate RI004-002-C000666 matches only
+# through its label description, so she stays regest-local (reported as unresolved identity).
+<urn:regesta:actor:22831:local:tochter-albrecht> a crm:E21_Person ;
+    rdfs:label "eine Tochter des Markgrafen Albrecht (des Bären) von Sachsen" .
+
+<urn:regesta:actor:22831:local:albrecht> a crm:E21_Person ;
+    rdfs:label "Markgrafen Albrecht (des Bären) von Sachsen" .
+
+<urn:regesta:22831:marriage> a rf:ActFactoid ;
+    rf:factoidType rv:MarriageConclusion ;
+    rf:source <urn:regesta:record:22831> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Herzog Wladislaw (II. von Polen )" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "heiratet eine Tochter des Markgrafen Albrecht (des Bären) von Sachsen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-W000744> ;
+        rf:role rv:Spouse ;
+        rf:nameInSource "Herzog Wladislaw (II. von Polen )" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22831:local:tochter-albrecht> ;
+        rf:role rv:Spouse ;
+        rf:nameInSource "eine Tochter" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-50> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22831:parenthood> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22831> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "eine Tochter des Markgrafen Albrecht (des Bären) von Sachsen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22831:local:albrecht> ;
+        rf:role rv:Parent ;
+        rf:nameInSource "Markgrafen Albrecht (des Bären) von Sachsen" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22831:local:tochter-albrecht> ;
+        rf:role rv:Child ;
+        rf:nameInSource "eine Tochter" ] ;
+    rf:qualifier "Tochter" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-50> ;
+    rf:verificationStatus rv:unchecked .

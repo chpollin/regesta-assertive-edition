@@ -1,0 +1,1069 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-00_1_0_4_2_1_90_90",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22717",
+  "identifier": "RI IV,2,1 n. 90",
+  "short": "RI IV,2,1 n. 90",
+  "sort": "004_002_001_000090_0000000090",
+  "start": "1152-05-01",
+  "end": "1152-05-31",
+  "proseYears": [],
+  "lead": "Wibald schreibt an Erzbischof Arnold von Köln unter anderem, daß ihm der König wegen seiner Verdienste um seine Wahl und der späteren Leistungen sehr dankbar sei, Lothringen (regnum Lotharingiae) seiner Disposition überlasse, in welcher Hinsicht der Kanzler (Arnold) und der Notar (Heinrich) den Bemühungen einiger Laien(fürsten) beim König entgegenwirken, und daß er über die neulich, allerdings ohne Wissen des Königs eroberte Burg frei verfügen könne; den Abt von Prüm möge er schonen, damit sich der König nicht versündige (ne serenus augustus in Deum peccet cum suae famae vel modico detrimento ).",
+  "date": [
+   {
+    "t": "(1152 Mai)"
+   }
+  ],
+  "place": [],
+  "text": "Wibald schreibt an Erzbischof Arnold von Köln unter anderem, daß ihm der König wegen seiner Verdienste um seine Wahl und der späteren Leistungen sehr dankbar sei, Lothringen (regnum Lotharingiae) seiner Disposition überlasse, in welcher Hinsicht der Kanzler (Arnold) und der Notar (Heinrich) den Bemühungen einiger Laien(fürsten) beim König entgegenwirken, und daß er über die neulich, allerdings ohne Wissen des Königs eroberte Burg frei verfügen könne; den Abt von Prüm möge er schonen, damit sich der König nicht versündige (ne serenus augustus in Deum peccet cum suae famae vel modico detrimento ).",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22717:f-castle-free-disposal",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22717:f-castle-free-disposal",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-castle-free-disposal",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 45,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-castle-free-disposal a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22717> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald schreibt an Erzbischof Arnold von Köln\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Arnold von Köln",
+      "text": "Erzbischof Arnold von Köln in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22717:f-castle-free-disposal",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-castle-free-disposal",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-castle-free-disposal rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Erzbischof Arnold von Köln\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001202"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die neulich, allerdings ohne Wissen des Königs eroberte Burg",
+      "text": "betrifft die neulich, allerdings ohne Wissen des Königs eroberte Burg",
+      "triple": [
+       "urn:regesta:22717:f-castle-free-disposal",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22717:thing-burg"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-castle-free-disposal",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-castle-free-disposal rf:concerns x:thing-burg .\nx:thing-burg a crm:E18_Physical_Thing ;\n    rdfs:label \"die neulich, allerdings ohne Wissen des Königs eroberte Burg\" .",
+      "object": "urn:regesta:22717:thing-burg",
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22717:f-castle-free-disposal",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22717:f-letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-castle-free-disposal",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-castle-free-disposal rf:partOf x:f-letter .\nx:f-letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald schreibt an Erzbischof Arnold von Köln\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Erzbischof Arnold von Köln\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22717> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22717:f-letter",
+      "objectClaim": "f-letter",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22717:f-castle-free-disposal",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-castle-free-disposal-2",
+      "own": true,
+      "evidence": {
+       "start": 361,
+       "end": 453,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-castle-free-disposal rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"daß er über die neulich, allerdings ohne Wissen des Königs eroberte Burg frei verfügen könne\" ] .",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "frei verfügen könne",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22717:f-castle-free-disposal",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 434,
+       "end": 453,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Zusicherung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Erzbischof Arnold von Köln"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "die neulich, allerdings ohne Wissen des Königs eroberte Burg"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22717:f-letter",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22717:f-letter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-letter",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 45,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-letter a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22717> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald schreibt an Erzbischof Arnold von Köln\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibald",
+      "text": "Wibald in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22717:f-letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Arnold von Köln",
+      "text": "Erzbischof Arnold von Köln in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22717:f-letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Erzbischof Arnold von Köln\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001202"
+      ],
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Wibald"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Erzbischof Arnold von Köln"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22717:f-lothringen-disposition",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22717:f-lothringen-disposition",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-lothringen-disposition",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 45,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-lothringen-disposition a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22717> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald schreibt an Erzbischof Arnold von Köln\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Arnold von Köln",
+      "text": "Erzbischof Arnold von Köln in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22717:f-lothringen-disposition",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-lothringen-disposition",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-lothringen-disposition rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Erzbischof Arnold von Köln\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001202"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der König",
+      "text": "der König in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22717:f-lothringen-disposition",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-lothringen-disposition",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-lothringen-disposition rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"der König\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Lothringen (regnum Lotharingiae)",
+      "text": "betrifft Lothringen (regnum Lotharingiae)",
+      "triple": [
+       "urn:regesta:22717:f-lothringen-disposition",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22717:place-lothringen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-lothringen-disposition",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-lothringen-disposition rf:concerns x:place-lothringen .\nx:place-lothringen a crm:E53_Place ;\n    rdfs:label \"Lothringen (regnum Lotharingiae)\" .",
+      "object": "urn:regesta:22717:place-lothringen",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22717:f-lothringen-disposition",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22717:f-letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-lothringen-disposition",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-lothringen-disposition rf:partOf x:f-letter .\nx:f-letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald schreibt an Erzbischof Arnold von Köln\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Erzbischof Arnold von Köln\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22717> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22717:f-letter",
+      "objectClaim": "f-letter",
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22717:f-lothringen-disposition",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-lothringen-disposition-2",
+      "own": true,
+      "evidence": {
+       "start": 61,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-lothringen-disposition rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"daß ihm der König wegen seiner Verdienste um seine Wahl und der späteren Leistungen sehr dankbar sei, Lothringen (regnum Lotharingiae) seiner Disposition überlasse\" ] .",
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "seiner Disposition überlasse",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22717:f-lothringen-disposition",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 196,
+       "end": 224,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10",
+       "k15"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12",
+       "k15"
+      ],
+      "text": "der König"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k11",
+       "k15"
+      ],
+      "text": "Erzbischof Arnold von Köln"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k13",
+       "k15"
+      ],
+      "text": "Lothringen (regnum Lotharingiae)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k14",
+       "k15"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22717:f-request-spare-abbot",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22717:f-request-spare-abbot",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-request-spare-abbot",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 45,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-request-spare-abbot a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22717> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald schreibt an Erzbischof Arnold von Köln\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k17"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibald",
+      "text": "Wibald in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22717:f-request-spare-abbot",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-request-spare-abbot",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-request-spare-abbot rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Arnold von Köln",
+      "text": "Erzbischof Arnold von Köln in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22717:f-request-spare-abbot",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-request-spare-abbot",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-request-spare-abbot rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Erzbischof Arnold von Köln\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001202"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Abt von Prüm",
+      "text": "den Abt von Prüm in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22717:f-request-spare-abbot",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-request-spare-abbot",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-request-spare-abbot rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22717:local:abt-pruem> ; rf:nameInSource \"den Abt von Prüm\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22717:local:abt-pruem"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22717:f-request-spare-abbot",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22717:f-letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-request-spare-abbot",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-request-spare-abbot rf:partOf x:f-letter .\nx:f-letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald schreibt an Erzbischof Arnold von Köln\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Erzbischof Arnold von Köln\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22717> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22717:f-letter",
+      "objectClaim": "f-letter",
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22717:f-request-spare-abbot",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-request-spare-abbot-2",
+      "own": true,
+      "evidence": {
+       "start": 455,
+       "end": 526,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22717:> .\nx:f-request-spare-abbot rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Abt von Prüm möge er schonen, damit sich der König nicht versündige\" ] .",
+      "key": "k22"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "damit sich der König nicht versündige",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22717:f-request-spare-abbot",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 489,
+       "end": 526,
+       "ambiguous": false
+      },
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k17",
+       "k22"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k18",
+       "k22"
+      ],
+      "text": "Wibald"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k19",
+       "k22"
+      ],
+      "text": "Erzbischof Arnold von Köln"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k20",
+       "k22"
+      ],
+      "text": "den Abt von Prüm"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k21",
+       "k22"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "f-castle-free-disposal",
+    "start": 0,
+    "end": 45
+   },
+   {
+    "id": "f-letter",
+    "start": 0,
+    "end": 45
+   },
+   {
+    "id": "f-lothringen-disposition",
+    "start": 0,
+    "end": 45
+   },
+   {
+    "id": "f-request-spare-abbot",
+    "start": 0,
+    "end": 45
+   },
+   {
+    "id": "f-lothringen-disposition-2",
+    "start": 61,
+    "end": 224
+   },
+   {
+    "id": "t2",
+    "start": 196,
+    "end": 224
+   },
+   {
+    "id": "f-castle-free-disposal-2",
+    "start": 361,
+    "end": 453
+   },
+   {
+    "id": "t1",
+    "start": 434,
+    "end": 453
+   },
+   {
+    "id": "f-request-spare-abbot-2",
+    "start": 455,
+    "end": 526
+   },
+   {
+    "id": "t3",
+    "start": 489,
+    "end": 526
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Recipient of the reported grant and assurance is referred to by pronoun ('ihm', 'er'); read as Erzbischof Arnold von Köln",
+     "lang": "en"
+    },
+    {
+     "text": "Grantor of the castle assurance is not named in the passage; the king is implied but not referenced",
+     "lang": "en"
+    },
+    {
+     "text": "Kanzler (Arnold), Notar (Heinrich), the lay princes and the Abt von Prüm are not extracted: their passages state no kinship, economic or legal relation",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No way to mark a factoid as reported speech inside a letter: the Lothringen grant and castle assurance are tied to the letter only by rf:partOf",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender role for a communication: Wibald is rv:Participant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "'seiner Disposition überlasse' is not clearly a transfer of right; encoded as rv:Grant with the wording as qualifier",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to mark a factoid as reported by a letter writer rather than enacted by the document.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for support of or opposition to a request at court.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No sender role for rv:Communication.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added regest-local actor <urn:regesta:actor:22717:local:abt-pruem> (crm:E21_Person, \"den Abt von Prüm\"); not identified with RI004-002-R000500.",
+     "lang": "en"
+    },
+    {
+     "text": "Added <urn:regesta:22717:f-request-spare-abbot> (rf:ActFactoid, rv:Request) with evidence \"den Abt von Prüm möge er schonen, damit sich der König nicht versündige\" and \"Wibald schreibt an Erzbischof Arnold von Köln\", references W000420 rv:Petitioner, A001202 rv:Addressee, abt-pruem rv:Beneficiary, rf:ground \"damit sich der König nicht versündige\", rf:partOf <urn:regesta:22717:f-letter>.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Fehler",
+     "subject": "22717",
+     "description": "The final clause is a request in the letter: Arnold should spare the abbot of Prüm so that the king does not sin. The contract can express it fully (rv:Request with Wibald as petitioner, Arnold as rv:Addressee, the abbot as a local or functional actor, rf:ground in exact wording). It is a distinct act of the letter, not commentary, and it is omitted.",
+     "proposal": "Add an rv:Request factoid with rf:partOf the letter, Wibald as rv:Petitioner, Arnold as rv:Addressee, the abbot ('den Abt von Prüm', a local actor since the regest gives no name) as rv:Beneficiary, and rf:ground 'damit sich der König nicht versündige'.",
+     "quote": {
+      "start": 455,
+      "end": 526
+     }
+    },
+    {
+     "category": "lost-ground",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22717:f-lothringen-disposition",
+     "description": "The regest gives the reason for the king's gratitude and favour: Arnold's merits concerning the election and his later services. The candidate keeps the words in the evidence selector but records no rf:ground, so the reason is not a queryable part of the factoid.",
+     "proposal": "Add rf:ground 'wegen seiner Verdienste um seine Wahl und der späteren Leistungen'.",
+     "quote": {
+      "start": 79,
+      "end": 144
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22717",
+     "description": "Chancellor Arnold and notary Heinrich counteract the efforts of some lay princes at court concerning Lotharingia. Both have register candidates in this packet (RI004-002-A001203, RI004-002-H000404) and are not referenced. The vocabulary has no act type for support or counteraction, so only a partial expression (rv:Dispute with participants) is possible.",
+     "proposal": "Either add an rv:Dispute factoid with the chancellor, the notary and a local group 'einiger Laien(fürsten)' as participants, concerning Lotharingia, or report the clause as a model gap.",
+     "quote": {
+      "start": 246,
+      "end": 355
+     }
+    },
+    {
+     "category": "reported-speech",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22717:f-lothringen-disposition",
+     "description": "The grant is reported by Wibald, not enacted in the regested document. rf:partOf the letter is the only marker of this; the guidelines use partOf for provisions of a main act, so the reported status is implicit.",
+     "proposal": "None under the frozen contract; report reported speech as a model gap.",
+     "quote": {
+      "start": 163,
+      "end": 224
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The request to spare the abbot of Prüm is omitted.",
+     "reason": "'den Abt von Prüm möge er schonen, damit sich der König nicht versündige' is a distinct request of the letter, expressible with rv:Request and rf:ground. The passage names the abbot only by office, so the register candidate Rether (RI004-002-R000500) cannot be matched by name; a regest-local actor is required.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The reason 'wegen seiner Verdienste um seine Wahl und der späteren Leistungen' is not recorded as rf:ground.",
+     "reason": "In 'daß ihm der König wegen seiner Verdienste um seine Wahl und der späteren Leistungen sehr dankbar sei, Lothringen ... seiner Disposition überlasse' the reason belongs grammatically to the gratitude clause; attaching it to the disposition would assert a reason the regest does not give for that act. The wording stays in the evidence.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The counteraction of chancellor Arnold and notary Heinrich is omitted.",
+     "reason": "'der Kanzler (Arnold) und der Notar (Heinrich) den Bemühungen einiger Laien(fürsten) beim König entgegenwirken' is opposition at court, for which the vocabulary has no act type; rv:Dispute would turn it into a lawsuit the passage does not report.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. zu diesem Schreiben und zu seiner wahrscheinlichen Datierung Simonsfeld, Jahrbücher 83, Ewig, Dukat der Kölner Erzbischöfe (FS. Franz Steinbach, 1960) 221 und Wolter, Arnold von Wied (Veröff. d. Köln. Gesch. ver. 32, 1973) 88. - Zum Fall des Abtes von Prüm vgl Reg. "
+    },
+    {
+     "t": "149",
+     "regest": "22776"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Epp. Wibaldi, ed. Jaffé, Mon. Corb. 510 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 381; Knipping, Reg. Köln 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 538."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=34"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-L000690",
+    "Lothringen (Nieder- und Ober -; nördlicher und südlicher Teil eines Gebietes im Nordosten Frankreichs)"
+   ],
+   [
+    "RI004-002-R000500",
+    "Abt von Prüm"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

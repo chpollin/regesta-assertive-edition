@@ -1,0 +1,1670 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-00-00_2_0_4_2_1_192_192",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22819",
+  "identifier": "RI IV,2,1 n. 192",
+  "short": "RI IV,2,1 n. 192",
+  "sort": "004_002_001_000192_0000000192",
+  "start": "1153-07-01",
+  "end": "1153-12-31",
+  "proseYears": [],
+  "lead": "Friedrich erfährt von seinem Legaten Sicher, den er mit einem Mandat zugunsten von Lodi nach Mailand geschickt hat (s.",
+  "date": [
+   {
+    "t": "(Wohl 1153 Sommer-Herbst)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich erfährt von seinem Legaten Sicher, den er mit einem Mandat zugunsten von Lodi nach Mailand geschickt hat (s. Regg. 167 und 168), vom Mißerfolg der diesem aufgetragenen Mission. Die Lodesanen übersenden ihm durch Markgraf Wilhelm von Montferrat heimlich einen goldenen Schlüssel und bitten ihn um seinen Schutz, den er ihnen bereitwillig gewährt (Laudenses et eorum civitatem, quamvis destructam, in sua custodia suscepit). Die Mailänder schicken zur Besänftigung des Königs einen goldenen Becher voll mit Geld, während die Cremonesen und Pavesen ebenfalls mit Geschenken gegen Mailand und für Lodi bei Friedrich eintreten.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 7,
+  "blocks": [
+   {
+    "node": "urn:regesta:22819:mission-sicher",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22819:mission-sicher",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mission-sicher",
+     "own": true,
+     "evidence": {
+      "start": 22,
+      "end": 114,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22819:> .\nx:mission-sicher a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"seinem Legaten Sicher, den er mit einem Mandat zugunsten von Lodi nach Mailand geschickt hat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22819:mission-sicher",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-sicher",
+      "own": true,
+      "evidence": {
+       "start": 22,
+       "end": 114,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:mission-sicher rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"er\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinem Legaten Sicher",
+      "text": "seinem Legaten Sicher in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22819:mission-sicher",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-sicher",
+      "own": true,
+      "evidence": {
+       "start": 22,
+       "end": 114,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:mission-sicher rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000646> ; rf:nameInSource \"Sicher\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000646"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Lodi",
+      "text": "betrifft Lodi",
+      "triple": [
+       "urn:regesta:22819:mission-sicher",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:place-lodi"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-sicher",
+      "own": true,
+      "evidence": {
+       "start": 22,
+       "end": 114,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:mission-sicher rf:concerns x:place-lodi .\nx:place-lodi a crm:E53_Place ;\n    rdfs:label \"Lodi\" .",
+      "object": "urn:regesta:22819:place-lodi",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Mailand",
+      "text": "betrifft Mailand",
+      "triple": [
+       "urn:regesta:22819:mission-sicher",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:place-mailand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-sicher",
+      "own": true,
+      "evidence": {
+       "start": 22,
+       "end": 114,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:mission-sicher rf:concerns x:place-mailand .\nx:place-mailand a crm:E53_Place ;\n    rdfs:label \"Mailand\" .",
+      "object": "urn:regesta:22819:place-mailand",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Entsendung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Gesandter ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "seinem Legaten Sicher"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Lodi"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Mailand"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22819:gift-key-lodesanen",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22819:gift-key-lodesanen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "gift-key-lodesanen",
+     "own": true,
+     "evidence": {
+      "start": 187,
+      "end": 287,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-key-lodesanen a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Lodesanen übersenden ihm durch Markgraf Wilhelm von Montferrat heimlich einen goldenen Schlüssel\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Die Lodesanen",
+      "text": "Die Lodesanen in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22819:gift-key-lodesanen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gift-key-lodesanen",
+      "own": true,
+      "evidence": {
+       "start": 187,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-key-lodesanen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000556:community> ; rf:nameInSource \"Die Lodesanen\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000556:community"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22819:gift-key-lodesanen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gift-key-lodesanen",
+      "own": true,
+      "evidence": {
+       "start": 187,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-key-lodesanen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgraf Wilhelm von Montferrat",
+      "text": "Markgraf Wilhelm von Montferrat in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22819:gift-key-lodesanen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gift-key-lodesanen",
+      "own": true,
+      "evidence": {
+       "start": 187,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-key-lodesanen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000552> ; rf:nameInSource \"Markgraf Wilhelm von Montferrat\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000552"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "einen goldenen Schlüssel",
+      "text": "betrifft einen goldenen Schlüssel",
+      "triple": [
+       "urn:regesta:22819:gift-key-lodesanen",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:thing-golden-key"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gift-key-lodesanen",
+      "own": true,
+      "evidence": {
+       "start": 187,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-key-lodesanen rf:concerns x:thing-golden-key .\nx:thing-golden-key a crm:E18_Physical_Thing ;\n    rdfs:label \"einen goldenen Schlüssel\" .",
+      "object": "urn:regesta:22819:thing-golden-key",
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "heimlich",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22819:gift-key-lodesanen",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 254,
+       "end": 262,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Die Lodesanen"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Gesandter ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Markgraf Wilhelm von Montferrat"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "einen goldenen Schlüssel"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22819:request-protection-lodesanen",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22819:request-protection-lodesanen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request-protection-lodesanen",
+     "own": true,
+     "evidence": {
+      "start": 187,
+      "end": 319,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22819:> .\nx:request-protection-lodesanen a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Lodesanen übersenden ihm durch Markgraf Wilhelm von Montferrat heimlich einen goldenen Schlüssel und bitten ihn um seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Die Lodesanen",
+      "text": "Die Lodesanen in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22819:request-protection-lodesanen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-protection-lodesanen",
+      "own": true,
+      "evidence": {
+       "start": 187,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:request-protection-lodesanen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000556:community> ; rf:nameInSource \"Die Lodesanen\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000556:community"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22819:request-protection-lodesanen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-protection-lodesanen",
+      "own": true,
+      "evidence": {
+       "start": 187,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:request-protection-lodesanen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihn\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Schutzrecht (seinen Schutz)",
+      "text": "betrifft Schutzrecht (seinen Schutz)",
+      "triple": [
+       "urn:regesta:22819:request-protection-lodesanen",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:right-protection-lodi"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-protection-lodesanen",
+      "own": true,
+      "evidence": {
+       "start": 187,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:request-protection-lodesanen rf:concerns x:right-protection-lodi .\nx:right-protection-lodi a crm:E30_Right ;\n    crm:P2_has_type rv:Protection ;\n    rdfs:label \"seinen Schutz\" .",
+      "object": "urn:regesta:22819:right-protection-lodi",
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Die Lodesanen"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Schutzrecht (seinen Schutz)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22819:protection-grant-lodi",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22819:protection-grant-lodi",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection-grant-lodi",
+     "own": true,
+     "evidence": {
+      "start": 321,
+      "end": 354,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22819:> .\nx:protection-grant-lodi a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den er ihnen bereitwillig gewährt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22819:protection-grant-lodi",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-grant-lodi",
+      "own": true,
+      "evidence": {
+       "start": 321,
+       "end": 354,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:protection-grant-lodi rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"er\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Die Lodesanen",
+      "text": "Die Lodesanen in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22819:protection-grant-lodi",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-grant-lodi",
+      "own": true,
+      "evidence": {
+       "start": 321,
+       "end": 354,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:protection-grant-lodi rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000556:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000556:community"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "eorum civitatem, quamvis destructam",
+      "text": "betrifft eorum civitatem, quamvis destructam",
+      "triple": [
+       "urn:regesta:22819:protection-grant-lodi",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:place-civitas-laudensium"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-grant-lodi",
+      "own": true,
+      "evidence": {
+       "start": 321,
+       "end": 354,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:protection-grant-lodi rf:concerns x:place-civitas-laudensium .\nx:place-civitas-laudensium a crm:E53_Place ;\n    rdfs:label \"eorum civitatem, quamvis destructam\" .",
+      "object": "urn:regesta:22819:place-civitas-laudensium",
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Schutzrecht (seinen Schutz)",
+      "text": "betrifft Schutzrecht (seinen Schutz)",
+      "triple": [
+       "urn:regesta:22819:protection-grant-lodi",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:right-protection-lodi"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-grant-lodi",
+      "own": true,
+      "evidence": {
+       "start": 321,
+       "end": 354,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:protection-grant-lodi rf:concerns x:right-protection-lodi .\nx:right-protection-lodi a crm:E30_Right ;\n    crm:P2_has_type rv:Protection ;\n    rdfs:label \"seinen Schutz\" .",
+      "object": "urn:regesta:22819:right-protection-lodi",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bitte",
+      "text": "bezieht sich auf Bitte",
+      "triple": [
+       "urn:regesta:22819:protection-grant-lodi",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22819:request-protection-lodesanen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-grant-lodi",
+      "own": true,
+      "evidence": {
+       "start": 321,
+       "end": 354,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:protection-grant-lodi rf:refersToAct x:request-protection-lodesanen .\nx:request-protection-lodesanen a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:concerns x:right-protection-lodi ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Lodesanen übersenden ihm durch Markgraf Wilhelm von Montferrat heimlich einen goldenen Schlüssel und bitten ihn um seinen Schutz\" ] ;\n    rf:factoidType rv:Request ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihn\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000556:community> ; rf:nameInSource \"Die Lodesanen\" ; rf:role rv:Petitioner ] ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22819:request-protection-lodesanen",
+      "objectClaim": "request-protection-lodesanen",
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22819:protection-grant-lodi",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-grant-lodi-2",
+      "own": true,
+      "evidence": {
+       "start": 356,
+       "end": 430,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:protection-grant-lodi rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Laudenses et eorum civitatem, quamvis destructam, in sua custodia suscepit\" ] .",
+      "key": "k22"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "bereitwillig",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22819:protection-grant-lodi",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 334,
+       "end": 346,
+       "ambiguous": false
+      },
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16",
+       "k22"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k17",
+       "k22"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k18",
+       "k22"
+      ],
+      "text": "Die Lodesanen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k19",
+       "k22"
+      ],
+      "text": "eorum civitatem, quamvis destructam"
+     },
+     " und ",
+     {
+      "keys": [
+       "k20",
+       "k22"
+      ],
+      "text": "Schutzrecht (seinen Schutz)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k21",
+       "k22"
+      ],
+      "text": "Bitte"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22819:gift-cup-milanese",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22819:gift-cup-milanese",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "gift-cup-milanese",
+     "own": true,
+     "evidence": {
+      "start": 433,
+      "end": 519,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-cup-milanese a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Mailänder schicken zur Besänftigung des Königs einen goldenen Becher voll mit Geld\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k24"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Die Mailänder",
+      "text": "Die Mailänder in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22819:gift-cup-milanese",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gift-cup-milanese",
+      "own": true,
+      "evidence": {
+       "start": 433,
+       "end": 519,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-cup-milanese rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000144:community> ; rf:nameInSource \"Die Mailänder\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000144:community"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22819:gift-cup-milanese",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gift-cup-milanese",
+      "own": true,
+      "evidence": {
+       "start": 433,
+       "end": 519,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-cup-milanese rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"des Königs\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "einen goldenen Becher voll mit Geld",
+      "text": "betrifft einen goldenen Becher voll mit Geld",
+      "triple": [
+       "urn:regesta:22819:gift-cup-milanese",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:thing-golden-cup"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gift-cup-milanese",
+      "own": true,
+      "evidence": {
+       "start": 433,
+       "end": 519,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gift-cup-milanese rf:concerns x:thing-golden-cup .\nx:thing-golden-cup a crm:E18_Physical_Thing ;\n    rdfs:label \"einen goldenen Becher voll mit Geld\" .",
+      "object": "urn:regesta:22819:thing-golden-cup",
+      "key": "k27"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "zur Besänftigung des Königs",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22819:gift-cup-milanese",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 456,
+       "end": 483,
+       "ambiguous": false
+      },
+      "key": "k28"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Die Mailänder"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "einen goldenen Becher voll mit Geld"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22819:gifts-cremona-pavia",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22819:gifts-cremona-pavia",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "gifts-cremona-pavia",
+     "own": true,
+     "evidence": {
+      "start": 529,
+      "end": 631,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gifts-cremona-pavia a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Cremonesen und Pavesen ebenfalls mit Geschenken gegen Mailand und für Lodi bei Friedrich eintreten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k29"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22819:gifts-cremona-pavia",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gifts-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gifts-cremona-pavia rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Cremonesen",
+      "text": "Cremonesen in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22819:gifts-cremona-pavia",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gifts-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gifts-cremona-pavia rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C001047:community> ; rf:nameInSource \"Cremonesen\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C001047:community"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Pavesen",
+      "text": "Pavesen in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22819:gifts-cremona-pavia",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gifts-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gifts-cremona-pavia rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000264:community> ; rf:nameInSource \"Pavesen\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000264:community"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Geschenken",
+      "text": "betrifft Geschenken",
+      "triple": [
+       "urn:regesta:22819:gifts-cremona-pavia",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:thing-gifts-cremona-pavia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gifts-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gifts-cremona-pavia rf:concerns x:thing-gifts-cremona-pavia .\nx:thing-gifts-cremona-pavia a crm:E18_Physical_Thing ;\n    rdfs:label \"Geschenken\" .",
+      "object": "urn:regesta:22819:thing-gifts-cremona-pavia",
+      "key": "k33"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bitte",
+      "text": "Teil von Bitte",
+      "triple": [
+       "urn:regesta:22819:gifts-cremona-pavia",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22819:intercession-cremona-pavia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gifts-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:gifts-cremona-pavia rf:partOf x:intercession-cremona-pavia .\nx:intercession-cremona-pavia a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:concerns x:place-lodi , x:place-mailand ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Cremonesen und Pavesen ebenfalls mit Geschenken gegen Mailand und für Lodi bei Friedrich eintreten\" ] ;\n    rf:factoidType rv:Request ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C001047:community> ; rf:nameInSource \"Cremonesen\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000264:community> ; rf:nameInSource \"Pavesen\" ; rf:role rv:Petitioner ] ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22819:intercession-cremona-pavia",
+      "objectClaim": "intercession-cremona-pavia",
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Cremonesen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Pavesen"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Geschenken"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Bitte"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22819:intercession-cremona-pavia",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22819:intercession-cremona-pavia",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "intercession-cremona-pavia",
+     "own": true,
+     "evidence": {
+      "start": 529,
+      "end": 631,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22819:> .\nx:intercession-cremona-pavia a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22819> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Cremonesen und Pavesen ebenfalls mit Geschenken gegen Mailand und für Lodi bei Friedrich eintreten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k35"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22819:intercession-cremona-pavia",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "intercession-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:intercession-cremona-pavia rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Cremonesen",
+      "text": "Cremonesen in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22819:intercession-cremona-pavia",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "intercession-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:intercession-cremona-pavia rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C001047:community> ; rf:nameInSource \"Cremonesen\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C001047:community"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Pavesen",
+      "text": "Pavesen in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22819:intercession-cremona-pavia",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "intercession-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:intercession-cremona-pavia rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000264:community> ; rf:nameInSource \"Pavesen\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000264:community"
+      ],
+      "key": "k38"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Lodi",
+      "text": "betrifft Lodi",
+      "triple": [
+       "urn:regesta:22819:intercession-cremona-pavia",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:place-lodi"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "intercession-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:intercession-cremona-pavia rf:concerns x:place-lodi .\nx:place-lodi a crm:E53_Place ;\n    rdfs:label \"Lodi\" .",
+      "object": "urn:regesta:22819:place-lodi",
+      "key": "k39"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Mailand",
+      "text": "betrifft Mailand",
+      "triple": [
+       "urn:regesta:22819:intercession-cremona-pavia",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22819:place-mailand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "intercession-cremona-pavia",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 631,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22819:> .\nx:intercession-cremona-pavia rf:concerns x:place-mailand .\nx:place-mailand a crm:E53_Place ;\n    rdfs:label \"Mailand\" .",
+      "object": "urn:regesta:22819:place-mailand",
+      "key": "k40"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Bitte"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "Cremonesen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k38"
+      ],
+      "text": "Pavesen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k39"
+      ],
+      "text": "Lodi"
+     },
+     " und ",
+     {
+      "keys": [
+       "k40"
+      ],
+      "text": "Mailand"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "mission-sicher",
+    "start": 22,
+    "end": 114
+   },
+   {
+    "id": "request-protection-lodesanen",
+    "start": 187,
+    "end": 319
+   },
+   {
+    "id": "gift-key-lodesanen",
+    "start": 187,
+    "end": 287
+   },
+   {
+    "id": "t1",
+    "start": 254,
+    "end": 262
+   },
+   {
+    "id": "protection-grant-lodi",
+    "start": 321,
+    "end": 354
+   },
+   {
+    "id": "t2",
+    "start": 334,
+    "end": 346
+   },
+   {
+    "id": "protection-grant-lodi-2",
+    "start": 356,
+    "end": 430
+   },
+   {
+    "id": "gift-cup-milanese",
+    "start": 433,
+    "end": 519
+   },
+   {
+    "id": "t3",
+    "start": 456,
+    "end": 483
+   },
+   {
+    "id": "gifts-cremona-pavia",
+    "start": 529,
+    "end": 631
+   },
+   {
+    "id": "intercession-cremona-pavia",
+    "start": 529,
+    "end": 631
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Lodi in 'zugunsten von Lodi' and 'für Lodi' is recorded as a place (rf:concerns), not as the Lodesanen community, because the wording names the city",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the sender of a mission; Friedrich is rv:Participant in the mission of Sicher.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a gift as a political gesture; the golden key, the golden cup and the gifts of Cremona and Pavia are typed rv:Grant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for intercession and no role for an opposed party ('gegen Mailand'); the intercession is rv:Request with Lodi and Mailand as concerned places.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The report of the mission's failure (Mißerfolg) to Friedrich has no factoid; outcome of a mission is not modelled.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The link of the protection grant to the request uses rf:refersToAct, whose definition targets confirmations and assurances.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a gift or symbolic submission distinct from a transfer of rights or possessions.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the party an intercession is directed against.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No property for the outcome of a mission.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-content",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22819:mission-sicher",
+     "description": "Friedrich learns from Sicher of the mission's failure; neither the report (rv:Communication) nor the failure is recorded. The failure is not expressible as an outcome property.",
+     "proposal": "Optionally add an rv:Communication with Sicher as rv:Envoy and Friedrich as rv:Addressee; report the outcome as model gap.",
+     "quote": {
+      "start": 139,
+      "end": 185
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22819:intercession-cremona-pavia",
+     "description": "'für Lodi' names a beneficiary that could be a reference with rv:Beneficiary rather than only a concerns place; 'gegen Mailand' has no role, as the extractor noted.",
+     "proposal": "Optionally add the Lodi community as rv:Beneficiary with nameInSource 'Lodi'.",
+     "quote": {
+      "start": 581,
+      "end": 631
+     }
+    },
+    {
+     "category": "vocabulary-limit",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22819:gift-key-lodesanen",
+     "description": "The golden key and the golden cup are typed rv:Grant; the vocabulary has no type for a symbolic or placatory gift, so Grant is the nearest fit.",
+     "proposal": "None; report as model gap.",
+     "quote": {
+      "start": 254,
+      "end": 287
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add an rv:Communication for Sicher's report of the failed mission.",
+     "reason": "'Friedrich erfährt von seinem Legaten Sicher ... vom Mißerfolg' reports learning of an outcome, not a legal or economic relation; the mission itself is recorded, and the outcome is not expressible.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add Lodi as rv:Beneficiary of the intercession.",
+     "reason": "'für Lodi' names the city, which the factoid already carries as rf:concerns <urn:regesta:22819:place-lodi>; turning it into the community reference L000556 would rest on the candidate label 'Bewohner', not on the wording 'Lodi'.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 202 ff. Es ist nicht sicher, ob diese Aktivitäten der Italiener am staufischen Hofe zur gleichen Zeit erfolgten, doch wurden sie hier - entsprechend dem Bericht Otto Morenas - zusammengefaßt. Wahrscheinlich ist jedoch, daß sie den König zur Beschleunigung seiner Vorbereitungen zum Italienzug bewogen, zu dem er nun in alle Teile seines Reiches Ladungen ergehen ließ (Reg. "
+    },
+    {
+     "t": "195",
+     "regest": "22822"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Otto Morena, ed. Güterbock, MG. SS rer. Germ. N. S. VII, 10 f."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=70"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-C001047",
+    "Bewohner, Bürger, Cremonesen, auch Heer, Truppen"
+   ],
+   [
+    "RI004-002-I000220",
+    "Italienzug, Reichsheerfahrt (siehe auch: Romzug)"
+   ],
+   [
+    "RI004-002-L000550",
+    "Lodi (Vecchio, am Lambro, südöstl. Mailand, ital. Prov. Lodi Nuovo)"
+   ],
+   [
+    "RI004-002-L000556",
+    "Bewohner, Leute (Lodesanen, Lodesen)"
+   ],
+   [
+    "RI004-002-M000086",
+    "Mailand (Lombardei)"
+   ],
+   [
+    "RI004-002-M000144",
+    "Bewohner (Mailänder), <i>burgenses</i>, <i>cives</i>, Heer, Ritter, <i>rustici</i>, Truppen"
+   ],
+   [
+    "RI004-002-P000264",
+    "Bewohner, Heer, Leute, Ritter, Truppen (Pavesen)"
+   ],
+   [
+    "RI004-002-S000646",
+    "Legat Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-W000552",
+    "(der Alte), Markgraf von Montferrat; <i>zu ihm siehe auch oben in der Einleitung, S. 28</i>"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

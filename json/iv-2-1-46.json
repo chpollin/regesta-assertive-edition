@@ -1,0 +1,385 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-00-00_1_0_4_2_1_46_46",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22673",
+  "identifier": "RI IV,2,1 n. 46",
+  "short": "RI IV,2,1 n. 46",
+  "sort": "004_002_001_000046_0000000046",
+  "start": "1147-01-01",
+  "end": "1147-12-31",
+  "proseYears": [
+   1149
+  ],
+  "lead": "Friedrich heiratet Adela, die Tochter Markgraf Diepolds von Vohburg.",
+  "date": [
+   {
+    "t": "(1147 oder 1149)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Eger ?)"
+   }
+  ],
+  "text": "Friedrich heiratet Adela, die Tochter Markgraf Diepolds von Vohburg.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22673:marriage",
+    "kind": "act",
+    "title": "Eheschließung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Eheschließung",
+     "text": "Eheschließung",
+     "triple": [
+      "urn:regesta:22673:marriage",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/MarriageConclusion"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "marriage",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 24,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22673:> .\nx:marriage a rf:ActFactoid ;\n    rf:factoidType rv:MarriageConclusion ;\n    rf:source <urn:regesta:record:22673> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich heiratet Adela\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-2> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22673:marriage",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22673:marriage-ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 24,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22673:> .\nx:marriage rf:reference x:marriage-ref-friedrich .\nx:marriage-ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Spouse .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Adela",
+      "text": "Adela in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22673:marriage",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22673:marriage-ref-adela"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 24,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22673:> .\nx:marriage rf:reference x:marriage-ref-adela .\nx:marriage-ref-adela a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A000306> ;\n    rf:nameInSource \"Adela\" ;\n    rf:role rv:Spouse .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000306"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Eheschließung"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Adela"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22673:parenthood-diepold-adela",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22673:parenthood-diepold-adela",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-diepold-adela",
+     "own": true,
+     "evidence": {
+      "start": 19,
+      "end": 67,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22673:> .\nx:parenthood-diepold-adela a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22673> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Adela, die Tochter Markgraf Diepolds von Vohburg\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-2> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Adela",
+      "text": "Adela in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22673:parenthood-diepold-adela",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22673:parenthood-ref-adela"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-diepold-adela",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 67,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22673:> .\nx:parenthood-diepold-adela rf:reference x:parenthood-ref-adela .\nx:parenthood-ref-adela a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A000306> ;\n    rf:nameInSource \"Adela\" ;\n    rf:role rv:Child .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000306"
+      ],
+      "key": "k5",
+      "crossrefs": [
+       {
+        "question": "gleichnamige-eltern",
+        "graphNode": "urn:regesta:actor:RI004-002-A000306",
+        "name": "Markgraf Diepolds von Vohburg",
+        "child": "Adela",
+        "here": {
+         "regest": "22673",
+         "label": "RI IV,2,1 n. 46",
+         "claim": "parenthood-diepold-adela",
+         "iri": "urn:regesta:actor:RI004-002-T000162",
+         "register": {
+          "id": "RI004-002-T000162",
+          "label": "(III.), Markgraf von Vohburg und Cham",
+          "assigned": true
+         },
+         "name": "Markgraf Diepolds von Vohburg"
+        },
+        "other": {
+         "regest": "22794",
+         "label": "RI IV,2,1 n. 167",
+         "claim": "parenthood-adela",
+         "iri": "urn:regesta:actor:RI004-002-T000163",
+         "register": {
+          "id": "RI004-002-T000163",
+          "label": "(VI.), Markgraf von Vohburg",
+          "assigned": true
+         },
+         "name": "Markgrafen Diepold von Vohburg"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgraf Diepolds von Vohburg",
+      "text": "Markgraf Diepolds von Vohburg in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22673:parenthood-diepold-adela",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22673:parenthood-ref-diepold"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-diepold-adela",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 67,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22673:> .\nx:parenthood-diepold-adela rf:reference x:parenthood-ref-diepold .\nx:parenthood-ref-diepold a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-T000162> ;\n    rf:nameInSource \"Markgraf Diepolds von Vohburg\" ;\n    rf:role rv:Parent .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-T000162"
+      ],
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Adela"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Markgraf Diepolds von Vohburg"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "marriage",
+    "start": 0,
+    "end": 24
+   },
+   {
+    "id": "parenthood-diepold-adela",
+    "start": 19,
+    "end": 67
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Only the act of marriage (rv:MarriageConclusion) is recorded; no separate rv:Marriage state was added, since the guidelines do not say whether a reported marriage act should also yield a state factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. dazu Simonsfeld, Jahrbücher 156 f. - Der Zeitpunkt der Eheschließung ist nicht bekannt, Simonsfeld, a. a. O. tritt für 1149 ein, Heimpel, NDB 5 (1961) 459 für ca.. 1147, das Chron. Waldsassense, a. a. O. nennt als Ort das "
+    },
+    {
+     "t": "oppidum",
+     "i": true
+    },
+    {
+     "t": " Eger. - Diese erste Ehe Barbarossas wurde im März 1153 zu Konstanz geschieden, Reg. "
+    },
+    {
+     "t": "167",
+     "regest": "22794"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Fundatio monasterii Waldsassensis cap. 8, MG. SS XV/2, 1092; vgl. Chron. Waldsassense, ed. Oefele, Rer. Boic. SS I (1763) 56."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=21"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000306",
+    "Adela von Vohburg, Tochter Markgraf Theobalds (Diepolds III.) von Vohburg, erste Gemahlin Friedrich Barbarossas, dann mit Dieto von Ravensburg verheiratet"
+   ],
+   [
+    "RI004-002-E000171",
+    "Eger (am gleichnamigen Fluss, <i>heute:</i> Cheb, am Fluss Ohře, Region Karlsbad/Karlovarský kraj, Tschechien)"
+   ],
+   [
+    "RI004-002-K000577",
+    "Konstanz (am Bodensee, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-T000162",
+    "(III.), Markgraf von Vohburg und Cham"
+   ]
+  ]
+ }
+}

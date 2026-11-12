@@ -1,0 +1,747 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1146-00-00_3_0_4_2_1_18_18",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22645",
+  "identifier": "RI IV,2,1 n. 18",
+  "short": "RI IV,2,1 n. 18",
+  "sort": "004_002_001_000018_0000000018",
+  "start": "1146-01-01",
+  "end": "1146-12-31",
+  "proseYears": [],
+  "lead": "Friedrich dringt während seiner Fehde mit Herzog Konrad von Zähringen bis zu dessen Stammburg vor, erobert eine für uneinnehmbar geltende Burg des Herzogs und zwingt diesen, vor seinem Vater (Friedrich von Schwaben) und seinem Oheim (König Konrad III.) zu erscheinen und um Frieden zu bitten.",
+  "date": [
+   {
+    "t": "(1146)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Zähringen"
+   }
+  ],
+  "text": "Friedrich dringt während seiner Fehde mit Herzog Konrad von Zähringen bis zu dessen Stammburg vor, erobert eine für uneinnehmbar geltende Burg des Herzogs und zwingt diesen, vor seinem Vater (Friedrich von Schwaben) und seinem Oheim (König Konrad III.) zu erscheinen und um Frieden zu bitten.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22645:kinship-oheim",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22645:kinship-oheim",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-oheim",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 16,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22645:> .\nx:kinship-oheim a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22645> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich dringt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22645:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 16,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22645:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 16,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrad III.\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22645:kinship-oheim",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim-2",
+      "own": true,
+      "evidence": {
+       "start": 220,
+       "end": 252,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:kinship-oheim rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"seinem Oheim (König Konrad III.)\" ] .",
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheim",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22645:kinship-oheim",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 227,
+       "end": 232,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k4"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2",
+       "k4"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3",
+       "k4"
+      ],
+      "text": "König Konrad III."
+     }
+    ]
+   },
+   {
+    "node": "urn:regesta:22645:parenthood-friedrich",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22645:parenthood-friedrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-friedrich",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 16,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22645:> .\nx:parenthood-friedrich a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22645> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich dringt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22645:parenthood-friedrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 16,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:parenthood-friedrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich von Schwaben",
+      "text": "Friedrich von Schwaben in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22645:parenthood-friedrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 16,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:parenthood-friedrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:nameInSource \"Friedrich von Schwaben\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22645:parenthood-friedrich",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-friedrich-2",
+      "own": true,
+      "evidence": {
+       "start": 178,
+       "end": 215,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:parenthood-friedrich rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"seinem Vater (Friedrich von Schwaben)\" ] .",
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6",
+       "k9"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k7",
+       "k9"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k8",
+       "k9"
+      ],
+      "text": "Friedrich von Schwaben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22645:request-peace",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22645:request-peace",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request-peace",
+     "own": true,
+     "evidence": {
+      "start": 32,
+      "end": 69,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22645:> .\nx:request-peace a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22645> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Fehde mit Herzog Konrad von Zähringen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22645:request-peace",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-peace",
+      "own": true,
+      "evidence": {
+       "start": 32,
+       "end": 69,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:request-peace rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Konrad von Zähringen",
+      "text": "Herzog Konrad von Zähringen in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22645:request-peace",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-peace",
+      "own": true,
+      "evidence": {
+       "start": 32,
+       "end": 69,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:request-peace rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000398> ; rf:nameInSource \"Herzog Konrad von Zähringen\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000398"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich von Schwaben",
+      "text": "Friedrich von Schwaben in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22645:request-peace",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-peace",
+      "own": true,
+      "evidence": {
+       "start": 32,
+       "end": 69,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:request-peace rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:nameInSource \"Friedrich von Schwaben\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22645:request-peace",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-peace",
+      "own": true,
+      "evidence": {
+       "start": 32,
+       "end": 69,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:request-peace rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrad III.\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22645:request-peace",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-peace-2",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 291,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22645:> .\nx:request-peace rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"zwingt diesen, vor seinem Vater (Friedrich von Schwaben) und seinem Oheim (König Konrad III.) zu erscheinen und um Frieden zu bitten\" ] .",
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10",
+       "k15"
+      ],
+      "text": "Bitte"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k11",
+       "k15"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k12",
+       "k15"
+      ],
+      "text": "Herzog Konrad von Zähringen"
+     },
+     ", als Adressaten ",
+     {
+      "keys": [
+       "k13",
+       "k15"
+      ],
+      "text": "Friedrich von Schwaben"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14",
+       "k15"
+      ],
+      "text": "König Konrad III."
+     }
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "kinship-oheim",
+    "start": 0,
+    "end": 16
+   },
+   {
+    "id": "parenthood-friedrich",
+    "start": 0,
+    "end": 16
+   },
+   {
+    "id": "request-peace",
+    "start": 32,
+    "end": 69
+   },
+   {
+    "id": "request-peace-2",
+    "start": 159,
+    "end": 291
+   },
+   {
+    "id": "parenthood-friedrich-2",
+    "start": 178,
+    "end": 215
+   },
+   {
+    "id": "kinship-oheim-2",
+    "start": 220,
+    "end": 252
+   },
+   {
+    "id": "t1",
+    "start": 227,
+    "end": 232
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'seinem Vater (Friedrich von Schwaben)' and 'seinem Oheim (König Konrad III.)' follow 'zwingt diesen'; the possessive is grammatically ambiguous between Friedrich and Herzog Konrad. Read as Friedrich's father and uncle on the strength of the editorial parentheses; the reviewer should check this reading.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the party who compels an act ('zwingt diesen ... um Frieden zu bitten'); Friedrich is recorded as rv:Participant in the request.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The state of feud ('während seiner Fehde mit Herzog Konrad von Zähringen') has no state or act type and is not recorded as its own factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for a party who compels an act (coercion).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for a feud (Fehde) as an extra-judicial conflict.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "actor-identification",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22645:parenthood-friedrich",
+     "description": "After \"zwingt diesen\" the possessive \"seinem\" can grammatically refer to Herzog Konrad as well as to Friedrich. The Child reference to Friedrich is anchored by a second selector \"Friedrich dringt\", which names Friedrich but does not establish that he is the possessor. The decisive disambiguation comes from the register labels (\"Vater Friedrich Barbarossas\", \"Onkel Friedrich Barbarossas\"), which the guidelines admit only for identification, not as facts. The same applies to urn:regesta:22645:kinship-oheim. The reading is very probably right, and the extractor flagged it, but the factoids state more than the passage alone secures.",
+     "proposal": "Keep both factoids but mark the antecedent ambiguity for expert review (for example in the batch report or a reviewer annotation), or replace the 'Friedrich dringt' selector by stating the reliance on the identification explicitly; do not treat the factoids as resting on the passage alone.",
+     "quote": {
+      "start": 159,
+      "end": 266
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "22645",
+     "description": "The regest states that the conquered castle belongs to the duke (\"Burg des Herzogs\", also \"dessen Stammburg\"). This is a possession relation, which the guidelines keep in scope even inside a military passage, and rv:Possession with Herzog Konrad as Possessor could express it with exact wording. It is not recorded.",
+     "proposal": "Add a StateFactoid of type rv:Possession with a reference to RI004-002-K000398 as rv:Possessor (nameInSource \"Herzogs\" or via the Fehde passage) and rf:concerns a crm:E18_Physical_Thing labelled \"Burg des Herzogs\"; optionally a second one for \"Stammburg\".",
+     "quote": {
+      "start": 107,
+      "end": 154
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22645:request-peace",
+     "description": "Friedrich is recorded as rv:Participant for compelling the request. This is the honest fallback, but Participant blurs that he is the coercing opponent, not a party to the request.",
+     "proposal": "Acceptable under the current vocabulary; record the coercing-party role as a model gap.",
+     "quote": {
+      "start": 159,
+      "end": 172
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The possessive 'seinem' after 'zwingt diesen' is grammatically ambiguous between Friedrich and Herzog Konrad; the Child and Kin references to Friedrich rest on a reading the passage alone does not secure.",
+     "reason": "The ambiguity is real in 'zwingt diesen, vor seinem Vater (Friedrich von Schwaben) und seinem Oheim (König Konrad III.) zu erscheinen', but Friedrich is the grammatical subject of the whole regest, the parenthetical names identify the father and uncle by name and title with the packet candidates RI004-002-F000681 and RI004-002-K000316, and the extractor declared the reading as an unresolved identity in batch-5 and in a Turtle comment. The contract has no property to mark a contested antecedent inside the graph, and removing both factoids would discard a defensible reading. The ambiguity stays open for expert review through the batch report; a factoid records the producer's reading, not a fact.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "'Burg des Herzogs' and 'dessen Stammburg' state a possession of Herzog Konrad that should be added as an rv:Possession state factoid.",
+     "reason": "In 'erobert eine für uneinnehmbar geltende Burg des Herzogs' and 'bis zu dessen Stammburg vor' the genitive and the possessive identify the targets of an advance and a conquest, which the guidelines exclude as military action. They are attributes of an out-of-scope act, not a central statement of possession, and the same decision is taken for the parallel genitive in 22637. The in-scope kinship and request factoids of the passage are recorded.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. die bei Reg. "
+    },
+    {
+     "t": "17",
+     "regest": "22644"
+    },
+    {
+     "t": " angegebene Literatur. Bei der ungenannten, eroberten Festung denkt Heyck, Herzoge von Zähringen 304 f. an eine Burg auf dem Schloßberg bei Freiburg im Breisgau. - Als Termin für die erwähnte Unterwerfung des Zähringers käme der 21. Juli 1146, Ulm in Betracht. Damals befand sich jedenfalls der Vater Barbarossas in der Umgebung seines königlichen Bruders (DK. III. 155), vgl. dazu Heyck, a. a. O. 305 f. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " Zur Datierung sowie zur Interpretation des Vorgehens des späteren Kaisers gegen die Zähringer und Zürich vgl. zuletzt Görich, Fürstenstreit und Friedensstiftung, ZGORh 158 (2010) 120–131 sowie 134."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. I cap. 27, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 44."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=17"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000430",
+    "Freiburg (im Breisgau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000398",
+    "Herzog von Zähringen"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-Z000009",
+    "Zähringen (Teil von Freiburg im Breisgau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-Z000076",
+    "Zürich (Schweiz)"
+   ]
+  ]
+ }
+}

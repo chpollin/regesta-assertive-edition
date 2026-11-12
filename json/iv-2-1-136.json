@@ -1,0 +1,1148 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-15_1_0_4_2_1_136_136",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22763",
+  "identifier": "RI IV,2,1 n. 136",
+  "short": "RI IV,2,1 n. 136",
+  "sort": "004_002_001_000136_0000000136",
+  "start": "1152-07-01",
+  "end": "1152-10-15",
+  "proseYears": [],
+  "lead": "Friedrich nimmt das Stift Marbach (Marchbach) auf Bitten seiner Kanoniker zum Seelenheil seiner Eltern in seinen Schutz, befreit es von jeder kirchlichen und weltlichen Herrschaft (ab omni ecclesiastice secularisve persone dominio vel potestate liberum), nimmt es von der üblichen Gerichtsbarkeit aus (ab omnium hominum iurisdictione separatus) und bestätigt ihm alle gegenwärtigen und künftigen Besitzungen.",
+  "date": [
+   {
+    "t": "(1152 Juli), Augsburg-1152 Oktober 15"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Würzburg)"
+   }
+  ],
+  "text": "Friedrich nimmt das Stift Marbach (Marchbach) auf Bitten seiner Kanoniker zum Seelenheil seiner Eltern in seinen Schutz, befreit es von jeder kirchlichen und weltlichen Herrschaft (ab omni ecclesiastice secularisve persone dominio vel potestate liberum), nimmt es von der üblichen Gerichtsbarkeit aus (ab omnium hominum iurisdictione separatus) und bestätigt ihm alle gegenwärtigen und künftigen Besitzungen. Z.: die Bischöfe Otto von Freising, Hermann von Konstanz, Konrad von Augsburg, Herzog Welf, Pfalzgraf Otto (von Wittelsbach), Markgraf Otakar (von Steier). - Arnoldus canc. vice Heinrici Moguntini archiep. et archicanc. ; verfaßt von AH (Albert). Quoniam quidem divina .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 6,
+  "blocks": [
+   {
+    "node": "urn:regesta:22763:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22763:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 119,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22763:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22763> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Stift Marbach (Marchbach) auf Bitten seiner Kanoniker zum Seelenheil seiner Eltern in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22763:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Marbach (Marchbach)",
+      "text": "Stift Marbach (Marchbach) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22763:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:nameInSource \"Stift Marbach\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000388:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Kanoniker",
+      "text": "seiner Kanoniker in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22763:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000390:community> ; rf:nameInSource \"seiner Kanoniker\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000390:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "zum Seelenheil seiner Eltern",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22763:protection",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 74,
+       "end": 102,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Stift Marbach (Marchbach)"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "seiner Kanoniker"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22763:request",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22763:request",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request",
+     "own": true,
+     "evidence": {
+      "start": 46,
+      "end": 73,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22763:> .\nx:request a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22763> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf Bitten seiner Kanoniker\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22763:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 46,
+       "end": 73,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Kanoniker",
+      "text": "seiner Kanoniker in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22763:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 46,
+       "end": 73,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000390:community> ; rf:nameInSource \"seiner Kanoniker\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000390:community"
+      ],
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bitte"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "seiner Kanoniker"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22763:parenthood",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22763:parenthood",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood",
+     "own": true,
+     "evidence": {
+      "start": 74,
+      "end": 102,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22763:> .\nx:parenthood a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22763> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"zum Seelenheil seiner Eltern\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22763:parenthood",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood",
+      "own": true,
+      "evidence": {
+       "start": 74,
+       "end": 102,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:parenthood rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Eltern",
+      "text": "seiner Eltern in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22763:parenthood",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood",
+      "own": true,
+      "evidence": {
+       "start": 74,
+       "end": 102,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:parenthood rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22763:local:eltern> ; rf:nameInSource \"seiner Eltern\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:22763:local:eltern"
+      ],
+      "key": "k11",
+      "agentNotes": [
+       {
+        "text": "'seiner Eltern' recorded as one regest-local group in the rv:Parent role; individual parents not named in this packet",
+        "lang": "en"
+       }
+      ]
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "seiner Eltern"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22763:liberty",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22763:liberty",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "liberty",
+     "own": true,
+     "evidence": {
+      "start": 121,
+      "end": 253,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22763:> .\nx:liberty a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22763> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"befreit es von jeder kirchlichen und weltlichen Herrschaft (ab omni ecclesiastice secularisve persone dominio vel potestate liberum)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22763:liberty",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "liberty",
+      "own": true,
+      "evidence": {
+       "start": 121,
+       "end": 253,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:liberty rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Marbach (Marchbach)",
+      "text": "Stift Marbach (Marchbach) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22763:liberty",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "liberty",
+      "own": true,
+      "evidence": {
+       "start": 121,
+       "end": 253,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:liberty rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:nameInSource \"es\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000388:community"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22763:liberty",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22763:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "liberty",
+      "own": true,
+      "evidence": {
+       "start": 121,
+       "end": 253,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:liberty rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Stift Marbach (Marchbach) auf Bitten seiner Kanoniker zum Seelenheil seiner Eltern in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:ground \"zum Seelenheil seiner Eltern\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:nameInSource \"Stift Marbach\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000390:community> ; rf:nameInSource \"seiner Kanoniker\" ; rf:role rv:Petitioner ] ;\n    rf:source <urn:regesta:record:22763> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22763:protection",
+      "objectClaim": "protection",
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Stift Marbach (Marchbach)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22763:jurisdiction-exemption",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22763:jurisdiction-exemption",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "jurisdiction-exemption",
+     "own": true,
+     "evidence": {
+      "start": 255,
+      "end": 344,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22763:> .\nx:jurisdiction-exemption a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22763> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nimmt es von der üblichen Gerichtsbarkeit aus (ab omnium hominum iurisdictione separatus)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22763:jurisdiction-exemption",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-exemption",
+      "own": true,
+      "evidence": {
+       "start": 255,
+       "end": 344,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:jurisdiction-exemption rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Marbach (Marchbach)",
+      "text": "Stift Marbach (Marchbach) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22763:jurisdiction-exemption",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-exemption",
+      "own": true,
+      "evidence": {
+       "start": 255,
+       "end": 344,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:jurisdiction-exemption rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:nameInSource \"es\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000388:community"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (der üblichen Gerichtsbarkeit)",
+      "text": "betrifft Gerichtsbarkeit (der üblichen Gerichtsbarkeit)",
+      "triple": [
+       "urn:regesta:22763:jurisdiction-exemption",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22763:gerichtsbarkeit"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-exemption",
+      "own": true,
+      "evidence": {
+       "start": 255,
+       "end": 344,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:jurisdiction-exemption rf:concerns x:gerichtsbarkeit .\nx:gerichtsbarkeit a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"der üblichen Gerichtsbarkeit\" .",
+      "object": "urn:regesta:22763:gerichtsbarkeit",
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22763:jurisdiction-exemption",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22763:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-exemption",
+      "own": true,
+      "evidence": {
+       "start": 255,
+       "end": 344,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:jurisdiction-exemption rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Stift Marbach (Marchbach) auf Bitten seiner Kanoniker zum Seelenheil seiner Eltern in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:ground \"zum Seelenheil seiner Eltern\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:nameInSource \"Stift Marbach\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000390:community> ; rf:nameInSource \"seiner Kanoniker\" ; rf:role rv:Petitioner ] ;\n    rf:source <urn:regesta:record:22763> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22763:protection",
+      "objectClaim": "protection",
+      "key": "k20"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Stift Marbach (Marchbach)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Gerichtsbarkeit (der üblichen Gerichtsbarkeit)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22763:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22763:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 349,
+      "end": 407,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22763:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22763> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm alle gegenwärtigen und künftigen Besitzungen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k21"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22763:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 349,
+       "end": 407,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Marbach (Marchbach)",
+      "text": "Stift Marbach (Marchbach) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22763:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 349,
+       "end": 407,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000388:community"
+      ],
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "alle gegenwärtigen und künftigen Besitzungen",
+      "text": "betrifft alle gegenwärtigen und künftigen Besitzungen",
+      "triple": [
+       "urn:regesta:22763:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22763:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 349,
+       "end": 407,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22763:> .\nx:confirmation rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"alle gegenwärtigen und künftigen Besitzungen\" .",
+      "object": "urn:regesta:22763:besitzungen",
+      "key": "k24"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "gegenwärtigen und künftigen",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22763:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 368,
+       "end": 395,
+       "ambiguous": false
+      },
+      "key": "k25"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Stift Marbach (Marchbach)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "alle gegenwärtigen und künftigen Besitzungen"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 119
+   },
+   {
+    "id": "request",
+    "start": 46,
+    "end": 73
+   },
+   {
+    "id": "parenthood",
+    "start": 74,
+    "end": 102
+   },
+   {
+    "id": "t1",
+    "start": 74,
+    "end": 102
+   },
+   {
+    "id": "liberty",
+    "start": 121,
+    "end": 253
+   },
+   {
+    "id": "jurisdiction-exemption",
+    "start": 255,
+    "end": 344
+   },
+   {
+    "id": "confirmation",
+    "start": 349,
+    "end": 407
+   },
+   {
+    "id": "t2",
+    "start": 368,
+    "end": 395
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Kanoniker (RI004-002-M000390, typed person in the register) recorded as :community group",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Freedom from ecclesiastical and secular lordship has no right type to point rf:concerns at; liberty provision typed rv:Enactment without concerns",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "rv:Parent expects one parent per reference; a collective 'Eltern' does not fit cleanly",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Exemption from all lordship and from ordinary jurisdiction can only be typed as rv:Enactment; the vocabulary has no immunity or exemption type.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "actor-identification",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22763:parenthood",
+     "description": "The possessive in \"seiner Eltern\" is grammatically ambiguous in a sentence where \"seiner Kanoniker\" refers to the Stift; reading it as Friedrich's parents is the plausible interpretation but remains the producer's reading. The parents are also bundled into one group reference.",
+     "proposal": "Keep the factoid and record the possessive reading in the batch report as an identification decision.",
+     "quote": {
+      "start": 74,
+      "end": 102
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Widersprüchlichkeit in den Datierungsangaben erklärt sich daraus, daß einerseits nach der Handlung in Augsburg und andererseits nach der Beurkundung am 15. Oktober (in Würzburg) datiert wurde, vgl. Herkenrath, Albert von Sponheim, ZAGV 80 (1970) 82 ff. und Reg. "
+    },
+    {
+     "t": "107",
+     "regest": "22734"
+    },
+    {
+     "t": ". - Aus einer Urkunde Friedrichs II. B.-Ficker Reg. "
+    },
+    {
+     "t": "1513"
+    },
+    {
+     "t": ") erfahren wir, daß Friedrich in Würzburg einen eigenen Hof besaß; vgl. dazu Schlesinger, Bischofssitze, Pfalzen und Städte (FS. E. Maschke. = Veröff. d. Komm. f. gesch. Landeskde. in Bad.-Württ. B 85, 1975) 9 und Opll, Itinerar 156 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschriften des Transsumptes Rudolfs I. von 1275 August 18 (B.-Redlich Reg. 420) im Marbacher Kopialbuch des 17. Jh. p. 8, Departementalarchiv Colmar (C) und von Grandidier Karton 2 Fasz. 2 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 118, Generallandesarchiv Karlsruhe (G). Drucke: Würdtwein, Nova Subsidia 7, 158 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 61; MG. DF. I. 29. Reg.: Stumpf 3634 zu Juli 15."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=48"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_29"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001209",
+    "H (= Albert von Sponheim), Notar der Reichskanzlei"
+   ],
+   [
+    "RI004-002-A001433",
+    "Augsburg (am Lech, bayer. Reg.-Bez. Schwaben)"
+   ],
+   [
+    "RI004-002-F000651",
+    "II., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-K000322",
+    "Bischof von Augsburg, vorher (Dom)Dekan von Konstanz (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-M000388",
+    "Marbach (Teil von Vœgtlinshoffen, südwestl. Colmar, Dép. Haut-Rhin), Stift, Kloster (Augustiner-Chorherrenstift)"
+   ],
+   [
+    "RI004-002-M000390",
+    "Kanoniker (Augustiner-Chorherren)"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000405",
+    "(I.), Bischof von Freising"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ],
+   [
+    "RI004-002-W000890",
+    "Hof Friedrich Barbarossas"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,283 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-01-04_1_0_4_2_1_20_20",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22647",
+  "identifier": "RI IV,2,1 n. 20",
+  "short": "RI IV,2,1 n. 20",
+  "sort": "004_002_001_000020_0000000020",
+  "start": "1147-01-04",
+  "end": "1147-01-04",
+  "proseYears": [],
+  "lead": "Friedrich, Herzog von Schwaben, wird in DK. III. 164 als Zeuge der Beilegung des Streites zwischen Erzbischof Adalbero von Trier und Graf Heinrich von Namur genannt.",
+  "date": [
+   {
+    "t": "1147 Januar 4"
+   }
+  ],
+  "place": [
+   {
+    "t": "Speyer"
+   }
+  ],
+  "text": "Friedrich, Herzog von Schwaben, wird in DK. III. 164 als Zeuge der Beilegung des Streites zwischen Erzbischof Adalbero von Trier und Graf Heinrich von Namur genannt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22647:dispute-adalbero-heinrich",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22647:dispute-adalbero-heinrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "dispute-adalbero-heinrich",
+     "own": true,
+     "evidence": {
+      "start": 81,
+      "end": 156,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22647:> .\nx:dispute-adalbero-heinrich a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22647> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Streites zwischen Erzbischof Adalbero von Trier und Graf Heinrich von Namur\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Adalbero von Trier",
+      "text": "Erzbischof Adalbero von Trier in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22647:dispute-adalbero-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-adalbero-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 81,
+       "end": 156,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22647:> .\nx:dispute-adalbero-heinrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000549> ; rf:nameInSource \"Erzbischof Adalbero von Trier\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000549"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Heinrich von Namur",
+      "text": "Graf Heinrich von Namur in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22647:dispute-adalbero-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-adalbero-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 81,
+       "end": 156,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22647:> .\nx:dispute-adalbero-heinrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000540> ; rf:nameInSource \"Graf Heinrich von Namur\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000540"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Erzbischof Adalbero von Trier"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Graf Heinrich von Namur"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "dispute-adalbero-heinrich",
+    "start": 81,
+    "end": 156
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Friedrich, Herzog von Schwaben' matches by name and title both the register candidate RI004-002-F000681 (Herzog von Schwaben, father of Barbarossa, role p_komment) and the shared ruler urn:regesta:actor:RI004-002-F000471. Not identified; no factoid needs the actor, since his mention is a charter witness only.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The settlement of the dispute ('Beilegung des Streites') has no act type; rv:Judgment requires a decision by verdict. Only the dispute is recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Mention as charter witness of a settlement documented in another charter (DK. III. 164) is treated as an excluded formulaic witness mention; rv:Witness covers only testimony in a narrated dispute.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for the settlement of a dispute (Beilegung, Vergleich) distinct from a judgment.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "act-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22647:dispute-adalbero-heinrich",
+     "description": "rv:Dispute is defined as a dispute before a court or ruler; the regest does not say before whom the dispute was carried, only that it was settled in a charter of Konrad III. The type fits the wording 'Streites zwischen' well enough, but the forum is not stated.",
+     "proposal": "No change; the definition's forum clause should not be read into the record.",
+     "quote": {
+      "start": 81,
+      "end": 156
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Vermerk",
+     "subject": "22647",
+     "description": "The settlement of the dispute is omitted. rv:Judgment would overstate it (a Beilegung need not be a judgment), so the omission is a model gap rather than an extraction error.",
+     "proposal": "Record as model gap; once a settlement type exists, add an act factoid with rf:refersToAct to the dispute.",
+     "quote": {
+      "start": 67,
+      "end": 89
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The settlement ('Beilegung des Streites') of the recorded dispute is omitted for lack of a type.",
+     "reason": "'Beilegung des Streites zwischen Erzbischof Adalbero von Trier und Graf Heinrich von Namur' reports a settlement; rv:Judgment requires decision by 'Spruch', which the passage does not state, and no settlement type exists. The dispute itself is recorded with both parties as rv:Participant, correctly since 'zwischen' names no claimant. Once a settlement type exists, the settlement becomes an act factoid with rf:refersToAct to the dispute.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Identifizierung mit Barbarossa vgl. Bernhardi, Jahrbücher 528 f. mit Anm. 55. Simonsfeld, Jahrbücher, Excurs I, 664 f. tritt dagegen für den Vater Friedrichs I. ein, dessen Anwesenheit in Speyer er mit Hinweis auf D. 156 (Reg. "
+    },
+    {
+     "t": "431"
+    },
+    {
+     "t": ") zweifelsfrei erweisen kann, Hausmann in der Edition der DDK. III. wieder für den späteren Kaiser. Da uns Barbarossas Anwesenheit in Speyer um diese Zeit auch sonst belegt ist (Reg. "
+    },
+    {
+     "t": "19",
+     "regest": "22646"
+    },
+    {
+     "t": "), kann nicht mit letzter Sicherheit entschieden werden, um welchen der beiden Friederiche es sich hier handelt. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " B.-Niederkorn-Hruza, Reg. 424 votieren zuletzt wieder für eine Identifizierung des in der Königsurkunde Konrads III. als Zeugen genannten Herzogs Friedrich von Schwaben mit dem Vater Friedrich Barbarossas, eine Auffassung, der sich auch Görich, Fürstenstreit und Friedensstiftung, ZGORh 158 (2010) 128 f. mit Anm. 42, anschließt."
+    }
+   ],
+   "transmission": [],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=17"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000549",
+    "(von Montreuil), Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000540",
+    "(IV., der Blinde), Graf von Luxemburg-Namur"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-S000967",
+    "Speyer (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

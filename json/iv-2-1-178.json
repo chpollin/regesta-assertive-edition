@@ -1,0 +1,756 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-06-07_1_0_4_2_1_178_178",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22805",
+  "identifier": "RI IV,2,1 n. 178",
+  "short": "RI IV,2,1 n. 178",
+  "sort": "004_002_001_000178_0000000178",
+  "start": "1153-06-07",
+  "end": "1153-06-07",
+  "proseYears": [],
+  "lead": "Friedrich hält zu Pfingsten einen Hoftag .",
+  "date": [
+   {
+    "t": "1153 Juni 7"
+   }
+  ],
+  "place": [
+   {
+    "t": "Worms"
+   }
+  ],
+  "text": "Friedrich hält zu Pfingsten einen Hoftag . Herzog Heinrich von Bayern weigert sich, über die Klage des gleichfalls anwesenden Herzogs Heinrich von Sachsen um das Herzogtum Bayern zu verhandeln. Friedrich läßt Erzbischof Heinrich von Mainz (Otto von Freising: ... pro distractione aecclesiae suae frequenter correptum nec correctum, ... ; Ann. s. Disibodi: ... ex praecepto Eugenii ; Ann. Palid.: ... ob inutilitatem...) sowie die Bischöfe Burchard von Eichstätt (Otto von Freising: ... senio gravem, de inutilitate causantes, ...), Bernhard von Hildesheim (Ann. Palid.: ... quia sacerdotale ministerium plenius exequi non poterat, ...) und Heinrich von Minden (Chron. reg. Col.: ... dum propter clericum quendam, qui in civitate a suis, ipso consentiente ut dicebatur, cecatus fuerat, expurgare se non posset, multis pertesus adversitatibus...) durch die Kardinallegaten absetzen und seinen Kanzler Arnold durch anwesende Mitglieder des Klerus und des Volkes zu Heinrichs Nachfolger in Mainz wählen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22805:klage-herzogtum-bayern",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22805:klage-herzogtum-bayern",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "klage-herzogtum-bayern",
+     "own": true,
+     "evidence": {
+      "start": 43,
+      "end": 192,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22805:> .\nx:klage-herzogtum-bayern a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22805> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Heinrich von Bayern weigert sich, über die Klage des gleichfalls anwesenden Herzogs Heinrich von Sachsen um das Herzogtum Bayern zu verhandeln\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Heinrich von Bayern",
+      "text": "Herzog Heinrich von Bayern in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22805:klage-herzogtum-bayern",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "klage-herzogtum-bayern",
+      "own": true,
+      "evidence": {
+       "start": 43,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22805:> .\nx:klage-herzogtum-bayern rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Herzog Heinrich von Bayern\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000498"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogs Heinrich von Sachsen",
+      "text": "Herzogs Heinrich von Sachsen in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22805:klage-herzogtum-bayern",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "klage-herzogtum-bayern",
+      "own": true,
+      "evidence": {
+       "start": 43,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22805:> .\nx:klage-herzogtum-bayern rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzogs Heinrich von Sachsen\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herzogtum Bayern",
+      "text": "betrifft Herzogtum Bayern",
+      "triple": [
+       "urn:regesta:22805:klage-herzogtum-bayern",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22805:herzogtum-bayern"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "klage-herzogtum-bayern",
+      "own": true,
+      "evidence": {
+       "start": 43,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22805:> .\nx:klage-herzogtum-bayern rf:concerns x:herzogtum-bayern .\nx:herzogtum-bayern a crm:E53_Place ;\n    rdfs:label \"Herzogtum Bayern\" .",
+      "object": "urn:regesta:22805:herzogtum-bayern",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Herzog Heinrich von Bayern"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzogs Heinrich von Sachsen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Herzogtum Bayern"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22805:wahl-arnold-mainz",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22805:wahl-arnold-mainz",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "wahl-arnold-mainz",
+     "own": true,
+     "evidence": {
+      "start": 194,
+      "end": 238,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22805:> .\nx:wahl-arnold-mainz a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22805> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich läßt Erzbischof Heinrich von Mainz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22805:wahl-arnold-mainz",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wahl-arnold-mainz",
+      "own": true,
+      "evidence": {
+       "start": 194,
+       "end": 238,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22805:> .\nx:wahl-arnold-mainz rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kanzler Arnold",
+      "text": "Kanzler Arnold in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22805:wahl-arnold-mainz",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wahl-arnold-mainz",
+      "own": true,
+      "evidence": {
+       "start": 194,
+       "end": 238,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22805:> .\nx:wahl-arnold-mainz rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:nameInSource \"seinen Kanzler Arnold\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001203"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "anwesende Mitglieder des Klerus und des Volkes",
+      "text": "anwesende Mitglieder des Klerus und des Volkes in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22805:wahl-arnold-mainz",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wahl-arnold-mainz",
+      "own": true,
+      "evidence": {
+       "start": 194,
+       "end": 238,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22805:> .\nx:wahl-arnold-mainz rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22805:local:mitglieder-klerus-volk> ; rf:nameInSource \"anwesende Mitglieder des Klerus und des Volkes\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22805:local:mitglieder-klerus-volk"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22805:wahl-arnold-mainz",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wahl-arnold-mainz-2",
+      "own": true,
+      "evidence": {
+       "start": 884,
+       "end": 998,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22805:> .\nx:wahl-arnold-mainz rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"seinen Kanzler Arnold durch anwesende Mitglieder des Klerus und des Volkes zu Heinrichs Nachfolger in Mainz wählen\" ] .",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "zu Heinrichs Nachfolger in Mainz",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22805:wahl-arnold-mainz",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 959,
+       "end": 991,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5",
+       "k9"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k6",
+       "k9"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k7",
+       "k9"
+      ],
+      "text": "Kanzler Arnold"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k8",
+       "k9"
+      ],
+      "text": "anwesende Mitglieder des Klerus und des Volkes"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "klage-herzogtum-bayern",
+    "start": 43,
+    "end": 192
+   },
+   {
+    "id": "wahl-arnold-mainz",
+    "start": 194,
+    "end": 238
+   },
+   {
+    "id": "wahl-arnold-mainz-2",
+    "start": 884,
+    "end": 998
+   },
+   {
+    "id": "t1",
+    "start": 959,
+    "end": 991
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Herzog Heinrich von Bayern' identified with RI004-002-H000498 (Jasomirgott) and 'Herzogs Heinrich von Sachsen' with RI004-002-H000470; both candidate labels mention Bavaria, the split follows the titles in the passage.",
+     "lang": "en"
+    },
+    {
+     "text": "'anwesende Mitglieder des Klerus und des Volkes' has no candidate and is a regest-local group.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a deposition from office: the deposition of Archbishop Heinrich of Mainz and the bishops Burchard of Eichstätt, Bernhard of Hildesheim and Heinrich of Minden by the cardinal legates was not extracted; the chronicle quotations giving reasons are commentary-like and were not used as rf:ground.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type or property for a respondent's refusal to negotiate a claim; the Dispute factoid keeps 'weigert sich' only in its evidence.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Election is typed rv:Appointment; Friedrich, who causes the election ('läßt ... wählen'), is given rv:Grantor and the electors rv:Participant, since no elector or initiator role exists.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Hoftag is out of scope and not extracted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for deposition from office (Absetzung).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for an actor who causes an act carried out by others (Friedrich läßt ... absetzen / wählen) and no elector role.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type or qualifier for refusal to negotiate or to submit to a court.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22805",
+     "description": "Friedrich has the cardinal legates depose Archbishop Heinrich of Mainz and the bishops Burchard of Eichstätt, Bernhard of Hildesheim and Heinrich of Minden. This is the core legal act of the record and is absent; the regest also gives grounds for each deposition in quoted source wording. The vocabulary has no deposition act type, so a fully correct factoid is not possible, but the prelates' office holding, the cardinal legates as functional actors and the quoted grounds as rf:ground could have been recorded, and the omission should at least be reported.",
+     "proposal": "Once a deposition type exists, add one act factoid per deposed prelate with Friedrich as causing actor, 'die Kardinallegaten' as rf:FunctionalActor, the prelate as affected party and the quoted reasons (for example 'ob inutilitatem') as rf:ground; until then report the passage as a model gap.",
+     "quote": {
+      "start": 845,
+      "end": 879
+     }
+    },
+    {
+     "category": "role-precision",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22805:wahl-arnold-mainz",
+     "description": "The electors are rv:Participant and Friedrich, who has the election carried out, is rv:Grantor. Both are the best available roles; the vocabulary lacks an elector role and a role for causing an act.",
+     "proposal": "No change within the contract.",
+     "quote": {
+      "start": 884,
+      "end": 998
+     }
+    },
+    {
+     "category": "omitted-detail",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22805:klage-herzogtum-bayern",
+     "description": "The respondent's refusal to negotiate is kept only in the evidence, as the extractor's comment says. Correctly reported as a gap.",
+     "proposal": "No change within the contract.",
+     "quote": {
+      "start": 43,
+      "end": 192
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The deposition of Archbishop Heinrich of Mainz and three bishops by the cardinal legates, the central act of the record, is not recorded.",
+     "reason": "The passage 'Friedrich läßt Erzbischof Heinrich von Mainz ... sowie die Bischöfe ... durch die Kardinallegaten absetzen' is central and in scope, but no act type of the contract expresses a deposition (rv:Revocation covers the revocation of a grant or provision, rv:Appointment the opposite act), and no role exists for the deposed or for the actor who causes an act carried out by others. Recording only office-holding states would not express the passage. No correction; the gap goes to the next model version.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Weigerung Herzog Heinrichs von Bayern vgl. Simonsfeld, Jahrbücher 187 und Fichtenau-Dienst, UB. zur Gesch. der Babenberger 4/1, 131 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 775. Zu den Absetzungen vgl. Simonsfeld, Jahrbücher 177 ff. sowie die Schreiben der (Äbtissin) Hildegard (von Rupertsberg) an die Legaten (Acht, Mainzer UB. 2/1, 358 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 194), an Eugen III. (a. a. O. 357 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 193), des Abtes Bernhard von Clairvaux an die Legaten (a. a. O. 359 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 195) und des Bischofs Eberhard II. von Bamberg an Eugen III. [a. a. O. 198 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 103 zu (1147)]. Zum allgemeinen Verhalten der Kardinallegaten vgl. Simonsfeld, Jahrbücher 186 mit Anm. 130 und zum Tod Heinrichs von Mainz 184 mit Anm. 121. Mit dem territorialpolitischen Aspekt der Absetzung Heinrichs von Mainz haben sich Büttner, Heinrich von Mainz, ZKG 69 (1958) 247 ff. und Heinemann, Hildesheim (Qu. u. Darst. zur Gesch. Ndsachs. 72, 1968) 210 f. und 222 beschäftigt. Abt R(udolf) von Reinhardsbrunn beglückwünschte Heinrichs Nachfolger A(rnold) zu seiner Erhebung (Acht, Mainzer UB. 2/1, 359 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 196). - Die Vorgeschichte sowie die Absetzung des Bischofs von Eichstätt behandelt Heidingsfelder, Reg. Eichstätt, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 396-398 und 400-402. Vgl. dazu auch Bernhardi, Konrad III. Jahrbücher 2, 905 f. Zum Schreiben (des Kanonikus Ilsung von Heidenheim?) an (Abt Adam von Ebrach) vgl. Ohnsorge, Ebracher Briefsammlung, QFIAB 20 (1928/29) 17 ff. und 34 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 6. - Die Absetzung Bernhards und ihre Hintergründe hat Heinemann, a. a. O. 209 ff. beleuchtet. Auch hier dürften territorialpolitische Gründe vgl. 211 und 222 entscheidend gewesen sein. Bernhards Absetzung dürfte in die Zeit zwischen dem 23. April und Ende Mai fallen, vgl. 223. Zur späteren Wahl seines Nachfolgers Bruno, vor dem der Hildesheimer Dompropst Rainald von Dassel zum Bischof ausersehen war, vgl. ebenfalls Heinemann, a. a. O. 225 f. mit Anm. 487 sowie Knipping, Reg. Köln 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "678"
+    },
+    {
+     "t": " (bei 1159). - Zur Blendung des Vorthlev ("
+    },
+    {
+     "t": "Fordivus",
+     "i": true
+    },
+    {
+     "t": ") sowie zur Absetzung des Bischofs Heinrich von Minden vgl. Ortmanns, Bistum Minden (Reihe der Forschungen 5, 1972) 78 ff. und Knipping, Reg. Köln 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "1162"
+    },
+    {
+     "t": " zu "
+    },
+    {
+     "t": "1181"
+    },
+    {
+     "t": " (Fordivus erhält noch weitere 10 Mark, ehe er eidlich gelobt, auf weitere Ansprüche zu verzichten); vgl. auch Reg. "
+    },
+    {
+     "t": "77",
+     "regest": "22704"
+    },
+    {
+     "t": ". Zur Tätigkeit der Kardinallegaten in Worms (Legat Gregor beruft den Propst von Corvey für den 14. Juni nach Worms) vgl. das Schreiben Epp. Wibaldi, ed. Jaffé, Mon. Corb. 551 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 412; dazu siehe auch Bachmann, Legaten (Hist. Stud 115, 1913) 106. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (2001):"
+    },
+    {
+     "t": " Ohnsorge, Ebracher Briefsammlung, QFIAB 20 (1928/29) 20 f. zeigt, daß der Bericht Ottos von Freising über die Absetzung Bischof Burchards von Eichstätt (Reg. 178) durch die Kardinallegalen "
+    },
+    {
+     "t": "permissu principis"
+    },
+    {
+     "t": " zeitlich (siehe die Nennungen der Kardinallegaten in Regg. 172 und 173) eher zum Bamberger Hoftag, vielleicht sogar schon vor Ostern (19. April) gehört, vgl. dazu jüngst Weinfurter, Barbarossa und Eichstätt, Jb.f.fränk.Landesforsch. 52 (1992) 82 Anm. 78."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Zum Hoftag vgl. die Erwähnung in DDF. I. 59 (Reg. 180; Stumpf 3670a: ... "
+    },
+    {
+     "t": "Secundo vero nostri principatus anno in festo pentecostes in urbe Wormatia sollemnem curiam celebrantes",
+     "i": true
+    },
+    {
+     "t": "...) und 60 (Reg. 181). Zur Weigerung Herzog Heinrichs von Bayern vgl. Ottonis Gesta Frid. l. II cap. 9, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 110 f. Zur Absetzung Heinrichs von Mainz vgl. Ann. s. Disibodi, MG. SS XVII, 28; Ann. Magdeburg., MG. SS XVI, 191; Ann. Palid., MG. SS XVI, 87 f.; Ann. s. Petri Erph. antiqui, ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 19; Ann. s. Petri Erph. breves, a. a. O. 56; Ann. s. Petri Erph. maiores, a. a. O. 57; Chron. Mogunt., MG. SS XXV, 241f.; Chron. Montis Sereni, MG. SS XXIII, 149; Chron. reg. Col., ed. Waitz, MG. SS rer. Germ. in us. schol. 89 f. Rec. I und II; Comp. Chron., ed. Leibnitz, SS Brunsvic. illustr. II, 66; Cont. Claustroneoburg. II, MG. SS IX, 615; Cron. s. Petri Erf. mod., ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 178; Eberbacher Chronik, ed. Widmann, NA 13 (1888) 133; Ottonis Gesta Frid. l. II cap. 9, ed. Waitz-Simson, MG. SS rer. Germ. in us schol. 110 f.; Sächs. Weltchronik, ed. Weiland, MG. Deutsche Chroniken II, 220; Ser. aepp. Mogunt. Seligenstad., MG. SS XIII, 313; Ser. s. Iacobi Moguntini, a. a. O. 314; Vita Arnoldi aep. Mogunt. ed Jaffe, Bibl. rer. Germ. 3, 610. Burchards von Eichstätt Absetzung berichten Gerhoh von Reichersberg, Commentarius in psalmum LXV, ed. Sackur, MG. Libelli III, 494 ff.; Gundechari lib. pont. Eichstet. cont., MG. SS VII, 250; Ottonis Gesta Frid. l. II cap. 9, a. a. O. 111; Relatio Adelberti, ed. Gretser, Opera omnia X, 817 H. ("
+    },
+    {
+     "t": "Cum igitur praedicti Cardinales Eystettensem Episcopum Burchardum deposuissent, & Cunradum Episcopum Canonica electione in Moguntina metropoli facia substituissent",
+     "i": true
+    },
+    {
+     "t": ", ...). Zu Bernhards Absetzung vgl.: Ann. Magdeburg., MG. SS XVI, 191; Ann. Palid., MG. SS XVI, 87; Chron. Hild., MG. SS VII, 855 f. Die Absetzung Heinrichs von Minden erwähnen Ann. Magdeburg., a. a. O. 191; Ann. Palid., a. a. O. 88; Chron. reg. Col., ed. Waitz, MG. SS rer. Germ. in us. schol. 90 Rec. I und II."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=64"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000294",
+    "Abt von Ebrach"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-B000313",
+    "Herzogtum"
+   ],
+   [
+    "RI004-002-B000622",
+    "Kardinalpriester von S. Clemente (1145─1158), dann Kardinalbischof von Porto (1158─1176)"
+   ],
+   [
+    "RI004-002-B000625",
+    "Bischof von Hildesheim"
+   ],
+   [
+    "RI004-002-B000633",
+    "Abt von Clairvaux"
+   ],
+   [
+    "RI004-002-B001491",
+    "Bischof von Hildesheim, vorher Domdekan von Hildesheim"
+   ],
+   [
+    "RI004-002-B001562",
+    "Bischof von Eichstätt"
+   ],
+   [
+    "RI004-002-C000963",
+    "Propst"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-G000973",
+    "Kardinaldiakon von S. Angelo (in Pescheria; vor Juli 1137<i>?</i>, dann, nach 13.4.1154─nach 18.5.1154, Kardinalbischof von Sabina)"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000393",
+    "Bischof von Minden"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000498",
+    "(Jasomirgott), Herzog von Österreich, vorher von Bayern"
+   ],
+   [
+    "RI004-002-H000987",
+    "Äbtissin von Bingen"
+   ],
+   [
+    "RI004-002-I000050",
+    "Ilsung, Kanoniker von Heidenheim (<i>?</i>)"
+   ],
+   [
+    "RI004-002-R000076",
+    "von Dassel, Elekt und Erzbischof von Köln und Erzkanzler für Italien, vorher Dompropst von Hildesheim und Kanzler der Reichskanzlei"
+   ],
+   [
+    "RI004-002-R001176",
+    "Abt von Reinhardsbrunn"
+   ],
+   [
+    "RI004-002-V000590",
+    "Vorthlev, Kleriker von Minden"
+   ],
+   [
+    "RI004-002-W000818",
+    "Worms (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

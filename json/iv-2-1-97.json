@@ -1,0 +1,580 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-06-29_3_0_4_2_1_97_97",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22724",
+  "identifier": "RI IV,2,1 n. 97",
+  "short": "RI IV,2,1 n. 97",
+  "sort": "004_002_001_000097_0000000097",
+  "start": "1152-06-29",
+  "end": "1152-06-29",
+  "proseYears": [],
+  "lead": "Auf dem Regensburger Hoftag König Friedrichs wird in Gegenwart Erzbischof Eberhards von Salzburg ein Tauschgeschäft zwischen Graf Berthold von Andechs und dem Kloster Admont, für dessen Abt Gottfried der Vogt, Graf Gebhard von Burghausen, tätig ist, vollzogen.",
+  "date": [
+   {
+    "t": "(1152 Juni 29)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Regensburg"
+   }
+  ],
+  "text": "Auf dem Regensburger Hoftag König Friedrichs wird in Gegenwart Erzbischof Eberhards von Salzburg ein Tauschgeschäft zwischen Graf Berthold von Andechs und dem Kloster Admont, für dessen Abt Gottfried der Vogt, Graf Gebhard von Burghausen, tätig ist, vollzogen. Z.: Graf Heinrich von Wolfratshausen, Adelbert von Eurasburg. (Iringespurch), Ulrich von Stein.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22724:exchange",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22724:exchange",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "exchange",
+     "own": true,
+     "evidence": {
+      "start": 45,
+      "end": 259,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22724:> .\nx:exchange a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22724> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"wird in Gegenwart Erzbischof Eberhards von Salzburg ein Tauschgeschäft zwischen Graf Berthold von Andechs und dem Kloster Admont, für dessen Abt Gottfried der Vogt, Graf Gebhard von Burghausen, tätig ist, vollzogen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Eberhards von Salzburg",
+      "text": "Erzbischof Eberhards von Salzburg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22724:exchange",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 45,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22724:> .\nx:exchange rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000010> ; rf:nameInSource \"Erzbischof Eberhards von Salzburg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000010"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Berthold von Andechs",
+      "text": "Graf Berthold von Andechs in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22724:exchange",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 45,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22724:> .\nx:exchange rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000726> ; rf:nameInSource \"Graf Berthold von Andechs\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000726"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Admont",
+      "text": "Kloster Admont in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22724:exchange",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 45,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22724:> .\nx:exchange rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000358:community> ; rf:nameInSource \"Kloster Admont\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000358:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Gottfried",
+      "text": "Abt Gottfried in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22724:exchange",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 45,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22724:> .\nx:exchange rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000797> ; rf:nameInSource \"Abt Gottfried\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000797"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Gebhard von Burghausen",
+      "text": "Graf Gebhard von Burghausen in der Rolle Vertreter",
+      "triple": [
+       "urn:regesta:22724:exchange",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 45,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22724:> .\nx:exchange rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000214> ; rf:nameInSource \"Graf Gebhard von Burghausen\" ; rf:role rv:Representative ] .",
+      "role": "Vertreter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000214"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Tauschgeschäft",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22724:exchange",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 101,
+       "end": 115,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Übertragung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Erzbischof Eberhards von Salzburg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Graf Berthold von Andechs"
+     },
+     ", ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Kloster Admont"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Abt Gottfried"
+     },
+     ", als Vertreter ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Graf Gebhard von Burghausen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22724:advocacy-holding",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22724:advocacy-holding",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advocacy-holding",
+     "own": true,
+     "evidence": {
+      "start": 155,
+      "end": 248,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22724:> .\nx:advocacy-holding a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22724> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Admont, für dessen Abt Gottfried der Vogt, Graf Gebhard von Burghausen, tätig ist\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Gebhard von Burghausen",
+      "text": "Graf Gebhard von Burghausen in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22724:advocacy-holding",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-holding",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 248,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22724:> .\nx:advocacy-holding rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000214> ; rf:nameInSource \"Graf Gebhard von Burghausen\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000214"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vogt)",
+      "text": "betrifft Vogtei (Vogt)",
+      "triple": [
+       "urn:regesta:22724:advocacy-holding",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22724:right:advocacy"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-holding",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 248,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22724:> .\nx:advocacy-holding rf:concerns x:right:advocacy .\nx:right:advocacy a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vogt\" .",
+      "object": "urn:regesta:22724:right:advocacy",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Kloster Admont",
+      "text": "betrifft Kloster Admont",
+      "triple": [
+       "urn:regesta:22724:advocacy-holding",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-A000358:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-holding",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 248,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22724:> .\nx:advocacy-holding rf:concerns <urn:regesta:actor:RI004-002-A000358:community> .\n<urn:regesta:actor:RI004-002-A000358:community> a crm:E74_Group ;\n    rdfs:label \"Kloster Admont\" .",
+      "object": "urn:regesta:actor:RI004-002-A000358:community",
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Graf Gebhard von Burghausen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Vogtei (Vogt)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Kloster Admont"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "exchange",
+    "start": 45,
+    "end": 259
+   },
+   {
+    "id": "t1",
+    "start": 101,
+    "end": 115
+   },
+   {
+    "id": "advocacy-holding",
+    "start": 155,
+    "end": 248
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for an exchange (Tauschgeschäft); recorded as rv:Grant with rf:qualifier \"Tauschgeschäft\".",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for presence at an act (in Gegenwart Erzbischof Eberhards); recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the party represented by a representative (Abt Gottfried); recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Whether the Vogt holds advocacy over the monastery or acts for the abbot personally is not settled by the wording; RightHolding concerns both the right and the Admont community.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No exchange act type.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for presence at an act (in Gegenwart).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the party on whose behalf a representative acts.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22724:exchange",
+     "description": "Erzbischof Eberhard is only present ('in Gegenwart'), but rv:Participant suggests involvement in the transaction. Abt Gottfried is the party for whom the Vogt acts; rv:Participant hides that he is represented.",
+     "proposal": "Keep the stand-in but add rf:qualifier \"in Gegenwart\" to make the archbishop's presence visible; report missing presence and represented-party roles as model gaps.",
+     "quote": {
+      "start": 45,
+      "end": 259
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Add rf:qualifier 'in Gegenwart' to mark the archbishop's mere presence.",
+     "reason": "'in Gegenwart Erzbischof Eberhards von Salzburg' qualifies one actor's role, not the type or time of the factoid, so rf:qualifier cannot bind it to the archbishop; the vocabulary lacks a presence role and a represented-party role.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Einreihung dieser Handlung ergibt sich aus den Zeugen und der Tatsache, daß Friedrich vor 1153 Juli 8 (dieser terminus ante quem für die Ausstellung der erzbischöflichen Urkunde resultiert aus der Erwähnung Papst Eugens III.) eben nur an Peter und Paul des Jahres 1152 einen Hoftag in Regensburg abhielt. - Zum Admonter Vogt vgl. Hausmann, JLKNÖ N. F. 42 (1976) 112 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt in einer Urkunde Erzbischof Eberhards I. von Salzburg von 1153 (Mai-Juli 8), ed. Hauthaler-Martin, Salzburger UB. 2, 423 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 304; Stumpf 3631."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=36"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000182",
+    "von Eurasburg"
+   ],
+   [
+    "RI004-002-A000358",
+    "Admont (im Ennstal, Steiermark), Benediktinerkloster, auch Frauenkloster"
+   ],
+   [
+    "RI004-002-B000726",
+    "(III., der Ältere), Markgraf von Andechs und Istrien, vorher Graf von Andechs (Meranien), auch von Plassenburg"
+   ],
+   [
+    "RI004-002-E000010",
+    "Erzbischof von Salzburg"
+   ],
+   [
+    "RI004-002-G000214",
+    "Graf von Burghausen"
+   ],
+   [
+    "RI004-002-G000797",
+    "Abt von Admont"
+   ],
+   [
+    "RI004-002-H000563",
+    "(II.), Graf von Wolfratshausen"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-U000225",
+    "von Stein, Edelfreier"
+   ]
+  ]
+ }
+}

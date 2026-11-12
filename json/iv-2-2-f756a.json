@@ -1,0 +1,472 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/a410ecc2-d212-4993-8bc6-d84cab5c8915",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "220532",
+  "identifier": "RI IV,2,2 n. †756a",
+  "short": "RI IV,2,2 n. †756a",
+  "sort": "004_002_002_001263_00000#756a",
+  "start": "1143-01-01",
+  "end": "1159-09-30",
+  "proseYears": [],
+  "lead": "Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit, dass er sich beim Kaiser für ihn einsetzen werde und demnächst mit Truppen zu Alexander (III.) kommen werde und ihm und seinen Freunden Unterstützung bei der Niederwerfung ihrer Feinde leisten werde.",
+  "date": [
+   {
+    "t": "(1159 vor Ende September)"
+   }
+  ],
+  "place": [],
+  "text": "Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit, dass er sich beim Kaiser für ihn einsetzen werde und demnächst mit Truppen zu Alexander (III.) kommen werde und ihm und seinen Freunden Unterstützung bei der Niederwerfung ihrer Feinde leisten werde.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:220532:assurance-intercession",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:220532:assurance-intercession",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "assurance-intercession",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 66,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220532:> .\nx:assurance-intercession a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:220532> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g11> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf (VI.)",
+      "text": "Herzog Welf (VI.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220532:assurance-intercession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-intercession",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220532:> .\nx:assurance-intercession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf (VI.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Guido (III.) Guerra, Graf von Tuszien",
+      "text": "Guido (III.) Guerra, Graf von Tuszien in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:220532:assurance-intercession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-intercession",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220532:> .\nx:assurance-intercession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001188> ; rf:nameInSource \"Guido (III.) Guerra\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G001188"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:220532:assurance-intercession",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:220532:letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-intercession",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220532:> .\nx:assurance-intercession rf:partOf x:letter .\nx:letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g11> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001188> ; rf:nameInSource \"Guido (III.) Guerra\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf (VI.)\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:220532> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:220532:letter",
+      "objectClaim": "letter",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:220532:assurance-intercession",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-intercession-2",
+      "own": true,
+      "evidence": {
+       "start": 68,
+       "end": 116,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220532:> .\nx:assurance-intercession rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dass er sich beim Kaiser für ihn einsetzen werde\" ] .",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "sich beim Kaiser für ihn einsetzen werde",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220532:assurance-intercession",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 76,
+       "end": 116,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Herzog Welf (VI.)"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Guido (III.) Guerra, Graf von Tuszien"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:220532:letter",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:220532:letter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "letter",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 66,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220532:> .\nx:letter a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:220532> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g11> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf (VI.)",
+      "text": "Herzog Welf (VI.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220532:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220532:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf (VI.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Guido (III.) Guerra, Graf von Tuszien",
+      "text": "Guido (III.) Guerra, Graf von Tuszien in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:220532:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220532:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001188> ; rf:nameInSource \"Guido (III.) Guerra\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G001188"
+      ],
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Schreiben"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herzog Welf (VI.)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Guido (III.) Guerra, Graf von Tuszien"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "assurance-intercession",
+    "start": 0,
+    "end": 66
+   },
+   {
+    "id": "letter",
+    "start": 0,
+    "end": 66
+   },
+   {
+    "id": "assurance-intercession-2",
+    "start": 68,
+    "end": 116
+   },
+   {
+    "id": "t1",
+    "start": 76,
+    "end": 116
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Borderline abstention: the letter promises intercession with the emperor and armed support against enemies ('Unterstützung bei der Niederwerfung ihrer Feinde'); read as political-military, not a kinship, economic or legal relation. Whether such alliance promises count as rv:Assurance in scope is an open expert question.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for intercession on another's behalf.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Replaced the abstention: added actors urn:regesta:actor:RI004-002-W000272 (\"Herzog Welf (VI.)\") and urn:regesta:actor:RI004-002-G001188 (\"Guido (III.) Guerra, Graf von Tuszien\").",
+     "lang": "en"
+    },
+    {
+     "text": "Added rf:ActFactoid urn:regesta:220532:letter (rv:Communication), Welf rv:Grantor, Guido rv:Addressee; producer correction-g11.",
+     "lang": "en"
+    },
+    {
+     "text": "Added rf:ActFactoid urn:regesta:220532:assurance-intercession (rv:Assurance, rf:partOf the letter), two evidence selectors, Welf rv:Grantor, Guido rv:Beneficiary, rf:qualifier \"sich beim Kaiser für ihn einsetzen werde\"; producer correction-g11.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "abstention",
+     "severity": "Fehler",
+     "subject": "220532",
+     "description": "The regest reports a letter from Welf (VI.) to Guido (III.) Guerra announcing that he will intercede with the emperor for him. rv:Communication and rv:Assurance cover this, and the packet carries matching candidates W000272 and G001188. The abstention reason ('no kinship, economic or legal relation') applies the exception clause of the military exclusion to the whole regest.",
+     "proposal": "Add an rv:Communication factoid (Welf sender, Guido rv:Addressee) and an rv:Assurance factoid partOf it with Welf as rv:Grantor, Guido as rv:Beneficiary and the emperor as rv:Addressee of the intercession, without asserting that the intercession took place. Leave the troop and support passage out as military.",
+     "quote": {
+      "start": 0,
+      "end": 116
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The abstention is unjustified: the letter and the announced intercession with the emperor are expressible acts.",
+     "reason": "The guidelines exclude only 'military movement alone, travel, and hostage taking'. 'Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit, dass er sich beim Kaiser für ihn einsetzen werde' is a letter (rv:Communication) carrying an assurance (rv:Assurance), the same kind of communication the run models in 220530. The coming with troops and the support against enemies remain out of scope as military. The fix is conservative because the vocabulary has no intercession type and no role for the person before whom one intercedes: the emperor gets no reference and the intercession stays in exact wording as rf:qualifier. Welf and Guido match the packet candidates W000272 and G001188 by name and title.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Fiktives Schreiben, dessen Verfasser freilich über die Geschehnisse der Epoche informiert gewesen sein dürfte. Die Datierung wird hier nach dem Eintreffen Welfs (VI.) vor Crema (Reg. II/"
+    },
+    {
+     "t": "757"
+    },
+    {
+     "t": ") vorgenommen. Hartmann, ebda., 290, hält es für denkbar, dass Welf VI. schon früh für Alexander III. Partei ergriffen hat."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Modi dictaminum des Magisters Guido (Verona, Biblioteca capitolare, Cod. CCLXII (234), fol. 62r. Druck: "
+    },
+    {
+     "t": "Hartmann, Ars dictaminis",
+     "href": "http://opac.regesta-imperii.de/id/1854872"
+    },
+    {
+     "t": ", 289f."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-A000617",
+    "III. (Roland Bandinelli), Papst, vorher: Kardinal (Roland Bandinelli) von S. Marco (vorher: Kardinaldiakon von SS. Cosma e Damiano; <i>zu ihm oben in der Einleitung, S. 27</i>), Kanzler der Römischen Kirche (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-G001188",
+    "VII., (III.) Guerra, Graf von Tuszien (<i>ob identisch mit Guido, Graf von Ventimiglia?</i>); <i>zu ihm siehe auch oben in der Einleitung, S. 28 f.</i>"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ]
+  ]
+ }
+}

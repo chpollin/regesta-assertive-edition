@@ -1,0 +1,174 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-03-00_2_0_4_2_1_72_72
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22699> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-E000589> a crm:E21_Person ; rdfs:label "Papst Eugen (III.)" .
+<urn:regesta:actor:RI004-002-E000011> a crm:E21_Person ; rdfs:label "Bischof E(berhard) von Bamberg" .
+<urn:regesta:actor:RI004-002-H001017> a crm:E21_Person ; rdfs:label "Elekt H(illin) von Trier" .
+<urn:regesta:actor:RI004-002-A000294> a crm:E21_Person ; rdfs:label "Abt A(dam) von Ebrach" .
+<urn:regesta:actor:22699:local:fuersten> a crm:E74_Group ; rdfs:label "die Fürsten" .
+<urn:regesta:actor:22699:local:roemische-kirche> a crm:E74_Group ; rdfs:label "die römische Kirche" .
+<urn:regesta:actor:22699:local:witwen> a crm:E74_Group ; rdfs:label "Witwen" .
+<urn:regesta:actor:22699:local:waisen> a crm:E74_Group ; rdfs:label "Waisen" .
+<urn:regesta:actor:22699:local:anvertrautes-volk> a crm:E74_Group ; rdfs:label "dem ihm anvertrauten Volk" .
+<urn:regesta:actor:22699:local:katholische-kirche> a crm:E74_Group ; rdfs:label "die katholische Kirche" .
+<urn:regesta:actor:22699:local:vorgaenger> a rf:FunctionalActor ; rdfs:label "seinem Vorgänger" .
+
+<urn:regesta:22699:frankfurt> a crm:E53_Place ; rdfs:label "Frankfurt" .
+
+<urn:regesta:22699:communication> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich unterrichtet Papst Eugen (III.) nach der Sitte seiner Vorgänger durch seine Legaten Bischof E(berhard) von Bamberg, Elekt H(illin) von Trier und Abt A(dam) von Ebrach und dieses Schreiben" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "Papst Eugen (III.)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Envoy ; rf:nameInSource "Bischof E(berhard) von Bamberg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001017> ; rf:role rv:Envoy ; rf:nameInSource "Elekt H(illin) von Trier" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000294> ; rf:role rv:Envoy ; rf:nameInSource "Abt A(dam) von Ebrach" ] ;
+    rf:qualifier "nach der Sitte seiner Vorgänger" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:election> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Er zeigt ihm seine am 17. Tag (= 1152 März 4) nach dem Ableben König K(onrads III.) zu Frankfurt in Eintracht erfolgte Wahl durch die Fürsten" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:fuersten> ; rf:role rv:Grantor ; rf:nameInSource "die Fürsten" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "Er" ] ;
+    rf:concerns <urn:regesta:22699:frankfurt> ;
+    rf:qualifier "in Eintracht" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:assurance-roman-church> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Er verspricht ihm, die römische Kirche nach seinem Krönungseid (iuxta professionis nostrę formulam, quam ab orthodoxis presulibus in ipso regni throno et unctione sacra accepimus) zu schützen" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:roemische-kirche> ; rf:role rv:Beneficiary ; rf:nameInSource "die römische Kirche" ] ;
+    rf:qualifier "nach seinem Krönungseid" ;
+    rf:partOf <urn:regesta:22699:communication> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:assurance-peace> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den Witwen, Waisen und dem ihm anvertrauten Volk den Frieden zu bringen und zu bewahren" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Er verspricht ihm" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:witwen> ; rf:role rv:Beneficiary ; rf:nameInSource "Witwen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:waisen> ; rf:role rv:Beneficiary ; rf:nameInSource "Waisen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:anvertrautes-volk> ; rf:role rv:Beneficiary ; rf:nameInSource "dem ihm anvertrauten Volk" ] ;
+    rf:partOf <urn:regesta:22699:communication> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:assurance-privileges> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die katholische Kirche in ihren Privilegien zu schützen" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Er verspricht ihm" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:katholische-kirche> ; rf:role rv:Beneficiary ; rf:nameInSource "die katholische Kirche" ] ;
+    rf:partOf <urn:regesta:22699:communication> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:predecessor-promises> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die von seinem Vorgänger dem Papst gegenüber gemachten Zusagen" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:vorgaenger> ; rf:role rv:Grantor ; rf:nameInSource "seinem Vorgänger" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "dem Papst" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:assurance-fulfil> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die von seinem Vorgänger dem Papst gegenüber gemachten Zusagen zu erfüllen" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Er verspricht ihm" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "dem Papst" ] ;
+    rf:refersToAct <urn:regesta:22699:predecessor-promises> ;
+    rf:partOf <urn:regesta:22699:communication> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:assurance-enemies> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "des Papstes Feinde auch als die seinigen zu betrachten" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Er verspricht ihm" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Beneficiary ; rf:nameInSource "des Papstes" ] ;
+    rf:partOf <urn:regesta:22699:communication> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ; rdfs:label "Erzbischof A(rnold) von Köln" .
+<urn:regesta:actor:22699:local:andere-bischoefe> a crm:E74_Group ; rdfs:label "andere Bischöfe" .
+<urn:regesta:actor:22699:local:volk> a crm:E74_Group ; rdfs:label "des Volkes" .
+
+<urn:regesta:22699:assurance-restore-empire> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den früheren Glanz des Reiches unter Beachtung des Grundsatzes von den zwei Gewalten wiederherzustellen" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Er verspricht ihm" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "ihm" ] ;
+    rf:qualifier "unter Beachtung des Grundsatzes von den zwei Gewalten" ;
+    rf:partOf <urn:regesta:22699:communication> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:anointing> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die am fünften Tag danach (März 9) durch Erzbischof A(rnold) von Köln und andere Bischöfe unter Akklamation des Volkes zu Aachen vorgenommene Königssalbung sowie die Thronsetzung" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Er zeigt ihm seine" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "Er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:role rv:Grantor ; rf:nameInSource "Erzbischof A(rnold) von Köln" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:andere-bischoefe> ; rf:role rv:Participant ; rf:nameInSource "andere Bischöfe" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22699:local:volk> ; rf:role rv:Participant ; rf:nameInSource "des Volkes" ] ;
+    rf:qualifier "Königssalbung sowie die Thronsetzung" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22699:request-return-abbot> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22699> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Er empfiehlt ihm seine Legaten und bittet um baldige Rücksendung des Abtes von Ebrach" ] ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000294> ; rf:role rv:Participant ; rf:nameInSource "des Abtes von Ebrach" ] ;
+    rf:qualifier "baldige" ;
+    rf:partOf <urn:regesta:22699:communication> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .

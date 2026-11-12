@@ -1,0 +1,61 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-08-19_1_0_4_2_1_128_128
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22755> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-K000350> a crm:E21_Person ;
+    rdfs:label "Abt Konrad von Schwatzach" .
+
+<urn:regesta:actor:RI004-002-S000416:community> a crm:E74_Group ;
+    rdfs:label "das Kloster" .
+
+<urn:regesta:actor:RI004-002-S000797> a crm:E21_Person ;
+    rdfs:label "Graf Simon von Saarbrücken" .
+
+<urn:regesta:22755:hof-schwindrazheim> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof Schwindrazheim (Swinderatesheim)" .
+
+<urn:regesta:22755:streit> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22755> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "um den das Kloster lange mit Graf Simon von Saarbrücken im Streit lag" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000416:community> ; rf:role rv:Participant ; rf:nameInSource "das Kloster" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000797> ; rf:role rv:Participant ; rf:nameInSource "Graf Simon von Saarbrücken" ] ;
+    rf:concerns <urn:regesta:22755:hof-schwindrazheim> ;
+    rf:qualifier "lange" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22755:urteil> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22755> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "daß er Abt Konrad von Schwatzach (Swarzaha in episcopatu Argentinensi) den Hof Schwindrazheim (Swinderatesheim)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "durch Urteilsspruch (per sentenciam ordine iudiciario promulgatam) zugesprochen hat" ] ;
+    rf:refersToAct <urn:regesta:22755:streit> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Judge ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000350> ; rf:role rv:Recipient ; rf:nameInSource "Abt Konrad von Schwatzach" ] ;
+    rf:concerns <urn:regesta:22755:hof-schwindrazheim> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22755:beurkundung> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22755> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich beurkundet, daß er Abt Konrad von Schwatzach" ] ;
+    rf:refersToAct <urn:regesta:22755:urteil> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000350> ; rf:role rv:Beneficiary ; rf:nameInSource "Abt Konrad von Schwatzach" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .

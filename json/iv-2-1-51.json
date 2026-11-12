@@ -1,0 +1,588 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1150-09-16_1_0_4_2_1_51_51",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22678",
+  "identifier": "RI IV,2,1 n. 51",
+  "short": "RI IV,2,1 n. 51",
+  "sort": "004_002_001_000051_0000000051",
+  "start": "1150-09-16",
+  "end": "1150-12-31",
+  "proseYears": [],
+  "lead": "Landgraf L(udwig II. von Thüringen) bittet Herzog F(riedrich von Schwaben) brieflich, er möge sich beim König für die Erhebung seines Verwandten Gebhard auf den Würzburger Bischofsstuhl einsetzen oder wenigstens eine Verschiebung der Entscheidung bewirken, bis er den König gesprochen habe.",
+  "date": [
+   {
+    "t": "(1150 September 16-Dezember)"
+   }
+  ],
+  "place": [],
+  "text": "Landgraf L(udwig II. von Thüringen) bittet Herzog F(riedrich von Schwaben) brieflich, er möge sich beim König für die Erhebung seines Verwandten Gebhard auf den Würzburger Bischofsstuhl einsetzen oder wenigstens eine Verschiebung der Entscheidung bewirken, bis er den König gesprochen habe.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22678:kinship-ludwig-gebhard",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22678:kinship-ludwig-gebhard",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-ludwig-gebhard",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 42,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22678:> .\nx:kinship-ludwig-gebhard a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22678> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Landgraf L(udwig II. von Thüringen) bittet\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Landgraf L(udwig II. von Thüringen)",
+      "text": "Landgraf L(udwig II. von Thüringen) in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22678:kinship-ludwig-gebhard",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22678:ref-kin-ludwig"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-ludwig-gebhard",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 42,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22678:> .\nx:kinship-ludwig-gebhard rf:reference x:ref-kin-ludwig .\nx:ref-kin-ludwig a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-L000841> ;\n    rf:nameInSource \"seines\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000841"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gebhard",
+      "text": "Gebhard in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22678:kinship-ludwig-gebhard",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22678:ref-kin-gebhard"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-ludwig-gebhard",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 42,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22678:> .\nx:kinship-ludwig-gebhard rf:reference x:ref-kin-gebhard .\nx:ref-kin-gebhard a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G000209> ;\n    rf:nameInSource \"Gebhard\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000209"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22678:kinship-ludwig-gebhard",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-ludwig-gebhard-2",
+      "own": true,
+      "evidence": {
+       "start": 127,
+       "end": 152,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22678:> .\nx:kinship-ludwig-gebhard rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"seines Verwandten Gebhard\" ] .",
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Verwandten",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22678:kinship-ludwig-gebhard",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 134,
+       "end": 144,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k4"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2",
+       "k4"
+      ],
+      "text": "Landgraf L(udwig II. von Thüringen)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3",
+       "k4"
+      ],
+      "text": "Gebhard"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22678:request",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22678:request",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 289,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22678:> .\nx:request a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22678> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Landgraf L(udwig II. von Thüringen) bittet Herzog F(riedrich von Schwaben) brieflich, er möge sich beim König für die Erhebung seines Verwandten Gebhard auf den Würzburger Bischofsstuhl einsetzen oder wenigstens eine Verschiebung der Entscheidung bewirken, bis er den König gesprochen habe\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Landgraf L(udwig II. von Thüringen)",
+      "text": "Landgraf L(udwig II. von Thüringen) in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22678:request",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22678:ref-request-ludwig"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 289,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22678:> .\nx:request rf:reference x:ref-request-ludwig .\nx:ref-request-ludwig a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-L000841> ;\n    rf:nameInSource \"Landgraf L(udwig II. von Thüringen)\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000841"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog F(riedrich von Schwaben)",
+      "text": "Herzog F(riedrich von Schwaben) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22678:request",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22678:ref-request-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 289,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22678:> .\nx:request rf:reference x:ref-request-friedrich .\nx:ref-request-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Herzog F(riedrich von Schwaben)\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gebhard",
+      "text": "Gebhard in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22678:request",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22678:ref-request-gebhard"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 289,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22678:> .\nx:request rf:reference x:ref-request-gebhard .\nx:ref-request-gebhard a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G000209> ;\n    rf:nameInSource \"Gebhard\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000209"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "bis er den König gesprochen habe",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22678:request",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 257,
+       "end": 289,
+       "ambiguous": false
+      },
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "brieflich",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22678:request",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 75,
+       "end": 84,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Landgraf L(udwig II. von Thüringen)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herzog F(riedrich von Schwaben)"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Gebhard"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "request",
+    "start": 0,
+    "end": 289
+   },
+   {
+    "id": "kinship-ludwig-gebhard",
+    "start": 0,
+    "end": 42
+   },
+   {
+    "id": "t3",
+    "start": 75,
+    "end": 84
+   },
+   {
+    "id": "kinship-ludwig-gebhard-2",
+    "start": 127,
+    "end": 152
+   },
+   {
+    "id": "t1",
+    "start": 134,
+    "end": 144
+   },
+   {
+    "id": "t2",
+    "start": 257,
+    "end": 289
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "\"seines Verwandten Gebhard\": the possessive is read as Landgraf Ludwig; grammatically it could also refer to Herzog Friedrich, the subject of \"er möge\".",
+     "lang": "en"
+    },
+    {
+     "text": "\"beim König\" names the king by title only; the packet candidate RI004-002-K000316 (Konrad III.) was not assigned because the passage gives no name and the king carries no reference.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the party at whom a requested intercession aims (the king); he carries no reference.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The requested outcomes (Erhebung auf den Würzburger Bischofsstuhl, Verschiebung der Entscheidung) have no slot other than the evidence passage; rf:concerns has no fitting class for a bishop's see.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the target of a requested intercession (the king).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No way to link the requested elevation as an intended, unperformed rv:Appointment with Gebhard and the Würzburg see.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "In <urn:regesta:22678:request> extended the oa:exact of the evidence selector to end with ', bis er den König gesprochen habe' (now the whole of summary_plain without the final period).",
+     "lang": "en"
+    },
+    {
+     "text": "Added rf:qualifier 'bis er den König gesprochen habe' beside 'brieflich'.",
+     "lang": "en"
+    },
+    {
+     "text": "Attributed <urn:regesta:22678:request> to correction-g3 as a changed factoid; the kinship factoid keeps extraction-batch-13.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "lost-condition",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22678:request",
+     "description": "The evidence ends before 'bis er den König gesprochen habe', which bounds the requested postponement. The limit belongs to the content of the request and is neither in the evidence nor in an exact-wording literal.",
+     "proposal": "Extend the evidence selector to include ', bis er den König gesprochen habe' or add rf:condition \"bis er den König gesprochen habe\".",
+     "quote": {
+      "start": 196,
+      "end": 289
+     }
+    },
+    {
+     "category": "ambiguous-reference",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22678:kinship-ludwig-gebhard",
+     "description": "The kinship is attached to Ludwig through 'seines'. The more natural reading of the sentence supports Ludwig, and the file flags the alternative reading (Friedrich) in a comment. Acceptable, but the uncertainty lives only in a Turtle comment, not in the data.",
+     "proposal": "No change to the factoid; carry the unresolved referent into the batch-level unresolved identities for expert review.",
+     "quote": {
+      "start": 127,
+      "end": 152
+     }
+    },
+    {
+     "category": "omitted-reference",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22678:request",
+     "description": "'beim König' (candidate K000316) is the target of the requested intercession and the one who decides; the vocabulary has no role for the target of an intercession, and making him an addressee would be wrong, so leaving him unreferenced is correct under the contract.",
+     "proposal": "No change; report as model gap.",
+     "quote": {
+      "start": 86,
+      "end": 195
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The temporal limit of the requested postponement is lost.",
+     "reason": "The request reads 'oder wenigstens eine Verschiebung der Entscheidung bewirken, bis er den König gesprochen habe'; the evidence stops at 'bewirken', so the bound of the alternative request is in neither the evidence nor a literal. It is a temporal qualification in exact wording, which rf:qualifier carries.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The king, at whom the intercession aims, carries no reference.",
+     "reason": "'er möge sich beim König ... einsetzen': the king is neither addressee nor beneficiary of the request, and the vocabulary has no role for the target of an intercession. Leaving him unreferenced is correct.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Über die zeitliche Einordnung und die Echtheit dieses Briefes vgl. Krabbo, Reinhardsbrunner Briefsteller, NA 32 (1907) 63 ff. sowie die Bemerkungen zu Reg. "
+    },
+    {
+     "t": "52",
+     "regest": "22679"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Reinhardsbrunner Briefsammlung, ed. Peeck, MG. Epp. sel. 5,15 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 15."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=22"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-G000209",
+    "Bischof von Würzburg"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000841",
+    "(II., Raspo, der Eiserne), Landgraf von Thüringen"
+   ]
+  ]
+ }
+}

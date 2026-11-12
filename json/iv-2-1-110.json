@@ -1,0 +1,366 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-25_1_0_4_2_1_110_110",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22737",
+  "identifier": "RI IV,2,1 n. 110",
+  "short": "RI IV,2,1 n. 110",
+  "sort": "004_002_001_000110_0000000110",
+  "start": "1152-07-25",
+  "end": "1152-07-25",
+  "proseYears": [],
+  "lead": "Friedrich hält einen Hoftag und errichtet unter Zustimmung der Fürsten einen festen Frieden.",
+  "date": [
+   {
+    "t": "1152 Juli 25"
+   }
+  ],
+  "place": [
+   {
+    "t": "Ulm"
+   }
+  ],
+  "text": "Friedrich hält einen Hoftag und errichtet unter Zustimmung der Fürsten einen festen Frieden. Die Laienfürsten beschließen, daß bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern der weltliche Rechtsspruch der Exkommunikation vorauszugehen habe.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22737:peace",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22737:peace",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "peace",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 91,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22737:> .\nx:peace a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22737> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich hält einen Hoftag und errichtet unter Zustimmung der Fürsten einen festen Frieden\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-27> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22737:peace",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22737:peace-ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "peace",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 91,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22737:> .\nx:peace rf:reference x:peace-ref-friedrich .\nx:peace-ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Fürsten",
+      "text": "Fürsten in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22737:peace",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22737:peace-ref-fuersten"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "peace",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 91,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22737:> .\nx:peace rf:reference x:peace-ref-fuersten .\nx:peace-ref-fuersten a rf:Reference ;\n    rf:actor <urn:regesta:actor:22737:local:fuersten> ;\n    rf:nameInSource \"Fürsten\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22737:local:fuersten"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Fürsten"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22737:resolution",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22737:resolution",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "resolution",
+     "own": true,
+     "evidence": {
+      "start": 93,
+      "end": 261,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22737:> .\nx:resolution a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22737> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Laienfürsten beschließen, daß bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern der weltliche Rechtsspruch der Exkommunikation vorauszugehen habe.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-27> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Laienfürsten",
+      "text": "Laienfürsten in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22737:resolution",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22737:resolution-ref-laienfuersten"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "resolution",
+      "own": true,
+      "evidence": {
+       "start": 93,
+       "end": 261,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22737:> .\nx:resolution rf:reference x:resolution-ref-laienfuersten .\nx:resolution-ref-laienfuersten a rf:Reference ;\n    rf:actor <urn:regesta:actor:22737:local:laienfuersten> ;\n    rf:nameInSource \"Laienfürsten\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22737:local:laienfuersten"
+      ],
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Laienfürsten"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "peace",
+    "start": 0,
+    "end": 91
+   },
+   {
+    "id": "resolution",
+    "start": 93,
+    "end": 261
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Fürsten (local group, no register candidate)",
+     "lang": "en"
+    },
+    {
+     "text": "Laienfürsten (local group, no register candidate)",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for consenting parties: 'unter Zustimmung der Fürsten' is recorded with rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type or concept for a public peace (Landfrieden); the peace is typed rv:Enactment without rf:concerns.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for consenting parties (Zustimmung).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "lost-condition",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22737:resolution",
+     "description": "The scope of the resolution (cases of robbery and arson against church goods) stays only in the evidence text; neither rf:condition nor rf:concerns carries it.",
+     "proposal": "Add rf:condition \"bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern\".",
+     "quote": {
+      "start": 127,
+      "end": 194
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22737:peace-ref-fuersten",
+     "description": "The princes consent; rv:Participant is the available fallback. A consent role does not exist.",
+     "proposal": "Keep, or add rf:qualifier \"unter Zustimmung der Fürsten\"; report as model gap.",
+     "quote": {
+      "start": 42,
+      "end": 70
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The scope 'bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern' should be added as rf:condition.",
+     "reason": "The wording states the subject matter of the resolution ('daß bei der Bestrafung ... der weltliche Rechtsspruch der Exkommunikation vorauszugehen habe'), not a condition under which it applies. The evidence selector keeps it in full, so nothing is lost.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The consenting princes carry rv:Participant, because no role for consent exists.",
+     "reason": "'unter Zustimmung der Fürsten' needs a role for consent, which the vocabulary lacks. rv:Participant stays, and the gap is already reported.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Datierung des HT vgl. Reg. "
+    },
+    {
+     "t": "111",
+     "regest": "22738"
+    },
+    {
+     "t": ", zu den dort gefaßten Beschlüssen Simonsfeld, Jahrbücher 121 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Zum HT vgl. das Schreiben des Notars Heinrich an Wibald, ed. Jaffé, Mon. Corb. 522 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 391 und Regg. 111-125. - Über den Frieden berichten die Ann. Isingrimi Ottenbur. maiores, MG. SS XVII, 313, vom Beschluß der Laienfürsten erfahren wir aus dem Protest Papst Eugens III. (unten Reg.132)."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0040"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ]
+  ]
+ }
+}

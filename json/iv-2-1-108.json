@@ -1,0 +1,511 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_3_0_4_2_1_108_108",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22735",
+  "identifier": "RI IV,2,1 n. 108",
+  "short": "RI IV,2,1 n. 108",
+  "sort": "004_002_001_000108_0000000108",
+  "start": "1152-07-01",
+  "end": "1152-07-31",
+  "proseYears": [],
+  "lead": "Friedrich interveniert bei der Augsburger Bischofswahl zugunsten des Dekans Konrad von Konstanz, nachdem vor ihm die Streitigkeiten zwischen den Ministerialen und den Kanonikern der Augsburger Kirche um die Bischofswahl zugunsten der letzteren entschieden worden sind.",
+  "date": [
+   {
+    "t": "1152 (Juli)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Augsburg"
+   }
+  ],
+  "text": "Friedrich interveniert bei der Augsburger Bischofswahl zugunsten des Dekans Konrad von Konstanz, nachdem vor ihm die Streitigkeiten zwischen den Ministerialen und den Kanonikern der Augsburger Kirche um die Bischofswahl zugunsten der letzteren entschieden worden sind.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22735:election-judgment",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22735:election-judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "election-judgment",
+     "own": true,
+     "evidence": {
+      "start": 97,
+      "end": 267,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22735:> .\nx:election-judgment a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22735> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nachdem vor ihm die Streitigkeiten zwischen den Ministerialen und den Kanonikern der Augsburger Kirche um die Bischofswahl zugunsten der letzteren entschieden worden sind\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-26> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22735:election-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22735:ref-judgment-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election-judgment",
+      "own": true,
+      "evidence": {
+       "start": 97,
+       "end": 267,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22735:> .\nx:election-judgment rf:reference x:ref-judgment-friedrich .\nx:ref-judgment-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"ihm\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Ministerialen",
+      "text": "den Ministerialen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22735:election-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22735:ref-judgment-ministerialen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election-judgment",
+      "own": true,
+      "evidence": {
+       "start": 97,
+       "end": 267,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22735:> .\nx:election-judgment rf:reference x:ref-judgment-ministerialen .\nx:ref-judgment-ministerialen a rf:Reference ;\n    rf:actor <urn:regesta:actor:22735:local:ministerialen> ;\n    rf:nameInSource \"den Ministerialen\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22735:local:ministerialen"
+      ],
+      "key": "k3",
+      "agentNotes": [
+       {
+        "text": "'den Ministerialen' and 'den Kanonikern der Augsburger Kirche': no candidate in this packet, regest-local groups",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Kanonikern der Augsburger Kirche",
+      "text": "den Kanonikern der Augsburger Kirche in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22735:election-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22735:ref-judgment-kanoniker"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election-judgment",
+      "own": true,
+      "evidence": {
+       "start": 97,
+       "end": 267,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22735:> .\nx:election-judgment rf:reference x:ref-judgment-kanoniker .\nx:ref-judgment-kanoniker a rf:Reference ;\n    rf:actor <urn:regesta:actor:22735:local:kanoniker> ;\n    rf:nameInSource \"der letzteren\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22735:local:kanoniker"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nachdem",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22735:election-judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 97,
+       "end": 104,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Urteil"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "den Ministerialen"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "den Kanonikern der Augsburger Kirche"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22735:election-dispute",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22735:election-dispute",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "election-dispute",
+     "own": true,
+     "evidence": {
+      "start": 113,
+      "end": 219,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22735:> .\nx:election-dispute a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22735> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Streitigkeiten zwischen den Ministerialen und den Kanonikern der Augsburger Kirche um die Bischofswahl\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-26> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Ministerialen",
+      "text": "den Ministerialen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22735:election-dispute",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22735:ref-dispute-ministerialen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election-dispute",
+      "own": true,
+      "evidence": {
+       "start": 113,
+       "end": 219,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22735:> .\nx:election-dispute rf:reference x:ref-dispute-ministerialen .\nx:ref-dispute-ministerialen a rf:Reference ;\n    rf:actor <urn:regesta:actor:22735:local:ministerialen> ;\n    rf:nameInSource \"den Ministerialen\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22735:local:ministerialen"
+      ],
+      "key": "k7",
+      "agentNotes": [
+       {
+        "text": "'den Ministerialen' and 'den Kanonikern der Augsburger Kirche': no candidate in this packet, regest-local groups",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Kanonikern der Augsburger Kirche",
+      "text": "den Kanonikern der Augsburger Kirche in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22735:election-dispute",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22735:ref-dispute-kanoniker"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election-dispute",
+      "own": true,
+      "evidence": {
+       "start": 113,
+       "end": 219,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22735:> .\nx:election-dispute rf:reference x:ref-dispute-kanoniker .\nx:ref-dispute-kanoniker a rf:Reference ;\n    rf:actor <urn:regesta:actor:22735:local:kanoniker> ;\n    rf:nameInSource \"den Kanonikern der Augsburger Kirche\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22735:local:kanoniker"
+      ],
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "den Ministerialen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "den Kanonikern der Augsburger Kirche"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "election-judgment",
+    "start": 97,
+    "end": 267
+   },
+   {
+    "id": "t1",
+    "start": 97,
+    "end": 104
+   },
+   {
+    "id": "election-dispute",
+    "start": 113,
+    "end": 219
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Dekans Konrad von Konstanz': two candidates for the same person (RI004-002-K000376 dean of Konstanz, RI004-002-K000322 bishop of Augsburg); not used because the intervention carries no factoid",
+     "lang": "en"
+    },
+    {
+     "text": "Friedrich in the judgment named only as 'ihm'; role Participant because 'vor ihm' does not state that he judged",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for an intervention in an episcopal election ('interveniert bei der Augsburger Bischofswahl zugunsten des Dekans Konrad'); not recorded rather than forced into Request or Appointment",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type or thing class for an episcopal election as object of a dispute; the dispute has no concerns node",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No property linking a judgment to the dispute it decides",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for intervention in an episcopal election (Wahlbeeinflussung, Intervention).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Changed rdfs:label of <urn:regesta:actor:RI004-002-F000471> from \"ihm\" to \"Friedrich\"; nameInSource \"ihm\" and role rv:Participant of ref-judgment-friedrich unchanged. No factoid changed, so producers stay.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "22735",
+     "description": "The central passage of the regest is not extracted. The vocabulary has no type for an intervention in an election, which is why this is a warning and a model gap rather than an error; still, the candidate neither approximates it nor records Konrad as beneficiary.",
+     "proposal": "Add an ActFactoid for the intervention (closest type, or flagged gap) with Friedrich as Grantor and urn:regesta:actor:RI004-002-K000376 as rv:Beneficiary, nameInSource \"Dekans Konrad von Konstanz\"; link the judgment as preceding with rf:qualifier \"nachdem\".",
+     "quote": {
+      "start": 0,
+      "end": 95
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22735:ref-judgment-friedrich",
+     "description": "The dispute was decided 'vor ihm', so Friedrich is the forum of the decision; rv:Judge would fit the passage better than rv:Participant, though the passive voice leaves the deciding party open. The actor label 'ihm' is a pronoun rather than a naming wording.",
+     "proposal": "Consider rv:Judge; label the ruler with \"Friedrich\" from the first clause.",
+     "quote": {
+      "start": 97,
+      "end": 131
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The central passage, Friedrich's intervention in the Augsburg election in favour of Dean Konrad of Konstanz, is not extracted.",
+     "reason": "'Friedrich interveniert bei der Augsburger Bischofswahl zugunsten des Dekans Konrad von Konstanz' is central, but no act type covers an intervention in an election. rv:Request, rv:Appointment and rv:Enactment would each assert a different act. The extractor reports the gap and the candidate K000376 in the batch report.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "rv:Judge is proposed for Friedrich, because the dispute was decided 'vor ihm'.",
+     "reason": "'nachdem vor ihm die Streitigkeiten ... entschieden worden sind' is passive and does not say that Friedrich judged. rv:Participant is the defensible reading.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "The ruler's actor label is the pronoun 'ihm'.",
+     "reason": "An actor's rdfs:label should name it in the wording of the source. The regest names him 'Friedrich' in its first clause, while 'ihm' belongs in nameInSource as the wording of this passage.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. dazu und zum Rücktritt des Vorgängers Konrads, des Bischofs Walter von Augsburg, Bernhardi, Konrad III. 905 f. und Simonsfeld, Jahrbücher 114 f. - Die Datierung ergibt sich aus der Zeugennennung Konrads in DF. I. 29 (Reg. "
+    },
+    {
+     "t": "136",
+     "regest": "22763"
+    },
+    {
+     "t": "), dessen Handlung in den Juli fällt (Reg. "
+    },
+    {
+     "t": "107",
+     "regest": "22734"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ann. Augustani minores, MG. SS X, 8; Ann. Isingrimi Ottenbur. maiores, MG. SS XVII, 313; Ann. Benedictoburani, MG. SS XVII, 320; vgl. Germ. pont. 2/1, 43 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " *52."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0039"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001433",
+    "Augsburg (am Lech, bayer. Reg.-Bez. Schwaben)"
+   ],
+   [
+    "RI004-002-A001435",
+    "Bistum, Bischofskirche, Bischöfliche Kirche, Diözese"
+   ],
+   [
+    "RI004-002-K000322",
+    "Bischof von Augsburg, vorher (Dom)Dekan von Konstanz (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-K000376",
+    "(Dom)Dekan von Konstanz, dann Bischof von Augsburg (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-W000106",
+    "Bischof von Augsburg"
+   ]
+  ]
+ }
+}

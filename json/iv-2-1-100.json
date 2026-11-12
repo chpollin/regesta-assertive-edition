@@ -1,0 +1,642 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-06-00_1_0_4_2_1_100_100",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22727",
+  "identifier": "RI IV,2,1 n. 100",
+  "short": "RI IV,2,1 n. 100",
+  "sort": "004_002_001_000100_0000000100",
+  "start": "1152-06-20",
+  "end": "1152-07-10",
+  "proseYears": [],
+  "lead": "Friedrich nimmt das Stift Gottesgnaden an der Saale (ęcclesiam sancti Victoris, que vocatur Gratia dei et sita est supra fluvium Salam in archiepiscopatu Magdeburgensi) wie König Konrad (III.) mit den genannten Besitzungen in seinen Schutz.",
+  "date": [
+   {
+    "t": "1152 (Ende Juni-Anfang Juli)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Regensburg (Ratispone)"
+   }
+  ],
+  "text": "Friedrich nimmt das Stift Gottesgnaden an der Saale (ęcclesiam sancti Victoris, que vocatur Gratia dei et sita est supra fluvium Salam in archiepiscopatu Magdeburgensi) wie König Konrad (III.) mit den genannten Besitzungen in seinen Schutz. Z.: die Erzbischöfe Wichmann von Magdeburg und Eberhard von Salzburg, die Bischöfe Anselm von Havelberg, Eberhard von Bamberg, Heinrich von Regensburg, Konrad von Passau, Eberhard von Trient, Hermann von Konstanz, Otto von Freising, die Herzoge Heinrich von Bayern, Welf von Spoleto, Markgraf von Tuszien und Fürst von Sardinien, Ulrich von Kärnten, Konrad von Meranien, die Markgrafen Konrad von Meißen, Albrecht von Brandenburg, Engelbert von Istrien, Otakar (von Steier), Thebald (von Vohburg), Pfalzgraf Otto (von Wittelsbach), Graf Gebhard (von Sulzbach), Burggraf Heinrich von Regensburg, Graf Berthold (von Bogen). - Heinricus not. vice archicanc. Heinrici Magontini archiep. ; Wiederholung des DK. III. 265 (VU. II) unter Benützung des DK. III. 169 (VU. I) in der Arenga, von derselben Empfängerhand wie DK. III. 265 mundiert; SI. D. Antecessorum nostrorum Romanorum .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22727:schutznahme-friedrich",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22727:schutznahme-friedrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "schutznahme-friedrich",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 239,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-friedrich a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22727> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Stift Gottesgnaden an der Saale (ęcclesiam sancti Victoris, que vocatur Gratia dei et sita est supra fluvium Salam in archiepiscopatu Magdeburgensi) wie König Konrad (III.) mit den genannten Besitzungen in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22727:schutznahme-friedrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-friedrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Gottesgnaden",
+      "text": "Stift Gottesgnaden in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22727:schutznahme-friedrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-friedrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000781:community> ; rf:nameInSource \"Stift Gottesgnaden\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000781:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den genannten Besitzungen",
+      "text": "betrifft den genannten Besitzungen",
+      "triple": [
+       "urn:regesta:22727:schutznahme-friedrich",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22727:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-friedrich rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"den genannten Besitzungen\" .",
+      "object": "urn:regesta:22727:besitzungen",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schutznahme",
+      "text": "bezieht sich auf Schutznahme",
+      "triple": [
+       "urn:regesta:22727:schutznahme-friedrich",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22727:schutznahme-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-friedrich rf:refersToAct x:schutznahme-konrad .\nx:schutznahme-konrad a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;\n    rf:concerns x:besitzungen ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Stift Gottesgnaden an der Saale (ęcclesiam sancti Victoris, que vocatur Gratia dei et sita est supra fluvium Salam in archiepiscopatu Magdeburgensi) wie König Konrad (III.) mit den genannten Besitzungen in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:qualifier \"wie König Konrad (III.)\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22727:local:koenig-konrad-iii> ; rf:nameInSource \"König Konrad (III.)\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000781:community> ; rf:nameInSource \"Stift Gottesgnaden\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22727> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22727:schutznahme-konrad",
+      "objectClaim": "schutznahme-konrad",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Stift Gottesgnaden"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "den genannten Besitzungen"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22727:schutznahme-konrad",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22727:schutznahme-konrad",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "schutznahme-konrad",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 239,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-konrad a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22727> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Stift Gottesgnaden an der Saale (ęcclesiam sancti Victoris, que vocatur Gratia dei et sita est supra fluvium Salam in archiepiscopatu Magdeburgensi) wie König Konrad (III.) mit den genannten Besitzungen in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Gottesgnaden",
+      "text": "Stift Gottesgnaden in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22727:schutznahme-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000781:community> ; rf:nameInSource \"Stift Gottesgnaden\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000781:community"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22727:schutznahme-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22727:local:koenig-konrad-iii> ; rf:nameInSource \"König Konrad (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22727:local:koenig-konrad-iii"
+      ],
+      "key": "k8",
+      "agentNotes": [
+       {
+        "text": "König Konrad (III.): no matching register candidate in this packet, local actor urn:regesta:actor:22727:local:koenig-konrad-iii",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den genannten Besitzungen",
+      "text": "betrifft den genannten Besitzungen",
+      "triple": [
+       "urn:regesta:22727:schutznahme-konrad",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22727:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22727:> .\nx:schutznahme-konrad rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"den genannten Besitzungen\" .",
+      "object": "urn:regesta:22727:besitzungen",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "wie König Konrad (III.)",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22727:schutznahme-konrad",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 169,
+       "end": 192,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Stift Gottesgnaden"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "den genannten Besitzungen"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "schutznahme-friedrich",
+    "start": 0,
+    "end": 239
+   },
+   {
+    "id": "schutznahme-konrad",
+    "start": 0,
+    "end": 239
+   },
+   {
+    "id": "t1",
+    "start": 169,
+    "end": 192
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The earlier protection by König Konrad (III.) rests only on the comparison 'wie König Konrad (III.)'; the model has no relation for 'renews the same act as', so it is recorded as refersToAct with the comparison in rf:qualifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The protected community Gottesgnaden is a register 'ort' entry; it is used as a community actor (E74_Group) by the community IRI convention.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Posse, CD. Sax. reg. 1/2, 166 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 247 und nach ihm Feldmann, Welf VI. Reg. "
+    },
+    {
+     "t": "60",
+     "regest": "22687"
+    },
+    {
+     "t": " bezeichnen das D. irrig als Fälschung; zur diplomatischen Kritik vgl. im einzelnen die Vorbemerkung zum D. Die Ankündigung der Zeugenliste fällt nicht nur durch Nennung des Ausstellungsortes, sondern auch durch Bezeichnung der Zeugen als: "
+    },
+    {
+     "t": "consentientibus et petentibus",
+     "i": true
+    },
+    {
+     "t": " aus dem Rahmen; die Nennung des bereits 1144 verstorbenen Herzogs Ulrich von Kärnten mag auf die Unerfahrenheit des Empfängerschreibers zurückzuführen sein, die Eberhards als Bischof von Trient (erst nach 1154 Februar 2, dem Todestag seines Vorgängers Arnold) kann nur durch die Annahme der Ausfertigung der Urkunde erst nach diesem Zeitpunkt, also frühestens im Februar 1154, erklärt werden. Herzog Welf wird in diesem D. zum ersten Mal als Herr seiner italienischen Lehen bezeichnet, vgl. dazu Feldmann, a. a. O. 33 f., die die Belehnung Welfs erst für den Hoftag zu Würzburg im Oktober 1152 annimmt (Reg. "
+    },
+    {
+     "t": "135",
+     "regest": "22762"
+    },
+    {
+     "t": "). - Zur umstrittenen Anwesenheit Albrechts (des Bären) von Brandenburg vgl. Krabbo-Winter, Reg. Brandenburg n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "219"
+    },
+    {
+     "t": ", der freilich den Regensburger Aufenthalt völlig aus dem Itinerar Albrechts streichen will. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (1991):"
+    },
+    {
+     "t": " Vgl. zum D. jetzt Herkenrath, Mark Brandenburg, MIÖG98 (1990) 112ff., der nachweist, daß die Ausfertigung frühestens 1157 erfolgt sein kann."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Magdeburg (A). Druck: MG. DF. I. 14. Reg.: Stumpf 3633."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=37"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_14"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-14"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001206",
+    "Bischof von Trient"
+   ],
+   [
+    "RI004-002-B000730",
+    "Graf von Bogen"
+   ],
+   [
+    "RI004-002-E000010",
+    "Erzbischof von Salzburg"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-E000016",
+    "Bischof von Trient"
+   ],
+   [
+    "RI004-002-E000342",
+    "Markgraf von Istrien und Kraiburg"
+   ],
+   [
+    "RI004-002-G000217",
+    "Graf von Sulzbach"
+   ],
+   [
+    "RI004-002-G000781",
+    "Gottesgnaden (in der Stadt Calbe an der Saale, südsüdöstl. Magdeburg, Salzldkr., Sachs.-Anhalt), (Prämonstratenser-)Stift St. Viktor"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000397",
+    "Bischof von Regensburg"
+   ],
+   [
+    "RI004-002-H000498",
+    "(Jasomirgott), Herzog von Österreich, vorher von Bayern"
+   ],
+   [
+    "RI004-002-H000568",
+    "Heinrich von Riedenburg, Burggraf von Regensburg"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-K000327",
+    "Bischof von Passau, dann Erzbischof von Salzburg, Konrad II., von Babenberg (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-K000393",
+    "(II.), Herzog von Kroatien und Dalmatien, von Meranien, ursprünglich: Graf (auch: Herzog) von Dachau"
+   ],
+   [
+    "RI004-002-K000401",
+    "Markgraf von Meißen, Sachsen, Wettin"
+   ],
+   [
+    "RI004-002-M000041",
+    "(Erz)bischöfliche Kirche, Erzbistum"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000405",
+    "(I.), Bischof von Freising"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-S000003",
+    "Saale (Fluss, Nebenfluss der Elbe)"
+   ],
+   [
+    "RI004-002-T000163",
+    "(VI.), Markgraf von Vohburg"
+   ],
+   [
+    "RI004-002-U000168",
+    "(I.) (Herzog) von Kärnten (<i>?</i>)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

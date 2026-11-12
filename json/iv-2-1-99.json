@@ -1,0 +1,497 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1150-07-05_1_0_4_2_1_99_99",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22726",
+  "identifier": "RI IV,2,1 n. 99",
+  "short": "RI IV,2,1 n. 99",
+  "sort": "004_002_001_000099_0000000099",
+  "start": "1150-07-05",
+  "end": "1150-07-05",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt auf Bitten des Abtes Ulrich dessen Kloster Moggio (Mosacensis) nach dem Beispiel seiner Vorgänger den Besitzstand und das Recht, Schenkungen von Allodialgütern anzunehmen.",
+  "date": [
+   {
+    "t": "1150 (!) Juli 5"
+   }
+  ],
+  "place": [
+   {
+    "t": "Regensburg"
+   }
+  ],
+  "text": "Friedrich bestätigt auf Bitten des Abtes Ulrich dessen Kloster Moggio (Mosacensis) nach dem Beispiel seiner Vorgänger den Besitzstand und das Recht, Schenkungen von Allodialgütern anzunehmen. Z.: Erzbischof Eberhard von Salzburg, die Bischöfe Heinrich von Regensburg, Eberhard von Bamberg, Konrad von Passau, Erzbischof Wichmann von Magdeburg (Maideburgensis), Bischof Gebhard von Würzburg, die Herzoge Heinrich von Bayern und Welf, Markgraf Otakar von Steier, Pfalzgraf Otto (von Wittelsbach) und seine Söhne Otto und Friedrich, Markgraf Engelbert von Istrien und sein Bruder, Graf Rapoto, die Grafen Siegfried (Siuridus von Lebenau/Hohenburg), Liutold von Plain (Plágin), Berthold von Andechs und Berthold von Bogen, Burggraf Otto von Regensburg und Graf Konrad von Oberroning (Ronigen ). - Arnoldus canc. vice Henrici Maguntini archiep. archicanc. ; VU.: DK. III. 198, außerhalb der Kanzlei verfaßt. Decet imperativam clementiam .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22726:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22726:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 190,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22726:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22726> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt auf Bitten des Abtes Ulrich dessen Kloster Moggio (Mosacensis) nach dem Beispiel seiner Vorgänger den Besitzstand und das Recht, Schenkungen von Allodialgütern anzunehmen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22726:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 190,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22726:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abtes Ulrich",
+      "text": "Abtes Ulrich in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22726:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 190,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22726:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000146> ; rf:nameInSource \"Abtes Ulrich\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000146"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Moggio",
+      "text": "Kloster Moggio in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22726:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 190,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22726:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M001014:community> ; rf:nameInSource \"Kloster Moggio\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M001014:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Besitzstand",
+      "text": "betrifft Besitzstand",
+      "triple": [
+       "urn:regesta:22726:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22726:thing:besitzstand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 190,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22726:> .\nx:confirmation rf:concerns x:thing:besitzstand .\nx:thing:besitzstand a crm:E18_Physical_Thing ;\n    rdfs:label \"Besitzstand\" .",
+      "object": "urn:regesta:22726:thing:besitzstand",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach dem Beispiel seiner Vorgänger",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22726:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 83,
+       "end": 117,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Abtes Ulrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Kloster Moggio"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Besitzstand"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 190
+   },
+   {
+    "id": "t1",
+    "start": 83,
+    "end": 117
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The confirmed right to accept donations of allodial goods (das Recht, Schenkungen von Allodialgütern anzunehmen) fits no concept of rv:RightTypes; left untyped, only in the evidence.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "\"nach dem Beispiel seiner Vorgänger\" kept as rf:qualifier; no earlier act created, referent of \"seiner\" not resolved.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for a capacity to acquire or accept donations.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "Kinship stated inside witness lists ('seine Söhne Otto und Friedrich', 'sein Bruder') is excluded by the source boundary and therefore lost.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22726:confirmation",
+     "description": "The confirmation covers two objects, the Besitzstand and the right to accept donations of allodial goods. Only the Besitzstand is a concerned node. The contract could carry the right as a crm:E30_Right with an rdfs:label in the source wording and the nearest draft right type (for example a top concept), reporting the poor fit as a model gap, instead of leaving it only in the evidence.",
+     "proposal": "Add <urn:regesta:22726:right:schenkungen-annehmen> a crm:E30_Right with rdfs:label \"das Recht, Schenkungen von Allodialgütern anzunehmen\" and the nearest rv:RightTypes concept, and add it to rf:concerns.",
+     "quote": {
+      "start": 138,
+      "end": 190
+     }
+    },
+    {
+     "category": "consistency",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22726:confirmation",
+     "description": "'nach dem Beispiel seiner Vorgänger' points to earlier confirmations by predecessors. The extractor keeps it as a qualifier only, whereas the analogous 'schon von seinen Vorgängern' in 22729 became an earlier act. Both readings are defensible; the treatment should be uniform across the run.",
+     "proposal": "Decide one convention for precedent phrases (qualifier only versus earlier act with a functional actor) and apply it consistently.",
+     "quote": {
+      "start": 83,
+      "end": 117
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The confirmed right to accept donations of allodial goods is missing from rf:concerns.",
+     "reason": "The passage confirms 'das Recht, Schenkungen von Allodialgütern anzunehmen', but a crm:E30_Right must carry a concept of rv:RightTypes and none fits a capacity to acquire donations; forcing the nearest concept would be a historical judgement the correction prompt excludes ('Where the vocabulary does not suffice, leave the detail out and record the gap').",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "'nach dem Beispiel seiner Vorgänger' is a qualifier here but an earlier act in 22729; treatment should be uniform.",
+     "reason": "The passages differ: 22726 states only a precedent ('nach dem Beispiel seiner Vorgänger'), whereas 22729 reports an earlier act ('die schon von seinen Vorgängern ... ausgezeichnet worden war'). Different modelling follows the wording.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Datierungsangaben - Inkarnationsjahr 1150 und die vierte Indiktion - und die Bezeichnung Friedrichs als Kaiser bereiten gewisse Schwierigkeiten. Inhaltlich ist das D., dessen Existenz auch durch die Erwähnung im Privileg Papst Lucius III. von 1184 September 19 (JL. 15082; It. Pont. 7, 67 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1) bezeugt ist, aber nicht verdächtig. Entweder sind die Unregelmäßigkeiten als Überlieferungsfehler zu sehen oder sie lassen sich durch die Herstellung durch den Empfänger erklären. Eine dritte Möglichkeit, für die Herkenrath, Regnum und Imperium, SB. Wien 264/5 (1969) 43 f. Anm. 229, jetzt in: Friedrich Barbarossa (WdF 390, 1975) 345 Anm. 111 eintritt, wäre die Annahme uneinheitlicher Datierung - Handlung 1152 Juli 5, Regensburg/Beurkundung 1156 -, Regensburg (zu diesem Jahr würde die Indiktion 4 passen). - Der Text weist in allen Partien weitestgehende Übereinstimmung mit Alberich von Montecassino, Breviarium de dictamine, ed. Rockinger, Briefsteller (Qu. u. Erört. zur Bayer. Gesch. 9/1, 1863) 39 auf, vgl. DD. H. IV. S. 686 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " XXIV und dazu die Nachträge, ed. Gawlik, 752. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (1991):"
+    },
+    {
+     "t": " Vgl. zum D. jetzt Herkenrath, Miszellen, AfD 28 (1982) 223 ff. mit Neuedition 236 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Originaltranssumpt Kaiser Friedrichs II. von 1227 Dezember (B.-Ficker Reg. 1717) im Cod. class. V 58/59 fol. 11, Biblioteca Marciana Venedig (B). Drucke: Cappelletti, Le chiese d'Italia 8, 209 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 7; MG. DF. I. 13. Reg.: Jaksch, Mon. Duc. Car. 3, 353 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 915; Stumpf 3632."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=37"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_13"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-B000726",
+    "(III., der Ältere), Markgraf von Andechs und Istrien, vorher Graf von Andechs (Meranien), auch von Plassenburg"
+   ],
+   [
+    "RI004-002-B000730",
+    "Graf von Bogen"
+   ],
+   [
+    "RI004-002-E000010",
+    "Erzbischof von Salzburg"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-E000342",
+    "Markgraf von Istrien und Kraiburg"
+   ],
+   [
+    "RI004-002-F000688",
+    "Pfalzgraf von Wittelsbach (-Lengenfeld)"
+   ],
+   [
+    "RI004-002-G000209",
+    "Bischof von Würzburg"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000397",
+    "Bischof von Regensburg"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000327",
+    "Bischof von Passau, dann Erzbischof von Salzburg, Konrad II., von Babenberg (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-K000421",
+    "Graf von Oberroning"
+   ],
+   [
+    "RI004-002-L000787",
+    "(III.), Papst (vorher: Hubald Allucingoli, Kardinalpriester von S. Prassede, dann Kardinalbischof von Ostia, <i>siehe dort</i>); <i>zu ihm siehe auch oben in der Einleitung, S. 27</i>"
+   ],
+   [
+    "RI004-002-L000801",
+    "Graf von Plain"
+   ],
+   [
+    "RI004-002-M001014",
+    "Moggio (<i>heute:</i> Moggio Udinese, an der Mündung der Aupa in die Fella, ital. Prov. Udine), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-O000442",
+    "Otto (V., gest. 1183) der Ältere, Pfalzgraf von Wittelsbach bzw. Bayern, Bannerträger Friedrich Barbarossas, dann Herzog von Bayern (<i>siehe dort</i>); <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-O000467",
+    "Graf, Burggraf von Regensburg"
+   ],
+   [
+    "RI004-002-R000022",
+    "Graf"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-S000692",
+    "Graf von Lebenau/Hohenburg"
+   ],
+   [
+    "RI004-002-U000146",
+    "Abt von Moggio"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,854 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-18_1_0_4_2_1_87_87",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22714",
+  "identifier": "RI IV,2,1 n. 87",
+  "short": "RI IV,2,1 n. 87",
+  "sort": "004_002_001_000087_0000000087",
+  "start": "1152-05-18",
+  "end": "1152-05-18",
+  "proseYears": [],
+  "lead": "Friedrich nimmt das Kloster Corvey auf Bitten des Abtes Wibald wegen dessen Treue gegen seinen Vorgänger, König Konrad (III.), und bei seiner Königswahl in seinen Schutz und bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte.",
+  "date": [
+   {
+    "t": "1152 Mai 18"
+   }
+  ],
+  "place": [
+   {
+    "t": "Merseburg"
+   }
+  ],
+  "text": "Friedrich nimmt das Kloster Corvey auf Bitten des Abtes Wibald wegen dessen Treue gegen seinen Vorgänger, König Konrad (III.), und bei seiner Königswahl in seinen Schutz und bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte. Z.: Sven, der König der Dänen, der daselbst das Königreich aus der Hand des Königs empfing, Knut, ein zweiter Däne, der daselbst das Königreich in die Hand des Königs aufließ, Erzbischof Hartwig von Bremen, die Bischöfe Ulrich von Halberstadt, Burchard von Straßburg, Wichmann von Zeitz, Daniel von Prag, Bernhard von Paderborn, Heinrich von Minden, Hermann von Verden, Anselm von Havelberg, Emehard von Mecklenburg (Michelemburgensis), Wicher von Brandenburg, die Äbte Markward von Fulda, Heinrich von Hersfeld, Arnold von Nienburg, Herzog Heinrich von Sachsen, sein Oheim dominus Welf, Markgraf Konrad von Meißen und seine Söhne, Markgraf Albrecht (der Bär) und seine Söhne. - Arnoldus canc. vice Heinrici Moguntini archicanc. ; VUU.: DD. K. III. 181 (VU. I) und 245 (VU. II), D. Arn. 3 (VU. III), D. Hermanns 1 (VU. IV) und DK. III. 221 (VU. V), verfaßt von Wibald, mundiert vom Schreiber der DDK. III. 179, 181, 221 und 245; SI. D. Ad regię dignitatis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22714:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22714:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 34,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22714:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22714> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Kloster Corvey\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22714:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 34,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Corvey",
+      "text": "Kloster Corvey in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22714:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 34,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000961:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Rechtsverleihung",
+      "text": "bezieht sich auf Rechtsverleihung",
+      "triple": [
+       "urn:regesta:22714:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22714:predecessor-grants"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 34,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:confirmation rf:refersToAct x:predecessor-grants .\nx:predecessor-grants a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte\" ] , [ a oa:TextQuoteSelector ; oa:exact \"die von seinen Vorgängern verliehenen Rechte\" ] ;\n    rf:factoidType rv:RightGrant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22714:local:vorgaenger> ; rf:nameInSource \"seinen Vorgängern\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22714> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22714:predecessor-grants",
+      "objectClaim": "predecessor-grants",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22714:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-2",
+      "own": true,
+      "evidence": {
+       "start": 174,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte\" ] .",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "umfassend",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22714:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 188,
+       "end": 197,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Kloster Corvey"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22714:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22714:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 169,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22714:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22714> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Kloster Corvey auf Bitten des Abtes Wibald wegen dessen Treue gegen seinen Vorgänger, König Konrad (III.), und bei seiner Königswahl in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22714:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 169,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Corvey",
+      "text": "Kloster Corvey in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22714:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 169,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ; rf:nameInSource \"Kloster Corvey\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000961:community"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abtes Wibald",
+      "text": "Abtes Wibald in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22714:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 169,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abtes Wibald\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen dessen Treue gegen seinen Vorgänger, König Konrad (III.), und bei seiner Königswahl",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22714:protection",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 63,
+       "end": 152,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Kloster Corvey"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Abtes Wibald"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22714:predecessor-grants",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22714:predecessor-grants",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "predecessor-grants",
+     "own": true,
+     "evidence": {
+      "start": 174,
+      "end": 242,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22714:> .\nx:predecessor-grants a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22714> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Corvey",
+      "text": "Kloster Corvey in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22714:predecessor-grants",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "predecessor-grants",
+      "own": true,
+      "evidence": {
+       "start": 174,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:predecessor-grants rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000961:community"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinen Vorgängern",
+      "text": "seinen Vorgängern in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22714:predecessor-grants",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "predecessor-grants",
+      "own": true,
+      "evidence": {
+       "start": 174,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:predecessor-grants rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22714:local:vorgaenger> ; rf:nameInSource \"seinen Vorgängern\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22714:local:vorgaenger"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22714:predecessor-grants",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "predecessor-grants-2",
+      "own": true,
+      "evidence": {
+       "start": 198,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22714:> .\nx:predecessor-grants rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die von seinen Vorgängern verliehenen Rechte\" ] .",
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12",
+       "k15"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k14",
+       "k15"
+      ],
+      "text": "seinen Vorgängern"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k13",
+       "k15"
+      ],
+      "text": "Kloster Corvey"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 169
+   },
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 34
+   },
+   {
+    "id": "t2",
+    "start": 63,
+    "end": 152
+   },
+   {
+    "id": "confirmation-2",
+    "start": 174,
+    "end": 242
+   },
+   {
+    "id": "predecessor-grants",
+    "start": 174,
+    "end": 242
+   },
+   {
+    "id": "t1",
+    "start": 188,
+    "end": 197
+   },
+   {
+    "id": "predecessor-grants-2",
+    "start": 198,
+    "end": 242
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'seinen Vorgängern' is a regest-local functional actor; no individual holder is named for the earlier grants.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The confirmed 'von seinen Vorgängern verliehenen Rechte' have no specific right type and no generic right type exists in rv:RightTypes; the right node is omitted and the confirmation has no rf:concerns.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Witness list states that Sven received the kingdom 'aus der Hand des Königs' and that Knut resigned it 'in die Hand des Königs', and that Welf is Heinrich's 'Oheim'; these are legal and kinship statements but were not extracted because the guidelines exclude formulaic witness lists.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No state type for fidelity or loyalty between persons.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "Legal acts narrated inside witness lists fall under a blanket exclusion.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added to <urn:regesta:22714:predecessor-grants> a second selector \"bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte\" and a reference RI004-002-C000961:community rv:Recipient nameInSource \"ihm\"; factoid now attributed to correction-g5. No date, no further object.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "underspecified-earlier-act",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22714:predecessor-grants",
+     "description": "The earlier grant by the predecessors lacks Corvey as recipient; the passage ties the rights to the same monastery ('bestätigt ihm ... die von seinen Vorgängern verliehenen Rechte').",
+     "proposal": "Add a rv:Recipient reference to <urn:regesta:actor:RI004-002-C000961:community> with nameInSource 'ihm'.",
+     "quote": {
+      "start": 174,
+      "end": 242
+     }
+    },
+    {
+     "category": "scope-boundary",
+     "severity": "Hinweis",
+     "subject": "22714",
+     "description": "The witness list contains two non-formulaic legal acts: Sven receives the kingdom from the king's hand, Knut resigns it into the king's hand. They are in-scope legal relations and are expressible, but the guidelines exclude Z.: wholesale. The omission is contract-conform; the warning records that substantive content is lost by the rule. The same acts are covered in 22715 and may not be carried over.",
+     "proposal": "No change under the frozen contract; raise the witness-list boundary for the next contract.",
+     "quote": {
+      "start": 248,
+      "end": 418
+     }
+    },
+    {
+     "category": "reference",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22714:protection",
+     "description": "The ground names König Konrad (III.), who has a register candidate in this packet (RI004-002-K000316); he appears only inside the ground literal. Wibald's fidelity to Konrad is a relation the vocabulary cannot type.",
+     "proposal": "None required; the ground literal is exact.",
+     "quote": {
+      "start": 63,
+      "end": 152
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The earlier grant by the predecessors lacks Corvey as recipient.",
+     "reason": "The passage confirms to Corvey 'ihm umfassend die von seinen Vorgängern verliehenen Rechte'; the rights confirmed to the monastery are those the predecessors granted to it, and the actor is the register community already used in the file.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Legal acts narrated inside the witness list (Sven receives, Knut resigns the kingdom) are lost.",
+     "reason": "The guidelines exclude formulaic witness lists ('Z.:') wholesale and the reviewer proposes no change; the boundary question belongs to the next contract version, and the same acts must not be carried over from 22715.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Ein vermutlich auf Purpur mit Goldschrift mundiertes zweites Original, das mit Goldbulle an roten Seidenfäden versehen war, wurde wahrscheinlich bei der Einnahme von Höxter durch die kaiserlichen Truppen 1634 vernichtet, vgl. Vorbemerkung zum D.; der Schreiber des Diploms war Corveyer Archivar und einer der engsten Mitarbeiter Wibalds, vgl. Zatschek, Wibald, MÖIG Erg.Bd. 10 (1928) 306 ff. - Zum D. vgl. auch Hausmann, Reichskanzlei 234."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Münster (A). Drucke: Erhard, CD. Westf. 2, 64 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 283; Wilmans-Philippi, Kaiserurk. d. Prov. Westfalen 2, 314 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 230; MG. DF. I. 11. Reg.: Wauters, Table chronol. 2, 357; Stumpf 3626."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=33"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/8577"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_11"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-11"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001214",
+    "Abt von Nienburg"
+   ],
+   [
+    "RI004-002-B000627",
+    "(I.), Bischof von Paderborn"
+   ],
+   [
+    "RI004-002-B001563",
+    "Bischof von Straßburg"
+   ],
+   [
+    "RI004-002-C000961",
+    "Corvey (an der Weser, <i>heute:</i> Teil von Höxter in Ostwestfalen, Nordrh.-Westf.), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-D000037",
+    "Königreich"
+   ],
+   [
+    "RI004-002-D000047",
+    "Bischof von Prag"
+   ],
+   [
+    "RI004-002-E000315",
+    "Bischof von Mecklenburg"
+   ],
+   [
+    "RI004-002-H000192",
+    "(I.), Erzbischof von Bremen und Hamburg"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000393",
+    "Bischof von Minden"
+   ],
+   [
+    "RI004-002-H000417",
+    "Abt von Hersfeld"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000821",
+    "Bischof von Verden"
+   ],
+   [
+    "RI004-002-H001241",
+    "Höxter (an der Weser, Reg.-Bez. Detmold, Nordrh.-Westf.)"
+   ],
+   [
+    "RI004-002-K000225",
+    "Prinz, dann König von Dänemark"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000401",
+    "Markgraf von Meißen, Sachsen, Wettin"
+   ],
+   [
+    "RI004-002-M000499",
+    "Abt von Fulda"
+   ],
+   [
+    "RI004-002-M000847",
+    "(auch: Stadt)"
+   ],
+   [
+    "RI004-002-S001332",
+    "Sven, auch Peter genannt, Prinz, dann König von Dänemark"
+   ],
+   [
+    "RI004-002-U000136",
+    "Bischof von Halberstadt"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000430",
+    "Bischof von Brandenburg"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ]
+  ]
+ }
+}

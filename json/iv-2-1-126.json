@@ -1,0 +1,836 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-08-01_1_0_4_2_1_126_126",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22753",
+  "identifier": "RI IV,2,1 n. 126",
+  "short": "RI IV,2,1 n. 126",
+  "sort": "004_002_001_000126_0000000126",
+  "start": "1152-08-01",
+  "end": "1152-08-01",
+  "proseYears": [],
+  "lead": "Papst Eugen (III.) befiehlt dem Magdeburger Domkapitel , dem Bischof von Zeitz (Wichmann), der sich durch königliche Gunst den Magdeburger Stuhl zu verschaffen wußte und vom König auch schon investiert worden sei, keinerlei Unterstützung zu leisten, wenn dieser in die Kirche von Magdeburg eindringen wolle, und droht bei Zuwiderhandlung den Verlust von Amt und Pfründe an.",
+  "date": [
+   {
+    "t": "(1152) August 1"
+   }
+  ],
+  "place": [
+   {
+    "t": "Segni"
+   }
+  ],
+  "text": "Papst Eugen (III.) befiehlt dem Magdeburger Domkapitel , dem Bischof von Zeitz (Wichmann), der sich durch königliche Gunst den Magdeburger Stuhl zu verschaffen wußte und vom König auch schon investiert worden sei, keinerlei Unterstützung zu leisten, wenn dieser in die Kirche von Magdeburg eindringen wolle, und droht bei Zuwiderhandlung den Verlust von Amt und Pfründe an.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22753:befehl",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22753:befehl",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "befehl",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 89,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22753:> .\nx:befehl a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22753> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) befiehlt dem Magdeburger Domkapitel , dem Bischof von Zeitz (Wichmann)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22753:befehl",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 89,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:befehl rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Magdeburger Domkapitel",
+      "text": "Magdeburger Domkapitel in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22753:befehl",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 89,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:befehl rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000042:community> ; rf:nameInSource \"Magdeburger Domkapitel\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000042:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof von Zeitz (Wichmann)",
+      "text": "Bischof von Zeitz (Wichmann) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22753:befehl",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 89,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:befehl rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:nameInSource \"Bischof von Zeitz (Wichmann)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000436"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Kirche von Magdeburg",
+      "text": "betrifft Kirche von Magdeburg",
+      "triple": [
+       "urn:regesta:22753:befehl",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-M000041:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 89,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:befehl rf:concerns <urn:regesta:actor:RI004-002-M000041:community> .\n<urn:regesta:actor:RI004-002-M000041:community> a crm:E74_Group ;\n    rdfs:label \"Kirche von Magdeburg\" .",
+      "object": "urn:regesta:actor:RI004-002-M000041:community",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22753:befehl",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl-2",
+      "own": true,
+      "evidence": {
+       "start": 214,
+       "end": 306,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:befehl rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"keinerlei Unterstützung zu leisten, wenn dieser in die Kirche von Magdeburg eindringen wolle\" ] .",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "wenn dieser in die Kirche von Magdeburg eindringen wolle",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22753:befehl",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 250,
+       "end": 306,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Magdeburger Domkapitel"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "Bischof von Zeitz (Wichmann)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Kirche von Magdeburg"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22753:investitur",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22753:investitur",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "investitur",
+     "own": true,
+     "evidence": {
+      "start": 91,
+      "end": 212,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22753:> .\nx:investitur a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22753> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der sich durch königliche Gunst den Magdeburger Stuhl zu verschaffen wußte und vom König auch schon investiert worden sei\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof von Zeitz (Wichmann)",
+      "text": "Bischof von Zeitz (Wichmann) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22753:investitur",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur",
+      "own": true,
+      "evidence": {
+       "start": 91,
+       "end": 212,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:investitur rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:nameInSource \"Bischof von Zeitz (Wichmann)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000436"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König",
+      "text": "König in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22753:investitur",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur",
+      "own": true,
+      "evidence": {
+       "start": 91,
+       "end": 212,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:investitur rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (den Magdeburger Stuhl)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (den Magdeburger Stuhl)",
+      "triple": [
+       "urn:regesta:22753:investitur",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22753:magdeburger-stuhl"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur",
+      "own": true,
+      "evidence": {
+       "start": 91,
+       "end": 212,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:investitur rf:concerns x:magdeburger-stuhl .\nx:magdeburger-stuhl a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"den Magdeburger Stuhl\" .",
+      "object": "urn:regesta:22753:magdeburger-stuhl",
+      "key": "k11"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "auch schon",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22753:investitur",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 180,
+       "end": 190,
+       "ambiguous": false
+      },
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "durch königliche Gunst",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22753:investitur",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 100,
+       "end": 122,
+       "ambiguous": false
+      },
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "investiert worden sei",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22753:investitur",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 191,
+       "end": 212,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "König"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bischof von Zeitz (Wichmann)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (den Magdeburger Stuhl)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22753:strafandrohung",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22753:strafandrohung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "strafandrohung",
+     "own": true,
+     "evidence": {
+      "start": 312,
+      "end": 372,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22753:> .\nx:strafandrohung a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22753> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"droht bei Zuwiderhandlung den Verlust von Amt und Pfründe an\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (Amt und Pfründe)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (Amt und Pfründe)",
+      "triple": [
+       "urn:regesta:22753:strafandrohung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22753:amt-und-pfruende"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "strafandrohung",
+      "own": true,
+      "evidence": {
+       "start": 312,
+       "end": 372,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:strafandrohung rf:concerns x:amt-und-pfruende .\nx:amt-und-pfruende a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"Amt und Pfründe\" .",
+      "object": "urn:regesta:22753:amt-und-pfruende",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22753:strafandrohung",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22753:befehl"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "strafandrohung",
+      "own": true,
+      "evidence": {
+       "start": 312,
+       "end": 372,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22753:> .\nx:strafandrohung rf:partOf x:befehl .\nx:befehl a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:concerns <urn:regesta:actor:RI004-002-M000041:community> ;\n    rf:condition \"wenn dieser in die Kirche von Magdeburg eindringen wolle\" ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) befiehlt dem Magdeburger Domkapitel , dem Bischof von Zeitz (Wichmann)\" ] , [ a oa:TextQuoteSelector ; oa:exact \"keinerlei Unterstützung zu leisten, wenn dieser in die Kirche von Magdeburg eindringen wolle\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000042:community> ; rf:nameInSource \"Magdeburger Domkapitel\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:nameInSource \"Bischof von Zeitz (Wichmann)\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22753> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22753:befehl",
+      "objectClaim": "befehl",
+      "key": "k17"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "bei Zuwiderhandlung",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22753:strafandrohung",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 318,
+       "end": 337,
+       "ambiguous": false
+      },
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Bestimmung"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (Amt und Pfründe)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "befehl",
+    "start": 0,
+    "end": 89
+   },
+   {
+    "id": "investitur",
+    "start": 91,
+    "end": 212
+   },
+   {
+    "id": "t3",
+    "start": 100,
+    "end": 122
+   },
+   {
+    "id": "t2",
+    "start": 180,
+    "end": 190
+   },
+   {
+    "id": "t4",
+    "start": 191,
+    "end": 212
+   },
+   {
+    "id": "befehl-2",
+    "start": 214,
+    "end": 306
+   },
+   {
+    "id": "t1",
+    "start": 250,
+    "end": 306
+   },
+   {
+    "id": "strafandrohung",
+    "start": 312,
+    "end": 372
+   },
+   {
+    "id": "t5",
+    "start": 318,
+    "end": 337
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'vom König' is identified with the packet's shared ruler (Friedrich Barbarossa); the regest does not name him in this passage.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The royal investiture of Wichmann is reported in the pope's indirect speech ('worden sei'); the model has no way to mark a factoid as a party's assertion within the source, so it stands as an ordinary Appointment factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a command or threat of sanction; both are recorded as rv:Enactment.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Magdeburg see and 'Amt und Pfründe' are modelled as E30 rights of type rv:ChurchRights; whether an episcopal see is a right is an expert question.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to mark a factoid as the reported assertion of an actor within the regest (reported speech in a letter), as distinct from what the regest narrates.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added rf:qualifier \"investiert worden sei\" to <urn:regesta:22753:investitur>, keeping \"durch königliche Gunst\" and \"auch schon\"; producer set to correction-g7 (adjudication: correct_conservatively).",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "attribution",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22753:investitur",
+     "description": "The investiture stands in the subjunctive of reported speech ('investiert worden sei'): the regest reports what the pope's letter asserts, not a fact the regest itself narrates. The factoid records it as a plain Appointment without any trace of this framing. The qualifiers keep 'auch schon' but drop the 'sei' that marks the report.",
+     "proposal": "Add rf:qualifier \"investiert worden sei\" (exact wording) to keep the reported-speech marker, or link the factoid to the papal command as content of that letter, and record the lack of a claim-attribution mechanism as a model gap.",
+     "quote": {
+      "start": 170,
+      "end": 212
+     }
+    },
+    {
+     "category": "collapsed-acts",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22753:investitur",
+     "description": "Two statements are merged: Wichmann obtained the Magdeburg see through royal favour, and the king invested him. 'durch königliche Gunst' is stored as a qualifier, although it describes the means of acquiring the see rather than qualifying the investiture.",
+     "proposal": "Acceptable as one Appointment; alternatively move 'durch königliche Gunst' to rf:ground.",
+     "quote": {
+      "start": 91,
+      "end": 165
+     }
+    },
+    {
+     "category": "references",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22753:strafandrohung",
+     "description": "The threat carries no references; the threatening pope and the threatened chapter are only reachable through rf:partOf.",
+     "proposal": "Optionally add the pope as Grantor and the chapter as Addressee.",
+     "quote": {
+      "start": 312,
+      "end": 372
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The investiture stands in reported speech ('investiert worden sei') but is recorded without any trace of that framing.",
+     "reason": "The regest gives the investiture in the subjunctive of the papal letter: 'vom König auch schon investiert worden sei', while 'zu verschaffen wußte' is indicative. The contract has no claim-attribution mechanism (model gap), but rf:qualifier can keep the exact mood-bearing wording so the factoid does not read as narrated fact.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Acquisition of the see and the investiture merged; 'durch königliche Gunst' could move to rf:ground.",
+     "reason": "'durch königliche Gunst' states the means, not a reason the regest gives, so rf:ground would misclassify it; rf:qualifier keeps the exact wording. One Appointment factoid is defensible for 'den Magdeburger Stuhl zu verschaffen wußte und vom König auch schon investiert worden sei'.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The threat carries no references; optionally add pope and chapter.",
+     "reason": "The provision is linked by rf:partOf to the command, which carries the pope as Grantor and the chapter as Addressee; the guidelines do not require repeating references on a provision.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 123."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Jaffé, Mon. Corb. 534 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 401; Doeberl, MG. sel. 4, 75 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " XXVIa; Israël-Möllenberg, UB. Erzstift Magdeburg 1, 344 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 275; JL. 9602."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0045"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-M000041",
+    "(Erz)bischöfliche Kirche, Erzbistum"
+   ],
+   [
+    "RI004-002-M000042",
+    "Domkapitel der (erz)bischöflichen Kirche"
+   ],
+   [
+    "RI004-002-S000504",
+    "Segni (westl. Anagni, ital. Prov. Rom)"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,1266 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-06-00_3_0_4_2_1_186_186",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22813",
+  "identifier": "RI IV,2,1 n. 186",
+  "short": "RI IV,2,1 n. 186",
+  "sort": "004_002_001_000186_0000000186",
+  "start": "1153-06-01",
+  "end": "1153-06-30",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Erzbischof Raimund von Arles die Stadt Arles, die Regalien des Erzbistums, Zölle, Weggelder, Gerichtsbarkeitsrechte (regalia, tolonea [!], pedatica, iusticias), die Verleihungen Ludwigs (des Blinden) an Erzbischof Manasse, nämlich die Hafenanlagen sowohl der Griechen als auch anderer Völker (tam portus Grecorum quam aliarum gentium ad civitatem tuam venientium), alle Wasser- und Weiderechte auf der Plaine de la Crau (de lapidoso agro, qui vulgari tuo Crau nuncupatur) und die Kastelle Fos-sur-Mer (Fossis), Albaron, Vernègues (Aluernis), Alleins (Aualone), Mondragon (Monte Draconis) und Salon. - Arbertus not. regis ; unter Verwendung der DDK.",
+  "date": [
+   {
+    "t": "1153 (Juni)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Worms (Garmacie)"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Erzbischof Raimund von Arles die Stadt Arles, die Regalien des Erzbistums, Zölle, Weggelder, Gerichtsbarkeitsrechte (regalia, tolonea [!], pedatica, iusticias), die Verleihungen Ludwigs (des Blinden) an Erzbischof Manasse, nämlich die Hafenanlagen sowohl der Griechen als auch anderer Völker (tam portus Grecorum quam aliarum gentium ad civitatem tuam venientium), alle Wasser- und Weiderechte auf der Plaine de la Crau (de lapidoso agro, qui vulgari tuo Crau nuncupatur) und die Kastelle Fos-sur-Mer (Fossis), Albaron, Vernègues (Aluernis), Alleins (Aualone), Mondragon (Monte Draconis) und Salon. - Arbertus not. regis ; unter Verwendung der DDK. III. 132 (VU. I) und 145 (VU. II) vielleicht von Wibald verfaßt und wohl von einem Empfängerschreiber mundiert. Imperialem munificentiam decet .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22813:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22813:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 245,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22813> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Erzbischof Raimund von Arles die Stadt Arles, die Regalien des Erzbistums, Zölle, Weggelder, Gerichtsbarkeitsrechte (regalia, tolonea [!], pedatica, iusticias), die Verleihungen Ludwigs (des Blinden) an Erzbischof Manasse\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Raimund von Arles",
+      "text": "Erzbischof Raimund von Arles in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000054> ; rf:nameInSource \"Erzbischof Raimund von Arles\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000054"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Stadt Arles",
+      "text": "betrifft die Stadt Arles",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:city-arles"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:city-arles .\nx:city-arles a crm:E53_Place ;\n    rdfs:label \"die Stadt Arles\" .",
+      "object": "urn:regesta:22813:city-arles",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (Gerichtsbarkeitsrechte)",
+      "text": "betrifft Gerichtsbarkeit (Gerichtsbarkeitsrechte)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:right-gerichtsbarkeit"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:right-gerichtsbarkeit .\nx:right-gerichtsbarkeit a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"Gerichtsbarkeitsrechte\" .",
+      "object": "urn:regesta:22813:right-gerichtsbarkeit",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die Regalien des Erzbistums)",
+      "text": "betrifft Herrschafts- und Schutzrechte (die Regalien des Erzbistums)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:right-regalien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:right-regalien .\nx:right-regalien a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die Regalien des Erzbistums\" .",
+      "object": "urn:regesta:22813:right-regalien",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (alle Wasser- und Weiderechte auf der Plaine de la Crau)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (alle Wasser- und Weiderechte auf der Plaine de la Crau)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:right-wasser-weide-crau"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:right-wasser-weide-crau .\nx:right-wasser-weide-crau a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"alle Wasser- und Weiderechte auf der Plaine de la Crau\" .",
+      "object": "urn:regesta:22813:right-wasser-weide-crau",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (Weggelder)",
+      "text": "betrifft Zollrecht (Weggelder)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:right-weggelder"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:right-weggelder .\nx:right-weggelder a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"Weggelder\" .",
+      "object": "urn:regesta:22813:right-weggelder",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (Zölle)",
+      "text": "betrifft Zollrecht (Zölle)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:right-zoelle"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:right-zoelle .\nx:right-zoelle a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"Zölle\" .",
+      "object": "urn:regesta:22813:right-zoelle",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Hafenanlagen sowohl der Griechen als auch anderer Völker",
+      "text": "betrifft die Hafenanlagen sowohl der Griechen als auch anderer Völker",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-hafenanlagen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:thing-hafenanlagen .\nx:thing-hafenanlagen a crm:E18_Physical_Thing ;\n    rdfs:label \"die Hafenanlagen sowohl der Griechen als auch anderer Völker\" .",
+      "object": "urn:regesta:22813:thing-hafenanlagen",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Albaron",
+      "text": "betrifft Albaron",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-albaron"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:thing-kastell-albaron .\nx:thing-kastell-albaron a crm:E18_Physical_Thing ;\n    rdfs:label \"Albaron\" .",
+      "object": "urn:regesta:22813:thing-kastell-albaron",
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Alleins (Aualone)",
+      "text": "betrifft Alleins (Aualone)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-alleins"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:thing-kastell-alleins .\nx:thing-kastell-alleins a crm:E18_Physical_Thing ;\n    rdfs:label \"Alleins (Aualone)\" .",
+      "object": "urn:regesta:22813:thing-kastell-alleins",
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Fos-sur-Mer (Fossis)",
+      "text": "betrifft Fos-sur-Mer (Fossis)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-fos"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:thing-kastell-fos .\nx:thing-kastell-fos a crm:E18_Physical_Thing ;\n    rdfs:label \"Fos-sur-Mer (Fossis)\" .",
+      "object": "urn:regesta:22813:thing-kastell-fos",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Mondragon (Monte Draconis)",
+      "text": "betrifft Mondragon (Monte Draconis)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-mondragon"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:thing-kastell-mondragon .\nx:thing-kastell-mondragon a crm:E18_Physical_Thing ;\n    rdfs:label \"Mondragon (Monte Draconis)\" .",
+      "object": "urn:regesta:22813:thing-kastell-mondragon",
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Salon",
+      "text": "betrifft Salon",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-salon"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:thing-kastell-salon .\nx:thing-kastell-salon a crm:E18_Physical_Thing ;\n    rdfs:label \"Salon\" .",
+      "object": "urn:regesta:22813:thing-kastell-salon",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vernègues (Aluernis)",
+      "text": "betrifft Vernègues (Aluernis)",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-vernegues"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:concerns x:thing-kastell-vernegues .\nx:thing-kastell-vernegues a crm:E18_Physical_Thing ;\n    rdfs:label \"Vernègues (Aluernis)\" .",
+      "object": "urn:regesta:22813:thing-kastell-vernegues",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22813:grant-ludwig"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 245,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:refersToAct x:grant-ludwig .\nx:grant-ludwig a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;\n    rf:concerns x:right-wasser-weide-crau , x:thing-hafenanlagen , x:thing-kastell-albaron , x:thing-kastell-alleins , x:thing-kastell-fos , x:thing-kastell-mondragon , x:thing-kastell-salon , x:thing-kastell-vernegues ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Verleihungen Ludwigs (des Blinden) an Erzbischof Manasse, nämlich die Hafenanlagen sowohl der Griechen als auch anderer Völker (tam portus Grecorum quam aliarum gentium ad civitatem tuam venientium), alle Wasser- und Weiderechte auf der Plaine de la Crau (de lapidoso agro, qui vulgari tuo Crau nuncupatur) und die Kastelle Fos-sur-Mer (Fossis), Albaron, Vernègues (Aluernis), Alleins (Aualone), Mondragon (Monte Draconis) und Salon\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000818> ; rf:nameInSource \"Ludwigs (des Blinden)\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000298> ; rf:nameInSource \"Erzbischof Manasse\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22813> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22813:grant-ludwig",
+      "objectClaim": "grant-ludwig",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22813:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-2",
+      "own": true,
+      "evidence": {
+       "start": 247,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nämlich die Hafenanlagen sowohl der Griechen als auch anderer Völker (tam portus Grecorum quam aliarum gentium ad civitatem tuam venientium), alle Wasser- und Weiderechte auf der Plaine de la Crau (de lapidoso agro, qui vulgari tuo Crau nuncupatur) und die Kastelle Fos-sur-Mer (Fossis), Albaron, Vernègues (Aluernis), Alleins (Aualone), Mondragon (Monte Draconis) und Salon\" ] .",
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k18"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k18"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k18"
+      ],
+      "text": "Erzbischof Raimund von Arles"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4",
+       "k18"
+      ],
+      "text": "die Stadt Arles"
+     },
+     ", ",
+     {
+      "keys": [
+       "k5",
+       "k18"
+      ],
+      "text": "Gerichtsbarkeit (Gerichtsbarkeitsrechte)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6",
+       "k18"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die Regalien des Erzbistums)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k7",
+       "k18"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (alle Wasser- und Weiderechte auf der Plaine de la Crau)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k8",
+       "k18"
+      ],
+      "text": "Zollrecht (Weggelder)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k9",
+       "k18"
+      ],
+      "text": "Zollrecht (Zölle)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k10",
+       "k18"
+      ],
+      "text": "die Hafenanlagen sowohl der Griechen als auch anderer Völker"
+     },
+     ", ",
+     {
+      "keys": [
+       "k11",
+       "k18"
+      ],
+      "text": "Albaron"
+     },
+     ", ",
+     {
+      "keys": [
+       "k12",
+       "k18"
+      ],
+      "text": "Alleins (Aualone)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k13",
+       "k18"
+      ],
+      "text": "Fos-sur-Mer (Fossis)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k14",
+       "k18"
+      ],
+      "text": "Mondragon (Monte Draconis)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k15",
+       "k18"
+      ],
+      "text": "Salon"
+     },
+     " und ",
+     {
+      "keys": [
+       "k16",
+       "k18"
+      ],
+      "text": "Vernègues (Aluernis)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k17",
+       "k18"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22813:grant-ludwig",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22813:grant-ludwig",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-ludwig",
+     "own": true,
+     "evidence": {
+      "start": 185,
+      "end": 621,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22813> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Verleihungen Ludwigs (des Blinden) an Erzbischof Manasse, nämlich die Hafenanlagen sowohl der Griechen als auch anderer Völker (tam portus Grecorum quam aliarum gentium ad civitatem tuam venientium), alle Wasser- und Weiderechte auf der Plaine de la Crau (de lapidoso agro, qui vulgari tuo Crau nuncupatur) und die Kastelle Fos-sur-Mer (Fossis), Albaron, Vernègues (Aluernis), Alleins (Aualone), Mondragon (Monte Draconis) und Salon\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k19"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ludwigs (des Blinden)",
+      "text": "Ludwigs (des Blinden) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000818> ; rf:nameInSource \"Ludwigs (des Blinden)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000818"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Manasse",
+      "text": "Erzbischof Manasse in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000298> ; rf:nameInSource \"Erzbischof Manasse\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000298"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (alle Wasser- und Weiderechte auf der Plaine de la Crau)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (alle Wasser- und Weiderechte auf der Plaine de la Crau)",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:right-wasser-weide-crau"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:concerns x:right-wasser-weide-crau .\nx:right-wasser-weide-crau a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"alle Wasser- und Weiderechte auf der Plaine de la Crau\" .",
+      "object": "urn:regesta:22813:right-wasser-weide-crau",
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Hafenanlagen sowohl der Griechen als auch anderer Völker",
+      "text": "betrifft die Hafenanlagen sowohl der Griechen als auch anderer Völker",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-hafenanlagen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:concerns x:thing-hafenanlagen .\nx:thing-hafenanlagen a crm:E18_Physical_Thing ;\n    rdfs:label \"die Hafenanlagen sowohl der Griechen als auch anderer Völker\" .",
+      "object": "urn:regesta:22813:thing-hafenanlagen",
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Albaron",
+      "text": "betrifft Albaron",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-albaron"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:concerns x:thing-kastell-albaron .\nx:thing-kastell-albaron a crm:E18_Physical_Thing ;\n    rdfs:label \"Albaron\" .",
+      "object": "urn:regesta:22813:thing-kastell-albaron",
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Alleins (Aualone)",
+      "text": "betrifft Alleins (Aualone)",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-alleins"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:concerns x:thing-kastell-alleins .\nx:thing-kastell-alleins a crm:E18_Physical_Thing ;\n    rdfs:label \"Alleins (Aualone)\" .",
+      "object": "urn:regesta:22813:thing-kastell-alleins",
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Fos-sur-Mer (Fossis)",
+      "text": "betrifft Fos-sur-Mer (Fossis)",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-fos"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:concerns x:thing-kastell-fos .\nx:thing-kastell-fos a crm:E18_Physical_Thing ;\n    rdfs:label \"Fos-sur-Mer (Fossis)\" .",
+      "object": "urn:regesta:22813:thing-kastell-fos",
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Mondragon (Monte Draconis)",
+      "text": "betrifft Mondragon (Monte Draconis)",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-mondragon"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:concerns x:thing-kastell-mondragon .\nx:thing-kastell-mondragon a crm:E18_Physical_Thing ;\n    rdfs:label \"Mondragon (Monte Draconis)\" .",
+      "object": "urn:regesta:22813:thing-kastell-mondragon",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Salon",
+      "text": "betrifft Salon",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-salon"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:concerns x:thing-kastell-salon .\nx:thing-kastell-salon a crm:E18_Physical_Thing ;\n    rdfs:label \"Salon\" .",
+      "object": "urn:regesta:22813:thing-kastell-salon",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vernègues (Aluernis)",
+      "text": "betrifft Vernègues (Aluernis)",
+      "triple": [
+       "urn:regesta:22813:grant-ludwig",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22813:thing-kastell-vernegues"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 185,
+       "end": 621,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22813:> .\nx:grant-ludwig rf:concerns x:thing-kastell-vernegues .\nx:thing-kastell-vernegues a crm:E18_Physical_Thing ;\n    rdfs:label \"Vernègues (Aluernis)\" .",
+      "object": "urn:regesta:22813:thing-kastell-vernegues",
+      "key": "k29"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Ludwigs (des Blinden)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Erzbischof Manasse"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (alle Wasser- und Weiderechte auf der Plaine de la Crau)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "die Hafenanlagen sowohl der Griechen als auch anderer Völker"
+     },
+     ", ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Albaron"
+     },
+     ", ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Alleins (Aualone)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Fos-sur-Mer (Fossis)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Mondragon (Monte Draconis)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Salon"
+     },
+     " und ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Vernègues (Aluernis)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 245
+   },
+   {
+    "id": "grant-ludwig",
+    "start": 185,
+    "end": 621
+   },
+   {
+    "id": "confirmation-2",
+    "start": 247,
+    "end": 621
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Scope of 'nämlich' unresolved: the castles may belong to Ludwig's grants to Manasse or be a separately confirmed item; they are attached to both the confirmation and the earlier grant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "'die Verleihungen Ludwigs' (plural) recorded as one grant factoid; no way to split into individual grants from the text.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for 'Regalien' as a bundle; typed with the top concept rv:LordshipRights. 'Weggelder' typed rv:Toll, a reading.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The city of Arles has no register candidate as a place (A001161 is the archbishopric); recorded as a local E53_Place.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Latin right terms (regalia, tolonea [!], pedatica, iusticias) have no property; only the German labels are kept.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "'Regalien' has no specific right type; the top concept rv:LordshipRights is used as nearest fit.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added a second rf:evidence selector to <urn:regesta:22813:confirmation> carrying the enumeration 'nämlich die Hafenanlagen ... und Salon'; producer of the confirmation set to correction-g10.",
+     "lang": "en"
+    },
+    {
+     "text": "<urn:regesta:22813:grant-ludwig> unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "evidence-coverage",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22813:confirmation",
+     "description": "The confirmation concerns the harbour installations, the Crau rights and the six castles, but its only selector ends at 'an Erzbischof Manasse'. The objects of the confirmation from 'nämlich' onwards rest on a passage the confirmation's evidence does not contain, so the selector does not support the whole factoid.",
+     "proposal": "Add a second selector to the confirmation covering the enumerated objects, or extend the selector through 'Mondragon (Monte Draconis) und Salon'.",
+     "quote": {
+      "start": 247,
+      "end": 315
+     }
+    },
+    {
+     "category": "scope-of-earlier-act",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22813:grant-ludwig",
+     "description": "Reading the castles as part of Ludwig's grants follows the 'nämlich' enumeration and is grammatically supported; the regest does not exclude that the castles were confirmed independently. The reading is defensible but should be checked by the expert against the charter.",
+     "proposal": "None required; flag for expert check.",
+     "quote": {
+      "start": 185,
+      "end": 254
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The confirmation concerns the harbour installations, the Crau rights and the six castles, but its only selector ends at 'an Erzbischof Manasse'.",
+     "reason": "The confirmed objects are enumerated after 'nämlich' ('nämlich die Hafenanlagen sowohl der Griechen ... und Salon'), and the confirmation's rf:concerns points to all of them; the guidelines require the evidence to support the whole factoid, so the enumeration needs its own selector.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Echtheit wurde von Brumm, Zur Frage der Echtheit, MIÖG 57 (1949) 306 ff., gegen Hirsch, Urkundenfälschungen (Forsch. zur Gesch. d. deutschen Kaiserzeit 1, 1937) 38 ff., erwiesen. In der Dispositio ist das Diplom Ludwigs des Blinden von 921 Februar 1 (Poupardin, Actes des rois de Provence 106 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 59) geringfügig benützt. Zur Rekognition durch Notar Albert vgl. DF. I. 62 (Reg. "
+    },
+    {
+     "t": "184",
+     "regest": "22811"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Livre autographe aus dem 13. Jh. p. 5 (B); Livre vert aus dem 13. Jh. f. 3' (C); Abschrift des späteren 13. Jh. im Livre d'or n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 184 (D); Livre noir aus dem 14. Jh. f. 124' (E), alle im Departementalarchiv Marseille. Drucke: Gallia christ. noviss. 3, 222 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 570; Stumpf, Acta ined. 483 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 339; MG. DF. I. 64. Reg.: Stumpf 3675."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=68"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_64"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000509",
+    "Albaron (südwestl. Arles an einem Mündungsarm der Rhône, Dép. Bouches-du-Rhône), Kastell"
+   ],
+   [
+    "RI004-002-A000660",
+    "Alleins (südl. der Durance, nordöstl. Salon-de-Provence, Dép. Bouches-du-Rhône), Kastell"
+   ],
+   [
+    "RI004-002-A001161",
+    "Erzbistum, Erzstuhl, Bischöfliche Kirche, Diözese, Hochstift"
+   ],
+   [
+    "RI004-002-A001164",
+    "Hafenanlagen der Griechen"
+   ],
+   [
+    "RI004-002-A001209",
+    "H (= Albert von Sponheim), Notar der Reichskanzlei"
+   ],
+   [
+    "RI004-002-F000350",
+    "Fos-sur-Mer (am Meer, südöstl. Arles, Dép. Bouches-du-Rhône), Kastell"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000818",
+    "(III., der Blinde), König von Italien, Kaiser"
+   ],
+   [
+    "RI004-002-M000298",
+    "Erzbischof von Arles"
+   ],
+   [
+    "RI004-002-M001053",
+    "Mondragon (an der Rhône, nördl. Orange, Dép. Vaucluse), Kastell"
+   ],
+   [
+    "RI004-002-P000829",
+    "Plaine de la Crau (Schottersteppe, nordöstl. der Camargue, Südfrankreich)"
+   ],
+   [
+    "RI004-002-R000054",
+    "(von Montredon), Erzbischof von Arles"
+   ],
+   [
+    "RI004-002-S000139",
+    "Kastell"
+   ],
+   [
+    "RI004-002-V000247",
+    "Vernègues (nordwestl. von Aix-en-Provence, Dép. Bouches-du-Rhône), Kastell"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000818",
+    "Worms (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

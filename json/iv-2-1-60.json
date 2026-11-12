@@ -1,0 +1,1038 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-02-15_1_0_4_2_1_60_60",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22687",
+  "identifier": "RI IV,2,1 n. 60",
+  "short": "RI IV,2,1 n. 60",
+  "sort": "004_002_001_000060_0000000060",
+  "start": "1152-02-15",
+  "end": "1152-02-15",
+  "proseYears": [],
+  "lead": "Friedrich erhält von seinem auf den Tod erkrankten Oheim, König Konrad (III.), die Reichsinsignien (Otto v.",
+  "date": [
+   {
+    "t": "1152 Februar 15"
+   }
+  ],
+  "place": [
+   {
+    "t": "Bamberg"
+   }
+  ],
+  "text": "Friedrich erhält von seinem auf den Tod erkrankten Oheim, König Konrad (III.), die Reichsinsignien (Otto v. Freising: regalia), und dieser vertraut ihm seinen noch kleinen Sohn Friedrich an, an dessen Nachfolge im Königreich er wegen seiner Jugend zweifelt, weshalb er seinen Neffen dazu für geeigneter ansieht. Konrad rät diesem, wegen seiner Nachfolge mit den Fürsten in Unterhandlungen zu treten (Chron. reg. Col.: Fridericum adhuc parvulum commendavit et ut pro regno sibi adquirendo principibus loqueretur suasit ).",
+  "status": "extracted",
+  "technical": true,
+  "claims": 5,
+  "blocks": [
+   {
+    "node": "urn:regesta:22687:grant-reichsinsignien",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22687:grant-reichsinsignien",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-reichsinsignien",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 98,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22687:> .\nx:grant-reichsinsignien a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22687> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich erhält von seinem auf den Tod erkrankten Oheim, König Konrad (III.), die Reichsinsignien\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22687:grant-reichsinsignien",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-reichsinsignien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 98,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:grant-reichsinsignien rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22687:grant-reichsinsignien",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-reichsinsignien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 98,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:grant-reichsinsignien rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrad (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Reichsinsignien",
+      "text": "betrifft Reichsinsignien",
+      "triple": [
+       "urn:regesta:22687:grant-reichsinsignien",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22687:reichsinsignien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-reichsinsignien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 98,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:grant-reichsinsignien rf:concerns x:reichsinsignien .\nx:reichsinsignien a crm:E18_Physical_Thing ;\n    rdfs:label \"Reichsinsignien\" .",
+      "object": "urn:regesta:22687:reichsinsignien",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Reichsinsignien"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22687:kinship-oheim",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22687:kinship-oheim",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-oheim",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 77,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22687:> .\nx:kinship-oheim a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22687> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich erhält von seinem auf den Tod erkrankten Oheim, König Konrad (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22687:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 77,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22687:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 77,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrad (III.)\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22687:kinship-oheim",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim-2",
+      "own": true,
+      "evidence": {
+       "start": 258,
+       "end": 310,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:kinship-oheim rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"weshalb er seinen Neffen dazu für geeigneter ansieht\" ] .",
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Neffen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22687:kinship-oheim",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 276,
+       "end": 282,
+       "ambiguous": false
+      },
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheim",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22687:kinship-oheim",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 51,
+       "end": 56,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5",
+       "k8"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k6",
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k7",
+       "k8"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22687:entrustment-son",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22687:entrustment-son",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "entrustment-son",
+     "own": true,
+     "evidence": {
+      "start": 132,
+      "end": 189,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22687:> .\nx:entrustment-son a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22687> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dieser vertraut ihm seinen noch kleinen Sohn Friedrich an\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22687:entrustment-son",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "entrustment-son",
+      "own": true,
+      "evidence": {
+       "start": 132,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:entrustment-son rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"dieser\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22687:entrustment-son",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "entrustment-son",
+      "own": true,
+      "evidence": {
+       "start": 132,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:entrustment-son rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Sohn Friedrich",
+      "text": "Sohn Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22687:entrustment-son",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "entrustment-son",
+      "own": true,
+      "evidence": {
+       "start": 132,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:entrustment-son rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000682> ; rf:nameInSource \"Sohn Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000682"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "vertraut",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22687:entrustment-son",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 139,
+       "end": 147,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Sohn Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22687:parenthood-konrad-friedrich",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22687:parenthood-konrad-friedrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-konrad-friedrich",
+     "own": true,
+     "evidence": {
+      "start": 132,
+      "end": 189,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22687:> .\nx:parenthood-konrad-friedrich a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22687> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dieser vertraut ihm seinen noch kleinen Sohn Friedrich an\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22687:parenthood-konrad-friedrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-konrad-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 132,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:parenthood-konrad-friedrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"dieser\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Sohn Friedrich",
+      "text": "Sohn Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22687:parenthood-konrad-friedrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-konrad-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 132,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:parenthood-konrad-friedrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000682> ; rf:nameInSource \"Sohn Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000682"
+      ],
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Sohn Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22687:advice-succession",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22687:advice-succession",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advice-succession",
+     "own": true,
+     "evidence": {
+      "start": 312,
+      "end": 398,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22687:> .\nx:advice-succession a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22687> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Konrad rät diesem, wegen seiner Nachfolge mit den Fürsten in Unterhandlungen zu treten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k19"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22687:advice-succession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-succession",
+      "own": true,
+      "evidence": {
+       "start": 312,
+       "end": 398,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:advice-succession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22687:advice-succession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-succession",
+      "own": true,
+      "evidence": {
+       "start": 312,
+       "end": 398,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22687:> .\nx:advice-succession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"diesem\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "rät",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22687:advice-succession",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 319,
+       "end": 322,
+       "ambiguous": false
+      },
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "grant-reichsinsignien",
+    "start": 0,
+    "end": 98
+   },
+   {
+    "id": "kinship-oheim",
+    "start": 0,
+    "end": 77
+   },
+   {
+    "id": "t2",
+    "start": 51,
+    "end": 56
+   },
+   {
+    "id": "entrustment-son",
+    "start": 132,
+    "end": 189
+   },
+   {
+    "id": "parenthood-konrad-friedrich",
+    "start": 132,
+    "end": 189
+   },
+   {
+    "id": "t3",
+    "start": 139,
+    "end": 147
+   },
+   {
+    "id": "kinship-oheim-2",
+    "start": 258,
+    "end": 310
+   },
+   {
+    "id": "t1",
+    "start": 276,
+    "end": 282
+   },
+   {
+    "id": "advice-succession",
+    "start": 312,
+    "end": 398
+   },
+   {
+    "id": "t4",
+    "start": 319,
+    "end": 322
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No entrustment or guardianship act type: Konrad entrusting his son to Friedrich is typed rv:Appointment provisionally.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No advice or counsel act type: 'Konrad rät diesem' is typed rv:Request with Petitioner and Addressee provisionally; the princes are not modelled as participants of the advice.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for royal succession or kingship, so the advice and the doubt about the son's succession carry no rf:concerns; Konrad's doubt about his son's succession and his preference for his nephew is an opinion with no act or state type and was not recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Kinship recorded once with both stated words (Oheim, Neffen) as qualifiers and two selectors; no direction of the relation is modelled.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No type for a stated preference, doubt or designation regarding succession.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for entrusting a person into another's care (guardianship).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for advice or counsel distinct from a request.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:record:22687",
+     "description": "The regest's central political statement, that Konrad doubts his son's succession because of his youth and considers his nephew more suitable, has no factoid. As an assessment rather than an act or state it falls outside the act and state schemes, so this is mainly a model gap rather than an extraction error; but the ground wegen seiner Jugend could have been kept as rf:ground on a related factoid, and the file records the omission nowhere.",
+     "proposal": "Record as model gap (no type for a stated preference or designation of a successor); optionally add rf:ground \"wegen seiner Jugend\" to the entrustment factoid if the expert reads the doubt as its reason.",
+     "quote": {
+      "start": 191,
+      "end": 310
+     }
+    },
+    {
+     "category": "act-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22687:entrustment-son",
+     "description": "Entrusting the young son is typed rv:Appointment (Beauftragung mit einer Aufgabe) with Konrad as rv:Grantor and Friedrich as rv:Recipient. This is a stretch the candidate flags itself; the son as rv:Participant is acceptable. Within the contract it is a reasonable provisional choice.",
+     "proposal": "Keep provisionally; record entrustment or guardianship as model gap.",
+     "quote": {
+      "start": 132,
+      "end": 189
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22687:advice-succession",
+     "description": "Advice is typed rv:Request with Konrad as rv:Petitioner. rv:Petitioner is defined as the one at whose request an act happens, so it fits the advising party only loosely; the purpose wegen seiner Nachfolge is not kept. rv:Addressee for Friedrich and the refusal to infer that negotiations took place are correct.",
+     "proposal": "Keep rv:Request provisionally; optionally add rf:qualifier \"wegen seiner Nachfolge\"; record advice as model gap.",
+     "quote": {
+      "start": 312,
+      "end": 398
+     }
+    },
+    {
+     "category": "act-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22687:grant-reichsinsignien",
+     "description": "The handover of the insignia by the dying king is typed rv:Grant. The regest does not say whether a right is transferred or the objects are handed over; the type is acceptable, but rf:qualifier \"auf den Tod erkrankten\" would keep the circumstance that frames the act.",
+     "proposal": "Optional: add the circumstance as rf:qualifier.",
+     "quote": {
+      "start": 0,
+      "end": 98
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Konrad's doubt about his son's succession and preference for his nephew have no factoid; optional rf:ground 'wegen seiner Jugend' on the entrustment.",
+     "reason": "'an dessen Nachfolge im Königreich er wegen seiner Jugend zweifelt, weshalb er seinen Neffen dazu für geeigneter ansieht' is an assessment, neither an act nor a state of the schemes. 'wegen seiner Jugend' is the reason for the doubt, not for the entrustment, so attaching it as rf:ground of the entrustment would misattribute it. The extractor records the gap in its batch report.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optional rf:qualifier 'wegen seiner Nachfolge' on the advice.",
+     "reason": "'wegen seiner Nachfolge' states the subject of the advised negotiations, not a qualification of type or time, and it stays in the evidence. The contract does not require it as a literal.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optional rf:qualifier 'auf den Tod erkrankten' on the handover of the insignia.",
+     "reason": "'von seinem auf den Tod erkrankten Oheim' describes Konrad's condition, not the type or time of the act, and is in the evidence already.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. dazu allgemein Simonsfeld, Jahrbücher 667 ff. (Excurs II). Zur Problematik der Designation vgl. Mitteis, Die deutsche Königswahl ("
+    },
+    {
+     "t": "2",
+     "sup": true
+    },
+    {
+     "t": " 1944) 37 ff. (zur Übertragung der Reichsinsignien a. a. O. 87 ff.) und Engels, Beiträge zur Geschichte der Staufer, DA 27 (1971) 401 und 419. Zu den Vorwürfen, Barbarossa habe seinen Vetter von der Erbfolge ausgeschaltet, vgl. Simonsfeld, a. a. O. 670 f. und Engels, a. a. O. 416 f. Zur Interpretation der Stelle bei Otto von Freising, die Fürsten hätten Friedrich "
+    },
+    {
+     "t": "non regis Conradi zelo",
+     "i": true
+    },
+    {
+     "t": " gewählt, vgl. unten Reg. "
+    },
+    {
+     "t": "64",
+     "regest": "22691"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. I cap. 70, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 98; Chron. reg. Col., ed. Waitz, MG. SS rer. Germ. in us. schol. 88. Für den Sohn Konrads III., Friedrich, war die Nachfolge im Herzogtum Schwaben vorgesehen, vgl. Burchard von Ursberg, ed. Holder-Egger-Simson, MG. SS rer. Germ. in us. schol. 20, Hugonis Chron. cont. Weingart., MG. SS XXI, 474. Den Vorwurf, daß Friedrich seinen Vetter um sein Erbe betrogen habe, machen Chron. s. Clementis Mettense, MG. SS XXIV, 501, Chron. princ. Sax. ampl., MG. SS XXX/1, 29 f. (beide mit falschem Namen für den Sohn Konrads III.); vgl. dazu auch Gesta epp. Halberstad., MG. SS XXIII, 107 und Kaiserchronik Anhang I, V. 23 ff. MG. Dt. Chroniken I, 397. Zur Frage der Designation Friedrichs durch seinen Oheim vgl. auch die Selbstaussage Barbarossas in seinem Brief an den oströmischen Kaiser Manuel (Reg. 197), ed. Jaffé, Mon. Corb. 548 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 410: "
+    },
+    {
+     "t": "imperator Conradus, moriens, cum nos declarasset imperii sui successores",
+     "i": true
+    },
+    {
+     "t": ". Ioannes Cinnamus, Epitome l. II cap. 20, ed. Meineke, CSHB 13 (1836) 89 führt die Nachfolge Friedrichs auf eine eidliche Übereinkunft zwischen seinem Vater und Konrad zurück, nach der das Reich nach dem Tod Konrads eben an ihn fallen müsse."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=23"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000111",
+    "Bamberg (an der Regnitz, bayer. Reg.-Bez. Oberfranken)"
+   ],
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-F000682",
+    "(IV.), Herzog von Elsass, Rothenburg und Schwaben, Sohn König Konrads III., Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ]
+  ]
+ }
+}

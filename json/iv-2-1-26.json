@@ -1,0 +1,397 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-04-04_1_0_4_2_1_26_26",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22653",
+  "identifier": "RI IV,2,1 n. 26",
+  "short": "RI IV,2,1 n. 26",
+  "sort": "004_002_001_000026_0000000026",
+  "start": "1147-04-04",
+  "end": "1147-04-04",
+  "proseYears": [],
+  "lead": "Friedrich folgt seinem Vater, Herzog Friedrich II., im Herzogtum Schwaben nach.",
+  "date": [
+   {
+    "t": "1147 (nach April 4 oder 6)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich folgt seinem Vater, Herzog Friedrich II., im Herzogtum Schwaben nach.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22653:officeholding-schwaben",
+    "kind": "state",
+    "title": "Amtsinhabe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Amtsinhabe",
+     "text": "Amtsinhabe",
+     "triple": [
+      "urn:regesta:22653:officeholding-schwaben",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/OfficeHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "officeholding-schwaben",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 78,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22653:> .\nx:officeholding-schwaben a rf:StateFactoid ;\n    rf:factoidType rv:OfficeHolding ;\n    rf:source <urn:regesta:record:22653> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich folgt seinem Vater, Herzog Friedrich II., im Herzogtum Schwaben nach\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g2> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Amtsinhaber",
+      "triple": [
+       "urn:regesta:22653:officeholding-schwaben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "officeholding-schwaben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 78,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22653:> .\nx:officeholding-schwaben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Officeholder ] .",
+      "role": "Amtsinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herzogtum Schwaben",
+      "text": "betrifft Herzogtum Schwaben",
+      "triple": [
+       "urn:regesta:22653:officeholding-schwaben",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22653:herzogtum-schwaben"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "officeholding-schwaben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 78,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22653:> .\nx:officeholding-schwaben rf:concerns x:herzogtum-schwaben .\nx:herzogtum-schwaben a crm:E53_Place ;\n    rdfs:label \"Herzogtum Schwaben\" .",
+      "object": "urn:regesta:22653:herzogtum-schwaben",
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Amtsinhabe"
+     },
+     ", als Amtsinhaber ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzogtum Schwaben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22653:parenthood-friedrich",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22653:parenthood-friedrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-friedrich",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 50,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22653:> .\nx:parenthood-friedrich a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22653> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich folgt seinem Vater, Herzog Friedrich II.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22653:parenthood-friedrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 50,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22653:> .\nx:parenthood-friedrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrich II.",
+      "text": "Herzog Friedrich II. in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22653:parenthood-friedrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-friedrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 50,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22653:> .\nx:parenthood-friedrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:nameInSource \"Herzog Friedrich II.\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Vater",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22653:parenthood-friedrich",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 23,
+       "end": 28,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Herzog Friedrich II."
+     }
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "officeholding-schwaben",
+    "start": 0,
+    "end": 78
+   },
+   {
+    "id": "parenthood-friedrich",
+    "start": 0,
+    "end": 50
+   },
+   {
+    "id": "t1",
+    "start": 23,
+    "end": 28
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Friedrich (the successor) identified with the shared ruler IRI; Herzog Friedrich II. identified with candidate RI004-002-F000681 by name and title.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for succession in a duchy or office (folgt ... im Herzogtum Schwaben nach); the succession is not recorded, only the stated parenthood.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for succession in an office or lordship, and no predecessor/successor role.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Kept <urn:regesta:22653:parenthood-friedrich> unchanged.",
+     "lang": "en"
+    },
+    {
+     "text": "Added place node <urn:regesta:22653:herzogtum-schwaben> (crm:E53_Place, label 'Herzogtum Schwaben').",
+     "lang": "en"
+    },
+    {
+     "text": "Added rf:StateFactoid <urn:regesta:22653:officeholding-schwaben> of type rv:OfficeHolding with Friedrich (shared ruler RI004-002-F000471) as rv:Officeholder, rf:concerns the place node, evidence of the whole regest sentence, attributed to correction-g2.",
+     "lang": "en"
+    },
+    {
+     "text": "Replaced the file comment by one naming the succession act and the predecessor role as model gaps.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-central-passage",
+     "severity": "Hinweis",
+     "subject": "22653",
+     "description": "The succession in the Herzogtum Schwaben is the main content of the regest and is omitted. The act scheme has no succession type, so the act itself is a model gap, but the contract could have recorded part of it: rv:Appointment is defined as Einsetzung in ein Amt, or a rf:StateFactoid rv:OfficeHolding with Friedrich as rv:Officeholder, rf:concerns the place Herzogtum Schwaben (candidate S000398) and rf:qualifier 'folgt ... nach' in exact wording. The father as predecessor would need a role the vocabulary lacks.",
+     "proposal": "Add a factoid for the succession: either rv:Appointment with Friedrich as rv:Recipient and the father as rv:Participant, or rv:OfficeHolding for Friedrich concerning <urn:regesta:actor:RI004-002-S000398> (E53_Place 'Herzogtum Schwaben'), with evidence the full sentence; report succession and predecessor role as model gaps.",
+     "quote": {
+      "start": 0,
+      "end": 79
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The central statement, Friedrich's succession in the duchy of Swabia, is omitted; only the parenthood is extracted.",
+     "reason": "'Friedrich folgt seinem Vater, Herzog Friedrich II., im Herzogtum Schwaben nach.' is the whole regest; succeeding in a duchy is a legal relation in scope. There is no succession act type and no predecessor role, and rv:Appointment ('Einsetzung in ein Amt') would assert an appointing act the passage does not state. What the passage does state and the contract can express is that Friedrich holds the duchy: rv:OfficeHolding with rv:Officeholder. The father gets no reference in this factoid, because rv:Participant would claim involvement in Friedrich's office holding that the vocabulary cannot qualify as predecessorship. The place gets a regest-local node, as the guidelines prescribe for places, not the register candidate IRI as an actor.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Das Datum ergibt sich aus dem Todestag des Vaters Barbarossas; zu diesem Termin vgl. Simonsfeld, Jahrbücher, Excurs I, 663 ff. Schwarzmaier, NDB 5 (1961) 589 f. entscheidet sich für den 6. April 1147."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. I cap. 41, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 60."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=18"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-S000398",
+    "Herzogtum"
+   ]
+  ]
+ }
+}

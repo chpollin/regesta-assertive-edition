@@ -1,0 +1,828 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-10-18_1_0_4_2_1_140_140",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22767",
+  "identifier": "RI IV,2,1 n. 140",
+  "short": "RI IV,2,1 n. 140",
+  "sort": "004_002_001_000140_0000000140",
+  "start": "1152-10-18",
+  "end": "1152-10-18",
+  "proseYears": [],
+  "lead": "Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in seinen Schutz, bestätigt ihm und der Kirche S. Maria die genannten Besitzungen und gewährt den beiden Kirchen ebenso wie dem Bischof (Reg. 138) eine Verjährungszeit von hundert Jahren.",
+  "date": [
+   {
+    "t": "1152 Oktober 18"
+   }
+  ],
+  "place": [
+   {
+    "t": "Würzburg"
+   }
+  ],
+  "text": "Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in seinen Schutz, bestätigt ihm und der Kirche S. Maria die genannten Besitzungen und gewährt den beiden Kirchen ebenso wie dem Bischof (Reg. 138) eine Verjährungszeit von hundert Jahren. Z.: Erzbischof Hartwig von Bremen, die Bischöfe Gebhard von Würzburg, Eberhard von Bamberg, Gunther von Speyer, die Herzoge Welf, Heinrich von Sachsen, die Markgrafen Albrecht (der Bär) und Konrad (von Wettin) von Sachsen, Otakar von Steier, Graf Wido von Biandrate. - Arnoldus vice Heinrici Maguntini archiep. et archicanc. ; verfaßt und geschrieben von A II. C; SI. D. Imperii nostri nos .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22767:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22767:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 165,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22767:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22767> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22767:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 165,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seines Kanzlers Arnold",
+      "text": "seines Kanzlers Arnold in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22767:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 165,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:nameInSource \"seines Kanzlers Arnold\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001203"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "anderer Fürsten",
+      "text": "anderer Fürsten in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22767:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 165,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22767:local:andere-fuersten> ; rf:nameInSource \"anderer Fürsten\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:22767:local:andere-fuersten"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)",
+      "text": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22767:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 165,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000200:community> ; rf:nameInSource \"das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000200:community"
+      ],
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "seines Kanzlers Arnold"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "anderer Fürsten"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22767:confirmation-besitzungen",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22767:confirmation-besitzungen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-besitzungen",
+     "own": true,
+     "evidence": {
+      "start": 167,
+      "end": 230,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22767:> .\nx:confirmation-besitzungen a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22767> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm und der Kirche S. Maria die genannten Besitzungen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22767:confirmation-besitzungen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-besitzungen",
+      "own": true,
+      "evidence": {
+       "start": 167,
+       "end": 230,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:confirmation-besitzungen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)",
+      "text": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22767:confirmation-besitzungen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-besitzungen",
+      "own": true,
+      "evidence": {
+       "start": 167,
+       "end": 230,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:confirmation-besitzungen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000200:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000200:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Kirche S. Maria",
+      "text": "der Kirche S. Maria in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22767:confirmation-besitzungen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-besitzungen",
+      "own": true,
+      "evidence": {
+       "start": 167,
+       "end": 230,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:confirmation-besitzungen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000199:community> ; rf:nameInSource \"der Kirche S. Maria\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000199:community"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die genannten Besitzungen",
+      "text": "betrifft die genannten Besitzungen",
+      "triple": [
+       "urn:regesta:22767:confirmation-besitzungen",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22767:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-besitzungen",
+      "own": true,
+      "evidence": {
+       "start": 167,
+       "end": 230,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:confirmation-besitzungen rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"die genannten Besitzungen\" .",
+      "object": "urn:regesta:22767:besitzungen",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22767:confirmation-besitzungen",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22767:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-besitzungen",
+      "own": true,
+      "evidence": {
+       "start": 167,
+       "end": 230,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:confirmation-besitzungen rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22767:local:andere-fuersten> ; rf:nameInSource \"anderer Fürsten\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:nameInSource \"seines Kanzlers Arnold\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000200:community> ; rf:nameInSource \"das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22767> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22767:protection",
+      "objectClaim": "protection",
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "der Kirche S. Maria"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "die genannten Besitzungen"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22767:grant-verjaehrung",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22767:grant-verjaehrung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-verjaehrung",
+     "own": true,
+     "evidence": {
+      "start": 235,
+      "end": 335,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22767:> .\nx:grant-verjaehrung a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22767> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gewährt den beiden Kirchen ebenso wie dem Bischof (Reg. 138) eine Verjährungszeit von hundert Jahren\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22767:grant-verjaehrung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-verjaehrung",
+      "own": true,
+      "evidence": {
+       "start": 235,
+       "end": 335,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:grant-verjaehrung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Kirche S. Maria",
+      "text": "der Kirche S. Maria in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22767:grant-verjaehrung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-verjaehrung",
+      "own": true,
+      "evidence": {
+       "start": 235,
+       "end": 335,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:grant-verjaehrung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000199:community> ; rf:nameInSource \"den beiden Kirchen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000199:community"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)",
+      "text": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22767:grant-verjaehrung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-verjaehrung",
+      "own": true,
+      "evidence": {
+       "start": 235,
+       "end": 335,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:grant-verjaehrung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000200:community> ; rf:nameInSource \"den beiden Kirchen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000200:community"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22767:grant-verjaehrung",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22767:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-verjaehrung",
+      "own": true,
+      "evidence": {
+       "start": 235,
+       "end": 335,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22767:> .\nx:grant-verjaehrung rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22767:local:andere-fuersten> ; rf:nameInSource \"anderer Fürsten\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:nameInSource \"seines Kanzlers Arnold\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000200:community> ; rf:nameInSource \"das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22767> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22767:protection",
+      "objectClaim": "protection",
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "eine Verjährungszeit von hundert Jahren",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22767:grant-verjaehrung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 296,
+       "end": 335,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "der Kirche S. Maria"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 165
+   },
+   {
+    "id": "confirmation-besitzungen",
+    "start": 167,
+    "end": 230
+   },
+   {
+    "id": "grant-verjaehrung",
+    "start": 235,
+    "end": 335
+   },
+   {
+    "id": "t1",
+    "start": 296,
+    "end": 335
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'den beiden Kirchen' read as the Domkapitel (RI004-002-V000200, typed as person in the register, here as community) and S. Maria (RI004-002-V000199).",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for a prescription period; kept as rf:qualifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The cross-reference 'ebenso wie dem Bischof (Reg. 138)' points to an act in another regest; no cross-regest relation exists, so no factoid was made for the bishop's grant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for a period of prescription (Verjährungszeit).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "actor-identification",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22767:grant-verjaehrung",
+     "description": "Both recipients carry the same nameInSource \"den beiden Kirchen\" while one of them is the chapter (Domkapitel) rather than a church; the reading is plausible but the mapping of \"Kirchen\" to the chapter is the producer's.",
+     "proposal": "Record the mapping of \"den beiden Kirchen\" to the chapter and S. Maria in the batch report.",
+     "quote": {
+      "start": 235,
+      "end": 335
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Überlieferung vgl. auch Gabotto, Vercelli, Arch. stor. ital. ser. V 21 (1898) 16 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 24. - Die von Simonsfeld, SB. München (1911/14) 23, geäußerten Zweifel an der Originalität sind durch den Nachweis der Entstehung in der Reichskanzlei hinfällig. - Zur Kirche S. Maria Maggiore, der ursprünglichen Kathedralkirche, vgl. It. pont. 6/2, 21 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Domkapitelarchiv Vercelli (A). Kop.: Unbeglaubigte etwa gleichzeitige Einzelabschrift ebenda (B). Drucke: Arnoldi, Le carte di Vercelli, BSSS 70 (1912) 360 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 148 ter; MG. DF. I. 33. Reg.: Stumpf 3648."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=50"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_33"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-33"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-G000209",
+    "Bischof von Würzburg"
+   ],
+   [
+    "RI004-002-G001180",
+    "Graf von Biandrate; <i>zu ihm siehe auch oben in der Einleitung, S. 28 und 31</i>"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000192",
+    "(I.), Erzbischof von Bremen und Hamburg"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000401",
+    "Markgraf von Meißen, Sachsen, Wettin"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-V000199",
+    "Bischöfliche Kirche S. Maria Maggiore, Domkirche"
+   ],
+   [
+    "RI004-002-V000200",
+    "Domkapitel S. Eusebio"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

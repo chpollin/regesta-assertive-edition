@@ -1,0 +1,982 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-02-04_1_0_4_2_1_159_159",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22786",
+  "identifier": "RI IV,2,1 n. 159",
+  "short": "RI IV,2,1 n. 159",
+  "sort": "004_002_001_000159_0000000159",
+  "start": "1153-02-04",
+  "end": "1153-02-04",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt den Herren von Bulgaro (Reinhero de Bulgaro et filiis Philippi et Manfredi) die namentlich genannten Besitzungen und Lehen, insbesondere die Burg Crevacuore (Creuecor) und nimmt die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.) unter Vorbehalt der königlichen Gerechtsame in seinen Schutz.",
+  "date": [
+   {
+    "t": "1153 Februar 4"
+   }
+  ],
+  "place": [
+   {
+    "t": "Mülhausen"
+   }
+  ],
+  "text": "Friedrich bestätigt den Herren von Bulgaro (Reinhero de Bulgaro et filiis Philippi et Manfredi) die namentlich genannten Besitzungen und Lehen, insbesondere die Burg Crevacuore (Creuecor) und nimmt die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.) unter Vorbehalt der königlichen Gerechtsame in seinen Schutz. Z.: Erzbischof Arnold von Köln, Bischof Ortlieb von Basel, Abt Wibald von Corvey, die Herzoge Heinrich von Sachsen, Welf von Spoleto, die Pfalzgrafen Otto von Wittelsbach, Friedrich von Tubingen (Tuuingen). - Arnoldus canc. vice Mogontini archiep. et archicanc. ; unter Verwendung der DDK. III. 267 (VU. I) und 55 (VU. II) sowie DH. V. Stumpf Reg. 3057 (Guasco di Bisio-Gabotto 215 no 2; VU. III) verfaßt und geschrieben von A II. D. Antecessorum nostrorum regum .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22786:confirmation-bulgaro",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22786:confirmation-bulgaro",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-bulgaro",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 187,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22786:> .\nx:confirmation-bulgaro a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22786> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt den Herren von Bulgaro (Reinhero de Bulgaro et filiis Philippi et Manfredi) die namentlich genannten Besitzungen und Lehen, insbesondere die Burg Crevacuore (Creuecor)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22786:confirmation-bulgaro",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:confirmation-bulgaro-grantor"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-bulgaro",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:confirmation-bulgaro rf:reference x:confirmation-bulgaro-grantor .\nx:confirmation-bulgaro-grantor a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Reinhero de Bulgaro",
+      "text": "Reinhero de Bulgaro in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22786:confirmation-bulgaro",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:confirmation-bulgaro-reinher"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-bulgaro",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:confirmation-bulgaro rf:reference x:confirmation-bulgaro-reinher .\nx:confirmation-bulgaro-reinher a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-R000128> ;\n    rf:nameInSource \"Reinhero de Bulgaro\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000128"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Philippi",
+      "text": "Philippi in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22786:confirmation-bulgaro",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:confirmation-bulgaro-philipp"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-bulgaro",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:confirmation-bulgaro rf:reference x:confirmation-bulgaro-philipp .\nx:confirmation-bulgaro-philipp a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-P000590> ;\n    rf:nameInSource \"Philippi\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000590"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Manfredi",
+      "text": "Manfredi in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22786:confirmation-bulgaro",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:confirmation-bulgaro-manfred"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-bulgaro",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:confirmation-bulgaro rf:reference x:confirmation-bulgaro-manfred .\nx:confirmation-bulgaro-manfred a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-M000337> ;\n    rf:nameInSource \"Manfredi\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000337"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die namentlich genannten Besitzungen und Lehen",
+      "text": "betrifft die namentlich genannten Besitzungen und Lehen",
+      "triple": [
+       "urn:regesta:22786:confirmation-bulgaro",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22786:thing-besitzungen-lehen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-bulgaro",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:confirmation-bulgaro rf:concerns x:thing-besitzungen-lehen .\nx:thing-besitzungen-lehen a crm:E18_Physical_Thing ;\n    rdfs:label \"die namentlich genannten Besitzungen und Lehen\" .",
+      "object": "urn:regesta:22786:thing-besitzungen-lehen",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Burg Crevacuore",
+      "text": "betrifft die Burg Crevacuore",
+      "triple": [
+       "urn:regesta:22786:confirmation-bulgaro",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22786:thing-burg-crevacuore"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-bulgaro",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:confirmation-bulgaro rf:concerns x:thing-burg-crevacuore .\nx:thing-burg-crevacuore a crm:E18_Physical_Thing ;\n    rdfs:label \"die Burg Crevacuore\" .",
+      "object": "urn:regesta:22786:thing-burg-crevacuore",
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Reinhero de Bulgaro"
+     },
+     ", ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Philippi"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Manfredi"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "die namentlich genannten Besitzungen und Lehen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "die Burg Crevacuore"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22786:parenthood-reinher-manfred",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22786:parenthood-reinher-manfred",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-reinher-manfred",
+     "own": true,
+     "evidence": {
+      "start": 44,
+      "end": 94,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22786:> .\nx:parenthood-reinher-manfred a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22786> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Reinhero de Bulgaro et filiis Philippi et Manfredi\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Reinhero de Bulgaro",
+      "text": "Reinhero de Bulgaro in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22786:parenthood-reinher-manfred",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:parenthood-reinher-manfred-parent"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-reinher-manfred",
+      "own": true,
+      "evidence": {
+       "start": 44,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:parenthood-reinher-manfred rf:reference x:parenthood-reinher-manfred-parent .\nx:parenthood-reinher-manfred-parent a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-R000128> ;\n    rf:nameInSource \"Reinhero de Bulgaro\" ;\n    rf:role rv:Parent .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000128"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Manfredi",
+      "text": "Manfredi in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22786:parenthood-reinher-manfred",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:parenthood-reinher-manfred-child"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-reinher-manfred",
+      "own": true,
+      "evidence": {
+       "start": 44,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:parenthood-reinher-manfred rf:reference x:parenthood-reinher-manfred-child .\nx:parenthood-reinher-manfred-child a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-M000337> ;\n    rf:nameInSource \"Manfredi\" ;\n    rf:role rv:Child .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000337"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "filiis",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22786:parenthood-reinher-manfred",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 67,
+       "end": 73,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Reinhero de Bulgaro"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Manfredi"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22786:parenthood-reinher-philipp",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22786:parenthood-reinher-philipp",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-reinher-philipp",
+     "own": true,
+     "evidence": {
+      "start": 44,
+      "end": 94,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22786:> .\nx:parenthood-reinher-philipp a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22786> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Reinhero de Bulgaro et filiis Philippi et Manfredi\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Reinhero de Bulgaro",
+      "text": "Reinhero de Bulgaro in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22786:parenthood-reinher-philipp",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:parenthood-reinher-philipp-parent"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-reinher-philipp",
+      "own": true,
+      "evidence": {
+       "start": 44,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:parenthood-reinher-philipp rf:reference x:parenthood-reinher-philipp-parent .\nx:parenthood-reinher-philipp-parent a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-R000128> ;\n    rf:nameInSource \"Reinhero de Bulgaro\" ;\n    rf:role rv:Parent .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000128"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Philippi",
+      "text": "Philippi in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22786:parenthood-reinher-philipp",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:parenthood-reinher-philipp-child"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-reinher-philipp",
+      "own": true,
+      "evidence": {
+       "start": 44,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:parenthood-reinher-philipp rf:reference x:parenthood-reinher-philipp-child .\nx:parenthood-reinher-philipp-child a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-P000590> ;\n    rf:nameInSource \"Philippi\" ;\n    rf:role rv:Child .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000590"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "filiis",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22786:parenthood-reinher-philipp",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 67,
+       "end": 73,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Reinhero de Bulgaro"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Philippi"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22786:protection-erwerbungen",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22786:protection-erwerbungen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection-erwerbungen",
+     "own": true,
+     "evidence": {
+      "start": 192,
+      "end": 337,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22786:> .\nx:protection-erwerbungen a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22786> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nimmt die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.) unter Vorbehalt der königlichen Gerechtsame in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22786:protection-erwerbungen",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22786:protection-erwerbungen-grantor"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-erwerbungen",
+      "own": true,
+      "evidence": {
+       "start": 192,
+       "end": 337,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:protection-erwerbungen rf:reference x:protection-erwerbungen-grantor .\nx:protection-erwerbungen-grantor a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)",
+      "text": "betrifft die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)",
+      "triple": [
+       "urn:regesta:22786:protection-erwerbungen",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22786:thing-erwerbungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-erwerbungen",
+      "own": true,
+      "evidence": {
+       "start": 192,
+       "end": 337,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:protection-erwerbungen rf:concerns x:thing-erwerbungen .\nx:thing-erwerbungen a crm:E18_Physical_Thing ;\n    rdfs:label \"die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)\" .",
+      "object": "urn:regesta:22786:thing-erwerbungen",
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22786:protection-erwerbungen",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22786:confirmation-bulgaro"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-erwerbungen",
+      "own": true,
+      "evidence": {
+       "start": 192,
+       "end": 337,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22786:> .\nx:protection-erwerbungen rf:partOf x:confirmation-bulgaro .\nx:confirmation-bulgaro a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:concerns x:thing-besitzungen-lehen , x:thing-burg-crevacuore ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt den Herren von Bulgaro (Reinhero de Bulgaro et filiis Philippi et Manfredi) die namentlich genannten Besitzungen und Lehen, insbesondere die Burg Crevacuore (Creuecor)\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference x:confirmation-bulgaro-grantor , x:confirmation-bulgaro-manfred , x:confirmation-bulgaro-philipp , x:confirmation-bulgaro-reinher ;\n    rf:source <urn:regesta:record:22786> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22786:confirmation-bulgaro",
+      "objectClaim": "confirmation-bulgaro",
+      "key": "k19"
+     },
+     {
+      "kind": "literal",
+      "label": "Ausnahme",
+      "text": "unter Vorbehalt der königlichen Gerechtsame",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22786:protection-erwerbungen",
+       "https://example.org/regesta/factoid/exception",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 277,
+       "end": 320,
+       "ambiguous": false
+      },
+      "key": "k20"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation-bulgaro",
+    "start": 0,
+    "end": 187
+   },
+   {
+    "id": "parenthood-reinher-manfred",
+    "start": 44,
+    "end": 94
+   },
+   {
+    "id": "parenthood-reinher-philipp",
+    "start": 44,
+    "end": 94
+   },
+   {
+    "id": "t1",
+    "start": 67,
+    "end": 73
+   },
+   {
+    "id": "t2",
+    "start": 67,
+    "end": 73
+   },
+   {
+    "id": "protection-erwerbungen",
+    "start": 192,
+    "end": 337
+   },
+   {
+    "id": "t3",
+    "start": 277,
+    "end": 320
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Reinhero de Bulgaro et filiis Philippi et Manfredi': parenthood read as Reinher father of Philipp and Manfred; 'filiis' carries no possessive, so the reading is the producer's and needs checking.",
+     "lang": "en"
+    },
+    {
+     "text": "Recipients of the protection grant are not named in its clause; no recipient reference recorded, only the acquisitions as concerned thing.",
+     "lang": "en"
+    },
+    {
+     "text": "Heinrich (V.), Lothar (III.) and Konrad (III.) serve only as dating of the acquisitions and are kept in the thing label, not as actors.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "'Lehen' are confirmed without a named lord; no feudal relationship recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added rf:partOf urn:regesta:22786:confirmation-bulgaro to urn:regesta:22786:protection-erwerbungen; no new references; exception kept; producer set to correction-g8.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "missing-reference",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22786:protection-erwerbungen",
+     "description": "The protection grant names only the ruler. The acquisitions taken into protection are those of the lords of Bulgaro, who are the recipients of the whole regest; without them the factoid does not say whose acquisitions are protected.",
+     "proposal": "Add Recipient references to R000128, P000590 and M000337 (or link the factoid by rf:partOf to the confirmation).",
+     "quote": {
+      "start": 192,
+      "end": 337
+     }
+    },
+    {
+     "category": "inference",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22786:parenthood-reinher-philipp",
+     "description": "The Latin says 'et filiis' without a possessive; reading them as Reinher's sons is the natural reading and supported by the coordination, but it is a reading.",
+     "proposal": "None; keep as is.",
+     "quote": {
+      "start": 44,
+      "end": 94
+     }
+    },
+    {
+     "category": "temporal-wording",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22786:protection-erwerbungen",
+     "description": "The time span of the acquisitions ('aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)') is kept only in the label of the thing node, not as rf:qualifier. Correctly, no date is derived from it.",
+     "proposal": "Optionally add rf:qualifier 'aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)'.",
+     "quote": {
+      "start": 214,
+      "end": 276
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The protection names only the ruler; the lords of Bulgaro, whose acquisitions are protected, are missing.",
+     "reason": "'und nimmt die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.) ... in seinen Schutz' is coordinated with the confirmation to the lords of Bulgaro but names no protected persons, so assigning them as rv:Recipient rests on ellipsis. The safe fix is the reviewer's alternative: connect the protection as a secondary act to the confirmation, which carries the recipients.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add the time span as rf:qualifier.",
+     "reason": "The wording 'aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)' is kept in the label of the thing node and the evidence, and no date is derived; the reviewer marks the addition optional.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [],
+   "transmission": [
+    {
+     "t": "Kop.: Zwei Abschriften aus der zweiten Hälfte des 15. und dem Anfang des 16. Jh., früher im Archivio Alliaga di Ricaldone zu Fossano, jetzt in der Stadtbibliothek Biella (B und C); zwei Abschriften des Transsumptes Kaiser Friedrichs II. von 1238 Mai (B.-Ficker, Reg. 2344) in den gleichen Handschriften ebenda (B"
+    },
+    {
+     "t": "1",
+     "sup": true
+    },
+    {
+     "t": " und C"
+    },
+    {
+     "t": "1",
+     "sup": true
+    },
+    {
+     "t": "); Insert im Original-Vidimus des savoyischen Senates von 1554 März 6 im Haus-, Hof und Staatsarchiv Wien (D). Drucke: Stumpf, Acta ined. 153 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 123; Guasco di Bisio-Gabotto, Documenti Biellesi, BSSS 34 (1908) 221 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 6; MG. DF. I. 47. Reg.: Stumpf 3660."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=57"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_47"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-C001077",
+    "Crevacuore (an der Sessera, südsüdwestl. Borgosesia, ital. Prov. Biella), Burg"
+   ],
+   [
+    "RI004-002-F000687",
+    "Pfalzgraf von Tübingen"
+   ],
+   [
+    "RI004-002-H000342",
+    "V., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000682",
+    "(III.), König und Kaiser"
+   ],
+   [
+    "RI004-002-M000337",
+    "von Bulgaro"
+   ],
+   [
+    "RI004-002-M001308",
+    "Mülhausen (<i>heute:</i> Mulhouse, im Elsass, Dép. Haut-Rhin)"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-P000590",
+    "von Bulgaro"
+   ],
+   [
+    "RI004-002-R000128",
+    "von Bulgaro"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

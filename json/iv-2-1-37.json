@@ -1,0 +1,254 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1148-03-00_1_0_4_2_1_37_37",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22664",
+  "identifier": "RI IV,2,1 n. 37",
+  "short": "RI IV,2,1 n. 37",
+  "sort": "004_002_001_000037_0000000037",
+  "start": "1148-03-01",
+  "end": "1148-03-31",
+  "proseYears": [],
+  "lead": "Friedrich segelt mit seinem Oheim, König Konrad III., von Konstantinopel ins Heilige Land.",
+  "date": [
+   {
+    "t": "1148 (März/April)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Konstantinopel-Akkon"
+   }
+  ],
+  "text": "Friedrich segelt mit seinem Oheim, König Konrad III., von Konstantinopel ins Heilige Land.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22664:kinship-oheim",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22664:kinship-oheim",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-oheim",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 52,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22664:> .\nx:kinship-oheim a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22664> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich segelt mit seinem Oheim, König Konrad III.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-10> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22664:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22664:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22664:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22664:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22664:local:konrad-iii> ; rf:nameInSource \"König Konrad III.\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:22664:local:konrad-iii"
+      ],
+      "key": "k3",
+      "agentNotes": [
+       {
+        "text": "König Konrad III.: no person candidate in packet 22664, local actor urn:regesta:actor:22664:local:konrad-iii",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheim",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22664:kinship-oheim",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 28,
+       "end": 33,
+       "ambiguous": false
+      },
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "König Konrad III."
+     }
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "kinship-oheim",
+    "start": 0,
+    "end": 52
+   },
+   {
+    "id": "t1",
+    "start": 28,
+    "end": 33
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "rv:Kinship offers only the symmetric role rv:Kin, so the direction of 'Oheim' (Konrad as uncle of Friedrich, from 'seinem Oheim') is not expressible beyond the qualifier literal",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Direction of the kinship term 'Oheim' is not expressible with two symmetric rv:Kin references.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 656 f. und Simonsfeld, Jahrbücher 13."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. I cap. 62, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 89."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=20"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000483",
+    "Akkon (Akko, am Nordrand der Bucht von Haifa, Israel)"
+   ],
+   [
+    "RI004-002-H000312",
+    "Heiliges Land"
+   ],
+   [
+    "RI004-002-K000571",
+    "Konstantinopel (<i>heute:</i> Istanbul, Türkei)"
+   ]
+  ]
+ }
+}

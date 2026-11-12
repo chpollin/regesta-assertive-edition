@@ -1,0 +1,319 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-08-00_1_0_4_2_1_33_33",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22660",
+  "identifier": "RI IV,2,1 n. 33",
+  "short": "RI IV,2,1 n. 33",
+  "sort": "004_002_001_000033_0000000033",
+  "start": "1147-08-01",
+  "end": "1147-08-31",
+  "proseYears": [],
+  "lead": "Friedrich übt an einem Kloster bei Adrianopel, in dem ein kranker Kreuzfahrer von habgierigen Griechen ausgeplündert und getötet worden war, im Auftrag König Konrads III. Vergeltung, indem er das Kloster niederbrennt, die Übeltäter hinrichten läßt und versucht, das geraubte Geld wieder herbeizuschaffen.",
+  "date": [
+   {
+    "t": "1147 (August)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Adrianopel"
+   }
+  ],
+  "text": "Friedrich übt an einem Kloster bei Adrianopel, in dem ein kranker Kreuzfahrer von habgierigen Griechen ausgeplündert und getötet worden war, im Auftrag König Konrads III. Vergeltung, indem er das Kloster niederbrennt, die Übeltäter hinrichten läßt und versucht, das geraubte Geld wieder herbeizuschaffen. Ein größerer Konflikt kann durch die Vermittlung des griechischen Feldherrn Prosuch verhindert werden.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22660:commission-retaliation",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22660:commission-retaliation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "commission-retaliation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 45,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22660:> .\nx:commission-retaliation a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22660> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich übt an einem Kloster bei Adrianopel\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-9> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22660:commission-retaliation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "commission-retaliation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22660:> .\nx:commission-retaliation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrads III.",
+      "text": "König Konrads III. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22660:commission-retaliation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "commission-retaliation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22660:> .\nx:commission-retaliation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrads III.\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22660:commission-retaliation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "commission-retaliation-2",
+      "own": true,
+      "evidence": {
+       "start": 141,
+       "end": 181,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22660:> .\nx:commission-retaliation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"im Auftrag König Konrads III. Vergeltung\" ] .",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k4"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k3",
+       "k4"
+      ],
+      "text": "König Konrads III."
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k2",
+       "k4"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "commission-retaliation",
+    "start": 0,
+    "end": 45
+   },
+   {
+    "id": "commission-retaliation-2",
+    "start": 141,
+    "end": 181
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Scope reading: the commission 'im Auftrag König Konrads III.' is extracted as rv:Appointment (Beauftragung); whether a commission to punitive retaliation is in the legal scope needs expert judgement.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for robbery or killing ('ausgeplündert und getötet'), the punitive execution ('hinrichten läßt') or the attempted recovery of stolen money ('versucht, das geraubte Geld wieder herbeizuschaffen'); rv:Restitution would assert a performed return, so the attempt is not extracted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Mediation preventing an armed conflict ('Vermittlung des griechischen Feldherrn Prosuch') fits neither rv:Dispute (court or ruler) nor any other act type; not extracted. Register candidate for Prosuch is typed 'ort' with role 'austOrt', an apparent register type error.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No marker for an attempted, unaccomplished act (versucht, ... herbeizuschaffen).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No principal and agent roles for a commission (Auftrag).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "scope",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22660:commission-retaliation",
+     "description": "The commission concerns a punitive military action. The guidelines exclude military movement but do not settle whether a commission to act militarily is a legal relation in scope. Extracting it is defensible; the case should be decided in the guidelines so that extractors treat it uniformly.",
+     "proposal": "Keep, and record a guideline decision on commissions for military or punitive action.",
+     "quote": {
+      "start": 141,
+      "end": 181
+     }
+    },
+    {
+     "category": "role-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22660:commission-retaliation",
+     "description": "The commissioner is given rv:Grantor and the commissioned person rv:Recipient. The role definitions (who transfers, confirms, grants or determines; to whom something is transferred) fit a commission only loosely.",
+     "proposal": "Acceptable under the current vocabulary; a principal and agent role pair would fit Appointment better.",
+     "quote": {
+      "start": 141,
+      "end": 170
+     }
+    },
+    {
+     "category": "model-gap-omission",
+     "severity": "Vermerk",
+     "subject": "22660",
+     "description": "The attempted recovery of the stolen money is an economic act, but only as an attempt. The contract has rv:Restitution for a performed return and no way to mark an act as attempted, so leaving it out is correct.",
+     "proposal": "None under the current contract.",
+     "quote": {
+      "start": 252,
+      "end": 303
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "Extracting a commission to a punitive military action may be out of scope.",
+     "reason": "rv:Appointment is defined as 'Einsetzung in ein Amt oder Beauftragung mit einer Aufgabe', and 'im Auftrag König Konrads III. Vergeltung' states such a commission. The factoid records only the commission, not the burning, executions or recovery attempt, so no military movement is recorded. A guideline decision on such commissions belongs to the next contract version.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "rv:Grantor and rv:Recipient fit commissioner and commissioned person only loosely.",
+     "reason": "rv:Grantor covers 'wer ... bestimmt', which includes the one who gives the commission, and no principal or agent role exists. The roles are the nearest available; a principal and agent pair is a gap for the next version.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 610 f. und Simonsfeld, Jahrbücher 12."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Nicetae Choniatae historia, ed. van Dieten, CFHB 11/1 (1975) 63 f..; Cinnamus, Epitome l. II cap. 13, ed. Meineke, CSHB 13 (1836) 71 f."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=19"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000391",
+    "Adrianopel (<i>heute:</i> Edirne, türk. Prov.-Hptst. in der europäischen Türkei)"
+   ],
+   [
+    "RI004-002-B001726",
+    "Byzantiner (auch: Griechen)"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-P001116",
+    "Prosuch, griechischer (= byzantinischer) Feldherr"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,588 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_4_0_4_2_1_121_121",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22748",
+  "identifier": "RI IV,2,1 n. 121",
+  "short": "RI IV,2,1 n. 121",
+  "sort": "004_002_001_000121_0000000121",
+  "start": "1152-07-01",
+  "end": "1152-07-31",
+  "proseYears": [],
+  "lead": "Friedrich verspricht dem Abt Wibald von Corvey , er werde die ihm zugefügte Gewalttat (den Überfall der Brüder Folkwin und Widekind von Schwalenberg auf die Stadt Höxter) bei der nächsten sich bietenden Gelegenheit rächen, und lädt ihn für den 13.",
+  "date": [
+   {
+    "t": "1152 Juli"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich verspricht dem Abt Wibald von Corvey , er werde die ihm zugefügte Gewalttat (den Überfall der Brüder Folkwin und Widekind von Schwalenberg auf die Stadt Höxter) bei der nächsten sich bietenden Gelegenheit rächen, und lädt ihn für den 13. Oktober zu einem Hoftag (curiam generalem) nach Würzburg. - Aller Wahrscheinlichkeit nach von A II. C verfaßt und wohl auch mundiert. Preter communem karitatis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22748:promise-revenge",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22748:promise-revenge",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "promise-revenge",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 221,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22748:> .\nx:promise-revenge a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22748> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verspricht dem Abt Wibald von Corvey , er werde die ihm zugefügte Gewalttat (den Überfall der Brüder Folkwin und Widekind von Schwalenberg auf die Stadt Höxter) bei der nächsten sich bietenden Gelegenheit rächen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22748:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22748:ref-promise-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 221,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22748:> .\nx:promise-revenge rf:reference x:ref-promise-friedrich .\nx:ref-promise-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Wibald von Corvey",
+      "text": "Abt Wibald von Corvey in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22748:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22748:ref-promise-wibald"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 221,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22748:> .\nx:promise-revenge rf:reference x:ref-promise-wibald .\nx:ref-promise-wibald a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000420> ;\n    rf:nameInSource \"Abt Wibald von Corvey\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22748:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22748:ref-promise-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 221,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22748:> .\nx:promise-revenge rf:reference x:ref-promise-folkwin .\nx:ref-promise-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind von Schwalenberg",
+      "text": "Widekind von Schwalenberg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22748:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22748:ref-promise-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 221,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22748:> .\nx:promise-revenge rf:reference x:ref-promise-widekind .\nx:ref-promise-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind von Schwalenberg\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "bei der nächsten sich bietenden Gelegenheit",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22748:promise-revenge",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 171,
+       "end": 214,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Abt Wibald von Corvey"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Widekind von Schwalenberg"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22748:brothers",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22748:brothers",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "brothers",
+     "own": true,
+     "evidence": {
+      "start": 104,
+      "end": 148,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22748:> .\nx:brothers a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22748> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Brüder Folkwin und Widekind von Schwalenberg\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22748:brothers",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22748:ref-brothers-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brothers",
+      "own": true,
+      "evidence": {
+       "start": 104,
+       "end": 148,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22748:> .\nx:brothers rf:reference x:ref-brothers-folkwin .\nx:ref-brothers-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind von Schwalenberg",
+      "text": "Widekind von Schwalenberg in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22748:brothers",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22748:ref-brothers-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brothers",
+      "own": true,
+      "evidence": {
+       "start": 104,
+       "end": 148,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22748:> .\nx:brothers rf:reference x:ref-brothers-widekind .\nx:ref-brothers-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind von Schwalenberg\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Brüder",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22748:brothers",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 104,
+       "end": 110,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Widekind von Schwalenberg"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "promise-revenge",
+    "start": 0,
+    "end": 221
+   },
+   {
+    "id": "brothers",
+    "start": 104,
+    "end": 148
+   },
+   {
+    "id": "t2",
+    "start": 104,
+    "end": 110
+   },
+   {
+    "id": "t1",
+    "start": 171,
+    "end": 214
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No role for the wrongdoer whose deed a ruler promises to avenge; Folkwin and Widekind are referenced as rv:Participant in the assurance.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The attack on Höxter (Überfall) and the summons to the Hoftag at Würzburg are left out as out of scope (violence, assembly summons); the vocabulary has no act type for a summons to a court assembly.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the perpetrators of a wrong to be avenged; rv:Participant is a placeholder.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22748",
+     "description": "The regest reports a second act, the invitation of Wibald to a curia generalis at Würzburg. It is not military movement or travel but a summons, which the contract can express as rv:Communication with Wibald as rv:Addressee and Würzburg as a place. Whether a court summons is in scope is arguable, but no abstention is recorded for it.",
+     "proposal": "Add a rv:Communication act factoid (Friedrich rv:Grantor, Wibald rv:Addressee with nameInSource \"ihn\", concerns a crm:E53_Place \"Würzburg\", qualifier \"für den 13. Oktober\"), or record the scope decision in the batch report.",
+     "quote": {
+      "start": 227,
+      "end": 304
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The summons of Wibald to the Hoftag at Würzburg is omitted.",
+     "reason": "'lädt ihn für den 13. Oktober zu einem Hoftag (curiam generalem) nach Würzburg' is an invitation to attend an assembly and states no kinship, economic or legal relation. The guidelines put travel out of scope. The extractor recorded the scope decision in batch-30, which is the reviewer's own alternative.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Für die Annahme der Verfasserschaft von Arnold II. C spricht besonders die Anwendung des Cursus, vgl. Zeillinger, Reichskanzlei, DA 22 (1966) 529. - Zur Sache s. die Klage Wibalds beim König (Reg. "
+    },
+    {
+     "t": "119",
+     "regest": "22746"
+    },
+    {
+     "t": ") und auch die aus dem Schreiben des Hofnotars Heinrich an Wibald (Jaffé Mon. Corb. 522 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 391) ersichtlichen Aktivitäten dieses Mannes der Kanzlei, der im Sinne Wibalds und im Auftrag des Königs mit der Obsorge für die Ausfertigung dieses und der beiden weiteren Mandate in dieser Angelegenheit (Regg. "
+    },
+    {
+     "t": "122",
+     "regest": "22749"
+    },
+    {
+     "t": " und "
+    },
+    {
+     "t": "123",
+     "regest": "22750"
+    },
+    {
+     "t": ") betraut war; auch die Schreiben Arnolds von Köln (Jaffé 517 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 385; Knipping, Reg. Köln 2 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "540"
+    },
+    {
+     "t": ") und Ottos von Freising (Jaffé 519 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 387) an Wibald befassen sich mit dieser Gewalttat. Vgl. über die Ereignisse Starke, Sommerschenburg, Jb. Gesch. Mittel- und Ostdtl. 4 (1955) 37, Hausmann, Reichskanzlei 235 und zuletzt mit Angabe weiterer Literatur Jordan, Oberweser und Leine (FS. H. Heimpel 2. = Veröff. d. M.-Planck-Inst. f. Gesch. 36/2, 1972) 1058 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift aus der Mitte des 12. Jh. im Cod. Wibaldi f. 131, Staatsarchiv Lüttich (B). Drucke: Jaffé, Mon. Corb. 520 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 388; MG. Const. 1, 199 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 142; MG. DF. I. 21. Reg.: Stumpf 3641."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0043"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_21"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-F000280",
+    "von Schwalenberg, Vogt von Höxter"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-H001241",
+    "Höxter (an der Weser, Reg.-Bez. Detmold, Nordrh.-Westf.)"
+   ],
+   [
+    "RI004-002-O000405",
+    "(I.), Bischof von Freising"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000454",
+    "(II.), Graf von Schwalenberg (-Waldeck), Vogt von Höxter"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

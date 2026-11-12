@@ -1,0 +1,220 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-08-25_1_0_4_2_1_130_130
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22757> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 130" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-S000091:community> a crm:E74_Group ;
+    rdfs:label "Kloster Salem" .
+# Two register candidates (U000176, U000177) both match "Ulrich von Herrlingen" by name and
+# title, and the passage does not decide between them, so donor and son stay regest-local.
+<urn:regesta:actor:22757:local:ulrich-von-herrlingen> a crm:E21_Person ;
+    rdfs:label "Ulrich von Herrlingen (Hurninge)" .
+<urn:regesta:actor:22757:local:ulrich-sohn> a crm:E21_Person ;
+    rdfs:label "seines Sohnes Ulrich" .
+<urn:regesta:actor:22757:local:gemahlin-ulrich> a crm:E21_Person ;
+    rdfs:label "seiner Gemahlin" .
+<urn:regesta:actor:RI004-002-F000687> a crm:E21_Person ;
+    rdfs:label "Pfalzgraf Friedrich von Tübingen" .
+<urn:regesta:actor:RI004-002-E000568> a crm:E21_Person ;
+    rdfs:label "Eticho" .
+<urn:regesta:actor:RI004-002-E000499> a crm:E21_Person ;
+    rdfs:label "Ernst von Altsteußlingen (Stuzelinge)" .
+<urn:regesta:actor:22757:local:gemahlin-ernst> a crm:E21_Person ;
+    rdfs:label "seiner Gemahlin" .
+<urn:regesta:actor:22757:local:soehne-ernst> a crm:E74_Group ;
+    rdfs:label "seiner Söhne" .
+<urn:regesta:actor:RI004-002-H000840> a crm:E21_Person ;
+    rdfs:label "Priester Hermann von Altsteußlingen" .
+<urn:regesta:actor:22757:local:burchard> a crm:E21_Person ;
+    rdfs:label "seinem Bruder Burchard" .
+
+<urn:regesta:22757:gueter-salem> a crm:E18_Physical_Thing ;
+    rdfs:label "die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen" .
+<urn:regesta:22757:kirche-frankenhofen> a crm:E18_Physical_Thing ;
+    rdfs:label "Kirche von Frankenhofen" .
+<urn:regesta:22757:hufen-hohonbuach> a crm:E18_Physical_Thing ;
+    rdfs:label "fünf Hufen in Hohonbuach" .
+<urn:regesta:22757:hof-tiefenhuelen> a crm:E18_Physical_Thing ;
+    rdfs:label "Tiefenhülen (Tufenhuluwe)" .
+<urn:regesta:22757:hof-bremfeld> a crm:E18_Physical_Thing ;
+    rdfs:label "Bremfeld" .
+<urn:regesta:22757:hof-hohonbuach> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof Hohonbuach" .
+
+<urn:regesta:22757:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich nimmt die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+            rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ;
+            rf:role rv:Recipient ; rf:nameInSource "Kloster Salem" ] ;
+    rf:concerns <urn:regesta:22757:gueter-salem> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22757:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt folgende im einzelnen" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt die dem Kloster Salem" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+            rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ;
+            rf:role rv:Recipient ; rf:nameInSource "Kloster Salem" ] ;
+    rf:refersToAct <urn:regesta:22757:donation-ulrich> , <urn:regesta:22757:donation-tuebingen> ,
+        <urn:regesta:22757:donation-ernst> , <urn:regesta:22757:donation-hermann> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+# The four earlier donations as the confirmation lists them; none is dated. The consent of wives
+# and sons has no role in the vocabulary and is recorded as Participant (model gap).
+<urn:regesta:22757:donation-ulrich> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+            oa:exact "die von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich übergebene Kirche von Frankenhofen" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "dem Kloster Salem in seiner Gegenwart geschenkten Güter" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-von-herrlingen> ;
+            rf:role rv:Grantor ; rf:nameInSource "Ulrich von Herrlingen (Hurninge)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ulrich> ;
+            rf:role rv:Participant ; rf:nameInSource "seiner Gemahlin" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-sohn> ;
+            rf:role rv:Participant ; rf:nameInSource "Ulrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ;
+            rf:role rv:Recipient ; rf:nameInSource "Kloster Salem" ] ;
+    rf:concerns <urn:regesta:22757:kirche-frankenhofen> ;
+    rf:condition "mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22757:donation-tuebingen> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+            oa:exact "von Pfalzgraf Friedrich von Tübingen gemeinsam mit seinem Ministerialen Eticho fünf Hufen in Hohonbuach" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "dem Kloster Salem in seiner Gegenwart geschenkten Güter" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000687> ;
+            rf:role rv:Grantor ; rf:nameInSource "Pfalzgraf Friedrich von Tübingen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000568> ;
+            rf:role rv:Grantor ; rf:nameInSource "Eticho" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ;
+            rf:role rv:Recipient ; rf:nameInSource "Kloster Salem" ] ;
+    rf:concerns <urn:regesta:22757:hufen-hohonbuach> ;
+    rf:amount "fünf Hufen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22757:donation-ernst> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+            oa:exact "die von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin und seiner Söhne geschenkten Höfe Tiefenhülen (Tufenhuluwe) und Bremfeld" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "dem Kloster Salem in seiner Gegenwart geschenkten Güter" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000499> ;
+            rf:role rv:Grantor ; rf:nameInSource "Ernst von Altsteußlingen (Stuzelinge)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ernst> ;
+            rf:role rv:Participant ; rf:nameInSource "seiner Gemahlin" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:soehne-ernst> ;
+            rf:role rv:Participant ; rf:nameInSource "seiner Söhne" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ;
+            rf:role rv:Recipient ; rf:nameInSource "Kloster Salem" ] ;
+    rf:concerns <urn:regesta:22757:hof-tiefenhuelen> , <urn:regesta:22757:hof-bremfeld> ;
+    rf:condition "mit Zustimmung seiner Gemahlin und seiner Söhne" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22757:donation-hermann> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+            oa:exact "vom Priester Hermann von Altsteußlingen und seinem Bruder Burchard den Hof Hohonbuach" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "dem Kloster Salem in seiner Gegenwart geschenkten Güter" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000840> ;
+            rf:role rv:Grantor ; rf:nameInSource "Priester Hermann von Altsteußlingen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:burchard> ;
+            rf:role rv:Grantor ; rf:nameInSource "Burchard" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ;
+            rf:role rv:Recipient ; rf:nameInSource "Kloster Salem" ] ;
+    rf:concerns <urn:regesta:22757:hof-hohonbuach> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22757:marriage-ulrich> a rf:StateFactoid ;
+    rf:factoidType rv:Marriage ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-von-herrlingen> ;
+            rf:role rv:Spouse ; rf:nameInSource "Ulrich von Herrlingen (Hurninge)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ulrich> ;
+            rf:role rv:Spouse ; rf:nameInSource "seiner Gemahlin" ] ;
+    rf:qualifier "Gemahlin" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22757:parenthood-ulrich> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-von-herrlingen> ;
+            rf:role rv:Parent ; rf:nameInSource "Ulrich von Herrlingen (Hurninge)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-sohn> ;
+            rf:role rv:Child ; rf:nameInSource "Ulrich" ] ;
+    rf:qualifier "Sohnes" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22757:marriage-ernst> a rf:StateFactoid ;
+    rf:factoidType rv:Marriage ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000499> ;
+            rf:role rv:Spouse ; rf:nameInSource "Ernst von Altsteußlingen (Stuzelinge)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ernst> ;
+            rf:role rv:Spouse ; rf:nameInSource "seiner Gemahlin" ] ;
+    rf:qualifier "Gemahlin" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+# The sons are unnamed and unnumbered, so they are one regest-local group as Child.
+<urn:regesta:22757:parenthood-ernst> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin und seiner Söhne" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000499> ;
+            rf:role rv:Parent ; rf:nameInSource "Ernst von Altsteußlingen (Stuzelinge)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:soehne-ernst> ;
+            rf:role rv:Child ; rf:nameInSource "seiner Söhne" ] ;
+    rf:qualifier "Söhne" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22757:kinship-hermann-burchard> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22757> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Priester Hermann von Altsteußlingen und seinem Bruder Burchard" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000840> ;
+            rf:role rv:Kin ; rf:nameInSource "Priester Hermann von Altsteußlingen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:burchard> ;
+            rf:role rv:Kin ; rf:nameInSource "Burchard" ] ;
+    rf:qualifier "Bruder" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .

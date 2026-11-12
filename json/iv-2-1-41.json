@@ -1,0 +1,431 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1148-09-08_1_0_4_2_1_41_41",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22668",
+  "identifier": "RI IV,2,1 n. 41",
+  "short": "RI IV,2,1 n. 41",
+  "sort": "004_002_001_000041_0000000041",
+  "start": "1148-09-08",
+  "end": "1148-09-08",
+  "proseYears": [],
+  "lead": "Friedrich bekräftigt eidlich den Vertrag zwischen König Konrad III. und Kaiser Manuel, der ein gemeinsames Vorgehen gegen König Roger von Sizilien vorsieht.",
+  "date": [
+   {
+    "t": "1148 nach September 8"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Thessalonike oder Konstantinopel)"
+   }
+  ],
+  "text": "Friedrich bekräftigt eidlich den Vertrag zwischen König Konrad III. und Kaiser Manuel, der ein gemeinsames Vorgehen gegen König Roger von Sizilien vorsieht.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22668:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22668:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 85,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22668:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22668> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bekräftigt eidlich den Vertrag zwischen König Konrad III. und Kaiser Manuel\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-11> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22668:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22668:confirmation-ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 85,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22668:> .\nx:confirmation rf:reference x:confirmation-ref-friedrich .\nx:confirmation-ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestimmung",
+      "text": "bezieht sich auf Bestimmung",
+      "triple": [
+       "urn:regesta:22668:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22668:treaty"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 85,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22668:> .\nx:confirmation rf:refersToAct x:treaty .\nx:treaty a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-11> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Vertrag zwischen König Konrad III. und Kaiser Manuel, der ein gemeinsames Vorgehen gegen König Roger von Sizilien vorsieht\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference x:treaty-ref-konrad , x:treaty-ref-manuel ;\n    rf:source <urn:regesta:record:22668> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22668:treaty",
+      "objectClaim": "treaty",
+      "key": "k3"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "eidlich",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22668:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 21,
+       "end": 28,
+       "ambiguous": false
+      },
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22668:treaty",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22668:treaty",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "treaty",
+     "own": true,
+     "evidence": {
+      "start": 29,
+      "end": 155,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22668:> .\nx:treaty a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22668> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Vertrag zwischen König Konrad III. und Kaiser Manuel, der ein gemeinsames Vorgehen gegen König Roger von Sizilien vorsieht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-11> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22668:treaty",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22668:treaty-ref-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treaty",
+      "own": true,
+      "evidence": {
+       "start": 29,
+       "end": 155,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22668:> .\nx:treaty rf:reference x:treaty-ref-konrad .\nx:treaty-ref-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000316> ;\n    rf:nameInSource \"König Konrad III.\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser Manuel",
+      "text": "Kaiser Manuel in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22668:treaty",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22668:treaty-ref-manuel"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treaty",
+      "own": true,
+      "evidence": {
+       "start": 29,
+       "end": 155,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22668:> .\nx:treaty rf:reference x:treaty-ref-manuel .\nx:treaty-ref-manuel a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-M000374> ;\n    rf:nameInSource \"Kaiser Manuel\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000374"
+      ],
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "König Konrad III."
+     },
+     " und ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Kaiser Manuel"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 85
+   },
+   {
+    "id": "t1",
+    "start": 21,
+    "end": 28
+   },
+   {
+    "id": "treaty",
+    "start": 29,
+    "end": 155
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for a treaty or agreement between parties; the treaty between König Konrad III. and Kaiser Manuel is typed rv:Enactment and its parties carry rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The treaty's content 'ein gemeinsames Vorgehen gegen König Roger von Sizilien' has no slot (no property for the provided content and no role for the party an agreement is directed against); it stays in the evidence only and König Roger receives no reference.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a treaty or agreement and no role for contracting parties.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the actor against whom an agreed action or provision is directed (Roger).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "vocabulary-limit",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22668:treaty",
+     "description": "A treaty between two rulers is typed rv:Enactment with both parties as rv:Participant. Enactment is defined as a determination the charter makes; a bilateral agreement has no act type or contracting-party role in the vocabulary. The reading is acceptable as a stopgap and is a model gap, not an extraction error.",
+     "proposal": "Keep as is until the vocabulary offers an agreement type and a party role; then retype.",
+     "quote": {
+      "start": 29,
+      "end": 85
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22668:treaty",
+     "description": "The treaty's provision of joint action against King Roger is not a separate provision factoid and Roger (candidate R000806) carries no reference. The vocabulary has no role for the party a provision is directed against, and joint military action is close to the out-of-scope military boundary, so the omission is defensible. The provision is correctly not read as performed.",
+     "proposal": "Optionally add an rv:Enactment provision factoid with rf:partOf the treaty and the exact wording 'gemeinsames Vorgehen gegen König Roger von Sizilien' as rf:qualifier; leave Roger unreferenced until a target role exists.",
+     "quote": {
+      "start": 87,
+      "end": 155
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optional separate provision factoid for the joint action against King Roger, with the wording as rf:qualifier.",
+     "reason": "The provision 'der ein gemeinsames Vorgehen gegen König Roger von Sizilien vorsieht' is already inside the treaty's evidence and is not read as performed. A joint military action is near the out-of-scope military boundary, the vocabulary has no role for Roger, and rf:qualifier is for wording that qualifies type or time, not for the content of a provision.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 680 ff., Simonsfeld, Jahrbücher 14; zur Frage der Beschwörung des Vertrags durch Friedrich vgl. Heilig, Ostrom und das Deutsche Reich (Schriften d. MGH 9, 1944) 162 ff., Rassow, Honor Imperii ("
+    },
+    {
+     "t": "2",
+     "sup": true
+    },
+    {
+     "t": " 1961) 26 ff. und Lamma, Comneni e Staufer 1, 89 ff. - Die zeitliche Einordnung ergibt sich daraus, daß Konrad III. am 8. September (vgl. DK. III. 197) das Heilige Land verlassen hat. Ob der Vertrag in Thessalonike oder in Konstantinopel geschlossen wurde, läßt sich nicht mit Sicherheit bestimmen, vgl. Heilig, a. a. O. 162 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Cinnamus, Epitome l. II cap. 19, ed. Meineke, CSHB 13 (1836) 87; vgl. Ottonis Gesta Frid. l. I cap. 64, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 90 und Dölger, Reg. d. oström. Reiches 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1374."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=20"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-H000312",
+    "Heiliges Land"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000571",
+    "Konstantinopel (<i>heute:</i> Istanbul, Türkei)"
+   ],
+   [
+    "RI004-002-M000374",
+    "(I.) Komnenos, Kaiser der Griechen, von Byzanz, von Konstantinopel"
+   ],
+   [
+    "RI004-002-R000806",
+    "(II.), König von Sizilien"
+   ],
+   [
+    "RI004-002-T000200",
+    "Thessalonike, Thessaloniki (Nordgriechenland)"
+   ]
+  ]
+ }
+}

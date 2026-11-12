@@ -1,0 +1,1118 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-09-20_1_0_4_2_1_132_132",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22759",
+  "identifier": "RI IV,2,1 n. 132",
+  "short": "RI IV,2,1 n. 132",
+  "sort": "004_002_001_000132_0000000132",
+  "start": "1152-09-20",
+  "end": "1152-09-20",
+  "proseYears": [],
+  "lead": "Papst Eugen (III.) trägt Abt (Wibald) von Corvey auf, die Angelegenheit des Bischofs Adelgoz von Chur bei König Friedrich zu fördern, gibt seiner Bestürzung über den von den Laien gefaßten Beschluß des Ulmer Hoftages (Reg. 110) Ausdruck, daß bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern der weltliche Rechtsspruch der Exkommunikation vorauszugehen habe (novo iudicio excommunicatos dedicant, nisi prius in laicorum iudicio damnationis sententia feriantur) und berichtet ihm von einer auf die Anstiftung des Ketzers Arnold (von Brescia) zurückgehenden Verschwörung in Rom, wo für den 1.",
+  "date": [
+   {
+    "t": "(1152) September 20"
+   }
+  ],
+  "place": [
+   {
+    "t": "Segni"
+   }
+  ],
+  "text": "Papst Eugen (III.) trägt Abt (Wibald) von Corvey auf, die Angelegenheit des Bischofs Adelgoz von Chur bei König Friedrich zu fördern, gibt seiner Bestürzung über den von den Laien gefaßten Beschluß des Ulmer Hoftages (Reg. 110) Ausdruck, daß bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern der weltliche Rechtsspruch der Exkommunikation vorauszugehen habe (novo iudicio excommunicatos dedicant, nisi prius in laicorum iudicio damnationis sententia feriantur) und berichtet ihm von einer auf die Anstiftung des Ketzers Arnold (von Brescia) zurückgehenden Verschwörung in Rom, wo für den 1. November die Bildung eines neuen Regiments und auch die Wahl eines Kaisers geplant sei, worüber Wibald König Friedrich vertraulich unterrichten solle, damit dieser die nötigen Anordnungen treffen könne.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 5,
+  "blocks": [
+   {
+    "node": "urn:regesta:22759:letter-dismay",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22759:letter-dismay",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "letter-dismay",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 52,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22759:> .\nx:letter-dismay a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22759> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) trägt Abt (Wibald) von Corvey auf\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22759:letter-dismay",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter-dismay",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:letter-dismay rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt (Wibald) von Corvey",
+      "text": "Abt (Wibald) von Corvey in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22759:letter-dismay",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter-dismay",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:letter-dismay rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt (Wibald) von Corvey\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestimmung",
+      "text": "bezieht sich auf Bestimmung",
+      "triple": [
+       "urn:regesta:22759:letter-dismay",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22759:ulm-decision"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter-dismay",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:letter-dismay rf:refersToAct x:ulm-decision .\nx:ulm-decision a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:concerns x:right-bestrafung ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"daß bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern der weltliche Rechtsspruch der Exkommunikation vorauszugehen habe\" ] , [ a oa:TextQuoteSelector ; oa:exact \"den von den Laien gefaßten Beschluß des Ulmer Hoftages\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22759:local:laien> ; rf:nameInSource \"den Laien\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22759> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22759:ulm-decision",
+      "objectClaim": "ulm-decision",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22759:letter-dismay",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter-dismay-2",
+      "own": true,
+      "evidence": {
+       "start": 134,
+       "end": 236,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:letter-dismay rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gibt seiner Bestürzung über den von den Laien gefaßten Beschluß des Ulmer Hoftages (Reg. 110) Ausdruck\" ] .",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Abt (Wibald) von Corvey"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22759:mandate-adelgoz",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22759:mandate-adelgoz",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mandate-adelgoz",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 132,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-adelgoz a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22759> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) trägt Abt (Wibald) von Corvey auf, die Angelegenheit des Bischofs Adelgoz von Chur bei König Friedrich zu fördern\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22759:mandate-adelgoz",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-adelgoz",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-adelgoz rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt (Wibald) von Corvey",
+      "text": "Abt (Wibald) von Corvey in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22759:mandate-adelgoz",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-adelgoz",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-adelgoz rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt (Wibald) von Corvey\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischofs Adelgoz von Chur",
+      "text": "Bischofs Adelgoz von Chur in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22759:mandate-adelgoz",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-adelgoz",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-adelgoz rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000285> ; rf:nameInSource \"Bischofs Adelgoz von Chur\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000285"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Friedrich",
+      "text": "König Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22759:mandate-adelgoz",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-adelgoz",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-adelgoz rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Abt (Wibald) von Corvey"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bischofs Adelgoz von Chur"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "König Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22759:mandate-inform-king",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22759:mandate-inform-king",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mandate-inform-king",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 18,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-inform-king a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22759> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22759:mandate-inform-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-inform-king",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 18,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-inform-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt (Wibald) von Corvey",
+      "text": "Abt (Wibald) von Corvey in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22759:mandate-inform-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-inform-king",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 18,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-inform-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Friedrich",
+      "text": "König Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22759:mandate-inform-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-inform-king",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 18,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-inform-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22759:mandate-inform-king",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-inform-king-2",
+      "own": true,
+      "evidence": {
+       "start": 697,
+       "end": 810,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:mandate-inform-king rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"worüber Wibald König Friedrich vertraulich unterrichten solle, damit dieser die nötigen Anordnungen treffen könne\" ] .",
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "damit dieser die nötigen Anordnungen treffen könne",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22759:mandate-inform-king",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 760,
+       "end": 810,
+       "ambiguous": false
+      },
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "vertraulich",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22759:mandate-inform-king",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 728,
+       "end": 739,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11",
+       "k15"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12",
+       "k15"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k13",
+       "k15"
+      ],
+      "text": "Abt (Wibald) von Corvey"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k14",
+       "k15"
+      ],
+      "text": "König Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22759:report-conspiracy",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22759:report-conspiracy",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "report-conspiracy",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 52,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22759:> .\nx:report-conspiracy a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22759> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) trägt Abt (Wibald) von Corvey auf\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22759:report-conspiracy",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "report-conspiracy",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:report-conspiracy rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt (Wibald) von Corvey",
+      "text": "Abt (Wibald) von Corvey in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22759:report-conspiracy",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "report-conspiracy",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:report-conspiracy rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt (Wibald) von Corvey\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22759:report-conspiracy",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "report-conspiracy-2",
+      "own": true,
+      "evidence": {
+       "start": 483,
+       "end": 593,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:report-conspiracy rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"berichtet ihm von einer auf die Anstiftung des Ketzers Arnold (von Brescia) zurückgehenden Verschwörung in Rom\" ] .",
+      "key": "k21"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18",
+       "k21"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k19",
+       "k21"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k20",
+       "k21"
+      ],
+      "text": "Abt (Wibald) von Corvey"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22759:ulm-decision",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22759:ulm-decision",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "ulm-decision",
+     "own": true,
+     "evidence": {
+      "start": 162,
+      "end": 216,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22759:> .\nx:ulm-decision a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22759> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den von den Laien gefaßten Beschluß des Ulmer Hoftages\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k22"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Laien",
+      "text": "den Laien in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22759:ulm-decision",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "ulm-decision",
+      "own": true,
+      "evidence": {
+       "start": 162,
+       "end": 216,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:ulm-decision rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22759:local:laien> ; rf:nameInSource \"den Laien\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22759:local:laien"
+      ],
+      "key": "k23",
+      "agentNotes": [
+       {
+        "text": "Die Laien who took the Ulm decision: regest-local group.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (Bestrafung von Raub und Brandstiftung an kirchlichen Gütern)",
+      "text": "betrifft Gerichtsbarkeit (Bestrafung von Raub und Brandstiftung an kirchlichen Gütern)",
+      "triple": [
+       "urn:regesta:22759:ulm-decision",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22759:right-bestrafung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "ulm-decision",
+      "own": true,
+      "evidence": {
+       "start": 162,
+       "end": 216,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:ulm-decision rf:concerns x:right-bestrafung .\nx:right-bestrafung a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"Bestrafung von Raub und Brandstiftung an kirchlichen Gütern\" .",
+      "object": "urn:regesta:22759:right-bestrafung",
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22759:ulm-decision",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "ulm-decision-2",
+      "own": true,
+      "evidence": {
+       "start": 238,
+       "end": 375,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22759:> .\nx:ulm-decision rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"daß bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern der weltliche Rechtsspruch der Exkommunikation vorauszugehen habe\" ] .",
+      "key": "k25"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k22",
+       "k25"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k23",
+       "k25"
+      ],
+      "text": "den Laien"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k24",
+       "k25"
+      ],
+      "text": "Gerichtsbarkeit (Bestrafung von Raub und Brandstiftung an kirchlichen Gütern)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "mandate-adelgoz",
+    "start": 0,
+    "end": 132
+   },
+   {
+    "id": "letter-dismay",
+    "start": 0,
+    "end": 52
+   },
+   {
+    "id": "report-conspiracy",
+    "start": 0,
+    "end": 52
+   },
+   {
+    "id": "mandate-inform-king",
+    "start": 0,
+    "end": 18
+   },
+   {
+    "id": "letter-dismay-2",
+    "start": 134,
+    "end": 236
+   },
+   {
+    "id": "ulm-decision",
+    "start": 162,
+    "end": 216
+   },
+   {
+    "id": "ulm-decision-2",
+    "start": 238,
+    "end": 375
+   },
+   {
+    "id": "report-conspiracy-2",
+    "start": 483,
+    "end": 593
+   },
+   {
+    "id": "mandate-inform-king-2",
+    "start": 697,
+    "end": 810
+   },
+   {
+    "id": "t2",
+    "start": 728,
+    "end": 739
+   },
+   {
+    "id": "t1",
+    "start": 760,
+    "end": 810
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No sender or author role for a letter; Pope Eugen recorded as rv:Participant in the communication.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No class for an assembly such as the Ulmer Hoftag; it appears only in evidence.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The reported Roman conspiracy, planned imperial election and the instruction to inform Friedrich confidentially were judged political and out of scope.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the target of an intercession.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No sender role for a Communication.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No way to record a planned but unperformed act (conspiracy, planned election) other than omitting it.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added <urn:regesta:22759:report-conspiracy> (rv:Communication; pope rv:Participant, Wibald rv:Addressee) with the two selectors named by the adjudication; producer correction-g7.",
+     "lang": "en"
+    },
+    {
+     "text": "Added <urn:regesta:22759:mandate-inform-king> (rv:Appointment; pope rv:Grantor, Wibald rv:Recipient, König Friedrich rv:Addressee; rf:qualifier \"vertraulich\"; rf:ground \"damit dieser die nötigen Anordnungen treffen könne\"); producer correction-g7.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Fehler",
+     "subject": "22759",
+     "description": "The second mandate (Wibald is to inform the king confidentially about the conspiracy) is omitted although it is of exactly the same kind as the extracted first mandate and the contract can express it as rv:Appointment or rv:Request with Eugen as Grantor, Wibald as Recipient and Friedrich as Addressee. The preceding report to Wibald about the planned new regime and imperial election in Rome, instigated by Arnold of Brescia (candidate A001236), could be a rv:Communication; the planned acts themselves stay unasserted ('geplant sei').",
+     "proposal": "Add an Appointment or Request factoid for the instruction to inform the king, with rf:qualifier \"vertraulich\" and rf:ground \"damit dieser die nötigen Anordnungen treffen könne\"; add a Communication factoid for the report of the conspiracy with Arnold referenced, without asserting the planned election.",
+     "quote": {
+      "start": 697,
+      "end": 810
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22759:mandate-adelgoz",
+     "description": "King Friedrich is recorded as rv:Addressee of the mandate, although the mandate is addressed to Wibald and the king is only the person before whom the matter is to be promoted. The extractor's comment acknowledges this; no participation is asserted.",
+     "proposal": "Acceptable; record a role for the target of an intercession as model gap.",
+     "quote": {
+      "start": 54,
+      "end": 132
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The pope's report of the Roman conspiracy and the second mandate that Wibald inform the king confidentially are omitted.",
+     "reason": "'und berichtet ihm von einer auf die Anstiftung des Ketzers Arnold (von Brescia) zurückgehenden Verschwörung in Rom, ..., worüber Wibald König Friedrich vertraulich unterrichten solle, damit dieser die nötigen Anordnungen treffen könne' is about half of the regest. The mandate is the same kind of act as the extracted first mandate and expressible as rv:Appointment; the report is expressible as rv:Communication. The conspiracy, the planned regime and the planned imperial election ('geplant sei') stay unasserted, and Arnold is not referenced, because no role exists for the subject of a report and a reference would suggest participation in the letter (model gap).",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "King Friedrich as rv:Addressee although the mandate is addressed to Wibald.",
+     "reason": "rv:Addressee asserts no participation and is the nearest role for the person before whom Wibald is to act ('bei König Friedrich zu fördern'); the role for the target of an intercession is a model gap.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 118 Anm. 384, 121 f. und 130."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Jaffé, Mon. Corb. 537 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 403; JL. 9606."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=46"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000285",
+    "Bischof von Chur"
+   ],
+   [
+    "RI004-002-A001236",
+    "von Brescia"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-R000885",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-S000504",
+    "Segni (westl. Anagni, ital. Prov. Rom)"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

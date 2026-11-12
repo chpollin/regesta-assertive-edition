@@ -1,0 +1,101 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-07-30_2_0_4_2_1_116_116
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22743> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-K000079> a crm:E21_Person ; rdfs:label "Karl" .
+<urn:regesta:actor:RI004-002-O000396> a crm:E21_Person ; rdfs:label "Otto" .
+<urn:regesta:actor:RI004-002-H000359> a crm:E21_Person ; rdfs:label "Heinrich" .
+<urn:regesta:actor:RI004-002-M000332> a crm:E21_Person ; rdfs:label "Mainfredum" .
+<urn:regesta:actor:RI004-002-C000460> a crm:E21_Person ; rdfs:label "Caualkasellam" .
+<urn:regesta:actor:22743:local:fratres> a crm:E74_Group ; rdfs:label "fratres" .
+<urn:regesta:actor:RI004-002-A001108> a crm:E21_Person ; rdfs:label "Ardicionem" .
+<urn:regesta:actor:RI004-002-C001095> a crm:E21_Person ; rdfs:label "Crollamontem" .
+<urn:regesta:actor:RI004-002-B000696> a crm:E21_Person ; rdfs:label "Berta" .
+
+<urn:regesta:22743:besitzungen> a crm:E18_Physical_Thing ; rdfs:label "Besitzungen" .
+<urn:regesta:22743:lago-maggiore> a crm:E53_Place ; rdfs:label "Westufer des Lago Maggiore" .
+<urn:regesta:22743:ossola> a crm:E53_Place ; rdfs:label "Tale Ossola (Oxola)" .
+<urn:regesta:22743:eigengueter-berta> a crm:E18_Physical_Thing ; rdfs:label "die Eigengüter der Gattin Manfreds von Castello, Berta" .
+
+<urn:regesta:22743:predecessors-protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22743> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis comites de Castello), wie seine Vorgänger Karl, Otto und Heinrich in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000079> ; rf:role rv:Grantor ; rf:nameInSource "Karl" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000396> ; rf:role rv:Grantor ; rf:nameInSource "Otto" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000359> ; rf:role rv:Grantor ; rf:nameInSource "Heinrich" ] ;
+    rf:qualifier "wie seine Vorgänger" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22743:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22743> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis comites de Castello), wie seine Vorgänger Karl, Otto und Heinrich in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000332> ; rf:role rv:Recipient ; rf:nameInSource "Mainfredum" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000460> ; rf:role rv:Recipient ; rf:nameInSource "Caualkasellam" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22743:local:fratres> ; rf:role rv:Recipient ; rf:nameInSource "fratres" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001108> ; rf:role rv:Recipient ; rf:nameInSource "Ardicionem" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C001095> ; rf:role rv:Recipient ; rf:nameInSource "Crollamontem" ] ;
+    rf:refersToAct <urn:regesta:22743:predecessors-protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22743:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22743> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihnen ihre Besitzungen und Rechte vor allem am Westufer des Lago Maggiore und im Tale Ossola (Oxola)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000332> ; rf:role rv:Recipient ; rf:nameInSource "Mainfredum" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000460> ; rf:role rv:Recipient ; rf:nameInSource "Caualkasellam" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22743:local:fratres> ; rf:role rv:Recipient ; rf:nameInSource "fratres" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001108> ; rf:role rv:Recipient ; rf:nameInSource "Ardicionem" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C001095> ; rf:role rv:Recipient ; rf:nameInSource "Crollamontem" ] ;
+    rf:concerns <urn:regesta:22743:besitzungen> , <urn:regesta:22743:lago-maggiore> , <urn:regesta:22743:ossola> ;
+    rf:qualifier "vor allem" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22743:manfred-berta-marriage> a rf:StateFactoid ;
+    rf:factoidType rv:Marriage ;
+    rf:source <urn:regesta:record:22743> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "der Gattin Manfreds von Castello, Berta" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000332> ; rf:role rv:Spouse ; rf:nameInSource "Manfreds von Castello" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000696> ; rf:role rv:Spouse ; rf:nameInSource "Berta" ] ;
+    rf:qualifier "Gattin" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22743:berta-possession> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22743> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Eigengüter der Gattin Manfreds von Castello, Berta" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000696> ; rf:role rv:Possessor ; rf:nameInSource "Berta" ] ;
+    rf:concerns <urn:regesta:22743:eigengueter-berta> ;
+    rf:qualifier "Eigengüter" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22743:berta-protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22743> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nimmt auch die Eigengüter der Gattin Manfreds von Castello, Berta, in seinen Schutz" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt die genannten Grafen von Castello" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000696> ; rf:role rv:Beneficiary ; rf:nameInSource "Berta" ] ;
+    rf:concerns <urn:regesta:22743:eigengueter-berta> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .

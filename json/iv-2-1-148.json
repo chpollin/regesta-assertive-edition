@@ -1,0 +1,1581 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-12-25_1_0_4_2_1_148_148",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22775",
+  "identifier": "RI IV,2,1 n. 148",
+  "short": "RI IV,2,1 n. 148",
+  "sort": "004_002_001_000148_0000000148",
+  "start": "1152-12-25",
+  "end": "1152-12-26",
+  "proseYears": [],
+  "lead": "Friedrich feiert das Weihnachtsfest im Krönungsornat, und Graf Dietrich von Flandern trägt in feierlicher Prozession das Schwert vor ihm.",
+  "date": [
+   {
+    "t": "1152 Dezember 25-26"
+   }
+  ],
+  "place": [
+   {
+    "t": "Trier"
+   }
+  ],
+  "text": "Friedrich feiert das Weihnachtsfest im Krönungsornat, und Graf Dietrich von Flandern trägt in feierlicher Prozession das Schwert vor ihm. Am folgenden Tag verleiht er Graf Dietrich von Flandern in Anwesenheit und mit Zustimmung der weltlichen Fürsten (ducibus totius monarchiae cum satrapis adstantibus regique faventibus) nach Leistung des Lehnseides neben seinen Lehen auch die Oberhoheit über das Bistum Cambrai. Der abreisende Graf beauftragt seinen Neffen, Herzog Matthäus von Lothringen, mit der Förderung seiner Angelegenheiten, und dieser ruft einen Schreiber, der gemäß dem Wunsch des Grafen eine vom König zu besiegelnde Urkunde ausfertigt, die ihm allerorten Gehorsam verschaffen soll (epistolam ... ubicumque in locis provecta foret et lecta, obedirent comiti sine mora). Bischof Nikolaus von Cambrai, der von diesen Bestrebungen des flandrischen Grafen gehört hat, eilt herbei und kann mit Unterstützung der Erzbischöfe von Köln, Mainz und Trier sowie des Lütticher Bischofs vor dem König verhindern, daß die Urkunde Gültigkeit erlangt. Nur mit großer Mühe kann Friedrich dem Ausbruch von Feindseligkeiten zwischen dem erzürnt zurückgekehrten Grafen und dem Bischof Einhalt gebieten, indem er Dietrich die Einwilligung zu einem Waffenstillstand bis zum nächsten Pfingstfest abringt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 7,
+  "blocks": [
+   {
+    "node": "urn:regesta:22775:enfeoffment",
+    "kind": "act",
+    "title": "Belehnung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Belehnung",
+     "text": "Belehnung",
+     "triple": [
+      "urn:regesta:22775:enfeoffment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enfeoffment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "enfeoffment",
+     "own": true,
+     "evidence": {
+      "start": 138,
+      "end": 414,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22775:> .\nx:enfeoffment a rf:ActFactoid ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:source <urn:regesta:record:22775> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Am folgenden Tag verleiht er Graf Dietrich von Flandern in Anwesenheit und mit Zustimmung der weltlichen Fürsten (ducibus totius monarchiae cum satrapis adstantibus regique faventibus) nach Leistung des Lehnseides neben seinen Lehen auch die Oberhoheit über das Bistum Cambrai\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22775:enfeoffment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 138,
+       "end": 414,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:enfeoffment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"er\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Dietrich von Flandern",
+      "text": "Graf Dietrich von Flandern in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22775:enfeoffment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 138,
+       "end": 414,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:enfeoffment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:nameInSource \"Graf Dietrich von Flandern\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000242"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der weltlichen Fürsten",
+      "text": "der weltlichen Fürsten in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22775:enfeoffment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 138,
+       "end": 414,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:enfeoffment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22775:local:weltliche-fuersten> ; rf:nameInSource \"der weltlichen Fürsten\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22775:local:weltliche-fuersten"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Bistum Cambrai",
+      "text": "betrifft Bistum Cambrai",
+      "triple": [
+       "urn:regesta:22775:enfeoffment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22775:bistum-cambrai"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 138,
+       "end": 414,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:enfeoffment rf:concerns x:bistum-cambrai .\nx:bistum-cambrai a crm:E53_Place ;\n    rdfs:label \"Bistum Cambrai\" .",
+      "object": "urn:regesta:22775:bistum-cambrai",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (Oberhoheit über das Bistum Cambrai)",
+      "text": "betrifft Herrschafts- und Schutzrechte (Oberhoheit über das Bistum Cambrai)",
+      "triple": [
+       "urn:regesta:22775:enfeoffment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22775:oberhoheit-cambrai"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 138,
+       "end": 414,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:enfeoffment rf:concerns x:oberhoheit-cambrai .\nx:oberhoheit-cambrai a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"Oberhoheit über das Bistum Cambrai\" .",
+      "object": "urn:regesta:22775:oberhoheit-cambrai",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach Leistung des Lehnseides",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22775:enfeoffment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 323,
+       "end": 351,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Belehnung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Graf Dietrich von Flandern"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "der weltlichen Fürsten"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bistum Cambrai"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Herrschafts- und Schutzrechte (Oberhoheit über das Bistum Cambrai)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22775:existing-fiefs",
+    "kind": "state",
+    "title": "Lehnsverhältnis",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Lehnsverhältnis",
+     "text": "Lehnsverhältnis",
+     "triple": [
+      "urn:regesta:22775:existing-fiefs",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/FeudalRelationship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "existing-fiefs",
+     "own": true,
+     "evidence": {
+      "start": 167,
+      "end": 370,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22775:> .\nx:existing-fiefs a rf:StateFactoid ;\n    rf:factoidType rv:FeudalRelationship ;\n    rf:source <urn:regesta:record:22775> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Graf Dietrich von Flandern in Anwesenheit und mit Zustimmung der weltlichen Fürsten (ducibus totius monarchiae cum satrapis adstantibus regique faventibus) nach Leistung des Lehnseides neben seinen Lehen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Dietrich von Flandern",
+      "text": "Graf Dietrich von Flandern in der Rolle Lehnsmann",
+      "triple": [
+       "urn:regesta:22775:existing-fiefs",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "existing-fiefs",
+      "own": true,
+      "evidence": {
+       "start": 167,
+       "end": 370,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:existing-fiefs rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:nameInSource \"Graf Dietrich von Flandern\" ; rf:role rv:Vassal ] .",
+      "role": "Lehnsmann",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000242"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "seinen Lehen",
+      "text": "betrifft seinen Lehen",
+      "triple": [
+       "urn:regesta:22775:existing-fiefs",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22775:lehen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "existing-fiefs",
+      "own": true,
+      "evidence": {
+       "start": 167,
+       "end": 370,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:existing-fiefs rf:concerns x:lehen .\nx:lehen a crm:E18_Physical_Thing ;\n    rdfs:label \"seinen Lehen\" .",
+      "object": "urn:regesta:22775:lehen",
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Lehnsverhältnis"
+     },
+     ", als Lehnsmann ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Graf Dietrich von Flandern"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "seinen Lehen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22775:commission",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22775:commission",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "commission",
+     "own": true,
+     "evidence": {
+      "start": 416,
+      "end": 534,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22775:> .\nx:commission a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22775> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Der abreisende Graf beauftragt seinen Neffen, Herzog Matthäus von Lothringen, mit der Förderung seiner Angelegenheiten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Dietrich von Flandern",
+      "text": "Graf Dietrich von Flandern in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22775:commission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "commission",
+      "own": true,
+      "evidence": {
+       "start": 416,
+       "end": 534,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:commission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:nameInSource \"Der abreisende Graf\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000242"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Matthäus von Lothringen",
+      "text": "Herzog Matthäus von Lothringen in der Rolle Vertreter",
+      "triple": [
+       "urn:regesta:22775:commission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "commission",
+      "own": true,
+      "evidence": {
+       "start": 416,
+       "end": 534,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:commission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:nameInSource \"Herzog Matthäus von Lothringen\" ; rf:role rv:Representative ] .",
+      "role": "Vertreter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000670"
+      ],
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Graf Dietrich von Flandern"
+     },
+     ", als Vertreter ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Herzog Matthäus von Lothringen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22775:kinship-nephew",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22775:kinship-nephew",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-nephew",
+     "own": true,
+     "evidence": {
+      "start": 416,
+      "end": 492,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22775:> .\nx:kinship-nephew a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22775> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Der abreisende Graf beauftragt seinen Neffen, Herzog Matthäus von Lothringen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Dietrich von Flandern",
+      "text": "Graf Dietrich von Flandern in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22775:kinship-nephew",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-nephew",
+      "own": true,
+      "evidence": {
+       "start": 416,
+       "end": 492,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:kinship-nephew rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:nameInSource \"Der abreisende Graf\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000242"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Matthäus von Lothringen",
+      "text": "Herzog Matthäus von Lothringen in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22775:kinship-nephew",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-nephew",
+      "own": true,
+      "evidence": {
+       "start": 416,
+       "end": 492,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:kinship-nephew rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:nameInSource \"Herzog Matthäus von Lothringen\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000670"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Neffen",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22775:kinship-nephew",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 454,
+       "end": 460,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Graf Dietrich von Flandern"
+     },
+     " und ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Herzog Matthäus von Lothringen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22775:document-drafted",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22775:document-drafted",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "document-drafted",
+     "own": true,
+     "evidence": {
+      "start": 540,
+      "end": 695,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22775:> .\nx:document-drafted a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22775> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dieser ruft einen Schreiber, der gemäß dem Wunsch des Grafen eine vom König zu besiegelnde Urkunde ausfertigt, die ihm allerorten Gehorsam verschaffen soll\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Matthäus von Lothringen",
+      "text": "Herzog Matthäus von Lothringen in der Rolle Vertreter",
+      "triple": [
+       "urn:regesta:22775:document-drafted",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "document-drafted",
+      "own": true,
+      "evidence": {
+       "start": 540,
+       "end": 695,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:document-drafted rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:nameInSource \"dieser\" ; rf:role rv:Representative ] .",
+      "role": "Vertreter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000670"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "einen Schreiber",
+      "text": "einen Schreiber in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22775:document-drafted",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "document-drafted",
+      "own": true,
+      "evidence": {
+       "start": 540,
+       "end": 695,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:document-drafted rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22775:local:schreiber> ; rf:nameInSource \"einen Schreiber\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22775:local:schreiber"
+      ],
+      "key": "k20",
+      "agentNotes": [
+       {
+        "text": "einen Schreiber: anonymous, regest-local",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Dietrich von Flandern",
+      "text": "Graf Dietrich von Flandern in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22775:document-drafted",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "document-drafted",
+      "own": true,
+      "evidence": {
+       "start": 540,
+       "end": 695,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:document-drafted rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:nameInSource \"des Grafen\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000242"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "eine vom König zu besiegelnde Urkunde",
+      "text": "betrifft eine vom König zu besiegelnde Urkunde",
+      "triple": [
+       "urn:regesta:22775:document-drafted",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22775:urkunde"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "document-drafted",
+      "own": true,
+      "evidence": {
+       "start": 540,
+       "end": 695,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:document-drafted rf:concerns x:urkunde .\nx:urkunde a crm:E18_Physical_Thing ;\n    rdfs:label \"eine vom König zu besiegelnde Urkunde\" .",
+      "object": "urn:regesta:22775:urkunde",
+      "key": "k22"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "vom König zu besiegelnde",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22775:document-drafted",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 606,
+       "end": 630,
+       "ambiguous": false
+      },
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Vertreter ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Herzog Matthäus von Lothringen"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "einen Schreiber"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Graf Dietrich von Flandern"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "eine vom König zu besiegelnde Urkunde"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22775:dispute-before-king",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22775:dispute-before-king",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "dispute-before-king",
+     "own": true,
+     "evidence": {
+      "start": 784,
+      "end": 1048,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22775:> .\nx:dispute-before-king a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22775> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof Nikolaus von Cambrai, der von diesen Bestrebungen des flandrischen Grafen gehört hat, eilt herbei und kann mit Unterstützung der Erzbischöfe von Köln, Mainz und Trier sowie des Lütticher Bischofs vor dem König verhindern, daß die Urkunde Gültigkeit erlangt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k24"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Nikolaus von Cambrai",
+      "text": "Bischof Nikolaus von Cambrai in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22775:dispute-before-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-before-king",
+      "own": true,
+      "evidence": {
+       "start": 784,
+       "end": 1048,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:dispute-before-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000147> ; rf:nameInSource \"Bischof Nikolaus von Cambrai\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-N000147"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Dietrich von Flandern",
+      "text": "Graf Dietrich von Flandern in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22775:dispute-before-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-before-king",
+      "own": true,
+      "evidence": {
+       "start": 784,
+       "end": 1048,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:dispute-before-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:nameInSource \"des flandrischen Grafen\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000242"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischöfe von Köln, Mainz und Trier",
+      "text": "Erzbischöfe von Köln, Mainz und Trier in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22775:dispute-before-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-before-king",
+      "own": true,
+      "evidence": {
+       "start": 784,
+       "end": 1048,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:dispute-before-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22775:local:erzbischoefe> ; rf:nameInSource \"Erzbischöfe von Köln, Mainz und Trier\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22775:local:erzbischoefe"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Lütticher Bischofs",
+      "text": "des Lütticher Bischofs in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22775:dispute-before-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-before-king",
+      "own": true,
+      "evidence": {
+       "start": 784,
+       "end": 1048,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:dispute-before-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22775:local:luetticher-bischof> ; rf:nameInSource \"des Lütticher Bischofs\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22775:local:luetticher-bischof"
+      ],
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22775:dispute-before-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-before-king",
+      "own": true,
+      "evidence": {
+       "start": 784,
+       "end": 1048,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:dispute-before-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"dem König\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "eine vom König zu besiegelnde Urkunde",
+      "text": "betrifft eine vom König zu besiegelnde Urkunde",
+      "triple": [
+       "urn:regesta:22775:dispute-before-king",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22775:urkunde"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-before-king",
+      "own": true,
+      "evidence": {
+       "start": 784,
+       "end": 1048,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:dispute-before-king rf:concerns x:urkunde .\nx:urkunde a crm:E18_Physical_Thing ;\n    rdfs:label \"eine vom König zu besiegelnde Urkunde\" .",
+      "object": "urn:regesta:22775:urkunde",
+      "key": "k30"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Bischof Nikolaus von Cambrai"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Graf Dietrich von Flandern"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Erzbischöfe von Köln, Mainz und Trier"
+     },
+     " und ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "des Lütticher Bischofs"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "eine vom König zu besiegelnde Urkunde"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22775:truce",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22775:truce",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "truce",
+     "own": true,
+     "evidence": {
+      "start": 1050,
+      "end": 1294,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22775:> .\nx:truce a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22775> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Nur mit großer Mühe kann Friedrich dem Ausbruch von Feindseligkeiten zwischen dem erzürnt zurückgekehrten Grafen und dem Bischof Einhalt gebieten, indem er Dietrich die Einwilligung zu einem Waffenstillstand bis zum nächsten Pfingstfest abringt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k31"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Vermittler",
+      "triple": [
+       "urn:regesta:22775:truce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "truce",
+      "own": true,
+      "evidence": {
+       "start": 1050,
+       "end": 1294,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:truce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Mediator ] .",
+      "role": "Vermittler",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Dietrich von Flandern",
+      "text": "Graf Dietrich von Flandern in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22775:truce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "truce",
+      "own": true,
+      "evidence": {
+       "start": 1050,
+       "end": 1294,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:truce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:nameInSource \"Dietrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000242"
+      ],
+      "key": "k33"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Nikolaus von Cambrai",
+      "text": "Bischof Nikolaus von Cambrai in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22775:truce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "truce",
+      "own": true,
+      "evidence": {
+       "start": 1050,
+       "end": 1294,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22775:> .\nx:truce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000147> ; rf:nameInSource \"dem Bischof\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-N000147"
+      ],
+      "key": "k34"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "bis zum nächsten Pfingstfest",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22775:truce",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1258,
+       "end": 1286,
+       "ambiguous": false
+      },
+      "key": "k35"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Graf Dietrich von Flandern"
+     },
+     ", als Vermittler ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Bischof Nikolaus von Cambrai"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "enfeoffment",
+    "start": 138,
+    "end": 414
+   },
+   {
+    "id": "existing-fiefs",
+    "start": 167,
+    "end": 370
+   },
+   {
+    "id": "t1",
+    "start": 323,
+    "end": 351
+   },
+   {
+    "id": "commission",
+    "start": 416,
+    "end": 534
+   },
+   {
+    "id": "kinship-nephew",
+    "start": 416,
+    "end": 492
+   },
+   {
+    "id": "t2",
+    "start": 454,
+    "end": 460
+   },
+   {
+    "id": "document-drafted",
+    "start": 540,
+    "end": 695
+   },
+   {
+    "id": "t3",
+    "start": 606,
+    "end": 630
+   },
+   {
+    "id": "dispute-before-king",
+    "start": 784,
+    "end": 1048
+   },
+   {
+    "id": "truce",
+    "start": 1050,
+    "end": 1294
+   },
+   {
+    "id": "t4",
+    "start": 1258,
+    "end": 1286
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Erzbischöfe von Köln, Mainz und Trier: named by see only; register candidates RI004-002-A001202, RI004-002-H000377, RI004-002-H001017 not applied, recorded as one functional actor",
+     "lang": "en"
+    },
+    {
+     "text": "des Lütticher Bischofs: named by see only; register candidate RI004-002-H000392 not applied",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for the oath of fealty (Leistung des Lehnseides), kept as qualifier of the enfeoffment",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a truce (Waffenstillstand); read as rv:Assurance by Dietrich with Friedrich as Mediator",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for preventing a document's validity; the outcome stays only in the evidence of the dispute factoid",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Lord of Dietrich's existing fiefs is not named and not inferred",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a truce (Waffenstillstand).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for preventing a charter from gaining validity.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "rv:Kin cannot express the direction of a kinship relation such as nephew and uncle.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for supporters of a party in a dispute.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Removed rf:partOf urn:regesta:22775:commission from urn:regesta:22775:document-drafted; producer set to correction-g8.",
+     "lang": "en"
+    },
+    {
+     "text": "Changed the type of urn:regesta:actor:22775:local:erzbischoefe from rf:FunctionalActor to crm:E74_Group, keeping IRI, label and the rv:Participant reference on dispute-before-king (the factoid itself is unchanged and keeps its producer).",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "object-scope",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22775:enfeoffment",
+     "description": "The sentence reads most naturally as Friedrich granting Dietrich his fiefs and in addition the overlordship ('verleiht ... neben seinen Lehen auch'). The candidate treats the fiefs only as a pre-existing state without lord and lets the enfeoffment concern only the overlordship, so part of the grant's object is lost.",
+     "proposal": "Add urn:regesta:22775:lehen to rf:concerns of the enfeoffment; keep or drop the separate FeudalRelationship state, and mark the reading as ambiguous for expert review.",
+     "quote": {
+      "start": 352,
+      "end": 414
+     }
+    },
+    {
+     "category": "relation-misuse",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22775:document-drafted",
+     "description": "rf:partOf is for a provision or secondary act belonging to a main act. Matthäus summoning a scribe who drafts a charter is a subsequent act by another actor, not a provision of Dietrich's commission.",
+     "proposal": "Remove rf:partOf from the drafting factoid and keep it as an independent act.",
+     "quote": {
+      "start": 540,
+      "end": 649
+     }
+    },
+    {
+     "category": "actor-merge",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:actor:22775:local:erzbischoefe",
+     "description": "Three distinct office holders (the archbishops of Köln, Mainz and Trier) are merged into one rf:FunctionalActor. FunctionalActor is meant for an actor determined by function, not for a collective of three individuals; the merge prevents later identification of each.",
+     "proposal": "Create three separate regest-local actors (archbishop of Köln, of Mainz, of Trier), each with its own reference; leave identification with the packet candidates to expert review since the passage gives no personal names.",
+     "quote": {
+      "start": 899,
+      "end": 987
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22775:dispute-before-king",
+     "description": "The king is the authority before whom the bishop prevents the charter from gaining validity; rv:Addressee is a cautious reading. The outcome itself (validity prevented) has no factoid.",
+     "proposal": "No change required; report the outcome type as a model gap.",
+     "quote": {
+      "start": 988,
+      "end": 1048
+     }
+    },
+    {
+     "category": "kinship-direction",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22775:kinship-nephew",
+     "description": "Both actors carry rv:Kin, so the direction (Matthäus is the count's nephew) survives only in the qualifier 'Neffen' without telling whose nephew. This follows the guidelines but loses direction.",
+     "proposal": "No change under the current contract; report as model gap.",
+     "quote": {
+      "start": 416,
+      "end": 492
+     }
+    },
+    {
+     "category": "type-approximation",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22775:truce",
+     "description": "A truce between count and bishop is modelled as Dietrich's unilateral assurance with the bishop as Beneficiary; the passage describes a bilateral cessation of hostilities extracted by Friedrich.",
+     "proposal": "Keep as approximation with rv:Participant for the bishop, and report the truce type gap.",
+     "quote": {
+      "start": 1197,
+      "end": 1294
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The fiefs should be part of the enfeoffment's object, not only a pre-existing state.",
+     "reason": "'verleiht er Graf Dietrich ... neben seinen Lehen auch die Oberhoheit über das Bistum Cambrai' admits two readings: granting the fiefs and the overlordship, or granting the overlordship in addition to fiefs Dietrich already holds. The candidate's second reading is grammatically defensible and keeps the fiefs as a separate state without inferring a lord; the reviewer itself calls the passage ambiguous.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "rf:partOf links the drafting of the charter to Dietrich's commission, but it is a subsequent act, not a provision.",
+     "reason": "rf:partOf is 'a provision or secondary act belonging to a main act ... such as the rights that come with a donation'. 'dieser ruft einen Schreiber, der ... eine vom König zu besiegelnde Urkunde ausfertigt' is a later act by Matthäus and a scribe, not a component of the commission.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Three archbishops are merged into one rf:FunctionalActor.",
+     "reason": "rf:FunctionalActor is one actor determined by office; 'der Erzbischöfe von Köln, Mainz und Trier' names three office holders as a plurality. Splitting into three actors would require labels that are not source wording ('Erzbischof von Mainz' does not occur), and the passage gives no personal names for a register identification. The safe fix is to type the plurality as a regest-local group, as the run does for 'der anwesenden Reichsfürsten' in 22773.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Use rv:Participant instead of rv:Beneficiary for the bishop in the truce.",
+     "reason": "The factoid reads the truce as Dietrich's consent extracted by Friedrich ('indem er Dietrich die Einwilligung zu einem Waffenstillstand ... abringt'); within that reading the bishop, against whom hostilities are halted, is the party in whose favour the consent is given. The approximation and the missing truce type are already documented.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 145 ff. sowie DF. I. 43 (Reg. "
+    },
+    {
+     "t": "153",
+     "regest": "22780"
+    },
+    {
+     "t": "). - Über die Urkunde, wohl ein von Empfängerseite hergestelltes Mandat, das aber dann mangels einer Besiegelung keine Rechtskraft erhielt, vgl. zuletzt Opll, Mandat, MlÖG 84 (1976) 313 f. - Die Nennung des Erzbischofs von Mainz führt Simonsfeld a. a. O. 146 Anm. 454 wohl zu Recht auf einen Gedächtnisfehler des Chronisten zurück. - Über spätere Kämpfe in diesem westlichen Grenzgebiet des Reiches "
+    },
+    {
+     "t": "ad iniuriam imperii",
+     "i": true
+    },
+    {
+     "t": " vgl. die Nachricht der Ann. Laub. Cont., MG. SS IV, 23 zu 1157 und Reg. "
+    },
+    {
+     "t": "189",
+     "regest": "22816"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ann. Cameracenses, MG. SS XVI, 523 ff."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=53"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-C000083",
+    "Bistum, bischöfliche Kirche, Diözese"
+   ],
+   [
+    "RI004-002-D000242",
+    "Graf von Flandern"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000392",
+    "II., Bischof von Lüttich"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-N000147",
+    "Bischof von Cambrai"
+   ],
+   [
+    "RI004-002-T000539",
+    "Trier (an der Mosel, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

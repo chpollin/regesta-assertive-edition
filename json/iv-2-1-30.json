@@ -1,0 +1,456 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-05-00_1_0_4_2_1_30_30",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22657",
+  "identifier": "RI IV,2,1 n. 30",
+  "short": "RI IV,2,1 n. 30",
+  "sort": "004_002_001_000030_0000000030",
+  "start": "1147-05-01",
+  "end": "1147-05-31",
+  "proseYears": [],
+  "lead": "Friedrich, Herzog von Schwaben (tunc dux Suevie postmodum imperator), wird als Zeuge einer Wessobrunner Traditionsnotiz genannt, welche die Übergabe zweier Höfe an das Kloster durch Herzog Welf zum Inhalt hat, der dafür 10 Pfund erhält.",
+  "date": [
+   {
+    "t": "1147 (Mai)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Stetten bei Regensburg"
+   }
+  ],
+  "text": "Friedrich, Herzog von Schwaben (tunc dux Suevie postmodum imperator), wird als Zeuge einer Wessobrunner Traditionsnotiz genannt, welche die Übergabe zweier Höfe an das Kloster durch Herzog Welf zum Inhalt hat, der dafür 10 Pfund erhält.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22657:transfer",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22657:transfer",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "transfer",
+     "own": true,
+     "evidence": {
+      "start": 136,
+      "end": 193,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22657:> .\nx:transfer a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22657> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Übergabe zweier Höfe an das Kloster durch Herzog Welf\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster",
+      "text": "Kloster in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22657:transfer",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "transfer",
+      "own": true,
+      "evidence": {
+       "start": 136,
+       "end": 193,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22657:> .\nx:transfer rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000382:community> ; rf:nameInSource \"Kloster\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000382:community"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf",
+      "text": "Herzog Welf in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22657:transfer",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "transfer",
+      "own": true,
+      "evidence": {
+       "start": 136,
+       "end": 193,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22657:> .\nx:transfer rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "zweier Höfe",
+      "text": "betrifft zweier Höfe",
+      "triple": [
+       "urn:regesta:22657:transfer",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22657:hoefe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "transfer",
+      "own": true,
+      "evidence": {
+       "start": 136,
+       "end": 193,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22657:> .\nx:transfer rf:concerns x:hoefe .\nx:hoefe a crm:E18_Physical_Thing ;\n    rdfs:label \"zweier Höfe\" .",
+      "object": "urn:regesta:22657:hoefe",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog Welf"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Kloster"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "zweier Höfe"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22657:payment",
+    "kind": "act",
+    "title": "Zahlung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zahlung",
+     "text": "Zahlung",
+     "triple": [
+      "urn:regesta:22657:payment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Payment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "payment",
+     "own": true,
+     "evidence": {
+      "start": 176,
+      "end": 235,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22657:> .\nx:payment a rf:ActFactoid ;\n    rf:factoidType rv:Payment ;\n    rf:source <urn:regesta:record:22657> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"durch Herzog Welf zum Inhalt hat, der dafür 10 Pfund erhält\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf",
+      "text": "Herzog Welf in der Rolle Zahlungsempfänger",
+      "triple": [
+       "urn:regesta:22657:payment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "payment",
+      "own": true,
+      "evidence": {
+       "start": 176,
+       "end": 235,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22657:> .\nx:payment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf\" ; rf:role rv:Payee ] .",
+      "role": "Zahlungsempfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Übertragung",
+      "text": "Teil von Übertragung",
+      "triple": [
+       "urn:regesta:22657:payment",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22657:transfer"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "payment",
+      "own": true,
+      "evidence": {
+       "start": 176,
+       "end": 235,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22657:> .\nx:payment rf:partOf x:transfer .\nx:transfer a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-8> ;\n    rf:concerns x:hoefe ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Übergabe zweier Höfe an das Kloster durch Herzog Welf\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000382:community> ; rf:nameInSource \"Kloster\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22657> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22657:transfer",
+      "objectClaim": "transfer",
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "10 Pfund",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22657:payment",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 220,
+       "end": 228,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Zahlung"
+     },
+     ", als Zahlungsempfänger ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Herzog Welf"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "transfer",
+    "start": 136,
+    "end": 193
+   },
+   {
+    "id": "payment",
+    "start": 176,
+    "end": 235
+   },
+   {
+    "id": "t1",
+    "start": 220,
+    "end": 228
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Payer of the 10 Pfund is not named; the payment factoid carries only Welf as payee.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The transfer of two Höfe against 10 Pfund could be read as rv:Sale; typed as rv:Grant with a separate rv:Payment part because the regest says 'Übergabe', not sale. Expert decision on Traditionsnotiz transfers with counter-payment needed.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Charter witness attestation not expressible (rv:Witness restricted to narrated disputes).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "The intermediate source layer (the regest reports the content of a Traditionsnotiz) is not modelled; rf:source points only to the regest.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "act-type-precision",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22657:transfer",
+     "description": "The transfer is typed with the generic rv:Grant although the summary states a counter-payment for it ('der dafür 10 Pfund erhält'). The contract has rv:Sale, defined as Übertragung gegen Entgelt, which the passage supports more precisely; the separate payment factoid shows the extractor read the consideration but did not type the main act accordingly. Whether a Tradition with Gegengabe is legally a sale is an expert question, so this is not an error.",
+     "proposal": "Retype to rv:Sale with Welf as rv:Seller and the monastery as rv:Buyer, keeping the payment factoid with rf:partOf; or keep rv:Grant and add rf:qualifier \"dafür\" so the consideration link stays visible.",
+     "quote": {
+      "start": 129,
+      "end": 235
+     }
+    },
+    {
+     "category": "abstention-scope",
+     "severity": "Vermerk",
+     "subject": "22657",
+     "description": "The parenthetical 'tunc dux Suevie postmodum imperator' states Friedrich's then and later office. Leaving it out is consistent with the guideline that office holding is recorded only where the statement needs it.",
+     "proposal": "None.",
+     "quote": {
+      "start": 32,
+      "end": 67
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The transfer is typed rv:Grant although the counter-payment would support rv:Sale.",
+     "reason": "'die Übergabe zweier Höfe an das Kloster durch Herzog Welf ..., der dafür 10 Pfund erhält' reports a Tradition with a counter-gift. Whether that is a sale is a legal judgment the regest does not make; rv:Grant is the broader concept that the passage certainly supports, and the separate rv:Payment factoid with rf:amount \"10 Pfund\" and rf:partOf already records the consideration. The reviewer itself declines to call it an error.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 596 Anm. 14 und Feldmann, a. a. O. 24 mit Anm. 99."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Mon. Boica 7, 348 f.; K. Schmid, Pfullendorf (Forsch. zur oberrhein. LG 1, 1954) 260 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 27; Feldmann, Welf VI. Reg. 22 mit Verbesserung des Druckes der Mon. Boica ("
+    },
+    {
+     "t": "statt dominus Fridericus dux Suevie - dominus Fridericus tunc dux Suevie postmodum imperator",
+     "i": true
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=18"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-S001189",
+    "Stetten bei Regensburg (südl. Kallmünz, Ldkr. Regensburg, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000382",
+    "Wessobrunn (südl. von Landsberg am Lech, Ldkr. Weilheim-Schongau, Oberbayern), (Benediktiner-)Kloster"
+   ]
+  ]
+ }
+}

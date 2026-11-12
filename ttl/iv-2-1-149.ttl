@@ -1,0 +1,50 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-12-28_1_0_4_2_1_149_149
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22776> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-H001017> a crm:E21_Person ;
+    rdfs:label "Erzbischof Hillin von Trier" .
+
+<urn:regesta:actor:RI004-002-R000500> a crm:E21_Person ;
+    rdfs:label "Abt (Rether) von Prüm" .
+
+# Request: the ruler demands that the archbishop consecrate the newly elected abbot.
+<urn:regesta:22776:request-consecration> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22776> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich fordert Erzbischof Hillin von Trier abermals auf, dem neugewählten Abt (Rether) von Prüm , der zu Unrecht der Simonie verdächtigt wurde, unverzüglich die Weihe zu erteilen" ] ;
+    rf:reference <urn:regesta:22776:request-consecration:ref-friedrich> ,
+        <urn:regesta:22776:request-consecration:ref-hillin> ,
+        <urn:regesta:22776:request-consecration:ref-rether> ;
+    rf:qualifier "abermals" , "unverzüglich" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22776:request-consecration:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Petitioner ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22776:request-consecration:ref-hillin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H001017> ;
+    rf:role rv:Addressee ;
+    rf:nameInSource "Erzbischof Hillin von Trier" .
+
+<urn:regesta:22776:request-consecration:ref-rether> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000500> ;
+    rf:role rv:Beneficiary ;
+    rf:nameInSource "Abt (Rether) von Prüm" .

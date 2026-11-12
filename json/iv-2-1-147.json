@@ -1,0 +1,1691 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-02-12_1_0_4_2_1_147_147",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22774",
+  "identifier": "RI IV,2,1 n. 147",
+  "short": "RI IV,2,1 n. 147",
+  "sort": "004_002_001_000147_0000000147",
+  "start": "1152-02-12",
+  "end": "1152-12-12",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen, trifft Verfügungen über die Rechte des Vogtes, der stets der Gründersippe entnommen werden soll, und erklärt sich als zuständig für Klagen des Klosters gegen den Vogt.",
+  "date": [
+   {
+    "t": "(1152 Februar)-1152 Dezember 12"
+   }
+  ],
+  "place": [
+   {
+    "t": "Mainz"
+   }
+  ],
+  "text": "Friedrich bestätigt die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen, trifft Verfügungen über die Rechte des Vogtes, der stets der Gründersippe entnommen werden soll, und erklärt sich als zuständig für Klagen des Klosters gegen den Vogt. Z.: die Erzbischöfe Heinrich von Mainz, Arnold von Köln, die Bischöfe Gebhard von Würzburg, Gunther von Speyer, die Herzoge Friedrich (von Schwaben, der König), Heinrich (von Sachsen), Pfalzgraf Hermann (bei Rhein), die Grafen Gerhard von Nürings (Nuringis) und Bertholf von Nied (Nitha), Gottfried von Höchst (Hoste), Graf Heinrich von Hessen (Hassię), Propst Arnold (von St. Peter zu Mainz), (Dom)propst Hartmann (oder: Propst von St. Moritz zu Mainz), Propst Giselbert (wohl von Frankfurt) und die Ministerialen Salicho, Hartmud, Eckehard, Getto, Berthold, Werner, Konrad, Lutfrid und Wigand. - Arnoldus canc. vice Maguntini archiep. et archicanc. ; nach der Urkunde Erzbischof Heinrichs I. von Mainz von 1151, Acht, Mainzer UB. 2/1, 292 no 159, Exemplar A verfaßt von einem Siegburger Empfängerschreiber, der den Kontext mundierte, während A II. C im Protokoll die Worte Fridericus und rex in dem dafür frei gelassenen Raum einsetzte und das gesamte Eschatokoll hinzufügte; SI. 1. Ad hoc nutu .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 6,
+  "blocks": [
+   {
+    "node": "urn:regesta:22774:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22774:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 308,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22774:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22774:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Klosters Alteburg (Aldenburg)",
+      "text": "Klosters Alteburg (Aldenburg) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22774:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000721:community> ; rf:nameInSource \"Klosters Alteburg (Aldenburg)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000721:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "ihren einzeln angeführten Besitzungen",
+      "text": "betrifft ihren einzeln angeführten Besitzungen",
+      "triple": [
+       "urn:regesta:22774:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22774:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:confirmation rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"ihren einzeln angeführten Besitzungen\" .",
+      "object": "urn:regesta:22774:besitzungen",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22774:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22774:gruendung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:confirmation rf:refersToAct x:gruendung .\nx:gruendung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:concerns x:besitzungen ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:qualifier \"Gründung\" , \"als Tochterniederlassung dieser Abtei\" , \"mit Rat und Hilfe\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000721:community> ; rf:nameInSource \"Klosters Alteburg (Aldenburg)\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000446> ; rf:nameInSource \"Konrad von Dreieichenhain (Hagen)\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000872> ; rf:nameInSource \"Luitgard\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000153> ; rf:nameInSource \"Abtes Nikolaus von Siegburg\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22774:gruendung",
+      "objectClaim": "gruendung",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Klosters Alteburg (Aldenburg)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "ihren einzeln angeführten Besitzungen"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22774:gruendung",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22774:gruendung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "gruendung",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 308,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22774:> .\nx:gruendung a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Klosters Alteburg (Aldenburg)",
+      "text": "Klosters Alteburg (Aldenburg) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22774:gruendung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gruendung",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:gruendung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000721:community> ; rf:nameInSource \"Klosters Alteburg (Aldenburg)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000721:community"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad von Dreieichenhain (Hagen)",
+      "text": "Konrad von Dreieichenhain (Hagen) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22774:gruendung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gruendung",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:gruendung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000446> ; rf:nameInSource \"Konrad von Dreieichenhain (Hagen)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000446"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Luitgard",
+      "text": "Luitgard in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22774:gruendung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gruendung",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:gruendung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000872> ; rf:nameInSource \"Luitgard\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000872"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abtes Nikolaus von Siegburg",
+      "text": "Abtes Nikolaus von Siegburg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22774:gruendung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gruendung",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:gruendung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000153> ; rf:nameInSource \"Abtes Nikolaus von Siegburg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-N000153"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "ihren einzeln angeführten Besitzungen",
+      "text": "betrifft ihren einzeln angeführten Besitzungen",
+      "triple": [
+       "urn:regesta:22774:gruendung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22774:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gruendung",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:gruendung rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"ihren einzeln angeführten Besitzungen\" .",
+      "object": "urn:regesta:22774:besitzungen",
+      "key": "k11"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Gründung",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22774:gruendung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 24,
+       "end": 32,
+       "ambiguous": false
+      },
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "als Tochterniederlassung dieser Abtei",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22774:gruendung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 229,
+       "end": 266,
+       "ambiguous": false
+      },
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "mit Rat und Hilfe",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22774:gruendung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 179,
+       "end": 196,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Konrad von Dreieichenhain (Hagen)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Luitgard"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Klosters Alteburg (Aldenburg)"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Abtes Nikolaus von Siegburg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "ihren einzeln angeführten Besitzungen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22774:marriage",
+    "kind": "state",
+    "title": "Ehe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehe",
+     "text": "Ehe",
+     "triple": [
+      "urn:regesta:22774:marriage",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Marriage"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "marriage",
+     "own": true,
+     "evidence": {
+      "start": 119,
+      "end": 178,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22774:> .\nx:marriage a rf:StateFactoid ;\n    rf:factoidType rv:Marriage ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad von Dreieichenhain (Hagen)",
+      "text": "Konrad von Dreieichenhain (Hagen) in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22774:marriage",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage",
+      "own": true,
+      "evidence": {
+       "start": 119,
+       "end": 178,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:marriage rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000446> ; rf:nameInSource \"Konrad von Dreieichenhain (Hagen)\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000446"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Luitgard",
+      "text": "Luitgard in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22774:marriage",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage",
+      "own": true,
+      "evidence": {
+       "start": 119,
+       "end": 178,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:marriage rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000872> ; rf:nameInSource \"Luitgard\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000872"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Gattin",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22774:marriage",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 163,
+       "end": 169,
+       "ambiguous": false
+      },
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Ehe"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Konrad von Dreieichenhain (Hagen)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Luitgard"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22774:advocate-rights",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22774:advocate-rights",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advocate-rights",
+     "own": true,
+     "evidence": {
+      "start": 310,
+      "end": 355,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-rights a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"trifft Verfügungen über die Rechte des Vogtes\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k19"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22774:advocate-rights",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-rights",
+      "own": true,
+      "evidence": {
+       "start": 310,
+       "end": 355,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-rights rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Vogtes",
+      "text": "des Vogtes in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22774:advocate-rights",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-rights",
+      "own": true,
+      "evidence": {
+       "start": 310,
+       "end": 355,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-rights rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22774:local:vogt> ; rf:nameInSource \"des Vogtes\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:22774:local:vogt"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Rechte des Vogtes)",
+      "text": "betrifft Vogtei (Rechte des Vogtes)",
+      "triple": [
+       "urn:regesta:22774:advocate-rights",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22774:vogtrechte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-rights",
+      "own": true,
+      "evidence": {
+       "start": 310,
+       "end": 355,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-rights rf:concerns x:vogtrechte .\nx:vogtrechte a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Rechte des Vogtes\" .",
+      "object": "urn:regesta:22774:vogtrechte",
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22774:advocate-rights",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22774:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-rights",
+      "own": true,
+      "evidence": {
+       "start": 310,
+       "end": 355,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-rights rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:concerns x:besitzungen ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000721:community> ; rf:nameInSource \"Klosters Alteburg (Aldenburg)\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:refersToAct x:gruendung ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22774:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "des Vogtes"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Vogtei (Rechte des Vogtes)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22774:advocate-from-founder-kin",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22774:advocate-from-founder-kin",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advocate-from-founder-kin",
+     "own": true,
+     "evidence": {
+      "start": 345,
+      "end": 405,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-from-founder-kin a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"des Vogtes, der stets der Gründersippe entnommen werden soll\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k24"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22774:advocate-from-founder-kin",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-from-founder-kin",
+      "own": true,
+      "evidence": {
+       "start": 345,
+       "end": 405,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-from-founder-kin rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Vogtes",
+      "text": "des Vogtes in der Rolle Amtsinhaber",
+      "triple": [
+       "urn:regesta:22774:advocate-from-founder-kin",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-from-founder-kin",
+      "own": true,
+      "evidence": {
+       "start": 345,
+       "end": 405,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-from-founder-kin rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22774:local:vogt> ; rf:nameInSource \"des Vogtes\" ; rf:role rv:Officeholder ] .",
+      "role": "Amtsinhaber",
+      "actors": [
+       "urn:regesta:actor:22774:local:vogt"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gründersippe",
+      "text": "Gründersippe in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22774:advocate-from-founder-kin",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-from-founder-kin",
+      "own": true,
+      "evidence": {
+       "start": 345,
+       "end": 405,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-from-founder-kin rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22774:local:gruendersippe> ; rf:nameInSource \"Gründersippe\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22774:local:gruendersippe"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Rechte des Vogtes)",
+      "text": "betrifft Vogtei (Rechte des Vogtes)",
+      "triple": [
+       "urn:regesta:22774:advocate-from-founder-kin",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22774:vogtrechte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-from-founder-kin",
+      "own": true,
+      "evidence": {
+       "start": 345,
+       "end": 405,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-from-founder-kin rf:concerns x:vogtrechte .\nx:vogtrechte a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Rechte des Vogtes\" .",
+      "object": "urn:regesta:22774:vogtrechte",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22774:advocate-from-founder-kin",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22774:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-from-founder-kin",
+      "own": true,
+      "evidence": {
+       "start": 345,
+       "end": 405,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:advocate-from-founder-kin rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:concerns x:besitzungen ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000721:community> ; rf:nameInSource \"Klosters Alteburg (Aldenburg)\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:refersToAct x:gruendung ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22774:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k29"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "stets",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22774:advocate-from-founder-kin",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 361,
+       "end": 366,
+       "ambiguous": false
+      },
+      "key": "k30"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Amtsinhaber ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "des Vogtes"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Gründersippe"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Vogtei (Rechte des Vogtes)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22774:jurisdiction-over-advocate",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22774:jurisdiction-over-advocate",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "jurisdiction-over-advocate",
+     "own": true,
+     "evidence": {
+      "start": 411,
+      "end": 476,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22774:> .\nx:jurisdiction-over-advocate a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"erklärt sich als zuständig für Klagen des Klosters gegen den Vogt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k31"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22774:jurisdiction-over-advocate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-over-advocate",
+      "own": true,
+      "evidence": {
+       "start": 411,
+       "end": 476,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:jurisdiction-over-advocate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Klosters Alteburg (Aldenburg)",
+      "text": "Klosters Alteburg (Aldenburg) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22774:jurisdiction-over-advocate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-over-advocate",
+      "own": true,
+      "evidence": {
+       "start": 411,
+       "end": 476,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:jurisdiction-over-advocate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000721:community> ; rf:nameInSource \"Klosters\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000721:community"
+      ],
+      "key": "k33"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Vogtes",
+      "text": "des Vogtes in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22774:jurisdiction-over-advocate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-over-advocate",
+      "own": true,
+      "evidence": {
+       "start": 411,
+       "end": 476,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:jurisdiction-over-advocate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22774:local:vogt> ; rf:nameInSource \"Vogt\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22774:local:vogt"
+      ],
+      "key": "k34"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (zuständig für Klagen des Klosters gegen den Vogt)",
+      "text": "betrifft Gerichtsbarkeit (zuständig für Klagen des Klosters gegen den Vogt)",
+      "triple": [
+       "urn:regesta:22774:jurisdiction-over-advocate",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22774:klagezustaendigkeit"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-over-advocate",
+      "own": true,
+      "evidence": {
+       "start": 411,
+       "end": 476,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:jurisdiction-over-advocate rf:concerns x:klagezustaendigkeit .\nx:klagezustaendigkeit a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"zuständig für Klagen des Klosters gegen den Vogt\" .",
+      "object": "urn:regesta:22774:klagezustaendigkeit",
+      "key": "k35"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22774:jurisdiction-over-advocate",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22774:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "jurisdiction-over-advocate",
+      "own": true,
+      "evidence": {
+       "start": 411,
+       "end": 476,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22774:> .\nx:jurisdiction-over-advocate rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:concerns x:besitzungen ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000721:community> ; rf:nameInSource \"Klosters Alteburg (Aldenburg)\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:refersToAct x:gruendung ;\n    rf:source <urn:regesta:record:22774> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22774:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k36"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Klosters Alteburg (Aldenburg)"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "des Vogtes"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Gerichtsbarkeit (zuständig für Klagen des Klosters gegen den Vogt)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 308
+   },
+   {
+    "id": "gruendung",
+    "start": 20,
+    "end": 308
+   },
+   {
+    "id": "t1",
+    "start": 24,
+    "end": 32
+   },
+   {
+    "id": "marriage",
+    "start": 119,
+    "end": 178
+   },
+   {
+    "id": "t4",
+    "start": 163,
+    "end": 169
+   },
+   {
+    "id": "t3",
+    "start": 179,
+    "end": 196
+   },
+   {
+    "id": "t2",
+    "start": 229,
+    "end": 266
+   },
+   {
+    "id": "advocate-rights",
+    "start": 310,
+    "end": 355
+   },
+   {
+    "id": "advocate-from-founder-kin",
+    "start": 345,
+    "end": 405
+   },
+   {
+    "id": "t5",
+    "start": 361,
+    "end": 366
+   },
+   {
+    "id": "jurisdiction-over-advocate",
+    "start": 411,
+    "end": 476
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "des Vogtes: functional actor, no named holder",
+     "lang": "en"
+    },
+    {
+     "text": "Gründersippe: no register candidate, regest-local group",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for the foundation of a monastery; the confirmed foundation is not modelled as its own act factoid, founders and advising abbot appear only as Participants of the confirmation",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No relation for a daughter house (Tochterniederlassung) to its mother abbey; kept as rf:qualifier",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for the foundation of a church or monastery.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No state type or role for filiation of a monastery to a mother house (Tochterniederlassung).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added act factoid urn:regesta:22774:gruendung (rv:Grant) with the instructed evidence, Konrad (K000446) and Luitgard (L000872) as rv:Grantor, Abbot Nikolaus (N000153) as rv:Participant, the Alteburg community as rv:Recipient, qualifiers 'Gründung', 'mit Rat und Hilfe', 'als Tochterniederlassung dieser Abtei', rf:concerns besitzungen, no date; producer correction-g8.",
+     "lang": "en"
+    },
+    {
+     "text": "On urn:regesta:22774:confirmation removed the three rv:Participant references to K000446, L000872, N000153 and the qualifier 'als Tochterniederlassung dieser Abtei', added rf:refersToAct urn:regesta:22774:gruendung; producer set to correction-g8.",
+     "lang": "en"
+    },
+    {
+     "text": "Replaced the now inaccurate comment that the foundation is not modelled by a comment stating the rv:Grant approximation.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "collapsed-earlier-act",
+     "severity": "Fehler",
+     "subject": "urn:regesta:22774:confirmation",
+     "description": "The regest reports an earlier act, the foundation of Alteburg by Konrad von Dreieichenhain and his wife Luitgard with the advice and help of Abbot Nikolaus of Siegburg, which Friedrich confirms. The candidate does not model this act and instead lists the founders and the abbot as rv:Participant of Friedrich's confirmation, which misplaces them in an act they did not perform. The guidelines require a confirmation to yield two act factoids joined by rf:refersToAct; the extractor's note cites the missing foundation type, which is a real gap but does not license dropping the act.",
+     "proposal": "Add an earlier rf:ActFactoid for the foundation (closest type rv:Grant, flagged as a type gap) with Konrad and Luitgard as rv:Grantor, Abbot Nikolaus as rv:Participant with rf:qualifier 'mit Rat und Hilfe', the Alteburg community as rv:Recipient and the possessions in rf:concerns; link it from the confirmation with rf:refersToAct and remove the three Participant references from the confirmation.",
+     "quote": {
+      "start": 20,
+      "end": 228
+     }
+    },
+    {
+     "category": "omitted-actor",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22774:confirmation",
+     "description": "The filiation to Siegburg is kept only as a qualifier string; the abbey of Siegburg (packet candidate RI004-002-S000657) does not appear as an actor.",
+     "proposal": "Optionally add the Siegburg community as a reference; report the missing filiation relation as a model gap.",
+     "quote": {
+      "start": 229,
+      "end": 266
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22774:advocate-from-founder-kin",
+     "description": "Reading the founders' kin as rv:Beneficiary of the rule that the advocate is always to be taken from it is interpretive; the passage states a selection rule, not a benefit.",
+     "proposal": "Use rv:Participant for the Gründersippe, or keep Beneficiary with a note.",
+     "quote": {
+      "start": 345,
+      "end": 405
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The foundation of Alteburg, the earlier act Friedrich confirms, is collapsed into the confirmation; founders and the advising abbot are listed as participants of Friedrich's act.",
+     "reason": "The regest reads 'Friedrich bestätigt die Gründung des Klosters Alteburg (Aldenburg) ... durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg'. The guidelines require a confirmation of an earlier act to give two act factoids joined by rf:refersToAct, and Konrad, Luitgard and Nikolaus did not take part in Friedrich's confirmation. The missing foundation type does not license dropping the act; the closest act type rv:Grant with the exact word 'Gründung' in rf:qualifier is the safe approximation, as 22783 likewise models a foundation by an existing transfer type.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add the Siegburg abbey as an actor for the filiation.",
+     "reason": "'als Tochterniederlassung dieser Abtei' states a filiation the contract has no state type or role for; the wording is kept as qualifier (after correction on the foundation factoid). The reviewer marks the addition as optional.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The Gründersippe as rv:Beneficiary is interpretive; rv:Participant proposed.",
+     "reason": "'des Vogtes, der stets der Gründersippe entnommen werden soll' reserves the advocacy to the founders' kin, which is a provision in their favour; rv:Beneficiary ('Zu wessen Gunsten etwas geschieht') is a defensible reading.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der Kontext des vorliegenden D. wurde in der Zeit der Vakanz des Thrones im Februar/März 1152 niedergeschrieben, wie sich aus der Freilassung des Namens und des Titels des Herrschers ergibt; die Zeugen sind ebenfalls auf diese Zeit zu beziehen (s. Reg. "
+    },
+    {
+     "t": "63",
+     "regest": "22690"
+    },
+    {
+     "t": "). Vollendet und beglaubigt wurde das D. dann im Dezember 1152, vgl. dazu Küther a. a. O. 231 ff., Appelt, Wahl (FS. Wiesflecker, 1973) 39 ff. und die Vorbemerkung zu DF. I. 38. - Zur wörtlichen Übernahme des Passus der VU., der dem Kloster das Recht der Klage gegen den Vogt vor dem Erzbischof, d. h. nun nach Übernahme ins Diplom vor dem Konig einräumt, vgl. Falck, Klosterfreiheit, A. f. mittelrh. KG 8 (1956) 64 f. - Erzbischof Heinrich von Mainz ist ebenso wie die anderen genannten Zeugen (der König selbst wird als Herzog von Schwaben genannt) als Handlungszeuge aufzufassen, weshalb diese Urkunde nicht als Zeichen einer Annäherung zwischen dem König und dem Mainzer Metropoliten - so Simonsfeld, Jahrbücher 141 f. - gewertet werden darf, vgl. dazu Büttner, Heinrich von Mainz, ZKG 69 (1958) 265 f. und die Vorbemerkung zu DF. I. 38. - Das vorligende D. wird auch in einer Urkunde des Abtes Gerhard I. von Eberbach von 1174 Juli 16 erwähnt, ed. Acht, Mainzer UB. 2/2, 602 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 362."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Fürst zu Solms-Hohensolms-Lich'sches Archiv zu Lich (A). Druck e: Th. Mayer, Diplom Friedrichs I., MÖIG Erg.Bd. 14 (1939) 247; Acht, Mainzer UB. 2/1, 332 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 179; Küther, Kloster Arnsburg, Artikelserie des heimatkundlichen Arbeitskreises Lich: Lich in Vergangenheit und Gegenwart (1970) 206; MG. DF. I. 38. Faks.: Teilfaks. bei Th. Mayer a. a. O.; Teilfaks. bei Gawlik, Ziele, Mittelalterliche Textüberlieferungen und ihre kritische Aufarbeitung. Beiträge der MGH zum Dt. Historikertag (1976) 54. Reg.: "
+    },
+    {
+     "t": "Böhmer-Will",
+     "href": "http://opac.regesta-imperii.de/lang_de/kurztitelsuche_r.php?kurztitel=Böhmer,_Regesta_archiepiscoporum_Maguntinensium"
+    },
+    {
+     "t": ", Reg. archiep. Magunt. 1, 348 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "158"
+    },
+    {
+     "t": "; Stumpf 3654. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze ("
+    },
+    {
+     "t": "2018",
+     "href": "http://opac.regesta-imperii.de/id/3015692"
+    },
+    {
+     "t": ")"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Zum "
+    },
+    {
+     "t": "DF.I.",
+     "href": "http://opac.regesta-imperii.de/id/47488"
+    },
+    {
+     "t": " 38 für Alteburg vgl. jetzt auch Küther, Urkunde Friedrich Barbarossas für Arnsburg, 206‒252, worauf Dieter Rübsamen am 22.9.2015 in einem Nachtrag aufmerksam gemacht hat."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=52"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/1408"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_38"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-38"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000721",
+    "(Benediktiner-)Kloster, Tochterniederlassung der Abtei Siegburg"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-A001220",
+    "Propst von St. Peter zu Mainz"
+   ],
+   [
+    "RI004-002-A001283",
+    "Arnsburg (heute: Ruine an der Wetter, südl. und Teil von Lich, Ldkr. Gießen, Hessen)"
+   ],
+   [
+    "RI004-002-B000737",
+    "Graf von Nied"
+   ],
+   [
+    "RI004-002-B000775",
+    "Ministeriale"
+   ],
+   [
+    "RI004-002-E000139",
+    "Ministeriale"
+   ],
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-G000209",
+    "Bischof von Würzburg"
+   ],
+   [
+    "RI004-002-G000354",
+    "(I.), Abt von Eberbach"
+   ],
+   [
+    "RI004-002-G000385",
+    "Graf von Nürings"
+   ],
+   [
+    "RI004-002-G000552",
+    "Ministeriale"
+   ],
+   [
+    "RI004-002-G000614",
+    "Propst (<i>wohl:</i> von Frankfurt)"
+   ],
+   [
+    "RI004-002-G000829",
+    "Graf von Höchst"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000163",
+    "Dompropst von Mainz oder Propst von St. Moritz zu Mainz"
+   ],
+   [
+    "RI004-002-H000180",
+    "Ministeriale"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000529",
+    "(II.) Raspe (Raspo), Graf von Gudensburg (<i>recte:</i> Gudensberg), auch von Hessen"
+   ],
+   [
+    "RI004-002-H000848",
+    "(III.) von Stahleck, Pfalzgraf bei Rhein"
+   ],
+   [
+    "RI004-002-K000446",
+    "(II.) von Dreieichenhain (auch: von Hagen, Arnsberg und Münzenberg), Reichsministeriale, Gründer des Klosters Alteburg"
+   ],
+   [
+    "RI004-002-K000541",
+    "Ministeriale"
+   ],
+   [
+    "RI004-002-L000872",
+    "Gemahlin des Konrad von Dreieichenhain, Gründerin des Klosters Alteburg"
+   ],
+   [
+    "RI004-002-L000920",
+    "Ministeriale"
+   ],
+   [
+    "RI004-002-M000179",
+    "Mainz (am Rhein, Hptst. von Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-N000153",
+    "Abt von Siegburg"
+   ],
+   [
+    "RI004-002-S000113",
+    "Ministeriale"
+   ],
+   [
+    "RI004-002-S000657",
+    "Siegburg (nordöstl. Bonn, Rhein-Sieg-Kr., Nordrh.-Westf.), (Benediktiner-)Abtei, Kloster"
+   ],
+   [
+    "RI004-002-W000358",
+    "Ministeriale"
+   ],
+   [
+    "RI004-002-W000486",
+    "Ministeriale"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,1509 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-08-25_1_0_4_2_1_133_133",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22760",
+  "identifier": "RI IV,2,1 n. 133",
+  "short": "RI IV,2,1 n. 133",
+  "sort": "004_002_001_000133_0000000133",
+  "start": "1152-08-25",
+  "end": "1152-10-13",
+  "proseYears": [],
+  "lead": "Friedrich nimmt das Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm) in seinen Schutz und bestätigt ihm wie seine Vorgänger den Besitzstand, darunter zum Seelenheil seines Oheims, Konrad (III.), namentlich Güter zu Paludano (Lectus Paludanus) und Gonzaga sowie nach dem Vorgang Lothars (III.) Pegognaga (Pigugnaga).",
+  "date": [
+   {
+    "t": "1152 (wohl August 25-Oktober 13)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Fulda (Fulde)"
+   }
+  ],
+  "text": "Friedrich nimmt das Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm) in seinen Schutz und bestätigt ihm wie seine Vorgänger den Besitzstand, darunter zum Seelenheil seines Oheims, Konrad (III.), namentlich Güter zu Paludano (Lectus Paludanus) und Gonzaga sowie nach dem Vorgang Lothars (III.) Pegognaga (Pigugnaga). Z.: die Äbte Markward von Fulda, Heinrich von Hersfeld, Magister Notar Heinrich, Propst Konrad von Worms, Graf Gottfried (von Ziegenhain) und sein Bruder Poppo, Pfalzgraf Otto der Jüngere (von Wittelsbach), die Graf en Ulrich von Lenzburg, Egeno (von Vaihingen). - Arnoldus canc. vice Heinrici Maguntini archiep. et archicanc. ; unter Benützung der DDK. III. 54 (VU. I) und 150 (VU. II) vefaßt und geschrieben von AH (Albert). Si antecessorum nostrorum .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 7,
+  "blocks": [
+   {
+    "node": "urn:regesta:22760:kinship-konrad",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22760:kinship-konrad",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-konrad",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 52,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22760:> .\nx:kinship-konrad a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Kloster S. Benedetto di Polirone\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22760:kinship-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:kinship-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad (III.)",
+      "text": "Konrad (III.) in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22760:kinship-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:kinship-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad (III.)\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22760:kinship-konrad",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-konrad-2",
+      "own": true,
+      "evidence": {
+       "start": 198,
+       "end": 226,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:kinship-konrad rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"seines Oheims, Konrad (III.)\" ] .",
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheims",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22760:kinship-konrad",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 205,
+       "end": 211,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k4"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2",
+       "k4"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3",
+       "k4"
+      ],
+      "text": "Konrad (III.)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22760:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22760:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 118,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22760:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm) in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22760:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 118,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)",
+      "text": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22760:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 118,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:nameInSource \"Kloster S. Benedetto di Polirone\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000906:community"
+      ],
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22760:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22760:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 123,
+      "end": 172,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm wie seine Vorgänger den Besitzstand\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22760:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 123,
+       "end": 172,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)",
+      "text": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22760:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 123,
+       "end": 172,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000906:community"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den Besitzstand",
+      "text": "betrifft den Besitzstand",
+      "triple": [
+       "urn:regesta:22760:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22760:besitzstand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 123,
+       "end": 172,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation rf:concerns x:besitzstand .\nx:besitzstand a crm:E18_Physical_Thing ;\n    rdfs:label \"den Besitzstand\" .",
+      "object": "urn:regesta:22760:besitzstand",
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestätigung",
+      "text": "bezieht sich auf Bestätigung",
+      "triple": [
+       "urn:regesta:22760:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22760:predecessors-confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 123,
+       "end": 172,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation rf:refersToAct x:predecessors-confirmation .\nx:predecessors-confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:concerns x:besitzstand ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm wie seine Vorgänger den Besitzstand\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22760:local:vorgaenger> ; rf:nameInSource \"seine Vorgänger\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22760:predecessors-confirmation",
+      "objectClaim": "predecessors-confirmation",
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "wie seine Vorgänger",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22760:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 137,
+       "end": 156,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "den Besitzstand"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22760:predecessors-confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22760:predecessors-confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "predecessors-confirmation",
+     "own": true,
+     "evidence": {
+      "start": 123,
+      "end": 172,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22760:> .\nx:predecessors-confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm wie seine Vorgänger den Besitzstand\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seine Vorgänger",
+      "text": "seine Vorgänger in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22760:predecessors-confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "predecessors-confirmation",
+      "own": true,
+      "evidence": {
+       "start": 123,
+       "end": 172,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:predecessors-confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22760:local:vorgaenger> ; rf:nameInSource \"seine Vorgänger\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22760:local:vorgaenger"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den Besitzstand",
+      "text": "betrifft den Besitzstand",
+      "triple": [
+       "urn:regesta:22760:predecessors-confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22760:besitzstand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "predecessors-confirmation",
+      "own": true,
+      "evidence": {
+       "start": 123,
+       "end": 172,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:predecessors-confirmation rf:concerns x:besitzstand .\nx:besitzstand a crm:E18_Physical_Thing ;\n    rdfs:label \"den Besitzstand\" .",
+      "object": "urn:regesta:22760:besitzstand",
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "seine Vorgänger"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "den Besitzstand"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22760:confirmation-paludano-gonzaga",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22760:confirmation-paludano-gonzaga",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-paludano-gonzaga",
+     "own": true,
+     "evidence": {
+      "start": 174,
+      "end": 287,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-paludano-gonzaga a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"darunter zum Seelenheil seines Oheims, Konrad (III.), namentlich Güter zu Paludano (Lectus Paludanus) und Gonzaga\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22760:confirmation-paludano-gonzaga",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-paludano-gonzaga",
+      "own": true,
+      "evidence": {
+       "start": 174,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-paludano-gonzaga rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)",
+      "text": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22760:confirmation-paludano-gonzaga",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-paludano-gonzaga",
+      "own": true,
+      "evidence": {
+       "start": 174,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-paludano-gonzaga rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000906:community"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Güter zu Paludano (Lectus Paludanus) und Gonzaga",
+      "text": "betrifft Güter zu Paludano (Lectus Paludanus) und Gonzaga",
+      "triple": [
+       "urn:regesta:22760:confirmation-paludano-gonzaga",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22760:gueter-paludano-gonzaga"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-paludano-gonzaga",
+      "own": true,
+      "evidence": {
+       "start": 174,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-paludano-gonzaga rf:concerns x:gueter-paludano-gonzaga .\nx:gueter-paludano-gonzaga a crm:E18_Physical_Thing ;\n    rdfs:label \"Güter zu Paludano (Lectus Paludanus) und Gonzaga\" .",
+      "object": "urn:regesta:22760:gueter-paludano-gonzaga",
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22760:confirmation-paludano-gonzaga",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22760:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-paludano-gonzaga",
+      "own": true,
+      "evidence": {
+       "start": 174,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-paludano-gonzaga rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:concerns x:besitzstand ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm wie seine Vorgänger den Besitzstand\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"wie seine Vorgänger\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:predecessors-confirmation ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22760:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k22"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "zum Seelenheil seines Oheims, Konrad (III.)",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22760:confirmation-paludano-gonzaga",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 183,
+       "end": 226,
+       "ambiguous": false
+      },
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Güter zu Paludano (Lectus Paludanus) und Gonzaga"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22760:confirmation-pegognaga",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22760:confirmation-pegognaga",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-pegognaga",
+     "own": true,
+     "evidence": {
+      "start": 288,
+      "end": 347,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-pegognaga a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"sowie nach dem Vorgang Lothars (III.) Pegognaga (Pigugnaga)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k24"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22760:confirmation-pegognaga",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-pegognaga",
+      "own": true,
+      "evidence": {
+       "start": 288,
+       "end": 347,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-pegognaga rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)",
+      "text": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22760:confirmation-pegognaga",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-pegognaga",
+      "own": true,
+      "evidence": {
+       "start": 288,
+       "end": 347,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-pegognaga rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000906:community"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Pegognaga (Pigugnaga)",
+      "text": "betrifft Pegognaga (Pigugnaga)",
+      "triple": [
+       "urn:regesta:22760:confirmation-pegognaga",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22760:pegognaga"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-pegognaga",
+      "own": true,
+      "evidence": {
+       "start": 288,
+       "end": 347,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-pegognaga rf:concerns x:pegognaga .\nx:pegognaga a crm:E18_Physical_Thing ;\n    rdfs:label \"Pegognaga (Pigugnaga)\" .",
+      "object": "urn:regesta:22760:pegognaga",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22760:confirmation-pegognaga",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22760:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-pegognaga",
+      "own": true,
+      "evidence": {
+       "start": 288,
+       "end": 347,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-pegognaga rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:concerns x:besitzstand ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm wie seine Vorgänger den Besitzstand\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"wie seine Vorgänger\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:predecessors-confirmation ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22760:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestätigung",
+      "text": "bezieht sich auf Bestätigung",
+      "triple": [
+       "urn:regesta:22760:confirmation-pegognaga",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22760:lothar-precedent"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-pegognaga",
+      "own": true,
+      "evidence": {
+       "start": 288,
+       "end": 347,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:confirmation-pegognaga rf:refersToAct x:lothar-precedent .\nx:lothar-precedent a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:concerns x:pegognaga ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Vorgang Lothars (III.) Pegognaga (Pigugnaga)\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"nach dem Vorgang\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ; rf:nameInSource \"Lothars (III.)\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22760:lothar-precedent",
+      "objectClaim": "lothar-precedent",
+      "key": "k29"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Pegognaga (Pigugnaga)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Bestätigung"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22760:lothar-precedent",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22760:lothar-precedent",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "lothar-precedent",
+     "own": true,
+     "evidence": {
+      "start": 294,
+      "end": 347,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22760:> .\nx:lothar-precedent a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22760> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Vorgang Lothars (III.) Pegognaga (Pigugnaga)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k30"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Lothars (III.)",
+      "text": "Lothars (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22760:lothar-precedent",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "lothar-precedent",
+      "own": true,
+      "evidence": {
+       "start": 294,
+       "end": 347,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:lothar-precedent rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ; rf:nameInSource \"Lothars (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000682"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Pegognaga (Pigugnaga)",
+      "text": "betrifft Pegognaga (Pigugnaga)",
+      "triple": [
+       "urn:regesta:22760:lothar-precedent",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22760:pegognaga"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "lothar-precedent",
+      "own": true,
+      "evidence": {
+       "start": 294,
+       "end": 347,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22760:> .\nx:lothar-precedent rf:concerns x:pegognaga .\nx:pegognaga a crm:E18_Physical_Thing ;\n    rdfs:label \"Pegognaga (Pigugnaga)\" .",
+      "object": "urn:regesta:22760:pegognaga",
+      "key": "k32"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach dem Vorgang",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22760:lothar-precedent",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 294,
+       "end": 310,
+       "ambiguous": false
+      },
+      "key": "k33"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Lothars (III.)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Pegognaga (Pigugnaga)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 118
+   },
+   {
+    "id": "kinship-konrad",
+    "start": 0,
+    "end": 52
+   },
+   {
+    "id": "confirmation",
+    "start": 123,
+    "end": 172
+   },
+   {
+    "id": "predecessors-confirmation",
+    "start": 123,
+    "end": 172
+   },
+   {
+    "id": "t2",
+    "start": 137,
+    "end": 156
+   },
+   {
+    "id": "confirmation-paludano-gonzaga",
+    "start": 174,
+    "end": 287
+   },
+   {
+    "id": "t3",
+    "start": 183,
+    "end": 226
+   },
+   {
+    "id": "kinship-konrad-2",
+    "start": 198,
+    "end": 226
+   },
+   {
+    "id": "t1",
+    "start": 205,
+    "end": 211
+   },
+   {
+    "id": "confirmation-pegognaga",
+    "start": 288,
+    "end": 347
+   },
+   {
+    "id": "lothar-precedent",
+    "start": 294,
+    "end": 347
+   },
+   {
+    "id": "t4",
+    "start": 294,
+    "end": 310
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'seine Vorgänger' recorded as regest-local functional actor; individual predecessors not identified",
+     "lang": "en"
+    },
+    {
+     "text": "Monastery identified via place register entry RI004-002-P000906 (Polirone, Benediktinerkloster) as :community group",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Act type of Lothar III's precedent ('nach dem Vorgang Lothars (III.)') is not stated; typed rv:Confirmation as nearest reading, could equally be a grant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Konrad III's soul is the stated ground for confirming the goods at Paludano and Gonzaga; whether Konrad donated them is not stated and was not inferred",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "nameInSource 'Friedrich' used for references where the passage names him only by possessive (seines, seine)",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added second rf:evidence selector \"Friedrich nimmt das Kloster S. Benedetto di Polirone\" to <urn:regesta:22760:kinship-konrad>; existing selector, references and qualifier unchanged; producer correction-g7 (adjudication: correct).",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "name-in-source",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22760:kinship-konrad",
+     "description": "Friedrich's reference carries rf:nameInSource \"Friedrich\", but the passage that states the kinship names him only through the possessive 'seines'. The guidelines require the wording naming the actor in this passage.",
+     "proposal": "Set rf:nameInSource \"seines\" for Friedrich in the kinship factoid, or add the passage naming Friedrich as a second selector.",
+     "quote": {
+      "start": 198,
+      "end": 226
+     }
+    },
+    {
+     "category": "type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22760:lothar-precedent",
+     "description": "Lothar's earlier act is typed rv:Confirmation. 'nach dem Vorgang Lothars' says only that Lothar acted before; whether he granted or confirmed is not stated. The reading is plausible but not secured by the passage.",
+     "proposal": "Acceptable; optionally note the uncertain type in a comment.",
+     "quote": {
+      "start": 294,
+      "end": 347
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "Friedrich's nameInSource 'Friedrich' does not occur in the only evidence selector 'seines Oheims, Konrad (III.)'.",
+     "reason": "The guidelines require the name in source to be the wording naming the actor in this passage, and a second selector where a role rests on a different passage. Friedrich's Kin role rests on the subject of the sentence 'Friedrich nimmt das Kloster S. Benedetto di Polirone', which the selector does not include. 22764 handles the same case with a second selector.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die zeitliche Einordnung zwischen die Aufenthalte des Königs in Speyer und in Würzburg wird auch durch die Übereinstimmung mehrerer Zeugennamen wahrscheinlich gemacht. Über die älteren Kaiserurkunden für das Kloster vgl. Pivec, Urkunden Heinrichs V., MÖIG 51 (1937) 25 ff. - Das vorliegende D. diente neben DD. L. III. 50 und 76 und DK. III. 54 als Vorlage für die Urkunde Herzog Welfs VI. von 1154 Mai 12 (Feldmann, Welf VI. Reg. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "66",
+     "regest": "22693"
+    },
+    {
+     "t": "). - Dieser Aufenthalt Friedrichs I. in Fulda war nach der Angabe des Apollo von Vilbel wahrscheinlich auch in der alten, verlorenen Fuldaer Chronik erwähnt, vgl. Heinemeyer, Chron. Fuldensis, AfD Beiheft 1 (1976) Einleitung 36. - Friedrich verfügte aus dem Erbe seines Vaters und dem des Vaters seiner ersten Gemahlin, des Markgrafen Diepold von Vohburg, auch über Fuldaer Klosterlehen, Heinemann, CD. Anhalt. 1, 366 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 502."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Liber privilegiorum s. Benedicti Polironensis cod. 736 f. 27', Stadtbibliothek Verona (B) und Chartular von Polirone B IV 18 p. 35, Stadtbibliothek Mantua (C), beide aus dem 15. Jh.; Vidimus des Senates von Mantua von 1692 März 3 im Haus-, Hof- und Staatsarchiv Wien, Confirm, privilegiorum lat. Exp. fasc. 6 f. 20' aus A (D). Drucke: Stumpf, Acta ined. 150 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 121; MG. DF. I. 28. Reg.: Torelli, Reg. Mantovano 1, 195 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 282; Stumpf 3644. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze ("
+    },
+    {
+     "t": "2018",
+     "href": "http://opac.regesta-imperii.de/id/3015692"
+    },
+    {
+     "t": ")"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Im "
+    },
+    {
+     "t": "MG.D.Phil.",
+     "href": "http://opac.regesta-imperii.de/id/2254228"
+    },
+    {
+     "t": " 4 von 1195 Juli 31 wird Friedrich Barbarossa unter den Wohltätern für S. Benedetto Po (di Polirone) genannt."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=46"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_28"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001209",
+    "H (= Albert von Sponheim), Notar der Reichskanzlei"
+   ],
+   [
+    "RI004-002-E000167",
+    "Graf von Vaihingen"
+   ],
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-F000805",
+    "Fulda (am gleichnamigen Fluss, Ldkr. Fulda, Osthessen), Benediktinerkloster, Hospital, Propstei"
+   ],
+   [
+    "RI004-002-G000715",
+    "Gonzaga (südl. des Po, östl. Guastalla, ital. Prov. Mantua)"
+   ],
+   [
+    "RI004-002-G000834",
+    "(I., Graf von Ziegenhain)"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-H000417",
+    "Abt von Hersfeld"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000354",
+    "Dompropst und Domkanoniker von Worms"
+   ],
+   [
+    "RI004-002-L000682",
+    "(III.), König und Kaiser"
+   ],
+   [
+    "RI004-002-M000499",
+    "Abt von Fulda"
+   ],
+   [
+    "RI004-002-O000443",
+    "Otto (VI., gest. 1189) der Jüngere, Pfalzgraf von Wittelsbach und Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-P000093",
+    "Paludano (<i>heute:</i> Palidano, Teil von Gonzaga, ital. Prov. Mantua)"
+   ],
+   [
+    "RI004-002-P000304",
+    "Pegognaga (südwestl. San Benedetto Po, ital. Prov. Mantua)"
+   ],
+   [
+    "RI004-002-P000862",
+    "Po (Fluss in Oberitalien)"
+   ],
+   [
+    "RI004-002-P000906",
+    "Polirone (<i>heute:</i> S. Benedetto Po, südöstl. Mantua, ital. Prov. Mantua), Benediktinerkloster S. Benedetto"
+   ],
+   [
+    "RI004-002-P000979",
+    "Graf von Hollende (auch: von Ziegenhain)"
+   ],
+   [
+    "RI004-002-S000967",
+    "Speyer (am Rhein, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-T000163",
+    "(VI.), Markgraf von Vohburg"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

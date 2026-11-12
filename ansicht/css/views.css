@@ -1,0 +1,53 @@
+/* The two further projections of the holdings: Zeitband (persons over time) and Jahrzehnte
+   (the map once per decade). They reuse the shell, the sidebar and the itinerary's map and
+   legend classes; colours come from tokens.css only. */
+
+@layer layout {
+  .views-tb { display: grid; grid-template-rows: auto minmax(0, 1fr); grid-template-columns: minmax(0, 1fr); }
+  .tb-scroll { overflow-y: auto; overflow-x: hidden; padding-block-end: var(--space-6); }
+  .tb-scroll:focus-visible, .dc-scene:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .views-dc .dc-scene { position: absolute; inset: var(--space-2) var(--space-2) var(--space-5); }
+}
+
+@layer components {
+  .tb-svg, .dc-svg { display: block; font-family: var(--font-ui); }
+  .tb-axis { border-block-end: 1px solid var(--hairline); }
+
+  /* Same sizes as the cube's names and year numbers, so the views share their text styles. */
+  .tb-year { fill: var(--muted); font-size: 11px; font-variant-numeric: lining-nums tabular-nums; }
+  .tb-name { fill: var(--text); font-size: 12.5px; }
+  .tb-name.is-run { fill: var(--accent-text); }
+  .tb-row.is-selected .tb-name { font-weight: 600; }
+  .tb-grid line { stroke: var(--hairline); stroke-width: 1; }
+  .tb-row-bg { fill: transparent; }
+  .tb-row:hover .tb-row-bg { fill: var(--side); }
+  .tb-row.is-selected .tb-row-bg { fill: var(--accent-faint); }
+  .tb-life { stroke: var(--edge); stroke-width: 1; }
+  .tb-tick { stroke: var(--text); stroke-width: 1.4; }
+  .tb-row.is-selected .tb-tick { stroke: var(--accent-text); stroke-width: 2; }
+  .tb-pointed { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .tb-opened { fill: none; stroke: var(--accent-text); stroke-width: 2.5; }
+  .tb-scroll { cursor: pointer; }
+
+  .tb-controls { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+  .tb-limit { background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); font-size: var(--step--1); color: var(--text); }
+  /* The legend key of an accent name: a short line in the name's colour. */
+  .tb-key { display: inline-block; inline-size: 0.9em; block-size: 2px; background: var(--accent-text); vertical-align: 0.25em; }
+
+  .dc-sep { stroke: var(--hairline); stroke-width: 1; }
+  .dc-panel { transition: opacity 0.2s; }
+  .dc-panel.is-out { opacity: 0.25; }
+  .dc-label { fill: var(--text); font-size: 12.5px; font-weight: 600; }
+  .dc-label.is-selected { fill: var(--accent-text); text-decoration: underline; text-decoration-color: var(--accent); }
+  .dc-dot { fill: var(--muted); fill-opacity: 0.55; stroke: var(--stage); stroke-width: 0.8; }
+  .dc-dot.is-selected { fill: var(--accent); fill-opacity: 0.9; }
+  .dc-ring { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .dc-chosen { fill: none; stroke: var(--accent-text); stroke-width: 1.4; }
+  .dc-ring.is-absent, .dc-chosen.is-absent { stroke-dasharray: 2 2; stroke-width: 1.2; }
+  .dc-opened { fill: none; stroke: var(--accent-text); stroke-width: 2.5; }
+  .dc-scene { cursor: pointer; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dc-panel { transition: none; }
+  }
+}

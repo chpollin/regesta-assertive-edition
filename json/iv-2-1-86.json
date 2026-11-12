@@ -1,0 +1,1649 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-17_1_0_4_2_1_86_86",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22713",
+  "identifier": "RI IV,2,1 n. 86",
+  "short": "RI IV,2,1 n. 86",
+  "sort": "004_002_001_000086_0000000086",
+  "start": "1152-05-17",
+  "end": "1152-05-17",
+  "proseYears": [],
+  "lead": "Papst Eugen (III.) schreibt an König F(riedrich), daß er die Botschaft von seiner Wahl mit um so größerer Freude vernommen habe, als er schon von Kardinalpriester O(ktavian) Gutes über ihn gehört habe, approbiert diese Wahl ausdrücklich, erinnert ihn an die Erfüllung der Versprechen seines Vorgängers gegenüber der römischen Kirche und auch seines Krönungseides, stellt ihm die Kaiserkrönung in Aussicht (ad honoris et exaltationis tuae augmentum ... intendimus laborare) und kündigt die baldige Entsendung eines Legaten an.",
+  "date": [
+   {
+    "t": "(1152) Mai 17"
+   }
+  ],
+  "place": [
+   {
+    "t": "Segni"
+   }
+  ],
+  "text": "Papst Eugen (III.) schreibt an König F(riedrich), daß er die Botschaft von seiner Wahl mit um so größerer Freude vernommen habe, als er schon von Kardinalpriester O(ktavian) Gutes über ihn gehört habe, approbiert diese Wahl ausdrücklich, erinnert ihn an die Erfüllung der Versprechen seines Vorgängers gegenüber der römischen Kirche und auch seines Krönungseides, stellt ihm die Kaiserkrönung in Aussicht (ad honoris et exaltationis tuae augmentum ... intendimus laborare) und kündigt die baldige Entsendung eines Legaten an.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 8,
+  "blocks": [
+   {
+    "node": "urn:regesta:22713:approbation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22713:approbation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "approbation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 86,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22713:> .\nx:approbation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich), daß er die Botschaft von seiner Wahl\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22713:approbation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "approbation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 86,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:approbation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König F(riedrich)",
+      "text": "König F(riedrich) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22713:approbation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "approbation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 86,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:approbation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König F(riedrich)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22713:approbation",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22713:letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "approbation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 86,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:approbation rf:partOf x:letter .\nx:letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König F(riedrich)\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22713:letter",
+      "objectClaim": "letter",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Einsetzung",
+      "text": "bezieht sich auf Einsetzung",
+      "triple": [
+       "urn:regesta:22713:approbation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22713:election"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "approbation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 86,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:approbation rf:refersToAct x:election .\nx:election a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Botschaft von seiner Wahl\" ] ;\n    rf:factoidType rv:Appointment ;\n    rf:qualifier \"Wahl\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"seiner\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22713:election",
+      "objectClaim": "election",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22713:approbation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "approbation-2",
+      "own": true,
+      "evidence": {
+       "start": 202,
+       "end": 236,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:approbation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"approbiert diese Wahl ausdrücklich\" ] .",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "ausdrücklich",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22713:approbation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 224,
+       "end": 236,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "König F(riedrich)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "Schreiben"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Einsetzung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22713:imperial-coronation-prospect",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22713:imperial-coronation-prospect",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "imperial-coronation-prospect",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 48,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22713:> .\nx:imperial-coronation-prospect a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22713:imperial-coronation-prospect",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "imperial-coronation-prospect",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:imperial-coronation-prospect rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König F(riedrich)",
+      "text": "König F(riedrich) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22713:imperial-coronation-prospect",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "imperial-coronation-prospect",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:imperial-coronation-prospect rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22713:imperial-coronation-prospect",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22713:letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "imperial-coronation-prospect",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:imperial-coronation-prospect rf:partOf x:letter .\nx:letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König F(riedrich)\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22713:letter",
+      "objectClaim": "letter",
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22713:imperial-coronation-prospect",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "imperial-coronation-prospect-2",
+      "own": true,
+      "evidence": {
+       "start": 364,
+       "end": 404,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:imperial-coronation-prospect rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"stellt ihm die Kaiserkrönung in Aussicht\" ] .",
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "in Aussicht",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22713:imperial-coronation-prospect",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 393,
+       "end": 404,
+       "ambiguous": false
+      },
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8",
+       "k12"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k9",
+       "k12"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k10",
+       "k12"
+      ],
+      "text": "König F(riedrich)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k11",
+       "k12"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22713:legate-announcement",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22713:legate-announcement",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "legate-announcement",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 48,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22713:> .\nx:legate-announcement a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22713:legate-announcement",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "legate-announcement",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:legate-announcement rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König F(riedrich)",
+      "text": "König F(riedrich) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22713:legate-announcement",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "legate-announcement",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:legate-announcement rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König F(riedrich)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22713:legate-announcement",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22713:letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "legate-announcement",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:legate-announcement rf:partOf x:letter .\nx:letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König F(riedrich)\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22713:letter",
+      "objectClaim": "letter",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22713:legate-announcement",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "legate-announcement-2",
+      "own": true,
+      "evidence": {
+       "start": 477,
+       "end": 524,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:legate-announcement rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"kündigt die baldige Entsendung eines Legaten an\" ] .",
+      "key": "k18"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "baldige",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22713:legate-announcement",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 489,
+       "end": 496,
+       "ambiguous": false
+      },
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14",
+       "k18"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k15",
+       "k18"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k16",
+       "k18"
+      ],
+      "text": "König F(riedrich)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k17",
+       "k18"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22713:letter",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22713:letter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "letter",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 48,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22713:> .\nx:letter a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k20"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22713:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König F(riedrich)",
+      "text": "König F(riedrich) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22713:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König F(riedrich)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "König F(riedrich)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22713:reminder",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22713:reminder",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "reminder",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 48,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22713:> .\nx:reminder a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k23"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22713:reminder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reminder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:reminder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König F(riedrich)",
+      "text": "König F(riedrich) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22713:reminder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reminder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:reminder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König F(riedrich)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22713:reminder",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22713:letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reminder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:reminder rf:partOf x:letter .\nx:letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König F(riedrich)\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22713:letter",
+      "objectClaim": "letter",
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Zusicherung",
+      "text": "bezieht sich auf Zusicherung",
+      "triple": [
+       "urn:regesta:22713:reminder",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22713:coronation-oath"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reminder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:reminder rf:refersToAct x:coronation-oath .\nx:coronation-oath a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"erinnert ihn an die Erfüllung der Versprechen seines Vorgängers gegenüber der römischen Kirche und auch seines Krönungseides\" ] ;\n    rf:factoidType rv:Assurance ;\n    rf:qualifier \"Krönungseides\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihn\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22713:coronation-oath",
+      "objectClaim": "coronation-oath",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Zusicherung",
+      "text": "bezieht sich auf Zusicherung",
+      "triple": [
+       "urn:regesta:22713:reminder",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22713:promises-predecessor"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reminder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:reminder rf:refersToAct x:promises-predecessor .\nx:promises-predecessor a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Versprechen seines Vorgängers gegenüber der römischen Kirche\" ] ;\n    rf:factoidType rv:Assurance ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22713:local:roemische-kirche> ; rf:nameInSource \"der römischen Kirche\" ; rf:role rv:Beneficiary ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:22713:local:vorgaenger> ; rf:nameInSource \"seines Vorgängers\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22713:promises-predecessor",
+      "objectClaim": "promises-predecessor",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22713:reminder",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reminder-2",
+      "own": true,
+      "evidence": {
+       "start": 238,
+       "end": 362,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:reminder rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"erinnert ihn an die Erfüllung der Versprechen seines Vorgängers gegenüber der römischen Kirche und auch seines Krönungseides\" ] .",
+      "key": "k29"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k23",
+       "k29"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k24",
+       "k29"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k25",
+       "k29"
+      ],
+      "text": "König F(riedrich)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k26",
+       "k29"
+      ],
+      "text": "Schreiben"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k27",
+       "k29"
+      ],
+      "text": "Zusicherung"
+     },
+     " und ",
+     {
+      "keys": [
+       "k28",
+       "k29"
+      ],
+      "text": "Zusicherung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22713:election",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22713:election",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "election",
+     "own": true,
+     "evidence": {
+      "start": 57,
+      "end": 86,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22713:> .\nx:election a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Botschaft von seiner Wahl\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k30"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König F(riedrich)",
+      "text": "König F(riedrich) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22713:election",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election",
+      "own": true,
+      "evidence": {
+       "start": 57,
+       "end": 86,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:election rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"seiner\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Wahl",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22713:election",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 82,
+       "end": 86,
+       "ambiguous": false
+      },
+      "key": "k32"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Einsetzung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "König F(riedrich)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22713:coronation-oath",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22713:coronation-oath",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "coronation-oath",
+     "own": true,
+     "evidence": {
+      "start": 238,
+      "end": 362,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22713:> .\nx:coronation-oath a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"erinnert ihn an die Erfüllung der Versprechen seines Vorgängers gegenüber der römischen Kirche und auch seines Krönungseides\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k33"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König F(riedrich)",
+      "text": "König F(riedrich) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22713:coronation-oath",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "coronation-oath",
+      "own": true,
+      "evidence": {
+       "start": 238,
+       "end": 362,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:coronation-oath rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihn\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k34"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Krönungseides",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22713:coronation-oath",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 349,
+       "end": 362,
+       "ambiguous": false
+      },
+      "key": "k35"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "König F(riedrich)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22713:promises-predecessor",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22713:promises-predecessor",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "promises-predecessor",
+     "own": true,
+     "evidence": {
+      "start": 268,
+      "end": 332,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22713:> .\nx:promises-predecessor a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22713> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Versprechen seines Vorgängers gegenüber der römischen Kirche\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k36"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seines Vorgängers",
+      "text": "seines Vorgängers in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22713:promises-predecessor",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promises-predecessor",
+      "own": true,
+      "evidence": {
+       "start": 268,
+       "end": 332,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:promises-predecessor rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22713:local:vorgaenger> ; rf:nameInSource \"seines Vorgängers\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22713:local:vorgaenger"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der römischen Kirche",
+      "text": "der römischen Kirche in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22713:promises-predecessor",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promises-predecessor",
+      "own": true,
+      "evidence": {
+       "start": 268,
+       "end": 332,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22713:> .\nx:promises-predecessor rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22713:local:roemische-kirche> ; rf:nameInSource \"der römischen Kirche\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22713:local:roemische-kirche"
+      ],
+      "key": "k38"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "seines Vorgängers"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k38"
+      ],
+      "text": "der römischen Kirche"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "approbation",
+    "start": 0,
+    "end": 86
+   },
+   {
+    "id": "imperial-coronation-prospect",
+    "start": 0,
+    "end": 48
+   },
+   {
+    "id": "legate-announcement",
+    "start": 0,
+    "end": 48
+   },
+   {
+    "id": "letter",
+    "start": 0,
+    "end": 48
+   },
+   {
+    "id": "reminder",
+    "start": 0,
+    "end": 48
+   },
+   {
+    "id": "election",
+    "start": 57,
+    "end": 86
+   },
+   {
+    "id": "t4",
+    "start": 82,
+    "end": 86
+   },
+   {
+    "id": "approbation-2",
+    "start": 202,
+    "end": 236
+   },
+   {
+    "id": "t1",
+    "start": 224,
+    "end": 236
+   },
+   {
+    "id": "coronation-oath",
+    "start": 238,
+    "end": 362
+   },
+   {
+    "id": "reminder-2",
+    "start": 238,
+    "end": 362
+   },
+   {
+    "id": "promises-predecessor",
+    "start": 268,
+    "end": 332
+   },
+   {
+    "id": "t5",
+    "start": 349,
+    "end": 362
+   },
+   {
+    "id": "imperial-coronation-prospect-2",
+    "start": 364,
+    "end": 404
+   },
+   {
+    "id": "t2",
+    "start": 393,
+    "end": 404
+   },
+   {
+    "id": "legate-announcement-2",
+    "start": 477,
+    "end": 524
+   },
+   {
+    "id": "t3",
+    "start": 489,
+    "end": 496
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'seines Vorgängers' is a regest-local functional actor; no register candidate in this packet names the predecessor.",
+     "lang": "en"
+    },
+    {
+     "text": "'seines Krönungseides' read as Friedrich's own coronation oath; it could also be read as the predecessor's.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No sender or author role for rv:Communication; the pope is recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a royal election; the election approved by the pope and Friedrich's message about it are not modelled as acts, and the approbation has no concerned object.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The announced dispatch of a legate is an announcement of a future mission without an act type of its own; not extracted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "'stellt ihm die Kaiserkrönung in Aussicht' typed rv:Assurance with qualifier 'in Aussicht'; whether a prospect counts as an assurance needs expert review.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender or author role for rv:Communication.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for a coronation or a coronation oath; the oath is approximated as rv:Assurance.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added <urn:regesta:22713:election> (rf:ActFactoid, rv:Appointment) with evidence \"die Botschaft von seiner Wahl\", reference RI004-002-F000471 rv:Recipient nameInSource \"seiner\", rf:qualifier \"Wahl\"; no electors, no date, no rf:partOf.",
+     "lang": "en"
+    },
+    {
+     "text": "Added rf:refersToAct <urn:regesta:22713:election> to <urn:regesta:22713:approbation>; approbation otherwise unchanged and now attributed to correction-g5.",
+     "lang": "en"
+    },
+    {
+     "text": "Added <urn:regesta:22713:legate-announcement> (rf:ActFactoid, rv:Communication) with evidence \"kündigt die baldige Entsendung eines Legaten an\" and \"Papst Eugen (III.) schreibt an König F(riedrich)\", references E000589 rv:Participant and F000471 rv:Addressee, rf:qualifier \"baldige\", rf:partOf <urn:regesta:22713:letter>. No rv:Mission, no legate actor, no outcome.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "collapsed-act",
+     "severity": "Fehler",
+     "subject": "urn:regesta:22713:approbation",
+     "description": "The pope approbates 'diese Wahl', Friedrich's election, which the passage reports as an earlier act ('die Botschaft von seiner Wahl'). The guidelines require the earlier act as its own act factoid joined by rf:refersToAct from the confirmation. The candidate folds the election into the second evidence selector of the approbation and gives the approbation Friedrich as Recipient, so the earlier act is collapsed into its confirmation.",
+     "proposal": "Add an rf:ActFactoid of type rv:Appointment for the election (Friedrich as rv:Recipient, electors unnamed, no date) with evidence 'die Botschaft von seiner Wahl', and add rf:refersToAct from urn:regesta:22713:approbation to it.",
+     "quote": {
+      "start": 202,
+      "end": 236
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22713",
+     "description": "The announcement of a legate is omitted. It is an act of the letter that the contract can express as a communication part of the letter; modelling it as rv:Mission would overreach, since only the announcement is stated.",
+     "proposal": "Add an rv:Communication factoid (or rv:Assurance) with rf:partOf the letter, the pope as sender reference, Friedrich as rv:Addressee and rf:qualifier 'baldige'.",
+     "quote": {
+      "start": 477,
+      "end": 524
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22713",
+     "description": "The pope reports having heard good things about Friedrich from cardinal priest Oktavian. Oktavian has a register candidate in this packet (RI004-002-O000158) and is not referenced at all. The report is a communication from Oktavian to the pope that the contract can express.",
+     "proposal": "Add an rv:Communication factoid with Oktavian as sender (rv:Participant) and the pope as rv:Addressee, with rf:qualifier 'schon'.",
+     "quote": {
+      "start": 129,
+      "end": 200
+     }
+    },
+    {
+     "category": "type-strength",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22713:imperial-coronation-prospect",
+     "description": "'in Aussicht stellen' is weaker than a Zusicherung. The qualifier 'in Aussicht' preserves the weakening, so the factoid does not overstate; the coronation itself is not given as rf:concerns.",
+     "proposal": "Optionally add rf:concerns to a node labelled 'die Kaiserkrönung'.",
+     "quote": {
+      "start": 364,
+      "end": 404
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22713:letter",
+     "description": "The pope as writer is rv:Participant because the role scheme has no sender role. Consistent with the vocabulary, but the author of a communication is not distinguishable from other participants.",
+     "proposal": "None under the frozen contract.",
+     "quote": {
+      "start": 0,
+      "end": 48
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The election approbated by the pope is collapsed into the approbation instead of being its own earlier act.",
+     "reason": "The passage reports the election as an earlier act ('die Botschaft von seiner Wahl') and then 'approbiert diese Wahl ausdrücklich'. The guidelines require the earlier act as its own act factoid joined by rf:refersToAct from the confirmation; rv:Appointment is the type the run uses for an election (cf. 22730).",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The announcement of a legate is omitted.",
+     "reason": "'kündigt die baldige Entsendung eines Legaten an' is a distinct act of the letter and in scope, but only the announcement is stated; an rv:Mission would assert a sending the passage does not report. The letter's other contents are already modelled as rv:Communication parts of the letter, so the same weak form is safe.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The pope's report of having heard good things from cardinal priest Oktavian is omitted.",
+     "reason": "'als er schon von Kardinalpriester O(ktavian) Gutes über ihn gehört habe' is a subordinate clause explaining the pope's joy, not a dispositive act or a kinship, economic or legal relation; adding it would widen the scope beyond central passages.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add rf:concerns to a node 'die Kaiserkrönung'.",
+     "reason": "The guidelines reserve rf:concerns for a right, thing, place or community; a coronation is none of these, and the qualifier 'in Aussicht' with the evidence already carries the wording.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. zu diesem Schreiben, das Friedrich in Regensburg (Reg. "
+    },
+    {
+     "t": "95",
+     "regest": "22722"
+    },
+    {
+     "t": ") erhielt, Simonsfeld, Jahrbücher 102 f., Unverhau, Approbatio-Reprobatio (Hist Studien 424, 1973) 158 ff. sowie besonders Kempf, Favor apostolicus (Friedrich Barbarossa = WdF 390, 1975) 104 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Jaffé, Mon. Corb. 513 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 382; MG. Const. 1, 193 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 139; JL. 9577."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=32"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-O000158",
+    "de Monticelli, Kardinalpriester von S. Cecilia (nach 2.3.1151─1159, vorher, vor 9.4.1138─1151, Kardinaldiakon von S. Nicola in Carcere Tulliano, dann Viktor IV., kaiserlicher [Gegen-]Papst, <i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-S000504",
+    "Segni (westl. Anagni, ital. Prov. Rom)"
+   ]
+  ]
+ }
+}

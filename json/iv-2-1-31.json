@@ -1,0 +1,260 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-05-00_2_0_4_2_1_31_31",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22658",
+  "identifier": "RI IV,2,1 n. 31",
+  "short": "RI IV,2,1 n. 31",
+  "sort": "004_002_001_000031_0000000031",
+  "start": "1147-06-01",
+  "end": "1147-12-31",
+  "proseYears": [],
+  "lead": "(Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach) schließt mit König Heinrich (VI.), dem Sohn König Konrads III., einen befristeten Vertrag über gewisse Burgen, Dienstleute und Allodialgüter.",
+  "date": [
+   {
+    "t": "1147 (nach Mai)"
+   }
+  ],
+  "place": [],
+  "text": "(Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach) schließt mit König Heinrich (VI.), dem Sohn König Konrads III., einen befristeten Vertrag über gewisse Burgen, Dienstleute und Allodialgüter.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22658:parenthood-heinrich",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22658:parenthood-heinrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-heinrich",
+     "own": true,
+     "evidence": {
+      "start": 78,
+      "end": 127,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22658:> .\nx:parenthood-heinrich a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22658> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"König Heinrich (VI.), dem Sohn König Konrads III.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Heinrich (VI.)",
+      "text": "König Heinrich (VI.) in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22658:parenthood-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 78,
+       "end": 127,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22658:> .\nx:parenthood-heinrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000343> ; rf:nameInSource \"König Heinrich (VI.)\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000343"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrads III.",
+      "text": "König Konrads III. in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22658:parenthood-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 78,
+       "end": 127,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22658:> .\nx:parenthood-heinrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrads III.\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "König Heinrich (VI.)"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "König Konrads III."
+     }
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "parenthood-heinrich",
+    "start": 78,
+    "end": 127
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Contracting party is given disjunctively as '(Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach)'; the only Friedrich candidate in the packet (RI004-002-F000681) is Barbarossa's father, a p_komment candidate, so the identification of 'Friedrich, Herzog von Schwaben' here is unresolved.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a concluded bilateral agreement or treaty ('befristeten Vertrag'); the contract about 'gewisse Burgen, Dienstleute und Allodialgüter' is not extracted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No means to express an alternative (either-or) actor in a reference; assigning both would assert participation of both.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a bilateral agreement or contract (Vertrag).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No representation of an alternative, uncertain actor identification given by the regest itself ('Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach').",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "model-gap-omission",
+     "severity": "Vermerk",
+     "subject": "22658",
+     "description": "The only substantive act of the regest, a bilateral fixed-term contract, is omitted. The contract has no act type for an agreement or treaty, and no way to state an alternative party ('A oder B'). The omission is therefore a model gap rather than an extraction error; forcing Grant or Negotiation would misstate the act.",
+     "proposal": "None under the current contract. With an Agreement act type and a way to express disjunctive actor identity, extract one ActFactoid with both alternatives, Heinrich (VI.) as party, rf:qualifier \"befristeten\" and rf:concerns \"gewisse Burgen, Dienstleute und Allodialgüter\".",
+     "quote": {
+      "start": 0,
+      "end": 206
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The fixed-term contract about castles, Dienstleute and Allodialgüter, the only substantive act, is omitted.",
+     "reason": "'(Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach) schließt ... einen befristeten Vertrag' needs an agreement act type and a way to state the regest's alternative party; the contract has neither. rv:Grant or rv:Negotiation would misstate the act, and a reference to only one of the alternatives would invent an identity. The omission and the comment in the file stand.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Hausmann führt in der Vorbemerkung zu diesem Diplom aus, daß es sich bei dem "
+    },
+    {
+     "t": "avunculus",
+     "i": true
+    },
+    {
+     "t": ", mit dem Heinrich den Vertrag abgeschlossen hat, nicht um seinen Oheim, Herzog Friedrich II. von Schwaben, sondern um seinen älteren Vetter, Friedrich Barbarossa, handeln muß. Der Zeitpunkt dieses Vertragsabschlusses muß auf jeden Fall nach dem Aufbruch Konrads III. zum Kreuzzug (Ende Mai 1147) liegen, da der König sonst unmittelbar davon hätte erfahren müssen. Friedrich Barbarossa dürfte dann wohl erst etwas nach seinem Oheim zum Kreuzzug aufgebrochen sein. - Giesebrecht, Kaiserzeit IV, 326 und 487 sowie Bernhardi, Konrad III. 724 sehen im Vertragspartner des jungen Königs dagegen Gebhard von Sulzbach."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt in einem verlorenen Schreiben König Heinrichs (VI.) an seinen Vater von (1147 Juli/Dezember), DH. (VI.) *3."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=19"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-G000217",
+    "Graf von Sulzbach"
+   ],
+   [
+    "RI004-002-H000343",
+    "(VI.), König, Sohn König Konrads III."
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ]
+  ]
+ }
+}

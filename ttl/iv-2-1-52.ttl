@@ -1,0 +1,110 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1150-09-16_2_0_4_2_1_52_52
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22679> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 52" .
+
+# Friedrich's role as charter witness is out of scope (rv:Witness excludes charter witness lists).
+# The act took place before the king; the vocabulary has no role for the ruler before whom an act
+# is performed, so he is recorded as rv:Participant.
+<urn:regesta:22679:grant-endowment> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:qualifier "Übergabe" ;
+    rf:source <urn:regesta:record:22679> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "vor König Konrad vollzogenen Übergabe der Ausstattung von Eußerthal an das dortige Kloster durch Rapoto, den späteren Bischof von Speyer, und dessen Brüder, Graf Hartmann von Lobdeburg und Graf Otto (Ordo) von Alerheim" ] ;
+    rf:reference <urn:regesta:22679:ref-grant-rapoto> , <urn:regesta:22679:ref-grant-hartmann> , <urn:regesta:22679:ref-grant-otto> , <urn:regesta:22679:ref-grant-kloster> , <urn:regesta:22679:ref-grant-konrad> ;
+    rf:concerns <urn:regesta:22679:ausstattung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22679:ausstattung> a crm:E18_Physical_Thing ;
+    rdfs:label "Ausstattung von Eußerthal" .
+
+<urn:regesta:22679:ref-grant-rapoto> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000015> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Rapoto, den späteren Bischof von Speyer" .
+
+<urn:regesta:22679:ref-grant-hartmann> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000169> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Graf Hartmann von Lobdeburg" .
+
+<urn:regesta:22679:ref-grant-otto> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-O000444> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Graf Otto (Ordo) von Alerheim" .
+
+<urn:regesta:22679:ref-grant-kloster> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000594:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "das dortige Kloster" .
+
+<urn:regesta:22679:ref-grant-konrad> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "König Konrad" .
+
+# Brotherhood is recorded only as stated, between Rapoto and each named brother.
+# No relation between Hartmann and Otto is derived.
+<urn:regesta:22679:kinship-rapoto-hartmann> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:qualifier "Brüder" ;
+    rf:source <urn:regesta:record:22679> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Rapoto, den späteren Bischof von Speyer, und dessen Brüder, Graf Hartmann von Lobdeburg" ] ;
+    rf:reference <urn:regesta:22679:ref-kin1-rapoto> , <urn:regesta:22679:ref-kin1-hartmann> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22679:ref-kin1-rapoto> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000015> ;
+    rf:role rv:Kin ;
+    rf:nameInSource "Rapoto, den späteren Bischof von Speyer" .
+
+<urn:regesta:22679:ref-kin1-hartmann> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000169> ;
+    rf:role rv:Kin ;
+    rf:nameInSource "Graf Hartmann von Lobdeburg" .
+
+<urn:regesta:22679:kinship-rapoto-otto> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:qualifier "Brüder" ;
+    rf:source <urn:regesta:record:22679> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Rapoto, den späteren Bischof von Speyer, und dessen Brüder, Graf Hartmann von Lobdeburg und Graf Otto (Ordo) von Alerheim" ] ;
+    rf:reference <urn:regesta:22679:ref-kin2-rapoto> , <urn:regesta:22679:ref-kin2-otto> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22679:ref-kin2-rapoto> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000015> ;
+    rf:role rv:Kin ;
+    rf:nameInSource "Rapoto, den späteren Bischof von Speyer" .
+
+<urn:regesta:22679:ref-kin2-otto> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-O000444> ;
+    rf:role rv:Kin ;
+    rf:nameInSource "Graf Otto (Ordo) von Alerheim" .
+
+<urn:regesta:actor:RI004-002-R000015> a crm:E21_Person ;
+    rdfs:label "Rapoto, den späteren Bischof von Speyer" .
+
+<urn:regesta:actor:RI004-002-H000169> a crm:E21_Person ;
+    rdfs:label "Graf Hartmann von Lobdeburg" .
+
+<urn:regesta:actor:RI004-002-O000444> a crm:E21_Person ;
+    rdfs:label "Graf Otto (Ordo) von Alerheim" .
+
+<urn:regesta:actor:RI004-002-E000594:community> a crm:E74_Group ;
+    rdfs:label "das dortige Kloster" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrad" .

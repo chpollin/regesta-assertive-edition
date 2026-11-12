@@ -1,0 +1,39 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-11-01_1_0_4_2_1_200_200
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22827> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ;
+    rdfs:label "Herzog (Heinrich) von Sachsen" .
+
+<urn:regesta:actor:RI004-002-B000659> a crm:E21_Person ;
+    rdfs:label "Ritter Bernhard" .
+
+# The earlier accusation and conviction. The execution ordered by Friedrich has no act type in the
+# contract and is reported as a model gap instead of being forced into Judgment or Enactment.
+<urn:regesta:22827:accusation> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22827> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "den Ritter Bernhard, der von Herzog (Heinrich) von Sachsen wegen des Mordes an Graf Hermann von Winzenburg angeklagt und überführt worden war" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000470> ;
+        rf:role rv:Claimant ;
+        rf:nameInSource "Herzog (Heinrich) von Sachsen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-B000659> ;
+        rf:role rv:Respondent ;
+        rf:nameInSource "Ritter Bernhard" ] ;
+    rf:ground "wegen des Mordes an Graf Hermann von Winzenburg" ;
+    rf:qualifier "angeklagt und überführt" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-49> ;
+    rf:verificationStatus rv:unchecked .

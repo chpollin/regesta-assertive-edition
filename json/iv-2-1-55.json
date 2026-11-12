@@ -1,0 +1,880 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1151-00-00_1_0_4_2_1_55_55",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22682",
+  "identifier": "RI IV,2,1 n. 55",
+  "short": "RI IV,2,1 n. 55",
+  "sort": "004_002_001_000055_0000000055",
+  "start": "1151-01-01",
+  "end": "1151-12-31",
+  "proseYears": [
+   1152
+  ],
+  "lead": "Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden , nach dem Welf die Gefangenen zurückerhält und dafür künftig nicht mehr gegen den König kämpfen wird; außerdem erhält Welf auch Reichseinkünfte mit dem Dorf Mertingen.",
+  "date": [
+   {
+    "t": "(Ende 1151/Anfang 1152)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden , nach dem Welf die Gefangenen zurückerhält und dafür künftig nicht mehr gegen den König kämpfen wird; außerdem erhält Welf auch Reichseinkünfte mit dem Dorf Mertingen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22682:peace",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22682:peace",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "peace",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 85,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22682:> .\nx:peace a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22682> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Vermittler",
+      "triple": [
+       "urn:regesta:22682:peace",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22682:peace-ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "peace",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 85,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:peace rf:reference x:peace-ref-friedrich .\nx:peace-ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Mediator .",
+      "role": "Vermittler",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22682:peace",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22682:peace-ref-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "peace",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 85,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:peace rf:reference x:peace-ref-konrad .\nx:peace-ref-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000316> ;\n    rf:nameInSource \"König Konrad (III.)\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf (VI.)",
+      "text": "Herzog Welf (VI.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22682:peace",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22682:peace-ref-welf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "peace",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 85,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:peace rf:reference x:peace-ref-welf .\nx:peace-ref-welf a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000272> ;\n    rf:nameInSource \"Herzog Welf (VI.)\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Frieden",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22682:peace",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 78,
+       "end": 85,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Vermittler ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Herzog Welf (VI.)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22682:no-fighting",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22682:no-fighting",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "no-fighting",
+     "own": true,
+     "evidence": {
+      "start": 88,
+      "end": 187,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22682:> .\nx:no-fighting a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22682> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Welf die Gefangenen zurückerhält und dafür künftig nicht mehr gegen den König kämpfen wird\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-14> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22682:no-fighting",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22682:no-fighting-ref-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "no-fighting",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:no-fighting rf:reference x:no-fighting-ref-konrad .\nx:no-fighting-ref-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000316> ;\n    rf:nameInSource \"König\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf (VI.)",
+      "text": "Herzog Welf (VI.) in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22682:no-fighting",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22682:no-fighting-ref-welf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "no-fighting",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:no-fighting rf:reference x:no-fighting-ref-welf .\nx:no-fighting-ref-welf a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000272> ;\n    rf:nameInSource \"Welf\" ;\n    rf:role rv:Obligor .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22682:no-fighting",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22682:peace"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "no-fighting",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:no-fighting rf:partOf x:peace .\nx:peace a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g3> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Frieden\" ;\n    rf:reference x:peace-ref-friedrich , x:peace-ref-konrad , x:peace-ref-welf ;\n    rf:source <urn:regesta:record:22682> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22682:peace",
+      "objectClaim": "peace",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "künftig",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22682:no-fighting",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 140,
+       "end": 147,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herzog Welf (VI.)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22682:prisoners",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22682:prisoners",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "prisoners",
+     "own": true,
+     "evidence": {
+      "start": 88,
+      "end": 129,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22682:> .\nx:prisoners a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22682> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Welf die Gefangenen zurückerhält\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-14> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf (VI.)",
+      "text": "Herzog Welf (VI.) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22682:prisoners",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22682:prisoners-ref-welf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prisoners",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 129,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:prisoners rf:reference x:prisoners-ref-welf .\nx:prisoners-ref-welf a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000272> ;\n    rf:nameInSource \"Welf\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22682:prisoners",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22682:peace"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prisoners",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 129,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:prisoners rf:partOf x:peace .\nx:peace a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g3> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Frieden\" ;\n    rf:reference x:peace-ref-friedrich , x:peace-ref-konrad , x:peace-ref-welf ;\n    rf:source <urn:regesta:record:22682> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22682:peace",
+      "objectClaim": "peace",
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Herzog Welf (VI.)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22682:revenues",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22682:revenues",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "revenues",
+     "own": true,
+     "evidence": {
+      "start": 189,
+      "end": 253,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22682:> .\nx:revenues a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22682> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"außerdem erhält Welf auch Reichseinkünfte mit dem Dorf Mertingen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf (VI.)",
+      "text": "Herzog Welf (VI.) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22682:revenues",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22682:revenues-ref-welf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "revenues",
+      "own": true,
+      "evidence": {
+       "start": 189,
+       "end": 253,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:revenues rf:reference x:revenues-ref-welf .\nx:revenues-ref-welf a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000272> ;\n    rf:nameInSource \"Welf\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Dorf Mertingen",
+      "text": "betrifft Dorf Mertingen",
+      "triple": [
+       "urn:regesta:22682:revenues",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22682:mertingen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "revenues",
+      "own": true,
+      "evidence": {
+       "start": 189,
+       "end": 253,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:revenues rf:concerns x:mertingen .\nx:mertingen a crm:E53_Place ;\n    rdfs:label \"Dorf Mertingen\" .",
+      "object": "urn:regesta:22682:mertingen",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (Reichseinkünfte)",
+      "text": "betrifft Einkünfterecht (Reichseinkünfte)",
+      "triple": [
+       "urn:regesta:22682:revenues",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22682:reichseinkuenfte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "revenues",
+      "own": true,
+      "evidence": {
+       "start": 189,
+       "end": 253,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:revenues rf:concerns x:reichseinkuenfte .\nx:reichseinkuenfte a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"Reichseinkünfte\" .",
+      "object": "urn:regesta:22682:reichseinkuenfte",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22682:revenues",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22682:peace"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "revenues",
+      "own": true,
+      "evidence": {
+       "start": 189,
+       "end": 253,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22682:> .\nx:revenues rf:partOf x:peace .\nx:peace a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g3> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"Frieden\" ;\n    rf:reference x:peace-ref-friedrich , x:peace-ref-konrad , x:peace-ref-welf ;\n    rf:source <urn:regesta:record:22682> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22682:peace",
+      "objectClaim": "peace",
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Herzog Welf (VI.)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Dorf Mertingen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Einkünfterecht (Reichseinkünfte)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "peace",
+    "start": 0,
+    "end": 85
+   },
+   {
+    "id": "t1",
+    "start": 78,
+    "end": 85
+   },
+   {
+    "id": "no-fighting",
+    "start": 88,
+    "end": 187
+   },
+   {
+    "id": "prisoners",
+    "start": 88,
+    "end": 129
+   },
+   {
+    "id": "t2",
+    "start": 140,
+    "end": 147
+   },
+   {
+    "id": "revenues",
+    "start": 189,
+    "end": 253
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for a concluded or mediated peace settlement; the main act 'vermittelt ... einen Frieden' is typed rv:Negotiation, which understates the conclusion the regest reports.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Prisoners returned to Welf cannot be modelled as rf:concerns (persons are not E18 things); the provision carries Welf as Beneficiary only.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Unresolved reading: whether 'außerdem erhält Welf auch Reichseinkünfte mit dem Dorf Mertingen' is a term of the peace (modelled with rf:partOf) or a separate act; the grantor is not named.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a concluded peace or settlement.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No relation for consideration between provisions (one term in return for another).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "In <urn:regesta:22682:peace> changed rf:factoidType rv:Negotiation to rv:Enactment and added rf:qualifier 'Frieden'; changed the roles of peace-ref-konrad and peace-ref-welf from rv:Negotiator to rv:Participant; kept Friedrich as rv:Mediator, the evidence and the provisions' rf:partOf; updated the Turtle comment.",
+     "lang": "en"
+    },
+    {
+     "text": "In <urn:regesta:22682:revenues> changed rf:factoidType rv:Grant to rv:Enactment, kept rf:partOf the peace, the evidence and rf:concerns; changed revenues-ref-welf from rv:Recipient to rv:Beneficiary; rewrote the comment as a provision while keeping the separate-act reading of 'außerdem' open for expert review.",
+     "lang": "en"
+    },
+    {
+     "text": "Attributed the two changed factoids to correction-g3; prisoners and no-fighting keep extraction-batch-14.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "act-type",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22682:peace",
+     "description": "The regest reports a peace mediated with stated terms, not merely a negotiation. rv:Negotiation is defined as not establishing a conclusion, so the factoid loses that a peace was reached, and the provisions then hang off an act that by definition has no outcome. rv:Enactment (a legal settlement made) would express the concluded peace within the contract; Friedrich as rv:Mediator fits either type.",
+     "proposal": "Type the peace as rv:Enactment with rf:qualifier \"Frieden\", keep Friedrich as rv:Mediator and Konrad and Welf as parties; report the missing peace-settlement type as model gap.",
+     "quote": {
+      "start": 0,
+      "end": 85
+     }
+    },
+    {
+     "category": "provision-read-as-performance",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22682:revenues",
+     "description": "The revenue clause is attached by rf:partOf to the peace yet typed as a performed rv:Grant, while the two other terms of the same peace are rv:Enactment. Either it is a term of the peace, then it is a provision (rv:Enactment), or it is a separate grant introduced by außerdem, then rf:partOf overreaches. The candidate's own comment marks the question as unresolved, but the triples assert one reading.",
+     "proposal": "Drop rf:partOf and keep a separate rv:Grant, or keep rf:partOf and type it rv:Enactment; do not combine both.",
+     "quote": {
+      "start": 189,
+      "end": 253
+     }
+    },
+    {
+     "category": "lost-relation",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22682:no-fighting",
+     "description": "The reciprocity (dafür) between the return of the prisoners and Welf's undertaking is only implicit in the shared evidence span. The contract has no property linking two provisions as consideration.",
+     "proposal": "Optionally keep rf:qualifier \"dafür\"; report as model gap.",
+     "quote": {
+      "start": 88,
+      "end": 187
+     }
+    },
+    {
+     "category": "concerns",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22682:mertingen",
+     "description": "Mertingen is typed crm:E53_Place, while the regest has Welf receive the village together with the revenues, as an object of transfer. A crm:E18_Physical_Thing for the village would be closer.",
+     "proposal": "Type the village as crm:E18_Physical_Thing labelled \"Dorf Mertingen\".",
+     "quote": {
+      "start": 215,
+      "end": 253
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "rv:Negotiation understates a mediated peace with stated terms.",
+     "reason": "'Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden, nach dem Welf ...' reports a peace brokered with its terms, while rv:Negotiation is defined as not establishing a conclusion, so the provisions hang off an act that by definition has no outcome. rv:Enactment, a settlement made without its observance being established, expresses it within the contract and matches the treatment of the treaty in 22668 of this group. The regest does not say that Konrad and Welf negotiated, so the parties take rv:Participant.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The revenue clause combines rf:partOf the peace with a performed rv:Grant.",
+     "reason": "'außerdem erhält Welf auch Reichseinkünfte mit dem Dorf Mertingen' stands in the same present-tense series as 'nach dem Welf die Gefangenen zurückerhält', which the candidate types as a provision; 'auch' links it to the terms of the peace. The guidelines make a provision an act of enactment that does not establish its performance, so the safe reading keeps rf:partOf and types the clause as a provision, without asserting a grantor or a completed transfer.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Reciprocity 'dafür' between the two provisions is not represented.",
+     "reason": "'und dafür künftig nicht mehr gegen den König kämpfen wird': the contract has no property for consideration between provisions, and rf:qualifier is for wording that qualifies type or time, not for a relation between factoids. The word stays in the evidence.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Mertingen typed crm:E53_Place instead of crm:E18_Physical_Thing.",
+     "reason": "'Reichseinkünfte mit dem Dorf Mertingen' can be read as the place the revenues attach to or as an estate; the regest does not decide it, and E53 with the label 'Dorf Mertingen' asserts nothing the passage does not carry.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 800; zur Datierung des Friedensschlusses vgl. jetzt Feldmann, Welf VI. 28. - Zur weiteren Geschichte der genannten Verleihungen an Welf vgl. Regg. "
+    },
+    {
+     "t": "135",
+     "regest": "22762"
+    },
+    {
+     "t": " und "
+    },
+    {
+     "t": "465"
+    },
+    {
+     "t": ". "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " B.-Niederkorn-Hruza, Reg. 698 möchten den von Friedrich vermittelten Frieden zwischen König Konrad III. und Herzog Welf VI. schon zu der Zusammenkunft in Langenau (siehe unser Reg. 50) datieren."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Hist. Welf. c. 28, ed. König, Schwäb. Chroniken d. Stauferzeit 1 (1938) 56."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=22"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-M000860",
+    "Mertingen (südl. Donauwörth, Ldkr. Donau-Ries, bayer. Reg.-Bez. Schwaben)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ]
+  ]
+ }
+}

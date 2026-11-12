@@ -1,0 +1,502 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-08-00_1_0_4_2_1_131_131",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22758",
+  "identifier": "RI IV,2,1 n. 131",
+  "short": "RI IV,2,1 n. 131",
+  "sort": "004_002_001_000131_0000000131",
+  "start": "1152-08-01",
+  "end": "1152-08-31",
+  "proseYears": [],
+  "lead": "Friedrich entsendet seine Cousine (Richildis) , die mit König Alfons VII. von Kastilien (rege Hispanorum) verlobt ist, mit großem Gefolge nach Spanien.",
+  "date": [
+   {
+    "t": "(1152 August)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Speyer"
+   }
+  ],
+  "text": "Friedrich entsendet seine Cousine (Richildis) , die mit König Alfons VII. von Kastilien (rege Hispanorum) verlobt ist, mit großem Gefolge nach Spanien.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22758:kinship-cousine",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22758:kinship-cousine",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-cousine",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 45,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22758:> .\nx:kinship-cousine a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22758> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich entsendet seine Cousine (Richildis)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22758:kinship-cousine",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-cousine",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22758:> .\nx:kinship-cousine rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seine Cousine (Richildis)",
+      "text": "seine Cousine (Richildis) in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22758:kinship-cousine",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-cousine",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 45,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22758:> .\nx:kinship-cousine rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000585> ; rf:nameInSource \"seine Cousine (Richildis)\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000585"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Cousine",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22758:kinship-cousine",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 26,
+       "end": 33,
+       "ambiguous": false
+      },
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "seine Cousine (Richildis)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22758:mission-spanien",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22758:mission-spanien",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mission-spanien",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 151,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22758:> .\nx:mission-spanien a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22758> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich entsendet seine Cousine (Richildis) , die mit König Alfons VII. von Kastilien (rege Hispanorum) verlobt ist, mit großem Gefolge nach Spanien.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22758:mission-spanien",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-spanien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 151,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22758:> .\nx:mission-spanien rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seine Cousine (Richildis)",
+      "text": "seine Cousine (Richildis) in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22758:mission-spanien",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-spanien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 151,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22758:> .\nx:mission-spanien rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000585> ; rf:nameInSource \"seine Cousine (Richildis)\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000585"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Spanien",
+      "text": "betrifft Spanien",
+      "triple": [
+       "urn:regesta:22758:mission-spanien",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22758:place-spanien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-spanien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 151,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22758:> .\nx:mission-spanien rf:concerns x:place-spanien .\nx:place-spanien a crm:E53_Place ;\n    rdfs:label \"Spanien\" .",
+      "object": "urn:regesta:22758:place-spanien",
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Entsendung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Gesandter ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "seine Cousine (Richildis)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Spanien"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "mission-spanien",
+    "start": 0,
+    "end": 151
+   },
+   {
+    "id": "kinship-cousine",
+    "start": 0,
+    "end": 45
+   },
+   {
+    "id": "t1",
+    "start": 26,
+    "end": 33
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No type for a betrothal (verlobt); the betrothal of Richildis to King Alfons VII. of Castile is not encoded, since rv:Marriage would overreach and rv:Negotiation does not fit a concluded betrothal.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender role for a mission; Friedrich recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No type for betrothal (Verlobung) as a state or act distinct from marriage.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No sender role for a Mission.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "22758",
+     "description": "The passage states a betrothal between Richildis and King Alfons VII. of Castile. The contract has no betrothal type, and rv:Marriage would overreach, so the omission is a model gap; but the consequence is that the central kinship-relevant statement of the regest and its second actor are lost entirely.",
+     "proposal": "Record as model gap with high priority; once a betrothal type exists, add a StateFactoid with Richildis and Alfons (A000646) as parties and 'verlobt' as qualifier.",
+     "quote": {
+      "start": 48,
+      "end": 117
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22758:mission-spanien",
+     "description": "Friedrich as sender is rv:Participant for lack of a sender role. Richildis as rv:Envoy fits the definition 'wer entsandt wird' literally, though she is sent as bride, not to carry a message. 'mit großem Gefolge' is not kept.",
+     "proposal": "Optionally add rf:qualifier \"mit großem Gefolge\"; record the sender role as model gap.",
+     "quote": {
+      "start": 0,
+      "end": 45
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The betrothal of Richildis to King Alfons VII. and Alfons himself are not encoded.",
+     "reason": "'die mit König Alfons VII. von Kastilien (rege Hispanorum) verlobt ist' states a betrothal; the vocabulary has no betrothal type, rv:Marriage would overreach, and rv:Negotiation concerns negotiations, not a concluded betrothal. Without a factoid, Alfons (candidate A000646) cannot be referenced. High-priority gap for the next model version.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Sender as rv:Participant; optionally add rf:qualifier 'mit großem Gefolge'.",
+     "reason": "The sender role is a recorded model gap. 'mit großem Gefolge' qualifies neither type nor time and stays in the evidence selector; the contract does not require it as a literal.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. dazu Simonsfeld, Jahrbücher 127 f. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (1991):"
+    },
+    {
+     "t": " Die hier als Cousine Friedrichs bezeichnete Richilde war nach Bouquet, Recueil 12, 363 Anm. "
+    },
+    {
+     "t": "a filia Vladislai IL Poloniae Ducis et Christinae Frederici sororis",
+     "i": true
+    },
+    {
+     "t": ". Geht man dieser Angabe genauer nach, so ergibt sich, daß Wladislaw II. von Polen in erster Ehe mit Agnes, einer Tochter Markgraf Leopolds III. von Osterreich verheiratet war, vgl. dazu Wutke, Stamm- und Übersichtstafeln der Schlesischen Piasten (bezeichnet Agnes als Tochter Herzog Leopolds V. von Österreich, vgl. dazu Lechner, Babenberger, Stammtafel, der allerdings den Tod Agnes' wohl irrig mit „nach 1157“ angibt - bereits um 1153 vermählte sich Wladislaw II. zum zweitenmal, vgl. dazu Reg. 204). Der Begriff „Cousine“ (Tochter der Tante) trifft somit hier exakt zu."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt im Schreiben des Notars Heinrich an Wibald, ed. Jaffé, Mon. Corb. 522 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 391."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=46"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000426",
+    "Tochter Markgraf Leopolds III. von Österreich und Gemahlin Herzog Wladislaws II. von Polen"
+   ],
+   [
+    "RI004-002-A000646",
+    "VII. (<i>beim Regest irrtümlich: II.</i>), König von Kastilien"
+   ],
+   [
+    "RI004-002-B001186",
+    "Bopporn (<i>heute:</i> Buborn, bei Offenbach-Hundheim am Glan, nordnordwestl. Kaiserslautern, Ldkr. Kusel, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-C000666",
+    "Gemahlin Herzog Wladislaws II. von Polen und Tochter Markgraf Albrechts des Bären"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-K000107",
+    "Kastilien (Spanien)"
+   ],
+   [
+    "RI004-002-L000378",
+    "(V.), Herzog von Österreich und Steiermark"
+   ],
+   [
+    "RI004-002-L000380",
+    "III., Markgraf von Österreich"
+   ],
+   [
+    "RI004-002-R000585",
+    "Cousine, bezeichnet auch (<i>irrtümlich!</i>) als Nichte Friedrich Barbarossas, Braut, dann Gemahlin, später Witwe König Alfons VII. von Kastilien, dann Gräfin von der Provence"
+   ],
+   [
+    "RI004-002-S000967",
+    "Speyer (am Rhein, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000744",
+    "II. (der Vertriebene), Herzog von Polen"
+   ]
+  ]
+ }
+}

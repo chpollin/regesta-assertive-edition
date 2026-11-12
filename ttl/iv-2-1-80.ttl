@@ -1,0 +1,59 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-04-00_2_0_4_2_1_80_80
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22707> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-L000452:community> a crm:E74_Group ;
+    rdfs:label "Liesborn (ecclesie sanctorum Cosme et Damiani in Lisborn)" .
+
+<urn:regesta:actor:RI004-002-M001332:community> a crm:E74_Group ;
+    rdfs:label "St. Maria in Überwasser zu Münster (ecclesie sancte Marie in Monasterio)" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrads (III.)" .
+
+<urn:regesta:22707:goods-remagen> a crm:E18_Physical_Thing ;
+    rdfs:label "im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien)" .
+
+<urn:regesta:22707:place-lohrsdorf> a crm:E53_Place ; rdfs:label "Lohrsdorf (Lorstorp)" .
+<urn:regesta:22707:place-gimersheim> a crm:E53_Place ; rdfs:label "Gimersheim" .
+<urn:regesta:22707:place-green> a crm:E53_Place ; rdfs:label "Green (Grien)" .
+
+<urn:regesta:22707:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22707> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt den Klöstern Liesborn (ecclesie sanctorum Cosme et Damiani in Lisborn) und St. Maria in Überwasser zu Münster (ecclesie sancte Marie in Monasterio) in Nachahmung König Konrads (III.) ihre im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000452:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "Liesborn" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M001332:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "St. Maria in Überwasser zu Münster" ] ;
+    rf:concerns <urn:regesta:22707:goods-remagen> , <urn:regesta:22707:place-lohrsdorf> ,
+        <urn:regesta:22707:place-gimersheim> , <urn:regesta:22707:place-green> ;
+    rf:refersToAct <urn:regesta:22707:earlier-act-konrad> ;
+    rf:qualifier "in Nachahmung" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22707:earlier-act-konrad> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22707> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "in Nachahmung König Konrads (III.)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+        rf:role rv:Grantor ; rf:nameInSource "König Konrads (III.)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .

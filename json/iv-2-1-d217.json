@@ -1,0 +1,434 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-00-00_1_0_4_2_1_217_D217",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22844",
+  "identifier": "RI IV,2,1 n. D217",
+  "short": "RI IV,2,1 n. D217",
+  "sort": "004_002_001_000217_000000D217",
+  "start": "1153-01-01",
+  "end": "1153-12-31",
+  "proseYears": [
+   1154
+  ],
+  "lead": "Friedrich schickt ein Schreiben an die Bewohner von Tortona , in dem er sie seines Schutzes (homines, qui erant sub eius tutella et defensione, sicut in litteris suis mandaveraf) versichert.",
+  "date": [
+   {
+    "t": "(1153 Sommer oder spätestens 1154 Frühjahr)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich schickt ein Schreiben an die Bewohner von Tortona , in dem er sie seines Schutzes (homines, qui erant sub eius tutella et defensione, sicut in litteris suis mandaveraf) versichert.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22844:letter",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22844:letter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "letter",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 59,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22844:> .\nx:letter a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22844> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schickt ein Schreiben an die Bewohner von Tortona\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-50> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22844:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 59,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22844:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die Bewohner von Tortona",
+      "text": "die Bewohner von Tortona in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22844:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 59,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22844:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-T000382:community> ; rf:nameInSource \"die Bewohner von Tortona\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-T000382:community"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schreiben"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "die Bewohner von Tortona"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22844:assurance",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22844:assurance",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "assurance",
+     "own": true,
+     "evidence": {
+      "start": 62,
+      "end": 189,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22844:> .\nx:assurance a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22844> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"in dem er sie seines Schutzes (homines, qui erant sub eius tutella et defensione, sicut in litteris suis mandaveraf) versichert\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-50> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22844:assurance",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 62,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22844:> .\nx:assurance rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"er\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die Bewohner von Tortona",
+      "text": "die Bewohner von Tortona in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22844:assurance",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 62,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22844:> .\nx:assurance rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-T000382:community> ; rf:nameInSource \"sie\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-T000382:community"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Schutzrecht (seines Schutzes)",
+      "text": "betrifft Schutzrecht (seines Schutzes)",
+      "triple": [
+       "urn:regesta:22844:assurance",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22844:protection-right"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 62,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22844:> .\nx:assurance rf:concerns x:protection-right .\nx:protection-right a crm:E30_Right ;\n    crm:P2_has_type rv:Protection ;\n    rdfs:label \"seines Schutzes\" .",
+      "object": "urn:regesta:22844:protection-right",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22844:assurance",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22844:letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 62,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22844:> .\nx:assurance rf:partOf x:letter .\nx:letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-50> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schickt ein Schreiben an die Bewohner von Tortona\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-T000382:community> ; rf:nameInSource \"die Bewohner von Tortona\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:22844> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22844:letter",
+      "objectClaim": "letter",
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "die Bewohner von Tortona"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Schutzrecht (seines Schutzes)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "letter",
+    "start": 0,
+    "end": 59
+   },
+   {
+    "id": "assurance",
+    "start": 62,
+    "end": 189
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No sender role for rv:Communication; the issuer of the letter is given rv:Grantor (Aussteller)",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The quoted Latin 'homines, qui erant sub eius tutella et defensione' could support an existing protection state, which was not extracted to avoid inferring a state from an assurance",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "structure",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22844:assurance",
+     "description": "The assurance is rf:partOf the Communication. rf:partOf is meant for provisions of a main act; using the letter as main act is defensible. The Latin clause also says the people were under his protection, a state the extractor leaves inside the evidence, which is appropriate for a narrative quotation.",
+     "proposal": "No change.",
+     "quote": {
+      "start": 93,
+      "end": 177
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur zeitlichen Einordnung vgl. Hofmeister, a. a. O. 128 f., der als terminus ante quem den Spruch über die Leistungen der Vasallen der Kirche von Vercelli anläßlich der Romfahrt, ed. Scheffer-Boichorst, Zur Gesch. d. XII. und XIII. Jahrhunderts (Hist. Stud. 8, 1897) 21 f., vom 15. Mai 1154 anführt, aber nicht ausschließen kann, daß das verlorene Schreiben schon 1153 (s. Reg. "
+    },
+    {
+     "t": "195",
+     "regest": "22822"
+    },
+    {
+     "t": ") abgeschickt wurde. - Wohl dem Überbringer dieses Schreibens leistete der Bischof den Treueid, schworen die Konsuln für sich und ihre Stadt und wurde das Fodrum entrichtet, vgl. Hofmeister, a. a. O. 130."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Deperditum; erwähnt in De Ruina civ. Terd., cap. 4 ed. Hofmeister, NA 43 (1922) 147."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=78"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-R000909",
+    "Romzug, Krönungszug"
+   ],
+   [
+    "RI004-002-T000367",
+    "Tortona (an der Scrivia, ital. Prov. Alessandria)"
+   ],
+   [
+    "RI004-002-T000377",
+    "Bischof"
+   ],
+   [
+    "RI004-002-T000379",
+    "Konsuln"
+   ],
+   [
+    "RI004-002-T000382",
+    "Bewohner, Tortonesen"
+   ],
+   [
+    "RI004-002-V000208",
+    "Vasallen der Kirche bzw. des Bischofs"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,93 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-07-00_7_0_4_2_1_124_124
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22751> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 124" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-C000861:community> a crm:E74_Group ;
+    rdfs:label "bischöflichen Kirche von Como" .
+
+<urn:regesta:actor:RI004-002-A001103> a crm:E21_Person ;
+    rdfs:label "Bischof Ardicios von Como" .
+
+# The restitution returns the rights; it does not establish that the places were again under the
+# church's lordship afterwards. The royal reservation stays as exception wording.
+<urn:regesta:22751:restitution> a rf:ActFactoid ;
+    rf:factoidType rv:Restitution ;
+    rf:source <urn:regesta:record:22751> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich stellt zu seinem und seiner Eltern Seelenheil und auf Intervention und Bitten Bischof Ardicios von Como der bischöflichen Kirche von Como vorbehaltlich des königlichen Rechts den districtus und das Fodrum folgender Orte, die sich der Herrschaft der Kirche von Como infolge von Kämpfen und beständigen Unruhen entzogen hatten, zurück" ] ,
+        [ a oa:TextQuoteSelector ;
+        oa:exact "Olgiate Comasco (Oglate), Casanova (Canorua), Albiolo, Gaggino (Cazinum), Fino (Finius), Bregnano (Bregniano) und Caversaccio (Cauerzasi)" ] ;
+    rf:reference <urn:regesta:22751:ref-restitution-friedrich> ,
+        <urn:regesta:22751:ref-restitution-church> ,
+        <urn:regesta:22751:ref-restitution-ardicio> ;
+    rf:concerns <urn:regesta:22751:right-districtus> ,
+        <urn:regesta:22751:right-fodrum> ,
+        <urn:regesta:22751:place-olgiate> ,
+        <urn:regesta:22751:place-casanova> ,
+        <urn:regesta:22751:place-albiolo> ,
+        <urn:regesta:22751:place-gaggino> ,
+        <urn:regesta:22751:place-fino> ,
+        <urn:regesta:22751:place-bregnano> ,
+        <urn:regesta:22751:place-caversaccio> ;
+    rf:ground "zu seinem und seiner Eltern Seelenheil" ;
+    rf:exception "vorbehaltlich des königlichen Rechts" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22751:ref-restitution-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22751:ref-restitution-church> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000861:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "bischöflichen Kirche von Como" .
+
+<urn:regesta:22751:ref-restitution-ardicio> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A001103> ;
+    rf:role rv:Petitioner ;
+    rf:nameInSource "Bischof Ardicios von Como" .
+
+<urn:regesta:22751:right-districtus> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "den districtus" .
+
+<urn:regesta:22751:right-fodrum> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "das Fodrum" .
+
+<urn:regesta:22751:place-olgiate> a crm:E53_Place ;
+    rdfs:label "Olgiate Comasco (Oglate)" .
+
+<urn:regesta:22751:place-casanova> a crm:E53_Place ;
+    rdfs:label "Casanova (Canorua)" .
+
+<urn:regesta:22751:place-albiolo> a crm:E53_Place ;
+    rdfs:label "Albiolo" .
+
+<urn:regesta:22751:place-gaggino> a crm:E53_Place ;
+    rdfs:label "Gaggino (Cazinum)" .
+
+<urn:regesta:22751:place-fino> a crm:E53_Place ;
+    rdfs:label "Fino (Finius)" .
+
+<urn:regesta:22751:place-bregnano> a crm:E53_Place ;
+    rdfs:label "Bregnano (Bregniano)" .
+
+<urn:regesta:22751:place-caversaccio> a crm:E53_Place ;
+    rdfs:label "Caversaccio (Cauerzasi)" .

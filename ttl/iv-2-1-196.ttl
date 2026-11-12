@@ -1,0 +1,82 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-09-00_1_0_4_2_1_196_196
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22823> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 196" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-H000498> a crm:E21_Person ;
+    rdfs:label "Heinrich von Bayern" .
+
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ;
+    rdfs:label "Heinrich von Sachsen" .
+
+<urn:regesta:actor:RI004-002-A000934> a crm:E21_Person ;
+    rdfs:label "Bischof Anselm von Havelberg" .
+
+<urn:regesta:actor:RI004-002-A000625> a crm:E21_Person ;
+    rdfs:label "Graf Alexander (von Gravina) von Apulien" .
+
+<urn:regesta:actor:RI004-002-M000374> a crm:E21_Person ;
+    rdfs:label "oströmischen Kaiser Manuel" .
+
+<urn:regesta:actor:RI004-002-W000509> a crm:E21_Person ;
+    rdfs:label "Gwilhelmo Siculo" .
+
+<urn:regesta:actor:RI004-002-R000806> a crm:E21_Person ;
+    rdfs:label "Rogerio" .
+
+<urn:regesta:22823:dispute-dukes> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22823> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Streites der beiden Herzoge (Heinrich von Bayern und Heinrich von Sachsen )" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:role rv:Participant ; rf:nameInSource "Heinrich von Bayern" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Participant ; rf:nameInSource "Heinrich von Sachsen" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22823:divorce> a rf:ActFactoid ;
+    rf:factoidType rv:MarriageDissolution ;
+    rf:source <urn:regesta:record:22823> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nach seiner erst kürzlich erfolgten Scheidung (Reg. 167)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Spouse ; rf:nameInSource "Friedrich" ] ;
+    rf:qualifier "erst kürzlich erfolgten" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22823:mission-manuel> a rf:ActFactoid ;
+    rf:factoidType rv:Mission ;
+    rf:source <urn:regesta:record:22823> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "sendet er deshalb und wegen eines Vorgehens gegen Sizilien" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Bischof Anselm von Havelberg und Graf Alexander (von Gravina) von Apulien" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "an den oströmischen Kaiser Manuel" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000934> ; rf:role rv:Envoy ; rf:nameInSource "Bischof Anselm von Havelberg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000625> ; rf:role rv:Envoy ; rf:nameInSource "Graf Alexander (von Gravina) von Apulien" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000374> ; rf:role rv:Addressee ; rf:nameInSource "oströmischen Kaiser Manuel" ] ;
+    rf:ground "da er nach seiner erst kürzlich erfolgten Scheidung (Reg. 167) an eine neue Heirat denkt" ,
+        "wegen eines Vorgehens gegen Sizilien" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22823:parenthood-roger-wilhelm> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22823> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "pro Gwilhelmo Siculo, qui patre suo Rogerio noviter defuncto successerat" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000806> ; rf:role rv:Parent ; rf:nameInSource "Rogerio" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000509> ; rf:role rv:Child ; rf:nameInSource "Gwilhelmo Siculo" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .

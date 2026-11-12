@@ -1,0 +1,853 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-12-28_3_0_4_2_1_151_151",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22778",
+  "identifier": "RI IV,2,1 n. 151",
+  "short": "RI IV,2,1 n. 151",
+  "sort": "004_002_001_000151_0000000151",
+  "start": "1152-12-28",
+  "end": "1152-12-28",
+  "proseYears": [],
+  "lead": "Friedrich befiehlt seinem Ministerialen H. von Thiel (Tiela) auf Klagen des Abtes und der Brüder der Kirche von Floreffe, ein zur Verzollung festgehaltenes Schiff dieses Stiftes freizugeben und derartige Übergriffe nicht zu wiederholen. - Vielleicht von Wibald verfaßt.",
+  "date": [
+   {
+    "t": "(1152 Dezember 28)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Trier?)"
+   }
+  ],
+  "text": "Friedrich befiehlt seinem Ministerialen H. von Thiel (Tiela) auf Klagen des Abtes und der Brüder der Kirche von Floreffe, ein zur Verzollung festgehaltenes Schiff dieses Stiftes freizugeben und derartige Übergriffe nicht zu wiederholen. - Vielleicht von Wibald verfaßt. Conquestus est nobis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22778:order-release",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22778:order-release",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "order-release",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 189,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22778:> .\nx:order-release a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22778> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich befiehlt seinem Ministerialen H. von Thiel (Tiela) auf Klagen des Abtes und der Brüder der Kirche von Floreffe, ein zur Verzollung festgehaltenes Schiff dieses Stiftes freizugeben\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22778:order-release",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22778:order-release:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "order-release",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:order-release rf:reference x:order-release:ref-friedrich .\nx:order-release:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "H. von Thiel (Tiela)",
+      "text": "H. von Thiel (Tiela) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22778:order-release",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22778:order-release:ref-h-thiel"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "order-release",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:order-release rf:reference x:order-release:ref-h-thiel .\nx:order-release:ref-h-thiel a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000006> ;\n    rf:nameInSource \"H. von Thiel (Tiela)\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000006"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kirche von Floreffe",
+      "text": "Kirche von Floreffe in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22778:order-release",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22778:order-release:ref-floreffe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "order-release",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:order-release rf:reference x:order-release:ref-floreffe .\nx:order-release:ref-floreffe a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000201:community> ;\n    rf:nameInSource \"Kirche von Floreffe\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000201:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "ein zur Verzollung festgehaltenes Schiff dieses Stiftes",
+      "text": "betrifft ein zur Verzollung festgehaltenes Schiff dieses Stiftes",
+      "triple": [
+       "urn:regesta:22778:order-release",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22778:thing-ship"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "order-release",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:order-release rf:concerns x:thing-ship .\nx:thing-ship a crm:E18_Physical_Thing ;\n    rdfs:label \"ein zur Verzollung festgehaltenes Schiff dieses Stiftes\" .",
+      "object": "urn:regesta:22778:thing-ship",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22778:order-release",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22778:complaint"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "order-release",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:order-release rf:refersToAct x:complaint .\nx:complaint a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf Klagen des Abtes und der Brüder der Kirche von Floreffe\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:reference x:complaint:ref-abbot , x:complaint:ref-brothers ;\n    rf:source <urn:regesta:record:22778> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22778:complaint",
+      "objectClaim": "complaint",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "auf Klagen des Abtes und der Brüder der Kirche von Floreffe",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22778:order-release",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 61,
+       "end": 120,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "H. von Thiel (Tiela)"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Kirche von Floreffe"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "ein zur Verzollung festgehaltenes Schiff dieses Stiftes"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22778:prohibition",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22778:prohibition",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "prohibition",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 60,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22778:> .\nx:prohibition a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22778> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich befiehlt seinem Ministerialen H. von Thiel (Tiela)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22778:prohibition",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22778:prohibition:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 60,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:prohibition rf:reference x:prohibition:ref-friedrich .\nx:prohibition:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "H. von Thiel (Tiela)",
+      "text": "H. von Thiel (Tiela) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22778:prohibition",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22778:prohibition:ref-h-thiel"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 60,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:prohibition rf:reference x:prohibition:ref-h-thiel .\nx:prohibition:ref-h-thiel a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000006> ;\n    rf:nameInSource \"H. von Thiel (Tiela)\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000006"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22778:prohibition",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22778:order-release"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 60,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:prohibition rf:partOf x:order-release .\nx:order-release a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:concerns x:thing-ship ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich befiehlt seinem Ministerialen H. von Thiel (Tiela) auf Klagen des Abtes und der Brüder der Kirche von Floreffe, ein zur Verzollung festgehaltenes Schiff dieses Stiftes freizugeben\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:ground \"auf Klagen des Abtes und der Brüder der Kirche von Floreffe\" ;\n    rf:reference x:order-release:ref-floreffe , x:order-release:ref-friedrich , x:order-release:ref-h-thiel ;\n    rf:refersToAct x:complaint ;\n    rf:source <urn:regesta:record:22778> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22778:order-release",
+      "objectClaim": "order-release",
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22778:prohibition",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-2",
+      "own": true,
+      "evidence": {
+       "start": 194,
+       "end": 235,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:prohibition rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"derartige Übergriffe nicht zu wiederholen\" ] .",
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8",
+       "k12"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k9",
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k10",
+       "k12"
+      ],
+      "text": "H. von Thiel (Tiela)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k11",
+       "k12"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22778:complaint",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22778:complaint",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "complaint",
+     "own": true,
+     "evidence": {
+      "start": 61,
+      "end": 120,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22778:> .\nx:complaint a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22778> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf Klagen des Abtes und der Brüder der Kirche von Floreffe\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k13"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abtes",
+      "text": "Abtes in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22778:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22778:complaint:ref-abbot"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 61,
+       "end": 120,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:complaint rf:reference x:complaint:ref-abbot .\nx:complaint:ref-abbot a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000203> ;\n    rf:nameInSource \"Abtes\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000203"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Brüder",
+      "text": "Brüder in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22778:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22778:complaint:ref-brothers"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 61,
+       "end": 120,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:complaint rf:reference x:complaint:ref-brothers .\nx:complaint:ref-brothers a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000204:community> ;\n    rf:nameInSource \"Brüder\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000204:community"
+      ],
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Abtes"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Brüder"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22778:possession-ship",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22778:possession-ship",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "possession-ship",
+     "own": true,
+     "evidence": {
+      "start": 97,
+      "end": 177,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22778:> .\nx:possession-ship a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22778> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Kirche von Floreffe, ein zur Verzollung festgehaltenes Schiff dieses Stiftes\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kirche von Floreffe",
+      "text": "Kirche von Floreffe in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22778:possession-ship",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22778:possession-ship:ref-floreffe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "possession-ship",
+      "own": true,
+      "evidence": {
+       "start": 97,
+       "end": 177,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:possession-ship rf:reference x:possession-ship:ref-floreffe .\nx:possession-ship:ref-floreffe a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000201:community> ;\n    rf:nameInSource \"dieses Stiftes\" ;\n    rf:role rv:Possessor .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000201:community"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "ein zur Verzollung festgehaltenes Schiff dieses Stiftes",
+      "text": "betrifft ein zur Verzollung festgehaltenes Schiff dieses Stiftes",
+      "triple": [
+       "urn:regesta:22778:possession-ship",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22778:thing-ship"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "possession-ship",
+      "own": true,
+      "evidence": {
+       "start": 97,
+       "end": 177,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22778:> .\nx:possession-ship rf:concerns x:thing-ship .\nx:thing-ship a crm:E18_Physical_Thing ;\n    rdfs:label \"ein zur Verzollung festgehaltenes Schiff dieses Stiftes\" .",
+      "object": "urn:regesta:22778:thing-ship",
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Kirche von Floreffe"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "ein zur Verzollung festgehaltenes Schiff dieses Stiftes"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "order-release",
+    "start": 0,
+    "end": 189
+   },
+   {
+    "id": "prohibition",
+    "start": 0,
+    "end": 60
+   },
+   {
+    "id": "complaint",
+    "start": 61,
+    "end": 120
+   },
+   {
+    "id": "t1",
+    "start": 61,
+    "end": 120
+   },
+   {
+    "id": "possession-ship",
+    "start": 97,
+    "end": 177
+   },
+   {
+    "id": "prohibition-2",
+    "start": 194,
+    "end": 235
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "The party that held the ship and committed the 'Übergriffe' is not named; H. von Thiel is recorded only as addressee of the order, not as respondent of the complaint.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No state type for ministerial dependency ('seinem Ministerialen H. von Thiel'); not recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a ruler's mandate or order; recorded as rv:Enactment.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The toll seizure itself ('zur Verzollung festgehaltenes') has no act type and is kept only in the label of the ship.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No state type for ministerial dependence on a lord.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "identity-match",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-F000204:community",
+     "description": "The passage says 'Brüder', the register candidate is 'Mönche' of Floreffe; the match rests on synonymy rather than name and title. Plausible but worth flagging.",
+     "proposal": "Keep, with a note that the identification rests on synonymy.",
+     "quote": {
+      "start": 61,
+      "end": 120
+     }
+    },
+    {
+     "category": "omitted-relation",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-H000006",
+     "description": "H. von Thiel is called Friedrich's ministerial; this dependence is not represented. The contract has no fitting state type.",
+     "proposal": "No change under the current contract; report as model gap.",
+     "quote": {
+      "start": 0,
+      "end": 60
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Einreihung zu 1160 ist nicht mit dem Königstitel zu vereinbaren, aus inneren Gründen wurde das Mandat zu DF. I. 40 gestellt, vgl. die Vorbemerkung zu DF. I. 41. - Der dem Stil der Kurie entsprechende Eingang "
+    },
+    {
+     "t": "Conquestus est nobis",
+     "i": true
+    },
+    {
+     "t": " war damals weit verbreitet und muß nicht auf den kurial geschulten Notar A II. C zurückgehen; zur Verfasserfrage vgl. Hausmann, Reichskanzlei 171."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Chartular des Stiftes Floreffe von 1292 f. 174 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1, Staatsarchiv Namur (B). Drucke: Barbier, Hist, de Floreffe ed. 2, 2, 20 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 34 zu 1160; MG. DF. I. 41."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=54"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_41"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-F000201",
+    "(an der Sambre, westl. Namur, belg. Prov. Namur), Abtei (Prämonstratenserstift)"
+   ],
+   [
+    "RI004-002-F000203",
+    "Abt"
+   ],
+   [
+    "RI004-002-F000204",
+    "Mönche"
+   ],
+   [
+    "RI004-002-H000006",
+    "Reichsministeriale von Thiel"
+   ],
+   [
+    "RI004-002-T000539",
+    "Trier (an der Mosel, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

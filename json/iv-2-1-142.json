@@ -1,0 +1,909 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-10-20_1_0_4_2_1_142_142",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22769",
+  "identifier": "RI IV,2,1 n. 142",
+  "short": "RI IV,2,1 n. 142",
+  "sort": "004_002_001_000142_0000000142",
+  "start": "1152-10-20",
+  "end": "1152-10-20",
+  "proseYears": [],
+  "lead": "Friedrich schenkt als Seelgerät für seine Eltern und seine königlichen und kaiserlichen Vorfahren, aber auch wegen der treuen Dienste Bischof Gunthers der bischöflichen Kirche von Speyer (in honorem sancte dei genitricis Marię ...",
+  "date": [
+   {
+    "t": "1152 Oktober 20"
+   }
+  ],
+  "place": [
+   {
+    "t": "Würzburg"
+   }
+  ],
+  "text": "Friedrich schenkt als Seelgerät für seine Eltern und seine königlichen und kaiserlichen Vorfahren, aber auch wegen der treuen Dienste Bischof Gunthers der bischöflichen Kirche von Speyer (in honorem sancte dei genitricis Marię ... Spirensi ecclesię) die Reichsburg Berwartstein (castrum Berwartstein, quod regno ac nobis attinet). Z.: Erzbischof Hartwig (Hertwicvs) von Bremen, Bischof (!) Wichmann (Witmannvs) von Magdeburg, die Bischöfe Gebhard von Würzburg, Eberhard von Bamberg, Heinrich von Regensburg, Anselm von Havelberg, Heinrich von Lüttich, Burchard von Straßburg, die Herzoge Heinrich von Sachsen, Matthäus von Lothringen, die Markgrafen Konrad von Wettin (Widen), Albrecht (der Bär) von Sachsen, Otakar von Steier, die Pfalzgrafen Hermann bei Rhein, Otto von Wittelsbach. - Arnoldvs canc. vice Henrici Mogonti (!) archiep. et archicanc. ; geschrieben und wohl auch verfaßt von A II. D; SI. 1. Si ęcclesiis dei .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22769:donation",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22769:donation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 277,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22769:> .\nx:donation a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22769> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt als Seelgerät für seine Eltern und seine königlichen und kaiserlichen Vorfahren, aber auch wegen der treuen Dienste Bischof Gunthers der bischöflichen Kirche von Speyer (in honorem sancte dei genitricis Marię ... Spirensi ecclesię) die Reichsburg Berwartstein\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22769:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 277,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seine Eltern",
+      "text": "seine Eltern in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22769:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 277,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22769:local:eltern> ; rf:nameInSource \"seine Eltern\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22769:local:eltern"
+      ],
+      "key": "k3",
+      "agentNotes": [
+       {
+        "text": "'seine Eltern', 'seine königlichen und kaiserlichen Vorfahren' and 'regno' are regest-local groups.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seine königlichen und kaiserlichen Vorfahren",
+      "text": "seine königlichen und kaiserlichen Vorfahren in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22769:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 277,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22769:local:vorfahren> ; rf:nameInSource \"seine königlichen und kaiserlichen Vorfahren\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22769:local:vorfahren"
+      ],
+      "key": "k4",
+      "agentNotes": [
+       {
+        "text": "'seine Eltern', 'seine königlichen und kaiserlichen Vorfahren' and 'regno' are regest-local groups.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Gunthers",
+      "text": "Bischof Gunthers in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22769:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 277,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001306> ; rf:nameInSource \"Bischof Gunthers\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G001306"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "bischöflichen Kirche von Speyer",
+      "text": "bischöflichen Kirche von Speyer in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22769:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 277,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000970:community> ; rf:nameInSource \"bischöflichen Kirche von Speyer\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000970:community"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Reichsburg Berwartstein",
+      "text": "betrifft Reichsburg Berwartstein",
+      "triple": [
+       "urn:regesta:22769:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22769:berwartstein"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 277,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:donation rf:concerns x:berwartstein .\nx:berwartstein a crm:E18_Physical_Thing ;\n    rdfs:label \"Reichsburg Berwartstein\" .",
+      "object": "urn:regesta:22769:berwartstein",
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "als Seelgerät für seine Eltern und seine königlichen und kaiserlichen Vorfahren",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22769:donation",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 18,
+       "end": 97,
+       "ambiguous": false
+      },
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen der treuen Dienste Bischof Gunthers",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22769:donation",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 109,
+       "end": 150,
+       "ambiguous": false
+      },
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigte ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "seine Eltern"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "seine königlichen und kaiserlichen Vorfahren"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bischof Gunthers"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "bischöflichen Kirche von Speyer"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Reichsburg Berwartstein"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22769:parenthood",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22769:parenthood",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 48,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22769:> .\nx:parenthood a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22769> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt als Seelgerät für seine Eltern\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22769:parenthood",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:parenthood rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seine Eltern",
+      "text": "seine Eltern in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22769:parenthood",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:parenthood rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22769:local:eltern> ; rf:nameInSource \"seine Eltern\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:22769:local:eltern"
+      ],
+      "key": "k12",
+      "agentNotes": [
+       {
+        "text": "'seine Eltern', 'seine königlichen und kaiserlichen Vorfahren' and 'regno' are regest-local groups.",
+        "lang": "en"
+       }
+      ]
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "seine Eltern"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22769:possession-berwartstein",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22769:possession-berwartstein",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "possession-berwartstein",
+     "own": true,
+     "evidence": {
+      "start": 279,
+      "end": 328,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22769:> .\nx:possession-berwartstein a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22769> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"castrum Berwartstein, quod regno ac nobis attinet\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k13"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "regno",
+      "text": "regno in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22769:possession-berwartstein",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "possession-berwartstein",
+      "own": true,
+      "evidence": {
+       "start": 279,
+       "end": 328,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:possession-berwartstein rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22769:local:regnum> ; rf:nameInSource \"regno\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:22769:local:regnum"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22769:possession-berwartstein",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "possession-berwartstein",
+      "own": true,
+      "evidence": {
+       "start": 279,
+       "end": 328,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:possession-berwartstein rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"nobis\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Reichsburg Berwartstein",
+      "text": "betrifft Reichsburg Berwartstein",
+      "triple": [
+       "urn:regesta:22769:possession-berwartstein",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22769:berwartstein"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "possession-berwartstein",
+      "own": true,
+      "evidence": {
+       "start": 279,
+       "end": 328,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22769:> .\nx:possession-berwartstein rf:concerns x:berwartstein .\nx:berwartstein a crm:E18_Physical_Thing ;\n    rdfs:label \"Reichsburg Berwartstein\" .",
+      "object": "urn:regesta:22769:berwartstein",
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "attinet",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22769:possession-berwartstein",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 321,
+       "end": 328,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "regno"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Reichsburg Berwartstein"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "donation",
+    "start": 0,
+    "end": 277
+   },
+   {
+    "id": "parenthood",
+    "start": 0,
+    "end": 48
+   },
+   {
+    "id": "t1",
+    "start": 18,
+    "end": 97
+   },
+   {
+    "id": "t2",
+    "start": 109,
+    "end": 150
+   },
+   {
+    "id": "possession-berwartstein",
+    "start": 279,
+    "end": 328
+   },
+   {
+    "id": "t3",
+    "start": 321,
+    "end": 328
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Recipient 'bischöflichen Kirche von Speyer' identified with candidate RI004-002-S000970 (typed ort, label 'Bischöfliche Kirche St. Maria, Bistum') as community; the candidate is a place entry.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the person whose merits ground an act (Bischof Gunther, 'wegen der treuen Dienste'); recorded as rv:Participant plus rf:ground.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Seelgerät beneficiaries recorded with rv:Beneficiary; the model has no memorial or soul-gift type distinct from rv:Donation.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No actor category for the realm (regnum) as a holder of property.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added <urn:regesta:22769:parenthood> (rv:Parenthood; local group seine Eltern rv:Parent, Friedrich rv:Child; selector \"Friedrich schenkt als Seelgerät für seine Eltern\"); producer correction-g7. Beneficiary reference on the donation kept.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22769",
+     "description": "The guideline turns a stated parent relation into a Parenthood factoid; \"seine Eltern\" of Friedrich is extracted only as a Beneficiary group, so the parent relation is missing.",
+     "proposal": "Add a StateFactoid rv:Parenthood with the local group urn:regesta:actor:22769:local:eltern as rv:Parent and Friedrich as rv:Child.",
+     "quote": {
+      "start": 18,
+      "end": 48
+     }
+    },
+    {
+     "category": "actor-identification",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22769:possession-berwartstein",
+     "description": "The realm (regno) is modelled as an E74_Group actor and possessor; this is an interpretive move, and \"attinet\" expresses belonging rather than possession in the strict sense.",
+     "proposal": "Keep the factoid but report the realm-as-actor reading as a model gap.",
+     "quote": {
+      "start": 279,
+      "end": 328
+     }
+    },
+    {
+     "category": "actor-role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22769:donation",
+     "description": "Bischof Gunther appears only through the reason for the donation; rv:Participant is acceptable, as the passage does not make him recipient.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 109,
+      "end": 150
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The stated parent relation 'seine Eltern' of Friedrich is not extracted as Parenthood.",
+     "reason": "The guidelines make a stated parent relation a rv:Parenthood state factoid; 'Friedrich schenkt als Seelgerät für seine Eltern' states it as plainly as 22763, where it was extracted. The local group <urn:regesta:actor:22769:local:eltern> already exists.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The realm as E74_Group possessor is an interpretive move; 'attinet' expresses belonging.",
+     "reason": "'castrum Berwartstein, quod regno ac nobis attinet' names realm and ruler as those the castle belongs to; rv:Possession with rf:qualifier \"attinet\" keeps the wording. A category for the realm as property holder is a gap for the next model version.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Arenga entspricht weitgehend Cod. Udalrici ed. Eccard n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 115. - Zu dieser Übertragung vgl. Werle, Hausmachtpolitik, ZGORh 110 = N. F. 71 (1962) 368 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Badisches Generallandesarchiv Karlsruhe (A). Drucke: Remling, UB. von Speyer 1, 100 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 91; MG. DF. I. 34. Reg.: Stumpf 3650."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=50"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/3815"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_34"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-34"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000808",
+    "Berwartstein (Burg im südlichen Pfälzerwald, westl. Bad Bergzabern, Ldkr. Südliche Weinstraße, Rheinl.-Pf.), Reichsburg"
+   ],
+   [
+    "RI004-002-B001563",
+    "Bischof von Straßburg"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-G000209",
+    "Bischof von Würzburg"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000192",
+    "(I.), Erzbischof von Bremen und Hamburg"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000392",
+    "II., Bischof von Lüttich"
+   ],
+   [
+    "RI004-002-H000397",
+    "Bischof von Regensburg"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000848",
+    "(III.) von Stahleck, Pfalzgraf bei Rhein"
+   ],
+   [
+    "RI004-002-K000401",
+    "Markgraf von Meißen, Sachsen, Wettin"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-S000970",
+    "Bischöfliche Kirche St. Maria, Bistum"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,1062 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-09_2_0_4_2_1_67_67",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22694",
+  "identifier": "RI IV,2,1 n. 67",
+  "short": "RI IV,2,1 n. 67",
+  "sort": "004_002_001_000067_0000000067",
+  "start": "1152-03-09",
+  "end": "1152-03-09",
+  "proseYears": [],
+  "lead": "Friedrich nimmt auf Bitten Abt Wibalds dessen Kloster Stablo gemäß den Verfügungen seiner genannten Vorgänger mit all seinen Besitzungen in seinen Schutz, bestätigt dem Reichskloster (semper ad nostram successorumque nostrorum manum et servitium inconvulsa stabilitate permaneat et libertate sibi collata pacifice potiatur) alle Vorrechte und die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo; außerdem fügt er das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo hinzu.",
+  "date": [
+   {
+    "t": "1152 März 9"
+   }
+  ],
+  "place": [
+   {
+    "t": "Aachen"
+   }
+  ],
+  "text": "Friedrich nimmt auf Bitten Abt Wibalds dessen Kloster Stablo gemäß den Verfügungen seiner genannten Vorgänger mit all seinen Besitzungen in seinen Schutz, bestätigt dem Reichskloster (semper ad nostram successorumque nostrorum manum et servitium inconvulsa stabilitate permaneat et libertate sibi collata pacifice potiatur) alle Vorrechte und die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo; außerdem fügt er das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo hinzu. Z.: die Erzbischöfe Arnold von Köln und Hillin von Trier, die Bischöfe Heinrich von Lüttich, Friedrich von Münster, Otto von Freising, Ortlieb von Basel, Hermann (irrig: Heinricus) von Konstanz, Markgraf Albrecht von Brandenburg, die Herzoge Heinrich von Sachsen, Matthäus von Oberlothringen, die Grafen Heinrich von Namur, Goswin von Valkenburg, Heinrich von Limburg (Lemborch) und sein Bruder Gerard, Konrad von Dalhem. - Arnoldus canc. vice Heinrici Moguntini archiep. et archicanc. ;in Wiederholung der DD. K. III. 5 (VU. I) und 40 (VU. II) geschrieben und in den wenigen selbständigen Teilen auch verfaßt von Wibald; SI. unkenntliche Reste. Cum omnium dei .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 5,
+  "blocks": [
+   {
+    "node": "urn:regesta:22694:schutznahme",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22694:schutznahme",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "schutznahme",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 153,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22694:> .\nx:schutznahme a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22694> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten Abt Wibalds dessen Kloster Stablo gemäß den Verfügungen seiner genannten Vorgänger mit all seinen Besitzungen in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22694:schutznahme",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 153,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:schutznahme rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Wibalds",
+      "text": "Abt Wibalds in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22694:schutznahme",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 153,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:schutznahme rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt Wibalds\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Stablo",
+      "text": "Kloster Stablo in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22694:schutznahme",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 153,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:schutznahme rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001047:community> ; rf:nameInSource \"Kloster Stablo\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S001047:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "all seinen Besitzungen",
+      "text": "betrifft all seinen Besitzungen",
+      "triple": [
+       "urn:regesta:22694:schutznahme",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22694:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 153,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:schutznahme rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"all seinen Besitzungen\" .",
+      "object": "urn:regesta:22694:besitzungen",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestimmung",
+      "text": "bezieht sich auf Bestimmung",
+      "triple": [
+       "urn:regesta:22694:schutznahme",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22694:verfuegungen-vorgaenger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 153,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:schutznahme rf:refersToAct x:verfuegungen-vorgaenger .\nx:verfuegungen-vorgaenger a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den Verfügungen seiner genannten Vorgänger\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22694:local:vorgaenger> ; rf:nameInSource \"seiner genannten Vorgänger\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22694> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22694:verfuegungen-vorgaenger",
+      "objectClaim": "verfuegungen-vorgaenger",
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Abt Wibalds"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Kloster Stablo"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "all seinen Besitzungen"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22694:verfuegungen-vorgaenger",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22694:verfuegungen-vorgaenger",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "verfuegungen-vorgaenger",
+     "own": true,
+     "evidence": {
+      "start": 61,
+      "end": 109,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22694:> .\nx:verfuegungen-vorgaenger a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22694> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den Verfügungen seiner genannten Vorgänger\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner genannten Vorgänger",
+      "text": "seiner genannten Vorgänger in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22694:verfuegungen-vorgaenger",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "verfuegungen-vorgaenger",
+      "own": true,
+      "evidence": {
+       "start": 61,
+       "end": 109,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:verfuegungen-vorgaenger rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22694:local:vorgaenger> ; rf:nameInSource \"seiner genannten Vorgänger\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22694:local:vorgaenger"
+      ],
+      "key": "k8",
+      "agentNotes": [
+       {
+        "text": "urn:regesta:actor:22694:local:vorgaenger (seiner genannten Vorgänger, functional, individual predecessors not named in the regest)",
+        "lang": "en"
+       }
+      ]
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "seiner genannten Vorgänger"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22694:bestaetigung",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22694:bestaetigung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung",
+     "own": true,
+     "evidence": {
+      "start": 155,
+      "end": 182,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22694:> .\nx:bestaetigung a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22694> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt dem Reichskloster\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Stablo",
+      "text": "Kloster Stablo in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22694:bestaetigung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:bestaetigung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001047:community> ; rf:nameInSource \"Reichskloster\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S001047:community"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Abtes",
+      "text": "des Abtes in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22694:bestaetigung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:bestaetigung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22694:local:abt> ; rf:nameInSource \"des Abtes\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:22694:local:abt"
+      ],
+      "key": "k11",
+      "agentNotes": [
+       {
+        "text": "urn:regesta:actor:22694:local:abt (des Abtes, functional holder of the jurisdiction; not identified with Wibald because the passage does not name him)",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22694:bestaetigung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:bestaetigung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo)",
+      "text": "betrifft Gerichtsbarkeit (die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo)",
+      "triple": [
+       "urn:regesta:22694:bestaetigung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22694:gerichtsbarkeit"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:bestaetigung rf:concerns x:gerichtsbarkeit .\nx:gerichtsbarkeit a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo\" .",
+      "object": "urn:regesta:22694:gerichtsbarkeit",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22694:bestaetigung",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-2",
+      "own": true,
+      "evidence": {
+       "start": 324,
+       "end": 427,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:bestaetigung rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"alle Vorrechte und die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo\" ] .",
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9",
+       "k14"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12",
+       "k14"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k10",
+       "k14"
+      ],
+      "text": "Kloster Stablo"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k11",
+       "k14"
+      ],
+      "text": "des Abtes"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k13",
+       "k14"
+      ],
+      "text": "Gerichtsbarkeit (die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22694:rechtsverleihung",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22694:rechtsverleihung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "rechtsverleihung",
+     "own": true,
+     "evidence": {
+      "start": 155,
+      "end": 182,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22694:> .\nx:rechtsverleihung a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22694> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt dem Reichskloster\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22694:rechtsverleihung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "rechtsverleihung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:rechtsverleihung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"er\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Stablo",
+      "text": "Kloster Stablo in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22694:rechtsverleihung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "rechtsverleihung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:rechtsverleihung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001047:community> ; rf:nameInSource \"Reichskloster\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S001047:community"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Marktrecht (des Abhaltens öffentlicher Märkte in Stablo)",
+      "text": "betrifft Marktrecht (des Abhaltens öffentlicher Märkte in Stablo)",
+      "triple": [
+       "urn:regesta:22694:rechtsverleihung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22694:marktrecht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "rechtsverleihung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:rechtsverleihung rf:concerns x:marktrecht .\nx:marktrecht a crm:E30_Right ;\n    crm:P2_has_type rv:Market ;\n    rdfs:label \"des Abhaltens öffentlicher Märkte in Stablo\" .",
+      "object": "urn:regesta:22694:marktrecht",
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Münzrecht (das Recht der Münzprägung)",
+      "text": "betrifft Münzrecht (das Recht der Münzprägung)",
+      "triple": [
+       "urn:regesta:22694:rechtsverleihung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22694:muenzrecht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "rechtsverleihung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:rechtsverleihung rf:concerns x:muenzrecht .\nx:muenzrecht a crm:E30_Right ;\n    crm:P2_has_type rv:Minting ;\n    rdfs:label \"das Recht der Münzprägung\" .",
+      "object": "urn:regesta:22694:muenzrecht",
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (des Zolls)",
+      "text": "betrifft Zollrecht (des Zolls)",
+      "triple": [
+       "urn:regesta:22694:rechtsverleihung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22694:zollrecht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "rechtsverleihung",
+      "own": true,
+      "evidence": {
+       "start": 155,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:rechtsverleihung rf:concerns x:zollrecht .\nx:zollrecht a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"des Zolls\" .",
+      "object": "urn:regesta:22694:zollrecht",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22694:rechtsverleihung",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "rechtsverleihung-2",
+      "own": true,
+      "evidence": {
+       "start": 429,
+       "end": 536,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:rechtsverleihung rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"außerdem fügt er das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo hinzu\" ] .",
+      "key": "k21"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15",
+       "k21"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k16",
+       "k21"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k17",
+       "k21"
+      ],
+      "text": "Kloster Stablo"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k18",
+       "k21"
+      ],
+      "text": "Marktrecht (des Abhaltens öffentlicher Märkte in Stablo)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k19",
+       "k21"
+      ],
+      "text": "Münzrecht (das Recht der Münzprägung)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k20",
+       "k21"
+      ],
+      "text": "Zollrecht (des Zolls)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22694:bestimmung-reichsdienst",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22694:bestimmung-reichsdienst",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestimmung-reichsdienst",
+     "own": true,
+     "evidence": {
+      "start": 184,
+      "end": 322,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22694:> .\nx:bestimmung-reichsdienst a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22694> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"semper ad nostram successorumque nostrorum manum et servitium inconvulsa stabilitate permaneat et libertate sibi collata pacifice potiatur\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k22"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22694:bestimmung-reichsdienst",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22694:bestaetigung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestimmung-reichsdienst",
+      "own": true,
+      "evidence": {
+       "start": 184,
+       "end": 322,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22694:> .\nx:bestimmung-reichsdienst rf:partOf x:bestaetigung .\nx:bestaetigung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;\n    rf:concerns x:gerichtsbarkeit ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"alle Vorrechte und die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo\" ] , [ a oa:TextQuoteSelector ; oa:exact \"bestätigt dem Reichskloster\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22694:local:abt> ; rf:nameInSource \"des Abtes\" ; rf:role rv:RightHolder ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001047:community> ; rf:nameInSource \"Reichskloster\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22694> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22694:bestaetigung",
+      "objectClaim": "bestaetigung",
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "schutznahme",
+    "start": 0,
+    "end": 153
+   },
+   {
+    "id": "verfuegungen-vorgaenger",
+    "start": 61,
+    "end": 109
+   },
+   {
+    "id": "bestaetigung",
+    "start": 155,
+    "end": 182
+   },
+   {
+    "id": "rechtsverleihung",
+    "start": 155,
+    "end": 182
+   },
+   {
+    "id": "bestimmung-reichsdienst",
+    "start": 184,
+    "end": 322
+   },
+   {
+    "id": "bestaetigung-2",
+    "start": 324,
+    "end": 427
+   },
+   {
+    "id": "rechtsverleihung-2",
+    "start": 429,
+    "end": 536
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No right type for unspecified privileges: 'alle Vorrechte' is covered by the confirmation's evidence but has no crm:E30_Right node.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No property for the content of an enactment: the Latin clause on remaining in the hand and service of the ruler and his successors is kept only as evidence; 'successorumque nostrorum' is not modelled as an actor.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Recipient of the right grant ('fügt er ... hinzu') is not named in that clause; it rests on a second selector ('bestätigt dem Reichskloster').",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Wehlt, Reichsabtei und König (Veröff. d. M.-Planck-Inst. f. Gesch. 28, 1970) 227."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Lüttich (A). Kop.: Transsumpt Kaiser Karls V. von 1553 März 16 ebenda (C). Drucke: Halkin-Roland, Recueil des chartes de Stavelot 1, 456 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 238; MG. DF. I. 1. Faks.: Zatschek, Wibald, MÖIG Erg.Bd. 10 (1928) Tafel I Schriftprobe. Reg.: Wauters, Table chronol. 2, 350; Stumpf 3615."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=26"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_1"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-1"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000009",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-G000381",
+    "Bruder des Grafen Heinrich von Limburg"
+   ],
+   [
+    "RI004-002-G000763",
+    "auch: der Jüngere, Graf von Heinsberg und Valkenburg; <i>zu ihm siehe auch oben in der Einleitung, S. 31 f.</i>"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000392",
+    "II., Bischof von Lüttich"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000539",
+    "Graf von Limburg"
+   ],
+   [
+    "RI004-002-H000540",
+    "(IV., der Blinde), Graf von Luxemburg-Namur"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-K000445",
+    "von Dalhem"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000405",
+    "(I.), Bischof von Freising"
+   ],
+   [
+    "RI004-002-S001047",
+    "Stablo (Stavelot, südwestl. Malmedy, belg. Prov. Lüttich), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

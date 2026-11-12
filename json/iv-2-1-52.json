@@ -1,0 +1,780 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1150-09-16_2_0_4_2_1_52_52",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22679",
+  "identifier": "RI IV,2,1 n. 52",
+  "short": "RI IV,2,1 n. 52",
+  "sort": "004_002_001_000052_0000000052",
+  "start": "1150-09-16",
+  "end": "1150-09-16",
+  "proseYears": [],
+  "lead": "Friedrich, Herzog (von Schwaben), wird als Zeuge der vor König Konrad vollzogenen Übergabe der Ausstattung von Eußerthal an das dortige Kloster durch Rapoto, den späteren Bischof von Speyer, und dessen Brüder, Graf Hartmann von Lobdeburg und Graf Otto (Ordo) von Alerheim, genannt.",
+  "date": [
+   {
+    "t": "1150 (nach September 16)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Würzburg"
+   }
+  ],
+  "text": "Friedrich, Herzog (von Schwaben), wird als Zeuge der vor König Konrad vollzogenen Übergabe der Ausstattung von Eußerthal an das dortige Kloster durch Rapoto, den späteren Bischof von Speyer, und dessen Brüder, Graf Hartmann von Lobdeburg und Graf Otto (Ordo) von Alerheim, genannt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22679:grant-endowment",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22679:grant-endowment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-endowment",
+     "own": true,
+     "evidence": {
+      "start": 53,
+      "end": 271,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22679:> .\nx:grant-endowment a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22679> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"vor König Konrad vollzogenen Übergabe der Ausstattung von Eußerthal an das dortige Kloster durch Rapoto, den späteren Bischof von Speyer, und dessen Brüder, Graf Hartmann von Lobdeburg und Graf Otto (Ordo) von Alerheim\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad",
+      "text": "König Konrad in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22679:grant-endowment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-grant-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-endowment",
+      "own": true,
+      "evidence": {
+       "start": 53,
+       "end": 271,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:grant-endowment rf:reference x:ref-grant-konrad .\nx:ref-grant-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000316> ;\n    rf:nameInSource \"König Konrad\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "das dortige Kloster",
+      "text": "das dortige Kloster in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22679:grant-endowment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-grant-kloster"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-endowment",
+      "own": true,
+      "evidence": {
+       "start": 53,
+       "end": 271,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:grant-endowment rf:reference x:ref-grant-kloster .\nx:ref-grant-kloster a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000594:community> ;\n    rf:nameInSource \"das dortige Kloster\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000594:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Rapoto, den späteren Bischof von Speyer",
+      "text": "Rapoto, den späteren Bischof von Speyer in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22679:grant-endowment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-grant-rapoto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-endowment",
+      "own": true,
+      "evidence": {
+       "start": 53,
+       "end": 271,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:grant-endowment rf:reference x:ref-grant-rapoto .\nx:ref-grant-rapoto a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-R000015> ;\n    rf:nameInSource \"Rapoto, den späteren Bischof von Speyer\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000015"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Hartmann von Lobdeburg",
+      "text": "Graf Hartmann von Lobdeburg in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22679:grant-endowment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-grant-hartmann"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-endowment",
+      "own": true,
+      "evidence": {
+       "start": 53,
+       "end": 271,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:grant-endowment rf:reference x:ref-grant-hartmann .\nx:ref-grant-hartmann a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000169> ;\n    rf:nameInSource \"Graf Hartmann von Lobdeburg\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000169"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Otto (Ordo) von Alerheim",
+      "text": "Graf Otto (Ordo) von Alerheim in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22679:grant-endowment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-grant-otto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-endowment",
+      "own": true,
+      "evidence": {
+       "start": 53,
+       "end": 271,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:grant-endowment rf:reference x:ref-grant-otto .\nx:ref-grant-otto a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-O000444> ;\n    rf:nameInSource \"Graf Otto (Ordo) von Alerheim\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000444"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Ausstattung von Eußerthal",
+      "text": "betrifft Ausstattung von Eußerthal",
+      "triple": [
+       "urn:regesta:22679:grant-endowment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22679:ausstattung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-endowment",
+      "own": true,
+      "evidence": {
+       "start": 53,
+       "end": 271,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:grant-endowment rf:concerns x:ausstattung .\nx:ausstattung a crm:E18_Physical_Thing ;\n    rdfs:label \"Ausstattung von Eußerthal\" .",
+      "object": "urn:regesta:22679:ausstattung",
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Übergabe",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22679:grant-endowment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 82,
+       "end": 90,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Rapoto, den späteren Bischof von Speyer"
+     },
+     ", ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Graf Hartmann von Lobdeburg"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Graf Otto (Ordo) von Alerheim"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "König Konrad"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "das dortige Kloster"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Ausstattung von Eußerthal"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22679:kinship-rapoto-hartmann",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22679:kinship-rapoto-hartmann",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-rapoto-hartmann",
+     "own": true,
+     "evidence": {
+      "start": 150,
+      "end": 237,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22679:> .\nx:kinship-rapoto-hartmann a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22679> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Rapoto, den späteren Bischof von Speyer, und dessen Brüder, Graf Hartmann von Lobdeburg\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Rapoto, den späteren Bischof von Speyer",
+      "text": "Rapoto, den späteren Bischof von Speyer in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22679:kinship-rapoto-hartmann",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-kin1-rapoto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-rapoto-hartmann",
+      "own": true,
+      "evidence": {
+       "start": 150,
+       "end": 237,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:kinship-rapoto-hartmann rf:reference x:ref-kin1-rapoto .\nx:ref-kin1-rapoto a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-R000015> ;\n    rf:nameInSource \"Rapoto, den späteren Bischof von Speyer\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000015"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Hartmann von Lobdeburg",
+      "text": "Graf Hartmann von Lobdeburg in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22679:kinship-rapoto-hartmann",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-kin1-hartmann"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-rapoto-hartmann",
+      "own": true,
+      "evidence": {
+       "start": 150,
+       "end": 237,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:kinship-rapoto-hartmann rf:reference x:ref-kin1-hartmann .\nx:ref-kin1-hartmann a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000169> ;\n    rf:nameInSource \"Graf Hartmann von Lobdeburg\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000169"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Brüder",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22679:kinship-rapoto-hartmann",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 202,
+       "end": 208,
+       "ambiguous": false
+      },
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Rapoto, den späteren Bischof von Speyer"
+     },
+     " und ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Graf Hartmann von Lobdeburg"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22679:kinship-rapoto-otto",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22679:kinship-rapoto-otto",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-rapoto-otto",
+     "own": true,
+     "evidence": {
+      "start": 150,
+      "end": 271,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22679:> .\nx:kinship-rapoto-otto a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22679> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Rapoto, den späteren Bischof von Speyer, und dessen Brüder, Graf Hartmann von Lobdeburg und Graf Otto (Ordo) von Alerheim\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k13"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Rapoto, den späteren Bischof von Speyer",
+      "text": "Rapoto, den späteren Bischof von Speyer in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22679:kinship-rapoto-otto",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-kin2-rapoto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-rapoto-otto",
+      "own": true,
+      "evidence": {
+       "start": 150,
+       "end": 271,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:kinship-rapoto-otto rf:reference x:ref-kin2-rapoto .\nx:ref-kin2-rapoto a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-R000015> ;\n    rf:nameInSource \"Rapoto, den späteren Bischof von Speyer\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000015"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Otto (Ordo) von Alerheim",
+      "text": "Graf Otto (Ordo) von Alerheim in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22679:kinship-rapoto-otto",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22679:ref-kin2-otto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-rapoto-otto",
+      "own": true,
+      "evidence": {
+       "start": 150,
+       "end": 271,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22679:> .\nx:kinship-rapoto-otto rf:reference x:ref-kin2-otto .\nx:ref-kin2-otto a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-O000444> ;\n    rf:nameInSource \"Graf Otto (Ordo) von Alerheim\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000444"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Brüder",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22679:kinship-rapoto-otto",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 202,
+       "end": 208,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Rapoto, den späteren Bischof von Speyer"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Graf Otto (Ordo) von Alerheim"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "grant-endowment",
+    "start": 53,
+    "end": 271
+   },
+   {
+    "id": "t1",
+    "start": 82,
+    "end": 90
+   },
+   {
+    "id": "kinship-rapoto-otto",
+    "start": 150,
+    "end": 271
+   },
+   {
+    "id": "kinship-rapoto-hartmann",
+    "start": 150,
+    "end": 237
+   },
+   {
+    "id": "t2",
+    "start": 202,
+    "end": 208
+   },
+   {
+    "id": "t3",
+    "start": 202,
+    "end": 208
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No role for the ruler before whom an act is performed (vor König Konrad); recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Charter witness (Zeuge) has no in-scope role; Friedrich is not referenced.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Übergabe der Ausstattung recorded as rv:Grant, not rv:Donation, because the regest does not state that it was gratuitous.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the ruler or authority before whom an act is performed (coram rege).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act or role for attesting a transaction outside a dispute; Friedrich's witness role cannot be recorded even where the regest centres on it.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "act-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22679:grant-endowment",
+     "description": "The handover of an endowment (Ausstattung) to a monastery is a gratuitous transfer to a church, which the narrower rv:Donation covers; rv:Grant is correct but less specific.",
+     "proposal": "Consider rv:Donation instead of rv:Grant.",
+     "quote": {
+      "start": 82,
+      "end": 143
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22679:ref-grant-konrad",
+     "description": "King Konrad is the ruler before whom the handover is performed. rv:Participant is the only available fit; the vocabulary has no role for the authority before whom an act takes place.",
+     "proposal": "Keep rv:Participant; record the missing role as model gap.",
+     "quote": {
+      "start": 53,
+      "end": 90
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-R000015",
+     "description": "Rapoto's later office is kept only in the name literal. An rv:OfficeHolding factoid with rf:qualifier \"späteren\" would be expressible, but the guidelines restrict office holding to where the statement needs it, so leaving it out is defensible.",
+     "proposal": "Optional: add an rv:OfficeHolding state factoid with rf:qualifier \"späteren\", without dating it.",
+     "quote": {
+      "start": 150,
+      "end": 189
+     }
+    },
+    {
+     "category": "concerns",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22679:ausstattung",
+     "description": "The endowment is typed crm:E18_Physical_Thing. The regest gives no content of the Ausstattung, which may comprise rights as well as land; the type is a reading, though the contract offers nothing better.",
+     "proposal": "Keep, or note that the composition of the endowment is not stated.",
+     "quote": {
+      "start": 95,
+      "end": 120
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "rv:Donation instead of rv:Grant.",
+     "reason": "'Übergabe der Ausstattung von Eußerthal an das dortige Kloster' does not state that the transfer was gratuitous, which rv:Donation presupposes. The broader rv:Grant with qualifier 'Übergabe' asserts no more than the passage.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optional rv:OfficeHolding for Rapoto's later bishopric.",
+     "reason": "'Rapoto, den späteren Bischof von Speyer' names an office held later, not at the act; the guidelines restrict office holding to where the statement needs it, and the wording is kept in nameInSource and label.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Urkunde ist in zwei Exemplaren erhalten; vgl. zum Verdacht der Fälschung und zu der Bedeutung für die Frühgeschichte von Eußerthal zuletzt Doll, Eußerthal, Mitt. HV Pfalz 68 (1970) 203 ff. - Die Datierung ergibt sich aus der Nennung Bischof Gebhards von Würzburg in der Zeugenreihe, der erst nach dem 16. September 1150 zum Bischof gewählt wurde, vgl. Bernhardi, Konrad III. 858 mit Anm. 49 und Wendehorst, Bistum Würzburg (Germ. sacra N. F. 1, 1962) 154 f. - Friedrich bestätigte diese Übergabe an Eußerthal im Jahre 1186, wobei Teile der Bischofsurkunde in dieses Diplom wörtlich übernommen wurden, Stumpf 4469 von 1186 November 11, vgl. Doll, a. a. O., 205 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt in einer Urkunde Rapotos von Speyer von (etwa 1170) Mai 28, ed. Remling, UB. Speyer 1, 115 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 101."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=22"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-E000594",
+    "Eußerthal (westnordwestl. Landau in der Pfalz, Ldkr. Südliche Weinstraße, Rheinl.-Pf.), Zisterzienserkloster St. Maria"
+   ],
+   [
+    "RI004-002-G000209",
+    "Bischof von Würzburg"
+   ],
+   [
+    "RI004-002-H000169",
+    "(der Ältere, Graf) von Lobdeburg"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-O000444",
+    "Graf von Alerheim und Lobdeburg"
+   ],
+   [
+    "RI004-002-R000015",
+    "von Lobdeburg, später Bischof von Speyer"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,356 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-04-19_1_0_4_2_1_172_172",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22799",
+  "identifier": "RI IV,2,1 n. 172",
+  "short": "RI IV,2,1 n. 172",
+  "sort": "004_002_001_000172_0000000172",
+  "start": "1153-04-19",
+  "end": "1153-04-19",
+  "proseYears": [],
+  "lead": "Am Osterfest findet in Bamberg eine Festkrönung König Friedrichs statt, bei der Kardinalpriester Bernhard (von S. Clemente) und Kardinaldiakon Gregor (von S. Angelo), denen die Absetzung gewisser Bischöfe vom Apostolischen Stuhl aufgetragen ist, anwesend sind.",
+  "date": [
+   {
+    "t": "1153 April 19"
+   }
+  ],
+  "place": [
+   {
+    "t": "Bamberg"
+   }
+  ],
+  "text": "Am Osterfest findet in Bamberg eine Festkrönung König Friedrichs statt, bei der Kardinalpriester Bernhard (von S. Clemente) und Kardinaldiakon Gregor (von S. Angelo), denen die Absetzung gewisser Bischöfe vom Apostolischen Stuhl aufgetragen ist, anwesend sind.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22799:deposition-mandate",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22799:deposition-mandate",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "deposition-mandate",
+     "own": true,
+     "evidence": {
+      "start": 80,
+      "end": 244,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22799:> .\nx:deposition-mandate a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22799> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Kardinalpriester Bernhard (von S. Clemente) und Kardinaldiakon Gregor (von S. Angelo), denen die Absetzung gewisser Bischöfe vom Apostolischen Stuhl aufgetragen ist\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kardinalpriester Bernhard (von S. Clemente)",
+      "text": "Kardinalpriester Bernhard (von S. Clemente) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22799:deposition-mandate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "deposition-mandate",
+      "own": true,
+      "evidence": {
+       "start": 80,
+       "end": 244,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22799:> .\nx:deposition-mandate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000622> ; rf:nameInSource \"Kardinalpriester Bernhard (von S. Clemente)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000622"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kardinaldiakon Gregor (von S. Angelo)",
+      "text": "Kardinaldiakon Gregor (von S. Angelo) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22799:deposition-mandate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "deposition-mandate",
+      "own": true,
+      "evidence": {
+       "start": 80,
+       "end": 244,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22799:> .\nx:deposition-mandate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000973> ; rf:nameInSource \"Kardinaldiakon Gregor (von S. Angelo)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000973"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Apostolischen Stuhl",
+      "text": "Apostolischen Stuhl in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22799:deposition-mandate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "deposition-mandate",
+      "own": true,
+      "evidence": {
+       "start": 80,
+       "end": 244,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22799:> .\nx:deposition-mandate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22799:local:apostolischer-stuhl> ; rf:nameInSource \"Apostolischen Stuhl\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22799:local:apostolischer-stuhl"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "die Absetzung gewisser Bischöfe",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22799:deposition-mandate",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 173,
+       "end": 204,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Apostolischen Stuhl"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Kardinalpriester Bernhard (von S. Clemente)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kardinaldiakon Gregor (von S. Angelo)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "deposition-mandate",
+    "start": 80,
+    "end": 244
+   },
+   {
+    "id": "t1",
+    "start": 173,
+    "end": 204
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Apostolischen Stuhl' is a regest-local group without register candidate.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The content of the commission ('die Absetzung gewisser Bischöfe') has no dedicated property and is held in rf:qualifier; the unnamed bishops are not modelled.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The festive coronation and the legates' presence are out of scope and were not recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a coronation or festal crowning.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the party affected by a commissioned act (the bishops to be deposed).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "22799",
+     "description": "The main passage, the festal coronation, is not represented. No act type of the contract fits a Festkrönung (it is neither an appointment nor an enactment), so the omission is justified but leaves the record's main content outside the graph.",
+     "proposal": "No extraction change; record the missing ceremonial or coronation act type.",
+     "quote": {
+      "start": 0,
+      "end": 70
+     }
+    },
+    {
+     "category": "omitted-actor",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22799:deposition-mandate",
+     "description": "The bishops to be deposed are kept only in rf:qualifier. A FunctionalActor 'gewisser Bischöfe' with a role would make them queryable; the vocabulary has no target or affected role, so the qualifier is the cautious choice.",
+     "proposal": "Optional: add a FunctionalActor for 'gewisser Bischöfe' if an affected-party role is introduced.",
+     "quote": {
+      "start": 173,
+      "end": 204
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The festal coronation is not extracted; the bishops to be deposed sit only in a qualifier.",
+     "reason": "No act type fits 'eine Festkrönung König Friedrichs', and no role exists for the party affected by a commissioned act ('die Absetzung gewisser Bischöfe'). The extraction's restraint is correct under the contract.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Es hat den Anschein, daß man sich mit den Bischofsabsetzungen bereits in Bamberg beschäftigte; dazu unten Reg. "
+    },
+    {
+     "t": "178",
+     "regest": "22805"
+    },
+    {
+     "t": ". "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2001):"
+    },
+    {
+     "t": " Ohnsorge, Ebracher Briefsammlung, QFIAB 20 (1928/29) 20 f. zeigt, daß der Bericht Ottos von Freising über die Absetzung Bischof Burchards von Eichstätt (Reg. 178) durch die Kardinallegalen "
+    },
+    {
+     "t": "permissu principis"
+    },
+    {
+     "t": " zeitlich (siehe die Nennungen der Kardinallegaten in Regg. 172 und 173) eher zum Bamberger Hoftag, vielleicht sogar schon vor Ostern (19. April) gehört, vgl. dazu jüngst Weinfurter, Barbarossa und Eichstätt, Jb.f.fränk.Landesforsch. 52 (1992) 82 Anm. 78."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. II cap. 9, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 110. Ort und Zeit werden auch in DF. I. 54 (Reg. 173) erwähnt (... "
+    },
+    {
+     "t": "in palatio Babenbergensi ... Statuto itaque termino in proximo tunc pascha futuro",
+     "i": true
+    },
+    {
+     "t": "...), vgl. Stumpf 3666 b."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=62"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000111",
+    "Bamberg (an der Regnitz, bayer. Reg.-Bez. Oberfranken)"
+   ],
+   [
+    "RI004-002-B000622",
+    "Kardinalpriester von S. Clemente (1145─1158), dann Kardinalbischof von Porto (1158─1176)"
+   ],
+   [
+    "RI004-002-G000973",
+    "Kardinaldiakon von S. Angelo (in Pescheria; vor Juli 1137<i>?</i>, dann, nach 13.4.1154─nach 18.5.1154, Kardinalbischof von Sabina)"
+   ]
+  ]
+ }
+}

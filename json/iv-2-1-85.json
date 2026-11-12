@@ -1,0 +1,873 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-09_1_0_4_2_1_85_85",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22712",
+  "identifier": "RI IV,2,1 n. 85",
+  "short": "RI IV,2,1 n. 85",
+  "sort": "004_002_001_000085_0000000085",
+  "start": "1152-05-09",
+  "end": "1152-05-09",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Stift Georgenberg zu Goslar auf Bitten Bischof Bernhards von Hildesheim, dessen Obsorge das Stift untersteht, des dortigen Propstes Benno und seines Verwandten, des Herzogs Heinrich von Sachsen und Bayern, die genannten Besitzungen.",
+  "date": [
+   {
+    "t": "1152 Mai 9"
+   }
+  ],
+  "place": [
+   {
+    "t": "Goslar"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Stift Georgenberg zu Goslar auf Bitten Bischof Bernhards von Hildesheim, dessen Obsorge das Stift untersteht, des dortigen Propstes Benno und seines Verwandten, des Herzogs Heinrich von Sachsen und Bayern, die genannten Besitzungen. Z.: die Bischöfe Bernhard von Hildesheim, Wichmann von Zeitz, Anselm von Havelberg, Abt Wibald von Corvey, (Dom)propst Rainald von Hildesheim, (Dom)dekan Bruno (von Hildesheim), Propst Burchard (des Moritzstiftes zu Hildesheim), Propst Eckehard (des St.-Blasius-stiftes zu Braunschweig), Herzog Heinrich von Sachsen, Markgraf Albrecht (der Bär), Herzog Welf, Graf Lutolf von Wöltingerode (Waltingerode) und seine Söhne Lutolf und Burchard, Hoger (der Bruder Graf Lutolfs von Wöltingerode), Vogt Anno von Goslar, Rudolf de Capella und sein Sohn Ulrich, Boto, Withekind, Hirzo, Boto, Adelhard (ab Rudolf wohl Bürger von Goslar). - Arnoldus canc. vice Heinrici Maguntini archiep. et archicanc. ; unter Verwendung von DH. V. Stumpf 3025 (VU. I) und der Urkunde Bischof Bernhards von Hildesheim von 1131 Juni 12 (Bode, UB. Stadt Goslar 1, 216 no 181; VU. II) verfaßt und geschrieben von Arnold H (Albert); SI. D. Quoniam regię nostre .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22712:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22712:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 255,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22712:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22712> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Stift Georgenberg zu Goslar auf Bitten Bischof Bernhards von Hildesheim, dessen Obsorge das Stift untersteht, des dortigen Propstes Benno und seines Verwandten, des Herzogs Heinrich von Sachsen und Bayern, die genannten Besitzungen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22712:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 255,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Georgenberg zu Goslar",
+      "text": "Stift Georgenberg zu Goslar in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22712:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 255,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000732:community> ; rf:nameInSource \"Stift Georgenberg zu Goslar\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000732:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Bernhards von Hildesheim",
+      "text": "Bischof Bernhards von Hildesheim in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22712:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 255,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000625> ; rf:nameInSource \"Bischof Bernhards von Hildesheim\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000625"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Propstes Benno",
+      "text": "Propstes Benno in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22712:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 255,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000489> ; rf:nameInSource \"Propstes Benno\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000489"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogs Heinrich von Sachsen und Bayern",
+      "text": "Herzogs Heinrich von Sachsen und Bayern in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22712:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 255,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzogs Heinrich von Sachsen und Bayern\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die genannten Besitzungen",
+      "text": "betrifft die genannten Besitzungen",
+      "triple": [
+       "urn:regesta:22712:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22712:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 255,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:confirmation rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"die genannten Besitzungen\" .",
+      "object": "urn:regesta:22712:besitzungen",
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Stift Georgenberg zu Goslar"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Bischof Bernhards von Hildesheim"
+     },
+     ", ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Propstes Benno"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Herzogs Heinrich von Sachsen und Bayern"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "die genannten Besitzungen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22712:kinship-heinrich",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22712:kinship-heinrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-heinrich",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 19,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22712:> .\nx:kinship-heinrich a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22712> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22712:kinship-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:kinship-heinrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogs Heinrich von Sachsen und Bayern",
+      "text": "Herzogs Heinrich von Sachsen und Bayern in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22712:kinship-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:kinship-heinrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzogs Heinrich von Sachsen und Bayern\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22712:kinship-heinrich",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-heinrich-2",
+      "own": true,
+      "evidence": {
+       "start": 166,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:kinship-heinrich rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"seines Verwandten, des Herzogs Heinrich von Sachsen und Bayern\" ] .",
+      "key": "k11"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Verwandten",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22712:kinship-heinrich",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 173,
+       "end": 183,
+       "ambiguous": false
+      },
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8",
+       "k11"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k9",
+       "k11"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k10",
+       "k11"
+      ],
+      "text": "Herzogs Heinrich von Sachsen und Bayern"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22712:obsorge",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22712:obsorge",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "obsorge",
+     "own": true,
+     "evidence": {
+      "start": 63,
+      "end": 132,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22712:> .\nx:obsorge a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22712> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof Bernhards von Hildesheim, dessen Obsorge das Stift untersteht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k13"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Bernhards von Hildesheim",
+      "text": "Bischof Bernhards von Hildesheim in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22712:obsorge",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "obsorge",
+      "own": true,
+      "evidence": {
+       "start": 63,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:obsorge rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000625> ; rf:nameInSource \"Bischof Bernhards von Hildesheim\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000625"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (Obsorge)",
+      "text": "betrifft Herrschafts- und Schutzrechte (Obsorge)",
+      "triple": [
+       "urn:regesta:22712:obsorge",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22712:right-obsorge"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "obsorge",
+      "own": true,
+      "evidence": {
+       "start": 63,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:obsorge rf:concerns x:right-obsorge .\nx:right-obsorge a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"Obsorge\" .",
+      "object": "urn:regesta:22712:right-obsorge",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Stift Georgenberg zu Goslar",
+      "text": "betrifft Stift Georgenberg zu Goslar",
+      "triple": [
+       "urn:regesta:22712:obsorge",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-G000732:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "obsorge",
+      "own": true,
+      "evidence": {
+       "start": 63,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22712:> .\nx:obsorge rf:concerns <urn:regesta:actor:RI004-002-G000732:community> .\n<urn:regesta:actor:RI004-002-G000732:community> a crm:E74_Group ;\n    rdfs:label \"Stift Georgenberg zu Goslar\" .",
+      "object": "urn:regesta:actor:RI004-002-G000732:community",
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Bischof Bernhards von Hildesheim"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Herrschafts- und Schutzrechte (Obsorge)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Stift Georgenberg zu Goslar"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 255
+   },
+   {
+    "id": "kinship-heinrich",
+    "start": 0,
+    "end": 19
+   },
+   {
+    "id": "obsorge",
+    "start": 63,
+    "end": 132
+   },
+   {
+    "id": "kinship-heinrich-2",
+    "start": 166,
+    "end": 228
+   },
+   {
+    "id": "t1",
+    "start": 173,
+    "end": 183
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'seines Verwandten, des Herzogs Heinrich von Sachsen und Bayern': 'seines' read as referring to the subject Friedrich; grammatically it could also refer to Propst Benno.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for the bishop's 'Obsorge' over the Stift; rv:LordshipRights (top concept) used as the nearest group.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Witness list states kinship (Graf Lutolf von Wöltingerode and his sons Lutolf and Burchard, Hoger his brother, Rudolf de Capella and his son Ulrich); not extracted because the guidelines exclude formulaic witness lists.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "An ambiguous antecedent cannot be recorded inside a factoid; the model has no way to mark an identification as uncertain other than the batch report.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "Kinship inside witness lists is excluded by rule, not by content.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "actor-identification",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22712:kinship-heinrich",
+     "description": "The factoid makes Friedrich the kin of Duke Heinrich. In the passage 'seines Verwandten' follows directly on 'des dortigen Propstes Benno', so the possessive can grammatically point to Benno as well as to the sentence subject Friedrich. Regest convention favours Friedrich, but the second selector 'Friedrich bestätigt' only shows that Friedrich is the subject, not that the possessive refers to him; the register label 'Cousin Friedrich Barbarossas' may not be used as evidence. The reading is plausible but is an interpretation that the file does not mark.",
+     "proposal": "Keep the factoid only with the antecedent recorded as unresolved in the batch report, or give expert review the choice between Friedrich and Benno as second kin.",
+     "quote": {
+      "start": 134,
+      "end": 228
+     }
+    },
+    {
+     "category": "right-typing",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22712:right-obsorge",
+     "description": "'Obsorge' of the bishop over the Stift is typed rv:LordshipRights. This is a defensible top-level choice; a more specific type does not exist in the scheme.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 97,
+      "end": 132
+     }
+    },
+    {
+     "category": "scope-boundary",
+     "severity": "Vermerk",
+     "subject": "22712",
+     "description": "The witness list states several kinship relations (Lutolf and his sons, Hoger as brother of Lutolf, Rudolf de Capella and his son Ulrich). Omitted per the witness-list exclusion; noted as a boundary case because these are stated relations, not formulae.",
+     "proposal": "No change under the frozen contract.",
+     "quote": {
+      "start": 697,
+      "end": 745
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The antecedent of 'seines Verwandten' may be Benno rather than Friedrich.",
+     "reason": "In 'auf Bitten Bischof Bernhards von Hildesheim, dessen Obsorge das Stift untersteht, des dortigen Propstes Benno und seines Verwandten' the regest uses 'dessen' for a non-subject antecedent and 'seines' for the sentence subject Friedrich; the candidate's reading follows this grammar and does not rest on the register label. The model cannot mark uncertainty inside a factoid; the residual doubt belongs to expert review, not to correction.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu Schrift und Diktat vgl. Diestelkamp, der auch eine genaue Beschreibung von A bietet. - Bei der Nennung Heinrichs des Löwen als Petent sind die Worte "
+    },
+    {
+     "t": "Saxonie atque Bawarie",
+     "i": true
+    },
+    {
+     "t": " von späterer Hand im frei gelassenen Raum nachgetragen; er wurde damals von der Reichskanzlei noch nicht als Herzog von Bayern bezeichnet. Diestelkamp vermutet, daß der freie Raum für einen weiteren Petenten vorgesehen war. - Zum Inhalt vgl. Heinemann, Hildesheim (Quellen u. Darstell. zur Gesch. Niedersachsens 72, 1968) 216 f. - Zur Bedeutung des welfischen Vogtes Anno von Goslar vgl. Jordan, Goslar und das Reich, Niedersächs. Jb. f. LG 35 (1963) 62 ff., Heinemann, a. a. O. 237 ff. und Petke, Grafen von Wöltingerode-Wohldenberg (Veröff. d. Inst. f. hist. LF d. Univ. Göttingen 4, 1971) 305 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: seit 1832 in Privathand und verschollen, 1930 wiederentdeckt und dem Urkundenbestand des Historischen Vereins für Niedersachsen Staatsarchiv Hannover einverleibt, 1943 durch Kriegseinwirkung vernichtet (A). Drucke: Bode, UB. Stadt Goslar 1, 249 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 219; Janicke, UB. d. Hochst. Hildesheim 1, 262 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 279; Diestelkamp, Diplomatische Beiträge, Niedersächs. Jb. f. LG 10 (1933) 62; MG. DF. I. 10 Reg.: Stumpf 3625."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=32"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_10"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A000330",
+    "(<i>wohl:</i> Bürger von Goslar)"
+   ],
+   [
+    "RI004-002-A000917",
+    "Vogt von Goslar"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001209",
+    "H (= Albert von Sponheim), Notar der Reichskanzlei"
+   ],
+   [
+    "RI004-002-B000489",
+    "Propst des Stiftes Georgenberg zu Goslar"
+   ],
+   [
+    "RI004-002-B000625",
+    "Bischof von Hildesheim"
+   ],
+   [
+    "RI004-002-B001022",
+    "(<i>wohl:</i> Bürger von Goslar)"
+   ],
+   [
+    "RI004-002-B001491",
+    "Bischof von Hildesheim, vorher Domdekan von Hildesheim"
+   ],
+   [
+    "RI004-002-B001571",
+    "Propst des Moritzstiftes zu Hildesheim"
+   ],
+   [
+    "RI004-002-B001583",
+    "Graf von Wöltingerode, auch von Harzburg bzw. Wohldenberg"
+   ],
+   [
+    "RI004-002-E000130",
+    "Propst des St.-Blasius-Stiftes zu Braunschweig"
+   ],
+   [
+    "RI004-002-G000728",
+    "Goslar (südl. Wolfenbüttel, Ndsachs.)"
+   ],
+   [
+    "RI004-002-G000732",
+    "Stift Georgenberg"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000948",
+    "(Rufus), Bürger von Goslar"
+   ],
+   [
+    "RI004-002-H001086",
+    "Graf von Wöltingerode"
+   ],
+   [
+    "RI004-002-L000802",
+    "(I.), Graf von Wöltingerode"
+   ],
+   [
+    "RI004-002-L000803",
+    "(II.), Graf von Wöltingerode und Hallermund"
+   ],
+   [
+    "RI004-002-R000076",
+    "von Dassel, Elekt und Erzbischof von Köln und Erzkanzler für Italien, vorher Dompropst von Hildesheim und Kanzler der Reichskanzlei"
+   ],
+   [
+    "RI004-002-R001239",
+    "von <i>Capella</i> (<i>wohl:</i> Bürger von Goslar)"
+   ],
+   [
+    "RI004-002-U000254",
+    "Sohn des Rudolf von <i>Capella</i> (<i>wohl:</i> Bürger von Goslar)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ],
+   [
+    "RI004-002-W000459",
+    " <i>wohl:</i> Bürger von Goslar"
+   ]
+  ]
+ }
+}

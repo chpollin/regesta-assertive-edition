@@ -1,0 +1,259 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-01-18_1_1_4_2_1_162a_162a",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "134420",
+  "identifier": "RI IV,2,1 n. 162a",
+  "short": "RI IV,2,1 n. 162a",
+  "sort": "004_002_001_000563_000000162a",
+  "start": "1153-02-01",
+  "end": "1153-02-28",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Kloster Château-Chalon die Rechte und Besitzungen.",
+  "date": [
+   {
+    "t": "1153 (Februar)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Besançon"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Kloster Château-Chalon die Rechte und Besitzungen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:134420:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:134420:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 73,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:134420:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:134420> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster Château-Chalon die Rechte und Besitzungen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-52> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:134420:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 73,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134420:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Château-Chalon",
+      "text": "Kloster Château-Chalon in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:134420:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 73,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134420:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000578:community> ; rf:nameInSource \"Kloster Château-Chalon\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000578:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Besitzungen",
+      "text": "betrifft Besitzungen",
+      "triple": [
+       "urn:regesta:134420:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:134420:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 73,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134420:> .\nx:confirmation rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"Besitzungen\" .",
+      "object": "urn:regesta:134420:besitzungen",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kloster Château-Chalon"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Besitzungen"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 73
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "'die Rechte' are unspecified; RightShape requires a crm:P2_has_type from rv:RightTypes and the scheme has no generic right concept, so only 'Besitzungen' is recorded as rf:concerns (as crm:E18_Physical_Thing, although Besitzungen need not be a single physical thing).",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No generic or unspecified right type in rv:RightTypes for confirmations of 'Rechte' without further specification.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-object",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:134420:confirmation",
+     "description": "The confirmation concerns 'die Rechte und Besitzungen', but rf:concerns points only to the possessions. Half of the confirmed object is lost. The contract requires a right node to carry a RightTypes concept, and an unspecified 'Rechte' fits none, which explains but does not justify the silent omission.",
+     "proposal": "Add a node labelled 'Rechte' (or label the thing node 'Rechte und Besitzungen') and report the missing generic right type as a model gap.",
+     "quote": {
+      "start": 47,
+      "end": 73
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The confirmation concerns 'die Rechte und Besitzungen', but rf:concerns points only to the possessions.",
+     "reason": "The omission is real ('bestätigt dem Kloster Château-Chalon die Rechte und Besitzungen'), but a crm:E30_Right must carry a concept of rv:RightTypes (RightShape), and unspecified 'Rechte' fit no concept; assigning a group concept would invent a right type. Relabelling the crm:E18_Physical_Thing node as 'Rechte und Besitzungen' would type rights as a physical thing. The words stay in the evidence selector; record the missing generic right type as a gap.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [],
+   "transmission": [
+    {
+     "t": "Deperditum; bekannt aus einer Erwähnung im Departementalarchiv zu Besançon H (Château-Chalon) 5, f. 23. - MG. DF. I. *1085."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-B000810",
+    "Besançon (am Doubs, Hptst. des Dép. Doubs)"
+   ],
+   [
+    "RI004-002-C000578",
+    "Château-Chalon (an der Seille, zwischen Lons-le-Saunier und Poligny, Dép. Jura), (Benediktinerinnen-)Nonnenkloster St. Maria und St. Petrus"
+   ]
+  ]
+ }
+}

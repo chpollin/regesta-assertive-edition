@@ -1,0 +1,314 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1150-09-24_1_0_4_2_1_50_50",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22677",
+  "identifier": "RI IV,2,1 n. 50",
+  "short": "RI IV,2,1 n. 50",
+  "sort": "004_002_001_000050_0000000050",
+  "start": "1150-09-24",
+  "end": "1150-09-24",
+  "proseYears": [],
+  "lead": "Friedrich, Herzog (von Schwaben), wird als Zeuge in einer bei einer Besprechung König Konrads (III.) mit den Reichsfürsten (rege Conrado in praefata villa colloquium cum principibus regni habente) ausgestellten Urkunde über ein Tauschgeschäft zwischen den Klöstern St. Blasien und Elchingen genannt.",
+  "date": [
+   {
+    "t": "1150 September 24"
+   }
+  ],
+  "place": [
+   {
+    "t": "Langenau (bei Ulm)"
+   }
+  ],
+  "text": "Friedrich, Herzog (von Schwaben), wird als Zeuge in einer bei einer Besprechung König Konrads (III.) mit den Reichsfürsten (rege Conrado in praefata villa colloquium cum principibus regni habente) ausgestellten Urkunde über ein Tauschgeschäft zwischen den Klöstern St. Blasien und Elchingen genannt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22677:exchange",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22677:exchange",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "exchange",
+     "own": true,
+     "evidence": {
+      "start": 211,
+      "end": 290,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22677:> .\nx:exchange a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22677> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Urkunde über ein Tauschgeschäft zwischen den Klöstern St. Blasien und Elchingen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster St. Blasien",
+      "text": "Kloster St. Blasien in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22677:exchange",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22677:ref-st-blasien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 211,
+       "end": 290,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22677:> .\nx:exchange rf:reference x:ref-st-blasien .\nx:ref-st-blasien a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-B000974:community> ;\n    rf:nameInSource \"St. Blasien\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000974:community"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Elchingen",
+      "text": "Kloster Elchingen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22677:exchange",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22677:ref-elchingen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "exchange",
+      "own": true,
+      "evidence": {
+       "start": 211,
+       "end": 290,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22677:> .\nx:exchange rf:reference x:ref-elchingen .\nx:ref-elchingen a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000265:community> ;\n    rf:nameInSource \"Elchingen\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000265:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Tauschgeschäft",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22677:exchange",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 228,
+       "end": 242,
+       "ambiguous": false
+      },
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Übertragung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Kloster St. Blasien"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kloster Elchingen"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "exchange",
+    "start": 211,
+    "end": 290
+   },
+   {
+    "id": "t1",
+    "start": 228,
+    "end": 242
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for an exchange (Tauschgeschäft); recorded as rv:Grant with rf:qualifier \"Tauschgeschäft\" and both monasteries as rv:Participant, since the regest gives no direction.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Charter witness (Zeuge) has no in-scope role; rv:Witness covers only testimony in a narrated dispute, so Friedrich is not referenced.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for an exchange and no role for exchange parties.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No way to record the assembly at which a charter was issued (colloquium of the king with the princes).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "vocabulary-limit",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22677:exchange",
+     "description": "An exchange is typed rv:Grant, which is defined as a one-directional transfer, with 'Tauschgeschäft' as qualifier and both monasteries as rv:Participant. The regest gives no object or direction, so the approximation is transparent and the roles do not overreach. Model gap.",
+     "proposal": "Keep until the vocabulary offers an exchange type under rv:Grant or beside it.",
+     "quote": {
+      "start": 211,
+      "end": 290
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. dazu auch die Urkunde Bischof Hermanns von Konstanz von 1156 April 4, Wirtemberg. UB. 2, 122 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 366; vgl. Bernhardi, Konrad III. 850 mit Anm. 32 und 33. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " B.-Niederkorn-Hruza, Reg. 698 möchten den von Friedrich vermittelten Frieden zwischen König Konrad III. und Herzog Welf VI. schon zu der Zusammenkunft in Langenau (siehe unser Reg. 50) datieren."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Tauschurkunde, ed. Gerbert, Hist. Silvae Nigrae 3 (1788) 76 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 51; Schmid, Pfullendorf (Forsch. zur oberrhein. LG 1, 1954) 261 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 29; Stumpf 3574."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=21"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000974",
+    "St. ─, (Benediktiner-)Kloster (im Schwarzwald, südöstl. Freiburg im Breisgau, Ldkr. Waldshut, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-E000265",
+    "Elchingen (<i>heute:</i> Oberelchingen, an der Donau, nordöstl. Ulm, bayer. Reg.-Bez. Schwaben), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000142",
+    "Langenau (nordöstl. Ulm, Alb-Donau-Kr., Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ]
+  ]
+ }
+}

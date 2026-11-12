@@ -1,0 +1,713 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-00_3_0_4_2_1_73_73",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22700",
+  "identifier": "RI IV,2,1 n. 73",
+  "short": "RI IV,2,1 n. 73",
+  "sort": "004_002_001_000073_0000000073",
+  "start": "1152-03-01",
+  "end": "1152-04-30",
+  "proseYears": [],
+  "lead": "(Wibald ) schreibt an Papst Eugen (III.) über die Ereignisse nach seiner Rückkehr von der letzten Gesandtschaftsreise nach Rom, nämlich die nach dem Tode König Konrads (III.) erfolgte Wahl Herzog Friedrichs von Schwaben zu dessen Nachfolger, wobei er kurz über dessen Alter und Eigenschaften spricht (nondum ut credimus annorum triginta, fuit antehac ingenio acer, consilio promptus, bello felix, rerum arduarum et gloriae appetens, iniuriae omnio impatiens, affabilis ac liberalis, et splendide disertus iuxta gentile idioma linguae suae), sowie über die Aachener Beratungen am Tag nach der Krönung (März 10), die eine Ablehnung der sofortigen Beschwörung eines Italienzuges durch die Laienfürsten brachten, und rät ihm, Friedrich zum König und Verteidiger der Kirche zu erklären (sit vobiscum magni consilii angelus, ut declaretis eum in regem ac defensorem Romane aecclesiae ).",
+  "date": [
+   {
+    "t": "(1152 März-April)"
+   }
+  ],
+  "place": [],
+  "text": "(Wibald ) schreibt an Papst Eugen (III.) über die Ereignisse nach seiner Rückkehr von der letzten Gesandtschaftsreise nach Rom, nämlich die nach dem Tode König Konrads (III.) erfolgte Wahl Herzog Friedrichs von Schwaben zu dessen Nachfolger, wobei er kurz über dessen Alter und Eigenschaften spricht (nondum ut credimus annorum triginta, fuit antehac ingenio acer, consilio promptus, bello felix, rerum arduarum et gloriae appetens, iniuriae omnio impatiens, affabilis ac liberalis, et splendide disertus iuxta gentile idioma linguae suae), sowie über die Aachener Beratungen am Tag nach der Krönung (März 10), die eine Ablehnung der sofortigen Beschwörung eines Italienzuges durch die Laienfürsten brachten, und rät ihm, Friedrich zum König und Verteidiger der Kirche zu erklären (sit vobiscum magni consilii angelus, ut declaretis eum in regem ac defensorem Romane aecclesiae ).",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22700:advice-declare-king",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22700:advice-declare-king",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advice-declare-king",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 40,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22700:> .\nx:advice-declare-king a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22700> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Wibald ) schreibt an Papst Eugen (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibald",
+      "text": "Wibald in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22700:advice-declare-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-declare-king",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 40,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22700:> .\nx:advice-declare-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrichs von Schwaben",
+      "text": "Herzog Friedrichs von Schwaben in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22700:advice-declare-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-declare-king",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 40,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22700:> .\nx:advice-declare-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22700:advice-declare-king",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-declare-king",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 40,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22700:> .\nx:advice-declare-king rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"ihm\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22700:advice-declare-king",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22700:communication"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-declare-king",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 40,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22700:> .\nx:advice-declare-king rf:partOf x:communication .\nx:communication a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Wibald ) schreibt an Papst Eugen (III.)\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22700> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22700:communication",
+      "objectClaim": "communication",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22700:advice-declare-king",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-declare-king-2",
+      "own": true,
+      "evidence": {
+       "start": 713,
+       "end": 780,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22700:> .\nx:advice-declare-king rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"rät ihm, Friedrich zum König und Verteidiger der Kirche zu erklären\" ] .",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "rät",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22700:advice-declare-king",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 713,
+       "end": 716,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Bitte"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Wibald"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Herzog Friedrichs von Schwaben"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22700:communication",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22700:communication",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "communication",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 40,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22700:> .\nx:communication a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22700> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Wibald ) schreibt an Papst Eugen (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibald",
+      "text": "Wibald in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22700:communication",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "communication",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 40,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22700:> .\nx:communication rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibald\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22700:communication",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "communication",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 40,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22700:> .\nx:communication rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Wibald"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22700:election",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22700:election",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "election",
+     "own": true,
+     "evidence": {
+      "start": 136,
+      "end": 240,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22700:> .\nx:election a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22700> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die nach dem Tode König Konrads (III.) erfolgte Wahl Herzog Friedrichs von Schwaben zu dessen Nachfolger\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrichs von Schwaben",
+      "text": "Herzog Friedrichs von Schwaben in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22700:election",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election",
+      "own": true,
+      "evidence": {
+       "start": 136,
+       "end": 240,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22700:> .\nx:election rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Herzog Friedrichs von Schwaben\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach dem Tode König Konrads (III.)",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22700:election",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 140,
+       "end": 174,
+       "ambiguous": false
+      },
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "zu dessen Nachfolger",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22700:election",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 220,
+       "end": 240,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Einsetzung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Herzog Friedrichs von Schwaben"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "advice-declare-king",
+    "start": 0,
+    "end": 40
+   },
+   {
+    "id": "communication",
+    "start": 0,
+    "end": 40
+   },
+   {
+    "id": "election",
+    "start": 136,
+    "end": 240
+   },
+   {
+    "id": "t2",
+    "start": 140,
+    "end": 174
+   },
+   {
+    "id": "t3",
+    "start": 220,
+    "end": 240
+   },
+   {
+    "id": "advice-declare-king-2",
+    "start": 713,
+    "end": 780
+   },
+   {
+    "id": "t1",
+    "start": 713,
+    "end": 716
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Herzog Friedrichs von Schwaben' and 'Friedrich' identified with the shared ruler IRI; reading as the same person as the later king rests on the shared ruler, not on a register candidate.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No sender role for a communication; Wibald recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for advice; 'rät' recorded as rv:Request with qualifier 'rät'.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a royal election; recorded as rv:Appointment without an elector, because the passage names none.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "König Konrad (III.) as the predecessor succeeded has no fitting role and is not referenced.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Aachen deliberations refusing an oath for an Italian expedition judged out of scope (political/military).",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for advice or counsel distinct from a request.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the author or sender of a letter.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "urn:regesta:22700:election: added rf:qualifier \"nach dem Tode König Konrads (III.)\" beside \"zu dessen Nachfolger\"; no reference for Konrad; producer correction-g4.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "lost-reference",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22700:election",
+     "description": "The election is to the succession of King Konrad III, who has a candidate in this packet. The qualifier 'zu dessen Nachfolger' keeps a pronoun whose referent is not represented, so the succession relation is lost.",
+     "proposal": "Add a reference to RI004-002-K000316 (nameInSource \"König Konrads (III.)\") as rv:Participant and keep rf:qualifier \"nach dem Tode\" and \"zu dessen Nachfolger\".",
+     "quote": {
+      "start": 140,
+      "end": 240
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22700",
+     "description": "The letter reports the Aachen deliberations, in which the lay princes rejected the immediate swearing of an Italian expedition. This is a reported collective decision not represented.",
+     "proposal": "Add an rv:Negotiation factoid with local group 'die Laienfürsten' as rv:Negotiator and rf:qualifier \"Ablehnung der sofortigen Beschwörung eines Italienzuges\", or report it as a model gap.",
+     "quote": {
+      "start": 611,
+      "end": 707
+     }
+    },
+    {
+     "category": "type-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22700:advice-declare-king",
+     "description": "Advice is typed rv:Request; the vocabulary has no advice type, and the qualifier 'rät' preserves the wording. Wibald as author is rv:Participant for lack of a sender role.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 713,
+      "end": 780
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The election to the succession of Konrad III loses its reference to Konrad.",
+     "reason": "'die nach dem Tode König Konrads (III.) erfolgte Wahl Herzog Friedrichs von Schwaben zu dessen Nachfolger' names Konrad (candidate K000316), but he takes no part in the election; rv:Participant would misstate him, and the vocabulary has no predecessor role. The safe fix keeps the temporal wording that names him.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The Aachen deliberations rejecting an immediate oath for an Italian expedition are not extracted.",
+     "reason": "'die eine Ablehnung der sofortigen Beschwörung eines Italienzuges durch die Laienfürsten brachten' concerns a military expedition reported in a letter and states no kinship, economic or legal relation; it is out of scope.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. zu diesem Schreiben Simonsfeld, Jahrbücher 50 ff., Maccarrone, Papato e impero 15 ff. und Zeillinger, Eberhard, MIÖG 78 (1970) 212 f. - Zur Angabe Wibalds über das Alter des neuen Königs vgl. Opll, Winterquatember, MIÖG 85 (1977) 341."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Epp. Wibaldi, ed. Jaffé, Mon. Corb. 503 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 375; MG. Const. 1, 192 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 138."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=29"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000009",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-R000885",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

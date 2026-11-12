@@ -1,0 +1,1063 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-00-00_1_0_4_2_1_183_183",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22810",
+  "identifier": "RI IV,2,1 n. 183",
+  "short": "RI IV,2,1 n. 183",
+  "sort": "004_002_001_000183_0000000183",
+  "start": "1153-01-01",
+  "end": "1153-12-31",
+  "proseYears": [
+   1152
+  ],
+  "lead": "Hugo von Baux und seine Brüder (Wilhelm , Bertrand und Gerbert ) danken Abt Wibald von Stablo für seine Bemühungen am kaiserlichen Hofe zugunsten Wilhelms, bitten ihn um weitere Unterstützung beim Kaiser (!), dem sie gegen die Angriffe des Grafen von Barcelona (Barcinonensis) Treue geloben, und um Mitteilung darüber, was sie sich von dessen Ankunft erhoffen können.",
+  "date": [
+   {
+    "t": "1152 Ende"
+   }
+  ],
+  "place": [],
+  "text": "Hugo von Baux und seine Brüder (Wilhelm , Bertrand und Gerbert ) danken Abt Wibald von Stablo für seine Bemühungen am kaiserlichen Hofe zugunsten Wilhelms, bitten ihn um weitere Unterstützung beim Kaiser (!), dem sie gegen die Angriffe des Grafen von Barcelona (Barcinonensis) Treue geloben, und um Mitteilung darüber, was sie sich von dessen Ankunft erhoffen können. Verbesserungen und Zusätze (1991): Korrektur der verderbten Datierung gemäß der 2. Lieferung (1991): '(1152 Ende, vor dem Aufbruch nach Burgund) - vgl. dazu Regg. 160 - 163 und Heinemann, Burgund, AfD 29 (1963) 168 Anm. 106.' Im Erstdruck genannte Datierung: (? 1153).",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22810:bitte",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22810:bitte",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bitte",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 93,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22810:> .\nx:bitte a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22810> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Hugo von Baux und seine Brüder (Wilhelm , Bertrand und Gerbert ) danken Abt Wibald von Stablo\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hugo von Baux",
+      "text": "Hugo von Baux in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22810:bitte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bitte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 93,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:bitte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001329> ; rf:nameInSource \"Hugo von Baux\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001329"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wilhelm",
+      "text": "Wilhelm in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22810:bitte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bitte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 93,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:bitte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000573> ; rf:nameInSource \"Wilhelm\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000573"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bertrand",
+      "text": "Bertrand in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22810:bitte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bitte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 93,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:bitte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000801> ; rf:nameInSource \"Bertrand\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000801"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gerbert",
+      "text": "Gerbert in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22810:bitte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bitte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 93,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:bitte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000337> ; rf:nameInSource \"Gerbert\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000337"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Wibald von Stablo",
+      "text": "Abt Wibald von Stablo in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22810:bitte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bitte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 93,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:bitte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt Wibald von Stablo\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22810:bitte",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bitte-2",
+      "own": true,
+      "evidence": {
+       "start": 156,
+       "end": 207,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:bitte rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bitten ihn um weitere Unterstützung beim Kaiser (!)\" ] .",
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "weitere",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22810:bitte",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 170,
+       "end": 177,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k7"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k2",
+       "k7"
+      ],
+      "text": "Hugo von Baux"
+     },
+     ", ",
+     {
+      "keys": [
+       "k3",
+       "k7"
+      ],
+      "text": "Wilhelm"
+     },
+     ", ",
+     {
+      "keys": [
+       "k4",
+       "k7"
+      ],
+      "text": "Bertrand"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5",
+       "k7"
+      ],
+      "text": "Gerbert"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k6",
+       "k7"
+      ],
+      "text": "Abt Wibald von Stablo"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22810:brueder",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22810:brueder",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "brueder",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 64,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22810:> .\nx:brueder a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22810> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Hugo von Baux und seine Brüder (Wilhelm , Bertrand und Gerbert )\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hugo von Baux",
+      "text": "Hugo von Baux in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22810:brueder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brueder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:brueder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001329> ; rf:nameInSource \"Hugo von Baux\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001329"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wilhelm",
+      "text": "Wilhelm in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22810:brueder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brueder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:brueder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000573> ; rf:nameInSource \"Wilhelm\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000573"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bertrand",
+      "text": "Bertrand in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22810:brueder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brueder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:brueder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000801> ; rf:nameInSource \"Bertrand\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000801"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gerbert",
+      "text": "Gerbert in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22810:brueder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brueder",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:brueder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000337> ; rf:nameInSource \"Gerbert\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000337"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Brüder",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22810:brueder",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 24,
+       "end": 30,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Hugo von Baux"
+     },
+     ", ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Wilhelm"
+     },
+     ", ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bertrand"
+     },
+     " und ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Gerbert"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22810:treuegeloebnis",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22810:treuegeloebnis",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "treuegeloebnis",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 64,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22810:> .\nx:treuegeloebnis a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22810> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Hugo von Baux und seine Brüder (Wilhelm , Bertrand und Gerbert )\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hugo von Baux",
+      "text": "Hugo von Baux in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22810:treuegeloebnis",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treuegeloebnis",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:treuegeloebnis rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001329> ; rf:nameInSource \"Hugo von Baux\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001329"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wilhelm",
+      "text": "Wilhelm in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22810:treuegeloebnis",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treuegeloebnis",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:treuegeloebnis rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000573> ; rf:nameInSource \"Wilhelm\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000573"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bertrand",
+      "text": "Bertrand in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22810:treuegeloebnis",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treuegeloebnis",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:treuegeloebnis rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000801> ; rf:nameInSource \"Bertrand\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000801"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gerbert",
+      "text": "Gerbert in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22810:treuegeloebnis",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treuegeloebnis",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:treuegeloebnis rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000337> ; rf:nameInSource \"Gerbert\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000337"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser",
+      "text": "Kaiser in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22810:treuegeloebnis",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treuegeloebnis",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 64,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:treuegeloebnis rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Kaiser\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22810:treuegeloebnis",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treuegeloebnis-2",
+      "own": true,
+      "evidence": {
+       "start": 192,
+       "end": 290,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22810:> .\nx:treuegeloebnis rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"beim Kaiser (!), dem sie gegen die Angriffe des Grafen von Barcelona (Barcinonensis) Treue geloben\" ] .",
+      "key": "k21"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Treue",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22810:treuegeloebnis",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 277,
+       "end": 282,
+       "ambiguous": false
+      },
+      "key": "k22"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "gegen die Angriffe des Grafen von Barcelona (Barcinonensis)",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22810:treuegeloebnis",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 217,
+       "end": 276,
+       "ambiguous": false
+      },
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15",
+       "k21"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k16",
+       "k21"
+      ],
+      "text": "Hugo von Baux"
+     },
+     ", ",
+     {
+      "keys": [
+       "k17",
+       "k21"
+      ],
+      "text": "Wilhelm"
+     },
+     ", ",
+     {
+      "keys": [
+       "k18",
+       "k21"
+      ],
+      "text": "Bertrand"
+     },
+     " und ",
+     {
+      "keys": [
+       "k19",
+       "k21"
+      ],
+      "text": "Gerbert"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k20",
+       "k21"
+      ],
+      "text": "Kaiser"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "bitte",
+    "start": 0,
+    "end": 93
+   },
+   {
+    "id": "brueder",
+    "start": 0,
+    "end": 64
+   },
+   {
+    "id": "treuegeloebnis",
+    "start": 0,
+    "end": 64
+   },
+   {
+    "id": "t2",
+    "start": 24,
+    "end": 30
+   },
+   {
+    "id": "bitte-2",
+    "start": 156,
+    "end": 207
+   },
+   {
+    "id": "t1",
+    "start": 170,
+    "end": 177
+   },
+   {
+    "id": "treuegeloebnis-2",
+    "start": 192,
+    "end": 290
+   },
+   {
+    "id": "t4",
+    "start": 217,
+    "end": 276
+   },
+   {
+    "id": "t3",
+    "start": 277,
+    "end": 282
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Kaiser (!)' identified with the shared ruler; the editorial (!) marks that the title is anachronistic",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for an opponent: 'gegen die Angriffe des Grafen von Barcelona' is in the evidence but the count (candidate RI004-002-B000184) is not referenced",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Fealty pledge (Treue geloben) typed as rv:Assurance; no dedicated act type for an oath of fealty",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Thanks for Wibald's earlier efforts at court on behalf of Wilhelm not extracted; no act type fits an intercession reported only as past effort, and no legal or economic relation is stated",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for an opponent or the party against whom an assurance or pledge is directed.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for intercession on behalf of another at court.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "urn:regesta:22810:treuegeloebnis: added rf:qualifier \"gegen die Angriffe des Grafen von Barcelona (Barcinonensis)\" beside \"Treue\"; no reference to the count added; factoid attributed to the corrector.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-actor",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22810:treuegeloebnis",
+     "description": "The pledge of fidelity is made against the attacks of the Count of Barcelona; neither the count (packet candidate RI004-002-B000184) nor this wording appears in the factoid. The exact phrase could have been kept as rf:qualifier or rf:ground.",
+     "proposal": "Add rf:ground or rf:qualifier 'gegen die Angriffe des Grafen von Barcelona (Barcinonensis)'; reference the count with the closest available role or report the missing opponent role.",
+     "quote": {
+      "start": 209,
+      "end": 290
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "22810",
+     "description": "Wibald's earlier efforts at the royal court in favour of Wilhelm are only used as evidence for the request. An intercession has no act type; the passage is borderline in scope.",
+     "proposal": "Report as model gap, or record an earlier rv:Request with Wibald as rv:Representative and Wilhelm as rv:Beneficiary if the expert accepts that reading.",
+     "quote": {
+      "start": 65,
+      "end": 154
+     }
+    },
+    {
+     "category": "omitted-detail",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22810:bitte",
+     "description": "The request has a second object, information about what they may expect from the ruler's arrival, which is neither in the evidence nor separately recorded; the ruler as the one before whom support is sought is not referenced.",
+     "proposal": "Optionally add a second selector or a second rv:Request factoid.",
+     "quote": {
+      "start": 292,
+      "end": 366
+     }
+    },
+    {
+     "category": "identification",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-F000471",
+     "description": "The ruler is called 'Kaiser (!)', the editor's mark that the title is anachronistic for 1152. Identification with the shared ruler IRI is correct; the label 'Kaiser' should not be read as a title in 1152.",
+     "proposal": "No change required.",
+     "quote": {
+      "start": 197,
+      "end": 207
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The pledge of fidelity is made against the attacks of the Count of Barcelona; neither the count nor this wording appears in the factoid.",
+     "reason": "'dem sie gegen die Angriffe des Grafen von Barcelona (Barcinonensis) Treue geloben' qualifies the pledge, and the phrase is lost beyond the evidence. The count matches the candidate RI004-002-B000184 ('Barcelona // Graf(en)'), but no role expresses the party against whom a pledge is directed; any available role (Participant included) would misstate him as a party to the pledge. The safe fix keeps the exact phrase as a literal and leaves the count unreferenced.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Wibald's earlier efforts at court and the second object of the request (information about the ruler's arrival) are not separately recorded.",
+     "reason": "Thanks for 'Bemühungen am kaiserlichen Hofe zugunsten Wilhelms' is an intercession without an act type; recording it as a rv:Request would be a reading. The second object 'um Mitteilung darüber, was sie sich von dessen Ankunft erhoffen können' belongs to the same request, which is already recorded with its addressee. The reviewer marks both as optional.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Simonsfeld, Jahrbücher 82 mit Anm. 259, verlegt mit Giesebrecht-Simson, Kaiserzeit 6, 329, das Schreiben in das Jahr 1152 vor den Abschluß des Vertrages mit dem Herzog von Zähringen (DF. I. 12, Reg. "
+    },
+    {
+     "t": "94",
+     "regest": "22721"
+    },
+    {
+     "t": "). Dagegen folgt Hausmann, Reichskanzlei 239 der Datierung Jaffés und verlegt das Dokument in den Sommer 1153, während Büttner, Burgund (VuF 12, 1968) 90, den Zusammenhang mit dem Wormser Hoftag im Juni 1153 herstellt. Daß damals wohl eine Gesandtschaft des Edlen von Baux an den Hof Barbarossas kam, läßt sich daraus erschließen, daß DK. III. 132 für Raimund von Baux als Vorlage für DF. I. 61 diente, vgl. die Vorbemerkung zu dem letztgenannten D. (Reg. "
+    },
+    {
+     "t": "182",
+     "regest": "22809"
+    },
+    {
+     "t": "). - Zum Kaisertitel vgl. Herkenrath, in: WdF 390 (1975) 347."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Epp. Wibaldi, ed. Jaffé, Mon. Corb. 565 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 428."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=67"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000184",
+    "Graf(en)"
+   ],
+   [
+    "RI004-002-B000724",
+    "(IV.), Herzog von Zähringen, Breisgau und Burgund"
+   ],
+   [
+    "RI004-002-B000801",
+    "(I.), Edler von Baux (auch von Marseille)"
+   ],
+   [
+    "RI004-002-B001643",
+    "Burgund, auch Hochburgund (sowohl das Königreich als auch der Kernraum der Grafschaft)"
+   ],
+   [
+    "RI004-002-G000337",
+    "(Edler) von Baux"
+   ],
+   [
+    "RI004-002-H001329",
+    "Edler von Baux"
+   ],
+   [
+    "RI004-002-R000063",
+    "Graf von Baux"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000573",
+    "von Baux"
+   ],
+   [
+    "RI004-002-W000818",
+    "Worms (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,231 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/d7a1159d-1676-4470-8838-d745d915f5ea",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "210553",
+  "identifier": "RI IV,2,1 n. 171a",
+  "short": "RI IV,2,1 n. 171a",
+  "sort": "004_002_001_000575_000000171a",
+  "start": "1153-03-01",
+  "end": "1153-03-31",
+  "proseYears": [],
+  "lead": "Friedrich nimmt das (Benediktiner-)Kloster (S. Salvatore a) Settimo in seinen Schutz.",
+  "date": [
+   {
+    "t": "1153 (vielleicht März)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Konstanz)"
+   }
+  ],
+  "text": "Friedrich nimmt das (Benediktiner-)Kloster (S. Salvatore a) Settimo in seinen Schutz.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:210553:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:210553:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 85,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:210553:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:210553> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das (Benediktiner-)Kloster (S. Salvatore a) Settimo in seinen Schutz.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-53> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:210553:protection",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:210553:protection-ref-grantor"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 85,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:210553:> .\nx:protection rf:reference x:protection-ref-grantor .\nx:protection-ref-grantor a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "(Benediktiner-)Kloster (S. Salvatore a) Settimo",
+      "text": "(Benediktiner-)Kloster (S. Salvatore a) Settimo in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:210553:protection",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:210553:protection-ref-recipient"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 85,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:210553:> .\nx:protection rf:reference x:protection-ref-recipient .\nx:protection-ref-recipient a rf:Reference ;\n    rf:actor <urn:regesta:actor:210553:local:kloster-settimo> ;\n    rf:nameInSource \"(Benediktiner-)Kloster (S. Salvatore a) Settimo\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:210553:local:kloster-settimo"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "(Benediktiner-)Kloster (S. Salvatore a) Settimo"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 85
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Kloster (S. Salvatore a) Settimo has no register candidate in the packet; recorded as local community actor.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Kenntnis dieses Deperditums ist der angeführten Edition der Urkunden des Klosters zu verdanken, die online zugänglich ist, siehe: "
+    },
+    {
+     "t": " https://www.academia.edu/1385315",
+     "href": "https://www.academia.edu/1385315"
+    },
+    {
+     "t": " (Zugriff: 23.11.2019). Die beiden Herausgeberinnen leiten nicht zuletzt aus dem Fehlen der Besiegelung des verlorenen Originals ab, dass das verlorene DF.I. im Gefolge der Wiederaussöhnung zwischen der Abtei und dem Papsttum, nachdem der im Schisma auf Seiten des Kaisers stehende Abt Roland von Settimo abgesetzt worden war, völlig in Bedeutungslosigkeit gefallen sei (ebd., 259). Der schismatische Abt Roland ist in einer am 29. Oktober 1172 in Settimo ausgestellten Urkunde als im Amt befindlich nachzuweisen (Ghignoli – Ferrucci, ebd., 180 Nr. 81) und wird in der Urkunde Papst Clemens‘ III. vom 30. Mai 1189 dezidiert als "
+    },
+    {
+     "t": "tunc scismaticus",
+     "i": true
+    },
+    {
+     "t": " bezeichnet (ebd., 210 Nr. 96); schon am 13. März 1177 ist ein Ambrogio als Abt von Settimo bezeugt (ebd., 186 Nr. 84). – Zum Zeitpunkt der Ausstellung der verlorenen Königsurkunde stand jedenfalls der seit 1123 und bis 1154 nachweisbare Abt Serafin dem Kloster Settimo vor, vgl. dazu die Belege bei Ghignoli – Ferrucci, ebd., 114 Nr. 49 und 154 Nr. 69). – Als Zeitpunkt der Ausstellung des Deperditums scheint am ehesten der Hoftag in Konstanz zu Anfang März dieses Jahres in Frage zu kommen, da damals auch päpstliche Legaten am königlichen Hof erschienen, vgl. Reg. "
+    },
+    {
+     "t": "167",
+     "regest": "22794"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Deperditum, erwähnt in einem Kopiar der Abtei aus dem 14. Jahrhundert im Staatsarchiv Florenz (Archivio di Stato di Firenze), CRS 481, c. 3 r (Randglosse): "
+    },
+    {
+     "t": "Sub isto numero habemus privilegium Frederici primi, ubi continetur quod monasterium sancti Salvatoris de Septimo sub sua protectione recep(it). Quod quidem privilegium est sine bulla. Anno domini 1153",
+     "i": true
+    },
+    {
+     "t": ". – Edition: Antonella Ghignoli – Anna Rosa Ferrucci (ed.), Carte della Badia di Settimo e della Badia de Buonsollazzo nell’Archivio di Stato di Firenze (998–1200) (Memoria scripturarum, Testi, 2, Firenze 2004), 258 Nr. 8 (Mit irriger Bezeichnung Friedrichs als „imperatore“ im Kopfregest, während in der Notiz des 14. Jahrhunderts nur von "
+    },
+    {
+     "t": "Fredericus primus",
+     "i": true
+    },
+    {
+     "t": " ohne Titelnennung – korrekt wäre es zu 1153, von „König“ zu sprechen – die Rede ist.)"
+    }
+   ],
+   "links": []
+  },
+  "register": []
+ }
+}

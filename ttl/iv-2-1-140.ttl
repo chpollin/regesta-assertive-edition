@@ -1,0 +1,74 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-10-18_1_0_4_2_1_140_140
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22767> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 140" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-A001203> a crm:E21_Person ;
+    rdfs:label "seines Kanzlers Arnold" .
+<urn:regesta:actor:22767:local:andere-fuersten> a crm:E74_Group ;
+    rdfs:label "anderer Fürsten" .
+<urn:regesta:actor:RI004-002-V000200:community> a crm:E74_Group ;
+    rdfs:label "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)" .
+<urn:regesta:actor:RI004-002-V000199:community> a crm:E74_Group ;
+    rdfs:label "der Kirche S. Maria" .
+
+# Things
+
+<urn:regesta:22767:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "die genannten Besitzungen" .
+
+# Protection grant, main act
+
+<urn:regesta:22767:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22767> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi) in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:role rv:Petitioner ; rf:nameInSource "seines Kanzlers Arnold" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22767:local:andere-fuersten> ; rf:role rv:Petitioner ; rf:nameInSource "anderer Fürsten" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000200:community> ; rf:role rv:Recipient ; rf:nameInSource "das Domkapitel von Vercelli (canonicos sancti Eusebii in civitate Uercellensi)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Confirmation of possessions
+
+<urn:regesta:22767:confirmation-besitzungen> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22767> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm und der Kirche S. Maria die genannten Besitzungen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000200:community> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000199:community> ; rf:role rv:Recipient ; rf:nameInSource "der Kirche S. Maria" ] ;
+    rf:concerns <urn:regesta:22767:besitzungen> ;
+    rf:partOf <urn:regesta:22767:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Prescription period for both churches; the vocabulary has no right type for it, so it stays a qualifier.
+# The parallel grant to the bishop is reported in Reg. 138 and is not restated as a factoid here.
+
+<urn:regesta:22767:grant-verjaehrung> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22767> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "gewährt den beiden Kirchen ebenso wie dem Bischof (Reg. 138) eine Verjährungszeit von hundert Jahren" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000200:community> ; rf:role rv:Recipient ; rf:nameInSource "den beiden Kirchen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000199:community> ; rf:role rv:Recipient ; rf:nameInSource "den beiden Kirchen" ] ;
+    rf:qualifier "eine Verjährungszeit von hundert Jahren" ;
+    rf:partOf <urn:regesta:22767:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .

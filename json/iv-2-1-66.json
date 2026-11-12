@@ -1,0 +1,870 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-09_1_0_4_2_1_66_66",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22693",
+  "identifier": "RI IV,2,1 n. 66",
+  "short": "RI IV,2,1 n. 66",
+  "sort": "004_002_001_000066_0000000066",
+  "start": "1152-03-09",
+  "end": "1152-03-14",
+  "proseYears": [],
+  "lead": "Königskrönung : Friedrich wird am Sonntag Letare Jerusalem (März 9) in der Marienkirche von Erzbischof Arnold von Köln unter Mitwirkung anderer Bischöfe nach Ablegung des herkömmlichen Krönungseides unter Akklamation des Volkes gesalbt, gekrönt und auf den Thron Karls des Großen gesetzt.",
+  "date": [
+   {
+    "t": "1152 März 9-14"
+   }
+  ],
+  "place": [
+   {
+    "t": "Aachen"
+   }
+  ],
+  "text": "Königskrönung : Friedrich wird am Sonntag Letare Jerusalem (März 9) in der Marienkirche von Erzbischof Arnold von Köln unter Mitwirkung anderer Bischöfe nach Ablegung des herkömmlichen Krönungseides unter Akklamation des Volkes gesalbt, gekrönt und auf den Thron Karls des Großen gesetzt. Trotz der Feierlichkeit des Tages vergibt er einem seiner Ministerialen, dem er wegen seiner Vergehen die Gunst entzogen hat und der sich ihm nun zu Füßen wirft, nicht und stellt damit seine unbedingte Liebe zur Gerechtigkeit unter Beweis. Am selben Tag wird von denselben Bischöfen auch der neue Bischof von Münster, der ebenfalls Friedrich heißt, geweiht, was man als gutes Vorzeichen ansieht. Am nächsten Tag verhandelt Friedrich in den Gemächern der Pfalz mit den Fürsten: Der Antritt des von seinem Vorgänger angeordneten Italienzuges zur Kaiserkrönung, zu dem die geistlichen Fürsten, vor allem der Kölner Erzbischof, raten, wird wegen der Einwände der Laienfürsten, die auf die gespannte innere Lage des Reiches und auf die Würde des Königs (Reg. 73: decere etiam, ut vocatus á vobis potius quam sponte sua veniret) hinweisen, vorläufig aufgeschoben. Die Entsendung einer Legation, bestehend aus dem Elekten Hillin von Trier, Bischof Eberhard von Bamberg und Abt Adam von Ebrach (vgl. Reg. 72), an Papst Eugen (III.), die Stadt Rom und ganz Italien zur Anzeige der Wahl des neuen Königs wird beschlossen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22693:coronation",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22693:coronation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "coronation",
+     "own": true,
+     "evidence": {
+      "start": 16,
+      "end": 287,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22693:> .\nx:coronation a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22693> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich wird am Sonntag Letare Jerusalem (März 9) in der Marienkirche von Erzbischof Arnold von Köln unter Mitwirkung anderer Bischöfe nach Ablegung des herkömmlichen Krönungseides unter Akklamation des Volkes gesalbt, gekrönt und auf den Thron Karls des Großen gesetzt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22693:coronation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "coronation",
+      "own": true,
+      "evidence": {
+       "start": 16,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:coronation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Arnold von Köln",
+      "text": "Erzbischof Arnold von Köln in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22693:coronation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "coronation",
+      "own": true,
+      "evidence": {
+       "start": 16,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:coronation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Erzbischof Arnold von Köln\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001202"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "anderer Bischöfe",
+      "text": "anderer Bischöfe in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22693:coronation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "coronation",
+      "own": true,
+      "evidence": {
+       "start": 16,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:coronation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22693:local:andere-bischoefe> ; rf:nameInSource \"anderer Bischöfe\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22693:local:andere-bischoefe"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Volkes",
+      "text": "des Volkes in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22693:coronation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "coronation",
+      "own": true,
+      "evidence": {
+       "start": 16,
+       "end": 287,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:coronation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22693:local:volk> ; rf:nameInSource \"des Volkes\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22693:local:volk"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "gesalbt, gekrönt und auf den Thron Karls des Großen gesetzt",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22693:coronation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 228,
+       "end": 287,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Erzbischof Arnold von Köln"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "anderer Bischöfe"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "des Volkes"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22693:consecration-muenster",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22693:consecration-muenster",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "consecration-muenster",
+     "own": true,
+     "evidence": {
+      "start": 529,
+      "end": 645,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22693:> .\nx:consecration-muenster a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22693> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Am selben Tag wird von denselben Bischöfen auch der neue Bischof von Münster, der ebenfalls Friedrich heißt, geweiht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "denselben Bischöfen",
+      "text": "denselben Bischöfen in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22693:consecration-muenster",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "consecration-muenster",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 645,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:consecration-muenster rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22693:local:dieselben-bischoefe> ; rf:nameInSource \"denselben Bischöfen\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22693:local:dieselben-bischoefe"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der neue Bischof von Münster, der ebenfalls Friedrich heißt",
+      "text": "der neue Bischof von Münster, der ebenfalls Friedrich heißt in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22693:consecration-muenster",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "consecration-muenster",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 645,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:consecration-muenster rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000657> ; rf:nameInSource \"der neue Bischof von Münster, der ebenfalls Friedrich heißt\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000657"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "geweiht",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22693:consecration-muenster",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 638,
+       "end": 645,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "denselben Bischöfen"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "der neue Bischof von Münster, der ebenfalls Friedrich heißt"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22693:mission-legation",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22693:mission-legation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mission-legation",
+     "own": true,
+     "evidence": {
+      "start": 1147,
+      "end": 1399,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22693:> .\nx:mission-legation a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22693> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Entsendung einer Legation, bestehend aus dem Elekten Hillin von Trier, Bischof Eberhard von Bamberg und Abt Adam von Ebrach (vgl. Reg. 72), an Papst Eugen (III.), die Stadt Rom und ganz Italien zur Anzeige der Wahl des neuen Königs wird beschlossen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "dem Elekten Hillin von Trier",
+      "text": "dem Elekten Hillin von Trier in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22693:mission-legation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-legation",
+      "own": true,
+      "evidence": {
+       "start": 1147,
+       "end": 1399,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:mission-legation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001017> ; rf:nameInSource \"dem Elekten Hillin von Trier\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001017"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhard von Bamberg",
+      "text": "Bischof Eberhard von Bamberg in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22693:mission-legation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-legation",
+      "own": true,
+      "evidence": {
+       "start": 1147,
+       "end": 1399,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:mission-legation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"Bischof Eberhard von Bamberg\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Adam von Ebrach",
+      "text": "Abt Adam von Ebrach in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22693:mission-legation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-legation",
+      "own": true,
+      "evidence": {
+       "start": 1147,
+       "end": 1399,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:mission-legation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000294> ; rf:nameInSource \"Abt Adam von Ebrach\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000294"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22693:mission-legation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-legation",
+      "own": true,
+      "evidence": {
+       "start": 1147,
+       "end": 1399,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22693:> .\nx:mission-legation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "wird beschlossen",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22693:mission-legation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1383,
+       "end": 1399,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Entsendung"
+     },
+     ", als Gesandte ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "dem Elekten Hillin von Trier"
+     },
+     ", ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Bischof Eberhard von Bamberg"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Abt Adam von Ebrach"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "coronation",
+    "start": 16,
+    "end": 287
+   },
+   {
+    "id": "t1",
+    "start": 228,
+    "end": 287
+   },
+   {
+    "id": "consecration-muenster",
+    "start": 529,
+    "end": 645
+   },
+   {
+    "id": "t2",
+    "start": 638,
+    "end": 645
+   },
+   {
+    "id": "mission-legation",
+    "start": 1147,
+    "end": 1399
+   },
+   {
+    "id": "t3",
+    "start": 1383,
+    "end": 1399
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'denselben Bischöfen' (consecrators of the bishop of Münster) kept as a local group; the passage refers back to Arnold of Cologne and the other bishops, but no identity merge is asserted",
+     "lang": "en"
+    },
+    {
+     "text": "'anderer Bischöfe' and 'des Volkes' are local groups without register candidates",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Royal coronation and episcopal consecration are typed rv:Appointment for lack of a coronation or consecration act type; whether coronation is an in-scope legal act is a reading for expert review",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Withdrawal of grace from a ministerial 'wegen seiner Vergehen' and the refusal to pardon him have no act type (no Huldentzug or pardon concept); the ministerial dependency 'einem seiner Ministerialen' has no state type; not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The decision to send a legation ('wird beschlossen') has no decision act type; rv:Mission would assert the sending itself; not extracted. The postponed Italian campaign and the coronation oath were treated as out of scope",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for refusal of pardon or withdrawal of favour.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for a decision or postponement distinct from a legal enactment.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added urn:regesta:22693:mission-legation (rv:Mission, qualifier \"wird beschlossen\") with Hillin (H001017), Eberhard (E000011), Adam (A000294) as rv:Envoy and Papst Eugen (E000589) as rv:Addressee; the four actors declared crm:E21_Person with rdfs:label equal to their nameInSource; producer correction-g4.",
+     "lang": "en"
+    },
+    {
+     "text": "No sender reference and no reference for Rome or Italy, as instructed.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Fehler",
+     "subject": "22693",
+     "description": "The decision to send a legation of Hillin, Eberhard and Adam to Pope Eugen, Rome and Italy to announce the election is a central in-scope act that rv:Mission with rv:Envoy and rv:Addressee expresses directly; all actors have candidates in this packet. It is missing.",
+     "proposal": "Add an ActFactoid rv:Mission with Hillin (RI004-002-H001017), Eberhard (RI004-002-E000011), Adam (RI004-002-A000294) as rv:Envoy, Eugen (RI004-002-E000589) and Rome as rv:Addressee, rf:qualifier \"wird beschlossen\" so the decision is not read as the departure.",
+     "quote": {
+      "start": 1147,
+      "end": 1400
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22693",
+     "description": "The negotiation of Friedrich with the princes on the next day and its outcome, the provisional postponement of the Italian expedition for the imperial coronation on the objections of the lay princes, are not extracted. The predecessor's order of the expedition is an earlier act mentioned in the same clause.",
+     "proposal": "Add an rv:Negotiation factoid (Friedrich and local group 'den Fürsten' as rv:Negotiator) and an rv:Enactment for the postponement with rf:qualifier \"vorläufig aufgeschoben\" and rf:ground \"wegen der Einwände der Laienfürsten\"; optionally the advice of the spiritual princes as rv:Request.",
+     "quote": {
+      "start": 685,
+      "end": 764
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22693:coronation",
+     "description": "The coronation oath sworn before the anointing is an act of Friedrich (a promise) that is only folded into the evidence of the coronation factoid.",
+     "proposal": "Add an rv:Assurance factoid with Friedrich as Grantor and rf:qualifier \"herkömmlichen Krönungseides\", linked by rf:partOf to the coronation.",
+     "quote": {
+      "start": 153,
+      "end": 198
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "22693",
+     "description": "The refusal to pardon a ministerial whom Friedrich had deprived of his favour because of his offences states a lordship relation and an earlier withdrawal of favour; the contract has no fitting act type.",
+     "proposal": "Record as a model gap, or extract the withdrawal of favour as rv:Revocation with rf:ground \"wegen seiner Vergehen\".",
+     "quote": {
+      "start": 323,
+      "end": 456
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The decided legation of Hillin, Eberhard and Adam to Pope Eugen, Rome and Italy is missing.",
+     "reason": "'Die Entsendung einer Legation, bestehend aus dem Elekten Hillin von Trier, Bischof Eberhard von Bamberg und Abt Adam von Ebrach (vgl. Reg. 72), an Papst Eugen (III.), die Stadt Rom und ganz Italien zur Anzeige der Wahl des neuen Königs wird beschlossen.' is central, and the guidelines treat missions and their addressees explicitly. The passage states a decision, not the departure, so the rv:Mission must carry 'wird beschlossen' as qualifier. All four persons have candidates of this packet matching by name and title (H001017, E000011, A000294, E000589). Rome and Italy are places in the register and are not turned into community actors.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Negotiation with the princes and the postponement of the Italian expedition are not extracted.",
+     "reason": "'Der Antritt des von seinem Vorgänger angeordneten Italienzuges zur Kaiserkrönung ... wird ... vorläufig aufgeschoben' concerns a military expedition, which the guidelines exclude without a kinship, economic or legal relation, and the vocabulary has no type for a postponement decision; rv:Enactment is a legal provision the charter makes.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The coronation oath should be a separate rv:Assurance partOf the coronation.",
+     "reason": "'nach Ablegung des herkömmlichen Krönungseides' mentions the oath only as a circumstance of the coronation; it states neither content nor addressee, so a separate Assurance would carry nothing beyond the wording already inside the coronation's evidence.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Refusal to pardon a ministerial after withdrawal of favour is not extracted.",
+     "reason": "'vergibt er einem seiner Ministerialen, dem er wegen seiner Vergehen die Gunst entzogen hat ... nicht' has no act type for withdrawal of favour or refused pardon; rv:Revocation means annulling an earlier grant or provision and would change the historical meaning.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 42 ff. - Friedrich hat die Diener der Marienkirche in Aachen der öffentlichen Besteuerung durch Schultheiß, Ministerialen und Bürger von Aachen entzogen und unter die bürgerliche Gerichtsbarkeit der Kirche gestellt; dies geht aus der Urkunde König Ottos IV., ed. Meuthen, Aachener Urkunden 243 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 52, B.-Ficker Reg. "
+    },
+    {
+     "t": "207"
+    },
+    {
+     "t": " hervor ("
+    },
+    {
+     "t": "Predecessoris itaque nostri Friderici Rom(anorum) imperatoris exemplo",
+     "i": true
+    },
+    {
+     "t": "...). Obwohl also Friedrich hier als Kaiser erwähnt ist, haben wir die Nachricht zum ersten bezeugten Aufenthalt in Aachen gesetzt, da von keiner urkundlichen Verfügung des Staufers, sondern von einer offenbar gewohnheitsrechtlichen Regelung gesprochen wird, deren Anfänge wohl kaum erst nach der Kaiserkrönung liegen."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Friedrichs Brief an Otto von Freising (Reg. 451); DF. I. 5 (Reg. 72); das Schreiben Wibalds an den Papst (Reg. 73); Ottonis Gesta Frid. l. II cap. 3, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 104 f.; weiters Ann. Aquenses, MG. SS XXIV, 38; Ann. Brunwilar., MG. SS XVI, 728; Ann. s. Pauli Virdun., MG. SS XVI, 501 (zu 1151); Chron. reg. Col., ed. Waitz, MG. SS rer. Germ. in us. schol. 89 (zu März 10); Cron. s. Petri Erford. mod., ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 178 (zu März 23); Gislebert v. Mons, ed. Vanderkindere, 93 (irrig zu Speyer); der Termin der Abreise Friedrichs aus Aachen (März 14) ergibt sich aus dem Brief Wibalds an Notar Heinrich, ed. Jaffé, Mon. Corb. 505 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 377."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=25"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000009",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-A000010",
+    "(Kanonikerstift), Kirche St. Marien, Marienstift (Pfalz-, Domstift)"
+   ],
+   [
+    "RI004-002-A000018",
+    "Pfalz"
+   ],
+   [
+    "RI004-002-A000022",
+    "Schultheiß, Ministerialen und Bürger"
+   ],
+   [
+    "RI004-002-A000024",
+    "Diener der Marienkirche (Glöckner, Bäcker, Köche, Brauer usw.)"
+   ],
+   [
+    "RI004-002-A000294",
+    "Abt von Ebrach"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-F000657",
+    "Bischof von Münster"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-I000211",
+    "Italien"
+   ],
+   [
+    "RI004-002-K000074",
+    "(I., der Große), König und Kaiser"
+   ],
+   [
+    "RI004-002-L000403",
+    "Jerusalem (4. Fastensonntag)"
+   ],
+   [
+    "RI004-002-O000395",
+    "(IV.), König und Kaiser"
+   ],
+   [
+    "RI004-002-R000885",
+    "(auch Stadt)"
+   ]
+  ]
+ }
+}

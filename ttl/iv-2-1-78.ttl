@@ -1,0 +1,182 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-04-20_1_0_4_2_1_78_78
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22705> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-L000021:community> a crm:E74_Group ;
+    rdfs:label "Abtei Laach (sancte Marię de Lacu)" .
+
+<urn:regesta:actor:RI004-002-H000510> a crm:E21_Person ;
+    rdfs:label "Pfalzgraf Heinrich" .
+
+<urn:regesta:actor:RI004-002-H000641> a crm:E21_Person ;
+    rdfs:label "Heinrich von Molsberg (Henricus quidam de Mollesperch)" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "Konrad III." .
+
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ;
+    rdfs:label "Erzbischof Arnold II. von Köln" .
+
+<urn:regesta:actor:22705:local:kirche-koeln> a crm:E74_Group ;
+    rdfs:label "dessen Kirche" .
+
+<urn:regesta:actor:22705:local:fuersten> a crm:E74_Group ;
+    rdfs:label "der Fürsten" .
+
+<urn:regesta:22705:hof-bendorf> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof Bendorf (Bedendorf)" .
+
+<urn:regesta:22705:restitution> a rf:ActFactoid ;
+    rf:factoidType rv:Restitution ;
+    rf:source <urn:regesta:record:22705> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich stellt der Abtei Laach (sancte Marię de Lacu) den ihr von ihrem Gründer, Pfalzgraf Heinrich, geschenkten Hof Bendorf (Bedendorf) zurück" ] ;
+    rf:reference <urn:regesta:22705:restitution-ref-friedrich> , <urn:regesta:22705:restitution-ref-laach> ;
+    rf:concerns <urn:regesta:22705:hof-bendorf> ;
+    rf:refersToAct <urn:regesta:22705:donation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22705:restitution-ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22705:restitution-ref-laach> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-L000021:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Abtei Laach (sancte Marię de Lacu)" .
+
+<urn:regesta:22705:donation> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22705> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "der Abtei Laach (sancte Marię de Lacu) den ihr von ihrem Gründer, Pfalzgraf Heinrich, geschenkten Hof Bendorf (Bedendorf)" ] ;
+    rf:reference <urn:regesta:22705:donation-ref-heinrich> , <urn:regesta:22705:donation-ref-laach> ;
+    rf:concerns <urn:regesta:22705:hof-bendorf> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22705:donation-ref-heinrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000510> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Pfalzgraf Heinrich" .
+
+<urn:regesta:22705:donation-ref-laach> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-L000021:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Abtei Laach (sancte Marię de Lacu)" .
+
+<urn:regesta:22705:possession-molsberg> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22705> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "den widerrechtlichen Besitzer Heinrich von Molsberg (Henricus quidam de Mollesperch)" ] ;
+    rf:reference <urn:regesta:22705:possession-molsberg-ref-heinrich> ;
+    rf:concerns <urn:regesta:22705:hof-bendorf> ;
+    rf:qualifier "widerrechtlichen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22705:possession-molsberg-ref-heinrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000641> ;
+    rf:role rv:Possessor ;
+    rf:nameInSource "Heinrich von Molsberg (Henricus quidam de Mollesperch)" .
+
+<urn:regesta:22705:judgment-hofgericht> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22705> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Heinrich von Molsberg (Henricus quidam de Mollesperch), dem der Hof schon durch ein Hofgerichtsurteil unter Konrad III. abgesprochen worden ist" ] ;
+    rf:reference <urn:regesta:22705:judgment-ref-heinrich> , <urn:regesta:22705:judgment-ref-konrad> ;
+    rf:concerns <urn:regesta:22705:hof-bendorf> ;
+    rf:qualifier "schon" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22705:judgment-ref-heinrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000641> ;
+    rf:role rv:Respondent ;
+    rf:nameInSource "Heinrich von Molsberg (Henricus quidam de Mollesperch)" .
+
+<urn:regesta:22705:judgment-ref-konrad> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Konrad III." .
+
+<urn:regesta:22705:payment> a rf:ActFactoid ;
+    rf:factoidType rv:Payment ;
+    rf:source <urn:regesta:record:22705> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "indem er den widerrechtlichen Besitzer Heinrich von Molsberg (Henricus quidam de Mollesperch), dem der Hof schon durch ein Hofgerichtsurteil unter Konrad III. abgesprochen worden ist, durch die Zahlung von 60 Mark entschädigt" ] ;
+    rf:reference <urn:regesta:22705:payment-ref-friedrich> , <urn:regesta:22705:payment-ref-heinrich> ;
+    rf:amount "60 Mark" ;
+    rf:partOf <urn:regesta:22705:restitution> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22705:payment-ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Payer ;
+    rf:nameInSource "er" .
+
+<urn:regesta:22705:payment-ref-heinrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000641> ;
+    rf:role rv:Payee ;
+    rf:nameInSource "Heinrich von Molsberg (Henricus quidam de Mollesperch)" .
+
+<urn:regesta:22705:possession-kirche-koeln> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22705> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Erzbischof Arnold II. von Köln, dessen Kirche dieses Gut gehört" ] ;
+    rf:reference <urn:regesta:22705:possession-kirche-ref-kirche> ;
+    rf:concerns <urn:regesta:22705:hof-bendorf> ;
+    rf:qualifier "gehört" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22705:possession-kirche-ref-kirche> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22705:local:kirche-koeln> ;
+    rf:role rv:Possessor ;
+    rf:nameInSource "dessen Kirche" .
+
+<urn:regesta:22705:confirmation-arnold> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22705> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "dies wird von Erzbischof Arnold II. von Köln, dessen Kirche dieses Gut gehört, in Gegenwart des Königs und der Fürsten kraft seiner und der päpstlichen Gewalt bestätigt" ] ;
+    rf:reference <urn:regesta:22705:confirmation-ref-arnold> , <urn:regesta:22705:confirmation-ref-koenig> , <urn:regesta:22705:confirmation-ref-fuersten> ;
+    rf:refersToAct <urn:regesta:22705:restitution> ;
+    rf:concerns <urn:regesta:22705:hof-bendorf> ;
+    rf:qualifier "kraft seiner und der päpstlichen Gewalt" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22705:confirmation-ref-arnold> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A001202> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Erzbischof Arnold II. von Köln" .
+
+<urn:regesta:22705:confirmation-ref-koenig> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "des Königs" .
+
+<urn:regesta:22705:confirmation-ref-fuersten> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22705:local:fuersten> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "der Fürsten" .

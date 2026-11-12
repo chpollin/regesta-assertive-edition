@@ -1,0 +1,76 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-06-29_1_0_4_2_1_95_95
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22722> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+# "den beiden Herzogen Heinrich" is one collective mention; it is read as the two Heinrich candidates of this packet.
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ; rdfs:label "Herzogen Heinrich" .
+<urn:regesta:actor:RI004-002-H000498> a crm:E21_Person ; rdfs:label "Herzogen Heinrich" .
+<urn:regesta:actor:RI004-002-E000589> a crm:E21_Person ; rdfs:label "Papst Eugen (III.)" .
+<urn:regesta:actor:22722:local:gesandte> a crm:E74_Group ; rdfs:label "Gesandten" .
+<urn:regesta:actor:22722:local:rom-staedte-italiens> a crm:E74_Group ; rdfs:label "Rom und die übrigen Städte Italiens" .
+
+<urn:regesta:22722:herzogtum-bayern> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "das Herzogtum Bayern" .
+<urn:regesta:22722:wuerzburg> a crm:E53_Place ; rdfs:label "Würzburg" .
+
+<urn:regesta:22722:streit-bayern> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22722> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Participant ; rf:nameInSource "Herzogen Heinrich" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:role rv:Participant ; rf:nameInSource "Herzogen Heinrich" ] ;
+    rf:concerns <urn:regesta:22722:herzogtum-bayern> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+# Attempt at reconciliation; no mediation act type exists, rv:Negotiation is the closest. It records no outcome.
+<urn:regesta:22722:aussoehnung> a rf:ActFactoid ;
+    rf:factoidType rv:Negotiation ;
+    rf:source <urn:regesta:record:22722> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bemüht sich um die Aussöhnung im Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Mediator ; rf:nameInSource "Friedrich" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Participant ; rf:nameInSource "Herzogen Heinrich" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:role rv:Participant ; rf:nameInSource "Herzogen Heinrich" ] ;
+    rf:concerns <urn:regesta:22722:herzogtum-bayern> ;
+    rf:qualifier "bemüht sich um die Aussöhnung" ;
+    rf:refersToAct <urn:regesta:22722:streit-bayern> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+# Mission; the sender is not named and the return with news is not recorded as an outcome.
+<urn:regesta:22722:gesandtschaft> a rf:ActFactoid ;
+    rf:factoidType rv:Mission ;
+    rf:source <urn:regesta:record:22722> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22722:local:gesandte> ; rf:role rv:Envoy ; rf:nameInSource "Gesandten" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "Papst Eugen (III.)" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:22722:local:rom-staedte-italiens> ; rf:role rv:Addressee ; rf:nameInSource "Rom und die übrigen Städte Italiens" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;
+    rf:verificationStatus rv:unchecked .
+
+# Summons; no summons act type exists, rv:Communication is the closest. Appearance is not asserted.
+<urn:regesta:22722:vorladung> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22722> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "lädt beide auf einen Hoftag in Würzburg im Oktober vor" ] ,
+                [ a oa:TextQuoteSelector ; oa:exact "Friedrich bemüht sich um die Aussöhnung im Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Addressee ; rf:nameInSource "Herzogen Heinrich" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:role rv:Addressee ; rf:nameInSource "Herzogen Heinrich" ] ;
+    rf:concerns <urn:regesta:22722:wuerzburg> ;
+    rf:qualifier "lädt beide auf einen Hoftag in Würzburg im Oktober vor" ;
+    rf:refersToAct <urn:regesta:22722:streit-bayern> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .

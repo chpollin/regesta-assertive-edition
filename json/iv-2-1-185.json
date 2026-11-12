@@ -1,0 +1,754 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-06-00_2_0_4_2_1_185_185",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22812",
+  "identifier": "RI IV,2,1 n. 185",
+  "short": "RI IV,2,1 n. 185",
+  "sort": "004_002_001_000185_0000000185",
+  "start": "1153-06-01",
+  "end": "1153-06-30",
+  "proseYears": [],
+  "lead": "Friedrich beauftragt den Erzbischof Hugo und den Domdekan Wilhelm von Vienne mit der custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör (wie DF.",
+  "date": [
+   {
+    "t": "(1153 Juni)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Worms)"
+   }
+  ],
+  "text": "Friedrich beauftragt den Erzbischof Hugo und den Domdekan Wilhelm von Vienne mit der custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör (wie DF. I. 62, Reg. 184), die nur ihm während seiner Anwesenheit übergeben werden darf, und empfiehlt ihnen den Überbringer dieses Mandats. - Unter Verwendung des DK. III. 145 (VU.) wahrscheinlich von Wibald verfaßt. In archivis imperii .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22812:beauftragung",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22812:beauftragung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "beauftragung",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 192,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22812:> .\nx:beauftragung a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22812> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich beauftragt den Erzbischof Hugo und den Domdekan Wilhelm von Vienne mit der custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22812:beauftragung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beauftragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:beauftragung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Hugo",
+      "text": "Erzbischof Hugo in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22812:beauftragung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beauftragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:beauftragung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001273> ; rf:nameInSource \"Erzbischof Hugo\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001273"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domdekan Wilhelm von Vienne",
+      "text": "Domdekan Wilhelm von Vienne in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22812:beauftragung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beauftragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:beauftragung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000540> ; rf:nameInSource \"Domdekan Wilhelm von Vienne\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000540"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Burg Pipet",
+      "text": "betrifft Burg Pipet",
+      "triple": [
+       "urn:regesta:22812:beauftragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22812:burg-pipet"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beauftragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:beauftragung rf:concerns x:burg-pipet .\nx:burg-pipet a crm:E18_Physical_Thing ;\n    rdfs:label \"Burg Pipet\" .",
+      "object": "urn:regesta:22812:burg-pipet",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör)",
+      "text": "betrifft Herrschafts- und Schutzrechte (custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör)",
+      "triple": [
+       "urn:regesta:22812:beauftragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22812:custodia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beauftragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:beauftragung rf:concerns x:custodia .\nx:custodia a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör\" .",
+      "object": "urn:regesta:22812:custodia",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Stadt Vienne",
+      "text": "betrifft Stadt Vienne",
+      "triple": [
+       "urn:regesta:22812:beauftragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22812:stadt-vienne"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beauftragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:beauftragung rf:concerns x:stadt-vienne .\nx:stadt-vienne a crm:E53_Place ;\n    rdfs:label \"Stadt Vienne\" .",
+      "object": "urn:regesta:22812:stadt-vienne",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zubehör",
+      "text": "betrifft Zubehör",
+      "triple": [
+       "urn:regesta:22812:beauftragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22812:zubehoer"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beauftragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 192,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:beauftragung rf:concerns x:zubehoer .\nx:zubehoer a crm:E18_Physical_Thing ;\n    rdfs:label \"Zubehör\" .",
+      "object": "urn:regesta:22812:zubehoer",
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Erzbischof Hugo"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Domdekan Wilhelm von Vienne"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Burg Pipet"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Herrschafts- und Schutzrechte (custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Stadt Vienne"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Zubehör"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22812:uebergabevorbehalt",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22812:uebergabevorbehalt",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "uebergabevorbehalt",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 20,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22812:> .\nx:uebergabevorbehalt a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22812> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich beauftragt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22812:uebergabevorbehalt",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabevorbehalt",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 20,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:uebergabevorbehalt rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22812:uebergabevorbehalt",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabevorbehalt",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 20,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:uebergabevorbehalt rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihm\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör)",
+      "text": "betrifft Herrschafts- und Schutzrechte (custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör)",
+      "triple": [
+       "urn:regesta:22812:uebergabevorbehalt",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22812:custodia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabevorbehalt",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 20,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:uebergabevorbehalt rf:concerns x:custodia .\nx:custodia a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör\" .",
+      "object": "urn:regesta:22812:custodia",
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Einsetzung",
+      "text": "Teil von Einsetzung",
+      "triple": [
+       "urn:regesta:22812:uebergabevorbehalt",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22812:beauftragung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabevorbehalt",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 20,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:uebergabevorbehalt rf:partOf x:beauftragung .\nx:beauftragung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:concerns x:burg-pipet , x:custodia , x:stadt-vienne , x:zubehoer ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich beauftragt den Erzbischof Hugo und den Domdekan Wilhelm von Vienne mit der custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör\" ] ;\n    rf:factoidType rv:Appointment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001273> ; rf:nameInSource \"Erzbischof Hugo\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000540> ; rf:nameInSource \"Domdekan Wilhelm von Vienne\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22812> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22812:beauftragung",
+      "objectClaim": "beauftragung",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22812:uebergabevorbehalt",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabevorbehalt-2",
+      "own": true,
+      "evidence": {
+       "start": 220,
+       "end": 280,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22812:> .\nx:uebergabevorbehalt rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die nur ihm während seiner Anwesenheit übergeben werden darf\" ] .",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "nur ihm während seiner Anwesenheit",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22812:uebergabevorbehalt",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 224,
+       "end": 258,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9",
+       "k14"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k10",
+       "k14"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k11",
+       "k14"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k12",
+       "k14"
+      ],
+      "text": "Herrschafts- und Schutzrechte (custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k13",
+       "k14"
+      ],
+      "text": "Einsetzung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "beauftragung",
+    "start": 0,
+    "end": 192
+   },
+   {
+    "id": "uebergabevorbehalt",
+    "start": 0,
+    "end": 20
+   },
+   {
+    "id": "uebergabevorbehalt-2",
+    "start": 220,
+    "end": 280
+   },
+   {
+    "id": "t1",
+    "start": 224,
+    "end": 258
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Editorial cross-reference '(wie DF. I. 62, Reg. 184)' points to another regest; no cross-regest act link in the model, not recorded",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Custody typed as rv:Appointment with the right typed rv:LordshipRights; the custodia is the same right as in 22811 but is not linked across regesta",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Recommendation of the bearer of the mandate is out of scope and not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "22812",
+     "description": "The recommendation of the bearer of the mandate to the two addressees is not recorded. It states no kinship, economic or legal relation and is borderline out of scope.",
+     "proposal": "No change required; optionally a rv:Communication with the bearer as rv:Envoy and Hugo and Wilhelm as rv:Addressee.",
+     "quote": {
+      "start": 282,
+      "end": 332
+     }
+    },
+    {
+     "category": "omitted-state",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22812:custodia",
+     "description": "As in 22811, the city's exclusive subjection to the Reich is kept only in the right label.",
+     "proposal": "Optionally add a rv:RightHolding state for a local Reich actor.",
+     "quote": {
+      "start": 94,
+      "end": 150
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add a rv:RightHolding state for a local Reich actor ('regno ... subiecta', 'der ausschließlich dem Reich unterstehenden Stadt Vienne').",
+     "reason": "The wording is kept as rf:exception in 22806 and in the right labels in 22811 and 22812; the guidelines do not require a separate state for an attributive description, and the reviewer marks the addition as optional.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The recommendation of the bearer of the mandate is not recorded.",
+     "reason": "'empfiehlt ihnen den Überbringer dieses Mandats' states no kinship, economic or legal relation and is borderline out of scope under the source boundary; the reviewer proposes no required change.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Brumm, Zur Frage der Echtheit, MIÖG 57 (1949) 305 hat die von Hirsch vorgebrachten Bedenken gegen die Echtheit (Hirsch, Urkundenfälschungen = Forsch. zur Gesch. d. deutschen Kaiserzeit 1, 1937, 71 ff.) entkräftet. Dieses Mandat dürfte gleichzeitig mit DDF. I. 61, 62 und 64 (Regg. "
+    },
+    {
+     "t": "182",
+     "regest": "22809"
+    },
+    {
+     "t": ", "
+    },
+    {
+     "t": "184",
+     "regest": "22811"
+    },
+    {
+     "t": " und "
+    },
+    {
+     "t": "186",
+     "regest": "22813"
+    },
+    {
+     "t": ") in Worms ausgestellt worden sein. Als Überbringer käme der Kapellan Heribert in Betracht, der dem Mundator von DF. I. 62 (Reg. "
+    },
+    {
+     "t": "184",
+     "regest": "22811"
+    },
+    {
+     "t": ") auch die Kenntnis des königlichen Monogramms vermittelt haben könnte."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Cod. Baluze 75 f. 373' aus dem 17. Jh., ex chartulario ecclesiae Viennensis, der Nationalbibliothek Paris (D). Drucke: Stumpf, Acta ined. 481 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 337; MG. DF. I. 63. Reg.: Chevalier, Reg. Dauphinois 1, Sp. 658 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 3938, ferner irrig Sp. 674 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 4033 zu 1157?; Stumpf 3674 a."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=68"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_63"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-H000783",
+    "Notar der Reichskanzlei, Magister, Kapellan, Propst von Aachen (des kaiserlichen Hofes), dann Erzbischof von Besançon (<i>siehe: dort</i>)"
+   ],
+   [
+    "RI004-002-H001273",
+    "Erzbischof von Vienne"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-P000728",
+    "Pipet (der Mont Pipet, bei Vienne, an der Rhône, Dép. Isère), Burg"
+   ],
+   [
+    "RI004-002-V000392",
+    "Stadt"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000540",
+    "Domdekan von Vienne"
+   ],
+   [
+    "RI004-002-W000818",
+    "Worms (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

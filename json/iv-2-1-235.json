@@ -1,0 +1,718 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-09_2_0_4_2_1_235_235",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22862",
+  "identifier": "RI IV,2,1 n. 235",
+  "short": "RI IV,2,1 n. 235",
+  "sort": "004_002_001_000235_0000000235",
+  "start": "1152-03-09",
+  "end": "1154-12-31",
+  "proseYears": [],
+  "lead": "Friedrich befiehlt dem Bischof Hermann von Utrecht und allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis), die Zollfreiheit der Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti) gemäß ihren alten Privilegien zu achten. - Vielleicht von Wibald verfaßt.",
+  "date": [
+   {
+    "t": "(1152 März 9-1154 Herbst)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich befiehlt dem Bischof Hermann von Utrecht und allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis), die Zollfreiheit der Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti) gemäß ihren alten Privilegien zu achten. - Vielleicht von Wibald verfaßt. Universitati vestre notum .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22862:befehl-zollfreiheit",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22862:befehl-zollfreiheit",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "befehl-zollfreiheit",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 261,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22862:> .\nx:befehl-zollfreiheit a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22862> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich befiehlt dem Bischof Hermann von Utrecht und allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis), die Zollfreiheit der Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti) gemäß ihren alten Privilegien zu achten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-51> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22862:befehl-zollfreiheit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl-zollfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 261,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:befehl-zollfreiheit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Hermann von Utrecht",
+      "text": "Bischof Hermann von Utrecht in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22862:befehl-zollfreiheit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl-zollfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 261,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:befehl-zollfreiheit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000820> ; rf:nameInSource \"Bischof Hermann von Utrecht\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000820"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis)",
+      "text": "allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22862:befehl-zollfreiheit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl-zollfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 261,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:befehl-zollfreiheit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22862:local:andere-inhaber-von-zollstaetten> ; rf:nameInSource \"allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:22862:local:andere-inhaber-von-zollstaetten"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti)",
+      "text": "Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22862:befehl-zollfreiheit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl-zollfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 261,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:befehl-zollfreiheit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000028:community> ; rf:nameInSource \"Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti)\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000028:community"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (Zollfreiheit der Reichsleute von Kaiserswerth)",
+      "text": "betrifft Zollrecht (Zollfreiheit der Reichsleute von Kaiserswerth)",
+      "triple": [
+       "urn:regesta:22862:befehl-zollfreiheit",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22862:zollfreiheit"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "befehl-zollfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 261,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:befehl-zollfreiheit rf:concerns x:zollfreiheit .\nx:zollfreiheit a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"Zollfreiheit der Reichsleute von Kaiserswerth\" .",
+      "object": "urn:regesta:22862:zollfreiheit",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "gemäß ihren alten Privilegien",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22862:befehl-zollfreiheit",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 222,
+       "end": 251,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressaten ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Bischof Hermann von Utrecht"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis)"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Zollrecht (Zollfreiheit der Reichsleute von Kaiserswerth)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22862:inhaber-zollstaetten",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22862:inhaber-zollstaetten",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "inhaber-zollstaetten",
+     "own": true,
+     "evidence": {
+      "start": 19,
+      "end": 127,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22862:> .\nx:inhaber-zollstaetten a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22862> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Bischof Hermann von Utrecht und allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-51> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Hermann von Utrecht",
+      "text": "Bischof Hermann von Utrecht in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22862:inhaber-zollstaetten",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "inhaber-zollstaetten",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 127,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:inhaber-zollstaetten rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000820> ; rf:nameInSource \"Bischof Hermann von Utrecht\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000820"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis)",
+      "text": "allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis) in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22862:inhaber-zollstaetten",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "inhaber-zollstaetten",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 127,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:inhaber-zollstaetten rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22862:local:andere-inhaber-von-zollstaetten> ; rf:nameInSource \"allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis)\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:22862:local:andere-inhaber-von-zollstaetten"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (Zollstätten)",
+      "text": "betrifft Zollrecht (Zollstätten)",
+      "triple": [
+       "urn:regesta:22862:inhaber-zollstaetten",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22862:zollstaetten"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "inhaber-zollstaetten",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 127,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:inhaber-zollstaetten rf:concerns x:zollstaetten .\nx:zollstaetten a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"Zollstätten\" .",
+      "object": "urn:regesta:22862:zollstaetten",
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bischof Hermann von Utrecht"
+     },
+     " und ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "allen anderen Inhabern von Zollstätten (comitibus, iudicibus, honoratis)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Zollrecht (Zollstätten)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22862:zollfreiheit-reichsleute",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22862:zollfreiheit-reichsleute",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "zollfreiheit-reichsleute",
+     "own": true,
+     "evidence": {
+      "start": 129,
+      "end": 251,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22862:> .\nx:zollfreiheit-reichsleute a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22862> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Zollfreiheit der Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti) gemäß ihren alten Privilegien\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-51> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti)",
+      "text": "Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti) in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22862:zollfreiheit-reichsleute",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "zollfreiheit-reichsleute",
+      "own": true,
+      "evidence": {
+       "start": 129,
+       "end": 251,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:zollfreiheit-reichsleute rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000028:community> ; rf:nameInSource \"Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti)\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000028:community"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (Zollfreiheit der Reichsleute von Kaiserswerth)",
+      "text": "betrifft Zollrecht (Zollfreiheit der Reichsleute von Kaiserswerth)",
+      "triple": [
+       "urn:regesta:22862:zollfreiheit-reichsleute",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22862:zollfreiheit"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "zollfreiheit-reichsleute",
+      "own": true,
+      "evidence": {
+       "start": 129,
+       "end": 251,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22862:> .\nx:zollfreiheit-reichsleute rf:concerns x:zollfreiheit .\nx:zollfreiheit a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"Zollfreiheit der Reichsleute von Kaiserswerth\" .",
+      "object": "urn:regesta:22862:zollfreiheit",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "gemäß ihren alten Privilegien",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22862:zollfreiheit-reichsleute",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 222,
+       "end": 251,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Reichsleute von Kaiserswerth (homines regni de insula sancti Switberti)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Zollrecht (Zollfreiheit der Reichsleute von Kaiserswerth)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "befehl-zollfreiheit",
+    "start": 0,
+    "end": 261
+   },
+   {
+    "id": "inhaber-zollstaetten",
+    "start": 19,
+    "end": 127
+   },
+   {
+    "id": "zollfreiheit-reichsleute",
+    "start": 129,
+    "end": 251
+   },
+   {
+    "id": "t1",
+    "start": 222,
+    "end": 251
+   },
+   {
+    "id": "t2",
+    "start": 222,
+    "end": 251
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No right type for an exemption or immunity: 'Zollfreiheit' is typed rv:Toll, which denotes the toll right itself, not freedom from it",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Toll stations held ('Inhabern von Zollstätten') are modelled as an E30_Right of type rv:Toll; a toll station as installation has no separate concept",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for exemptions or immunities (Zollfreiheit); rv:Toll denotes the opposite position.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "right-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22862:zollfreiheit",
+     "description": "A toll exemption is typed rv:Toll (Zollrecht), the right to levy toll. The exemption is the opposite position, freedom from toll. The vocabulary has no exemption or immunity type, so this is a vocabulary limit, but the typing could mislead a query for toll rights.",
+     "proposal": "Report as model gap; keep the label 'Zollfreiheit' as the controlling wording until an exemption type exists.",
+     "quote": {
+      "start": 129,
+      "end": 178
+     }
+    },
+    {
+     "category": "right-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22862:zollstaetten",
+     "description": "'Zollstätten' are toll stations, which the candidate types as a right (E30_Right, rv:Toll). Reading 'Inhabern von Zollstätten' as holding a toll right is a reasonable interpretation; the passage itself names places or installations.",
+     "proposal": "Acceptable; alternatively label the right node 'Inhabern von Zollstätten' to make the interpretive step explicit.",
+     "quote": {
+      "start": 55,
+      "end": 93
+     }
+    },
+    {
+     "category": "earlier-act",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22862:zollfreiheit-reichsleute",
+     "description": "The 'alten Privilegien' that ground the exemption are earlier unnamed acts, kept only as a qualifier on both factoids. Acceptable, since no grantor or date is named.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 222,
+      "end": 251
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The toll exemption is typed rv:Toll, the right to levy toll, which is the opposite position.",
+     "reason": "rv:RightTypes has no exemption or immunity concept, and the shape requires a RightTypes concept on every crm:E30_Right. Switching to the group concept rv:UsageRights would be equally misleading. The label 'Zollfreiheit der Reichsleute von Kaiserswerth' stays as controlling wording; record the missing exemption type as a gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "'Zollstätten' are installations, typed as a toll right; optionally relabel the right node.",
+     "reason": "Reading 'allen anderen Inhabern von Zollstätten' as holders of a toll right is defensible, and the label 'Zollstätten' is source wording. The reviewer itself calls the reading acceptable.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Über die Einreihung und die älteren Privilegien für die Leute von Kaiserswerth vgl. die Vorbemerkung zum D."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift aus dem Anfang des 15. Jh., Hauptstaatsarchiv Düsseldorf, Sammelband Cleve Mark, Landesbezirke und herrschaftliche Häuser, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 24 f. 34' (C). Drucke: Ottenthal, Sieben unveröffentlichte Königsurkunden, MIÖG 39 (1923) 364 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 4; MG. DF. I. 85."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=83"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_85"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-H000820",
+    "Bischof von Utrecht"
+   ],
+   [
+    "RI004-002-K000028",
+    "Reichsleute"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

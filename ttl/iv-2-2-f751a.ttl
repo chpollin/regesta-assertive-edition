@@ -1,0 +1,51 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/e0b09c79-3e4e-4ad0-8d37-9f06abced66f
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:220530> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-G000351> a crm:E21_Person ;
+    rdfs:label "Bischof G(erhard) von Bologna" .
+
+<urn:regesta:actor:RI004-002-H000026> a crm:E21_Person ;
+    rdfs:label "Papst A. (Hadrian IV.)" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Kaiser" .
+
+<urn:regesta:220530:oath-demand> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:220530> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "dass der Kaiser nach der beinahe vollständigen Unterwerfung Italiens von ihm einen Treueid gefordert habe" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Petitioner ; rf:nameInSource "der Kaiser" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ;
+        rf:role rv:Addressee ; rf:nameInSource "ihm" ] ;
+    rf:qualifier "nach der beinahe vollständigen Unterwerfung Italiens" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:220530:report> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:220530> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Bischof G(erhard) von Bologna teilt Papst A. (Hadrian IV.) mit" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "den er nicht ohne päpstliche Erlaubnis schwören wolle" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ;
+        rf:role rv:Grantor ; rf:nameInSource "Bischof G(erhard) von Bologna" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000026> ;
+        rf:role rv:Addressee ; rf:nameInSource "Papst A. (Hadrian IV.)" ] ;
+    rf:refersToAct <urn:regesta:220530:oath-demand> ;
+    rf:condition "nicht ohne päpstliche Erlaubnis" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;
+    rf:verificationStatus rv:unchecked .

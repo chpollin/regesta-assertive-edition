@@ -1,0 +1,358 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-00-00_1_0_4_2_1_105_105",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22732",
+  "identifier": "RI IV,2,1 n. 105",
+  "short": "RI IV,2,1 n. 105",
+  "sort": "004_002_001_000105_0000000105",
+  "start": "1152-01-01",
+  "end": "1155-12-31",
+  "proseYears": [],
+  "lead": "(Friedrich?) klagt bei König (Geisa II. ) von Ungarn über die Gefangennahme seines Gesandten und droht ihm mit Krieg, falls der Gefangene nicht freigelassen werde.",
+  "date": [
+   {
+    "t": "(1152-1155)"
+   }
+  ],
+  "place": [],
+  "text": "(Friedrich?) klagt bei König (Geisa II. ) von Ungarn über die Gefangennahme seines Gesandten und droht ihm mit Krieg, falls der Gefangene nicht freigelassen werde.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22732:complaint",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22732:complaint",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "complaint",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 92,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22732:> .\nx:complaint a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22732> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Friedrich?) klagt bei König (Geisa II. ) von Ungarn über die Gefangennahme seines Gesandten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich?",
+      "text": "Friedrich? in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22732:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22732:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 92,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22732:> .\nx:complaint rf:reference x:ref-friedrich .\nx:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich?\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König (Geisa II. ) von Ungarn",
+      "text": "König (Geisa II. ) von Ungarn in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22732:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22732:ref-geisa"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 92,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22732:> .\nx:complaint rf:reference x:ref-geisa .\nx:ref-geisa a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G000230> ;\n    rf:nameInSource \"König (Geisa II. ) von Ungarn\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000230"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seines Gesandten",
+      "text": "seines Gesandten in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22732:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22732:ref-gesandter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 92,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22732:> .\nx:complaint rf:reference x:ref-gesandter .\nx:ref-gesandter a rf:Reference ;\n    rf:actor <urn:regesta:actor:22732:local:gesandter> ;\n    rf:nameInSource \"seines Gesandten\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22732:local:gesandter"
+      ],
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich?"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "König (Geisa II. ) von Ungarn"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "seines Gesandten"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "complaint",
+    "start": 0,
+    "end": 92
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'(Friedrich?)': the regest itself marks the complainant as uncertain; mapped to the shared ruler IRI provisionally",
+     "lang": "en"
+    },
+    {
+     "text": "'seines Gesandten': unnamed envoy, regest-local actor",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Threat of war with condition 'falls der Gefangene nicht freigelassen werde' not recorded: no act type for a threat; military content otherwise out of scope",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The capture of the envoy itself (hostage/prisoner taking) not recorded as out of scope; only the complaint about it",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a threat or ultimatum.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No way to mark an actor identification that the regest itself flags as uncertain.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Changed rf:role of <urn:regesta:22732:ref-gesandter> from rv:Envoy to rv:Participant; actor and nameInSource \"seines Gesandten\" unchanged.",
+     "lang": "en"
+    },
+    {
+     "text": "Set prov:wasAttributedTo of <urn:regesta:22732:complaint> to the corrector.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "lost-condition",
+     "severity": "Hinweis",
+     "subject": "22732",
+     "description": "The threat of war is a second act of the same passage and carries an explicit condition. The candidate drops both. No act type fits a threat exactly, but the contract could carry it as an act with rf:condition in exact wording, or the omission should at least be reported as a model gap.",
+     "proposal": "Add an ActFactoid for the threat (closest available type, e.g. rv:Communication, or report it as a model gap) with Friedrich as Grantor, the King of Hungary as Addressee and rf:condition \"falls der Gefangene nicht freigelassen werde\"; link it to the complaint.",
+     "quote": {
+      "start": 97,
+      "end": 162
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22732:ref-gesandter",
+     "description": "The envoy is not acting as an envoy in this act; he is the person whose capture the complaint is about. rv:Envoy (who is sent or delivers a message) describes his general function, not his role in the complaint.",
+     "proposal": "Use rv:Participant (or rv:Beneficiary) for the envoy in the Dispute factoid, or move the envoy relation into a separate statement.",
+     "quote": {
+      "start": 53,
+      "end": 92
+     }
+    },
+    {
+     "category": "identity-uncertainty",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22732:ref-friedrich",
+     "description": "The regest marks the sender as uncertain with a question mark. The candidate maps the mention to the shared ruler IRI without any trace of that doubt beyond the label literal, so a query over rf:actor treats the identification as certain.",
+     "proposal": "Keep the shared ruler IRI only with an explicit uncertainty marker (rf:qualifier \"(Friedrich?)\" on the factoid at minimum), or use a regest-local actor labelled \"Friedrich?\"; report the missing uncertainty mechanism as a model gap.",
+     "quote": {
+      "start": 0,
+      "end": 28
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The threat of war and its condition 'falls der Gefangene nicht freigelassen werde' are not extracted.",
+     "reason": "'droht ihm mit Krieg, falls der Gefangene nicht freigelassen werde' is a threat; no act type of rv:ActTypes means a threat, and forcing it into rv:Communication would change its meaning. A condition needs a factoid to attach to. The extractor already reports the gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The captured envoy carries rv:Envoy in the complaint, although he is the person the complaint is about, not an envoy acting in it.",
+     "reason": "The passage 'klagt ... über die Gefangennahme seines Gesandten' makes the envoy the object of the complaint. rv:Envoy (who is sent or delivers a message) describes a mission this factoid does not record. No more specific role fits, so rv:Participant is the safe fix.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "'(Friedrich?)' is mapped to the shared ruler IRI without a marker of the regest's doubt.",
+     "reason": "The guidelines say the ruler uses the shared ruler IRI, and the actor label and nameInSource keep the question mark 'Friedrich?'. rf:qualifier qualifies the type or time of a factoid, not an identification, so the contract cannot mark an uncertain identification. The batch report already lists the identification as unresolved.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Peeck hat diese Stilübung auf Konrad III. bezogen, schließt aber nicht aus, daß es sich beim Absender doch um Friedrich gehandelt haben könnte, a. a. O., 61 Anm. 2. - Das Schreiben (vgl. auch die Antwort darauf, Peeck, a. a. O., 62 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 71) paßt jedenfalls zu dem von Friedrich geplanten, dann aber nicht durchgeführten Feldzug gegen Ungarn (vgl. Reg. "
+    },
+    {
+     "t": "95",
+     "regest": "22722"
+    },
+    {
+     "t": "), weshalb wir es auch hier eingereiht haben."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Stilübung"
+    },
+    {
+     "t": ", Reinhardsbrunner Briefsammlung, ed. Peeck, MG. Epp. sel. V, 61 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 70."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=39"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-G000230",
+    "II., König von Ungarn"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-U000275",
+    "Ungarn (Königreich bzw. Volk)"
+   ]
+  ]
+ }
+}

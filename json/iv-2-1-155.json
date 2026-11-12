@@ -1,0 +1,573 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-01-10_1_0_4_2_1_155_155",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22782",
+  "identifier": "RI IV,2,1 n. 155",
+  "short": "RI IV,2,1 n. 155",
+  "sort": "004_002_001_000155_0000000155",
+  "start": "1153-01-10",
+  "end": "1153-01-10",
+  "proseYears": [],
+  "lead": "Friedrich schenkt dem Abt Wibald von Stablo für dessen treue Dienste den Teil der Vogtei des Klosters, den einst Graf Heinrich von Laroche (comes Heinricus de Rupe) innehatte, unter der Bedingumg, daß die damit verbundenen militärischen Verpflichtungen (miliciam ordinandi - militärisches Aufgebot, palefridos tollendi - die Requirierung von Pferden, subvecturas atque commeatum in hostem absque ullius contradictione preparandi - Fuhrdienste und Verpflegung) erfüllt werden.",
+  "date": [
+   {
+    "t": "1153 Januar 10"
+   }
+  ],
+  "place": [
+   {
+    "t": "Metz"
+   }
+  ],
+  "text": "Friedrich schenkt dem Abt Wibald von Stablo für dessen treue Dienste den Teil der Vogtei des Klosters, den einst Graf Heinrich von Laroche (comes Heinricus de Rupe) innehatte, unter der Bedingumg, daß die damit verbundenen militärischen Verpflichtungen (miliciam ordinandi - militärisches Aufgebot, palefridos tollendi - die Requirierung von Pferden, subvecturas atque commeatum in hostem absque ullius contradictione preparandi - Fuhrdienste und Verpflegung) erfüllt werden. Z.: Erzbischof Arnold von Köln, die Bischöfe Stephan von Metz. Albero von Verdun, die Herzoge Heinrich von Sachsen, Matthäus von Lothringen, Markgraf Hermann von Sachsen, Pfalzgraf Otto von Wittelsbach, die Grafen Emicho von Leiningen, Hugo von Dagsburg. - Verfaßt von Wibald. Sollerti industria prospeximus .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22782:schenkung-vogtei",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22782:schenkung-vogtei",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "schenkung-vogtei",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 101,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22782:> .\nx:schenkung-vogtei a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22782> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt dem Abt Wibald von Stablo für dessen treue Dienste den Teil der Vogtei des Klosters\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22782:schenkung-vogtei",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung-vogtei",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 101,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22782:> .\nx:schenkung-vogtei rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Wibald von Stablo",
+      "text": "Abt Wibald von Stablo in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22782:schenkung-vogtei",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung-vogtei",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 101,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22782:> .\nx:schenkung-vogtei rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt Wibald von Stablo\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (den Teil der Vogtei des Klosters)",
+      "text": "betrifft Vogtei (den Teil der Vogtei des Klosters)",
+      "triple": [
+       "urn:regesta:22782:schenkung-vogtei",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22782:teil-vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung-vogtei",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 101,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22782:> .\nx:schenkung-vogtei rf:concerns x:teil-vogtei .\nx:teil-vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"den Teil der Vogtei des Klosters\" .",
+      "object": "urn:regesta:22782:teil-vogtei",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22782:schenkung-vogtei",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung-vogtei-2",
+      "own": true,
+      "evidence": {
+       "start": 176,
+       "end": 252,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22782:> .\nx:schenkung-vogtei rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"unter der Bedingumg, daß die damit verbundenen militärischen Verpflichtungen\" ] .",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "daß die damit verbundenen militärischen Verpflichtungen (miliciam ordinandi - militärisches Aufgebot, palefridos tollendi - die Requirierung von Pferden, subvecturas atque commeatum in hostem absque ullius contradictione preparandi - Fuhrdienste und Verpflegung) erfüllt werden",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22782:schenkung-vogtei",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 197,
+       "end": 474,
+       "ambiguous": false
+      },
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "für dessen treue Dienste",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22782:schenkung-vogtei",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 44,
+       "end": 68,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Abt Wibald von Stablo"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "Vogtei (den Teil der Vogtei des Klosters)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22782:inhabe-laroche",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22782:inhabe-laroche",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "inhabe-laroche",
+     "own": true,
+     "evidence": {
+      "start": 69,
+      "end": 174,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22782:> .\nx:inhabe-laroche a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22782> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Teil der Vogtei des Klosters, den einst Graf Heinrich von Laroche (comes Heinricus de Rupe) innehatte\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Heinrich von Laroche",
+      "text": "Graf Heinrich von Laroche in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22782:inhabe-laroche",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "inhabe-laroche",
+      "own": true,
+      "evidence": {
+       "start": 69,
+       "end": 174,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22782:> .\nx:inhabe-laroche rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000536> ; rf:nameInSource \"Graf Heinrich von Laroche\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000536"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (den Teil der Vogtei des Klosters)",
+      "text": "betrifft Vogtei (den Teil der Vogtei des Klosters)",
+      "triple": [
+       "urn:regesta:22782:inhabe-laroche",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22782:teil-vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "inhabe-laroche",
+      "own": true,
+      "evidence": {
+       "start": 69,
+       "end": 174,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22782:> .\nx:inhabe-laroche rf:concerns x:teil-vogtei .\nx:teil-vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"den Teil der Vogtei des Klosters\" .",
+      "object": "urn:regesta:22782:teil-vogtei",
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "einst",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22782:inhabe-laroche",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 107,
+       "end": 112,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Graf Heinrich von Laroche"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Vogtei (den Teil der Vogtei des Klosters)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "schenkung-vogtei",
+    "start": 0,
+    "end": 101
+   },
+   {
+    "id": "t2",
+    "start": 44,
+    "end": 68
+   },
+   {
+    "id": "inhabe-laroche",
+    "start": 69,
+    "end": 174
+   },
+   {
+    "id": "t3",
+    "start": 107,
+    "end": 112
+   },
+   {
+    "id": "schenkung-vogtei-2",
+    "start": 176,
+    "end": 252
+   },
+   {
+    "id": "t1",
+    "start": 197,
+    "end": 474
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The military obligations attached to the advocacy are kept only as rf:condition of the donation; no separate obligation factoid, because the regest names no obligor.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The military obligations in the condition (miliciam ordinandi, palefridos tollendi, subvecturas atque commeatum) can only be kept as one literal; the contract has no way to type the individual service obligations attached to a right.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "missing-reference",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22782:teil-vogtei",
+     "description": "The advocacy is 'der Vogtei des Klosters', but neither the right node nor the donation names the monastery of Stablo. The candidate S001047 is an 'ort' entry, so leaving it out is defensible; the right's label keeps the wording.",
+     "proposal": "Optionally add the monastery as a crm:E53_Place or community in rf:concerns of the donation; no change required.",
+     "quote": {
+      "start": 69,
+      "end": 101
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add the monastery of Stablo to rf:concerns of the donation.",
+     "reason": "The right's label 'den Teil der Vogtei des Klosters' keeps the wording, and the only candidate S001047 is an 'ort' entry; the reviewer itself requires no change.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "DF. I. 44, das Simonsfeld, Jahrbücher 150, noch unbekannt war, ist der einzige Beleg für den Aufenthalt in Metz. Die Übertragung der Vogtei an Wibald persönlich erfolgte am Todestag des kinderlosen Obervogtes Heinrich II. von Laroche. Nach dem schrittweisen Zurückdrängen des Einflusses des Vogtes war es Wibald damit gelungen, die ursprünglich rein grundherrliche Basis seiner Herrschaft auszuweiten; vgl. Wehlt, Reichsabtei (Veröff. d. M.-Planck-Inst. f. Gesch. 28, 1970) 228. Parisse, La noblesse Lorraine 2, 712 ff. macht wahrscheinlich, daß Friedrich um diese Zeit Herzog Matthäus von Lothringen die Grafschaft Toul zugesprochen hat, vgl. Reg. "
+    },
+    {
+     "t": "154",
+     "regest": "22781"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift aus dem Beginn des 13. Jh. in einem Pergamentkodex aus Stablo, der sich 1908 im Besitz des M. Ed. Crahay zu Lüttich befand, derzeit jedoch laut Auskunft des Staatsarchivs Lüttich nicht auffindbar ist, f. 113' (B). Drucke: Halkin-Roland, Recueil des chartes de Stavelot 1, 461 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 240; MG. DF. I. 44. Reg.: Wampach, UB zur Gesch. d. altluxemburg. Terr. 1, 634 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 460."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=55"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000550",
+    "(III.), Bischof von Verdun"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-E000324",
+    "Graf von Leiningen"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000536",
+    "(II.), Graf von Laroche, (Teil)Vogt des Klosters Stablo"
+   ],
+   [
+    "RI004-002-H000846",
+    "Markgraf von Sachsen, Graf von (Weimar-)Orlamünde"
+   ],
+   [
+    "RI004-002-H001317",
+    "Graf von Dagsburg/Elsass, auch Graf von Metz und im Moselgau"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-M000874",
+    "Metz (Dép. Moselle)"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-S001047",
+    "Stablo (Stavelot, südwestl. Malmedy, belg. Prov. Lüttich), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-S001143",
+    "Bischof von Metz"
+   ],
+   [
+    "RI004-002-T000419",
+    "Grafschaft"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

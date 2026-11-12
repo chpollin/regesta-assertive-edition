@@ -1,0 +1,443 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-12-28_1_0_4_2_1_149_149",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22776",
+  "identifier": "RI IV,2,1 n. 149",
+  "short": "RI IV,2,1 n. 149",
+  "sort": "004_002_001_000149_0000000149",
+  "start": "1152-07-01",
+  "end": "1152-12-28",
+  "proseYears": [],
+  "lead": "Friedrich fordert Erzbischof Hillin von Trier abermals auf, dem neugewählten Abt (Rether) von Prüm , der zu Unrecht der Simonie verdächtigt wurde, unverzüglich die Weihe zu erteilen (sine omni retardatione manus inponas). - Verfaßt und geschrieben von A II. C; S. D. Inter cetera, que .",
+  "date": [
+   {
+    "t": "(1152 Sommer-Dezember 28)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich fordert Erzbischof Hillin von Trier abermals auf, dem neugewählten Abt (Rether) von Prüm , der zu Unrecht der Simonie verdächtigt wurde, unverzüglich die Weihe zu erteilen (sine omni retardatione manus inponas). - Verfaßt und geschrieben von A II. C; S. D. Inter cetera, que .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22776:request-consecration",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22776:request-consecration",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request-consecration",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 181,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22776:> .\nx:request-consecration a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22776> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich fordert Erzbischof Hillin von Trier abermals auf, dem neugewählten Abt (Rether) von Prüm , der zu Unrecht der Simonie verdächtigt wurde, unverzüglich die Weihe zu erteilen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22776:request-consecration",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22776:request-consecration:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-consecration",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 181,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22776:> .\nx:request-consecration rf:reference x:request-consecration:ref-friedrich .\nx:request-consecration:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Hillin von Trier",
+      "text": "Erzbischof Hillin von Trier in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22776:request-consecration",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22776:request-consecration:ref-hillin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-consecration",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 181,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22776:> .\nx:request-consecration rf:reference x:request-consecration:ref-hillin .\nx:request-consecration:ref-hillin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H001017> ;\n    rf:nameInSource \"Erzbischof Hillin von Trier\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001017"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt (Rether) von Prüm",
+      "text": "Abt (Rether) von Prüm in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22776:request-consecration",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22776:request-consecration:ref-rether"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-consecration",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 181,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22776:> .\nx:request-consecration rf:reference x:request-consecration:ref-rether .\nx:request-consecration:ref-rether a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-R000500> ;\n    rf:nameInSource \"Abt (Rether) von Prüm\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000500"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "abermals",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22776:request-consecration",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 46,
+       "end": 54,
+       "ambiguous": false
+      },
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "unverzüglich",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22776:request-consecration",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 147,
+       "end": 159,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Erzbischof Hillin von Trier"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Abt (Rether) von Prüm"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "request-consecration",
+    "start": 0,
+    "end": 181
+   },
+   {
+    "id": "t1",
+    "start": 46,
+    "end": 54
+   },
+   {
+    "id": "t2",
+    "start": 147,
+    "end": 159
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No role for the party who issues a demand or request; the ruler is recorded as rv:Petitioner of the rv:Request.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The statement that the abbot 'zu Unrecht der Simonie verdächtigt wurde' (a suspicion and its rejection) has no act or state type and is kept only inside the evidence selector.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The earlier demand implied by 'abermals' and the abbot's election implied by 'neugewählten' are not modelled as separate acts; 'abermals' is kept as rf:qualifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the actor who issues a request or demand, distinct from rv:Petitioner.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act or state type for an accusation or suspicion (simony).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22776:request-consecration:ref-friedrich",
+     "description": "rv:Petitioner is defined as the one at whose petition an act happens; here Friedrich is the one who demands. The vocabulary has no requester role, so the choice is an approximation.",
+     "proposal": "No change under the current contract; report the missing requester role.",
+     "quote": {
+      "start": 0,
+      "end": 58
+     }
+    },
+    {
+     "category": "unstructured-content",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22776:request-consecration",
+     "description": "The abbot's recent election and the (according to the regest unjustified) suspicion of simony are in-scope legal context but are not represented beyond the evidence passage.",
+     "proposal": "Optionally add rf:qualifier 'neugewählten' and 'der zu Unrecht der Simonie verdächtigt wurde'; report the missing accusation type.",
+     "quote": {
+      "start": 60,
+      "end": 145
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add qualifiers for the new election and the simony suspicion.",
+     "reason": "rf:qualifier is for wording that qualifies type or time of the factoid; 'der zu Unrecht der Simonie verdächtigt wurde' describes the abbot and would need an accusation type the contract lacks. The wording stays in the evidence; the reviewer marks it optional.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu diesem ältesten erhaltenen Original einer "
+    },
+    {
+     "t": "littera clausa",
+     "i": true
+    },
+    {
+     "t": " der Kanzlei Friedrichs I. und zu seiner Besiegelung und Faltung vgl. Bresslau, Urkundenlehre 2"
+    },
+    {
+     "t": "3",
+     "sup": true
+    },
+    {
+     "t": ", 588 Anm. 1; auf der Rückseite steht durch den Pergamentstreifen getrennt von der Hand des Notars A II. C die Adresse: "
+    },
+    {
+     "t": "archiepiscopo Treuer/ensi",
+     "i": true
+    },
+    {
+     "t": ". Das Formular zeigt Anklänge an den päpstlichen Kanzleistil. - Die zeitliche Einreihung des Mandats ergibt sich aus der Rückkehr Hillins aus Italien im Sommer 1152 und aus der Nennung Rethers in Reg. "
+    },
+    {
+     "t": "150",
+     "regest": "22777"
+    },
+    {
+     "t": ". - Die Mönche von Prüm hatten nach der Erkrankung ihres Abtes Gottfried unterstützt von Erzbischof Arnold von Köln (Knipping, Reg. Köln 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "546"
+    },
+    {
+     "t": ") bei Friedrich dessen Absetzung und eine Neuwahl durchgesetzt (Cat. abb. Epternac. sec., MG. SS XXIII, 34, vgl. dazu Wibalds Schreiben an Arnold, Jaffé, Mon. Corb. 510 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 381), die auf Rether gefallen war, vgl. dazu auch Hilpisch, Hillin, A. f. mittelrh. KG 7 (1955) 14."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Koblenz (A). Drucke: MG. Const. 1, 200 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 143; MG. DF. I. 39. Reg.: Wauters, Table chronol. 2, 389; Goerz, Reg. 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 14; Stumpf 4531 zu 1152-54."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=53"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_39"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-39"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-G000803",
+    "Abt von Prüm"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-I000220",
+    "Italienzug, Reichsheerfahrt (siehe auch: Romzug)"
+   ],
+   [
+    "RI004-002-R000500",
+    "Abt von Prüm"
+   ]
+  ]
+ }
+}

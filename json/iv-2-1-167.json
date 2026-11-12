@@ -1,0 +1,1352 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-03-04_1_0_4_2_1_167_167",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22794",
+  "identifier": "RI IV,2,1 n. 167",
+  "short": "RI IV,2,1 n. 167",
+  "sort": "004_002_001_000167_0000000167",
+  "start": "1153-03-04",
+  "end": "1153-03-04",
+  "proseYears": [],
+  "lead": "Friedrich hält einen Hoftag .",
+  "date": [
+   {
+    "t": "1153 März 4 bzw. März"
+   }
+  ],
+  "place": [
+   {
+    "t": "Konstanz"
+   }
+  ],
+  "text": "Friedrich hält einen Hoftag . Legaten Eugens III., der Kardinalpriestcr Bernhard von S. Clemente und der Kardinaldiakon Gregor von S. Angelo, erscheinen bei Hofe. Die beiden Bürger von Lodi, Albernardus Alamanus und Magister Homobonus, die auf Bitten des Bischofs Hermann von Konstanz die Stadt Konstanz aufgesucht haben, klagen vor König Friedrich und den Fürsten über die Unterdrückung durch die Mailänder, besonders über die gewaltsame Verlegung eines Marktes, worauf Friedrich durch seinen Kanzler (Arnold) ein Schreiben an die Mailänder ausfertigen läßt (vgl. Regg. 168 und 192). Friedrich wird, nachdem schon vorher die Erzbischöfe und Bischöfe auf einer Synode darüber beraten haben, vor den päpstlichen Legaten und Bischof Hermann von Konstanz von Adela, seiner ersten Gemahlin, der Tochter des Markgrafen Diepold von Vohburg, wegen zu naher Verwandtschaft im Chor (des Domes) von Konstanz geschieden.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 5,
+  "blocks": [
+   {
+    "node": "urn:regesta:22794:complaint",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22794:complaint",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "complaint",
+     "own": true,
+     "evidence": {
+      "start": 163,
+      "end": 234,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22794:> .\nx:complaint a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22794> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die beiden Bürger von Lodi, Albernardus Alamanus und Magister Homobonus\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Albernardus Alamanus",
+      "text": "Albernardus Alamanus in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22794:complaint",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 163,
+       "end": 234,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:complaint rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000547> ; rf:nameInSource \"Albernardus Alamanus\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000547"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Magister Homobonus",
+      "text": "Magister Homobonus in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22794:complaint",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 163,
+       "end": 234,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:complaint rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001179> ; rf:nameInSource \"Magister Homobonus\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001179"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22794:complaint",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 163,
+       "end": 234,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:complaint rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Fürsten",
+      "text": "den Fürsten in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22794:complaint",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 163,
+       "end": 234,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:complaint rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22794:local:fuersten> ; rf:nameInSource \"Fürsten\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:22794:local:fuersten"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die Mailänder",
+      "text": "die Mailänder in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22794:complaint",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 163,
+       "end": 234,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:complaint rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000144:community> ; rf:nameInSource \"Mailänder\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000144:community"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Marktrecht (eines Marktes)",
+      "text": "betrifft Marktrecht (eines Marktes)",
+      "triple": [
+       "urn:regesta:22794:complaint",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22794:market"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 163,
+       "end": 234,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:complaint rf:concerns x:market .\nx:market a crm:E30_Right ;\n    crm:P2_has_type rv:Market ;\n    rdfs:label \"eines Marktes\" .",
+      "object": "urn:regesta:22794:market",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22794:complaint",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint-2",
+      "own": true,
+      "evidence": {
+       "start": 322,
+       "end": 462,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:complaint rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"klagen vor König Friedrich und den Fürsten über die Unterdrückung durch die Mailänder, besonders über die gewaltsame Verlegung eines Marktes\" ] .",
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k8"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k2",
+       "k8"
+      ],
+      "text": "Albernardus Alamanus"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3",
+       "k8"
+      ],
+      "text": "Magister Homobonus"
+     },
+     ", als Adressaten ",
+     {
+      "keys": [
+       "k4",
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5",
+       "k8"
+      ],
+      "text": "den Fürsten"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k6",
+       "k8"
+      ],
+      "text": "die Mailänder"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7",
+       "k8"
+      ],
+      "text": "Marktrecht (eines Marktes)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22794:letter",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22794:letter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "letter",
+     "own": true,
+     "evidence": {
+      "start": 464,
+      "end": 558,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22794:> .\nx:letter a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22794> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"worauf Friedrich durch seinen Kanzler (Arnold) ein Schreiben an die Mailänder ausfertigen läßt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22794:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 464,
+       "end": 558,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die Mailänder",
+      "text": "die Mailänder in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22794:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 464,
+       "end": 558,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000144:community> ; rf:nameInSource \"Mailänder\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000144:community"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kanzler (Arnold)",
+      "text": "Kanzler (Arnold) in der Rolle Vertreter",
+      "triple": [
+       "urn:regesta:22794:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 464,
+       "end": 558,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:nameInSource \"Kanzler (Arnold)\" ; rf:role rv:Representative ] .",
+      "role": "Vertreter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001203"
+      ],
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Schreiben"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "die Mailänder"
+     },
+     ", als Vertreter ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Kanzler (Arnold)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22794:divorce",
+    "kind": "act",
+    "title": "Ehescheidung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehescheidung",
+     "text": "Ehescheidung",
+     "triple": [
+      "urn:regesta:22794:divorce",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/MarriageDissolution"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "divorce",
+     "own": true,
+     "evidence": {
+      "start": 585,
+      "end": 599,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22794:> .\nx:divorce a rf:ActFactoid ;\n    rf:factoidType rv:MarriageDissolution ;\n    rf:source <urn:regesta:record:22794> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich wird\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k13"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22794:divorce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "divorce",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 599,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:divorce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kardinalpriestcr Bernhard von S. Clemente",
+      "text": "Kardinalpriestcr Bernhard von S. Clemente in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22794:divorce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "divorce",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 599,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:divorce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000622> ; rf:nameInSource \"päpstlichen Legaten\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000622"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kardinaldiakon Gregor von S. Angelo",
+      "text": "Kardinaldiakon Gregor von S. Angelo in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22794:divorce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "divorce",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 599,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:divorce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000973> ; rf:nameInSource \"päpstlichen Legaten\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000973"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Hermann von Konstanz",
+      "text": "Bischof Hermann von Konstanz in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22794:divorce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "divorce",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 599,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:divorce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000817> ; rf:nameInSource \"Bischof Hermann von Konstanz\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000817"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Adela",
+      "text": "Adela in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22794:divorce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "divorce",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 599,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:divorce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000306> ; rf:nameInSource \"Adela\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000306"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22794:divorce",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "divorce-2",
+      "own": true,
+      "evidence": {
+       "start": 691,
+       "end": 908,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:divorce rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"vor den päpstlichen Legaten und Bischof Hermann von Konstanz von Adela, seiner ersten Gemahlin, der Tochter des Markgrafen Diepold von Vohburg, wegen zu naher Verwandtschaft im Chor (des Domes) von Konstanz geschieden\" ] .",
+      "key": "k19"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "zu naher Verwandtschaft",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22794:divorce",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 841,
+       "end": 864,
+       "ambiguous": false
+      },
+      "key": "k20"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k13",
+       "k19"
+      ],
+      "text": "Ehescheidung"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k14",
+       "k19"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k18",
+       "k19"
+      ],
+      "text": "Adela"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k15",
+       "k19"
+      ],
+      "text": "Kardinalpriestcr Bernhard von S. Clemente"
+     },
+     ", ",
+     {
+      "keys": [
+       "k16",
+       "k19"
+      ],
+      "text": "Kardinaldiakon Gregor von S. Angelo"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17",
+       "k19"
+      ],
+      "text": "Bischof Hermann von Konstanz"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22794:marriage",
+    "kind": "state",
+    "title": "Ehe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehe",
+     "text": "Ehe",
+     "triple": [
+      "urn:regesta:22794:marriage",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Marriage"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "marriage",
+     "own": true,
+     "evidence": {
+      "start": 752,
+      "end": 785,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22794:> .\nx:marriage a rf:StateFactoid ;\n    rf:factoidType rv:Marriage ;\n    rf:source <urn:regesta:record:22794> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von Adela, seiner ersten Gemahlin\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k21"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Adela",
+      "text": "Adela in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22794:marriage",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage",
+      "own": true,
+      "evidence": {
+       "start": 752,
+       "end": 785,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:marriage rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000306> ; rf:nameInSource \"Adela\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000306"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22794:marriage",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage",
+      "own": true,
+      "evidence": {
+       "start": 752,
+       "end": 785,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:marriage rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"seiner\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k23"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "ersten Gemahlin",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22794:marriage",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 770,
+       "end": 785,
+       "ambiguous": false
+      },
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Ehe"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Adela"
+     },
+     " und ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22794:parenthood-adela",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22794:parenthood-adela",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-adela",
+     "own": true,
+     "evidence": {
+      "start": 756,
+      "end": 833,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22794:> .\nx:parenthood-adela a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22794> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Adela, seiner ersten Gemahlin, der Tochter des Markgrafen Diepold von Vohburg\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Adela",
+      "text": "Adela in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22794:parenthood-adela",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-adela",
+      "own": true,
+      "evidence": {
+       "start": 756,
+       "end": 833,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:parenthood-adela rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000306> ; rf:nameInSource \"Adela\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000306"
+      ],
+      "key": "k26",
+      "crossrefs": [
+       {
+        "question": "gleichnamige-eltern",
+        "graphNode": "urn:regesta:actor:RI004-002-A000306",
+        "name": "Markgrafen Diepold von Vohburg",
+        "child": "Adela",
+        "here": {
+         "regest": "22794",
+         "label": "RI IV,2,1 n. 167",
+         "claim": "parenthood-adela",
+         "iri": "urn:regesta:actor:RI004-002-T000163",
+         "register": {
+          "id": "RI004-002-T000163",
+          "label": "(VI.), Markgraf von Vohburg",
+          "assigned": true
+         },
+         "name": "Markgrafen Diepold von Vohburg"
+        },
+        "other": {
+         "regest": "22673",
+         "label": "RI IV,2,1 n. 46",
+         "claim": "parenthood-diepold-adela",
+         "iri": "urn:regesta:actor:RI004-002-T000162",
+         "register": {
+          "id": "RI004-002-T000162",
+          "label": "(III.), Markgraf von Vohburg und Cham",
+          "assigned": true
+         },
+         "name": "Markgraf Diepolds von Vohburg"
+        }
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgrafen Diepold von Vohburg",
+      "text": "Markgrafen Diepold von Vohburg in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22794:parenthood-adela",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-adela",
+      "own": true,
+      "evidence": {
+       "start": 756,
+       "end": 833,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22794:> .\nx:parenthood-adela rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-T000163> ; rf:nameInSource \"Markgrafen Diepold von Vohburg\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-T000163"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Tochter",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22794:parenthood-adela",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 791,
+       "end": 798,
+       "ambiguous": false
+      },
+      "key": "k28"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Adela"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Markgrafen Diepold von Vohburg"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "complaint",
+    "start": 163,
+    "end": 234
+   },
+   {
+    "id": "complaint-2",
+    "start": 322,
+    "end": 462
+   },
+   {
+    "id": "letter",
+    "start": 464,
+    "end": 558
+   },
+   {
+    "id": "divorce",
+    "start": 585,
+    "end": 599
+   },
+   {
+    "id": "divorce-2",
+    "start": 691,
+    "end": 908
+   },
+   {
+    "id": "marriage",
+    "start": 752,
+    "end": 785
+   },
+   {
+    "id": "parenthood-adela",
+    "start": 756,
+    "end": 833
+   },
+   {
+    "id": "t2",
+    "start": 770,
+    "end": 785
+   },
+   {
+    "id": "t3",
+    "start": 791,
+    "end": 798
+   },
+   {
+    "id": "t1",
+    "start": 841,
+    "end": 864
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'den päpstlichen Legaten' in the divorce passage is identified with Bernhard (RI004-002-B000622) and Gregor (RI004-002-G000973) from the earlier sentence of the same regest; both references carry the collective wording.",
+     "lang": "en"
+    },
+    {
+     "text": "'Markgrafen Diepold von Vohburg' is identified with RI004-002-T000163 by name and title; the register labels disagree on the ordinal (Adela's entry says Diepold III., T000163 says VI.), which the regest itself does not settle.",
+     "lang": "en"
+    },
+    {
+     "text": "'den Fürsten' is a regest-local group without register candidate.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The prior synod deliberation ('nachdem schon vorher die Erzbischöfe und Bischöfe auf einer Synode darüber beraten haben') has no fitting act type (deliberation or consultation is neither Negotiation nor Dispute) and was left out.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the forum before which a complaint is brought or a divorce is pronounced; Friedrich and the princes are Addressee of the complaint, the legates and Bischof Hermann are Participant of the divorce.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The request of Bischof Hermann that brought the citizens of Lodi to Konstanz is a travel motive and was left out; the model cannot link it to the complaint.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The market is typed as a market right (rv:Market) although the regest speaks of relocating a market; no class for a market as an institution or event.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu den genannten Ereignissen vgl. Simonsfeld, Jahrbücher 156 ff. Zur Möglichkeit eines Kontaktes des Bischofs von Konstanz mit Lodi vgl. Weiss, Die Konstanzer Bischöfe (Konstanzer Geschichtsu. Rechtsquellen 20, 1975) 90 f. und zur Lodesaner Gesandtschaft Caretta, Le cinque ambascerie lodigiane, Arch. stor. Lodigiano ser. II a. VIII (1960) 57 f. Über den Mißerfolg der Legation Sichers in Mailand berichtet Otto Morena, a. a. O. 9 f, (vgl. Reg. "
+    },
+    {
+     "t": "192",
+     "regest": "22819"
+    },
+    {
+     "t": "). Datierbar ist nur die Klage der Bürger von Lodi mit dem 4. März ("
+    },
+    {
+     "t": "die Mercurii capitis ieiunii",
+     "i": true
+    },
+    {
+     "t": "... Morena, a. a. O. 3, Z. 21 f.). Zur Annullierung von Friedrichs erster Ehe, die er vor seiner Wahl zum König geschlossen hatte (Reg. "
+    },
+    {
+     "t": "46",
+     "regest": "22673"
+    },
+    {
+     "t": "), vgl. Rundnagel, Ehescheidung (FS. R. Holtzmann = Hist. Stud. 238, 1933) 145 ff. und Güterbock, Otto von St. Blasien (FS. R. Holtzmann = Hist. Stud. 238, 1933) 204 f. Vielleicht bezieht sich ein Eintrag im Necrologium Isnense, MG. Necrologia I, 177 zu Februar 19 ("
+    },
+    {
+     "t": "Adelhaidis regina, benefactrix",
+     "i": true
+    },
+    {
+     "t": ") mit Anm. 1, auf die erste Gemahlin König Friedrichs. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " Zur Trennung der ersten Ehe Friedrich Barbarossas von Vohburg vgl. zuletzt Hlawitschka, Auflösung der Ehe, DA 61 (2005) 509–536, der nachweist, dass Adela die Enkeltochter Judiths, der Tochter Kaiser Heinrichs III. und Schwester Heinrichs IV. sowie Witwe nach König Salomon von Ungarn, und ihres Gemahls Herzog Wladislav I. (Hermann) von Polen war und demzufolge mit ihrem Mann, Friedrich tatsächlich im kanonischen Gradverhältnis 3:4 verwandt war, was von der Kurie nicht akzeptiert werden konnte. Hlawitschka bestimmt damit auch den Quellenwert der durch Wibald von Stablo überlieferten Consanguinitätstafel neu."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Zum Hoftag vgl. Otto von St. Blasien, ed. Hofmeister, MG. SS rer. Germ, in us. schol. 10. Epp. Wibaldi, ed. Jaffé, Mon. Corb. 548 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 409, JL. 9696 (Schreiben Eugens III. an Wibald von 1153 Februar 8). In DF. I. 52 wird die Zusage des Königs in die Hand des päpstlichen Legaten erwähnt. "
+    },
+    {
+     "t": "Coram apostolice sedis legatis",
+     "i": true
+    },
+    {
+     "t": " erfolgte auch die Scheidung; Ann. s. Aegid. Brunsvic. exc., MG. SS XXX/1, 15; Ann. Palid., MG. SS XVI, 88; Ann. Magdeburg., MG. SS XVI, 191: "
+    },
+    {
+     "t": "coram legatis apostolici",
+     "i": true
+    },
+    {
+     "t": ". Otto Morena, ed. Güterbock, MG. SS rer. Germ. N. S. VII, 2 ff. und Galvaneus Flamma, Man. Flor., ed. Muratori, Rer. Ital. SS XI, Sp. 633 f. berichten über die Klage der Bürger von Lodi. Vgl. dazu auch Carmen de gestis, ed. Schmale-Ott, MG. SS rer. Germ. in us. schol. 3, V. 61 ff. Zur Scheidung vgl. Ann. s. Aegid. Brunsvic. exc., a. a. O. 15; Ann. Campolil., ed. Haider, Lilienfelder Annalen-Fragmente, MIÖG 82 (1974) 115; Ann. Egmund., ed. Oppermann, Werken uitgeg. d. h. hist. genootschap Utrecht 3. Ser. 61 (1933) 165; Ann. Herbipol., MG. SS XVI, 9; Ann. Magdeburg., a. a. O. 191; Ann. Palid., a. a. O. 88 zu 1153 und 89 zu 1156; Ann. Reichersperg., MG. SS XVII, 466; Ann. Welf. Weingart., ed. König, Schwäb. Chroniken der Stauferzeit 1 (1938) 88; Auct. Lambac., MG. SS IX, 555; Burchard von Ursberg, ed. Holder-Egger - Simson, MG. SS rer. Germ, in us. schol. 26; Chron. reg. Col., ed. Waitz, MG. SS rer. Germ. in us. schol. 92 Rec. I zu 1156; Cont. Admunt., MG. SS IX, 582 zu 1156; Cron. apost. et imp. Basileensia, MG. SS XXXI, 293; Hugonis Chron. Cont. Weingart., MG. SS XXI, 475; Ligurinus l. V, ed. Migne, PL 212, Sp. 396 V. 249-251; Ottonis Gesta Frid. l. II cap. 11, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 111 f.; Otto von St. Blasien, a. a. O. 10; Sigeb. Auct. Affligemense, ed. Gorissen, Verhand. K. Vlaamse Acad. Klasse d. Letteren 15 (1952) 138 zu 1156; Sigeb. Cont. Aquicinct., MG. SS VI, 407 zu 1156. Den offiziellen Scheidungsgrund berichten die Ann. Herbipol., a. a. O. 9; Burchard von Ursberg, a. a. O. 26; Ottonis Gesta Frid. l. II cap. 11. a. a. O. 111; Ligurinus l. V, a. a. O. 396 V. 249-251. Andere Gründe geben an: Ann. s. Aegid. Brunsvic. exc., a. a. O. 15: "
+    },
+    {
+     "t": "propter improborum figmenta",
+     "i": true
+    },
+    {
+     "t": "; Chron. Montis Sereni, MG. SS XXIII, 149: "
+    },
+    {
+     "t": "propter notam adulterii",
+     "i": true
+    },
+    {
+     "t": ", vgl. dazu auch die Ann. Vetero-Cellenses, ed. Opel, Mittheil. d. Dt. Ges. zur Erforsch. vaterländ. Sprache u. Alterthümer in Leipzig 1/2 (1874) 179 zu 1152: "
+    },
+    {
+     "t": "ab uxore sua propter notam adulterii auctoritate papae a thoro cum ea divortiatus est",
+     "i": true
+    },
+    {
+     "t": "; Otto von St. Blasien, a. a. O. 10: "
+    },
+    {
+     "t": "causa fornicationis sepius infamatam",
+     "i": true
+    },
+    {
+     "t": ". Die Ann. s. Disibodi, MG. SS XVII, 29 (zu 1156) verbinden die Scheidung irrig mit dem Schisma und (zu 1159) mit der Exkommunikation, ebenso haben die Ann. Palid., a. a. O. 91 zu 1159, das Chron. s. Clementis Mettense, MG. SS XXIV, 501 zu 1154 und die Sigeb. Cont. Aquicinct., a. a. O. 407 zu 1156 (päpstl. Rüge wegen der Scheidung) sowie 408 zu 1158 die Scheidung mit der Exkommunikation verbunden. Zum Verwandtschaftsverhältnis Friedrichs mit Adela sowie zum betreffenden Grad vgl. die Tabula consanguinitatis, Epp. Wibaldi ed. Jaffé, Mon. Corb. 547 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 408. Nach den Conciliorum oecumenicorum decreta ("
+    },
+    {
+     "t": "3",
+     "sup": true
+    },
+    {
+     "t": " 1973), 257 f. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 50 erfolgte erst 1215 eine Einschränkung dieses Ehehindernisses auf den 4. Grad."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=59"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000306",
+    "Adela von Vohburg, Tochter Markgraf Theobalds (Diepolds III.) von Vohburg, erste Gemahlin Friedrich Barbarossas, dann mit Dieto von Ravensburg verheiratet"
+   ],
+   [
+    "RI004-002-A000547",
+    "Albernardus Alamanus, Bürger von Lodi"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-B000622",
+    "Kardinalpriester von S. Clemente (1145─1158), dann Kardinalbischof von Porto (1158─1176)"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-G000973",
+    "Kardinaldiakon von S. Angelo (in Pescheria; vor Juli 1137<i>?</i>, dann, nach 13.4.1154─nach 18.5.1154, Kardinalbischof von Sabina)"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-H001179",
+    "Magister, Bürger von Lodi"
+   ],
+   [
+    "RI004-002-J000274",
+    "Königin von Ungarn"
+   ],
+   [
+    "RI004-002-K000577",
+    "Konstanz (am Bodensee, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-L000550",
+    "Lodi (Vecchio, am Lambro, südöstl. Mailand, ital. Prov. Lodi Nuovo)"
+   ],
+   [
+    "RI004-002-L000554",
+    "Borgo Piacentino"
+   ],
+   [
+    "RI004-002-M000144",
+    "Bewohner (Mailänder), <i>burgenses</i>, <i>cives</i>, Heer, Ritter, <i>rustici</i>, Truppen"
+   ],
+   [
+    "RI004-002-S000136",
+    "König von Ungarn"
+   ],
+   [
+    "RI004-002-S000646",
+    "Legat Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-T000163",
+    "(VI.), Markgraf von Vohburg"
+   ],
+   [
+    "RI004-002-W000743",
+    "I. (Hermann), Herzog von Polen"
+   ]
+  ]
+ }
+}

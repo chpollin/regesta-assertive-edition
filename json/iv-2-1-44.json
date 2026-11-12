@@ -1,0 +1,139 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1149-04-00_2_0_4_2_1_44_44",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22671",
+  "identifier": "RI IV,2,1 n. 44",
+  "short": "RI IV,2,1 n. 44",
+  "sort": "004_002_001_000044_0000000044",
+  "start": "1149-04-01",
+  "end": "1149-04-30",
+  "proseYears": [],
+  "lead": "Friedrich läßt einige seiner Ministerialen wegen Störung des Landfriedens am Galgen hinrichten.",
+  "date": [
+   {
+    "t": "1149 April"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich läßt einige seiner Ministerialen wegen Störung des Landfriedens am Galgen hinrichten.",
+  "status": "no_in_scope_claim",
+  "technical": true,
+  "claims": 0,
+  "blocks": [],
+  "spans": [],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for a punishment or execution; the execution 'wegen Störung des Landfriedens' is typed rv:Judgment with Friedrich as rv:Judge, although the regest states no formal sentence.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No state type for ministeriality; the dependency stated in 'seiner Ministerialen' is not recorded as a separate state factoid (rv:FeudalRelationship would overreach).",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for punishment or execution.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No state type for ministeriality or unfree service dependency.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Removed <urn:regesta:22671:execution> (rv:Judgment), its references execution-ref-friedrich (rv:Judge) and execution-ref-ministerialen (rv:Respondent), and the then unused actor nodes <urn:regesta:actor:RI004-002-F000471> and <urn:regesta:actor:22671:local:ministerialen>.",
+     "lang": "en"
+    },
+    {
+     "text": "Kept only <urn:regesta:record:22671> a crm:E31_Document, with a comment naming the model gap.",
+     "lang": "en"
+    }
+   ],
+   "status": "no_in_scope_claim",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "unsupported-type",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22671:execution",
+     "description": "rv:Judgment is defined as deciding a dispute by sentence, and rv:Judge and rv:Respondent are litigation roles. The regest reports that Friedrich has ministeriales hanged for breach of the peace; it names no dispute, trial or sentence. The candidate thus asserts a judicial form the passage does not support. The extractor marked this as a model gap, but the chosen type overreaches rather than approximates.",
+     "proposal": "Either abstain from typing the execution and report the missing punishment type as a model gap, or, if kept, use rv:Participant for the ministeriales instead of rv:Respondent and record the execution type as an open model gap rather than rv:Judgment.",
+     "quote": {
+      "start": 0,
+      "end": 94
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:22671:local:ministerialen",
+     "description": "'seiner Ministerialen' states a dependency of the ministeriales on Friedrich. The vocabulary has no ministeriality or service-dependency state; rv:FeudalRelationship would overreach.",
+     "proposal": "No change; report as model gap.",
+     "quote": {
+      "start": 15,
+      "end": 42
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "rv:Judgment with rv:Judge and rv:Respondent asserts a judicial proceeding the regest does not report.",
+     "reason": "'Friedrich läßt einige seiner Ministerialen wegen Störung des Landfriedens am Galgen hinrichten' names no dispute, trial or sentence, while rv:Judgment is defined as 'Entscheidung eines Streits durch Spruch' and Judge and Respondent are litigation roles. No act type of the contract expresses a punishment or execution, so any retyping would be a new reading. The extractor itself records the overreach as a model gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The dependency in 'seiner Ministerialen' is not captured.",
+     "reason": "'einige seiner Ministerialen' states a service dependency; the state scheme has no ministeriality type and rv:FeudalRelationship would overreach.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 752 f. und Simonsfeld, Jahrbücher 14."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. I cap. 64, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 90."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=21"
+    }
+   ]
+  },
+  "register": []
+ }
+}

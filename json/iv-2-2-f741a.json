@@ -1,0 +1,501 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/a08dff22-e01c-492d-aa63-fddb87e772a9",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "220528",
+  "identifier": "RI IV,2,2 n. †741a",
+  "short": "RI IV,2,2 n. †741a",
+  "sort": "004_002_002_001259_00000#741a",
+  "start": "1152-01-01",
+  "end": "1165-12-31",
+  "proseYears": [],
+  "lead": "Bischof G(erhard) von Bologna bittet den Kaiser, gegen die Grafen von Panizo vorzugehen, welche die Güter der Bologneser Kirche plündern.",
+  "date": [
+   {
+    "t": "(1152–1165, wohl 1159)"
+   }
+  ],
+  "place": [],
+  "text": "Bischof G(erhard) von Bologna bittet den Kaiser, gegen die Grafen von Panizo vorzugehen, welche die Güter der Bologneser Kirche plündern.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:220528:request",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:220528:request",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 136,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220528:> .\nx:request a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:220528> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof G(erhard) von Bologna bittet den Kaiser, gegen die Grafen von Panizo vorzugehen, welche die Güter der Bologneser Kirche plündern\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof G(erhard) von Bologna",
+      "text": "Bischof G(erhard) von Bologna in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:220528:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 136,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220528:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"Bischof G(erhard) von Bologna\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000351"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser",
+      "text": "Kaiser in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:220528:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 136,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220528:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"den Kaiser\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Grafen von Panizo",
+      "text": "Grafen von Panizo in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:220528:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 136,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220528:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000103:community> ; rf:nameInSource \"die Grafen von Panizo\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-P000103:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Güter der Bologneser Kirche",
+      "text": "betrifft Güter der Bologneser Kirche",
+      "triple": [
+       "urn:regesta:220528:request",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:220528:goods"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 136,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220528:> .\nx:request rf:concerns x:goods .\nx:goods a crm:E18_Physical_Thing ;\n    rdfs:label \"Güter der Bologneser Kirche\" .",
+      "object": "urn:regesta:220528:goods",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "welche die Güter der Bologneser Kirche plündern",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220528:request",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 89,
+       "end": 136,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Bischof G(erhard) von Bologna"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kaiser"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Grafen von Panizo"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Güter der Bologneser Kirche"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:220528:possession-church",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:220528:possession-church",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "possession-church",
+     "own": true,
+     "evidence": {
+      "start": 96,
+      "end": 127,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220528:> .\nx:possession-church a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:220528> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Güter der Bologneser Kirche\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g11> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bologneser Kirche",
+      "text": "Bologneser Kirche in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:220528:possession-church",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "possession-church",
+      "own": true,
+      "evidence": {
+       "start": 96,
+       "end": 127,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220528:> .\nx:possession-church rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001067:community> ; rf:nameInSource \"Bologneser Kirche\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B001067:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Güter der Bologneser Kirche",
+      "text": "betrifft Güter der Bologneser Kirche",
+      "triple": [
+       "urn:regesta:220528:possession-church",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:220528:goods"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "possession-church",
+      "own": true,
+      "evidence": {
+       "start": 96,
+       "end": 127,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220528:> .\nx:possession-church rf:concerns x:goods .\nx:goods a crm:E18_Physical_Thing ;\n    rdfs:label \"Güter der Bologneser Kirche\" .",
+      "object": "urn:regesta:220528:goods",
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Bologneser Kirche"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Güter der Bologneser Kirche"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "request",
+    "start": 0,
+    "end": 136
+   },
+   {
+    "id": "t1",
+    "start": 89,
+    "end": 136
+   },
+   {
+    "id": "possession-church",
+    "start": 96,
+    "end": 127
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "die Grafen von Panizo identified with register entry RI004-002-P000103 as a community (E74_Group), although the register types it as a place ('ort') with the label 'Panizo, Grafen'.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the party against whom the requested action is directed; the counts of Panizo are recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The alleged plundering of the church's goods has no fitting act type; it is kept only as rf:ground of the request, not as a Dispute or as Possession.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for plundering or spoliation as an alleged wrong; it survives only as rf:ground.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added actor urn:regesta:actor:RI004-002-B001067:community (crm:E74_Group, label \"Bologneser Kirche\").",
+     "lang": "en"
+    },
+    {
+     "text": "Added rf:StateFactoid urn:regesta:220528:possession-church (rv:Possession, evidence \"die Güter der Bologneser Kirche\", Bologneser Kirche as rv:Possessor, rf:concerns urn:regesta:220528:goods), producer correction-g11.",
+     "lang": "en"
+    },
+    {
+     "text": "urn:regesta:220528:request unchanged; no plundering factoid asserted.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:220528:request",
+     "description": "The counts of Panizo are the party against whom action is requested and the alleged plunderers. rv:Participant hides that they are the opposing party; the vocabulary's rv:Respondent fits a party complained against better.",
+     "proposal": "Use rv:Respondent for the counts of Panizo, or report the missing 'target of requested action' role.",
+     "quote": {
+      "start": 49,
+      "end": 136
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "220528",
+     "description": "The regest states that the goods belong to the church of Bologna, and the packet carries the candidate RI004-002-B001067 (Bologna, Bistum, Kirche). The thing node is labelled with the phrase, but no rv:Possession factoid names the church as possessor, so the economic relation is lost.",
+     "proposal": "Add a rf:StateFactoid of type rv:Possession with an rv:Possessor reference to urn:regesta:actor:RI004-002-B001067:community (nameInSource \"Bologneser Kirche\") concerning urn:regesta:220528:goods.",
+     "quote": {
+      "start": 96,
+      "end": 127
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The counts of Panizo are rv:Participant although they are the party against whom action is requested; rv:Respondent proposed.",
+     "reason": "The factoid is a rv:Request ('bittet den Kaiser, gegen die Grafen von Panizo vorzugehen'), not a rv:Dispute, and rv:Respondent ('Beklagter') belongs to a lawsuit, which the regest does not report. No role covers the target of a requested action, so rv:Participant, the contract's role for involvement without a more specific role, stays; the extractor already reported the gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "The possession of the goods by the church of Bologna is not recorded, although a matching candidate exists.",
+     "reason": "The regest states 'die Güter der Bologneser Kirche', an economic relation in scope that rv:Possession and rv:Possessor express; the packet candidate RI004-002-B001067 'Bologna // Bistum, Diözese, Kirche' matches 'Bologneser Kirche' by name and kind. The same reading is used in this group for the monastery goods in 22861. The plundering itself stays only in rf:ground.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Fiktives Schreiben, dessen Verfasser freilich gut über die Geschehnisse der Epoche informiert war. Die Datierung wird hier nach dem Vorbild von Hartmann vorgenommen; allerdings lässt sich aus der kaiserlichen Antwort (siehe das nächste Regest: N.IV – †741b) erschließen, dass Rainald von Dassel zur Ausstellungszeit noch Kanzler der Reichskanzlei war, weshalb eine Einreihung zum Zeitpunkt vor dessen Wahl zum Erzbischof von Köln (Reg. II/"
+    },
+    {
+     "t": "742"
+    },
+    {
+     "t": ") zutreffen dürfte. – Vgl. auch die Antwort des Kaisers im nächsten Reg. N.IV/†741b."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Briefe des Magisters Guido (Savignano sul Rubicone. Biblioteca dell’Accademia dei Filopatridi, MS. 45S [Zweite Sammlung], fol. 141v–142r.) – Reg.: "
+    },
+    {
+     "t": "Hartmann, Ars dictaminis",
+     "href": "http://opac.regesta-imperii.de/id/1854872"
+    },
+    {
+     "t": ", 344 Nr. 25."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-B001067",
+    "Bistum, Diözese, Kirche"
+   ],
+   [
+    "RI004-002-G000351",
+    "Bischof von Bologna"
+   ],
+   [
+    "RI004-002-P000103",
+    " <i>Panizo</i> (<i>Panigo südl. Bologna?</i>), Grafen ─"
+   ],
+   [
+    "RI004-002-R000076",
+    "von Dassel, Elekt und Erzbischof von Köln und Erzkanzler für Italien, vorher Dompropst von Hildesheim und Kanzler der Reichskanzlei"
+   ]
+  ]
+ }
+}

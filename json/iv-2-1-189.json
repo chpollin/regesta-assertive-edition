@@ -1,0 +1,501 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-02-28_1_0_4_2_1_189_189",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22816",
+  "identifier": "RI IV,2,1 n. 189",
+  "short": "RI IV,2,1 n. 189",
+  "sort": "004_002_001_000189_0000000189",
+  "start": "1153-02-28",
+  "end": "1153-08-20",
+  "proseYears": [],
+  "lead": "Bischof Stephan von Metz bittet Abt Wibald von Stablo , daß er den König veranlassen möge, das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei, zu beseitigen.",
+  "date": [
+   {
+    "t": "(1153 Februar 28-1153 August 20)"
+   }
+  ],
+  "place": [],
+  "text": "Bischof Stephan von Metz bittet Abt Wibald von Stablo , daß er den König veranlassen möge, das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei, zu beseitigen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22816:request",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22816:request",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 239,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22816:> .\nx:request a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22816> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof Stephan von Metz bittet Abt Wibald von Stablo , daß er den König veranlassen möge, das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei, zu beseitigen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Stephan von Metz",
+      "text": "Bischof Stephan von Metz in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22816:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22816:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001143> ; rf:nameInSource \"Bischof Stephan von Metz\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S001143"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Wibald von Stablo",
+      "text": "Abt Wibald von Stablo in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22816:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22816:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt Wibald von Stablo\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22816:request",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22816:dispute-unrecht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22816:> .\nx:request rf:refersToAct x:dispute-unrecht .\nx:dispute-unrecht a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22816:local:kirche> ; rf:nameInSource \"der Kirche\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000633> ; rf:nameInSource \"Abt Bernhards von Clairvaux\" ; rf:role rv:Mediator ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001143> ; rf:nameInSource \"ihm\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22816> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22816:dispute-unrecht",
+      "objectClaim": "dispute-unrecht",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Bischof Stephan von Metz"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Abt Wibald von Stablo"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22816:dispute-unrecht",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22816:dispute-unrecht",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "dispute-unrecht",
+     "own": true,
+     "evidence": {
+      "start": 91,
+      "end": 224,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22816:> .\nx:dispute-unrecht a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22816> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Stephan von Metz",
+      "text": "Bischof Stephan von Metz in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22816:dispute-unrecht",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-unrecht",
+      "own": true,
+      "evidence": {
+       "start": 91,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22816:> .\nx:dispute-unrecht rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001143> ; rf:nameInSource \"ihm\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S001143"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Kirche",
+      "text": "der Kirche in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22816:dispute-unrecht",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-unrecht",
+      "own": true,
+      "evidence": {
+       "start": 91,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22816:> .\nx:dispute-unrecht rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22816:local:kirche> ; rf:nameInSource \"der Kirche\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22816:local:kirche"
+      ],
+      "key": "k7",
+      "agentNotes": [
+       {
+        "text": "'der Kirche' (presumably the church of Metz) has no register candidate; local group IRI.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Bernhards von Clairvaux",
+      "text": "Abt Bernhards von Clairvaux in der Rolle Vermittler",
+      "triple": [
+       "urn:regesta:22816:dispute-unrecht",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-unrecht",
+      "own": true,
+      "evidence": {
+       "start": 91,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22816:> .\nx:dispute-unrecht rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000633> ; rf:nameInSource \"Abt Bernhards von Clairvaux\" ; rf:role rv:Mediator ] .",
+      "role": "Vermittler",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000633"
+      ],
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bischof Stephan von Metz"
+     },
+     " und ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "der Kirche"
+     },
+     ", als Vermittler ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Abt Bernhards von Clairvaux"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "request",
+    "start": 0,
+    "end": 239
+   },
+   {
+    "id": "dispute-unrecht",
+    "start": 91,
+    "end": 224
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for a suffered wrong (Unrecht) with a failed mediation; recorded as rv:Dispute with injured parties as rv:Participant and Bernhard as rv:Mediator. The failure ('nicht aus der Welt geschafft') is only in the evidence, no outcome property exists.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The king as intended target of the requested intervention ('den König') has no fitting role and is not referenced.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for an injury or wrong suffered outside a formal dispute.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the party whose intervention a request seeks (here the king).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No property for the outcome of a mediation.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Replaced the selector of <urn:regesta:22816:request> by the full request clause ending 'zu beseitigen'; producer of the request set to correction-g10. No reference for the king added.",
+     "lang": "en"
+    },
+    {
+     "text": "<urn:regesta:22816:dispute-unrecht> unchanged (adjudication: keep).",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "factoid-type-and-roles",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22816:dispute-unrecht",
+     "description": "The passage reports a wrong inflicted on Stephan and the church and a failed mediation, not a dispute or suit before a court or ruler as rv:Dispute defines it. The injured parties are given rv:Participant, and the party that inflicted the wrong is unnamed. The typing as Dispute stretches the vocabulary.",
+     "proposal": "Keep the factoid but mark the type choice as a vocabulary limit in the batch report, or record only the request and the mediation; report the missing type for an injury or conflict.",
+     "quote": {
+      "start": 91,
+      "end": 224
+     }
+    },
+    {
+     "category": "omitted-content",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22816:request",
+     "description": "The request's content, that Wibald induce the king to remove the wrong, is lost: the king is not referenced and the selector stops before 'zu beseitigen'. The factoid states only that Stephan asks Wibald something about the wrong.",
+     "proposal": "Extend the selector through 'zu beseitigen' and add a reference to the ruler IRI with nameInSource 'den König' (rv:Participant as nearest role), reporting the missing role for the intended intervener as a model gap.",
+     "quote": {
+      "start": 56,
+      "end": 131
+     }
+    },
+    {
+     "category": "outcome",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22816:dispute-unrecht",
+     "description": "The failure of Bernhard's mediation is visible only in the selector; no property records it.",
+     "proposal": "None possible within the contract; report as model gap.",
+     "quote": {
+      "start": 192,
+      "end": 224
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The wrong done to Stephan and the church is typed rv:Dispute, which stretches the vocabulary.",
+     "reason": "'das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei' reports a conflict that a mediator tried to settle and that is to be brought before the king; rv:Dispute ('Streit oder Klage') with Bernhard as rv:Mediator is the nearest type and asserts no verdict. The injured parties stay rv:Participant because the wrongdoer is unnamed. The missing type for a suffered injury and the missing outcome property are model gaps.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The request's content, that Wibald induce the king to remove the wrong, is lost; the selector stops before 'zu beseitigen' and the king is not referenced.",
+     "reason": "The selector ends mid-clause and does not carry what is requested ('den König veranlassen möge ... zu beseitigen'). Extending it is safe. Adding the king as rv:Participant is not: he is the party whose intervention is sought, not a participant in the request, and the guidelines keep the addressed and the intended apart; the missing role is a model gap.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Bei dem erwähnten Unrecht handelt es sich um die Kämpfe in Lothringen zwischen den Metzern und ihren Gegnern, bei denen jene am 28. Februar 1153 eine schwere Niederlage erlitten hatten. Erzbischof Hillin von Trier bat Bernhard von Clairvaux um seine Vermittlung, mit der aber der Metzer offenbar nicht zufrieden war. Aus dem Todestag Bernhards (1153 August 20) ergibt sich der terminus ante quem. Vgl. dazu Simonsfeld, Jahrbücher 182 f. mit Anm. 116 sowie Parisse, La noblesse Lorraine 2, 717 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Epp. Wibaldi, ed. Jaffé, Mon. Corb. 551 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 413."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=69"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000633",
+    "Abt von Clairvaux"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-L000690",
+    "Lothringen (Nieder- und Ober -; nördlicher und südlicher Teil eines Gebietes im Nordosten Frankreichs)"
+   ],
+   [
+    "RI004-002-M000887",
+    "Leute, Bürger"
+   ],
+   [
+    "RI004-002-S001143",
+    "Bischof von Metz"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

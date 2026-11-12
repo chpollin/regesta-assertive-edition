@@ -1,0 +1,342 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-10-00_1_0_4_2_1_35_35",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22662",
+  "identifier": "RI IV,2,1 n. 35",
+  "short": "RI IV,2,1 n. 35",
+  "sort": "004_002_001_000035_0000000035",
+  "start": "1147-10-01",
+  "end": "1147-10-31",
+  "proseYears": [],
+  "lead": "Friedrich wird nach der Katastrophe des Kreuzheeres auf dem Weg nach Ikonium (Konya) von König Konrad III. beauftragt, dem französischen König Ludwig VII. von den Ereignissen Mitteilung zu machen und ihn um Hilfe zu bitten.",
+  "date": [
+   {
+    "t": "1147 (Ende Oktober)"
+   }
+  ],
+  "place": [
+   {
+    "t": "bei Nicaea"
+   }
+  ],
+  "text": "Friedrich wird nach der Katastrophe des Kreuzheeres auf dem Weg nach Ikonium (Konya) von König Konrad III. beauftragt, dem französischen König Ludwig VII. von den Ereignissen Mitteilung zu machen und ihn um Hilfe zu bitten.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22662:mission-to-ludwig",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22662:mission-to-ludwig",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mission-to-ludwig",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 51,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22662:> .\nx:mission-to-ludwig a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22662> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich wird nach der Katastrophe des Kreuzheeres\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-9> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22662:mission-to-ludwig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-to-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 51,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22662:> .\nx:mission-to-ludwig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22662:mission-to-ludwig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-to-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 51,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22662:> .\nx:mission-to-ludwig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrad III.\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "dem französischen König Ludwig VII.",
+      "text": "dem französischen König Ludwig VII. in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22662:mission-to-ludwig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-to-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 51,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22662:> .\nx:mission-to-ludwig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000820> ; rf:nameInSource \"dem französischen König Ludwig VII.\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000820"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22662:mission-to-ludwig",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-to-ludwig-2",
+      "own": true,
+      "evidence": {
+       "start": 85,
+       "end": 222,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22662:> .\nx:mission-to-ludwig rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von König Konrad III. beauftragt, dem französischen König Ludwig VII. von den Ereignissen Mitteilung zu machen und ihn um Hilfe zu bitten\" ] .",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Entsendung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "König Konrad III."
+     },
+     ", als Gesandter ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "dem französischen König Ludwig VII."
+     }
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "mission-to-ludwig",
+    "start": 0,
+    "end": 51
+   },
+   {
+    "id": "mission-to-ludwig-2",
+    "start": 85,
+    "end": 222
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The sender of a mission has no dedicated role; Konrad III. is given rv:Grantor ('bestimmt'). The message and request for help are only commissioned, so no rv:Communication or rv:Request factoid is created.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender or principal role for rv:Mission.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22662:mission-to-ludwig",
+     "description": "The sender of the mission is given rv:Grantor; the vocabulary has no sender or principal role for a Mission.",
+     "proposal": "Acceptable under the current vocabulary; a sender role would be more precise.",
+     "quote": {
+      "start": 85,
+      "end": 117
+     }
+    },
+    {
+     "category": "temporal-qualifier",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22662:mission-to-ludwig",
+     "description": "The relative time anchor 'nach der Katastrophe des Kreuzheeres' is part of the evidence but not kept as rf:qualifier. No temporal overreach results; it is a matter of completeness.",
+     "proposal": "Optionally add rf:qualifier \"nach der Katastrophe des Kreuzheeres\".",
+     "quote": {
+      "start": 15,
+      "end": 51
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The sender of the mission is given rv:Grantor.",
+     "reason": "'von König Konrad III. beauftragt' makes Konrad the one who determines the mission; the vocabulary has no sender role, and Envoy and Addressee are correctly assigned to Friedrich and Ludwig VII.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add rf:qualifier \"nach der Katastrophe des Kreuzheeres\".",
+     "reason": "rf:qualifier is for wording that qualifies type or time and that the vocabulary does not capture; the relative anchor is already contained in the first evidence selector 'Friedrich wird nach der Katastrophe des Kreuzheeres', no date is asserted, and the contract does not require duplicating it.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 629 ff., bes. 638 f. und Simonsfeld, Jahrbücher 12. - Die Ann. Herbipol., MG. SS XVI, 6 berichten, daß Friedrich gemeinsam mit dem König und anderen Fürsten um diese Zeit an der Suche nach Wasser teilnahm, vgl. dazu auch Feldmann, Welf VI. Anm. 100 zu S. 24. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " Vgl. zur Überbringung der Nachricht an König Ludwig VII. von Frankreich jetzt Görich, Wahrung des "
+    },
+    {
+     "t": "honor",
+     "i": true
+    },
+    {
+     "t": ". Ein Grundsatz im politischen Handeln König Konrads III., in: Grafen, Herzöge, Könige. Der Aufstieg der frühen Staufer, hg. von Seibert und Dendorfer (Mittelalter-Forschungen, Bd. 18, 2005) 267 f. mit Anm. 1."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Wilhelm v. Tyrus l. XVI cap. 23, ed. Migne, PL 201, Sp. 665."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=19"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000602",
+    "Konya (<i>Ikonium</i>; türk. Prov.-Hptst. in Zentralanatolien)"
+   ],
+   [
+    "RI004-002-L000820",
+    "(VII.), König von Frankreich"
+   ],
+   [
+    "RI004-002-N000143",
+    "Nicaea, Nikaia (<i>heute:</i> İznik, am gleichnam. See, Prov. Bursa, Türkei)"
+   ]
+  ]
+ }
+}

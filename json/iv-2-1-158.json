@@ -1,0 +1,1395 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-01-30_1_0_4_2_1_158_158",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22785",
+  "identifier": "RI IV,2,1 n. 158",
+  "short": "RI IV,2,1 n. 158",
+  "sort": "004_002_001_000158_0000000158",
+  "start": "1153-01-30",
+  "end": "1153-01-30",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Abt Berthold des von den Vorfahren des Grafen Eberhard auf seinem Allod gegründeten Klosters Altdorf im Elsaß [in quodam suę proprietatis allodio, quod dicitur Altorph, in quo suus avus et pater ipsius Hvgo abbatiam in honore sacratissimi marthiris Christi construxit Cyriaci in provincia Alsatia in pago quoque Northgowe in comitatu predicti quondam Everhardi, nunc autem heredis sui Hvgonis comitis (von Dagsburg) sito ], Markt, Münze, Schenke und Zoll (fas, ius et potestatem mercatum, monetam, tabernam et theloneum publicum habendi, construendi et legitime faciendi), wie sie einst Kaiser Otto (III.) dem Grafen Eberhard verliehen hatte, und alle anderen Stiftungen der Gründerfamilie.",
+  "date": [
+   {
+    "t": "1153 Januar 30"
+   }
+  ],
+  "place": [
+   {
+    "t": "Colmar"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Abt Berthold des von den Vorfahren des Grafen Eberhard auf seinem Allod gegründeten Klosters Altdorf im Elsaß [in quodam suę proprietatis allodio, quod dicitur Altorph, in quo suus avus et pater ipsius Hvgo abbatiam in honore sacratissimi marthiris Christi construxit Cyriaci in provincia Alsatia in pago quoque Northgowe in comitatu predicti quondam Everhardi, nunc autem heredis sui Hvgonis comitis (von Dagsburg) sito ], Markt, Münze, Schenke und Zoll (fas, ius et potestatem mercatum, monetam, tabernam et theloneum publicum habendi, construendi et legitime faciendi), wie sie einst Kaiser Otto (III.) dem Grafen Eberhard verliehen hatte, und alle anderen Stiftungen der Gründerfamilie. Verstöße sollen mit dem gleichen Königsbann wie im Falle des Mainzer, Kölner und Straßburger Marktes geahndet werden. Z.: Erzbischof Arnold von Köln, Bischof Ortlieb von Basel, die Äbte Wibald und Corvey (Corbeigensis), Egelolf von Murbach Morbacensis, die Herzoge Heinrich von Sachsen, Berthold von Burgund, Pfalzgraf Otto von Wittelsbach, Graf Siegbert von Frankenburg, der erwähnte Hugo (von Dagsburg), Vogt von Altdorf (memoratus Hugo eiusdemque loci advocatus). - Arnoldus canc. vice Mogontini archiep. et archicanc ; in Anlehnung an den Rechtsinhalt eines Deperditums Ottos III. (B.-Uhlirz, Reg. no 1322; VU.) geschrieben von A II. D; SP. D. Noverit omnium tam .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22785:confirmation-altdorf",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22785:confirmation-altdorf",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-altdorf",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 133,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22785> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Abt Berthold des von den Vorfahren des Grafen Eberhard auf seinem Allod gegründeten Klosters Altdorf im Elsaß\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22785:confirmation-altdorf-grantor"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:reference x:confirmation-altdorf-grantor .\nx:confirmation-altdorf-grantor a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Berthold",
+      "text": "Abt Berthold in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22785:confirmation-altdorf-recipient"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:reference x:confirmation-altdorf-recipient .\nx:confirmation-altdorf-recipient a rf:Reference ;\n    rf:actor <urn:regesta:actor:22785:local:abt-berthold> ;\n    rf:nameInSource \"Abt Berthold\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22785:local:abt-berthold"
+      ],
+      "key": "k3",
+      "agentNotes": [
+       {
+        "text": "Abt Berthold of Altdorf has no matching candidate (RI004-002-B000724 is the Duke of Zähringen); local actor urn:regesta:actor:22785:local:abt-berthold.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Klosters Altdorf",
+      "text": "Klosters Altdorf in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22785:confirmation-altdorf-beneficiary"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:reference x:confirmation-altdorf-beneficiary .\nx:confirmation-altdorf-beneficiary a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A000702:community> ;\n    rf:nameInSource \"Klosters Altdorf\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000702:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Marktrecht (Markt)",
+      "text": "betrifft Marktrecht (Markt)",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-markt"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:concerns x:right-markt .\nx:right-markt a crm:E30_Right ;\n    crm:P2_has_type rv:Market ;\n    rdfs:label \"Markt\" .",
+      "object": "urn:regesta:22785:right-markt",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Münzrecht (Münze)",
+      "text": "betrifft Münzrecht (Münze)",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-muenze"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:concerns x:right-muenze .\nx:right-muenze a crm:E30_Right ;\n    crm:P2_has_type rv:Minting ;\n    rdfs:label \"Münze\" .",
+      "object": "urn:regesta:22785:right-muenze",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (Schenke)",
+      "text": "betrifft Einkünfterecht (Schenke)",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-schenke"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:concerns x:right-schenke .\nx:right-schenke a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"Schenke\" .",
+      "object": "urn:regesta:22785:right-schenke",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (Zoll)",
+      "text": "betrifft Zollrecht (Zoll)",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-zoll"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:concerns x:right-zoll .\nx:right-zoll a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"Zoll\" .",
+      "object": "urn:regesta:22785:right-zoll",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "alle anderen Stiftungen der Gründerfamilie",
+      "text": "betrifft alle anderen Stiftungen der Gründerfamilie",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:thing-stiftungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:concerns x:thing-stiftungen .\nx:thing-stiftungen a crm:E18_Physical_Thing ;\n    rdfs:label \"alle anderen Stiftungen der Gründerfamilie\" .",
+      "object": "urn:regesta:22785:thing-stiftungen",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Rechtsverleihung",
+      "text": "bezieht sich auf Rechtsverleihung",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22785:grant-otto-eberhard"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:refersToAct x:grant-otto-eberhard .\nx:grant-otto-eberhard a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:concerns x:right-markt , x:right-muenze , x:right-schenke , x:right-zoll ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"wie sie einst Kaiser Otto (III.) dem Grafen Eberhard verliehen hatte\" ] ;\n    rf:factoidType rv:RightGrant ;\n    rf:qualifier \"einst\" ;\n    rf:reference x:grant-otto-eberhard-grantor , x:grant-otto-eberhard-recipient ;\n    rf:source <urn:regesta:record:22785> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22785:grant-otto-eberhard",
+      "objectClaim": "grant-otto-eberhard",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf-2",
+      "own": true,
+      "evidence": {
+       "start": 448,
+       "end": 478,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Markt, Münze, Schenke und Zoll\" ] .",
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22785:confirmation-altdorf",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-altdorf-3",
+      "own": true,
+      "evidence": {
+       "start": 667,
+       "end": 713,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:confirmation-altdorf rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"und alle anderen Stiftungen der Gründerfamilie\" ] .",
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k11",
+       "k12"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k11",
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k11",
+       "k12"
+      ],
+      "text": "Abt Berthold"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k4",
+       "k11",
+       "k12"
+      ],
+      "text": "Klosters Altdorf"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5",
+       "k11",
+       "k12"
+      ],
+      "text": "Marktrecht (Markt)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6",
+       "k11",
+       "k12"
+      ],
+      "text": "Münzrecht (Münze)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k7",
+       "k11",
+       "k12"
+      ],
+      "text": "Einkünfterecht (Schenke)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k8",
+       "k11",
+       "k12"
+      ],
+      "text": "Zollrecht (Zoll)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k9",
+       "k11",
+       "k12"
+      ],
+      "text": "alle anderen Stiftungen der Gründerfamilie"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k10",
+       "k11",
+       "k12"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22785:kinship-vorfahren-eberhard",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22785:kinship-vorfahren-eberhard",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-vorfahren-eberhard",
+     "own": true,
+     "evidence": {
+      "start": 41,
+      "end": 78,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22785:> .\nx:kinship-vorfahren-eberhard a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22785> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von den Vorfahren des Grafen Eberhard\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k13"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Vorfahren des Grafen Eberhard",
+      "text": "Vorfahren des Grafen Eberhard in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22785:kinship-vorfahren-eberhard",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22785:kinship-vorfahren-eberhard-ancestors"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-vorfahren-eberhard",
+      "own": true,
+      "evidence": {
+       "start": 41,
+       "end": 78,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:kinship-vorfahren-eberhard rf:reference x:kinship-vorfahren-eberhard-ancestors .\nx:kinship-vorfahren-eberhard-ancestors a rf:Reference ;\n    rf:actor <urn:regesta:actor:22785:local:vorfahren-eberhard> ;\n    rf:nameInSource \"Vorfahren\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:22785:local:vorfahren-eberhard"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Grafen Eberhard",
+      "text": "Grafen Eberhard in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22785:kinship-vorfahren-eberhard",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22785:kinship-vorfahren-eberhard-eberhard"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-vorfahren-eberhard",
+      "own": true,
+      "evidence": {
+       "start": 41,
+       "end": 78,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:kinship-vorfahren-eberhard rf:reference x:kinship-vorfahren-eberhard-eberhard .\nx:kinship-vorfahren-eberhard-eberhard a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000040> ;\n    rf:nameInSource \"Grafen Eberhard\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000040"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Vorfahren",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22785:kinship-vorfahren-eberhard",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 49,
+       "end": 58,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Vorfahren des Grafen Eberhard"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Grafen Eberhard"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22785:grant-otto-eberhard",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22785:grant-otto-eberhard",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-otto-eberhard",
+     "own": true,
+     "evidence": {
+      "start": 597,
+      "end": 665,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22785:> .\nx:grant-otto-eberhard a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22785> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"wie sie einst Kaiser Otto (III.) dem Grafen Eberhard verliehen hatte\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k17"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Grafen Eberhard",
+      "text": "Grafen Eberhard in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22785:grant-otto-eberhard",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22785:grant-otto-eberhard-recipient"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-otto-eberhard",
+      "own": true,
+      "evidence": {
+       "start": 597,
+       "end": 665,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:grant-otto-eberhard rf:reference x:grant-otto-eberhard-recipient .\nx:grant-otto-eberhard-recipient a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000040> ;\n    rf:nameInSource \"Grafen Eberhard\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000040"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser Otto (III.)",
+      "text": "Kaiser Otto (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22785:grant-otto-eberhard",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22785:grant-otto-eberhard-grantor"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-otto-eberhard",
+      "own": true,
+      "evidence": {
+       "start": 597,
+       "end": 665,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:grant-otto-eberhard rf:reference x:grant-otto-eberhard-grantor .\nx:grant-otto-eberhard-grantor a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-O000394> ;\n    rf:nameInSource \"Kaiser Otto (III.)\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000394"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Marktrecht (Markt)",
+      "text": "betrifft Marktrecht (Markt)",
+      "triple": [
+       "urn:regesta:22785:grant-otto-eberhard",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-markt"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-otto-eberhard",
+      "own": true,
+      "evidence": {
+       "start": 597,
+       "end": 665,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:grant-otto-eberhard rf:concerns x:right-markt .\nx:right-markt a crm:E30_Right ;\n    crm:P2_has_type rv:Market ;\n    rdfs:label \"Markt\" .",
+      "object": "urn:regesta:22785:right-markt",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Münzrecht (Münze)",
+      "text": "betrifft Münzrecht (Münze)",
+      "triple": [
+       "urn:regesta:22785:grant-otto-eberhard",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-muenze"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-otto-eberhard",
+      "own": true,
+      "evidence": {
+       "start": 597,
+       "end": 665,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:grant-otto-eberhard rf:concerns x:right-muenze .\nx:right-muenze a crm:E30_Right ;\n    crm:P2_has_type rv:Minting ;\n    rdfs:label \"Münze\" .",
+      "object": "urn:regesta:22785:right-muenze",
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (Schenke)",
+      "text": "betrifft Einkünfterecht (Schenke)",
+      "triple": [
+       "urn:regesta:22785:grant-otto-eberhard",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-schenke"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-otto-eberhard",
+      "own": true,
+      "evidence": {
+       "start": 597,
+       "end": 665,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:grant-otto-eberhard rf:concerns x:right-schenke .\nx:right-schenke a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"Schenke\" .",
+      "object": "urn:regesta:22785:right-schenke",
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (Zoll)",
+      "text": "betrifft Zollrecht (Zoll)",
+      "triple": [
+       "urn:regesta:22785:grant-otto-eberhard",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-zoll"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-otto-eberhard",
+      "own": true,
+      "evidence": {
+       "start": 597,
+       "end": 665,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:grant-otto-eberhard rf:concerns x:right-zoll .\nx:right-zoll a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"Zoll\" .",
+      "object": "urn:regesta:22785:right-zoll",
+      "key": "k23"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "einst",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22785:grant-otto-eberhard",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 605,
+       "end": 610,
+       "ambiguous": false
+      },
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Kaiser Otto (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Grafen Eberhard"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Marktrecht (Markt)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Münzrecht (Münze)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Einkünfterecht (Schenke)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Zollrecht (Zoll)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22785:enactment-koenigsbann",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22785:enactment-koenigsbann",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "enactment-koenigsbann",
+     "own": true,
+     "evidence": {
+      "start": 715,
+      "end": 831,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22785:> .\nx:enactment-koenigsbann a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22785> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Verstöße sollen mit dem gleichen Königsbann wie im Falle des Mainzer, Kölner und Straßburger Marktes geahndet werden\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22785:enactment-koenigsbann",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22785:enactment-koenigsbann-grantor"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 715,
+       "end": 831,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:enactment-koenigsbann rf:reference x:enactment-koenigsbann-grantor .\nx:enactment-koenigsbann-grantor a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Marktrecht (Markt)",
+      "text": "betrifft Marktrecht (Markt)",
+      "triple": [
+       "urn:regesta:22785:enactment-koenigsbann",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-markt"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 715,
+       "end": 831,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:enactment-koenigsbann rf:concerns x:right-markt .\nx:right-markt a crm:E30_Right ;\n    crm:P2_has_type rv:Market ;\n    rdfs:label \"Markt\" .",
+      "object": "urn:regesta:22785:right-markt",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Münzrecht (Münze)",
+      "text": "betrifft Münzrecht (Münze)",
+      "triple": [
+       "urn:regesta:22785:enactment-koenigsbann",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-muenze"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 715,
+       "end": 831,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:enactment-koenigsbann rf:concerns x:right-muenze .\nx:right-muenze a crm:E30_Right ;\n    crm:P2_has_type rv:Minting ;\n    rdfs:label \"Münze\" .",
+      "object": "urn:regesta:22785:right-muenze",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (Schenke)",
+      "text": "betrifft Einkünfterecht (Schenke)",
+      "triple": [
+       "urn:regesta:22785:enactment-koenigsbann",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-schenke"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 715,
+       "end": 831,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:enactment-koenigsbann rf:concerns x:right-schenke .\nx:right-schenke a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"Schenke\" .",
+      "object": "urn:regesta:22785:right-schenke",
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (Zoll)",
+      "text": "betrifft Zollrecht (Zoll)",
+      "triple": [
+       "urn:regesta:22785:enactment-koenigsbann",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22785:right-zoll"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 715,
+       "end": 831,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:enactment-koenigsbann rf:concerns x:right-zoll .\nx:right-zoll a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"Zoll\" .",
+      "object": "urn:regesta:22785:right-zoll",
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22785:enactment-koenigsbann",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22785:confirmation-altdorf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 715,
+       "end": 831,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22785:> .\nx:enactment-koenigsbann rf:partOf x:confirmation-altdorf .\nx:confirmation-altdorf a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;\n    rf:concerns x:right-markt , x:right-muenze , x:right-schenke , x:right-zoll , x:thing-stiftungen ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Abt Berthold des von den Vorfahren des Grafen Eberhard auf seinem Allod gegründeten Klosters Altdorf im Elsaß\" ] , [ a oa:TextQuoteSelector ; oa:exact \"Markt, Münze, Schenke und Zoll\" ] , [ a oa:TextQuoteSelector ; oa:exact \"und alle anderen Stiftungen der Gründerfamilie\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference x:confirmation-altdorf-beneficiary , x:confirmation-altdorf-grantor , x:confirmation-altdorf-recipient ;\n    rf:refersToAct x:grant-otto-eberhard ;\n    rf:source <urn:regesta:record:22785> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22785:confirmation-altdorf",
+      "objectClaim": "confirmation-altdorf",
+      "key": "k31"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Marktrecht (Markt)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Münzrecht (Münze)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Einkünfterecht (Schenke)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Zollrecht (Zoll)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation-altdorf",
+    "start": 0,
+    "end": 133
+   },
+   {
+    "id": "kinship-vorfahren-eberhard",
+    "start": 41,
+    "end": 78
+   },
+   {
+    "id": "t1",
+    "start": 49,
+    "end": 58
+   },
+   {
+    "id": "confirmation-altdorf-2",
+    "start": 448,
+    "end": 478
+   },
+   {
+    "id": "grant-otto-eberhard",
+    "start": 597,
+    "end": 665
+   },
+   {
+    "id": "t2",
+    "start": 605,
+    "end": 610
+   },
+   {
+    "id": "confirmation-altdorf-3",
+    "start": 667,
+    "end": 713
+   },
+   {
+    "id": "enactment-koenigsbann",
+    "start": 715,
+    "end": 831
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Latin 'suus avus et pater ipsius Hvgo' (founders of the abbey) is grammatically ambiguous between grandfather and father of Eberhard or of Hugo; candidates RI004-002-H001323 (Hugo, Gründer von Altdorf) and RI004-002-H001317 (Hugo von Dagsburg) not assigned to any factoid; no parent relation recorded.",
+     "lang": "en"
+    },
+    {
+     "text": "'nunc autem heredis sui Hvgonis comitis (von Dagsburg)': Hugo as heir of Eberhard and current holder of the county not recorded, because heirship is neither a stated kinship degree nor a right type of the vocabulary.",
+     "lang": "en"
+    },
+    {
+     "text": "'auf seinem Allod': possessor of the allod ambiguous (Eberhard or his ancestors); no possession factoid recorded.",
+     "lang": "en"
+    },
+    {
+     "text": "Hugo as Vogt von Altdorf appears only in the witness list and is skipped per guidelines.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for the foundation of a monastery ('gegründeten Klosters Altdorf'); not recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Right type of 'Schenke' (taberna) mapped to rv:Revenue as nearest concept; no tavern right in the vocabulary.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The sanction 'Königsbann' with its comparison to the markets of Mainz, Köln and Straßburg has no property beyond the evidence wording; the enactment carries it only in its selector.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for the foundation of a monastery.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No right type for a tavern right (Schenke); rv:Revenue is an approximation.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No way to express the comparative clause of the penalty (the same Königsbann as for the markets of Mainz, Köln and Straßburg) other than in the evidence.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22785",
+     "description": "The regest's quoted text calls Count Hugo (von Dagsburg) the heir of the late Eberhard. This is a stated kinship or inheritance relation in summary_plain and in scope; candidate H001317 matches 'Hugo von Dagsburg' by name and title. It is not extracted.",
+     "proposal": "Add an rf:StateFactoid of type rv:Kinship with references to urn:regesta:actor:RI004-002-E000040 and urn:regesta:actor:RI004-002-H001317 (rv:Kin) and rf:qualifier 'heredis'.",
+     "quote": {
+      "start": 386,
+      "end": 439
+     }
+    },
+    {
+     "category": "omitted-earlier-act",
+     "severity": "Hinweis",
+     "subject": "22785",
+     "description": "The foundation of Altdorf by Eberhard's ancestors on the allod is an earlier act the regest reports; only the ancestor relation is extracted. In 22783 the same pattern is kept as an earlier act, so the treatment is inconsistent within the run.",
+     "proposal": "Add an undated earlier act factoid for the foundation with the local ancestors group as Grantor and the monastery as Recipient or Beneficiary, typed as in 22783, and report the missing foundation type.",
+     "quote": {
+      "start": 41,
+      "end": 133
+     }
+    },
+    {
+     "category": "omitted-state",
+     "severity": "Vermerk",
+     "subject": "22785",
+     "description": "'auf seinem Allod' states an allodial holding, but 'seinem' may refer to Eberhard or to the ancestors. Leaving it out is acceptable given the ambiguity.",
+     "proposal": "None, or a rv:Possession factoid only if the referent is settled by an expert.",
+     "quote": {
+      "start": 79,
+      "end": 124
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The heir relation of Count Hugo (von Dagsburg) to Eberhard is not extracted; a rv:Kinship factoid with qualifier 'heredis' is proposed.",
+     "reason": "'in comitatu predicti quondam Everhardi, nunc autem heredis sui Hvgonis comitis (von Dagsburg)' states succession as heir in a locating clause, not a kinship word; recording it as rv:Kinship would infer a genealogy the guidelines forbid. The contract has no heir role or succession state type. No correction; gap recorded.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The foundation of Altdorf by Eberhard's ancestors is not recorded as an earlier act, unlike in 22783.",
+     "reason": "Friedrich confirms 'Markt, Münze, Schenke und Zoll ... wie sie einst Kaiser Otto (III.) dem Grafen Eberhard verliehen hatte'; the foundation is a descriptive participle of the monastery, not the object of the confirmation, and that earlier act is already modelled. The foundation is therefore not central, and the contract lacks a foundation type. The ancestor relation from the same clause is kept.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Kehr, Urkunden Otto III. 302 ff., konnte den Wortlaut der echten Vorlage, die gegen Ende des 12. Jh. durch die Fälschung DO. III. 325 ersetzt wurde, weitgehend rekonstruieren. Der Name des Erzbischofs Heinrich von Mainz in der Rekognition ist durch Rasur getilgt. Die Gründung des Klosters, die in unserem Diplom dem Großvater bzw. Urgroßvater des Grafen Eberhard zugeschrieben wird, erfolgte durch Hugo, den Sohn des Grafen Eberhard von Egisheim; vgl. Germ. pont. 3/3, 26 und B.-Uhlirz, Reg. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "1322"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Departementalarchiv Straßburg (A). Drucke: Würdtwein, Nova Subsidia 7, 162 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 63; MG. DF. I. 46. Reg.: Stumpf 3659."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=56"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000702",
+    "Altdorf (<i>heute:</i> Altorf bei Molsheim, westsüdwestl. Straßburg, Dép. Bas-Rhin), (Benediktiner-)Kloster St. Cyriacus"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000724",
+    "(IV.), Herzog von Zähringen, Breisgau und Burgund"
+   ],
+   [
+    "RI004-002-C000820",
+    "Colmar (im südl. Elsaß, Hptst. des Dép. Haut-Rhin)"
+   ],
+   [
+    "RI004-002-E000040",
+    "Graf (von Egisheim, Zeitgenosse Kaiser Ottos III.), Wohltäter von Altdorf"
+   ],
+   [
+    "RI004-002-E000156",
+    "Abt von Murbach"
+   ],
+   [
+    "RI004-002-E000291",
+    "Elsaß, Elsass"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H001317",
+    "Graf von Dagsburg/Elsass, auch Graf von Metz und im Moselgau"
+   ],
+   [
+    "RI004-002-H001323",
+    "Graf (im Nordgau), Gründer von Altdorf"
+   ],
+   [
+    "RI004-002-K000254",
+    "Markt"
+   ],
+   [
+    "RI004-002-M000194",
+    "Markt"
+   ],
+   [
+    "RI004-002-N000274",
+    "Nordgau (im Elsass)"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000394",
+    "(III.), König und Kaiser"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-S000652",
+    "Graf von Frankenburg"
+   ],
+   [
+    "RI004-002-S001223",
+    "Markt"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

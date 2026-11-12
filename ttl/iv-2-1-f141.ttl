@@ -1,0 +1,39 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-10-18_1_0_4_2_1_141_F141
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22768> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. †141" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-V000206:community> a crm:E74_Group ;
+    rdfs:label "Domkanonikern von Vercelli" .
+
+<urn:regesta:22768:hof-caresana> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof Caresana mit allem Zubehör" .
+
+<urn:regesta:22768:gerechtsame-cervo-sesia> a crm:E30_Right ;
+    crm:P2_has_type rv:UsageRights ;
+    rdfs:label "Gerechtsame an den Flüssen Cervo und Sesia" .
+
+<urn:regesta:22768:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22768> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt den Domkanonikern von Vercelli auf ihre Bitten hin den Hof Caresana mit allem Zubehör sowie die genannten Gerechtsame an den Flüssen Cervo und Sesia" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000206:community> ; rf:role rv:Recipient ; rf:nameInSource "Domkanonikern von Vercelli" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000206:community> ; rf:role rv:Petitioner ; rf:nameInSource "ihre" ] ;
+    rf:concerns <urn:regesta:22768:hof-caresana> , <urn:regesta:22768:gerechtsame-cervo-sesia> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,502 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1144-07-00_1_0_4_2_1_13_13",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22640",
+  "identifier": "RI IV,2,1 n. 13",
+  "short": "RI IV,2,1 n. 13",
+  "sort": "004_002_001_000013_0000000013",
+  "start": "1144-07-01",
+  "end": "1144-07-31",
+  "proseYears": [],
+  "lead": "Friedrich gibt gemeinsam mit seinem Vater, Herzog Friedrich (II. von Schwaben), als Inhaber der Vogtei über das Kloster Lorch seine Zustimmung zur Errichtung des Frauenstiftes Lochgarten durch die Untertanen von Lorch, Konstantin und Giselbert.",
+  "date": [
+   {
+    "t": "1144 (Juli/September)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Lorch"
+   }
+  ],
+  "text": "Friedrich gibt gemeinsam mit seinem Vater, Herzog Friedrich (II. von Schwaben), als Inhaber der Vogtei über das Kloster Lorch seine Zustimmung zur Errichtung des Frauenstiftes Lochgarten durch die Untertanen von Lorch, Konstantin und Giselbert.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22640:parenthood",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22640:parenthood",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 78,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22640:> .\nx:parenthood a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22640> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich gibt gemeinsam mit seinem Vater, Herzog Friedrich (II. von Schwaben)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22640:parenthood",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22640:parenthood-ref-child"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 78,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22640:> .\nx:parenthood rf:reference x:parenthood-ref-child .\nx:parenthood-ref-child a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Child .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrich (II. von Schwaben)",
+      "text": "Herzog Friedrich (II. von Schwaben) in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22640:parenthood",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22640:parenthood-ref-parent"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 78,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22640:> .\nx:parenthood rf:reference x:parenthood-ref-parent .\nx:parenthood-ref-parent a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000681> ;\n    rf:nameInSource \"Herzog Friedrich (II. von Schwaben)\" ;\n    rf:role rv:Parent .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog Friedrich (II. von Schwaben)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22640:vogtei-holding",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22640:vogtei-holding",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vogtei-holding",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 125,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22640:> .\nx:vogtei-holding a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22640> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich gibt gemeinsam mit seinem Vater, Herzog Friedrich (II. von Schwaben), als Inhaber der Vogtei über das Kloster Lorch\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22640:vogtei-holding",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22640:vogtei-ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei-holding",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 125,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22640:> .\nx:vogtei-holding rf:reference x:vogtei-ref-friedrich .\nx:vogtei-ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:RightHolder .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrich (II. von Schwaben)",
+      "text": "Herzog Friedrich (II. von Schwaben) in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22640:vogtei-holding",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22640:vogtei-ref-father"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei-holding",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 125,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22640:> .\nx:vogtei-holding rf:reference x:vogtei-ref-father .\nx:vogtei-ref-father a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000681> ;\n    rf:nameInSource \"Herzog Friedrich (II. von Schwaben)\" ;\n    rf:role rv:RightHolder .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vogtei über das Kloster Lorch)",
+      "text": "betrifft Vogtei (Vogtei über das Kloster Lorch)",
+      "triple": [
+       "urn:regesta:22640:vogtei-holding",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22640:right-vogtei-lorch"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei-holding",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 125,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22640:> .\nx:vogtei-holding rf:concerns x:right-vogtei-lorch .\nx:right-vogtei-lorch a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vogtei über das Kloster Lorch\" .",
+      "object": "urn:regesta:22640:right-vogtei-lorch",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Kloster Lorch",
+      "text": "betrifft Kloster Lorch",
+      "triple": [
+       "urn:regesta:22640:vogtei-holding",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-L000660:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei-holding",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 125,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22640:> .\nx:vogtei-holding rf:concerns <urn:regesta:actor:RI004-002-L000660:community> .\n<urn:regesta:actor:RI004-002-L000660:community> a crm:E74_Group ;\n    rdfs:label \"Kloster Lorch\" .",
+      "object": "urn:regesta:actor:RI004-002-L000660:community",
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Herzog Friedrich (II. von Schwaben)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Vogtei (Vogtei über das Kloster Lorch)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Kloster Lorch"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "vogtei-holding",
+    "start": 0,
+    "end": 125
+   },
+   {
+    "id": "parenthood",
+    "start": 0,
+    "end": 78
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for consent (Zustimmung): the consent of Friedrich and his father is typed rv:Confirmation with rf:qualifier \"Zustimmung\" as nearest fit; a dedicated consent type is needed.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for the foundation of a religious house (Errichtung des Frauenstiftes Lochgarten): the foundation by Konstantin and Giselbert is not recorded as an act of its own, only as the object of the consent, with both as rv:Beneficiary references; a founder role is missing.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No state type for personal dependency or subjection (Untertanen von Lorch): the status of Konstantin and Giselbert as subjects of Lorch is not recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The capacity in which the consent is given (als Inhaber der Vogtei) is recorded as a separate RightHolding factoid; the contract has no property linking an act to the capacity that grounds it.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for consent (Zustimmung) to another party's act.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for the foundation (Errichtung) of a church institution, and no founder role.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No state type for the dependency of Konstantin and Giselbert as Untertanen of Kloster Lorch.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Removed the act factoid <urn:regesta:22640:consent> (typed rv:Confirmation) with all its triples and its two preceding comment lines, following adjudication-g1 decision correct_conservatively.",
+     "lang": "en"
+    },
+    {
+     "text": "Removed the reference nodes <urn:regesta:22640:consent-ref-friedrich>, <urn:regesta:22640:consent-ref-father>, <urn:regesta:22640:consent-ref-konstantin> and <urn:regesta:22640:consent-ref-giselbert>.",
+     "lang": "en"
+    },
+    {
+     "text": "Removed the actor nodes <urn:regesta:actor:RI004-002-K000569>, <urn:regesta:actor:RI004-002-G000630> and <urn:regesta:actor:RI004-002-L000545:community>, which no remaining triple references.",
+     "lang": "en"
+    },
+    {
+     "text": "Kept <urn:regesta:22640:parenthood>, <urn:regesta:22640:vogtei-holding>, their references, <urn:regesta:22640:right-vogtei-lorch> and <urn:regesta:actor:RI004-002-L000660:community> byte-for-byte unchanged with their original producer; no factoid was added or changed, so no factoid carries the correction producer.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "act-type",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22640:consent",
+     "description": "A consent to a foundation is typed rv:Confirmation. The vocabulary defines a confirmation as confirming possession, rights or an earlier act; the regest reports consent to an Errichtung, not the confirmation of an existing state or prior act. Querying confirmations would wrongly include this record. The extractor marked the choice as nearest type, and the qualifier \"Zustimmung\" preserves the wording, so the defect is partly mitigated.",
+     "proposal": "Keep the factoid with qualifier \"Zustimmung\" but flag the type as provisional, or add a consent act type to the vocabulary in a later contract revision; until then rv:Confirmation should be listed as a known misfit in the batch report.",
+     "quote": {
+      "start": 126,
+      "end": 186
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22640:consent",
+     "description": "Konstantin and Giselbert are the founders of the Stift to which consent is given; rv:Beneficiary is defensible as the party in whose favour the consent is given, but loses that they are the actors of the consented act.",
+     "proposal": "Acceptable under the current vocabulary; record the founder role as a model gap.",
+     "quote": {
+      "start": 187,
+      "end": 243
+     }
+    },
+    {
+     "category": "label",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-L000545:community",
+     "description": "The label keeps the genitive inflection \"Frauenstiftes Lochgarten\". It is the source wording, as required, but reads awkwardly as a label.",
+     "proposal": "No change required by the contract.",
+     "quote": {
+      "start": 162,
+      "end": 186
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "A consent (Zustimmung) to the foundation of Lochgarten is typed rv:Confirmation; the founders Konstantin and Giselbert carry rv:Beneficiary.",
+     "reason": "The passage reads 'seine Zustimmung zur Errichtung des Frauenstiftes Lochgarten durch die Untertanen von Lorch, Konstantin und Giselbert'. rv:Confirmation is defined as confirming 'Besitz, Rechte oder einen früheren Akt', and the guidelines model a confirmation as two act factoids joined by rf:refersToAct; the regest reports no earlier act or existing right that is confirmed, only consent to an act of others. The vocabulary has no consent type and no generic act type, so the current typing turns a model limit into a different historical meaning, which correct.md forbids, and the qualifier 'Zustimmung' does not undo the false membership in queries for confirmations. Reclassifying under another type would be a new reading. The only safe fix is removal with a recorded gap. The Vogtei holding and the parenthood factoid of the same passage are supported and stay.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. dazu auch DF. I. 127 (Reg. "
+    },
+    {
+     "t": "366"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnung in DK. III. 113."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=16"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-G000630",
+    "Untertan des Klosters Lorch, Stifter des Frauenstiftes Lochgarten"
+   ],
+   [
+    "RI004-002-K000569",
+    "Untertan des Klosters Lorch, Stifter des Frauenstiftes Lochgarten"
+   ],
+   [
+    "RI004-002-L000545",
+    "Lochgarten (<i>heute:</i> Hofgut Louisgarde, nördl. Weikersheim, nordwestl. Rothenburg ob der Tauber, Main-Tauber-Kr., Bad.-Württ.), (Prämonstratenserinnen-)Frauenstift"
+   ],
+   [
+    "RI004-002-L000660",
+    "Lorch (im oberen Remstal, westl. Schwäbisch-Gmünd, Ostalbkr., Bad.-Württ.), (Benediktiner-)Kloster St. Maria"
+   ]
+  ]
+ }
+}

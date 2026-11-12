@@ -1,0 +1,368 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-11-01_1_0_4_2_1_200_200",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22827",
+  "identifier": "RI IV,2,1 n. 200",
+  "short": "RI IV,2,1 n. 200",
+  "sort": "004_002_001_000200_0000000200",
+  "start": "1153-11-01",
+  "end": "1153-11-01",
+  "proseYears": [],
+  "lead": "Friedrich wird in Köln von Erzbischof Arnold sowie von den Bürgern ehrenvoll aufgenommen und läßt den Ritter Bernhard, der von Herzog (Heinrich) von Sachsen wegen des Mordes an Graf Hermann von Winzenburg angeklagt und überführt worden war, enthaupten [iussu ipsius imperatoris (!) decollatur ].",
+  "date": [
+   {
+    "t": "(1153) November 1"
+   }
+  ],
+  "place": [
+   {
+    "t": "Köln"
+   }
+  ],
+  "text": "Friedrich wird in Köln von Erzbischof Arnold sowie von den Bürgern ehrenvoll aufgenommen und läßt den Ritter Bernhard, der von Herzog (Heinrich) von Sachsen wegen des Mordes an Graf Hermann von Winzenburg angeklagt und überführt worden war, enthaupten [iussu ipsius imperatoris (!) decollatur ].",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22827:accusation",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22827:accusation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "accusation",
+     "own": true,
+     "evidence": {
+      "start": 98,
+      "end": 239,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22827:> .\nx:accusation a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22827> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Ritter Bernhard, der von Herzog (Heinrich) von Sachsen wegen des Mordes an Graf Hermann von Winzenburg angeklagt und überführt worden war\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-49> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ritter Bernhard",
+      "text": "Ritter Bernhard in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22827:accusation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "accusation",
+      "own": true,
+      "evidence": {
+       "start": 98,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22827:> .\nx:accusation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000659> ; rf:nameInSource \"Ritter Bernhard\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000659"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog (Heinrich) von Sachsen",
+      "text": "Herzog (Heinrich) von Sachsen in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22827:accusation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "accusation",
+      "own": true,
+      "evidence": {
+       "start": 98,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22827:> .\nx:accusation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzog (Heinrich) von Sachsen\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen des Mordes an Graf Hermann von Winzenburg",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22827:accusation",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 157,
+       "end": 204,
+       "ambiguous": false
+      },
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "angeklagt und überführt",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22827:accusation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 205,
+       "end": 228,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Ritter Bernhard"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog (Heinrich) von Sachsen"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "accusation",
+    "start": 98,
+    "end": 239
+   },
+   {
+    "id": "t1",
+    "start": 157,
+    "end": 204
+   },
+   {
+    "id": "t2",
+    "start": 205,
+    "end": 228
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for punishment or execution; Friedrich's ordered beheading of Bernhard ('läßt ... enthaupten') is not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No victim role; Graf Hermann von Winzenburg appears only inside the rf:ground literal",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No link property from the execution to the earlier accusation and conviction",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for punishment or execution of a sentence.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for a homicide reported as the ground of a charge.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:record:22827",
+     "description": "The central legal act of the regest, Friedrich having the convicted knight beheaded on his order, is absent. The contract has no punishment type, but rv:Enactment (an order) with Friedrich as rv:Grantor and Bernhard as a further reference could carry the order without asserting more than the passage says.",
+     "proposal": "Either add an ActFactoid for the order of execution with rf:qualifier \"enthaupten\" and rf:refersToAct to the accusation, or keep the omission as model gap (no punishment act type); the expert should decide.",
+     "quote": {
+      "start": 93,
+      "end": 251
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22827:accusation",
+     "description": "Count Hermann von Winzenburg, the murder victim and the ground of the charge, is not referenced although a matching packet candidate (H000860) exists. He appears only inside the rf:ground literal.",
+     "proposal": "Add a reference to urn:regesta:actor:RI004-002-H000860 with rv:Participant and nameInSource \"Graf Hermann von Winzenburg\".",
+     "quote": {
+      "start": 157,
+      "end": 204
+     }
+    },
+    {
+     "category": "collapse",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22827:accusation",
+     "description": "Accusation and conviction are one Dispute factoid; the conviction is a judgment by an unnamed authority. The qualifier keeps the wording, so nothing is asserted beyond the passage.",
+     "proposal": "Optionally split into rv:Dispute and rv:Judgment (judge unnamed) linked by rf:refersToAct.",
+     "quote": {
+      "start": 205,
+      "end": 239
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Friedrich having the convicted knight beheaded is absent.",
+     "reason": "'läßt den Ritter Bernhard ... enthaupten' reports a performed execution; rv:Enactment is defined as a legal provision whose performance is not established, and rv:Judgment as deciding a dispute, which the passage attributes to no one. Either type would change the meaning. The extractor already records the missing punishment type.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Count Hermann von Winzenburg, the murder victim, is not referenced although candidate H000860 exists.",
+     "reason": "Hermann appears only in the ground 'wegen des Mordes an Graf Hermann von Winzenburg', which the factoid keeps verbatim; he is not a party to the accusation, and an rv:Participant reference would assert involvement in it.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Accusation and conviction are one Dispute factoid; optionally split into rv:Dispute and rv:Judgment.",
+     "reason": "'angeklagt und überführt worden war' names no judging authority; the qualifier 'angeklagt und überführt' keeps the conviction in its wording, and a Judgment without a judge adds no expressible content.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Daß der Aufenthalt, den die Königschronik bei 1156 erwähnt, nicht in das genannte Jahr, sondern zu 1153 gehört, hat Hofmeister, Rezension Simonsfeld, MIÖG 38 (1920) 352 gegen Simonsfeld, Jahrbücher 481 nachgewiesen. Zu diesem Aufenthalt vgl. auch DF. I. 66 (Reg. "
+    },
+    {
+     "t": "199",
+     "regest": "22826"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Chron. reg. Col., ed. Waitz, MG. SS rer. Germ, in us. schol. 92 Rec. I und II; Knipping, Reg. Köln 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 639 zu 1156."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=72"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000659",
+    "Ritter, Mörder Graf Hermanns von Winzenburg"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000860",
+    "Graf von Winzenburg"
+   ],
+   [
+    "RI004-002-K000237",
+    "Köln (am Rhein, Deutschland)"
+   ],
+   [
+    "RI004-002-K000275",
+    "Bürger, Bürgerschaft, Kölner"
+   ]
+  ]
+ }
+}

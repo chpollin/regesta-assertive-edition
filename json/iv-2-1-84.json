@@ -1,0 +1,736 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-08_1_0_4_2_1_84_84",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22711",
+  "identifier": "RI IV,2,1 n. 84",
+  "short": "RI IV,2,1 n. 84",
+  "sort": "004_002_001_000084_0000000084",
+  "start": "1152-05-08",
+  "end": "1152-05-08",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III., die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis).",
+  "date": [
+   {
+    "t": "1152 Mai 8"
+   }
+  ],
+  "place": [
+   {
+    "t": "Goslar"
+   }
+  ],
+  "text": "Friedrich bestätigt gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III., die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis). Z.: die Bischöfe Bernhard von Hildesheim, Wichmann von Zeitz, Anselm von Havelberg, Abt Wibald von Stablo und Corvey, Herzog Heinrich von Sachsen, Markgraf Albrecht von Brandenburg, dominus Welf, der Oheim des Königs, Pfalzgraf Otto von Wittelsbach, Graf Ulrich von Lenzburg, Markward von Grumbach. - Arnoldus canc. vice Heinrici Moguntini archiep. et archicanc. ; in Wiederholung des DK. III. 251 (VU. I), erweitert um einen Passus über die vermögensrechtliche Verfügungsgewalt des Abtes von Waulsort über Hastière aus dem kurz vorher entstandenen, unechten DL. III. 131 (VU. II), wohl mundiert von Wibald. Ad imperialem munificentiam .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22711:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22711:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 189,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22711:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22711> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III., die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22711:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abtei Waulsort (Walcidorensis)",
+      "text": "Abtei Waulsort (Walcidorensis) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22711:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000197:community> ; rf:nameInSource \"Abtei Waulsort (Walcidorensis)\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000197:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))",
+      "text": "betrifft Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))",
+      "triple": [
+       "urn:regesta:22711:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22711:right-unterordnung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:confirmation rf:concerns x:right-unterordnung .\nx:right-unterordnung a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis)\" .",
+      "object": "urn:regesta:22711:right-unterordnung",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Klosters Hastière (Hasteriensis)",
+      "text": "betrifft Klosters Hastière (Hasteriensis)",
+      "triple": [
+       "urn:regesta:22711:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-H000222:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:confirmation rf:concerns <urn:regesta:actor:RI004-002-H000222:community> .\n<urn:regesta:actor:RI004-002-H000222:community> a crm:E74_Group ;\n    rdfs:label \"Klosters Hastière (Hasteriensis)\" .",
+      "object": "urn:regesta:actor:RI004-002-H000222:community",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22711:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22711:privilege-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:confirmation rf:refersToAct x:privilege-konrad .\nx:privilege-konrad a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:concerns x:right-unterordnung ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III.\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad III.\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22711> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22711:privilege-konrad",
+      "objectClaim": "privilege-konrad",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22711:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22711:privilege-lothar"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 189,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:confirmation rf:refersToAct x:privilege-lothar .\nx:privilege-lothar a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:concerns x:right-unterordnung ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III.\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ; rf:nameInSource \"Lothar III.\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22711> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22711:privilege-lothar",
+      "objectClaim": "privilege-lothar",
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Abtei Waulsort (Walcidorensis)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Klosters Hastière (Hasteriensis)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Übertragung"
+     },
+     " und ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22711:privilege-konrad",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22711:privilege-konrad",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "privilege-konrad",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 87,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22711:> .\nx:privilege-konrad a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22711> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad III.",
+      "text": "Konrad III. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22711:privilege-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "privilege-konrad",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:privilege-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad III.\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))",
+      "text": "betrifft Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))",
+      "triple": [
+       "urn:regesta:22711:privilege-konrad",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22711:right-unterordnung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "privilege-konrad",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:privilege-konrad rf:concerns x:right-unterordnung .\nx:right-unterordnung a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis)\" .",
+      "object": "urn:regesta:22711:right-unterordnung",
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Konrad III."
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22711:privilege-lothar",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22711:privilege-lothar",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "privilege-lothar",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 87,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22711:> .\nx:privilege-lothar a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22711> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Lothar III.",
+      "text": "Lothar III. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22711:privilege-lothar",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "privilege-lothar",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:privilege-lothar rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ; rf:nameInSource \"Lothar III.\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000682"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))",
+      "text": "betrifft Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))",
+      "triple": [
+       "urn:regesta:22711:privilege-lothar",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22711:right-unterordnung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "privilege-lothar",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22711:> .\nx:privilege-lothar rf:concerns x:right-unterordnung .\nx:right-unterordnung a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis)\" .",
+      "object": "urn:regesta:22711:right-unterordnung",
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Lothar III."
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis))"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 189
+   },
+   {
+    "id": "privilege-konrad",
+    "start": 20,
+    "end": 87
+   },
+   {
+    "id": "privilege-lothar",
+    "start": 20,
+    "end": 87
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The earlier privileges of Lothar III. and Konrad III. carry no stated act type; typed with the top concept rv:Grant as a placeholder.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for the subordination of one monastery under another abbey; rv:LordshipRights (top concept) used as the nearest group.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Witness list states 'dominus Welf, der Oheim des Königs' (kinship); not extracted because the guidelines exclude formulaic witness lists.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The relation of predecessor in office ('seiner Vorgänger, Lothar III. und Konrad III.') has no state type or role; rv:OfficeHolding cannot express succession.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "Whether kinship statements inside witness lists are in scope is not settled by the guidelines.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added rf:concerns <urn:regesta:22711:right-unterordnung> to <urn:regesta:22711:privilege-lothar> and <urn:regesta:22711:privilege-konrad>; both factoids now attributed to correction-g5. Type, grantor references and evidence unchanged; no date, no recipient.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22711:confirmation",
+     "description": "Waulsort is referenced as rv:Beneficiary. The confirmed subordination is a right of Waulsort over Hastière, so Waulsort is the party to whom something is confirmed, which the vocabulary defines as rv:Recipient. Beneficiary is not wrong but weaker than the passage allows.",
+     "proposal": "Use rv:Recipient for the Waulsort reference; keep Hastière in rf:concerns.",
+     "quote": {
+      "start": 89,
+      "end": 189
+     }
+    },
+    {
+     "category": "underspecified-earlier-act",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22711:privilege-lothar",
+     "description": "The two earlier privilege factoids carry only the grantor. The passage says the confirmation follows these privileges, so the earlier acts concern the same subordination; without rf:concerns and without Waulsort they are free-floating grants of unknown object. The rf:Grant type is a generic reading of 'Privilegien' that the passage does not narrow; this is acceptable, but the object link is recoverable. Same for urn:regesta:22711:privilege-konrad.",
+     "proposal": "Add rf:concerns <urn:regesta:22711:right-unterordnung> to both earlier act factoids, or record in the batch report that the object of the earlier privileges is left unstated on purpose.",
+     "quote": {
+      "start": 20,
+      "end": 87
+     }
+    },
+    {
+     "category": "scope-boundary",
+     "severity": "Vermerk",
+     "subject": "22711",
+     "description": "The witness list carries a stated kinship ('dominus Welf, der Oheim des Königs'). The guidelines exclude formulaic witness lists, so the omission is contract-conform, but a kinship word inside Z.: is not formulaic and would otherwise be an rv:Kinship factoid.",
+     "proposal": "No change under the frozen contract; report as a boundary question for the guidelines.",
+     "quote": {
+      "start": 373,
+      "end": 407
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "Waulsort should be rv:Recipient instead of rv:Beneficiary.",
+     "reason": "The passage names no dative recipient ('bestätigt ... die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort'); the confirmation is in Waulsort's favour, which rv:Beneficiary states without asserting receipt.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "The two earlier privilege factoids lack the object they concern.",
+     "reason": "The confirmation of the subordination is made 'gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III.', so the passage itself ties the earlier privileges to the same subordination; the right node already exists in the file.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Erwirkt von Wibald, der seit seiner Profeß in engen Beziehungen zu Waulsort stand, vgl. die Vorbemerkungen zu DL. III. 131 und DK. III. 251 sowie auch Hausmann, Reichskanzlei 234; für eine Mundierung durch Wibald spricht vor allem das in D nachgezeichnete Monogramm, das dem in dem von ihm mundierten DF. I. 1 (s. Reg. "
+    },
+    {
+     "t": "67",
+     "regest": "22694"
+    },
+    {
+     "t": ") entspricht."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift von ca. 1525 im Liber monasteriorum Walsiodorensis et Hasteriensis f. 118, Seminarbibliothek Namur (C); Beglaubigte Abschrift von 1735 im Liber quartus cartarum von Waulsort f. 128, Staatsarchiv Namur (D). Drucke: Stumpf, Acta ined. 145 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 118; Despy, Chartes de Waulsort 1, 361 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 28; MG. DF. I. 9. Reg.: Wauters, Table chronol. 7/1, 255 zu Mai 5; Stumpf 3624."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=32"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_9"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-B000625",
+    "Bischof von Hildesheim"
+   ],
+   [
+    "RI004-002-G000728",
+    "Goslar (südl. Wolfenbüttel, Ndsachs.)"
+   ],
+   [
+    "RI004-002-H000222",
+    "Hastière (an der Maas/Meuse, unmittelbar an der franz. Grenze, südl. Namur, belg. Prov. Namur), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000682",
+    "(III.), König und Kaiser"
+   ],
+   [
+    "RI004-002-M000513",
+    "(II., der Ältere) von Grumbach (Edelfreier); <i>zu ihm siehe auch oben in der Einleitung, S. 32</i>"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000197",
+    "Waulsort (Teil von Hastière, an der Maas/Meuse, belg. Prov. Namur), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ]
+  ]
+ }
+}

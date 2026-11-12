@@ -1,0 +1,144 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-05-29_2_0_4_2_1_177_177
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22804> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-B000794> a crm:E21_Person ;
+    rdfs:label "Propst Bertram von Fredelsloh" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "Konrad (III.)" .
+
+<urn:regesta:actor:RI004-002-T000226> a crm:E21_Person ;
+    rdfs:label "päpstlichen Legaten Bischof Thietwin (auch Dietwin)" .
+
+<urn:regesta:actor:RI004-002-H001023:community> a crm:E74_Group ;
+    rdfs:label "Reichsabtei Hilwartshausen (abbatiam in Hildewardeshusen ad ius regni pertinentem)" .
+
+<urn:regesta:actor:22804:local:reich> a crm:E74_Group ;
+    rdfs:label "regni" .
+
+<urn:regesta:actor:22804:local:nonnen> a crm:E74_Group ;
+    rdfs:label "die Nonnen" .
+
+<urn:regesta:22804:propstwahl> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "die freie Propstwahl" .
+
+<urn:regesta:22804:entfremdete-besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "entfremdeter Besitzungen" .
+
+<urn:regesta:22804:vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die Vogtei" .
+
+<urn:regesta:22804:konrad-grant> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22804> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "wie dies schon Konrad (III.) auf Bitten des päpstlichen Legaten Bischof Thietwin (auch Dietwin) tat" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Konrad (III.)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-T000226> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Bischof Thietwin (auch Dietwin)" ] ;
+    rf:concerns <urn:regesta:actor:RI004-002-H001023:community> ;
+    rf:qualifier "schon" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22804:subordination> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22804> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich unterstellt die Reichsabtei Hilwartshausen (abbatiam in Hildewardeshusen ad ius regni pertinentem) dem Propst Bertram von Fredelsloh" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-B000794> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Propst Bertram von Fredelsloh" ] ;
+    rf:concerns <urn:regesta:actor:RI004-002-H001023:community> ;
+    rf:refersToAct <urn:regesta:22804:konrad-grant> ;
+    rf:qualifier "unterstellt" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22804:abbey-reich> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22804> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "abbatiam in Hildewardeshusen ad ius regni pertinentem" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22804:local:reich> ;
+        rf:role rv:RightHolder ;
+        rf:nameInSource "regni" ] ;
+    rf:concerns <urn:regesta:actor:RI004-002-H001023:community> ;
+    rf:qualifier "ad ius regni pertinentem" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22804:propstwahl-provision> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22804> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "legt für den Fall des Todes oder des Verzichtes Bertrams auf seine Propstei die freie Propstwahl durch die Nonnen fest" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22804:local:nonnen> ;
+        rf:role rv:Beneficiary ;
+        rf:nameInSource "die Nonnen" ] ;
+    rf:concerns <urn:regesta:22804:propstwahl> ;
+    rf:condition "für den Fall des Todes oder des Verzichtes Bertrams auf seine Propstei" ;
+    rf:partOf <urn:regesta:22804:subordination> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22804:rueckfall-provision> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22804> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "trifft Verfügungen über den Rückfall entfremdeter Besitzungen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22804:entfremdete-besitzungen> ;
+    rf:partOf <urn:regesta:22804:subordination> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22804:vogtei-reservation> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22804> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "behält sich die Vogtei vor" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22804:vogtei> ;
+    rf:exception "behält sich die Vogtei vor" ;
+    rf:partOf <urn:regesta:22804:subordination> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,110 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-07-00_5_0_4_2_1_122_122
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22749> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 122" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-C000964:community> a crm:E74_Group ;
+    rdfs:label "Konvent von Corvey" .
+
+<urn:regesta:actor:RI004-002-F000280> a crm:E21_Person ;
+    rdfs:label "Folkwin" .
+
+<urn:regesta:actor:RI004-002-W000454> a crm:E21_Person ;
+    rdfs:label "Widekind von Schwalenberg" .
+
+# The promise of revenge is an assurance; it does not establish that revenge was taken.
+<urn:regesta:22749:promise-revenge> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22749> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich verspricht dem Konvent von Corvey , er werde die ihm zugefügte Gewalttat (der Brüder Folkwin und Widekind von Schwalenberg) baldmöglichst rächen" ] ;
+    rf:reference <urn:regesta:22749:ref-promise-friedrich> ,
+        <urn:regesta:22749:ref-promise-konvent> ,
+        <urn:regesta:22749:ref-promise-folkwin> ,
+        <urn:regesta:22749:ref-promise-widekind> ;
+    rf:qualifier "baldmöglichst" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22749:ref-promise-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22749:ref-promise-konvent> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000964:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Konvent von Corvey" .
+
+# The perpetrators of the wrong to be avenged have no dedicated role; Participant is used (model gap).
+<urn:regesta:22749:ref-promise-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000280> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Folkwin" .
+
+<urn:regesta:22749:ref-promise-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000454> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Widekind von Schwalenberg" .
+
+<urn:regesta:22749:brothers> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22749> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Brüder Folkwin und Widekind von Schwalenberg" ] ;
+    rf:reference <urn:regesta:22749:ref-brothers-folkwin> ,
+        <urn:regesta:22749:ref-brothers-widekind> ;
+    rf:qualifier "Brüder" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22749:ref-brothers-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000280> ;
+    rf:role rv:Kin ;
+    rf:nameInSource "Folkwin" .
+
+<urn:regesta:22749:ref-brothers-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000454> ;
+    rf:role rv:Kin ;
+    rf:nameInSource "Widekind von Schwalenberg" .
+
+# The command is an enactment; its performance is not established. The convent is the addressee
+# of the letter as a whole; the command passage does not name it again.
+<urn:regesta:22749:command-worship> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22749> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "befiehlt die Wiederaufnahme des Gottesdienstes in der Klosterkirche, der zum Zeichen des Protestes eingestellt worden war, sowie die Enthüllung der Kreuze und die Herbeischaffung der Reliquien" ] ,
+        [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich verspricht dem Konvent von Corvey" ] ;
+    rf:reference <urn:regesta:22749:ref-command-friedrich> ,
+        <urn:regesta:22749:ref-command-konvent> ;
+    rf:concerns <urn:regesta:22749:klosterkirche> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22749:ref-command-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22749:ref-command-konvent> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000964:community> ;
+    rf:role rv:Addressee ;
+    rf:nameInSource "Konvent von Corvey" .
+
+<urn:regesta:22749:klosterkirche> a crm:E18_Physical_Thing ;
+    rdfs:label "Klosterkirche" .

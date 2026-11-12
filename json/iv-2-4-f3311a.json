@@ -1,0 +1,229 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/dbf59de9-3f1f-41f1-970c-41816998903b",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "220541",
+  "identifier": "RI IV,2,4 n. †3311a",
+  "short": "RI IV,2,4 n. †3311a",
+  "sort": "004_002_004_000906_0000#3311a",
+  "start": "1152-03-09",
+  "end": "1189-05-30",
+  "proseYears": [],
+  "lead": "Friedrich stellt der Stadt St. Gallen ein Privileg aus.",
+  "date": [
+   {
+    "t": "(1152 März 9/1155 Juni 18 – 1189 Ende Mai)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich stellt der Stadt St. Gallen ein Privileg aus.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:220541:privilege-grant",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:220541:privilege-grant",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "privilege-grant",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 54,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220541:> .\nx:privilege-grant a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:220541> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich stellt der Stadt St. Gallen ein Privileg aus\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-55> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220541:privilege-grant",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "privilege-grant",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 54,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220541:> .\nx:privilege-grant rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stadt St. Gallen",
+      "text": "Stadt St. Gallen in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:220541:privilege-grant",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "privilege-grant",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 54,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220541:> .\nx:privilege-grant rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000054:community> ; rf:nameInSource \"Stadt St. Gallen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000054:community"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Stadt St. Gallen"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "privilege-grant",
+    "start": 0,
+    "end": 54
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The regest names only 'ein Privileg' without its content; rv:RightTypes has no generic privilege type, so no crm:E30_Right node is asserted and rv:RightGrant is used for an unspecified privilege.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for issuing a privilege of unstated content.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:220541:privilege-grant",
+     "description": "'ein Privileg ausstellen' is typed rv:RightGrant. A privilege of unknown content may also be a confirmation or protection grant, so the specific type slightly exceeds the passage; rv:Grant would be the safer top concept.",
+     "proposal": "Consider rv:Grant, or keep rv:RightGrant with a comment that the content is unknown.",
+     "quote": {
+      "start": 0,
+      "end": 54
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "rv:RightGrant may exceed 'ein Privileg ausstellen'; rv:Grant proposed.",
+     "reason": "'Friedrich stellt der Stadt St. Gallen ein Privileg aus' reports the issuing of a privilege, which by its kind confers a right; rv:RightGrant ('Verleihung eines Rechts') is defensible, and rv:Grant ('überträgt ... ein Recht, einen Besitz oder eine Einrichtung') would not be safer. No right node is asserted, and the extractor reported the missing type for a privilege of unstated content.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der gelehrte Humanist Vadian äußerte sich durchaus vorsichtig über die Existenz einer verlorenen Urkunde Friedrich Barbarossas für die Stadt St. Gallen, hielt es aber für denkbar, dass eine solche beim Stadtbrand von 1215 zerstört worden sei. Tatsächlich handelt es sich um den Versuch, für die den Äbten des Klosters untertänige Stadt eine direkte Unterordnung unter das Reich, damit also den Rang einer „Reichsstadt' nachzuweisen. – Den Hinweis verdanke ich dem Referat „... die selb statt kain richstatt nie gesin ist. Politische Argumentation der Fürstabtei und der Reichsstadt St. Gallen im Spätmittelalter und in der frühen Neuzeit“, das Rudolf Gamper bei der Sechsten wissenschaftlichen Tagung des Mühlhäuser Arbeitskreises für Reichsstadtgeschichte („Reichsstadt als Argument“) am 13. Februar 2018 in Mühlhausen/Thüringen gehalten hat. Herrn Gamper bin ich für die Übermittlung von Kopien der hier zitierten Edition sehr dankbar."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Fingiertes "
+    },
+    {
+     "t": "DF.I.",
+     "href": "http://opac.regesta-imperii.de/id/47488"
+    },
+    {
+     "t": ", erwähnt bei Joachim von Watt (Vadian), Grössere Chronik der Äbte, Bd. 1, ed. Stettler, 169f."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-G000054",
+    "Stadt"
+   ]
+  ]
+ }
+}

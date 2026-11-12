@@ -1,0 +1,644 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-09-00_1_0_4_2_1_199_199",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22826",
+  "identifier": "RI IV,2,1 n. 199",
+  "short": "RI IV,2,1 n. 199",
+  "sort": "004_002_001_000199_0000000199",
+  "start": "1153-09-01",
+  "end": "1153-10-31",
+  "proseYears": [],
+  "lead": "Friedrich teilt dem Abt Wibald von Corvey mit, er habe dem Pfalzgrafen (Friedrich) von Sommerschenburg befohlen, das Gut Nienstedt und das seinen Leuten entfremdete Lehen zurückzustellen, und beruft ihn für den 1.",
+  "date": [
+   {
+    "t": "(1153 September-Oktober)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich teilt dem Abt Wibald von Corvey mit, er habe dem Pfalzgrafen (Friedrich) von Sommerschenburg befohlen, das Gut Nienstedt und das seinen Leuten entfremdete Lehen zurückzustellen, und beruft ihn für den 1. November nach Köln. - Möglicherweise von A II. D verfaßt und mundiert. Si palatinus comes .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22826:communication",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22826:communication",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "communication",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 111,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22826:> .\nx:communication a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22826> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich teilt dem Abt Wibald von Corvey mit, er habe dem Pfalzgrafen (Friedrich) von Sommerschenburg befohlen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-49> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22826:communication",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "communication",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 111,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22826:> .\nx:communication rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Wibald von Corvey",
+      "text": "Abt Wibald von Corvey in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22826:communication",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "communication",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 111,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22826:> .\nx:communication rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt Wibald von Corvey\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestimmung",
+      "text": "bezieht sich auf Bestimmung",
+      "triple": [
+       "urn:regesta:22826:communication",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22826:restitution-order"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "communication",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 111,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22826:> .\nx:communication rf:refersToAct x:restitution-order .\nx:restitution-order a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:concerns x:entfremdetes-lehen , x:gut-nienstedt ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"er habe dem Pfalzgrafen (Friedrich) von Sommerschenburg befohlen, das Gut Nienstedt und das seinen Leuten entfremdete Lehen zurückzustellen\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"befohlen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22826:local:leute> ; rf:nameInSource \"seinen Leuten\" ; rf:role rv:Beneficiary ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000686> ; rf:nameInSource \"Pfalzgrafen (Friedrich) von Sommerschenburg\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:22826> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22826:restitution-order",
+      "objectClaim": "restitution-order",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schreiben"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Abt Wibald von Corvey"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22826:restitution-order",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22826:restitution-order",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "restitution-order",
+     "own": true,
+     "evidence": {
+      "start": 47,
+      "end": 186,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22826:> .\nx:restitution-order a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22826> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"er habe dem Pfalzgrafen (Friedrich) von Sommerschenburg befohlen, das Gut Nienstedt und das seinen Leuten entfremdete Lehen zurückzustellen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22826:restitution-order",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-order",
+      "own": true,
+      "evidence": {
+       "start": 47,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22826:> .\nx:restitution-order rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Pfalzgrafen (Friedrich) von Sommerschenburg",
+      "text": "Pfalzgrafen (Friedrich) von Sommerschenburg in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22826:restitution-order",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-order",
+      "own": true,
+      "evidence": {
+       "start": 47,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22826:> .\nx:restitution-order rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000686> ; rf:nameInSource \"Pfalzgrafen (Friedrich) von Sommerschenburg\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000686"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinen Leuten",
+      "text": "seinen Leuten in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22826:restitution-order",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-order",
+      "own": true,
+      "evidence": {
+       "start": 47,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22826:> .\nx:restitution-order rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22826:local:leute> ; rf:nameInSource \"seinen Leuten\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22826:local:leute"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das seinen Leuten entfremdete Lehen",
+      "text": "betrifft das seinen Leuten entfremdete Lehen",
+      "triple": [
+       "urn:regesta:22826:restitution-order",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22826:entfremdetes-lehen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-order",
+      "own": true,
+      "evidence": {
+       "start": 47,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22826:> .\nx:restitution-order rf:concerns x:entfremdetes-lehen .\nx:entfremdetes-lehen a crm:E18_Physical_Thing ;\n    rdfs:label \"das seinen Leuten entfremdete Lehen\" .",
+      "object": "urn:regesta:22826:entfremdetes-lehen",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gut Nienstedt",
+      "text": "betrifft Gut Nienstedt",
+      "triple": [
+       "urn:regesta:22826:restitution-order",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22826:gut-nienstedt"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-order",
+      "own": true,
+      "evidence": {
+       "start": 47,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22826:> .\nx:restitution-order rf:concerns x:gut-nienstedt .\nx:gut-nienstedt a crm:E18_Physical_Thing ;\n    rdfs:label \"Gut Nienstedt\" .",
+      "object": "urn:regesta:22826:gut-nienstedt",
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "befohlen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22826:restitution-order",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 103,
+       "end": 111,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Pfalzgrafen (Friedrich) von Sommerschenburg"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "seinen Leuten"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "das seinen Leuten entfremdete Lehen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Gut Nienstedt"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "communication",
+    "start": 0,
+    "end": 111
+   },
+   {
+    "id": "restitution-order",
+    "start": 47,
+    "end": 186
+   },
+   {
+    "id": "t1",
+    "start": 103,
+    "end": 111
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'seinen Leuten': the possessor of 'seinen' (Wibald/Corvey or the Pfalzgraf) is ambiguous, so no beneficiary reference was set",
+     "lang": "en"
+    },
+    {
+     "text": "'beruft ihn für den 1. November nach Köln': 'ihn' may be Wibald or the Pfalzgraf; the summons was not extracted",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a command or order to restore; the order is recorded as rv:Enactment with qualifier 'befohlen', not as rv:Restitution, since performance is not stated",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the person commanded; the Pfalzgraf carries rv:Addressee",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to express the prior alienation (entfremdet) of a fief except as part of a thing label.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Declared <urn:regesta:actor:22826:local:leute> a crm:E74_Group with label \"seinen Leuten\" and added it to <urn:regesta:22826:restitution-order> as rv:Beneficiary with nameInSource \"seinen Leuten\"; not identified with Wibald; producer of the restitution order set to correction-g10.",
+     "lang": "en"
+    },
+    {
+     "text": "<urn:regesta:22826:communication> unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22826:restitution-order",
+     "description": "The order is in favour of Wibald's side: the fief was alienated from \"seinen Leuten\", most plausibly Wibald's people, and the letter is addressed to Wibald. No beneficiary reference is given, so the factoid loses for whom restitution is ordered.",
+     "proposal": "Add a local group for \"seinen Leuten\" (or Wibald, urn:regesta:actor:RI004-002-W000420) with rv:Beneficiary; label it in source wording because the possessive is not fully determinate.",
+     "quote": {
+      "start": 135,
+      "end": 186
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22826:restitution-order",
+     "description": "The count palatine, who is ordered to restore, carries rv:Addressee. This matches the definition (to whom an order is directed) but loses that he is the party obliged to restore; rv:Obligor is a possible alternative.",
+     "proposal": "Keep rv:Addressee or switch to rv:Obligor by run convention.",
+     "quote": {
+      "start": 47,
+      "end": 111
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:record:22826",
+     "description": "The summons of Wibald to Köln for 1 November is not extracted. As travel to an assembly it falls under the exclusion, but 22829 extracts a royal summons as rv:Communication, so the run is inconsistent.",
+     "proposal": "Decide one convention for summonses across the run.",
+     "quote": {
+      "start": 192,
+      "end": 232
+     }
+    },
+    {
+     "category": "type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22826:entfremdetes-lehen",
+     "description": "The alienated fief is typed crm:E18_Physical_Thing; a Lehen is a tenure relation as much as a thing. Acceptable under the contract's thing and right split.",
+     "proposal": "No change; vocabulary limit.",
+     "quote": {
+      "start": 135,
+      "end": 170
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The order names no party in whose favour the restitution is ordered.",
+     "reason": "'das seinen Leuten entfremdete Lehen zurückzustellen' names the people to whom the fief is to be restored, which is central to the order. The possessive 'seinen' is not determinate in the passage, so identifying them with Wibald or his people would be a reading; a regest-local group in the source wording is safe.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The count palatine carries rv:Addressee; rv:Obligor is an alternative.",
+     "reason": "'er habe dem Pfalzgrafen ... befohlen' directs an order to him; rv:Addressee fits its definition and, unlike rv:Obligor, does not imply that an obligation is established beyond the order.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The summons of Wibald to Köln for 1 November is not extracted.",
+     "reason": "'beruft ihn für den 1. November nach Köln' calls Wibald to a court gathering without a stated dispute; adjudications g5 and g6 treated such summonses to a court day as not required, and the run types a summons as rv:Dispute only where a legal proceeding against the summoned is stated.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu den Streitigkeiten Wibalds mit dem Pfalzgrafen von Sommerschenburg, zu deren Verlauf auch auf Ep. Wibaldi n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 414 (Schmidt, UB. Hochstift Halberstadt 1, 212 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 243) und Ep. Wibaldi n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 423 (Schmidt, a. a. O. 1, 212 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 244) zu verweisen ist, vgl. Hausmann, Reichskanzlei 241 und Starke, Sommerschenburg, Jb. Gesch. Mittel- u. Ostdtl. 4 (1955) 37."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift aus der Mitte des 12. Jh. im Cod. Wibaldi f. 145, Staatsarchiv Lüttich (B). Drucke: Jaffé, Mon. Corb. 560 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 422; Schmidt, UB. Hochstift Halberstadt 1, 213 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 245; MG. DF. I. 66."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=72"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_66"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-F000686",
+    "Pfalzgraf von Sommerschenburg und Sachsen"
+   ],
+   [
+    "RI004-002-K000237",
+    "Köln (am Rhein, Deutschland)"
+   ],
+   [
+    "RI004-002-N000210",
+    "Nienstedt (Teil von Allstedt, Ldkr. Mansfeld-Südharz, Sachs.-Anhalt)"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

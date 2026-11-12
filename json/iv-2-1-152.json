@@ -1,0 +1,1905 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-12-28_4_0_4_2_1_152_152",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22779",
+  "identifier": "RI IV,2,1 n. 152",
+  "short": "RI IV,2,1 n. 152",
+  "sort": "004_002_001_000152_0000000152",
+  "start": "1152-12-28",
+  "end": "1152-12-28",
+  "proseYears": [],
+  "lead": "Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz, bestätigt ihm die Freiheit von jeder Herrschaft, bestimmt, daß der nach dem König zweite Vogt nur einen einzigen Untervogt einsetzen darf, dessen Rechte genau festgelegt werden, gewährt nach dem Tod Abt Arnulfs das freie Abt- und Vogtwahlrecht, das Befestigungsrecht im Gebiet um Gembloux, die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich und bekräftigt Abt Arnulf die Schenkungen Kaiser Ottos und Bischof Wilbodos von Lüttich.",
+  "date": [
+   {
+    "t": "1152 Dezember 28"
+   }
+  ],
+  "place": [
+   {
+    "t": "Trier"
+   }
+  ],
+  "text": "Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz, bestätigt ihm die Freiheit von jeder Herrschaft, bestimmt, daß der nach dem König zweite Vogt nur einen einzigen Untervogt einsetzen darf, dessen Rechte genau festgelegt werden, gewährt nach dem Tod Abt Arnulfs das freie Abt- und Vogtwahlrecht, das Befestigungsrecht im Gebiet um Gembloux, die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich und bekräftigt Abt Arnulf die Schenkungen Kaiser Ottos und Bischof Wilbodos von Lüttich. Z.: Erzbischof Hillin von Trier, die Bischöfe Ortlieb (Ortoliabus) von Basel, Konrad von Worms, Heinrich von Lüttich, die Herzoge Heinrich von Sachsen, Welf, Matthäus von Lothringen, Pfalzgraf Hermann (bei Rhein), Abt Wibald von Stablo, Herzog Gottfried von Löwen, Graf Dietrich von Flandern. - Arnoldus canc. vice Maguntini archiep. et archicanc. ; verfaßt und wie die Nachzeichnung von Chrismon und Monogramm zeigt, auch geschrieben von A II. C. Pie postulatio voluntatis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 9,
+  "blocks": [
+   {
+    "node": "urn:regesta:22779:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22779:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 122,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:protection",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:protection:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 122,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:protection rf:reference x:protection:ref-friedrich .\nx:protection:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seines Kanzlers Arnold",
+      "text": "seines Kanzlers Arnold in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22779:protection",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:protection:ref-arnold"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 122,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:protection rf:reference x:protection:ref-arnold .\nx:protection:ref-arnold a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001203> ;\n    rf:nameInSource \"seines Kanzlers Arnold\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001203"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "anderer Fürsten",
+      "text": "anderer Fürsten in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22779:protection",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:protection:ref-fuersten"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 122,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:protection rf:reference x:protection:ref-fuersten .\nx:protection:ref-fuersten a rf:Reference ;\n    rf:actor <urn:regesta:actor:22779:local:andere-fuersten> ;\n    rf:nameInSource \"anderer Fürsten\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:22779:local:andere-fuersten"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Gembloux (Gemblacensem)",
+      "text": "Kloster Gembloux (Gemblacensem) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22779:protection",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:protection:ref-gembloux"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 122,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:protection rf:reference x:protection:ref-gembloux .\nx:protection:ref-gembloux a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G000251:community> ;\n    rf:nameInSource \"Kloster Gembloux (Gemblacensem)\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000251:community"
+      ],
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "seines Kanzlers Arnold"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "anderer Fürsten"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Kloster Gembloux (Gemblacensem)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22779:confirmation-freedom",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22779:confirmation-freedom",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-freedom",
+     "own": true,
+     "evidence": {
+      "start": 70,
+      "end": 171,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-freedom a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das Kloster Gembloux (Gemblacensem) in seinen Schutz, bestätigt ihm die Freiheit von jeder Herrschaft\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:confirmation-freedom",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:confirmation-freedom:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-freedom",
+      "own": true,
+      "evidence": {
+       "start": 70,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-freedom rf:reference x:confirmation-freedom:ref-friedrich .\nx:confirmation-freedom:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Gembloux (Gemblacensem)",
+      "text": "Kloster Gembloux (Gemblacensem) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22779:confirmation-freedom",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:confirmation-freedom:ref-gembloux"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-freedom",
+      "own": true,
+      "evidence": {
+       "start": 70,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-freedom rf:reference x:confirmation-freedom:ref-gembloux .\nx:confirmation-freedom:ref-gembloux a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G000251:community> ;\n    rf:nameInSource \"Kloster Gembloux (Gemblacensem)\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000251:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die Freiheit von jeder Herrschaft)",
+      "text": "betrifft Herrschafts- und Schutzrechte (die Freiheit von jeder Herrschaft)",
+      "triple": [
+       "urn:regesta:22779:confirmation-freedom",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22779:right-freedom"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-freedom",
+      "own": true,
+      "evidence": {
+       "start": 70,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-freedom rf:concerns x:right-freedom .\nx:right-freedom a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die Freiheit von jeder Herrschaft\" .",
+      "object": "urn:regesta:22779:right-freedom",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22779:confirmation-freedom",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22779:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-freedom",
+      "own": true,
+      "evidence": {
+       "start": 70,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-freedom rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-arnold , x:protection:ref-friedrich , x:protection:ref-fuersten , x:protection:ref-gembloux ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22779:protection",
+      "objectClaim": "protection",
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Kloster Gembloux (Gemblacensem)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die Freiheit von jeder Herrschaft)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22779:provision-subadvocate",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22779:provision-subadvocate",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "provision-subadvocate",
+     "own": true,
+     "evidence": {
+      "start": 173,
+      "end": 300,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:provision-subadvocate a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestimmt, daß der nach dem König zweite Vogt nur einen einzigen Untervogt einsetzen darf, dessen Rechte genau festgelegt werden\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:provision-subadvocate",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:provision-subadvocate:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-subadvocate",
+      "own": true,
+      "evidence": {
+       "start": 173,
+       "end": 300,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:provision-subadvocate rf:reference x:provision-subadvocate:ref-friedrich .\nx:provision-subadvocate:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der nach dem König zweite Vogt",
+      "text": "der nach dem König zweite Vogt in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22779:provision-subadvocate",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:provision-subadvocate:ref-vogt"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-subadvocate",
+      "own": true,
+      "evidence": {
+       "start": 173,
+       "end": 300,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:provision-subadvocate rf:reference x:provision-subadvocate:ref-vogt .\nx:provision-subadvocate:ref-vogt a rf:Reference ;\n    rf:actor <urn:regesta:actor:22779:local:zweiter-vogt> ;\n    rf:nameInSource \"der nach dem König zweite Vogt\" ;\n    rf:role rv:Obligor .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:22779:local:zweiter-vogt"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (einen einzigen Untervogt einsetzen)",
+      "text": "betrifft Vogtei (einen einzigen Untervogt einsetzen)",
+      "triple": [
+       "urn:regesta:22779:provision-subadvocate",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22779:right-subadvocate"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-subadvocate",
+      "own": true,
+      "evidence": {
+       "start": 173,
+       "end": 300,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:provision-subadvocate rf:concerns x:right-subadvocate .\nx:right-subadvocate a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"einen einzigen Untervogt einsetzen\" .",
+      "object": "urn:regesta:22779:right-subadvocate",
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22779:provision-subadvocate",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22779:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-subadvocate",
+      "own": true,
+      "evidence": {
+       "start": 173,
+       "end": 300,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:provision-subadvocate rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-arnold , x:protection:ref-friedrich , x:protection:ref-fuersten , x:protection:ref-gembloux ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22779:protection",
+      "objectClaim": "protection",
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nur einen einzigen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22779:provision-subadvocate",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 218,
+       "end": 236,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "der nach dem König zweite Vogt"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Vogtei (einen einzigen Untervogt einsetzen)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22779:grant-election",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22779:grant-election",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-election",
+     "own": true,
+     "evidence": {
+      "start": 302,
+      "end": 367,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-election a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gewährt nach dem Tod Abt Arnulfs das freie Abt- und Vogtwahlrecht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k17"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:grant-election",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:grant-election:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-election",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 367,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-election rf:reference x:grant-election:ref-friedrich .\nx:grant-election:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Gembloux (Gemblacensem)",
+      "text": "Kloster Gembloux (Gemblacensem) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22779:grant-election",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:grant-election:ref-gembloux"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-election",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 367,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-election rf:reference x:grant-election:ref-gembloux .\nx:grant-election:ref-gembloux a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G000251:community> ;\n    rf:nameInSource \"Kloster Gembloux (Gemblacensem)\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000251:community"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (das freie Abt- und Vogtwahlrecht)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (das freie Abt- und Vogtwahlrecht)",
+      "triple": [
+       "urn:regesta:22779:grant-election",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22779:right-election"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-election",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 367,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-election rf:concerns x:right-election .\nx:right-election a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy , rv:ChurchRights ;\n    rdfs:label \"das freie Abt- und Vogtwahlrecht\" .",
+      "object": "urn:regesta:22779:right-election",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22779:grant-election",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22779:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-election",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 367,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-election rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-arnold , x:protection:ref-friedrich , x:protection:ref-fuersten , x:protection:ref-gembloux ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22779:protection",
+      "objectClaim": "protection",
+      "key": "k21"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "nach dem Tod Abt Arnulfs",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22779:grant-election",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 310,
+       "end": 334,
+       "ambiguous": false
+      },
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Kloster Gembloux (Gemblacensem)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (das freie Abt- und Vogtwahlrecht)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22779:grant-fortification",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22779:grant-fortification",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-fortification",
+     "own": true,
+     "evidence": {
+      "start": 302,
+      "end": 412,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-fortification a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gewährt nach dem Tod Abt Arnulfs das freie Abt- und Vogtwahlrecht, das Befestigungsrecht im Gebiet um Gembloux\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k23"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:grant-fortification",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:grant-fortification:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-fortification",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 412,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-fortification rf:reference x:grant-fortification:ref-friedrich .\nx:grant-fortification:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Gembloux (Gemblacensem)",
+      "text": "Kloster Gembloux (Gemblacensem) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22779:grant-fortification",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:grant-fortification:ref-gembloux"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-fortification",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 412,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-fortification rf:reference x:grant-fortification:ref-gembloux .\nx:grant-fortification:ref-gembloux a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G000251:community> ;\n    rf:nameInSource \"Kloster Gembloux (Gemblacensem)\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000251:community"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gebiet um Gembloux",
+      "text": "betrifft Gebiet um Gembloux",
+      "triple": [
+       "urn:regesta:22779:grant-fortification",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22779:place-gebiet-gembloux"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-fortification",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 412,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-fortification rf:concerns x:place-gebiet-gembloux .\nx:place-gebiet-gembloux a crm:E53_Place ;\n    rdfs:label \"Gebiet um Gembloux\" .",
+      "object": "urn:regesta:22779:place-gebiet-gembloux",
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (das Befestigungsrecht)",
+      "text": "betrifft Herrschafts- und Schutzrechte (das Befestigungsrecht)",
+      "triple": [
+       "urn:regesta:22779:grant-fortification",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22779:right-fortification"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-fortification",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 412,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-fortification rf:concerns x:right-fortification .\nx:right-fortification a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"das Befestigungsrecht\" .",
+      "object": "urn:regesta:22779:right-fortification",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22779:grant-fortification",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22779:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-fortification",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 412,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-fortification rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-arnold , x:protection:ref-friedrich , x:protection:ref-fuersten , x:protection:ref-gembloux ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22779:protection",
+      "objectClaim": "protection",
+      "key": "k28"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Kloster Gembloux (Gemblacensem)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Gebiet um Gembloux"
+     },
+     " und ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Herrschafts- und Schutzrechte (das Befestigungsrecht)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22779:grant-toll-exemption",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22779:grant-toll-exemption",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-toll-exemption",
+     "own": true,
+     "evidence": {
+      "start": 302,
+      "end": 497,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-toll-exemption a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gewährt nach dem Tod Abt Arnulfs das freie Abt- und Vogtwahlrecht, das Befestigungsrecht im Gebiet um Gembloux, die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k29"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:grant-toll-exemption",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:grant-toll-exemption:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-toll-exemption",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 497,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-toll-exemption rf:reference x:grant-toll-exemption:ref-friedrich .\nx:grant-toll-exemption:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bewohner der Stadt Gembloux",
+      "text": "Bewohner der Stadt Gembloux in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22779:grant-toll-exemption",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:grant-toll-exemption:ref-inhabitants"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-toll-exemption",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 497,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-toll-exemption rf:reference x:grant-toll-exemption:ref-inhabitants .\nx:grant-toll-exemption:ref-inhabitants a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G000250:community> ;\n    rf:nameInSource \"Bewohner der Stadt Gembloux\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000250:community"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich)",
+      "triple": [
+       "urn:regesta:22779:grant-toll-exemption",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22779:right-toll-exemption"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-toll-exemption",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 497,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-toll-exemption rf:concerns x:right-toll-exemption .\nx:right-toll-exemption a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich\" .",
+      "object": "urn:regesta:22779:right-toll-exemption",
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22779:grant-toll-exemption",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22779:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-toll-exemption",
+      "own": true,
+      "evidence": {
+       "start": 302,
+       "end": 497,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:grant-toll-exemption rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-arnold , x:protection:ref-friedrich , x:protection:ref-fuersten , x:protection:ref-gembloux ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22779:protection",
+      "objectClaim": "protection",
+      "key": "k33"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Bewohner der Stadt Gembloux"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22779:confirmation-donations",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22779:confirmation-donations",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-donations",
+     "own": true,
+     "evidence": {
+      "start": 502,
+      "end": 585,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-donations a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bekräftigt Abt Arnulf die Schenkungen Kaiser Ottos und Bischof Wilbodos von Lüttich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k34"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:confirmation-donations",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:confirmation-donations:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-donations",
+      "own": true,
+      "evidence": {
+       "start": 502,
+       "end": 585,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-donations rf:reference x:confirmation-donations:ref-friedrich .\nx:confirmation-donations:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k35"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Arnulf",
+      "text": "Abt Arnulf in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22779:confirmation-donations",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:confirmation-donations:ref-arnulf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-donations",
+      "own": true,
+      "evidence": {
+       "start": 502,
+       "end": 585,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-donations rf:reference x:confirmation-donations:ref-arnulf .\nx:confirmation-donations:ref-arnulf a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001272> ;\n    rf:nameInSource \"Abt Arnulf\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001272"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22779:confirmation-donations",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22779:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-donations",
+      "own": true,
+      "evidence": {
+       "start": 502,
+       "end": 585,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-donations rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-arnold , x:protection:ref-friedrich , x:protection:ref-fuersten , x:protection:ref-gembloux ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22779:protection",
+      "objectClaim": "protection",
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schenkung",
+      "text": "bezieht sich auf Schenkung",
+      "triple": [
+       "urn:regesta:22779:confirmation-donations",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22779:donation-otto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-donations",
+      "own": true,
+      "evidence": {
+       "start": 502,
+       "end": 585,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-donations rf:refersToAct x:donation-otto .\nx:donation-otto a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Schenkungen Kaiser Ottos\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:reference x:donation-otto:ref-otto ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22779:donation-otto",
+      "objectClaim": "donation-otto",
+      "key": "k38"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schenkung",
+      "text": "bezieht sich auf Schenkung",
+      "triple": [
+       "urn:regesta:22779:confirmation-donations",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22779:donation-wilbodo"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-donations",
+      "own": true,
+      "evidence": {
+       "start": 502,
+       "end": 585,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:confirmation-donations rf:refersToAct x:donation-wilbodo .\nx:donation-wilbodo a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Schenkungen Kaiser Ottos und Bischof Wilbodos von Lüttich\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:reference x:donation-wilbodo:ref-wilbodo ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22779:donation-wilbodo",
+      "objectClaim": "donation-wilbodo",
+      "key": "k39"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Abt Arnulf"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "Schutznahme"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k38"
+      ],
+      "text": "Schenkung"
+     },
+     " und ",
+     {
+      "keys": [
+       "k39"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22779:donation-otto",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22779:donation-otto",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-otto",
+     "own": true,
+     "evidence": {
+      "start": 524,
+      "end": 552,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:donation-otto a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Schenkungen Kaiser Ottos\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k40"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser Ottos",
+      "text": "Kaiser Ottos in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:donation-otto",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:donation-otto:ref-otto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-otto",
+      "own": true,
+      "evidence": {
+       "start": 524,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:donation-otto rf:reference x:donation-otto:ref-otto .\nx:donation-otto:ref-otto a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-O000392> ;\n    rf:nameInSource \"Kaiser Ottos\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000392"
+      ],
+      "key": "k41"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k40"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k41"
+      ],
+      "text": "Kaiser Ottos"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22779:donation-wilbodo",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22779:donation-wilbodo",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-wilbodo",
+     "own": true,
+     "evidence": {
+      "start": 524,
+      "end": 585,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22779:> .\nx:donation-wilbodo a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22779> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Schenkungen Kaiser Ottos und Bischof Wilbodos von Lüttich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k42"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Wilbodos von Lüttich",
+      "text": "Bischof Wilbodos von Lüttich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22779:donation-wilbodo",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22779:donation-wilbodo:ref-wilbodo"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-wilbodo",
+      "own": true,
+      "evidence": {
+       "start": 524,
+       "end": 585,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22779:> .\nx:donation-wilbodo rf:reference x:donation-wilbodo:ref-wilbodo .\nx:donation-wilbodo:ref-wilbodo a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000497> ;\n    rf:nameInSource \"Bischof Wilbodos von Lüttich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000497"
+      ],
+      "key": "k43"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k42"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k43"
+      ],
+      "text": "Bischof Wilbodos von Lüttich"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 122
+   },
+   {
+    "id": "confirmation-freedom",
+    "start": 70,
+    "end": 171
+   },
+   {
+    "id": "provision-subadvocate",
+    "start": 173,
+    "end": 300
+   },
+   {
+    "id": "t1",
+    "start": 218,
+    "end": 236
+   },
+   {
+    "id": "grant-toll-exemption",
+    "start": 302,
+    "end": 497
+   },
+   {
+    "id": "grant-fortification",
+    "start": 302,
+    "end": 412
+   },
+   {
+    "id": "grant-election",
+    "start": 302,
+    "end": 367
+   },
+   {
+    "id": "t2",
+    "start": 310,
+    "end": 334
+   },
+   {
+    "id": "confirmation-donations",
+    "start": 502,
+    "end": 585
+   },
+   {
+    "id": "donation-wilbodo",
+    "start": 524,
+    "end": 585
+   },
+   {
+    "id": "donation-otto",
+    "start": 524,
+    "end": 552
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Kaiser Ottos' identified with RI004-002-O000392 (Otto I.) by the packet's candidate; which Otto is meant is the register's reading.",
+     "lang": "en"
+    },
+    {
+     "text": "'anderer Fürsten' kept as regest-local group actor.",
+     "lang": "en"
+    },
+    {
+     "text": "'der nach dem König zweite Vogt' kept as local rf:FunctionalActor; register candidate RI004-002-G001360 ('Vogt, Untervogt') not used because it names an office, not an individual.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right types for immunity or freedom from lordship, fortification, or toll exemption; recorded as rv:LordshipRights, rv:LordshipRights and rv:Toll respectively.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for election rights; the joint 'Abt- und Vogtwahlrecht' is typed both rv:ChurchRights and rv:Advocacy on one right node.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the party restricted by a provision; the second Vogt is recorded as rv:Obligor.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The fixing of the Untervogt's rights ('dessen Rechte genau festgelegt werden') has no stated content and is not a separate factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Recipient of the earlier donations of Otto and Wilbodo is not stated in the regest and is left open.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for exemption from tolls and dues.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No right type for freedom from any lordship; rv:LordshipRights is used as a top concept.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "On urn:regesta:22779:right-toll-exemption replaced crm:P2_has_type rv:Toll by rv:UsageRights, label kept, comment added. No factoid was changed, so all producers are kept.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "right-type",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22779:right-toll-exemption",
+     "description": "The node is typed rv:Toll ('Zollrecht'), the right to levy tolls, while the passage grants exemption from all tolls and dues, the opposite relation. A query for toll rights would return this exemption as if the inhabitants held a toll.",
+     "proposal": "Type the node rv:UsageRights (top concept) and report the missing exemption type as model gap.",
+     "quote": {
+      "start": 414,
+      "end": 497
+     }
+    },
+    {
+     "category": "implied-state",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22779:provision-subadvocate",
+     "description": "'der nach dem König zweite Vogt' implies that the king holds the first advocacy; this is not modelled. It is an implication rather than a statement, so leaving it out is defensible.",
+     "proposal": "Leave to expert decision whether a RightHolding (rv:Advocacy) for the ruler should be recorded.",
+     "quote": {
+      "start": 187,
+      "end": 217
+     }
+    },
+    {
+     "category": "relation-misuse",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22779:confirmation-donations",
+     "description": "The confirmations and grants are coordinate acts of the charter rather than provisions of the protection; rf:partOf to the protection overstates their dependence. Applies to all partOf links in this file.",
+     "proposal": "Keep partOf only where a clause is clearly subordinate, or accept it as a project convention.",
+     "quote": {
+      "start": 498,
+      "end": 585
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "Coordinate confirmations and grants are linked by rf:partOf to the protection; drop partOf (22777) or keep only where subordinate (22779).",
+     "reason": "rf:partOf covers 'a provision or secondary act belonging to a main act of the same regest'. The confirmations and grants of one diploma following the protection clause are defensibly secondary dispositions of that act, and the run applies the same pattern in 22780, 22783 and 22788. Dropping the links would leave the parts of one charter unconnected.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "The exemption from tolls is typed rv:Toll, the right to levy tolls.",
+     "reason": "The passage grants 'die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich'. rv:Toll ('Zollrecht') denotes the opposite relation and would return the inhabitants as holders of a toll. The top concept rv:UsageRights is expressible and does not assert a levy right.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Ob die im Text erwähnten Verleihungen Kaiser Ottos und des Bischofs von Lüttich mit dem gefälschten DO. I. 82 und einer Bischofsurkunde von etwa 1018-1021 (Roland a. a. O. 35 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 18) identisch sind, ist nicht eindeutig festzustellen; Konrad III. gewährte dem Kloster einen Wochenmarkt zu Mont-Saint-Guibert, wie wir aus einer Urkunde Herzog Gottfrieds III. von Löwen (Roland a. a. O. 68 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 59) erfahren; ein diesbezügliches Diplom Konrads III. ist nicht erhalten. - Zur Vogtei des Klosters, die dem Herzog von Löwen zustand, vgl. Vollmer, Territorialpolitik, masch. phil. Diss. (Freiburg i. Br. 1951) 268."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift von 1498-1500 im Registre 8 de la Chambre des Comptes f. 392, Staatsarchiv Brüssel (B); Abschriften des 18. Jh. im Inventaire des Archives de l'abbaye de Gembloux p. 210, Staatsarchiv Namur (C), in den Privilegia abbatiae Gemblacensis p. 6 ebenda (D) und in den Extraits des privilèges de l'abbaye de Gembloux n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 2 p. 4 ebenda (E). Drucke: Stumpf, Acta ined. 151 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 122; Roland, Recueil des chartes de Gembloux 62 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 55; MG. DF. I. 42. Reg.: Wauters, Table chronol. 7/1, 258 zu 1153 Dez. 28; Stumpf 3656."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=54"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_42"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-A001272",
+    "Abt von Gembloux"
+   ],
+   [
+    "RI004-002-D000242",
+    "Graf von Flandern"
+   ],
+   [
+    "RI004-002-G000250",
+    "Stadt"
+   ],
+   [
+    "RI004-002-G000251",
+    "(Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-G000822",
+    "Herzog von Brabant, (Nieder)Lothringen und Löwen"
+   ],
+   [
+    "RI004-002-G001360",
+    "Vogt, Untervogt"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000392",
+    "II., Bischof von Lüttich"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000848",
+    "(III.) von Stahleck, Pfalzgraf bei Rhein"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000333",
+    "(I.), Bischof von Worms"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-M001224",
+    "Mont-Saint-Guibert (südöstl. Brüssel, belg. Prov. Wallonisch-Brabant), Wochenmarkt"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000392",
+    "(I., der Große) König und Kaiser"
+   ],
+   [
+    "RI004-002-T000539",
+    "Trier (an der Mosel, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000497",
+    "Wilbodo, Bischof von Lüttich"
+   ]
+  ]
+ }
+}

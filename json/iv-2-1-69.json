@@ -1,0 +1,1653 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-12_1_0_4_2_1_69_69",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22696",
+  "identifier": "RI IV,2,1 n. 69",
+  "short": "RI IV,2,1 n. 69",
+  "sort": "004_002_001_000069_0000000069",
+  "start": "1152-03-12",
+  "end": "1152-03-12",
+  "proseYears": [],
+  "lead": "Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha).",
+  "date": [
+   {
+    "t": "1152 März 12"
+   }
+  ],
+  "place": [
+   {
+    "t": "Aachen"
+   }
+  ],
+  "text": "Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha). Der Bischof oder sein kanonisch gewählter Nachfolger hat das Recht der Investitur des Abtes, die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts geht an die Bamberger Kirche über, wobei dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen; die jährlichen Abgaben an den Fiskus (Ea vero, quę fisco exrinde annuatim solvebantur) fallen künftig an den Bischof, der aber die bisherigen Verpflichtungen des Klosters gegenüber dem Reich übernimmt und für die Bedürfnisse der Abtei sorgt (quatenus episcopus vice abbatis plenius et devotius curię regali deservire et necessitatibus predicti monasterii commodius et uberius providere valeat). Z.: Erzbischof Arnold von Köln, die Bischöfe Hermann von Konstanz, Ortlieb von Basel, Abt Wibald (Gwinebaldvs) von Corvey, Markgraf Albrecht von Sachsen, Markward von Grumbach. - Data per manum Arnoldi canc. vice archicanc. Heinrici Moguntini archiep. ; nach Bamberger Diktat geschrieben vom Bamberger Kleriker Gotebold; SI. 1. Quia placuit altissimo .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 7,
+  "blocks": [
+   {
+    "node": "urn:regesta:22696:oheim",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22696:oheim",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "oheim",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 120,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22696:> .\nx:oheim a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22696:oheim",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-oheim-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 120,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:oheim rf:reference x:ref-oheim-friedrich .\nx:ref-oheim-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22696:oheim",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-oheim-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 120,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:oheim rf:reference x:ref-oheim-konrad .\nx:ref-oheim-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000316> ;\n    rf:nameInSource \"König Konrad III.\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheims",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22696:oheim",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 80,
+       "end": 86,
+       "ambiguous": false
+      },
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "König Konrad III."
+     }
+    ]
+   },
+   {
+    "node": "urn:regesta:22696:schenkung",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22696:schenkung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "schenkung",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 391,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22696:> .\nx:schenkung a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-schenkung-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:schenkung rf:reference x:ref-schenkung-friedrich .\nx:ref-schenkung-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-schenkung-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:schenkung rf:reference x:ref-schenkung-konrad .\nx:ref-schenkung-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000316> ;\n    rf:nameInSource \"König Konrad III.\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhards II. von Bamberg",
+      "text": "Bischof Eberhards II. von Bamberg in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-schenkung-eberhard-bitte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:schenkung rf:reference x:ref-schenkung-eberhard-bitte .\nx:ref-schenkung-eberhard-bitte a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000011> ;\n    rf:nameInSource \"Bischof Eberhards II. von Bamberg\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhards II. von Bamberg",
+      "text": "Bischof Eberhards II. von Bamberg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-schenkung-eberhard"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:schenkung rf:reference x:ref-schenkung-eberhard .\nx:ref-schenkung-eberhard a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000011> ;\n    rf:nameInSource \"diesem\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinen Nachfolgern",
+      "text": "seinen Nachfolgern in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-schenkung-nachfolger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:schenkung rf:reference x:ref-schenkung-nachfolger .\nx:ref-schenkung-nachfolger a rf:Reference ;\n    rf:actor <urn:regesta:actor:22696:local:nachfolger> ;\n    rf:nameInSource \"seinen Nachfolgern\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22696:local:nachfolger"
+      ],
+      "key": "k10",
+      "agentNotes": [
+       {
+        "text": "'seinen Nachfolgern' and 'sein kanonisch gewählter Nachfolger' kept as two separate local functional actors; no identity asserted between them.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die Bamberger Kirche",
+      "text": "die Bamberger Kirche in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-schenkung-kirche"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:schenkung rf:reference x:ref-schenkung-kirche .\nx:ref-schenkung-kirche a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-B000114:community> ;\n    rf:nameInSource \"seiner Kirche\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000114:community"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Reichsabtei Niederaltaich (abbatiam nostram Altaha)",
+      "text": "betrifft Reichsabtei Niederaltaich (abbatiam nostram Altaha)",
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22696:thing-niederaltaich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schenkung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:schenkung rf:concerns x:thing-niederaltaich .\nx:thing-niederaltaich a crm:E18_Physical_Thing ;\n    rdfs:label \"Reichsabtei Niederaltaich (abbatiam nostram Altaha)\" .",
+      "object": "urn:regesta:22696:thing-niederaltaich",
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 18,
+       "end": 139,
+       "ambiguous": false
+      },
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "zur Hebung des religiösen Lebens",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22696:schenkung",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 230,
+       "end": 262,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "König Konrad III."
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Bischof Eberhards II. von Bamberg"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bischof Eberhards II. von Bamberg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "seinen Nachfolgern"
+     },
+     " und ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "die Bamberger Kirche"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Reichsabtei Niederaltaich (abbatiam nostram Altaha)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22696:investitur",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22696:investitur",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "investitur",
+     "own": true,
+     "evidence": {
+      "start": 393,
+      "end": 484,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22696:> .\nx:investitur a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Der Bischof oder sein kanonisch gewählter Nachfolger hat das Recht der Investitur des Abtes\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhards II. von Bamberg",
+      "text": "Bischof Eberhards II. von Bamberg in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22696:investitur",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-investitur-bischof"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur",
+      "own": true,
+      "evidence": {
+       "start": 393,
+       "end": 484,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:investitur rf:reference x:ref-investitur-bischof .\nx:ref-investitur-bischof a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000011> ;\n    rf:nameInSource \"Der Bischof\" ;\n    rf:role rv:RightHolder .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "sein kanonisch gewählter Nachfolger",
+      "text": "sein kanonisch gewählter Nachfolger in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22696:investitur",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-investitur-nachfolger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur",
+      "own": true,
+      "evidence": {
+       "start": 393,
+       "end": 484,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:investitur rf:reference x:ref-investitur-nachfolger .\nx:ref-investitur-nachfolger a rf:Reference ;\n    rf:actor <urn:regesta:actor:22696:local:kanonisch-gewaehlter-nachfolger> ;\n    rf:nameInSource \"sein kanonisch gewählter Nachfolger\" ;\n    rf:role rv:RightHolder .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:22696:local:kanonisch-gewaehlter-nachfolger"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Investiturrecht (das Recht der Investitur des Abtes)",
+      "text": "betrifft Investiturrecht (das Recht der Investitur des Abtes)",
+      "triple": [
+       "urn:regesta:22696:investitur",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22696:right-investitur"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur",
+      "own": true,
+      "evidence": {
+       "start": 393,
+       "end": 484,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:investitur rf:concerns x:right-investitur .\nx:right-investitur a crm:E30_Right ;\n    crm:P2_has_type rv:Investiture ;\n    rdfs:label \"das Recht der Investitur des Abtes\" .",
+      "object": "urn:regesta:22696:right-investitur",
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schenkung",
+      "text": "Teil von Schenkung",
+      "triple": [
+       "urn:regesta:22696:investitur",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22696:schenkung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "investitur",
+      "own": true,
+      "evidence": {
+       "start": 393,
+       "end": 484,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:investitur rf:partOf x:schenkung .\nx:schenkung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:concerns x:thing-niederaltaich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha)\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:ground \"zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken\" , \"zur Hebung des religiösen Lebens\" ;\n    rf:reference x:ref-schenkung-eberhard , x:ref-schenkung-eberhard-bitte , x:ref-schenkung-friedrich , x:ref-schenkung-kirche , x:ref-schenkung-konrad , x:ref-schenkung-nachfolger ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22696:schenkung",
+      "objectClaim": "schenkung",
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Bischof Eberhards II. von Bamberg"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "sein kanonisch gewählter Nachfolger"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Investiturrecht (das Recht der Investitur des Abtes)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22696:vogtei",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22696:vogtei",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vogtei",
+     "own": true,
+     "evidence": {
+      "start": 486,
+      "end": 586,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vogtei a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts geht an die Bamberger Kirche über\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k20"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die Bamberger Kirche",
+      "text": "die Bamberger Kirche in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22696:vogtei",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-vogtei-kirche"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei",
+      "own": true,
+      "evidence": {
+       "start": 486,
+       "end": 586,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vogtei rf:reference x:ref-vogtei-kirche .\nx:ref-vogtei-kirche a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-B000114:community> ;\n    rf:nameInSource \"die Bamberger Kirche\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000114:community"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts)",
+      "text": "betrifft Vogtei (die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts)",
+      "triple": [
+       "urn:regesta:22696:vogtei",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22696:right-vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei",
+      "own": true,
+      "evidence": {
+       "start": 486,
+       "end": 586,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vogtei rf:concerns x:right-vogtei .\nx:right-vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts\" .",
+      "object": "urn:regesta:22696:right-vogtei",
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schenkung",
+      "text": "Teil von Schenkung",
+      "triple": [
+       "urn:regesta:22696:vogtei",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22696:schenkung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei",
+      "own": true,
+      "evidence": {
+       "start": 486,
+       "end": 586,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vogtei rf:partOf x:schenkung .\nx:schenkung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:concerns x:thing-niederaltaich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha)\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:ground \"zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken\" , \"zur Hebung des religiösen Lebens\" ;\n    rf:reference x:ref-schenkung-eberhard , x:ref-schenkung-eberhard-bitte , x:ref-schenkung-friedrich , x:ref-schenkung-kirche , x:ref-schenkung-konrad , x:ref-schenkung-nachfolger ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22696:schenkung",
+      "objectClaim": "schenkung",
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "die Bamberger Kirche"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Vogtei (die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22696:vorbehalt-stipendia",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22696:vorbehalt-stipendia",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vorbehalt-stipendia",
+     "own": true,
+     "evidence": {
+      "start": 588,
+      "end": 686,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vorbehalt-stipendia a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"wobei dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k24"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "dem Abt",
+      "text": "dem Abt in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22696:vorbehalt-stipendia",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-vorbehalt-abt"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorbehalt-stipendia",
+      "own": true,
+      "evidence": {
+       "start": 588,
+       "end": 686,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vorbehalt-stipendia rf:reference x:ref-vorbehalt-abt .\nx:ref-vorbehalt-abt a rf:Reference ;\n    rf:actor <urn:regesta:actor:22696:local:abt> ;\n    rf:nameInSource \"dem Abt\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22696:local:abt"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Mönchen",
+      "text": "den Mönchen in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22696:vorbehalt-stipendia",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-vorbehalt-moenche"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorbehalt-stipendia",
+      "own": true,
+      "evidence": {
+       "start": 588,
+       "end": 686,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vorbehalt-stipendia rf:reference x:ref-vorbehalt-moenche .\nx:ref-vorbehalt-moenche a rf:Reference ;\n    rf:actor <urn:regesta:actor:22696:local:moenche> ;\n    rf:nameInSource \"den Mönchen\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22696:local:moenche"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (ihre Einkünfte (stipendia))",
+      "text": "betrifft Einkünfterecht (ihre Einkünfte (stipendia))",
+      "triple": [
+       "urn:regesta:22696:vorbehalt-stipendia",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22696:right-stipendia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorbehalt-stipendia",
+      "own": true,
+      "evidence": {
+       "start": 588,
+       "end": 686,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vorbehalt-stipendia rf:concerns x:right-stipendia .\nx:right-stipendia a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"ihre Einkünfte (stipendia)\" .",
+      "object": "urn:regesta:22696:right-stipendia",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schenkung",
+      "text": "Teil von Schenkung",
+      "triple": [
+       "urn:regesta:22696:vorbehalt-stipendia",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22696:schenkung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorbehalt-stipendia",
+      "own": true,
+      "evidence": {
+       "start": 588,
+       "end": 686,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:vorbehalt-stipendia rf:partOf x:schenkung .\nx:schenkung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:concerns x:thing-niederaltaich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha)\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:ground \"zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken\" , \"zur Hebung des religiösen Lebens\" ;\n    rf:reference x:ref-schenkung-eberhard , x:ref-schenkung-eberhard-bitte , x:ref-schenkung-friedrich , x:ref-schenkung-kirche , x:ref-schenkung-konrad , x:ref-schenkung-nachfolger ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22696:schenkung",
+      "objectClaim": "schenkung",
+      "key": "k28"
+     },
+     {
+      "kind": "literal",
+      "label": "Ausnahme",
+      "text": "dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22696:vorbehalt-stipendia",
+       "https://example.org/regesta/factoid/exception",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 594,
+       "end": 686,
+       "ambiguous": false
+      },
+      "key": "k29"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Begünstigte ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "dem Abt"
+     },
+     " und ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "den Mönchen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Einkünfterecht (ihre Einkünfte (stipendia))"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22696:abgaben",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22696:abgaben",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "abgaben",
+     "own": true,
+     "evidence": {
+      "start": 688,
+      "end": 804,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22696:> .\nx:abgaben a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die jährlichen Abgaben an den Fiskus (Ea vero, quę fisco exrinde annuatim solvebantur) fallen künftig an den Bischof\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k30"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhards II. von Bamberg",
+      "text": "Bischof Eberhards II. von Bamberg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22696:abgaben",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-abgaben-bischof"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "abgaben",
+      "own": true,
+      "evidence": {
+       "start": 688,
+       "end": 804,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:abgaben rf:reference x:ref-abgaben-bischof .\nx:ref-abgaben-bischof a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000011> ;\n    rf:nameInSource \"den Bischof\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (die jährlichen Abgaben an den Fiskus (Ea vero, quę fisco exrinde annuatim solvebantur))",
+      "text": "betrifft Einkünfterecht (die jährlichen Abgaben an den Fiskus (Ea vero, quę fisco exrinde annuatim solvebantur))",
+      "triple": [
+       "urn:regesta:22696:abgaben",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22696:right-abgaben"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "abgaben",
+      "own": true,
+      "evidence": {
+       "start": 688,
+       "end": 804,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:abgaben rf:concerns x:right-abgaben .\nx:right-abgaben a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"die jährlichen Abgaben an den Fiskus (Ea vero, quę fisco exrinde annuatim solvebantur)\" .",
+      "object": "urn:regesta:22696:right-abgaben",
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schenkung",
+      "text": "Teil von Schenkung",
+      "triple": [
+       "urn:regesta:22696:abgaben",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22696:schenkung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "abgaben",
+      "own": true,
+      "evidence": {
+       "start": 688,
+       "end": 804,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:abgaben rf:partOf x:schenkung .\nx:schenkung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:concerns x:thing-niederaltaich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha)\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:ground \"zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken\" , \"zur Hebung des religiösen Lebens\" ;\n    rf:reference x:ref-schenkung-eberhard , x:ref-schenkung-eberhard-bitte , x:ref-schenkung-friedrich , x:ref-schenkung-kirche , x:ref-schenkung-konrad , x:ref-schenkung-nachfolger ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22696:schenkung",
+      "objectClaim": "schenkung",
+      "key": "k33"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "künftig",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22696:abgaben",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 782,
+       "end": 789,
+       "ambiguous": false
+      },
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Bischof Eberhards II. von Bamberg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Einkünfterecht (die jährlichen Abgaben an den Fiskus (Ea vero, quę fisco exrinde annuatim solvebantur))"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22696:verpflichtungen",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22696:verpflichtungen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "verpflichtungen",
+     "own": true,
+     "evidence": {
+      "start": 793,
+      "end": 928,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22696:> .\nx:verpflichtungen a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Bischof, der aber die bisherigen Verpflichtungen des Klosters gegenüber dem Reich übernimmt und für die Bedürfnisse der Abtei sorgt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k35"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhards II. von Bamberg",
+      "text": "Bischof Eberhards II. von Bamberg in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22696:verpflichtungen",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22696:ref-verpflichtungen-bischof"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "verpflichtungen",
+      "own": true,
+      "evidence": {
+       "start": 793,
+       "end": 928,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:verpflichtungen rf:reference x:ref-verpflichtungen-bischof .\nx:ref-verpflichtungen-bischof a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000011> ;\n    rf:nameInSource \"den Bischof\" ;\n    rf:role rv:Obligor .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Reichsabtei Niederaltaich (abbatiam nostram Altaha)",
+      "text": "betrifft Reichsabtei Niederaltaich (abbatiam nostram Altaha)",
+      "triple": [
+       "urn:regesta:22696:verpflichtungen",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22696:thing-niederaltaich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "verpflichtungen",
+      "own": true,
+      "evidence": {
+       "start": 793,
+       "end": 928,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:verpflichtungen rf:concerns x:thing-niederaltaich .\nx:thing-niederaltaich a crm:E18_Physical_Thing ;\n    rdfs:label \"Reichsabtei Niederaltaich (abbatiam nostram Altaha)\" .",
+      "object": "urn:regesta:22696:thing-niederaltaich",
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schenkung",
+      "text": "Teil von Schenkung",
+      "triple": [
+       "urn:regesta:22696:verpflichtungen",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22696:schenkung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "verpflichtungen",
+      "own": true,
+      "evidence": {
+       "start": 793,
+       "end": 928,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22696:> .\nx:verpflichtungen rf:partOf x:schenkung .\nx:schenkung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;\n    rf:concerns x:thing-niederaltaich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha)\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:ground \"zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken\" , \"zur Hebung des religiösen Lebens\" ;\n    rf:reference x:ref-schenkung-eberhard , x:ref-schenkung-eberhard-bitte , x:ref-schenkung-friedrich , x:ref-schenkung-kirche , x:ref-schenkung-konrad , x:ref-schenkung-nachfolger ;\n    rf:source <urn:regesta:record:22696> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22696:schenkung",
+      "objectClaim": "schenkung",
+      "key": "k38"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Bischof Eberhards II. von Bamberg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "Reichsabtei Niederaltaich (abbatiam nostram Altaha)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k38"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "schenkung",
+    "start": 0,
+    "end": 391
+   },
+   {
+    "id": "oheim",
+    "start": 0,
+    "end": 120
+   },
+   {
+    "id": "t2",
+    "start": 18,
+    "end": 139
+   },
+   {
+    "id": "t1",
+    "start": 80,
+    "end": 86
+   },
+   {
+    "id": "t3",
+    "start": 230,
+    "end": 262
+   },
+   {
+    "id": "investitur",
+    "start": 393,
+    "end": 484
+   },
+   {
+    "id": "vogtei",
+    "start": 486,
+    "end": 586
+   },
+   {
+    "id": "vorbehalt-stipendia",
+    "start": 588,
+    "end": 686
+   },
+   {
+    "id": "t4",
+    "start": 594,
+    "end": 686
+   },
+   {
+    "id": "abgaben",
+    "start": 688,
+    "end": 804
+   },
+   {
+    "id": "t5",
+    "start": 782,
+    "end": 789
+   },
+   {
+    "id": "verpflichtungen",
+    "start": 793,
+    "end": 928
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'den Bischof' (revenue and obligation clauses) identified with RI004-002-E000011 Eberhard; could instead be the office of the bishop of Bamberg as a functional actor.",
+     "lang": "en"
+    },
+    {
+     "text": "'Reichsabtei Niederaltaich' modelled as crm:E18_Physical_Thing (object of the donation) rather than via register candidate RI004-002-N000175, which is typed as a place; the abbey as community is not referenced.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No state type or role for succession in office ('Vorgängers'); Konrad III. as predecessor not recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the person invested (the abbot as object of 'das Recht der Investitur des Abtes').",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No actor role for the party an obligation is owed to ('gegenüber dem Reich'); the Reich and the former recipient 'den Fiskus' are not referenced.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Dependent persons attached to a right ('mit den Ministerialen und Hörigen beiderlei Geschlechts') can only be kept in the right's label.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Memorial motive kept as rf:ground; Konrad III. given rv:Beneficiary as the person commemorated, which is a reading of the memoria formula.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zum Schreiber und zu den Abweichungen von der Kanzleiregel in der Gestaltung des Eschatokolls vgl. Föhl, Eberhard II., MÖIG 50 (1936) 80 ff. und die Vorbemerkung zum D.; das Siegel wurde erst nach der Niederschrift des Eschatokolls aufgedrückt, da es Teile desselben verdeckt, was wohl mit der Anfertigung des endgültigen königlichen Typars zusammenhängt, vgl. Jaffé, Mon. Corb. 506 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 377 und Deér, Siegel (FS. Hahnloser, 1961) 68 f., jetzt: VuF 21 (1977) 214. - Zu dieser Schenkung vgl. Guttenberg, Bistum Bamberg 1, Germ. Sacra 2/1, 152, wo auch auf die Bestätigung durch Eugen III. (JL. 9590) und die späteren DD. F. I. (vgl. Regg. "
+    },
+    {
+     "t": "102",
+     "regest": "22729"
+    },
+    {
+     "t": ", "
+    },
+    {
+     "t": "146",
+     "regest": "22773"
+    },
+    {
+     "t": " und "
+    },
+    {
+     "t": "208"
+    },
+    {
+     "t": ") in dieser Angelegenheit Bezug genommen ist. - Zur Lage des Klosters in dieser Zeit vgl. das Schreiben in der Tegernseer Briefsammlung, Plechl, Studien 4/1, DA 13 (1957) 87 f. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 201. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (2011):"
+    },
+    {
+     "t": " DF.I.69 für Bischof Arducius von Genf ist bei Scalfati, Carte dell’Archivio arcivescovile di Pisa 3, 15 no 8, nach einer im dortigen Archiv überlieferten Kopie des 13. Jh. ediert."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Hauptstaatsarchiv München (A). Drucke: Mon. Boica 11, 164 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 42 und 29"
+    },
+    {
+     "t": "a",
+     "sup": true
+    },
+    {
+     "t": ", 310 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 484 Reg. aus A; MG. DF. I. 3. Faks.: Kaiserurk. in Abb. X, 7b. Reg.: Stumpf 3618."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=27"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg: "
+    },
+    {
+     "t": "Org.",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/10218"
+    },
+    {
+     "t": ", "
+    },
+    {
+     "t": "Kop., 14. Jhd.",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/80159"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. in KUA",
+     "href": "http://geschichte.digitale-sammlungen.de/kaiserurkunden/seite/bsb00009144_00185"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_3"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-3"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000009",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-B000114",
+    "Bischöfliche Kirche, Bistum, Domkirche, Hochstift"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-G000673",
+    "Kleriker von Bamberg, Urkundenschreiber"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-M000513",
+    "(II., der Ältere) von Grumbach (Edelfreier); <i>zu ihm siehe auch oben in der Einleitung, S. 32</i>"
+   ],
+   [
+    "RI004-002-N000175",
+    "Niederaltaich (am Nordufer der Donau, südöstl. Deggendorf, Niederbayern), (Benediktiner-)Reichsabtei"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

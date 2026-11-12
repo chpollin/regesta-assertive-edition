@@ -1,0 +1,1028 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-03-23_1_0_4_2_1_169_169",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22796",
+  "identifier": "RI IV,2,1 n. 169",
+  "short": "RI IV,2,1 n. 169",
+  "sort": "004_002_001_000169_0000000169",
+  "start": "1153-03-23",
+  "end": "1153-03-23",
+  "proseYears": [],
+  "lead": "Friedrich verbrieft Papst Eugen (III.) den Wortlaut des von den beiderseitigen Unterhändlern formulierten Vertrages (Reg. 164), nachdem die noch ausständigen Rechtshandlungen, nämlich die Eidesleistung eines Reichsministerialen in anima regis und die feierliche Zusage des Königs in die Hand des päpstlichen Legaten vollzogen worden sind.",
+  "date": [
+   {
+    "t": "1153 März 23"
+   }
+  ],
+  "place": [
+   {
+    "t": "Konstanz"
+   }
+  ],
+  "text": "Friedrich verbrieft Papst Eugen (III.) den Wortlaut des von den beiderseitigen Unterhändlern formulierten Vertrages (Reg. 164), nachdem die noch ausständigen Rechtshandlungen, nämlich die Eidesleistung eines Reichsministerialen in anima regis und die feierliche Zusage des Königs in die Hand des päpstlichen Legaten vollzogen worden sind. Z.: Erzbischof Arnold von Köln, die Bischöfe Hermann von Konstanz, Anselm von Havelberg, Ardicio von Como, (Adelgoz) von Chur, Abt Wibald von Stablo, Dekan Albert von Köln, Magister Notar Heinrich, der königliche Kapellan Gottfried von Viterbo; von den Laien: Herzog Welf, Markgraf Hermann von Baden, die Grafen Ulrich und Werner von Lenzburg, der Kämmerer und Reichsministeriale Anselm. - Arnoldus canc. ; möglicherweise von A II. C geschrieben und wohl unter seiner und Wibalds Beteiligung verfaßt. Regie maiestatis dignitas .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22796:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22796:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 115,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22796:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22796> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verbrieft Papst Eugen (III.) den Wortlaut des von den beiderseitigen Unterhändlern formulierten Vertrages\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22796:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 115,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22796:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 115,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Verhandlung",
+      "text": "bezieht sich auf Verhandlung",
+      "triple": [
+       "urn:regesta:22796:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22796:treaty-negotiation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 115,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:confirmation rf:refersToAct x:treaty-negotiation .\nx:treaty-negotiation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verbrieft Papst Eugen (III.)\" ] , [ a oa:TextQuoteSelector ; oa:exact \"des von den beiderseitigen Unterhändlern formulierten Vertrages\" ] ;\n    rf:factoidType rv:Negotiation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22796:local:unterhaendler> ; rf:nameInSource \"beiderseitigen Unterhändlern\" ; rf:role rv:Negotiator ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22796> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22796:treaty-negotiation",
+      "objectClaim": "treaty-negotiation",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Verhandlung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22796:treaty-negotiation",
+    "kind": "act",
+    "title": "Verhandlung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verhandlung",
+     "text": "Verhandlung",
+     "triple": [
+      "urn:regesta:22796:treaty-negotiation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Negotiation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "treaty-negotiation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 38,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22796:> .\nx:treaty-negotiation a rf:ActFactoid ;\n    rf:factoidType rv:Negotiation ;\n    rf:source <urn:regesta:record:22796> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verbrieft Papst Eugen (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22796:treaty-negotiation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treaty-negotiation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 38,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:treaty-negotiation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22796:treaty-negotiation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treaty-negotiation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 38,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:treaty-negotiation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "beiderseitigen Unterhändlern",
+      "text": "beiderseitigen Unterhändlern in der Rolle Verhandelnder",
+      "triple": [
+       "urn:regesta:22796:treaty-negotiation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treaty-negotiation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 38,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:treaty-negotiation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22796:local:unterhaendler> ; rf:nameInSource \"beiderseitigen Unterhändlern\" ; rf:role rv:Negotiator ] .",
+      "role": "Verhandelnder",
+      "actors": [
+       "urn:regesta:actor:22796:local:unterhaendler"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22796:treaty-negotiation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "treaty-negotiation-2",
+      "own": true,
+      "evidence": {
+       "start": 52,
+       "end": 115,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:treaty-negotiation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"des von den beiderseitigen Unterhändlern formulierten Vertrages\" ] .",
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5",
+       "k9"
+      ],
+      "text": "Verhandlung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k6",
+       "k9"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k7",
+       "k9"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     ", als Verhandelnder ",
+     {
+      "keys": [
+       "k8",
+       "k9"
+      ],
+      "text": "beiderseitigen Unterhändlern"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22796:oath",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22796:oath",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "oath",
+     "own": true,
+     "evidence": {
+      "start": 184,
+      "end": 242,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22796:> .\nx:oath a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22796> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Eidesleistung eines Reichsministerialen in anima regis\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "eines Reichsministerialen",
+      "text": "eines Reichsministerialen in der Rolle Vertreter",
+      "triple": [
+       "urn:regesta:22796:oath",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "oath",
+      "own": true,
+      "evidence": {
+       "start": 184,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:oath rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22796:local:reichsministeriale> ; rf:nameInSource \"eines Reichsministerialen\" ; rf:role rv:Representative ] .",
+      "role": "Vertreter",
+      "actors": [
+       "urn:regesta:actor:22796:local:reichsministeriale"
+      ],
+      "key": "k11",
+      "agentNotes": [
+       {
+        "text": "The imperial ministerial who swore 'in anima regis' is unnamed; not identified with the Kämmerer und Reichsministeriale Anselm of the witness list.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22796:oath",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "oath",
+      "own": true,
+      "evidence": {
+       "start": 184,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:oath rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"regis\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "in anima regis",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22796:oath",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 228,
+       "end": 242,
+       "ambiguous": false
+      },
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nachdem",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22796:oath",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 128,
+       "end": 135,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Zusicherung"
+     },
+     ", als Vertreter ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "eines Reichsministerialen"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22796:promise",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22796:promise",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "promise",
+     "own": true,
+     "evidence": {
+      "start": 247,
+      "end": 315,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22796:> .\nx:promise a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22796> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die feierliche Zusage des Königs in die Hand des päpstlichen Legaten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-41> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22796:promise",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise",
+      "own": true,
+      "evidence": {
+       "start": 247,
+       "end": 315,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:promise rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"des Königs\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des päpstlichen Legaten",
+      "text": "des päpstlichen Legaten in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22796:promise",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise",
+      "own": true,
+      "evidence": {
+       "start": 247,
+       "end": 315,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22796:> .\nx:promise rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22796:local:paepstlicher-legat> ; rf:nameInSource \"des päpstlichen Legaten\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22796:local:paepstlicher-legat"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "feierliche",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22796:promise",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 251,
+       "end": 261,
+       "ambiguous": false
+      },
+      "key": "k18"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nachdem",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22796:promise",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 128,
+       "end": 135,
+       "ambiguous": false
+      },
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "des päpstlichen Legaten"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 115
+   },
+   {
+    "id": "treaty-negotiation",
+    "start": 0,
+    "end": 38
+   },
+   {
+    "id": "treaty-negotiation-2",
+    "start": 52,
+    "end": 115
+   },
+   {
+    "id": "t2",
+    "start": 128,
+    "end": 135
+   },
+   {
+    "id": "t4",
+    "start": 128,
+    "end": 135
+   },
+   {
+    "id": "oath",
+    "start": 184,
+    "end": 242
+   },
+   {
+    "id": "t1",
+    "start": 228,
+    "end": 242
+   },
+   {
+    "id": "promise",
+    "start": 247,
+    "end": 315
+   },
+   {
+    "id": "t3",
+    "start": 251,
+    "end": 261
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "The papal legate is unnamed; kept as a functional actor.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No property for a cross-reference to another regest ('Reg. 164'); omitted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No relation type for preconditions fulfilled before an act ('nachdem ... vollzogen worden sind'); the oath and promise are linked from the confirmation with rf:refersToAct and carry the qualifier 'nachdem'.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The oath sworn on the king's behalf is modelled as rv:Assurance with the ministerial as Representative and the king (nameInSource 'regis') as Grantor; no oath act type exists.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "rv:Negotiation for the treaty drafted by negotiators of both sides; no act type for treaty conclusion distinct from negotiation.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No relation or property for a fulfilled precondition between acts ('nachdem ... vollzogen worden sind').",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for an agreement or treaty; Negotiation explicitly excludes conclusion.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the principal on whose behalf an oath is sworn.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "urn:regesta:22796:confirmation: rf:refersToAct reduced to <urn:regesta:22796:treaty-negotiation>; oath and promise removed; comment added explaining why.",
+     "lang": "en"
+    },
+    {
+     "text": "urn:regesta:22796:treaty-negotiation: added selector \"Friedrich verbrieft Papst Eugen (III.)\" and two rv:Participant references (Friedrich, nameInSource \"Friedrich\"; RI004-002-E000589, nameInSource \"Papst Eugen (III.)\"); rv:Negotiation and the negotiators' reference kept.",
+     "lang": "en"
+    },
+    {
+     "text": "urn:regesta:22796:oath: role of the reference to RI004-002-F000471 (nameInSource \"regis\") changed from rv:Grantor to rv:Participant; rf:qualifier \"in anima regis\" and \"nachdem\" kept.",
+     "lang": "en"
+    },
+    {
+     "text": "The three changed factoids are attributed to the corrector; urn:regesta:22796:promise unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "relation-misuse",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22796:confirmation",
+     "description": "The confirmation points with rf:refersToAct to the oath and the promise as if it confirmed them. The regest gives them as preconditions completed before the issuance ('nachdem ... vollzogen worden sind'); the object of the issuance is the treaty text only. The temporal precondition is thereby turned into an object of confirmation.",
+     "proposal": "Keep rf:refersToAct only to urn:regesta:22796:treaty-negotiation; record the precondition on the confirmation as rf:qualifier (or rf:condition) with the exact wording 'nachdem die noch ausständigen Rechtshandlungen ... vollzogen worden sind' and report the missing precondition relation as a model gap.",
+     "quote": {
+      "start": 128,
+      "end": 337
+     }
+    },
+    {
+     "category": "omitted-actor",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22796:treaty-negotiation",
+     "description": "The treaty factoid names only the negotiators as one functional actor. 'beiderseitigen' marks two sides, Friedrich and Pope Eugen, who are the parties of the treaty; neither is referenced, so the earlier act is detached from its parties.",
+     "proposal": "Add references to Friedrich and urn:regesta:actor:RI004-002-E000589 with rv:Participant (or rv:Negotiator for the sides) on the treaty factoid, supported by the evidence 'Friedrich verbrieft Papst Eugen (III.)'.",
+     "quote": {
+      "start": 52,
+      "end": 115
+     }
+    },
+    {
+     "category": "type-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22796:treaty-negotiation",
+     "description": "A formulated treaty text is more than a negotiation, while rv:Negotiation explicitly denies a conclusion. The vocabulary has no type for an agreement or treaty; Negotiation is the most cautious available choice.",
+     "proposal": "Keep for this contract; record the missing agreement/treaty act type.",
+     "quote": {
+      "start": 93,
+      "end": 115
+     }
+    },
+    {
+     "category": "role-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22796:oath",
+     "description": "Friedrich carries rv:Grantor in an oath sworn by a ministerial on the king's soul. The king is the principal bound by the oath, not a grantor; the vocabulary offers no principal role.",
+     "proposal": "Consider rv:Obligor for the king or record the missing principal role as a model gap.",
+     "quote": {
+      "start": 184,
+      "end": 242
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The confirmation points with rf:refersToAct to the oath and the promise, which the regest gives as completed preconditions, not as objects of the confirmation.",
+     "reason": "The object of 'Friedrich verbrieft Papst Eugen (III.) den Wortlaut des ... Vertrages' is the treaty text only; the oath and the promise stand in the temporal clause 'nachdem die noch ausständigen Rechtshandlungen ... vollzogen worden sind'. rf:refersToAct to them reads as if the charter confirmed them. Their temporal relation is already kept by rf:qualifier \"nachdem\" on both factoids, so no new literal is needed.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The treaty factoid names only the negotiators; the two sides marked by 'beiderseitigen', Friedrich and Pope Eugen, are not referenced.",
+     "reason": "'des von den beiderseitigen Unterhändlern formulierten Vertrages' marks two sides, and the same sentence names the two parties between whom the charter passes ('Friedrich verbrieft Papst Eugen (III.)'). Their exact function in the treaty is not stated, so only rv:Participant is safe; rv:Negotiator stays with the negotiators.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "rv:Negotiation denies a conclusion, but a formulated treaty is more than a negotiation; no agreement type exists.",
+     "reason": "The vocabulary has no act type for an agreement or treaty; rv:Negotiation is the most cautious available type for 'formulierten Vertrages'. No correction.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Friedrich carries rv:Grantor in an oath sworn by a ministerial on the king's soul.",
+     "reason": "In 'die Eidesleistung eines Reichsministerialen in anima regis' the king neither transfers, confirms, grants nor enacts, so rv:Grantor misstates his part. rv:Obligor would add the legal reading that the oath binds the king; the safe fix is rv:Participant, and the principal role is recorded as a model gap.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Das Fehlen des Namens des Bischofs von Chur muß nicht unbedingt auf den Kopisten zurückgehen, da wir solchen Fällen auch bei Originalen begegnen. Die irrige Zeitangabe könnte auf ein Versehen des Notars zurückgehen. Sie muß nicht auf eine uneinheitliche Datierung hinweisen; vgl. Rassow, a. a. O. 49. Gegen Zatschek, Beiträge, SB. Wien 210/3 (1930) 7 ff., der die geringfügigen Änderungen im Text gegenüber dem Vorvertrag (Reg. "
+    },
+    {
+     "t": "164",
+     "regest": "22791"
+    },
+    {
+     "t": ") für politisch besonders bedeutend hielt, vgl. Güterbock, Nachrichten, NA 49 (1932) 583. Gerade die Änderung des Königs- in den Kaisertitel deutet aber auf eine Mitwirkung Wibalds hin, vgl. Herkenrath, Regnum und Imperium, SB. Wien 264/5 (1969) 30 ff., jetzt: WdF 390 (1975) 331 ff. Zum Konstanzer Vertrag vgl. Rassow, Honor imperii 45 ff.; Grundmann, Rezension von: Peter Rassow, Honor imperii, WdF 390 (1975) 26 ff., Maccarrone, Papato e impero 41 ff. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (1991):"
+    },
+    {
+     "t": " Nach Herkenrath, Legastheniker, AfD 33 (1987) 281 ff. stammt die Schrift von A II. D."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift von 1188/89 in der Collectio Albini, Cod. Ottobonian. lat. 3057 f. 138 (B); Abschrift von 1192 im Liber Censuum des Cencius, Cod. Vat. lat. 8486 f. 105 (C); Transsumpt, angelegt auf dem Konzil von Lyon 1245 (Rouleaux de Cluny II), Cod. lat. 8989 der Nationalbibliothek Paris (D). Drucke: MG. Const. 1, 202 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 145; Maccarrone, Papato e impero 50; Rassow, Honor imperii 117; MG. DF. I. 52. Reg.: Batelli, I Transunti di Lione del 1245, MIÖG 62 (1954) 349; Stumpf 3664. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze ("
+    },
+    {
+     "t": "2018",
+     "href": "http://opac.regesta-imperii.de/id/3015692"
+    },
+    {
+     "t": ")"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Zum Konstanzer Vertrag mit Papst Eugen III. vgl. jetzt auch "
+    },
+    {
+     "t": "Petersohn, Kaisertum und Rom",
+     "href": "http://opac.regesta-imperii.de/id/1558347"
+    },
+    {
+     "t": ", 131‒147."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=61"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_52"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000110",
+    "Propst von Aachen, zugleich Domdekan von Köln"
+   ],
+   [
+    "RI004-002-A000285",
+    "Bischof von Chur"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A000953",
+    "von Speyer, Reichsministeriale und Kämmerer Friedrich Barbarossas (<i>ob identisch mit dem Vorigen?</i>)"
+   ],
+   [
+    "RI004-002-A001103",
+    "Bischof von Como"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-G000795",
+    "von Viterbo, Kapellan Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-H000843",
+    "(III.), Markgraf von Baden und Verona (gest. 1160)"
+   ],
+   [
+    "RI004-002-K000577",
+    "Konstanz (am Bodensee, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000328",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

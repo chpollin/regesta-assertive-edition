@@ -1,0 +1,1187 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-06-00_1_0_4_2_1_182_182",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22809",
+  "identifier": "RI IV,2,1 n. 182",
+  "short": "RI IV,2,1 n. 182",
+  "sort": "004_002_001_000182_0000000182",
+  "start": "1153-06-01",
+  "end": "1153-06-30",
+  "proseYears": [],
+  "lead": "Friedrich belehnt den Edlen Silvius von Clerieux (Clariaco) und dessen Erben mit der Burg Clérieux sowie mit Charmagnieu (Charamaneum) samt dazugehörigen Zöllen und Weggeldern und den anderen Gütern, die er vom Reich besitzt, unter Vorbehalt der Gerechtsame des Reiches und gegen Erfüllung seiner Verpflichtungen zur Heeresfolge und zum Hofdienst (servitium tam in militia quam in curia, quale debent casati nostri, qui similia beneficia a nobis habent) und bestimmt, daß die Mannschaft ausschließlich ihm und seinen Nachfolgenrn zu leisten sei.",
+  "date": [
+   {
+    "t": "1153 (Juni)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Worms"
+   }
+  ],
+  "text": "Friedrich belehnt den Edlen Silvius von Clerieux (Clariaco) und dessen Erben mit der Burg Clérieux sowie mit Charmagnieu (Charamaneum) samt dazugehörigen Zöllen und Weggeldern und den anderen Gütern, die er vom Reich besitzt, unter Vorbehalt der Gerechtsame des Reiches und gegen Erfüllung seiner Verpflichtungen zur Heeresfolge und zum Hofdienst (servitium tam in militia quam in curia, quale debent casati nostri, qui similia beneficia a nobis habent) und bestimmt, daß die Mannschaft ausschließlich ihm und seinen Nachfolgenrn zu leisten sei. Z.: Erzbischof Arnold von Köln, die Bischöfe Konrad von Augsburg, Burchard von Straßburg, Gunther von Speyer und Konrad von Worms, Abt Wibald von Stablo, die Herzoge Friedrich von Schwaben und Elsaß, der Sohn Kaiser (!) Konrads III., Heinrich von Sachsen, Pfalzgraf Hermann bei Rhein, die Grafen Ulrich von Lenzburg, Werner von Baden (Bathena) und Amadeus von Genf, Guigo von Domène und Peter von Vinay (Vinaico). - Arnoldus Maguntine sedis archiep. et regie curie canc. ; unter Verwendung von DK. III. 132, das vermutlich von Wibald für den Entwurf dieses Diploms herangezogen wurde, von einem Deutschen mundiert; war mit einer Goldbulle besiegelt. Principalem munificentiam decet .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22809:belehnung",
+    "kind": "act",
+    "title": "Belehnung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Belehnung",
+     "text": "Belehnung",
+     "triple": [
+      "urn:regesta:22809:belehnung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enfeoffment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "belehnung",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 224,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22809:> .\nx:belehnung a rf:ActFactoid ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:source <urn:regesta:record:22809> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich belehnt den Edlen Silvius von Clerieux (Clariaco) und dessen Erben mit der Burg Clérieux sowie mit Charmagnieu (Charamaneum) samt dazugehörigen Zöllen und Weggeldern und den anderen Gütern, die er vom Reich besitzt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "belehnung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:belehnung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Silvius von Clerieux",
+      "text": "Silvius von Clerieux in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "belehnung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:belehnung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000784> ; rf:nameInSource \"Silvius von Clerieux\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000784"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "dessen Erben",
+      "text": "dessen Erben in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "belehnung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:belehnung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22809:local:erben> ; rf:nameInSource \"dessen Erben\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22809:local:erben"
+      ],
+      "key": "k4",
+      "agentNotes": [
+       {
+        "text": "'dessen Erben' and 'seinen Nachfolgenrn' kept as regest-local functional actors",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den anderen Gütern, die er vom Reich besitzt",
+      "text": "betrifft den anderen Gütern, die er vom Reich besitzt",
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22809:andere-gueter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "belehnung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:belehnung rf:concerns x:andere-gueter .\nx:andere-gueter a crm:E18_Physical_Thing ;\n    rdfs:label \"den anderen Gütern, die er vom Reich besitzt\" .",
+      "object": "urn:regesta:22809:andere-gueter",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Burg Clérieux",
+      "text": "betrifft Burg Clérieux",
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22809:burg-clerieux"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "belehnung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:belehnung rf:concerns x:burg-clerieux .\nx:burg-clerieux a crm:E18_Physical_Thing ;\n    rdfs:label \"Burg Clérieux\" .",
+      "object": "urn:regesta:22809:burg-clerieux",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Charmagnieu",
+      "text": "betrifft Charmagnieu",
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22809:charmagnieu"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "belehnung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:belehnung rf:concerns x:charmagnieu .\nx:charmagnieu a crm:E18_Physical_Thing ;\n    rdfs:label \"Charmagnieu\" .",
+      "object": "urn:regesta:22809:charmagnieu",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Zollrecht (dazugehörigen Zöllen und Weggeldern)",
+      "text": "betrifft Zollrecht (dazugehörigen Zöllen und Weggeldern)",
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22809:zoelle"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "belehnung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:belehnung rf:concerns x:zoelle .\nx:zoelle a crm:E30_Right ;\n    crm:P2_has_type rv:Toll ;\n    rdfs:label \"dazugehörigen Zöllen und Weggeldern\" .",
+      "object": "urn:regesta:22809:zoelle",
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "gegen Erfüllung seiner Verpflichtungen zur Heeresfolge und zum Hofdienst",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 274,
+       "end": 346,
+       "ambiguous": false
+      },
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Ausnahme",
+      "text": "unter Vorbehalt der Gerechtsame des Reiches",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22809:belehnung",
+       "https://example.org/regesta/factoid/exception",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 226,
+       "end": 269,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Belehnung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Silvius von Clerieux"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "dessen Erben"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "den anderen Gütern, die er vom Reich besitzt"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Burg Clérieux"
+     },
+     ", ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Charmagnieu"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Zollrecht (dazugehörigen Zöllen und Weggeldern)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22809:mannschaft",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22809:mannschaft",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mannschaft",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 17,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22809:> .\nx:mannschaft a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22809> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich belehnt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22809:mannschaft",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mannschaft",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 17,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:mannschaft rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22809:mannschaft",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mannschaft",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 17,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:mannschaft rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihm\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinen Nachfolgenrn",
+      "text": "seinen Nachfolgenrn in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22809:mannschaft",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mannschaft",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 17,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:mannschaft rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22809:local:nachfolger> ; rf:nameInSource \"seinen Nachfolgenrn\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22809:local:nachfolger"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Belehnung",
+      "text": "Teil von Belehnung",
+      "triple": [
+       "urn:regesta:22809:mannschaft",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22809:belehnung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mannschaft",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 17,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:mannschaft rf:partOf x:belehnung .\nx:belehnung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:concerns x:andere-gueter , x:burg-clerieux , x:charmagnieu , x:zoelle ;\n    rf:condition \"gegen Erfüllung seiner Verpflichtungen zur Heeresfolge und zum Hofdienst\" ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich belehnt den Edlen Silvius von Clerieux (Clariaco) und dessen Erben mit der Burg Clérieux sowie mit Charmagnieu (Charamaneum) samt dazugehörigen Zöllen und Weggeldern und den anderen Gütern, die er vom Reich besitzt\" ] ;\n    rf:exception \"unter Vorbehalt der Gerechtsame des Reiches\" ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22809:local:erben> ; rf:nameInSource \"dessen Erben\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000784> ; rf:nameInSource \"Silvius von Clerieux\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22809> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22809:belehnung",
+      "objectClaim": "belehnung",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22809:mannschaft",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mannschaft-2",
+      "own": true,
+      "evidence": {
+       "start": 458,
+       "end": 544,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:mannschaft rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestimmt, daß die Mannschaft ausschließlich ihm und seinen Nachfolgenrn zu leisten sei\" ] .",
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "ausschließlich",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22809:mannschaft",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 487,
+       "end": 501,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11",
+       "k16"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12",
+       "k16"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigte ",
+     {
+      "keys": [
+       "k13",
+       "k16"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14",
+       "k16"
+      ],
+      "text": "seinen Nachfolgenrn"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k15",
+       "k16"
+      ],
+      "text": "Belehnung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22809:besitz-vom-reich",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22809:besitz-vom-reich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "besitz-vom-reich",
+     "own": true,
+     "evidence": {
+      "start": 28,
+      "end": 48,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22809:> .\nx:besitz-vom-reich a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22809> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Silvius von Clerieux\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Silvius von Clerieux",
+      "text": "Silvius von Clerieux in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22809:besitz-vom-reich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "besitz-vom-reich",
+      "own": true,
+      "evidence": {
+       "start": 28,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:besitz-vom-reich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000784> ; rf:nameInSource \"Silvius von Clerieux\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000784"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den anderen Gütern, die er vom Reich besitzt",
+      "text": "betrifft den anderen Gütern, die er vom Reich besitzt",
+      "triple": [
+       "urn:regesta:22809:besitz-vom-reich",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22809:andere-gueter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "besitz-vom-reich",
+      "own": true,
+      "evidence": {
+       "start": 28,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:besitz-vom-reich rf:concerns x:andere-gueter .\nx:andere-gueter a crm:E18_Physical_Thing ;\n    rdfs:label \"den anderen Gütern, die er vom Reich besitzt\" .",
+      "object": "urn:regesta:22809:andere-gueter",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22809:besitz-vom-reich",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "besitz-vom-reich-2",
+      "own": true,
+      "evidence": {
+       "start": 180,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:besitz-vom-reich rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den anderen Gütern, die er vom Reich besitzt\" ] .",
+      "key": "k21"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "vom Reich",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22809:besitz-vom-reich",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 207,
+       "end": 216,
+       "ambiguous": false
+      },
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18",
+       "k21"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k19",
+       "k21"
+      ],
+      "text": "Silvius von Clerieux"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k20",
+       "k21"
+      ],
+      "text": "den anderen Gütern, die er vom Reich besitzt"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22809:dienstpflicht",
+    "kind": "state",
+    "title": "Verpflichtung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verpflichtung",
+     "text": "Verpflichtung",
+     "triple": [
+      "urn:regesta:22809:dienstpflicht",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Obligation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "dienstpflicht",
+     "own": true,
+     "evidence": {
+      "start": 28,
+      "end": 48,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22809:> .\nx:dienstpflicht a rf:StateFactoid ;\n    rf:factoidType rv:Obligation ;\n    rf:source <urn:regesta:record:22809> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Silvius von Clerieux\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k23"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Silvius von Clerieux",
+      "text": "Silvius von Clerieux in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22809:dienstpflicht",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dienstpflicht",
+      "own": true,
+      "evidence": {
+       "start": 28,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:dienstpflicht rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000784> ; rf:nameInSource \"Silvius von Clerieux\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000784"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Belehnung",
+      "text": "Teil von Belehnung",
+      "triple": [
+       "urn:regesta:22809:dienstpflicht",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22809:belehnung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dienstpflicht",
+      "own": true,
+      "evidence": {
+       "start": 28,
+       "end": 48,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:dienstpflicht rf:partOf x:belehnung .\nx:belehnung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:concerns x:andere-gueter , x:burg-clerieux , x:charmagnieu , x:zoelle ;\n    rf:condition \"gegen Erfüllung seiner Verpflichtungen zur Heeresfolge und zum Hofdienst\" ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich belehnt den Edlen Silvius von Clerieux (Clariaco) und dessen Erben mit der Burg Clérieux sowie mit Charmagnieu (Charamaneum) samt dazugehörigen Zöllen und Weggeldern und den anderen Gütern, die er vom Reich besitzt\" ] ;\n    rf:exception \"unter Vorbehalt der Gerechtsame des Reiches\" ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22809:local:erben> ; rf:nameInSource \"dessen Erben\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000784> ; rf:nameInSource \"Silvius von Clerieux\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22809> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22809:belehnung",
+      "objectClaim": "belehnung",
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22809:dienstpflicht",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dienstpflicht-2",
+      "own": true,
+      "evidence": {
+       "start": 274,
+       "end": 453,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22809:> .\nx:dienstpflicht rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gegen Erfüllung seiner Verpflichtungen zur Heeresfolge und zum Hofdienst (servitium tam in militia quam in curia, quale debent casati nostri, qui similia beneficia a nobis habent)\" ] .",
+      "key": "k26"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k23",
+       "k26"
+      ],
+      "text": "Verpflichtung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k24",
+       "k26"
+      ],
+      "text": "Silvius von Clerieux"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k25",
+       "k26"
+      ],
+      "text": "Belehnung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "belehnung",
+    "start": 0,
+    "end": 224
+   },
+   {
+    "id": "mannschaft",
+    "start": 0,
+    "end": 17
+   },
+   {
+    "id": "besitz-vom-reich",
+    "start": 28,
+    "end": 48
+   },
+   {
+    "id": "dienstpflicht",
+    "start": 28,
+    "end": 48
+   },
+   {
+    "id": "besitz-vom-reich-2",
+    "start": 180,
+    "end": 224
+   },
+   {
+    "id": "t4",
+    "start": 207,
+    "end": 216
+   },
+   {
+    "id": "t2",
+    "start": 226,
+    "end": 269
+   },
+   {
+    "id": "dienstpflicht-2",
+    "start": 274,
+    "end": 453
+   },
+   {
+    "id": "t1",
+    "start": 274,
+    "end": 346
+   },
+   {
+    "id": "mannschaft-2",
+    "start": 458,
+    "end": 544
+   },
+   {
+    "id": "t3",
+    "start": 487,
+    "end": 501
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'er' in 'die er vom Reich besitzt' read as Silvius, not Friedrich; the possession factoid rests on that reading",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type or act concept for Mannschaft (homage, hominium); the enactment carries no rf:concerns for it, and the vassal who owes homage is implicit and not referenced",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Holding goods 'vom Reich' has no actor for the Reich as lord; recorded as Possession with qualifier instead of FeudalRelationship",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Kinship 'der Sohn Kaiser (!) Konrads III.' stands in the witness list and was skipped per guidelines",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role-precision",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22809:mannschaft",
+     "description": "The provision names to whom homage is due (Friedrich and his successors, as rv:Beneficiary) but not who owes it; Silvius as the party bound to homage is missing. rv:Lord for Friedrich and rv:Vassal for Silvius would state the intended relation more precisely.",
+     "proposal": "Add Silvius with rv:Obligor or rv:Vassal; consider rv:Lord for Friedrich and the successors.",
+     "quote": {
+      "start": 458,
+      "end": 544
+     }
+    },
+    {
+     "category": "state-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22809:besitz-vom-reich",
+     "description": "'die er vom Reich besitzt' describes holding from the Reich, which is closer to rv:FeudalRelationship than plain rv:Possession; the qualifier 'vom Reich' keeps the wording, so nothing is lost.",
+     "proposal": "Optionally retype as rv:FeudalRelationship with a local Reich actor as rv:Lord.",
+     "quote": {
+      "start": 180,
+      "end": 224
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "Silvius as the party owing homage is missing; rv:Lord and rv:Vassal proposed.",
+     "reason": "'bestimmt, daß die Mannschaft ausschließlich ihm und seinen Nachfolgenrn zu leisten sei' names only to whom homage is due, not who owes it; adding Silvius as Obligor or Vassal would supply an unstated party. rv:Beneficiary for the ruler is defensible for an enactment.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "'die er vom Reich besitzt' could be retyped as rv:FeudalRelationship.",
+     "reason": "The passage says 'besitzt', not 'zu Lehen trägt'; rv:Possession follows the wording and rf:qualifier \"vom Reich\" keeps the source of the holding.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die von Hirsch, Urkundenfälschungen (Forsch. zur Gesch. d. deutschen Kaiserzeit 1, 1937) 112 ff., geäußerten Bedenken gegen die Echtheit hat Brumm, Zur Frage der Echtheit, MIÖG 57 (1949) 287 ff. und 303 f., entkräftet. Hugo von Baux wandte sich in den Auseinandersetzungen mit dem Grafen von Barcelona an Wibald mit der Bitte, für ihn beim König einzutreten (Jaffé, Mon. Corb. 565 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 428 zu 1153, Reg. "
+    },
+    {
+     "t": "183",
+     "regest": "22810"
+    },
+    {
+     "t": "). Es ist anzunehmen, daß eine in Worms anwesende Gesandtschaft des Edlen von Baux DK. III. 132 vorlegte, das Wibald als Vorlage für den Entwurf des gleichzeitig erbetenen Diploms für den Edlen von Clérieux verwendete. Zur in der Datierung erwähnten Wahl Arnolds zum Erzbischof von Mainz, die während des Wormser Aufenthaltes erfolgte, vgl. auch Schöntag, Mainz (Qu. u. Forsch. zur hess. Gesch. 22, 1973) 21. - Zu 'Kaiser' Konrad III. Herkenrath, in: WdF 390 (1975) 335."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Notarielle Abschrift von 1430 März 21, Departementalarchiv Grenoble (D); Abschrift von 1669 (aus einem Vidimus von 1345 März 18) im Schloßarchiv S. Vallier, Drôme (E); Abschrift (17. Jh.) in documents manuser. de Guy Allard 8, f. 561 in der Stadtbibliothek Grenoble (F). Drucke: Stumpf, Acta ined. 481 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 388; MG. DF. I. 61. Reg.: Chevalier Reg. Dauphinois 1, Sp. 659 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 3940 zu Juni 7; Stumpf 3676 und S. 544."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=67"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_61"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000775",
+    "Graf von Genf"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-B000184",
+    "Graf(en)"
+   ],
+   [
+    "RI004-002-B001563",
+    "Bischof von Straßburg"
+   ],
+   [
+    "RI004-002-C000571",
+    "Charmagnieu (<i>wohl:</i> abgekommen, an der Isère, nördl. Valence, Dép. Drôme)"
+   ],
+   [
+    "RI004-002-C000762",
+    "Burg"
+   ],
+   [
+    "RI004-002-F000682",
+    "(IV.), Herzog von Elsass, Rothenburg und Schwaben, Sohn König Konrads III., Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-G001262",
+    "von Domène"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000848",
+    "(III.) von Stahleck, Pfalzgraf bei Rhein"
+   ],
+   [
+    "RI004-002-H001329",
+    "Edler von Baux"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000322",
+    "Bischof von Augsburg, vorher (Dom)Dekan von Konstanz (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-K000333",
+    "(I.), Bischof von Worms"
+   ],
+   [
+    "RI004-002-P000467",
+    "von Vinay"
+   ],
+   [
+    "RI004-002-S000784",
+    "Edler von Clérieux"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000325",
+    "Graf von Baden"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000818",
+    "Worms (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

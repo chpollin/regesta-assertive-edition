@@ -1,0 +1,1574 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-10-16_1_0_4_2_1_137_137",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22764",
+  "identifier": "RI IV,2,1 n. 137",
+  "short": "RI IV,2,1 n. 137",
+  "sort": "004_002_001_000137_0000000137",
+  "start": "1152-10-16",
+  "end": "1152-10-16",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Abt Hugo von S. Remi zu Reims (monasterii sancti Remigii in suburbio Remorum siti) nach Einsicht in die durch Abt Hugo vorgelegten Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad, den in seinem Reich gelegenen Hof Kusel (curtem quandam Cosla vocatam infra regni nostri terminos constitutam) mit seinen namentlich angeführten Zugehörungen (Capellam, Glannam, Concham, Osterna, Querenbach et in comitatu de Kiriberch villam, que dicitur Brucca) und stellt ihm Güter in Thüringen (in ducatu Turingorum), im Ripuariergau (in pago Ribuariense), im Gau an der Rossel (in pago Roslisse) und das vom früheren Vogt (von Kusel) und jetzigen Mönch des Klosters, Albert, geschenkte Eigengut in Boppard (Buppura) zurück.",
+  "date": [
+   {
+    "t": "1152 Oktober 16"
+   }
+  ],
+  "place": [
+   {
+    "t": "Würzburg"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Abt Hugo von S. Remi zu Reims (monasterii sancti Remigii in suburbio Remorum siti) nach Einsicht in die durch Abt Hugo vorgelegten Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad, den in seinem Reich gelegenen Hof Kusel (curtem quandam Cosla vocatam infra regni nostri terminos constitutam) mit seinen namentlich angeführten Zugehörungen (Capellam, Glannam, Concham, Osterna, Querenbach et in comitatu de Kiriberch villam, que dicitur Brucca) und stellt ihm Güter in Thüringen (in ducatu Turingorum), im Ripuariergau (in pago Ribuariense), im Gau an der Rossel (in pago Roslisse) und das vom früheren Vogt (von Kusel) und jetzigen Mönch des Klosters, Albert, geschenkte Eigengut in Boppard (Buppura) zurück. Z.: Erzbischof Hartwig von Bremen, die Bischöfe Gebhard (Gebahardus) von Würzburg, Gunther von Speyer, Anselm von Havelberg, Eberhard (Ebrahardus) von Bamberg, Heinrich von Regensburg, Ardicio(!)von Vercelli, Abt Markward von Fulda, die Herzoge Heinrich von Sachsen, Welf von Spoleto, Markgraf von Tuszien, die Markgrafen Otakar von Steier, Albrecht von Sachsen, Konrad von Sachsen (Wettin). - Arnoldus canc. vice Henrici Maguntini archiep. et archicanc. ; VUU.: DD. O. III. 122 (VU. I) und Karl III. 106 (VU. II), verfaßt und geschrieben von A II. C. Quoniam regię dignitatis.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 6,
+  "blocks": [
+   {
+    "node": "urn:regesta:22764:confirmation-kusel",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22764:confirmation-kusel",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-kusel",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 53,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22764:> .\nx:confirmation-kusel a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Abt Hugo von S. Remi zu Reims\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22764:confirmation-kusel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-kusel",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:confirmation-kusel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Hugo von S. Remi zu Reims",
+      "text": "Abt Hugo von S. Remi zu Reims in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22764:confirmation-kusel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-kusel",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:confirmation-kusel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:nameInSource \"Abt Hugo von S. Remi zu Reims\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001291"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Hof Kusel (curtem quandam Cosla vocatam infra regni nostri terminos constitutam) mit seinen namentlich angeführten Zugehörungen",
+      "text": "betrifft Hof Kusel (curtem quandam Cosla vocatam infra regni nostri terminos constitutam) mit seinen namentlich angeführten Zugehörungen",
+      "triple": [
+       "urn:regesta:22764:confirmation-kusel",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22764:hof-kusel"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-kusel",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:confirmation-kusel rf:concerns x:hof-kusel .\nx:hof-kusel a crm:E18_Physical_Thing ;\n    rdfs:label \"Hof Kusel (curtem quandam Cosla vocatam infra regni nostri terminos constitutam) mit seinen namentlich angeführten Zugehörungen\" .",
+      "object": "urn:regesta:22764:hof-kusel",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22764:confirmation-kusel",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22764:earlier-privileges"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-kusel",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:confirmation-kusel rf:refersToAct x:earlier-privileges .\nx:earlier-privileges a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:concerns x:privilegien ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach Einsicht in die durch Abt Hugo vorgelegten Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000359> ; rf:nameInSource \"Heinrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000076> ; rf:nameInSource \"Karl\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000394> ; rf:nameInSource \"Otto\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22764:earlier-privileges",
+      "objectClaim": "earlier-privileges",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22764:confirmation-kusel",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-kusel-2",
+      "own": true,
+      "evidence": {
+       "start": 231,
+       "end": 388,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:confirmation-kusel rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den in seinem Reich gelegenen Hof Kusel (curtem quandam Cosla vocatam infra regni nostri terminos constitutam) mit seinen namentlich angeführten Zugehörungen\" ] .",
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Abt Hugo von S. Remi zu Reims"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "Hof Kusel (curtem quandam Cosla vocatam infra regni nostri terminos constitutam) mit seinen namentlich angeführten Zugehörungen"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22764:kinship-oheim-konrad",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22764:kinship-oheim-konrad",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-oheim-konrad",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 19,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22764:> .\nx:kinship-oheim-konrad a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22764:kinship-oheim-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:kinship-oheim-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad",
+      "text": "Konrad in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22764:kinship-oheim-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:kinship-oheim-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22764:kinship-oheim-konrad",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim-konrad-2",
+      "own": true,
+      "evidence": {
+       "start": 209,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:kinship-oheim-konrad rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"seines Oheims Konrad\" ] .",
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheims",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22764:kinship-oheim-konrad",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 216,
+       "end": 222,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7",
+       "k10"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k8",
+       "k10"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k9",
+       "k10"
+      ],
+      "text": "Konrad"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22764:restitution-gueter",
+    "kind": "act",
+    "title": "Rückgabe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rückgabe",
+     "text": "Rückgabe",
+     "triple": [
+      "urn:regesta:22764:restitution-gueter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Restitution"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "restitution-gueter",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 53,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter a rf:ActFactoid ;\n    rf:factoidType rv:Restitution ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Abt Hugo von S. Remi zu Reims\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Hugo von S. Remi zu Reims",
+      "text": "Abt Hugo von S. Remi zu Reims in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001291"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Eigengut in Boppard (Buppura)",
+      "text": "betrifft Eigengut in Boppard (Buppura)",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22764:eigengut-boppard"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:concerns x:eigengut-boppard .\nx:eigengut-boppard a crm:E18_Physical_Thing ;\n    rdfs:label \"Eigengut in Boppard (Buppura)\" .",
+      "object": "urn:regesta:22764:eigengut-boppard",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Güter im Ripuariergau (in pago Ribuariense)",
+      "text": "betrifft Güter im Ripuariergau (in pago Ribuariense)",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22764:gueter-ripuariergau"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:concerns x:gueter-ripuariergau .\nx:gueter-ripuariergau a crm:E18_Physical_Thing ;\n    rdfs:label \"Güter im Ripuariergau (in pago Ribuariense)\" .",
+      "object": "urn:regesta:22764:gueter-ripuariergau",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Güter im Gau an der Rossel (in pago Roslisse)",
+      "text": "betrifft Güter im Gau an der Rossel (in pago Roslisse)",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22764:gueter-rossel"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:concerns x:gueter-rossel .\nx:gueter-rossel a crm:E18_Physical_Thing ;\n    rdfs:label \"Güter im Gau an der Rossel (in pago Roslisse)\" .",
+      "object": "urn:regesta:22764:gueter-rossel",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Güter in Thüringen (in ducatu Turingorum)",
+      "text": "betrifft Güter in Thüringen (in ducatu Turingorum)",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22764:gueter-thueringen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:concerns x:gueter-thueringen .\nx:gueter-thueringen a crm:E18_Physical_Thing ;\n    rdfs:label \"Güter in Thüringen (in ducatu Turingorum)\" .",
+      "object": "urn:regesta:22764:gueter-thueringen",
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22764:confirmation-kusel"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:partOf x:confirmation-kusel .\nx:confirmation-kusel a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:concerns x:hof-kusel ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Abt Hugo von S. Remi zu Reims\" ] , [ a oa:TextQuoteSelector ; oa:exact \"den in seinem Reich gelegenen Hof Kusel (curtem quandam Cosla vocatam infra regni nostri terminos constitutam) mit seinen namentlich angeführten Zugehörungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:nameInSource \"Abt Hugo von S. Remi zu Reims\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:earlier-privileges ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22764:confirmation-kusel",
+      "objectClaim": "confirmation-kusel",
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schenkung",
+      "text": "bezieht sich auf Schenkung",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22764:donation-albert"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 53,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:refersToAct x:donation-albert .\nx:donation-albert a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:concerns x:eigengut-boppard ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das vom früheren Vogt (von Kusel) und jetzigen Mönch des Klosters, Albert, geschenkte Eigengut in Boppard (Buppura)\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000127> ; rf:nameInSource \"Albert\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22764:donation-albert",
+      "objectClaim": "donation-albert",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22764:restitution-gueter",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-gueter-2",
+      "own": true,
+      "evidence": {
+       "start": 498,
+       "end": 757,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:restitution-gueter rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"stellt ihm Güter in Thüringen (in ducatu Turingorum), im Ripuariergau (in pago Ribuariense), im Gau an der Rossel (in pago Roslisse) und das vom früheren Vogt (von Kusel) und jetzigen Mönch des Klosters, Albert, geschenkte Eigengut in Boppard (Buppura) zurück\" ] .",
+      "key": "k21"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12",
+       "k21"
+      ],
+      "text": "Rückgabe"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k13",
+       "k21"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k14",
+       "k21"
+      ],
+      "text": "Abt Hugo von S. Remi zu Reims"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15",
+       "k21"
+      ],
+      "text": "Eigengut in Boppard (Buppura)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k16",
+       "k21"
+      ],
+      "text": "Güter im Ripuariergau (in pago Ribuariense)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k17",
+       "k21"
+      ],
+      "text": "Güter im Gau an der Rossel (in pago Roslisse)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k18",
+       "k21"
+      ],
+      "text": "Güter in Thüringen (in ducatu Turingorum)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k19",
+       "k21"
+      ],
+      "text": "Bestätigung"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k20",
+       "k21"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22764:earlier-privileges",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22764:earlier-privileges",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-privileges",
+     "own": true,
+     "evidence": {
+      "start": 107,
+      "end": 229,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22764:> .\nx:earlier-privileges a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach Einsicht in die durch Abt Hugo vorgelegten Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k22"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Karl",
+      "text": "Karl in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22764:earlier-privileges",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-privileges",
+      "own": true,
+      "evidence": {
+       "start": 107,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:earlier-privileges rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000076> ; rf:nameInSource \"Karl\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000076"
+      ],
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Otto",
+      "text": "Otto in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22764:earlier-privileges",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-privileges",
+      "own": true,
+      "evidence": {
+       "start": 107,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:earlier-privileges rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000394> ; rf:nameInSource \"Otto\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000394"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich",
+      "text": "Heinrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22764:earlier-privileges",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-privileges",
+      "own": true,
+      "evidence": {
+       "start": 107,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:earlier-privileges rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000359> ; rf:nameInSource \"Heinrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000359"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad",
+      "text": "Konrad in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22764:earlier-privileges",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-privileges",
+      "own": true,
+      "evidence": {
+       "start": 107,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:earlier-privileges rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad",
+      "text": "betrifft Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad",
+      "triple": [
+       "urn:regesta:22764:earlier-privileges",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22764:privilegien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-privileges",
+      "own": true,
+      "evidence": {
+       "start": 107,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:earlier-privileges rf:concerns x:privilegien .\nx:privilegien a crm:E18_Physical_Thing ;\n    rdfs:label \"Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad\" .",
+      "object": "urn:regesta:22764:privilegien",
+      "key": "k27"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Karl"
+     },
+     ", ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Otto"
+     },
+     ", ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Heinrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Konrad"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22764:donation-albert",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22764:donation-albert",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-albert",
+     "own": true,
+     "evidence": {
+      "start": 635,
+      "end": 750,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22764:> .\nx:donation-albert a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das vom früheren Vogt (von Kusel) und jetzigen Mönch des Klosters, Albert, geschenkte Eigengut in Boppard (Buppura)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k28"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Albert",
+      "text": "Albert in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22764:donation-albert",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-albert",
+      "own": true,
+      "evidence": {
+       "start": 635,
+       "end": 750,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:donation-albert rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000127> ; rf:nameInSource \"Albert\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000127"
+      ],
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Eigengut in Boppard (Buppura)",
+      "text": "betrifft Eigengut in Boppard (Buppura)",
+      "triple": [
+       "urn:regesta:22764:donation-albert",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22764:eigengut-boppard"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-albert",
+      "own": true,
+      "evidence": {
+       "start": 635,
+       "end": 750,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:donation-albert rf:concerns x:eigengut-boppard .\nx:eigengut-boppard a crm:E18_Physical_Thing ;\n    rdfs:label \"Eigengut in Boppard (Buppura)\" .",
+      "object": "urn:regesta:22764:eigengut-boppard",
+      "key": "k30"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Albert"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Eigengut in Boppard (Buppura)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22764:office-albert-vogt",
+    "kind": "state",
+    "title": "Amtsinhabe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Amtsinhabe",
+     "text": "Amtsinhabe",
+     "triple": [
+      "urn:regesta:22764:office-albert-vogt",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/OfficeHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "office-albert-vogt",
+     "own": true,
+     "evidence": {
+      "start": 639,
+      "end": 708,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22764:> .\nx:office-albert-vogt a rf:StateFactoid ;\n    rf:factoidType rv:OfficeHolding ;\n    rf:source <urn:regesta:record:22764> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"vom früheren Vogt (von Kusel) und jetzigen Mönch des Klosters, Albert\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k31"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Albert",
+      "text": "Albert in der Rolle Amtsinhaber",
+      "triple": [
+       "urn:regesta:22764:office-albert-vogt",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "office-albert-vogt",
+      "own": true,
+      "evidence": {
+       "start": 639,
+       "end": 708,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:office-albert-vogt rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000127> ; rf:nameInSource \"Albert\" ; rf:role rv:Officeholder ] .",
+      "role": "Amtsinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000127"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vogt (von Kusel))",
+      "text": "betrifft Vogtei (Vogt (von Kusel))",
+      "triple": [
+       "urn:regesta:22764:office-albert-vogt",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22764:vogtei-kusel"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "office-albert-vogt",
+      "own": true,
+      "evidence": {
+       "start": 639,
+       "end": 708,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22764:> .\nx:office-albert-vogt rf:concerns x:vogtei-kusel .\nx:vogtei-kusel a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vogt (von Kusel)\" .",
+      "object": "urn:regesta:22764:vogtei-kusel",
+      "key": "k33"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "früheren",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22764:office-albert-vogt",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 643,
+       "end": 651,
+       "ambiguous": false
+      },
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Amtsinhabe"
+     },
+     ", als Amtsinhaber ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Albert"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Vogtei (Vogt (von Kusel))"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation-kusel",
+    "start": 0,
+    "end": 53
+   },
+   {
+    "id": "restitution-gueter",
+    "start": 0,
+    "end": 53
+   },
+   {
+    "id": "kinship-oheim-konrad",
+    "start": 0,
+    "end": 19
+   },
+   {
+    "id": "earlier-privileges",
+    "start": 107,
+    "end": 229
+   },
+   {
+    "id": "kinship-oheim-konrad-2",
+    "start": 209,
+    "end": 229
+   },
+   {
+    "id": "t1",
+    "start": 216,
+    "end": 222
+   },
+   {
+    "id": "confirmation-kusel-2",
+    "start": 231,
+    "end": 388
+   },
+   {
+    "id": "restitution-gueter-2",
+    "start": 498,
+    "end": 757
+   },
+   {
+    "id": "donation-albert",
+    "start": 635,
+    "end": 750
+   },
+   {
+    "id": "office-albert-vogt",
+    "start": 639,
+    "end": 708
+   },
+   {
+    "id": "t2",
+    "start": 643,
+    "end": 651
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Heinrich among the predecessors identified with RI004-002-H000359 (Kaiser, welcher?); the register itself leaves the individual open.",
+     "lang": "en"
+    },
+    {
+     "text": "The recipient of Albert's donation of the Eigengut in Boppard is not named; no recipient reference was set.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The content and kind of the predecessors' privileges (Karl, Otto, Heinrich, Konrad) are not stated; recorded as generic rv:Grant, and the relation 'nach Einsicht in' (inspection as basis of the confirmation) is approximated with rf:refersToAct.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No property for a former office distinct from a current one other than rf:qualifier 'früheren'; Albert's status as monk was not recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No state type for membership in a monastic community (jetziger Mönch des Klosters).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "structure",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22764:restitution-gueter",
+     "description": "The restitution is a coordinated act of its own, not a provision of the confirmation of Hof Kusel; rf:partOf overstates the dependency.",
+     "proposal": "Drop rf:partOf from the restitution or record that coordinated acts are linked with partOf by convention.",
+     "quote": {
+      "start": 494,
+      "end": 550
+     }
+    },
+    {
+     "category": "actor-role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22764:earlier-privileges",
+     "description": "Abt Hugo's act of presenting the privileges and the monastery as their recipient are not referenced; the grantor readings of Karl, Otto, Heinrich and Konrad are supported by the genitive of the predecessors.",
+     "proposal": "Optionally add Abt Hugo as rv:Participant with nameInSource \"Abt Hugo\".",
+     "quote": {
+      "start": 107,
+      "end": 229
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "rf:partOf overstates the dependency of the coordinated restitution on the confirmation.",
+     "reason": "The guidelines treat dispositive clauses of one charter as provisions of its main act, and the run applies this throughout (22765, 22767, 22770). The link asserts no more than membership in the same charter.",
+     "lang": "en"
+    },
+    {
+     "decision": "Befund zurückgewiesen",
+     "finding": "Add Abt Hugo as rv:Participant to the earlier privileges.",
+     "reason": "In 'nach Einsicht in die durch Abt Hugo vorgelegten Privilegien seiner Vorgänger' Hugo presents the privileges now; he takes no part in the earlier grants of Karl, Otto, Heinrich and Konrad. A reference on that factoid would misplace him.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der Hof Kusel war S. Remi schon mehrfach, auch von Friedrich, vgl. DF. I. 2 (Reg. "
+    },
+    {
+     "t": "68",
+     "regest": "22695"
+    },
+    {
+     "t": ") mit abweichender Besitzliste, bestätigt worden; eine zusammenfassende Bestätigung aller Besitzungen von S. Remi im Deutschen Reich bietet das Privileg Hadrians IV. von 1154 Dezember 19 (JL. 9951). - Zur Person des Vogtes Albert von Kusel vgl. die Vorbemerkung zum D. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (1991):"
+    },
+    {
+     "t": " Bei dem an das Kloster S. Remi zurückgestellten Eigengut in "
+    },
+    {
+     "t": "Buppura",
+     "i": true
+    },
+    {
+     "t": " muß die Auflösung des Ortsnamens richtig lauten: Bopporn, Hof bei Offenbach am Glan, vgl. dazu Remling, Geschichte der Benediktinerpropstei St. Remigiusberg bei Cusel i. d. Rheinpfalz, Abhh. d. bayer. Akad., Hist Cl. 8 (1860) 336 Anm. 40."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Chartular B von S. Remi aus dem 13. Jh. p. 106, Departementalarchiv Reims (B); Schott, Diplomatica Rheingravica 7 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 137 aus dem Ende des 18. Jh. unvollst. im Staatsarchiv Darmstadt Hs. 137 B (S). Drucke: Varin, Archives admin. de Reims 1, 326 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 110; MG. DF. I. 30. Reg.: Goerz, Mittelrhein. Reg. 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 25; Dobenecker, Reg. Thur. 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 25; Stumpf 3645."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=48"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_30"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000127",
+    "Mönch von S. Remi zu Reims, vorher Vogt von Kusel"
+   ],
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B001186",
+    "Bopporn (<i>heute:</i> Buborn, bei Offenbach-Hundheim am Glan, nordnordwestl. Kaiserslautern, Ldkr. Kusel, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-B001473",
+    " <i>Brucca</i> in der Grafschaft <i>Kiriberch</i> (<i>ob: Osterbrücken, ostnordöstl. St. Wendel im Saarland, oder die Wüstung Brücken, bei Ulmet, nordwestl. Kaiserslautern, Rheinl.-Pf.?</i>)"
+   ],
+   [
+    "RI004-002-C000199",
+    " <i>Capella</i> (Kappeln, am Jeckenbach, nordwestl. Lauterecken, Ldkr. Kusel, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-C000901",
+    "Abt"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-G000209",
+    "Bischof von Würzburg"
+   ],
+   [
+    "RI004-002-G000653",
+    " <i>Glanna</i> (<i>wo?</i>)"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000026",
+    "IV., Papst"
+   ],
+   [
+    "RI004-002-H000192",
+    "(I.), Erzbischof von Bremen und Hamburg"
+   ],
+   [
+    "RI004-002-H000359",
+    "Kaiser (<i>welcher?</i>)"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000397",
+    "Bischof von Regensburg"
+   ],
+   [
+    "RI004-002-H001291",
+    "Abt von S. Remi zu Reims"
+   ],
+   [
+    "RI004-002-K000076",
+    "(III. der Dicke), König und Kaiser"
+   ],
+   [
+    "RI004-002-K000192",
+    " <i>Kiriberch</i> (<i>wohl: im Saarland, wo?; oder: Kirchberg/Hunsrück, westl. Simmern/Hunsrück, Rheinl.-Pf.?</i>), Grafschaft"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000401",
+    "Markgraf von Meißen, Sachsen, Wettin"
+   ],
+   [
+    "RI004-002-K000685",
+    "Kürnbach (<i>nicht:</i> Quirnbach, Ldkr. Kusel, Rheinl.-Pf., <i>sondern:</i> Kürnbach, im Kraichgau, südwestl. Eppingen, Ldkr. Karlsruhe, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-K000688",
+    "Kusel (am Kuselbach, nordwestl. Kaiserslautern, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-M000499",
+    "Abt von Fulda"
+   ],
+   [
+    "RI004-002-N000182",
+    "Niederkirchen (<i>Osterna</i>; Teil von St. Wendel, westl. Kaiserslautern, Saarland)"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000394",
+    "(III.), König und Kaiser"
+   ],
+   [
+    "RI004-002-R000431",
+    "(Benediktiner- bzw. Cluniazenser-)Abtei S. Remi"
+   ],
+   [
+    "RI004-002-R000672",
+    "Ripuariergau (rheinfränkisches Gebiet)"
+   ],
+   [
+    "RI004-002-R001081",
+    "Rossel (linker Nebenfluss der Saar, mündet bei Völklingen-Wehrden, Saarland), Gau an der ─"
+   ],
+   [
+    "RI004-002-T000250",
+    "Thüringen"
+   ],
+   [
+    "RI004-002-U000108",
+    "Bischof von Vercelli"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

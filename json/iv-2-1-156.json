@@ -1,0 +1,2267 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-01-27_1_0_4_2_1_156_156",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22783",
+  "identifier": "RI IV,2,1 n. 156",
+  "short": "RI IV,2,1 n. 156",
+  "sort": "004_002_001_000156_0000000156",
+  "start": "1153-01-27",
+  "end": "1153-01-27",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig, Konrad und Walter, gestifteten Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen die Unterstellung unter den Abt von Conques (sancte Fidei in Concha), der auch das Recht hat, den Vogt zu wählen, die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener, das Begräbnisrecht und die Besitzungen, frei von aller weltlichen Herrschaft.",
+  "date": [
+   {
+    "t": "1153 Januar 27"
+   }
+  ],
+  "place": [
+   {
+    "t": "Hohenburg"
+   }
+  ],
+  "text": "Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig, Konrad und Walter, gestifteten Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen die Unterstellung unter den Abt von Conques (sancte Fidei in Concha), der auch das Recht hat, den Vogt zu wählen, die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener, das Begräbnisrecht und die Besitzungen, frei von aller weltlichen Herrschaft. Z.: Erzbischof Arnold von Köln, Bischof Burchard von Straßburg, Abt Wibald von Corvey (Corbeigeinsis), Herzog Heinrich von Sachsen, Markgraf Hermann von Sachsen, Pfalzgraf Otto von Wittelsbach, die Grafen Werner von Baden und Emicho von Leiningen, Kuno von Biederthal (Biberdan), Heinrich von Eichstetten (Eistey), Hartmann von Siebeneich (Siwenheich), der Kämmerer des Königs. - Arnoldus canc. vice Henrici Mogontini archiep. et archicanc. ; unter Verwendung der Gründungsurkunde der Hildegard, Gemahlin Friedrichs von Büren, vom Jahre 1094 (Würdtwein, Nova Subsidia 6, 256 no 109; VU. I) und des Privilegs Paschals II. von 1106 (JL. 6072, Germ. pont. 3/3, 54 no 1; VU. II), wahrscheinlich verfaßt und geschrieben von A II. D. Felicius agi res .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 13,
+  "blocks": [
+   {
+    "node": "urn:regesta:22783:bestaetigung",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22783:bestaetigung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 23,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22783:bestaetigung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 23,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster St. Fides in Schlettstadt",
+      "text": "Kloster St. Fides in Schlettstadt in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22783:bestaetigung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 23,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:nameInSource \"Kloster St. Fides in Schlettstadt\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000362:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestimmung",
+      "text": "bezieht sich auf Bestimmung",
+      "triple": [
+       "urn:regesta:22783:bestaetigung",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22783:bestimmungen-ahnen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 23,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung rf:refersToAct x:bestimmungen-ahnen .\nx:bestimmungen-ahnen a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den von seinen Ahnen getroffenen Bestimmungen\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22783:local:ahnen> ; rf:nameInSource \"seinen Ahnen\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22783:bestimmungen-ahnen",
+      "objectClaim": "bestimmungen-ahnen",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22783:bestaetigung",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-2",
+      "own": true,
+      "evidence": {
+       "start": 149,
+       "end": 316,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen\" ] .",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Kloster St. Fides in Schlettstadt"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:vorfahr-friedrich-schwaben",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22783:vorfahr-friedrich-schwaben",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vorfahr-friedrich-schwaben",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 108,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-friedrich-schwaben a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-friedrich-schwaben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-friedrich-schwaben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-friedrich-schwaben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrich (I.) von Schwaben",
+      "text": "Herzog Friedrich (I.) von Schwaben in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-friedrich-schwaben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-friedrich-schwaben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-friedrich-schwaben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000680> ; rf:nameInSource \"Herzog Friedrich (I.) von Schwaben\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000680"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Vorfahren",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22783:vorfahr-friedrich-schwaben",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 35,
+       "end": 44,
+       "ambiguous": false
+      },
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herzog Friedrich (I.) von Schwaben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:vorfahr-konrad",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22783:vorfahr-konrad",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vorfahr-konrad",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 124,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-konrad a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig, Konrad\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 124,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad",
+      "text": "Konrad in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-konrad",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 124,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000461> ; rf:nameInSource \"Konrad\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000461"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Vorfahren",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22783:vorfahr-konrad",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 35,
+       "end": 44,
+       "ambiguous": false
+      },
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Konrad"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:vorfahr-ludwig",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22783:vorfahr-ludwig",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vorfahr-ludwig",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 116,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-ludwig a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-ludwig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 116,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-ludwig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ludwig",
+      "text": "Ludwig in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-ludwig",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-ludwig",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 116,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-ludwig rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000852> ; rf:nameInSource \"Ludwig\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000852"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Vorfahren",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22783:vorfahr-ludwig",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 35,
+       "end": 44,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Ludwig"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:vorfahr-otto",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22783:vorfahr-otto",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vorfahr-otto",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 72,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-otto a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-otto",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-otto",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 72,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-otto rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Otto von Straßburg",
+      "text": "Bischof Otto von Straßburg in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-otto",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-otto",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 72,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-otto rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000410> ; rf:nameInSource \"Bischof Otto von Straßburg\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000410"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Vorfahren",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22783:vorfahr-otto",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 35,
+       "end": 44,
+       "ambiguous": false
+      },
+      "key": "k21"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Bischof Otto von Straßburg"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:vorfahr-walter",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22783:vorfahr-walter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vorfahr-walter",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 135,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-walter a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig, Konrad und Walter\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k22"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-walter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-walter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 135,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-walter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Walter",
+      "text": "Walter in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22783:vorfahr-walter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorfahr-walter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 135,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vorfahr-walter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000125> ; rf:nameInSource \"Walter\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000125"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Vorfahren",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22783:vorfahr-walter",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 35,
+       "end": 44,
+       "ambiguous": false
+      },
+      "key": "k25"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Walter"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:stiftung",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22783:stiftung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "stiftung",
+     "own": true,
+     "evidence": {
+      "start": 24,
+      "end": 182,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:stiftung a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig, Konrad und Walter, gestifteten Kloster St. Fides in Schlettstadt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k26"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Otto von Straßburg",
+      "text": "Bischof Otto von Straßburg in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22783:stiftung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "stiftung",
+      "own": true,
+      "evidence": {
+       "start": 24,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:stiftung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000410> ; rf:nameInSource \"Bischof Otto von Straßburg\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000410"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrich (I.) von Schwaben",
+      "text": "Herzog Friedrich (I.) von Schwaben in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22783:stiftung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "stiftung",
+      "own": true,
+      "evidence": {
+       "start": 24,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:stiftung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000680> ; rf:nameInSource \"Herzog Friedrich (I.) von Schwaben\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000680"
+      ],
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ludwig",
+      "text": "Ludwig in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22783:stiftung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "stiftung",
+      "own": true,
+      "evidence": {
+       "start": 24,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:stiftung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000852> ; rf:nameInSource \"Ludwig\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000852"
+      ],
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad",
+      "text": "Konrad in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22783:stiftung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "stiftung",
+      "own": true,
+      "evidence": {
+       "start": 24,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:stiftung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000461> ; rf:nameInSource \"Konrad\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000461"
+      ],
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Walter",
+      "text": "Walter in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22783:stiftung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "stiftung",
+      "own": true,
+      "evidence": {
+       "start": 24,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:stiftung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000125> ; rf:nameInSource \"Walter\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000125"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster St. Fides in Schlettstadt",
+      "text": "Kloster St. Fides in Schlettstadt in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22783:stiftung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "stiftung",
+      "own": true,
+      "evidence": {
+       "start": 24,
+       "end": 182,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:stiftung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:nameInSource \"Kloster St. Fides in Schlettstadt\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000362:community"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "gestifteten",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22783:stiftung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 137,
+       "end": 148,
+       "ambiguous": false
+      },
+      "key": "k33"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Bischof Otto von Straßburg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Herzog Friedrich (I.) von Schwaben"
+     },
+     ", ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Ludwig"
+     },
+     ", ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Konrad"
+     },
+     " und ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Walter"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Kloster St. Fides in Schlettstadt"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:bestimmungen-ahnen",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22783:bestimmungen-ahnen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestimmungen-ahnen",
+     "own": true,
+     "evidence": {
+      "start": 265,
+      "end": 316,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestimmungen-ahnen a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den von seinen Ahnen getroffenen Bestimmungen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k34"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinen Ahnen",
+      "text": "seinen Ahnen in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22783:bestimmungen-ahnen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestimmungen-ahnen",
+      "own": true,
+      "evidence": {
+       "start": 265,
+       "end": 316,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestimmungen-ahnen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22783:local:ahnen> ; rf:nameInSource \"seinen Ahnen\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22783:local:ahnen"
+      ],
+      "key": "k35",
+      "agentNotes": [
+       {
+        "text": "'seinen Ahnen' (author of the confirmed provisions) kept as regest-local group; whether it denotes the named founders is not stated.",
+        "lang": "en"
+       }
+      ]
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "seinen Ahnen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:bestaetigung-unterstellung",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22783:bestaetigung-unterstellung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung-unterstellung",
+     "own": true,
+     "evidence": {
+      "start": 317,
+      "end": 385,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-unterstellung a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Unterstellung unter den Abt von Conques (sancte Fidei in Concha)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k36"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Abt von Conques",
+      "text": "den Abt von Conques in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-unterstellung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-unterstellung",
+      "own": true,
+      "evidence": {
+       "start": 317,
+       "end": 385,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-unterstellung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000901> ; rf:nameInSource \"den Abt von Conques\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000901"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (die Unterstellung unter den Abt von Conques)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (die Unterstellung unter den Abt von Conques)",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-unterstellung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22783:unterstellung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-unterstellung",
+      "own": true,
+      "evidence": {
+       "start": 317,
+       "end": 385,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-unterstellung rf:concerns x:unterstellung .\nx:unterstellung a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"die Unterstellung unter den Abt von Conques\" .",
+      "object": "urn:regesta:22783:unterstellung",
+      "key": "k38"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-unterstellung",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22783:bestaetigung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-unterstellung",
+      "own": true,
+      "evidence": {
+       "start": 317,
+       "end": 385,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-unterstellung rf:partOf x:bestaetigung .\nx:bestaetigung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem\" ] , [ a oa:TextQuoteSelector ; oa:exact \"Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:nameInSource \"Kloster St. Fides in Schlettstadt\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:bestimmungen-ahnen ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22783:bestaetigung",
+      "objectClaim": "bestaetigung",
+      "key": "k39"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Bestätigung"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "den Abt von Conques"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k38"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (die Unterstellung unter den Abt von Conques)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k39"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:vogtwahl-abt",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22783:vogtwahl-abt",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vogtwahl-abt",
+     "own": true,
+     "evidence": {
+      "start": 341,
+      "end": 429,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vogtwahl-abt a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Abt von Conques (sancte Fidei in Concha), der auch das Recht hat, den Vogt zu wählen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k40"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Abt von Conques",
+      "text": "den Abt von Conques in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22783:vogtwahl-abt",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtwahl-abt",
+      "own": true,
+      "evidence": {
+       "start": 341,
+       "end": 429,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vogtwahl-abt rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000901> ; rf:nameInSource \"den Abt von Conques\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000901"
+      ],
+      "key": "k41"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (das Recht hat, den Vogt zu wählen)",
+      "text": "betrifft Vogtei (das Recht hat, den Vogt zu wählen)",
+      "triple": [
+       "urn:regesta:22783:vogtwahl-abt",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22783:recht-vogtwahl"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtwahl-abt",
+      "own": true,
+      "evidence": {
+       "start": 341,
+       "end": 429,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vogtwahl-abt rf:concerns x:recht-vogtwahl .\nx:recht-vogtwahl a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"das Recht hat, den Vogt zu wählen\" .",
+      "object": "urn:regesta:22783:recht-vogtwahl",
+      "key": "k42"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22783:vogtwahl-abt",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22783:bestaetigung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtwahl-abt",
+      "own": true,
+      "evidence": {
+       "start": 341,
+       "end": 429,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:vogtwahl-abt rf:partOf x:bestaetigung .\nx:bestaetigung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem\" ] , [ a oa:TextQuoteSelector ; oa:exact \"Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:nameInSource \"Kloster St. Fides in Schlettstadt\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:bestimmungen-ahnen ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22783:bestaetigung",
+      "objectClaim": "bestaetigung",
+      "key": "k43"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k40"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k41"
+      ],
+      "text": "den Abt von Conques"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k42"
+      ],
+      "text": "Vogtei (das Recht hat, den Vogt zu wählen)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k43"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:bestaetigung-freiheit",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22783:bestaetigung-freiheit",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung-freiheit",
+     "own": true,
+     "evidence": {
+      "start": 431,
+      "end": 522,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-freiheit a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k44"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Schutzrecht (die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener)",
+      "text": "betrifft Schutzrecht (die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener)",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-freiheit",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22783:freiheit"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-freiheit",
+      "own": true,
+      "evidence": {
+       "start": 431,
+       "end": 522,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-freiheit rf:concerns x:freiheit .\nx:freiheit a crm:E30_Right ;\n    crm:P2_has_type rv:Protection ;\n    rdfs:label \"die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener\" .",
+      "object": "urn:regesta:22783:freiheit",
+      "key": "k45"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-freiheit",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22783:bestaetigung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-freiheit",
+      "own": true,
+      "evidence": {
+       "start": 431,
+       "end": 522,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-freiheit rf:partOf x:bestaetigung .\nx:bestaetigung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem\" ] , [ a oa:TextQuoteSelector ; oa:exact \"Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:nameInSource \"Kloster St. Fides in Schlettstadt\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:bestimmungen-ahnen ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22783:bestaetigung",
+      "objectClaim": "bestaetigung",
+      "key": "k46"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k44"
+      ],
+      "text": "Bestätigung"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k45"
+      ],
+      "text": "Schutzrecht (die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k46"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:bestaetigung-begraebnisrecht",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22783:bestaetigung-begraebnisrecht",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung-begraebnisrecht",
+     "own": true,
+     "evidence": {
+      "start": 524,
+      "end": 542,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-begraebnisrecht a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das Begräbnisrecht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k47"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (das Begräbnisrecht)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (das Begräbnisrecht)",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-begraebnisrecht",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22783:begraebnisrecht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-begraebnisrecht",
+      "own": true,
+      "evidence": {
+       "start": 524,
+       "end": 542,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-begraebnisrecht rf:concerns x:begraebnisrecht .\nx:begraebnisrecht a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"das Begräbnisrecht\" .",
+      "object": "urn:regesta:22783:begraebnisrecht",
+      "key": "k48"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-begraebnisrecht",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22783:bestaetigung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-begraebnisrecht",
+      "own": true,
+      "evidence": {
+       "start": 524,
+       "end": 542,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-begraebnisrecht rf:partOf x:bestaetigung .\nx:bestaetigung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem\" ] , [ a oa:TextQuoteSelector ; oa:exact \"Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:nameInSource \"Kloster St. Fides in Schlettstadt\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:bestimmungen-ahnen ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22783:bestaetigung",
+      "objectClaim": "bestaetigung",
+      "key": "k49"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k47"
+      ],
+      "text": "Bestätigung"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k48"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (das Begräbnisrecht)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k49"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22783:bestaetigung-besitzungen",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22783:bestaetigung-besitzungen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung-besitzungen",
+     "own": true,
+     "evidence": {
+      "start": 547,
+      "end": 600,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-besitzungen a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Besitzungen, frei von aller weltlichen Herrschaft\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k50"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Besitzungen",
+      "text": "betrifft die Besitzungen",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-besitzungen",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22783:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-besitzungen",
+      "own": true,
+      "evidence": {
+       "start": 547,
+       "end": 600,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-besitzungen rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"die Besitzungen\" .",
+      "object": "urn:regesta:22783:besitzungen",
+      "key": "k51"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22783:bestaetigung-besitzungen",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22783:bestaetigung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-besitzungen",
+      "own": true,
+      "evidence": {
+       "start": 547,
+       "end": 600,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22783:> .\nx:bestaetigung-besitzungen rf:partOf x:bestaetigung .\nx:bestaetigung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem\" ] , [ a oa:TextQuoteSelector ; oa:exact \"Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:nameInSource \"Kloster St. Fides in Schlettstadt\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:bestimmungen-ahnen ;\n    rf:source <urn:regesta:record:22783> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22783:bestaetigung",
+      "objectClaim": "bestaetigung",
+      "key": "k52"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "frei von aller weltlichen Herrschaft",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22783:bestaetigung-besitzungen",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 564,
+       "end": 600,
+       "ambiguous": false
+      },
+      "key": "k53"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k50"
+      ],
+      "text": "Bestätigung"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k51"
+      ],
+      "text": "die Besitzungen"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k52"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "vorfahr-walter",
+    "start": 0,
+    "end": 135
+   },
+   {
+    "id": "vorfahr-konrad",
+    "start": 0,
+    "end": 124
+   },
+   {
+    "id": "vorfahr-ludwig",
+    "start": 0,
+    "end": 116
+   },
+   {
+    "id": "vorfahr-friedrich-schwaben",
+    "start": 0,
+    "end": 108
+   },
+   {
+    "id": "vorfahr-otto",
+    "start": 0,
+    "end": 72
+   },
+   {
+    "id": "bestaetigung",
+    "start": 0,
+    "end": 23
+   },
+   {
+    "id": "stiftung",
+    "start": 24,
+    "end": 182
+   },
+   {
+    "id": "t1",
+    "start": 35,
+    "end": 44
+   },
+   {
+    "id": "t2",
+    "start": 35,
+    "end": 44
+   },
+   {
+    "id": "t3",
+    "start": 35,
+    "end": 44
+   },
+   {
+    "id": "t4",
+    "start": 35,
+    "end": 44
+   },
+   {
+    "id": "t5",
+    "start": 35,
+    "end": 44
+   },
+   {
+    "id": "t6",
+    "start": 137,
+    "end": 148
+   },
+   {
+    "id": "bestaetigung-2",
+    "start": 149,
+    "end": 316
+   },
+   {
+    "id": "bestimmungen-ahnen",
+    "start": 265,
+    "end": 316
+   },
+   {
+    "id": "bestaetigung-unterstellung",
+    "start": 317,
+    "end": 385
+   },
+   {
+    "id": "vogtwahl-abt",
+    "start": 341,
+    "end": 429
+   },
+   {
+    "id": "bestaetigung-freiheit",
+    "start": 431,
+    "end": 522
+   },
+   {
+    "id": "bestaetigung-begraebnisrecht",
+    "start": 524,
+    "end": 542
+   },
+   {
+    "id": "bestaetigung-besitzungen",
+    "start": 547,
+    "end": 600
+   },
+   {
+    "id": "t7",
+    "start": 564,
+    "end": 600
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Ludwig, Konrad and Walter are named by first name only; identified with the packet candidates L000852, K000461, W000125 because those candidates are the only ones described as ancestors and founders of Schlettstadt.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a foundation ('gestifteten'); rv:Donation used as closest type with the wording in rf:qualifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right types for burial right, subordination to an abbey or freedom from oppression; typed rv:ChurchRights and rv:Protection as closest concepts.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the party a house is subordinated to; the abbot of Conques takes rv:Beneficiary in the subordination factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Hildegard marriage ('Gemahlin Friedrichs von Büren') stands only in the chancery and Vorurkunde note and was skipped per the source boundary.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for the foundation of a church or monastery.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No directed roles for ancestor and descendant; rv:Kin is symmetric.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No right type for subordination of a house to another abbey (Unterstellung) or for burial right; both fall back on the broad rv:ChurchRights.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "vocabulary-limit",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22783:vorfahr-otto",
+     "description": "All five ancestor factoids give both sides rv:Kin, so the direction (who is ancestor of whom) survives only in the qualifier 'Vorfahren' and in the evidence. This is a vocabulary limit, not an extraction error.",
+     "proposal": "None within the contract; see model gap on directed kinship roles.",
+     "quote": {
+      "start": 24,
+      "end": 135
+     }
+    },
+    {
+     "category": "right-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22783:recht-vogtwahl",
+     "description": "The right to choose the Vogt is typed rv:Advocacy, which the vocabulary defines as the protective lordship itself. The passage describes a right of selection over the advocate, closer to a church right than to holding the advocacy.",
+     "proposal": "Consider rv:ChurchRights for the election right; expert question for the right-type hierarchy.",
+     "quote": {
+      "start": 387,
+      "end": 429
+     }
+    },
+    {
+     "category": "act-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22783:stiftung",
+     "description": "The foundation is typed rv:Donation with the monastery as recipient of its own foundation. The extractor flags it as the closest type; the reading is defensible but the recipient role is strained.",
+     "proposal": "Keep as is pending a foundation type; alternatively give the monastery rv:Beneficiary.",
+     "quote": {
+      "start": 137,
+      "end": 182
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The right to choose the Vogt is typed rv:Advocacy; rv:ChurchRights proposed.",
+     "reason": "'der auch das Recht hat, den Vogt zu wählen' is a right concerning the advocacy; rv:Advocacy is a defensible placement, and the hierarchy of right types is explicitly reserved for expert review in the vocabulary. Neither concept is clearly more correct.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The monastery as rv:Recipient of its own foundation is strained; rv:Beneficiary as alternative.",
+     "reason": "The reviewer recommends keeping it pending a foundation type. Under the approximating transfer type the founded house is the one to which the foundation is made over; the same choice is prescribed for 22774 above for consistency.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Bestimmung über die freie Vogtwahl wurde von JL. 6072 (VU. II) übernommen, obwohl Herzog Friedrich von Schwaben im Jahre 1105 festgestellt hatte, daß die Vogtei dem jeweiligen Inhaber des Hohenstaufen und des Herzogtums Schwaben zustehen solle (Würdtwein, Nova Subsidia 6, 290). - Es ist durchaus möglich, daß sich Friedrich damals auch in Oberehnheim aufgehalten hat. Zum Itinerar dieser Zeit vgl. Simonsfeld, Jahrbücher 150 Anm. 2 und Opll, Itinerar 10. - Zu den Vorfahren Friedrichs vgl. Maschke, Staufer, 17 ff. und Klebel, Hohenstaufen, ZGORh 102 = N. F. 63 (1954) 139 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift Grandidiers (18. Jh.) aus einer damals im bischöflichen Archiv Straßburg befindlichen Kopie des 13. Jh. im Generallandesarchiv Karlsruhe (G). Drucke: Würdtwein, Nova Subsidia 7, 160 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 62; MG. DF. I. 45. Reg.: Stumpf 3658."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=55"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_45"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B001563",
+    "Bischof von Straßburg"
+   ],
+   [
+    "RI004-002-C000901",
+    "Abt"
+   ],
+   [
+    "RI004-002-E000324",
+    "Graf von Leiningen"
+   ],
+   [
+    "RI004-002-F000680",
+    "(I.), Herzog von Schwaben, Großvater Friedrich Barbarossas, Stifter von Schlettstadt"
+   ],
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-F000716",
+    "von Büren (Urgroßvater Friedrich Barbarossas), Gründer von Schlettstadt"
+   ],
+   [
+    "RI004-002-H000173",
+    "von Siebeneich, Reichsministeriale, Ritter, kaiserlicher Kämmerer"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000598",
+    "von Eichstetten"
+   ],
+   [
+    "RI004-002-H000846",
+    "Markgraf von Sachsen, Graf von (Weimar-)Orlamünde"
+   ],
+   [
+    "RI004-002-H000988",
+    "Gemahlin Friedrichs von Büren (Urgroßmutter Friedrich Barbarossas), Gründerin von Schlettstadt"
+   ],
+   [
+    "RI004-002-H001093",
+    "Hohenburg (<i>heute:</i> Odilienberg, bzw. Mont Sainte-Odile, südwestl. Strassburg, Dép. Haut-Rhin), Augustiner-Chorfrauenstift, auch Kloster St. Odilia"
+   ],
+   [
+    "RI004-002-H001115",
+    "Hohenstaufen (Ruine nordöstl. Göppingen, Bad.-Württ.), Stammburg der Staufer"
+   ],
+   [
+    "RI004-002-K000440",
+    "von Biederthal"
+   ],
+   [
+    "RI004-002-K000461",
+    "von (Hohen)Staufen, Vorfahre Friedrich Barbarossas, (Mit)Stifter von Schlettstadt"
+   ],
+   [
+    "RI004-002-L000852",
+    "Vorfahre Friedrich Barbarossas, Stifter von Schlettstadt"
+   ],
+   [
+    "RI004-002-O000007",
+    "Oberehnheim (<i>heute:</i> Obernai, südwestl. Straßburg, Dép. Bas-Rhin)"
+   ],
+   [
+    "RI004-002-O000410",
+    "Bischof von Straßburg, Vorfahre Friedrich Barbarossas, Stifter von Schlettstadt"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-P000182",
+    "II., Papst"
+   ],
+   [
+    "RI004-002-S000362",
+    "Schlettstadt (<i>heute:</i> Séléstat, südwestl. Straßburg, Dép. Bas-Rhin), Kirche (Benediktinerpriorat) St. Fides"
+   ],
+   [
+    "RI004-002-S000364",
+    "Vogt"
+   ],
+   [
+    "RI004-002-S000398",
+    "Herzogtum"
+   ],
+   [
+    "RI004-002-W000125",
+    "Vorfahre Friedrich Barbarossas, Stifter von Schlettstadt"
+   ],
+   [
+    "RI004-002-W000325",
+    "Graf von Baden"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

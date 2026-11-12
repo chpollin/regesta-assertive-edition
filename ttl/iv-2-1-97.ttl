@@ -1,0 +1,79 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-06-29_3_0_4_2_1_97_97
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22724> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-B000726> a crm:E21_Person ;
+    rdfs:label "Graf Berthold von Andechs" .
+
+<urn:regesta:actor:RI004-002-A000358:community> a crm:E74_Group ;
+    rdfs:label "Kloster Admont" .
+
+<urn:regesta:actor:RI004-002-G000797> a crm:E21_Person ;
+    rdfs:label "Abt Gottfried" .
+
+<urn:regesta:actor:RI004-002-G000214> a crm:E21_Person ;
+    rdfs:label "Graf Gebhard von Burghausen" .
+
+<urn:regesta:actor:RI004-002-E000010> a crm:E21_Person ;
+    rdfs:label "Erzbischof Eberhards von Salzburg" .
+
+# The exchange is reported as performed ("vollzogen"). No exchange type exists; rv:Grant with
+# the exact word in rf:qualifier is the nearest concept (model gap). Presence of the archbishop
+# has no dedicated role and is recorded as rv:Participant (model gap).
+<urn:regesta:22724:exchange> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:qualifier "Tauschgeschäft" ;
+    rf:source <urn:regesta:record:22724> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "wird in Gegenwart Erzbischof Eberhards von Salzburg ein Tauschgeschäft zwischen Graf Berthold von Andechs und dem Kloster Admont, für dessen Abt Gottfried der Vogt, Graf Gebhard von Burghausen, tätig ist, vollzogen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-B000726> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Graf Berthold von Andechs" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A000358:community> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Kloster Admont" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-G000797> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Abt Gottfried" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-G000214> ;
+        rf:role rv:Representative ;
+        rf:nameInSource "Graf Gebhard von Burghausen" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-E000010> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Erzbischof Eberhards von Salzburg" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22724:right:advocacy> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "Vogt" .
+
+# Reading: Gebhard is named as Vogt acting for the abbot of Admont; whether the advocacy is over
+# the monastery or the abbot personally is left to the wording.
+<urn:regesta:22724:advocacy-holding> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22724> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "dem Kloster Admont, für dessen Abt Gottfried der Vogt, Graf Gebhard von Burghausen, tätig ist" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-G000214> ;
+        rf:role rv:RightHolder ;
+        rf:nameInSource "Graf Gebhard von Burghausen" ] ;
+    rf:concerns <urn:regesta:22724:right:advocacy> , <urn:regesta:actor:RI004-002-A000358:community> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,298 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1146-12-27_1_0_4_2_1_19_19",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22646",
+  "identifier": "RI IV,2,1 n. 19",
+  "short": "RI IV,2,1 n. 19",
+  "sort": "004_002_001_000019_0000000019",
+  "start": "1146-12-27",
+  "end": "1146-12-27",
+  "proseYears": [],
+  "lead": "Friedrich nimmt, von Abt Bernhard von Clairvaux dazu bewogen, gemeinsam mit seinem Oheim, König Konrad III., das Kreuz.",
+  "date": [
+   {
+    "t": "1146 Dezember 27"
+   }
+  ],
+  "place": [
+   {
+    "t": "Speyer"
+   }
+  ],
+  "text": "Friedrich nimmt, von Abt Bernhard von Clairvaux dazu bewogen, gemeinsam mit seinem Oheim, König Konrad III., das Kreuz.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22646:kinship-oheim",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22646:kinship-oheim",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-oheim",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 15,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22646:> .\nx:kinship-oheim a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22646> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22646:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 15,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22646:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22646:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 15,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22646:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrad III.\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22646:kinship-oheim",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim-2",
+      "own": true,
+      "evidence": {
+       "start": 62,
+       "end": 107,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22646:> .\nx:kinship-oheim rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemeinsam mit seinem Oheim, König Konrad III.\" ] .",
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheim",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22646:kinship-oheim",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 83,
+       "end": 88,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k4"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2",
+       "k4"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3",
+       "k4"
+      ],
+      "text": "König Konrad III."
+     }
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "kinship-oheim",
+    "start": 0,
+    "end": 15
+   },
+   {
+    "id": "kinship-oheim-2",
+    "start": 62,
+    "end": 107
+   },
+   {
+    "id": "t1",
+    "start": 83,
+    "end": 88
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Taking the cross (crusade vow) at the urging of Abt Bernhard von Clairvaux has no act type and is not recorded; Bernhard therefore receives no reference.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a crusade vow (das Kreuz nehmen) and no role for an actor who moves another to an act (bewogen).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 531 und Simonsfeld, Jahrbücher 11 f. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " Görich, Fürstenstreit und Friedensstiftung, ZGORh 158 (2010) weist darauf hin, dass Barbarossa bereits auf dem Hoftag zu Speyer zu Weihnachten 1146 als Herzog von Schwaben zu fassen ist, nicht erst zu Anfang März 1147 (vgl. Reg. 21)."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. I cap. 40, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 59; Vita s. Bernhardi l. VI cap. 14, MG. SS XXVI, 126; Helmold v. Bosau l. I cap. 59, ed. Schmeidler, MG. SS rer. Germ. in us. schol. ("
+    },
+    {
+     "t": "3",
+     "sup": true
+    },
+    {
+     "t": " 1937) 115."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=17"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000633",
+    "Abt von Clairvaux"
+   ],
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-S000967",
+    "Speyer (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

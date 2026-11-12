@@ -1,0 +1,1654 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_2_0_4_2_1_119_119",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22746",
+  "identifier": "RI IV,2,1 n. 119",
+  "short": "RI IV,2,1 n. 119",
+  "sort": "004_002_001_000119_0000000119",
+  "start": "1152-07-01",
+  "end": "1152-07-31",
+  "proseYears": [],
+  "lead": "Wibald (von Stablo) führt bei Kaiser Friedrich Klage über die Gewalttaten seiner Lehensleute (homines nostri, qui nobis fidelitatem iuraverunt et magna beneficia a nobis habent) Folkwin und Widekind (von Schwalenberg), die die zu Corvey gehörende Stadt Höxter (oppidum nostrum Huxariam) in seiner Abwesenheit überfallen und durch drei Tage hindurch verwüstet, dadurch einen Schaden von etwa 900 Pfund Pfennigen angerichtet, von den vornehmeren Gefangenen 253 Pfund erpreßt und als Vögte dieses Ortes die mit Erlaubnis Konrads III. angelegten Befestigungen (vallum et munitiones) zerstört haben, worauf die Corveyer Mönche den Gottesdienst und das Läuten der Glocken eingestellt haben.",
+  "date": [
+   {
+    "t": "(1152 Juli)"
+   }
+  ],
+  "place": [],
+  "text": "Wibald (von Stablo) führt bei Kaiser Friedrich Klage über die Gewalttaten seiner Lehensleute (homines nostri, qui nobis fidelitatem iuraverunt et magna beneficia a nobis habent) Folkwin und Widekind (von Schwalenberg), die die zu Corvey gehörende Stadt Höxter (oppidum nostrum Huxariam) in seiner Abwesenheit überfallen und durch drei Tage hindurch verwüstet, dadurch einen Schaden von etwa 900 Pfund Pfennigen angerichtet, von den vornehmeren Gefangenen 253 Pfund erpreßt und als Vögte dieses Ortes die mit Erlaubnis Konrads III. angelegten Befestigungen (vallum et munitiones) zerstört haben, worauf die Corveyer Mönche den Gottesdienst und das Läuten der Glocken eingestellt haben. Er bittet ihn daher gemeinsam mit den Mönchen und Hintersassen des Klosters Corvey, diese Untat (hanc insignem contumeliam) zu bestrafen, da er sonst weder ihm und dem Reich dienen noch ehrenvoll in Sachsen leben könne.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 7,
+  "blocks": [
+   {
+    "node": "urn:regesta:22746:complaint",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22746:complaint",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "complaint",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 217,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22746:> .\nx:complaint a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22746> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald (von Stablo) führt bei Kaiser Friedrich Klage über die Gewalttaten seiner Lehensleute (homines nostri, qui nobis fidelitatem iuraverunt et magna beneficia a nobis habent) Folkwin und Widekind (von Schwalenberg)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibald (von Stablo)",
+      "text": "Wibald (von Stablo) in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22746:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:complaint:ref-wibald"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:complaint rf:reference x:complaint:ref-wibald .\nx:complaint:ref-wibald a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000420> ;\n    rf:nameInSource \"Wibald (von Stablo)\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser Friedrich",
+      "text": "Kaiser Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22746:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:complaint:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:complaint rf:reference x:complaint:ref-friedrich .\nx:complaint:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Kaiser Friedrich\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22746:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:complaint:ref-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:complaint rf:reference x:complaint:ref-folkwin .\nx:complaint:ref-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Respondent .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind (von Schwalenberg)",
+      "text": "Widekind (von Schwalenberg) in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22746:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:complaint:ref-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:complaint rf:reference x:complaint:ref-widekind .\nx:complaint:ref-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind (von Schwalenberg)\" ;\n    rf:role rv:Respondent .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "Gewalttaten",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22746:complaint",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 62,
+       "end": 73,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Wibald (von Stablo)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kaiser Friedrich"
+     },
+     ", als Beklagte ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Widekind (von Schwalenberg)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22746:vassalage",
+    "kind": "state",
+    "title": "Lehnsverhältnis",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Lehnsverhältnis",
+     "text": "Lehnsverhältnis",
+     "triple": [
+      "urn:regesta:22746:vassalage",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/FeudalRelationship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vassalage",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 217,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22746:> .\nx:vassalage a rf:StateFactoid ;\n    rf:factoidType rv:FeudalRelationship ;\n    rf:source <urn:regesta:record:22746> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wibald (von Stablo) führt bei Kaiser Friedrich Klage über die Gewalttaten seiner Lehensleute (homines nostri, qui nobis fidelitatem iuraverunt et magna beneficia a nobis habent) Folkwin und Widekind (von Schwalenberg)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibald (von Stablo)",
+      "text": "Wibald (von Stablo) in der Rolle Lehnsherr",
+      "triple": [
+       "urn:regesta:22746:vassalage",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:vassalage:ref-wibald"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vassalage",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:vassalage rf:reference x:vassalage:ref-wibald .\nx:vassalage:ref-wibald a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000420> ;\n    rf:nameInSource \"Wibald (von Stablo)\" ;\n    rf:role rv:Lord .",
+      "role": "Lehnsherr",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Lehnsmann",
+      "triple": [
+       "urn:regesta:22746:vassalage",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:vassalage:ref-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vassalage",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:vassalage rf:reference x:vassalage:ref-folkwin .\nx:vassalage:ref-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Vassal .",
+      "role": "Lehnsmann",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind (von Schwalenberg)",
+      "text": "Widekind (von Schwalenberg) in der Rolle Lehnsmann",
+      "triple": [
+       "urn:regesta:22746:vassalage",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:vassalage:ref-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vassalage",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:vassalage rf:reference x:vassalage:ref-widekind .\nx:vassalage:ref-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind (von Schwalenberg)\" ;\n    rf:role rv:Vassal .",
+      "role": "Lehnsmann",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Lehensleute",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22746:vassalage",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 81,
+       "end": 92,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Lehnsverhältnis"
+     },
+     ", als Lehnsherr ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Wibald (von Stablo)"
+     },
+     ", als Lehnsleute ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Widekind (von Schwalenberg)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22746:advocacy",
+    "kind": "state",
+    "title": "Rechtsinhaberschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsinhaberschaft",
+     "text": "Rechtsinhaberschaft",
+     "triple": [
+      "urn:regesta:22746:advocacy",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advocacy",
+     "own": true,
+     "evidence": {
+      "start": 178,
+      "end": 259,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22746:> .\nx:advocacy a rf:StateFactoid ;\n    rf:factoidType rv:RightHolding ;\n    rf:source <urn:regesta:record:22746> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Folkwin und Widekind (von Schwalenberg), die die zu Corvey gehörende Stadt Höxter\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22746:advocacy",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:advocacy:ref-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy",
+      "own": true,
+      "evidence": {
+       "start": 178,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:advocacy rf:reference x:advocacy:ref-folkwin .\nx:advocacy:ref-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:RightHolder .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind (von Schwalenberg)",
+      "text": "Widekind (von Schwalenberg) in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22746:advocacy",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:advocacy:ref-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy",
+      "own": true,
+      "evidence": {
+       "start": 178,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:advocacy rf:reference x:advocacy:ref-widekind .\nx:advocacy:ref-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind (von Schwalenberg)\" ;\n    rf:role rv:RightHolder .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Stadt Höxter (oppidum nostrum Huxariam)",
+      "text": "betrifft Stadt Höxter (oppidum nostrum Huxariam)",
+      "triple": [
+       "urn:regesta:22746:advocacy",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22746:hoexter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy",
+      "own": true,
+      "evidence": {
+       "start": 178,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:advocacy rf:concerns x:hoexter .\nx:hoexter a crm:E53_Place ;\n    rdfs:label \"Stadt Höxter (oppidum nostrum Huxariam)\" .",
+      "object": "urn:regesta:22746:hoexter",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vögte dieses Ortes)",
+      "text": "betrifft Vogtei (Vögte dieses Ortes)",
+      "triple": [
+       "urn:regesta:22746:advocacy",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22746:vogtei-hoexter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy",
+      "own": true,
+      "evidence": {
+       "start": 178,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:advocacy rf:concerns x:vogtei-hoexter .\nx:vogtei-hoexter a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vögte dieses Ortes\" .",
+      "object": "urn:regesta:22746:vogtei-hoexter",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22746:advocacy",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-2",
+      "own": true,
+      "evidence": {
+       "start": 477,
+       "end": 499,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:advocacy rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"als Vögte dieses Ortes\" ] .",
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12",
+       "k17"
+      ],
+      "text": "Rechtsinhaberschaft"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k13",
+       "k17"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14",
+       "k17"
+      ],
+      "text": "Widekind (von Schwalenberg)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15",
+       "k17"
+      ],
+      "text": "Stadt Höxter (oppidum nostrum Huxariam)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k16",
+       "k17"
+      ],
+      "text": "Vogtei (Vögte dieses Ortes)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22746:extortion",
+    "kind": "act",
+    "title": "Zahlung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zahlung",
+     "text": "Zahlung",
+     "triple": [
+      "urn:regesta:22746:extortion",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Payment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "extortion",
+     "own": true,
+     "evidence": {
+      "start": 178,
+      "end": 259,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22746:> .\nx:extortion a rf:ActFactoid ;\n    rf:factoidType rv:Payment ;\n    rf:source <urn:regesta:record:22746> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Folkwin und Widekind (von Schwalenberg), die die zu Corvey gehörende Stadt Höxter\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Zahlungsempfänger",
+      "triple": [
+       "urn:regesta:22746:extortion",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:extortion:ref-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "extortion",
+      "own": true,
+      "evidence": {
+       "start": 178,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:extortion rf:reference x:extortion:ref-folkwin .\nx:extortion:ref-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Payee .",
+      "role": "Zahlungsempfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind (von Schwalenberg)",
+      "text": "Widekind (von Schwalenberg) in der Rolle Zahlungsempfänger",
+      "triple": [
+       "urn:regesta:22746:extortion",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:extortion:ref-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "extortion",
+      "own": true,
+      "evidence": {
+       "start": 178,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:extortion rf:reference x:extortion:ref-widekind .\nx:extortion:ref-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind (von Schwalenberg)\" ;\n    rf:role rv:Payee .",
+      "role": "Zahlungsempfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den vornehmeren Gefangenen",
+      "text": "den vornehmeren Gefangenen in der Rolle Zahler",
+      "triple": [
+       "urn:regesta:22746:extortion",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:extortion:ref-gefangene"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "extortion",
+      "own": true,
+      "evidence": {
+       "start": 178,
+       "end": 259,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:extortion rf:reference x:extortion:ref-gefangene .\nx:extortion:ref-gefangene a rf:Reference ;\n    rf:actor <urn:regesta:actor:22746:local:vornehmere-gefangene> ;\n    rf:nameInSource \"den vornehmeren Gefangenen\" ;\n    rf:role rv:Payer .",
+      "role": "Zahler",
+      "actors": [
+       "urn:regesta:actor:22746:local:vornehmere-gefangene"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22746:extortion",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "extortion-2",
+      "own": true,
+      "evidence": {
+       "start": 424,
+       "end": 472,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:extortion rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von den vornehmeren Gefangenen 253 Pfund erpreßt\" ] .",
+      "key": "k22"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "253 Pfund",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22746:extortion",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 455,
+       "end": 464,
+       "ambiguous": false
+      },
+      "key": "k23"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erpreßt",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22746:extortion",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 465,
+       "end": 472,
+       "ambiguous": false
+      },
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18",
+       "k22"
+      ],
+      "text": "Zahlung"
+     },
+     ", als Zahlungsempfänger ",
+     {
+      "keys": [
+       "k19",
+       "k22"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k20",
+       "k22"
+      ],
+      "text": "Widekind (von Schwalenberg)"
+     },
+     ", als Zahler ",
+     {
+      "keys": [
+       "k21",
+       "k22"
+      ],
+      "text": "den vornehmeren Gefangenen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22746:hoexter-belongs-corvey",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22746:hoexter-belongs-corvey",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "hoexter-belongs-corvey",
+     "own": true,
+     "evidence": {
+      "start": 223,
+      "end": 286,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22746:> .\nx:hoexter-belongs-corvey a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22746> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die zu Corvey gehörende Stadt Höxter (oppidum nostrum Huxariam)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Corvey",
+      "text": "Corvey in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22746:hoexter-belongs-corvey",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:hoexter-belongs-corvey:ref-corvey"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "hoexter-belongs-corvey",
+      "own": true,
+      "evidence": {
+       "start": 223,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:hoexter-belongs-corvey rf:reference x:hoexter-belongs-corvey:ref-corvey .\nx:hoexter-belongs-corvey:ref-corvey a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-C000961:community> ;\n    rf:nameInSource \"Corvey\" ;\n    rf:role rv:Possessor .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000961:community"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Stadt Höxter (oppidum nostrum Huxariam)",
+      "text": "betrifft Stadt Höxter (oppidum nostrum Huxariam)",
+      "triple": [
+       "urn:regesta:22746:hoexter-belongs-corvey",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22746:hoexter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "hoexter-belongs-corvey",
+      "own": true,
+      "evidence": {
+       "start": 223,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:hoexter-belongs-corvey rf:concerns x:hoexter .\nx:hoexter a crm:E53_Place ;\n    rdfs:label \"Stadt Höxter (oppidum nostrum Huxariam)\" .",
+      "object": "urn:regesta:22746:hoexter",
+      "key": "k27"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "zu Corvey gehörende",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22746:hoexter-belongs-corvey",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 227,
+       "end": 246,
+       "ambiguous": false
+      },
+      "key": "k28"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Corvey"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Stadt Höxter (oppidum nostrum Huxariam)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22746:konrad-permission",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22746:konrad-permission",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "konrad-permission",
+     "own": true,
+     "evidence": {
+      "start": 500,
+      "end": 578,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22746:> .\nx:konrad-permission a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22746> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die mit Erlaubnis Konrads III. angelegten Befestigungen (vallum et munitiones)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k29"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrads III.",
+      "text": "Konrads III. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22746:konrad-permission",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:konrad-permission:ref-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "konrad-permission",
+      "own": true,
+      "evidence": {
+       "start": 500,
+       "end": 578,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:konrad-permission rf:reference x:konrad-permission:ref-konrad .\nx:konrad-permission:ref-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000316> ;\n    rf:nameInSource \"Konrads III.\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Befestigungen (vallum et munitiones)",
+      "text": "betrifft Befestigungen (vallum et munitiones)",
+      "triple": [
+       "urn:regesta:22746:konrad-permission",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22746:befestigungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "konrad-permission",
+      "own": true,
+      "evidence": {
+       "start": 500,
+       "end": 578,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:konrad-permission rf:concerns x:befestigungen .\nx:befestigungen a crm:E18_Physical_Thing ;\n    rdfs:label \"Befestigungen (vallum et munitiones)\" .",
+      "object": "urn:regesta:22746:befestigungen",
+      "key": "k31"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Erlaubnis",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22746:konrad-permission",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 508,
+       "end": 517,
+       "ambiguous": false
+      },
+      "key": "k32"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Konrads III."
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Befestigungen (vallum et munitiones)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22746:request-punishment",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22746:request-punishment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request-punishment",
+     "own": true,
+     "evidence": {
+      "start": 685,
+      "end": 821,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22746:> .\nx:request-punishment a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22746> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Er bittet ihn daher gemeinsam mit den Mönchen und Hintersassen des Klosters Corvey, diese Untat (hanc insignem contumeliam) zu bestrafen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k33"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibald (von Stablo)",
+      "text": "Wibald (von Stablo) in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22746:request-punishment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:request-punishment:ref-wibald"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-punishment",
+      "own": true,
+      "evidence": {
+       "start": 685,
+       "end": 821,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:request-punishment rf:reference x:request-punishment:ref-wibald .\nx:request-punishment:ref-wibald a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000420> ;\n    rf:nameInSource \"Er\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k34"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser Friedrich",
+      "text": "Kaiser Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22746:request-punishment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:request-punishment:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-punishment",
+      "own": true,
+      "evidence": {
+       "start": 685,
+       "end": 821,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:request-punishment rf:reference x:request-punishment:ref-friedrich .\nx:request-punishment:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"ihn\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k35"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Mönchen",
+      "text": "Mönchen in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22746:request-punishment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:request-punishment:ref-moenche"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-punishment",
+      "own": true,
+      "evidence": {
+       "start": 685,
+       "end": 821,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:request-punishment rf:reference x:request-punishment:ref-moenche .\nx:request-punishment:ref-moenche a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-C000965:community> ;\n    rf:nameInSource \"Mönchen\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000965:community"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hintersassen des Klosters Corvey",
+      "text": "Hintersassen des Klosters Corvey in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22746:request-punishment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22746:request-punishment:ref-hintersassen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-punishment",
+      "own": true,
+      "evidence": {
+       "start": 685,
+       "end": 821,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22746:> .\nx:request-punishment rf:reference x:request-punishment:ref-hintersassen .\nx:request-punishment:ref-hintersassen a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-C000967:community> ;\n    rf:nameInSource \"Hintersassen des Klosters Corvey\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000967:community"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "da er sonst weder ihm und dem Reich dienen noch ehrenvoll in Sachsen leben könne",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22746:request-punishment",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 823,
+       "end": 903,
+       "ambiguous": false
+      },
+      "key": "k38"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Wibald (von Stablo)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Mönchen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "Hintersassen des Klosters Corvey"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Kaiser Friedrich"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "complaint",
+    "start": 0,
+    "end": 217
+   },
+   {
+    "id": "vassalage",
+    "start": 0,
+    "end": 217
+   },
+   {
+    "id": "t1",
+    "start": 62,
+    "end": 73
+   },
+   {
+    "id": "t2",
+    "start": 81,
+    "end": 92
+   },
+   {
+    "id": "advocacy",
+    "start": 178,
+    "end": 259
+   },
+   {
+    "id": "extortion",
+    "start": 178,
+    "end": 259
+   },
+   {
+    "id": "hoexter-belongs-corvey",
+    "start": 223,
+    "end": 286
+   },
+   {
+    "id": "t5",
+    "start": 227,
+    "end": 246
+   },
+   {
+    "id": "extortion-2",
+    "start": 424,
+    "end": 472
+   },
+   {
+    "id": "t3",
+    "start": 455,
+    "end": 464
+   },
+   {
+    "id": "t4",
+    "start": 465,
+    "end": 472
+   },
+   {
+    "id": "advocacy-2",
+    "start": 477,
+    "end": 499
+   },
+   {
+    "id": "konrad-permission",
+    "start": 500,
+    "end": 578
+   },
+   {
+    "id": "t6",
+    "start": 508,
+    "end": 517
+   },
+   {
+    "id": "request-punishment",
+    "start": 685,
+    "end": 821
+   },
+   {
+    "id": "t7",
+    "start": 823,
+    "end": 903
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Corvey (RI004-002-C000961) is a register place entry for the monastery; used as community IRI for the possessor of Höxter",
+     "lang": "en"
+    },
+    {
+     "text": "Wibald in the request is named only by the pronoun 'Er'; Friedrich only by 'ihn'",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Damage of 'etwa 900 Pfund Pfennigen' and the devastation and destruction of the fortifications have no act type (no damage or violence type); omitted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Extortion of 253 Pfund is typed rv:Payment with qualifier 'erpreßt'; the model has no type for a forced exaction, and all acts of Folkwin and Widekind are reported inside Wibald's complaint, which the model cannot mark as an allegation",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Permission of Konrad III for the fortifications typed rv:Grant; recipient unstated and no right type for a fortification right",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Monks' suspension of services and bells is out of scope",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for damage or destruction of property, so the 900 Pfund damage and the destruction of the fortifications cannot be recorded.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No means to mark factoids as allegations reported within a complaint.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "Konrad's permission has no stated recipient; rv:Grant without recipient is the closest available form.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "allegation-as-fact",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22746:extortion",
+     "description": "The extortion is part of Wibald's complaint, typed rv:Payment. The passage supports that the complaint reports it, and the qualifier erpreßt keeps the nature; but the factoid stands as an act without any link to the complaint that alleges it. The same holds for the vassalage, advocacy and possession factoids, which are less problematic.",
+     "proposal": "No change within the contract; report as model gap (reported allegation).",
+     "quote": {
+      "start": 424,
+      "end": 472
+     }
+    },
+    {
+     "category": "ground",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22746:complaint",
+     "description": "rf:ground \"Gewalttaten\" names the subject of the complaint rather than a reason the regest gives for it. Acceptable but stretches the property.",
+     "proposal": "Optionally move the wording to rf:qualifier.",
+     "quote": {
+      "start": 20,
+      "end": 73
+     }
+    },
+    {
+     "category": "omitted-economic",
+     "severity": "Vermerk",
+     "subject": "22746",
+     "description": "The damage of about 900 Pfund Pfennigen is an economic statement of the passage; the vocabulary has no act type for damage, so the omission is a model gap rather than an extraction error. The same applies to the destruction of the fortifications by the advocates.",
+     "proposal": "Report as model gap in the batch report.",
+     "quote": {
+      "start": 360,
+      "end": 422
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The extortion and the other deeds are allegations within Wibald's complaint, and the model cannot mark them as such.",
+     "reason": "Every statement after 'führt bei Kaiser Friedrich Klage über' is reported inside the complaint. The contract has no means to mark a factoid as an allegation. The qualifier 'erpreßt' keeps the nature of the payment. No correction.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "rf:ground \"Gewalttaten\" names the subject of the complaint rather than a reason for it.",
+     "reason": "'Klage über die Gewalttaten' gives the violence as what the complaint is brought for, which falls within 'a reason the regest gives for the act'. The wording is exact.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The damage of about 900 Pfund and the destruction of the fortifications are omitted.",
+     "reason": "'einen Schaden von etwa 900 Pfund Pfennigen angerichtet' and 'die ... Befestigungen ... zerstört' need an act type for damage or destruction, which the vocabulary lacks. The extractor reported it.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Friedrich antwortete auf diese Klage mit mehreren Mandaten (Regg. "
+    },
+    {
+     "t": "120",
+     "regest": "22747"
+    },
+    {
+     "t": " -"
+    },
+    {
+     "t": "123",
+     "regest": "22750"
+    },
+    {
+     "t": "). Vgl. dazu auch die Schreiben Arnolds von Köln und Ottos von Freising an Wibald, Jaffé, a. a. O. 517 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 385 (Knipping, Reg. Köln 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "540"
+    },
+    {
+     "t": ") und 519 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 387, Hausmann, Reichskanzlei 235 und die bei Reg. "
+    },
+    {
+     "t": "121",
+     "regest": "22748"
+    },
+    {
+     "t": " angegebene Literatur."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Epp. Wibaldi, ed. Jaffé, Mon. Corb. 515 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 384."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0042"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-C000961",
+    "Corvey (an der Weser, <i>heute:</i> Teil von Höxter in Ostwestfalen, Nordrh.-Westf.), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-C000965",
+    "Mönche"
+   ],
+   [
+    "RI004-002-C000967",
+    "Hintersassen"
+   ],
+   [
+    "RI004-002-F000280",
+    "von Schwalenberg, Vogt von Höxter"
+   ],
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-H001241",
+    "Höxter (an der Weser, Reg.-Bez. Detmold, Nordrh.-Westf.)"
+   ],
+   [
+    "RI004-002-H001243",
+    "Befestigungen"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-O000405",
+    "(I.), Bischof von Freising"
+   ],
+   [
+    "RI004-002-S000032",
+    "Sachsen"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000454",
+    "(II.), Graf von Schwalenberg (-Waldeck), Vogt von Höxter"
+   ]
+  ]
+ }
+}

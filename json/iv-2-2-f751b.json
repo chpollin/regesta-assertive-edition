@@ -1,0 +1,394 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/fe4f30ec-e986-4f71-a328-f42a9c8c1aa2",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "220531",
+  "identifier": "RI IV,2,2 n. †751b",
+  "short": "RI IV,2,2 n. †751b",
+  "sort": "004_002_002_001262_00000#751b",
+  "start": "1143-01-01",
+  "end": "1159-08-30",
+  "proseYears": [],
+  "lead": "Papst G. (recte: Hadrian IV.) erlaubt Bischof G(erhard) von Bologna nach Rücksprache mit den Kardinälen, dem Kaiser salva ecclesie ac pontificum reverentia den Treueid zu leisten.",
+  "date": [
+   {
+    "t": "(vor 1159 September 1)"
+   }
+  ],
+  "place": [],
+  "text": "Papst G. (recte: Hadrian IV.) erlaubt Bischof G(erhard) von Bologna nach Rücksprache mit den Kardinälen, dem Kaiser salva ecclesie ac pontificum reverentia den Treueid zu leisten.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:220531:permission",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:220531:permission",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "permission",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 178,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220531:> .\nx:permission a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:220531> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Papst G. (recte: Hadrian IV.) erlaubt Bischof G(erhard) von Bologna nach Rücksprache mit den Kardinälen, dem Kaiser salva ecclesie ac pontificum reverentia den Treueid zu leisten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst G. (recte: Hadrian IV.)",
+      "text": "Papst G. (recte: Hadrian IV.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220531:permission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "permission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 178,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220531:> .\nx:permission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000026> ; rf:nameInSource \"Papst G. (recte: Hadrian IV.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000026"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof G(erhard) von Bologna",
+      "text": "Bischof G(erhard) von Bologna in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:220531:permission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "permission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 178,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220531:> .\nx:permission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"Bischof G(erhard) von Bologna\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000351"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Kardinälen",
+      "text": "den Kardinälen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:220531:permission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "permission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 178,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220531:> .\nx:permission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:220531:local:kardinaele> ; rf:nameInSource \"den Kardinälen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:220531:local:kardinaele"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser",
+      "text": "Kaiser in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:220531:permission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "permission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 178,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220531:> .\nx:permission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"dem Kaiser\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Ausnahme",
+      "text": "salva ecclesie ac pontificum reverentia",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220531:permission",
+       "https://example.org/regesta/factoid/exception",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 116,
+       "end": 155,
+       "ambiguous": false
+      },
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erlaubt",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220531:permission",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 30,
+       "end": 37,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Papst G. (recte: Hadrian IV.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Bischof G(erhard) von Bologna"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "den Kardinälen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Kaiser"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "permission",
+    "start": 0,
+    "end": 178
+   },
+   {
+    "id": "t2",
+    "start": 30,
+    "end": 37
+   },
+   {
+    "id": "t1",
+    "start": 116,
+    "end": 155
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Papst G. (recte: Hadrian IV.)' identified with RI004-002-H000026 following the regest's own correction 'recte'.",
+     "lang": "en"
+    },
+    {
+     "text": "'den Kardinälen' is a regest-local group without register candidate.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a permission (Erlaubnis/licence); recorded as rv:Enactment with qualifier 'erlaubt'.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the person to whom the permitted oath would be sworn or for consulted counsellors; emperor and cardinals recorded as rv:Participant. The oath itself is not asserted as performed.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a permission; rv:Enactment is used.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:220531:permission",
+     "description": "The emperor is the one to whom the permitted oath would be sworn; he takes no part in the pope's permission. rv:Participant implies involvement in the act that the passage does not state.",
+     "proposal": "Use rv:Beneficiary for the emperor, or drop the reference and record him in a comment, since the permission concerns a prospective oath to him.",
+     "quote": {
+      "start": 105,
+      "end": 178
+     }
+    },
+    {
+     "category": "literal",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:220531:permission",
+     "description": "rf:qualifier \"erlaubt\" only repeats the verb and qualifies nothing the type does not. The consultation 'nach Rücksprache mit den Kardinälen' is the qualifying detail and could stand as the qualifier; the cardinals as rv:Participant is acceptable.",
+     "proposal": "Replace the qualifier with \"nach Rücksprache mit den Kardinälen\".",
+     "quote": {
+      "start": 68,
+      "end": 103
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The emperor as rv:Participant implies involvement in the papal permission; rv:Beneficiary or removal proposed.",
+     "reason": "In 'erlaubt Bischof G(erhard) von Bologna ..., dem Kaiser ... den Treueid zu leisten' the emperor is the prospective recipient of the oath. rv:Beneficiary would read the papal permission as made in the emperor's favour, which the passage does not say, and removing the reference loses a mention. rv:Participant ('Beteiligt, ohne dass das Regest eine bestimmtere Rolle trägt') is the contract's weakest role; the missing role for the person to whom an oath is sworn stays a gap, already reported by the extractor.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Replace rf:qualifier \"erlaubt\" with \"nach Rücksprache mit den Kardinälen\".",
+     "reason": "rf:qualifier takes 'exact wording that qualifies the type ... that the vocabulary does not capture'. The factoid is typed rv:Enactment for want of a permission type, so \"erlaubt\" is exactly the qualifying word that marks it as a permission. The consultation is already carried by the cardinals' reference with nameInSource \"den Kardinälen\".",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Fiktives Schreiben, dessen Verfasser freilich gut über die Geschehnisse der Epoche informiert war; Antwort auf das vorige Reg. †N.IV – 751a. – Die Datierung wird hier nach der Nennung Papst Hadrians IV. vorgenommen, der am 1. September 1159 starb."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Briefe des Magisters Guido (Savignano sul Rubicone. Biblioteca dell’Accademia dei Filopatridi, MS. 45S [Zweite Sammlung], fol. 141r.) Reg.: "
+    },
+    {
+     "t": "Hartmann, Ars dictaminis",
+     "href": "http://opac.regesta-imperii.de/id/1854872"
+    },
+    {
+     "t": ", 344 Nr. 22."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-G000351",
+    "Bischof von Bologna"
+   ],
+   [
+    "RI004-002-H000026",
+    "IV., Papst"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,2216 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-02-00_1_0_4_2_1_161_161",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22788",
+  "identifier": "RI IV,2,1 n. 161",
+  "short": "RI IV,2,1 n. 161",
+  "sort": "004_002_001_000161_0000000161",
+  "start": "1153-02-01",
+  "end": "1153-02-28",
+  "proseYears": [],
+  "lead": "Friedrich nimmt die Besitzungen der Domkanoniker zu Besançon (matris ecclesiae sancti Ioannis) in seinen Schutz, unterstellt sie ausschließlich seiner Vogtei, bestätigt ihnen die Freiheit der Orte Cully (Cusliacum) und Riex (Roaldum) von allen Abgaben an die Dienstmannen zu Lutry (a ministris de Lustriaco), den Anteil an der Münze (Tertiam etiam partem Bisuntinae monetae cum custodia ferramentorum, quibus ipsa cuditur, ita quod ipsi habeant mediam partem et archiepiscopus aliam et neutri parti sine alia cudere liceat) sowie das Geleitrecht in der Stadt (conductum in civilate) und erneuert ihnen die Immunitätsverleihungen seiner Vorgänger bei Festsetzung einer Strafe von 70 Pfund für einen Freien bzw. ebensovielen Schlägen für einen Unfreien (si liber est, septuaginta libris legalem bannum componat, si vero servus, tot ictus accipiat).",
+  "date": [
+   {
+    "t": "1153 (Februar)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Besançon (Bisuntii)"
+   }
+  ],
+  "text": "Friedrich nimmt die Besitzungen der Domkanoniker zu Besançon (matris ecclesiae sancti Ioannis) in seinen Schutz, unterstellt sie ausschließlich seiner Vogtei, bestätigt ihnen die Freiheit der Orte Cully (Cusliacum) und Riex (Roaldum) von allen Abgaben an die Dienstmannen zu Lutry (a ministris de Lustriaco), den Anteil an der Münze (Tertiam etiam partem Bisuntinae monetae cum custodia ferramentorum, quibus ipsa cuditur, ita quod ipsi habeant mediam partem et archiepiscopus aliam et neutri parti sine alia cudere liceat) sowie das Geleitrecht in der Stadt (conductum in civilate) und erneuert ihnen die Immunitätsverleihungen seiner Vorgänger bei Festsetzung einer Strafe von 70 Pfund für einen Freien bzw. ebensovielen Schlägen für einen Unfreien (si liber est, septuaginta libris legalem bannum componat, si vero servus, tot ictus accipiat). Z.: die Erzbischöfe Arnold von Köln, Humbert von Besançon, die Bischöfe Ortlieb von Basel, Konrad von Worms, Hermann von Konstanz, Anselm von Havelberg, Abt Wibald von Corvey, Herzog Heinrich von Sachsen, die Markgrafen Hermann von Sachsen, Otakar von Steier, die Pfalzgrafen Otto von Wittelsbach, Friedrich von Tübingen. - Arnoldus canc. vice Mogontini archiep. et archicanc. ; unter Verwendung des vermutlich zur Erlangung unseres Diploms gefälschten DH. III. 389 (VU.) wohl von A II. D geschrieben; B. 1 laut C. Divina nos praecepta .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 9,
+  "blocks": [
+   {
+    "node": "urn:regesta:22788:schutznahme",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22788:schutznahme",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "schutznahme",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 111,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:schutznahme a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die Besitzungen der Domkanoniker zu Besançon (matris ecclesiae sancti Ioannis) in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22788:schutznahme",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 111,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:schutznahme rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkanoniker zu Besançon",
+      "text": "Domkanoniker zu Besançon in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22788:schutznahme",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 111,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:schutznahme rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ; rf:nameInSource \"Domkanoniker zu Besançon\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000824:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Besitzungen der Domkanoniker zu Besançon",
+      "text": "betrifft die Besitzungen der Domkanoniker zu Besançon",
+      "triple": [
+       "urn:regesta:22788:schutznahme",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22788:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutznahme",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 111,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:schutznahme rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"die Besitzungen der Domkanoniker zu Besançon\" .",
+      "object": "urn:regesta:22788:besitzungen",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Domkanoniker zu Besançon"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "die Besitzungen der Domkanoniker zu Besançon"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22788:vogtei-unterstellung",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22788:vogtei-unterstellung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vogtei-unterstellung",
+     "own": true,
+     "evidence": {
+      "start": 113,
+      "end": 157,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:vogtei-unterstellung a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"unterstellt sie ausschließlich seiner Vogtei\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22788:vogtei-unterstellung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei-unterstellung",
+      "own": true,
+      "evidence": {
+       "start": 113,
+       "end": 157,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:vogtei-unterstellung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"seiner\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Besitzungen der Domkanoniker zu Besançon",
+      "text": "betrifft die Besitzungen der Domkanoniker zu Besançon",
+      "triple": [
+       "urn:regesta:22788:vogtei-unterstellung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22788:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei-unterstellung",
+      "own": true,
+      "evidence": {
+       "start": 113,
+       "end": 157,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:vogtei-unterstellung rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"die Besitzungen der Domkanoniker zu Besançon\" .",
+      "object": "urn:regesta:22788:besitzungen",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vogtei)",
+      "text": "betrifft Vogtei (Vogtei)",
+      "triple": [
+       "urn:regesta:22788:vogtei-unterstellung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22788:vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei-unterstellung",
+      "own": true,
+      "evidence": {
+       "start": 113,
+       "end": 157,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:vogtei-unterstellung rf:concerns x:vogtei .\nx:vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vogtei\" .",
+      "object": "urn:regesta:22788:vogtei",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22788:vogtei-unterstellung",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22788:schutznahme"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vogtei-unterstellung",
+      "own": true,
+      "evidence": {
+       "start": 113,
+       "end": 157,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:vogtei-unterstellung rf:partOf x:schutznahme .\nx:schutznahme a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:concerns x:besitzungen ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die Besitzungen der Domkanoniker zu Besançon (matris ecclesiae sancti Ioannis) in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ; rf:nameInSource \"Domkanoniker zu Besançon\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22788:schutznahme",
+      "objectClaim": "schutznahme",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "ausschließlich",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:vogtei-unterstellung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 129,
+       "end": 143,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "die Besitzungen der Domkanoniker zu Besançon"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Vogtei (Vogtei)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung-abgabenfreiheit",
+     "own": true,
+     "evidence": {
+      "start": 159,
+      "end": 307,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-abgabenfreiheit a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihnen die Freiheit der Orte Cully (Cusliacum) und Riex (Roaldum) von allen Abgaben an die Dienstmannen zu Lutry (a ministris de Lustriaco)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-abgabenfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 307,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-abgabenfreiheit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkanoniker zu Besançon",
+      "text": "Domkanoniker zu Besançon in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-abgabenfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 307,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-abgabenfreiheit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000824:community"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Dienstmannen zu Lutry",
+      "text": "Dienstmannen zu Lutry in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-abgabenfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 307,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-abgabenfreiheit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000928:community> ; rf:nameInSource \"Dienstmannen zu Lutry\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000928:community"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Cully (Cusliacum)",
+      "text": "betrifft Cully (Cusliacum)",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22788:cully"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-abgabenfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 307,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-abgabenfreiheit rf:concerns x:cully .\nx:cully a crm:E53_Place ;\n    rdfs:label \"Cully (Cusliacum)\" .",
+      "object": "urn:regesta:22788:cully",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Riex (Roaldum)",
+      "text": "betrifft Riex (Roaldum)",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22788:riex"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-abgabenfreiheit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 307,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-abgabenfreiheit rf:concerns x:riex .\nx:riex a crm:E53_Place ;\n    rdfs:label \"Riex (Roaldum)\" .",
+      "object": "urn:regesta:22788:riex",
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Domkanoniker zu Besançon"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Dienstmannen zu Lutry"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Cully (Cusliacum)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Riex (Roaldum)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22788:bestaetigung-geleit",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22788:bestaetigung-geleit",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung-geleit",
+     "own": true,
+     "evidence": {
+      "start": 159,
+      "end": 174,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-geleit a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihnen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k17"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-geleit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-geleit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 174,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-geleit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkanoniker zu Besançon",
+      "text": "Domkanoniker zu Besançon in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-geleit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-geleit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 174,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-geleit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000824:community"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Schutzrecht (das Geleitrecht in der Stadt)",
+      "text": "betrifft Schutzrecht (das Geleitrecht in der Stadt)",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-geleit",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22788:geleitrecht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-geleit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 174,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-geleit rf:concerns x:geleitrecht .\nx:geleitrecht a crm:E30_Right ;\n    crm:P2_has_type rv:Protection ;\n    rdfs:label \"das Geleitrecht in der Stadt\" .",
+      "object": "urn:regesta:22788:geleitrecht",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "in der Stadt",
+      "text": "betrifft in der Stadt",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-geleit",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22788:stadt"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-geleit",
+      "own": true,
+      "evidence": {
+       "start": 159,
+       "end": 174,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-geleit rf:concerns x:stadt .\nx:stadt a crm:E53_Place ;\n    rdfs:label \"in der Stadt\" .",
+      "object": "urn:regesta:22788:stadt",
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-geleit",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-geleit-2",
+      "own": true,
+      "evidence": {
+       "start": 530,
+       "end": 582,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-geleit rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das Geleitrecht in der Stadt (conductum in civilate)\" ] .",
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k17",
+       "k22"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k18",
+       "k22"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k19",
+       "k22"
+      ],
+      "text": "Domkanoniker zu Besançon"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k20",
+       "k22"
+      ],
+      "text": "Schutzrecht (das Geleitrecht in der Stadt)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k21",
+       "k22"
+      ],
+      "text": "in der Stadt"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22788:bestaetigung-muenze",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22788:bestaetigung-muenze",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "bestaetigung-muenze",
+     "own": true,
+     "evidence": {
+      "start": 309,
+      "end": 523,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-muenze a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Anteil an der Münze (Tertiam etiam partem Bisuntinae monetae cum custodia ferramentorum, quibus ipsa cuditur, ita quod ipsi habeant mediam partem et archiepiscopus aliam et neutri parti sine alia cudere liceat)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k23"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-muenze",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-muenze",
+      "own": true,
+      "evidence": {
+       "start": 309,
+       "end": 523,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-muenze rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkanoniker zu Besançon",
+      "text": "Domkanoniker zu Besançon in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-muenze",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-muenze",
+      "own": true,
+      "evidence": {
+       "start": 309,
+       "end": 523,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-muenze rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000824:community"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "archiepiscopus",
+      "text": "archiepiscopus in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-muenze",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-muenze",
+      "own": true,
+      "evidence": {
+       "start": 309,
+       "end": 523,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-muenze rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22788:local:archiepiscopus> ; rf:nameInSource \"archiepiscopus\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22788:local:archiepiscopus"
+      ],
+      "key": "k26",
+      "agentNotes": [
+       {
+        "text": "'archiepiscopus' in the Latin mint clause is kept as a regest-local functional actor; the register candidate Humbert of Besançon appears only in the witness list and is not identified with it.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Münzrecht (den Anteil an der Münze)",
+      "text": "betrifft Münzrecht (den Anteil an der Münze)",
+      "triple": [
+       "urn:regesta:22788:bestaetigung-muenze",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22788:muenze"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "bestaetigung-muenze",
+      "own": true,
+      "evidence": {
+       "start": 309,
+       "end": 523,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:bestaetigung-muenze rf:concerns x:muenze .\nx:muenze a crm:E30_Right ;\n    crm:P2_has_type rv:Minting ;\n    rdfs:label \"den Anteil an der Münze\" .",
+      "object": "urn:regesta:22788:muenze",
+      "key": "k27"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "ita quod ipsi habeant mediam partem et archiepiscopus aliam et neutri parti sine alia cudere liceat",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:bestaetigung-muenze",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 423,
+       "end": 522,
+       "ambiguous": false
+      },
+      "key": "k28"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Tertiam etiam partem Bisuntinae monetae cum custodia ferramentorum, quibus ipsa cuditur",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:bestaetigung-muenze",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 334,
+       "end": 421,
+       "ambiguous": false
+      },
+      "key": "k29"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Domkanoniker zu Besançon"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "archiepiscopus"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Münzrecht (den Anteil an der Münze)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22788:erneuerung-immunitaet",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22788:erneuerung-immunitaet",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "erneuerung-immunitaet",
+     "own": true,
+     "evidence": {
+      "start": 587,
+      "end": 645,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:erneuerung-immunitaet a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"erneuert ihnen die Immunitätsverleihungen seiner Vorgänger\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k30"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22788:erneuerung-immunitaet",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "erneuerung-immunitaet",
+      "own": true,
+      "evidence": {
+       "start": 587,
+       "end": 645,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:erneuerung-immunitaet rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkanoniker zu Besançon",
+      "text": "Domkanoniker zu Besançon in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22788:erneuerung-immunitaet",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "erneuerung-immunitaet",
+      "own": true,
+      "evidence": {
+       "start": 587,
+       "end": 645,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:erneuerung-immunitaet rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000824:community"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Rechtsverleihung",
+      "text": "bezieht sich auf Rechtsverleihung",
+      "triple": [
+       "urn:regesta:22788:erneuerung-immunitaet",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22788:immunitaet-vorgaenger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "erneuerung-immunitaet",
+      "own": true,
+      "evidence": {
+       "start": 587,
+       "end": 645,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:erneuerung-immunitaet rf:refersToAct x:immunitaet-vorgaenger .\nx:immunitaet-vorgaenger a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Immunitätsverleihungen seiner Vorgänger\" ] ;\n    rf:factoidType rv:RightGrant ;\n    rf:qualifier \"Immunitätsverleihungen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22788:local:vorgaenger> ; rf:nameInSource \"seiner Vorgänger\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22788:immunitaet-vorgaenger",
+      "objectClaim": "immunitaet-vorgaenger",
+      "key": "k33"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erneuert",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:erneuerung-immunitaet",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 587,
+       "end": 595,
+       "ambiguous": false
+      },
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Domkanoniker zu Besançon"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22788:immunitaet-vorgaenger",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22788:immunitaet-vorgaenger",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "immunitaet-vorgaenger",
+     "own": true,
+     "evidence": {
+      "start": 602,
+      "end": 645,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:immunitaet-vorgaenger a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Immunitätsverleihungen seiner Vorgänger\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k35"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Vorgänger",
+      "text": "seiner Vorgänger in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22788:immunitaet-vorgaenger",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "immunitaet-vorgaenger",
+      "own": true,
+      "evidence": {
+       "start": 602,
+       "end": 645,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:immunitaet-vorgaenger rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22788:local:vorgaenger> ; rf:nameInSource \"seiner Vorgänger\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22788:local:vorgaenger"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Immunitätsverleihungen",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:immunitaet-vorgaenger",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 606,
+       "end": 628,
+       "ambiguous": false
+      },
+      "key": "k37"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "seiner Vorgänger"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22788:strafe-frei",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22788:strafe-frei",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "strafe-frei",
+     "own": true,
+     "evidence": {
+      "start": 668,
+      "end": 704,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:strafe-frei a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Strafe von 70 Pfund für einen Freien\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k38"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22788:strafe-frei",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "strafe-frei",
+      "own": true,
+      "evidence": {
+       "start": 668,
+       "end": 704,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:strafe-frei rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k39"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22788:strafe-frei",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22788:erneuerung-immunitaet"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "strafe-frei",
+      "own": true,
+      "evidence": {
+       "start": 668,
+       "end": 704,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:strafe-frei rf:partOf x:erneuerung-immunitaet .\nx:erneuerung-immunitaet a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"erneuert ihnen die Immunitätsverleihungen seiner Vorgänger\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"erneuert\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:refersToAct x:immunitaet-vorgaenger ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22788:erneuerung-immunitaet",
+      "objectClaim": "erneuerung-immunitaet",
+      "key": "k40"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22788:strafe-frei",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "strafe-frei-2",
+      "own": true,
+      "evidence": {
+       "start": 752,
+       "end": 808,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:strafe-frei rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"si liber est, septuaginta libris legalem bannum componat\" ] .",
+      "key": "k41"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "für einen Freien",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:strafe-frei",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 688,
+       "end": 704,
+       "ambiguous": false
+      },
+      "key": "k42"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "si liber est",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:strafe-frei",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 752,
+       "end": 764,
+       "ambiguous": false
+      },
+      "key": "k43"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "70 Pfund",
+      "id": "t8",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:strafe-frei",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 679,
+       "end": 687,
+       "ambiguous": false
+      },
+      "key": "k44"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "septuaginta libris",
+      "id": "t9",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:strafe-frei",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 766,
+       "end": 784,
+       "ambiguous": false
+      },
+      "key": "k45"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k38",
+       "k41"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k39",
+       "k41"
+      ],
+      "text": "Friedrich"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k40",
+       "k41"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22788:strafe-unfrei",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22788:strafe-unfrei",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "strafe-unfrei",
+     "own": true,
+     "evidence": {
+      "start": 710,
+      "end": 750,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22788:> .\nx:strafe-unfrei a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"ebensovielen Schlägen für einen Unfreien\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k46"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22788:strafe-unfrei",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "strafe-unfrei",
+      "own": true,
+      "evidence": {
+       "start": 710,
+       "end": 750,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:strafe-unfrei rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k47"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22788:strafe-unfrei",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22788:erneuerung-immunitaet"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "strafe-unfrei",
+      "own": true,
+      "evidence": {
+       "start": 710,
+       "end": 750,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:strafe-unfrei rf:partOf x:erneuerung-immunitaet .\nx:erneuerung-immunitaet a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"erneuert ihnen die Immunitätsverleihungen seiner Vorgänger\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"erneuert\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ; rf:nameInSource \"ihnen\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:refersToAct x:immunitaet-vorgaenger ;\n    rf:source <urn:regesta:record:22788> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22788:erneuerung-immunitaet",
+      "objectClaim": "erneuerung-immunitaet",
+      "key": "k48"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22788:strafe-unfrei",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "strafe-unfrei-2",
+      "own": true,
+      "evidence": {
+       "start": 810,
+       "end": 844,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22788:> .\nx:strafe-unfrei rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"si vero servus, tot ictus accipiat\" ] .",
+      "key": "k49"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "für einen Unfreien",
+      "id": "t10",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:strafe-unfrei",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 732,
+       "end": 750,
+       "ambiguous": false
+      },
+      "key": "k50"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "si vero servus",
+      "id": "t11",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:strafe-unfrei",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 810,
+       "end": 824,
+       "ambiguous": false
+      },
+      "key": "k51"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "ebensovielen Schlägen",
+      "id": "t12",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:strafe-unfrei",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 710,
+       "end": 731,
+       "ambiguous": false
+      },
+      "key": "k52"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "tot ictus",
+      "id": "t13",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22788:strafe-unfrei",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 826,
+       "end": 835,
+       "ambiguous": false
+      },
+      "key": "k53"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k46",
+       "k49"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k47",
+       "k49"
+      ],
+      "text": "Friedrich"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k48",
+       "k49"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "schutznahme",
+    "start": 0,
+    "end": 111
+   },
+   {
+    "id": "vogtei-unterstellung",
+    "start": 113,
+    "end": 157
+   },
+   {
+    "id": "t1",
+    "start": 129,
+    "end": 143
+   },
+   {
+    "id": "bestaetigung-abgabenfreiheit",
+    "start": 159,
+    "end": 307
+   },
+   {
+    "id": "bestaetigung-geleit",
+    "start": 159,
+    "end": 174
+   },
+   {
+    "id": "bestaetigung-muenze",
+    "start": 309,
+    "end": 523
+   },
+   {
+    "id": "t3",
+    "start": 334,
+    "end": 421
+   },
+   {
+    "id": "t2",
+    "start": 423,
+    "end": 522
+   },
+   {
+    "id": "bestaetigung-geleit-2",
+    "start": 530,
+    "end": 582
+   },
+   {
+    "id": "erneuerung-immunitaet",
+    "start": 587,
+    "end": 645
+   },
+   {
+    "id": "t4",
+    "start": 587,
+    "end": 595
+   },
+   {
+    "id": "immunitaet-vorgaenger",
+    "start": 602,
+    "end": 645
+   },
+   {
+    "id": "t5",
+    "start": 606,
+    "end": 628
+   },
+   {
+    "id": "strafe-frei",
+    "start": 668,
+    "end": 704
+   },
+   {
+    "id": "t8",
+    "start": 679,
+    "end": 687
+   },
+   {
+    "id": "t6",
+    "start": 688,
+    "end": 704
+   },
+   {
+    "id": "strafe-unfrei",
+    "start": 710,
+    "end": 750
+   },
+   {
+    "id": "t12",
+    "start": 710,
+    "end": 731
+   },
+   {
+    "id": "t10",
+    "start": 732,
+    "end": 750
+   },
+   {
+    "id": "strafe-frei-2",
+    "start": 752,
+    "end": 808
+   },
+   {
+    "id": "t7",
+    "start": 752,
+    "end": 764
+   },
+   {
+    "id": "t9",
+    "start": 766,
+    "end": 784
+   },
+   {
+    "id": "strafe-unfrei-2",
+    "start": 810,
+    "end": 844
+   },
+   {
+    "id": "t11",
+    "start": 810,
+    "end": 824
+   },
+   {
+    "id": "t13",
+    "start": 826,
+    "end": 835
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'seiner Vorgänger' (grantors of the earlier immunity grants) is a regest-local functional actor; the recipients of those earlier grants are not stated and are left out.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for immunity or exemption: the immunity grants and the freedom of Cully and Riex from dues carry no crm:E30_Right node, only places and a qualifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Geleitrecht (conductus) mapped to rv:Protection as the nearest right type; a conduct right is not defined in the vocabulary.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No property for co-holding terms of a shared right: the half-share of the archbishop and the joint-minting restriction are kept as rf:condition in Latin wording.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Penalty amounts in blows (ebensovielen Schlägen) are recorded with rf:amount, which the ontology defines for monetary-type amounts.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for immunity.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No right type for exemption from dues; the freedom of Cully and Riex has no right node.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for a party adversely affected or excluded by an act (the Dienstmannen of Lutry).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Removed urn:regesta:22788:strafe.",
+     "lang": "en"
+    },
+    {
+     "text": "Added urn:regesta:22788:strafe-frei (rv:Enactment; selectors 'Strafe von 70 Pfund für einen Freien' and 'si liber est, septuaginta libris legalem bannum componat'; Friedrich rv:Grantor; amounts '70 Pfund', 'septuaginta libris'; conditions 'für einen Freien', 'si liber est'; partOf erneuerung-immunitaet; producer correction-g8).",
+     "lang": "en"
+    },
+    {
+     "text": "Added urn:regesta:22788:strafe-unfrei (rv:Enactment; selectors 'ebensovielen Schlägen für einen Unfreien' and 'si vero servus, tot ictus accipiat'; Friedrich rv:Grantor; amounts 'ebensovielen Schlägen', 'tot ictus'; conditions 'für einen Unfreien', 'si vero servus'; partOf erneuerung-immunitaet; producer correction-g8).",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "lost-condition",
+     "severity": "Fehler",
+     "subject": "urn:regesta:22788:strafe",
+     "description": "The penalty is two conditional rules: 70 Pfund for a free man, as many blows for an unfree man. The candidate puts four rf:amount and four rf:condition literals on one factoid, so the graph no longer says which amount applies under which condition and admits the reading of 70 Pfund for an unfree man.",
+     "proposal": "Split into two rv:Enactment factoids partOf the renewal: one with rf:condition 'für einen Freien' and rf:amount '70 Pfund', one with rf:condition 'für einen Unfreien' and rf:qualifier 'ebensovielen Schlägen' (a corporal penalty is not an amount).",
+     "quote": {
+      "start": 646,
+      "end": 750
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+     "description": "The Dienstmannen of Lutry are those to whom no dues are owed; rv:Participant overstates their part in the confirmation. No closer role exists.",
+     "proposal": "Keep, or drop the reference and keep them in the evidence; report the missing role.",
+     "quote": {
+      "start": 234,
+      "end": 307
+     }
+    },
+    {
+     "category": "right-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22788:geleitrecht",
+     "description": "The conduct right is typed rv:Protection. Geleit is also a revenue-bearing right; the classification is an expert question.",
+     "proposal": "None; flag for the right-type review.",
+     "quote": {
+      "start": 530,
+      "end": 582
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "Four amounts and four conditions on one factoid lose which penalty applies under which condition.",
+     "reason": "The passage sets two conditional rules: 'Strafe von 70 Pfund für einen Freien bzw. ebensovielen Schlägen für einen Unfreien (si liber est, septuaginta libris legalem bannum componat, si vero servus, tot ictus accipiat)'. On one node the graph admits 70 Pfund for an unfree man. Two enactment factoids keep each amount with its condition. 'ebensovielen Schlägen' is a counted quantity in its historical unit and may stay rf:amount.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The Dienstmannen of Lutry as rv:Participant overstate their part; keep or drop.",
+     "reason": "'von allen Abgaben an die Dienstmannen zu Lutry' makes them the party to whom dues are no longer owed. rv:Participant is the vocabulary's declared fallback ('Beteiligt, ohne dass das Regest eine bestimmtere Rolle trägt'); dropping the reference would lose the actor. No correction; the missing role for an adversely affected party is recorded.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu den verlorenen Königsurkunden vgl. die Vorbemerkung zu DF. I. 49 und Herkenrath, in: WdF 390 (1975) 343. Bei den genannten "
+    },
+    {
+     "t": "ministri",
+     "i": true
+    },
+    {
+     "t": " von Lutry handelt es sich nicht um königliche, wie das gefälschte DH. III. 389 angibt, sondern um solche des Bischofs von Lausanne, vgl. dazu die Urkunde Bischof Ortliebs von Basel von 1154 Juli 10, ed. Trouillat, Mon. de Bâle 1, 324 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 211; Sources du droit de Vaud B 1, ed. Anex-Cabanis- Poudret, Samml. Schweizer. Rechtsqu. 19, 1977, 33 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 39; Hidber 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 2008. Verschiedene stilistische Eigentümlichkeiten, aber auch die Androhung körperlicher Züchtigung unfreier Verletzer der Rechte der Kirche deuten darauf hin, daß es sich bei DF. I. 49 um Empfängerdiktat handelt. Die Goldbulle an Seidenfäden wird in C erwähnt. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " Wohl dieses DF.I. für die Domkanoniker von Besançon ("
+    },
+    {
+     "t": "ecclesiae sancti Ioannis",
+     "i": true
+    },
+    {
+     "t": ") wurde im Privileg Papst Lucius’ III. von 1185 Februar 5, Verona bestätigt, vgl. dazu Baaken – Schmidt, Papstregesten 1124–1198, Teil 4/Lfg. 2: 1184–1185, Nr. 1460."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift des Kanonikus Chaillot (17. Jh.) in der Collection Chifflet Bd. 19 f. 35 der Stadtbibliothek Besançon (B); Abschrift des Kanonikus D' Orival von etwa 1620 im Ms. 710 f. 59 ebenda (C). Drucke: Stumpf, Acta ined. 154 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 124; MG. DF. I. 49. Reg.: Forel, Reg. de doc. de la Suisse Rom. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 556; Hidber 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1996 zu Februar 15; Stumpf 3662."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=57"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_49"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000810",
+    "Besançon (am Doubs, Hptst. des Dép. Doubs)"
+   ],
+   [
+    "RI004-002-B000812",
+    "Stadt"
+   ],
+   [
+    "RI004-002-B000824",
+    "Domkanoniker der Mutterkirche St. Johannes"
+   ],
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-F000687",
+    "Pfalzgraf von Tübingen"
+   ],
+   [
+    "RI004-002-H000340",
+    "III., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-H000846",
+    "Markgraf von Sachsen, Graf von (Weimar-)Orlamünde"
+   ],
+   [
+    "RI004-002-H001389",
+    "Erzbischof von Besançon"
+   ],
+   [
+    "RI004-002-K000333",
+    "(I.), Bischof von Worms"
+   ],
+   [
+    "RI004-002-L000787",
+    "(III.), Papst (vorher: Hubald Allucingoli, Kardinalpriester von S. Prassede, dann Kardinalbischof von Ostia, <i>siehe dort</i>); <i>zu ihm siehe auch oben in der Einleitung, S. 27</i>"
+   ],
+   [
+    "RI004-002-L000928",
+    "Dienstmannen (des Bischofs von Lausanne)"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-V000250",
+    "Verona (an der Etsch/Adige, ital.-Prov.-Hptst.)"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

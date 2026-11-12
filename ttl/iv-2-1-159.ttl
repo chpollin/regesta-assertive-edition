@@ -1,0 +1,117 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-02-04_1_0_4_2_1_159_159
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22786> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 159" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-R000128> a crm:E21_Person ;
+    rdfs:label "Reinhero de Bulgaro" .
+
+<urn:regesta:actor:RI004-002-P000590> a crm:E21_Person ;
+    rdfs:label "Philippi" .
+
+<urn:regesta:actor:RI004-002-M000337> a crm:E21_Person ;
+    rdfs:label "Manfredi" .
+
+<urn:regesta:22786:thing-besitzungen-lehen> a crm:E18_Physical_Thing ;
+    rdfs:label "die namentlich genannten Besitzungen und Lehen" .
+
+<urn:regesta:22786:thing-burg-crevacuore> a crm:E18_Physical_Thing ;
+    rdfs:label "die Burg Crevacuore" .
+
+<urn:regesta:22786:thing-erwerbungen> a crm:E18_Physical_Thing ;
+    rdfs:label "die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)" .
+
+<urn:regesta:22786:confirmation-bulgaro> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22786> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt den Herren von Bulgaro (Reinhero de Bulgaro et filiis Philippi et Manfredi) die namentlich genannten Besitzungen und Lehen, insbesondere die Burg Crevacuore (Creuecor)" ] ;
+    rf:reference <urn:regesta:22786:confirmation-bulgaro-grantor> , <urn:regesta:22786:confirmation-bulgaro-reinher> , <urn:regesta:22786:confirmation-bulgaro-philipp> , <urn:regesta:22786:confirmation-bulgaro-manfred> ;
+    rf:concerns <urn:regesta:22786:thing-besitzungen-lehen> , <urn:regesta:22786:thing-burg-crevacuore> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22786:confirmation-bulgaro-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22786:confirmation-bulgaro-reinher> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000128> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Reinhero de Bulgaro" .
+
+<urn:regesta:22786:confirmation-bulgaro-philipp> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-P000590> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Philippi" .
+
+<urn:regesta:22786:confirmation-bulgaro-manfred> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-M000337> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Manfredi" .
+
+<urn:regesta:22786:parenthood-reinher-philipp> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22786> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Reinhero de Bulgaro et filiis Philippi et Manfredi" ] ;
+    rf:reference <urn:regesta:22786:parenthood-reinher-philipp-parent> , <urn:regesta:22786:parenthood-reinher-philipp-child> ;
+    rf:qualifier "filiis" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22786:parenthood-reinher-philipp-parent> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000128> ;
+    rf:role rv:Parent ;
+    rf:nameInSource "Reinhero de Bulgaro" .
+
+<urn:regesta:22786:parenthood-reinher-philipp-child> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-P000590> ;
+    rf:role rv:Child ;
+    rf:nameInSource "Philippi" .
+
+<urn:regesta:22786:parenthood-reinher-manfred> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22786> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Reinhero de Bulgaro et filiis Philippi et Manfredi" ] ;
+    rf:reference <urn:regesta:22786:parenthood-reinher-manfred-parent> , <urn:regesta:22786:parenthood-reinher-manfred-child> ;
+    rf:qualifier "filiis" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22786:parenthood-reinher-manfred-parent> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000128> ;
+    rf:role rv:Parent ;
+    rf:nameInSource "Reinhero de Bulgaro" .
+
+<urn:regesta:22786:parenthood-reinher-manfred-child> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-M000337> ;
+    rf:role rv:Child ;
+    rf:nameInSource "Manfredi" .
+
+<urn:regesta:22786:protection-erwerbungen> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22786> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nimmt die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.) unter Vorbehalt der königlichen Gerechtsame in seinen Schutz" ] ;
+    rf:reference <urn:regesta:22786:protection-erwerbungen-grantor> ;
+    rf:concerns <urn:regesta:22786:thing-erwerbungen> ;
+    rf:exception "unter Vorbehalt der königlichen Gerechtsame" ;
+    rf:partOf <urn:regesta:22786:confirmation-bulgaro> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22786:protection-erwerbungen-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor .

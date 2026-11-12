@@ -1,0 +1,145 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-09-23_1_0_4_2_1_193_F193
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# The record is marked as a forgery (n. †193); the factoids report what the regest says.
+
+<urn:regesta:record:22820> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. †193" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-R000317:community> a crm:E74_Group ;
+    rdfs:label "Kloster St. Emmeram zu Regensburg" .
+<urn:regesta:actor:RI004-002-L000786> a crm:E21_Person ;
+    rdfs:label "Papst Lucius' II." .
+
+<urn:regesta:22820:right-security-acquisitions> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "Sicherheit für Gütererwerbungen aller Art" .
+<urn:regesta:22820:right-death-dues> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "das Recht auf bestimmte Abgaben beim Tod von Hintersassen" .
+<urn:regesta:22820:right-ministerials> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters" .
+<urn:regesta:22820:right-jurisdiction> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "die Gerichtshoheit in seinem Bereich" .
+
+# Earlier act: the papal privilege. Its content and recipient are not stated beyond the confirmation.
+<urn:regesta:22820:privilege-lucius> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22820> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Privileg Papst Lucius' II." ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-L000786> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Papst Lucius' II." ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22820:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22820> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg das wörtlich inserierte Privileg Papst Lucius' II." ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000317:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Kloster St. Emmeram zu Regensburg" ] ;
+    rf:refersToAct <urn:regesta:22820:privilege-lucius> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22820:assurance-acquisitions> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22820> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gewährt ihm Sicherheit für Gütererwerbungen aller Art" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000317:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22820:right-security-acquisitions> ;
+    rf:partOf <urn:regesta:22820:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22820:grant-death-dues> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22820> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "das Recht auf bestimmte Abgaben beim Tod von Hintersassen" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "gewährt ihm" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000317:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22820:right-death-dues> ;
+    rf:partOf <urn:regesta:22820:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22820:grant-ministerials> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22820> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "gewährt ihm" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000317:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22820:right-ministerials> ;
+    rf:partOf <urn:regesta:22820:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22820:grant-jurisdiction> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22820> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Gerichtshoheit in seinem Bereich" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "gewährt ihm" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000317:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22820:right-jurisdiction> ;
+    rf:partOf <urn:regesta:22820:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .

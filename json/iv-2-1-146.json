@@ -1,0 +1,1092 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-10-00_1_0_4_2_1_146_146",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22773",
+  "identifier": "RI IV,2,1 n. 146",
+  "short": "RI IV,2,1 n. 146",
+  "sort": "004_002_001_000146_0000000146",
+  "start": "1152-10-01",
+  "end": "1152-10-31",
+  "proseYears": [],
+  "lead": "Friedrich belehnt Bischof Eberhard von Bamberg erneut mit der Abtei Niederaltaich, nachdem wegen der Unmutsäußerungen einiger Mönche, die sich aber dann dem Gericht nicht stellten, von Bischof Heinrich von Regensburg unter Zustimmung der anwesenden Reichsfürsten ein diesbezüglicher Spruch gefällt worden ist, und befiehlt, ihn in den Besitz des Klosters durch den Klostervogt, (Graf) Berthold von Bogen, einweisen zu lassen.",
+  "date": [
+   {
+    "t": "(1152 Ende Oktober/Anfang November)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Stallbaum (Stalboume)"
+   }
+  ],
+  "text": "Friedrich belehnt Bischof Eberhard von Bamberg erneut mit der Abtei Niederaltaich, nachdem wegen der Unmutsäußerungen einiger Mönche, die sich aber dann dem Gericht nicht stellten, von Bischof Heinrich von Regensburg unter Zustimmung der anwesenden Reichsfürsten ein diesbezüglicher Spruch gefällt worden ist, und befiehlt, ihn in den Besitz des Klosters durch den Klostervogt, (Graf) Berthold von Bogen, einweisen zu lassen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 5,
+  "blocks": [
+   {
+    "node": "urn:regesta:22773:enfeoffment",
+    "kind": "act",
+    "title": "Belehnung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Belehnung",
+     "text": "Belehnung",
+     "triple": [
+      "urn:regesta:22773:enfeoffment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enfeoffment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "enfeoffment",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 81,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22773:> .\nx:enfeoffment a rf:ActFactoid ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:source <urn:regesta:record:22773> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich belehnt Bischof Eberhard von Bamberg erneut mit der Abtei Niederaltaich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22773:enfeoffment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 81,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:enfeoffment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhard von Bamberg",
+      "text": "Bischof Eberhard von Bamberg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22773:enfeoffment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 81,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:enfeoffment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"Bischof Eberhard von Bamberg\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Abtei Niederaltaich",
+      "text": "betrifft Abtei Niederaltaich",
+      "triple": [
+       "urn:regesta:22773:enfeoffment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22773:abtei-niederaltaich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 81,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:enfeoffment rf:concerns x:abtei-niederaltaich .\nx:abtei-niederaltaich a crm:E18_Physical_Thing ;\n    rdfs:label \"Abtei Niederaltaich\" .",
+      "object": "urn:regesta:22773:abtei-niederaltaich",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Urteil",
+      "text": "bezieht sich auf Urteil",
+      "triple": [
+       "urn:regesta:22773:enfeoffment",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22773:judgment"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 81,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:enfeoffment rf:refersToAct x:judgment .\nx:judgment a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:concerns x:abtei-niederaltaich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von Bischof Heinrich von Regensburg unter Zustimmung der anwesenden Reichsfürsten ein diesbezüglicher Spruch gefällt worden ist\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:ground \"wegen der Unmutsäußerungen einiger Mönche\" ;\n    rf:qualifier \"nachdem\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22773:local:reichsfuersten> ; rf:nameInSource \"der anwesenden Reichsfürsten\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000397> ; rf:nameInSource \"Bischof Heinrich von Regensburg\" ; rf:role rv:Judge ] ;\n    rf:source <urn:regesta:record:22773> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22773:judgment",
+      "objectClaim": "judgment",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erneut",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22773:enfeoffment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 47,
+       "end": 53,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Belehnung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Bischof Eberhard von Bamberg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Abtei Niederaltaich"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22773:dispute",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22773:dispute",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "dispute",
+     "own": true,
+     "evidence": {
+      "start": 91,
+      "end": 179,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22773:> .\nx:dispute a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22773> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"wegen der Unmutsäußerungen einiger Mönche, die sich aber dann dem Gericht nicht stellten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "einiger Mönche",
+      "text": "einiger Mönche in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22773:dispute",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute",
+      "own": true,
+      "evidence": {
+       "start": 91,
+       "end": 179,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:dispute rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000177:community> ; rf:nameInSource \"einiger Mönche\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-N000177:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Abtei Niederaltaich",
+      "text": "betrifft Abtei Niederaltaich",
+      "triple": [
+       "urn:regesta:22773:dispute",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22773:abtei-niederaltaich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute",
+      "own": true,
+      "evidence": {
+       "start": 91,
+       "end": 179,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:dispute rf:concerns x:abtei-niederaltaich .\nx:abtei-niederaltaich a crm:E18_Physical_Thing ;\n    rdfs:label \"Abtei Niederaltaich\" .",
+      "object": "urn:regesta:22773:abtei-niederaltaich",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "die sich aber dann dem Gericht nicht stellten",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22773:dispute",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 134,
+       "end": 179,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "einiger Mönche"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Abtei Niederaltaich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22773:judgment",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22773:judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "judgment",
+     "own": true,
+     "evidence": {
+      "start": 181,
+      "end": 308,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22773:> .\nx:judgment a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22773> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von Bischof Heinrich von Regensburg unter Zustimmung der anwesenden Reichsfürsten ein diesbezüglicher Spruch gefällt worden ist\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Heinrich von Regensburg",
+      "text": "Bischof Heinrich von Regensburg in der Rolle Richter",
+      "triple": [
+       "urn:regesta:22773:judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 181,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000397> ; rf:nameInSource \"Bischof Heinrich von Regensburg\" ; rf:role rv:Judge ] .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000397"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der anwesenden Reichsfürsten",
+      "text": "der anwesenden Reichsfürsten in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22773:judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 181,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22773:local:reichsfuersten> ; rf:nameInSource \"der anwesenden Reichsfürsten\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22773:local:reichsfuersten"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Abtei Niederaltaich",
+      "text": "betrifft Abtei Niederaltaich",
+      "triple": [
+       "urn:regesta:22773:judgment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22773:abtei-niederaltaich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 181,
+       "end": 308,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:judgment rf:concerns x:abtei-niederaltaich .\nx:abtei-niederaltaich a crm:E18_Physical_Thing ;\n    rdfs:label \"Abtei Niederaltaich\" .",
+      "object": "urn:regesta:22773:abtei-niederaltaich",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen der Unmutsäußerungen einiger Mönche",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22773:judgment",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 91,
+       "end": 132,
+       "ambiguous": false
+      },
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nachdem",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22773:judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 83,
+       "end": 90,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Urteil"
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bischof Heinrich von Regensburg"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "der anwesenden Reichsfürsten"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Abtei Niederaltaich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22773:induction-order",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22773:induction-order",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "induction-order",
+     "own": true,
+     "evidence": {
+      "start": 314,
+      "end": 424,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22773:> .\nx:induction-order a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22773> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"befiehlt, ihn in den Besitz des Klosters durch den Klostervogt, (Graf) Berthold von Bogen, einweisen zu lassen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k17"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22773:induction-order",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "induction-order",
+      "own": true,
+      "evidence": {
+       "start": 314,
+       "end": 424,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:induction-order rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhard von Bamberg",
+      "text": "Bischof Eberhard von Bamberg in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22773:induction-order",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "induction-order",
+      "own": true,
+      "evidence": {
+       "start": 314,
+       "end": 424,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:induction-order rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"ihn\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "(Graf) Berthold von Bogen",
+      "text": "(Graf) Berthold von Bogen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22773:induction-order",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "induction-order",
+      "own": true,
+      "evidence": {
+       "start": 314,
+       "end": 424,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:induction-order rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000730> ; rf:nameInSource \"(Graf) Berthold von Bogen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000730"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Abtei Niederaltaich",
+      "text": "betrifft Abtei Niederaltaich",
+      "triple": [
+       "urn:regesta:22773:induction-order",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22773:abtei-niederaltaich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "induction-order",
+      "own": true,
+      "evidence": {
+       "start": 314,
+       "end": 424,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:induction-order rf:concerns x:abtei-niederaltaich .\nx:abtei-niederaltaich a crm:E18_Physical_Thing ;\n    rdfs:label \"Abtei Niederaltaich\" .",
+      "object": "urn:regesta:22773:abtei-niederaltaich",
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Belehnung",
+      "text": "Teil von Belehnung",
+      "triple": [
+       "urn:regesta:22773:induction-order",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22773:enfeoffment"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "induction-order",
+      "own": true,
+      "evidence": {
+       "start": 314,
+       "end": 424,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:induction-order rf:partOf x:enfeoffment .\nx:enfeoffment a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:concerns x:abtei-niederaltaich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich belehnt Bischof Eberhard von Bamberg erneut mit der Abtei Niederaltaich\" ] ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:qualifier \"erneut\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"Bischof Eberhard von Bamberg\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:refersToAct x:judgment ;\n    rf:source <urn:regesta:record:22773> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22773:enfeoffment",
+      "objectClaim": "enfeoffment",
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Bischof Eberhard von Bamberg"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "(Graf) Berthold von Bogen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Abtei Niederaltaich"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Belehnung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22773:advocate-office",
+    "kind": "state",
+    "title": "Amtsinhabe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Amtsinhabe",
+     "text": "Amtsinhabe",
+     "triple": [
+      "urn:regesta:22773:advocate-office",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/OfficeHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advocate-office",
+     "own": true,
+     "evidence": {
+      "start": 361,
+      "end": 403,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22773:> .\nx:advocate-office a rf:StateFactoid ;\n    rf:factoidType rv:OfficeHolding ;\n    rf:source <urn:regesta:record:22773> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Klostervogt, (Graf) Berthold von Bogen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k23"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "(Graf) Berthold von Bogen",
+      "text": "(Graf) Berthold von Bogen in der Rolle Amtsinhaber",
+      "triple": [
+       "urn:regesta:22773:advocate-office",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-office",
+      "own": true,
+      "evidence": {
+       "start": 361,
+       "end": 403,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:advocate-office rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000730> ; rf:nameInSource \"(Graf) Berthold von Bogen\" ; rf:role rv:Officeholder ] .",
+      "role": "Amtsinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000730"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Klostervogt)",
+      "text": "betrifft Vogtei (Klostervogt)",
+      "triple": [
+       "urn:regesta:22773:advocate-office",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22773:vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-office",
+      "own": true,
+      "evidence": {
+       "start": 361,
+       "end": 403,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22773:> .\nx:advocate-office rf:concerns x:vogtei .\nx:vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Klostervogt\" .",
+      "object": "urn:regesta:22773:vogtei",
+      "key": "k25"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Amtsinhabe"
+     },
+     ", als Amtsinhaber ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "(Graf) Berthold von Bogen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Vogtei (Klostervogt)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "enfeoffment",
+    "start": 0,
+    "end": 81
+   },
+   {
+    "id": "t1",
+    "start": 47,
+    "end": 53
+   },
+   {
+    "id": "t4",
+    "start": 83,
+    "end": 90
+   },
+   {
+    "id": "dispute",
+    "start": 91,
+    "end": 179
+   },
+   {
+    "id": "t3",
+    "start": 91,
+    "end": 132
+   },
+   {
+    "id": "t2",
+    "start": 134,
+    "end": 179
+   },
+   {
+    "id": "judgment",
+    "start": 181,
+    "end": 308
+   },
+   {
+    "id": "induction-order",
+    "start": 314,
+    "end": 424
+   },
+   {
+    "id": "advocate-office",
+    "start": 361,
+    "end": 403
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "einiger Mönche: identified with the register entry for the Niederaltaich monks as a community IRI, although the passage speaks of some monks only",
+     "lang": "en"
+    },
+    {
+     "text": "der anwesenden Reichsfürsten: no register candidate, regest-local group",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The monks' Unmutsäußerungen are typed rv:Dispute with role Participant, since the regest names neither a formal claim nor claimant/respondent roles",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the executor of an induction into possession (Klostervogt Berthold), recorded as Participant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the executor of an order (the person through whom an act is to be carried out).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "relation-misuse",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22773:enfeoffment",
+     "description": "rf:refersToAct is defined for a confirmation or assurance referring to an earlier act. The enfeoffment follows the judgment ('nachdem') but does not confirm it. The 'erneut' implies an earlier enfeoffment that the regest does not report as an act, so the qualifier alone is adequate.",
+     "proposal": "Either drop rf:refersToAct or keep it with an explicit note that it expresses sequence, not confirmation.",
+     "quote": {
+      "start": 0,
+      "end": 90
+     }
+    },
+    {
+     "category": "identity-scope",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-N000177:community",
+     "description": "The register entry denotes the monks of Niederaltaich as a body, while the passage speaks of 'einiger Mönche', a subset. Using the community IRI slightly widens the actor.",
+     "proposal": "Use a regest-local group 'einiger Mönche' or keep the register IRI with a note that only some monks are meant.",
+     "quote": {
+      "start": 91,
+      "end": 132
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22773:induction-order",
+     "description": "Berthold von Bogen is the advocate through whom the induction is to be carried out; rv:Participant is acceptable but the vocabulary has no executor role.",
+     "proposal": "No change required; report the missing executor role as a model gap.",
+     "quote": {
+      "start": 314,
+      "end": 424
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "rf:refersToAct from the renewed enfeoffment to the judgment misuses a property meant for confirmations.",
+     "reason": "rf:refersToAct is defined for 'a later act such as a confirmation or assurance', so the list is not exclusive. The regest ties the renewed enfeoffment to the judgment ('belehnt ... erneut ..., nachdem ... ein diesbezüglicher Spruch gefällt worden ist'); a reference from the later act to the earlier one the same regest reports is defensible and implies no date.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The community IRI for the Niederaltaich monks widens 'einiger Mönche' to the whole body.",
+     "reason": "N000177 is the packet's own register entry 'Niederaltaich ... // Mönche', matching the passage by name; the label 'einiger Mönche' and rf:nameInSource keep the restriction in the source wording. A regest-local group would discard a valid packet identification.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "S. dazu die Regg. "
+    },
+    {
+     "t": "69",
+     "regest": "22696"
+    },
+    {
+     "t": " und "
+    },
+    {
+     "t": "102",
+     "regest": "22729"
+    },
+    {
+     "t": "; vgl. Herzberg-Fränkel, Niederaltaich, MÖIG Erg.Bd. 10 (1928) 130."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt in DF. I. 70 (Reg. 208)."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=52"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000730",
+    "Graf von Bogen"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-H000397",
+    "Bischof von Regensburg"
+   ],
+   [
+    "RI004-002-N000175",
+    "Niederaltaich (am Nordufer der Donau, südöstl. Deggendorf, Niederbayern), (Benediktiner-)Reichsabtei"
+   ],
+   [
+    "RI004-002-N000177",
+    "Mönche"
+   ],
+   [
+    "RI004-002-S001071",
+    "Stallbaum (Teil von Pommelsbrunn, Ldkr. Nürnberger Land, bayer. Reg.-Bez. Mittelfranken)"
+   ]
+  ]
+ }
+}

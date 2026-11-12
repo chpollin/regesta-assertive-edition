@@ -1,0 +1,274 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-06-01_1_0_4_2_1_94_94
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22721> a crm:E31_Document .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-B000724> a crm:E21_Person ; rdfs:label "Herzog Berthold (IV. von Zähringen)" .
+<urn:regesta:actor:RI004-002-W000568> a crm:E21_Person ; rdfs:label "Graf Wilhelm von Mâcon" .
+<urn:regesta:actor:RI004-002-B000330> a crm:E21_Person ; rdfs:label "Beatrix, die spätere Kaiserin" .
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ; rdfs:label "Herzog Heinrich von Sachsen" .
+<urn:regesta:actor:RI004-002-W000272> a crm:E21_Person ; rdfs:label "dominus Welf" .
+<urn:regesta:actor:RI004-002-A001203> a crm:E21_Person ; rdfs:label "Kanzler Arnold" .
+<urn:regesta:actor:RI004-002-U000179> a crm:E21_Person ; rdfs:label "Ulrich von Lenzburg" .
+<urn:regesta:actor:RI004-002-E000167> a crm:E21_Person ; rdfs:label "Egeno (wohl von Vaihingen)" .
+<urn:regesta:actor:RI004-002-U000176> a crm:E21_Person ; rdfs:label "Ulrich von Herrlingen" .
+<urn:regesta:actor:RI004-002-M000513> a crm:E21_Person ; rdfs:label "Markward von Grumbach" .
+<urn:regesta:actor:RI004-002-A001234> a crm:E21_Person ; rdfs:label "Arnold von Biberbach" .
+<urn:regesta:actor:RI004-002-O000441> a crm:E21_Person ; rdfs:label "Pfalzgraf Otto von Wittelsbach" .
+<urn:regesta:actor:RI004-002-W000148> a crm:E21_Person ; rdfs:label "der Truchseß Walther" .
+<urn:regesta:actor:RI004-002-H000982> a crm:E21_Person ; rdfs:label "der Mundschenk Hildebrand" .
+<urn:regesta:actor:RI004-002-K000492> a crm:E21_Person ; rdfs:label "(der Reichsministeriale) Konrad Colbo" .
+<urn:regesta:actor:RI004-002-S000708> a crm:E21_Person ; rdfs:label "sein Bruder Siegfried" .
+<urn:regesta:actor:RI004-002-B001610> a crm:E21_Person ; rdfs:label "Burchard" .
+<urn:regesta:actor:RI004-002-W000357> a crm:E21_Person ; rdfs:label "Werner" .
+
+<urn:regesta:actor:22721:local:frueher-investierte-bischoefe> a rf:FunctionalActor ;
+    rdfs:label "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden" .
+<urn:regesta:actor:22721:local:andere-fuersten> a rf:FunctionalActor ;
+    rdfs:label "anderen Fürsten" .
+
+# Places, things and rights
+
+<urn:regesta:22721:koenigreich-burgund> a crm:E53_Place ; rdfs:label "Königreich Burgund" .
+<urn:regesta:22721:burgund> a crm:E53_Place ; rdfs:label "Burgund" .
+<urn:regesta:22721:provence> a crm:E53_Place ; rdfs:label "Provence" .
+<urn:regesta:22721:land-wilhelms> a crm:E53_Place ;
+    rdfs:label "das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat" .
+<urn:regesta:22721:herrschaft-leitung> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "Herrschaft und Leitung beider Länder" .
+<urn:regesta:22721:verfuegungsgewalt-bistuemer> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "die Erzbistümer und Bistümer in seiner Verfügungsgewalt" .
+<urn:regesta:22721:investitur> a crm:E30_Right ;
+    crm:P2_has_type rv:Investiture ;
+    rdfs:label "ihre Investitur" .
+<urn:regesta:22721:burg-teck> a crm:E18_Physical_Thing ;
+    rdfs:label "die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern" .
+<urn:regesta:22721:oethlingen> a crm:E18_Physical_Thing ; rdfs:label "Oethlingen (Hetlingen)" .
+<urn:regesta:22721:wellingen> a crm:E18_Physical_Thing ; rdfs:label "Wellingen (Willigen)" .
+<urn:regesta:22721:erstein> a crm:E18_Physical_Thing ; rdfs:label "Erstein mit allen Pertinenzen" .
+
+# Main act. The vocabulary has no act type for a bilateral agreement; rv:Enactment is the closest (model gap reported).
+
+<urn:regesta:22721:vertrag> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich schließt mit Herzog Berthold (IV. von Zähringen) einen Vertrag über die Ordnung der Verhältnisse im Königreich Burgund" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Friedrich" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:Participant ; rf:nameInSource "Herzog Berthold (IV. von Zähringen)" ] ;
+    rf:concerns <urn:regesta:22721:koenigreich-burgund> ;
+    rf:qualifier "Vertrag" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+# Provisions of the agreement
+
+<urn:regesta:22721:koenig-zug-uebergabe> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Der König verpflichtet sich, mit dem Herzog nach Burgund und in die Provence zu ziehen, ihm die Länder unterwerfen zu helfen und ihm zu übergeben" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Obligor ; rf:nameInSource "Der König" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:Beneficiary ; rf:nameInSource "dem Herzog" ] ;
+    rf:concerns <urn:regesta:22721:burgund> , <urn:regesta:22721:provence> ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:koenig-feldzugsfrist> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Der König wird seinen Feldzug in die genannten Länder vom nächsten 1. Juni in der 15. Indiktion (1152 Juni 1) an innerhalb eines Jahres antreten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Obligor ; rf:nameInSource "Der König" ] ;
+    rf:qualifier "vom nächsten 1. Juni in der 15. Indiktion (1152 Juni 1) an innerhalb eines Jahres" ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:wilhelm-rechenschaft> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Graf Wilhelm von Mâcon muß über das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat, dem Herzog Rechenschaft geben" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:role rv:Obligor ; rf:nameInSource "Graf Wilhelm von Mâcon" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:Beneficiary ; rf:nameInSource "dem Herzog" ] ;
+    rf:concerns <urn:regesta:22721:land-wilhelms> ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:wilhelm-besitz> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Graf Wilhelm von Mâcon muß über das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:role rv:Possessor ; rf:nameInSource "Graf Wilhelm von Mâcon" ] ;
+    rf:concerns <urn:regesta:22721:land-wilhelms> ;
+    rf:qualifier "von seiner Nichte (Beatrix, die spätere Kaiserin) her" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:wilhelm-nichte> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Graf Wilhelm von Mâcon muß über das Land, das er von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:role rv:Kin ; rf:nameInSource "Graf Wilhelm von Mâcon" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000330> ; rf:role rv:Kin ; rf:nameInSource "Beatrix, die spätere Kaiserin" ] ;
+    rf:qualifier "Nichte" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:herrschaft-koenig> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Herrschaft und Leitung beider Länder stehen dem König bei Anwesenheit zu" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:RightHolder ; rf:nameInSource "dem König" ] ;
+    rf:concerns <urn:regesta:22721:herrschaft-leitung> ;
+    rf:condition "bei Anwesenheit" ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:bistuemer-koenig> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nach seinem Abzug verbleiben nur die Erzbistümer und Bistümer in seiner Verfügungsgewalt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:RightHolder ; rf:nameInSource "seiner" ] ;
+    rf:concerns <urn:regesta:22721:verfuegungsgewalt-bistuemer> ;
+    rf:condition "nach seinem Abzug" ;
+    rf:qualifier "nur" ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+# Earlier investitures, reported with "bisher"; no date implied.
+<urn:regesta:22721:fruehere-investitur> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000568> ; rf:role rv:Grantor ; rf:nameInSource "Grafen Wilhelm" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:22721:local:andere-fuersten> ; rf:role rv:Grantor ; rf:nameInSource "anderen Fürsten" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:22721:local:frueher-investierte-bischoefe> ; rf:role rv:Recipient ; rf:nameInSource "Bischöfe" ] ;
+    rf:qualifier "bisher" , "vom Grafen Wilhelm oder anderen Fürsten" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:investitur-herzog> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden, empfangen ihre Investitur vom Herzog" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:RightHolder ; rf:nameInSource "Herzog" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:22721:local:frueher-investierte-bischoefe> ; rf:role rv:Recipient ; rf:nameInSource "Bischöfe" ] ;
+    rf:concerns <urn:regesta:22721:investitur> ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    rf:refersToAct <urn:regesta:22721:fruehere-investitur> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+# Sureties. The vocabulary has no surety role; rv:Obligor under an rv:Obligation state is the closest (model gap reported).
+<urn:regesta:22721:buergen-koenig> a rf:StateFactoid ;
+    rf:factoidType rv:Obligation ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Bürgen des Königs: Herzog Heinrich von Sachsen, dominus Welf, Kanzler Arnold, die Grafen Ulrich von Lenzburg, Egeno (wohl von Vaihingen) und Ulrich von Herrlingen" ] ,
+                [ a oa:TextQuoteSelector ; oa:exact "Markward von Grumbach, Arnold von Biberbach, Pfalzgraf Otto von Wittelsbach, der Truchseß Walther, der Mundschenk Hildebrand, (der Reichsministeriale) Konrad Colbo und sein Bruder Siegfried" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "des Königs" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Obligor ; rf:nameInSource "Herzog Heinrich von Sachsen" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:role rv:Obligor ; rf:nameInSource "dominus Welf" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:role rv:Obligor ; rf:nameInSource "Kanzler Arnold" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000179> ; rf:role rv:Obligor ; rf:nameInSource "Ulrich von Lenzburg" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000167> ; rf:role rv:Obligor ; rf:nameInSource "Egeno (wohl von Vaihingen)" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000176> ; rf:role rv:Obligor ; rf:nameInSource "Ulrich von Herrlingen" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000513> ; rf:role rv:Obligor ; rf:nameInSource "Markward von Grumbach" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001234> ; rf:role rv:Obligor ; rf:nameInSource "Arnold von Biberbach" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000441> ; rf:role rv:Obligor ; rf:nameInSource "Pfalzgraf Otto von Wittelsbach" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000148> ; rf:role rv:Obligor ; rf:nameInSource "der Truchseß Walther" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000982> ; rf:role rv:Obligor ; rf:nameInSource "der Mundschenk Hildebrand" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000492> ; rf:role rv:Obligor ; rf:nameInSource "Konrad Colbo" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000708> ; rf:role rv:Obligor ; rf:nameInSource "Siegfried" ] ;
+    rf:qualifier "Bürgen des Königs" ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:colbo-bruder> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Konrad Colbo und sein Bruder Siegfried" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000492> ; rf:role rv:Kin ; rf:nameInSource "Konrad Colbo" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000708> ; rf:role rv:Kin ; rf:nameInSource "Siegfried" ] ;
+    rf:qualifier "Bruder" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:berthold-burgundzug> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Herzog Berthold verpflichtet sich, für den Burgundzug des Königs tausend Panzerreiter (loricatos equites)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:Obligor ; rf:nameInSource "Herzog Berthold" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Beneficiary ; rf:nameInSource "des Königs" ] ;
+    rf:amount "tausend Panzerreiter (loricatos equites)" ;
+    rf:qualifier "für den Burgundzug des Königs" ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:berthold-italienzug> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Herzog Berthold verpflichtet sich" ] ,
+                [ a oa:TextQuoteSelector ; oa:exact "für den Italienzug, an dem er teilnehmen wird, für die Zeit seiner Anwesenheit fünfhundert Panzerreiter und fünfzig Armbrustschützen (arcobalistarios) zu stellen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:Obligor ; rf:nameInSource "Herzog Berthold" ] ;
+    rf:amount "fünfhundert Panzerreiter und fünfzig Armbrustschützen (arcobalistarios)" ;
+    rf:qualifier "für den Italienzug, an dem er teilnehmen wird" ;
+    rf:condition "für die Zeit seiner Anwesenheit" ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+# Promised pledge: an enactment, not the performed pledge.
+<urn:regesta:22721:berthold-pfand> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "als Pfand wird er dem König sein Allod, die Burg Teck (Thecche), mit allen Ministerialen und dazugehörigen Gütern sowie Oethlingen (Hetlingen), Wellingen (Willigen) und Erstein mit allen Pertinenzen geben" ] ,
+                [ a oa:TextQuoteSelector ; oa:exact "Herzog Berthold verpflichtet sich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:Pledgor ; rf:nameInSource "Herzog Berthold" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Pledgee ; rf:nameInSource "dem König" ] ;
+    rf:concerns <urn:regesta:22721:burg-teck> , <urn:regesta:22721:oethlingen> , <urn:regesta:22721:wellingen> , <urn:regesta:22721:erstein> ;
+    rf:qualifier "als Pfand" ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22721:berthold-allod> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "als Pfand wird er dem König sein Allod, die Burg Teck (Thecche)" ] ,
+                [ a oa:TextQuoteSelector ; oa:exact "Herzog Berthold verpflichtet sich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:Possessor ; rf:nameInSource "Herzog Berthold" ] ;
+    rf:concerns <urn:regesta:22721:burg-teck> ;
+    rf:qualifier "sein Allod" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .
+
+# Oath on the duke's behalf. No oath act type exists; rv:Assurance is the closest (model gap reported).
+<urn:regesta:22721:eid-ministerialen> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22721> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Für den Herzog schwören seine Ministerialen Burchard und Werner" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000724> ; rf:role rv:Participant ; rf:nameInSource "den Herzog" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001610> ; rf:role rv:Representative ; rf:nameInSource "Burchard" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000357> ; rf:role rv:Representative ; rf:nameInSource "Werner" ] ;
+    rf:qualifier "schwören" ;
+    rf:partOf <urn:regesta:22721:vertrag> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;
+    rf:verificationStatus rv:unchecked .

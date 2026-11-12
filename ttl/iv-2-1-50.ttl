@@ -1,0 +1,42 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1150-09-24_1_0_4_2_1_50_50
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22677> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 50" .
+
+# The vocabulary has no exchange type. The exchange is recorded as rv:Grant with the source
+# word in rf:qualifier and both monasteries as participants, because the regest gives no direction.
+# Friedrich's role as charter witness is out of scope (rv:Witness excludes charter witness lists).
+<urn:regesta:22677:exchange> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:qualifier "Tauschgeschäft" ;
+    rf:source <urn:regesta:record:22677> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Urkunde über ein Tauschgeschäft zwischen den Klöstern St. Blasien und Elchingen" ] ;
+    rf:reference <urn:regesta:22677:ref-st-blasien> , <urn:regesta:22677:ref-elchingen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-13> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22677:ref-st-blasien> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-B000974:community> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "St. Blasien" .
+
+<urn:regesta:22677:ref-elchingen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000265:community> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Elchingen" .
+
+<urn:regesta:actor:RI004-002-B000974:community> a crm:E74_Group ;
+    rdfs:label "Kloster St. Blasien" .
+
+<urn:regesta:actor:RI004-002-E000265:community> a crm:E74_Group ;
+    rdfs:label "Kloster Elchingen" .

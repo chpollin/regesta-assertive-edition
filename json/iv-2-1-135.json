@@ -1,0 +1,2538 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-10-13_1_0_4_2_1_135_135",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22762",
+  "identifier": "RI IV,2,1 n. 135",
+  "short": "RI IV,2,1 n. 135",
+  "sort": "004_002_001_000135_0000000135",
+  "start": "1152-10-13",
+  "end": "1152-10-13",
+  "proseYears": [],
+  "lead": "Friedrich hält einen allgemeinen Hoftag .",
+  "date": [
+   {
+    "t": "1152 Oktober 13"
+   }
+  ],
+  "place": [
+   {
+    "t": "Würzburg"
+   }
+  ],
+  "text": "Friedrich hält einen allgemeinen Hoftag . Friedrich läßt auf die Klage von einigen Apuliern, die von Roger aus ihrer Heimat vertrieben worden sind, den Antritt des Italienzuges, der dem Erwerb der Kaiserkrone dienen soll, innerhalb der nächsten zwei Jahre beschwören. Entgegen seiner Vorladung (s. Reg. 95) erscheint Heinrich Jasomirgott nicht bei Hofe, so daß er erneut vorgeladen werden muß. Friedrich erzielt im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären (vgl. Reg. 88) einen Ausgleich, indem der Welfe das Winzenburger und der Askanier das Plötzkesche Erbe erhält. Friedrich verleiht seinem Oheim, Herzog Welf, das Herzogtum Spoleto, die Markgrafschaft Tuszien, den principatus Sardinien und das Hausgut der Gräfin Mathilde sowie die ihm schon von Konrad III. übertragenenReichseinkünfte mit dem Dorfe Mertingen. Vor Friedrich und den Fürsten wird gemäß den Klagen Wibalds (vgl. Regg. 119-123) der Wiederaufbau der Befestigungen von Höxter beschlossen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 12,
+  "blocks": [
+   {
+    "node": "urn:regesta:22762:italienzug-oath",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22762:italienzug-oath",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "italienzug-oath",
+     "own": true,
+     "evidence": {
+      "start": 42,
+      "end": 266,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:italienzug-oath a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich läßt auf die Klage von einigen Apuliern, die von Roger aus ihrer Heimat vertrieben worden sind, den Antritt des Italienzuges, der dem Erwerb der Kaiserkrone dienen soll, innerhalb der nächsten zwei Jahre beschwören\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22762:italienzug-oath",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "italienzug-oath",
+      "own": true,
+      "evidence": {
+       "start": 42,
+       "end": 266,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:italienzug-oath rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "auf die Klage von einigen Apuliern",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22762:italienzug-oath",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 57,
+       "end": 91,
+       "ambiguous": false
+      },
+      "key": "k3"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "innerhalb der nächsten zwei Jahre",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22762:italienzug-oath",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 222,
+       "end": 255,
+       "ambiguous": false
+      },
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:apulian-complaint",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22762:apulian-complaint",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "apulian-complaint",
+     "own": true,
+     "evidence": {
+      "start": 57,
+      "end": 146,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:apulian-complaint a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf die Klage von einigen Apuliern, die von Roger aus ihrer Heimat vertrieben worden sind\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22762:apulian-complaint",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "apulian-complaint",
+      "own": true,
+      "evidence": {
+       "start": 57,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:apulian-complaint rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "einigen Apuliern",
+      "text": "einigen Apuliern in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22762:apulian-complaint",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "apulian-complaint",
+      "own": true,
+      "evidence": {
+       "start": 57,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:apulian-complaint rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001019:community> ; rf:nameInSource \"einigen Apuliern\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001019:community"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Roger",
+      "text": "Roger in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22762:apulian-complaint",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "apulian-complaint",
+      "own": true,
+      "evidence": {
+       "start": 57,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:apulian-complaint rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000806> ; rf:nameInSource \"Roger\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000806"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "die von Roger aus ihrer Heimat vertrieben worden sind",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22762:apulian-complaint",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 93,
+       "end": 146,
+       "ambiguous": false
+      },
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "einigen Apuliern"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Roger"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:summons-jasomirgott",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22762:summons-jasomirgott",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "summons-jasomirgott",
+     "own": true,
+     "evidence": {
+      "start": 268,
+      "end": 352,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:summons-jasomirgott a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Entgegen seiner Vorladung (s. Reg. 95) erscheint Heinrich Jasomirgott nicht bei Hofe\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich Jasomirgott",
+      "text": "Heinrich Jasomirgott in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22762:summons-jasomirgott",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons-jasomirgott",
+      "own": true,
+      "evidence": {
+       "start": 268,
+       "end": 352,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:summons-jasomirgott rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Heinrich Jasomirgott\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000498"
+      ],
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Heinrich Jasomirgott"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:settlement",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22762:settlement",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "settlement",
+     "own": true,
+     "evidence": {
+      "start": 394,
+      "end": 503,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich erzielt im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären (vgl. Reg. 88) einen Ausgleich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Vermittler",
+      "triple": [
+       "urn:regesta:22762:settlement",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement",
+      "own": true,
+      "evidence": {
+       "start": 394,
+       "end": 503,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Mediator ] .",
+      "role": "Vermittler",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich dem Löwen",
+      "text": "Heinrich dem Löwen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22762:settlement",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement",
+      "own": true,
+      "evidence": {
+       "start": 394,
+       "end": 503,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Heinrich dem Löwen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Albrecht dem Bären",
+      "text": "Albrecht dem Bären in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22762:settlement",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement",
+      "own": true,
+      "evidence": {
+       "start": 394,
+       "end": 503,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:nameInSource \"Albrecht dem Bären\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000135"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22762:settlement",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22762:dispute-heinrich-albrecht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement",
+      "own": true,
+      "evidence": {
+       "start": 394,
+       "end": 503,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement rf:refersToAct x:dispute-heinrich-albrecht .\nx:dispute-heinrich-albrecht a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:nameInSource \"Albrecht dem Bären\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Heinrich dem Löwen\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22762:dispute-heinrich-albrecht",
+      "objectClaim": "dispute-heinrich-albrecht",
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Ausgleich",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22762:settlement",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 494,
+       "end": 503,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Urteil"
+     },
+     ", als Vermittler ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Heinrich dem Löwen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Albrecht dem Bären"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:dispute-heinrich-albrecht",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22762:dispute-heinrich-albrecht",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "dispute-heinrich-albrecht",
+     "own": true,
+     "evidence": {
+      "start": 412,
+      "end": 472,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:dispute-heinrich-albrecht a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich dem Löwen",
+      "text": "Heinrich dem Löwen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22762:dispute-heinrich-albrecht",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-heinrich-albrecht",
+      "own": true,
+      "evidence": {
+       "start": 412,
+       "end": 472,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:dispute-heinrich-albrecht rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Heinrich dem Löwen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Albrecht dem Bären",
+      "text": "Albrecht dem Bären in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22762:dispute-heinrich-albrecht",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-heinrich-albrecht",
+      "own": true,
+      "evidence": {
+       "start": 412,
+       "end": 472,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:dispute-heinrich-albrecht rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:nameInSource \"Albrecht dem Bären\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000135"
+      ],
+      "key": "k20"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Heinrich dem Löwen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Albrecht dem Bären"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:settlement-winzenburg",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22762:settlement-winzenburg",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "settlement-winzenburg",
+     "own": true,
+     "evidence": {
+      "start": 505,
+      "end": 537,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement-winzenburg a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"indem der Welfe das Winzenburger\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k21"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich dem Löwen",
+      "text": "Heinrich dem Löwen in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22762:settlement-winzenburg",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement-winzenburg",
+      "own": true,
+      "evidence": {
+       "start": 505,
+       "end": 537,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement-winzenburg rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"der Welfe\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das Winzenburger",
+      "text": "betrifft das Winzenburger",
+      "triple": [
+       "urn:regesta:22762:settlement-winzenburg",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:winzenburger-erbe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement-winzenburg",
+      "own": true,
+      "evidence": {
+       "start": 505,
+       "end": 537,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement-winzenburg rf:concerns x:winzenburger-erbe .\nx:winzenburger-erbe a crm:E18_Physical_Thing ;\n    rdfs:label \"das Winzenburger\" .",
+      "object": "urn:regesta:22762:winzenburger-erbe",
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Urteil",
+      "text": "Teil von Urteil",
+      "triple": [
+       "urn:regesta:22762:settlement-winzenburg",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22762:settlement"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement-winzenburg",
+      "own": true,
+      "evidence": {
+       "start": 505,
+       "end": 537,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement-winzenburg rf:partOf x:settlement .\nx:settlement a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich erzielt im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären (vgl. Reg. 88) einen Ausgleich\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:qualifier \"Ausgleich\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:nameInSource \"Albrecht dem Bären\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Mediator ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Heinrich dem Löwen\" ; rf:role rv:Participant ] ;\n    rf:refersToAct x:dispute-heinrich-albrecht ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22762:settlement",
+      "objectClaim": "settlement",
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Übertragung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Heinrich dem Löwen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "das Winzenburger"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:settlement-ploetzke",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22762:settlement-ploetzke",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "settlement-ploetzke",
+     "own": true,
+     "evidence": {
+      "start": 542,
+      "end": 582,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement-ploetzke a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Askanier das Plötzkesche Erbe erhält\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Albrecht dem Bären",
+      "text": "Albrecht dem Bären in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22762:settlement-ploetzke",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement-ploetzke",
+      "own": true,
+      "evidence": {
+       "start": 542,
+       "end": 582,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement-ploetzke rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:nameInSource \"der Askanier\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000135"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das Plötzkesche Erbe",
+      "text": "betrifft das Plötzkesche Erbe",
+      "triple": [
+       "urn:regesta:22762:settlement-ploetzke",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:ploetzkesches-erbe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement-ploetzke",
+      "own": true,
+      "evidence": {
+       "start": 542,
+       "end": 582,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement-ploetzke rf:concerns x:ploetzkesches-erbe .\nx:ploetzkesches-erbe a crm:E18_Physical_Thing ;\n    rdfs:label \"das Plötzkesche Erbe\" .",
+      "object": "urn:regesta:22762:ploetzkesches-erbe",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Urteil",
+      "text": "Teil von Urteil",
+      "triple": [
+       "urn:regesta:22762:settlement-ploetzke",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22762:settlement"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "settlement-ploetzke",
+      "own": true,
+      "evidence": {
+       "start": 542,
+       "end": 582,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:settlement-ploetzke rf:partOf x:settlement .\nx:settlement a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich erzielt im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären (vgl. Reg. 88) einen Ausgleich\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:qualifier \"Ausgleich\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:nameInSource \"Albrecht dem Bären\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Mediator ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Heinrich dem Löwen\" ; rf:role rv:Participant ] ;\n    rf:refersToAct x:dispute-heinrich-albrecht ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22762:settlement",
+      "objectClaim": "settlement",
+      "key": "k28"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Übertragung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Albrecht dem Bären"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "das Plötzkesche Erbe"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:grant-welf",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22762:grant-welf",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-welf",
+     "own": true,
+     "evidence": {
+      "start": 584,
+      "end": 742,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verleiht seinem Oheim, Herzog Welf, das Herzogtum Spoleto, die Markgrafschaft Tuszien, den principatus Sardinien und das Hausgut der Gräfin Mathilde\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k29"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22762:grant-welf",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 742,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf",
+      "text": "Herzog Welf in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22762:grant-welf",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 742,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das Hausgut der Gräfin Mathilde",
+      "text": "betrifft das Hausgut der Gräfin Mathilde",
+      "triple": [
+       "urn:regesta:22762:grant-welf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:hausgut-mathilde"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 742,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf rf:concerns x:hausgut-mathilde .\nx:hausgut-mathilde a crm:E18_Physical_Thing ;\n    rdfs:label \"das Hausgut der Gräfin Mathilde\" .",
+      "object": "urn:regesta:22762:hausgut-mathilde",
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (das Herzogtum Spoleto)",
+      "text": "betrifft Herrschafts- und Schutzrechte (das Herzogtum Spoleto)",
+      "triple": [
+       "urn:regesta:22762:grant-welf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:herzogtum-spoleto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 742,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf rf:concerns x:herzogtum-spoleto .\nx:herzogtum-spoleto a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"das Herzogtum Spoleto\" .",
+      "object": "urn:regesta:22762:herzogtum-spoleto",
+      "key": "k33"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die Markgrafschaft Tuszien)",
+      "text": "betrifft Herrschafts- und Schutzrechte (die Markgrafschaft Tuszien)",
+      "triple": [
+       "urn:regesta:22762:grant-welf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:markgrafschaft-tuszien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 742,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf rf:concerns x:markgrafschaft-tuszien .\nx:markgrafschaft-tuszien a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die Markgrafschaft Tuszien\" .",
+      "object": "urn:regesta:22762:markgrafschaft-tuszien",
+      "key": "k34"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (den principatus Sardinien)",
+      "text": "betrifft Herrschafts- und Schutzrechte (den principatus Sardinien)",
+      "triple": [
+       "urn:regesta:22762:grant-welf",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:principatus-sardinien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 742,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf rf:concerns x:principatus-sardinien .\nx:principatus-sardinien a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"den principatus Sardinien\" .",
+      "object": "urn:regesta:22762:principatus-sardinien",
+      "key": "k35"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Herzog Welf"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "das Hausgut der Gräfin Mathilde"
+     },
+     ", ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Herrschafts- und Schutzrechte (das Herzogtum Spoleto)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die Markgrafschaft Tuszien)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Herrschafts- und Schutzrechte (den principatus Sardinien)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:grant-welf-revenues",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22762:grant-welf-revenues",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-welf-revenues",
+     "own": true,
+     "evidence": {
+      "start": 584,
+      "end": 628,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf-revenues a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verleiht seinem Oheim, Herzog Welf\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k36"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22762:grant-welf-revenues",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf-revenues",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 628,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf-revenues rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf",
+      "text": "Herzog Welf in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22762:grant-welf-revenues",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf-revenues",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 628,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf-revenues rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k38"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "dem Dorfe Mertingen",
+      "text": "betrifft dem Dorfe Mertingen",
+      "triple": [
+       "urn:regesta:22762:grant-welf-revenues",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:dorf-mertingen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf-revenues",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 628,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf-revenues rf:concerns x:dorf-mertingen .\nx:dorf-mertingen a crm:E18_Physical_Thing ;\n    rdfs:label \"dem Dorfe Mertingen\" .",
+      "object": "urn:regesta:22762:dorf-mertingen",
+      "key": "k39"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (Reichseinkünfte)",
+      "text": "betrifft Einkünfterecht (Reichseinkünfte)",
+      "triple": [
+       "urn:regesta:22762:grant-welf-revenues",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:reichseinkuenfte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf-revenues",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 628,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf-revenues rf:concerns x:reichseinkuenfte .\nx:reichseinkuenfte a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"Reichseinkünfte\" .",
+      "object": "urn:regesta:22762:reichseinkuenfte",
+      "key": "k40"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Übertragung",
+      "text": "Teil von Übertragung",
+      "triple": [
+       "urn:regesta:22762:grant-welf-revenues",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22762:grant-welf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf-revenues",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 628,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf-revenues rf:partOf x:grant-welf .\nx:grant-welf a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:concerns x:hausgut-mathilde , x:herzogtum-spoleto , x:markgrafschaft-tuszien , x:principatus-sardinien ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verleiht seinem Oheim, Herzog Welf, das Herzogtum Spoleto, die Markgrafschaft Tuszien, den principatus Sardinien und das Hausgut der Gräfin Mathilde\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22762:grant-welf",
+      "objectClaim": "grant-welf",
+      "key": "k41"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22762:grant-welf-revenues",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22762:earlier-grant-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf-revenues",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 628,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf-revenues rf:refersToAct x:earlier-grant-konrad .\nx:earlier-grant-konrad a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:concerns x:dorf-mertingen , x:reichseinkuenfte ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die ihm schon von Konrad III. übertragenenReichseinkünfte mit dem Dorfe Mertingen\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:qualifier \"schon\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22762:local:konrad-iii> ; rf:nameInSource \"Konrad III.\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22762:earlier-grant-konrad",
+      "objectClaim": "earlier-grant-konrad",
+      "key": "k42"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22762:grant-welf-revenues",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-welf-revenues-2",
+      "own": true,
+      "evidence": {
+       "start": 743,
+       "end": 830,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:grant-welf-revenues rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"sowie die ihm schon von Konrad III. übertragenenReichseinkünfte mit dem Dorfe Mertingen\" ] .",
+      "key": "k43"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k36",
+       "k43"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k37",
+       "k43"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k38",
+       "k43"
+      ],
+      "text": "Herzog Welf"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k39",
+       "k43"
+      ],
+      "text": "dem Dorfe Mertingen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k40",
+       "k43"
+      ],
+      "text": "Einkünfterecht (Reichseinkünfte)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k41",
+       "k43"
+      ],
+      "text": "Übertragung"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k42",
+       "k43"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:kinship-welf",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22762:kinship-welf",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-welf",
+     "own": true,
+     "evidence": {
+      "start": 584,
+      "end": 628,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:kinship-welf a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verleiht seinem Oheim, Herzog Welf\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k44"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22762:kinship-welf",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-welf",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 628,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:kinship-welf rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k45"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf",
+      "text": "Herzog Welf in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22762:kinship-welf",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-welf",
+      "own": true,
+      "evidence": {
+       "start": 584,
+       "end": 628,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:kinship-welf rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Herzog Welf\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k46"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheim",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22762:kinship-welf",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 610,
+       "end": 615,
+       "ambiguous": false
+      },
+      "key": "k47"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k44"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k45"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k46"
+      ],
+      "text": "Herzog Welf"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:earlier-grant-konrad",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22762:earlier-grant-konrad",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-grant-konrad",
+     "own": true,
+     "evidence": {
+      "start": 749,
+      "end": 830,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:earlier-grant-konrad a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die ihm schon von Konrad III. übertragenenReichseinkünfte mit dem Dorfe Mertingen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k48"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Welf",
+      "text": "Herzog Welf in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22762:earlier-grant-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-grant-konrad",
+      "own": true,
+      "evidence": {
+       "start": 749,
+       "end": 830,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:earlier-grant-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k49"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad III.",
+      "text": "Konrad III. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22762:earlier-grant-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-grant-konrad",
+      "own": true,
+      "evidence": {
+       "start": 749,
+       "end": 830,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:earlier-grant-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22762:local:konrad-iii> ; rf:nameInSource \"Konrad III.\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22762:local:konrad-iii"
+      ],
+      "key": "k50",
+      "agentNotes": [
+       {
+        "text": "Konrad III. has no register candidate in this packet; regest-local actor urn:regesta:actor:22762:local:konrad-iii",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "dem Dorfe Mertingen",
+      "text": "betrifft dem Dorfe Mertingen",
+      "triple": [
+       "urn:regesta:22762:earlier-grant-konrad",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:dorf-mertingen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-grant-konrad",
+      "own": true,
+      "evidence": {
+       "start": 749,
+       "end": 830,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:earlier-grant-konrad rf:concerns x:dorf-mertingen .\nx:dorf-mertingen a crm:E18_Physical_Thing ;\n    rdfs:label \"dem Dorfe Mertingen\" .",
+      "object": "urn:regesta:22762:dorf-mertingen",
+      "key": "k51"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (Reichseinkünfte)",
+      "text": "betrifft Einkünfterecht (Reichseinkünfte)",
+      "triple": [
+       "urn:regesta:22762:earlier-grant-konrad",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:reichseinkuenfte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-grant-konrad",
+      "own": true,
+      "evidence": {
+       "start": 749,
+       "end": 830,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:earlier-grant-konrad rf:concerns x:reichseinkuenfte .\nx:reichseinkuenfte a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"Reichseinkünfte\" .",
+      "object": "urn:regesta:22762:reichseinkuenfte",
+      "key": "k52"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "schon",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22762:earlier-grant-konrad",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 757,
+       "end": 762,
+       "ambiguous": false
+      },
+      "key": "k53"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k48"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k50"
+      ],
+      "text": "Konrad III."
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k49"
+      ],
+      "text": "Herzog Welf"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k51"
+      ],
+      "text": "dem Dorfe Mertingen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k52"
+      ],
+      "text": "Einkünfterecht (Reichseinkünfte)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22762:hoexter-decision",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22762:hoexter-decision",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "hoexter-decision",
+     "own": true,
+     "evidence": {
+      "start": 832,
+      "end": 970,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22762:> .\nx:hoexter-decision a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22762> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Vor Friedrich und den Fürsten wird gemäß den Klagen Wibalds (vgl. Regg. 119-123) der Wiederaufbau der Befestigungen von Höxter beschlossen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k54"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22762:hoexter-decision",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "hoexter-decision",
+      "own": true,
+      "evidence": {
+       "start": 832,
+       "end": 970,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:hoexter-decision rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k55"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Fürsten",
+      "text": "den Fürsten in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22762:hoexter-decision",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "hoexter-decision",
+      "own": true,
+      "evidence": {
+       "start": 832,
+       "end": 970,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:hoexter-decision rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22762:local:fuersten> ; rf:nameInSource \"den Fürsten\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22762:local:fuersten"
+      ],
+      "key": "k56"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibalds",
+      "text": "Wibalds in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22762:hoexter-decision",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "hoexter-decision",
+      "own": true,
+      "evidence": {
+       "start": 832,
+       "end": 970,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:hoexter-decision rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Wibalds\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k57"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "der Befestigungen von Höxter",
+      "text": "betrifft der Befestigungen von Höxter",
+      "triple": [
+       "urn:regesta:22762:hoexter-decision",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22762:befestigungen-hoexter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "hoexter-decision",
+      "own": true,
+      "evidence": {
+       "start": 832,
+       "end": 970,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22762:> .\nx:hoexter-decision rf:concerns x:befestigungen-hoexter .\nx:befestigungen-hoexter a crm:E18_Physical_Thing ;\n    rdfs:label \"der Befestigungen von Höxter\" .",
+      "object": "urn:regesta:22762:befestigungen-hoexter",
+      "key": "k58"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "gemäß den Klagen Wibalds",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22762:hoexter-decision",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 867,
+       "end": 891,
+       "ambiguous": false
+      },
+      "key": "k59"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k54"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k55"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k56"
+      ],
+      "text": "den Fürsten"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k57"
+      ],
+      "text": "Wibalds"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k58"
+      ],
+      "text": "der Befestigungen von Höxter"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "italienzug-oath",
+    "start": 42,
+    "end": 266
+   },
+   {
+    "id": "apulian-complaint",
+    "start": 57,
+    "end": 146
+   },
+   {
+    "id": "t1",
+    "start": 57,
+    "end": 91
+   },
+   {
+    "id": "t3",
+    "start": 93,
+    "end": 146
+   },
+   {
+    "id": "t2",
+    "start": 222,
+    "end": 255
+   },
+   {
+    "id": "summons-jasomirgott",
+    "start": 268,
+    "end": 352
+   },
+   {
+    "id": "settlement",
+    "start": 394,
+    "end": 503
+   },
+   {
+    "id": "dispute-heinrich-albrecht",
+    "start": 412,
+    "end": 472
+   },
+   {
+    "id": "t4",
+    "start": 494,
+    "end": 503
+   },
+   {
+    "id": "settlement-winzenburg",
+    "start": 505,
+    "end": 537
+   },
+   {
+    "id": "settlement-ploetzke",
+    "start": 542,
+    "end": 582
+   },
+   {
+    "id": "grant-welf",
+    "start": 584,
+    "end": 742
+   },
+   {
+    "id": "grant-welf-revenues",
+    "start": 584,
+    "end": 628
+   },
+   {
+    "id": "kinship-welf",
+    "start": 584,
+    "end": 628
+   },
+   {
+    "id": "t5",
+    "start": 610,
+    "end": 615
+   },
+   {
+    "id": "grant-welf-revenues-2",
+    "start": 743,
+    "end": 830
+   },
+   {
+    "id": "earlier-grant-konrad",
+    "start": 749,
+    "end": 830
+   },
+   {
+    "id": "t6",
+    "start": 757,
+    "end": 762
+   },
+   {
+    "id": "hoexter-decision",
+    "start": 832,
+    "end": 970
+   },
+   {
+    "id": "t7",
+    "start": 867,
+    "end": 891
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'den Fürsten' recorded as regest-local group",
+     "lang": "en"
+    },
+    {
+     "text": "'der Welfe' and 'der Askanier' identified with Heinrich der Löwe (H000470) and Albrecht der Bär (A000135) from the same sentence",
+     "lang": "en"
+    },
+    {
+     "text": "Who swore the oath on the Italienzug is not named",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No settlement type: Friedrich's 'Ausgleich' typed rv:Judgment with Friedrich as rv:Mediator and qualifier 'Ausgleich'; the shares are rv:Grant parts without a named grantor",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No type for summons or non-appearance: Heinrich Jasomirgott's Vorladung, non-appearance and the modal renewed summons ('erneut vorgeladen werden muß') not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Duchy, march and principatus modelled as E30_Right under rv:LordshipRights top concept; no narrower right type; whether the grant to Welf is an enfeoffment is not stated",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Italienzug oath typed rv:Enactment; no concerns target for a campaign, and the swearing parties are unstated",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Wibald's 'Klagen' recorded as rv:Petitioner on the Höxter decision, not as a separate dispute",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Hoftag (assembly) out of scope; expulsion by Roger kept only as rf:ground of the complaint",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for holding a court assembly (Hoftag).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for a negotiated settlement or arbitration (Ausgleich); rv:Judgment presupposes a verdict.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for expulsion from a homeland and no way to state non-appearance at court.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "rv:Kin is symmetrical, so the direction of Oheim is only recoverable from the literal qualifier.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Declared RI004-002-H000498 \"Heinrich Jasomirgott\" as crm:E21_Person (packet candidate).",
+     "lang": "en"
+    },
+    {
+     "text": "Added <urn:regesta:22762:summons-jasomirgott> (rv:Dispute, one reference Heinrich Jasomirgott rv:Respondent, no date); producer correction-g7.",
+     "lang": "en"
+    },
+    {
+     "text": "In <urn:regesta:22762:apulian-complaint> changed Roger's role from rv:Respondent to rv:Participant; nameInSource, ground and other references kept; producer correction-g7.",
+     "lang": "en"
+    },
+    {
+     "text": "Added second rf:evidence selector \"Friedrich verleiht seinem Oheim, Herzog Welf\" to <urn:regesta:22762:grant-welf-revenues>; producer correction-g7.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Fehler",
+     "subject": "22762",
+     "description": "The summons of Heinrich Jasomirgott, his non-appearance and the renewed summons are a legal act in a court context and are not extracted, although the packet holds the matching candidate RI004-002-H000498 and the contract could express at least the renewed summons as a Communication (or a Dispute) with Friedrich as issuer and Heinrich Jasomirgott as Addressee.",
+     "proposal": "Add an ActFactoid of type rv:Communication (or rv:Dispute) for the renewed summons with a reference to urn:regesta:actor:RI004-002-H000498 as rv:Addressee (nameInSource \"Heinrich Jasomirgott\"), keep the earlier summons as an undated act with rf:qualifier \"erneut\" on the renewed one, and report the non-appearance itself as a model gap.",
+     "quote": {
+      "start": 268,
+      "end": 393
+     }
+    },
+    {
+     "category": "act-type",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22762:settlement",
+     "description": "The settlement is typed rv:Judgment, defined as decision of a dispute by verdict, while the passage reports a negotiated settlement (Ausgleich) that Friedrich achieves; the factoid itself gives Friedrich the role Mediator, which contradicts the judgment type. The vocabulary has no settlement type, so this is partly a model gap.",
+     "proposal": "Keep rf:qualifier \"Ausgleich\" and record the type mismatch as a model gap (no settlement or arbitration type); until the vocabulary has one, mark the choice of rv:Judgment as a forced approximation in the batch report.",
+     "quote": {
+      "start": 394,
+      "end": 503
+     }
+    },
+    {
+     "category": "actor-role",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22762:apulian-complaint",
+     "description": "Roger is given the role Respondent, but the passage names him only in the relative clause describing the Apulians' expulsion; it does not say that the complaint was directed against Roger before a court. Friedrich as Addressee is acceptable.",
+     "proposal": "Change Roger's role to rv:Participant, or move the expulsion into its own factoid and report the missing act type for expulsion as a model gap.",
+     "quote": {
+      "start": 57,
+      "end": 146
+     }
+    },
+    {
+     "category": "evidence-scope",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22762:grant-welf-revenues",
+     "description": "Friedrich's grantor role rests on the verb in the preceding part of the sentence, which the selector does not include; the guideline asks for a second selector where a role rests on a different passage.",
+     "proposal": "Add a second selector \"Friedrich verleiht seinem Oheim, Herzog Welf\".",
+     "quote": {
+      "start": 584,
+      "end": 628
+     }
+    },
+    {
+     "category": "actor-role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22762:hoexter-decision",
+     "description": "Wibald is the source of complaints (Klagen) on which the decision is based; Claimant fits the wording better than Petitioner. The complaints could also form their own Dispute factoid.",
+     "proposal": "Use rv:Claimant for Wibald or add a separate rv:Dispute factoid for his complaints.",
+     "quote": {
+      "start": 867,
+      "end": 891
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The summons of Heinrich Jasomirgott, his non-appearance and the renewed summons are omitted.",
+     "reason": "'Entgegen seiner Vorladung (s. Reg. 95) erscheint Heinrich Jasomirgott nicht bei Hofe, so daß er erneut vorgeladen werden muß' states an earlier summons as fact and is a legal act in scope; the packet holds candidate H000498 '(Jasomirgott), Herzog von Österreich'. The run types a summons as rv:Dispute with the summoned as rv:Respondent (22756). The renewed summons is given only as necessity ('werden muß') and the non-appearance has no type, so both stay out. The summoner is not named in the sentence and gets no reference.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "A negotiated settlement (Ausgleich) is typed rv:Judgment, which presupposes a verdict, while Friedrich is rv:Mediator.",
+     "reason": "'Friedrich erzielt ... einen Ausgleich' is neither a verdict nor any other act type of the scheme; no existing type fits better, and rf:qualifier \"Ausgleich\" keeps the wording. No correction; record the missing settlement or arbitration type.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Roger is given rv:Respondent although the passage does not say the complaint was directed against him.",
+     "reason": "In 'auf die Klage von einigen Apuliern, die von Roger aus ihrer Heimat vertrieben worden sind' Roger appears only in the relative clause on the expulsion; the respondent of the complaint is not stated. rv:Participant is the safe role; the expulsion has no act type.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "Friedrich's Grantor role rests on 'Friedrich verleiht', which the selector does not include.",
+     "reason": "The selector 'sowie die ihm schon von Konrad III. übertragenenReichseinkünfte mit dem Dorfe Mertingen' does not contain the nameInSource 'Friedrich'; the guidelines ask for a second selector where a role rests on a different passage.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Wibald should be rv:Claimant rather than rv:Petitioner.",
+     "reason": "The decision is taken 'gemäß den Klagen Wibalds'; rv:Petitioner ('auf wessen Bitten ein Akt geschieht') fits an act prompted by his complaints, while rv:Claimant belongs to a dispute the passage does not narrate.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zum HT im allgemeinen vgl. Simonsfeld, Jahrbücher 128 ff. - Wohl von hier aus wurde auch die Gesandtschaft an Eugen III. abgesandt, welche den Abschluß des Vertrages mit dem Papst erreichen konnte (vgl. Reg. "
+    },
+    {
+     "t": "164",
+     "regest": "22791"
+    },
+    {
+     "t": "), vgl. Simonsfeld, a. a. O. 136. - Die Datierung der Verleihungen an Welf steht nicht mit letzter Sicherheit fest. Well wird schon in DF. I. 14 (Reg. "
+    },
+    {
+     "t": "100",
+     "regest": "22727"
+    },
+    {
+     "t": ") mit seinen italienischen Titeln genannt; da aber dieses D. erst später ausgefertigt wurde (vgl die Vorbemerkung zu DF. I. 14), haben wir mit Feldmann, Welf VI. 33 f., die allerdings in Reg. "
+    },
+    {
+     "t": "60",
+     "regest": "22687"
+    },
+    {
+     "t": " das DF. I. 14 irrig als Fälschung bezeichnet, diese Erhöhung Welfs in den Oktober 1152 gesetzt. Der Passus "
+    },
+    {
+     "t": "reditus tamen illos ad fiscum pertinentes, quorum iam mentionem habuimus, nichilominus recepit",
+     "i": true
+    },
+    {
+     "t": " in der Hist. Welf. bezieht sich nach dem Verweis auf das früher Gesagte ("
+    },
+    {
+     "t": "iam mentionem habuimus",
+     "i": true
+    },
+    {
+     "t": ") wohl doch eher auf die mit Mertingen zusammenhängenden Einkünfte (vgl. auch Reg. "
+    },
+    {
+     "t": "55",
+     "regest": "22682"
+    },
+    {
+     "t": ") als auf die aus Italien, vgl. gegen Simonsfeld, Jahrbücher 108 und Haverkamp, Regalien-, Schutz- und Steuerpolitik, Zs. f. bayer. LG 29 (1966) 8 Anm. 23 Feldmann, a. a. O. Anm. 45 zu S. 33. Vgl. auch Reg. "
+    },
+    {
+     "t": "465"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Zum HT und zu seiner Datierung vgl. DF. I. 21 (Reg. 121) und Ottonis Gesta Frid. l. II cap. 7, ed. Waitz-Simson, MG. SS rer. Germ, in us. schol. 107 f. Zum Italienzug Ottonis Gesta Frid. a. a. O. 108, Ann. Palidenses, MG. SS XVI, 86, Ann. s. Pauli Virdun., MG. SS XVI, 501 (irrig zum Merseburger HT) und Chron. reg. Col., ed. Waitz, MG. SS rer. Germ, in us. schol. 91 (zu 1154). Zur Ladung des Babenbergers vgl. Ottonis Gesta Frid. ebda. Welfisch-askanischer Streit: Ann. Palidenses, MG. SS XVI, 86, Ann. Stadenses, MG. SS XVI, 344 und Ann. s. Blasii Brunsvic. mai fragm., MG. SS XXX/1, 19. Wetf VI.: Hist. Welforum, ed. König, Schwäb. Chroniken d. Stauferzeit 1 (1938) 56 und Burchard von Ursberg, ed. Holder-Egger - Simson, MG. SS rer. Germ, in us. schol. 24. Zu Höxter vgl. das Schreiben Wibalds an Bischof Bernhard von Paderborn, Jaffé, Mon. Corb. 544 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 406."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page="
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A001019",
+    "Leute aus ─"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000498",
+    "(Jasomirgott), Herzog von Österreich, vorher von Bayern"
+   ],
+   [
+    "RI004-002-H001241",
+    "Höxter (an der Weser, Reg.-Bez. Detmold, Nordrh.-Westf.)"
+   ],
+   [
+    "RI004-002-H001243",
+    "Befestigungen"
+   ],
+   [
+    "RI004-002-I000220",
+    "Italienzug, Reichsheerfahrt (siehe auch: Romzug)"
+   ],
+   [
+    "RI004-002-M000648",
+    "(Mark-)Gräfin von Tuszien, von Canossa, Hausgut"
+   ],
+   [
+    "RI004-002-M000860",
+    "Mertingen (südl. Donauwörth, Ldkr. Donau-Ries, bayer. Reg.-Bez. Schwaben)"
+   ],
+   [
+    "RI004-002-P000856",
+    "Plötzker Erbe"
+   ],
+   [
+    "RI004-002-R000806",
+    "(II.), König von Sizilien"
+   ],
+   [
+    "RI004-002-S000229",
+    "Fürstentum, Prinzipat"
+   ],
+   [
+    "RI004-002-S001025",
+    "Herzogtum"
+   ],
+   [
+    "RI004-002-T000392",
+    "Mark, Markgrafschaft"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000699",
+    "Winzenburger Erbe"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

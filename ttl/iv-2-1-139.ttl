@@ -1,0 +1,156 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-10-17_2_0_4_2_1_139_139
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22766> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 139" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-U000108> a crm:E21_Person ;
+    rdfs:label "Bischof Uguccios von Vercelli" .
+<urn:regesta:actor:RI004-002-A001203> a crm:E21_Person ;
+    rdfs:label "seines Kanzlers Arnold" .
+<urn:regesta:actor:RI004-002-W000092> a crm:E21_Person ;
+    rdfs:label "Walo di Casalvolone (Casale Walonis)" .
+<urn:regesta:actor:22766:local:vorgaenger-walo> a rf:FunctionalActor ;
+    rdfs:label "seine Vorgänger" .
+<urn:regesta:actor:22766:local:vorgaenger-privilegien> a rf:FunctionalActor ;
+    rdfs:label "seiner Vorgänger" .
+<urn:regesta:actor:RI004-002-A000276> a crm:E21_Person ;
+    rdfs:label "Alberts" .
+<urn:regesta:actor:RI004-002-H000721> a crm:E21_Person ;
+    rdfs:label "Heinrichs" .
+<urn:regesta:actor:22766:local:ihre-brueder> a crm:E74_Group ;
+    rdfs:label "ihrer Brüder" .
+
+# Rights and things
+
+<urn:regesta:22766:banngewalt> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "Banngewalt zu Casalvolone, Rosasco, Serga, Pezzana und Buronzo" .
+<urn:regesta:22766:weiderecht> a crm:E30_Right ;
+    crm:P2_has_type rv:UsageRights ;
+    rdfs:label "Weiderecht" .
+<urn:regesta:22766:regalien> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "den übrigen Regalien" .
+<urn:regesta:22766:entfremdete-lehen> a crm:E18_Physical_Thing ;
+    rdfs:label "durch seine Vorgänger entfremdeten Lehen" .
+<urn:regesta:22766:befestigungsrecht> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "das Befestigungsrecht" .
+<urn:regesta:22766:privilegien> a crm:E18_Physical_Thing ;
+    rdfs:label "alle Privilegien seiner Vorgänger" .
+
+# Investiture with the imperial fiefs, main act
+
+<urn:regesta:22766:enfeoffment> a rf:ActFactoid ;
+    rf:factoidType rv:Enfeoffment ;
+    rf:source <urn:regesta:record:22766> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich investiert auf Bitten Bischof Uguccios von Vercelli und seines Kanzlers Arnold den Walo di Casalvolone (Casale Walonis) mit den Reichslehen, nämlich der Banngewalt zu Casalvolone, Rosasco, Serga, Pezzana und Buronzo, jeweils mit dem Weiderecht und den übrigen Regalien" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000108> ; rf:role rv:Petitioner ; rf:nameInSource "Bischof Uguccios von Vercelli" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:role rv:Petitioner ; rf:nameInSource "seines Kanzlers Arnold" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000092> ; rf:role rv:Recipient ; rf:nameInSource "Walo di Casalvolone (Casale Walonis)" ] ;
+    rf:concerns <urn:regesta:22766:banngewalt> , <urn:regesta:22766:weiderecht> , <urn:regesta:22766:regalien> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Earlier alienation of fiefs by Walo's predecessors
+
+<urn:regesta:22766:alienation-vorgaenger> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22766> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "von durch seine Vorgänger entfremdeten Lehen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22766:local:vorgaenger-walo> ; rf:role rv:Grantor ; rf:nameInSource "seine Vorgänger" ] ;
+    rf:concerns <urn:regesta:22766:entfremdete-lehen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Permission to recover alienated fiefs, with exception and condition
+
+<urn:regesta:22766:permission-recovery> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22766> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "erlaubt ihm die Rückgewinnung von durch seine Vorgänger entfremdeten Lehen mit Ausnahme derjenigen Alberts und Heinrichs sowie ihrer Brüder, falls diese nichts von den Regalien veräußert haben" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000092> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000276> ; rf:role rv:Participant ; rf:nameInSource "Alberts" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000721> ; rf:role rv:Participant ; rf:nameInSource "Heinrichs" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22766:local:ihre-brueder> ; rf:role rv:Participant ; rf:nameInSource "ihrer Brüder" ] ;
+    rf:concerns <urn:regesta:22766:entfremdete-lehen> ;
+    rf:exception "mit Ausnahme derjenigen Alberts und Heinrichs sowie ihrer Brüder" ;
+    rf:condition "falls diese nichts von den Regalien veräußert haben" ;
+    rf:refersToAct <urn:regesta:22766:alienation-vorgaenger> ;
+    rf:partOf <urn:regesta:22766:enfeoffment> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Brothers of Albert and Heinrich; whether Albert and Heinrich are brothers of each other is not stated
+
+<urn:regesta:22766:kinship-brueder-albert> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22766> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Alberts und Heinrichs sowie ihrer Brüder" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000276> ; rf:role rv:Kin ; rf:nameInSource "Alberts" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22766:local:ihre-brueder> ; rf:role rv:Kin ; rf:nameInSource "ihrer Brüder" ] ;
+    rf:qualifier "Brüder" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22766:kinship-brueder-heinrich> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22766> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Alberts und Heinrichs sowie ihrer Brüder" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000721> ; rf:role rv:Kin ; rf:nameInSource "Heinrichs" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22766:local:ihre-brueder> ; rf:role rv:Kin ; rf:nameInSource "ihrer Brüder" ] ;
+    rf:qualifier "Brüder" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;
+    rf:verificationStatus rv:unchecked .
+
+# Right of fortification
+
+<urn:regesta:22766:grant-befestigung> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22766> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "verleiht ihm das Befestigungsrecht" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000092> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22766:befestigungsrecht> ;
+    rf:partOf <urn:regesta:22766:enfeoffment> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Confirmation of the predecessors' privileges and the earlier privileges themselves
+
+<urn:regesta:22766:earlier-privileges> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22766> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "alle Privilegien seiner Vorgänger" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22766:local:vorgaenger-privilegien> ; rf:role rv:Participant ; rf:nameInSource "seiner Vorgänger" ] ;
+    rf:concerns <urn:regesta:22766:privilegien> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22766:confirmation-privilegien> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22766> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm alle Privilegien seiner Vorgänger" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000092> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22766:privilegien> ;
+    rf:refersToAct <urn:regesta:22766:earlier-privileges> ;
+    rf:partOf <urn:regesta:22766:enfeoffment> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .

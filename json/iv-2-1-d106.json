@@ -1,0 +1,1183 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_1_0_4_2_1_106_D106",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22733",
+  "identifier": "RI IV,2,1 n. D106",
+  "short": "RI IV,2,1 n. D106",
+  "sort": "004_002_001_000106_000000D106",
+  "start": "1152-07-01",
+  "end": "1152-07-31",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt der Stadt Augsburg auf Klagen des Bischofs Konrad, der Geistlichen und aller Stadtbewohner über Gewalttätigkeiten der Vögte und über das Fehlen eines festgelegten Rechtes (quod civitas nullo certo iuris ordine vel termino fungeretur) ein Weistum über die Stadtrechte (eos ex communi consilio, quo iure ex antiqua et legali institutione gubernari deberent, pronunciare precepit); ohne Hinzufügung von Neuerungen wird in Gegenwart des Vogtes Adelgoz und des Burggrafen Konrad das auf dem Regensburger Hoftag (unter Heinrich IV.) festgelegte Recht verkündet und bekräftigt, in dem es vor allem um die Abgrenzung der Rechte zwischen den Vögten und den Domkanonikern geht.",
+  "date": [
+   {
+    "t": "1152 (Juli)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Augsburg"
+   }
+  ],
+  "text": "Friedrich bestätigt der Stadt Augsburg auf Klagen des Bischofs Konrad, der Geistlichen und aller Stadtbewohner über Gewalttätigkeiten der Vögte und über das Fehlen eines festgelegten Rechtes (quod civitas nullo certo iuris ordine vel termino fungeretur) ein Weistum über die Stadtrechte (eos ex communi consilio, quo iure ex antiqua et legali institutione gubernari deberent, pronunciare precepit); ohne Hinzufügung von Neuerungen wird in Gegenwart des Vogtes Adelgoz und des Burggrafen Konrad das auf dem Regensburger Hoftag (unter Heinrich IV.) festgelegte Recht verkündet und bekräftigt, in dem es vor allem um die Abgrenzung der Rechte zwischen den Vögten und den Domkanonikern geht.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22733:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22733:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 110,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22733> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt der Stadt Augsburg auf Klagen des Bischofs Konrad, der Geistlichen und aller Stadtbewohner\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-conf-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 110,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation rf:reference x:ref-conf-friedrich .\nx:ref-conf-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stadt Augsburg",
+      "text": "Stadt Augsburg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-conf-augsburg"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 110,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation rf:reference x:ref-conf-augsburg .\nx:ref-conf-augsburg a rf:Reference ;\n    rf:actor <urn:regesta:actor:22733:local:stadt-augsburg> ;\n    rf:nameInSource \"Stadt Augsburg\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22733:local:stadt-augsburg"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischofs Konrad",
+      "text": "Bischofs Konrad in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-conf-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 110,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation rf:reference x:ref-conf-konrad .\nx:ref-conf-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000322> ;\n    rf:nameInSource \"Bischofs Konrad\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000322"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Geistlichen",
+      "text": "der Geistlichen in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-conf-geistliche"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 110,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation rf:reference x:ref-conf-geistliche .\nx:ref-conf-geistliche a rf:Reference ;\n    rf:actor <urn:regesta:actor:22733:local:geistliche> ;\n    rf:nameInSource \"der Geistlichen\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:22733:local:geistliche"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "aller Stadtbewohner",
+      "text": "aller Stadtbewohner in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-conf-stadtbewohner"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 110,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation rf:reference x:ref-conf-stadtbewohner .\nx:ref-conf-stadtbewohner a rf:Reference ;\n    rf:actor <urn:regesta:actor:22733:local:stadtbewohner> ;\n    rf:nameInSource \"aller Stadtbewohner\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:22733:local:stadtbewohner"
+      ],
+      "key": "k6",
+      "agentNotes": [
+       {
+        "text": "'der Geistlichen' and 'aller Stadtbewohner': regest-local groups",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (Stadtrechte)",
+      "text": "betrifft Herrschafts- und Schutzrechte (Stadtrechte)",
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22733:stadtrechte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 110,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation rf:concerns x:stadtrechte .\nx:stadtrechte a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"Stadtrechte\" .",
+      "object": "urn:regesta:22733:stadtrechte",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestätigung",
+      "text": "bezieht sich auf Bestätigung",
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22733:proclamation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 110,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation rf:refersToAct x:proclamation .\nx:proclamation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"ohne Hinzufügung von Neuerungen wird in Gegenwart des Vogtes Adelgoz und des Burggrafen Konrad das auf dem Regensburger Hoftag (unter Heinrich IV.) festgelegte Recht verkündet und bekräftigt\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"ohne Hinzufügung von Neuerungen\" ;\n    rf:reference x:ref-proc-adelgoz , x:ref-proc-burggraf ;\n    rf:refersToAct x:regensburg-law ;\n    rf:source <urn:regesta:record:22733> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22733:proclamation",
+      "objectClaim": "proclamation",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-2",
+      "own": true,
+      "evidence": {
+       "start": 254,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"ein Weistum über die Stadtrechte\" ] .",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "über Gewalttätigkeiten der Vögte und über das Fehlen eines festgelegten Rechtes",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22733:confirmation",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 111,
+       "end": 190,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k9"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k9"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k9"
+      ],
+      "text": "Stadt Augsburg"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k4",
+       "k9"
+      ],
+      "text": "Bischofs Konrad"
+     },
+     ", ",
+     {
+      "keys": [
+       "k5",
+       "k9"
+      ],
+      "text": "der Geistlichen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6",
+       "k9"
+      ],
+      "text": "aller Stadtbewohner"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7",
+       "k9"
+      ],
+      "text": "Herrschafts- und Schutzrechte (Stadtrechte)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k8",
+       "k9"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22733:complaint",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22733:complaint",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "complaint",
+     "own": true,
+     "evidence": {
+      "start": 39,
+      "end": 190,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22733:> .\nx:complaint a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22733> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf Klagen des Bischofs Konrad, der Geistlichen und aller Stadtbewohner über Gewalttätigkeiten der Vögte und über das Fehlen eines festgelegten Rechtes\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-26> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischofs Konrad",
+      "text": "Bischofs Konrad in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22733:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-complaint-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 39,
+       "end": 190,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:complaint rf:reference x:ref-complaint-konrad .\nx:ref-complaint-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000322> ;\n    rf:nameInSource \"Bischofs Konrad\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000322"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Geistlichen",
+      "text": "der Geistlichen in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22733:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-complaint-geistliche"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 39,
+       "end": 190,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:complaint rf:reference x:ref-complaint-geistliche .\nx:ref-complaint-geistliche a rf:Reference ;\n    rf:actor <urn:regesta:actor:22733:local:geistliche> ;\n    rf:nameInSource \"der Geistlichen\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:22733:local:geistliche"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "aller Stadtbewohner",
+      "text": "aller Stadtbewohner in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22733:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-complaint-stadtbewohner"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 39,
+       "end": 190,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:complaint rf:reference x:ref-complaint-stadtbewohner .\nx:ref-complaint-stadtbewohner a rf:Reference ;\n    rf:actor <urn:regesta:actor:22733:local:stadtbewohner> ;\n    rf:nameInSource \"aller Stadtbewohner\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:22733:local:stadtbewohner"
+      ],
+      "key": "k14",
+      "agentNotes": [
+       {
+        "text": "'der Geistlichen' and 'aller Stadtbewohner': regest-local groups",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Vögte",
+      "text": "Vögte in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22733:complaint",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-complaint-voegte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "complaint",
+      "own": true,
+      "evidence": {
+       "start": 39,
+       "end": 190,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:complaint rf:reference x:ref-complaint-voegte .\nx:ref-complaint-voegte a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001455:community> ;\n    rf:nameInSource \"der Vögte\" ;\n    rf:role rv:Respondent .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001455:community"
+      ],
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bischofs Konrad"
+     },
+     ", ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "der Geistlichen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "aller Stadtbewohner"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Vögte"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22733:proclamation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22733:proclamation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "proclamation",
+     "own": true,
+     "evidence": {
+      "start": 399,
+      "end": 589,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22733:> .\nx:proclamation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22733> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"ohne Hinzufügung von Neuerungen wird in Gegenwart des Vogtes Adelgoz und des Burggrafen Konrad das auf dem Regensburger Hoftag (unter Heinrich IV.) festgelegte Recht verkündet und bekräftigt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Vogtes Adelgoz",
+      "text": "Vogtes Adelgoz in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22733:proclamation",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-proc-adelgoz"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "proclamation",
+      "own": true,
+      "evidence": {
+       "start": 399,
+       "end": 589,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:proclamation rf:reference x:ref-proc-adelgoz .\nx:ref-proc-adelgoz a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A000287> ;\n    rf:nameInSource \"Vogtes Adelgoz\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000287"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Burggrafen Konrad",
+      "text": "Burggrafen Konrad in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22733:proclamation",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-proc-burggraf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "proclamation",
+      "own": true,
+      "evidence": {
+       "start": 399,
+       "end": 589,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:proclamation rf:reference x:ref-proc-burggraf .\nx:ref-proc-burggraf a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000431> ;\n    rf:nameInSource \"Burggrafen Konrad\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000431"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestimmung",
+      "text": "bezieht sich auf Bestimmung",
+      "triple": [
+       "urn:regesta:22733:proclamation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22733:regensburg-law"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "proclamation",
+      "own": true,
+      "evidence": {
+       "start": 399,
+       "end": 589,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:proclamation rf:refersToAct x:regensburg-law .\nx:regensburg-law a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-26> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Abgrenzung der Rechte zwischen den Vögten und den Domkanonikern\" ] , [ a oa:TextQuoteSelector ; oa:exact \"das auf dem Regensburger Hoftag (unter Heinrich IV.) festgelegte Recht\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference x:ref-law-domkanoniker , x:ref-law-heinrich , x:ref-law-voegte ;\n    rf:source <urn:regesta:record:22733> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22733:regensburg-law",
+      "objectClaim": "regensburg-law",
+      "key": "k19"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "ohne Hinzufügung von Neuerungen",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22733:proclamation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 399,
+       "end": 430,
+       "ambiguous": false
+      },
+      "key": "k20"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Bestätigung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Vogtes Adelgoz"
+     },
+     " und ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Burggrafen Konrad"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22733:regensburg-law",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22733:regensburg-law",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "regensburg-law",
+     "own": true,
+     "evidence": {
+      "start": 494,
+      "end": 564,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22733:> .\nx:regensburg-law a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22733> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das auf dem Regensburger Hoftag (unter Heinrich IV.) festgelegte Recht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-26> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k21"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich IV.",
+      "text": "Heinrich IV. in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22733:regensburg-law",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-law-heinrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "regensburg-law",
+      "own": true,
+      "evidence": {
+       "start": 494,
+       "end": 564,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:regensburg-law rf:reference x:ref-law-heinrich .\nx:ref-law-heinrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:22733:local:heinrich-iv> ;\n    rf:nameInSource \"Heinrich IV.\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22733:local:heinrich-iv"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Vögte",
+      "text": "Vögte in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22733:regensburg-law",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-law-voegte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "regensburg-law",
+      "own": true,
+      "evidence": {
+       "start": 494,
+       "end": 564,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:regensburg-law rf:reference x:ref-law-voegte .\nx:ref-law-voegte a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001455:community> ;\n    rf:nameInSource \"Vögten\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001455:community"
+      ],
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkanonikern",
+      "text": "Domkanonikern in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22733:regensburg-law",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22733:ref-law-domkanoniker"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "regensburg-law",
+      "own": true,
+      "evidence": {
+       "start": 494,
+       "end": 564,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:regensburg-law rf:reference x:ref-law-domkanoniker .\nx:ref-law-domkanoniker a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001444:community> ;\n    rf:nameInSource \"Domkanonikern\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001444:community"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22733:regensburg-law",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "regensburg-law-2",
+      "own": true,
+      "evidence": {
+       "start": 618,
+       "end": 681,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22733:> .\nx:regensburg-law rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Abgrenzung der Rechte zwischen den Vögten und den Domkanonikern\" ] .",
+      "key": "k25"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k21",
+       "k25"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k22",
+       "k25"
+      ],
+      "text": "Heinrich IV."
+     },
+     ", ",
+     {
+      "keys": [
+       "k23",
+       "k25"
+      ],
+      "text": "Vögte"
+     },
+     " und ",
+     {
+      "keys": [
+       "k24",
+       "k25"
+      ],
+      "text": "Domkanonikern"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 110
+   },
+   {
+    "id": "complaint",
+    "start": 39,
+    "end": 190
+   },
+   {
+    "id": "t1",
+    "start": 111,
+    "end": 190
+   },
+   {
+    "id": "confirmation-2",
+    "start": 254,
+    "end": 286
+   },
+   {
+    "id": "proclamation",
+    "start": 399,
+    "end": 589
+   },
+   {
+    "id": "t2",
+    "start": 399,
+    "end": 430
+   },
+   {
+    "id": "regensburg-law",
+    "start": 494,
+    "end": 564
+   },
+   {
+    "id": "regensburg-law-2",
+    "start": 618,
+    "end": 681
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Stadt Augsburg': no community candidate in the packet, regest-local group",
+     "lang": "en"
+    },
+    {
+     "text": "'Heinrich IV.': no candidate in the packet, regest-local person; 'unter Heinrich IV.' read as participation only, not as enactor",
+     "lang": "en"
+    },
+    {
+     "text": "'Vögte' (RI004-002-A001455) and 'Domkanoniker' (RI004-002-A001444) are register entries typed person but denote collectives; mapped to :community IRIs typed E74_Group",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for town law ('Stadtrechte'); top concept rv:LordshipRights used provisionally",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for the delimitation of rights between advocates and cathedral canons; the Regensburg law has no concerns node",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Weistum is a declaration of law, not a right; confirmation targets it only via evidence and the Stadtrechte node",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Latin quotations of the regest (iuris ordine, gubernari deberent) carry no separate factoid",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for town law (Stadtrecht).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for persons present at an act who are not formulaic witnesses (in Gegenwart); Participant is a fallback.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Removed <urn:regesta:22733:proclamation> rf:partOf <urn:regesta:22733:confirmation>.",
+     "lang": "en"
+    },
+    {
+     "text": "Added <urn:regesta:22733:confirmation> rf:refersToAct <urn:regesta:22733:proclamation>; the proclamation keeps rf:refersToAct <urn:regesta:22733:regensburg-law>, its type, evidence, references and qualifier.",
+     "lang": "en"
+    },
+    {
+     "text": "Set prov:wasAttributedTo of the confirmation and the proclamation to the corrector; updated the section comment of the proclamation accordingly.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "collapsed-act",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22733:proclamation",
+     "description": "Friedrich confirms a Weistum; the second clause describes that Weistum (the old law proclaimed and reaffirmed in the presence of Adelgoz and Burggraf Konrad). The candidate makes the proclamation rf:partOf the confirmation instead of treating it as the act the confirmation refers to, so the Weistum is merged into its own confirmation.",
+     "proposal": "Remove rf:partOf from the proclamation and add rf:refersToAct <urn:regesta:22733:proclamation> on <urn:regesta:22733:confirmation>; keep the proclamation's rf:refersToAct to the Regensburg law.",
+     "quote": {
+      "start": 399,
+      "end": 589
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22733:regensburg-law",
+     "description": "Vögte and Domkanoniker are the parties whose rights the law delimits, not participants in the enactment under Heinrich IV. Heinrich IV. is likewise named only as the ruler under whom the diet met; Participant is acceptable for him but the passage does not say he enacted it.",
+     "proposal": "Give Vögte and Domkanoniker rv:Beneficiary or carry them via rf:concerns on a right node 'Abgrenzung der Rechte'; keep Heinrich IV. as rv:Participant with rf:qualifier \"unter Heinrich IV.\".",
+     "quote": {
+      "start": 591,
+      "end": 686
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Vermerk",
+     "subject": "22733",
+     "description": "The Latin insert says Friedrich ordered the parties to declare the law (pronunciare precepit), i.e. the Weistum was produced on his order. Not extracted; a minor gap.",
+     "proposal": "Optionally add an Enactment or Appointment factoid for the order to declare the law, partOf the confirmation.",
+     "quote": {
+      "start": 376,
+      "end": 396
+     }
+    },
+    {
+     "category": "vocabulary",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22733:stadtrechte",
+     "description": "Stadtrechte are typed with the top concept rv:LordshipRights; no narrower concept for town law exists.",
+     "proposal": "Keep; report as vocabulary gap.",
+     "quote": {
+      "start": 254,
+      "end": 286
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "The proclamation of the Regensburg law is the Weistum that Friedrich confirms, so it should be the act the confirmation refers to, not rf:partOf it.",
+     "reason": "'Friedrich bestätigt ... ein Weistum über die Stadtrechte (... pronunciare precepit); ohne Hinzufügung von Neuerungen wird ... das ... festgelegte Recht verkündet und bekräftigt' describes the Weistum's content, which the confirmation confirms. The guidelines model a confirmation of an act as two act factoids joined by rf:refersToAct, not as a provision linked by rf:partOf.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Vögte and Domkanoniker are parties whose rights the law delimits, not participants. The reviewer proposes rv:Beneficiary and a qualifier 'unter Heinrich IV.'.",
+     "reason": "'Abgrenzung der Rechte zwischen den Vögten und den Domkanonikern' benefits neither party, so rv:Beneficiary would overclaim. rv:Participant is the vocabulary's role for involvement without a more specific role. 'unter Heinrich IV.' is not needed as a qualifier, because nameInSource and the evidence keep it.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Friedrich's order to declare the law ('pronunciare precepit') is not extracted.",
+     "reason": "The Latin insert explains how the confirmed Weistum came about. It is not a central passage of its own, and the confirmation and the proclamation already cover the dispositive content.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Existenz dieses Deperditums ist durch die Worte "
+    },
+    {
+     "t": "rex id ipsum auctoritate sui privilegii confirmabat. Acta sunt autem hęc anno MCLII"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": ". gesichert. Der Ausstellungsort ergibt sich aus der Narratio: "
+    },
+    {
+     "t": "Accidit namque, quod predictus imperator, dum antenominatam civitatem quadam vice intraret",
+     "i": true
+    },
+    {
+     "t": "... (vgl. Simonsfeld, Jahrbücher 115). - Zu den hier bestätigten, wörtlich aufgenommenen Verfügungen Heinrichs IV. aus dem Jahre 1104 (DH. IV. 484, daneben dienten in geringem Maß auch DD. H. IV. 482 Lemma Anm. I und 483 als Vorlagen, vgl. die Vorbemerkung zu DF. I. 147) vgl. Vock, Urkunden des Hochstiftes Augsburg 6 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 16."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Deperditum; erwähnt in DF. I. 147 (Reg. 406)."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0039"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000287",
+    "von Schwabegg, Vogt von Augsburg"
+   ],
+   [
+    "RI004-002-A001444",
+    "Domkanoniker"
+   ],
+   [
+    "RI004-002-A001455",
+    "Vögte"
+   ],
+   [
+    "RI004-002-K000322",
+    "Bischof von Augsburg, vorher (Dom)Dekan von Konstanz (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-K000431",
+    "Burggraf von Augsburg"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ]
+  ]
+ }
+}

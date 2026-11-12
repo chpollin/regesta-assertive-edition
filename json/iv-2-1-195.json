@@ -1,0 +1,513 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-09-29_1_0_4_2_1_195_195",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22822",
+  "identifier": "RI IV,2,1 n. 195",
+  "short": "RI IV,2,1 n. 195",
+  "sort": "004_002_001_000195_0000000195",
+  "start": "1153-09-29",
+  "end": "1153-09-29",
+  "proseYears": [],
+  "lead": "Friedrich schickt seine Boten in alle Teile des Reiches (per Alamaniam, Saxoniam, Provinciam, Burgondiam, Longobardiam, Tusciam, Romaniam et per universum Romanum imperium) und befiehlt allen geistlichen und weltlichen Fürsten, am Fest des hl.",
+  "date": [
+   {
+    "t": "(Vor 1153 September 29)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich schickt seine Boten in alle Teile des Reiches (per Alamaniam, Saxoniam, Provinciam, Burgondiam, Longobardiam, Tusciam, Romaniam et per universum Romanum imperium) und befiehlt allen geistlichen und weltlichen Fürsten, am Fest des hl. Michael (September 29) übers Jahr (usque ad festivitatem sancti Michaelis proxime venientis et unum annum) in Roncaglia zu erscheinen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22822:mission",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22822:mission",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mission",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 55,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22822:> .\nx:mission a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22822> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schickt seine Boten in alle Teile des Reiches\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22822:mission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 55,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22822:> .\nx:mission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seine Boten",
+      "text": "seine Boten in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22822:mission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 55,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22822:> .\nx:mission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22822:local:boten> ; rf:nameInSource \"seine Boten\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:22822:local:boten"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Entsendung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Gesandter ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "seine Boten"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22822:summons",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22822:summons",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "summons",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 29,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22822:> .\nx:summons a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22822> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schickt seine Boten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22822:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 29,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22822:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "allen geistlichen und weltlichen Fürsten",
+      "text": "allen geistlichen und weltlichen Fürsten in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22822:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 29,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22822:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22822:local:fuersten> ; rf:nameInSource \"allen geistlichen und weltlichen Fürsten\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:22822:local:fuersten"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Roncaglia",
+      "text": "betrifft Roncaglia",
+      "triple": [
+       "urn:regesta:22822:summons",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22822:place-roncaglia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 29,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22822:> .\nx:summons rf:concerns x:place-roncaglia .\nx:place-roncaglia a crm:E53_Place ;\n    rdfs:label \"Roncaglia\" .",
+      "object": "urn:regesta:22822:place-roncaglia",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22822:summons",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons-2",
+      "own": true,
+      "evidence": {
+       "start": 177,
+       "end": 377,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22822:> .\nx:summons rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"befiehlt allen geistlichen und weltlichen Fürsten, am Fest des hl. Michael (September 29) übers Jahr (usque ad festivitatem sancti Michaelis proxime venientis et unum annum) in Roncaglia zu erscheinen\" ] .",
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "am Fest des hl. Michael (September 29) übers Jahr",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22822:summons",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 228,
+       "end": 277,
+       "ambiguous": false
+      },
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4",
+       "k8"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k5",
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k6",
+       "k8"
+      ],
+      "text": "allen geistlichen und weltlichen Fürsten"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7",
+       "k8"
+      ],
+      "text": "Roncaglia"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "mission",
+    "start": 0,
+    "end": 55
+   },
+   {
+    "id": "summons",
+    "start": 0,
+    "end": 29
+   },
+   {
+    "id": "summons-2",
+    "start": 177,
+    "end": 377
+   },
+   {
+    "id": "t1",
+    "start": 228,
+    "end": 277
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No role for the sender of a mission; Friedrich is given rv:Participant in the Mission factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Whether a summons to Roncaglia is a legal enactment (duty to attend) or out-of-scope travel is a reading for review; it was extracted as rv:Enactment.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the issuer of a command distinct from rv:Grantor, and no sender role for a mission (Friedrich is rv:Participant).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "scope-and-completeness",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22822:mission",
+     "description": "The mission carries no concerns for the regions the messengers are sent to; the mission alone is close to the movement exclusion and is in scope only as the vehicle of the summons. Recording it is acceptable.",
+     "proposal": "Optionally link the mission to the summons with rf:partOf, or leave as is.",
+     "quote": {
+      "start": 0,
+      "end": 55
+     }
+    },
+    {
+     "category": "literal",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22822:summons",
+     "description": "The qualifier includes the editorial insertion '(September 29)'; it is an exact substring and acceptable, but the Latin wording 'usque ad festivitatem sancti Michaelis proxime venientis et unum annum' is the source's own formulation of the term.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 228,
+      "end": 277
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally link the mission to the summons with rf:partOf.",
+     "reason": "The contract does not require the link; the summons already carries the second selector 'Friedrich schickt seine Boten', and the regest does not state the summons as a provision of the mission.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 202 und Hofmeister, De Ruina civ. Terd., NA 43 (1922) 128 f. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " Im Kontext des königlichen Rundschreibens vom September 1153 betreffs der Ladung der Fürsten, übers Jahr in Roncaglia zu erscheinen, sei hier darauf hingewiesen, dass Kramer – Scheidt, Antidotarius magnus, Sudhoffs Archiv 83/1 (1999) 113 wahrscheinlich zu machen versuchen, dass der staufische Herrscher eine heute in der Biblioteca Nazionale zu Florenz (Cod. Palat. lat. 747) aufbewahrte Abschrift dieser Rezeptensammlung für seinen Italienzug in Auftrag gegeben habe. Diese Annahme beruht auf einer freilich nicht nachvollziehbaren Konjektur eines Hinweises in dieser Handschrift: „"
+    },
+    {
+     "t": "Isto libro e di, …rossi ispeciali/ Fecesi in anni [!] domini MCLIII (1153)",
+     "i": true
+    },
+    {
+     "t": "“, was zu: „"
+    },
+    {
+     "t": "Isto libri e donatione Barbarossi [!] imperiale, fecesi in anni [!] domini MCLIII (1153)",
+     "i": true
+    },
+    {
+     "t": "“. Dies wurde auch bereits in der Anzeige dieser Studie durch Schieffer, DA 57 (2001) 274, so beurteilt. – Im Katalog der Staufer-Ausstellung Mannheim 2010 wird die Auffassung von Kramer/Scheidt allerdings unkritisch übernommen, siehe dazu Huth, Wissensaustausch, in: Die Staufer und Italien, Bd. 1 (2010) 261."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Otto Morena, ed. Güterbock, MG. SS rer. Germ. N. S. VII, 11; vgl. Ann. Pisani, ed. Gentile, Rer. Ital. SS N. S. VI/2, 15 und Ottonis Gesta Frid. l. II cap. 15, ed. Waitz-Simson, MG. SS rer. Germ, in us. schol. 117 f."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=71"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B001643",
+    "Burgund, auch Hochburgund (sowohl das Königreich als auch der Kernraum der Grafschaft)"
+   ],
+   [
+    "RI004-002-D000113",
+    "(<i>regnum Theutonicum</i>)"
+   ],
+   [
+    "RI004-002-I000220",
+    "Italienzug, Reichsheerfahrt (siehe auch: Romzug)"
+   ],
+   [
+    "RI004-002-L000598",
+    "Lombardei (Oberitalien), Lombarden"
+   ],
+   [
+    "RI004-002-M000925",
+    "Fest, Tag St. ─ (29.9.)"
+   ],
+   [
+    "RI004-002-P001121",
+    "Provence (südfranzösische Landschaft)"
+   ],
+   [
+    "RI004-002-R000991",
+    "Romagna, Romaniola (Oberitalien)"
+   ],
+   [
+    "RI004-002-R001040",
+    "Roncaglia (Fraz. von Piacenza, ital. Prov. Piacenza)"
+   ],
+   [
+    "RI004-002-S000032",
+    "Sachsen"
+   ],
+   [
+    "RI004-002-T000392",
+    "Mark, Markgrafschaft"
+   ]
+  ]
+ }
+}

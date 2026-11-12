@@ -1,0 +1,402 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_3_0_4_2_1_120_D120",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22747",
+  "identifier": "RI IV,2,1 n. D120",
+  "short": "RI IV,2,1 n. D120",
+  "sort": "004_002_001_000120_000000D120",
+  "start": "1152-07-01",
+  "end": "1152-07-31",
+  "proseYears": [],
+  "lead": "Friedrich befiehlt (intime rogat) Herzog (Heinrich ) von Sachsen , über die Gewalttaten F(olkwins) und W(idekinds von Schwalenberg) gegenüber dem Kloster Corvey zu richten (plenariam iusticiam ... faciat ).",
+  "date": [
+   {
+    "t": "1152 Juli"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich befiehlt (intime rogat) Herzog (Heinrich ) von Sachsen , über die Gewalttaten F(olkwins) und W(idekinds von Schwalenberg) gegenüber dem Kloster Corvey zu richten (plenariam iusticiam ... faciat ).",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22747:mandate-judgment",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22747:mandate-judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mandate-judgment",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 171,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22747:> .\nx:mandate-judgment a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22747> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich befiehlt (intime rogat) Herzog (Heinrich ) von Sachsen , über die Gewalttaten F(olkwins) und W(idekinds von Schwalenberg) gegenüber dem Kloster Corvey zu richten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22747:mandate-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22747:mandate-judgment:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22747:> .\nx:mandate-judgment rf:reference x:mandate-judgment:ref-friedrich .\nx:mandate-judgment:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog (Heinrich ) von Sachsen",
+      "text": "Herzog (Heinrich ) von Sachsen in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22747:mandate-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22747:mandate-judgment:ref-heinrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22747:> .\nx:mandate-judgment rf:reference x:mandate-judgment:ref-heinrich .\nx:mandate-judgment:ref-heinrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000470> ;\n    rf:nameInSource \"Herzog (Heinrich ) von Sachsen\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "F(olkwins)",
+      "text": "F(olkwins) in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22747:mandate-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22747:mandate-judgment:ref-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22747:> .\nx:mandate-judgment rf:reference x:mandate-judgment:ref-folkwin .\nx:mandate-judgment:ref-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:22747:local:folkwin> ;\n    rf:nameInSource \"F(olkwins)\" ;\n    rf:role rv:Respondent .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:22747:local:folkwin"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "W(idekinds von Schwalenberg)",
+      "text": "W(idekinds von Schwalenberg) in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22747:mandate-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22747:mandate-judgment:ref-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22747:> .\nx:mandate-judgment rf:reference x:mandate-judgment:ref-widekind .\nx:mandate-judgment:ref-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:22747:local:widekind> ;\n    rf:nameInSource \"W(idekinds von Schwalenberg)\" ;\n    rf:role rv:Respondent .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:22747:local:widekind"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Corvey",
+      "text": "Kloster Corvey in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22747:mandate-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22747:mandate-judgment:ref-corvey"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mandate-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 171,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22747:> .\nx:mandate-judgment rf:reference x:mandate-judgment:ref-corvey .\nx:mandate-judgment:ref-corvey a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-C000961:community> ;\n    rf:nameInSource \"Kloster Corvey\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000961:community"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "befiehlt (intime rogat)",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22747:mandate-judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 10,
+       "end": 33,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog (Heinrich ) von Sachsen"
+     },
+     ", als Beklagte ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "F(olkwins)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "W(idekinds von Schwalenberg)"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Kloster Corvey"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "mandate-judgment",
+    "start": 0,
+    "end": 171
+   },
+   {
+    "id": "t1",
+    "start": 10,
+    "end": 33
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "F(olkwins) and W(idekinds von Schwalenberg) have no register candidate in this packet; kept as regest-local actors",
+     "lang": "en"
+    },
+    {
+     "text": "Kloster Corvey (RI004-002-C000961, a place entry) used as community IRI with role Participant, since the passage gives it no more specific role",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Mandate to judge typed rv:Appointment (Beauftragung); the regest's 'befiehlt' against the Latin 'intime rogat' could also be read as rv:Request, the tension is kept in the qualifier",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the injured party of a wrong.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22747:mandate-judgment",
+     "description": "Duke Heinrich is the one charged with the task; rv:Addressee is defensible, but in an Appointment rv:Recipient or rv:Judge would state the commission more precisely. Corvey, the injured party, is rv:Participant where rv:Beneficiary would fit the passage.",
+     "proposal": "Optionally give Heinrich rv:Recipient and Corvey rv:Beneficiary.",
+     "quote": {
+      "start": 67,
+      "end": 171
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "Optionally give Heinrich rv:Recipient and Corvey rv:Beneficiary.",
+     "reason": "'befiehlt (intime rogat) Herzog (Heinrich ) von Sachsen' addresses a command, so rv:Addressee fits. 'Gewalttaten ... gegenüber dem Kloster Corvey' makes Corvey the injured party, but it does not say that the judgment is in Corvey's favour. rv:Participant stays.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Aus diesem Schreiben erfahren wir, daß der Notar von Wibald mit der Vertretung seiner Agenden bei Hofe beauftragt worden war ("
+    },
+    {
+     "t": "sicut mihi insinuastis",
+     "i": true
+    },
+    {
+     "t": "); vgl. die Vorbemerkung zu DF. I. 21. - Zur Sache vgl. die bei Reg. "
+    },
+    {
+     "t": "121",
+     "regest": "22748"
+    },
+    {
+     "t": " angegebene Literatur."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Deperditum; erwähnt in einem Schreiben des Notars Heinrich an Wibald von Corvey, ed. Jaffé, Mon. Corb. 522 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 391."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0043"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-C000961",
+    "Corvey (an der Weser, <i>heute:</i> Teil von Höxter in Ostwestfalen, Nordrh.-Westf.), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

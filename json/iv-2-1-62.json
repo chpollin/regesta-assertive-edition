@@ -1,0 +1,258 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-02-00_1_0_4_2_1_62_62",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22689",
+  "identifier": "RI IV,2,1 n. 62",
+  "short": "RI IV,2,1 n. 62",
+  "sort": "004_002_001_000062_0000000062",
+  "start": "1152-02-01",
+  "end": "1152-03-31",
+  "proseYears": [],
+  "lead": "Abt Wibald von Stablo nimmt - von den Fürsten (auch) wegen seiner erst neulich beendeten Legation nach Italien eingeladen - an mehreren Verhandlungen über die Wahl eines neuen Königs teil.",
+  "date": [
+   {
+    "t": "(1152 Februar-März)"
+   }
+  ],
+  "place": [],
+  "text": "Abt Wibald von Stablo nimmt - von den Fürsten (auch) wegen seiner erst neulich beendeten Legation nach Italien eingeladen - an mehreren Verhandlungen über die Wahl eines neuen Königs teil.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22689:negotiation-election",
+    "kind": "act",
+    "title": "Verhandlung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verhandlung",
+     "text": "Verhandlung",
+     "triple": [
+      "urn:regesta:22689:negotiation-election",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Negotiation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "negotiation-election",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 188,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22689:> .\nx:negotiation-election a rf:ActFactoid ;\n    rf:factoidType rv:Negotiation ;\n    rf:source <urn:regesta:record:22689> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Abt Wibald von Stablo nimmt - von den Fürsten (auch) wegen seiner erst neulich beendeten Legation nach Italien eingeladen - an mehreren Verhandlungen über die Wahl eines neuen Königs teil.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-16> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Wibald von Stablo",
+      "text": "Abt Wibald von Stablo in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22689:negotiation-election",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "negotiation-election",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 188,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22689:> .\nx:negotiation-election rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:nameInSource \"Abt Wibald von Stablo\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000420"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "an mehreren Verhandlungen über die Wahl eines neuen Königs",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22689:negotiation-election",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 124,
+       "end": 182,
+       "ambiguous": false
+      },
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Verhandlung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Abt Wibald von Stablo"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "negotiation-election",
+    "start": 0,
+    "end": 188
+   },
+   {
+    "id": "t1",
+    "start": 124,
+    "end": 182
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'den Fürsten' who invite Wibald are not modelled, because the invitation is no kinship, economic or legal act.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a royal election; participation in negotiations about the election is recorded as rv:Negotiation, whose definition names a future agreement such as a marriage. Whether election talks fit that type is an expert question.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The invitation by the princes with its reason ('wegen seiner erst neulich beendeten Legation nach Italien') has no fitting act type and is left out.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for an invitation; rv:Request is the nearest concept but its roles (Petitioner, Addressee) do not name the inviting party cleanly.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22689",
+     "description": "The invitation of Wibald by the princes is an act the passage states, and the regest gives its reason (his recently finished legation to Italy). The candidate folds it into the evidence of the Negotiation factoid without representing the inviting princes or the reason.",
+     "proposal": "Add an ActFactoid of type rv:Request (invitation) with a local group 'den Fürsten' as Grantor-side requester (or Participant) and Wibald as rv:Addressee, rf:ground \"wegen seiner erst neulich beendeten Legation nach Italien\" and rf:qualifier \"eingeladen\" and \"(auch)\".",
+     "quote": {
+      "start": 30,
+      "end": 121
+     }
+    },
+    {
+     "category": "literal-redundancy",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22689:negotiation-election",
+     "description": "rf:qualifier repeats the object of the negotiation, which the factoid type and evidence already carry; the election as subject of the negotiation would be better stated with rf:concerns or left to the evidence.",
+     "proposal": "Keep only \"mehreren\" as qualifier or drop the qualifier.",
+     "quote": {
+      "start": 124,
+      "end": 187
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The princes' invitation of Wibald with its stated reason is not extracted.",
+     "reason": "The passage 'von den Fürsten (auch) wegen seiner erst neulich beendeten Legation nach Italien eingeladen' is a parenthetical invitation to negotiations; it states no kinship, economic or legal relation, the vocabulary has no invitation type, and a correction adds an omitted passage only where it is central and in scope.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "rf:qualifier repeats the object of the negotiation; reduce to 'mehreren' or drop.",
+     "reason": "rf:qualifier holds exact wording that qualifies the type where the vocabulary does not capture it; 'an mehreren Verhandlungen über die Wahl eines neuen Königs' records the object of a rv:Negotiation that no concept names, and it is an exact substring.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 24 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Vgl. die Erwähnungen in den Briefen Wibalds, Jaffé, Mon. Corb. 492 ff. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 364-367."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=24"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-I000211",
+    "Italien"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

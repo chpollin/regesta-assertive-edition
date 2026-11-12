@@ -1,0 +1,107 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-06-14_2_0_4_2_1_181_181
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22808> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 181" .
+
+# Earlier state: Arnold I held the advocacy after the death of Count Gerhard.
+<urn:regesta:22808:vogtei-arnold-i> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22808> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Erzbischof Arnold I., der sie nach dem Tod des erbenlosen Grafen Gerhard des Jüngeren von Jülich in Händen hatte" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A001201> ;
+        rf:role rv:RightHolder ;
+        rf:nameInSource "Erzbischof Arnold I." ] ;
+    rf:concerns <urn:regesta:22808:vogtei-worringen> ;
+    rf:qualifier "nach dem Tod des erbenlosen Grafen Gerhard des Jüngeren von Jülich" .
+
+# Earlier act: Arnold II, still provost, acquired the advocacy from Arnold I for 100 marks.
+<urn:regesta:22808:erwerb-vogtei> a rf:ActFactoid ;
+    rf:factoidType rv:Sale ;
+    rf:source <urn:regesta:record:22808> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Arnold II. noch als Kölner Dompropst von Erzbischof Arnold I., der sie nach dem Tod des erbenlosen Grafen Gerhard des Jüngeren von Jülich in Händen hatte, um 100 Mark Silber unter der Bedingung erworben hatte, daß nur der jeweilige Dompropst Vogt sein soll" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A001202> ;
+        rf:role rv:Buyer ;
+        rf:nameInSource "Arnold II." ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A001201> ;
+        rf:role rv:Seller ;
+        rf:nameInSource "Erzbischof Arnold I." ] ;
+    rf:concerns <urn:regesta:22808:vogtei-worringen> ;
+    rf:amount "100 Mark Silber" ;
+    rf:condition "daß nur der jeweilige Dompropst Vogt sein soll" ;
+    rf:qualifier "noch als Kölner Dompropst" .
+
+# Earlier act: the charter of King Konrad III on which the confirmation rests. Its content
+# is not stated; typed as Communication (reported as a model gap).
+<urn:regesta:22808:urkunde-konrad> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22808> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "gemäß einer Urkunde König Konrads (III.)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "König Konrads (III.)" ] ;
+    rf:concerns <urn:regesta:22808:vogtei-worringen> .
+
+# Main act: Friedrich's confirmation to the cathedral provost Walter and his successors.
+<urn:regesta:22808:bestaetigung-vogtei> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22808> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Dompropst Walter von Köln und dessen Nachfolgern auf Bitten Erzbischof Arnolds II. gemäß einer Urkunde König Konrads (III.) die Vogtei der Ortschaft Worringen (de villa Worunch)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-W000110> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Dompropst Walter von Köln" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22808:local:nachfolger-walter> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "dessen Nachfolgern" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A001202> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Erzbischof Arnolds II." ] ;
+    rf:concerns <urn:regesta:22808:vogtei-worringen> , <urn:regesta:22808:worringen> ;
+    rf:refersToAct <urn:regesta:22808:erwerb-vogtei> , <urn:regesta:22808:urkunde-konrad> .
+
+<urn:regesta:22808:vogtei-worringen> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "Vogtei der Ortschaft Worringen (de villa Worunch)" .
+<urn:regesta:22808:worringen> a crm:E53_Place ;
+    rdfs:label "Ortschaft Worringen" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-W000110> a crm:E21_Person ;
+    rdfs:label "Dompropst Walter von Köln" .
+<urn:regesta:actor:22808:local:nachfolger-walter> a rf:FunctionalActor ;
+    rdfs:label "dessen Nachfolgern" .
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ;
+    rdfs:label "Erzbischof Arnolds II." .
+<urn:regesta:actor:RI004-002-A001201> a crm:E21_Person ;
+    rdfs:label "Erzbischof Arnold I." .
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrads (III.)" .

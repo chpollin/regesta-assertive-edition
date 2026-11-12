@@ -1,0 +1,268 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-00-00_1_0_4_2_2_882_D1440",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "24069",
+  "identifier": "RI IV,2,2 n. D1440",
+  "short": "RI IV,2,2 n. D1440",
+  "sort": "004_002_002_000882_00000D1440",
+  "start": "1152-01-01",
+  "end": "1164-12-31",
+  "proseYears": [],
+  "lead": "(Friedrich) verleiht Markgraf Otakar(III.) von Steier(mark) das Bergregal.",
+  "date": [
+   {
+    "t": "(1152 bzw. 1155-Ende 1164)"
+   }
+  ],
+  "place": [],
+  "text": "(Friedrich) verleiht Markgraf Otakar(III.) von Steier(mark) das Bergregal.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:24069:grant",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:24069:grant",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 74,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:24069:> .\nx:grant a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:24069> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Friedrich) verleiht Markgraf Otakar(III.) von Steier(mark) das Bergregal.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-53> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:24069:grant",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:24069:grant-ref-grantor"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 74,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:24069:> .\nx:grant rf:reference x:grant-ref-grantor .\nx:grant-ref-grantor a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgraf Otakar(III.) von Steier(mark)",
+      "text": "Markgraf Otakar(III.) von Steier(mark) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:24069:grant",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:24069:grant-ref-recipient"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 74,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:24069:> .\nx:grant rf:reference x:grant-ref-recipient .\nx:grant-ref-recipient a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-O000360> ;\n    rf:nameInSource \"Markgraf Otakar(III.) von Steier(mark)\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000360"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (Bergregal)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (Bergregal)",
+      "triple": [
+       "urn:regesta:24069:grant",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:24069:bergregal"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 74,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:24069:> .\nx:grant rf:concerns x:bergregal .\nx:bergregal a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"Bergregal\" .",
+      "object": "urn:regesta:24069:bergregal",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Markgraf Otakar(III.) von Steier(mark)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (Bergregal)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "grant",
+    "start": 0,
+    "end": 74
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No right type for mining rights (Bergregal); typed with the top concept rv:UsageRights.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for mining rights (Bergregal).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "vocabulary",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:24069:bergregal",
+     "description": "The Bergregal is typed with the group concept rv:UsageRights because the vocabulary has no mining right. Correct handling of the limit.",
+     "proposal": "No change; report the missing mining-right concept.",
+     "quote": {
+      "start": 60,
+      "end": 73
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur zeitlichen Einordnung und zum wahrscheinlichen Bezug dieser Nachricht auf ein verlorenes Diplom vgl. Appelt, Landesherrschaft der Traungauer, FS. Karl Eder (1959) 309 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Deperditum; erwähnt in der Urkunde Herzog Otakars von Steierm(mark) von 1182 November 29, Graz für das Stift Seckau, ed. Zahn, UB. des Herzogthums Steiermark 1, 585 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 619; MG. DF. I. *1139."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009246?page=233"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000361",
+    "(IV.), Markgraf dann Herzog von Steier(mark)"
+   ],
+   [
+    "RI004-002-S000482",
+    "Seckau (Bez. Murtal, Steiermark), (Benediktiner-)Kloster"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,905 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_6_0_4_2_1_123_123",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22750",
+  "identifier": "RI IV,2,1 n. 123",
+  "short": "RI IV,2,1 n. 123",
+  "sort": "004_002_001_000123_0000000123",
+  "start": "1152-07-01",
+  "end": "1152-07-31",
+  "proseYears": [],
+  "lead": "Friedrich verspricht den Bürgern von Höxter (Huxera), das ihnen von Folkwin und Widekind (von Schwalenberg) zugefügte Unrecht zu rächen, untersagt ihnen die Entrichtung der versprochenen Geldsumme an die Genannten und befiehlt den Wiederaufbau der zerstörten Befestigungen. - Verfaßt von A II. C. Iniurias a Folcwino .",
+  "date": [
+   {
+    "t": "(1152 Juli)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich verspricht den Bürgern von Höxter (Huxera), das ihnen von Folkwin und Widekind (von Schwalenberg) zugefügte Unrecht zu rächen, untersagt ihnen die Entrichtung der versprochenen Geldsumme an die Genannten und befiehlt den Wiederaufbau der zerstörten Befestigungen. - Verfaßt von A II. C. Iniurias a Folcwino .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22750:command-fortifications",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22750:command-fortifications",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "command-fortifications",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 52,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22750:> .\nx:command-fortifications a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22750> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verspricht den Bürgern von Höxter (Huxera)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22750:command-fortifications",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-command-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "command-fortifications",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:command-fortifications rf:reference x:ref-command-friedrich .\nx:ref-command-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bürgern von Höxter (Huxera)",
+      "text": "Bürgern von Höxter (Huxera) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22750:command-fortifications",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-command-buerger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "command-fortifications",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:command-fortifications rf:reference x:ref-command-buerger .\nx:ref-command-buerger a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H001241:community> ;\n    rf:nameInSource \"Bürgern von Höxter (Huxera)\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001241:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "zerstörten Befestigungen",
+      "text": "betrifft zerstörten Befestigungen",
+      "triple": [
+       "urn:regesta:22750:command-fortifications",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22750:befestigungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "command-fortifications",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 52,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:command-fortifications rf:concerns x:befestigungen .\nx:befestigungen a crm:E18_Physical_Thing ;\n    rdfs:label \"zerstörten Befestigungen\" .",
+      "object": "urn:regesta:22750:befestigungen",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22750:command-fortifications",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "command-fortifications-2",
+      "own": true,
+      "evidence": {
+       "start": 218,
+       "end": 272,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:command-fortifications rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"befiehlt den Wiederaufbau der zerstörten Befestigungen\" ] .",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Bürgern von Höxter (Huxera)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "zerstörten Befestigungen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22750:promise-revenge",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22750:promise-revenge",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "promise-revenge",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 135,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promise-revenge a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22750> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verspricht den Bürgern von Höxter (Huxera), das ihnen von Folkwin und Widekind (von Schwalenberg) zugefügte Unrecht zu rächen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22750:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-promise-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 135,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promise-revenge rf:reference x:ref-promise-friedrich .\nx:ref-promise-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bürgern von Höxter (Huxera)",
+      "text": "Bürgern von Höxter (Huxera) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22750:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-promise-buerger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 135,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promise-revenge rf:reference x:ref-promise-buerger .\nx:ref-promise-buerger a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H001241:community> ;\n    rf:nameInSource \"Bürgern von Höxter (Huxera)\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001241:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22750:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-promise-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 135,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promise-revenge rf:reference x:ref-promise-folkwin .\nx:ref-promise-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind (von Schwalenberg)",
+      "text": "Widekind (von Schwalenberg) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22750:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-promise-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 135,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promise-revenge rf:reference x:ref-promise-widekind .\nx:ref-promise-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind (von Schwalenberg)\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Bürgern von Höxter (Huxera)"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Widekind (von Schwalenberg)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22750:promised-sum",
+    "kind": "state",
+    "title": "Verpflichtung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verpflichtung",
+     "text": "Verpflichtung",
+     "triple": [
+      "urn:regesta:22750:promised-sum",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Obligation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "promised-sum",
+     "own": true,
+     "evidence": {
+      "start": 21,
+      "end": 107,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promised-sum a rf:StateFactoid ;\n    rf:factoidType rv:Obligation ;\n    rf:source <urn:regesta:record:22750> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Bürgern von Höxter (Huxera), das ihnen von Folkwin und Widekind (von Schwalenberg)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bürgern von Höxter (Huxera)",
+      "text": "Bürgern von Höxter (Huxera) in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22750:promised-sum",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-sum-buerger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promised-sum",
+      "own": true,
+      "evidence": {
+       "start": 21,
+       "end": 107,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promised-sum rf:reference x:ref-sum-buerger .\nx:ref-sum-buerger a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H001241:community> ;\n    rf:nameInSource \"ihnen\" ;\n    rf:role rv:Obligor .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001241:community"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Gläubiger",
+      "triple": [
+       "urn:regesta:22750:promised-sum",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-sum-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promised-sum",
+      "own": true,
+      "evidence": {
+       "start": 21,
+       "end": 107,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promised-sum rf:reference x:ref-sum-folkwin .\nx:ref-sum-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Creditor .",
+      "role": "Gläubiger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind (von Schwalenberg)",
+      "text": "Widekind (von Schwalenberg) in der Rolle Gläubiger",
+      "triple": [
+       "urn:regesta:22750:promised-sum",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-sum-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promised-sum",
+      "own": true,
+      "evidence": {
+       "start": 21,
+       "end": 107,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promised-sum rf:reference x:ref-sum-widekind .\nx:ref-sum-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind (von Schwalenberg)\" ;\n    rf:role rv:Creditor .",
+      "role": "Gläubiger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22750:promised-sum",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promised-sum-2",
+      "own": true,
+      "evidence": {
+       "start": 137,
+       "end": 213,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:promised-sum rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"untersagt ihnen die Entrichtung der versprochenen Geldsumme an die Genannten\" ] .",
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "versprochenen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22750:promised-sum",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 173,
+       "end": 186,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11",
+       "k15"
+      ],
+      "text": "Verpflichtung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k12",
+       "k15"
+      ],
+      "text": "Bürgern von Höxter (Huxera)"
+     },
+     ", als Gläubiger ",
+     {
+      "keys": [
+       "k13",
+       "k15"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14",
+       "k15"
+      ],
+      "text": "Widekind (von Schwalenberg)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22750:prohibition-payment",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22750:prohibition-payment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "prohibition-payment",
+     "own": true,
+     "evidence": {
+      "start": 137,
+      "end": 213,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22750:> .\nx:prohibition-payment a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22750> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"untersagt ihnen die Entrichtung der versprochenen Geldsumme an die Genannten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k17"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22750:prohibition-payment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-prohibition-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-payment",
+      "own": true,
+      "evidence": {
+       "start": 137,
+       "end": 213,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:prohibition-payment rf:reference x:ref-prohibition-friedrich .\nx:ref-prohibition-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bürgern von Höxter (Huxera)",
+      "text": "Bürgern von Höxter (Huxera) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22750:prohibition-payment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22750:ref-prohibition-buerger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-payment",
+      "own": true,
+      "evidence": {
+       "start": 137,
+       "end": 213,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22750:> .\nx:prohibition-payment rf:reference x:ref-prohibition-buerger .\nx:ref-prohibition-buerger a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H001241:community> ;\n    rf:nameInSource \"ihnen\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001241:community"
+      ],
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Bürgern von Höxter (Huxera)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "promise-revenge",
+    "start": 0,
+    "end": 135
+   },
+   {
+    "id": "command-fortifications",
+    "start": 0,
+    "end": 52
+   },
+   {
+    "id": "promised-sum",
+    "start": 21,
+    "end": 107
+   },
+   {
+    "id": "prohibition-payment",
+    "start": 137,
+    "end": 213
+   },
+   {
+    "id": "promised-sum-2",
+    "start": 137,
+    "end": 213
+   },
+   {
+    "id": "t1",
+    "start": 173,
+    "end": 186
+   },
+   {
+    "id": "command-fortifications-2",
+    "start": 218,
+    "end": 272
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Bürgern von Höxter (Huxera): identified as community of the place candidate RI004-002-H001241 (urn:regesta:actor:RI004-002-H001241:community); the packet has no candidate for the citizenry itself.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the wrongdoer; rv:Participant used.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The citizens' earlier promise of a sum is modelled as rv:Assurance with rv:Obligor and rv:Creditor; the vocabulary has no act type for a promise to pay. No amount is stated.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the perpetrators of a wrong to be avenged; rv:Participant is a placeholder.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Changed <urn:regesta:22750:promised-sum> from rf:ActFactoid rv:Assurance to rf:StateFactoid rv:Obligation, keeping its IRI, both evidence selectors, references ref-sum-buerger (rv:Obligor), ref-sum-folkwin and ref-sum-widekind (rv:Creditor) and rf:qualifier \"versprochenen\"; comment updated.",
+     "lang": "en"
+    },
+    {
+     "text": "Removed <urn:regesta:22750:prohibition-payment> rf:refersToAct <urn:regesta:22750:promised-sum>, which ActTypeShape no longer permits.",
+     "lang": "en"
+    },
+    {
+     "text": "Set prov:wasAttributedTo of promised-sum and prohibition-payment to the corrector.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "inferred-actor",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22750:promised-sum",
+     "description": "The regest says only versprochenen Geldsumme; it does not say who promised it. That the citizens made the promise is inferred from the prohibition addressed to them. The factoid also has no rv:Grantor, so the act of promising has no actor, while the citizens appear as rv:Obligor, a state role.",
+     "proposal": "Either model the earlier promise as a rv:Obligation state (citizens rv:Obligor, Folkwin and Widekind rv:Creditor, qualifier \"versprochenen\") that rests directly on the passage, or keep the act and name the inference in the batch report.",
+     "quote": {
+      "start": 137,
+      "end": 213
+     }
+    },
+    {
+     "category": "identity",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-H001241:community",
+     "description": "The citizens are identified as the community of the place candidate Höxter. This follows the community rule, and the extractor flagged it as unresolved.",
+     "proposal": "None required; leave for expert identity review.",
+     "quote": {
+      "start": 21,
+      "end": 52
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The earlier promise is modelled as an act without a promisor; that the citizens promised is inferred, and the state roles Obligor and Creditor stand in an act.",
+     "reason": "'untersagt ihnen die Entrichtung der versprochenen Geldsumme an die Genannten' states that a promised sum was due from the citizens to Folkwin and Widekind. It does not state who made the promise. An rv:Obligation state with Obligor and Creditor rests directly on the passage. ActTypeShape restricts rf:refersToAct to act factoids, so the prohibition's link to it has to go.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. die Bemerkungen zu Reg. "
+    },
+    {
+     "t": "121",
+     "regest": "22748"
+    },
+    {
+     "t": ". Zur Geldsumme und zum Wiederaufbau s. Reg. "
+    },
+    {
+     "t": "119",
+     "regest": "22746"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift aus der Mitte des 12. Jh. Cod. Wibaldi f. 131', Staatsarchiv Lüttich (B). Drucke: Jaffé, Mon. Corb. 521 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 390; Wilmans-Philippi, Kaiserurk. der Prov. Westfalen 2, 320 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 231 c; MG. DF. I. 23. Reg.: Stumpf 3641 b zu 1152 August."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0043"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_23"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-F000280",
+    "von Schwalenberg, Vogt von Höxter"
+   ],
+   [
+    "RI004-002-H001241",
+    "Höxter (an der Weser, Reg.-Bez. Detmold, Nordrh.-Westf.)"
+   ],
+   [
+    "RI004-002-H001243",
+    "Befestigungen"
+   ],
+   [
+    "RI004-002-W000454",
+    "(II.), Graf von Schwalenberg (-Waldeck), Vogt von Höxter"
+   ]
+  ]
+ }
+}

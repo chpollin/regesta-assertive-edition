@@ -1,0 +1,186 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-00-00_2_0_4_2_1_192_192
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22819> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 192" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-S000646> a crm:E21_Person ;
+    rdfs:label "seinem Legaten Sicher" .
+<urn:regesta:actor:RI004-002-W000552> a crm:E21_Person ;
+    rdfs:label "Markgraf Wilhelm von Montferrat" .
+<urn:regesta:actor:RI004-002-L000556:community> a crm:E74_Group ;
+    rdfs:label "Die Lodesanen" .
+<urn:regesta:actor:RI004-002-M000144:community> a crm:E74_Group ;
+    rdfs:label "Die Mailänder" .
+<urn:regesta:actor:RI004-002-C001047:community> a crm:E74_Group ;
+    rdfs:label "Cremonesen" .
+<urn:regesta:actor:RI004-002-P000264:community> a crm:E74_Group ;
+    rdfs:label "Pavesen" .
+
+<urn:regesta:22819:place-lodi> a crm:E53_Place ;
+    rdfs:label "Lodi" .
+<urn:regesta:22819:place-mailand> a crm:E53_Place ;
+    rdfs:label "Mailand" .
+<urn:regesta:22819:place-civitas-laudensium> a crm:E53_Place ;
+    rdfs:label "eorum civitatem, quamvis destructam" .
+<urn:regesta:22819:thing-golden-key> a crm:E18_Physical_Thing ;
+    rdfs:label "einen goldenen Schlüssel" .
+<urn:regesta:22819:thing-golden-cup> a crm:E18_Physical_Thing ;
+    rdfs:label "einen goldenen Becher voll mit Geld" .
+<urn:regesta:22819:thing-gifts-cremona-pavia> a crm:E18_Physical_Thing ;
+    rdfs:label "Geschenken" .
+<urn:regesta:22819:right-protection-lodi> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "seinen Schutz" .
+
+# Earlier mission with a mandate in favour of Lodi; its failure is reported to Friedrich.
+# The regest gives no sender role; the ruler is recorded as participant.
+<urn:regesta:22819:mission-sicher> a rf:ActFactoid ;
+    rf:factoidType rv:Mission ;
+    rf:source <urn:regesta:record:22819> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "seinem Legaten Sicher, den er mit einem Mandat zugunsten von Lodi nach Mailand geschickt hat" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "er" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-S000646> ;
+        rf:role rv:Envoy ;
+        rf:nameInSource "Sicher" ] ;
+    rf:concerns <urn:regesta:22819:place-lodi> , <urn:regesta:22819:place-mailand> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22819:gift-key-lodesanen> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22819> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Die Lodesanen übersenden ihm durch Markgraf Wilhelm von Montferrat heimlich einen goldenen Schlüssel" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-L000556:community> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Die Lodesanen" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "ihm" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-W000552> ;
+        rf:role rv:Envoy ;
+        rf:nameInSource "Markgraf Wilhelm von Montferrat" ] ;
+    rf:concerns <urn:regesta:22819:thing-golden-key> ;
+    rf:qualifier "heimlich" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22819:request-protection-lodesanen> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22819> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Die Lodesanen übersenden ihm durch Markgraf Wilhelm von Montferrat heimlich einen goldenen Schlüssel und bitten ihn um seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-L000556:community> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Die Lodesanen" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "ihn" ] ;
+    rf:concerns <urn:regesta:22819:right-protection-lodi> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22819:protection-grant-lodi> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22819> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "den er ihnen bereitwillig gewährt" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "Laudenses et eorum civitatem, quamvis destructam, in sua custodia suscepit" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "er" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-L000556:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "ihnen" ] ;
+    rf:concerns <urn:regesta:22819:right-protection-lodi> , <urn:regesta:22819:place-civitas-laudensium> ;
+    rf:refersToAct <urn:regesta:22819:request-protection-lodesanen> ;
+    rf:qualifier "bereitwillig" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22819:gift-cup-milanese> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22819> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Die Mailänder schicken zur Besänftigung des Königs einen goldenen Becher voll mit Geld" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-M000144:community> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Die Mailänder" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "des Königs" ] ;
+    rf:concerns <urn:regesta:22819:thing-golden-cup> ;
+    rf:ground "zur Besänftigung des Königs" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+# Intercession of Cremona and Pavia, recorded as a request; "gegen Mailand" has no role in the model.
+<urn:regesta:22819:intercession-cremona-pavia> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22819> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Cremonesen und Pavesen ebenfalls mit Geschenken gegen Mailand und für Lodi bei Friedrich eintreten" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-C001047:community> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Cremonesen" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-P000264:community> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Pavesen" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22819:place-lodi> , <urn:regesta:22819:place-mailand> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22819:gifts-cremona-pavia> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22819> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Cremonesen und Pavesen ebenfalls mit Geschenken gegen Mailand und für Lodi bei Friedrich eintreten" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-C001047:community> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Cremonesen" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-P000264:community> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Pavesen" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22819:thing-gifts-cremona-pavia> ;
+    rf:partOf <urn:regesta:22819:intercession-cremona-pavia> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;
+    rf:verificationStatus rv:unchecked .

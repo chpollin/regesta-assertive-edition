@@ -1,0 +1,609 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-04-00_1_0_4_2_1_79_79",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22706",
+  "identifier": "RI IV,2,1 n. 79",
+  "short": "RI IV,2,1 n. 79",
+  "sort": "004_002_001_000079_0000000079",
+  "start": "1152-04-01",
+  "end": "1152-04-30",
+  "proseYears": [],
+  "lead": "Vor Friedrich wird ein Fürstenspruch gefällt, der dem Erzbischof Arnold II. von Köln die Unveräußerlichkeit der erzbischöflichen Tafelgüter entgegen den Veräußerungen seines Vorgängers Friedrich bestätigt.",
+  "date": [
+   {
+    "t": "(1152 April)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Dortmund"
+   }
+  ],
+  "text": "Vor Friedrich wird ein Fürstenspruch gefällt, der dem Erzbischof Arnold II. von Köln die Unveräußerlichkeit der erzbischöflichen Tafelgüter entgegen den Veräußerungen seines Vorgängers Friedrich bestätigt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22706:judgment",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22706:judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "judgment",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 204,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22706:> .\nx:judgment a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22706> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Vor Friedrich wird ein Fürstenspruch gefällt, der dem Erzbischof Arnold II. von Köln die Unveräußerlichkeit der erzbischöflichen Tafelgüter entgegen den Veräußerungen seines Vorgängers Friedrich bestätigt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22706:judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22706:judgment-ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 204,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22706:> .\nx:judgment rf:reference x:judgment-ref-friedrich .\nx:judgment-ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Arnold II. von Köln",
+      "text": "Erzbischof Arnold II. von Köln in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22706:judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22706:judgment-ref-arnold"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 204,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22706:> .\nx:judgment rf:reference x:judgment-ref-arnold .\nx:judgment-ref-arnold a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001202> ;\n    rf:nameInSource \"Erzbischof Arnold II. von Köln\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001202"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "erzbischöflichen Tafelgüter",
+      "text": "betrifft erzbischöflichen Tafelgüter",
+      "triple": [
+       "urn:regesta:22706:judgment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22706:tafelgueter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 204,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22706:> .\nx:judgment rf:concerns x:tafelgueter .\nx:tafelgueter a crm:E18_Physical_Thing ;\n    rdfs:label \"erzbischöflichen Tafelgüter\" .",
+      "object": "urn:regesta:22706:tafelgueter",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22706:judgment",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22706:alienations"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 204,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22706:> .\nx:judgment rf:refersToAct x:alienations .\nx:alienations a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19> ;\n    rf:concerns x:tafelgueter ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der erzbischöflichen Tafelgüter entgegen den Veräußerungen seines Vorgängers Friedrich\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:qualifier \"Veräußerungen\" ;\n    rf:reference x:alienations-ref-vorgaenger ;\n    rf:source <urn:regesta:record:22706> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22706:alienations",
+      "objectClaim": "alienations",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Fürstenspruch",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22706:judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 23,
+       "end": 36,
+       "ambiguous": false
+      },
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Unveräußerlichkeit",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22706:judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 89,
+       "end": 107,
+       "ambiguous": false
+      },
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "entgegen den Veräußerungen",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22706:judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 140,
+       "end": 166,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Urteil"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Erzbischof Arnold II. von Köln"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "erzbischöflichen Tafelgüter"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22706:alienations",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22706:alienations",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "alienations",
+     "own": true,
+     "evidence": {
+      "start": 108,
+      "end": 194,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22706:> .\nx:alienations a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22706> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der erzbischöflichen Tafelgüter entgegen den Veräußerungen seines Vorgängers Friedrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seines Vorgängers Friedrich",
+      "text": "seines Vorgängers Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22706:alienations",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22706:alienations-ref-vorgaenger"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "alienations",
+      "own": true,
+      "evidence": {
+       "start": 108,
+       "end": 194,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22706:> .\nx:alienations rf:reference x:alienations-ref-vorgaenger .\nx:alienations-ref-vorgaenger a rf:Reference ;\n    rf:actor <urn:regesta:actor:22706:local:vorgaenger-friedrich> ;\n    rf:nameInSource \"seines Vorgängers Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22706:local:vorgaenger-friedrich"
+      ],
+      "key": "k10",
+      "agentNotes": [
+       {
+        "text": "'seines Vorgängers Friedrich' (Arnold's predecessor as archbishop) has no register candidate; local person IRI urn:regesta:actor:22706:local:vorgaenger-friedrich.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "erzbischöflichen Tafelgüter",
+      "text": "betrifft erzbischöflichen Tafelgüter",
+      "triple": [
+       "urn:regesta:22706:alienations",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22706:tafelgueter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "alienations",
+      "own": true,
+      "evidence": {
+       "start": 108,
+       "end": 194,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22706:> .\nx:alienations rf:concerns x:tafelgueter .\nx:tafelgueter a crm:E18_Physical_Thing ;\n    rdfs:label \"erzbischöflichen Tafelgüter\" .",
+      "object": "urn:regesta:22706:tafelgueter",
+      "key": "k11"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Veräußerungen",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22706:alienations",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 153,
+       "end": 166,
+       "ambiguous": false
+      },
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "seines Vorgängers Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "erzbischöflichen Tafelgüter"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "judgment",
+    "start": 0,
+    "end": 204
+   },
+   {
+    "id": "t1",
+    "start": 23,
+    "end": 36
+   },
+   {
+    "id": "t2",
+    "start": 89,
+    "end": 107
+   },
+   {
+    "id": "alienations",
+    "start": 108,
+    "end": 194
+   },
+   {
+    "id": "t3",
+    "start": 140,
+    "end": 166
+   },
+   {
+    "id": "t4",
+    "start": 153,
+    "end": 166
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "The princes who pronounce the 'Fürstenspruch' are not named; local group IRI urn:regesta:actor:22706:local:fuersten, with nameInSource 'Fürstenspruch' as the only wording.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for an unspecified alienation ('Veräußerungen'); typed with the top concept Grant and the exact word kept in rf:qualifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type or status for inalienability ('Unveräußerlichkeit'); kept as qualifier of the judgment, with the Tafelgüter as the concerned thing.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The predecessor relation in office ('seines Vorgängers') has no state type and is not recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No property for an act that rules against or invalidates an earlier act without being a formal revocation.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for alienation in general (Veräußerung) distinct from grant or sale.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "Inalienability as a legal status of goods has no right or state type.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "urn:regesta:22706:judgment: removed reference <urn:regesta:22706:judgment-ref-fuersten>, deleted that reference node and the actor node <urn:regesta:actor:22706:local:fuersten>; Friedrich and Arnold references unchanged.",
+     "lang": "en"
+    },
+    {
+     "text": "urn:regesta:22706:judgment: added rf:qualifier \"Fürstenspruch\" and \"entgegen den Veräußerungen\" beside \"Unveräußerlichkeit\"; rf:refersToAct <urn:regesta:22706:alienations> kept; producer correction-g4.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "actor-wording",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:actor:22706:local:fuersten",
+     "description": "The local actor for the judging princes carries rdfs:label and rf:nameInSource \"Fürstenspruch\". That word names the verdict, not a group of persons; the regest never names the princes as actors. Using it as the actor's name in source misrepresents the wording that identifies the actor.",
+     "proposal": "Either drop the princes' reference and keep \"Fürstenspruch\" as rf:qualifier of the judgment, or keep the local group but note in the batch report that it is inferred from the compound noun and give it no rf:nameInSource.",
+     "quote": {
+      "start": 0,
+      "end": 44
+     }
+    },
+    {
+     "category": "typing",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22706:alienations",
+     "description": "\"Veräußerungen\" is typed rv:Grant without a recipient. The regest states that the predecessor alienated goods but not to whom or in what form; rv:Grant is the closest act type and does not overstate.",
+     "proposal": "None required; record that the vocabulary has no generic alienation type.",
+     "quote": {
+      "start": 140,
+      "end": 194
+     }
+    },
+    {
+     "category": "relation-semantics",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22706:judgment",
+     "description": "rf:refersToAct links the judgment to the alienations, but the judgment rules against them (entgegen). The link is correct in direction, but the oppositional relation is not expressible, and it must not be read as a confirmation of the alienations.",
+     "proposal": "Keep the link and add rf:qualifier \"entgegen den Veräußerungen\" to make the opposition explicit in the source's words.",
+     "quote": {
+      "start": 85,
+      "end": 204
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The judging princes are labelled and named 'Fürstenspruch', which names the verdict, not persons.",
+     "reason": "'Vor Friedrich wird ein Fürstenspruch gefällt' never names the princes; rf:nameInSource and rdfs:label must be the wording naming the actor, and inferring a group from a compound noun is not supported. The safe fix keeps the word on the judgment.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "rf:refersToAct to the alienations could be read as confirming them; the opposition 'entgegen' is not expressed.",
+     "reason": "The judgment confirms inalienability 'entgegen den Veräußerungen seines Vorgängers Friedrich'. Without the exact wording the link reads neutrally or as approval; adding it as qualifier keeps the opposition in the source's words.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die zeitliche Einordnung der Nachricht ergibt sich aus dem Itinerar des Königs."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt in DF. I. 59 (Reg. 180); vgl. Knipping, Reg. Köln 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 559 und Stumpf 3621 a."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=30"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-D000411",
+    "Dortmund (Ruhrgebiet, Nordrh.-Westf.)"
+   ]
+  ]
+ }
+}

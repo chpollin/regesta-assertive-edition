@@ -1,0 +1,207 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1144-03-25_1_0_4_2_1_12_12",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22639",
+  "identifier": "RI IV,2,1 n. 12",
+  "short": "RI IV,2,1 n. 12",
+  "sort": "004_002_001_000012_0000000012",
+  "start": "1144-03-25",
+  "end": "1144-03-25",
+  "proseYears": [],
+  "lead": "Friedrich wird neben seinem Vater, Herzog Friedrich (II. von Schwaben), als Zeuge in DK. III. 98 für das Kloster Paulinzelle genannt.",
+  "date": [
+   {
+    "t": "1144 März 25"
+   }
+  ],
+  "place": [
+   {
+    "t": "Würzburg"
+   }
+  ],
+  "text": "Friedrich wird neben seinem Vater, Herzog Friedrich (II. von Schwaben), als Zeuge in DK. III. 98 für das Kloster Paulinzelle genannt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22639:parenthood-vater",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22639:parenthood-vater",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-vater",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 70,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22639:> .\nx:parenthood-vater a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22639> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich wird neben seinem Vater, Herzog Friedrich (II. von Schwaben)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22639:parenthood-vater",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22639:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-vater",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 70,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22639:> .\nx:parenthood-vater rf:reference x:ref-friedrich .\nx:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Child .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrich (II. von Schwaben)",
+      "text": "Herzog Friedrich (II. von Schwaben) in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22639:parenthood-vater",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22639:ref-vater"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-vater",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 70,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22639:> .\nx:parenthood-vater rf:reference x:ref-vater .\nx:ref-vater a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000681> ;\n    rf:nameInSource \"Herzog Friedrich (II. von Schwaben)\" ;\n    rf:role rv:Parent .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog Friedrich (II. von Schwaben)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "parenthood-vater",
+    "start": 0,
+    "end": 70
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Being named as witness in a charter (DK. III. 98 for Kloster Paulinzelle) is a formulaic witness-list mention; rv:Witness excludes it and the model has no type for attestation in another document, so it was not extracted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [],
+   "transmission": [],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=16"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-P000217",
+    "Paulinzelle (<i>heute:</i> Paulinzella, Teil von Königsee-Rottenbach, Ldkr. Saalfeld-Rudolstadt, Thüringen), (Benediktiner- und Benediktinerinnen-)Kloster"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

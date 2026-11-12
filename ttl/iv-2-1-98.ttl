@@ -1,0 +1,91 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-07-01_1_0_4_2_1_98_98
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22725> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:22725:local:fuersten> a crm:E74_Group ;
+    rdfs:label "den Fürsten" .
+
+# Two register candidates match "Markgraf Otakar von Steier" by name and title (O000360, role
+# nennung; O000361, role p_komment). O000360 is chosen because its packet role is the mention in
+# the regest; the choice is reported as unresolved.
+<urn:regesta:actor:RI004-002-O000360> a crm:E21_Person ;
+    rdfs:label "Markgraf Otakar von Steier" .
+
+<urn:regesta:actor:RI004-002-E000010> a crm:E21_Person ;
+    rdfs:label "Erzbischof Eberhards von Salzburg" .
+
+<urn:regesta:actor:RI004-002-W000319> a crm:E21_Person ;
+    rdfs:label "Propstes Werner" .
+
+<urn:regesta:actor:RI004-002-S000482:community> a crm:E74_Group ;
+    rdfs:label "Stiftes Seckau" .
+
+<urn:regesta:22725:right:advocacy> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "Vogt des Stiftes Seckau" .
+
+# The appointing actor is not named (passive). Ruler and princes are present ("Vor"), the
+# archbishop proposes; neither presence nor proposal has a dedicated role (model gap), so both
+# are rv:Participant.
+<urn:regesta:22725:appointment> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22725> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Vor Friedrich und den Fürsten wird Markgraf Otakar von Steier auf den Vorschlag Erzbischof Eberhards von Salzburg und auf Bitten des Propstes Werner zum Vogt des Stiftes Seckau (Seccowensis) ernannt" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-O000360> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Markgraf Otakar von Steier" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-W000319> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Propstes Werner" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-E000010> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Erzbischof Eberhards von Salzburg" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22725:local:fuersten> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "den Fürsten" ] ;
+    rf:concerns <urn:regesta:22725:right:advocacy> , <urn:regesta:actor:RI004-002-S000482:community> ;
+    rf:condition "keinen Untervogt einzusetzen und keine Abgaben zu erheben (nullumque subadvocatum vel genus exactionis quod vulgo voitmutte appellatur)" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;
+    rf:verificationStatus rv:unchecked .
+
+# Otakar's assent to the condition, an act preceding the appointment ("nachdem"). The contract
+# has no property for the content of an undertaking; the content stays in the evidence (model gap).
+# The assent does not establish later compliance.
+<urn:regesta:22725:assent> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:partOf <urn:regesta:22725:appointment> ;
+    rf:qualifier "nachdem" ;
+    rf:source <urn:regesta:record:22725> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "nachdem er der Bedingung, keinen Untervogt einzusetzen und keine Abgaben zu erheben (nullumque subadvocatum vel genus exactionis quod vulgo voitmutte appellatur), zugestimmt hat" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "Markgraf Otakar von Steier" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-O000360> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Markgraf Otakar von Steier" ] ;
+    rf:concerns <urn:regesta:22725:right:advocacy> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,736 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-00_2_0_4_2_1_91_91",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22718",
+  "identifier": "RI IV,2,1 n. 91",
+  "short": "RI IV,2,1 n. 91",
+  "sort": "004_002_001_000091_0000000091",
+  "start": "1152-05-01",
+  "end": "1152-05-31",
+  "proseYears": [],
+  "lead": "(Friedrich) teilt Herzog (Heinrich) von Sachsen (richtig: Landgraf Ludwig II. von Thüringen ) mit, daß Herzog (Vladislav) von Böhmen trotz kaiserlichen Befehls nicht auf dem Hoftag (zu Merseburg, vgl. Reg. 88) erschienen sei und er dies nach Beratung mit den Fürsten zu ahnden beschlossen habe, falls er nicht um des Empfängers willen, der mit dem Herzog verwandt und sehr befreundet ist, das Urteil abschwäche.",
+  "date": [
+   {
+    "t": "(1152 Mai)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Merseburg)"
+   }
+  ],
+  "text": "(Friedrich) teilt Herzog (Heinrich) von Sachsen (richtig: Landgraf Ludwig II. von Thüringen ) mit, daß Herzog (Vladislav) von Böhmen trotz kaiserlichen Befehls nicht auf dem Hoftag (zu Merseburg, vgl. Reg. 88) erschienen sei und er dies nach Beratung mit den Fürsten zu ahnden beschlossen habe, falls er nicht um des Empfängers willen, der mit dem Herzog verwandt und sehr befreundet ist, das Urteil abschwäche.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22718:f-decision-to-punish",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22718:f-decision-to-punish",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-decision-to-punish",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 17,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-decision-to-punish a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22718> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Friedrich) teilt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "(Friedrich)",
+      "text": "(Friedrich) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22718:f-decision-to-punish",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-decision-to-punish",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 17,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-decision-to-punish rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"(Friedrich)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog (Vladislav) von Böhmen",
+      "text": "Herzog (Vladislav) von Böhmen in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22718:f-decision-to-punish",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-decision-to-punish",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 17,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-decision-to-punish rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000532> ; rf:nameInSource \"Herzog (Vladislav) von Böhmen\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000532"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Fürsten",
+      "text": "den Fürsten in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22718:f-decision-to-punish",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-decision-to-punish",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 17,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-decision-to-punish rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22718:local:fuersten> ; rf:nameInSource \"den Fürsten\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22718:local:fuersten"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22718:f-decision-to-punish",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22718:f-letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-decision-to-punish",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 17,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-decision-to-punish rf:partOf x:f-letter .\nx:f-letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Friedrich) teilt Herzog (Heinrich) von Sachsen (richtig: Landgraf Ludwig II. von Thüringen ) mit\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"(Friedrich)\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:nameInSource \"Landgraf Ludwig II. von Thüringen\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:22718> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22718:f-letter",
+      "objectClaim": "f-letter",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22718:f-decision-to-punish",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-decision-to-punish-2",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 410,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-decision-to-punish rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"daß Herzog (Vladislav) von Böhmen trotz kaiserlichen Befehls nicht auf dem Hoftag (zu Merseburg, vgl. Reg. 88) erschienen sei und er dies nach Beratung mit den Fürsten zu ahnden beschlossen habe, falls er nicht um des Empfängers willen, der mit dem Herzog verwandt und sehr befreundet ist, das Urteil abschwäche\" ] .",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "falls er nicht um des Empfängers willen, der mit dem Herzog verwandt und sehr befreundet ist, das Urteil abschwäche",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22718:f-decision-to-punish",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 295,
+       "end": 410,
+       "ambiguous": false
+      },
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "Herzog (Vladislav) von Böhmen trotz kaiserlichen Befehls nicht auf dem Hoftag (zu Merseburg, vgl. Reg. 88) erschienen sei",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22718:f-decision-to-punish",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 103,
+       "end": 224,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "(Friedrich)"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Herzog (Vladislav) von Böhmen"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "den Fürsten"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22718:f-letter",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22718:f-letter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-letter",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 97,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-letter a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22718> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Friedrich) teilt Herzog (Heinrich) von Sachsen (richtig: Landgraf Ludwig II. von Thüringen ) mit\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "(Friedrich)",
+      "text": "(Friedrich) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22718:f-letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 97,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"(Friedrich)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Landgraf Ludwig II. von Thüringen",
+      "text": "Landgraf Ludwig II. von Thüringen in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22718:f-letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 97,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:nameInSource \"Landgraf Ludwig II. von Thüringen\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000841"
+      ],
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "(Friedrich)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Landgraf Ludwig II. von Thüringen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22718:f-kinship",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22718:f-kinship",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-kinship",
+     "own": true,
+     "evidence": {
+      "start": 313,
+      "end": 363,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-kinship a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22718> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"des Empfängers willen, der mit dem Herzog verwandt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Landgraf Ludwig II. von Thüringen",
+      "text": "Landgraf Ludwig II. von Thüringen in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22718:f-kinship",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-kinship",
+      "own": true,
+      "evidence": {
+       "start": 313,
+       "end": 363,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-kinship rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:nameInSource \"des Empfängers\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000841"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog (Vladislav) von Böhmen",
+      "text": "Herzog (Vladislav) von Böhmen in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22718:f-kinship",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-kinship",
+      "own": true,
+      "evidence": {
+       "start": 313,
+       "end": 363,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22718:> .\nx:f-kinship rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000532> ; rf:nameInSource \"dem Herzog\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000532"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "verwandt",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22718:f-kinship",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 355,
+       "end": 363,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Landgraf Ludwig II. von Thüringen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Herzog (Vladislav) von Böhmen"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "f-letter",
+    "start": 0,
+    "end": 97
+   },
+   {
+    "id": "f-decision-to-punish",
+    "start": 0,
+    "end": 17
+   },
+   {
+    "id": "f-decision-to-punish-2",
+    "start": 99,
+    "end": 410
+   },
+   {
+    "id": "t2",
+    "start": 103,
+    "end": 224
+   },
+   {
+    "id": "t1",
+    "start": 295,
+    "end": 410
+   },
+   {
+    "id": "f-kinship",
+    "start": 313,
+    "end": 363
+   },
+   {
+    "id": "t3",
+    "start": 355,
+    "end": 363
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Addressee named 'Herzog (Heinrich) von Sachsen' and corrected by the regest to 'Landgraf Ludwig II. von Thüringen'; the reading follows the correction (RI004-002-L000841) and does not reference Heinrich",
+     "lang": "en"
+    },
+    {
+     "text": "'dem Herzog' in the kinship clause read as Herzog (Vladislav) von Böhmen",
+     "lang": "en"
+    },
+    {
+     "text": "'den Fürsten' recorded as a regest-local group",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No sender role for a communication: Friedrich is rv:Participant in the letter",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for an imperial order and non-appearance ('trotz kaiserlichen Befehls nicht ... erschienen'); kept only as rf:ground of the decision",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Decision to punish encoded as rv:Enactment with Vladislav as rv:Respondent, though no dispute is narrated",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Friendship ('sehr befreundet') has no state type and is not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Friendship ('sehr befreundet') has no state type.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the person a sanction is directed at.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "actor-identification",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22718:f-letter",
+     "description": "The regest names the addressee as Herzog (Heinrich) von Sachsen and corrects it to Landgraf Ludwig II. The candidate follows the correction and records the choice in a comment. This is the regest's own reading and acceptable; the transmitted addressee is lost, and the kinship factoid's 'des Empfängers' depends on the same correction.",
+     "proposal": "None required; keep the identification flagged as unresolved in the batch report.",
+     "quote": {
+      "start": 18,
+      "end": 93
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "22718",
+     "description": "The imperial command to appear at the court is an earlier act; it survives only inside the rf:ground literal. Peripheral, expressible as an rv:Communication with Vladislav as rv:Addressee.",
+     "proposal": "Optional.",
+     "quote": {
+      "start": 133,
+      "end": 224
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22718:f-decision-to-punish",
+     "description": "Vladislav is rv:Respondent in an rv:Enactment; there is no dispute, so the role borrows dispute vocabulary for the object of a sanction. The condition literal correctly keeps the possible mitigation for the recipient's sake.",
+     "proposal": "None under the frozen contract.",
+     "quote": {
+      "start": 229,
+      "end": 293
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The imperial command Vladislav disobeyed could be added as rv:Communication.",
+     "reason": "The command survives in exact wording in the rf:ground of the decision ('trotz kaiserlichen Befehls nicht auf dem Hoftag ... erschienen sei'); the reviewer marks it optional and it is not central.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Peeck datiert das Schreiben auf Grund der Angabe über die Verwandtschaft des Empfängers, als den er gegen die Angabe des Textes den Thüringer Landgrafen wahrscheinlich machen kann, mit dem Böhmenherzog und des Königstitels auf 1153-55; wegen des Hinweises auf den (Merseburger) Hoftag haben wir es aber hier eingeordnet."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Stilübung"
+    },
+    {
+     "t": ", Reinhardsbrunner Briefsammlung, ed. Peeck, MG. Epp. sel. V, 64 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 76."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=34"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000841",
+    "(II., Raspo, der Eiserne), Landgraf von Thüringen"
+   ],
+   [
+    "RI004-002-M000847",
+    "(auch: Stadt)"
+   ],
+   [
+    "RI004-002-V000532",
+    "(II.), Herzog, dann König von Böhmen"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,375 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-10-18_1_0_4_2_1_141_F141",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22768",
+  "identifier": "RI IV,2,1 n. †141",
+  "short": "RI IV,2,1 n. †141",
+  "sort": "004_002_001_000141_000000#141",
+  "start": "1153-10-18",
+  "end": "1153-10-18",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt den Domkanonikern von Vercelli auf ihre Bitten hin den Hof Caresana mit allem Zubehör sowie die genannten Gerechtsame an den Flüssen Cervo und Sesia. - Wiederholung des unvollendeten und unvollzogenen DH.",
+  "date": [
+   {
+    "t": "1153 (!) Oktober 18"
+   }
+  ],
+  "place": [
+   {
+    "t": "Würzburg"
+   }
+  ],
+  "text": "Friedrich bestätigt den Domkanonikern von Vercelli auf ihre Bitten hin den Hof Caresana mit allem Zubehör sowie die genannten Gerechtsame an den Flüssen Cervo und Sesia. - Wiederholung des unvollendeten und unvollzogenen DH. IV. 293 a. Si dei ecclesiis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22768:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22768:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 168,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22768:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22768> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt den Domkanonikern von Vercelli auf ihre Bitten hin den Hof Caresana mit allem Zubehör sowie die genannten Gerechtsame an den Flüssen Cervo und Sesia\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22768:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 168,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22768:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkanonikern von Vercelli",
+      "text": "Domkanonikern von Vercelli in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22768:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 168,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22768:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000206:community> ; rf:nameInSource \"Domkanonikern von Vercelli\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000206:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkanonikern von Vercelli",
+      "text": "Domkanonikern von Vercelli in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22768:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 168,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22768:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000206:community> ; rf:nameInSource \"ihre\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000206:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (Gerechtsame an den Flüssen Cervo und Sesia)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (Gerechtsame an den Flüssen Cervo und Sesia)",
+      "triple": [
+       "urn:regesta:22768:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22768:gerechtsame-cervo-sesia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 168,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22768:> .\nx:confirmation rf:concerns x:gerechtsame-cervo-sesia .\nx:gerechtsame-cervo-sesia a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"Gerechtsame an den Flüssen Cervo und Sesia\" .",
+      "object": "urn:regesta:22768:gerechtsame-cervo-sesia",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Hof Caresana mit allem Zubehör",
+      "text": "betrifft Hof Caresana mit allem Zubehör",
+      "triple": [
+       "urn:regesta:22768:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22768:hof-caresana"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 168,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22768:> .\nx:confirmation rf:concerns x:hof-caresana .\nx:hof-caresana a crm:E18_Physical_Thing ;\n    rdfs:label \"Hof Caresana mit allem Zubehör\" .",
+      "object": "urn:regesta:22768:hof-caresana",
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Domkanonikern von Vercelli"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Domkanonikern von Vercelli"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (Gerechtsame an den Flüssen Cervo und Sesia)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Hof Caresana mit allem Zubehör"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 168
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No right type for river rights; 'Gerechtsame an den Flüssen Cervo und Sesia' typed with the top concept rv:UsageRights.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The diplomatic note 'Wiederholung des unvollendeten und unvollzogenen DH. IV. 293 a' (an unexecuted earlier draft of Heinrich IV.) is not modelled as an earlier act; the model has no way to express an unexecuted or incomplete act, and the record is marked spurious (†) in its identifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to mark a factoid's source as a forgery or as a repetition of an unexecuted diploma.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "scope",
+     "severity": "Vermerk",
+     "subject": "22768",
+     "description": "The regest is marked as spurious (†) and states that it repeats an unfinished and unexecuted diploma of Heinrich IV; the factoid cannot carry this authenticity status.",
+     "proposal": "No change to the Turtle; report the authenticity status as a model gap.",
+     "quote": {
+      "start": 172,
+      "end": 235
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The spurious status and the repetition of the unexecuted DH. IV. 293 a cannot be carried.",
+     "reason": "'Wiederholung des unvollendeten und unvollzogenen DH. IV. 293 a.' is diplomatic commentary about the source; the contract has no property for authenticity of the source document. No change to the Turtle.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu DH. IV. 293a vgl. Holtzmann, Vercelli, DA 12 (1956) 518 ff. sowie Gawlik, DD. H. IV. 3. Teil (1978) Nachtrag zu D. 293 a. - Der Charakter der Fälschung ergibt sich aus der weitgehenden Wiederholung des DH. IV., dessen Bestimmungen man Rechtskraft verleihen wollte. Im Jahre 1146 wurden Streitigkeiten zwischen dem Bischof und dem Domkapitel von Vercelli um Rechte an der Sesia zugunsten des letzteren beigelegt, Arnoldi, Le carte di Vercelli, 1, BSSS 70 (1912) 160 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 130. Mit diesen Auseinandersetzungen ist wohl auch die Entstehung unserer Fälschung in Zusammenhang zu bringen. - Vgl. zum Besitz von Caresana besonders Groneuer, Caresana (Forsch. zur Sozial- u. Wirtschaftsgesch. 15, 1970) 16 ff. - Die Einordnung zum Jahr 1152 ergibt sich aus dem Zusammenhang mit D. F. I. 33 (Reg. "
+    },
+    {
+     "t": "140",
+     "regest": "22767"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Fälschung"
+    },
+    {
+     "t": "; Kop.: Abschrift des 18. Jh. Cod. 3 f. 151', Kapitelarchiv Vercelli (D); Fileppi, Storia di Vercelli p. 281, Manuskript des 18. Jh., Bibliothek der Akademie der Wissenschaften zu Turin (F). Drucke: Cusano, Discorsi historiali 176 (zu 1157) (c); Mandelli, II comune di Vercelli 2, 12 erwähnt zu 1153 Dezember 15. Reg.: Stumpf 3649."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=50"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-C000258",
+    "Caresana (westl. der Sesia, südöstl. Vercelli, ital. Prov. Vercelli)"
+   ],
+   [
+    "RI004-002-C000526",
+    "Cervo (rechter Nebenfluss der Sesia, mündet nördl. von Vercelli)"
+   ],
+   [
+    "RI004-002-H000341",
+    "IV., König und Kaiser"
+   ],
+   [
+    "RI004-002-S000598",
+    "Sesia (linker Nebenfluss des Po im Piemont und in der Lombardei, mündet östl. Casale Monferrato)"
+   ],
+   [
+    "RI004-002-V000206",
+    "Domkanoniker"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

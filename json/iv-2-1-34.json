@@ -1,0 +1,249 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-09-07_1_0_4_2_1_34_34",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22661",
+  "identifier": "RI IV,2,1 n. 34",
+  "short": "RI IV,2,1 n. 34",
+  "sort": "004_002_001_000034_0000000034",
+  "start": "1147-09-07",
+  "end": "1147-09-09",
+  "proseYears": [],
+  "lead": "Friedrich lagert gemeinsam mit seinem Oheim Welf (VI.) am Abhang eines Berges und entgeht dadurch einer durch ein heftiges Unwetter verursachten Katastrophe des Kreuzheeres.",
+  "date": [
+   {
+    "t": "1147 September 7-9"
+   }
+  ],
+  "place": [
+   {
+    "t": "bei Chörobacchi (unweit von Konstantinopel)"
+   }
+  ],
+  "text": "Friedrich lagert gemeinsam mit seinem Oheim Welf (VI.) am Abhang eines Berges und entgeht dadurch einer durch ein heftiges Unwetter verursachten Katastrophe des Kreuzheeres.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22661:kinship-welf",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22661:kinship-welf",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-welf",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 54,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22661:> .\nx:kinship-welf a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22661> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich lagert gemeinsam mit seinem Oheim Welf (VI.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-9> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22661:kinship-welf",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-welf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 54,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22661:> .\nx:kinship-welf rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Welf (VI.)",
+      "text": "Welf (VI.) in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22661:kinship-welf",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-welf",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 54,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22661:> .\nx:kinship-welf rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:nameInSource \"Welf (VI.)\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000272"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheim",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22661:kinship-welf",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 38,
+       "end": 43,
+       "ambiguous": false
+      },
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Welf (VI.)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "kinship-welf",
+    "start": 0,
+    "end": 54
+   },
+   {
+    "id": "t1",
+    "start": 38,
+    "end": 43
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Kinship 'Oheim' recorded with two rv:Kin references; the contract has no directional roles, so who is uncle of whom stays in the wording only.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Direction of the kinship term 'Oheim' is not expressible with two symmetric rv:Kin references.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Bernhardi, Konrad III. 612 ff. und Simonsfeld, Jahrbücher 12."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. I cap. 47, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 65 ff."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=19"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-C000644",
+    "Chörobacchi (wohl: im Bereich von Büyükçekmece, unweit westl. von Istanbul)"
+   ],
+   [
+    "RI004-002-K000571",
+    "Konstantinopel (<i>heute:</i> Istanbul, Türkei)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ]
+  ]
+ }
+}

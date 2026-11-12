@@ -1,0 +1,59 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1147-00-00_1_0_4_2_1_46_46
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22673> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 46" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-A000306> a crm:E21_Person ;
+    rdfs:label "Adela" .
+
+<urn:regesta:actor:RI004-002-T000162> a crm:E21_Person ;
+    rdfs:label "Markgraf Diepolds von Vohburg" .
+
+<urn:regesta:22673:marriage> a rf:ActFactoid ;
+    rf:factoidType rv:MarriageConclusion ;
+    rf:source <urn:regesta:record:22673> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich heiratet Adela" ] ;
+    rf:reference <urn:regesta:22673:marriage-ref-friedrich> , <urn:regesta:22673:marriage-ref-adela> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-2> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22673:marriage-ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Spouse ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22673:marriage-ref-adela> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A000306> ;
+    rf:role rv:Spouse ;
+    rf:nameInSource "Adela" .
+
+<urn:regesta:22673:parenthood-diepold-adela> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22673> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Adela, die Tochter Markgraf Diepolds von Vohburg" ] ;
+    rf:reference <urn:regesta:22673:parenthood-ref-diepold> , <urn:regesta:22673:parenthood-ref-adela> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-2> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22673:parenthood-ref-diepold> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-T000162> ;
+    rf:role rv:Parent ;
+    rf:nameInSource "Markgraf Diepolds von Vohburg" .
+
+<urn:regesta:22673:parenthood-ref-adela> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A000306> ;
+    rf:role rv:Child ;
+    rf:nameInSource "Adela" .

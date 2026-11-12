@@ -1,0 +1,2585 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-08-25_1_0_4_2_1_130_130",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22757",
+  "identifier": "RI IV,2,1 n. 130",
+  "short": "RI IV,2,1 n. 130",
+  "sort": "004_002_001_000130_0000000130",
+  "start": "1152-08-25",
+  "end": "1152-08-25",
+  "proseYears": [],
+  "lead": "Friedrich nimmt die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen in seinen Schutz und bestätigt folgende im einzelnen: die von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich übergebene Kirche von Frankenhofen, von Pfalzgraf Friedrich von Tübingen gemeinsam mit seinem Ministerialen Eticho fünf Hufen in Hohonbuach, die von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin und seiner Söhne geschenkten Höfe Tiefenhülen (Tufenhuluwe) und Bremfeld und vom Priester Hermann von Altsteußlingen und seinem Bruder Burchard den Hof Hohonbuach.",
+  "date": [
+   {
+    "t": "1152 August 25"
+   }
+  ],
+  "place": [
+   {
+    "t": "Speyer"
+   }
+  ],
+  "text": "Friedrich nimmt die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen in seinen Schutz und bestätigt folgende im einzelnen: die von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich übergebene Kirche von Frankenhofen, von Pfalzgraf Friedrich von Tübingen gemeinsam mit seinem Ministerialen Eticho fünf Hufen in Hohonbuach, die von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin und seiner Söhne geschenkten Höfe Tiefenhülen (Tufenhuluwe) und Bremfeld und vom Priester Hermann von Altsteußlingen und seinem Bruder Burchard den Hof Hohonbuach. Z.: Bischof Gunther von Speyer, Herzog Matthäus von Lothringen, Bischof Anselm von Havelberg, Markgraf Otakar von Steier, die Grafen Ulrich von Lenzburg, Emicho von Leiningen. - Arnoldus canc. vice Henirici (!) Maguntini archiep. et archicanc. ; verfaßt und geschrieben von A II.C; SI.1. Decet omnes christianę .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 11,
+  "blocks": [
+   {
+    "node": "urn:regesta:22757:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22757:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 37,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die dem Kloster Salem\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22757:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 37,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Salem",
+      "text": "Kloster Salem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22757:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 37,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000091:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schenkung",
+      "text": "bezieht sich auf Schenkung",
+      "triple": [
+       "urn:regesta:22757:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22757:donation-ernst"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 37,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:confirmation rf:refersToAct x:donation-ernst .\nx:donation-ernst a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:concerns x:hof-bremfeld , x:hof-tiefenhuelen ;\n    rf:condition \"mit Zustimmung seiner Gemahlin und seiner Söhne\" ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Salem in seiner Gegenwart geschenkten Güter\" ] , [ a oa:TextQuoteSelector ; oa:exact \"die von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin und seiner Söhne geschenkten Höfe Tiefenhülen (Tufenhuluwe) und Bremfeld\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ernst> ; rf:nameInSource \"seiner Gemahlin\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:soehne-ernst> ; rf:nameInSource \"seiner Söhne\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000499> ; rf:nameInSource \"Ernst von Altsteußlingen (Stuzelinge)\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22757:donation-ernst",
+      "objectClaim": "donation-ernst",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schenkung",
+      "text": "bezieht sich auf Schenkung",
+      "triple": [
+       "urn:regesta:22757:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22757:donation-hermann"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 37,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:confirmation rf:refersToAct x:donation-hermann .\nx:donation-hermann a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:concerns x:hof-hohonbuach ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Salem in seiner Gegenwart geschenkten Güter\" ] , [ a oa:TextQuoteSelector ; oa:exact \"vom Priester Hermann von Altsteußlingen und seinem Bruder Burchard den Hof Hohonbuach\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:burchard> ; rf:nameInSource \"Burchard\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000840> ; rf:nameInSource \"Priester Hermann von Altsteußlingen\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22757:donation-hermann",
+      "objectClaim": "donation-hermann",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schenkung",
+      "text": "bezieht sich auf Schenkung",
+      "triple": [
+       "urn:regesta:22757:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22757:donation-tuebingen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 37,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:confirmation rf:refersToAct x:donation-tuebingen .\nx:donation-tuebingen a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:amount \"fünf Hufen\" ;\n    rf:concerns x:hufen-hohonbuach ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Salem in seiner Gegenwart geschenkten Güter\" ] , [ a oa:TextQuoteSelector ; oa:exact \"von Pfalzgraf Friedrich von Tübingen gemeinsam mit seinem Ministerialen Eticho fünf Hufen in Hohonbuach\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000568> ; rf:nameInSource \"Eticho\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000687> ; rf:nameInSource \"Pfalzgraf Friedrich von Tübingen\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22757:donation-tuebingen",
+      "objectClaim": "donation-tuebingen",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schenkung",
+      "text": "bezieht sich auf Schenkung",
+      "triple": [
+       "urn:regesta:22757:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22757:donation-ulrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 37,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:confirmation rf:refersToAct x:donation-ulrich .\nx:donation-ulrich a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:concerns x:kirche-frankenhofen ;\n    rf:condition \"mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich\" ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Salem in seiner Gegenwart geschenkten Güter\" ] , [ a oa:TextQuoteSelector ; oa:exact \"die von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich übergebene Kirche von Frankenhofen\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ulrich> ; rf:nameInSource \"seiner Gemahlin\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-sohn> ; rf:nameInSource \"Ulrich\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-von-herrlingen> ; rf:nameInSource \"Ulrich von Herrlingen (Hurninge)\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22757:donation-ulrich",
+      "objectClaim": "donation-ulrich",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22757:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-2",
+      "own": true,
+      "evidence": {
+       "start": 113,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt folgende im einzelnen\" ] .",
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k8"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k8"
+      ],
+      "text": "Kloster Salem"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4",
+       "k8"
+      ],
+      "text": "Schenkung"
+     },
+     ", ",
+     {
+      "keys": [
+       "k5",
+       "k8"
+      ],
+      "text": "Schenkung"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6",
+       "k8"
+      ],
+      "text": "Schenkung"
+     },
+     " und ",
+     {
+      "keys": [
+       "k7",
+       "k8"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22757:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 108,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22757:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Salem",
+      "text": "Kloster Salem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22757:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000091:community"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen",
+      "text": "betrifft die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen",
+      "triple": [
+       "urn:regesta:22757:protection",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22757:gueter-salem"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:protection rf:concerns x:gueter-salem .\nx:gueter-salem a crm:E18_Physical_Thing ;\n    rdfs:label \"die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen\" .",
+      "object": "urn:regesta:22757:gueter-salem",
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Kloster Salem"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "die dem Kloster Salem in seiner Gegenwart geschenkten Güter und Besitzungen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:donation-ernst",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22757:donation-ernst",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-ernst",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 75,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ernst a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Salem in seiner Gegenwart geschenkten Güter\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k13"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Salem",
+      "text": "Kloster Salem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22757:donation-ernst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ernst",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ernst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000091:community"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Gemahlin",
+      "text": "seiner Gemahlin in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22757:donation-ernst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ernst",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ernst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ernst> ; rf:nameInSource \"seiner Gemahlin\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22757:local:gemahlin-ernst"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ernst von Altsteußlingen (Stuzelinge)",
+      "text": "Ernst von Altsteußlingen (Stuzelinge) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22757:donation-ernst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ernst",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ernst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000499> ; rf:nameInSource \"Ernst von Altsteußlingen (Stuzelinge)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000499"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Söhne",
+      "text": "seiner Söhne in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22757:donation-ernst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ernst",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ernst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:soehne-ernst> ; rf:nameInSource \"seiner Söhne\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22757:local:soehne-ernst"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Bremfeld",
+      "text": "betrifft Bremfeld",
+      "triple": [
+       "urn:regesta:22757:donation-ernst",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22757:hof-bremfeld"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ernst",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ernst rf:concerns x:hof-bremfeld .\nx:hof-bremfeld a crm:E18_Physical_Thing ;\n    rdfs:label \"Bremfeld\" .",
+      "object": "urn:regesta:22757:hof-bremfeld",
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Tiefenhülen (Tufenhuluwe)",
+      "text": "betrifft Tiefenhülen (Tufenhuluwe)",
+      "triple": [
+       "urn:regesta:22757:donation-ernst",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22757:hof-tiefenhuelen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ernst",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ernst rf:concerns x:hof-tiefenhuelen .\nx:hof-tiefenhuelen a crm:E18_Physical_Thing ;\n    rdfs:label \"Tiefenhülen (Tufenhuluwe)\" .",
+      "object": "urn:regesta:22757:hof-tiefenhuelen",
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22757:donation-ernst",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ernst-2",
+      "own": true,
+      "evidence": {
+       "start": 384,
+       "end": 533,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ernst rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin und seiner Söhne geschenkten Höfe Tiefenhülen (Tufenhuluwe) und Bremfeld\" ] .",
+      "key": "k20"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "mit Zustimmung seiner Gemahlin und seiner Söhne",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22757:donation-ernst",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 430,
+       "end": 477,
+       "ambiguous": false
+      },
+      "key": "k21"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k13",
+       "k20"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k16",
+       "k20"
+      ],
+      "text": "Ernst von Altsteußlingen (Stuzelinge)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k14",
+       "k20"
+      ],
+      "text": "Kloster Salem"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k15",
+       "k20"
+      ],
+      "text": "seiner Gemahlin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17",
+       "k20"
+      ],
+      "text": "seiner Söhne"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k18",
+       "k20"
+      ],
+      "text": "Bremfeld"
+     },
+     " und ",
+     {
+      "keys": [
+       "k19",
+       "k20"
+      ],
+      "text": "Tiefenhülen (Tufenhuluwe)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:donation-hermann",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22757:donation-hermann",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-hermann",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 75,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-hermann a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Salem in seiner Gegenwart geschenkten Güter\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k22"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Salem",
+      "text": "Kloster Salem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22757:donation-hermann",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-hermann",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-hermann rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000091:community"
+      ],
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Priester Hermann von Altsteußlingen",
+      "text": "Priester Hermann von Altsteußlingen in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22757:donation-hermann",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-hermann",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-hermann rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000840> ; rf:nameInSource \"Priester Hermann von Altsteußlingen\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000840"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinem Bruder Burchard",
+      "text": "seinem Bruder Burchard in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22757:donation-hermann",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-hermann",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-hermann rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:burchard> ; rf:nameInSource \"Burchard\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22757:local:burchard"
+      ],
+      "key": "k25",
+      "agentNotes": [
+       {
+        "text": "Burchard, brother of Hermann: no register candidate; regest-local.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Hof Hohonbuach",
+      "text": "betrifft Hof Hohonbuach",
+      "triple": [
+       "urn:regesta:22757:donation-hermann",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22757:hof-hohonbuach"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-hermann",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-hermann rf:concerns x:hof-hohonbuach .\nx:hof-hohonbuach a crm:E18_Physical_Thing ;\n    rdfs:label \"Hof Hohonbuach\" .",
+      "object": "urn:regesta:22757:hof-hohonbuach",
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22757:donation-hermann",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-hermann-2",
+      "own": true,
+      "evidence": {
+       "start": 538,
+       "end": 623,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-hermann rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"vom Priester Hermann von Altsteußlingen und seinem Bruder Burchard den Hof Hohonbuach\" ] .",
+      "key": "k27"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k22",
+       "k27"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k24",
+       "k27"
+      ],
+      "text": "Priester Hermann von Altsteußlingen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k25",
+       "k27"
+      ],
+      "text": "seinem Bruder Burchard"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k23",
+       "k27"
+      ],
+      "text": "Kloster Salem"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k26",
+       "k27"
+      ],
+      "text": "Hof Hohonbuach"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:donation-tuebingen",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22757:donation-tuebingen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-tuebingen",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 75,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-tuebingen a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Salem in seiner Gegenwart geschenkten Güter\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k28"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Salem",
+      "text": "Kloster Salem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22757:donation-tuebingen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-tuebingen",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-tuebingen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000091:community"
+      ],
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Pfalzgraf Friedrich von Tübingen",
+      "text": "Pfalzgraf Friedrich von Tübingen in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22757:donation-tuebingen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-tuebingen",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-tuebingen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000687> ; rf:nameInSource \"Pfalzgraf Friedrich von Tübingen\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000687"
+      ],
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Eticho",
+      "text": "Eticho in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22757:donation-tuebingen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-tuebingen",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-tuebingen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000568> ; rf:nameInSource \"Eticho\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000568"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "fünf Hufen in Hohonbuach",
+      "text": "betrifft fünf Hufen in Hohonbuach",
+      "triple": [
+       "urn:regesta:22757:donation-tuebingen",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22757:hufen-hohonbuach"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-tuebingen",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-tuebingen rf:concerns x:hufen-hohonbuach .\nx:hufen-hohonbuach a crm:E18_Physical_Thing ;\n    rdfs:label \"fünf Hufen in Hohonbuach\" .",
+      "object": "urn:regesta:22757:hufen-hohonbuach",
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22757:donation-tuebingen",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-tuebingen-2",
+      "own": true,
+      "evidence": {
+       "start": 279,
+       "end": 382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-tuebingen rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von Pfalzgraf Friedrich von Tübingen gemeinsam mit seinem Ministerialen Eticho fünf Hufen in Hohonbuach\" ] .",
+      "key": "k33"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "fünf Hufen",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22757:donation-tuebingen",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 358,
+       "end": 368,
+       "ambiguous": false
+      },
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k28",
+       "k33"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k30",
+       "k33"
+      ],
+      "text": "Pfalzgraf Friedrich von Tübingen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k31",
+       "k33"
+      ],
+      "text": "Eticho"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k29",
+       "k33"
+      ],
+      "text": "Kloster Salem"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k32",
+       "k33"
+      ],
+      "text": "fünf Hufen in Hohonbuach"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:donation-ulrich",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22757:donation-ulrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-ulrich",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 75,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ulrich a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Kloster Salem in seiner Gegenwart geschenkten Güter\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k35"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Salem",
+      "text": "Kloster Salem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22757:donation-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000091:community> ; rf:nameInSource \"Kloster Salem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000091:community"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich von Herrlingen (Hurninge)",
+      "text": "Ulrich von Herrlingen (Hurninge) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22757:donation-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-von-herrlingen> ; rf:nameInSource \"Ulrich von Herrlingen (Hurninge)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22757:local:ulrich-von-herrlingen"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seines Sohnes Ulrich",
+      "text": "seines Sohnes Ulrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22757:donation-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-sohn> ; rf:nameInSource \"Ulrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22757:local:ulrich-sohn"
+      ],
+      "key": "k38"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Gemahlin",
+      "text": "seiner Gemahlin in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22757:donation-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ulrich> ; rf:nameInSource \"seiner Gemahlin\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22757:local:gemahlin-ulrich"
+      ],
+      "key": "k39"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Kirche von Frankenhofen",
+      "text": "betrifft Kirche von Frankenhofen",
+      "triple": [
+       "urn:regesta:22757:donation-ulrich",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22757:kirche-frankenhofen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 75,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ulrich rf:concerns x:kirche-frankenhofen .\nx:kirche-frankenhofen a crm:E18_Physical_Thing ;\n    rdfs:label \"Kirche von Frankenhofen\" .",
+      "object": "urn:regesta:22757:kirche-frankenhofen",
+      "key": "k40"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22757:donation-ulrich",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-ulrich-2",
+      "own": true,
+      "evidence": {
+       "start": 146,
+       "end": 277,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:donation-ulrich rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich übergebene Kirche von Frankenhofen\" ] .",
+      "key": "k41"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22757:donation-ulrich",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 187,
+       "end": 242,
+       "ambiguous": false
+      },
+      "key": "k42"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k35",
+       "k41"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k37",
+       "k41"
+      ],
+      "text": "Ulrich von Herrlingen (Hurninge)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k36",
+       "k41"
+      ],
+      "text": "Kloster Salem"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k38",
+       "k41"
+      ],
+      "text": "seines Sohnes Ulrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k39",
+       "k41"
+      ],
+      "text": "seiner Gemahlin"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k40",
+       "k41"
+      ],
+      "text": "Kirche von Frankenhofen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:marriage-ulrich",
+    "kind": "state",
+    "title": "Ehe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehe",
+     "text": "Ehe",
+     "triple": [
+      "urn:regesta:22757:marriage-ulrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Marriage"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "marriage-ulrich",
+     "own": true,
+     "evidence": {
+      "start": 150,
+      "end": 217,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:marriage-ulrich a rf:StateFactoid ;\n    rf:factoidType rv:Marriage ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k43"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich von Herrlingen (Hurninge)",
+      "text": "Ulrich von Herrlingen (Hurninge) in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22757:marriage-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 150,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:marriage-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-von-herrlingen> ; rf:nameInSource \"Ulrich von Herrlingen (Hurninge)\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:22757:local:ulrich-von-herrlingen"
+      ],
+      "key": "k44"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Gemahlin",
+      "text": "seiner Gemahlin in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22757:marriage-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 150,
+       "end": 217,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:marriage-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ulrich> ; rf:nameInSource \"seiner Gemahlin\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:22757:local:gemahlin-ulrich"
+      ],
+      "key": "k45"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Gemahlin",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22757:marriage-ulrich",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 209,
+       "end": 217,
+       "ambiguous": false
+      },
+      "key": "k46"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k43"
+      ],
+      "text": "Ehe"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k44"
+      ],
+      "text": "Ulrich von Herrlingen (Hurninge)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k45"
+      ],
+      "text": "seiner Gemahlin"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:parenthood-ulrich",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22757:parenthood-ulrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-ulrich",
+     "own": true,
+     "evidence": {
+      "start": 150,
+      "end": 242,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:parenthood-ulrich a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von Ulrich von Herrlingen (Hurninge) mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k47"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seines Sohnes Ulrich",
+      "text": "seines Sohnes Ulrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22757:parenthood-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 150,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:parenthood-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-sohn> ; rf:nameInSource \"Ulrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:22757:local:ulrich-sohn"
+      ],
+      "key": "k48"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich von Herrlingen (Hurninge)",
+      "text": "Ulrich von Herrlingen (Hurninge) in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22757:parenthood-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 150,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:parenthood-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:ulrich-von-herrlingen> ; rf:nameInSource \"Ulrich von Herrlingen (Hurninge)\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:22757:local:ulrich-von-herrlingen"
+      ],
+      "key": "k49"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Sohnes",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22757:parenthood-ulrich",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 229,
+       "end": 235,
+       "ambiguous": false
+      },
+      "key": "k50"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k47"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k48"
+      ],
+      "text": "seines Sohnes Ulrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k49"
+      ],
+      "text": "Ulrich von Herrlingen (Hurninge)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:marriage-ernst",
+    "kind": "state",
+    "title": "Ehe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehe",
+     "text": "Ehe",
+     "triple": [
+      "urn:regesta:22757:marriage-ernst",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Marriage"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "marriage-ernst",
+     "own": true,
+     "evidence": {
+      "start": 388,
+      "end": 460,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:marriage-ernst a rf:StateFactoid ;\n    rf:factoidType rv:Marriage ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k51"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Gemahlin",
+      "text": "seiner Gemahlin in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22757:marriage-ernst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage-ernst",
+      "own": true,
+      "evidence": {
+       "start": 388,
+       "end": 460,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:marriage-ernst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:gemahlin-ernst> ; rf:nameInSource \"seiner Gemahlin\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:22757:local:gemahlin-ernst"
+      ],
+      "key": "k52"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ernst von Altsteußlingen (Stuzelinge)",
+      "text": "Ernst von Altsteußlingen (Stuzelinge) in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22757:marriage-ernst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage-ernst",
+      "own": true,
+      "evidence": {
+       "start": 388,
+       "end": 460,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:marriage-ernst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000499> ; rf:nameInSource \"Ernst von Altsteußlingen (Stuzelinge)\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000499"
+      ],
+      "key": "k53"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Gemahlin",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22757:marriage-ernst",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 452,
+       "end": 460,
+       "ambiguous": false
+      },
+      "key": "k54"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k51"
+      ],
+      "text": "Ehe"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k52"
+      ],
+      "text": "seiner Gemahlin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k53"
+      ],
+      "text": "Ernst von Altsteußlingen (Stuzelinge)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:parenthood-ernst",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22757:parenthood-ernst",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-ernst",
+     "own": true,
+     "evidence": {
+      "start": 388,
+      "end": 477,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:parenthood-ernst a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von Ernst von Altsteußlingen (Stuzelinge) mit Zustimmung seiner Gemahlin und seiner Söhne\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k55"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ernst von Altsteußlingen (Stuzelinge)",
+      "text": "Ernst von Altsteußlingen (Stuzelinge) in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22757:parenthood-ernst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-ernst",
+      "own": true,
+      "evidence": {
+       "start": 388,
+       "end": 477,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:parenthood-ernst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000499> ; rf:nameInSource \"Ernst von Altsteußlingen (Stuzelinge)\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000499"
+      ],
+      "key": "k56"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seiner Söhne",
+      "text": "seiner Söhne in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22757:parenthood-ernst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-ernst",
+      "own": true,
+      "evidence": {
+       "start": 388,
+       "end": 477,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:parenthood-ernst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:soehne-ernst> ; rf:nameInSource \"seiner Söhne\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:22757:local:soehne-ernst"
+      ],
+      "key": "k57"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Söhne",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22757:parenthood-ernst",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 472,
+       "end": 477,
+       "ambiguous": false
+      },
+      "key": "k58"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k55"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k56"
+      ],
+      "text": "Ernst von Altsteußlingen (Stuzelinge)"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k57"
+      ],
+      "text": "seiner Söhne"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22757:kinship-hermann-burchard",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22757:kinship-hermann-burchard",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-hermann-burchard",
+     "own": true,
+     "evidence": {
+      "start": 542,
+      "end": 604,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22757:> .\nx:kinship-hermann-burchard a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22757> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Priester Hermann von Altsteußlingen und seinem Bruder Burchard\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k59"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Priester Hermann von Altsteußlingen",
+      "text": "Priester Hermann von Altsteußlingen in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22757:kinship-hermann-burchard",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-hermann-burchard",
+      "own": true,
+      "evidence": {
+       "start": 542,
+       "end": 604,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:kinship-hermann-burchard rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000840> ; rf:nameInSource \"Priester Hermann von Altsteußlingen\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000840"
+      ],
+      "key": "k60"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinem Bruder Burchard",
+      "text": "seinem Bruder Burchard in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22757:kinship-hermann-burchard",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-hermann-burchard",
+      "own": true,
+      "evidence": {
+       "start": 542,
+       "end": 604,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22757:> .\nx:kinship-hermann-burchard rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22757:local:burchard> ; rf:nameInSource \"Burchard\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:22757:local:burchard"
+      ],
+      "key": "k61",
+      "agentNotes": [
+       {
+        "text": "Burchard, brother of Hermann: no register candidate; regest-local.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Bruder",
+      "id": "t8",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22757:kinship-hermann-burchard",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 589,
+       "end": 595,
+       "ambiguous": false
+      },
+      "key": "k62"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k59"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k60"
+      ],
+      "text": "Priester Hermann von Altsteußlingen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k61"
+      ],
+      "text": "seinem Bruder Burchard"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 108
+   },
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 37
+   },
+   {
+    "id": "donation-ernst",
+    "start": 20,
+    "end": 75
+   },
+   {
+    "id": "donation-hermann",
+    "start": 20,
+    "end": 75
+   },
+   {
+    "id": "donation-tuebingen",
+    "start": 20,
+    "end": 75
+   },
+   {
+    "id": "donation-ulrich",
+    "start": 20,
+    "end": 75
+   },
+   {
+    "id": "confirmation-2",
+    "start": 113,
+    "end": 144
+   },
+   {
+    "id": "donation-ulrich-2",
+    "start": 146,
+    "end": 277
+   },
+   {
+    "id": "parenthood-ulrich",
+    "start": 150,
+    "end": 242
+   },
+   {
+    "id": "marriage-ulrich",
+    "start": 150,
+    "end": 217
+   },
+   {
+    "id": "t3",
+    "start": 187,
+    "end": 242
+   },
+   {
+    "id": "t4",
+    "start": 209,
+    "end": 217
+   },
+   {
+    "id": "t5",
+    "start": 229,
+    "end": 235
+   },
+   {
+    "id": "donation-tuebingen-2",
+    "start": 279,
+    "end": 382
+   },
+   {
+    "id": "t2",
+    "start": 358,
+    "end": 368
+   },
+   {
+    "id": "donation-ernst-2",
+    "start": 384,
+    "end": 533
+   },
+   {
+    "id": "parenthood-ernst",
+    "start": 388,
+    "end": 477
+   },
+   {
+    "id": "marriage-ernst",
+    "start": 388,
+    "end": 460
+   },
+   {
+    "id": "t1",
+    "start": 430,
+    "end": 477
+   },
+   {
+    "id": "t6",
+    "start": 452,
+    "end": 460
+   },
+   {
+    "id": "t7",
+    "start": 472,
+    "end": 477
+   },
+   {
+    "id": "donation-hermann-2",
+    "start": 538,
+    "end": 623
+   },
+   {
+    "id": "kinship-hermann-burchard",
+    "start": 542,
+    "end": 604
+   },
+   {
+    "id": "t8",
+    "start": 589,
+    "end": 595
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Ulrich von Herrlingen (Hurninge): two register candidates (RI004-002-U000176, RI004-002-U000177) match by name and title; donor and his son Ulrich kept regest-local.",
+     "lang": "en"
+    },
+    {
+     "text": "The wives of Ulrich and Ernst and Ernst's sons: unnamed, regest-local.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role or act type for consent to a donation (mit Zustimmung); consenting wives and sons recorded as rv:Participant and the consent clause as rf:condition.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No state type for the ministerial dependency (seinem Ministerialen Eticho); the relation between Pfalzgraf Friedrich von Tübingen and Eticho is not encoded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Witness list (Z.:) skipped per guidelines.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for consenting kin in a donation.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No state type for ministeriality or personal dependence.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "qualifier",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22757:donation-ulrich",
+     "description": "Each donation cites 'dem Kloster Salem in seiner Gegenwart geschenkten Güter' as second evidence, but the qualifier 'in seiner Gegenwart' (the gifts were made in Friedrich's presence) is not recorded on any donation; the ruler's presence is the link between the earlier gifts and the protection.",
+     "proposal": "Add rf:qualifier \"in seiner Gegenwart\" to the four donation factoids, or a reference to the ruler with a suitable role if the contract allowed one.",
+     "quote": {
+      "start": 20,
+      "end": 75
+     }
+    },
+    {
+     "category": "type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22757:donation-ulrich",
+     "description": "The church of Frankenhofen is 'übergeben', not 'geschenkt'; typing it rv:Donation relies on the umbrella phrase 'geschenkten Güter'. The consent clause is stored as rf:condition, which reads consent as a condition rather than as an accompanying circumstance.",
+     "proposal": "Acceptable; optionally move the consent wording to rf:qualifier and record a consent role as model gap.",
+     "quote": {
+      "start": 146,
+      "end": 277
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Vermerk",
+     "subject": "22757",
+     "description": "Eticho is called the Pfalzgraf's ministerial. This dependence is a stated legal relation the vocabulary cannot express (FeudalRelationship would overreach).",
+     "proposal": "Record as model gap.",
+     "quote": {
+      "start": 316,
+      "end": 357
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "'in seiner Gegenwart' not recorded as qualifier on the four donations.",
+     "reason": "Each donation already carries the selector 'dem Kloster Salem in seiner Gegenwart geschenkten Güter' and the property node of the protection keeps the phrase in its label. rf:qualifier is for wording that qualifies type or time, and the contract does not require repeating a circumstance on every donation.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Frankenhofen church is 'übergeben' rather than 'geschenkt'; consent stored as rf:condition.",
+     "reason": "The umbrella phrase 'dem Kloster Salem in seiner Gegenwart geschenkten Güter' covers all listed gifts, so rv:Donation is supported. Consent 'mit Zustimmung seiner Gemahlin und seines Sohnes Ulrich' is kept in exact wording; reading it as condition is defensible.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Eticho's ministeriality ('seinem Ministerialen Eticho') is not represented.",
+     "reason": "The state scheme has no type for ministeriality or personal dependence, and rv:FeudalRelationship would overreach.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Eine Abbildung des Siegels findet sich bei Deér, Siegel (FS. Hahnloser, 1961) 62 Abb. 17, jetzt in: VuF 21 (1977) Tafel 40 Abb. 17. - Dorsualvermerk: "
+    },
+    {
+     "t": "privilegium super Albam",
+     "i": true
+    },
+    {
+     "t": " (saec. XII, in Diplomschrift). - Zur wirtschaftlichen Entwicklung Salems in dieser Zeit vgl. Rösener, Reichsabtei Salem (VuF Sbd. 13, 1974) 37 ff., besonders das Verzeichnis der Besitzungen im Anhang, 188 ff. - Einen Tag nach der Ausstellung dieses D. urkundete Bischof Gunther von Speyer in seiner Bischofsstadt, Wirtemberg. UB. 2, 64 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 339. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " Eine Abbildung des königlichen Siegels jetzt auch bei Rödel, Siegel, in: Die Staufer und Italien, Bd. 2: Objekte (2010) 23 Kat.-Nr. II.A.2, und ein Faksimile des gesamten Stücks findet sich bei Koch – Friedl (Hgg.), Kaiser- und Königsurkunden der Staufer (Digitale Urkundenbilder, 4, 2010) Tafel 4."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Generallandesarchiv Karlsruhe (A). Drucke: Wirtemberg. UB. 2, 62 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 338; Weech, CD. Salemitan. 1, 9 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 5; MG. DF. I. 27. Faks.: Th. Mayer, Diplom Friedrichs I., MÖIG Erg. Bd. 14 (1939) nach 240 Tafel 1 (Schriftprobe). Reg.: Stumpf 3643."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=46"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/3814"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_27"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in WUB-Online",
+     "href": "http://www.wubonline.de/?wub=544"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-27"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B001377",
+    "Bremfeld (abgekommen, bei Tiefenhülen-Frankenhofen, Teil von Ehingen an der Donau, Alb-Donau-Kr., Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-E000324",
+    "Graf von Leiningen"
+   ],
+   [
+    "RI004-002-E000499",
+    "von Altsteußlingen"
+   ],
+   [
+    "RI004-002-E000568",
+    "Ministeriale des Pfalzgrafen Friedrich von Tübingen"
+   ],
+   [
+    "RI004-002-F000376",
+    "Frankenhofen (Teil von Ehingen an der Donau, westl. Ulm, Bad.-Württ.), Kirche zu ─"
+   ],
+   [
+    "RI004-002-F000687",
+    "Pfalzgraf von Tübingen"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000840",
+    "Priester von Altsteußlingen"
+   ],
+   [
+    "RI004-002-H001143",
+    " <i>Hohonbuach</i> (Wüstung im Bereich von Grötzingen, Ortsteil von Allmendingen, nördl. Ehingen an der Donau, Alb-Donau-Kr., Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-S000091",
+    "Salem (östl. Überlingen, im Linzgau, Bad.-Württ.), Zisterzienserkloster St. Maria"
+   ],
+   [
+    "RI004-002-S000967",
+    "Speyer (am Rhein, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-T000275",
+    "Tiefenhülen (Teil von Ehingen an der Donau, südwestl. Ulm, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-U000176",
+    "(II.) Graf bzw. Edelfreier von Herrlingen"
+   ],
+   [
+    "RI004-002-U000177",
+    "(III.) Graf von Herrlingen"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ]
+  ]
+ }
+}

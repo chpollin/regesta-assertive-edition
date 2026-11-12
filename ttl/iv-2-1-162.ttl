@@ -1,0 +1,121 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-01-18_1_0_4_2_1_162_162
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22789> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-P000428> a crm:E21_Person ;
+    rdfs:label "Priors Petrus" .
+
+<urn:regesta:actor:RI004-002-B000814:community> a crm:E74_Group ;
+    rdfs:label "Stift Saint-Paul zu Besançon" .
+
+<urn:regesta:actor:RI004-002-B001873> a crm:E21_Person ;
+    rdfs:label "Zöllner von St. Paul" .
+
+<urn:regesta:actor:22789:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seiner Vorgänger" .
+
+<urn:regesta:22789:kirche-leugny> a crm:E18_Physical_Thing ;
+    rdfs:label "die Kirche Leugny" .
+
+<urn:regesta:22789:zehentanteile> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "Zehentanteile an den namentlich angeführten Orten" .
+
+<urn:regesta:22789:warmbaeder> a crm:E18_Physical_Thing ;
+    rdfs:label "mehrere Warmbäder mit ihren Erträgnissen" .
+
+<urn:regesta:22789:zoll> a crm:E30_Right ;
+    crm:P2_has_type rv:Toll ;
+    rdfs:label "den Anteil am Zoll in der Stadt Besançon" .
+
+<urn:regesta:22789:asylrecht> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "das Asylrecht" .
+
+<urn:regesta:22789:gerichtsbarkeit> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "die Gerichtsbarkeit über den Zöllner von St. Paul" .
+
+<urn:regesta:22789:stadt-besancon> a crm:E53_Place ;
+    rdfs:label "Stadt Besançon" .
+
+# Request of the prior; its outcome is not asserted by this factoid
+<urn:regesta:22789:bitte> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22789> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt auf Bitten des vor ihm erschienenen Priors Petrus" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000428> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Priors Petrus" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Earlier confirmations by the predecessors, undated
+<urn:regesta:22789:vorbild-vorgaenger> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22789> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "nach dem Vorbild seiner Vorgänger dem Stift Saint-Paul zu Besançon die Besitzungen und Rechte" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22789:local:vorgaenger> ;
+        rf:role rv:Grantor ; rf:nameInSource "seiner Vorgänger" ] ;
+    rf:qualifier "nach dem Vorbild" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Confirmation of possessions, rights and customs to Saint-Paul
+<urn:regesta:22789:bestaetigung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22789> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt auf Bitten des vor ihm erschienenen Priors Petrus nach dem Vorbild seiner Vorgänger dem Stift Saint-Paul zu Besançon die Besitzungen und Rechte" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "darunter die Kirche Leugny, Zehentanteile an den namentlich angeführten Orten, mehrere Warmbäder mit ihren Erträgnissen und den Anteil am Zoll in der Stadt Besançon sowie die alten Gewohnheiten des Stiftes, das Asylrecht, die Freiheit der Bewohner von Verpfändungen oder Bedrückungen wegen Nichtleistung städtischer Dienste, die Gerichtsbarkeit über den Zöllner von St. Paul sowie die gerichtliche Klärung unrechtmäßiger Besitzansprüche" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000814:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "Stift Saint-Paul zu Besançon" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001873> ;
+        rf:role rv:Participant ; rf:nameInSource "Zöllner von St. Paul" ] ;
+    rf:concerns <urn:regesta:22789:kirche-leugny> , <urn:regesta:22789:zehentanteile> ,
+        <urn:regesta:22789:warmbaeder> , <urn:regesta:22789:zoll> , <urn:regesta:22789:stadt-besancon> ,
+        <urn:regesta:22789:asylrecht> , <urn:regesta:22789:gerichtsbarkeit> ;
+    rf:refersToAct <urn:regesta:22789:vorbild-vorgaenger> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:actor:22789:local:bewohner> a crm:E74_Group ;
+    rdfs:label "Bewohner" .
+
+<urn:regesta:22789:freiheit-bewohner> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "die Freiheit der Bewohner von Verpfändungen oder Bedrückungen wegen Nichtleistung städtischer Dienste" .
+
+# Partial confirmation for the inhabitants, who are beneficiaries distinct from the recipient.
+# The vocabulary has no exemption right type; the customs and the judicial clarification have
+# no fitting right type and stay only in the evidence of the main confirmation (model gaps).
+<urn:regesta:22789:bestaetigung-freiheit-bewohner> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22789> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Freiheit der Bewohner von Verpfändungen oder Bedrückungen wegen Nichtleistung städtischer Dienste" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22789:local:bewohner> ;
+        rf:role rv:Beneficiary ; rf:nameInSource "Bewohner" ] ;
+    rf:concerns <urn:regesta:22789:freiheit-bewohner> ;
+    rf:partOf <urn:regesta:22789:bestaetigung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;
+    rf:verificationStatus rv:unchecked .

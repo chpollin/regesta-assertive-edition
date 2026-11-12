@@ -1,0 +1,885 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-08-19_1_0_4_2_1_128_128",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22755",
+  "identifier": "RI IV,2,1 n. 128",
+  "short": "RI IV,2,1 n. 128",
+  "sort": "004_002_001_000128_0000000128",
+  "start": "1152-08-19",
+  "end": "1152-08-19",
+  "proseYears": [],
+  "lead": "Friedrich beurkundet, daß er Abt Konrad von Schwatzach (Swarzaha in episcopatu Argentinensi) den Hof Schwindrazheim (Swinderatesheim), um den das Kloster lange mit Graf Simon von Saarbrücken im Streit lag, durch Urteilsspruch (per sentenciam ordine iudiciario promulgatam) zugesprochen hat.",
+  "date": [
+   {
+    "t": "1152 August 19"
+   }
+  ],
+  "place": [
+   {
+    "t": "Speyer"
+   }
+  ],
+  "text": "Friedrich beurkundet, daß er Abt Konrad von Schwatzach (Swarzaha in episcopatu Argentinensi) den Hof Schwindrazheim (Swinderatesheim), um den das Kloster lange mit Graf Simon von Saarbrücken im Streit lag, durch Urteilsspruch (per sentenciam ordine iudiciario promulgatam) zugesprochen hat. Z.: die Bischöfe Gunther von Speyer, Konrad von Worms, Markgraf Otakar von Steier, Graf Ulrich von Lenzburg, die Äbte Markward von Fulda, Volmar von Hirsau, die Grafen Egino von Vaihingen, Poppo von Henneberg und sein Bruder Graf Berthold, Graf Emicho von Leiningen, Pfalzgraf Friedrich von Tübingen (Tuingen). - Arnoldus canc. vice Heinrici Maguntini archiep. et archicanc. ; verfaßt und sicherlich auch geschrieben von A II. C. Ex commisso nobis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22755:beurkundung",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22755:beurkundung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "beurkundung",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 54,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22755:> .\nx:beurkundung a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22755> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich beurkundet, daß er Abt Konrad von Schwatzach\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22755:beurkundung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beurkundung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 54,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:beurkundung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Konrad von Schwatzach",
+      "text": "Abt Konrad von Schwatzach in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22755:beurkundung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beurkundung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 54,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:beurkundung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000350> ; rf:nameInSource \"Abt Konrad von Schwatzach\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000350"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Urteil",
+      "text": "bezieht sich auf Urteil",
+      "triple": [
+       "urn:regesta:22755:beurkundung",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22755:urteil"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beurkundung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 54,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:beurkundung rf:refersToAct x:urteil .\nx:urteil a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:concerns x:hof-schwindrazheim ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"daß er Abt Konrad von Schwatzach (Swarzaha in episcopatu Argentinensi) den Hof Schwindrazheim (Swinderatesheim)\" ] , [ a oa:TextQuoteSelector ; oa:exact \"durch Urteilsspruch (per sentenciam ordine iudiciario promulgatam) zugesprochen hat\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Judge ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000350> ; rf:nameInSource \"Abt Konrad von Schwatzach\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:streit ;\n    rf:source <urn:regesta:record:22755> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22755:urteil",
+      "objectClaim": "urteil",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schreiben"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Abt Konrad von Schwatzach"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22755:urteil",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22755:urteil",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "urteil",
+     "own": true,
+     "evidence": {
+      "start": 22,
+      "end": 133,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22755:> .\nx:urteil a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22755> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"daß er Abt Konrad von Schwatzach (Swarzaha in episcopatu Argentinensi) den Hof Schwindrazheim (Swinderatesheim)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Richter",
+      "triple": [
+       "urn:regesta:22755:urteil",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "urteil",
+      "own": true,
+      "evidence": {
+       "start": 22,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:urteil rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Judge ] .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Konrad von Schwatzach",
+      "text": "Abt Konrad von Schwatzach in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22755:urteil",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "urteil",
+      "own": true,
+      "evidence": {
+       "start": 22,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:urteil rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000350> ; rf:nameInSource \"Abt Konrad von Schwatzach\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000350"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Hof Schwindrazheim (Swinderatesheim)",
+      "text": "betrifft Hof Schwindrazheim (Swinderatesheim)",
+      "triple": [
+       "urn:regesta:22755:urteil",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22755:hof-schwindrazheim"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "urteil",
+      "own": true,
+      "evidence": {
+       "start": 22,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:urteil rf:concerns x:hof-schwindrazheim .\nx:hof-schwindrazheim a crm:E18_Physical_Thing ;\n    rdfs:label \"Hof Schwindrazheim (Swinderatesheim)\" .",
+      "object": "urn:regesta:22755:hof-schwindrazheim",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22755:urteil",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22755:streit"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "urteil",
+      "own": true,
+      "evidence": {
+       "start": 22,
+       "end": 133,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:urteil rf:refersToAct x:streit .\nx:streit a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:concerns x:hof-schwindrazheim ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"um den das Kloster lange mit Graf Simon von Saarbrücken im Streit lag\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:qualifier \"lange\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000416:community> ; rf:nameInSource \"das Kloster\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000797> ; rf:nameInSource \"Graf Simon von Saarbrücken\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22755> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22755:streit",
+      "objectClaim": "streit",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22755:urteil",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "urteil-2",
+      "own": true,
+      "evidence": {
+       "start": 206,
+       "end": 289,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:urteil rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"durch Urteilsspruch (per sentenciam ordine iudiciario promulgatam) zugesprochen hat\" ] .",
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5",
+       "k10"
+      ],
+      "text": "Urteil"
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k6",
+       "k10"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k7",
+       "k10"
+      ],
+      "text": "Abt Konrad von Schwatzach"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k8",
+       "k10"
+      ],
+      "text": "Hof Schwindrazheim (Swinderatesheim)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k9",
+       "k10"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22755:streit",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22755:streit",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "streit",
+     "own": true,
+     "evidence": {
+      "start": 135,
+      "end": 204,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22755:> .\nx:streit a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22755> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"um den das Kloster lange mit Graf Simon von Saarbrücken im Streit lag\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "das Kloster",
+      "text": "das Kloster in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22755:streit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "streit",
+      "own": true,
+      "evidence": {
+       "start": 135,
+       "end": 204,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:streit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000416:community> ; rf:nameInSource \"das Kloster\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000416:community"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Simon von Saarbrücken",
+      "text": "Graf Simon von Saarbrücken in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22755:streit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "streit",
+      "own": true,
+      "evidence": {
+       "start": 135,
+       "end": 204,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:streit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000797> ; rf:nameInSource \"Graf Simon von Saarbrücken\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000797"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Hof Schwindrazheim (Swinderatesheim)",
+      "text": "betrifft Hof Schwindrazheim (Swinderatesheim)",
+      "triple": [
+       "urn:regesta:22755:streit",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22755:hof-schwindrazheim"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "streit",
+      "own": true,
+      "evidence": {
+       "start": 135,
+       "end": 204,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22755:> .\nx:streit rf:concerns x:hof-schwindrazheim .\nx:hof-schwindrazheim a crm:E18_Physical_Thing ;\n    rdfs:label \"Hof Schwindrazheim (Swinderatesheim)\" .",
+      "object": "urn:regesta:22755:hof-schwindrazheim",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "lange",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22755:streit",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 154,
+       "end": 159,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "das Kloster"
+     },
+     " und ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Graf Simon von Saarbrücken"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Hof Schwindrazheim (Swinderatesheim)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "beurkundung",
+    "start": 0,
+    "end": 54
+   },
+   {
+    "id": "urteil",
+    "start": 22,
+    "end": 133
+   },
+   {
+    "id": "streit",
+    "start": 135,
+    "end": 204
+   },
+   {
+    "id": "t1",
+    "start": 154,
+    "end": 159
+   },
+   {
+    "id": "urteil-2",
+    "start": 206,
+    "end": 289
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'das Kloster' is identified with the Schwarzach monastery register entry RI004-002-S000416 as a community; the regest spells Schwatzach.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The dispute does not say who sued, so the monastery and Graf Simon von Saarbrücken are both rv:Participant rather than Claimant and Respondent.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The documenting act (beurkundet) is typed rv:Communication with refersToAct to the earlier judgment; the model has no act type for documentation of an earlier act.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The judgment awards the Hof to the abbot; possession is not inferred from it. The witness list was skipped as formulaic.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for the documentation (Beurkundung) of an earlier act.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22755:streit",
+     "description": "Both parties of the dispute are rv:Participant. The passage does not say who claimed and who responded, so the fallback is justified.",
+     "proposal": "None.",
+     "quote": {
+      "start": 135,
+      "end": 204
+     }
+    },
+    {
+     "category": "type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22755:beurkundung",
+     "description": "The documentation of the judgment ('beurkundet') is typed rv:Communication with the abbot as Beneficiary. This is defensible; rf:refersToAct from the Judgment to the Dispute extends the property beyond its confirmation use, which is acceptable.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 0,
+      "end": 54
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Bischof Gunther von Speyer stellte über die gleiche Angelegenheit "
+    },
+    {
+     "t": "auctoritate domini nostri gloriosissimi regis Friderici",
+     "i": true
+    },
+    {
+     "t": " eine Urkunde mit vereinzelten wörtlichen Anklängen an unser Diplom aus (Würdtwein a. a. O. 155 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 60), aus der wir auch erfahren, daß Graf Simon in diesem Streit von Papst Eugen III. exkommuniziert worden war, vgl. Germ. pont. 3/3, 75 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " *1. - Vgl. Schwarzmaier, Ortenau, ZGORh 121 = N. F. 82 (1973) 4. 3 Böhmer IV, Friedrich I."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift von ca. 1415 im Kopialbuch des Klosters Schwarzach n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1315 p. 24, Generallandesarchiv Karlruhe (B); zwei Absehriften des Transsumptes Rudolfs I. von 1275 Dezember 12 (B.-Redlich Reg. 464) p. 30 und 55 ebenda (R"
+    },
+    {
+     "t": "1",
+     "sup": true
+    },
+    {
+     "t": " und R"
+    },
+    {
+     "t": "2",
+     "sup": true
+    },
+    {
+     "t": "). Drucke: Würdtwein, Nova Subsidia 7, 153 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 59; MG. DF. I. 26. Reg.: Dümgé, Reg. Badensia 46; Goerz, Mittelrhein. Reg. 2 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 22; Stumpf 3642. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze ("
+    },
+    {
+     "t": "2018",
+     "href": "http://opac.regesta-imperii.de/id/3015692"
+    },
+    {
+     "t": ")"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Im Nachtrag von Christian Burkhart vom 29.8.2014 finden sich beachtenswerte Hinweise zu möglichen Aufenthalten Friedrich Barbarossas in Bretten im Kraichgau, vielleicht auch auf der Baustelle des Zisterzienserklosters Maulbronn, und zwar zwischen den urkundlich nachgewiesenen Aufenthalten in Ulm (Regg. I/"
+    },
+    {
+     "t": "110"
+    },
+    {
+     "t": "‒"
+    },
+    {
+     "t": "118"
+    },
+    {
+     "t": " und I/"
+    },
+    {
+     "t": "124"
+    },
+    {
+     "t": "‒"
+    },
+    {
+     "t": "125"
+    },
+    {
+     "t": ") und Speyer (Reg. I/"
+    },
+    {
+     "t": "128"
+    },
+    {
+     "t": "). Abgeleitet werden diese Hinweise aus einer im genannten Ort Bretten ausgestellten Urkunde des damals im Gefolge des Staufers weilenden Bischofs Konrad von Worms für die Zisterzienserabtei Schönau."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=45"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_26"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000732",
+    "Graf von Henneberg"
+   ],
+   [
+    "RI004-002-B001421",
+    "Bretten (<i>Breteheim</i>; im westl. Kraichgau, unweit Maulbronn, östl. Karlsruhe, Ldkr. Karlsruhe, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-E000167",
+    "Graf von Vaihingen"
+   ],
+   [
+    "RI004-002-E000324",
+    "Graf von Leiningen"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-F000258",
+    "Abt von Hirsau"
+   ],
+   [
+    "RI004-002-F000687",
+    "Pfalzgraf von Tübingen"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-K000333",
+    "(I.), Bischof von Worms"
+   ],
+   [
+    "RI004-002-K000350",
+    "Abt von Schwarzach"
+   ],
+   [
+    "RI004-002-M000499",
+    "Abt von Fulda"
+   ],
+   [
+    "RI004-002-M000685",
+    "Maulbronn (nordöstl. Pforzheim, Enzkr., Bad.-Württ.), Zisterzienserkloster"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-P000978",
+    "Graf von Henneberg, Burggraf von Würzburg"
+   ],
+   [
+    "RI004-002-S000376",
+    "Schönau (im Odenwald im Steinachtal, östl. Heidelberg, Bad.-Württ.), Zisterzienserkloster"
+   ],
+   [
+    "RI004-002-S000416",
+    "Schwarzach (Teil von Rheinmünster, in der Rheinebene, Ldkr. Rastatt, Bad.-Württ.), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-S000450",
+    "Schwindrazheim (<i>heute:</i> Schwindratzheim, südwestl. Hagenau, Dép. Bas-Rhin)"
+   ],
+   [
+    "RI004-002-S000797",
+    "(I.), Graf von Saarbrücken"
+   ],
+   [
+    "RI004-002-S000967",
+    "Speyer (am Rhein, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ]
+  ]
+ }
+}

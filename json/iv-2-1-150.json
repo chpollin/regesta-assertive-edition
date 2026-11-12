@@ -1,0 +1,1462 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-12-28_2_0_4_2_1_150_150",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22777",
+  "identifier": "RI IV,2,1 n. 150",
+  "short": "RI IV,2,1 n. 150",
+  "sort": "004_002_001_000150_0000000150",
+  "start": "1152-12-28",
+  "end": "1152-12-28",
+  "proseYears": [],
+  "lead": "Friedrich nimmt gemäß den Verfügungen König Konrads (III.) das Stift Floreffe in seinen Schutz und bestätigt ihm den Besitzstand, das Recht der freien Abtwahl und darüber hinaus die Kirche von Leffe mit allem Zubehör (ecclesiam scilicet sancte Marie, que Leffle dicitur, cum omnibus attinentiis suis, scilicet prepositura, templi custodia, oblationibus altaris et prebendarum redditibus), den Hof Fléchière (Fechire), die Hälfte des Allods von Mornimont (Mornigemont), die Höfe Marlange, Mariembourg (Uerofle) mit dem halben Zehent, Villers (Uileir), Coulonval (Ualle Columbina) und Eksel (Hecscele).",
+  "date": [
+   {
+    "t": "1152 Dezember 28"
+   }
+  ],
+  "place": [
+   {
+    "t": "Trier"
+   }
+  ],
+  "text": "Friedrich nimmt gemäß den Verfügungen König Konrads (III.) das Stift Floreffe in seinen Schutz und bestätigt ihm den Besitzstand, das Recht der freien Abtwahl und darüber hinaus die Kirche von Leffe mit allem Zubehör (ecclesiam scilicet sancte Marie, que Leffle dicitur, cum omnibus attinentiis suis, scilicet prepositura, templi custodia, oblationibus altaris et prebendarum redditibus), den Hof Fléchière (Fechire), die Hälfte des Allods von Mornimont (Mornigemont), die Höfe Marlange, Mariembourg (Uerofle) mit dem halben Zehent, Villers (Uileir), Coulonval (Ualle Columbina) und Eksel (Hecscele). Z.: Erzbischof Hillin von Trier, die Bischöfe Stephan von Metz, Ortlieb (Ortilief) von Basel, Heinrich von Lüttich, Nikolaus von Cambrai, die Äbte Wibald von Corvey und Stablo, Rether von Prüm, die Herzoge Heinrich von Sachsen, Welf von Spoleto, Matthäus von Lothringen, Gottfried von Löwen, die Grafen Heinrich von Namur, Dietrich von Flandern, Pfalzgraf Hermann bei Rhein. - Arnoldus can. vice Mogontini archiep. et archicanc. ; nach DK. III. 258 (VU. I) und der Urkunde Heinrichs des Blinden, des Grafen von Namur (Rousseau, Actes des comtes de Namur, 20 no 8; VU. II) offenbar mundiert von A II. D, dessen Gewohnheiten Zeugenankündigung und Eschatokoll entsprechen. Pie postulatio voluntatis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 5,
+  "blocks": [
+   {
+    "node": "urn:regesta:22777:confirmation-possessions",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22777:confirmation-possessions",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-possessions",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 128,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-possessions a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt gemäß den Verfügungen König Konrads (III.) das Stift Floreffe in seinen Schutz und bestätigt ihm den Besitzstand\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22777:confirmation-possessions",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:confirmation-possessions:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-possessions",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 128,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-possessions rf:reference x:confirmation-possessions:ref-friedrich .\nx:confirmation-possessions:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Floreffe",
+      "text": "Stift Floreffe in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22777:confirmation-possessions",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:confirmation-possessions:ref-floreffe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-possessions",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 128,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-possessions rf:reference x:confirmation-possessions:ref-floreffe .\nx:confirmation-possessions:ref-floreffe a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000201:community> ;\n    rf:nameInSource \"Stift Floreffe\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000201:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den Besitzstand",
+      "text": "betrifft den Besitzstand",
+      "triple": [
+       "urn:regesta:22777:confirmation-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-besitzstand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-possessions",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 128,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-possessions rf:concerns x:thing-besitzstand .\nx:thing-besitzstand a crm:E18_Physical_Thing ;\n    rdfs:label \"den Besitzstand\" .",
+      "object": "urn:regesta:22777:thing-besitzstand",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22777:confirmation-possessions",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22777:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-possessions",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 128,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-possessions rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt gemäß den Verfügungen König Konrads (III.) das Stift Floreffe in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-floreffe , x:protection:ref-friedrich ;\n    rf:refersToAct x:konrad-dispositions ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22777:protection",
+      "objectClaim": "protection",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Stift Floreffe"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "den Besitzstand"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22777:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22777:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 94,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22777:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt gemäß den Verfügungen König Konrads (III.) das Stift Floreffe in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22777:protection",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:protection:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:protection rf:reference x:protection:ref-friedrich .\nx:protection:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Floreffe",
+      "text": "Stift Floreffe in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22777:protection",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:protection:ref-floreffe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:protection rf:reference x:protection:ref-floreffe .\nx:protection:ref-floreffe a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000201:community> ;\n    rf:nameInSource \"Stift Floreffe\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000201:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestimmung",
+      "text": "bezieht sich auf Bestimmung",
+      "triple": [
+       "urn:regesta:22777:protection",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22777:konrad-dispositions"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:protection rf:refersToAct x:konrad-dispositions .\nx:konrad-dispositions a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den Verfügungen König Konrads (III.)\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference x:konrad-dispositions:ref-konrad ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22777:konrad-dispositions",
+      "objectClaim": "konrad-dispositions",
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Stift Floreffe"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22777:konrad-dispositions",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22777:konrad-dispositions",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "konrad-dispositions",
+     "own": true,
+     "evidence": {
+      "start": 16,
+      "end": 58,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22777:> .\nx:konrad-dispositions a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gemäß den Verfügungen König Konrads (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrads (III.)",
+      "text": "König Konrads (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22777:konrad-dispositions",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:konrad-dispositions:ref-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "konrad-dispositions",
+      "own": true,
+      "evidence": {
+       "start": 16,
+       "end": 58,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:konrad-dispositions rf:reference x:konrad-dispositions:ref-konrad .\nx:konrad-dispositions:ref-konrad a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-K000316> ;\n    rf:nameInSource \"König Konrads (III.)\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "König Konrads (III.)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22777:confirmation-abbot-election",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22777:confirmation-abbot-election",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-abbot-election",
+     "own": true,
+     "evidence": {
+      "start": 59,
+      "end": 158,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-abbot-election a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das Stift Floreffe in seinen Schutz und bestätigt ihm den Besitzstand, das Recht der freien Abtwahl\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22777:confirmation-abbot-election",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:confirmation-abbot-election:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-abbot-election",
+      "own": true,
+      "evidence": {
+       "start": 59,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-abbot-election rf:reference x:confirmation-abbot-election:ref-friedrich .\nx:confirmation-abbot-election:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Floreffe",
+      "text": "Stift Floreffe in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22777:confirmation-abbot-election",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:confirmation-abbot-election:ref-floreffe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-abbot-election",
+      "own": true,
+      "evidence": {
+       "start": 59,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-abbot-election rf:reference x:confirmation-abbot-election:ref-floreffe .\nx:confirmation-abbot-election:ref-floreffe a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000201:community> ;\n    rf:nameInSource \"Stift Floreffe\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000201:community"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (das Recht der freien Abtwahl)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (das Recht der freien Abtwahl)",
+      "triple": [
+       "urn:regesta:22777:confirmation-abbot-election",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:right-abbot-election"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-abbot-election",
+      "own": true,
+      "evidence": {
+       "start": 59,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-abbot-election rf:concerns x:right-abbot-election .\nx:right-abbot-election a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"das Recht der freien Abtwahl\" .",
+      "object": "urn:regesta:22777:right-abbot-election",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22777:confirmation-abbot-election",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22777:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-abbot-election",
+      "own": true,
+      "evidence": {
+       "start": 59,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-abbot-election rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt gemäß den Verfügungen König Konrads (III.) das Stift Floreffe in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-floreffe , x:protection:ref-friedrich ;\n    rf:refersToAct x:konrad-dispositions ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22777:protection",
+      "objectClaim": "protection",
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Stift Floreffe"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (das Recht der freien Abtwahl)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22777:confirmation-further-possessions",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22777:confirmation-further-possessions",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-further-possessions",
+     "own": true,
+     "evidence": {
+      "start": 99,
+      "end": 387,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm den Besitzstand, das Recht der freien Abtwahl und darüber hinaus die Kirche von Leffe mit allem Zubehör (ecclesiam scilicet sancte Marie, que Leffle dicitur, cum omnibus attinentiis suis, scilicet prepositura, templi custodia, oblationibus altaris et prebendarum redditibus)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k17"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:confirmation-further-possessions:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:reference x:confirmation-further-possessions:ref-friedrich .\nx:confirmation-further-possessions:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Floreffe",
+      "text": "Stift Floreffe in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22777:confirmation-further-possessions:ref-floreffe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:reference x:confirmation-further-possessions:ref-floreffe .\nx:confirmation-further-possessions:ref-floreffe a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000201:community> ;\n    rf:nameInSource \"Stift Floreffe\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000201:community"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (oblationibus altaris et prebendarum redditibus)",
+      "text": "betrifft Einkünfterecht (oblationibus altaris et prebendarum redditibus)",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:right-leffe-revenues"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:right-leffe-revenues .\nx:right-leffe-revenues a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"oblationibus altaris et prebendarum redditibus\" .",
+      "object": "urn:regesta:22777:right-leffe-revenues",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (dem halben Zehent)",
+      "text": "betrifft Einkünfterecht (dem halben Zehent)",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:right-mariembourg-half-tithe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:right-mariembourg-half-tithe .\nx:right-mariembourg-half-tithe a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"dem halben Zehent\" .",
+      "object": "urn:regesta:22777:right-mariembourg-half-tithe",
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Hälfte des Allods von Mornimont (Mornigemont)",
+      "text": "betrifft die Hälfte des Allods von Mornimont (Mornigemont)",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-allod-mornimont-half"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:thing-allod-mornimont-half .\nx:thing-allod-mornimont-half a crm:E18_Physical_Thing ;\n    rdfs:label \"die Hälfte des Allods von Mornimont (Mornigemont)\" .",
+      "object": "urn:regesta:22777:thing-allod-mornimont-half",
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Kirche von Leffe mit allem Zubehör",
+      "text": "betrifft die Kirche von Leffe mit allem Zubehör",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-church-leffe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:thing-church-leffe .\nx:thing-church-leffe a crm:E18_Physical_Thing ;\n    rdfs:label \"die Kirche von Leffe mit allem Zubehör\" .",
+      "object": "urn:regesta:22777:thing-church-leffe",
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Coulonval (Ualle Columbina)",
+      "text": "betrifft Coulonval (Ualle Columbina)",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-hof-coulonval"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:thing-hof-coulonval .\nx:thing-hof-coulonval a crm:E18_Physical_Thing ;\n    rdfs:label \"Coulonval (Ualle Columbina)\" .",
+      "object": "urn:regesta:22777:thing-hof-coulonval",
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Eksel (Hecscele)",
+      "text": "betrifft Eksel (Hecscele)",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-hof-eksel"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:thing-hof-eksel .\nx:thing-hof-eksel a crm:E18_Physical_Thing ;\n    rdfs:label \"Eksel (Hecscele)\" .",
+      "object": "urn:regesta:22777:thing-hof-eksel",
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den Hof Fléchière (Fechire)",
+      "text": "betrifft den Hof Fléchière (Fechire)",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-hof-flechiere"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:thing-hof-flechiere .\nx:thing-hof-flechiere a crm:E18_Physical_Thing ;\n    rdfs:label \"den Hof Fléchière (Fechire)\" .",
+      "object": "urn:regesta:22777:thing-hof-flechiere",
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Mariembourg (Uerofle)",
+      "text": "betrifft Mariembourg (Uerofle)",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-hof-mariembourg"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:thing-hof-mariembourg .\nx:thing-hof-mariembourg a crm:E18_Physical_Thing ;\n    rdfs:label \"Mariembourg (Uerofle)\" .",
+      "object": "urn:regesta:22777:thing-hof-mariembourg",
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Marlange",
+      "text": "betrifft Marlange",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-hof-marlange"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:thing-hof-marlange .\nx:thing-hof-marlange a crm:E18_Physical_Thing ;\n    rdfs:label \"Marlange\" .",
+      "object": "urn:regesta:22777:thing-hof-marlange",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Villers (Uileir)",
+      "text": "betrifft Villers (Uileir)",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22777:thing-hof-villers"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:concerns x:thing-hof-villers .\nx:thing-hof-villers a crm:E18_Physical_Thing ;\n    rdfs:label \"Villers (Uileir)\" .",
+      "object": "urn:regesta:22777:thing-hof-villers",
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schutznahme",
+      "text": "Teil von Schutznahme",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22777:protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions",
+      "own": true,
+      "evidence": {
+       "start": 99,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:partOf x:protection .\nx:protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt gemäß den Verfügungen König Konrads (III.) das Stift Floreffe in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:reference x:protection:ref-floreffe , x:protection:ref-friedrich ;\n    rf:refersToAct x:konrad-dispositions ;\n    rf:source <urn:regesta:record:22777> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22777:protection",
+      "objectClaim": "protection",
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-further-possessions-2",
+      "own": true,
+      "evidence": {
+       "start": 389,
+       "end": 599,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22777:> .\nx:confirmation-further-possessions rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Hof Fléchière (Fechire), die Hälfte des Allods von Mornimont (Mornigemont), die Höfe Marlange, Mariembourg (Uerofle) mit dem halben Zehent, Villers (Uileir), Coulonval (Ualle Columbina) und Eksel (Hecscele)\" ] .",
+      "key": "k31"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "darüber hinaus",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22777:confirmation-further-possessions",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 163,
+       "end": 177,
+       "ambiguous": false
+      },
+      "key": "k32"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k17",
+       "k31"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k18",
+       "k31"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k19",
+       "k31"
+      ],
+      "text": "Stift Floreffe"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k20",
+       "k31"
+      ],
+      "text": "Einkünfterecht (oblationibus altaris et prebendarum redditibus)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k21",
+       "k31"
+      ],
+      "text": "Einkünfterecht (dem halben Zehent)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k22",
+       "k31"
+      ],
+      "text": "die Hälfte des Allods von Mornimont (Mornigemont)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k23",
+       "k31"
+      ],
+      "text": "die Kirche von Leffe mit allem Zubehör"
+     },
+     ", ",
+     {
+      "keys": [
+       "k24",
+       "k31"
+      ],
+      "text": "Coulonval (Ualle Columbina)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k25",
+       "k31"
+      ],
+      "text": "Eksel (Hecscele)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k26",
+       "k31"
+      ],
+      "text": "den Hof Fléchière (Fechire)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k27",
+       "k31"
+      ],
+      "text": "Mariembourg (Uerofle)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k28",
+       "k31"
+      ],
+      "text": "Marlange"
+     },
+     " und ",
+     {
+      "keys": [
+       "k29",
+       "k31"
+      ],
+      "text": "Villers (Uileir)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k30",
+       "k31"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation-possessions",
+    "start": 0,
+    "end": 128
+   },
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 94
+   },
+   {
+    "id": "konrad-dispositions",
+    "start": 16,
+    "end": 58
+   },
+   {
+    "id": "confirmation-abbot-election",
+    "start": 59,
+    "end": 158
+   },
+   {
+    "id": "confirmation-further-possessions",
+    "start": 99,
+    "end": 387
+   },
+   {
+    "id": "t1",
+    "start": 163,
+    "end": 177
+   },
+   {
+    "id": "confirmation-further-possessions-2",
+    "start": 389,
+    "end": 599
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Stift Floreffe identified with register candidate RI004-002-F000201 as community, although the candidate label carries no name ('(an der Sambre, westl. Namur, ...), Abtei (Prämonstratenserstift)'); match rests on description and ID only.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for free abbatial election; recorded as top concept rv:ChurchRights.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The appurtenances of Leffe (prepositura, templi custodia) have no right types; only the revenues 'oblationibus altaris et prebendarum redditibus' are typed rv:Revenue, the rest stays in the thing label and the selector.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Konrad III.'s 'Verfügungen' recorded as an undated rv:Enactment; its content and recipient are not stated in the regest.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Witness list and chancery/Vorurkunde notes (incl. the charter of Heinrich the Blind, count of Namur) skipped per guidelines.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No specific right type for free abbatial election; rv:ChurchRights is used as a top concept.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Removed rf:refersToAct urn:regesta:22777:konrad-dispositions from confirmation-possessions, confirmation-abbot-election and confirmation-further-possessions; kept it on protection; kept qualifier 'darüber hinaus'; producer of the three confirmations set to correction-g8.",
+     "lang": "en"
+    },
+    {
+     "text": "Adjusted the comment on konrad-dispositions so it no longer claims the confirmations refer to it.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "scope-overreach",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22777:confirmation-further-possessions",
+     "description": "'gemäß den Verfügungen König Konrads (III.)' stands in the protection clause. The candidate links all three confirmations to Konrad's dispositions, including the items introduced by 'darüber hinaus', which may mark additions beyond what those dispositions contained.",
+     "proposal": "Remove rf:refersToAct from confirmation-further-possessions, and mark the link from the other two confirmations as an ambiguous reading.",
+     "quote": {
+      "start": 159,
+      "end": 216
+     }
+    },
+    {
+     "category": "relation-misuse",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22777:confirmation-possessions",
+     "description": "The confirmations are coordinate main acts ('und bestätigt'), not provisions of the protection; rf:partOf overstates their dependence. Applies to all three confirmation factoids.",
+     "proposal": "Drop rf:partOf from the confirmation factoids.",
+     "quote": {
+      "start": 78,
+      "end": 128
+     }
+    },
+    {
+     "category": "partial-object",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22777:right-leffe-revenues",
+     "description": "The revenue right covers only the altar offerings and prebend revenues; the provostship and church custody named in the same appurtenance list are not represented.",
+     "proposal": "Add a right node for 'prepositura, templi custodia' typed rv:ChurchRights, or extend the thing label of the church to the full appurtenance wording.",
+     "quote": {
+      "start": 301,
+      "end": 386
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Linking all confirmations, including the items after 'darüber hinaus', to Konrad's dispositions overreaches.",
+     "reason": "'gemäß den Verfügungen König Konrads (III.)' stands in the clause 'nimmt ... das Stift Floreffe in seinen Schutz'; whether it extends to the coordinated 'und bestätigt ihm ...' is a reading, and 'darüber hinaus' may mark additions beyond those dispositions. The contract cannot mark a link as ambiguous, so the safe fix is to keep the link only where the passage places it; the confirmations stay connected through rf:partOf to the protection.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Coordinate confirmations and grants are linked by rf:partOf to the protection; drop partOf (22777) or keep only where subordinate (22779).",
+     "reason": "rf:partOf covers 'a provision or secondary act belonging to a main act of the same regest'. The confirmations and grants of one diploma following the protection clause are defensibly secondary dispositions of that act, and the run applies the same pattern in 22780, 22783 and 22788. Dropping the links would leave the parts of one charter unconnected.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The provostship and church custody of Leffe have no right node.",
+     "reason": "The thing node 'die Kirche von Leffe mit allem Zubehör' already covers the appurtenances, and the full list stays in the evidence. A separate node for 'prepositura, templi custodia' is a refinement the contract does not require.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Graf Heinrich von Namur besaß die Kirche von Leffe und den Hof von Obaix als Lehen des Königs und schenkte sie mit dem Zubehör dem Stift Floreffe (Rousseau a. a. O.: ("
+    },
+    {
+     "t": "quicquid ad prepositum et custodem vel ad ceteros canonicos pertinebat, scilicet: oblationes altaris et prebendarum reditus",
+     "i": true
+    },
+    {
+     "t": ", ...)."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Unvollständige Abschrift im Chartular des Stiftes Floreffe von 1292 f. 185, Staatsarchiv Namur (B). Drucke: Hugo, Ann. Praemonstr. 1 prob. 56 und 2, prob. 10; MG. DF. I. 40. Reg.: Wauters, Table chronol. 2, 368 zu Dez. 26; Stumpf 3655."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=53"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_40"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-C000985",
+    "Coulonval (an der Maas, südwestl. Dinant, belg. Prov. Namur)"
+   ],
+   [
+    "RI004-002-D000242",
+    "Graf von Flandern"
+   ],
+   [
+    "RI004-002-E000257",
+    "Eksel (<i>heute:</i> Hechtel-Eksel, nördl. Hasselt, belg. Prov. Limburg)"
+   ],
+   [
+    "RI004-002-F000193",
+    "Fléchière (bei Gouy-les-Piéton, nordwestl. Charleroi, belg. Prov. Hennegau), Hof"
+   ],
+   [
+    "RI004-002-F000201",
+    "(an der Sambre, westl. Namur, belg. Prov. Namur), Abtei (Prämonstratenserstift)"
+   ],
+   [
+    "RI004-002-G000822",
+    "Herzog von Brabant, (Nieder)Lothringen und Löwen"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000392",
+    "II., Bischof von Lüttich"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000540",
+    "(IV., der Blinde), Graf von Luxemburg-Namur"
+   ],
+   [
+    "RI004-002-H000848",
+    "(III.) von Stahleck, Pfalzgraf bei Rhein"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000275",
+    "Leffe (Teil von Dinant, an der Mosel, südl. Namur, belg. Prov. Namur), (Prämonstratenserstift Notre-Dame de Leffe) Kirche St. Maria"
+   ],
+   [
+    "RI004-002-M000463",
+    "Mariembourg (Teil von Couvin, belg. Prov. Namur)"
+   ],
+   [
+    "RI004-002-M000528",
+    "Marlange (bei Sart-Saint-Laurent, südl. Floreffe, belg. Prov. Namur)"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-M001272",
+    "Mornimont (Teil von Jemeppe-sur-Sambre, nordwestl. Floreffe, belg. Prov. Namur), Allod"
+   ],
+   [
+    "RI004-002-N000147",
+    "Bischof von Cambrai"
+   ],
+   [
+    "RI004-002-O000004",
+    "Obaix (Teil von Pont-à-Celles, südl. bei Nivelles, belg. Prov. Hennegau), Hof"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-R000500",
+    "Abt von Prüm"
+   ],
+   [
+    "RI004-002-S001143",
+    "Bischof von Metz"
+   ],
+   [
+    "RI004-002-T000539",
+    "Trier (an der Mosel, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-V000449",
+    "Villers (bei Dinant, belg. Prov. Namur)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

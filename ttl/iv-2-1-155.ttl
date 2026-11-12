@@ -1,0 +1,50 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-01-10_1_0_4_2_1_155_155
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22782> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ;
+    rdfs:label "Abt Wibald von Stablo" .
+
+<urn:regesta:actor:RI004-002-H000536> a crm:E21_Person ;
+    rdfs:label "Graf Heinrich von Laroche" .
+
+<urn:regesta:22782:schenkung-vogtei> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22782> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich schenkt dem Abt Wibald von Stablo für dessen treue Dienste den Teil der Vogtei des Klosters" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "unter der Bedingumg, daß die damit verbundenen militärischen Verpflichtungen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:role rv:Recipient ; rf:nameInSource "Abt Wibald von Stablo" ] ;
+    rf:ground "für dessen treue Dienste" ;
+    rf:condition "daß die damit verbundenen militärischen Verpflichtungen (miliciam ordinandi - militärisches Aufgebot, palefridos tollendi - die Requirierung von Pferden, subvecturas atque commeatum in hostem absque ullius contradictione preparandi - Fuhrdienste und Verpflegung) erfüllt werden" ;
+    rf:concerns <urn:regesta:22782:teil-vogtei> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22782:teil-vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "den Teil der Vogtei des Klosters" .
+
+# Earlier state: the former holder of that part of the advocacy. No date.
+<urn:regesta:22782:inhabe-laroche> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22782> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den Teil der Vogtei des Klosters, den einst Graf Heinrich von Laroche (comes Heinricus de Rupe) innehatte" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000536> ; rf:role rv:RightHolder ; rf:nameInSource "Graf Heinrich von Laroche" ] ;
+    rf:qualifier "einst" ;
+    rf:concerns <urn:regesta:22782:teil-vogtei> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .

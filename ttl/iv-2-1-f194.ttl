@@ -1,0 +1,61 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-09-23_2_0_4_2_1_194_F194
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22821> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. †194" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:22821:local:kloster-weingarten> a crm:E74_Group ;
+    rdfs:label "Kloster Weingarten" .
+
+<urn:regesta:actor:RI004-002-W000270> a crm:E21_Person ;
+    rdfs:label "Herzog Welf" .
+
+<urn:regesta:22821:right-verfuegungsgewalt> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Verfügungsgewalt über seine Hintersassen" .
+
+<urn:regesta:22821:thing-besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "den genannten Besitzungen" .
+
+<urn:regesta:22821:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22821> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem von seinem Vorfahren (nostre nobilitatis proavus) Herzog Welf gegründeten Kloster Weingarten die Rechte, darunter die Freiheit vom Reichsdienst und die Verfügungsgewalt über seine Hintersassen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22821:local:kloster-weingarten> ; rf:role rv:Recipient ; rf:nameInSource "Kloster Weingarten" ] ;
+    rf:concerns <urn:regesta:22821:right-verfuegungsgewalt> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22821:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22821> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nimmt es mit den genannten Besitzungen in seinen Schutz" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem von seinem Vorfahren (nostre nobilitatis proavus) Herzog Welf gegründeten Kloster Weingarten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22821:local:kloster-weingarten> ; rf:role rv:Recipient ; rf:nameInSource "Kloster Weingarten" ] ;
+    rf:concerns <urn:regesta:22821:thing-besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22821:kinship-welf> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22821> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem von seinem Vorfahren (nostre nobilitatis proavus) Herzog Welf" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000270> ; rf:role rv:Kin ; rf:nameInSource "Herzog Welf" ] ;
+    rf:qualifier "Vorfahren (nostre nobilitatis proavus)" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .

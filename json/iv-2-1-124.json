@@ -1,0 +1,779 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_7_0_4_2_1_124_124",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22751",
+  "identifier": "RI IV,2,1 n. 124",
+  "short": "RI IV,2,1 n. 124",
+  "sort": "004_002_001_000124_0000000124",
+  "start": "1152-07-20",
+  "end": "1152-08-10",
+  "proseYears": [],
+  "lead": "Friedrich stellt zu seinem und seiner Eltern Seelenheil und auf Intervention und Bitten Bischof Ardicios von Como der bischöflichen Kirche von Como vorbehaltlich des königlichen Rechts den districtus und das Fodrum folgender Orte, die sich der Herrschaft der Kirche von Como infolge von Kämpfen und beständigen Unruhen entzogen hatten, zurück: Olgiate Comasco (Oglate), Casanova (Canorua), Albiolo, Gaggino (Cazinum), Fino (Finius), Bregnano (Bregniano) und Caversaccio (Cauerzasi). - Arnoldus canc. vice archicanz. ; verfaßt und wohl auch mundiert von Heribert.",
+  "date": [
+   {
+    "t": "1152 (Ende Juli-Anfang August)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Ulm (Vlme)"
+   }
+  ],
+  "text": "Friedrich stellt zu seinem und seiner Eltern Seelenheil und auf Intervention und Bitten Bischof Ardicios von Como der bischöflichen Kirche von Como vorbehaltlich des königlichen Rechts den districtus und das Fodrum folgender Orte, die sich der Herrschaft der Kirche von Como infolge von Kämpfen und beständigen Unruhen entzogen hatten, zurück: Olgiate Comasco (Oglate), Casanova (Canorua), Albiolo, Gaggino (Cazinum), Fino (Finius), Bregnano (Bregniano) und Caversaccio (Cauerzasi). - Arnoldus canc. vice archicanz. ; verfaßt und wohl auch mundiert von Heribert. Sicut divine bonitatis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22751:restitution",
+    "kind": "act",
+    "title": "Rückgabe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rückgabe",
+     "text": "Rückgabe",
+     "triple": [
+      "urn:regesta:22751:restitution",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Restitution"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "restitution",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 342,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution a rf:ActFactoid ;\n    rf:factoidType rv:Restitution ;\n    rf:source <urn:regesta:record:22751> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich stellt zu seinem und seiner Eltern Seelenheil und auf Intervention und Bitten Bischof Ardicios von Como der bischöflichen Kirche von Como vorbehaltlich des königlichen Rechts den districtus und das Fodrum folgender Orte, die sich der Herrschaft der Kirche von Como infolge von Kämpfen und beständigen Unruhen entzogen hatten, zurück\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22751:ref-restitution-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:reference x:ref-restitution-friedrich .\nx:ref-restitution-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Ardicios von Como",
+      "text": "Bischof Ardicios von Como in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22751:ref-restitution-ardicio"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:reference x:ref-restitution-ardicio .\nx:ref-restitution-ardicio a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001103> ;\n    rf:nameInSource \"Bischof Ardicios von Como\" ;\n    rf:role rv:Petitioner .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001103"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "bischöflichen Kirche von Como",
+      "text": "bischöflichen Kirche von Como in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22751:ref-restitution-church"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:reference x:ref-restitution-church .\nx:ref-restitution-church a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-C000861:community> ;\n    rf:nameInSource \"bischöflichen Kirche von Como\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000861:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Albiolo",
+      "text": "betrifft Albiolo",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:place-albiolo"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:place-albiolo .\nx:place-albiolo a crm:E53_Place ;\n    rdfs:label \"Albiolo\" .",
+      "object": "urn:regesta:22751:place-albiolo",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Bregnano (Bregniano)",
+      "text": "betrifft Bregnano (Bregniano)",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:place-bregnano"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:place-bregnano .\nx:place-bregnano a crm:E53_Place ;\n    rdfs:label \"Bregnano (Bregniano)\" .",
+      "object": "urn:regesta:22751:place-bregnano",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Casanova (Canorua)",
+      "text": "betrifft Casanova (Canorua)",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:place-casanova"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:place-casanova .\nx:place-casanova a crm:E53_Place ;\n    rdfs:label \"Casanova (Canorua)\" .",
+      "object": "urn:regesta:22751:place-casanova",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Caversaccio (Cauerzasi)",
+      "text": "betrifft Caversaccio (Cauerzasi)",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:place-caversaccio"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:place-caversaccio .\nx:place-caversaccio a crm:E53_Place ;\n    rdfs:label \"Caversaccio (Cauerzasi)\" .",
+      "object": "urn:regesta:22751:place-caversaccio",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Fino (Finius)",
+      "text": "betrifft Fino (Finius)",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:place-fino"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:place-fino .\nx:place-fino a crm:E53_Place ;\n    rdfs:label \"Fino (Finius)\" .",
+      "object": "urn:regesta:22751:place-fino",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gaggino (Cazinum)",
+      "text": "betrifft Gaggino (Cazinum)",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:place-gaggino"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:place-gaggino .\nx:place-gaggino a crm:E53_Place ;\n    rdfs:label \"Gaggino (Cazinum)\" .",
+      "object": "urn:regesta:22751:place-gaggino",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Olgiate Comasco (Oglate)",
+      "text": "betrifft Olgiate Comasco (Oglate)",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:place-olgiate"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:place-olgiate .\nx:place-olgiate a crm:E53_Place ;\n    rdfs:label \"Olgiate Comasco (Oglate)\" .",
+      "object": "urn:regesta:22751:place-olgiate",
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (den districtus)",
+      "text": "betrifft Gerichtsbarkeit (den districtus)",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:right-districtus"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:right-districtus .\nx:right-districtus a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"den districtus\" .",
+      "object": "urn:regesta:22751:right-districtus",
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (das Fodrum)",
+      "text": "betrifft Einkünfterecht (das Fodrum)",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22751:right-fodrum"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 342,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:concerns x:right-fodrum .\nx:right-fodrum a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"das Fodrum\" .",
+      "object": "urn:regesta:22751:right-fodrum",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-2",
+      "own": true,
+      "evidence": {
+       "start": 344,
+       "end": 481,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22751:> .\nx:restitution rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Olgiate Comasco (Oglate), Casanova (Canorua), Albiolo, Gaggino (Cazinum), Fino (Finius), Bregnano (Bregniano) und Caversaccio (Cauerzasi)\" ] .",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Ausnahme",
+      "text": "vorbehaltlich des königlichen Rechts",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/exception",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 148,
+       "end": 184,
+       "ambiguous": false
+      },
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "zu seinem und seiner Eltern Seelenheil",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22751:restitution",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 17,
+       "end": 55,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k14"
+      ],
+      "text": "Rückgabe"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k14"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k3",
+       "k14"
+      ],
+      "text": "Bischof Ardicios von Como"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k4",
+       "k14"
+      ],
+      "text": "bischöflichen Kirche von Como"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5",
+       "k14"
+      ],
+      "text": "Albiolo"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6",
+       "k14"
+      ],
+      "text": "Bregnano (Bregniano)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k7",
+       "k14"
+      ],
+      "text": "Casanova (Canorua)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k8",
+       "k14"
+      ],
+      "text": "Caversaccio (Cauerzasi)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k9",
+       "k14"
+      ],
+      "text": "Fino (Finius)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k10",
+       "k14"
+      ],
+      "text": "Gaggino (Cazinum)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k11",
+       "k14"
+      ],
+      "text": "Olgiate Comasco (Oglate)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k12",
+       "k14"
+      ],
+      "text": "Gerichtsbarkeit (den districtus)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k13",
+       "k14"
+      ],
+      "text": "Einkünfterecht (das Fodrum)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "restitution",
+    "start": 0,
+    "end": 342
+   },
+   {
+    "id": "t2",
+    "start": 17,
+    "end": 55
+   },
+   {
+    "id": "t1",
+    "start": 148,
+    "end": 184
+   },
+   {
+    "id": "restitution-2",
+    "start": 344,
+    "end": 481
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The earlier withdrawal of the places from the church's lordship (sich der Herrschaft der Kirche von Como ... entzogen hatten) has no act type and is not recorded as its own factoid; it remains inside the restitution evidence.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The parents named only as seiner Eltern in the ground are not referenced as actors; rv:Parenthood needs one named parent and child.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Right-type assignment of districtus to rv:Jurisdiction and Fodrum to rv:Revenue is a draft reading for expert review.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to record a former state that has ended (the church's lost lordship) or its cause.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "rf:concerns cannot tie each right to the places it applies to; rights and places sit side by side on the restitution.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "right-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22751:right-districtus",
+     "description": "districtus is typed rv:Jurisdiction and fodrum rv:Revenue. Both are plausible but historical judgements for expert review; districtus covers more than jurisdiction.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 185,
+      "end": 229
+     }
+    },
+    {
+     "category": "omitted-context",
+     "severity": "Vermerk",
+     "subject": "22751",
+     "description": "The places had withdrawn from the lordship of the church of Como through fighting and unrest. A rv:RightHolding state for the church would assert a current lordship the passage denies, so the omission is right within the contract.",
+     "proposal": "Report as model gap.",
+     "quote": {
+      "start": 231,
+      "end": 334
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der von Besta geäußerte Fälschungsverdacht beruht auf der irrigen Angabe, daß der Name des Kanzlers fehle. Vielmehr fehlt der des Erzkanzlers Heinrich von Mainz; ob dies schon im Original so war oder auf einen Überlieferungsfehler - um einen solchen könnte es sich bei der Auslassung des Wortes "
+    },
+    {
+     "t": "invictissimi",
+     "i": true
+    },
+    {
+     "t": " in der Signumzeile handeln - zurückgeht, ist wohl kaum zu entscheiden. - Die zeitliche Einordnung des Diploms ergibt sich aus dem Itinerar des Königs, dessen Aufenthalt in Ulm für Juli 25 bis August 1 bezeugt ist (Regg. "
+    },
+    {
+     "t": "110",
+     "regest": "22737"
+    },
+    {
+     "t": " -"
+    },
+    {
+     "t": "117",
+     "regest": "22744"
+    },
+    {
+     "t": "). - Das D. wurde durch Heinrich VI. bestätigt, B.-Baaken Reg. "
+    },
+    {
+     "t": "544"
+    },
+    {
+     "t": ". "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (1991):"
+    },
+    {
+     "t": " Bei der Angabe der Überlieferung des DF.I.24 in der Collectio privil. Cumanae ecclesiae muß es richtig heißen: f. 25."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Collectio privil. Cumanae ecclesiae des 14. Jh. f. 17', Biblioteca Ambrosiana Mailand (B). Drucke: Tatti, Annali di Como 2, 869; MG. DF. I. 24. Reg.: Besta, I diplomi, Arch. stor. lomb. N.S. 2 (1937) 328 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 51; Stumpf 3640."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0044"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_24"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000564",
+    "Albiolo (zwischen Como und Varese, ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-A001103",
+    "Bischof von Como"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-B001340",
+    "Bregnano (südwestl. Cantù, ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-C000317",
+    "Casanova (nördl. Albiolo, ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-C000464",
+    "Caversaccio (Fraz. von Valmorea, östl. Varese, ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-C000861",
+    "Bischöfliche Kirche, Bistum, Diözese"
+   ],
+   [
+    "RI004-002-F000171",
+    "Fino (<i>heute:</i> Fino Mornasco, südl. von und ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-G000019",
+    "Gaggino (westl. Como, ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000783",
+    "Notar der Reichskanzlei, Magister, Kapellan, Propst von Aachen (des kaiserlichen Hofes), dann Erzbischof von Besançon (<i>siehe: dort</i>)"
+   ],
+   [
+    "RI004-002-O000182",
+    "Olgiate Comasco (westsüdwestl. Como, ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ]
+  ]
+ }
+}

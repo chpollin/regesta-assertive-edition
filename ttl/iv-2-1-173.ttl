@@ -1,0 +1,109 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-04-23_1_0_4_2_1_173_173
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22800> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 173" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-A001103> a crm:E21_Person ; rdfs:label "Bischof Ardicio von Como" .
+<urn:regesta:actor:RI004-002-G001143> a crm:E21_Person ; rdfs:label "Guibertus vero Crassus" .
+<urn:regesta:actor:RI004-002-G001144> a crm:E21_Person ; rdfs:label "Guibertus Porcus" .
+<urn:regesta:actor:RI004-002-K000322> a crm:E21_Person ; rdfs:label "Bischof Konrad von Augsburg" .
+<urn:regesta:actor:RI004-002-F000681> a crm:E21_Person ; rdfs:label "Friderici ducis Sueuorum" .
+<urn:regesta:actor:22800:local:leute-von-chiavenna> a crm:E74_Group ; rdfs:label "Leute von Chiavenna" .
+<urn:regesta:actor:22800:local:como> a crm:E74_Group ; rdfs:label "Como" .
+
+<urn:regesta:22800:grafschaft-chiavenna> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "Grafschaft Chiavenna" .
+
+<urn:regesta:22800:dispute> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22800> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "den Streit zwischen dem Bischof Ardicio von Como und den Vertretern der Leute von Chiavenna (Guibertus vero Crassus et Guibertus Porcus) um die Grafschaft Chiavenna" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001103> ;
+        rf:role rv:Participant ; rf:nameInSource "Bischof Ardicio von Como" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:22800:local:leute-von-chiavenna> ;
+        rf:role rv:Participant ; rf:nameInSource "Leute von Chiavenna" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001143> ;
+        rf:role rv:Representative ; rf:nameInSource "Guibertus vero Crassus" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001144> ;
+        rf:role rv:Representative ; rf:nameInSource "Guibertus Porcus" ] ;
+    rf:concerns <urn:regesta:22800:grafschaft-chiavenna> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22800:adjourned-hearing> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22800> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nach einer in Konstanz vertagten Verhandlung" ] ;
+    rf:concerns <urn:regesta:22800:grafschaft-chiavenna> ;
+    rf:qualifier "vertagten" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22800:ulm-disposition> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22800> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "entgegen seiner im Vorjahr zu Ulm getroffenen Verfügung" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "seiner" ] ;
+    rf:qualifier "im Vorjahr" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22800:judgment> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22800> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich entscheidet den Streit zwischen dem Bischof Ardicio von Como und den Vertretern der Leute von Chiavenna (Guibertus vero Crassus et Guibertus Porcus) um die Grafschaft Chiavenna" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "durch einen von Bischof Konrad von Augsburg formulierten Fürstenspruch zugunsten von Como" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Judge ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000322> ;
+        rf:role rv:Participant ; rf:nameInSource "Bischof Konrad von Augsburg" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:22800:local:como> ;
+        rf:role rv:Beneficiary ; rf:nameInSource "Como" ] ;
+    rf:concerns <urn:regesta:22800:grafschaft-chiavenna> ;
+    rf:refersToAct <urn:regesta:22800:dispute> , <urn:regesta:22800:adjourned-hearing> , <urn:regesta:22800:ulm-disposition> ;
+    rf:ground "nach Vorweisung und Vorlesung der Urkunden des Bischofs von Como und Ablehnung der Chiavennater Urkunden sowie ihrer Behauptung, die Grafschaft gehöre zum Herzogtum Schwaben" ;
+    rf:qualifier "zu Ostern (April 19)" , "entgegen seiner im Vorjahr zu Ulm getroffenen Verfügung" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22800:parenthood-duke-friedrich> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22800> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "patris nostri Friderici ducis Sueuorum" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ;
+        rf:role rv:Parent ; rf:nameInSource "Friderici ducis Sueuorum" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Child ; rf:nameInSource "nostri" ] ;
+    rf:qualifier "patris" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22800:royal-privilege-chiavenna> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22800> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "postquam regni solium divina dispositione conscendimus, privilegium de ipso comitatu a manu nostra de respectu regni, sicut supra notavimus, susceperunt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "manu nostra" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:22800:local:leute-von-chiavenna> ;
+        rf:role rv:Recipient ] ;
+    rf:concerns <urn:regesta:22800:grafschaft-chiavenna> ;
+    rf:qualifier "postquam regni solium divina dispositione conscendimus" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .

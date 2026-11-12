@@ -1,0 +1,2132 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-29_2_0_4_2_1_114_114",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22741",
+  "identifier": "RI IV,2,1 n. 114",
+  "short": "RI IV,2,1 n. 114",
+  "sort": "004_002_001_000114_0000000114",
+  "start": "1152-07-29",
+  "end": "1152-07-29",
+  "proseYears": [],
+  "lead": "Friedrich nimmt das auf Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich erbaute und von ihnen dem hl.",
+  "date": [
+   {
+    "t": "1152 Juli 29"
+   }
+  ],
+  "place": [
+   {
+    "t": "Ulm"
+   }
+  ],
+  "text": "Friedrich nimmt das auf Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich erbaute und von ihnen dem hl. Petrus übergebene Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm) auf Bitten der dortigen Brüder in seinen Schutz und bestätigt ihm die genannten Besitzungen; weiters verfügt er, daß das Kloster nur einen Vogt haben und daß nach dem Tod des jetzigen Vogtes, Oudelard, dessen nächster Erbe ihm in seinem Amt (officium advocatię) nachfolgen solle, was auch künftig zu beobachten sei. Schließlich wird festgelegt, daß die Hintersassen des Klosters einmal jährlich mit Zustimmung des Abtes vor das Gericht des Vogtes gerufen werden sollen, der nach den Rechtsgewohnheiten dieser Kirche über ihre Vergehen urteilt. Z.: die Bischöfe Hermann von Konstanz, Ortlieb (Ortliabus) von Basel, die Herzoge Welf, Berthold von Burgund, Markgraf Otakar von Steier, Graf Ulrich von Lenzburg. - Arnoldus canc. vice Henrici Maguntini archiep. et archicanc. ; nach dem Privileg Eugens III. von 1147 Juli 23 (JL. 9101; Solothurner UB. 1, 55 no 91) von Arnold II. C geschrieben; SI.1. Decet omnes christianę) .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 9,
+  "blocks": [
+   {
+    "node": "urn:regesta:22741:advocacy-succession",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22741:advocacy-succession",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advocacy-succession",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 32,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocacy-succession a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das auf Eigengut\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22741:advocacy-succession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-succession",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocacy-succession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Oudelard",
+      "text": "Oudelard in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22741:advocacy-succession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-succession",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocacy-succession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000566> ; rf:nameInSource \"Oudelard\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000566"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "dessen nächster Erbe",
+      "text": "dessen nächster Erbe in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22741:advocacy-succession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-succession",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocacy-succession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:naechster-erbe> ; rf:nameInSource \"dessen nächster Erbe\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22741:local:naechster-erbe"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (officium advocatię)",
+      "text": "betrifft Vogtei (officium advocatię)",
+      "triple": [
+       "urn:regesta:22741:advocacy-succession",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22741:vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-succession",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocacy-succession rf:concerns x:vogtei .\nx:vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"officium advocatię\" .",
+      "object": "urn:regesta:22741:vogtei",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22741:advocacy-succession",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocacy-succession-2",
+      "own": true,
+      "evidence": {
+       "start": 346,
+       "end": 506,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocacy-succession rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"daß nach dem Tod des jetzigen Vogtes, Oudelard, dessen nächster Erbe ihm in seinem Amt (officium advocatię) nachfolgen solle, was auch künftig zu beobachten sei\" ] .",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "nach dem Tod des jetzigen Vogtes, Oudelard",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22741:advocacy-succession",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 350,
+       "end": 392,
+       "ambiguous": false
+      },
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "was auch künftig zu beobachten sei",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22741:advocacy-succession",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 472,
+       "end": 506,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Oudelard"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "dessen nächster Erbe"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Vogtei (officium advocatię)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22741:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22741:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 32,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das auf Eigengut\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22741:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm)",
+      "text": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22741:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000381:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000381:community"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die genannten Besitzungen",
+      "text": "betrifft die genannten Besitzungen",
+      "triple": [
+       "urn:regesta:22741:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22741:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:confirmation rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"die genannten Besitzungen\" .",
+      "object": "urn:regesta:22741:besitzungen",
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22741:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-2",
+      "own": true,
+      "evidence": {
+       "start": 244,
+       "end": 283,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm die genannten Besitzungen\" ] .",
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9",
+       "k13"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k10",
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k11",
+       "k13"
+      ],
+      "text": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k12",
+       "k13"
+      ],
+      "text": "die genannten Besitzungen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22741:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22741:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 32,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das auf Eigengut\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22741:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm)",
+      "text": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22741:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000381:community> ; rf:nameInSource \"Kloster Beinwil\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000381:community"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der dortigen Brüder",
+      "text": "der dortigen Brüder in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22741:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:brueder> ; rf:nameInSource \"dortigen Brüder\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:22741:local:brueder"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22741:protection",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection-2",
+      "own": true,
+      "evidence": {
+       "start": 128,
+       "end": 239,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:protection rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm) auf Bitten der dortigen Brüder in seinen Schutz\" ] .",
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14",
+       "k18"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k15",
+       "k18"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k16",
+       "k18"
+      ],
+      "text": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm)"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k17",
+       "k18"
+      ],
+      "text": "der dortigen Brüder"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22741:single-advocate",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22741:single-advocate",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "single-advocate",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 32,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:single-advocate a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt das auf Eigengut\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k19"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22741:single-advocate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "single-advocate",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:single-advocate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm)",
+      "text": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22741:single-advocate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "single-advocate",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:single-advocate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000381:community> ; rf:nameInSource \"Kloster\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000381:community"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (officium advocatię)",
+      "text": "betrifft Vogtei (officium advocatię)",
+      "triple": [
+       "urn:regesta:22741:single-advocate",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22741:vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "single-advocate",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 32,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:single-advocate rf:concerns x:vogtei .\nx:vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"officium advocatię\" .",
+      "object": "urn:regesta:22741:vogtei",
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22741:single-advocate",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "single-advocate-2",
+      "own": true,
+      "evidence": {
+       "start": 293,
+       "end": 341,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:single-advocate rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"verfügt er, daß das Kloster nur einen Vogt haben\" ] .",
+      "key": "k23"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nur einen Vogt",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22741:single-advocate",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 321,
+       "end": 335,
+       "ambiguous": false
+      },
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k19",
+       "k23"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k20",
+       "k23"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k21",
+       "k23"
+      ],
+      "text": "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k22",
+       "k23"
+      ],
+      "text": "Vogtei (officium advocatię)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22741:eigengut-possession",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22741:eigengut-possession",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "eigengut-possession",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 87,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:eigengut-possession a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich erbaute\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Noker",
+      "text": "Noker in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22741:eigengut-possession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eigengut-possession",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:eigengut-possession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000262> ; rf:nameInSource \"Noker\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-N000262"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Oudelard",
+      "text": "Oudelard in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22741:eigengut-possession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eigengut-possession",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:eigengut-possession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000566> ; rf:nameInSource \"Oudelard\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000566"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Burchard",
+      "text": "Burchard in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22741:eigengut-possession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eigengut-possession",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:eigengut-possession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001612> ; rf:nameInSource \"Burchard\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B001612"
+      ],
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich",
+      "text": "Ulrich in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22741:eigengut-possession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eigengut-possession",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:eigengut-possession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000242> ; rf:nameInSource \"Ulrich\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000242"
+      ],
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich",
+      "text": "betrifft Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich",
+      "triple": [
+       "urn:regesta:22741:eigengut-possession",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22741:eigengut"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "eigengut-possession",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 87,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:eigengut-possession rf:concerns x:eigengut .\nx:eigengut a crm:E18_Physical_Thing ;\n    rdfs:label \"Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich\" .",
+      "object": "urn:regesta:22741:eigengut",
+      "key": "k30"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Eigengut",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22741:eigengut-possession",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 24,
+       "end": 32,
+       "ambiguous": false
+      },
+      "key": "k31"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Noker"
+     },
+     ", ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Oudelard"
+     },
+     ", ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Burchard"
+     },
+     " und ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Ulrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22741:founders-donation",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22741:founders-donation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "founders-donation",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 143,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:founders-donation a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich erbaute und von ihnen dem hl. Petrus übergebene Kloster Beinwil\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k32"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Noker",
+      "text": "Noker in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22741:founders-donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "founders-donation",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 143,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:founders-donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000262> ; rf:nameInSource \"Noker\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-N000262"
+      ],
+      "key": "k33"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Oudelard",
+      "text": "Oudelard in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22741:founders-donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "founders-donation",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 143,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:founders-donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000566> ; rf:nameInSource \"Oudelard\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000566"
+      ],
+      "key": "k34"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Burchard",
+      "text": "Burchard in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22741:founders-donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "founders-donation",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 143,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:founders-donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001612> ; rf:nameInSource \"Burchard\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B001612"
+      ],
+      "key": "k35"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich",
+      "text": "Ulrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22741:founders-donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "founders-donation",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 143,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:founders-donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000242> ; rf:nameInSource \"Ulrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000242"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "hl. Petrus",
+      "text": "hl. Petrus in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22741:founders-donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "founders-donation",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 143,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:founders-donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:hl-petrus> ; rf:nameInSource \"hl. Petrus\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22741:local:hl-petrus"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Kloster Beinwil",
+      "text": "betrifft Kloster Beinwil",
+      "triple": [
+       "urn:regesta:22741:founders-donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22741:kloster-beinwil"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "founders-donation",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 143,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:founders-donation rf:concerns x:kloster-beinwil .\nx:kloster-beinwil a crm:E18_Physical_Thing ;\n    rdfs:label \"Kloster Beinwil\" .",
+      "object": "urn:regesta:22741:kloster-beinwil",
+      "key": "k38"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Noker"
+     },
+     ", ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Oudelard"
+     },
+     ", ",
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Burchard"
+     },
+     " und ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Ulrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "hl. Petrus"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k38"
+      ],
+      "text": "Kloster Beinwil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22741:brothers-request",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22741:brothers-request",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "brothers-request",
+     "own": true,
+     "evidence": {
+      "start": 192,
+      "end": 222,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:brothers-request a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf Bitten der dortigen Brüder\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k39"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der dortigen Brüder",
+      "text": "der dortigen Brüder in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22741:brothers-request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brothers-request",
+      "own": true,
+      "evidence": {
+       "start": 192,
+       "end": 222,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:brothers-request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:brueder> ; rf:nameInSource \"dortigen Brüder\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:22741:local:brueder"
+      ],
+      "key": "k40"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k39"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k40"
+      ],
+      "text": "der dortigen Brüder"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22741:oudelard-advocate",
+    "kind": "state",
+    "title": "Amtsinhabe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Amtsinhabe",
+     "text": "Amtsinhabe",
+     "triple": [
+      "urn:regesta:22741:oudelard-advocate",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/OfficeHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "oudelard-advocate",
+     "own": true,
+     "evidence": {
+      "start": 363,
+      "end": 392,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:oudelard-advocate a rf:StateFactoid ;\n    rf:factoidType rv:OfficeHolding ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"des jetzigen Vogtes, Oudelard\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k41"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Oudelard",
+      "text": "Oudelard in der Rolle Amtsinhaber",
+      "triple": [
+       "urn:regesta:22741:oudelard-advocate",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "oudelard-advocate",
+      "own": true,
+      "evidence": {
+       "start": 363,
+       "end": 392,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:oudelard-advocate rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000566> ; rf:nameInSource \"Oudelard\" ; rf:role rv:Officeholder ] .",
+      "role": "Amtsinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000566"
+      ],
+      "key": "k42"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (officium advocatię)",
+      "text": "betrifft Vogtei (officium advocatię)",
+      "triple": [
+       "urn:regesta:22741:oudelard-advocate",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22741:vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "oudelard-advocate",
+      "own": true,
+      "evidence": {
+       "start": 363,
+       "end": 392,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:oudelard-advocate rf:concerns x:vogtei .\nx:vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"officium advocatię\" .",
+      "object": "urn:regesta:22741:vogtei",
+      "key": "k43"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "jetzigen",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22741:oudelard-advocate",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 367,
+       "end": 375,
+       "ambiguous": false
+      },
+      "key": "k44"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k41"
+      ],
+      "text": "Amtsinhabe"
+     },
+     ", als Amtsinhaber ",
+     {
+      "keys": [
+       "k42"
+      ],
+      "text": "Oudelard"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k43"
+      ],
+      "text": "Vogtei (officium advocatię)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22741:advocate-court",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22741:advocate-court",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advocate-court",
+     "own": true,
+     "evidence": {
+      "start": 508,
+      "end": 734,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocate-court a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22741> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Schließlich wird festgelegt, daß die Hintersassen des Klosters einmal jährlich mit Zustimmung des Abtes vor das Gericht des Vogtes gerufen werden sollen, der nach den Rechtsgewohnheiten dieser Kirche über ihre Vergehen urteilt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k45"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die Hintersassen des Klosters",
+      "text": "die Hintersassen des Klosters in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22741:advocate-court",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-court",
+      "own": true,
+      "evidence": {
+       "start": 508,
+       "end": 734,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocate-court rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:hintersassen> ; rf:nameInSource \"Hintersassen des Klosters\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22741:local:hintersassen"
+      ],
+      "key": "k46",
+      "agentNotes": [
+       {
+        "text": "der dortigen Brüder, die Hintersassen des Klosters, des Abtes, des Vogtes and dessen nächster Erbe are regest-local actors; no identity with the monastery community or with Oudelard is asserted.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Abtes",
+      "text": "des Abtes in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22741:advocate-court",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-court",
+      "own": true,
+      "evidence": {
+       "start": 508,
+       "end": 734,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocate-court rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:abt> ; rf:nameInSource \"des Abtes\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22741:local:abt"
+      ],
+      "key": "k47"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Vogtes",
+      "text": "des Vogtes in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22741:advocate-court",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-court",
+      "own": true,
+      "evidence": {
+       "start": 508,
+       "end": 734,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocate-court rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:vogt> ; rf:nameInSource \"des Vogtes\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:22741:local:vogt"
+      ],
+      "key": "k48"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (Gericht des Vogtes)",
+      "text": "betrifft Gerichtsbarkeit (Gericht des Vogtes)",
+      "triple": [
+       "urn:regesta:22741:advocate-court",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22741:vogtgericht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advocate-court",
+      "own": true,
+      "evidence": {
+       "start": 508,
+       "end": 734,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22741:> .\nx:advocate-court rf:concerns x:vogtgericht .\nx:vogtgericht a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"Gericht des Vogtes\" .",
+      "object": "urn:regesta:22741:vogtgericht",
+      "key": "k49"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "mit Zustimmung des Abtes",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22741:advocate-court",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 587,
+       "end": 611,
+       "ambiguous": false
+      },
+      "key": "k50"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "einmal jährlich",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22741:advocate-court",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 571,
+       "end": 586,
+       "ambiguous": false
+      },
+      "key": "k51"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach den Rechtsgewohnheiten dieser Kirche",
+      "id": "t8",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22741:advocate-court",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 666,
+       "end": 707,
+       "ambiguous": false
+      },
+      "key": "k52"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k45"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k46"
+      ],
+      "text": "die Hintersassen des Klosters"
+     },
+     " und ",
+     {
+      "keys": [
+       "k47"
+      ],
+      "text": "des Abtes"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k48"
+      ],
+      "text": "des Vogtes"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k49"
+      ],
+      "text": "Gerichtsbarkeit (Gericht des Vogtes)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "advocacy-succession",
+    "start": 0,
+    "end": 32
+   },
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 32
+   },
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 32
+   },
+   {
+    "id": "single-advocate",
+    "start": 0,
+    "end": 32
+   },
+   {
+    "id": "founders-donation",
+    "start": 20,
+    "end": 143
+   },
+   {
+    "id": "eigengut-possession",
+    "start": 20,
+    "end": 87
+   },
+   {
+    "id": "t4",
+    "start": 24,
+    "end": 32
+   },
+   {
+    "id": "protection-2",
+    "start": 128,
+    "end": 239
+   },
+   {
+    "id": "brothers-request",
+    "start": 192,
+    "end": 222
+   },
+   {
+    "id": "confirmation-2",
+    "start": 244,
+    "end": 283
+   },
+   {
+    "id": "single-advocate-2",
+    "start": 293,
+    "end": 341
+   },
+   {
+    "id": "t3",
+    "start": 321,
+    "end": 335
+   },
+   {
+    "id": "advocacy-succession-2",
+    "start": 346,
+    "end": 506
+   },
+   {
+    "id": "t1",
+    "start": 350,
+    "end": 392
+   },
+   {
+    "id": "oudelard-advocate",
+    "start": 363,
+    "end": 392
+   },
+   {
+    "id": "t5",
+    "start": 367,
+    "end": 375
+   },
+   {
+    "id": "t2",
+    "start": 472,
+    "end": 506
+   },
+   {
+    "id": "advocate-court",
+    "start": 508,
+    "end": 734
+   },
+   {
+    "id": "t7",
+    "start": 571,
+    "end": 586
+   },
+   {
+    "id": "t6",
+    "start": 587,
+    "end": 611
+   },
+   {
+    "id": "t8",
+    "start": 666,
+    "end": 707
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "hl. Petrus as recipient of the founders' donation is a regest-local actor typed crm:E21_Person; whether a saint as nominal recipient should be an actor at all is open.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The court provision is stated in the passive (wird festgelegt), so no enacting actor is referenced.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The heir succession rule concerns hereditary succession in the advocacy; only the Advocacy right type is used, Inheritance is not added because the regest speaks of an office.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for those subject to a jurisdiction (Hintersassen); Participant is used.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No link between an institution as thing (donated object) and as actor (community).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "structure",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22741:confirmation",
+     "description": "The confirmation concerns 'die genannten Besitzungen', which point back to the founders' donation; no rf:refersToAct links them. The provisions (single advocate, succession, court) are not linked by rf:partOf to the protection or confirmation.",
+     "proposal": "Optionally add rf:refersToAct to the founders' donation and rf:partOf from the provisions to the protection act.",
+     "quote": {
+      "start": 244,
+      "end": 283
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22741:advocate-court",
+     "description": "The enactment has no Grantor reference because of the passive wording; acceptable. The Vogt is a functional actor although the regest names Oudelard as the current holder; per guidelines a separate holder reference is only needed where the passage names him, which this sentence does not.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 508,
+      "end": 535
+     }
+    },
+    {
+     "category": "representation",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22741:kloster-beinwil",
+     "description": "The monastery appears both as a physical thing (object of the founders' donation) and as a group actor (recipient of protection), without a link between them.",
+     "proposal": "Keep; report the dual representation of institutions as a model question.",
+     "quote": {
+      "start": 92,
+      "end": 143
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally link the confirmation to the founders' donation by rf:refersToAct, and the provisions to the protection by rf:partOf.",
+     "reason": "'bestätigt ihm die genannten Besitzungen' confirms possessions, not the founders' act of giving the monastery to St. Peter. The provisions are introduced by 'weiters verfügt er' as dispositions of their own, so neither link is required.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der noch ungeübte Notar Arnold II. C hat das Monogramm vorausgefertigt und die Zeugenliste nachgetragen. Zur Widerlegung des unbegründeten Fälschungsverdachtes s. schon oben bei Reg. "
+    },
+    {
+     "t": "113",
+     "regest": "22740"
+    },
+    {
+     "t": " und Vorbemerkung zu DF. I. 16. - Über das Kloster vgl. Schenker, Beinwil, Jb. f. solothurn. Gesch. 46 (1973) 5 ff., zu den Besitzungen a. a. O. 64 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Solothurn (A). Drucke: Thommen, Kaiserurkunden, NA 12 (1887) 182 mit Schriftprobe; Solothurner UB. 1, 69 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 123; MG. DF. I. 17. Faks.: Solothurner UB. 1, a. a. O. Reg.: Hidber 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1986; Stumpf 3637."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0041"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/12722"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_17"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-17"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000381",
+    "Beinwil (an der Lüssel, zwischen Basel und Solothurn, schweizer. Kt. Solothurn), (Benediktiner-)Kloster St. Vincenz und Allerheiligen"
+   ],
+   [
+    "RI004-002-B000724",
+    "(IV.), Herzog von Zähringen, Breisgau und Burgund"
+   ],
+   [
+    "RI004-002-B001612",
+    "Edelfreier, Stifter von Beinwil"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-N000262",
+    "Noker, Edelfreier, Stifter von Beinwil"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000566",
+    "Edelfreier, Stifter und Vogt von Beinwil"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-U000242",
+    "Edelfreier, Stifter von Beinwil"
+   ]
+  ]
+ }
+}

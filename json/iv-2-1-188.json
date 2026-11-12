@@ -1,0 +1,867 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-07-12_1_0_4_2_1_188_188",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22815",
+  "identifier": "RI IV,2,1 n. 188",
+  "short": "RI IV,2,1 n. 188",
+  "sort": "004_002_001_000188_0000000188",
+  "start": "1153-07-12",
+  "end": "1153-07-12",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt, daß die Äbtissin Bertha von Erstein durch ihn und den Klostervogt Graf Hugo von Dagsburg den Hof Besigheim ( Basincheim), den Kaiserin Agnes einst dem Kloster übergab, an den Markgrafen Hermann von Baden zu freiem Eigen geschenkt hat.",
+  "date": [
+   {
+    "t": "1153 Juli 12"
+   }
+  ],
+  "place": [
+   {
+    "t": "Erstein"
+   }
+  ],
+  "text": "Friedrich bestätigt, daß die Äbtissin Bertha von Erstein durch ihn und den Klostervogt Graf Hugo von Dagsburg den Hof Besigheim ( Basincheim), den Kaiserin Agnes einst dem Kloster übergab, an den Markgrafen Hermann von Baden zu freiem Eigen geschenkt hat. Z.: Bischof Burchard von Straßburg, Konrad, der Bruder des Königs, die Grafen Siegbert von Frankenburg (Frankennesbvrch), Werner von Habsburg (Hauegesburch) und Berthold von Neuenburg, Vogt Anselm von Straßburg, die Grafen von Tübingen und Ludwig von Württemberg (Werdeneberch). - Henricus not. vice Arnoldi Mogontini archiep. et archicanc. ; unter Verwendung von DH. II. 499 (VU.) verfaßt und geschrieben von A II. D; SI. D. Regia dignitas rei .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22815:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22815:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 56,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22815:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22815> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt, daß die Äbtissin Bertha von Erstein\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22815:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 56,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Hof Besigheim ( Basincheim)",
+      "text": "betrifft Hof Besigheim ( Basincheim)",
+      "triple": [
+       "urn:regesta:22815:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22815:thing-hof-besigheim"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 56,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:confirmation rf:concerns x:thing-hof-besigheim .\nx:thing-hof-besigheim a crm:E18_Physical_Thing ;\n    rdfs:label \"Hof Besigheim ( Basincheim)\" .",
+      "object": "urn:regesta:22815:thing-hof-besigheim",
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schenkung",
+      "text": "bezieht sich auf Schenkung",
+      "triple": [
+       "urn:regesta:22815:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22815:donation-bertha"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 56,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:confirmation rf:refersToAct x:donation-bertha .\nx:donation-bertha a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;\n    rf:concerns x:thing-hof-besigheim ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Äbtissin Bertha von Erstein durch ihn und den Klostervogt Graf Hugo von Dagsburg den Hof Besigheim ( Basincheim), den Kaiserin Agnes einst dem Kloster übergab, an den Markgrafen Hermann von Baden zu freiem Eigen geschenkt hat\" ] ;\n    rf:factoidType rv:Donation ;\n    rf:qualifier \"zu freiem Eigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000692> ; rf:nameInSource \"Äbtissin Bertha von Erstein\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihn\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000843> ; rf:nameInSource \"Markgrafen Hermann von Baden\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001317> ; rf:nameInSource \"Klostervogt Graf Hugo von Dagsburg\" ; rf:role rv:Representative ] ;\n    rf:source <urn:regesta:record:22815> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22815:donation-bertha",
+      "objectClaim": "donation-bertha",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Hof Besigheim ( Basincheim)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Schenkung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22815:donation-bertha",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22815:donation-bertha",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-bertha",
+     "own": true,
+     "evidence": {
+      "start": 25,
+      "end": 254,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22815:> .\nx:donation-bertha a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22815> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Äbtissin Bertha von Erstein durch ihn und den Klostervogt Graf Hugo von Dagsburg den Hof Besigheim ( Basincheim), den Kaiserin Agnes einst dem Kloster übergab, an den Markgrafen Hermann von Baden zu freiem Eigen geschenkt hat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Äbtissin Bertha von Erstein",
+      "text": "Äbtissin Bertha von Erstein in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22815:donation-bertha",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-bertha",
+      "own": true,
+      "evidence": {
+       "start": 25,
+       "end": 254,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:donation-bertha rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000692> ; rf:nameInSource \"Äbtissin Bertha von Erstein\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000692"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22815:donation-bertha",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-bertha",
+      "own": true,
+      "evidence": {
+       "start": 25,
+       "end": 254,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:donation-bertha rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihn\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Klostervogt Graf Hugo von Dagsburg",
+      "text": "Klostervogt Graf Hugo von Dagsburg in der Rolle Vertreter",
+      "triple": [
+       "urn:regesta:22815:donation-bertha",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-bertha",
+      "own": true,
+      "evidence": {
+       "start": 25,
+       "end": 254,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:donation-bertha rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001317> ; rf:nameInSource \"Klostervogt Graf Hugo von Dagsburg\" ; rf:role rv:Representative ] .",
+      "role": "Vertreter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001317"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgrafen Hermann von Baden",
+      "text": "Markgrafen Hermann von Baden in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22815:donation-bertha",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-bertha",
+      "own": true,
+      "evidence": {
+       "start": 25,
+       "end": 254,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:donation-bertha rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000843> ; rf:nameInSource \"Markgrafen Hermann von Baden\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000843"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Hof Besigheim ( Basincheim)",
+      "text": "betrifft Hof Besigheim ( Basincheim)",
+      "triple": [
+       "urn:regesta:22815:donation-bertha",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22815:thing-hof-besigheim"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-bertha",
+      "own": true,
+      "evidence": {
+       "start": 25,
+       "end": 254,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:donation-bertha rf:concerns x:thing-hof-besigheim .\nx:thing-hof-besigheim a crm:E18_Physical_Thing ;\n    rdfs:label \"Hof Besigheim ( Basincheim)\" .",
+      "object": "urn:regesta:22815:thing-hof-besigheim",
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "zu freiem Eigen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22815:donation-bertha",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 225,
+       "end": 240,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Äbtissin Bertha von Erstein"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Vertreter ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Klostervogt Graf Hugo von Dagsburg"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Markgrafen Hermann von Baden"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Hof Besigheim ( Basincheim)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22815:grant-agnes",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22815:grant-agnes",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-agnes",
+     "own": true,
+     "evidence": {
+      "start": 110,
+      "end": 187,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22815:> .\nx:grant-agnes a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22815> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"den Hof Besigheim ( Basincheim), den Kaiserin Agnes einst dem Kloster übergab\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiserin Agnes",
+      "text": "Kaiserin Agnes in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22815:grant-agnes",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-agnes",
+      "own": true,
+      "evidence": {
+       "start": 110,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:grant-agnes rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000420> ; rf:nameInSource \"Kaiserin Agnes\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000420"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "dem Kloster",
+      "text": "dem Kloster in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22815:grant-agnes",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-agnes",
+      "own": true,
+      "evidence": {
+       "start": 110,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:grant-agnes rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000504:community> ; rf:nameInSource \"dem Kloster\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000504:community"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Hof Besigheim ( Basincheim)",
+      "text": "betrifft Hof Besigheim ( Basincheim)",
+      "triple": [
+       "urn:regesta:22815:grant-agnes",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22815:thing-hof-besigheim"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-agnes",
+      "own": true,
+      "evidence": {
+       "start": 110,
+       "end": 187,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22815:> .\nx:grant-agnes rf:concerns x:thing-hof-besigheim .\nx:thing-hof-besigheim a crm:E18_Physical_Thing ;\n    rdfs:label \"Hof Besigheim ( Basincheim)\" .",
+      "object": "urn:regesta:22815:thing-hof-besigheim",
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "einst",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22815:grant-agnes",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 162,
+       "end": 167,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Kaiserin Agnes"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "dem Kloster"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Hof Besigheim ( Basincheim)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 56
+   },
+   {
+    "id": "donation-bertha",
+    "start": 25,
+    "end": 254
+   },
+   {
+    "id": "grant-agnes",
+    "start": 110,
+    "end": 187
+   },
+   {
+    "id": "t2",
+    "start": 162,
+    "end": 167
+   },
+   {
+    "id": "t1",
+    "start": 225,
+    "end": 240
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No role for the intermediary hand of a donation ('durch ihn und den Klostervogt'); the king is recorded as rv:Participant and the Vogt as rv:Representative.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The office 'Klostervogt' of Hugo is kept only in nameInSource; no separate office or advocacy state factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "'Konrad, der Bruder des Königs' stands in the witness list (Z.:) and was skipped per guidelines, although it states a kinship relation.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The confirmation names no recipient in the regest; only the grantor is referenced.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for an intermediary through whose hand a donation is made (Salmann-type agency).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22815:donation-bertha",
+     "description": "The regest coordinates Friedrich and the Klostervogt as the joint means of the donation ('durch ihn und den Klostervogt'), yet Friedrich receives rv:Participant and Hugo rv:Representative. The asymmetric roles impose a distinction the passage does not draw.",
+     "proposal": "Give both references the same role (rv:Representative, or rv:Participant for both) and report the missing intermediary role as a model gap.",
+     "quote": {
+      "start": 57,
+      "end": 109
+     }
+    },
+    {
+     "category": "omitted-state",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-H001317",
+     "description": "Hugo is called 'Klostervogt'; an rv:OfficeHolding state (or rv:RightHolding of rv:Advocacy over the monastery) could be recorded, since his office explains his role in the act.",
+     "proposal": "Optionally add a StateFactoid rv:OfficeHolding with Hugo as rv:Officeholder and the qualifier 'Klostervogt'.",
+     "quote": {
+      "start": 75,
+      "end": 109
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "Friedrich carries rv:Participant and Hugo rv:Representative although the passage coordinates them ('durch ihn und den Klostervogt').",
+     "reason": "Hugo is named by the office 'Klostervogt', which grounds his acting for the monastery, so rv:Representative is supported; the passage gives the king no such capacity, and rv:Participant is the contract's safe role for him. The missing intermediary role for a donation made 'durch' someone is a model gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add an rv:OfficeHolding state for Hugo as 'Klostervogt'.",
+     "reason": "rv:OfficeHolding is defined for an office named 'wo das für die Aussage nötig ist'; the office is already carried by the actor label and the Representative role, and the regest states no separate claim about the office.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Rekognoszent ist, wie in DF. I. 127, der spätere Protonotar Heinrich. - Diese Übertragung der Reichsabtei könnte mit dem Niedergang Ersteins zusammenhängen, aber auch ein Zugeständnis an den Markgrafen im Hinblick auf dessen Teilnahme an dem geplanten Romzug sein. Da die Staufer im Elsaß über ein ausgedehntes Hausgut verfügten, waren sie hier vielleicht auch nicht so stark auf das Reichsgut angewiesen; vgl. Scheffer-Boichorst, Erstein (Zur Geschichte des 12. und 13. Jh. = Hist. Stud. 8, 1897) 359 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Stuttgart (A). Drucke: Wirtembergisches UB. 2, 76 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 345; MG. DF. I. 65. Reg.: Fester, Reg. der Markgr. v. Baden 1, 10 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 103; Stumpf 3677. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze ("
+    },
+    {
+     "t": "2018",
+     "href": "http://opac.regesta-imperii.de/id/3015692"
+    },
+    {
+     "t": ")"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Zum "
+    },
+    {
+     "t": "DF.I.",
+     "href": "http://opac.regesta-imperii.de/id/47488"
+    },
+    {
+     "t": " 65 für Äbtissin Bertha von Erstein betreffs der Übertragung von Besigheim an Markgraf Hermann von Baden vgl. jetzt auch Schwarzmaier, Besigheim zwischen König und Markgraf, worauf Dieter Rübsamen am 22.9.2015 in einem Nachtrag aufmerksam gemacht hat."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=69"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/1875"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_65"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in WUB-Online",
+     "href": "http://www.wubonline.de/?wub=553"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-65"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000420",
+    "Kaiserin (Gemahlin Kaiser Heinrichs III.)"
+   ],
+   [
+    "RI004-002-A000955",
+    "Vogt von Straßburg"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000692",
+    "Äbtissin von Erstein"
+   ],
+   [
+    "RI004-002-B000735",
+    "Graf von Neuenburg"
+   ],
+   [
+    "RI004-002-B000849",
+    "Hof"
+   ],
+   [
+    "RI004-002-B001563",
+    "Bischof von Straßburg"
+   ],
+   [
+    "RI004-002-E000291",
+    "Elsaß, Elsass"
+   ],
+   [
+    "RI004-002-E000504",
+    "Erstein (am Rhein, südl. Straßburg, Dép. Bas-Rhin), (Benediktinerinnen-)Abtei"
+   ],
+   [
+    "RI004-002-H000339",
+    "II., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-H000843",
+    "(III.), Markgraf von Baden und Verona (gest. 1160)"
+   ],
+   [
+    "RI004-002-H001317",
+    "Graf von Dagsburg/Elsass, auch Graf von Metz und im Moselgau"
+   ],
+   [
+    "RI004-002-K000399",
+    "Pfalzgraf bei Rhein, Halbbruder Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000851",
+    "Graf von Württemberg"
+   ],
+   [
+    "RI004-002-R000909",
+    "Romzug, Krönungszug"
+   ],
+   [
+    "RI004-002-S000652",
+    "Graf von Frankenburg"
+   ],
+   [
+    "RI004-002-T000624",
+    "Grafen"
+   ],
+   [
+    "RI004-002-W000326",
+    "Graf vom Elsass, von Habsburg"
+   ]
+  ]
+ }
+}

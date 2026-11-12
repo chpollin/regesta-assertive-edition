@@ -1,0 +1,1613 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-10-24_1_0_4_2_1_143_143",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22770",
+  "identifier": "RI IV,2,1 n. 143",
+  "short": "RI IV,2,1 n. 143",
+  "sort": "004_002_001_000143_0000000143",
+  "start": "1152-10-24",
+  "end": "1152-10-24",
+  "proseYears": [],
+  "lead": "Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten Abt Adalbert von Ellwangen mit seinem Kloster (abbatia ...",
+  "date": [
+   {
+    "t": "1152 Oktober 24"
+   }
+  ],
+  "place": [
+   {
+    "t": "Würzburg"
+   }
+  ],
+  "text": "Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten Abt Adalbert von Ellwangen mit seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata) in seinen Schutz, bestätigt ihm den Besitzstand und trifft folgende Bestimmungen über die Vogtei: Der Vogt darf nur dreimal im Jahr mit zwölf Berittenen im Kloster Gericht halten und dabei seine Einkünfte (suum servitium videlicet duas victimas cum suis appenditiis) empfangen, darüber hinaus darf er nur auf Wunsch des Abtes tätig werden. Schließlich überträgt der König dem Kloster das Recht der Abteien Fulda und Reichenau und verbrieft ihm den Bannforst Virgunda in den angegebenen Grenzen. Z.: die Bischöfe Gebhard von Würzburg, Eberhard von Bamberg, Gunther von Speyer, die Herzoge Welf, Heinrich von Sachsen, die Markgrafen Otakar von Steier, Albrecht (der Bär) von Sachsen. - Arnoldus canc. vice Henrici Maguntini archiep. et archicanc. ; nach DO. III. 38 (VU. I) und DDH. II. 53 und 505 (VU. II) verfaßt und geschrieben von A II. C; SI. D. Quotiens illud .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 7,
+  "blocks": [
+   {
+    "node": "urn:regesta:22770:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22770:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 229,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22770:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten Abt Adalbert von Ellwangen mit seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata) in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22770:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seines Kanzlers Arnold",
+      "text": "seines Kanzlers Arnold in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22770:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:nameInSource \"seines Kanzlers Arnold\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001203"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "anderer Fürsten",
+      "text": "anderer Fürsten in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22770:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22770:local:andere-fuersten> ; rf:nameInSource \"anderer Fürsten\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:22770:local:andere-fuersten"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Adalbert von Ellwangen",
+      "text": "Abt Adalbert von Ellwangen in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22770:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000100> ; rf:nameInSource \"Abt Adalbert von Ellwangen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000100"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata)",
+      "text": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22770:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 229,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22770:local:kloster-ellwangen> ; rf:nameInSource \"seinem Kloster\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22770:local:kloster-ellwangen"
+      ],
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "seines Kanzlers Arnold"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "anderer Fürsten"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Abt Adalbert von Ellwangen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22770:confirmation-besitzstand",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22770:confirmation-besitzstand",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-besitzstand",
+     "own": true,
+     "evidence": {
+      "start": 231,
+      "end": 260,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22770:> .\nx:confirmation-besitzstand a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihm den Besitzstand\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22770:confirmation-besitzstand",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-besitzstand",
+      "own": true,
+      "evidence": {
+       "start": 231,
+       "end": 260,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:confirmation-besitzstand rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Adalbert von Ellwangen",
+      "text": "Abt Adalbert von Ellwangen in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22770:confirmation-besitzstand",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-besitzstand",
+      "own": true,
+      "evidence": {
+       "start": 231,
+       "end": 260,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:confirmation-besitzstand rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000100> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000100"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Besitzstand",
+      "text": "betrifft Besitzstand",
+      "triple": [
+       "urn:regesta:22770:confirmation-besitzstand",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22770:besitzstand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-besitzstand",
+      "own": true,
+      "evidence": {
+       "start": 231,
+       "end": 260,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:confirmation-besitzstand rf:concerns x:besitzstand .\nx:besitzstand a crm:E18_Physical_Thing ;\n    rdfs:label \"Besitzstand\" .",
+      "object": "urn:regesta:22770:besitzstand",
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Abt Adalbert von Ellwangen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Besitzstand"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22770:enactment-vogtei",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22770:enactment-vogtei",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "enactment-vogtei",
+     "own": true,
+     "evidence": {
+      "start": 265,
+      "end": 309,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22770:> .\nx:enactment-vogtei a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"trifft folgende Bestimmungen über die Vogtei\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22770:enactment-vogtei",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-vogtei",
+      "own": true,
+      "evidence": {
+       "start": 265,
+       "end": 309,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:enactment-vogtei rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vogtei)",
+      "text": "betrifft Vogtei (Vogtei)",
+      "triple": [
+       "urn:regesta:22770:enactment-vogtei",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22770:vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-vogtei",
+      "own": true,
+      "evidence": {
+       "start": 265,
+       "end": 309,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:enactment-vogtei rf:concerns x:vogtei .\nx:vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vogtei\" .",
+      "object": "urn:regesta:22770:vogtei",
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Vogtei (Vogtei)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22770:provision-gericht",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22770:provision-gericht",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "provision-gericht",
+     "own": true,
+     "evidence": {
+      "start": 311,
+      "end": 489,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-gericht a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Der Vogt darf nur dreimal im Jahr mit zwölf Berittenen im Kloster Gericht halten und dabei seine Einkünfte (suum servitium videlicet duas victimas cum suis appenditiis) empfangen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Der Vogt",
+      "text": "Der Vogt in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22770:provision-gericht",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-gericht",
+      "own": true,
+      "evidence": {
+       "start": 311,
+       "end": 489,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-gericht rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22770:local:vogt> ; rf:nameInSource \"Der Vogt\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:22770:local:vogt"
+      ],
+      "key": "k15",
+      "agentNotes": [
+       {
+        "text": "'Der Vogt' is modelled as a regest-local rf:FunctionalActor; the packet candidate RI004-002-E000288 (Ellwangen Kloster // Vogt) was not used because the passage names no individual holder.",
+        "lang": "en"
+       },
+       {
+        "text": "'des Abtes' in the Vogt provision is a functional actor; whether it means Abt Adalbert is not stated.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (seine Einkünfte (suum servitium videlicet duas victimas cum suis appenditiis))",
+      "text": "betrifft Einkünfterecht (seine Einkünfte (suum servitium videlicet duas victimas cum suis appenditiis))",
+      "triple": [
+       "urn:regesta:22770:provision-gericht",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22770:einkuenfte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-gericht",
+      "own": true,
+      "evidence": {
+       "start": 311,
+       "end": 489,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-gericht rf:concerns x:einkuenfte .\nx:einkuenfte a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"seine Einkünfte (suum servitium videlicet duas victimas cum suis appenditiis)\" .",
+      "object": "urn:regesta:22770:einkuenfte",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (im Kloster Gericht halten)",
+      "text": "betrifft Gerichtsbarkeit (im Kloster Gericht halten)",
+      "triple": [
+       "urn:regesta:22770:provision-gericht",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22770:gericht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-gericht",
+      "own": true,
+      "evidence": {
+       "start": 311,
+       "end": 489,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-gericht rf:concerns x:gericht .\nx:gericht a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"im Kloster Gericht halten\" .",
+      "object": "urn:regesta:22770:gericht",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22770:provision-gericht",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22770:enactment-vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-gericht",
+      "own": true,
+      "evidence": {
+       "start": 311,
+       "end": 489,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-gericht rf:partOf x:enactment-vogtei .\nx:enactment-vogtei a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:concerns x:vogtei ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"trifft folgende Bestimmungen über die Vogtei\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22770:enactment-vogtei",
+      "objectClaim": "enactment-vogtei",
+      "key": "k18"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "duas victimas cum suis appenditiis",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22770:provision-gericht",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 444,
+       "end": 478,
+       "ambiguous": false
+      },
+      "key": "k19"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nur dreimal im Jahr mit zwölf Berittenen",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22770:provision-gericht",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 325,
+       "end": 365,
+       "ambiguous": false
+      },
+      "key": "k20"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Der Vogt"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Einkünfterecht (seine Einkünfte (suum servitium videlicet duas victimas cum suis appenditiis))"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Gerichtsbarkeit (im Kloster Gericht halten)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22770:provision-taetigkeit",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22770:provision-taetigkeit",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "provision-taetigkeit",
+     "own": true,
+     "evidence": {
+      "start": 491,
+      "end": 551,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-taetigkeit a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"darüber hinaus darf er nur auf Wunsch des Abtes tätig werden\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k21"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Der Vogt",
+      "text": "Der Vogt in der Rolle Verpflichteter",
+      "triple": [
+       "urn:regesta:22770:provision-taetigkeit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-taetigkeit",
+      "own": true,
+      "evidence": {
+       "start": 491,
+       "end": 551,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-taetigkeit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22770:local:vogt> ; rf:nameInSource \"er\" ; rf:role rv:Obligor ] .",
+      "role": "Verpflichteter",
+      "actors": [
+       "urn:regesta:actor:22770:local:vogt"
+      ],
+      "key": "k22",
+      "agentNotes": [
+       {
+        "text": "'Der Vogt' is modelled as a regest-local rf:FunctionalActor; the packet candidate RI004-002-E000288 (Ellwangen Kloster // Vogt) was not used because the passage names no individual holder.",
+        "lang": "en"
+       },
+       {
+        "text": "'des Abtes' in the Vogt provision is a functional actor; whether it means Abt Adalbert is not stated.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Abtes",
+      "text": "des Abtes in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22770:provision-taetigkeit",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-taetigkeit",
+      "own": true,
+      "evidence": {
+       "start": 491,
+       "end": 551,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-taetigkeit rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22770:local:abt> ; rf:nameInSource \"des Abtes\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22770:local:abt"
+      ],
+      "key": "k23",
+      "agentNotes": [
+       {
+        "text": "'des Abtes' in the Vogt provision is a functional actor; whether it means Abt Adalbert is not stated.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vogtei)",
+      "text": "betrifft Vogtei (Vogtei)",
+      "triple": [
+       "urn:regesta:22770:provision-taetigkeit",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22770:vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-taetigkeit",
+      "own": true,
+      "evidence": {
+       "start": 491,
+       "end": 551,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-taetigkeit rf:concerns x:vogtei .\nx:vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vogtei\" .",
+      "object": "urn:regesta:22770:vogtei",
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22770:provision-taetigkeit",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22770:enactment-vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-taetigkeit",
+      "own": true,
+      "evidence": {
+       "start": 491,
+       "end": 551,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:provision-taetigkeit rf:partOf x:enactment-vogtei .\nx:enactment-vogtei a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:concerns x:vogtei ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"trifft folgende Bestimmungen über die Vogtei\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22770:enactment-vogtei",
+      "objectClaim": "enactment-vogtei",
+      "key": "k25"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "nur auf Wunsch des Abtes",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22770:provision-taetigkeit",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 514,
+       "end": 538,
+       "ambiguous": false
+      },
+      "key": "k26"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Verpflichteter ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Der Vogt"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "des Abtes"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Vogtei (Vogtei)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22770:grant-recht-fulda-reichenau",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22770:grant-recht-fulda-reichenau",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-recht-fulda-reichenau",
+     "own": true,
+     "evidence": {
+      "start": 565,
+      "end": 638,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22770:> .\nx:grant-recht-fulda-reichenau a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"überträgt der König dem Kloster das Recht der Abteien Fulda und Reichenau\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k27"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22770:grant-recht-fulda-reichenau",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-recht-fulda-reichenau",
+      "own": true,
+      "evidence": {
+       "start": 565,
+       "end": 638,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:grant-recht-fulda-reichenau rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"der König\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata)",
+      "text": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22770:grant-recht-fulda-reichenau",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-recht-fulda-reichenau",
+      "own": true,
+      "evidence": {
+       "start": 565,
+       "end": 638,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:grant-recht-fulda-reichenau rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22770:local:kloster-ellwangen> ; rf:nameInSource \"dem Kloster\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22770:local:kloster-ellwangen"
+      ],
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (das Recht der Abteien Fulda und Reichenau)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (das Recht der Abteien Fulda und Reichenau)",
+      "triple": [
+       "urn:regesta:22770:grant-recht-fulda-reichenau",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22770:recht-fulda-reichenau"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-recht-fulda-reichenau",
+      "own": true,
+      "evidence": {
+       "start": 565,
+       "end": 638,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:grant-recht-fulda-reichenau rf:concerns x:recht-fulda-reichenau .\nx:recht-fulda-reichenau a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"das Recht der Abteien Fulda und Reichenau\" .",
+      "object": "urn:regesta:22770:recht-fulda-reichenau",
+      "key": "k30"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (das Recht der Abteien Fulda und Reichenau)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22770:grant-bannforst",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22770:grant-bannforst",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-bannforst",
+     "own": true,
+     "evidence": {
+      "start": 643,
+      "end": 706,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22770:> .\nx:grant-bannforst a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22770> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"verbrieft ihm den Bannforst Virgunda in den angegebenen Grenzen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k31"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata)",
+      "text": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22770:grant-bannforst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-bannforst",
+      "own": true,
+      "evidence": {
+       "start": 643,
+       "end": 706,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:grant-bannforst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22770:local:kloster-ellwangen> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22770:local:kloster-ellwangen"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22770:grant-bannforst",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-bannforst",
+      "own": true,
+      "evidence": {
+       "start": 643,
+       "end": 706,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:grant-bannforst rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"der König\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k33"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Bannforst Virgunda",
+      "text": "betrifft Bannforst Virgunda",
+      "triple": [
+       "urn:regesta:22770:grant-bannforst",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22770:bannforst-virgunda"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-bannforst",
+      "own": true,
+      "evidence": {
+       "start": 643,
+       "end": 706,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22770:> .\nx:grant-bannforst rf:concerns x:bannforst-virgunda .\nx:bannforst-virgunda a crm:E18_Physical_Thing ;\n    rdfs:label \"Bannforst Virgunda\" .",
+      "object": "urn:regesta:22770:bannforst-virgunda",
+      "key": "k34"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "in den angegebenen Grenzen",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22770:grant-bannforst",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 680,
+       "end": 706,
+       "ambiguous": false
+      },
+      "key": "k35"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "verbrieft",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22770:grant-bannforst",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 643,
+       "end": 652,
+       "ambiguous": false
+      },
+      "key": "k36"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "seinem Kloster (abbatia ... Elwanc nominata in honore sanctorum martirum Viti, Sulpitii et Seruiliani dedicata)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Bannforst Virgunda"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 229
+   },
+   {
+    "id": "confirmation-besitzstand",
+    "start": 231,
+    "end": 260
+   },
+   {
+    "id": "enactment-vogtei",
+    "start": 265,
+    "end": 309
+   },
+   {
+    "id": "provision-gericht",
+    "start": 311,
+    "end": 489
+   },
+   {
+    "id": "t2",
+    "start": 325,
+    "end": 365
+   },
+   {
+    "id": "t1",
+    "start": 444,
+    "end": 478
+   },
+   {
+    "id": "provision-taetigkeit",
+    "start": 491,
+    "end": 551
+   },
+   {
+    "id": "t3",
+    "start": 514,
+    "end": 538
+   },
+   {
+    "id": "grant-recht-fulda-reichenau",
+    "start": 565,
+    "end": 638
+   },
+   {
+    "id": "grant-bannforst",
+    "start": 643,
+    "end": 706
+   },
+   {
+    "id": "t5",
+    "start": 643,
+    "end": 652
+   },
+   {
+    "id": "t4",
+    "start": 680,
+    "end": 706
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "The monastery of Ellwangen has no candidate of its own and is a regest-local group.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "'das Recht der Abteien Fulda und Reichenau' is a privileged status by reference to other abbeys; no right type fits, typed with the top concept rv:ChurchRights, and the reference abbeys (candidates RI004-002-F000805, RI004-002-R000396) cannot be linked as a standard of comparison.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the actor whose wish conditions an act (Abt in 'nur auf Wunsch des Abtes'); recorded as rv:Participant plus rf:condition.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Vogt's restricted court-holding and revenue are an enactment that limits a right; role rv:Obligor is an approximation, there is no role for the holder of a regulated right in an enactment.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "'verbrieft' (Bannforst Virgunda) is ambiguous between grant and confirmation; recorded as rv:Grant with qualifier 'verbrieft'. No right type for forest ban; the Bannforst is modelled as a thing.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to express a right defined as the status of another institution (Recht der Abteien Fulda und Reichenau).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "act-type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22770:grant-bannforst",
+     "description": "\"verbrieft\" can mean confirmation by charter as well as grant; typing it as rv:Grant is a reading, which the qualifier \"verbrieft\" keeps visible.",
+     "proposal": "Keep, and record the reading in the batch report.",
+     "quote": {
+      "start": 643,
+      "end": 706
+     }
+    },
+    {
+     "category": "actor-identification",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:22770:local:vogt",
+     "description": "The packet holds a candidate for the Vogt of Ellwangen (RI004-002-E000288); a local functional actor is defensible because the provision addresses the respective advocate, but the choice should be reported.",
+     "proposal": "Report the choice between the register candidate and the functional actor as unresolved identity.",
+     "quote": {
+      "start": 311,
+      "end": 391
+     }
+    },
+    {
+     "category": "concerns",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22770:grant-recht-fulda-reichenau",
+     "description": "The right is defined by reference to the abbeys of Fulda and Reichenau, which are not linked; the right's content is otherwise unstated.",
+     "proposal": "Optionally add rf:concerns to place nodes for Fulda and Reichenau.",
+     "quote": {
+      "start": 597,
+      "end": 638
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "'verbrieft' may mean confirmation as well as grant.",
+     "reason": "rv:Grant is a defensible reading of 'verbrieft ihm den Bannforst Virgunda', and rf:qualifier \"verbrieft\" keeps the ambiguity visible.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The packet holds a candidate for the Vogt of Ellwangen (E000288); the functional actor should be reported.",
+     "reason": "'Der Vogt darf nur dreimal im Jahr ...' regulates the respective office holder, which the guidelines model as rf:FunctionalActor; the register entry names the office without an individual, so no identification is required.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add rf:concerns to place nodes for Fulda and Reichenau.",
+     "reason": "The act of 'überträgt der König dem Kloster das Recht der Abteien Fulda und Reichenau' concerns the right, which is already a node with the exact wording; the abbeys are not themselves the object.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Dem Diktat von A II. C sind Anklänge an das Formular der Papsturkunde (Verleihung des königlichen Schutzes) zuzuschreiben, woraus sich auch Übereinstimmungen mit dem Wortlaut des Privilegs Eugens III. von 1153 Februar 19 (JL. 9706; Germ. pont. 2/1, 109 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 2) erklären; die Verfügungen über die Vogtei waren Vorlage für die Interpolation in DO. III. 38. - Zur Frage des Forstes Virgunda vgl. die bei Fik, Geschichte (Ellwangen 764-1964 Bd. 1) 127 angegebene Literatur, besonders Rettenmeier, Grenzen des Ellwanger Bannforsts, Ellwanger Jb. 15 (1950-53) 79 ff. und die Karte a. a. O. 77."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Stuttgart (A). Drucke: Wirtemberg. UB. 2, 65 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 340; MG. DF. I. 35. Reg.: Stumpf 3651."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=51"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/1889"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_35"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in WUB-Online",
+     "href": "http://www.wubonline.de/?wub=546"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-35"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000100",
+    "Abt von Ellwangen"
+   ],
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-E000288",
+    "Vogt"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-F000805",
+    "Fulda (am gleichnamigen Fluss, Ldkr. Fulda, Osthessen), Benediktinerkloster, Hospital, Propstei"
+   ],
+   [
+    "RI004-002-G000209",
+    "Bischof von Würzburg"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000339",
+    "II., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000394",
+    "(III.), König und Kaiser"
+   ],
+   [
+    "RI004-002-R000396",
+    "Reichenau (Insel im Bodensee, Ldkr. Konstanz, Bad.-Württ.), Benediktinerkloster"
+   ],
+   [
+    "RI004-002-V000465",
+    " <i>Virgunda</i> (Waldgebiet im Raum von Ellwangen, nördl. von Aalen, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

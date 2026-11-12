@@ -1,0 +1,155 @@
+/* Design tokens. The only file with raw colour values; components consume var() only.
+   Since 2026-11-11 the edition is light only, after the operator rejected the tinted grounds
+   and red as lead colour (verbatim in knowledge/ui-feedback.md): white ground, near-black
+   text, neutral greys, one accent #0097A7 as in his slide scheme. Text reaches at least 7:1
+   against white and against the sidebar grey; the accent itself (3.5:1) marks graphics and
+   selection only, text in the accent colour uses the darker --accent-text. */
+@layer reset, base, tokens, layout, components, utilities;
+
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Junicode";
+  src: url("../fonts/Junicode-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-500.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-600.woff2") format("woff2");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../fonts/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+
+    --font-source: "Junicode", "Iowan Old Style", Georgia, serif;
+    --font-ui: "Instrument Sans", system-ui, sans-serif;
+    --font-code: "Space Mono", ui-monospace, "Cascadia Mono", monospace;
+
+    /* Ground, text and lines. Contrast against white: text 17.4:1, muted 8.9:1. */
+    --stage: #ffffff;
+    --side: #f6f6f6;
+    --text: #1a1a1a;
+    --muted: #4a4a4a;
+    --hairline: #dcdcdc;
+    /* Informative lines of the graphs, 3.4:1 against white. */
+    --edge: #8c8c8c;
+
+    /* The one accent. Graphics and selection in #0097A7; text in the accent hue uses the
+       darker value, 7.7:1 against white and 7.2:1 against the sidebar grey. */
+    --accent: #0097a7;
+    --accent-text: #005c64;
+    --accent-faint: #e3f4f6;
+
+    /* Older role names, kept so the views need no second set of rules: the source text lies
+       on a neutral ground, what a machine wrote and every pointing or deciding mark take the
+       accent. No red anywhere. */
+    --paper: #f6f6f6;
+    --paper-ink: #1a1a1a;
+    --paper-muted: #4a4a4a;
+    --machine: var(--accent-text);
+    --machine-faint: var(--accent);
+    --pen: var(--accent-text);
+    --pen-on-paper: var(--accent-text);
+
+    /* A missing basis: a dark amber, always with a word. */
+    --warn: #6b4a00;
+    --focus: #005c64;
+
+    /* Regesta per year of the whole delivery, a quiet ground behind the time band. */
+    --bars: #d2d2d2;
+
+    /* The base map of the itinerary, quieter than every data mark. */
+    --map-coast: #c6cdd1;
+    --map-river: #d6dde0;
+
+    --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+    --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+    --step-1: clamp(1.125rem, 1.07rem + 0.3vw, 1.3125rem);
+    --step-2: clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2.25rem;
+    --space-7: 3.5rem;
+
+    --measure: 62ch;
+    --radius: 2px;
+    --header-height: 3rem;
+    --aside-width: 21rem;
+    --detail-width: 26rem;
+  }
+  /* The second data layer (statements extracted by LLM-based agents) and the weight of the
+     marks. By default the layer takes the accent. */
+  :root {
+    --layer2: var(--accent);
+    --dot-r: 2.2px;
+    --label-weight: 400;
+  }
+
+  /* Two warmer versions for the operator's choice, reached as ?farbe=w1 or ?farbe=w2, after
+     his remark that the light design felt cold (2026-11-11, ui-feedback.md). The ground stays
+     white and untinted; warmth comes from the greys, the sidebar and the lines; the second
+     layer gets a muted colour of its own. Deliberate shortcut for the comparison: the chosen
+     version replaces the default values above and the parameter goes. */
+  :root[data-palette="w1"] {
+    --side: #f7f5f1;
+    --text: #22201c;
+    --muted: #4d4741;
+    --hairline: #e0dad1;
+    --edge: #8f877c;
+    --bars: #d8d1c6;
+    --map-coast: #cfc8bc;
+    --map-river: #ddd6cb;
+    --layer2: #9c7a2e;
+    --dot-r: 2.5px;
+    --label-weight: 500;
+  }
+  :root[data-palette="w2"] {
+    --side: #f3efe8;
+    --text: #1f1c18;
+    --muted: #4d4741;
+    --hairline: #d9d2c7;
+    --edge: #857b6d;
+    --bars: #cfc6b8;
+    --map-coast: #c7bfb2;
+    --map-river: #d8d0c4;
+    --layer2: #4b4f86;
+    --dot-r: 2.7px;
+    --label-weight: 500;
+  }
+}

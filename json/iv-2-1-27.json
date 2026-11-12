@@ -1,0 +1,711 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-04-20_1_0_4_2_1_27_27",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22654",
+  "identifier": "RI IV,2,1 n. 27",
+  "short": "RI IV,2,1 n. 27",
+  "sort": "004_002_001_000027_0000000027",
+  "start": "1147-04-20",
+  "end": "1147-04-20",
+  "proseYears": [],
+  "lead": "König Konrad III. unterstellt die genannten Bamberger Ministerialien , die ihm von Bischof Eberhard (II.) wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck übergeben worden sind, dem Schutz Herzog Friedrichs von Schwaben (in manus Friderici ducis Suevię non in ius advocatię sed in graciam tuitionis et protectionis commisit ).",
+  "date": [
+   {
+    "t": "1147 (wohl April 20)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Bamberg)"
+   }
+  ],
+  "text": "König Konrad III. unterstellt die genannten Bamberger Ministerialien , die ihm von Bischof Eberhard (II.) wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck übergeben worden sind, dem Schutz Herzog Friedrichs von Schwaben (in manus Friderici ducis Suevię non in ius advocatię sed in graciam tuitionis et protectionis commisit ).",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22654:schutzunterstellung",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22654:schutzunterstellung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "schutzunterstellung",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 68,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22654:> .\nx:schutzunterstellung a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22654> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"König Konrad III. unterstellt die genannten Bamberger Ministerialien\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22654:schutzunterstellung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutzunterstellung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 68,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:schutzunterstellung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrad III.\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bamberger Ministerialien",
+      "text": "Bamberger Ministerialien in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22654:schutzunterstellung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutzunterstellung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 68,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:schutzunterstellung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000133:community> ; rf:nameInSource \"Bamberger Ministerialien\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000133:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrichs von Schwaben",
+      "text": "Herzog Friedrichs von Schwaben in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22654:schutzunterstellung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutzunterstellung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 68,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:schutzunterstellung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Herzog Friedrichs von Schwaben\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Schutzrecht (in graciam tuitionis et protectionis)",
+      "text": "betrifft Schutzrecht (in graciam tuitionis et protectionis)",
+      "triple": [
+       "urn:regesta:22654:schutzunterstellung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22654:right-schutz"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutzunterstellung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 68,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:schutzunterstellung rf:concerns x:right-schutz .\nx:right-schutz a crm:E30_Right ;\n    crm:P2_has_type rv:Protection ;\n    rdfs:label \"in graciam tuitionis et protectionis\" .",
+      "object": "urn:regesta:22654:right-schutz",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22654:schutzunterstellung",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22654:uebergabe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutzunterstellung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 68,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:schutzunterstellung rf:refersToAct x:uebergabe .\nx:uebergabe a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-7> ;\n    rf:concerns <urn:regesta:actor:RI004-002-B000133:community> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die genannten Bamberger Ministerialien\" ] , [ a oa:TextQuoteSelector ; oa:exact \"die ihm von Bischof Eberhard (II.) wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck übergeben worden sind\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:ground \"wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"Bischof Eberhard (II.)\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22654> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22654:uebergabe",
+      "objectClaim": "uebergabe",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22654:schutzunterstellung",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schutzunterstellung-2",
+      "own": true,
+      "evidence": {
+       "start": 202,
+       "end": 347,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:schutzunterstellung rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Schutz Herzog Friedrichs von Schwaben (in manus Friderici ducis Suevię non in ius advocatię sed in graciam tuitionis et protectionis commisit\" ] .",
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Ausnahme",
+      "text": "non in ius advocatię",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22654:schutzunterstellung",
+       "https://example.org/regesta/factoid/exception",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 277,
+       "end": 297,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k7"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k7"
+      ],
+      "text": "König Konrad III."
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k3",
+       "k7"
+      ],
+      "text": "Bamberger Ministerialien"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k4",
+       "k7"
+      ],
+      "text": "Herzog Friedrichs von Schwaben"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5",
+       "k7"
+      ],
+      "text": "Schutzrecht (in graciam tuitionis et protectionis)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k6",
+       "k7"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22654:uebergabe",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22654:uebergabe",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "uebergabe",
+     "own": true,
+     "evidence": {
+      "start": 30,
+      "end": 68,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22654:> .\nx:uebergabe a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22654> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die genannten Bamberger Ministerialien\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22654:uebergabe",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabe",
+      "own": true,
+      "evidence": {
+       "start": 30,
+       "end": 68,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:uebergabe rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Eberhard (II.)",
+      "text": "Bischof Eberhard (II.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22654:uebergabe",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabe",
+      "own": true,
+      "evidence": {
+       "start": 30,
+       "end": 68,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:uebergabe rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"Bischof Eberhard (II.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Bamberger Ministerialien",
+      "text": "betrifft Bamberger Ministerialien",
+      "triple": [
+       "urn:regesta:22654:uebergabe",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-B000133:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabe",
+      "own": true,
+      "evidence": {
+       "start": 30,
+       "end": 68,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:uebergabe rf:concerns <urn:regesta:actor:RI004-002-B000133:community> .\n<urn:regesta:actor:RI004-002-B000133:community> a crm:E74_Group ;\n    rdfs:label \"Bamberger Ministerialien\" .",
+      "object": "urn:regesta:actor:RI004-002-B000133:community",
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22654:uebergabe",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebergabe-2",
+      "own": true,
+      "evidence": {
+       "start": 71,
+       "end": 200,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22654:> .\nx:uebergabe rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die ihm von Bischof Eberhard (II.) wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck übergeben worden sind\" ] .",
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22654:uebergabe",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 106,
+       "end": 178,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9",
+       "k13"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k11",
+       "k13"
+      ],
+      "text": "Bischof Eberhard (II.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k10",
+       "k13"
+      ],
+      "text": "König Konrad III."
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k12",
+       "k13"
+      ],
+      "text": "Bamberger Ministerialien"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "schutzunterstellung",
+    "start": 0,
+    "end": 68
+   },
+   {
+    "id": "uebergabe",
+    "start": 30,
+    "end": 68
+   },
+   {
+    "id": "uebergabe-2",
+    "start": 71,
+    "end": 200
+   },
+   {
+    "id": "t2",
+    "start": 106,
+    "end": 178
+   },
+   {
+    "id": "schutzunterstellung-2",
+    "start": 202,
+    "end": 347
+   },
+   {
+    "id": "t1",
+    "start": 277,
+    "end": 297
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Herzog Friedrichs von Schwaben is identified with the shared ruler IRI, but register candidate RI004-002-F000681 (Friedrich II., father of Barbarossa, register role p_komment) also matches by name and title. The choice rests on the edition context, not on the regest text; expert check needed.",
+     "lang": "en"
+    },
+    {
+     "text": "Konrad von Rietfeld (RI004-002-K000502) and Berengar von Albeck (RI004-002-B000529) appear only inside the rf:ground literal and carry no reference.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the party whose oppression (Bedrückung) is the ground of an act; Konrad von Rietfeld and Berengar von Albeck are therefore not referenced as actors.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the actor into whose protection a third party is committed; Herzog Friedrich is given rv:Recipient in the rv:ProtectionGrant, the ministerials rv:Beneficiary.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The handover of ministerials (persons) by the bishop to the king is typed rv:Grant with the ministerial group under rf:concerns; the model has no distinct type for committing persons into another's hands.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for oppression or violence that a reason clause reports, and no role for its perpetrators.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "rf:refersToAct is limited to confirmations and assurances; no relation for a consequent act building on an earlier one.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for handing over persons (Ministerialen) into another's power or protection distinct from a grant of property.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "actor-identification",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-F000471",
+     "description": "'Herzog Friedrichs von Schwaben' is identified with the shared ruler although candidate F000681 (Herzog von Schwaben, father of Barbarossa) also matches by name and title. The candidate carries only role p_komment, not nennung, which supports reading the summary's duke as the ruler; the extractor flagged the identification as a reading. Defensible, but it rests on the candidate role, not on the summary text.",
+     "proposal": "Keep; list as an unresolved identity for expert review (shared ruler versus F000681).",
+     "quote": {
+      "start": 202,
+      "end": 243
+     }
+    },
+    {
+     "category": "unreferenced-actors",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22654:uebergabe",
+     "description": "Konrad von Rietfeld (K000502) and Berengar von Albeck (B000529) are named in the summary and have matching candidates, but appear only inside the rf:ground literal, so the graph cannot find them. The oppression has no act type (rv:Dispute does not fit), and no role covers an oppressor in a reason clause.",
+     "proposal": "Optionally add references with rv:Participant to the handover factoid, or report the oppression as a model gap so the two actors are at least listed.",
+     "quote": {
+      "start": 106,
+      "end": 178
+     }
+    },
+    {
+     "category": "role-and-link-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22654:schutzunterstellung",
+     "description": "The protected Ministerialien are rv:Beneficiary and the duke rv:Recipient; this is a reasonable reading (the duke receives the charge, the Ministerialien benefit), but the Latin 'in manus ... commisit' makes the Ministerialien the object handed over. rf:refersToAct is defined for confirmations or assurances referring to an earlier act; here it links a consequent act to its precondition, a stretch of the property. Typing the bishop's handover of persons as rv:Grant (transfer of a right, possession or institution) is also an approximation.",
+     "proposal": "Keep for this run; consider a sequence relation distinct from rf:refersToAct and a commendation or handover type for persons in the next contract.",
+     "quote": {
+      "start": 71,
+      "end": 200
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "'Herzog Friedrichs von Schwaben' is identified with the shared ruler although candidate F000681 also matches by name and title.",
+     "reason": "F000681 is the father ('Herzog von Schwaben, Vater Friedrich Barbarossas') and carries only role p_komment in this packet, while the regest belongs to the Barbarossa regesta and the preceding record 22653 of the same series reports the son's succession in the duchy. The identification with the shared ruler is defensible; the file's comment already marks it as a reading, which the corrector keeps as an open identity.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Konrad von Rietfeld (K000502) and Berengar von Albeck (B000529) appear only inside the rf:ground literal and are not referenced.",
+     "reason": "'wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck' names them as the cause of the handover, not as parties to it. Adding them as rv:Participant to the handover factoid would assert participation in the bishop's transfer that the passage does not state. The oppression itself has no act type and its perpetrators no role; the ground literal keeps the exact wording.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Roles rv:Beneficiary for the Ministerialien and rv:Recipient for the duke, rf:refersToAct from the protection grant to the handover, and rv:Grant for a handover of persons are approximations.",
+     "reason": "The duke receives the charge ('in manus Friderici ducis Suevię ... commisit') and the Ministerialien are those placed under protection, so Recipient and Beneficiary read the passage correctly. rf:refersToAct is defined for 'a later act such as a confirmation or assurance' that refers to an earlier act of the same regest; 'die genannten Bamberger Ministerialien, die ihm ... übergeben worden sind' is such a reference, and no date is asserted. rv:Grant is the nearest available type for the handover; a person-handover type is a gap for the next version, not a correction.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Über die Datierung der Bischofsurkunde vgl. Bernhardi, Konrad III. 541 Anm. 11, der die Handlung des Dokuments allerdings a. a. O. 561 mit Anm. 64 zum Aufenthalt Konrads III. in Nürnberg gegen Ende April 1147 verlegt. Dagegen scheint die chronologische Einordnung durch Guttenberg, Bistum Bamberg 1 (Germania sacra 2/1, 1937) 143 zum Bamberger Aufenthalt des Königs zu Ostern 1147 ungleich wahrscheinlicher. - Maurer, Herzog von Schwaben 254 geht ebenfalls auf diese Urkunde ein, hält aber den genannten Herzog Friedrich irrig für Barbarossas Vater, vgl. dazu Opll, Rezension, Schweiz. Zs. f. Gesch. 29 (1979) 712."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt in der Urkunde Bischof Eberhards (II.) von Bamberg von 1147 (1152) Februar 4, Bamberg, Stumpf, Acta ined. 137 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 113; Stumpf 3531."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=18"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000111",
+    "Bamberg (an der Regnitz, bayer. Reg.-Bez. Oberfranken)"
+   ],
+   [
+    "RI004-002-B000133",
+    "Ministerialen"
+   ],
+   [
+    "RI004-002-B000529",
+    "von Albeck"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000502",
+    "von Rietfeld"
+   ],
+   [
+    "RI004-002-N000342",
+    "Nürnberg (an derr Pegnitz, bayer. Reg.-Bez. Mittelfranken)"
+   ]
+  ]
+ }
+}

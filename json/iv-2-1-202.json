@@ -1,0 +1,567 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-12-00_1_0_4_2_1_202_202",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22829",
+  "identifier": "RI IV,2,1 n. 202",
+  "short": "RI IV,2,1 n. 202",
+  "sort": "004_002_001_000202_0000000202",
+  "start": "1153-12-01",
+  "end": "1153-12-31",
+  "proseYears": [],
+  "lead": "Friedrich lädt die beiden Herzoge Heinrich (von Bayern ) und Heinrich (von Sachsen ) nach Speyer.",
+  "date": [
+   {
+    "t": "(1153) Dezember"
+   }
+  ],
+  "place": [
+   {
+    "t": "Speyer"
+   }
+  ],
+  "text": "Friedrich lädt die beiden Herzoge Heinrich (von Bayern ) und Heinrich (von Sachsen ) nach Speyer. Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein, wird die Angelegenheit, die der König wegen des Italienzuges beenden wollte, vertagt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22829:summons",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22829:summons",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "summons",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 96,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22829:> .\nx:summons a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22829> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich lädt die beiden Herzoge Heinrich (von Bayern ) und Heinrich (von Sachsen ) nach Speyer\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-50> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22829:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 96,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22829:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich (von Bayern )",
+      "text": "Heinrich (von Bayern ) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22829:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 96,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22829:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Heinrich (von Bayern )\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000498"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich (von Sachsen )",
+      "text": "Heinrich (von Sachsen ) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22829:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 96,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22829:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Heinrich (von Sachsen )\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "lädt",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22829:summons",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 10,
+       "end": 14,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schreiben"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressaten ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Heinrich (von Bayern )"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Heinrich (von Sachsen )"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22829:adjournment",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22829:adjournment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "adjournment",
+     "own": true,
+     "evidence": {
+      "start": 98,
+      "end": 276,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22829:> .\nx:adjournment a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22829> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein, wird die Angelegenheit, die der König wegen des Italienzuges beenden wollte, vertagt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich (von Bayern )",
+      "text": "Heinrich (von Bayern ) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22829:adjournment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "adjournment",
+      "own": true,
+      "evidence": {
+       "start": 98,
+       "end": 276,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22829:> .\nx:adjournment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Heinrich (von Bayern)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000498"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22829:adjournment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "adjournment",
+      "own": true,
+      "evidence": {
+       "start": 98,
+       "end": 276,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22829:> .\nx:adjournment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"der König\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schreiben",
+      "text": "bezieht sich auf Schreiben",
+      "triple": [
+       "urn:regesta:22829:adjournment",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22829:summons"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "adjournment",
+      "own": true,
+      "evidence": {
+       "start": 98,
+       "end": 276,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22829:> .\nx:adjournment rf:refersToAct x:summons .\nx:summons a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-50> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich lädt die beiden Herzoge Heinrich (von Bayern ) und Heinrich (von Sachsen ) nach Speyer\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:qualifier \"lädt\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Heinrich (von Sachsen )\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Heinrich (von Bayern )\" ; rf:role rv:Addressee ] ;\n    rf:source <urn:regesta:record:22829> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22829:summons",
+      "objectClaim": "summons",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22829:adjournment",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 98,
+       "end": 190,
+       "ambiguous": false
+      },
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "vertagt",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22829:adjournment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 269,
+       "end": 276,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Heinrich (von Bayern )"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "summons",
+    "start": 0,
+    "end": 96
+   },
+   {
+    "id": "t1",
+    "start": 10,
+    "end": 14
+   },
+   {
+    "id": "adjournment",
+    "start": 98,
+    "end": 276
+   },
+   {
+    "id": "t2",
+    "start": 98,
+    "end": 190
+   },
+   {
+    "id": "t3",
+    "start": 269,
+    "end": 276
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Heinrich (von Bayern ) identified with RI004-002-H000498 (Jasomirgott, 'vorher von Bayern'); candidate RI004-002-H000470 (der Löwe) also carries Bayern in its label, so the match rests on assigning H000470 to Heinrich (von Sachsen ) as the only candidate naming Sachsen",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a court summons; the Ladung is typed rv:Communication with qualifier 'lädt', and the summoner's role rv:Grantor is a stretch",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a procedural objection (Heinrich (von Bayern) excuses himself as not lawfully summoned) or for an adjournment ('vertagt'); both passages are left without factoid",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a court summons or for adjournment of a case.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added <urn:regesta:22829:adjournment> (rf:ActFactoid, rv:Dispute) with the selector 'Da sich Heinrich (von Bayern) ... vertagt', references H000498 (rv:Participant, \"Heinrich (von Bayern)\") and F000471 (rv:Participant, \"der König\"), rf:ground, rf:qualifier \"vertagt\", rf:refersToAct <urn:regesta:22829:summons>, rf:verificationStatus rv:unchecked. No reference to Heinrich (von Sachsen), no date.",
+     "lang": "en"
+    },
+    {
+     "text": "<urn:regesta:22829:summons> unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Fehler",
+     "subject": "urn:regesta:record:22829",
+     "description": "The legal core of the regest is missing: Heinrich (von Bayern) again objects that he was not lawfully summoned, and the matter is adjourned. This is a dispute procedure with a stated legal ground, and the contract can express it as rv:Dispute with both dukes as parties, the king as rv:Judge, rf:ground for the objection and rf:qualifier for \"abermals\" and \"vertagt\".",
+     "proposal": "Add an ActFactoid rv:Dispute with references H000498 (\"Heinrich (von Bayern)\", rv:Participant), H000470 (rv:Participant), Friedrich (\"der König\", rv:Judge), rf:ground \"nicht gesetzmäßig geladen zu sein\", rf:qualifier \"abermals\" and \"vertagt\"; link the summons to it with rf:partOf.",
+     "quote": {
+      "start": 98,
+      "end": 277
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22829:summons",
+     "description": "Friedrich as summoning authority carries rv:Grantor, defined for transfer, confirmation or enactment. A summons is closer to an order; rv:Grantor is the nearest available role.",
+     "proposal": "No change; record the absence of a summons type and summoner role as model gap.",
+     "quote": {
+      "start": 0,
+      "end": 33
+     }
+    },
+    {
+     "category": "identity",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-H000498",
+     "description": "Heinrich (von Bayern) is assigned H000498 (\"vorher von Bayern\"); the passage distinguishes him from Heinrich (von Sachsen), so the assignment is supported within the packet. Record 22823 left the same wording local.",
+     "proposal": "Harmonise with 22823.",
+     "quote": {
+      "start": 15,
+      "end": 84
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Heinrich (von Bayern)'s renewed objection that he was not lawfully summoned and the adjournment of the matter are missing.",
+     "reason": "'Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein, wird die Angelegenheit, die der König wegen des Italienzuges beenden wollte, vertagt' is the legal core of the regest and expressible as rv:Dispute, the run's type for court proceedings (adjudication g7, 22762). The proposed roles go too far: the sentence does not name Heinrich (von Sachsen) as party, and 'beenden wollte' states an intention, not a judging act, so the king gets rv:Participant rather than rv:Judge.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 207; Fichtenau-Dienst, UB. zur Gesch. der Babenberger 4/1, 132 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 777."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. II cap. 11, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 112."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=73"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000498",
+    "(Jasomirgott), Herzog von Österreich, vorher von Bayern"
+   ],
+   [
+    "RI004-002-I000220",
+    "Italienzug, Reichsheerfahrt (siehe auch: Romzug)"
+   ],
+   [
+    "RI004-002-S000967",
+    "Speyer (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,722 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-30_1_0_4_2_1_115_115",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22742",
+  "identifier": "RI IV,2,1 n. 115",
+  "short": "RI IV,2,1 n. 115",
+  "sort": "004_002_001_000115_0000000115",
+  "start": "1152-07-30",
+  "end": "1152-07-30",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Kloster Rüeggisberg (Rukeresperch) wie Konrad (III.) den Besitzstand und die rechtliche Unterordnung unter die Abtei Cluny.",
+  "date": [
+   {
+    "t": "1152 Juli 30"
+   }
+  ],
+  "place": [
+   {
+    "t": "Ulm"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Kloster Rüeggisberg (Rukeresperch) wie Konrad (III.) den Besitzstand und die rechtliche Unterordnung unter die Abtei Cluny. Z.: die Bischöfe Hermann von Konstanz, Ortlieb (Ortliabo) von Basel, Konrad von Worms, die Herzoge Welf, Berthold von Burgund, Markgraf Otakar von Steier, die Grafen Ulrich von Lenzburg, Werner von Baden, Markgraf Hermann von Breisgau (Priscowe). - Arnoldus canc. vice Henrici Maguntini archiep. et archicanc. ; nach DK. III. 176 (VU.) geschrieben von A II. C; SI. D. Si his, qui .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22742:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22742:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 146,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22742:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22742> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster Rüeggisberg (Rukeresperch) wie Konrad (III.) den Besitzstand und die rechtliche Unterordnung unter die Abtei Cluny\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22742:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Rüeggisberg (Rukeresperch)",
+      "text": "Kloster Rüeggisberg (Rukeresperch) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22742:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R001247:community> ; rf:nameInSource \"Kloster Rüeggisberg\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R001247:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abtei Cluny",
+      "text": "Abtei Cluny in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22742:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000772:community> ; rf:nameInSource \"Abtei Cluny\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000772:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Besitzstand",
+      "text": "betrifft Besitzstand",
+      "triple": [
+       "urn:regesta:22742:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22742:besitzstand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:confirmation rf:concerns x:besitzstand .\nx:besitzstand a crm:E18_Physical_Thing ;\n    rdfs:label \"Besitzstand\" .",
+      "object": "urn:regesta:22742:besitzstand",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestätigung",
+      "text": "bezieht sich auf Bestätigung",
+      "triple": [
+       "urn:regesta:22742:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22742:konrad-confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:confirmation rf:refersToAct x:konrad-confirmation .\nx:konrad-confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:concerns x:besitzstand ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster Rüeggisberg (Rukeresperch) wie Konrad (III.) den Besitzstand und die rechtliche Unterordnung unter die Abtei Cluny\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"die rechtliche Unterordnung unter die Abtei Cluny\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000772:community> ; rf:nameInSource \"Abtei Cluny\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad (III.)\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R001247:community> ; rf:nameInSource \"Kloster Rüeggisberg\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22742> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22742:konrad-confirmation",
+      "objectClaim": "konrad-confirmation",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "die rechtliche Unterordnung unter die Abtei Cluny",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22742:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 97,
+       "end": 146,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kloster Rüeggisberg (Rukeresperch)"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Abtei Cluny"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Besitzstand"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22742:konrad-confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22742:konrad-confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "konrad-confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 146,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22742:> .\nx:konrad-confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22742> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster Rüeggisberg (Rukeresperch) wie Konrad (III.) den Besitzstand und die rechtliche Unterordnung unter die Abtei Cluny\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Rüeggisberg (Rukeresperch)",
+      "text": "Kloster Rüeggisberg (Rukeresperch) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22742:konrad-confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "konrad-confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:konrad-confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R001247:community> ; rf:nameInSource \"Kloster Rüeggisberg\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R001247:community"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad (III.)",
+      "text": "Konrad (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22742:konrad-confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "konrad-confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:konrad-confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abtei Cluny",
+      "text": "Abtei Cluny in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22742:konrad-confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "konrad-confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:konrad-confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000772:community> ; rf:nameInSource \"Abtei Cluny\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000772:community"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Besitzstand",
+      "text": "betrifft Besitzstand",
+      "triple": [
+       "urn:regesta:22742:konrad-confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22742:besitzstand"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "konrad-confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 146,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22742:> .\nx:konrad-confirmation rf:concerns x:besitzstand .\nx:besitzstand a crm:E18_Physical_Thing ;\n    rdfs:label \"Besitzstand\" .",
+      "object": "urn:regesta:22742:besitzstand",
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "die rechtliche Unterordnung unter die Abtei Cluny",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22742:konrad-confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 97,
+       "end": 146,
+       "ambiguous": false
+      },
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Konrad (III.)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Kloster Rüeggisberg (Rukeresperch)"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Abtei Cluny"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Besitzstand"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 146
+   },
+   {
+    "id": "konrad-confirmation",
+    "start": 0,
+    "end": 146
+   },
+   {
+    "id": "t1",
+    "start": 97,
+    "end": 146
+   },
+   {
+    "id": "t2",
+    "start": 97,
+    "end": 146
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No state or right type for the legal subordination of a monastery under an abbey (rechtliche Unterordnung unter die Abtei Cluny); kept as rf:qualifier in exact wording with Cluny as Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Konrad (III.)'s earlier confirmation is inferred from 'wie Konrad (III.)' as a prior act of the same content; the regest does not state it as a separate act explicitly.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No state or right type for the subordination of a monastery under an abbey (Cluniac dependency); rv:ChurchRights is only an approximation.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "object-as-qualifier",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22742:confirmation",
+     "description": "The confirmation has two objects, the Besitzstand and the rechtliche Unterordnung unter die Abtei Cluny. Only the Besitzstand is a rf:concerns node; the subordination sits in rf:qualifier, which the ontology reserves for wording that qualifies type or time. A query over what was confirmed misses the subordination. The same applies to urn:regesta:22742:konrad-confirmation.",
+     "proposal": "Add a rf:concerns node for the subordination, e.g. a crm:E30_Right labelled \"die rechtliche Unterordnung unter die Abtei Cluny\" typed rv:ChurchRights, or report it as a model gap; drop the qualifier on both factoids.",
+     "quote": {
+      "start": 77,
+      "end": 146
+     }
+    },
+    {
+     "category": "qualifier",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22742:konrad-confirmation",
+     "description": "The earlier act rests only on the comparative wie; the factoid carries no qualifier marking that Konrad's act is reported as a precedent. Acceptable, but the wording would make the inference visible.",
+     "proposal": "Optionally add rf:qualifier \"wie\" to the Konrad factoid.",
+     "quote": {
+      "start": 59,
+      "end": 76
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The second object of the confirmation, the subordination to Cluny, sits in rf:qualifier instead of rf:concerns, on both confirmation factoids.",
+     "reason": "'den Besitzstand und die rechtliche Unterordnung unter die Abtei Cluny' names a legal status. A crm:E30_Right typed rv:ChurchRights would be a historical judgement the vocabulary does not support, and no state type covers monastic dependency. The qualifier keeps the exact wording, and the extractor reports the gap. No correction.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add rf:qualifier \"wie\" to Konrad's earlier confirmation.",
+     "reason": "The rf:refersToAct link and the evidence 'wie Konrad (III.)' already carry the earlier act. The guidelines require a qualifier only for temporal words that are present, such as 'nachträglich'.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Über die erstmalige Anwendung der für A II. C charakteristischen Corroboratio vgl. Zeillinger, Reichskanzlei, DA 22 (1966) 528 f.; der unbegründete Fälschungsverdacht von Thommen a. a. O. 163 ff. wurde bereits von Scheffer-Boichorst, Kaiserurkunden in der Schweiz, MIÖG 9 (1888) 191 ff. zurückgewiesen, der auch a. a. O. 201 Aufklärung über die sinnstörende Ortsangabe "
+    },
+    {
+     "t": "Ruicinum locum",
+     "i": true
+    },
+    {
+     "t": ", die aus "
+    },
+    {
+     "t": "ducis R. vicinum",
+     "i": true
+    },
+    {
+     "t": " im unechten DH. IV. 281 verlesen ist, bietet. - Bei den Verfügungen der genannten Vorgänger handelt es sich neben den bereits genannten Urkunden Heinrichs IV. und Konrads III. (VU.) um DH. V. Stumpf 3121 und ein Deperditum Lothars III."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Bern (A). Drucke: Stumpf, Acta ined. 477 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 335; Thommen, Kaiserurkunden, NA 12 (1887) 183 mit Schriftprobe; MG. DF. I. 18. Faks.: Th. Mayer, Diplom Friedrichs I., MÖIG Erg.Bd. 14 (1939) nach 240 Tafel 1. Reg.: Hidber 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1987; Solothurner UB. 1, 71 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 124; Stumpf 3638."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0041"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_18"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-18"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000724",
+    "(IV.), Herzog von Zähringen, Breisgau und Burgund"
+   ],
+   [
+    "RI004-002-C000772",
+    "Cluny (an der Grosne, nordwestl. Mâcon, Dép. Saône-et-Loire), (Benediktiner- bzw. Cluniazenser-)Abtei"
+   ],
+   [
+    "RI004-002-H000341",
+    "IV., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000342",
+    "V., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-H000843",
+    "(III.), Markgraf von Baden und Verona (gest. 1160)"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000333",
+    "(I.), Bischof von Worms"
+   ],
+   [
+    "RI004-002-L000682",
+    "(III.), König und Kaiser"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-R001247",
+    "Rüeggisberg (südl. Bern, schweizer. Kt. Bern), (Benediktiner-, Cluniazenser-)Kloster"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000325",
+    "Graf von Baden"
+   ]
+  ]
+ }
+}

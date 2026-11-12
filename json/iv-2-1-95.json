@@ -1,0 +1,1121 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-06-29_1_0_4_2_1_95_95",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22722",
+  "identifier": "RI IV,2,1 n. 95",
+  "short": "RI IV,2,1 n. 95",
+  "sort": "004_002_001_000095_0000000095",
+  "start": "1152-06-29",
+  "end": "1152-06-29",
+  "proseYears": [],
+  "lead": "Friedrich hält einen Hoftag und wird in St. Emmeram - der Dom war nämlich einem Feuer zum Opfer gefallen - gekrönt.",
+  "date": [
+   {
+    "t": "1152 Juni 29"
+   }
+  ],
+  "place": [
+   {
+    "t": "Regensburg"
+   }
+  ],
+  "text": "Friedrich hält einen Hoftag und wird in St. Emmeram - der Dom war nämlich einem Feuer zum Opfer gefallen - gekrönt. Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten kehren mit guten Nachrichten (vgl. Reg. 86) zurück. Der Plan eines Feldzuges gegen Ungarn muß wegen des Widerstandes der Fürsten, die ihre Gründe dafür geheimhalten, aufgegeben werden. Ebenso wird der König auch nicht nach Burgund ziehen. Friedrich bemüht sich um die Aussöhnung im Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich und lädt beide auf einen Hoftag in Würzburg im Oktober vor.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22722:gesandtschaft",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22722:gesandtschaft",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "gesandtschaft",
+     "own": true,
+     "evidence": {
+      "start": 116,
+      "end": 201,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22722:> .\nx:gesandtschaft a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22722> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen (III.)",
+      "text": "Papst Eugen (III.) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22722:gesandtschaft",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gesandtschaft",
+      "own": true,
+      "evidence": {
+       "start": 116,
+       "end": 201,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:gesandtschaft rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen (III.)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Rom und die übrigen Städte Italiens",
+      "text": "Rom und die übrigen Städte Italiens in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22722:gesandtschaft",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gesandtschaft",
+      "own": true,
+      "evidence": {
+       "start": 116,
+       "end": 201,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:gesandtschaft rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22722:local:rom-staedte-italiens> ; rf:nameInSource \"Rom und die übrigen Städte Italiens\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:22722:local:rom-staedte-italiens"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gesandten",
+      "text": "Gesandten in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22722:gesandtschaft",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "gesandtschaft",
+      "own": true,
+      "evidence": {
+       "start": 116,
+       "end": 201,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:gesandtschaft rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22722:local:gesandte> ; rf:nameInSource \"Gesandten\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:22722:local:gesandte"
+      ],
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Entsendung"
+     },
+     ", als Adressaten ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Papst Eugen (III.)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Rom und die übrigen Städte Italiens"
+     },
+     ", als Gesandter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Gesandten"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22722:aussoehnung",
+    "kind": "act",
+    "title": "Verhandlung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verhandlung",
+     "text": "Verhandlung",
+     "triple": [
+      "urn:regesta:22722:aussoehnung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Negotiation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "aussoehnung",
+     "own": true,
+     "evidence": {
+      "start": 441,
+      "end": 552,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22722:> .\nx:aussoehnung a rf:ActFactoid ;\n    rf:factoidType rv:Negotiation ;\n    rf:source <urn:regesta:record:22722> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bemüht sich um die Aussöhnung im Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Vermittler",
+      "triple": [
+       "urn:regesta:22722:aussoehnung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "aussoehnung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:aussoehnung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Mediator ] .",
+      "role": "Vermittler",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogen Heinrich",
+      "text": "Herzogen Heinrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22722:aussoehnung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "aussoehnung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:aussoehnung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogen Heinrich",
+      "text": "Herzogen Heinrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22722:aussoehnung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "aussoehnung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:aussoehnung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000498"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (das Herzogtum Bayern)",
+      "text": "betrifft Herrschafts- und Schutzrechte (das Herzogtum Bayern)",
+      "triple": [
+       "urn:regesta:22722:aussoehnung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22722:herzogtum-bayern"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "aussoehnung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:aussoehnung rf:concerns x:herzogtum-bayern .\nx:herzogtum-bayern a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"das Herzogtum Bayern\" .",
+      "object": "urn:regesta:22722:herzogtum-bayern",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22722:aussoehnung",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22722:streit-bayern"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "aussoehnung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:aussoehnung rf:refersToAct x:streit-bayern .\nx:streit-bayern a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:herzogtum-bayern ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22722> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22722:streit-bayern",
+      "objectClaim": "streit-bayern",
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "bemüht sich um die Aussöhnung",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22722:aussoehnung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 451,
+       "end": 480,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Verhandlung"
+     },
+     ", als Vermittler ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Herzogen Heinrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herzogen Heinrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Herrschafts- und Schutzrechte (das Herzogtum Bayern)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22722:vorladung",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22722:vorladung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "vorladung",
+     "own": true,
+     "evidence": {
+      "start": 441,
+      "end": 552,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22722:> .\nx:vorladung a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22722> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bemüht sich um die Aussöhnung im Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22722:vorladung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorladung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:vorladung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogen Heinrich",
+      "text": "Herzogen Heinrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22722:vorladung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorladung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:vorladung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogen Heinrich",
+      "text": "Herzogen Heinrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22722:vorladung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorladung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:vorladung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000498"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Würzburg",
+      "text": "betrifft Würzburg",
+      "triple": [
+       "urn:regesta:22722:vorladung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22722:wuerzburg"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorladung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:vorladung rf:concerns x:wuerzburg .\nx:wuerzburg a crm:E53_Place ;\n    rdfs:label \"Würzburg\" .",
+      "object": "urn:regesta:22722:wuerzburg",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22722:vorladung",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22722:streit-bayern"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorladung",
+      "own": true,
+      "evidence": {
+       "start": 441,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:vorladung rf:refersToAct x:streit-bayern .\nx:streit-bayern a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:herzogtum-bayern ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22722> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22722:streit-bayern",
+      "objectClaim": "streit-bayern",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22722:vorladung",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "vorladung-2",
+      "own": true,
+      "evidence": {
+       "start": 557,
+       "end": 611,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:vorladung rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"lädt beide auf einen Hoftag in Würzburg im Oktober vor\" ] .",
+      "key": "k18"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "lädt beide auf einen Hoftag in Würzburg im Oktober vor",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22722:vorladung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 557,
+       "end": 611,
+       "ambiguous": false
+      },
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12",
+       "k18"
+      ],
+      "text": "Schreiben"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k13",
+       "k18"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressaten ",
+     {
+      "keys": [
+       "k14",
+       "k18"
+      ],
+      "text": "Herzogen Heinrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15",
+       "k18"
+      ],
+      "text": "Herzogen Heinrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k16",
+       "k18"
+      ],
+      "text": "Würzburg"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k17",
+       "k18"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22722:streit-bayern",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22722:streit-bayern",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "streit-bayern",
+     "own": true,
+     "evidence": {
+      "start": 484,
+      "end": 552,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22722:> .\nx:streit-bayern a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22722> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k20"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogen Heinrich",
+      "text": "Herzogen Heinrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22722:streit-bayern",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "streit-bayern",
+      "own": true,
+      "evidence": {
+       "start": 484,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:streit-bayern rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogen Heinrich",
+      "text": "Herzogen Heinrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22722:streit-bayern",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "streit-bayern",
+      "own": true,
+      "evidence": {
+       "start": 484,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:streit-bayern rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Herzogen Heinrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000498"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (das Herzogtum Bayern)",
+      "text": "betrifft Herrschafts- und Schutzrechte (das Herzogtum Bayern)",
+      "triple": [
+       "urn:regesta:22722:streit-bayern",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22722:herzogtum-bayern"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "streit-bayern",
+      "own": true,
+      "evidence": {
+       "start": 484,
+       "end": 552,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22722:> .\nx:streit-bayern rf:concerns x:herzogtum-bayern .\nx:herzogtum-bayern a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"das Herzogtum Bayern\" .",
+      "object": "urn:regesta:22722:herzogtum-bayern",
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Herzogen Heinrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Herzogen Heinrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Herrschafts- und Schutzrechte (das Herzogtum Bayern)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "gesandtschaft",
+    "start": 116,
+    "end": 201
+   },
+   {
+    "id": "aussoehnung",
+    "start": 441,
+    "end": 552
+   },
+   {
+    "id": "vorladung",
+    "start": 441,
+    "end": 552
+   },
+   {
+    "id": "t1",
+    "start": 451,
+    "end": 480
+   },
+   {
+    "id": "streit-bayern",
+    "start": 484,
+    "end": 552
+   },
+   {
+    "id": "t2",
+    "start": 557,
+    "end": 611
+   },
+   {
+    "id": "vorladung-2",
+    "start": 557,
+    "end": 611
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'den beiden Herzogen Heinrich' is one collective mention, read as the two Heinrich candidates RI004-002-H000470 and RI004-002-H000498; which wording belongs to which is not distinguishable",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No mediation or reconciliation act type; Friedrich's effort ('bemüht sich um die Aussöhnung') is rv:Negotiation with rv:Mediator, recording no outcome",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No summons act type; the summons to the Hoftag in Würzburg is rv:Communication with the dukes as rv:Addressee, and Friedrich carries rv:Grantor for lack of a sender role",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Coronation in St. Emmeram, return of envoys, abandoned Hungary campaign and the decision not to move to Burgundy are not extracted as outside the kinship, economic and legal scope; the coronation's legal status is a reading for review",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a summons (Vorladung) and no role for the summoning party.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for mediation or reconciliation efforts; rv:Negotiation is a stand-in.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "rf:refersToAct is used to tie the reconciliation and the summons to the dispute, which stretches its confirmation-oriented definition.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added actors <urn:regesta:actor:22722:local:gesandte> (crm:E74_Group, \"Gesandten\"), <urn:regesta:actor:22722:local:rom-staedte-italiens> (crm:E74_Group, \"Rom und die übrigen Städte Italiens\") and <urn:regesta:actor:RI004-002-E000589> (crm:E21_Person, \"Papst Eugen (III.)\").",
+     "lang": "en"
+    },
+    {
+     "text": "Added <urn:regesta:22722:gesandtschaft> (rf:ActFactoid, rv:Mission) with evidence \"Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten\", references gesandte rv:Envoy, E000589 rv:Addressee, rom-staedte-italiens rv:Addressee. No sender, no qualifier for 'mit guten Nachrichten', no outcome.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "22722",
+     "description": "The coronation of Friedrich is an act of installation in office and could be expressed as rv:Appointment (or rv:OfficeHolding) with Friedrich as recipient and the wording 'gekrönt' as qualifier. It is the opening statement of the regest and is not extracted. Severity is warning rather than error because the guidelines do not state explicitly whether a coronation falls into the kinship, economic or legal scope.",
+     "proposal": "Add an rv:Appointment factoid with Friedrich as rv:Recipient, rf:qualifier \"gekrönt\", evidence the coronation clause; do not name a crowning actor, since none is given.",
+     "quote": {
+      "start": 0,
+      "end": 114
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Hinweis",
+     "subject": "22722",
+     "description": "The embassy to Pope Eugen, Rome and the Italian cities is an rv:Mission the vocabulary provides for, with the addressees as rv:Addressee. Its return 'mit guten Nachrichten' must not become an outcome, but the mission itself is in scope. Eugen III has a candidate in this packet (RI004-002-E000589).",
+     "proposal": "Add an rv:Mission factoid with local functional envoys (rv:Envoy), Papst Eugen (III.) as rv:Addressee and Rom / die übrigen Städte Italiens as addressees or concerned places; keep 'mit guten Nachrichten' as qualifier at most, without asserting a result.",
+     "quote": {
+      "start": 116,
+      "end": 252
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22722:vorladung",
+     "description": "Friedrich as summoner is typed rv:Grantor, whose definition (überträgt, bestätigt, verleiht, bestimmt) fits a summons only loosely. The second selector repeats the reconciliation passage and is not needed for any role.",
+     "proposal": "Acceptable stand-in; report the missing sender or summoner role as a model gap and drop the redundant selector.",
+     "quote": {
+      "start": 557,
+      "end": 611
+     }
+    },
+    {
+     "category": "identity",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-H000498",
+     "description": "The collective mention 'den beiden Herzogen Heinrich' is resolved to the two Heinrich candidates of the packet (der Löwe and Jasomirgott). The reading is plausible and uses only this packet, but it is an identification from one undifferentiated mention and both references share the same nameInSource.",
+     "proposal": "Keep, but mark the resolution as unresolved identity for expert review.",
+     "quote": {
+      "start": 515,
+      "end": 552
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Friedrich's coronation in St. Emmeram is omitted.",
+     "reason": "'wird in St. Emmeram ... gekrönt' has no act type; rv:Appointment is defined as installation in an office or commission and would turn the coronation of the reigning king into an installation. No correction, record the gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The embassy to Pope Eugen, Rome and the Italian cities is omitted.",
+     "reason": "'Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten kehren mit guten Nachrichten (vgl. Reg. 86) zurück' reports a mission the vocabulary provides for; the sender is not named and the return with news must not become an outcome, so only the mission with envoys and addressees is safe. Papst Eugen (III.) matches candidate RI004-002-E000589 by name and title; Rome and the cities are kept as one regest-local addressee instead of a register place identification.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Friedrich as rv:Grantor fits loosely; the second selector is redundant.",
+     "reason": "rv:Grantor ('wer ... bestimmt') is an acceptable stand-in for the summoning ruler, and the second selector supports the referent of 'beide' in 'lädt beide auf einen Hoftag in Würzburg im Oktober vor'.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The collective mention 'den beiden Herzogen Heinrich' is resolved to two packet candidates.",
+     "reason": "'Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich' names two dukes called Heinrich, and the packet holds exactly two Heinrich candidates titled Herzog with a Bavarian title (H000470, H000498); the identification uses only this packet and matches name and title.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu der Krönung Friedrichs in St. Emmeram, einer Festkrönung, vgl. Simonsfeld, Jahrbücher 99 f. mit Anm. 312 und Klewitz, Festkrönungen (Libelli 133, 1966) 17 mit Anm. 1. - Näheres über den aufgegebenen Ungarnzug bei Simonsfeld 101 und 109, wo auf die Möglichkeit hingewiesen wird, daß die wohl damals anzusetzende Erhebung Konrads von Dachau zum Herzog von Meranien (Erste Nennung in DF. I. 14, Reg. "
+    },
+    {
+     "t": "100",
+     "regest": "22727"
+    },
+    {
+     "t": ", vgl. auch Ottonis Gesta Frid. l. I cap. 26, a. a. O. 43) als drohender Wink gegenüber dem ungarischen König aufzufassen sein könnte; vgl. Ohnsorge, Bedeutung der deutsch-byzantinischen Beziehungen (Abendland und Byzanz. Gesammelte Aufsätze, 1958) 442 ff. Zu den Bemühungen Friedrichs im Streit zwischen Babenbergern und Welfen vgl. auch Fich-tenau-Dienst, UB. zur Gesch. d. Babenberger 4/1, 130 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 773."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. II cap. 6, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 107. Zum Brand in Regensburg vgl. Ann. Ratispon., MG. SS XVII, 586, Auct. Lambac., MG. SS IX, 555 und Cont. Admunt., MG. SS IX, 581. Zum Burgundzug vgl. die Angaben des Notars Heinrich in seinem Schreiben an Wibald, ed. Jaffé, Mon. Corb. 522 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 391."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=36"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000011",
+    "Babenberger (Adelsgeschlecht)"
+   ],
+   [
+    "RI004-002-B000313",
+    "Herzogtum"
+   ],
+   [
+    "RI004-002-B001643",
+    "Burgund, auch Hochburgund (sowohl das Königreich als auch der Kernraum der Grafschaft)"
+   ],
+   [
+    "RI004-002-B001645",
+    "Burgundzug"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000498",
+    "(Jasomirgott), Herzog von Österreich, vorher von Bayern"
+   ],
+   [
+    "RI004-002-I000211",
+    "Italien"
+   ],
+   [
+    "RI004-002-K000393",
+    "(II.), Herzog von Kroatien und Dalmatien, von Meranien, ursprünglich: Graf (auch: Herzog) von Dachau"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-R000316",
+    "Dom"
+   ],
+   [
+    "RI004-002-R000317",
+    "(Benediktiner-)Kloster St. Emmeram"
+   ],
+   [
+    "RI004-002-R000885",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-U000275",
+    "Ungarn (Königreich bzw. Volk)"
+   ],
+   [
+    "RI004-002-W000275",
+    "Welfen"
+   ],
+   [
+    "RI004-002-W000882",
+    "Würzburg (am Main, bayer. Reg.-Bez. Unterfranken)"
+   ]
+  ]
+ }
+}

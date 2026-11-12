@@ -1,0 +1,231 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1138-04-17_1_0_4_2_1_3_3",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22630",
+  "identifier": "RI IV,2,1 n. 3",
+  "short": "RI IV,2,1 n. 3",
+  "sort": "004_002_001_000003_0000000003",
+  "start": "1138-04-17",
+  "end": "1138-04-17",
+  "proseYears": [],
+  "lead": "(Friedrich) wird neben seinem Vater, Herzog Friedrich (II. von Schwaben), als Zeuge in DK. III. 8 für das Kloster Laach genannt.",
+  "date": [
+   {
+    "t": "1138 (April 17/23)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Mainz"
+   }
+  ],
+  "text": "(Friedrich) wird neben seinem Vater, Herzog Friedrich (II. von Schwaben), als Zeuge in DK. III. 8 für das Kloster Laach genannt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22630:parenthood-father",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22630:parenthood-father",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-father",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 72,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22630:> .\nx:parenthood-father a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22630> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"(Friedrich) wird neben seinem Vater, Herzog Friedrich (II. von Schwaben)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22630:parenthood-father",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-father",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 72,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22630:> .\nx:parenthood-father rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrich (II. von Schwaben)",
+      "text": "Herzog Friedrich (II. von Schwaben) in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22630:parenthood-father",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-father",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 72,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22630:> .\nx:parenthood-father rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:nameInSource \"Herzog Friedrich (II. von Schwaben)\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog Friedrich (II. von Schwaben)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "parenthood-father",
+    "start": 0,
+    "end": 72
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Attestation as charter witness in DK. III. 8 for Kloster Laach was not extracted: rv:Witness is defined for testimony in a narrated dispute only, and charter witnessing states no kinship, economic or legal relation of its own.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for witnessing or appearing in a charter of another issuer (here DK. III. 8 for Kloster Laach); rv:Witness covers only narrated disputes.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "name-in-source",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22630:parenthood-father",
+     "description": "The child is named '(Friedrich)' in brackets, an editorial supplement of the regest; the reference gives 'Friedrich' without the brackets. It is a valid substring, but the editorial marking of the name is lost.",
+     "proposal": "Use '(Friedrich)' as rf:nameInSource to keep the editorial supplement visible.",
+     "quote": {
+      "start": 0,
+      "end": 72
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The Child reference gives rf:nameInSource 'Friedrich' instead of '(Friedrich)' and loses the editorial bracket.",
+     "reason": "rf:nameInSource requires 'the exact wording that names the actor in this passage', and 'Friedrich' is that wording and a substring of '(Friedrich) wird neben seinem Vater'. The bracket is an editorial mark of the regest, which the evidence selector keeps verbatim. The contract does not require the mark in the name, so the candidate's reading is defensible.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [],
+   "transmission": [],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=15"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000021",
+    "Laach (<i>heute:</i> Maria Laach, am Laacher See in der Eifel, Teil von Glees, Ldkr. Ahrweiler, Rheinl.-Pf.), Benediktinerkloster St. Maria"
+   ],
+   [
+    "RI004-002-M000179",
+    "Mainz (am Rhein, Hptst. von Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,170 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1153-03-28_1_0_4_2_1_171_F171
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22798> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. †171" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-A000940> a crm:E21_Person ; rdfs:label "Abt und Grafen Anselm von Bobbio" .
+<urn:regesta:actor:RI004-002-H000377> a crm:E21_Person ; rdfs:label "Erzbischofs, obersten Rates und Erzkanzlers Heinrich von Mainz" .
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ; rdfs:label "Erzbischofs Arnold von Köln" .
+<urn:regesta:actor:RI004-002-O000272> a crm:E21_Person ; rdfs:label "Bischofs Ortlieb von Basel" .
+<urn:regesta:actor:RI004-002-H000843> a crm:E21_Person ; rdfs:label "Markgrafen Hermann von Baden" .
+<urn:regesta:actor:RI004-002-U000179> a crm:E21_Person ; rdfs:label "Grafen Ulrich von Lenzburg" .
+<urn:regesta:actor:RI004-002-L000680> a crm:E21_Person ; rdfs:label "Lothar" .
+<urn:regesta:actor:RI004-002-L000815> a crm:E21_Person ; rdfs:label "Ludwig" .
+<urn:regesta:actor:RI004-002-K000088> a crm:E21_Person ; rdfs:label "Karlmann" .
+<urn:regesta:actor:RI004-002-K000076> a crm:E21_Person ; rdfs:label "Karl" .
+<urn:regesta:actor:RI004-002-O000392> a crm:E21_Person ; rdfs:label "Otto I." .
+<urn:regesta:actor:RI004-002-O000393> a crm:E21_Person ; rdfs:label "Otto I., II. und III." .
+<urn:regesta:actor:RI004-002-O000394> a crm:E21_Person ; rdfs:label "Otto I., II. und III." .
+<urn:regesta:actor:RI004-002-H000341> a crm:E21_Person ; rdfs:label "Heinrich IV." .
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ; rdfs:label "Konrad II. (III.)" .
+
+<urn:regesta:22798:grafschaft-bobbio> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Grafschaft Bobbio innerhalb der angegebenen Grenzen mit allen Rechten und Zugehörungen" .
+
+<urn:regesta:22798:silber-vom-hof> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "den jährlichen Empfang von 60 Pfund Silber vom Hof" .
+
+<urn:regesta:22798:treueid-freiheit> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Freiheit von der Leistung des Treueides" .
+
+<urn:regesta:22798:paepstliche-privilegien> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "alle päpstlichen Privilegien" .
+
+<urn:regesta:22798:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22798> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt dem Abt und Grafen Anselm von Bobbio auf seine Bitten und die Intervention des Erzbischofs, obersten Rates und Erzkanzlers Heinrich von Mainz, des Erzbischofs Arnold von Köln, des Bischofs Ortlieb von Basel, des Markgrafen Hermann von Baden und des Grafen Ulrich von Lenzburg" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "die Grafschaft Bobbio innerhalb der angegebenen Grenzen mit allen Rechten und Zugehörungen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000940> ;
+        rf:role rv:Recipient ; rf:nameInSource "Abt und Grafen Anselm von Bobbio" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000940> ;
+        rf:role rv:Petitioner ; rf:nameInSource "seine" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000377> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Erzbischofs, obersten Rates und Erzkanzlers Heinrich von Mainz" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Erzbischofs Arnold von Köln" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000272> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Bischofs Ortlieb von Basel" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000843> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Markgrafen Hermann von Baden" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000179> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Grafen Ulrich von Lenzburg" ] ;
+    rf:concerns <urn:regesta:22798:grafschaft-bobbio> ;
+    rf:refersToAct <urn:regesta:22798:predecessor-privileges> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22798:confirmation-silver> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22798> ;
+    rf:partOf <urn:regesta:22798:confirmation> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den jährlichen Empfang von 60 Pfund Silber vom Hof" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Abt und Grafen Anselm von Bobbio" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000940> ;
+        rf:role rv:Recipient ; rf:nameInSource "Abt und Grafen Anselm von Bobbio" ] ;
+    rf:concerns <urn:regesta:22798:silber-vom-hof> ;
+    rf:amount "60 Pfund Silber" ;
+    rf:qualifier "jährlichen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22798:confirmation-oath-freedom> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22798> ;
+    rf:partOf <urn:regesta:22798:confirmation> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Freiheit von der Leistung des Treueides" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Abt und Grafen Anselm von Bobbio" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000940> ;
+        rf:role rv:Recipient ; rf:nameInSource "Abt und Grafen Anselm von Bobbio" ] ;
+    rf:concerns <urn:regesta:22798:treueid-freiheit> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22798:confirmation-papal-privileges> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22798> ;
+    rf:partOf <urn:regesta:22798:confirmation> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "alle päpstlichen Privilegien" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Abt und Grafen Anselm von Bobbio" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000940> ;
+        rf:role rv:Recipient ; rf:nameInSource "Abt und Grafen Anselm von Bobbio" ] ;
+    rf:concerns <urn:regesta:22798:paepstliche-privilegien> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22798:predecessor-privileges> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22798> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gemäß den Privilegien seiner Vorgänger Lothar und seines Sohnes Ludwig, Karlmann und seines Bruders Karl, Otto I., II. und III., Heinrich IV. und Konrad II. (III.)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000680> ;
+        rf:role rv:Grantor ; rf:nameInSource "Lothar" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000815> ;
+        rf:role rv:Grantor ; rf:nameInSource "Ludwig" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000088> ;
+        rf:role rv:Grantor ; rf:nameInSource "Karlmann" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000076> ;
+        rf:role rv:Grantor ; rf:nameInSource "Karl" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000392> ;
+        rf:role rv:Grantor ; rf:nameInSource "Otto I." ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000393> ;
+        rf:role rv:Grantor ; rf:nameInSource "Otto I., II. und III." ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000394> ;
+        rf:role rv:Grantor ; rf:nameInSource "Otto I., II. und III." ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000341> ;
+        rf:role rv:Grantor ; rf:nameInSource "Heinrich IV." ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+        rf:role rv:Grantor ; rf:nameInSource "Konrad II. (III.)" ] ;
+    rf:qualifier "Vorgänger" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22798:parenthood-lothar-ludwig> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22798> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Lothar und seines Sohnes Ludwig" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000680> ;
+        rf:role rv:Parent ; rf:nameInSource "Lothar" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000815> ;
+        rf:role rv:Child ; rf:nameInSource "Ludwig" ] ;
+    rf:qualifier "Sohnes" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22798:kinship-karlmann-karl> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22798> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Karlmann und seines Bruders Karl" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000088> ;
+        rf:role rv:Kin ; rf:nameInSource "Karlmann" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000076> ;
+        rf:role rv:Kin ; rf:nameInSource "Karl" ] ;
+    rf:qualifier "Bruders" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,1294 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-05-29_1_0_4_2_1_176_176",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22803",
+  "identifier": "RI IV,2,1 n. 176",
+  "short": "RI IV,2,1 n. 176",
+  "sort": "004_002_001_000176_0000000176",
+  "start": "1153-05-29",
+  "end": "1153-05-29",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt auf Bitten des 'Bruders' Johannes (des Stiftsverwalters) dem Stift Fredelsloh (cenobium Fridessele) in Erneuerung der Verfügungen Konrads (III.) als Seelgerät die dem Reich gehörige Kapelle Grone, den Königsschutz, die ausschließliche Unterstellung unter die königliche Vogtei (ne advocatum aliquem preter nos nostrosque successores reges seu imperatores predictus locus habeat) und fügt selber die Schenkung zweier Hufen mit dem Ertrag von 20 Solidi, sowie einer Mühle mit 4 Solidi Ertrag in Roßdorf (R잒sthorp) hinzu.",
+  "date": [
+   {
+    "t": "1153 Mai 29"
+   }
+  ],
+  "place": [
+   {
+    "t": "Heiligenstadt"
+   }
+  ],
+  "text": "Friedrich bestätigt auf Bitten des 'Bruders' Johannes (des Stiftsverwalters) dem Stift Fredelsloh (cenobium Fridessele) in Erneuerung der Verfügungen Konrads (III.) als Seelgerät die dem Reich gehörige Kapelle Grone, den Königsschutz, die ausschließliche Unterstellung unter die königliche Vogtei (ne advocatum aliquem preter nos nostrosque successores reges seu imperatores predictus locus habeat) und fügt selber die Schenkung zweier Hufen mit dem Ertrag von 20 Solidi, sowie einer Mühle mit 4 Solidi Ertrag in Roßdorf (R잒sthorp) hinzu. Z.: Bischof Konrad von Augsburg, Propst Gottschalk (von Heiligenstadt), Notar Heinrich, die Kapelläne Hartwich (Domkantor und Propst von St. Johann zu Mainz), Reinbert, Jordan und Heribert, Herzog Heinrich (von Sachsen), die Grafen Rudolf von Bregenz und Otto von Ravensberg, Markward von Grumbach, Reinboto von Röckingen, die Ministerialen Gerwich von Kiffhausen (Cuphese), Kapellar Friedrich, Kapellar Widekind und Kapellar Azzo. - Arnoldus canc. ; in Wiederholung des DK. III. 149 (VU.), bis auf das von A II. D stammende Monogramm, von einem Empfängerschreiber mundiert, der auch DF. I. 57 (Reg. 177) schrieb; SI. 1. Si antecessorum nostrorum .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22803:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22803:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 164,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22803> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt auf Bitten des 'Bruders' Johannes (des Stiftsverwalters) dem Stift Fredelsloh (cenobium Fridessele) in Erneuerung der Verfügungen Konrads (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 164,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "'Bruders' Johannes (des Stiftsverwalters)",
+      "text": "'Bruders' Johannes (des Stiftsverwalters) in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 164,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000146> ; rf:nameInSource \"Johannes\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-J000146"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Fredelsloh (cenobium Fridessele)",
+      "text": "Stift Fredelsloh (cenobium Fridessele) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 164,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000421:community> ; rf:nameInSource \"Stift Fredelsloh\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000421:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die dem Reich gehörige Kapelle Grone",
+      "text": "betrifft die dem Reich gehörige Kapelle Grone",
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22803:kapelle-grone"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 164,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation rf:concerns x:kapelle-grone .\nx:kapelle-grone a crm:E18_Physical_Thing ;\n    rdfs:label \"die dem Reich gehörige Kapelle Grone\" .",
+      "object": "urn:regesta:22803:kapelle-grone",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (die ausschließliche Unterstellung unter die königliche Vogtei)",
+      "text": "betrifft Vogtei (die ausschließliche Unterstellung unter die königliche Vogtei)",
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22803:koenigliche-vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 164,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation rf:concerns x:koenigliche-vogtei .\nx:koenigliche-vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"die ausschließliche Unterstellung unter die königliche Vogtei\" .",
+      "object": "urn:regesta:22803:koenigliche-vogtei",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Schutzrecht (den Königsschutz)",
+      "text": "betrifft Schutzrecht (den Königsschutz)",
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22803:koenigsschutz"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 164,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation rf:concerns x:koenigsschutz .\nx:koenigsschutz a crm:E30_Right ;\n    crm:P2_has_type rv:Protection ;\n    rdfs:label \"den Königsschutz\" .",
+      "object": "urn:regesta:22803:koenigsschutz",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestimmung",
+      "text": "bezieht sich auf Bestimmung",
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22803:konrad-verfuegungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 164,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation rf:refersToAct x:konrad-verfuegungen .\nx:konrad-verfuegungen a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Verfügungen Konrads (III.)\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrads (III.)\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22803> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22803:konrad-verfuegungen",
+      "objectClaim": "konrad-verfuegungen",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-2",
+      "own": true,
+      "evidence": {
+       "start": 165,
+       "end": 398,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"als Seelgerät die dem Reich gehörige Kapelle Grone, den Königsschutz, die ausschließliche Unterstellung unter die königliche Vogtei (ne advocatum aliquem preter nos nostrosque successores reges seu imperatores predictus locus habeat)\" ] .",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "als Seelgerät",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 165,
+       "end": 178,
+       "ambiguous": false
+      },
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "in Erneuerung",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22803:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 120,
+       "end": 133,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k9"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k9"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k3",
+       "k9"
+      ],
+      "text": "'Bruders' Johannes (des Stiftsverwalters)"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k4",
+       "k9"
+      ],
+      "text": "Stift Fredelsloh (cenobium Fridessele)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5",
+       "k9"
+      ],
+      "text": "die dem Reich gehörige Kapelle Grone"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6",
+       "k9"
+      ],
+      "text": "Vogtei (die ausschließliche Unterstellung unter die königliche Vogtei)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k7",
+       "k9"
+      ],
+      "text": "Schutzrecht (den Königsschutz)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k8",
+       "k9"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22803:donation",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22803:donation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation",
+     "own": true,
+     "evidence": {
+      "start": 77,
+      "end": 119,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22803:> .\nx:donation a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22803> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem Stift Fredelsloh (cenobium Fridessele)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 77,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Fredelsloh (cenobium Fridessele)",
+      "text": "Stift Fredelsloh (cenobium Fridessele) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 77,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000421:community> ; rf:nameInSource \"Stift Fredelsloh\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000421:community"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "zweier Hufen mit dem Ertrag von 20 Solidi",
+      "text": "betrifft zweier Hufen mit dem Ertrag von 20 Solidi",
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22803:hufen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 77,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:donation rf:concerns x:hufen .\nx:hufen a crm:E18_Physical_Thing ;\n    rdfs:label \"zweier Hufen mit dem Ertrag von 20 Solidi\" .",
+      "object": "urn:regesta:22803:hufen",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "einer Mühle mit 4 Solidi Ertrag",
+      "text": "betrifft einer Mühle mit 4 Solidi Ertrag",
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22803:muehle"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 77,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:donation rf:concerns x:muehle .\nx:muehle a crm:E18_Physical_Thing ;\n    rdfs:label \"einer Mühle mit 4 Solidi Ertrag\" .",
+      "object": "urn:regesta:22803:muehle",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Roßdorf",
+      "text": "betrifft Roßdorf",
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22803:rossdorf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 77,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:donation rf:concerns x:rossdorf .\nx:rossdorf a crm:E53_Place ;\n    rdfs:label \"Roßdorf\" .",
+      "object": "urn:regesta:22803:rossdorf",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22803:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 77,
+       "end": 119,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:donation rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;\n    rf:concerns x:kapelle-grone , x:koenigliche-vogtei , x:koenigsschutz ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt auf Bitten des 'Bruders' Johannes (des Stiftsverwalters) dem Stift Fredelsloh (cenobium Fridessele) in Erneuerung der Verfügungen Konrads (III.)\" ] , [ a oa:TextQuoteSelector ; oa:exact \"als Seelgerät die dem Reich gehörige Kapelle Grone, den Königsschutz, die ausschließliche Unterstellung unter die königliche Vogtei (ne advocatum aliquem preter nos nostrosque successores reges seu imperatores predictus locus habeat)\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"als Seelgerät\" , \"in Erneuerung\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000421:community> ; rf:nameInSource \"Stift Fredelsloh\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000146> ; rf:nameInSource \"Johannes\" ; rf:role rv:Petitioner ] ;\n    rf:refersToAct x:konrad-verfuegungen ;\n    rf:source <urn:regesta:record:22803> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22803:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-2",
+      "own": true,
+      "evidence": {
+       "start": 403,
+       "end": 520,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:donation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"fügt selber die Schenkung zweier Hufen mit dem Ertrag von 20 Solidi, sowie einer Mühle mit 4 Solidi Ertrag in Roßdorf\" ] .",
+      "key": "k19"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "mit 4 Solidi Ertrag",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 490,
+       "end": 509,
+       "ambiguous": false
+      },
+      "key": "k20"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "mit dem Ertrag von 20 Solidi",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 442,
+       "end": 470,
+       "ambiguous": false
+      },
+      "key": "k21"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "selber",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22803:donation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 408,
+       "end": 414,
+       "ambiguous": false
+      },
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12",
+       "k19"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k13",
+       "k19"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k14",
+       "k19"
+      ],
+      "text": "Stift Fredelsloh (cenobium Fridessele)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15",
+       "k19"
+      ],
+      "text": "zweier Hufen mit dem Ertrag von 20 Solidi"
+     },
+     ", ",
+     {
+      "keys": [
+       "k16",
+       "k19"
+      ],
+      "text": "einer Mühle mit 4 Solidi Ertrag"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17",
+       "k19"
+      ],
+      "text": "Roßdorf"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k18",
+       "k19"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22803:konrad-verfuegungen",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22803:konrad-verfuegungen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "konrad-verfuegungen",
+     "own": true,
+     "evidence": {
+      "start": 138,
+      "end": 164,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22803:> .\nx:konrad-verfuegungen a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22803> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Verfügungen Konrads (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k23"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrads (III.)",
+      "text": "Konrads (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22803:konrad-verfuegungen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "konrad-verfuegungen",
+      "own": true,
+      "evidence": {
+       "start": 138,
+       "end": 164,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:konrad-verfuegungen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrads (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Konrads (III.)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22803:grone-reich",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22803:grone-reich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grone-reich",
+     "own": true,
+     "evidence": {
+      "start": 179,
+      "end": 215,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22803:> .\nx:grone-reich a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22803> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die dem Reich gehörige Kapelle Grone\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Reich",
+      "text": "Reich in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22803:grone-reich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grone-reich",
+      "own": true,
+      "evidence": {
+       "start": 179,
+       "end": 215,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:grone-reich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22803:local:reich> ; rf:nameInSource \"Reich\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:22803:local:reich"
+      ],
+      "key": "k26",
+      "agentNotes": [
+       {
+        "text": "Reich as possessor of the chapel Grone is a regest-local group without register candidate.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die dem Reich gehörige Kapelle Grone",
+      "text": "betrifft die dem Reich gehörige Kapelle Grone",
+      "triple": [
+       "urn:regesta:22803:grone-reich",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22803:kapelle-grone"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grone-reich",
+      "own": true,
+      "evidence": {
+       "start": 179,
+       "end": 215,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22803:> .\nx:grone-reich rf:concerns x:kapelle-grone .\nx:kapelle-grone a crm:E18_Physical_Thing ;\n    rdfs:label \"die dem Reich gehörige Kapelle Grone\" .",
+      "object": "urn:regesta:22803:kapelle-grone",
+      "key": "k27"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Reich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "die dem Reich gehörige Kapelle Grone"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 164
+   },
+   {
+    "id": "donation",
+    "start": 77,
+    "end": 119
+   },
+   {
+    "id": "t2",
+    "start": 120,
+    "end": 133
+   },
+   {
+    "id": "konrad-verfuegungen",
+    "start": 138,
+    "end": 164
+   },
+   {
+    "id": "confirmation-2",
+    "start": 165,
+    "end": 398
+   },
+   {
+    "id": "t1",
+    "start": 165,
+    "end": 178
+   },
+   {
+    "id": "grone-reich",
+    "start": 179,
+    "end": 215
+   },
+   {
+    "id": "donation-2",
+    "start": 403,
+    "end": 520
+   },
+   {
+    "id": "t5",
+    "start": 408,
+    "end": 414
+   },
+   {
+    "id": "t4",
+    "start": 442,
+    "end": 470
+   },
+   {
+    "id": "t3",
+    "start": 490,
+    "end": 509
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Stift Fredelsloh identified as community of register place RI004-002-F000421.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The content of Konrad's earlier 'Verfügungen' is only implied by 'in Erneuerung'; the earlier act is typed rv:Enactment without rf:concerns, since the regest does not state which items Konrad granted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "rf:amount cannot be bound to an individual thing: '20 Solidi' belongs to the two Hufen, '4 Solidi' to the mill, both sit on one donation factoid. The amounts are yields (Ertrag), not prices, and the model has no property for revenue yield.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "'als Seelgerät' (pious purpose) has no dedicated property; kept as rf:qualifier on the confirmation.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "rf:amount attaches to the factoid, not to a concerned thing, so several amounts in one act cannot be bound to their items.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No property for the purpose of an act (Seelgerät, pro remedio animae) distinct from rf:ground.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "rdfs:label of <urn:regesta:22803:hufen> changed to \"zweier Hufen mit dem Ertrag von 20 Solidi\".",
+     "lang": "en"
+    },
+    {
+     "text": "rdfs:label of <urn:regesta:22803:muehle> changed to \"einer Mühle mit 4 Solidi Ertrag\".",
+     "lang": "en"
+    },
+    {
+     "text": "Factoid urn:regesta:22803:donation left unchanged, including both rf:amount literals and its producer, because only the labels of the concerned things changed and the instruction keeps the factoid unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "lost-association",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22803:donation",
+     "description": "Both amounts sit as literals on one donation factoid that concerns two hides, a mill and Roßdorf, so the reading that 20 Solidi belong to the hides and 4 Solidi to the mill is lost. The contract could keep it by two donation factoids, one per item, each with its own amount.",
+     "proposal": "Split into a donation of 'zweier Hufen' with rf:amount 'mit dem Ertrag von 20 Solidi' and a donation of 'einer Mühle' with rf:amount 'mit 4 Solidi Ertrag' concerning Roßdorf, both rf:partOf or linked to the confirmation.",
+     "quote": {
+      "start": 403,
+      "end": 520
+     }
+    },
+    {
+     "category": "incomplete-earlier-act",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22803:konrad-verfuegungen",
+     "description": "Konrad III's earlier act carries only the grantor. The regest says Friedrich renews these dispositions in favour of Fredelsloh, so the stift as recipient and the chapel, protection and advocacy as concerned items rest on the same clause. Typing it rv:Enactment rather than rv:Grant is cautious and defensible.",
+     "proposal": "Optionally add the Fredelsloh community as rv:Recipient and rf:concerns to the three items; keep the act undated.",
+     "quote": {
+      "start": 120,
+      "end": 164
+     }
+    },
+    {
+     "category": "act-grouping",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22803:donation",
+     "description": "The regest marks the donation as Friedrich's own addition beyond the renewal ('fügt selber ... hinzu'). rf:partOf the confirmation is admissible as a secondary act, but it blurs that this is a new grant, not part of what is confirmed.",
+     "proposal": "Consider dropping rf:partOf and keeping the donation as an independent act factoid of the same charter.",
+     "quote": {
+      "start": 403,
+      "end": 520
+     }
+    },
+    {
+     "category": "literal-placement",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22803:confirmation",
+     "description": "'als Seelgerät' states the pious purpose of the act rather than a type or time qualification; rf:ground would fit it better. The exclusivity of royal advocacy is kept only inside the right label and evidence, not as a literal.",
+     "proposal": "Move 'als Seelgerät' to rf:ground; optionally add rf:exception 'preter nos nostrosque successores reges seu imperatores' to the advocacy provision.",
+     "quote": {
+      "start": 235,
+      "end": 398
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Both amounts sit on one donation factoid, so the binding of 20 Solidi to the hides and 4 Solidi to the mill is lost; a split into two donations is proposed.",
+     "reason": "The finding holds: 'zweier Hufen mit dem Ertrag von 20 Solidi, sowie einer Mühle mit 4 Solidi Ertrag' binds each yield to its item. Splitting one stated act into two factoids would change the unit of the act to work around the model (rf:amount attaches to the factoid). The safe fix keeps one donation and binds the yields in the labels of the concerned things, which the guidelines require to be in the source's words.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "rf:partOf the confirmation blurs that the donation is Friedrich's own addition.",
+     "reason": "rf:partOf is defined for 'a provision or secondary act belonging to a main act of the same regest'; the donation is added in the same charter ('fügt selber ... hinzu'), and rf:qualifier \"selber\" keeps the addition visible.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Move 'als Seelgerät' to rf:ground; add rf:exception 'preter nos nostrosque successores reges seu imperatores'.",
+     "reason": "'als Seelgerät' qualifies the kind of transfer rather than giving a reason, and its exact wording is kept; the contract has no purpose property. 'preter nos ...' is not an exception to the confirmation but the content of the exclusive royal advocacy, kept in the right's label and the evidence.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add Fredelsloh as recipient and the three items as concerned objects of Konrad III's earlier dispositions.",
+     "reason": "'in Erneuerung der Verfügungen Konrads (III.)' does not state what Konrad disposed or for whom; carrying the present items back to the earlier act would infer its content.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Rekognition vgl. die Vorbemerkung von DF. I. 56. Zu den Kapellänen Jordan und Heribert vgl. Hausmann, Reichskanzlei 302 und 265. Zum politischen Hintergrund dieses Aufenthaltes im Eichsfeld vgl. Büttner, Heinrich von Mainz, ZKG 69 (1958) 266 f. und jetzt auch Jordan, Oberweser und Leine, (FS. Heimpel 2 = Veröff. d. M.-Planck-Inst. f. Gesch. 36/2, 1972) 1052 ff. Zu Fredelsloh vgl. Stimming, Mainz (Qu. u. Forsch. zur hess. Gesch. 3, 1915) 51 und 68 f., Vollmer, Territorialpolitik, masch. phil. Diss. (Freiburg i. Br. 1951) 318 Anm. 8 und Gramatzki, Stift Fredelsloh (Stud. zur Einbecker Gesch. 5, 1972) 38, 40 und 47. Zum Inhalt vgl. auch die Bestätigung durch Erzbischof Arnold von Mainz im Jahre 1155 (Mainzer UB. 2/1, 378 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 209)."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Staatsarchiv Hannover (A). Druck : MG. DF. I. 56. Reg.: Dobenecker, Reg. Thur. 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 51; Stumpf 3669."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=63"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/10042"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_56"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-56"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001211",
+    "II. D (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-A001404",
+    "Kapellan, capellarius (<i>Kaiser Friedrich Barbarossas?</i>)"
+   ],
+   [
+    "RI004-002-E000215",
+    "Eichsfeld (historische Landschaft zwischen Harz und Werra)"
+   ],
+   [
+    "RI004-002-F000421",
+    "Fredelsloh (an der Dieße, Teil von Moringen, nordnordwestl. Göttingen, Ndsachs.), (Augustiner-Chorherren-)Stift"
+   ],
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-F000674",
+    "Kapellar"
+   ],
+   [
+    "RI004-002-G000547",
+    "von Kiffhausen, Reichsministeriale"
+   ],
+   [
+    "RI004-002-G000878",
+    "Propst von Heiligenstadt"
+   ],
+   [
+    "RI004-002-G001028",
+    "Grone (auf dem Hagenberg, im Leinetal, Teil von Göttingen, Ndsachs.), Kapelle"
+   ],
+   [
+    "RI004-002-H000199",
+    "Kapellan (Domkantor und Propst von St. Johann zu Mainz)"
+   ],
+   [
+    "RI004-002-H000300",
+    "Heiligenstadt (<i>heute:</i> Heilbad Heiligenstadt, südöstl. Göttingen, Ldkr. Eichsfeld, Thüringen)"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000783",
+    "Notar der Reichskanzlei, Magister, Kapellan, Propst von Aachen (des kaiserlichen Hofes), dann Erzbischof von Besançon (<i>siehe: dort</i>)"
+   ],
+   [
+    "RI004-002-J000146",
+    "Bruder (recte: Stiftsverwalter) von Fredelsloh"
+   ],
+   [
+    "RI004-002-J000242",
+    "Kapellan"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000322",
+    "Bischof von Augsburg, vorher (Dom)Dekan von Konstanz (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-M000513",
+    "(II., der Ältere) von Grumbach (Edelfreier); <i>zu ihm siehe auch oben in der Einleitung, S. 32</i>"
+   ],
+   [
+    "RI004-002-O000460",
+    "Graf von Ravensberg"
+   ],
+   [
+    "RI004-002-R000289",
+    "von Röckingen"
+   ],
+   [
+    "RI004-002-R000423",
+    "Kapellan"
+   ],
+   [
+    "RI004-002-R001080",
+    "Roßdorf (<i>heute:</i> Rosdorf, südl. Göttingen, Ldkr. Göttingen, Ndsachs.)"
+   ],
+   [
+    "RI004-002-R001192",
+    "Graf von Pfullendorf, Bregenz, Lindau, Ramsberg und Schweinshut"
+   ],
+   [
+    "RI004-002-W000453",
+    "Kapellar"
+   ]
+  ]
+ }
+}

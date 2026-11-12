@@ -1,0 +1,1713 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-30_2_0_4_2_1_116_116",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22743",
+  "identifier": "RI IV,2,1 n. 116",
+  "short": "RI IV,2,1 n. 116",
+  "sort": "004_002_001_000116_0000000116",
+  "start": "1152-07-30",
+  "end": "1152-07-30",
+  "proseYears": [],
+  "lead": "Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis comites de Castello), wie seine Vorgänger Karl, Otto und Heinrich in seinen Schutz, bestätigt ihnen ihre Besitzungen und Rechte vor allem am Westufer des Lago Maggiore und im Tale Ossola (Oxola) und nimmt auch die Eigengüter der Gattin Manfreds von Castello, Berta, in seinen Schutz.",
+  "date": [
+   {
+    "t": "1152 Juli 30"
+   }
+  ],
+  "place": [
+   {
+    "t": "Ulm"
+   }
+  ],
+  "text": "Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis comites de Castello), wie seine Vorgänger Karl, Otto und Heinrich in seinen Schutz, bestätigt ihnen ihre Besitzungen und Rechte vor allem am Westufer des Lago Maggiore und im Tale Ossola (Oxola) und nimmt auch die Eigengüter der Gattin Manfreds von Castello, Berta, in seinen Schutz. Z.: die Bischöfe Hermann von Konstanz, Ortlieb (ortoliabus) von Basel und Ardicio von Como, die Herzoge Welf und Berthold von Burgund, Markgraf Otakar von Steier. - Arnoldus canc. vice Henrici Maguntini archiep. et archicanc. ; verfaßt und geschrieben von A II. C; SI. D. Regalis munificentię dignitatis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 6,
+  "blocks": [
+   {
+    "node": "urn:regesta:22743:berta-protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22743:berta-protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "berta-protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 49,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22743:> .\nx:berta-protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22743> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die genannten Grafen von Castello\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22743:berta-protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berta-protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 49,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:berta-protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Berta",
+      "text": "Berta in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22743:berta-protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berta-protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 49,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:berta-protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000696> ; rf:nameInSource \"Berta\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000696"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Eigengüter der Gattin Manfreds von Castello, Berta",
+      "text": "betrifft die Eigengüter der Gattin Manfreds von Castello, Berta",
+      "triple": [
+       "urn:regesta:22743:berta-protection",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22743:eigengueter-berta"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berta-protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 49,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:berta-protection rf:concerns x:eigengueter-berta .\nx:eigengueter-berta a crm:E18_Physical_Thing ;\n    rdfs:label \"die Eigengüter der Gattin Manfreds von Castello, Berta\" .",
+      "object": "urn:regesta:22743:eigengueter-berta",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22743:berta-protection",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berta-protection-2",
+      "own": true,
+      "evidence": {
+       "start": 345,
+       "end": 428,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:berta-protection rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nimmt auch die Eigengüter der Gattin Manfreds von Castello, Berta, in seinen Schutz\" ] .",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Berta"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "die Eigengüter der Gattin Manfreds von Castello, Berta"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22743:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22743:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 117,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22743> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Mainfredum",
+      "text": "Mainfredum in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000332> ; rf:nameInSource \"Mainfredum\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000332"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Caualkasellam",
+      "text": "Caualkasellam in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000460> ; rf:nameInSource \"Caualkasellam\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000460"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "fratres",
+      "text": "fratres in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22743:local:fratres> ; rf:nameInSource \"fratres\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22743:local:fratres"
+      ],
+      "key": "k10",
+      "agentNotes": [
+       {
+        "text": "fratres is a regest-local group; whose brothers they are (Caualkasella's or the listed counts') is unresolved.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ardicionem",
+      "text": "Ardicionem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001108> ; rf:nameInSource \"Ardicionem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001108"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Crollamontem",
+      "text": "Crollamontem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C001095> ; rf:nameInSource \"Crollamontem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C001095"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Besitzungen",
+      "text": "betrifft Besitzungen",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22743:besitzungen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:concerns x:besitzungen .\nx:besitzungen a crm:E18_Physical_Thing ;\n    rdfs:label \"Besitzungen\" .",
+      "object": "urn:regesta:22743:besitzungen",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Westufer des Lago Maggiore",
+      "text": "betrifft Westufer des Lago Maggiore",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22743:lago-maggiore"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:concerns x:lago-maggiore .\nx:lago-maggiore a crm:E53_Place ;\n    rdfs:label \"Westufer des Lago Maggiore\" .",
+      "object": "urn:regesta:22743:lago-maggiore",
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Tale Ossola (Oxola)",
+      "text": "betrifft Tale Ossola (Oxola)",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22743:ossola"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 117,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:concerns x:ossola .\nx:ossola a crm:E53_Place ;\n    rdfs:label \"Tale Ossola (Oxola)\" .",
+      "object": "urn:regesta:22743:ossola",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-2",
+      "own": true,
+      "evidence": {
+       "start": 230,
+       "end": 340,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt ihnen ihre Besitzungen und Rechte vor allem am Westufer des Lago Maggiore und im Tale Ossola (Oxola)\" ] .",
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "vor allem",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22743:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 274,
+       "end": 283,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6",
+       "k16"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7",
+       "k16"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8",
+       "k16"
+      ],
+      "text": "Mainfredum"
+     },
+     ", ",
+     {
+      "keys": [
+       "k9",
+       "k16"
+      ],
+      "text": "Caualkasellam"
+     },
+     ", ",
+     {
+      "keys": [
+       "k10",
+       "k16"
+      ],
+      "text": "fratres"
+     },
+     ", ",
+     {
+      "keys": [
+       "k11",
+       "k16"
+      ],
+      "text": "Ardicionem"
+     },
+     " und ",
+     {
+      "keys": [
+       "k12",
+       "k16"
+      ],
+      "text": "Crollamontem"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k13",
+       "k16"
+      ],
+      "text": "Besitzungen"
+     },
+     ", ",
+     {
+      "keys": [
+       "k14",
+       "k16"
+      ],
+      "text": "Westufer des Lago Maggiore"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15",
+       "k16"
+      ],
+      "text": "Tale Ossola (Oxola)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22743:predecessors-protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22743:predecessors-protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "predecessors-protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 228,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22743:> .\nx:predecessors-protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22743> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis comites de Castello), wie seine Vorgänger Karl, Otto und Heinrich in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Karl",
+      "text": "Karl in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22743:predecessors-protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "predecessors-protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:predecessors-protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000079> ; rf:nameInSource \"Karl\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000079"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Otto",
+      "text": "Otto in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22743:predecessors-protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "predecessors-protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:predecessors-protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000396> ; rf:nameInSource \"Otto\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000396"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich",
+      "text": "Heinrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22743:predecessors-protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "predecessors-protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:predecessors-protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000359> ; rf:nameInSource \"Heinrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000359"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "wie seine Vorgänger",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22743:predecessors-protection",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 168,
+       "end": 187,
+       "ambiguous": false
+      },
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Karl"
+     },
+     ", ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Otto"
+     },
+     " und ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Heinrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22743:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22743:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 228,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22743:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22743> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis comites de Castello), wie seine Vorgänger Karl, Otto und Heinrich in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k23"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22743:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Mainfredum",
+      "text": "Mainfredum in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000332> ; rf:nameInSource \"Mainfredum\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000332"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Caualkasellam",
+      "text": "Caualkasellam in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000460> ; rf:nameInSource \"Caualkasellam\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000460"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "fratres",
+      "text": "fratres in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22743:local:fratres> ; rf:nameInSource \"fratres\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22743:local:fratres"
+      ],
+      "key": "k27",
+      "agentNotes": [
+       {
+        "text": "fratres is a regest-local group; whose brothers they are (Caualkasella's or the listed counts') is unresolved.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ardicionem",
+      "text": "Ardicionem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001108> ; rf:nameInSource \"Ardicionem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001108"
+      ],
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Crollamontem",
+      "text": "Crollamontem in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22743:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C001095> ; rf:nameInSource \"Crollamontem\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C001095"
+      ],
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Schutznahme",
+      "text": "bezieht sich auf Schutznahme",
+      "triple": [
+       "urn:regesta:22743:protection",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22743:predecessors-protection"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 228,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:protection rf:refersToAct x:predecessors-protection .\nx:predecessors-protection a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die genannten Grafen von Castello (Mainfredum, Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis comites de Castello), wie seine Vorgänger Karl, Otto und Heinrich in seinen Schutz\" ] ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:qualifier \"wie seine Vorgänger\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000359> ; rf:nameInSource \"Heinrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000079> ; rf:nameInSource \"Karl\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000396> ; rf:nameInSource \"Otto\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22743> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22743:predecessors-protection",
+      "objectClaim": "predecessors-protection",
+      "key": "k30"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Mainfredum"
+     },
+     ", ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Caualkasellam"
+     },
+     ", ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "fratres"
+     },
+     ", ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Ardicionem"
+     },
+     " und ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Crollamontem"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Schutznahme"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22743:berta-possession",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22743:berta-possession",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "berta-possession",
+     "own": true,
+     "evidence": {
+      "start": 356,
+      "end": 410,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22743:> .\nx:berta-possession a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22743> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Eigengüter der Gattin Manfreds von Castello, Berta\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k31"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Berta",
+      "text": "Berta in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22743:berta-possession",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berta-possession",
+      "own": true,
+      "evidence": {
+       "start": 356,
+       "end": 410,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:berta-possession rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000696> ; rf:nameInSource \"Berta\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000696"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Eigengüter der Gattin Manfreds von Castello, Berta",
+      "text": "betrifft die Eigengüter der Gattin Manfreds von Castello, Berta",
+      "triple": [
+       "urn:regesta:22743:berta-possession",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22743:eigengueter-berta"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "berta-possession",
+      "own": true,
+      "evidence": {
+       "start": 356,
+       "end": 410,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:berta-possession rf:concerns x:eigengueter-berta .\nx:eigengueter-berta a crm:E18_Physical_Thing ;\n    rdfs:label \"die Eigengüter der Gattin Manfreds von Castello, Berta\" .",
+      "object": "urn:regesta:22743:eigengueter-berta",
+      "key": "k33"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Eigengüter",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22743:berta-possession",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 360,
+       "end": 370,
+       "ambiguous": false
+      },
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Berta"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "die Eigengüter der Gattin Manfreds von Castello, Berta"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22743:manfred-berta-marriage",
+    "kind": "state",
+    "title": "Ehe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehe",
+     "text": "Ehe",
+     "triple": [
+      "urn:regesta:22743:manfred-berta-marriage",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Marriage"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "manfred-berta-marriage",
+     "own": true,
+     "evidence": {
+      "start": 371,
+      "end": 410,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22743:> .\nx:manfred-berta-marriage a rf:StateFactoid ;\n    rf:factoidType rv:Marriage ;\n    rf:source <urn:regesta:record:22743> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Gattin Manfreds von Castello, Berta\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k35"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Mainfredum",
+      "text": "Mainfredum in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22743:manfred-berta-marriage",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "manfred-berta-marriage",
+      "own": true,
+      "evidence": {
+       "start": 371,
+       "end": 410,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:manfred-berta-marriage rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000332> ; rf:nameInSource \"Manfreds von Castello\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000332"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Berta",
+      "text": "Berta in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22743:manfred-berta-marriage",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "manfred-berta-marriage",
+      "own": true,
+      "evidence": {
+       "start": 371,
+       "end": 410,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22743:> .\nx:manfred-berta-marriage rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000696> ; rf:nameInSource \"Berta\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000696"
+      ],
+      "key": "k37"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Gattin",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22743:manfred-berta-marriage",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 375,
+       "end": 381,
+       "ambiguous": false
+      },
+      "key": "k38"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Ehe"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Mainfredum"
+     },
+     " und ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "Berta"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "predecessors-protection",
+    "start": 0,
+    "end": 228
+   },
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 228
+   },
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 117
+   },
+   {
+    "id": "berta-protection",
+    "start": 0,
+    "end": 49
+   },
+   {
+    "id": "t2",
+    "start": 168,
+    "end": 187
+   },
+   {
+    "id": "confirmation-2",
+    "start": 230,
+    "end": 340
+   },
+   {
+    "id": "t1",
+    "start": 274,
+    "end": 283
+   },
+   {
+    "id": "berta-protection-2",
+    "start": 345,
+    "end": 428
+   },
+   {
+    "id": "berta-possession",
+    "start": 356,
+    "end": 410
+   },
+   {
+    "id": "t3",
+    "start": 360,
+    "end": 370
+   },
+   {
+    "id": "manfred-berta-marriage",
+    "start": 371,
+    "end": 410
+   },
+   {
+    "id": "t4",
+    "start": 375,
+    "end": 381
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Karl, Otto and Heinrich are identified with register candidates whose own labels mark the identity as uncertain (welcher?).",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "filios Wilielmi et Guidonis states parenthood, but the pairing of children to the fathers Wilhelm and Guido and the extent of the list it governs are ambiguous; no Parenthood or Kinship factoid was written.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The confirmed 'Rechte' have no specific right type in rv:RightTypes and no generic type exists; they are not modelled as an E30_Right.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Manfred in the marriage passage and Mainfredum among the recipients are both identified with register candidate M000332 by name and title, each from this packet.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No generic right type for unspecified 'Rechte' in rv:RightTypes.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "Parenthood requires one parent and one child; an ambiguous collective filiation (sons of A and B) cannot be expressed without over- or under-claiming.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-kinship",
+     "severity": "Hinweis",
+     "subject": "22743",
+     "description": "The name list states kinship: Cavalcasella and his brothers (fratres), and Ardicio and Crollamons as sons of Wilhelm and Guido. Wilhelm (RI004-002-W000559) and Guido (RI004-002-G001184) are register candidates of this packet. The distributive reading of filios Wilielmi et Guidonis is ambiguous, so a Parenthood with one parent per child would overreach, but the brother relation and the filiation could be recorded as rv:Kinship with the exact word in rf:qualifier, or the ambiguity reported.",
+     "proposal": "Add a rv:Kinship state with qualifier \"fratres\" (Cavalcasella, local fratres group) and record the filiation either as rv:Kinship with qualifier \"filios Wilielmi et Guidonis\" or as an unresolved gap in the batch report.",
+     "quote": {
+      "start": 63,
+      "end": 165
+     }
+    },
+    {
+     "category": "lost-object",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22743:confirmation",
+     "description": "Friedrich confirms Besitzungen und Rechte; only the Besitzungen appear as a rf:concerns node. The rights are dropped.",
+     "proposal": "Add a crm:E30_Right node labelled \"Rechte\" (top concept as type, or report the missing generic type) to rf:concerns.",
+     "quote": {
+      "start": 230,
+      "end": 273
+     }
+    },
+    {
+     "category": "redundancy",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22743:berta-possession",
+     "description": "Berta's possession of the Eigengüter is supported by the genitive, but it duplicates the object of the protection factoid. Acceptable.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 356,
+      "end": 410
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The kinship in the Latin name list ('et fratres', 'filios Wilielmi et Guidonis') is not extracted.",
+     "reason": "In 'Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis' it is open whose brothers 'fratres' are, which children 'filios' governs and how they pair with the two fathers. The guidelines require rv:Parenthood with one parent and one child, and forbid substituting rv:Kinship for a parent relation. Any factoid would therefore over- or under-claim. The ambiguity is already in the batch report.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The confirmed 'Rechte' are dropped from rf:concerns.",
+     "reason": "'bestätigt ihnen ihre Besitzungen und Rechte' names unspecified rights. RightShape requires a crm:P2_has_type from rv:RightTypes, and no generic right type exists, while picking a top concept would be an unsupported judgement. The gap is reported.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Am unteren linken Rand steht von gleichzeitiger Hand: "
+    },
+    {
+     "t": "filii Wilelmi Henricus et Ardicio, Albertus et Wilelmo",
+     "i": true
+    },
+    {
+     "t": ". - Von den Schutzurkunden der genannten Vorgänger ist nichts bekannt; das D. wurde durch Heinrich VI. bestätigt, B.-Baaken Reg. "
+    },
+    {
+     "t": "193",
+     "regest": "22820"
+    },
+    {
+     "t": ". - Vgl. die Nennung Cavalcasellas in Reg. "
+    },
+    {
+     "t": "139",
+     "regest": "22766"
+    },
+    {
+     "t": ". "
+    },
+    {
+     "t": "Verbesserungen und Zusätze (1991):"
+    },
+    {
+     "t": " Das Incipit von DF. I. 19 lautet richtig "
+    },
+    {
+     "t": "Regalis munificentię dignitas",
+     "i": true
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Orig.: Archiv der Grafen Barbavara di Gravellona zu Gallarate (A). Kop..: Zwei Abschriften des 18. Jh., Sormani, Diplomatica Mediolanensis tom. 3, fol. 13 in der Biblioteca Ambrosiana zu Mailand (B) = CD. Mediolanensis des Giulio della Croce tom. 8, fol. 37 ebenda (C). Drucke: Colombo, Cartario di Vigevano, BSSS 128 (1933) 129 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 55; Belfanti, Castelletto sopra Ticino 271; MG. DF. I. 19. Reg.: Stumpf 3639."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0041"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_19"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-19"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000143",
+    "Sohn des Grafen Wilhelm von Castello"
+   ],
+   [
+    "RI004-002-A001103",
+    "Bischof von Como"
+   ],
+   [
+    "RI004-002-A001108",
+    "Graf von Castello"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000696",
+    "Gemahlin des Grafen Manfred von Castello"
+   ],
+   [
+    "RI004-002-B000724",
+    "(IV.), Herzog von Zähringen, Breisgau und Burgund"
+   ],
+   [
+    "RI004-002-C000460",
+    "(Graf) von Castel d'Agogna (<i>Castello</i>)"
+   ],
+   [
+    "RI004-002-C001095",
+    "Crollamons, Graf von Castello"
+   ],
+   [
+    "RI004-002-G001184",
+    "Graf von Castello"
+   ],
+   [
+    "RI004-002-H000359",
+    "Kaiser (<i>welcher?</i>)"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000520",
+    "Sohn des Grafen Wilhelm von Castello"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-K000079",
+    "Kaiser (<i>welcher?</i>)"
+   ],
+   [
+    "RI004-002-L000044",
+    "Lago Maggiore (an der Grenze zwischen der Schweiz und Italien)"
+   ],
+   [
+    "RI004-002-M000332",
+    "Graf von Castello"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000325",
+    "Ossola, Val d' (oberes Tal des Toce, Piemont)"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000396",
+    "König und Kaiser (<i>welcher?</i>)"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-V000023",
+    "Val d'Ossola (Tal vom Griespass an der ital.-schweizer. Grenze bis Domodossola, Piemont)"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000559",
+    "Graf von Castello"
+   ],
+   [
+    "RI004-002-W000560",
+    "Graf von Castello, Sohn des Vorigen"
+   ]
+  ]
+ }
+}

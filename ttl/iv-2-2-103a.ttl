@@ -1,0 +1,157 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1138-06-00_1_1_4_1_2_103a_000000103a
+
+@prefix rf: <https://example.org/regesta/factoid/> .
+@prefix rv: <https://example.org/regesta/concept/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:134441> a crm:E31_Document ;
+    rdfs:label "RI IV,2,2 n. 103a" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "König Friedrich" .
+
+<urn:regesta:actor:RI004-002-E000587> a crm:E21_Person ;
+    rdfs:label "Eufemia" .
+
+<urn:regesta:actor:RI004-002-H000615> a crm:E21_Person ;
+    rdfs:label "Heinrichs von Hegilen" .
+
+<urn:regesta:actor:RI004-002-B000513:community> a crm:E74_Group ;
+    rdfs:label "Stift Berchtesgaden" .
+
+<urn:regesta:actor:RI004-002-H000436> a crm:E21_Person ;
+    rdfs:label "Propst Heinrich" .
+
+<urn:regesta:actor:RI004-002-E000342> a crm:E21_Person ;
+    rdfs:label "Markgraf Engelbert von Kraiburg" .
+
+<urn:regesta:actor:RI004-002-O000481> a crm:E21_Person ;
+    rdfs:label "Otto von Moos" .
+
+<urn:regesta:actor:RI004-002-E000440> a crm:E21_Person ;
+    rdfs:label "Erbo von Biburg" .
+
+<urn:regesta:actor:RI004-002-H000788> a crm:E21_Person ;
+    rdfs:label "Herbord von Hebingen" .
+
+<urn:regesta:134441:saline-salzpfanne-reichenhall> a crm:E18_Physical_Thing ;
+    rdfs:label "Saline und Salzpfanne zu Reichenhall" .
+
+# Dispute
+
+<urn:regesta:134441:dispute> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:134441> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich um Saline und Salzpfanne zu Reichenhall" ] ;
+    rf:reference <urn:regesta:134441:dispute-ref-eufemia> , <urn:regesta:134441:dispute-ref-stift> ;
+    rf:concerns <urn:regesta:134441:saline-salzpfanne-reichenhall> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:134441:dispute-ref-eufemia> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000587> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Eufemia" .
+
+<urn:regesta:134441:dispute-ref-stift> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-B000513:community> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Stift Berchtesgaden" .
+
+# Judgment deciding the dispute
+
+<urn:regesta:134441:judgment> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:134441> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Vor König Friedrich (coram rege Friderico) wird der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich um Saline und Salzpfanne zu Reichenhall nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen durch Spruch des erwählten Richters Markgraf Engelbert von Kraiburg (Istrien) zugunsten des Stiftes entschieden." ] ;
+    rf:refersToAct <urn:regesta:134441:dispute> ;
+    rf:reference <urn:regesta:134441:judgment-ref-ruler> ,
+        <urn:regesta:134441:judgment-ref-judge> ,
+        <urn:regesta:134441:judgment-ref-stift> ,
+        <urn:regesta:134441:judgment-ref-otto> ,
+        <urn:regesta:134441:judgment-ref-erbo> ,
+        <urn:regesta:134441:judgment-ref-herbord> ;
+    rf:concerns <urn:regesta:134441:saline-salzpfanne-reichenhall> ;
+    rf:qualifier "erwählten Richters" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:134441:judgment-ref-ruler> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "König Friedrich" .
+
+<urn:regesta:134441:judgment-ref-judge> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000342> ;
+    rf:role rv:Judge ;
+    rf:nameInSource "Markgraf Engelbert von Kraiburg" .
+
+<urn:regesta:134441:judgment-ref-stift> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-B000513:community> ;
+    rf:role rv:Beneficiary ;
+    rf:nameInSource "Stiftes" .
+
+<urn:regesta:134441:judgment-ref-otto> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-O000481> ;
+    rf:role rv:Witness ;
+    rf:nameInSource "Otto von Moos" .
+
+<urn:regesta:134441:judgment-ref-erbo> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000440> ;
+    rf:role rv:Witness ;
+    rf:nameInSource "Erbo von Biburg" .
+
+<urn:regesta:134441:judgment-ref-herbord> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000788> ;
+    rf:role rv:Witness ;
+    rf:nameInSource "Herbord von Hebingen" .
+
+# Widowhood
+
+<urn:regesta:134441:marriage-eufemia-heinrich> a rf:StateFactoid ;
+    rf:factoidType rv:Marriage ;
+    rf:source <urn:regesta:record:134441> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Eufemia, der Witwe Heinrichs von Hegilen" ] ;
+    rf:reference <urn:regesta:134441:marriage-ref-eufemia> , <urn:regesta:134441:marriage-ref-heinrich> ;
+    rf:qualifier "Witwe" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:134441:marriage-ref-eufemia> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000587> ;
+    rf:role rv:Spouse ;
+    rf:nameInSource "Eufemia" .
+
+<urn:regesta:134441:marriage-ref-heinrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000615> ;
+    rf:role rv:Spouse ;
+    rf:nameInSource "Heinrichs von Hegilen" .
+
+# Provost of the house as party
+
+<urn:regesta:134441:office-propst-heinrich> a rf:StateFactoid ;
+    rf:factoidType rv:OfficeHolding ;
+    rf:source <urn:regesta:record:134441> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Stift Berchtesgaden unter Propst Heinrich" ] ;
+    rf:reference <urn:regesta:134441:office-ref-heinrich> ;
+    rf:concerns <urn:regesta:actor:RI004-002-B000513:community> ;
+    rf:qualifier "Propst" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:134441:office-ref-heinrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000436> ;
+    rf:role rv:Officeholder ;
+    rf:nameInSource "Propst Heinrich" .

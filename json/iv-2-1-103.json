@@ -1,0 +1,1410 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-06-17_1_0_4_2_1_103_103",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22730",
+  "identifier": "RI IV,2,1 n. 103",
+  "short": "RI IV,2,1 n. 103",
+  "sort": "004_002_001_000103_0000000103",
+  "start": "1152-06-17",
+  "end": "1152-06-17",
+  "proseYears": [],
+  "lead": "Die Erzbischöfe Eberhard von Salzburg , Hartwig von Bremen und Hillin von Trier sowie die Bischöfe Eberhard von Bamberg, Hermann von Konstanz, Heinrich von Regensburg , Otto von Freising , Konrad von Passau , Daniel von Prag, Anselm von Havelberg und Burchard von Eichstätt schreiben an Papst Eugen III. und setzen sich für die Bestätigung der Wahl Wichmanns zum Erzbischof von Magdeburg ein.",
+  "date": [
+   {
+    "t": "(1152 vor August 17, vielleicht Ende Juni/Anfang Juli)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Regensburg)"
+   }
+  ],
+  "text": "Die Erzbischöfe Eberhard von Salzburg , Hartwig von Bremen und Hillin von Trier sowie die Bischöfe Eberhard von Bamberg, Hermann von Konstanz, Heinrich von Regensburg , Otto von Freising , Konrad von Passau , Daniel von Prag, Anselm von Havelberg und Burchard von Eichstätt schreiben an Papst Eugen III. und setzen sich für die Bestätigung der Wahl Wichmanns zum Erzbischof von Magdeburg ein.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22730:fuersprache",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22730:fuersprache",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "fuersprache",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 391,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22730> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Erzbischöfe Eberhard von Salzburg , Hartwig von Bremen und Hillin von Trier sowie die Bischöfe Eberhard von Bamberg, Hermann von Konstanz, Heinrich von Regensburg , Otto von Freising , Konrad von Passau , Daniel von Prag, Anselm von Havelberg und Burchard von Eichstätt schreiben an Papst Eugen III. und setzen sich für die Bestätigung der Wahl Wichmanns zum Erzbischof von Magdeburg ein\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Eberhard von Salzburg",
+      "text": "Eberhard von Salzburg in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000010> ; rf:nameInSource \"Eberhard von Salzburg\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000010"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hartwig von Bremen",
+      "text": "Hartwig von Bremen in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000192> ; rf:nameInSource \"Hartwig von Bremen\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000192"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hillin von Trier",
+      "text": "Hillin von Trier in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001017> ; rf:nameInSource \"Hillin von Trier\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001017"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Eberhard von Bamberg",
+      "text": "Eberhard von Bamberg in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"Eberhard von Bamberg\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hermann von Konstanz",
+      "text": "Hermann von Konstanz in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000817> ; rf:nameInSource \"Hermann von Konstanz\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000817"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich von Regensburg",
+      "text": "Heinrich von Regensburg in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000397> ; rf:nameInSource \"Heinrich von Regensburg\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000397"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Otto von Freising",
+      "text": "Otto von Freising in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000405> ; rf:nameInSource \"Otto von Freising\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000405"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad von Passau",
+      "text": "Konrad von Passau in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000327> ; rf:nameInSource \"Konrad von Passau\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000327"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Daniel von Prag",
+      "text": "Daniel von Prag in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:nameInSource \"Daniel von Prag\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000047"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Anselm von Havelberg",
+      "text": "Anselm von Havelberg in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000934> ; rf:nameInSource \"Anselm von Havelberg\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000934"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Burchard von Eichstätt",
+      "text": "Burchard von Eichstätt in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001562> ; rf:nameInSource \"Burchard von Eichstätt\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B001562"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen III.",
+      "text": "Papst Eugen III. in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen III.\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wichmanns",
+      "text": "Wichmanns in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:nameInSource \"Wichmanns\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000436"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22730:schreiben"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:partOf x:schreiben .\nx:schreiben a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Erzbischöfe Eberhard von Salzburg , Hartwig von Bremen und Hillin von Trier sowie die Bischöfe Eberhard von Bamberg, Hermann von Konstanz, Heinrich von Regensburg , Otto von Freising , Konrad von Passau , Daniel von Prag, Anselm von Havelberg und Burchard von Eichstätt schreiben an Papst Eugen III.\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000934> ; rf:nameInSource \"Anselm von Havelberg\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001562> ; rf:nameInSource \"Burchard von Eichstätt\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:nameInSource \"Daniel von Prag\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000010> ; rf:nameInSource \"Eberhard von Salzburg\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"Eberhard von Bamberg\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen III.\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000192> ; rf:nameInSource \"Hartwig von Bremen\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000397> ; rf:nameInSource \"Heinrich von Regensburg\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000817> ; rf:nameInSource \"Hermann von Konstanz\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001017> ; rf:nameInSource \"Hillin von Trier\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000327> ; rf:nameInSource \"Konrad von Passau\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000405> ; rf:nameInSource \"Otto von Freising\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22730> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22730:schreiben",
+      "objectClaim": "schreiben",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Einsetzung",
+      "text": "bezieht sich auf Einsetzung",
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22730:wahl-wichmann"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuersprache",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 391,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:fuersprache rf:refersToAct x:wahl-wichmann .\nx:wahl-wichmann a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Wahl Wichmanns zum Erzbischof von Magdeburg\" ] ;\n    rf:factoidType rv:Appointment ;\n    rf:qualifier \"Wahl\" , \"zum Erzbischof von Magdeburg\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:nameInSource \"Wichmanns\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22730> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22730:wahl-wichmann",
+      "objectClaim": "wahl-wichmann",
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "für die Bestätigung der Wahl",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22730:fuersprache",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 320,
+       "end": 348,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Eberhard von Salzburg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Hartwig von Bremen"
+     },
+     ", ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Hillin von Trier"
+     },
+     ", ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Eberhard von Bamberg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Hermann von Konstanz"
+     },
+     ", ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Heinrich von Regensburg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Otto von Freising"
+     },
+     ", ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Konrad von Passau"
+     },
+     ", ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Daniel von Prag"
+     },
+     ", ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Anselm von Havelberg"
+     },
+     " und ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Burchard von Eichstätt"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Papst Eugen III."
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Wichmanns"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Schreiben"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Einsetzung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22730:schreiben",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22730:schreiben",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "schreiben",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 303,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22730> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Erzbischöfe Eberhard von Salzburg , Hartwig von Bremen und Hillin von Trier sowie die Bischöfe Eberhard von Bamberg, Hermann von Konstanz, Heinrich von Regensburg , Otto von Freising , Konrad von Passau , Daniel von Prag, Anselm von Havelberg und Burchard von Eichstätt schreiben an Papst Eugen III.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Eberhard von Salzburg",
+      "text": "Eberhard von Salzburg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000010> ; rf:nameInSource \"Eberhard von Salzburg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000010"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hartwig von Bremen",
+      "text": "Hartwig von Bremen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000192> ; rf:nameInSource \"Hartwig von Bremen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000192"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hillin von Trier",
+      "text": "Hillin von Trier in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001017> ; rf:nameInSource \"Hillin von Trier\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001017"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Eberhard von Bamberg",
+      "text": "Eberhard von Bamberg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:nameInSource \"Eberhard von Bamberg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000011"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hermann von Konstanz",
+      "text": "Hermann von Konstanz in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000817> ; rf:nameInSource \"Hermann von Konstanz\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000817"
+      ],
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich von Regensburg",
+      "text": "Heinrich von Regensburg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000397> ; rf:nameInSource \"Heinrich von Regensburg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000397"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Otto von Freising",
+      "text": "Otto von Freising in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000405> ; rf:nameInSource \"Otto von Freising\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000405"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad von Passau",
+      "text": "Konrad von Passau in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000327> ; rf:nameInSource \"Konrad von Passau\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000327"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Daniel von Prag",
+      "text": "Daniel von Prag in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:nameInSource \"Daniel von Prag\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000047"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Anselm von Havelberg",
+      "text": "Anselm von Havelberg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000934> ; rf:nameInSource \"Anselm von Havelberg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000934"
+      ],
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Burchard von Eichstätt",
+      "text": "Burchard von Eichstätt in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001562> ; rf:nameInSource \"Burchard von Eichstätt\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B001562"
+      ],
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Eugen III.",
+      "text": "Papst Eugen III. in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22730:schreiben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "schreiben",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 303,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:schreiben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:nameInSource \"Papst Eugen III.\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000589"
+      ],
+      "key": "k30"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Eberhard von Salzburg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Hartwig von Bremen"
+     },
+     ", ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Hillin von Trier"
+     },
+     ", ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Eberhard von Bamberg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Hermann von Konstanz"
+     },
+     ", ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Heinrich von Regensburg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Otto von Freising"
+     },
+     ", ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Konrad von Passau"
+     },
+     ", ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Daniel von Prag"
+     },
+     ", ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Anselm von Havelberg"
+     },
+     " und ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Burchard von Eichstätt"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Papst Eugen III."
+     }
+    ]
+   },
+   {
+    "node": "urn:regesta:22730:wahl-wichmann",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22730:wahl-wichmann",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "wahl-wichmann",
+     "own": true,
+     "evidence": {
+      "start": 340,
+      "end": 387,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22730:> .\nx:wahl-wichmann a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22730> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Wahl Wichmanns zum Erzbischof von Magdeburg\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k31"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wichmanns",
+      "text": "Wichmanns in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22730:wahl-wichmann",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "wahl-wichmann",
+      "own": true,
+      "evidence": {
+       "start": 340,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22730:> .\nx:wahl-wichmann rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:nameInSource \"Wichmanns\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000436"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Wahl",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22730:wahl-wichmann",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 344,
+       "end": 348,
+       "ambiguous": false
+      },
+      "key": "k33"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "zum Erzbischof von Magdeburg",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22730:wahl-wichmann",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 359,
+       "end": 387,
+       "ambiguous": false
+      },
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Einsetzung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Wichmanns"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "fuersprache",
+    "start": 0,
+    "end": 391
+   },
+   {
+    "id": "schreiben",
+    "start": 0,
+    "end": 303
+   },
+   {
+    "id": "t1",
+    "start": 320,
+    "end": 348
+   },
+   {
+    "id": "wahl-wichmann",
+    "start": 340,
+    "end": 387
+   },
+   {
+    "id": "t2",
+    "start": 344,
+    "end": 348
+   },
+   {
+    "id": "t3",
+    "start": 359,
+    "end": 387
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No sender role for rv:Communication; the eleven writing prelates carry rv:Participant in the letter factoid and rv:Petitioner in the intercession factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The election of Wichmann is recorded as an Appointment from the phrase 'der Wahl Wichmanns zum Erzbischof von Magdeburg' without electors; the intercession refers to it via refersToAct, which the model defines for confirmations and assurances. No confirmation by the pope is asserted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender or author role for rv:Communication.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for electors; the election is recorded without its electing body because the passage names none.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22730:schreiben",
+     "description": "The senders of the letter are rv:Participant because the vocabulary has no sender role; the Request factoid carries the more specific rv:Petitioner. Acceptable stand-in.",
+     "proposal": "No change; report the missing sender role as a model gap.",
+     "quote": {
+      "start": 274,
+      "end": 303
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Ottonis Gesta Frid. l. II cap. 8, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 108 geben als Grund für diesen Schritt der Bischöfe "
+    },
+    {
+     "t": "ob amorem regis",
+     "i": true
+    },
+    {
+     "t": " an. Dazu und zur Datierung des verlorenen Schreibens vgl. Simonsfeld, Jahrbücher 104 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt im Schreiben Eugens III. an die genannten Bischöfe von (1152) August 17, ed. Doeberl, MG. sel. 4, 76 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " XXVIb; JL. 9605 (Reg. 127)."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=38"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-B001562",
+    "Bischof von Eichstätt"
+   ],
+   [
+    "RI004-002-D000047",
+    "Bischof von Prag"
+   ],
+   [
+    "RI004-002-E000010",
+    "Erzbischof von Salzburg"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-H000192",
+    "(I.), Erzbischof von Bremen und Hamburg"
+   ],
+   [
+    "RI004-002-H000397",
+    "Bischof von Regensburg"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-K000327",
+    "Bischof von Passau, dann Erzbischof von Salzburg, Konrad II., von Babenberg (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-O000405",
+    "(I.), Bischof von Freising"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ]
+  ]
+ }
+}

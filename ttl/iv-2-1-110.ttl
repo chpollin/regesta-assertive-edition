@@ -1,0 +1,56 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-07-25_1_0_4_2_1_110_110
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22737> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 110" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:22737:local:fuersten> a crm:E74_Group ;
+    rdfs:label "Fürsten" .
+
+<urn:regesta:actor:22737:local:laienfuersten> a crm:E74_Group ;
+    rdfs:label "Laienfürsten" .
+
+<urn:regesta:22737:peace> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22737> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich hält einen Hoftag und errichtet unter Zustimmung der Fürsten einen festen Frieden" ] ;
+    rf:reference <urn:regesta:22737:peace-ref-friedrich> , <urn:regesta:22737:peace-ref-fuersten> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-27> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22737:peace-ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22737:peace-ref-fuersten> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22737:local:fuersten> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Fürsten" .
+
+<urn:regesta:22737:resolution> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22737> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Die Laienfürsten beschließen, daß bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern der weltliche Rechtsspruch der Exkommunikation vorauszugehen habe." ] ;
+    rf:reference <urn:regesta:22737:resolution-ref-laienfuersten> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-27> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22737:resolution-ref-laienfuersten> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22737:local:laienfuersten> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Laienfürsten" .

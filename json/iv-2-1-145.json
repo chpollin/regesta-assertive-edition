@@ -1,0 +1,992 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-10-31_1_0_4_2_1_145_145",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22772",
+  "identifier": "RI IV,2,1 n. 145",
+  "short": "RI IV,2,1 n. 145",
+  "sort": "004_002_001_000145_0000000145",
+  "start": "1152-10-31",
+  "end": "1152-10-31",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Kloster S. Simplician zu Mailand (monasterio sanctorum martirum Geruasii et Protasii seu beatissimi antistitis Simpliciani) nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben mit Ausnahme des Fodrums bei Zügen des Königs ins regnum Lombardie und der scudassia an den Grafen.",
+  "date": [
+   {
+    "t": "1152 Oktorber 31"
+   }
+  ],
+  "place": [
+   {
+    "t": "Nürnberg"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Kloster S. Simplician zu Mailand (monasterio sanctorum martirum Geruasii et Protasii seu beatissimi antistitis Simpliciani) nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben mit Ausnahme des Fodrums bei Zügen des Königs ins regnum Lombardie und der scudassia an den Grafen. Z.: Pfalzgraf Otto von Wittelsbach, Graf Rudolf von Ramsberg, Heinrich, der Marschall des Königs. - Arnoldus canc. vice Henrici Magontini archiep. et archicanc. ; Wiederholung des DL. III. 115, geschrieben von A II. C. Dignum est, ut .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22772:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22772:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 401,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22772:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22772> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster S. Simplician zu Mailand (monasterio sanctorum martirum Geruasii et Protasii seu beatissimi antistitis Simpliciani) nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben mit Ausnahme des Fodrums bei Zügen des Königs ins regnum Lombardie und der scudassia an den Grafen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22772:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 401,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster S. Simplician zu Mailand",
+      "text": "Kloster S. Simplician zu Mailand in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22772:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 401,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000105:community> ; rf:nameInSource \"Kloster S. Simplician zu Mailand\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000105:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Klosterleute zu Treviglio",
+      "text": "Klosterleute zu Treviglio in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22772:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 401,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22772:local:klosterleute-treviglio> ; rf:nameInSource \"Klosterleute zu Treviglio\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22772:local:klosterleute-treviglio"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)",
+      "triple": [
+       "urn:regesta:22772:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22772:befreiung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 401,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:confirmation rf:concerns x:befreiung .\nx:befreiung a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben\" .",
+      "object": "urn:regesta:22772:befreiung",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Treviglio (Triuillio, qui dicitur Grasso)",
+      "text": "betrifft Treviglio (Triuillio, qui dicitur Grasso)",
+      "triple": [
+       "urn:regesta:22772:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22772:treviglio"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 401,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:confirmation rf:concerns x:treviglio .\nx:treviglio a crm:E53_Place ;\n    rdfs:label \"Treviglio (Triuillio, qui dicitur Grasso)\" .",
+      "object": "urn:regesta:22772:treviglio",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22772:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22772:precedent-heinrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 401,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:confirmation rf:refersToAct x:precedent-heinrich .\nx:precedent-heinrich a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:concerns x:befreiung , x:treviglio ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:qualifier \"nach dem Vorgang\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22772:local:klosterleute-treviglio> ; rf:nameInSource \"Klosterleute zu Treviglio\" ; rf:role rv:Beneficiary ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000341> ; rf:nameInSource \"Heinrich (IV.)\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22772> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22772:precedent-heinrich",
+      "objectClaim": "precedent-heinrich",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22772:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22772:precedent-lothar"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 401,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:confirmation rf:refersToAct x:precedent-lothar .\nx:precedent-lothar a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:concerns x:befreiung , x:treviglio ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:qualifier \"nach dem Vorgang\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22772:local:klosterleute-treviglio> ; rf:nameInSource \"Klosterleute zu Treviglio\" ; rf:role rv:Beneficiary ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ; rf:nameInSource \"Lothar (III.)\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22772> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22772:precedent-lothar",
+      "objectClaim": "precedent-lothar",
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Ausnahme",
+      "text": "mit Ausnahme des Fodrums bei Zügen des Königs ins regnum Lombardie und der scudassia an den Grafen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22772:confirmation",
+       "https://example.org/regesta/factoid/exception",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 303,
+       "end": 401,
+       "ambiguous": false
+      },
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kloster S. Simplician zu Mailand"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Klosterleute zu Treviglio"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Treviglio (Triuillio, qui dicitur Grasso)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Übertragung"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22772:precedent-heinrich",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22772:precedent-heinrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "precedent-heinrich",
+     "own": true,
+     "evidence": {
+      "start": 148,
+      "end": 302,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-heinrich a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22772> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser Heinrich (IV.)",
+      "text": "Kaiser Heinrich (IV.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22772:precedent-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "precedent-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 148,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-heinrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000341> ; rf:nameInSource \"Heinrich (IV.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000341"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Klosterleute zu Treviglio",
+      "text": "Klosterleute zu Treviglio in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22772:precedent-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "precedent-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 148,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-heinrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22772:local:klosterleute-treviglio> ; rf:nameInSource \"Klosterleute zu Treviglio\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22772:local:klosterleute-treviglio"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)",
+      "triple": [
+       "urn:regesta:22772:precedent-heinrich",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22772:befreiung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "precedent-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 148,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-heinrich rf:concerns x:befreiung .\nx:befreiung a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben\" .",
+      "object": "urn:regesta:22772:befreiung",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Treviglio (Triuillio, qui dicitur Grasso)",
+      "text": "betrifft Treviglio (Triuillio, qui dicitur Grasso)",
+      "triple": [
+       "urn:regesta:22772:precedent-heinrich",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22772:treviglio"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "precedent-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 148,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-heinrich rf:concerns x:treviglio .\nx:treviglio a crm:E53_Place ;\n    rdfs:label \"Treviglio (Triuillio, qui dicitur Grasso)\" .",
+      "object": "urn:regesta:22772:treviglio",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach dem Vorgang",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22772:precedent-heinrich",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 148,
+       "end": 164,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Kaiser Heinrich (IV.)"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Klosterleute zu Treviglio"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Treviglio (Triuillio, qui dicitur Grasso)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22772:precedent-lothar",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22772:precedent-lothar",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "precedent-lothar",
+     "own": true,
+     "evidence": {
+      "start": 148,
+      "end": 302,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-lothar a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22772> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Lothar (III.)",
+      "text": "Lothar (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22772:precedent-lothar",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "precedent-lothar",
+      "own": true,
+      "evidence": {
+       "start": 148,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-lothar rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ; rf:nameInSource \"Lothar (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000682"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Klosterleute zu Treviglio",
+      "text": "Klosterleute zu Treviglio in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22772:precedent-lothar",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "precedent-lothar",
+      "own": true,
+      "evidence": {
+       "start": 148,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-lothar rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22772:local:klosterleute-treviglio> ; rf:nameInSource \"Klosterleute zu Treviglio\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22772:local:klosterleute-treviglio"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)",
+      "triple": [
+       "urn:regesta:22772:precedent-lothar",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22772:befreiung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "precedent-lothar",
+      "own": true,
+      "evidence": {
+       "start": 148,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-lothar rf:concerns x:befreiung .\nx:befreiung a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben\" .",
+      "object": "urn:regesta:22772:befreiung",
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Treviglio (Triuillio, qui dicitur Grasso)",
+      "text": "betrifft Treviglio (Triuillio, qui dicitur Grasso)",
+      "triple": [
+       "urn:regesta:22772:precedent-lothar",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22772:treviglio"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "precedent-lothar",
+      "own": true,
+      "evidence": {
+       "start": 148,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22772:> .\nx:precedent-lothar rf:concerns x:treviglio .\nx:treviglio a crm:E53_Place ;\n    rdfs:label \"Treviglio (Triuillio, qui dicitur Grasso)\" .",
+      "object": "urn:regesta:22772:treviglio",
+      "key": "k20"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach dem Vorgang",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22772:precedent-lothar",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 148,
+       "end": 164,
+       "ambiguous": false
+      },
+      "key": "k21"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Lothar (III.)"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Klosterleute zu Treviglio"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Treviglio (Triuillio, qui dicitur Grasso)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 401
+   },
+   {
+    "id": "precedent-heinrich",
+    "start": 148,
+    "end": 302
+   },
+   {
+    "id": "precedent-lothar",
+    "start": 148,
+    "end": 302
+   },
+   {
+    "id": "t2",
+    "start": 148,
+    "end": 164
+   },
+   {
+    "id": "t3",
+    "start": 148,
+    "end": 164
+   },
+   {
+    "id": "t1",
+    "start": 303,
+    "end": 401
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Klosterleute zu Treviglio: no register candidate, regest-local group",
+     "lang": "en"
+    },
+    {
+     "text": "an den Grafen (recipient of the scudassia): unnamed count, kept only inside the exception literal",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act or right type for an exemption or immunity from levies (Befreiung von allen Abgaben); the exempted object is approximated by rf:concerns on the place Treviglio",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The precedent acts of Heinrich (IV.) and Lothar (III.) are stated only as 'nach dem Vorgang'; whether they were grants or confirmations is unstated, typed as generic rv:Grant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No neutral act type for an earlier act whose nature the regest leaves open ('nach dem Vorgang').",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No right type for an exemption or immunity from dues; rv:Revenue and rv:Toll denote the right to levy, not freedom from it.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added right node urn:regesta:22772:befreiung (crm:E30_Right, rv:UsageRights, label 'die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben').",
+     "lang": "en"
+    },
+    {
+     "text": "Added urn:regesta:22772:befreiung to rf:concerns of confirmation, precedent-heinrich and precedent-lothar, keeping urn:regesta:22772:treviglio; producer of these three factoids set to correction-g8.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "type-overreach",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22772:precedent-heinrich",
+     "description": "The passage says only that Friedrich acts 'nach dem Vorgang' of Heinrich (IV.) and Lothar (III.); it does not say whether the emperors granted or themselves confirmed the exemption. Typing both precedent factoids as rv:Grant with the emperors as Grantor asserts a grant the passage does not state. The same applies to urn:regesta:22772:precedent-lothar.",
+     "proposal": "Keep the two earlier act factoids and the qualifier 'nach dem Vorgang', but flag the act type as unresolved for expert review and report the lack of a neutral type for an unspecified earlier act as a model gap.",
+     "quote": {
+      "start": 148,
+      "end": 208
+     }
+    },
+    {
+     "category": "missing-right-node",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22772:confirmation",
+     "description": "The object of the confirmation is the exemption of the monastery's people from all dues, but rf:concerns points only to the place Treviglio. The exemption itself is not represented as a right.",
+     "proposal": "Add a crm:E30_Right labelled with the exemption wording (closest type rv:UsageRights) to rf:concerns of the confirmation and the precedent factoids, and report the missing exemption type.",
+     "quote": {
+      "start": 209,
+      "end": 302
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The precedent acts of Heinrich (IV.) and Lothar (III.) are typed rv:Grant although the regest says only 'nach dem Vorgang'; applies equally to urn:regesta:22772:precedent-lothar.",
+     "reason": "The passage 'nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung ... von allen Abgaben' attests earlier acts about the exemption but not their kind. The candidate already keeps rf:qualifier 'nach dem Vorgang' and comments the unresolved reading; the act scheme has no neutral type for an earlier act of unstated kind, and rv:Confirmation would assert just as much as rv:Grant. No correction; gap recorded.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The exemption that is the object of the confirmation has no right node; rf:concerns points only to the place Treviglio.",
+     "reason": "The confirmed object is 'die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben'. The contract can express it as a crm:E30_Right; since the vocabulary has no exemption type, only the top concept rv:UsageRights is safe, as used for the gaulum exemption in 22780.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Scudassia",
+     "i": true
+    },
+    {
+     "t": ", richtig "
+    },
+    {
+     "t": "sculdassia",
+     "i": true
+    },
+    {
+     "t": ", bezeichnet eine an den langobardischen "
+    },
+    {
+     "t": "sculdahis",
+     "i": true
+    },
+    {
+     "t": " (Schultheiß) zu entrichtende Abgabe. - Dieser Aufenthalt wird im Chron. rhythm. Austriacum, MG. SS XXV, 351 erwähnt, vgl. Nürnberger UB. 43 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 64 Anm. 1."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift aus der zweiten Hälfte des 14. Jh. im Codex 1507 f. 2, Biblioteca Trivulziana Mailand (C); Chartular aus dem Ende des 15. Jh. f. 1', Stadtarchiv Treviglio (D). Drucke: Barelli, Documenti dell'archivio comunale di Treviglio, Arch. stor ital. ser. V 30 (1902) 20 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 5; MG. DF. I. 37. Reg.: Nürnberger UB. 43 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 64; Stumpf 3653."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=51"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_37"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-H000341",
+    "IV., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000645",
+    "von Pappenheim, Calbus (<i>Beiname nicht durchgehend genannt; ob identisch mit einem der anderen hier angeführten kaiserlichen Marschälle Heinrich von Kaiserslautern bzw. Heinrich von Kalden?</i>), kaiserlicher Marschall"
+   ],
+   [
+    "RI004-002-I000220",
+    "Italienzug, Reichsheerfahrt (siehe auch: Romzug)"
+   ],
+   [
+    "RI004-002-L000682",
+    "(III.), König und Kaiser"
+   ],
+   [
+    "RI004-002-M000105",
+    "S. Simpliciano, (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-N000342",
+    "Nürnberg (an derr Pegnitz, bayer. Reg.-Bez. Mittelfranken)"
+   ],
+   [
+    "RI004-002-O000441",
+    "Otto (IV., gest. 4.8.1156), Pfalzgraf von Wittelsbach bzw. von Bayern; <i>zu ihm siehe auch oben in der Einleitung, S. 32─34</i>"
+   ],
+   [
+    "RI004-002-R001192",
+    "Graf von Pfullendorf, Bregenz, Lindau, Ramsberg und Schweinshut"
+   ],
+   [
+    "RI004-002-T000476",
+    "Treviglio (zwischen Adda und Serio, ital. Prov. Bergamo)"
+   ]
+  ]
+ }
+}

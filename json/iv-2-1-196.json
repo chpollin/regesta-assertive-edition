@@ -1,0 +1,977 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-09-00_1_0_4_2_1_196_196",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22823",
+  "identifier": "RI IV,2,1 n. 196",
+  "short": "RI IV,2,1 n. 196",
+  "sort": "004_002_001_000196_0000000196",
+  "start": "1153-09-01",
+  "end": "1153-09-30",
+  "proseYears": [],
+  "lead": "Friedrich lädt die Fürsten und Großen Bayerns nach Regensburg, kann aber wegen des Streites der beiden Herzoge (Heinrich von Bayern und Heinrich von Sachsen ) den Frieden in dieser Provinz nicht herstellen; da er nach seiner erst kürzlich erfolgten Scheidung (Reg. 167) an eine neue Heirat denkt, sendet er deshalb und wegen eines Vorgehens gegen Sizilien (pro Gwilhelmo Siculo, qui patre suo Rogerio noviter defuncto successerat, utriusque imperii invasore, debellando) Bischof Anselm von Havelberg und Graf Alexander (von Gravina) von Apulien (a Rogerio cum caeteris eiusdem provinciae nobilibus ob suspitionem dominandi propulsus) an den oströmischen Kaiser Manuel (ad Manuel Grecorum imperatorem ).",
+  "date": [
+   {
+    "t": "1153 September"
+   }
+  ],
+  "place": [
+   {
+    "t": "Regensburg"
+   }
+  ],
+  "text": "Friedrich lädt die Fürsten und Großen Bayerns nach Regensburg, kann aber wegen des Streites der beiden Herzoge (Heinrich von Bayern und Heinrich von Sachsen ) den Frieden in dieser Provinz nicht herstellen; da er nach seiner erst kürzlich erfolgten Scheidung (Reg. 167) an eine neue Heirat denkt, sendet er deshalb und wegen eines Vorgehens gegen Sizilien (pro Gwilhelmo Siculo, qui patre suo Rogerio noviter defuncto successerat, utriusque imperii invasore, debellando) Bischof Anselm von Havelberg und Graf Alexander (von Gravina) von Apulien (a Rogerio cum caeteris eiusdem provinciae nobilibus ob suspitionem dominandi propulsus) an den oströmischen Kaiser Manuel (ad Manuel Grecorum imperatorem ).",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22823:divorce",
+    "kind": "act",
+    "title": "Ehescheidung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehescheidung",
+     "text": "Ehescheidung",
+     "triple": [
+      "urn:regesta:22823:divorce",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/MarriageDissolution"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "divorce",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 9,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22823:> .\nx:divorce a rf:ActFactoid ;\n    rf:factoidType rv:MarriageDissolution ;\n    rf:source <urn:regesta:record:22823> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22823:divorce",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "divorce",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 9,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:divorce rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22823:divorce",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "divorce-2",
+      "own": true,
+      "evidence": {
+       "start": 213,
+       "end": 269,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:divorce rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach seiner erst kürzlich erfolgten Scheidung (Reg. 167)\" ] .",
+      "key": "k3"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erst kürzlich erfolgten",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22823:divorce",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 225,
+       "end": 248,
+       "ambiguous": false
+      },
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k3"
+      ],
+      "text": "Ehescheidung"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k2",
+       "k3"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22823:mission-manuel",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22823:mission-manuel",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mission-manuel",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 9,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22823:> .\nx:mission-manuel a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22823> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-manuel",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 9,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:mission-manuel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Anselm von Havelberg",
+      "text": "Bischof Anselm von Havelberg in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-manuel",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 9,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:mission-manuel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000934> ; rf:nameInSource \"Bischof Anselm von Havelberg\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000934"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Graf Alexander (von Gravina) von Apulien",
+      "text": "Graf Alexander (von Gravina) von Apulien in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-manuel",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 9,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:mission-manuel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000625> ; rf:nameInSource \"Graf Alexander (von Gravina) von Apulien\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000625"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "oströmischen Kaiser Manuel",
+      "text": "oströmischen Kaiser Manuel in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-manuel",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 9,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:mission-manuel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000374> ; rf:nameInSource \"oströmischen Kaiser Manuel\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000374"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-manuel-2",
+      "own": true,
+      "evidence": {
+       "start": 297,
+       "end": 355,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:mission-manuel rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"sendet er deshalb und wegen eines Vorgehens gegen Sizilien\" ] .",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-manuel-3",
+      "own": true,
+      "evidence": {
+       "start": 471,
+       "end": 544,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:mission-manuel rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof Anselm von Havelberg und Graf Alexander (von Gravina) von Apulien\" ] .",
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission-manuel-4",
+      "own": true,
+      "evidence": {
+       "start": 634,
+       "end": 667,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:mission-manuel rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"an den oströmischen Kaiser Manuel\" ] .",
+      "key": "k12"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "da er nach seiner erst kürzlich erfolgten Scheidung (Reg. 167) an eine neue Heirat denkt",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 207,
+       "end": 295,
+       "ambiguous": false
+      },
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen eines Vorgehens gegen Sizilien",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22823:mission-manuel",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 319,
+       "end": 355,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5",
+       "k10",
+       "k11",
+       "k12"
+      ],
+      "text": "Entsendung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k6",
+       "k10",
+       "k11",
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Gesandte ",
+     {
+      "keys": [
+       "k7",
+       "k10",
+       "k11",
+       "k12"
+      ],
+      "text": "Bischof Anselm von Havelberg"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8",
+       "k10",
+       "k11",
+       "k12"
+      ],
+      "text": "Graf Alexander (von Gravina) von Apulien"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k9",
+       "k10",
+       "k11",
+       "k12"
+      ],
+      "text": "oströmischen Kaiser Manuel"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22823:dispute-dukes",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22823:dispute-dukes",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "dispute-dukes",
+     "own": true,
+     "evidence": {
+      "start": 83,
+      "end": 158,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22823:> .\nx:dispute-dukes a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22823> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Streites der beiden Herzoge (Heinrich von Bayern und Heinrich von Sachsen )\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich von Bayern",
+      "text": "Heinrich von Bayern in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22823:dispute-dukes",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-dukes",
+      "own": true,
+      "evidence": {
+       "start": 83,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:dispute-dukes rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:nameInSource \"Heinrich von Bayern\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000498"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrich von Sachsen",
+      "text": "Heinrich von Sachsen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22823:dispute-dukes",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute-dukes",
+      "own": true,
+      "evidence": {
+       "start": 83,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:dispute-dukes rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Heinrich von Sachsen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Heinrich von Bayern"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Heinrich von Sachsen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22823:parenthood-roger-wilhelm",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22823:parenthood-roger-wilhelm",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-roger-wilhelm",
+     "own": true,
+     "evidence": {
+      "start": 357,
+      "end": 429,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22823:> .\nx:parenthood-roger-wilhelm a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22823> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"pro Gwilhelmo Siculo, qui patre suo Rogerio noviter defuncto successerat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gwilhelmo Siculo",
+      "text": "Gwilhelmo Siculo in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22823:parenthood-roger-wilhelm",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-roger-wilhelm",
+      "own": true,
+      "evidence": {
+       "start": 357,
+       "end": 429,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:parenthood-roger-wilhelm rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000509> ; rf:nameInSource \"Gwilhelmo Siculo\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000509"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Rogerio",
+      "text": "Rogerio in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22823:parenthood-roger-wilhelm",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-roger-wilhelm",
+      "own": true,
+      "evidence": {
+       "start": 357,
+       "end": 429,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22823:> .\nx:parenthood-roger-wilhelm rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000806> ; rf:nameInSource \"Rogerio\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000806"
+      ],
+      "key": "k20"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Gwilhelmo Siculo"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Rogerio"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "divorce",
+    "start": 0,
+    "end": 9
+   },
+   {
+    "id": "mission-manuel",
+    "start": 0,
+    "end": 9
+   },
+   {
+    "id": "dispute-dukes",
+    "start": 83,
+    "end": 158
+   },
+   {
+    "id": "t2",
+    "start": 207,
+    "end": 295
+   },
+   {
+    "id": "divorce-2",
+    "start": 213,
+    "end": 269
+   },
+   {
+    "id": "t1",
+    "start": 225,
+    "end": 248
+   },
+   {
+    "id": "mission-manuel-2",
+    "start": 297,
+    "end": 355
+   },
+   {
+    "id": "t3",
+    "start": 319,
+    "end": 355
+   },
+   {
+    "id": "parenthood-roger-wilhelm",
+    "start": 357,
+    "end": 429
+   },
+   {
+    "id": "mission-manuel-3",
+    "start": 471,
+    "end": 544
+   },
+   {
+    "id": "mission-manuel-4",
+    "start": 634,
+    "end": 667
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'Heinrich von Bayern' matches by title both RI004-002-H000498 ('vorher von Bayern') and RI004-002-H000470 ('Herzog von Bayern und Sachsen'); kept local. 'Heinrich von Sachsen' identified with H000470.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the sender of a mission; Friedrich is given rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Dispute parties are rv:Participant because the regest names no claimant or respondent.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The invitation of the Bavarian princes to Regensburg was judged out of scope (convocation, no stated legal relation); the expulsion of Alexander by Roger and Wilhelm's succession were not extracted as no fitting act type exists.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender or initiator role for a Mission; the sender falls back to rv:Participant.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for succession or for expulsion from a territory.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Replaced the local actor <urn:regesta:actor:22823:local:heinrich-von-bayern> by <urn:regesta:actor:RI004-002-H000498> (crm:E21_Person, label \"Heinrich von Bayern\") in its declaration and in the reference of <urn:regesta:22823:dispute-dukes>; role rv:Participant and nameInSource unchanged; removed the local node and its two comment lines; producer of dispute-dukes set to correction-g10.",
+     "lang": "en"
+    },
+    {
+     "text": "Divorce, mission and parenthood factoids unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22823:mission-manuel",
+     "description": "Friedrich, who sends the envoys, carries rv:Participant. The vocabulary has no sender role, but other records of this run give the sender of a letter or order rv:Grantor, so the sender role is handled inconsistently across the run.",
+     "proposal": "Keep rv:Participant as the contract-conformant reading and record the missing sender role as a model gap; harmonise the convention for senders across the run.",
+     "quote": {
+      "start": 297,
+      "end": 355
+     }
+    },
+    {
+     "category": "identity",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:22823:local:heinrich-von-bayern",
+     "description": "Heinrich von Bayern is left regest-local although the passage distinguishes him from Heinrich von Sachsen (H000470) as the second of two dukes, which leaves H000498 (\"vorher von Bayern\") as the only remaining packet candidate. The caution is defensible; record 22829 of the same run assigns H000498 to the same wording, so the two records diverge.",
+     "proposal": "Either assign urn:regesta:actor:RI004-002-H000498 as in 22829 or keep both records local; decide one convention.",
+     "quote": {
+      "start": 83,
+      "end": 158
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-W000509",
+     "description": "The clause states that Wilhelm succeeded his deceased father Roger; only the parenthood is extracted, not the succession. The contract could carry it only approximately (OfficeHolding with qualifier), and the office is not named in the passage.",
+     "proposal": "Optionally add a StateFactoid rv:OfficeHolding for Wilhelm with rf:qualifier \"successerat\"; otherwise report as model gap (no succession act type).",
+     "quote": {
+      "start": 379,
+      "end": 429
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-A000625",
+     "description": "The Latin side clause reports that Alexander was driven out by Roger on suspicion of seeking lordship. This is a political expulsion without an act type in the vocabulary, and it is peripheral to the regest.",
+     "proposal": "No change; record as model gap if expulsions are to be captured.",
+     "quote": {
+      "start": 546,
+      "end": 632
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Friedrich as sender of the envoys carries rv:Participant; the run handles senders inconsistently.",
+     "reason": "The vocabulary has no sender role; rv:Participant is the contract's fallback, as adjudication g7 decided for 22754. No correction; the missing sender or initiator role is a gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "Heinrich von Bayern stays regest-local although H000498 is the only remaining packet candidate; 22829 assigns H000498 to the same wording.",
+     "reason": "The passage names 'der beiden Herzoge (Heinrich von Bayern und Heinrich von Sachsen )'; H000470 ('Herzog von Bayern und Sachsen') is assigned to 'Heinrich von Sachsen', and H000498 ('Herzog von Österreich, vorher von Bayern') in the same packet matches 'Heinrich von Bayern' by name and title. The identification uses only this packet's candidates and aligns the record with 22829.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Wilhelm's succession to his father Roger is not extracted; optionally an rv:OfficeHolding with qualifier 'successerat'.",
+     "reason": "'qui patre suo Rogerio noviter defuncto successerat' names no office, so an rv:OfficeHolding would supply one the passage does not state; the act scheme has no succession type. The parenthood is recorded.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu den beiden Herzogen vgl. Simonsfeld, Jahrbücher 196 und Fichtenau-Dienst, UB. zur Gesch. der Babenberger 4/1, 132 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 777. Zur Gesandtschaft vgl. Simonsfeld, Jahrbücher 197 und 200 mit Anm. 173; Jaffé, Mon. Corb. 548 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 410 (Reg. "
+    },
+    {
+     "t": "197",
+     "regest": "22824"
+    },
+    {
+     "t": "); Ohnsorge, Anfänge, QFIAB 32 (1942) 30 f. sowie in: ders., Abendland und Byzanz. Gesammelte Aufsätze, 430 f. und Lamma, Comneni e Staufer 1, 141 ff. Die Erwähnung des Todes von Roger von Sizilien erschwert die eindeutige Datierung dieser Gesandtschaft, vgl. Simonsfeld, a. a. O. 200 mit Anm. 173. Für eine eventuelle Heirat mit Friedrich war Maria, die Tochter des Sebastokrators Isaak, vorgesehen; vgl. Ioannes Cinnamus, Epitome l. IV cap. 1, ed. Meineke, CSHB 13 (1836) 134 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. II cap. 11, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 111 f."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=71"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000625",
+    "Graf von Apulien (von Gravina)"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-B000313",
+    "Herzogtum"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000498",
+    "(Jasomirgott), Herzog von Österreich, vorher von Bayern"
+   ],
+   [
+    "RI004-002-M000374",
+    "(I.) Komnenos, Kaiser der Griechen, von Byzanz, von Konstantinopel"
+   ],
+   [
+    "RI004-002-M000439",
+    "Tochter des byzantinischen Sebastokrators Isaak und Verwandte Kaiser Manuels von Byzanz, Braut Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-R000806",
+    "(II.), König von Sizilien"
+   ],
+   [
+    "RI004-002-W000509",
+    "(I.) König von Sizilien"
+   ]
+  ]
+ }
+}

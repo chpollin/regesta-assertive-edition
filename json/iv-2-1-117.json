@@ -1,0 +1,1170 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-08-01_1_0_4_2_1_117_117",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22744",
+  "identifier": "RI IV,2,1 n. 117",
+  "short": "RI IV,2,1 n. 117",
+  "sort": "004_002_001_000117_0000000117",
+  "start": "1152-08-01",
+  "end": "1152-08-01",
+  "proseYears": [],
+  "lead": "Friedrich belehnt die Konsuln Wibert und Soldanus von Chiavenna (Clavennates) auf Grund eines von Albert von Kiburg (Chiburch) gefundenen Fürstenspruches, der den durch 30 Jahre hindurch ununterbrochenen Besitz der Grafschaft Chiavenna durch die dortigen Konsuln und auch den Nachweis eines Privilegs Konrads (III.) betont, vorbehaltlich des königlichen Rechts mit der genannten Grafschaft, auf die sowohl Bischof Ardicio von Como als auch Henricus de Hostia Anspruch erhoben haben.",
+  "date": [
+   {
+    "t": "1152 August 1"
+   }
+  ],
+  "place": [
+   {
+    "t": "Ulm"
+   }
+  ],
+  "text": "Friedrich belehnt die Konsuln Wibert und Soldanus von Chiavenna (Clavennates) auf Grund eines von Albert von Kiburg (Chiburch) gefundenen Fürstenspruches, der den durch 30 Jahre hindurch ununterbrochenen Besitz der Grafschaft Chiavenna durch die dortigen Konsuln und auch den Nachweis eines Privilegs Konrads (III.) betont, vorbehaltlich des königlichen Rechts mit der genannten Grafschaft, auf die sowohl Bischof Ardicio von Como als auch Henricus de Hostia Anspruch erhoben haben. Z.: die Bischöfe Hermann von Konstanz, Ortlieb (Ortoliabus) von Basel, die Herzoge Welf, Berthold von Burgund, Graf Ulrich von Lenzburg, Markgraf Werner von Baden (Pade), Ulrich von Herrlingen (Orninga), die Grafen Egino von Vaihingen (Fehinge), Rudolf de Suzivineshut (von Pfullendorf).. - Wohl von A II. C verfaßt und mundiert. Notum sit omnibus .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 5,
+  "blocks": [
+   {
+    "node": "urn:regesta:22744:enfeoffment",
+    "kind": "act",
+    "title": "Belehnung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Belehnung",
+     "text": "Belehnung",
+     "triple": [
+      "urn:regesta:22744:enfeoffment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enfeoffment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "enfeoffment",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 77,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22744:> .\nx:enfeoffment a rf:ActFactoid ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:source <urn:regesta:record:22744> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich belehnt die Konsuln Wibert und Soldanus von Chiavenna (Clavennates)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22744:enfeoffment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22744:enfeoffment:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 77,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:enfeoffment rf:reference x:enfeoffment:ref-friedrich .\nx:enfeoffment:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wibert",
+      "text": "Wibert in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22744:enfeoffment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22744:enfeoffment:ref-wibert"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 77,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:enfeoffment rf:reference x:enfeoffment:ref-wibert .\nx:enfeoffment:ref-wibert a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-G001142> ;\n    rf:nameInSource \"Wibert\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G001142"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Soldanus",
+      "text": "Soldanus in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22744:enfeoffment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22744:enfeoffment:ref-soldanus"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 77,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:enfeoffment rf:reference x:enfeoffment:ref-soldanus .\nx:enfeoffment:ref-soldanus a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-S000901> ;\n    rf:nameInSource \"Soldanus\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000901"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Grafschaft Chiavenna",
+      "text": "betrifft Grafschaft Chiavenna",
+      "triple": [
+       "urn:regesta:22744:enfeoffment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22744:grafschaft-chiavenna"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 77,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:enfeoffment rf:concerns x:grafschaft-chiavenna .\nx:grafschaft-chiavenna a crm:E53_Place ;\n    rdfs:label \"Grafschaft Chiavenna\" .",
+      "object": "urn:regesta:22744:grafschaft-chiavenna",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22744:enfeoffment",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enfeoffment-2",
+      "own": true,
+      "evidence": {
+       "start": 324,
+       "end": 389,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:enfeoffment rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"vorbehaltlich des königlichen Rechts mit der genannten Grafschaft\" ] .",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Ausnahme",
+      "text": "vorbehaltlich des königlichen Rechts",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22744:enfeoffment",
+       "https://example.org/regesta/factoid/exception",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 324,
+       "end": 360,
+       "ambiguous": false
+      },
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "auf Grund eines von Albert von Kiburg (Chiburch) gefundenen Fürstenspruches",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22744:enfeoffment",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 78,
+       "end": 153,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Belehnung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Wibert"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "Soldanus"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Grafschaft Chiavenna"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22744:princes-judgment",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22744:princes-judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "princes-judgment",
+     "own": true,
+     "evidence": {
+      "start": 88,
+      "end": 153,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22744:> .\nx:princes-judgment a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22744> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"eines von Albert von Kiburg (Chiburch) gefundenen Fürstenspruches\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Albert von Kiburg (Chiburch)",
+      "text": "Albert von Kiburg (Chiburch) in der Rolle Richter",
+      "triple": [
+       "urn:regesta:22744:princes-judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22744:princes-judgment:ref-albert"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "princes-judgment",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 153,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:princes-judgment rf:reference x:princes-judgment:ref-albert .\nx:princes-judgment:ref-albert a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A000146> ;\n    rf:nameInSource \"Albert von Kiburg (Chiburch)\" ;\n    rf:role rv:Judge .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000146"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Grafschaft Chiavenna",
+      "text": "betrifft Grafschaft Chiavenna",
+      "triple": [
+       "urn:regesta:22744:princes-judgment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22744:grafschaft-chiavenna"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "princes-judgment",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 153,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:princes-judgment rf:concerns x:grafschaft-chiavenna .\nx:grafschaft-chiavenna a crm:E53_Place ;\n    rdfs:label \"Grafschaft Chiavenna\" .",
+      "object": "urn:regesta:22744:grafschaft-chiavenna",
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Urteil"
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Albert von Kiburg (Chiburch)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Grafschaft Chiavenna"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22744:consuls-possession",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22744:consuls-possession",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "consuls-possession",
+     "own": true,
+     "evidence": {
+      "start": 138,
+      "end": 262,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22744:> .\nx:consuls-possession a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22744> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Fürstenspruches, der den durch 30 Jahre hindurch ununterbrochenen Besitz der Grafschaft Chiavenna durch die dortigen Konsuln\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die dortigen Konsuln",
+      "text": "die dortigen Konsuln in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22744:consuls-possession",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22744:consuls-possession:ref-konsuln"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "consuls-possession",
+      "own": true,
+      "evidence": {
+       "start": 138,
+       "end": 262,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:consuls-possession rf:reference x:consuls-possession:ref-konsuln .\nx:consuls-possession:ref-konsuln a rf:Reference ;\n    rf:actor <urn:regesta:actor:22744:local:dortige-konsuln> ;\n    rf:nameInSource \"die dortigen Konsuln\" ;\n    rf:role rv:Possessor .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:22744:local:dortige-konsuln"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Grafschaft Chiavenna",
+      "text": "betrifft Grafschaft Chiavenna",
+      "triple": [
+       "urn:regesta:22744:consuls-possession",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22744:grafschaft-chiavenna"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "consuls-possession",
+      "own": true,
+      "evidence": {
+       "start": 138,
+       "end": 262,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:consuls-possession rf:concerns x:grafschaft-chiavenna .\nx:grafschaft-chiavenna a crm:E53_Place ;\n    rdfs:label \"Grafschaft Chiavenna\" .",
+      "object": "urn:regesta:22744:grafschaft-chiavenna",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "durch 30 Jahre hindurch ununterbrochenen",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22744:consuls-possession",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 163,
+       "end": 203,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "die dortigen Konsuln"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Grafschaft Chiavenna"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22744:reservation",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22744:reservation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "reservation",
+     "own": true,
+     "evidence": {
+      "start": 324,
+      "end": 389,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22744:> .\nx:reservation a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22744> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"vorbehaltlich des königlichen Rechts mit der genannten Grafschaft\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Grafschaft Chiavenna",
+      "text": "betrifft Grafschaft Chiavenna",
+      "triple": [
+       "urn:regesta:22744:reservation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22744:grafschaft-chiavenna"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reservation",
+      "own": true,
+      "evidence": {
+       "start": 324,
+       "end": 389,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:reservation rf:concerns x:grafschaft-chiavenna .\nx:grafschaft-chiavenna a crm:E53_Place ;\n    rdfs:label \"Grafschaft Chiavenna\" .",
+      "object": "urn:regesta:22744:grafschaft-chiavenna",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (des königlichen Rechts)",
+      "text": "betrifft Herrschafts- und Schutzrechte (des königlichen Rechts)",
+      "triple": [
+       "urn:regesta:22744:reservation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22744:koenigliches-recht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reservation",
+      "own": true,
+      "evidence": {
+       "start": 324,
+       "end": 389,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:reservation rf:concerns x:koenigliches-recht .\nx:koenigliches-recht a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"des königlichen Rechts\" .",
+      "object": "urn:regesta:22744:koenigliches-recht",
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Belehnung",
+      "text": "Teil von Belehnung",
+      "triple": [
+       "urn:regesta:22744:reservation",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22744:enfeoffment"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "reservation",
+      "own": true,
+      "evidence": {
+       "start": 324,
+       "end": 389,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:reservation rf:partOf x:enfeoffment .\nx:enfeoffment a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:concerns x:grafschaft-chiavenna ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich belehnt die Konsuln Wibert und Soldanus von Chiavenna (Clavennates)\" ] , [ a oa:TextQuoteSelector ; oa:exact \"vorbehaltlich des königlichen Rechts mit der genannten Grafschaft\" ] ;\n    rf:exception \"vorbehaltlich des königlichen Rechts\" ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:ground \"auf Grund eines von Albert von Kiburg (Chiburch) gefundenen Fürstenspruches\" ;\n    rf:reference x:enfeoffment:ref-friedrich , x:enfeoffment:ref-soldanus , x:enfeoffment:ref-wibert ;\n    rf:source <urn:regesta:record:22744> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22744:enfeoffment",
+      "objectClaim": "enfeoffment",
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Bestimmung"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Grafschaft Chiavenna"
+     },
+     " und ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Herrschafts- und Schutzrechte (des königlichen Rechts)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Belehnung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22744:county-claims",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22744:county-claims",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "county-claims",
+     "own": true,
+     "evidence": {
+      "start": 391,
+      "end": 481,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22744:> .\nx:county-claims a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22744> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf die sowohl Bischof Ardicio von Como als auch Henricus de Hostia Anspruch erhoben haben\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k20"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Ardicio von Como",
+      "text": "Bischof Ardicio von Como in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22744:county-claims",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22744:county-claims:ref-ardicio"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "county-claims",
+      "own": true,
+      "evidence": {
+       "start": 391,
+       "end": 481,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:county-claims rf:reference x:county-claims:ref-ardicio .\nx:county-claims:ref-ardicio a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001103> ;\n    rf:nameInSource \"Bischof Ardicio von Como\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001103"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Henricus de Hostia",
+      "text": "Henricus de Hostia in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22744:county-claims",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22744:county-claims:ref-henricus"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "county-claims",
+      "own": true,
+      "evidence": {
+       "start": 391,
+       "end": 481,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:county-claims rf:reference x:county-claims:ref-henricus .\nx:county-claims:ref-henricus a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000542> ;\n    rf:nameInSource \"Henricus de Hostia\" ;\n    rf:role rv:Claimant .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000542"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Grafschaft Chiavenna",
+      "text": "betrifft Grafschaft Chiavenna",
+      "triple": [
+       "urn:regesta:22744:county-claims",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22744:grafschaft-chiavenna"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "county-claims",
+      "own": true,
+      "evidence": {
+       "start": 391,
+       "end": 481,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22744:> .\nx:county-claims rf:concerns x:grafschaft-chiavenna .\nx:grafschaft-chiavenna a crm:E53_Place ;\n    rdfs:label \"Grafschaft Chiavenna\" .",
+      "object": "urn:regesta:22744:grafschaft-chiavenna",
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Bischof Ardicio von Como"
+     },
+     " und ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Henricus de Hostia"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Grafschaft Chiavenna"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "enfeoffment",
+    "start": 0,
+    "end": 77
+   },
+   {
+    "id": "t2",
+    "start": 78,
+    "end": 153
+   },
+   {
+    "id": "princes-judgment",
+    "start": 88,
+    "end": 153
+   },
+   {
+    "id": "consuls-possession",
+    "start": 138,
+    "end": 262
+   },
+   {
+    "id": "t3",
+    "start": 163,
+    "end": 203
+   },
+   {
+    "id": "enfeoffment-2",
+    "start": 324,
+    "end": 389
+   },
+   {
+    "id": "reservation",
+    "start": 324,
+    "end": 389
+   },
+   {
+    "id": "t1",
+    "start": 324,
+    "end": 360
+   },
+   {
+    "id": "county-claims",
+    "start": 391,
+    "end": 481
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "die dortigen Konsuln: regest-local FunctionalActor; not merged with the named consuls Wibert and Soldanus, although the passage may mean them",
+     "lang": "en"
+    },
+    {
+     "text": "Wibert: identified with register candidate RI004-002-G001142, whose label calls him Rektor, not Konsul, of Chiavenna",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "The possession of the county (30 years) is stated as the content of the princes' judgment; the model has no link from a state factoid to the act that asserts it, so the possession factoid stands unlinked and only its evidence carries the context",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No property links the enfeoffment to the judgment it rests on except the rf:ground literal",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Privileg Konrads (III.): content and recipient unstated; typed rv:Grant as the closest act type",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Object of the enfeoffment: the county is read from 'mit der genannten Grafschaft', which stands syntactically in the reservation clause; the royal right reserved is typed with the top concept rv:LordshipRights because no narrower right type fits",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to mark a state as asserted by another act of the same regest (the judgment emphasises the possession).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for an unspecified privilege.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role distinguishing the finder of a judgment from the judge.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Deleted <urn:regesta:22744:konrad-privilege>, its reference <urn:regesta:22744:konrad-privilege:ref-konrad> and the actor node <urn:regesta:actor:RI004-002-K000316>, which no other factoid used. No remaining factoid changed, so producers stay.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "unsupported-type",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22744:konrad-privilege",
+     "description": "The regest mentions only the proof of a privilege of Konrad III; it says neither what it granted nor to whom. rv:Grant asserts a transfer that the passage does not state; the privilege could equally have been a confirmation or protection.",
+     "proposal": "Report the act type as unresolved (model gap for an unspecified privilege) or keep the factoid with an explicit note that the type is the producer's reading; do not add recipient or object.",
+     "quote": {
+      "start": 272,
+      "end": 315
+     }
+    },
+    {
+     "category": "embedded-claim",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22744:consuls-possession",
+     "description": "The 30-year possession is what the Fürstenspruch emphasises, not a statement of the regest in its own voice. The factoid's evidence includes Fürstenspruches, but nothing in the graph links the state to the judgment that asserts it.",
+     "proposal": "No change possible within the contract; report as model gap.",
+     "quote": {
+      "start": 155,
+      "end": 262
+     }
+    },
+    {
+     "category": "redundancy",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22744:reservation",
+     "description": "The reservation is held twice, as rf:exception on the enfeoffment and as a separate Enactment with rf:partOf. The separate factoid names no grantor. Matter of taste; the guideline allows a reserving provision as its own factoid.",
+     "proposal": "Optionally add Friedrich as rv:Grantor to the reservation factoid.",
+     "quote": {
+      "start": 324,
+      "end": 389
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22744:princes-judgment",
+     "description": "Albert von Kiburg found (gefunden) the princes' judgment; rv:Judge is a reasonable approximation of the Urteilsfinder, though the judgment is the princes' and the court presumably the king's.",
+     "proposal": "None required; an Urteilsfinder role would be a vocabulary extension.",
+     "quote": {
+      "start": 88,
+      "end": 153
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Typing Konrad's privilege as rv:Grant asserts a transfer that the passage does not state.",
+     "reason": "'den Nachweis eines Privilegs Konrads (III.)' says only that a privilege was adduced as proof. Its content, recipient and act type are not stated, and it could equally be a confirmation. No act type fits an unspecified privilege, so the safe fix removes the unsupported factoid instead of keeping a guessed type.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The 30-year possession is what the princes' judgment emphasises, and the graph does not link the two.",
+     "reason": "The contract has no property linking a state factoid to the act that asserts it. The evidence 'Fürstenspruches, der den ... Besitz ... betont' keeps the context. No correction.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add Friedrich as rv:Grantor to the reservation factoid.",
+     "reason": "The reservation is rf:partOf the enfeoffment, which names Friedrich as Grantor. A reference is not required by the shapes or the guidelines.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Verfasserschaft von A II. C erhärtet den bereits von Scheffer-Boichorst erbrachten Echtheitsnachweis. Zur Persönlichkeit des "
+    },
+    {
+     "t": "Henricus de Hostia",
+     "i": true
+    },
+    {
+     "t": " und zur irrigen Bezeichnung des Grafen Werner von Baden im Aargau als Markgraf vgl. ebenfalls Scheffer-Boichorst a. a. O. 103. Heinrich IV. hatte die Grafschaft Chiavenna 1065 in einem Streit zwischen dem Bischof von Como und einem Grafen Eberhard (aus dem Hause Sponheim) durch DH. IV. 149 dem ersteren zurückgestellt; im Anschluß daran äußerte Bresslau, Exkurse, NA 34 (1909) 89 die Vermutung, "
+    },
+    {
+     "t": "Henricus de Hostia",
+     "i": true
+    },
+    {
+     "t": " könnte ein Nachfolger dieses Sponheimers gewesen sein und schlug vor, "
+    },
+    {
+     "t": "Ortia",
+     "i": true
+    },
+    {
+     "t": " in "
+    },
+    {
+     "t": "Ortenburc",
+     "i": true
+    },
+    {
+     "t": " zu emendieren und also den in unserem Diplom auftretenden Heinrich mit Graf Heinrich I. von Ortenburg in Kärnten zu identifizieren. - Das erwähnte Diplom Konrads III. ist verloren. - Zur Bedeutung dieser Urkunde vgl. Büttner, Alpenpaßpolitik (VuF 1, 1962) 245 ff. und jetzt auch Maurer, Chiavenna (FS. F. Hausmann, 1977) 339 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Zwei Abschriften des 19. Jh. in der Sammlung Crollalanza, Stadtbibliothek Como p. 439 (C"
+    },
+    {
+     "t": "1",
+     "sup": true
+    },
+    {
+     "t": ") und 93 (C"
+    },
+    {
+     "t": "2",
+     "sup": true
+    },
+    {
+     "t": "), beide aus "
+    },
+    {
+     "t": "exemplum ab exemplo ex autentico exemplato",
+     "i": true
+    },
+    {
+     "t": ". Drucke: Scheffer-Boichorst, Zur Gesch. des 12. und 13. Jh. 119; MG. DF. I. 20. Reg.: Stumpf 3616 zu März 9."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0042"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_20"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000146",
+    "(II.) Graf von Dillingen und Kiburg"
+   ],
+   [
+    "RI004-002-A001103",
+    "Bischof von Como"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000724",
+    "(IV.), Herzog von Zähringen, Breisgau und Burgund"
+   ],
+   [
+    "RI004-002-C000611",
+    "Grafschaft"
+   ],
+   [
+    "RI004-002-C000868",
+    "Bischof"
+   ],
+   [
+    "RI004-002-E000048",
+    "Graf von Sponheim"
+   ],
+   [
+    "RI004-002-E000167",
+    "Graf von Vaihingen"
+   ],
+   [
+    "RI004-002-G001142",
+    "Rektor von Chiavenna"
+   ],
+   [
+    "RI004-002-H000341",
+    "IV., König und Kaiser"
+   ],
+   [
+    "RI004-002-H000542",
+    "Graf von Ortenburg, <i>de Hostia</i> (<i>Graf von Ortenburg?</i>)"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-R001192",
+    "Graf von Pfullendorf, Bregenz, Lindau, Ramsberg und Schweinshut"
+   ],
+   [
+    "RI004-002-S000901",
+    "Soldanus, Konsul, Rektor von Chiavenna"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-U000176",
+    "(II.) Graf bzw. Edelfreier von Herrlingen"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000325",
+    "Graf von Baden"
+   ]
+  ]
+ }
+}

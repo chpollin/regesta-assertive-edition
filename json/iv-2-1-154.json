@@ -1,0 +1,542 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-00-00_1_0_4_2_1_154_154",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22781",
+  "identifier": "RI IV,2,1 n. 154",
+  "short": "RI IV,2,1 n. 154",
+  "sort": "004_002_001_000154_0000000154",
+  "start": "1152-01-01",
+  "end": "1152-12-31",
+  "proseYears": [
+   1153
+  ],
+  "lead": "Bischof Stephan von Metz erwirbt mit Hilfe Kaiser (!) Friedrichs die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat.",
+  "date": [
+   {
+    "t": "(Ende 1152/Anfang 1153)"
+   }
+  ],
+  "place": [],
+  "text": "Bischof Stephan von Metz erwirbt mit Hilfe Kaiser (!) Friedrichs die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22781:erwerb-homburg",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22781:erwerb-homburg",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "erwerb-homburg",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 81,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22781:> .\nx:erwerb-homburg a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22781> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof Stephan von Metz erwirbt mit Hilfe Kaiser (!) Friedrichs die Burg Homburg\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Stephan von Metz",
+      "text": "Bischof Stephan von Metz in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22781:erwerb-homburg",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "erwerb-homburg",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 81,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22781:> .\nx:erwerb-homburg rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001143> ; rf:nameInSource \"Bischof Stephan von Metz\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S001143"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaiser (!) Friedrichs",
+      "text": "Kaiser (!) Friedrichs in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22781:erwerb-homburg",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "erwerb-homburg",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 81,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22781:> .\nx:erwerb-homburg rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Kaiser (!) Friedrichs\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Burg Homburg",
+      "text": "betrifft die Burg Homburg",
+      "triple": [
+       "urn:regesta:22781:erwerb-homburg",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22781:burg-homburg"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "erwerb-homburg",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 81,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22781:> .\nx:erwerb-homburg rf:concerns x:burg-homburg .\nx:burg-homburg a crm:E18_Physical_Thing ;\n    rdfs:label \"die Burg Homburg\" .",
+      "object": "urn:regesta:22781:burg-homburg",
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erwirbt",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22781:erwerb-homburg",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 25,
+       "end": 32,
+       "ambiguous": false
+      },
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "mit Hilfe",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22781:erwerb-homburg",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 33,
+       "end": 42,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Übertragung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Bischof Stephan von Metz"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kaiser (!) Friedrichs"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "die Burg Homburg"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22781:besitz-matthaeus",
+    "kind": "state",
+    "title": "Besitz",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Besitz",
+     "text": "Besitz",
+     "triple": [
+      "urn:regesta:22781:besitz-matthaeus",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Possession"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "besitz-matthaeus",
+     "own": true,
+     "evidence": {
+      "start": 65,
+      "end": 144,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22781:> .\nx:besitz-matthaeus a rf:StateFactoid ;\n    rf:factoidType rv:Possession ;\n    rf:source <urn:regesta:record:22781> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Matthäus von Lothringen",
+      "text": "Herzog Matthäus von Lothringen in der Rolle Besitzer",
+      "triple": [
+       "urn:regesta:22781:besitz-matthaeus",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "besitz-matthaeus",
+      "own": true,
+      "evidence": {
+       "start": 65,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22781:> .\nx:besitz-matthaeus rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:nameInSource \"Herzog Matthäus von Lothringen\" ; rf:role rv:Possessor ] .",
+      "role": "Besitzer",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000670"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Burg Homburg",
+      "text": "betrifft die Burg Homburg",
+      "triple": [
+       "urn:regesta:22781:besitz-matthaeus",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22781:burg-homburg"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "besitz-matthaeus",
+      "own": true,
+      "evidence": {
+       "start": 65,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22781:> .\nx:besitz-matthaeus rf:concerns x:burg-homburg .\nx:burg-homburg a crm:E18_Physical_Thing ;\n    rdfs:label \"die Burg Homburg\" .",
+      "object": "urn:regesta:22781:burg-homburg",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "unrechtmäßig usurpiert",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22781:besitz-matthaeus",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 118,
+       "end": 140,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Besitz"
+     },
+     ", als Besitzer ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herzog Matthäus von Lothringen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "die Burg Homburg"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "erwerb-homburg",
+    "start": 0,
+    "end": 81
+   },
+   {
+    "id": "t1",
+    "start": 25,
+    "end": 32
+   },
+   {
+    "id": "t2",
+    "start": 33,
+    "end": 42
+   },
+   {
+    "id": "besitz-matthaeus",
+    "start": 65,
+    "end": 144
+   },
+   {
+    "id": "t3",
+    "start": 118,
+    "end": 140
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for an acquisition without a named transferring party ('erwirbt'); rv:Grant used as closest type with the wording in rf:qualifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for a helper ('mit Hilfe Kaiser (!) Friedrichs'); rv:Participant used.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act or state type for a wrongful seizure ('die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat'); not encoded, so Herzog Matthäus (candidate RI004-002-M000670) appears in no factoid.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for an acquisition without a named transferor.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for usurpation or wrongful seizure.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added actor urn:regesta:actor:RI004-002-M000670 (crm:E21_Person, label 'Herzog Matthäus von Lothringen').",
+     "lang": "en"
+    },
+    {
+     "text": "Added state factoid urn:regesta:22781:besitz-matthaeus (rv:Possession) with evidence 'die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat', Matthäus as rv:Possessor, qualifier 'unrechtmäßig usurpiert', rf:concerns burg-homburg, no date; producer correction-g8.",
+     "lang": "en"
+    },
+    {
+     "text": "Removed the comment sentence saying the usurpation is not encoded.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Fehler",
+     "subject": "urn:regesta:22781:burg-homburg",
+     "description": "The regest states that Duke Matthäus of Lorraine had wrongfully usurped the castle. The candidate omits this clause and the actor, citing the lack of a type for wrongful seizure. The contract could express it as a StateFactoid rv:Possession (defined neutrally as possession 'wie das Regest es sagt') with Matthäus as rv:Possessor and the exact wording as qualifier. Matthäus matches the packet candidate RI004-002-M000670 by name and title.",
+     "proposal": "Add a StateFactoid rv:Possession concerning the castle with a reference to urn:regesta:actor:RI004-002-M000670 (rv:Possessor, nameInSource 'Herzog Matthäus von Lothringen') and rf:qualifier 'unrechtmäßig usurpiert'; report the usurpation act type as model gap.",
+     "quote": {
+      "start": 83,
+      "end": 144
+     }
+    },
+    {
+     "category": "type-approximation",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22781:erwerb-homburg",
+     "description": "rv:Grant presupposes a transferring actor; the passage names none and speaks of acquisition with the ruler's help. The extractor reports this as a model gap, which is accurate.",
+     "proposal": "Keep as approximation; report the acquisition type gap.",
+     "quote": {
+      "start": 0,
+      "end": 81
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The usurpation of Homburg by Duke Matthäus, half of the regest, is omitted together with its actor.",
+     "reason": "'die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat' is central and in scope (a legal relation to a castle). The act type for usurpation is missing, but the resulting holding is expressible as rv:Possession, defined 'wie das Regest es sagt', with the exact wording 'unrechtmäßig usurpiert' as qualifier so that no lawful possession is asserted. 'Herzog Matthäus von Lothringen' matches the packet candidate RI004-002-M000670 'Matthäus // Herzog von (Ober-)Lothringen' by name and title.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Trotz des Kaisertitels ist diese Nachricht sehr wahrscheinlich zum Aufenthalt des Herrschers in Lothringen (vgl. Regg. "
+    },
+    {
+     "t": "148",
+     "regest": "22775"
+    },
+    {
+     "t": " -"
+    },
+    {
+     "t": "155",
+     "regest": "22782"
+    },
+    {
+     "t": ") an der Jahreswende 1152/53 einzuordnen, wie Parisse, La noblesse Lorraine 2, 716 dargelegt hat; vgl. auch Bur, La frontière entre la Champagne et la Lorraine, Francia 4, 1976 (1977) 248. - Bei der genannten Burg handelt es sich urn Hombourg-Haut zwischen S. Avold und Forbach östl. von Metz, Dép. Moselle."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Gesta epp. Mettensium, MG. SS X, 544."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=55"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001520",
+    "Avold, Saint'- (östl. Metz nahe der französisch-deutschen Grenze, Dép. Moselle)"
+   ],
+   [
+    "RI004-002-F000309",
+    "Forbach (südwestl. Saarbrücken, an der französisch-deutschen Grenze, Dép. Moselle)"
+   ],
+   [
+    "RI004-002-H001174",
+    "Homburg (<i>heute:</i> Hombourg-Haut, zwischen S. Avold und Forbach, östl. von Metz, Dép. Moselle), Burg"
+   ],
+   [
+    "RI004-002-L000690",
+    "Lothringen (Nieder- und Ober -; nördlicher und südlicher Teil eines Gebietes im Nordosten Frankreichs)"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-M000874",
+    "Metz (Dép. Moselle)"
+   ],
+   [
+    "RI004-002-S001143",
+    "Bischof von Metz"
+   ]
+  ]
+ }
+}

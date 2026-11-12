@@ -1,0 +1,627 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1147-03-19_1_0_4_2_1_25_25",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22652",
+  "identifier": "RI IV,2,1 n. 25",
+  "short": "RI IV,2,1 n. 25",
+  "sort": "004_002_001_000025_0000000025",
+  "start": "1147-03-19",
+  "end": "1147-03-19",
+  "proseYears": [],
+  "lead": "Friedrich, Herzog von Schwaben und vom Elsaß, tritt einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei, nach dem die dem Kloster Corvey geschenkten Stifte Kemnade und Fischbeck auch weiterhin frei von allen Reichsdiensten sein sollen.",
+  "date": [
+   {
+    "t": "1147 (März 19/ca. 23)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Frankfurt"
+   }
+  ],
+  "text": "Friedrich, Herzog von Schwaben und vom Elsaß, tritt einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei, nach dem die dem Kloster Corvey geschenkten Stifte Kemnade und Fischbeck auch weiterhin frei von allen Reichsdiensten sein sollen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22652:beitritt",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22652:beitritt",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "beitritt",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 120,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22652:> .\nx:beitritt a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22652> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich, Herzog von Schwaben und vom Elsaß, tritt einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich, Herzog von Schwaben und vom Elsaß",
+      "text": "Friedrich, Herzog von Schwaben und vom Elsaß in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22652:beitritt",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beitritt",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 120,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22652:> .\nx:beitritt rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich, Herzog von Schwaben und vom Elsaß\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Urteil",
+      "text": "bezieht sich auf Urteil",
+      "triple": [
+       "urn:regesta:22652:beitritt",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22652:fuerstenspruch"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "beitritt",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 120,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22652:> .\nx:beitritt rf:refersToAct x:fuerstenspruch .\nx:fuerstenspruch a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-7> ;\n    rf:concerns <urn:regesta:actor:RI004-002-F000181:community> , <urn:regesta:actor:RI004-002-K000153:community> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei, nach dem die dem Kloster Corvey geschenkten Stifte Kemnade und Fischbeck auch weiterhin frei von allen Reichsdiensten sein sollen\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:qualifier \"auch weiterhin\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001563> ; rf:nameInSource \"Bischof Burchard von Straßburg\" ; rf:role rv:Judge ] ;\n    rf:source <urn:regesta:record:22652> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22652:fuerstenspruch",
+      "objectClaim": "fuerstenspruch",
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich, Herzog von Schwaben und vom Elsaß"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22652:fuerstenspruch",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22652:fuerstenspruch",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "fuerstenspruch",
+     "own": true,
+     "evidence": {
+      "start": 52,
+      "end": 251,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22652:> .\nx:fuerstenspruch a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22652> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei, nach dem die dem Kloster Corvey geschenkten Stifte Kemnade und Fischbeck auch weiterhin frei von allen Reichsdiensten sein sollen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Burchard von Straßburg",
+      "text": "Bischof Burchard von Straßburg in der Rolle Richter",
+      "triple": [
+       "urn:regesta:22652:fuerstenspruch",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuerstenspruch",
+      "own": true,
+      "evidence": {
+       "start": 52,
+       "end": 251,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22652:> .\nx:fuerstenspruch rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001563> ; rf:nameInSource \"Bischof Burchard von Straßburg\" ; rf:role rv:Judge ] .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B001563"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Fischbeck",
+      "text": "betrifft Fischbeck",
+      "triple": [
+       "urn:regesta:22652:fuerstenspruch",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-F000181:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuerstenspruch",
+      "own": true,
+      "evidence": {
+       "start": 52,
+       "end": 251,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22652:> .\nx:fuerstenspruch rf:concerns <urn:regesta:actor:RI004-002-F000181:community> .\n<urn:regesta:actor:RI004-002-F000181:community> a crm:E74_Group ;\n    rdfs:label \"Fischbeck\" .",
+      "object": "urn:regesta:actor:RI004-002-F000181:community",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Kemnade",
+      "text": "betrifft Kemnade",
+      "triple": [
+       "urn:regesta:22652:fuerstenspruch",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-K000153:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "fuerstenspruch",
+      "own": true,
+      "evidence": {
+       "start": 52,
+       "end": 251,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22652:> .\nx:fuerstenspruch rf:concerns <urn:regesta:actor:RI004-002-K000153:community> .\n<urn:regesta:actor:RI004-002-K000153:community> a crm:E74_Group ;\n    rdfs:label \"Kemnade\" .",
+      "object": "urn:regesta:actor:RI004-002-K000153:community",
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "auch weiterhin",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22652:fuerstenspruch",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 195,
+       "end": 209,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Urteil"
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bischof Burchard von Straßburg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Fischbeck"
+     },
+     " und ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Kemnade"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22652:donation-kemnade-fischbeck",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22652:donation-kemnade-fischbeck",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation-kemnade-fischbeck",
+     "own": true,
+     "evidence": {
+      "start": 131,
+      "end": 194,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22652:> .\nx:donation-kemnade-fischbeck a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22652> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die dem Kloster Corvey geschenkten Stifte Kemnade und Fischbeck\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Corvey",
+      "text": "Kloster Corvey in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22652:donation-kemnade-fischbeck",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-kemnade-fischbeck",
+      "own": true,
+      "evidence": {
+       "start": 131,
+       "end": 194,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22652:> .\nx:donation-kemnade-fischbeck rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ; rf:nameInSource \"Kloster Corvey\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000961:community"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Fischbeck",
+      "text": "betrifft Fischbeck",
+      "triple": [
+       "urn:regesta:22652:donation-kemnade-fischbeck",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-F000181:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-kemnade-fischbeck",
+      "own": true,
+      "evidence": {
+       "start": 131,
+       "end": 194,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22652:> .\nx:donation-kemnade-fischbeck rf:concerns <urn:regesta:actor:RI004-002-F000181:community> .\n<urn:regesta:actor:RI004-002-F000181:community> a crm:E74_Group ;\n    rdfs:label \"Fischbeck\" .",
+      "object": "urn:regesta:actor:RI004-002-F000181:community",
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Kemnade",
+      "text": "betrifft Kemnade",
+      "triple": [
+       "urn:regesta:22652:donation-kemnade-fischbeck",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-K000153:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation-kemnade-fischbeck",
+      "own": true,
+      "evidence": {
+       "start": 131,
+       "end": 194,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22652:> .\nx:donation-kemnade-fischbeck rf:concerns <urn:regesta:actor:RI004-002-K000153:community> .\n<urn:regesta:actor:RI004-002-K000153:community> a crm:E74_Group ;\n    rdfs:label \"Kemnade\" .",
+      "object": "urn:regesta:actor:RI004-002-K000153:community",
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Schenkung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Kloster Corvey"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Fischbeck"
+     },
+     " und ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Kemnade"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "beitritt",
+    "start": 0,
+    "end": 120
+   },
+   {
+    "id": "fuerstenspruch",
+    "start": 52,
+    "end": 251
+   },
+   {
+    "id": "donation-kemnade-fischbeck",
+    "start": 131,
+    "end": 194
+   },
+   {
+    "id": "t1",
+    "start": 195,
+    "end": 209
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Friedrich, Herzog von Schwaben und vom Elsaß identified with the shared ruler IRI as the ruler of this edition; the packet has no separate register candidate for him.",
+     "lang": "en"
+    },
+    {
+     "text": "Stifte Kemnade and Fischbeck and Kloster Corvey are register candidates of type ort; modelled as communities (RI004-002-K000153:community, RI004-002-F000181:community, RI004-002-C000961:community) so that the donated Stifte keep their register link. Whether a donated Stift is a thing or a community is open.",
+     "lang": "en"
+    },
+    {
+     "text": "The donor of the earlier donation to Corvey is not named in the regest; no grantor reference.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for accession to or assent with a judgment (tritt ... bei); Friedrich's act is typed rv:Confirmation with rf:refersToAct to the Fürstenspruch as the nearest available type.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for an exemption from imperial services (frei von allen Reichsdiensten); the content of the Fürstenspruch is carried only by the evidence quote and the qualifier auch weiterhin, without an E30_Right node.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for assent or accession to another actor's act (Beitritt).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No right type for exemption or immunity from imperial services (frei von allen Reichsdiensten).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "type-approximation",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22652:beitritt",
+     "description": "Friedrich's accession (Beitritt) to a judgment is typed rv:Confirmation with role rv:Grantor. Accession or assent is not a confirmation of possession or rights; the extractor flagged this as a model gap in its comment. Acceptable as the nearest available type, but a later query for confirmations will over-count.",
+     "proposal": "Keep for this run; add an assent/accession act type and an assenting-party role to the vocabulary and retype.",
+     "quote": {
+      "start": 46,
+      "end": 120
+     }
+    },
+    {
+     "category": "content-not-structured",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22652:fuerstenspruch",
+     "description": "The decisive content of the judgment, that the Stifte remain free of all imperial services, is not represented by rf:concerns on a right or exemption; the factoid concerns only the two Stifte. rv:RightTypes has no immunity or exemption concept, so this is a model gap rather than an extraction error. The temporal word 'auch weiterhin' is correctly kept as rf:qualifier.",
+     "proposal": "Add an exemption/immunity concept to rv:RightTypes and attach an E30_Right labelled 'frei von allen Reichsdiensten' via rf:concerns.",
+     "quote": {
+      "start": 195,
+      "end": 251
+     }
+    },
+    {
+     "category": "evidence-span",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22652:fuerstenspruch",
+     "description": "The judgment's evidence starts inside the accession clause and includes the verb particle 'bei' of Friedrich's act; the shortest passage carrying the judgment would begin at 'einem von Bischof Burchard' and could omit 'bei'. Cosmetic.",
+     "proposal": "None needed; optionally split into two selectors without 'bei'.",
+     "quote": {
+      "start": 52,
+      "end": 130
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Friedrich's accession (Beitritt) to the Fürstenspruch is typed rv:Confirmation with rv:Grantor although accession is not a confirmation.",
+     "reason": "The passage 'tritt einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei' states assent to another actor's judgment. The act scheme has no assent or accession type; rv:Confirmation ('bestätigt ... einen früheren Akt') is the nearest concept, and its definition explicitly does not claim validity. The current typing stays, the extractor's comment already marks the approximation; the missing type is a gap for the next model version.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The content of the judgment, freedom from all imperial services, is not structured as a right via rf:concerns.",
+     "reason": "'auch weiterhin frei von allen Reichsdiensten sein sollen' describes an exemption. rv:RightTypes has no exemption or immunity concept, and RightShape requires a crm:P2_has_type from that scheme, so an E30_Right cannot be typed honestly. Forcing rv:LordshipRights or rv:Protection would change the historical meaning, which correct.md forbids. The wording survives in the evidence and 'auch weiterhin' in rf:qualifier.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "The judgment's evidence selector includes the particle 'bei' of Friedrich's accession; optionally split.",
+     "reason": "The selector is a contiguous substring that carries type and roles of the judgment. The guideline asks for the shortest supporting passage but does not invalidate a selector for one extra particle, and the reviewer itself calls it cosmetic.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. dazu auch die spätere Bestätigung DK. III. 245."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnung in DK. III. 182."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=18"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B001563",
+    "Bischof von Straßburg"
+   ],
+   [
+    "RI004-002-C000961",
+    "Corvey (an der Weser, <i>heute:</i> Teil von Höxter in Ostwestfalen, Nordrh.-Westf.), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-F000181",
+    "Fischbeck (an der Weser, Teil von Hessisch Oldendorf, Ldkr. Hameln-Pyrmont, Ndsachs.), (Kanonissen-)Stift"
+   ],
+   [
+    "RI004-002-F000384",
+    "Frankfurt (am Main)"
+   ],
+   [
+    "RI004-002-K000153",
+    "Kemnade (an der Weser, zwischen Höxter und Hameln, <i>heute:</i> Teil von Bodenwerder, Ndsachs.), Stift (recte: Benediktinerkloster)"
+   ]
+  ]
+ }
+}

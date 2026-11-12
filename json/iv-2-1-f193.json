@@ -1,0 +1,1462 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-09-23_1_0_4_2_1_193_F193",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22820",
+  "identifier": "RI IV,2,1 n. †193",
+  "short": "RI IV,2,1 n. †193",
+  "sort": "004_002_001_000193_000000#193",
+  "start": "1153-09-23",
+  "end": "1153-09-23",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg das wörtlich inserierte Privileg Papst Lucius' II. von 1144 März 20 (in verfälschter Fassung, JL. 8530; Germ. pont. 1, 288 no 15), gewährt ihm Sicherheit für Gütererwerbungen aller Art, das Recht auf bestimmte Abgaben beim Tod von Hintersassen, die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters und die Gerichtshoheit in seinem Bereich. - Iohannes imperialis aule canc. vice Chunradi Maguntine sedis archiep. et Germanie archicanc. ; nach der Weingartener Fälschung (Reg. †194) abgefaßt; SP. 2.",
+  "date": [
+   {
+    "t": "1153 September 23"
+   }
+  ],
+  "place": [
+   {
+    "t": "Überlingen"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg das wörtlich inserierte Privileg Papst Lucius' II. von 1144 März 20 (in verfälschter Fassung, JL. 8530; Germ. pont. 1, 288 no 15), gewährt ihm Sicherheit für Gütererwerbungen aller Art, das Recht auf bestimmte Abgaben beim Tod von Hintersassen, die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters und die Gerichtshoheit in seinem Bereich. - Iohannes imperialis aule canc. vice Chunradi Maguntine sedis archiep. et Germanie archicanc. ; nach der Weingartener Fälschung (Reg. †194) abgefaßt; SP. 2. Ex imperatorie maiestatis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 6,
+  "blocks": [
+   {
+    "node": "urn:regesta:22820:assurance-acquisitions",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22820:assurance-acquisitions",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "assurance-acquisitions",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 19,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22820:> .\nx:assurance-acquisitions a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22820:assurance-acquisitions",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-acquisitions",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:assurance-acquisitions rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster St. Emmeram zu Regensburg",
+      "text": "Kloster St. Emmeram zu Regensburg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22820:assurance-acquisitions",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-acquisitions",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:assurance-acquisitions rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000317:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Schutzrecht (Sicherheit für Gütererwerbungen aller Art)",
+      "text": "betrifft Schutzrecht (Sicherheit für Gütererwerbungen aller Art)",
+      "triple": [
+       "urn:regesta:22820:assurance-acquisitions",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22820:right-security-acquisitions"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-acquisitions",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:assurance-acquisitions rf:concerns x:right-security-acquisitions .\nx:right-security-acquisitions a crm:E30_Right ;\n    crm:P2_has_type rv:Protection ;\n    rdfs:label \"Sicherheit für Gütererwerbungen aller Art\" .",
+      "object": "urn:regesta:22820:right-security-acquisitions",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22820:assurance-acquisitions",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22820:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-acquisitions",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:assurance-acquisitions rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg das wörtlich inserierte Privileg Papst Lucius' II.\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"Kloster St. Emmeram zu Regensburg\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:privilege-lucius ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22820:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22820:assurance-acquisitions",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-acquisitions-2",
+      "own": true,
+      "evidence": {
+       "start": 189,
+       "end": 242,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:assurance-acquisitions rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gewährt ihm Sicherheit für Gütererwerbungen aller Art\" ] .",
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Kloster St. Emmeram zu Regensburg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "Schutzrecht (Sicherheit für Gütererwerbungen aller Art)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22820:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22820:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 108,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22820:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg das wörtlich inserierte Privileg Papst Lucius' II.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22820:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster St. Emmeram zu Regensburg",
+      "text": "Kloster St. Emmeram zu Regensburg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22820:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"Kloster St. Emmeram zu Regensburg\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000317:community"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:22820:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22820:privilege-lucius"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:confirmation rf:refersToAct x:privilege-lucius .\nx:privilege-lucius a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Privileg Papst Lucius' II.\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000786> ; rf:nameInSource \"Papst Lucius' II.\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22820:privilege-lucius",
+      "objectClaim": "privilege-lucius",
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Kloster St. Emmeram zu Regensburg"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22820:grant-death-dues",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22820:grant-death-dues",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-death-dues",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 19,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-death-dues a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22820:grant-death-dues",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-death-dues",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-death-dues rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster St. Emmeram zu Regensburg",
+      "text": "Kloster St. Emmeram zu Regensburg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22820:grant-death-dues",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-death-dues",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-death-dues rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000317:community"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (das Recht auf bestimmte Abgaben beim Tod von Hintersassen)",
+      "text": "betrifft Einkünfterecht (das Recht auf bestimmte Abgaben beim Tod von Hintersassen)",
+      "triple": [
+       "urn:regesta:22820:grant-death-dues",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22820:right-death-dues"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-death-dues",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-death-dues rf:concerns x:right-death-dues .\nx:right-death-dues a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"das Recht auf bestimmte Abgaben beim Tod von Hintersassen\" .",
+      "object": "urn:regesta:22820:right-death-dues",
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22820:grant-death-dues",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22820:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-death-dues",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-death-dues rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg das wörtlich inserierte Privileg Papst Lucius' II.\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"Kloster St. Emmeram zu Regensburg\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:privilege-lucius ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22820:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22820:grant-death-dues",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-death-dues-2",
+      "own": true,
+      "evidence": {
+       "start": 189,
+       "end": 200,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-death-dues rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gewährt ihm\" ] .",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22820:grant-death-dues",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-death-dues-3",
+      "own": true,
+      "evidence": {
+       "start": 244,
+       "end": 301,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-death-dues rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das Recht auf bestimmte Abgaben beim Tod von Hintersassen\" ] .",
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11",
+       "k16",
+       "k17"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12",
+       "k16",
+       "k17"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k13",
+       "k16",
+       "k17"
+      ],
+      "text": "Kloster St. Emmeram zu Regensburg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14",
+       "k16",
+       "k17"
+      ],
+      "text": "Einkünfterecht (das Recht auf bestimmte Abgaben beim Tod von Hintersassen)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k15",
+       "k16",
+       "k17"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22820:grant-jurisdiction",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22820:grant-jurisdiction",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-jurisdiction",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 19,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-jurisdiction a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22820:grant-jurisdiction",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-jurisdiction",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-jurisdiction rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster St. Emmeram zu Regensburg",
+      "text": "Kloster St. Emmeram zu Regensburg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22820:grant-jurisdiction",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-jurisdiction",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-jurisdiction rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000317:community"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gerichtsbarkeit (die Gerichtshoheit in seinem Bereich)",
+      "text": "betrifft Gerichtsbarkeit (die Gerichtshoheit in seinem Bereich)",
+      "triple": [
+       "urn:regesta:22820:grant-jurisdiction",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22820:right-jurisdiction"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-jurisdiction",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-jurisdiction rf:concerns x:right-jurisdiction .\nx:right-jurisdiction a crm:E30_Right ;\n    crm:P2_has_type rv:Jurisdiction ;\n    rdfs:label \"die Gerichtshoheit in seinem Bereich\" .",
+      "object": "urn:regesta:22820:right-jurisdiction",
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22820:grant-jurisdiction",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22820:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-jurisdiction",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-jurisdiction rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg das wörtlich inserierte Privileg Papst Lucius' II.\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"Kloster St. Emmeram zu Regensburg\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:privilege-lucius ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22820:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22820:grant-jurisdiction",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-jurisdiction-2",
+      "own": true,
+      "evidence": {
+       "start": 189,
+       "end": 200,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-jurisdiction rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gewährt ihm\" ] .",
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22820:grant-jurisdiction",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-jurisdiction-3",
+      "own": true,
+      "evidence": {
+       "start": 382,
+       "end": 418,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-jurisdiction rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Gerichtshoheit in seinem Bereich\" ] .",
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18",
+       "k23",
+       "k24"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k19",
+       "k23",
+       "k24"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k20",
+       "k23",
+       "k24"
+      ],
+      "text": "Kloster St. Emmeram zu Regensburg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k21",
+       "k23",
+       "k24"
+      ],
+      "text": "Gerichtsbarkeit (die Gerichtshoheit in seinem Bereich)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k22",
+       "k23",
+       "k24"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22820:grant-ministerials",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22820:grant-ministerials",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "grant-ministerials",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 19,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-ministerials a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22820:grant-ministerials",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ministerials",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-ministerials rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster St. Emmeram zu Regensburg",
+      "text": "Kloster St. Emmeram zu Regensburg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22820:grant-ministerials",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ministerials",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-ministerials rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"ihm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000317:community"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters)",
+      "text": "betrifft Herrschafts- und Schutzrechte (die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters)",
+      "triple": [
+       "urn:regesta:22820:grant-ministerials",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22820:right-ministerials"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ministerials",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-ministerials rf:concerns x:right-ministerials .\nx:right-ministerials a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters\" .",
+      "object": "urn:regesta:22820:right-ministerials",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22820:grant-ministerials",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22820:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ministerials",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-ministerials rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster St. Emmeram zu Regensburg das wörtlich inserierte Privileg Papst Lucius' II.\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000317:community> ; rf:nameInSource \"Kloster St. Emmeram zu Regensburg\" ; rf:role rv:Recipient ] ;\n    rf:refersToAct x:privilege-lucius ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22820:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k29"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22820:grant-ministerials",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ministerials-2",
+      "own": true,
+      "evidence": {
+       "start": 189,
+       "end": 200,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-ministerials rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gewährt ihm\" ] .",
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22820:grant-ministerials",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "grant-ministerials-3",
+      "own": true,
+      "evidence": {
+       "start": 303,
+       "end": 377,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:grant-ministerials rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters\" ] .",
+      "key": "k31"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25",
+       "k30",
+       "k31"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k26",
+       "k30",
+       "k31"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k27",
+       "k30",
+       "k31"
+      ],
+      "text": "Kloster St. Emmeram zu Regensburg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k28",
+       "k30",
+       "k31"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die Erlaubnis zur Ernennung von Ministerialen aus der familia des Klosters)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k29",
+       "k30",
+       "k31"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22820:privilege-lucius",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22820:privilege-lucius",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "privilege-lucius",
+     "own": true,
+     "evidence": {
+      "start": 82,
+      "end": 108,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22820:> .\nx:privilege-lucius a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22820> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Privileg Papst Lucius' II.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-47> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k32"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Papst Lucius' II.",
+      "text": "Papst Lucius' II. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22820:privilege-lucius",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "privilege-lucius",
+      "own": true,
+      "evidence": {
+       "start": 82,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22820:> .\nx:privilege-lucius rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000786> ; rf:nameInSource \"Papst Lucius' II.\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000786"
+      ],
+      "key": "k33"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Papst Lucius' II."
+     }
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 108
+   },
+   {
+    "id": "assurance-acquisitions",
+    "start": 0,
+    "end": 19
+   },
+   {
+    "id": "grant-death-dues",
+    "start": 0,
+    "end": 19
+   },
+   {
+    "id": "grant-jurisdiction",
+    "start": 0,
+    "end": 19
+   },
+   {
+    "id": "grant-ministerials",
+    "start": 0,
+    "end": 19
+   },
+   {
+    "id": "privilege-lucius",
+    "start": 82,
+    "end": 108
+   },
+   {
+    "id": "assurance-acquisitions-2",
+    "start": 189,
+    "end": 242
+   },
+   {
+    "id": "grant-death-dues-2",
+    "start": 189,
+    "end": 200
+   },
+   {
+    "id": "grant-jurisdiction-2",
+    "start": 189,
+    "end": 200
+   },
+   {
+    "id": "grant-ministerials-2",
+    "start": 189,
+    "end": 200
+   },
+   {
+    "id": "grant-death-dues-3",
+    "start": 244,
+    "end": 301
+   },
+   {
+    "id": "grant-ministerials-3",
+    "start": 303,
+    "end": 377
+   },
+   {
+    "id": "grant-jurisdiction-3",
+    "start": 382,
+    "end": 418
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The record is a forgery (n. †193, 'nach der Weingartener Fälschung (Reg. †194) abgefaßt'); the model has no slot for the authenticity of the charter.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The date of the earlier papal privilege (1144 März 20) is not recorded, as the guidelines give earlier acts no date.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The permission to appoint ministerials from the familia has no fitting right type; rv:LordshipRights used.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The recipient of the papal privilege is not stated; the earlier act carries only its grantor.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to mark the regest or the charter as a forgery (n. †193).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No property for an explicit date the regest gives for an earlier act.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Removed rf:qualifier \"in verfälschter Fassung\" from <urn:regesta:22820:confirmation>; not moved to <urn:regesta:22820:privilege-lucius>; producer of the confirmation set to correction-g10.",
+     "lang": "en"
+    },
+    {
+     "text": "Other five factoids unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "misplaced-literal",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22820:confirmation",
+     "description": "The qualifier 'in verfälschter Fassung' qualifies the inserted papal privilege (and is the editor's text-critical remark), not Friedrich's act of confirmation. Attached to the confirmation it reads as a property of the confirming act.",
+     "proposal": "Move the qualifier to urn:regesta:22820:privilege-lucius or drop it as editorial commentary and report it as model gap.",
+     "quote": {
+      "start": 127,
+      "end": 150
+     }
+    },
+    {
+     "category": "structure",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22820:grant-death-dues",
+     "description": "The four grants are Friedrich's own acts ('gewährt ihm') but are linked by rf:partOf to the confirmation of the papal privilege, and carry the selector 'Friedrich bestätigt', which supports the confirmation verb rather than the grant. A reader may take them as content of the confirmed papal privilege.",
+     "proposal": "Use 'Friedrich' only for the actor or keep the selector but state in the batch report that partOf denotes the same charter, not the papal privilege.",
+     "quote": {
+      "start": 189,
+      "end": 242
+     }
+    },
+    {
+     "category": "omitted-literal",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22820:privilege-lucius",
+     "description": "The regest dates the earlier privilege explicitly; the contract forbids a date on the earlier act, so the date is lost. The omission follows the guidelines.",
+     "proposal": "None within the contract; report as model gap.",
+     "quote": {
+      "start": 109,
+      "end": 125
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "The qualifier 'in verfälschter Fassung' is attached to Friedrich's confirmation, although it qualifies the inserted papal privilege as an editorial text-critical remark.",
+     "reason": "In 'das wörtlich inserierte Privileg Papst Lucius' II. von 1144 März 20 (in verfälschter Fassung, JL. 8530; ...)' the parenthesis describes the inserted text, not the act of confirming; moving it to the privilege would claim the papal act itself was falsified, which the passage does not say. Removal is the only safe fix, and the forgery status of the transmission is a model gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The four grants are linked by rf:partOf to the confirmation and carry the selector 'Friedrich bestätigt'.",
+     "reason": "The subject of 'gewährt ihm' is the 'Friedrich' of 'Friedrich bestätigt', so the second selector is needed for the Grantor's nameInSource; rf:partOf is defined for secondary acts belonging to a main act of the same regest and does not make the grants content of the papal privilege.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zu dieser Fälschung, die der Schrift nach dem 14. Jh. angehört, vgl. Krallert, Urkundenfälschungen des Klosters Weingarten, AUF 15 (1938) 300 ff. Nach den beiliegenden Fragmenten eines echten Siegels Friedrichs I. aus der Kaiserzeit (vgl. Abb. bei C. Vogl) muß ein echtes Diplom existiert haben, das vermutlich aus der Spätzeit der Regierung stammt, als das Hängesiegel üblich geworden war. - Zu der Datierung des D. vgl. die Bemerkungen bei Reg. "
+    },
+    {
+     "t": "†194"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Fälschung"
+    },
+    {
+     "t": "; "
+    },
+    {
+     "t": "Angebl"
+    },
+    {
+     "t": ". Orig.: Hauptstaatsarchiv München (A). Drucke: Lünig, Reichsarchiv 18"
+    },
+    {
+     "t": "a",
+     "sup": true
+    },
+    {
+     "t": ", 654; Coelestin (Vogl), Ratisbona monastica 1, 146 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 57 mit Abb. des Siegels Appendix Tafel VI. Reg.: Mon. Boica 30"
+    },
+    {
+     "t": "a",
+     "sup": true
+    },
+    {
+     "t": ", 397 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 11; Stumpf 3678."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=70"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Abb. des LBA Marburg",
+     "href": "https://urkundenrepositorium.uni-marburg.de/handle/lba/3299"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Eintrag in AVEKK",
+     "href": "http://www.hgw-online.net/abbildungsverzeichnis/df-i-1034"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-J000116",
+    "Kanzler der Reichskanzlei"
+   ],
+   [
+    "RI004-002-K000318",
+    "(von Wittelsbach), Elekt, dann Erzbischof von Mainz, Kardinalbischof von Sabina (1166─1200, vorher, 1165─1166, Kardinalpriester von S. Marcello), dann Erzbischof (III.) von Salzburg und abermals Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-L000786",
+    "(II.), Papst"
+   ],
+   [
+    "RI004-002-R000317",
+    "(Benediktiner-)Kloster St. Emmeram"
+   ],
+   [
+    "RI004-002-U000003",
+    "Überlingen (am Bodenseeufer, Bodenseekr., Bad.-Württ.)"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,1625 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-09_1_0_4_2_1_70_70",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22697",
+  "identifier": "RI IV,2,1 n. 70",
+  "short": "RI IV,2,1 n. 70",
+  "sort": "004_002_001_000070_0000000070",
+  "start": "1152-03-09",
+  "end": "1152-03-14",
+  "proseYears": [],
+  "lead": "Friedrich legt auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts die Rechte der Vögte des Domkapitels zu Lüttich (ius advocatorum et terminum iuris eorum) fest, bestimmt, daß die Vogtei nur der mit dem Königsbann Belehnte (nisi quem constaret bannum regie auctoritatis habere) ausüben dürfe, verbietet das Eintreiben von Abgaben in einer Höhe, die dem Zeugnis und den Urkunden der Schöffen und Dorfbewohner (quod auctoritas privilegiorum et testimonium scabinorum et villarum fidelium perhiberet veraci attestatione) widerspricht und bestätigt die Privilegien der Stadt und des Stiftes, die durch seinen Oheim erneuert worden sind.",
+  "date": [
+   {
+    "t": "1152 (März 9-14)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Aachen (Aquisgrani)"
+   }
+  ],
+  "text": "Friedrich legt auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts die Rechte der Vögte des Domkapitels zu Lüttich (ius advocatorum et terminum iuris eorum) fest, bestimmt, daß die Vogtei nur der mit dem Königsbann Belehnte (nisi quem constaret bannum regie auctoritatis habere) ausüben dürfe, verbietet das Eintreiben von Abgaben in einer Höhe, die dem Zeugnis und den Urkunden der Schöffen und Dorfbewohner (quod auctoritas privilegiorum et testimonium scabinorum et villarum fidelium perhiberet veraci attestatione) widerspricht und bestätigt die Privilegien der Stadt und des Stiftes, die durch seinen Oheim erneuert worden sind. Z.: die Erzbischöfe Arnold von Köln, Hillin von Trier (Triuirensis), die Bischöfe Heinrich von Lüttich, Eberhard von Bamberg, Otto von Freising, Hermann von Konstanz, Ortlieb von Basel, Friedrich von Münster, Abt Wibald von Stablo, Herzog Heinrich von Sachsen, Welf von Ravensburg (Rauenesber), Markgraf Albrecht und Herzog Matthäus von Lothringen. - Arnoldus canc. vice Henrici Moguntini archiep. et archicanc. ; verfaßt und wahrscheinlich auch mundiert von Heribert. Sicut divina preordinante .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 7,
+  "blocks": [
+   {
+    "node": "urn:regesta:22697:enactment-voegte",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22697:enactment-voegte",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "enactment-voegte",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 186,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22697:> .\nx:enactment-voegte a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich legt auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts die Rechte der Vögte des Domkapitels zu Lüttich (ius advocatorum et terminum iuris eorum) fest\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22697:enactment-voegte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-voegte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:enactment-voegte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Vögte des Domkapitels zu Lüttich",
+      "text": "der Vögte des Domkapitels zu Lüttich in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22697:enactment-voegte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-voegte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:enactment-voegte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:voegte> ; rf:nameInSource \"der Vögte des Domkapitels zu Lüttich\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:22697:local:voegte"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkapitels zu Lüttich",
+      "text": "Domkapitels zu Lüttich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22697:enactment-voegte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-voegte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:enactment-voegte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000934:community> ; rf:nameInSource \"Domkapitels zu Lüttich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000934:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (die Rechte der Vögte des Domkapitels zu Lüttich)",
+      "text": "betrifft Vogtei (die Rechte der Vögte des Domkapitels zu Lüttich)",
+      "triple": [
+       "urn:regesta:22697:enactment-voegte",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22697:right-voegte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-voegte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:enactment-voegte rf:concerns x:right-voegte .\nx:right-voegte a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"die Rechte der Vögte des Domkapitels zu Lüttich\" .",
+      "object": "urn:regesta:22697:right-voegte",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Urteil",
+      "text": "bezieht sich auf Urteil",
+      "triple": [
+       "urn:regesta:22697:enactment-voegte",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22697:earlier-judgment"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-voegte",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 186,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:enactment-voegte rf:refersToAct x:earlier-judgment .\nx:earlier-judgment a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:qualifier \"erneuerten\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:hofgericht> ; rf:nameInSource \"des Hofgerichts\" ; rf:role rv:Judge ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad III.\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22697:earlier-judgment",
+      "objectClaim": "earlier-judgment",
+      "key": "k6"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22697:enactment-voegte",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 15,
+       "end": 91,
+       "ambiguous": false
+      },
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "der Vögte des Domkapitels zu Lüttich"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Domkapitels zu Lüttich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Vogtei (die Rechte der Vögte des Domkapitels zu Lüttich)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22697:earlier-judgment",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22697:earlier-judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-judgment",
+     "own": true,
+     "evidence": {
+      "start": 25,
+      "end": 91,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22697:> .\nx:earlier-judgment a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad III.",
+      "text": "Konrad III. in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22697:earlier-judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-judgment",
+      "own": true,
+      "evidence": {
+       "start": 25,
+       "end": 91,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:earlier-judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad III.\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Hofgerichts",
+      "text": "des Hofgerichts in der Rolle Richter",
+      "triple": [
+       "urn:regesta:22697:earlier-judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-judgment",
+      "own": true,
+      "evidence": {
+       "start": 25,
+       "end": 91,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:earlier-judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:hofgericht> ; rf:nameInSource \"des Hofgerichts\" ; rf:role rv:Judge ] .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:22697:local:hofgericht"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erneuerten",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22697:earlier-judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 49,
+       "end": 59,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Urteil"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Konrad III."
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "des Hofgerichts"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22697:provision-koenigsbann",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22697:provision-koenigsbann",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "provision-koenigsbann",
+     "own": true,
+     "evidence": {
+      "start": 188,
+      "end": 317,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22697:> .\nx:provision-koenigsbann a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestimmt, daß die Vogtei nur der mit dem Königsbann Belehnte (nisi quem constaret bannum regie auctoritatis habere) ausüben dürfe\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22697:provision-koenigsbann",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 188,
+       "end": 317,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:provision-koenigsbann rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der mit dem Königsbann Belehnte",
+      "text": "der mit dem Königsbann Belehnte in der Rolle Rechteinhaber",
+      "triple": [
+       "urn:regesta:22697:provision-koenigsbann",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 188,
+       "end": 317,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:provision-koenigsbann rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:koenigsbann-belehnter> ; rf:nameInSource \"der mit dem Königsbann Belehnte\" ; rf:role rv:RightHolder ] .",
+      "role": "Rechteinhaber",
+      "actors": [
+       "urn:regesta:actor:22697:local:koenigsbann-belehnter"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (die Vogtei)",
+      "text": "betrifft Vogtei (die Vogtei)",
+      "triple": [
+       "urn:regesta:22697:provision-koenigsbann",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22697:right-vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 188,
+       "end": 317,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:provision-koenigsbann rf:concerns x:right-vogtei .\nx:right-vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"die Vogtei\" .",
+      "object": "urn:regesta:22697:right-vogtei",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22697:provision-koenigsbann",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22697:enactment-voegte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-koenigsbann",
+      "own": true,
+      "evidence": {
+       "start": 188,
+       "end": 317,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:provision-koenigsbann rf:partOf x:enactment-voegte .\nx:enactment-voegte a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:concerns x:right-voegte ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich legt auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts die Rechte der Vögte des Domkapitels zu Lüttich (ius advocatorum et terminum iuris eorum) fest\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:ground \"auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:voegte> ; rf:nameInSource \"der Vögte des Domkapitels zu Lüttich\" ; rf:role rv:RightHolder ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000934:community> ; rf:nameInSource \"Domkapitels zu Lüttich\" ; rf:role rv:Participant ] ;\n    rf:refersToAct x:earlier-judgment ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22697:enactment-voegte",
+      "objectClaim": "enactment-voegte",
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "nur der mit dem Königsbann Belehnte",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22697:provision-koenigsbann",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 213,
+       "end": 248,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Rechteinhaber ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "der mit dem Königsbann Belehnte"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Vogtei (die Vogtei)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22697:prohibition-abgaben",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22697:prohibition-abgaben",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "prohibition-abgaben",
+     "own": true,
+     "evidence": {
+      "start": 319,
+      "end": 556,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22697:> .\nx:prohibition-abgaben a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"verbietet das Eintreiben von Abgaben in einer Höhe, die dem Zeugnis und den Urkunden der Schöffen und Dorfbewohner (quod auctoritas privilegiorum et testimonium scabinorum et villarum fidelium perhiberet veraci attestatione) widerspricht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22697:prohibition-abgaben",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-abgaben",
+      "own": true,
+      "evidence": {
+       "start": 319,
+       "end": 556,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:prohibition-abgaben rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (Abgaben)",
+      "text": "betrifft Einkünfterecht (Abgaben)",
+      "triple": [
+       "urn:regesta:22697:prohibition-abgaben",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22697:right-abgaben"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-abgaben",
+      "own": true,
+      "evidence": {
+       "start": 319,
+       "end": 556,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:prohibition-abgaben rf:concerns x:right-abgaben .\nx:right-abgaben a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"Abgaben\" .",
+      "object": "urn:regesta:22697:right-abgaben",
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22697:prohibition-abgaben",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22697:enactment-voegte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-abgaben",
+      "own": true,
+      "evidence": {
+       "start": 319,
+       "end": 556,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:prohibition-abgaben rf:partOf x:enactment-voegte .\nx:enactment-voegte a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:concerns x:right-voegte ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich legt auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts die Rechte der Vögte des Domkapitels zu Lüttich (ius advocatorum et terminum iuris eorum) fest\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:ground \"auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:voegte> ; rf:nameInSource \"der Vögte des Domkapitels zu Lüttich\" ; rf:role rv:RightHolder ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000934:community> ; rf:nameInSource \"Domkapitels zu Lüttich\" ; rf:role rv:Participant ] ;\n    rf:refersToAct x:earlier-judgment ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22697:enactment-voegte",
+      "objectClaim": "enactment-voegte",
+      "key": "k21"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "in einer Höhe, die dem Zeugnis und den Urkunden der Schöffen und Dorfbewohner (quod auctoritas privilegiorum et testimonium scabinorum et villarum fidelium perhiberet veraci attestatione) widerspricht",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22697:prohibition-abgaben",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 356,
+       "end": 556,
+       "ambiguous": false
+      },
+      "key": "k22"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "verbietet",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22697:prohibition-abgaben",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 319,
+       "end": 328,
+       "ambiguous": false
+      },
+      "key": "k23"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Einkünfterecht (Abgaben)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22697:confirmation-privileges",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22697:confirmation-privileges",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-privileges",
+     "own": true,
+     "evidence": {
+      "start": 561,
+      "end": 657,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22697:> .\nx:confirmation-privileges a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt die Privilegien der Stadt und des Stiftes, die durch seinen Oheim erneuert worden sind\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k24"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22697:confirmation-privileges",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-privileges",
+      "own": true,
+      "evidence": {
+       "start": 561,
+       "end": 657,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:confirmation-privileges rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k25"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Stadt",
+      "text": "der Stadt in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22697:confirmation-privileges",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-privileges",
+      "own": true,
+      "evidence": {
+       "start": 561,
+       "end": 657,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:confirmation-privileges rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000932:community> ; rf:nameInSource \"der Stadt\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000932:community"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Stiftes",
+      "text": "des Stiftes in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22697:confirmation-privileges",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-privileges",
+      "own": true,
+      "evidence": {
+       "start": 561,
+       "end": 657,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:confirmation-privileges rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:stift> ; rf:nameInSource \"des Stiftes\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22697:local:stift"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestätigung",
+      "text": "bezieht sich auf Bestätigung",
+      "triple": [
+       "urn:regesta:22697:confirmation-privileges",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22697:earlier-renewal"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-privileges",
+      "own": true,
+      "evidence": {
+       "start": 561,
+       "end": 657,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:confirmation-privileges rf:refersToAct x:earlier-renewal .\nx:earlier-renewal a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Privilegien der Stadt und des Stiftes, die durch seinen Oheim erneuert worden sind\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:qualifier \"erneuert\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:oheim> ; rf:nameInSource \"seinen Oheim\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:stift> ; rf:nameInSource \"des Stiftes\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000932:community> ; rf:nameInSource \"der Stadt\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22697:earlier-renewal",
+      "objectClaim": "earlier-renewal",
+      "key": "k28"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "der Stadt"
+     },
+     " und ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "des Stiftes"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22697:earlier-renewal",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22697:earlier-renewal",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-renewal",
+     "own": true,
+     "evidence": {
+      "start": 571,
+      "end": 657,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22697:> .\nx:earlier-renewal a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Privilegien der Stadt und des Stiftes, die durch seinen Oheim erneuert worden sind\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k29"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Stadt",
+      "text": "der Stadt in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22697:earlier-renewal",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-renewal",
+      "own": true,
+      "evidence": {
+       "start": 571,
+       "end": 657,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:earlier-renewal rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000932:community> ; rf:nameInSource \"der Stadt\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000932:community"
+      ],
+      "key": "k30"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des Stiftes",
+      "text": "des Stiftes in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22697:earlier-renewal",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-renewal",
+      "own": true,
+      "evidence": {
+       "start": 571,
+       "end": 657,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:earlier-renewal rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:stift> ; rf:nameInSource \"des Stiftes\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22697:local:stift"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinen Oheim",
+      "text": "seinen Oheim in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22697:earlier-renewal",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-renewal",
+      "own": true,
+      "evidence": {
+       "start": 571,
+       "end": 657,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:earlier-renewal rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:oheim> ; rf:nameInSource \"seinen Oheim\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:22697:local:oheim"
+      ],
+      "key": "k32",
+      "agentNotes": [
+       {
+        "text": "'seinen Oheim' kept as a local person; identification with Konrad III. (RI004-002-K000316, named earlier in the same regest) would be an inference and is not asserted",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erneuert",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22697:earlier-renewal",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 637,
+       "end": 645,
+       "ambiguous": false
+      },
+      "key": "k33"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "seinen Oheim"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "der Stadt"
+     },
+     " und ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "des Stiftes"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22697:kinship-oheim",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22697:kinship-oheim",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-oheim",
+     "own": true,
+     "evidence": {
+      "start": 618,
+      "end": 636,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22697:> .\nx:kinship-oheim a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22697> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"durch seinen Oheim\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k34"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "seinen Oheim",
+      "text": "seinen Oheim in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22697:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 618,
+       "end": 636,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:oheim> ; rf:nameInSource \"seinen Oheim\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:22697:local:oheim"
+      ],
+      "key": "k35",
+      "agentNotes": [
+       {
+        "text": "'seinen Oheim' kept as a local person; identification with Konrad III. (RI004-002-K000316, named earlier in the same regest) would be an inference and is not asserted",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22697:kinship-oheim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-oheim",
+      "own": true,
+      "evidence": {
+       "start": 618,
+       "end": 636,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22697:> .\nx:kinship-oheim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"seinen\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Oheim",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22697:kinship-oheim",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 631,
+       "end": 636,
+       "ambiguous": false
+      },
+      "key": "k37"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "seinen Oheim"
+     },
+     " und ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "enactment-voegte",
+    "start": 0,
+    "end": 186
+   },
+   {
+    "id": "t1",
+    "start": 15,
+    "end": 91
+   },
+   {
+    "id": "earlier-judgment",
+    "start": 25,
+    "end": 91
+   },
+   {
+    "id": "t2",
+    "start": 49,
+    "end": 59
+   },
+   {
+    "id": "provision-koenigsbann",
+    "start": 188,
+    "end": 317
+   },
+   {
+    "id": "t3",
+    "start": 213,
+    "end": 248
+   },
+   {
+    "id": "prohibition-abgaben",
+    "start": 319,
+    "end": 556
+   },
+   {
+    "id": "t5",
+    "start": 319,
+    "end": 328
+   },
+   {
+    "id": "t4",
+    "start": 356,
+    "end": 556
+   },
+   {
+    "id": "confirmation-privileges",
+    "start": 561,
+    "end": 657
+   },
+   {
+    "id": "earlier-renewal",
+    "start": 571,
+    "end": 657
+   },
+   {
+    "id": "kinship-oheim",
+    "start": 618,
+    "end": 636
+   },
+   {
+    "id": "t7",
+    "start": 631,
+    "end": 636
+   },
+   {
+    "id": "t6",
+    "start": 637,
+    "end": 645
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'des Stiftes' kept as a local group; not merged with the Domkapitel RI004-002-L000934",
+     "lang": "en"
+    },
+    {
+     "text": "'des Hofgerichts' is a local group without register candidate",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for generic privileges ('die Privilegien der Stadt und des Stiftes'); the confirmation and the earlier renewal carry no rf:concerns",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the ruler under whom a judgment was renewed ('unter Konrad III.'); Konrad is recorded as rv:Participant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Domkapitel's role in the fixing of the advocates' rights is not stated; recorded as rv:Participant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Schöffen und Dorfbewohner, whose testimony bounds the dues, are kept only inside the rf:condition literal",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "collapsed-acts",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22697:earlier-judgment",
+     "description": "The passage speaks of a court judgment renewed under Konrad III. The candidate types the renewed judgment as one rv:Judgment with Konrad as Participant, collapsing the original judgment and its renewal; the time of the original judgment is not under Konrad.",
+     "proposal": "Split into an rv:Judgment by 'des Hofgerichts' without a ruler reference and an rv:Confirmation (renewal) with Konrad III and rf:qualifier \"erneuerten\", joined by rf:refersToAct.",
+     "quote": {
+      "start": 25,
+      "end": 91
+     }
+    },
+    {
+     "category": "identification-consistency",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:22697:local:stift",
+     "description": "'der Stadt' is identified with the register entry Lüttich Stadt while 'des Stiftes' is left local, although the packet carries the Domkapitel Lüttich entry already used for 'Domkapitels zu Lüttich'. Either both are inferred from context or neither.",
+     "proposal": "Treat both consistently: identify 'des Stiftes' with RI004-002-L000934:community or keep 'der Stadt' local too.",
+     "quote": {
+      "start": 571,
+      "end": 612
+     }
+    },
+    {
+     "category": "role-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22697:enactment-voegte",
+     "description": "The Domkapitel is a Participant; it is the body whose advocates are regulated and would fit rv:Beneficiary. The 'Oheim' is correctly kept local rather than identified with Konrad III through the register label.",
+     "proposal": "Optionally use rv:Beneficiary for the Domkapitel.",
+     "quote": {
+      "start": 92,
+      "end": 186
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "The original judgment and its renewal under Konrad III are collapsed into one rv:Judgment.",
+     "reason": "The passage names one judgment of the court, 'eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts', and that renewed judgment is what Friedrich relies on. It says nothing of the original judgment beyond 'erneuerten', which the qualifier keeps; splitting would assign the original to the court and the renewal to Konrad, a reading the wording does not settle.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "'der Stadt' is identified with a register entry while 'des Stiftes' is kept local; treat both alike.",
+     "reason": "The packet carries a candidate for the city of Liège (L000932, 'Stadt') matching 'der Stadt' in a regest about Liège. 'des Stiftes' may mean the Hochstift or the Domkapitel (L000934), so a local actor is the cautious reading. The asymmetry follows the evidence.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The Domkapitel could be rv:Beneficiary instead of rv:Participant.",
+     "reason": "'die Rechte der Vögte des Domkapitels zu Lüttich ... fest' does not say that the act is in favour of the chapter; rv:Participant does not overstate.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Bezeichnung Friedrichs als erster seines Namens vgl. die Vorbemerkung zum vorliegenden D. - Bei der Erneuerung der Privilegien durch Konrad III., die Friedrich hier bestätigt, handelt es sich um ein Deperditum."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Liber chartarum ecclesiae Leodiensis Ende 13. Jh. f. 69 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 6, Staatsarchiv Lüttich, 1944 durch Kriegseinwirkung vernichtet (B); Liber primus chartarum ecclesiae Leodiensis 14. Jh. f. 44 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 6 ebenda (C). Drucke: Bormans - Schoolmeesters, Cart. de S. Lambert de Liège 1, 71 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 43; MG. DF. I. 4. Reg.: Wauters, Table chronol. 2, 736; Poncelet, Cart. de S. Lambert de Liège 6, 4 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 14; Stumpf 3619."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=27"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_4"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000009",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-E000011",
+    "Bischof von Bamberg"
+   ],
+   [
+    "RI004-002-F000657",
+    "Bischof von Münster"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000392",
+    "II., Bischof von Lüttich"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000783",
+    "Notar der Reichskanzlei, Magister, Kapellan, Propst von Aachen (des kaiserlichen Hofes), dann Erzbischof von Besançon (<i>siehe: dort</i>)"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000932",
+    "Stadt"
+   ],
+   [
+    "RI004-002-L000934",
+    "Domkapitel"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000405",
+    "(I.), Bischof von Freising"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,690 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_5_0_4_2_1_122_122",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22749",
+  "identifier": "RI IV,2,1 n. 122",
+  "short": "RI IV,2,1 n. 122",
+  "sort": "004_002_001_000122_0000000122",
+  "start": "1152-07-01",
+  "end": "1152-07-31",
+  "proseYears": [],
+  "lead": "Friedrich verspricht dem Konvent von Corvey , er werde die ihm zugefügte Gewalttat (der Brüder Folkwin und Widekind von Schwalenberg) baldmöglichst rächen, und befiehlt die Wiederaufnahme des Gottesdienstes in der Klosterkirche, der zum Zeichen des Protestes eingestellt worden war, sowie die Enthüllung der Kreuze und die Herbeischaffung der Reliquien. - Verfaßt von A II. C. Universitatis vestrę doloribus .",
+  "date": [
+   {
+    "t": "(1152 Juli)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich verspricht dem Konvent von Corvey , er werde die ihm zugefügte Gewalttat (der Brüder Folkwin und Widekind von Schwalenberg) baldmöglichst rächen, und befiehlt die Wiederaufnahme des Gottesdienstes in der Klosterkirche, der zum Zeichen des Protestes eingestellt worden war, sowie die Enthüllung der Kreuze und die Herbeischaffung der Reliquien. - Verfaßt von A II. C. Universitatis vestrę doloribus .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22749:command-worship",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22749:command-worship",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "command-worship",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 43,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22749:> .\nx:command-worship a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22749> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verspricht dem Konvent von Corvey\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22749:command-worship",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22749:ref-command-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "command-worship",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 43,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:command-worship rf:reference x:ref-command-friedrich .\nx:ref-command-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konvent von Corvey",
+      "text": "Konvent von Corvey in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22749:command-worship",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22749:ref-command-konvent"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "command-worship",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 43,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:command-worship rf:reference x:ref-command-konvent .\nx:ref-command-konvent a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-C000964:community> ;\n    rf:nameInSource \"Konvent von Corvey\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000964:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Klosterkirche",
+      "text": "betrifft Klosterkirche",
+      "triple": [
+       "urn:regesta:22749:command-worship",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22749:klosterkirche"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "command-worship",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 43,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:command-worship rf:concerns x:klosterkirche .\nx:klosterkirche a crm:E18_Physical_Thing ;\n    rdfs:label \"Klosterkirche\" .",
+      "object": "urn:regesta:22749:klosterkirche",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22749:command-worship",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "command-worship-2",
+      "own": true,
+      "evidence": {
+       "start": 160,
+       "end": 352,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:command-worship rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"befiehlt die Wiederaufnahme des Gottesdienstes in der Klosterkirche, der zum Zeichen des Protestes eingestellt worden war, sowie die Enthüllung der Kreuze und die Herbeischaffung der Reliquien\" ] .",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k5"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3",
+       "k5"
+      ],
+      "text": "Konvent von Corvey"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4",
+       "k5"
+      ],
+      "text": "Klosterkirche"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22749:promise-revenge",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22749:promise-revenge",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "promise-revenge",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 154,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22749:> .\nx:promise-revenge a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22749> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verspricht dem Konvent von Corvey , er werde die ihm zugefügte Gewalttat (der Brüder Folkwin und Widekind von Schwalenberg) baldmöglichst rächen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22749:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22749:ref-promise-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 154,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:promise-revenge rf:reference x:ref-promise-friedrich .\nx:ref-promise-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konvent von Corvey",
+      "text": "Konvent von Corvey in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22749:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22749:ref-promise-konvent"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 154,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:promise-revenge rf:reference x:ref-promise-konvent .\nx:ref-promise-konvent a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-C000964:community> ;\n    rf:nameInSource \"Konvent von Corvey\" ;\n    rf:role rv:Recipient .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000964:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22749:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22749:ref-promise-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 154,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:promise-revenge rf:reference x:ref-promise-folkwin .\nx:ref-promise-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind von Schwalenberg",
+      "text": "Widekind von Schwalenberg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22749:promise-revenge",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22749:ref-promise-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "promise-revenge",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 154,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:promise-revenge rf:reference x:ref-promise-widekind .\nx:ref-promise-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind von Schwalenberg\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "baldmöglichst",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22749:promise-revenge",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 134,
+       "end": 147,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Konvent von Corvey"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Widekind von Schwalenberg"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22749:brothers",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22749:brothers",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "brothers",
+     "own": true,
+     "evidence": {
+      "start": 88,
+      "end": 132,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22749:> .\nx:brothers a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22749> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Brüder Folkwin und Widekind von Schwalenberg\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22749:brothers",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22749:ref-brothers-folkwin"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brothers",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:brothers rf:reference x:ref-brothers-folkwin .\nx:ref-brothers-folkwin a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000280> ;\n    rf:nameInSource \"Folkwin\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind von Schwalenberg",
+      "text": "Widekind von Schwalenberg in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22749:brothers",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22749:ref-brothers-widekind"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "brothers",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 132,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22749:> .\nx:brothers rf:reference x:ref-brothers-widekind .\nx:ref-brothers-widekind a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-W000454> ;\n    rf:nameInSource \"Widekind von Schwalenberg\" ;\n    rf:role rv:Kin .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Brüder",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22749:brothers",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 88,
+       "end": 94,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Widekind von Schwalenberg"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "promise-revenge",
+    "start": 0,
+    "end": 154
+   },
+   {
+    "id": "command-worship",
+    "start": 0,
+    "end": 43
+   },
+   {
+    "id": "brothers",
+    "start": 88,
+    "end": 132
+   },
+   {
+    "id": "t2",
+    "start": 88,
+    "end": 94
+   },
+   {
+    "id": "t1",
+    "start": 134,
+    "end": 147
+   },
+   {
+    "id": "command-worship-2",
+    "start": 160,
+    "end": 352
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No role for the wrongdoer whose deed is to be avenged; rv:Participant used.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The earlier suspension of worship as protest (der zum Zeichen des Protestes eingestellt worden war) has no fitting act type and is kept only inside the evidence of the command; the command itself is recorded as rv:Enactment, whose scope as a legal act is a reading.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the perpetrators of a wrong to be avenged; rv:Participant is a placeholder.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. die Bemerkungen zu Reg. "
+    },
+    {
+     "t": "12",
+     "regest": "22639"
+    },
+    {
+     "t": " sowie Reg. "
+    },
+    {
+     "t": "119",
+     "regest": "22746"
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift aus der Mitte des 12. Jh. im Cod. Wibaldi f. 131', Staatsarchiv Lüttich (B). Drucke: Jaffé, Mon. Corb. 521 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 389; Wilmans-Philippi, Kaiserurk. der Prov. Westfalen 2, 319 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 231 b; MG. DF. I. 22. Reg.: Stumpf 3641 a zu 1152 August."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0043"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_22"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-C000964",
+    "Konvent"
+   ],
+   [
+    "RI004-002-F000280",
+    "von Schwalenberg, Vogt von Höxter"
+   ],
+   [
+    "RI004-002-W000454",
+    "(II.), Graf von Schwalenberg (-Waldeck), Vogt von Höxter"
+   ]
+  ]
+ }
+}

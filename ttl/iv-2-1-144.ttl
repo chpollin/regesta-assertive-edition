@@ -1,0 +1,138 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-10-00_1_0_4_2_1_144_144
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22771> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 144" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-G001180> a crm:E21_Person ;
+    rdfs:label "Grafen Wido von Biandrate" .
+
+<urn:regesta:actor:RI004-002-R001212> a crm:E21_Person ;
+    rdfs:label "Rudolf von Monteacuto" .
+
+<urn:regesta:actor:RI004-002-B000701> a crm:E21_Person ;
+    rdfs:label "Berta" .
+
+<urn:regesta:actor:RI004-002-O000483> a crm:E21_Person ;
+    rdfs:label "Odo" .
+
+<urn:regesta:actor:22771:local:heredes> a crm:E74_Group ;
+    rdfs:label "eius heredes" .
+
+<urn:regesta:22771:besitzungen-und-rechte> a crm:E18_Physical_Thing ;
+    rdfs:label "die Besitzungen und Rechte" .
+
+<urn:regesta:22771:regalien-castano-lonate> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "Regalien zu Castano und Lonate" .
+
+<urn:regesta:22771:cesola> a crm:E53_Place ;
+    rdfs:label "Cesola nel Monferrato" .
+
+<urn:regesta:22771:riva-di-chieri> a crm:E53_Place ;
+    rdfs:label "Riva di Chieri" .
+
+<urn:regesta:22771:porcile> a crm:E53_Place ;
+    rdfs:label "Porcile" .
+
+<urn:regesta:22771:valmacca> a crm:E53_Place ;
+    rdfs:label "Valmacca nel Monferrato (Valdemax)" .
+
+<urn:regesta:22771:burg-monteacuto> a crm:E18_Physical_Thing ;
+    rdfs:label "die Burg Monteacuto mit allen Besitzungen" .
+
+<urn:regesta:22771:besitzungen-berta-odo> a crm:E18_Physical_Thing ;
+    rdfs:label "allen Besitzungen" .
+
+<urn:regesta:22771:fodrum> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "das Fodrum in der Grafschaft" .
+
+<urn:regesta:22771:gerichtsstand> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "den alleinigen Gerichtsstand vor dem König" .
+
+<urn:regesta:22771:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22771> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt dem Grafen Wido von Biandrate die Besitzungen und Rechte, besonders die Regalien zu Castano und Lonate, darüber hinaus Cesola nel Monferrato, Riva di Chieri, Porcile, Valmacca nel Monferrato (Valdemax) und die Burg Monteacuto mit allen Besitzungen, die Rudolf von Monteacuto dem Grafen aus dem Besitz seiner Tochter Berta und ihres Gatten Odo gegeben hat, sowie das Fodrum in der Grafschaft" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001180> ; rf:role rv:Recipient ; rf:nameInSource "Grafen Wido von Biandrate" ] ;
+    rf:concerns <urn:regesta:22771:besitzungen-und-rechte> , <urn:regesta:22771:regalien-castano-lonate> ,
+        <urn:regesta:22771:cesola> , <urn:regesta:22771:riva-di-chieri> , <urn:regesta:22771:porcile> ,
+        <urn:regesta:22771:valmacca> , <urn:regesta:22771:burg-monteacuto> , <urn:regesta:22771:fodrum> ;
+    rf:refersToAct <urn:regesta:22771:grant-rudolf> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22771:grant-rudolf> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22771> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Burg Monteacuto mit allen Besitzungen, die Rudolf von Monteacuto dem Grafen aus dem Besitz seiner Tochter Berta und ihres Gatten Odo gegeben hat" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R001212> ; rf:role rv:Grantor ; rf:nameInSource "Rudolf von Monteacuto" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001180> ; rf:role rv:Recipient ; rf:nameInSource "dem Grafen" ] ;
+    rf:concerns <urn:regesta:22771:burg-monteacuto> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22771:possession-berta-odo> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22771> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "allen Besitzungen, die Rudolf von Monteacuto dem Grafen aus dem Besitz seiner Tochter Berta und ihres Gatten Odo gegeben hat" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000701> ; rf:role rv:Possessor ; rf:nameInSource "Berta" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000483> ; rf:role rv:Possessor ; rf:nameInSource "Odo" ] ;
+    rf:concerns <urn:regesta:22771:besitzungen-berta-odo> ;
+    rf:qualifier "aus dem Besitz" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22771:parenthood-rudolf-berta> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22771> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Rudolf von Monteacuto dem Grafen aus dem Besitz seiner Tochter Berta" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R001212> ; rf:role rv:Parent ; rf:nameInSource "Rudolf von Monteacuto" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000701> ; rf:role rv:Child ; rf:nameInSource "Berta" ] ;
+    rf:qualifier "Tochter" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22771:marriage-berta-odo> a rf:StateFactoid ;
+    rf:factoidType rv:Marriage ;
+    rf:source <urn:regesta:record:22771> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "seiner Tochter Berta und ihres Gatten Odo" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000701> ; rf:role rv:Spouse ; rf:nameInSource "Berta" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000483> ; rf:role rv:Spouse ; rf:nameInSource "Odo" ] ;
+    rf:qualifier "Gatten" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22771:grant-gerichtsstand> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22771> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "verleiht ihm den alleinigen Gerichtsstand vor dem König (nemini liceat ... comitem neque eius heredes in ius vocare apud alium iudicem nisi ante nostram vel successorum nostrorum celsitudinem eo invito.)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001180> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22771:local:heredes> ; rf:role rv:Beneficiary ; rf:nameInSource "eius heredes" ] ;
+    rf:concerns <urn:regesta:22771:gerichtsstand> ;
+    rf:exception "nisi ante nostram vel successorum nostrorum celsitudinem" ;
+    rf:condition "eo invito" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;
+    rf:verificationStatus rv:unchecked .

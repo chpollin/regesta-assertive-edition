@@ -1,0 +1,105 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-03-04_1_0_4_2_1_64_64
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22691> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 64" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:22691:local:fuersten> a crm:E74_Group ;
+    rdfs:label "einer großen Zahl von Fürsten, auch aus Italien" .
+
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ;
+    rdfs:label "Arnold II. von Köln" .
+
+<urn:regesta:actor:RI004-002-H001017> a crm:E21_Person ;
+    rdfs:label "Hillin von Trier" .
+
+<urn:regesta:actor:22691:local:staufer> a crm:E74_Group ;
+    rdfs:label "Staufern" .
+
+<urn:regesta:actor:RI004-002-W000275:community> a crm:E74_Group ;
+    rdfs:label "Welfen" .
+
+<urn:regesta:actor:22691:local:verstorbener-koenig> a crm:E21_Person ;
+    rdfs:label "des verstorbenen Königs" .
+
+<urn:regesta:actor:22691:local:friedrich-sohn> a crm:E21_Person ;
+    rdfs:label "dem kleinen Sohn des verstorbenen Königs, Friedrich" .
+
+<urn:regesta:22691:election> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22691> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich wird gemäß dem Reichsrecht" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "in Anwesenheit einer großen Zahl von Fürsten, auch aus Italien, unter Zustimmung aller zum König gewählt" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "Die Erzbischöfe Arnold II. von Köln und Hillin von Trier treten besonders für ihn ein." ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22691:local:fuersten> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "einer großen Zahl von Fürsten, auch aus Italien" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A001202> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Arnold II. von Köln" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H001017> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Hillin von Trier" ] ;
+    rf:qualifier "zum König gewählt" , "gemäß dem Reichsrecht" , "unter Zustimmung aller" ;
+    rf:ground "Als Grund für diese Wahl nennt Otto von Freising die Verwandtschaft Friedrichs mit Staufern und Welfen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22691:kinship-staufer-welfen> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22691> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Verwandtschaft Friedrichs mit Staufern und Welfen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Kin ;
+        rf:nameInSource "Friedrichs" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22691:local:staufer> ;
+        rf:role rv:Kin ;
+        rf:nameInSource "Staufern" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-W000275:community> ;
+        rf:role rv:Kin ;
+        rf:nameInSource "Welfen" ] ;
+    rf:qualifier "Verwandtschaft" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-16> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22691:parenthood-king-son> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22691> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "dem kleinen Sohn des verstorbenen Königs, Friedrich" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22691:local:verstorbener-koenig> ;
+        rf:role rv:Parent ;
+        rf:nameInSource "des verstorbenen Königs" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22691:local:friedrich-sohn> ;
+        rf:role rv:Child ;
+        rf:nameInSource "dem kleinen Sohn des verstorbenen Königs, Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-16> ;
+    rf:verificationStatus rv:unchecked .

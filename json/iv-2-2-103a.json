@@ -1,0 +1,958 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1138-06-00_1_1_4_1_2_103a_000000103a",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "134441",
+  "identifier": "RI IV,2,2 n. 103a",
+  "short": "RI IV,2,2 n. 103a",
+  "sort": "004_001_002_000793_000000103a",
+  "start": "1138-06-01",
+  "end": "1138-06-30",
+  "proseYears": [
+   1152
+  ],
+  "lead": "Vor König Friedrich (coram rege Friderico) wird der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich um Saline und Salzpfanne zu Reichenhall nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen durch Spruch des erwählten Richters Markgraf Engelbert von Kraiburg (Istrien) zugunsten des Stiftes entschieden.",
+  "date": [
+   {
+    "t": "(1152 Juni/Juli)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Regensburg"
+   }
+  ],
+  "text": "Vor König Friedrich (coram rege Friderico) wird der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich um Saline und Salzpfanne zu Reichenhall nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen durch Spruch des erwählten Richters Markgraf Engelbert von Kraiburg (Istrien) zugunsten des Stiftes entschieden. Nennung lokaler Zeugen, darunter Markgraf Engelbert von Kraiburg, Kuno von Mödling (Megelingen), Babo von Zulling (Zollingen), Pilgrim von Wolmotsa, Otto von Moos, Erbo von Biburg und Wernhard von Hornbach.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:134441:judgment",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:134441:judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "judgment",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 400,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:134441> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Vor König Friedrich (coram rege Friderico) wird der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich um Saline und Salzpfanne zu Reichenhall nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen durch Spruch des erwählten Richters Markgraf Engelbert von Kraiburg (Istrien) zugunsten des Stiftes entschieden.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Friedrich",
+      "text": "König Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:judgment-ref-ruler"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 400,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment rf:reference x:judgment-ref-ruler .\nx:judgment-ref-ruler a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"König Friedrich\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Otto von Moos",
+      "text": "Otto von Moos in der Rolle Zeuge",
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:judgment-ref-otto"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 400,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment rf:reference x:judgment-ref-otto .\nx:judgment-ref-otto a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-O000481> ;\n    rf:nameInSource \"Otto von Moos\" ;\n    rf:role rv:Witness .",
+      "role": "Zeuge",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000481"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erbo von Biburg",
+      "text": "Erbo von Biburg in der Rolle Zeuge",
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:judgment-ref-erbo"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 400,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment rf:reference x:judgment-ref-erbo .\nx:judgment-ref-erbo a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000440> ;\n    rf:nameInSource \"Erbo von Biburg\" ;\n    rf:role rv:Witness .",
+      "role": "Zeuge",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000440"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herbord von Hebingen",
+      "text": "Herbord von Hebingen in der Rolle Zeuge",
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:judgment-ref-herbord"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 400,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment rf:reference x:judgment-ref-herbord .\nx:judgment-ref-herbord a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000788> ;\n    rf:nameInSource \"Herbord von Hebingen\" ;\n    rf:role rv:Witness .",
+      "role": "Zeuge",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000788"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgraf Engelbert von Kraiburg",
+      "text": "Markgraf Engelbert von Kraiburg in der Rolle Richter",
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:judgment-ref-judge"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 400,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment rf:reference x:judgment-ref-judge .\nx:judgment-ref-judge a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000342> ;\n    rf:nameInSource \"Markgraf Engelbert von Kraiburg\" ;\n    rf:role rv:Judge .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000342"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Berchtesgaden",
+      "text": "Stift Berchtesgaden in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:judgment-ref-stift"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 400,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment rf:reference x:judgment-ref-stift .\nx:judgment-ref-stift a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-B000513:community> ;\n    rf:nameInSource \"Stiftes\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000513:community"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Saline und Salzpfanne zu Reichenhall",
+      "text": "betrifft Saline und Salzpfanne zu Reichenhall",
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:134441:saline-salzpfanne-reichenhall"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 400,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment rf:concerns x:saline-salzpfanne-reichenhall .\nx:saline-salzpfanne-reichenhall a crm:E18_Physical_Thing ;\n    rdfs:label \"Saline und Salzpfanne zu Reichenhall\" .",
+      "object": "urn:regesta:134441:saline-salzpfanne-reichenhall",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:134441:dispute"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 400,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:judgment rf:refersToAct x:dispute .\nx:dispute a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;\n    rf:concerns x:saline-salzpfanne-reichenhall ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich um Saline und Salzpfanne zu Reichenhall\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:reference x:dispute-ref-eufemia , x:dispute-ref-stift ;\n    rf:source <urn:regesta:record:134441> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:134441:dispute",
+      "objectClaim": "dispute",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erwählten Richters",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:134441:judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 305,
+       "end": 323,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Urteil"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "König Friedrich"
+     },
+     ", als Zeugen ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Otto von Moos"
+     },
+     ", ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Erbo von Biburg"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Herbord von Hebingen"
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Markgraf Engelbert von Kraiburg"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Stift Berchtesgaden"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Saline und Salzpfanne zu Reichenhall"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:134441:dispute",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:134441:dispute",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "dispute",
+     "own": true,
+     "evidence": {
+      "start": 48,
+      "end": 199,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:134441:> .\nx:dispute a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:134441> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich um Saline und Salzpfanne zu Reichenhall\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Eufemia",
+      "text": "Eufemia in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:134441:dispute",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:dispute-ref-eufemia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute",
+      "own": true,
+      "evidence": {
+       "start": 48,
+       "end": 199,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:dispute rf:reference x:dispute-ref-eufemia .\nx:dispute-ref-eufemia a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000587> ;\n    rf:nameInSource \"Eufemia\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000587"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Stift Berchtesgaden",
+      "text": "Stift Berchtesgaden in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:134441:dispute",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:dispute-ref-stift"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute",
+      "own": true,
+      "evidence": {
+       "start": 48,
+       "end": 199,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:dispute rf:reference x:dispute-ref-stift .\nx:dispute-ref-stift a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-B000513:community> ;\n    rf:nameInSource \"Stift Berchtesgaden\" ;\n    rf:role rv:Participant .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000513:community"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Saline und Salzpfanne zu Reichenhall",
+      "text": "betrifft Saline und Salzpfanne zu Reichenhall",
+      "triple": [
+       "urn:regesta:134441:dispute",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:134441:saline-salzpfanne-reichenhall"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "dispute",
+      "own": true,
+      "evidence": {
+       "start": 48,
+       "end": 199,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:dispute rf:concerns x:saline-salzpfanne-reichenhall .\nx:saline-salzpfanne-reichenhall a crm:E18_Physical_Thing ;\n    rdfs:label \"Saline und Salzpfanne zu Reichenhall\" .",
+      "object": "urn:regesta:134441:saline-salzpfanne-reichenhall",
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Eufemia"
+     },
+     " und ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Stift Berchtesgaden"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Saline und Salzpfanne zu Reichenhall"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:134441:marriage-eufemia-heinrich",
+    "kind": "state",
+    "title": "Ehe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehe",
+     "text": "Ehe",
+     "triple": [
+      "urn:regesta:134441:marriage-eufemia-heinrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Marriage"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "marriage-eufemia-heinrich",
+     "own": true,
+     "evidence": {
+      "start": 68,
+      "end": 108,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:134441:> .\nx:marriage-eufemia-heinrich a rf:StateFactoid ;\n    rf:factoidType rv:Marriage ;\n    rf:source <urn:regesta:record:134441> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Eufemia, der Witwe Heinrichs von Hegilen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Eufemia",
+      "text": "Eufemia in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:134441:marriage-eufemia-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:marriage-ref-eufemia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage-eufemia-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 68,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:marriage-eufemia-heinrich rf:reference x:marriage-ref-eufemia .\nx:marriage-ref-eufemia a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-E000587> ;\n    rf:nameInSource \"Eufemia\" ;\n    rf:role rv:Spouse .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000587"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Heinrichs von Hegilen",
+      "text": "Heinrichs von Hegilen in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:134441:marriage-eufemia-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:marriage-ref-heinrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage-eufemia-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 68,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:marriage-eufemia-heinrich rf:reference x:marriage-ref-heinrich .\nx:marriage-ref-heinrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000615> ;\n    rf:nameInSource \"Heinrichs von Hegilen\" ;\n    rf:role rv:Spouse .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000615"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Witwe",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:134441:marriage-eufemia-heinrich",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 81,
+       "end": 86,
+       "ambiguous": false
+      },
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Ehe"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Eufemia"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Heinrichs von Hegilen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:134441:office-propst-heinrich",
+    "kind": "state",
+    "title": "Amtsinhabe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Amtsinhabe",
+     "text": "Amtsinhabe",
+     "triple": [
+      "urn:regesta:134441:office-propst-heinrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/OfficeHolding"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "office-propst-heinrich",
+     "own": true,
+     "evidence": {
+      "start": 118,
+      "end": 159,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:134441:> .\nx:office-propst-heinrich a rf:StateFactoid ;\n    rf:factoidType rv:OfficeHolding ;\n    rf:source <urn:regesta:record:134441> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Stift Berchtesgaden unter Propst Heinrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k19"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Propst Heinrich",
+      "text": "Propst Heinrich in der Rolle Amtsinhaber",
+      "triple": [
+       "urn:regesta:134441:office-propst-heinrich",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:134441:office-ref-heinrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "office-propst-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 118,
+       "end": 159,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:office-propst-heinrich rf:reference x:office-ref-heinrich .\nx:office-ref-heinrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-H000436> ;\n    rf:nameInSource \"Propst Heinrich\" ;\n    rf:role rv:Officeholder .",
+      "role": "Amtsinhaber",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000436"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Stift Berchtesgaden",
+      "text": "betrifft Stift Berchtesgaden",
+      "triple": [
+       "urn:regesta:134441:office-propst-heinrich",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-B000513:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "office-propst-heinrich",
+      "own": true,
+      "evidence": {
+       "start": 118,
+       "end": 159,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:134441:> .\nx:office-propst-heinrich rf:concerns <urn:regesta:actor:RI004-002-B000513:community> .\n<urn:regesta:actor:RI004-002-B000513:community> a crm:E74_Group ;\n    rdfs:label \"Stift Berchtesgaden\" .",
+      "object": "urn:regesta:actor:RI004-002-B000513:community",
+      "key": "k21"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Propst",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:134441:office-propst-heinrich",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 144,
+       "end": 150,
+       "ambiguous": false
+      },
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Amtsinhabe"
+     },
+     ", als Amtsinhaber ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Propst Heinrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Stift Berchtesgaden"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "judgment",
+    "start": 0,
+    "end": 400
+   },
+   {
+    "id": "dispute",
+    "start": 48,
+    "end": 199
+   },
+   {
+    "id": "marriage-eufemia-heinrich",
+    "start": 68,
+    "end": 108
+   },
+   {
+    "id": "t2",
+    "start": 81,
+    "end": 86
+   },
+   {
+    "id": "office-propst-heinrich",
+    "start": 118,
+    "end": 159
+   },
+   {
+    "id": "t3",
+    "start": 144,
+    "end": 150
+   },
+   {
+    "id": "t1",
+    "start": 305,
+    "end": 323
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The regest does not say which party brought the dispute, so both parties carry rv:Participant; the vocabulary has no neutral role for a party to a dispute.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the head under whom a community appears as party (Stift Berchtesgaden unter Propst Heinrich); recorded as a separate rv:OfficeHolding factoid and Heinrich kept out of the dispute roles.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The ruler's presence at the judgment (Vor König Friedrich, coram rege Friderico) has no specific role and is recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The basis of the judgment (nach dem Zeugnis der Edelfreien ...) is carried only by rv:Witness references, not by rf:ground.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Saline und Salzpfanne zu Reichenhall is a regest-local crm:E18_Physical_Thing; the register entry RI004-002-R000410 (Salzpfanne) is not linked because the model has no link from a thing to a register entry.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl.dazu Tyroller, Schirmvögte des Klosters Biburg, Verhh. d. hist. Ver. f. Niederbayern 53 (1917) 39 n° 130. - Die Datierung ergibt sich aus dem Königstitel und dem Nachweis mehrerer der genannten Zeugen auf dem Regensburger Hoftag von 1152 (vgl. Regg. 99-101)."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Undatierte Berchtesgadener Notiz, ed.Muffat, Schenkungsbuch Berchtesgaden (Quellen u. Erörterungen zur bayer. u. deut­schen Geschichte 1, 1856) 318 n° 140."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-B000014",
+    "Zulling"
+   ],
+   [
+    "RI004-002-B000513",
+    "Berchtesgaden (unweit der deutsch-österreichischen Grenze, Ldkr. Berchtesgadener Land, Oberbayern), Augustiner-Chorherrenstift"
+   ],
+   [
+    "RI004-002-E000342",
+    "Markgraf von Istrien und Kraiburg"
+   ],
+   [
+    "RI004-002-E000440",
+    "von Biburg"
+   ],
+   [
+    "RI004-002-E000587",
+    "Witwe Heinrichs von <i>Hegilen</i> und Gemahlin Wolframs"
+   ],
+   [
+    "RI004-002-H000436",
+    "Propst von Berchtesgaden, später: Erzbischof von Salzburg (<i>siehe dort</i>), dann (III.) Bischof von Brixen (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-H000615",
+    "von <i>Hegilen</i>"
+   ],
+   [
+    "RI004-002-H000788",
+    "von Großhöbing (<i>Hebingen</i>)"
+   ],
+   [
+    "RI004-002-K000482",
+    "von (Unter)Mödling"
+   ],
+   [
+    "RI004-002-O000481",
+    "von Moos"
+   ],
+   [
+    "RI004-002-P000699",
+    "von Wolznach"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-R000410",
+    "Salzpfanne"
+   ],
+   [
+    "RI004-002-W000365",
+    "von Hörbach"
+   ]
+  ]
+ }
+}

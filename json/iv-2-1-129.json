@@ -1,0 +1,376 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-08-24_1_0_4_2_1_129_129",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22756",
+  "identifier": "RI IV,2,1 n. 129",
+  "short": "RI IV,2,1 n. 129",
+  "sort": "004_002_001_000129_0000000129",
+  "start": "1152-08-24",
+  "end": "1152-08-24",
+  "proseYears": [],
+  "lead": "Auf diesen Termin lädt Friedrich Folkwin und Widekind von Schwalenberg wegen ihrer Gewalttaten gegen das Kloster Corvey vor.",
+  "date": [
+   {
+    "t": "(1152) August 24"
+   }
+  ],
+  "place": [
+   {
+    "t": "Worms"
+   }
+  ],
+  "text": "Auf diesen Termin lädt Friedrich Folkwin und Widekind von Schwalenberg wegen ihrer Gewalttaten gegen das Kloster Corvey vor.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22756:summons",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22756:summons",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "summons",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 124,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22756:> .\nx:summons a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22756> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Auf diesen Termin lädt Friedrich Folkwin und Widekind von Schwalenberg wegen ihrer Gewalttaten gegen das Kloster Corvey vor.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Richter",
+      "triple": [
+       "urn:regesta:22756:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 124,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22756:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Judge ] .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Folkwin",
+      "text": "Folkwin in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22756:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 124,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22756:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000280> ; rf:nameInSource \"Folkwin\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000280"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Widekind von Schwalenberg",
+      "text": "Widekind von Schwalenberg in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22756:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 124,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22756:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000454> ; rf:nameInSource \"Widekind von Schwalenberg\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000454"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Corvey",
+      "text": "Kloster Corvey in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22756:summons",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "summons",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 124,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22756:> .\nx:summons rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ; rf:nameInSource \"Kloster Corvey\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000961:community"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen ihrer Gewalttaten gegen das Kloster Corvey",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22756:summons",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 71,
+       "end": 119,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beklagte ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Folkwin"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Widekind von Schwalenberg"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Kloster Corvey"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "summons",
+    "start": 0,
+    "end": 124
+   },
+   {
+    "id": "t1",
+    "start": 71,
+    "end": 119
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No act type for a summons before the ruler's court; recorded as rv:Dispute with Friedrich as Judge.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the injured party (Kloster Corvey) when no complaint is stated; recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for a summons before a court.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for the injured party where the passage does not state a complaint.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "type",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22756:summons",
+     "description": "A summons is typed rv:Dispute because the vocabulary has no summons type; the extractor documents this. Judge and Respondent roles are a reasonable reading of 'lädt ... vor'. Corvey as injured party is rv:Participant; the passage does not make it claimant.",
+     "proposal": "None within the contract.",
+     "quote": {
+      "start": 18,
+      "end": 123
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Sache vgl. oben Regg. "
+    },
+    {
+     "t": "119",
+     "regest": "22746"
+    },
+    {
+     "t": " -"
+    },
+    {
+     "t": "123",
+     "regest": "22750"
+    },
+    {
+     "t": ". Zur Wahrscheinlichkeit dieses Aufenthalts vgl. zuletzt Opll, Itinerar 9 mit Anm. 10-11."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt im Schreiben des Notars Heinrichs an Wibald, ed. Jaffé Mon. Corb. 522 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 391."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=46"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-C000961",
+    "Corvey (an der Weser, <i>heute:</i> Teil von Höxter in Ostwestfalen, Nordrh.-Westf.), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-F000280",
+    "von Schwalenberg, Vogt von Höxter"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ],
+   [
+    "RI004-002-W000454",
+    "(II.), Graf von Schwalenberg (-Waldeck), Vogt von Höxter"
+   ],
+   [
+    "RI004-002-W000818",
+    "Worms (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

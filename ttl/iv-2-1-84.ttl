@@ -1,0 +1,68 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-05-08_1_0_4_2_1_84_84
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22711> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-L000682> a crm:E21_Person ;
+    rdfs:label "Lothar III." .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "Konrad III." .
+
+<urn:regesta:actor:RI004-002-W000197:community> a crm:E74_Group ;
+    rdfs:label "Abtei Waulsort (Walcidorensis)" .
+
+<urn:regesta:actor:RI004-002-H000222:community> a crm:E74_Group ;
+    rdfs:label "Klosters Hastière (Hasteriensis)" .
+
+<urn:regesta:22711:right-unterordnung> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis)" .
+
+<urn:regesta:22711:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22711> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III., die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000197:community> ;
+        rf:role rv:Beneficiary ; rf:nameInSource "Abtei Waulsort (Walcidorensis)" ] ;
+    rf:concerns <urn:regesta:22711:right-unterordnung> , <urn:regesta:actor:RI004-002-H000222:community> ;
+    rf:refersToAct <urn:regesta:22711:privilege-lothar> , <urn:regesta:22711:privilege-konrad> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22711:privilege-lothar> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22711> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III." ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ;
+        rf:role rv:Grantor ; rf:nameInSource "Lothar III." ] ;
+    rf:concerns <urn:regesta:22711:right-unterordnung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22711:privilege-konrad> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22711> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III." ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+        rf:role rv:Grantor ; rf:nameInSource "Konrad III." ] ;
+    rf:concerns <urn:regesta:22711:right-unterordnung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;
+    rf:verificationStatus rv:unchecked .

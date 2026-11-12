@@ -1,0 +1,2915 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-18_2_0_4_2_1_88_88",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22715",
+  "identifier": "RI IV,2,1 n. 88",
+  "short": "RI IV,2,1 n. 88",
+  "sort": "004_002_001_000088_0000000088",
+  "start": "1152-05-18",
+  "end": "1152-05-18",
+  "proseYears": [],
+  "lead": "Friedrich hält zu Pfingsten einen Hoftag und trägt in feierlicher Prozession die Krone, wobei ihm der neue Dänenkönig Petrus (Sven) das Reichsschwert voranträgt.",
+  "date": [
+   {
+    "t": "1152 Mai 18"
+   }
+  ],
+  "place": [
+   {
+    "t": "Merseburg"
+   }
+  ],
+  "text": "Friedrich hält zu Pfingsten einen Hoftag und trägt in feierlicher Prozession die Krone, wobei ihm der neue Dänenkönig Petrus (Sven) das Reichsschwert voranträgt. Friedrich entscheidet den dänischen Thronstreit zwischen den beiden Prätendenten Peter, der auch Sven genannt wird, und Knut, die durch eine Gesandtschaft herbeigerufen worden sind, nach dem Urteil und dem Rat der Vornehmsten in folgender Weise: Knut verzichtet auf das Königreich, indem er Friedrich nach dem Brauch des Hofes (Otto v. Freising: est enim consuetudo curiae, ut regna per gladium, provinciae per vexillum a principe tradantur vel recipiantur) sein Schwert überreicht, und erhält einige Provinzen, darunter besonders Seeland. Peter (Sven) erhält nach Leistung von Treueid und Mannschaft das Königreich aus der Hand des Königs, der ihm die Königskrone aufsetzt. Ein dritter Prinz namens Waldemar erhält ebenfalls einen Teil Dänemarks. Friedrich hat Ulrich, dem Sohn des Herzogs Sobeslav von Böhmen, versprochen, ihm gegen eine große Geldsumme das väterliche Herzogtum zuzuwenden. Dies kann jedoch Bischof Daniel von Prag, den der entgegen seiner Vorladung auf den Hoftag nicht erschienene Herzog Vladislav von Böhmen an den neuen König abgeordnet hat, verhindern, indem er dem genannten Ulrich die Burg Königgrätz (Gradek ultra Albim) als Lehen verschafft. Friedrich greift in die Magdeburger Doppelwahl ein, wo die eine Seite für Dompropst Gerhard, die andere dagegen für Domdekan Hazzo eintritt und der Streit schon längere Zeit andauert, und bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden, dem er nach Erscheinen die Regalien verleiht. Friedrich versucht erfolglos, den Streit zwischen Herzog Heinrich dem Löwen und Markgraf Albrecht dem Bären um das Erbe des ermordeten Grafen Hermann von Winzenburg und das des Grafen Bernhard (von Plötzke) beizulegen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 13,
+  "blocks": [
+   {
+    "node": "urn:regesta:22715:f-judgment-denmark",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22715:f-judgment-denmark",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-judgment-denmark",
+     "own": true,
+     "evidence": {
+      "start": 162,
+      "end": 286,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-judgment-denmark a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich entscheidet den dänischen Thronstreit zwischen den beiden Prätendenten Peter, der auch Sven genannt wird, und Knut\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Richter",
+      "triple": [
+       "urn:regesta:22715:f-judgment-denmark",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-judgment-denmark",
+      "own": true,
+      "evidence": {
+       "start": 162,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-judgment-denmark rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Judge ] .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Peter, der auch Sven genannt wird",
+      "text": "Peter, der auch Sven genannt wird in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-judgment-denmark",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-judgment-denmark",
+      "own": true,
+      "evidence": {
+       "start": 162,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-judgment-denmark rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001332> ; rf:nameInSource \"Peter, der auch Sven genannt wird\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S001332"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Knut",
+      "text": "Knut in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-judgment-denmark",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-judgment-denmark",
+      "own": true,
+      "evidence": {
+       "start": 162,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-judgment-denmark rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:nameInSource \"Knut\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000225"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Vornehmsten",
+      "text": "der Vornehmsten in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-judgment-denmark",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-judgment-denmark",
+      "own": true,
+      "evidence": {
+       "start": 162,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-judgment-denmark rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22715:local:vornehmste> ; rf:nameInSource \"der Vornehmsten\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22715:local:vornehmste"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das Königreich",
+      "text": "betrifft das Königreich",
+      "triple": [
+       "urn:regesta:22715:f-judgment-denmark",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:place-koenigreich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-judgment-denmark",
+      "own": true,
+      "evidence": {
+       "start": 162,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-judgment-denmark rf:concerns x:place-koenigreich .\nx:place-koenigreich a crm:E53_Place ;\n    rdfs:label \"das Königreich\" .",
+      "object": "urn:regesta:22715:place-koenigreich",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22715:f-judgment-denmark",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-judgment-denmark-2",
+      "own": true,
+      "evidence": {
+       "start": 344,
+       "end": 387,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-judgment-denmark rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nach dem Urteil und dem Rat der Vornehmsten\" ] .",
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k7"
+      ],
+      "text": "Urteil"
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k2",
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k3",
+       "k7"
+      ],
+      "text": "Peter, der auch Sven genannt wird"
+     },
+     ", ",
+     {
+      "keys": [
+       "k4",
+       "k7"
+      ],
+      "text": "Knut"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5",
+       "k7"
+      ],
+      "text": "der Vornehmsten"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k6",
+       "k7"
+      ],
+      "text": "das Königreich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-knut-provinces",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22715:f-knut-provinces",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-knut-provinces",
+     "own": true,
+     "evidence": {
+      "start": 408,
+      "end": 442,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-provinces a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Knut verzichtet auf das Königreich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Knut",
+      "text": "Knut in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22715:f-knut-provinces",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-provinces",
+      "own": true,
+      "evidence": {
+       "start": 408,
+       "end": 442,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-provinces rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:nameInSource \"Knut\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000225"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "einige Provinzen",
+      "text": "betrifft einige Provinzen",
+      "triple": [
+       "urn:regesta:22715:f-knut-provinces",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:place-provinzen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-provinces",
+      "own": true,
+      "evidence": {
+       "start": 408,
+       "end": 442,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-provinces rf:concerns x:place-provinzen .\nx:place-provinzen a crm:E53_Place ;\n    rdfs:label \"einige Provinzen\" .",
+      "object": "urn:regesta:22715:place-provinzen",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Seeland",
+      "text": "betrifft Seeland",
+      "triple": [
+       "urn:regesta:22715:f-knut-provinces",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:place-seeland"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-provinces",
+      "own": true,
+      "evidence": {
+       "start": 408,
+       "end": 442,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-provinces rf:concerns x:place-seeland .\nx:place-seeland a crm:E53_Place ;\n    rdfs:label \"Seeland\" .",
+      "object": "urn:regesta:22715:place-seeland",
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Urteil",
+      "text": "Teil von Urteil",
+      "triple": [
+       "urn:regesta:22715:f-knut-provinces",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22715:f-judgment-denmark"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-provinces",
+      "own": true,
+      "evidence": {
+       "start": 408,
+       "end": 442,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-provinces rf:partOf x:f-judgment-denmark .\nx:f-judgment-denmark a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:concerns x:place-koenigreich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich entscheidet den dänischen Thronstreit zwischen den beiden Prätendenten Peter, der auch Sven genannt wird, und Knut\" ] , [ a oa:TextQuoteSelector ; oa:exact \"nach dem Urteil und dem Rat der Vornehmsten\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22715:local:vornehmste> ; rf:nameInSource \"der Vornehmsten\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Judge ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:nameInSource \"Knut\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001332> ; rf:nameInSource \"Peter, der auch Sven genannt wird\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22715:f-judgment-denmark",
+      "objectClaim": "f-judgment-denmark",
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22715:f-knut-provinces",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-provinces-2",
+      "own": true,
+      "evidence": {
+       "start": 645,
+       "end": 700,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-provinces rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"und erhält einige Provinzen, darunter besonders Seeland\" ] .",
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8",
+       "k13"
+      ],
+      "text": "Übertragung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9",
+       "k13"
+      ],
+      "text": "Knut"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k10",
+       "k13"
+      ],
+      "text": "einige Provinzen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k11",
+       "k13"
+      ],
+      "text": "Seeland"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k12",
+       "k13"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-knut-renounces",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22715:f-knut-renounces",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-knut-renounces",
+     "own": true,
+     "evidence": {
+      "start": 408,
+      "end": 488,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-renounces a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Knut verzichtet auf das Königreich, indem er Friedrich nach dem Brauch des Hofes\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22715:f-knut-renounces",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-renounces",
+      "own": true,
+      "evidence": {
+       "start": 408,
+       "end": 488,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-renounces rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Knut",
+      "text": "Knut in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22715:f-knut-renounces",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-renounces",
+      "own": true,
+      "evidence": {
+       "start": 408,
+       "end": 488,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-renounces rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:nameInSource \"Knut\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000225"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das Königreich",
+      "text": "betrifft das Königreich",
+      "triple": [
+       "urn:regesta:22715:f-knut-renounces",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:place-koenigreich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-renounces",
+      "own": true,
+      "evidence": {
+       "start": 408,
+       "end": 488,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-renounces rf:concerns x:place-koenigreich .\nx:place-koenigreich a crm:E53_Place ;\n    rdfs:label \"das Königreich\" .",
+      "object": "urn:regesta:22715:place-koenigreich",
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Urteil",
+      "text": "Teil von Urteil",
+      "triple": [
+       "urn:regesta:22715:f-knut-renounces",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22715:f-judgment-denmark"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-knut-renounces",
+      "own": true,
+      "evidence": {
+       "start": 408,
+       "end": 488,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-knut-renounces rf:partOf x:f-judgment-denmark .\nx:f-judgment-denmark a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:concerns x:place-koenigreich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich entscheidet den dänischen Thronstreit zwischen den beiden Prätendenten Peter, der auch Sven genannt wird, und Knut\" ] , [ a oa:TextQuoteSelector ; oa:exact \"nach dem Urteil und dem Rat der Vornehmsten\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22715:local:vornehmste> ; rf:nameInSource \"der Vornehmsten\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Judge ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:nameInSource \"Knut\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001332> ; rf:nameInSource \"Peter, der auch Sven genannt wird\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22715:f-judgment-denmark",
+      "objectClaim": "f-judgment-denmark",
+      "key": "k18"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "verzichtet",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22715:f-knut-renounces",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 413,
+       "end": 423,
+       "ambiguous": false
+      },
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Knut"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "das Königreich"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-sven-kingdom",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22715:f-sven-kingdom",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-sven-kingdom",
+     "own": true,
+     "evidence": {
+      "start": 702,
+      "end": 835,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-sven-kingdom a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Peter (Sven) erhält nach Leistung von Treueid und Mannschaft das Königreich aus der Hand des Königs, der ihm die Königskrone aufsetzt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k20"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Peter, der auch Sven genannt wird",
+      "text": "Peter, der auch Sven genannt wird in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22715:f-sven-kingdom",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-sven-kingdom",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 835,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-sven-kingdom rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001332> ; rf:nameInSource \"Peter (Sven)\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S001332"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22715:f-sven-kingdom",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-sven-kingdom",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 835,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-sven-kingdom rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"des Königs\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das Königreich",
+      "text": "betrifft das Königreich",
+      "triple": [
+       "urn:regesta:22715:f-sven-kingdom",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:place-koenigreich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-sven-kingdom",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 835,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-sven-kingdom rf:concerns x:place-koenigreich .\nx:place-koenigreich a crm:E53_Place ;\n    rdfs:label \"das Königreich\" .",
+      "object": "urn:regesta:22715:place-koenigreich",
+      "key": "k23"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Urteil",
+      "text": "Teil von Urteil",
+      "triple": [
+       "urn:regesta:22715:f-sven-kingdom",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22715:f-judgment-denmark"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-sven-kingdom",
+      "own": true,
+      "evidence": {
+       "start": 702,
+       "end": 835,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-sven-kingdom rf:partOf x:f-judgment-denmark .\nx:f-judgment-denmark a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:concerns x:place-koenigreich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich entscheidet den dänischen Thronstreit zwischen den beiden Prätendenten Peter, der auch Sven genannt wird, und Knut\" ] , [ a oa:TextQuoteSelector ; oa:exact \"nach dem Urteil und dem Rat der Vornehmsten\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22715:local:vornehmste> ; rf:nameInSource \"der Vornehmsten\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Judge ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:nameInSource \"Knut\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001332> ; rf:nameInSource \"Peter, der auch Sven genannt wird\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22715:f-judgment-denmark",
+      "objectClaim": "f-judgment-denmark",
+      "key": "k24"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach Leistung von Treueid und Mannschaft",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22715:f-sven-kingdom",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 722,
+       "end": 762,
+       "ambiguous": false
+      },
+      "key": "k25"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Peter, der auch Sven genannt wird"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "das Königreich"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-waldemar-part",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22715:f-waldemar-part",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-waldemar-part",
+     "own": true,
+     "evidence": {
+      "start": 837,
+      "end": 908,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-waldemar-part a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Ein dritter Prinz namens Waldemar erhält ebenfalls einen Teil Dänemarks\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k26"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Waldemar",
+      "text": "Waldemar in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22715:f-waldemar-part",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-waldemar-part",
+      "own": true,
+      "evidence": {
+       "start": 837,
+       "end": 908,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-waldemar-part rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000038> ; rf:nameInSource \"Waldemar\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000038"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "einen Teil Dänemarks",
+      "text": "betrifft einen Teil Dänemarks",
+      "triple": [
+       "urn:regesta:22715:f-waldemar-part",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:place-teil-daenemarks"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-waldemar-part",
+      "own": true,
+      "evidence": {
+       "start": 837,
+       "end": 908,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-waldemar-part rf:concerns x:place-teil-daenemarks .\nx:place-teil-daenemarks a crm:E53_Place ;\n    rdfs:label \"einen Teil Dänemarks\" .",
+      "object": "urn:regesta:22715:place-teil-daenemarks",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Urteil",
+      "text": "Teil von Urteil",
+      "triple": [
+       "urn:regesta:22715:f-waldemar-part",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22715:f-judgment-denmark"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-waldemar-part",
+      "own": true,
+      "evidence": {
+       "start": 837,
+       "end": 908,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-waldemar-part rf:partOf x:f-judgment-denmark .\nx:f-judgment-denmark a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:concerns x:place-koenigreich ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich entscheidet den dänischen Thronstreit zwischen den beiden Prätendenten Peter, der auch Sven genannt wird, und Knut\" ] , [ a oa:TextQuoteSelector ; oa:exact \"nach dem Urteil und dem Rat der Vornehmsten\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22715:local:vornehmste> ; rf:nameInSource \"der Vornehmsten\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Judge ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:nameInSource \"Knut\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001332> ; rf:nameInSource \"Peter, der auch Sven genannt wird\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22715:f-judgment-denmark",
+      "objectClaim": "f-judgment-denmark",
+      "key": "k29"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Übertragung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Waldemar"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "einen Teil Dänemarks"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-promise-ulrich",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22715:f-promise-ulrich",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-promise-ulrich",
+     "own": true,
+     "evidence": {
+      "start": 910,
+      "end": 1053,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-promise-ulrich a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich hat Ulrich, dem Sohn des Herzogs Sobeslav von Böhmen, versprochen, ihm gegen eine große Geldsumme das väterliche Herzogtum zuzuwenden\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k30"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22715:f-promise-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-promise-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 910,
+       "end": 1053,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-promise-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k31"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich",
+      "text": "Ulrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22715:f-promise-ulrich",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-promise-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 910,
+       "end": 1053,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-promise-ulrich rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000167> ; rf:nameInSource \"Ulrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000167"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das väterliche Herzogtum",
+      "text": "betrifft das väterliche Herzogtum",
+      "triple": [
+       "urn:regesta:22715:f-promise-ulrich",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:place-herzogtum"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-promise-ulrich",
+      "own": true,
+      "evidence": {
+       "start": 910,
+       "end": 1053,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-promise-ulrich rf:concerns x:place-herzogtum .\nx:place-herzogtum a crm:E53_Place ;\n    rdfs:label \"das väterliche Herzogtum\" .",
+      "object": "urn:regesta:22715:place-herzogtum",
+      "key": "k33"
+     },
+     {
+      "kind": "literal",
+      "label": "Betrag",
+      "text": "eine große Geldsumme",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22715:f-promise-ulrich",
+       "https://example.org/regesta/factoid/amount",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 997,
+       "end": 1017,
+       "ambiguous": false
+      },
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k30"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "Ulrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "das väterliche Herzogtum"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-ulrich-parent",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22715:f-ulrich-parent",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-ulrich-parent",
+     "own": true,
+     "evidence": {
+      "start": 924,
+      "end": 972,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-ulrich-parent a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Ulrich, dem Sohn des Herzogs Sobeslav von Böhmen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k35"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich",
+      "text": "Ulrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22715:f-ulrich-parent",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-ulrich-parent",
+      "own": true,
+      "evidence": {
+       "start": 924,
+       "end": 972,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-ulrich-parent rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000167> ; rf:nameInSource \"Ulrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000167"
+      ],
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzogs Sobeslav von Böhmen",
+      "text": "Herzogs Sobeslav von Böhmen in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22715:f-ulrich-parent",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-ulrich-parent",
+      "own": true,
+      "evidence": {
+       "start": 924,
+       "end": 972,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-ulrich-parent rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000880> ; rf:nameInSource \"Herzogs Sobeslav von Böhmen\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-S000880"
+      ],
+      "key": "k37"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Ulrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "Herzogs Sobeslav von Böhmen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-koeniggraetz-fief",
+    "kind": "act",
+    "title": "Belehnung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Belehnung",
+     "text": "Belehnung",
+     "triple": [
+      "urn:regesta:22715:f-koeniggraetz-fief",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enfeoffment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-koeniggraetz-fief",
+     "own": true,
+     "evidence": {
+      "start": 1055,
+      "end": 1095,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-koeniggraetz-fief a rf:ActFactoid ;\n    rf:factoidType rv:Enfeoffment ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Dies kann jedoch Bischof Daniel von Prag\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k38"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Daniel von Prag",
+      "text": "Bischof Daniel von Prag in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-koeniggraetz-fief",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-koeniggraetz-fief",
+      "own": true,
+      "evidence": {
+       "start": 1055,
+       "end": 1095,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-koeniggraetz-fief rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:nameInSource \"Bischof Daniel von Prag\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000047"
+      ],
+      "key": "k39"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich",
+      "text": "Ulrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22715:f-koeniggraetz-fief",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-koeniggraetz-fief",
+      "own": true,
+      "evidence": {
+       "start": 1055,
+       "end": 1095,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-koeniggraetz-fief rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000167> ; rf:nameInSource \"dem genannten Ulrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000167"
+      ],
+      "key": "k40"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Burg Königgrätz (Gradek ultra Albim)",
+      "text": "betrifft die Burg Königgrätz (Gradek ultra Albim)",
+      "triple": [
+       "urn:regesta:22715:f-koeniggraetz-fief",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:thing-koeniggraetz"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-koeniggraetz-fief",
+      "own": true,
+      "evidence": {
+       "start": 1055,
+       "end": 1095,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-koeniggraetz-fief rf:concerns x:thing-koeniggraetz .\nx:thing-koeniggraetz a crm:E18_Physical_Thing ;\n    rdfs:label \"die Burg Königgrätz (Gradek ultra Albim)\" .",
+      "object": "urn:regesta:22715:thing-koeniggraetz",
+      "key": "k41"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22715:f-koeniggraetz-fief",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-koeniggraetz-fief-2",
+      "own": true,
+      "evidence": {
+       "start": 1239,
+       "end": 1330,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-koeniggraetz-fief rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"indem er dem genannten Ulrich die Burg Königgrätz (Gradek ultra Albim) als Lehen verschafft\" ] .",
+      "key": "k42"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k38",
+       "k42"
+      ],
+      "text": "Belehnung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k39",
+       "k42"
+      ],
+      "text": "Bischof Daniel von Prag"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k40",
+       "k42"
+      ],
+      "text": "Ulrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k41",
+       "k42"
+      ],
+      "text": "die Burg Königgrätz (Gradek ultra Albim)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-mission-daniel",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22715:f-mission-daniel",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-mission-daniel",
+     "own": true,
+     "evidence": {
+      "start": 1072,
+      "end": 1225,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-mission-daniel a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof Daniel von Prag, den der entgegen seiner Vorladung auf den Hoftag nicht erschienene Herzog Vladislav von Böhmen an den neuen König abgeordnet hat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k43"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Daniel von Prag",
+      "text": "Bischof Daniel von Prag in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22715:f-mission-daniel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-mission-daniel",
+      "own": true,
+      "evidence": {
+       "start": 1072,
+       "end": 1225,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-mission-daniel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:nameInSource \"Bischof Daniel von Prag\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000047"
+      ],
+      "key": "k44"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Vladislav von Böhmen",
+      "text": "Herzog Vladislav von Böhmen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-mission-daniel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-mission-daniel",
+      "own": true,
+      "evidence": {
+       "start": 1072,
+       "end": 1225,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-mission-daniel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000532> ; rf:nameInSource \"Herzog Vladislav von Böhmen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000532"
+      ],
+      "key": "k45"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22715:f-mission-daniel",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-mission-daniel",
+      "own": true,
+      "evidence": {
+       "start": 1072,
+       "end": 1225,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-mission-daniel rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"den neuen König\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k46"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k43"
+      ],
+      "text": "Entsendung"
+     },
+     ", als Gesandter ",
+     {
+      "keys": [
+       "k44"
+      ],
+      "text": "Bischof Daniel von Prag"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k45"
+      ],
+      "text": "Herzog Vladislav von Böhmen"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k46"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-hazzo-party-decision",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22715:f-hazzo-party-decision",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-hazzo-party-decision",
+     "own": true,
+     "evidence": {
+      "start": 1332,
+      "end": 1382,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-hazzo-party-decision a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich greift in die Magdeburger Doppelwahl ein\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k47"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-hazzo-party-decision",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-hazzo-party-decision",
+      "own": true,
+      "evidence": {
+       "start": 1332,
+       "end": 1382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-hazzo-party-decision rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k48"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "die Partei Hazzos",
+      "text": "die Partei Hazzos in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-hazzo-party-decision",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-hazzo-party-decision",
+      "own": true,
+      "evidence": {
+       "start": 1332,
+       "end": 1382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-hazzo-party-decision rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22715:local:partei-hazzos> ; rf:nameInSource \"die Partei Hazzos\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22715:local:partei-hazzos"
+      ],
+      "key": "k49"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Wichmann von Naumburg",
+      "text": "Bischof Wichmann von Naumburg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22715:f-hazzo-party-decision",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-hazzo-party-decision",
+      "own": true,
+      "evidence": {
+       "start": 1332,
+       "end": 1382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-hazzo-party-decision rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:nameInSource \"Bischof Wichmann von Naumburg\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000436"
+      ],
+      "key": "k50"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22715:f-hazzo-party-decision",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-hazzo-party-decision-2",
+      "own": true,
+      "evidence": {
+       "start": 1520,
+       "end": 1604,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-hazzo-party-decision rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden\" ] .",
+      "key": "k51"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "entscheiden",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22715:f-hazzo-party-decision",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1593,
+       "end": 1604,
+       "ambiguous": false
+      },
+      "key": "k52"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k47",
+       "k51"
+      ],
+      "text": "Einsetzung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k48",
+       "k51"
+      ],
+      "text": "Friedrich"
+     },
+     " und ",
+     {
+      "keys": [
+       "k49",
+       "k51"
+      ],
+      "text": "die Partei Hazzos"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k50",
+       "k51"
+      ],
+      "text": "Bischof Wichmann von Naumburg"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-regalia-wichmann",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22715:f-regalia-wichmann",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-regalia-wichmann",
+     "own": true,
+     "evidence": {
+      "start": 1332,
+      "end": 1382,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-regalia-wichmann a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich greift in die Magdeburger Doppelwahl ein\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k53"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22715:f-regalia-wichmann",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-regalia-wichmann",
+      "own": true,
+      "evidence": {
+       "start": 1332,
+       "end": 1382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-regalia-wichmann rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k54"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Wichmann von Naumburg",
+      "text": "Bischof Wichmann von Naumburg in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22715:f-regalia-wichmann",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-regalia-wichmann",
+      "own": true,
+      "evidence": {
+       "start": 1332,
+       "end": 1382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-regalia-wichmann rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:nameInSource \"Bischof Wichmann von Naumburg\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000436"
+      ],
+      "key": "k55"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (die Regalien)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (die Regalien)",
+      "triple": [
+       "urn:regesta:22715:f-regalia-wichmann",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:right-regalien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-regalia-wichmann",
+      "own": true,
+      "evidence": {
+       "start": 1332,
+       "end": 1382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-regalia-wichmann rf:concerns x:right-regalien .\nx:right-regalien a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"die Regalien\" .",
+      "object": "urn:regesta:22715:right-regalien",
+      "key": "k56"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22715:f-regalia-wichmann",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-regalia-wichmann-2",
+      "own": true,
+      "evidence": {
+       "start": 1560,
+       "end": 1650,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-regalia-wichmann rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Bischof Wichmann von Naumburg zu entscheiden, dem er nach Erscheinen die Regalien verleiht\" ] .",
+      "key": "k57"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach Erscheinen",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22715:f-regalia-wichmann",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1613,
+       "end": 1628,
+       "ambiguous": false
+      },
+      "key": "k58"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k53",
+       "k57"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k54",
+       "k57"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k55",
+       "k57"
+      ],
+      "text": "Bischof Wichmann von Naumburg"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k56",
+       "k57"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (die Regalien)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-magdeburg-dispute",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22715:f-magdeburg-dispute",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-magdeburg-dispute",
+     "own": true,
+     "evidence": {
+      "start": 1387,
+      "end": 1514,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-magdeburg-dispute a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die eine Seite für Dompropst Gerhard, die andere dagegen für Domdekan Hazzo eintritt und der Streit schon längere Zeit andauert\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k59"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Dompropst Gerhard",
+      "text": "Dompropst Gerhard in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-magdeburg-dispute",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-magdeburg-dispute",
+      "own": true,
+      "evidence": {
+       "start": 1387,
+       "end": 1514,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-magdeburg-dispute rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000363> ; rf:nameInSource \"Dompropst Gerhard\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000363"
+      ],
+      "key": "k60"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domdekan Hazzo",
+      "text": "Domdekan Hazzo in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-magdeburg-dispute",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-magdeburg-dispute",
+      "own": true,
+      "evidence": {
+       "start": 1387,
+       "end": 1514,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-magdeburg-dispute rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000257> ; rf:nameInSource \"Domdekan Hazzo\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000257"
+      ],
+      "key": "k61"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "schon längere Zeit",
+      "id": "t6",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22715:f-magdeburg-dispute",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1487,
+       "end": 1505,
+       "ambiguous": false
+      },
+      "key": "k62"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k59"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k60"
+      ],
+      "text": "Dompropst Gerhard"
+     },
+     " und ",
+     {
+      "keys": [
+       "k61"
+      ],
+      "text": "Domdekan Hazzo"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22715:f-inheritance-dispute",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22715:f-inheritance-dispute",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "f-inheritance-dispute",
+     "own": true,
+     "evidence": {
+      "start": 1652,
+      "end": 1869,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-inheritance-dispute a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22715> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich versucht erfolglos, den Streit zwischen Herzog Heinrich dem Löwen und Markgraf Albrecht dem Bären um das Erbe des ermordeten Grafen Hermann von Winzenburg und das des Grafen Bernhard (von Plötzke) beizulegen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k63"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Vermittler",
+      "triple": [
+       "urn:regesta:22715:f-inheritance-dispute",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-inheritance-dispute",
+      "own": true,
+      "evidence": {
+       "start": 1652,
+       "end": 1869,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-inheritance-dispute rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Mediator ] .",
+      "role": "Vermittler",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k64"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Heinrich dem Löwen",
+      "text": "Herzog Heinrich dem Löwen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-inheritance-dispute",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-inheritance-dispute",
+      "own": true,
+      "evidence": {
+       "start": 1652,
+       "end": 1869,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-inheritance-dispute rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:nameInSource \"Herzog Heinrich dem Löwen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000470"
+      ],
+      "key": "k65"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgraf Albrecht dem Bären",
+      "text": "Markgraf Albrecht dem Bären in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22715:f-inheritance-dispute",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-inheritance-dispute",
+      "own": true,
+      "evidence": {
+       "start": 1652,
+       "end": 1869,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-inheritance-dispute rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:nameInSource \"Markgraf Albrecht dem Bären\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000135"
+      ],
+      "key": "k66"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Erbrecht (das Erbe des ermordeten Grafen Hermann von Winzenburg und das des Grafen Bernhard (von Plötzke))",
+      "text": "betrifft Erbrecht (das Erbe des ermordeten Grafen Hermann von Winzenburg und das des Grafen Bernhard (von Plötzke))",
+      "triple": [
+       "urn:regesta:22715:f-inheritance-dispute",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22715:right-erbe"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "f-inheritance-dispute",
+      "own": true,
+      "evidence": {
+       "start": 1652,
+       "end": 1869,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22715:> .\nx:f-inheritance-dispute rf:concerns x:right-erbe .\nx:right-erbe a crm:E30_Right ;\n    crm:P2_has_type rv:Inheritance ;\n    rdfs:label \"das Erbe des ermordeten Grafen Hermann von Winzenburg und das des Grafen Bernhard (von Plötzke)\" .",
+      "object": "urn:regesta:22715:right-erbe",
+      "key": "k67"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "versucht erfolglos",
+      "id": "t7",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22715:f-inheritance-dispute",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1662,
+       "end": 1680,
+       "ambiguous": false
+      },
+      "key": "k68"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k63"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Vermittler ",
+     {
+      "keys": [
+       "k64"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k65"
+      ],
+      "text": "Herzog Heinrich dem Löwen"
+     },
+     " und ",
+     {
+      "keys": [
+       "k66"
+      ],
+      "text": "Markgraf Albrecht dem Bären"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k67"
+      ],
+      "text": "Erbrecht (das Erbe des ermordeten Grafen Hermann von Winzenburg und das des Grafen Bernhard (von Plötzke))"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "f-judgment-denmark",
+    "start": 162,
+    "end": 286
+   },
+   {
+    "id": "f-judgment-denmark-2",
+    "start": 344,
+    "end": 387
+   },
+   {
+    "id": "f-knut-renounces",
+    "start": 408,
+    "end": 488
+   },
+   {
+    "id": "f-knut-provinces",
+    "start": 408,
+    "end": 442
+   },
+   {
+    "id": "t1",
+    "start": 413,
+    "end": 423
+   },
+   {
+    "id": "f-knut-provinces-2",
+    "start": 645,
+    "end": 700
+   },
+   {
+    "id": "f-sven-kingdom",
+    "start": 702,
+    "end": 835
+   },
+   {
+    "id": "t2",
+    "start": 722,
+    "end": 762
+   },
+   {
+    "id": "f-waldemar-part",
+    "start": 837,
+    "end": 908
+   },
+   {
+    "id": "f-promise-ulrich",
+    "start": 910,
+    "end": 1053
+   },
+   {
+    "id": "f-ulrich-parent",
+    "start": 924,
+    "end": 972
+   },
+   {
+    "id": "t3",
+    "start": 997,
+    "end": 1017
+   },
+   {
+    "id": "f-koeniggraetz-fief",
+    "start": 1055,
+    "end": 1095
+   },
+   {
+    "id": "f-mission-daniel",
+    "start": 1072,
+    "end": 1225
+   },
+   {
+    "id": "f-koeniggraetz-fief-2",
+    "start": 1239,
+    "end": 1330
+   },
+   {
+    "id": "f-hazzo-party-decision",
+    "start": 1332,
+    "end": 1382
+   },
+   {
+    "id": "f-regalia-wichmann",
+    "start": 1332,
+    "end": 1382
+   },
+   {
+    "id": "f-magdeburg-dispute",
+    "start": 1387,
+    "end": 1514
+   },
+   {
+    "id": "t6",
+    "start": 1487,
+    "end": 1505
+   },
+   {
+    "id": "f-hazzo-party-decision-2",
+    "start": 1520,
+    "end": 1604
+   },
+   {
+    "id": "f-regalia-wichmann-2",
+    "start": 1560,
+    "end": 1650
+   },
+   {
+    "id": "t4",
+    "start": 1593,
+    "end": 1604
+   },
+   {
+    "id": "t5",
+    "start": 1613,
+    "end": 1628
+   },
+   {
+    "id": "f-inheritance-dispute",
+    "start": 1652,
+    "end": 1869
+   },
+   {
+    "id": "t7",
+    "start": 1662,
+    "end": 1680
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'der Vornehmsten' recorded as a regest-local group without register candidate",
+     "lang": "en"
+    },
+    {
+     "text": "Grantor of Knut's provinces and Waldemar's part of Denmark is not named in the passage; only the recipient is referenced",
+     "lang": "en"
+    },
+    {
+     "text": "Feudal lord of the Königgrätz fief is not named; Bischof Daniel von Prag procures it and is referenced as Participant",
+     "lang": "en"
+    },
+    {
+     "text": "Grafen Hermann von Winzenburg and Bernhard (von Plötzke) appear only in the label of the inheritance right, since no role fits a decedent",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for renunciation: Knut's 'verzichtet auf das Königreich' is encoded as rv:Grant to Friedrich with qualifier 'verzichtet'",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for homage and fealty or coronation: Treueid and Mannschaft kept only as qualifier of Sven's grant; no Enfeoffment or FeudalRelationship inferred",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No symmetric party role for disputes: pretenders and contending parties are rv:Participant rather than Claimant/Respondent",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender role for a mission: Vladislav as sender of Daniel is rv:Participant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for prevention or frustration of an earlier promise ('Dies kann jedoch ... verhindern'); the link between the promise to Ulrich and the Königgrätz fief is not expressed",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for summons and non-appearance ('entgegen seiner Vorladung ... nicht erschienene'); not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for election or for Friedrich's intervention in the Magdeburg double election; only the dispute and the grant of regalia are extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No right type for regalia; 'die Regalien' typed rv:ChurchRights as nearest top concept",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for a deceased person whose inheritance is disputed",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for renunciation or resignation of a right into the lord's hand.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for homage or oath of fealty, and none for coronation.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No property linking an act to another act it prevents or frustrates (refersToAct is meant for confirmations).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No sender role for missions and communications.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added regest-local actor <urn:regesta:actor:22715:local:partei-hazzos> (crm:E74_Group, \"die Partei Hazzos\").",
+     "lang": "en"
+    },
+    {
+     "text": "Added <urn:regesta:22715:f-hazzo-party-decision> (rf:ActFactoid, rv:Appointment) with evidence \"bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden\" and \"Friedrich greift in die Magdeburger Doppelwahl ein\", references partei-hazzos rv:Participant, W000436 rv:Recipient, F000471 rv:Participant, rf:qualifier \"entscheiden\". Not linked to the regalia grant or the dispute; no installation in office asserted.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "type-overreach",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22715:f-knut-renounces",
+     "description": "Knut's renunciation is typed rv:Grant with Knut as Grantor and Friedrich as Recipient of the kingdom. The passage states a renunciation performed by handing over the sword; it does not state that the kingdom is transferred to Friedrich. The qualifier 'verzichtet' preserves the wording, but the type and roles assert a transfer.",
+     "proposal": "Report renunciation as a model gap; until the vocabulary has a renunciation type, keep rv:Grant only with Friedrich as rv:Addressee or rv:Participant rather than rv:Recipient, or use rv:Restitution with a note for expert review.",
+     "quote": {
+      "start": 408,
+      "end": 488
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22715:f-sven-kingdom",
+     "description": "Sven's oath of fealty and homage is reduced to a qualifier of the grant. The homage is an act of its own that founds a relation to Friedrich; the vocabulary has no homage act type, and rv:FeudalRelationship would be an inference since 'Lehen' is not said. The coronation by Friedrich is likewise only inside the evidence. rv:Enfeoffment would fit the act better than generic rv:Grant, but the regest does not use the word Lehen.",
+     "proposal": "Keep the grant; record homage and coronation as model gaps in the batch report rather than as a qualifier only.",
+     "quote": {
+      "start": 702,
+      "end": 835
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22715",
+     "description": "Friedrich brings Hazzo's party to decide for Bishop Wichmann. This election choice is the outcome of the Magdeburg intervention and an act the contract can express (rv:Appointment with Hazzo's party as actor, Wichmann as Recipient, Friedrich as rv:Mediator or rv:Petitioner). Only the regalia grant is modelled, so Wichmann appears without the act that makes him the candidate.",
+     "proposal": "Add an rv:Appointment factoid for the decision of Hazzo's party with a local group actor 'die Partei Hazzos', Wichmann as rv:Recipient, Friedrich as rv:Mediator, and link the regalia grant to it.",
+     "quote": {
+      "start": 1520,
+      "end": 1604
+     }
+    },
+    {
+     "category": "evidence-support",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22715:f-regalia-wichmann",
+     "description": "The first selector 'Friedrich greift in die Magdeburger Doppelwahl ein' is used only to anchor Friedrich as subject; it does not carry the grant. Acceptable, but the Magdeburg see (register M000041) is nowhere referenced. The regalia are typed rv:ChurchRights, whereas regalia are temporal rights granted by the ruler; the type is a historical judgement for expert review.",
+     "proposal": "Consider rv:LordshipRights or leave for expert review; add Magdeburg as rf:concerns to the dispute factoid.",
+     "quote": {
+      "start": 1606,
+      "end": 1650
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22715:f-magdeburg-dispute",
+     "description": "Gerhard and Hazzo are the candidates of the two sides, not the disputing parties themselves; rv:Participant is broad enough not to misstate this.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 1387,
+      "end": 1471
+     }
+    },
+    {
+     "category": "literal-property",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22715:f-promise-ulrich",
+     "description": "'gegen eine große Geldsumme' is a counter-performance on which the promise depends; rf:amount records it but loses its conditional character. The prevention of the promise by Daniel ('Dies kann jedoch ... verhindern') is not linked to the promise.",
+     "proposal": "Add rf:condition 'gegen eine große Geldsumme' alongside rf:amount; report the prevention relation as a model gap.",
+     "quote": {
+      "start": 974,
+      "end": 1053
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "22715",
+     "description": "Minor acts are omitted: the summoning of the two pretenders by an embassy, and Vladislav's summons to the court, which he did not obey. Both are expressible in principle (rv:Mission, rv:Communication) but peripheral. The Pentecost crown-wearing with Sven bearing the sword is ceremonial and plausibly out of scope.",
+     "proposal": "Optionally add a Communication factoid for the summons with Vladislav as rv:Addressee.",
+     "quote": {
+      "start": 1105,
+      "end": 1191
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22715:f-mission-daniel",
+     "description": "Vladislav as the sending duke is rv:Participant because there is no sender role; Daniel as rv:Envoy and Friedrich as rv:Addressee are correct.",
+     "proposal": "None under the frozen contract.",
+     "quote": {
+      "start": 1097,
+      "end": 1225
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Knut's renunciation is typed rv:Grant with Friedrich as recipient, asserting a transfer.",
+     "reason": "The passage states 'Knut verzichtet auf das Königreich, indem er Friedrich nach dem Brauch des Hofes ... sein Schwert überreicht' and quotes the custom 'ut regna per gladium ... a principe tradantur vel recipiantur', so handing the realm into Friedrich's hand is a defensible reading and the qualifier 'verzichtet' keeps the wording. A renunciation or resignation act type does not exist; no correction, record the gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Homage and coronation of Sven are reduced to a qualifier.",
+     "reason": "'nach Leistung von Treueid und Mannschaft' and 'der ihm die Königskrone aufsetzt' have no act type in the vocabulary, and rv:FeudalRelationship would infer a fief the passage does not name. The reviewer itself proposes keeping the grant.",
+     "lang": "en"
+    },
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Friedrich bringing Hazzo's party to decide for Wichmann is omitted.",
+     "reason": "'bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden' is the outcome of Friedrich's intervention and the act that makes Wichmann the candidate who then receives the regalia; it is central and in scope. The specific roles the reviewer proposes (Friedrich as Mediator) are not stated, so only generic roles are safe.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Regalia typed rv:ChurchRights; Magdeburg not referenced as concerned by the dispute.",
+     "reason": "The right typing is a historical judgement reserved for expert review, and the reviewer offers no definite alternative. 'Magdeburger Doppelwahl' names the see only adjectivally; adding it to the dispute is not required by the contract.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Add rf:condition 'gegen eine große Geldsumme' alongside rf:amount.",
+     "reason": "rf:amount already holds 'eine große Geldsumme' in exact wording and the full clause stands in the evidence; duplicating it as a condition adds nothing the contract requires. The prevention by Daniel has no property and stays a model limit.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Summons of the pretenders and Vladislav's summons are omitted.",
+     "reason": "Both are peripheral to the settled acts; Vladislav's disobeyed summons survives in the mission evidence ('entgegen seiner Vorladung auf den Hoftag nicht erschienene'), and the reviewer marks the addition as optional.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zum HT im allgemeinen vgl. Simonsfeld, Jahrbücher 76 ff. und bes. 84 ff. Zu den dänischen Streitigkeiten vgl. auch Pelzer, Politik gegenüber Dänemark, Polen und Ungarn, 3 ff. und E. Hoffmann, Thronfolgeordnung in Dänemark (Beiträge zur Gesch. u. Quellenkde. d. Mittelalters 5, 1976) 88 f. Zu Sven s. auch Reg. "
+    },
+    {
+     "t": "9",
+     "regest": "22636"
+    },
+    {
+     "t": ". - Zu den böhmischen Angelegenheiten vgl. zuletzt Hilsch, Bischöfe von Prag (Veröff. d. Coll. Carolinum 22, 1969) 69 ff. - Über die Magdeburger Wahl und die zeitliche Einordnung des Eingreifens des Königs vgl. Claude, Geschichte des Erzbistums Magdeburg 2 (Mitteldte. Forsch. 67/2, 1975) 71 ff."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Zum HT im allgemeinen vgl. Ottonis Gesta Frid. l. II cap. 5, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 105 f. Über die Entscheidung im dänischen Thronstreit vgl. Ottonis Gesta Frid. ebda. und den Brief Friedrichs an Otto von Freising (Reg. 451), weiters Saxo Grammaticus l. XIV cap. 8, ed. Olrik-Raeder (1931) 386 f. und Helmold v. Bosau l. I cap. 73, ed. Schmeidler, MG. SS rer. Germ. in us. schol. ("
+    },
+    {
+     "t": "3",
+     "sup": true
+    },
+    {
+     "t": " 1937) 139, der darüber berichtet, daß Knut von Herzog Heinrich dem Löwen und Sven von Erzbischof Hartwig von Hamburg-Bremen, in dessen Gefolge sich auch Bischof Vizelin von Oldenburg befand, zum HT geleitet wurde. Vgl. weiters Ann. Dan. Bartholiniani, ed. Langebek, SS rer. Dan. I (1772) 340, Ann. Palidensis, MG. SS XVI, 86, Ann. s. Pauli Virdunenses, MG. SS XVI, 501, Chron. Montis Sereni, MG. SS XXIII, 149, Cron. s. Petri Erford. mod., ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 178 und Radulfus Niger, Chron. universalis, MG. SS XXVII, 334. Über die böhmischen Angelegenheiten unterrichtet irrig zu 1154 Vinzenz von Prag, MG. SS XVII, 665. Vgl. dazu auch die Schreiben der Reinhardsbrunner Briefsammlung (Regg. 91 und 92). Zur Magdeburger Wahl vgl. Ottonis Gesta Frid. l. II cap. 6 (106 f.) und das Schreiben Friedrichs an Otto von Freising (Reg. 451), weiters Chron. Montis Sereni, MG. SS XXIII, 149, Chron, reg. Col., ed. Waitz, MG. SS rer. Germ. in us. schol. 90, Cron. s. Petri Erford. mod., ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 178 sowie Gesta archiepp. Magdeburg. Cont. I, MG. SS XIV, 416 B 4 in marg. et B 4"
+    },
+    {
+     "t": "a",
+     "sup": true
+    },
+    {
+     "t": ". Zum Streit zwischen dem Welfen und dem Askanier, zu dessen Beilegung der Merseburger HT (auch) einberufen worden ist, vgl. Helmold von Bosau l. I cap. 73 (139), Ann. s. Blasii Brunsvic. mai. fragm., MG. SS XXX/1, 19, Ann. Palid., MG. SS XVI, 86, Chron. Montis Sereni, MG. SS XXIII, 149, Cron. s. Petri Erford. mod., ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 178 und die Schreiben der Reinhardsbrunner Briefsammlung, ed. Peeck, MG. Epp. sel. V, 40 f. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 43 und 44, 48 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 52, 59 ff. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 65, 66, 68 und 69 (vgl. Fichtenau-Dienst, UB. zur Gesch. d. Babenberger 4/1, 130 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 771 und 772)."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=33"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-B000646",
+    "Graf von Plötzke"
+   ],
+   [
+    "RI004-002-B001034",
+    "Herzogtum"
+   ],
+   [
+    "RI004-002-D000037",
+    "Königreich"
+   ],
+   [
+    "RI004-002-D000047",
+    "Bischof von Prag"
+   ],
+   [
+    "RI004-002-G000363",
+    "Dompropst von Magdeburg"
+   ],
+   [
+    "RI004-002-H000192",
+    "(I.), Erzbischof von Bremen und Hamburg"
+   ],
+   [
+    "RI004-002-H000257",
+    "Hazzo, Domdekan von Magdeburg und Kandidat für den Bischofsstuhl"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000860",
+    "Graf von Winzenburg"
+   ],
+   [
+    "RI004-002-K000225",
+    "Prinz, dann König von Dänemark"
+   ],
+   [
+    "RI004-002-K000306",
+    "Königgrätz (<i>heute:</i> Hradec Králové, an der Elbe, östl. Prag, Tschechien), Burg"
+   ],
+   [
+    "RI004-002-M000041",
+    "(Erz)bischöfliche Kirche, Erzbistum"
+   ],
+   [
+    "RI004-002-M000847",
+    "(auch: Stadt)"
+   ],
+   [
+    "RI004-002-S000880",
+    "(I.), Herzog von Böhmen"
+   ],
+   [
+    "RI004-002-S001332",
+    "Sven, auch Peter genannt, Prinz, dann König von Dänemark"
+   ],
+   [
+    "RI004-002-U000167",
+    "(der Böhme), Herzog von Böhmen bzw. Mähren"
+   ],
+   [
+    "RI004-002-V000527",
+    "Vizelin, Bischof von Oldenburg"
+   ],
+   [
+    "RI004-002-V000532",
+    "(II.), Herzog, dann König von Böhmen"
+   ],
+   [
+    "RI004-002-W000038",
+    "(I.), Prinz, dann König von Dänemark"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ]
+  ]
+ }
+}

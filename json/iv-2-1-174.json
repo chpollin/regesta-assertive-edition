@@ -1,0 +1,494 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-04-24_1_0_4_2_1_174_174",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22801",
+  "identifier": "RI IV,2,1 n. 174",
+  "short": "RI IV,2,1 n. 174",
+  "sort": "004_002_001_000174_0000000174",
+  "start": "1153-04-24",
+  "end": "1153-04-24",
+  "proseYears": [],
+  "lead": "Friedrich schenkt dem Bischof Ardicio von Como die Hoheitsrechte (honorem, districtum) und das Fodrum mit allen Regalien zu Gravedona und Domaso (et fodrum cum aliis omnibus ad regalia pertinentibus in locis, burgis et territoriis Grabadone et Domasii).",
+  "date": [
+   {
+    "t": "1153 April 24"
+   }
+  ],
+  "place": [
+   {
+    "t": "Bamberg"
+   }
+  ],
+  "text": "Friedrich schenkt dem Bischof Ardicio von Como die Hoheitsrechte (honorem, districtum) und das Fodrum mit allen Regalien zu Gravedona und Domaso (et fodrum cum aliis omnibus ad regalia pertinentibus in locis, burgis et territoriis Grabadone et Domasii). Z.: die Bischöfe Anselm von Havelberg, Wichmann von Zeitz, Konrad von Augsburg, Markgraf Albrecht (der Bär) von Sachsen, Graf Friedrich von Beichlingen, Markward von Grumbach. - Arnoldus canc. vice Mogontini archiep. et archicanc. ; verfaßt und wohl auch geschrieben von A II. C. Ex commissi nobis .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22801:donation",
+    "kind": "act",
+    "title": "Schenkung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schenkung",
+     "text": "Schenkung",
+     "triple": [
+      "urn:regesta:22801:donation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Donation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "donation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 144,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22801:> .\nx:donation a rf:ActFactoid ;\n    rf:factoidType rv:Donation ;\n    rf:source <urn:regesta:record:22801> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich schenkt dem Bischof Ardicio von Como die Hoheitsrechte (honorem, districtum) und das Fodrum mit allen Regalien zu Gravedona und Domaso\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22801:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22801:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Ardicio von Como",
+      "text": "Bischof Ardicio von Como in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22801:donation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22801:> .\nx:donation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001103> ; rf:nameInSource \"Bischof Ardicio von Como\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001103"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Domaso",
+      "text": "betrifft Domaso",
+      "triple": [
+       "urn:regesta:22801:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22801:domaso"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22801:> .\nx:donation rf:concerns x:domaso .\nx:domaso a crm:E53_Place ;\n    rdfs:label \"Domaso\" .",
+      "object": "urn:regesta:22801:domaso",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Einkünfterecht (das Fodrum)",
+      "text": "betrifft Einkünfterecht (das Fodrum)",
+      "triple": [
+       "urn:regesta:22801:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22801:fodrum"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22801:> .\nx:donation rf:concerns x:fodrum .\nx:fodrum a crm:E30_Right ;\n    crm:P2_has_type rv:Revenue ;\n    rdfs:label \"das Fodrum\" .",
+      "object": "urn:regesta:22801:fodrum",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gravedona",
+      "text": "betrifft Gravedona",
+      "triple": [
+       "urn:regesta:22801:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22801:gravedona"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22801:> .\nx:donation rf:concerns x:gravedona .\nx:gravedona a crm:E53_Place ;\n    rdfs:label \"Gravedona\" .",
+      "object": "urn:regesta:22801:gravedona",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die Hoheitsrechte (honorem, districtum))",
+      "text": "betrifft Herrschafts- und Schutzrechte (die Hoheitsrechte (honorem, districtum))",
+      "triple": [
+       "urn:regesta:22801:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22801:hoheitsrechte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22801:> .\nx:donation rf:concerns x:hoheitsrechte .\nx:hoheitsrechte a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die Hoheitsrechte (honorem, districtum)\" .",
+      "object": "urn:regesta:22801:hoheitsrechte",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (allen Regalien)",
+      "text": "betrifft Herrschafts- und Schutzrechte (allen Regalien)",
+      "triple": [
+       "urn:regesta:22801:donation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22801:regalien"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "donation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 144,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22801:> .\nx:donation rf:concerns x:regalien .\nx:regalien a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"allen Regalien\" .",
+      "object": "urn:regesta:22801:regalien",
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Schenkung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Bischof Ardicio von Como"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Domaso"
+     },
+     ", ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Einkünfterecht (das Fodrum)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Gravedona"
+     },
+     ", ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die Hoheitsrechte (honorem, districtum))"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herrschafts- und Schutzrechte (allen Regalien)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "donation",
+    "start": 0,
+    "end": 144
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Recipient read as the person Bischof Ardicio von Como (RI004-002-A001103); whether the bishopric of Como as institution is the recipient is not settled by the regest.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for regalia or for comital/sovereign rights (honor, districtus); 'Hoheitsrechte (honorem, districtum)' and 'allen Regalien' typed with the top concept rv:LordshipRights.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No IRI pattern for places with register candidates; Gravedona and Domaso are regest-local E53_Place nodes without link to RI004-002-G000955 and RI004-002-D000353.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "type-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22801:hoheitsrechte",
+     "description": "The rights 'honorem, districtum' are typed with the top concept rv:LordshipRights; districtum would also fit rv:Jurisdiction. The broader concept is the cautious choice.",
+     "proposal": "Keep, or split districtum as rv:Jurisdiction after expert review.",
+     "quote": {
+      "start": 47,
+      "end": 86
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "'honorem, districtum' typed with the top concept rv:LordshipRights; districtum could be rv:Jurisdiction.",
+     "reason": "The regest treats 'die Hoheitsrechte (honorem, districtum)' as one item; the broader concept is the cautious choice, and splitting it is an expert decision on the right-type hierarchy.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Auf ein Versehen des Kopisten dürfte der Kaisertitel in der Signumzeile zurückzuführen sein, da das sorgfältig nachgezeichnete Monogramm eine der Königszeit entsprechende Form zeigt. Bestas Bedenken gegen die Echtheit sind unbegründet. Später urkundete Friedrich offenbar gegen die Interessen von Como für Gravedona und Domaso; vgl. DH. VI. B.-Baaken, Reg. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "128",
+     "regest": "22755"
+    },
+    {
+     "t": ". Am 6. September 1196 bestätigt Heinrich VI. alle Diplome und Fürstensprüche aus der Regierungszeit seines Vaters für Como; vgl. B.-Baaken, Reg. n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "544"
+    },
+    {
+     "t": "."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Collectio privil. Cumanae eccl. aus dem 14. Jh. f. 34' in der Biblioteca Ambrosiana Mailand (B). Drucke: Tatti, Annali di Como 2, 873; MG. DF. I 55. Reg.: Besta, I diplomi, Arch. stor. lomb. N.S. 2 (1937) 329 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 53 zu 1154; Stumpf 3668."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=63"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_55"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A000934",
+    "Erzbischof von Ravenna, vorher Bischof von Havelberg"
+   ],
+   [
+    "RI004-002-A001103",
+    "Bischof von Como"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001210",
+    "II. C (Notar der Reichskanzlei)"
+   ],
+   [
+    "RI004-002-B000111",
+    "Bamberg (an der Regnitz, bayer. Reg.-Bez. Oberfranken)"
+   ],
+   [
+    "RI004-002-C000861",
+    "Bischöfliche Kirche, Bistum, Diözese"
+   ],
+   [
+    "RI004-002-D000353",
+    "Domaso (bei Gravedona, am Nordufer des Comer Sees, ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-F000693",
+    "Graf von Beichlingen"
+   ],
+   [
+    "RI004-002-G000955",
+    "Gravedona (am Nordufer des Comer Sees, ital. Prov. Como)"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-K000322",
+    "Bischof von Augsburg, vorher (Dom)Dekan von Konstanz (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-M000513",
+    "(II., der Ältere) von Grumbach (Edelfreier); <i>zu ihm siehe auch oben in der Einleitung, S. 32</i>"
+   ],
+   [
+    "RI004-002-W000436",
+    "Erzbischof von Magdeburg, vorher Bischof von Zeitz und Naumburg"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,722 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-01_1_0_4_2_1_98_98",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22725",
+  "identifier": "RI IV,2,1 n. 98",
+  "short": "RI IV,2,1 n. 98",
+  "sort": "004_002_001_000098_0000000098",
+  "start": "1152-07-01",
+  "end": "1152-07-01",
+  "proseYears": [],
+  "lead": "Vor Friedrich und den Fürsten wird Markgraf Otakar von Steier auf den Vorschlag Erzbischof Eberhards von Salzburg und auf Bitten des Propstes Werner zum Vogt des Stiftes Seckau (Seccowensis) ernannt, nachdem er der Bedingung, keinen Untervogt einzusetzen und keine Abgaben zu erheben (nullumque subadvocatum vel genus exactionis quod vulgo voitmutte appellatur), zugestimmt hat.",
+  "date": [
+   {
+    "t": "1152 Juli 1"
+   }
+  ],
+  "place": [
+   {
+    "t": "Regensburg"
+   }
+  ],
+  "text": "Vor Friedrich und den Fürsten wird Markgraf Otakar von Steier auf den Vorschlag Erzbischof Eberhards von Salzburg und auf Bitten des Propstes Werner zum Vogt des Stiftes Seckau (Seccowensis) ernannt, nachdem er der Bedingung, keinen Untervogt einzusetzen und keine Abgaben zu erheben (nullumque subadvocatum vel genus exactionis quod vulgo voitmutte appellatur), zugestimmt hat.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22725:appointment",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22725:appointment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "appointment",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 198,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22725:> .\nx:appointment a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22725> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Vor Friedrich und den Fürsten wird Markgraf Otakar von Steier auf den Vorschlag Erzbischof Eberhards von Salzburg und auf Bitten des Propstes Werner zum Vogt des Stiftes Seckau (Seccowensis) ernannt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22725:appointment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 198,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:appointment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Fürsten",
+      "text": "den Fürsten in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22725:appointment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 198,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:appointment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22725:local:fuersten> ; rf:nameInSource \"den Fürsten\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22725:local:fuersten"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgraf Otakar von Steier",
+      "text": "Markgraf Otakar von Steier in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22725:appointment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 198,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:appointment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000360> ; rf:nameInSource \"Markgraf Otakar von Steier\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000360"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Eberhards von Salzburg",
+      "text": "Erzbischof Eberhards von Salzburg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22725:appointment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 198,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:appointment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000010> ; rf:nameInSource \"Erzbischof Eberhards von Salzburg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000010"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Propstes Werner",
+      "text": "Propstes Werner in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22725:appointment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 198,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:appointment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000319> ; rf:nameInSource \"Propstes Werner\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000319"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vogt des Stiftes Seckau)",
+      "text": "betrifft Vogtei (Vogt des Stiftes Seckau)",
+      "triple": [
+       "urn:regesta:22725:appointment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22725:right:advocacy"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 198,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:appointment rf:concerns x:right:advocacy .\nx:right:advocacy a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vogt des Stiftes Seckau\" .",
+      "object": "urn:regesta:22725:right:advocacy",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Stiftes Seckau",
+      "text": "betrifft Stiftes Seckau",
+      "triple": [
+       "urn:regesta:22725:appointment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:actor:RI004-002-S000482:community"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 198,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:appointment rf:concerns <urn:regesta:actor:RI004-002-S000482:community> .\n<urn:regesta:actor:RI004-002-S000482:community> a crm:E74_Group ;\n    rdfs:label \"Stiftes Seckau\" .",
+      "object": "urn:regesta:actor:RI004-002-S000482:community",
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "keinen Untervogt einzusetzen und keine Abgaben zu erheben (nullumque subadvocatum vel genus exactionis quod vulgo voitmutte appellatur)",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22725:appointment",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 226,
+       "end": 361,
+       "ambiguous": false
+      },
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Einsetzung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "den Fürsten"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Erzbischof Eberhards von Salzburg"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Markgraf Otakar von Steier"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Propstes Werner"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Vogtei (Vogt des Stiftes Seckau)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Stiftes Seckau"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22725:assent",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22725:assent",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "assent",
+     "own": true,
+     "evidence": {
+      "start": 35,
+      "end": 61,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22725:> .\nx:assent a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22725> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Markgraf Otakar von Steier\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Markgraf Otakar von Steier",
+      "text": "Markgraf Otakar von Steier in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22725:assent",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assent",
+      "own": true,
+      "evidence": {
+       "start": 35,
+       "end": 61,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:assent rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000360> ; rf:nameInSource \"Markgraf Otakar von Steier\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-O000360"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Vogt des Stiftes Seckau)",
+      "text": "betrifft Vogtei (Vogt des Stiftes Seckau)",
+      "triple": [
+       "urn:regesta:22725:assent",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22725:right:advocacy"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assent",
+      "own": true,
+      "evidence": {
+       "start": 35,
+       "end": 61,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:assent rf:concerns x:right:advocacy .\nx:right:advocacy a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Vogt des Stiftes Seckau\" .",
+      "object": "urn:regesta:22725:right:advocacy",
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Einsetzung",
+      "text": "Teil von Einsetzung",
+      "triple": [
+       "urn:regesta:22725:assent",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22725:appointment"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assent",
+      "own": true,
+      "evidence": {
+       "start": 35,
+       "end": 61,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:assent rf:partOf x:appointment .\nx:appointment a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;\n    rf:concerns <urn:regesta:actor:RI004-002-S000482:community> , x:right:advocacy ;\n    rf:condition \"keinen Untervogt einzusetzen und keine Abgaben zu erheben (nullumque subadvocatum vel genus exactionis quod vulgo voitmutte appellatur)\" ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Vor Friedrich und den Fürsten wird Markgraf Otakar von Steier auf den Vorschlag Erzbischof Eberhards von Salzburg und auf Bitten des Propstes Werner zum Vogt des Stiftes Seckau (Seccowensis) ernannt\" ] ;\n    rf:factoidType rv:Appointment ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22725:local:fuersten> ; rf:nameInSource \"den Fürsten\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000010> ; rf:nameInSource \"Erzbischof Eberhards von Salzburg\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000360> ; rf:nameInSource \"Markgraf Otakar von Steier\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000319> ; rf:nameInSource \"Propstes Werner\" ; rf:role rv:Petitioner ] ;\n    rf:source <urn:regesta:record:22725> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22725:appointment",
+      "objectClaim": "appointment",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22725:assent",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assent-2",
+      "own": true,
+      "evidence": {
+       "start": 200,
+       "end": 377,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22725:> .\nx:assent rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"nachdem er der Bedingung, keinen Untervogt einzusetzen und keine Abgaben zu erheben (nullumque subadvocatum vel genus exactionis quod vulgo voitmutte appellatur), zugestimmt hat\" ] .",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nachdem",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22725:assent",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 200,
+       "end": 207,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10",
+       "k14"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k11",
+       "k14"
+      ],
+      "text": "Markgraf Otakar von Steier"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k12",
+       "k14"
+      ],
+      "text": "Vogtei (Vogt des Stiftes Seckau)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k13",
+       "k14"
+      ],
+      "text": "Einsetzung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "appointment",
+    "start": 0,
+    "end": 198
+   },
+   {
+    "id": "assent",
+    "start": 35,
+    "end": 61
+   },
+   {
+    "id": "assent-2",
+    "start": 200,
+    "end": 377
+   },
+   {
+    "id": "t2",
+    "start": 200,
+    "end": 207
+   },
+   {
+    "id": "t1",
+    "start": 226,
+    "end": 361
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Markgraf Otakar von Steier: candidates RI004-002-O000360 (III., role nennung) and RI004-002-O000361 (IV., role p_komment) both match name and title; O000360 chosen by packet role.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Appointing actor not named (passive); ruler and princes present (Vor Friedrich und den Fürsten) and archbishop proposing (auf den Vorschlag) have no dedicated roles; recorded as rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No property for the content of an undertaking; Otakar's assent is an rv:Assurance partOf the appointment, with the content only in the evidence and as rf:condition of the appointment.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for proposer (Vorschlag) distinct from petitioner.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for presence before a ruler or assembly.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No property for the content of an undertaking beyond rf:condition.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22725:appointment",
+     "description": "Friedrich and the princes appear only as the forum ('Vor'), and the archbishop as proposer; all three are rv:Participant, which flattens presence and proposal into generic involvement. The appointing actor is left unnamed, which correctly follows the passive.",
+     "proposal": "Add rf:qualifier \"Vor\" and \"auf den Vorschlag\" or keep as is and report the missing roles.",
+     "quote": {
+      "start": 0,
+      "end": 113
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Add qualifiers 'Vor' and 'auf den Vorschlag' to distinguish presence and proposal.",
+     "reason": "'Vor Friedrich und den Fürsten' and 'auf den Vorschlag Erzbischof Eberhards von Salzburg' are role distinctions; a factoid-level qualifier cannot bind them to the actors, and the vocabulary has no presence or proposer role.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur richtigen Datierung auf den 1. Juli, die sich zwingend aus der Angabe "
+    },
+    {
+     "t": "feria III",
+     "i": true
+    },
+    {
+     "t": " "
+    },
+    {
+     "t": "2",
+     "sup": true
+    },
+    {
+     "t": " ergibt, vgl. Simonsfeld, Jahrbücher 100 Anm. 313. - In einer Urkunde Herzog Otakars von Steier von 1182 November 29, ed. Zahn, UB. des Herzogtums Steiermark 1, 585 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 619, heißt es, daß Propst Werner von Seckau und Bruder Adalram (von Waldeck, der Gründer von Seckau) den Vater des Herzogs auf dem im Jahre 1152 zu Regensburg abgehaltenen Hoftag Kaiser (!) Friedrichs zum Vogt gewählt hätten."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt in einer Urkunde Erzbischof Adalberts III. von Salzburg von 1197 März 19, ed. Hauthaler-Martin, Salzburger UB. 2, 694 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 515; Stumpf 3629 zu Juni 29."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=36"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000089",
+    "(III.), Elekt, Erzbischof von Salzburg, 1177 abgesetzt, dann Propst von Mělník, dann ab 1183 erneut als Erzbischof von Salzburg eingesetzt"
+   ],
+   [
+    "RI004-002-A000290",
+    "von Waldeck, Bruder und Gründer des Stiftes Seckau"
+   ],
+   [
+    "RI004-002-E000010",
+    "Erzbischof von Salzburg"
+   ],
+   [
+    "RI004-002-O000360",
+    "(III.), Markgraf von Steier(mark)"
+   ],
+   [
+    "RI004-002-O000361",
+    "(IV.), Markgraf dann Herzog von Steier(mark)"
+   ],
+   [
+    "RI004-002-R000312",
+    "Regensburg (an der Donau, bayer. Reg.-Bez. Oberpfalz)"
+   ],
+   [
+    "RI004-002-S000482",
+    "Seckau (Bez. Murtal, Steiermark), (Benediktiner-)Kloster"
+   ],
+   [
+    "RI004-002-W000319",
+    "Propst von Seckau"
+   ]
+  ]
+ }
+}

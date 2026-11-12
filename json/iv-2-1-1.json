@@ -1,0 +1,644 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1122-12-20_1_0_4_2_1_1_1",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22628",
+  "identifier": "RI IV,2,1 n. 1",
+  "short": "RI IV,2,1 n. 1",
+  "sort": "004_002_001_000001_0000000001",
+  "start": "1122-12-20",
+  "end": "1122-12-23",
+  "proseYears": [],
+  "lead": "Geburt : Friedrich wird als Sohn Herzog Friedrichs II. von Schwaben und seiner Gemahlin Judith, der Tochter Herzog Heinrichs des Schwarzen von Bayern, geboren.",
+  "date": [
+   {
+    "t": "(1122, vermutlich Dezember 20-23)"
+   }
+  ],
+  "place": [],
+  "text": "Geburt : Friedrich wird als Sohn Herzog Friedrichs II. von Schwaben und seiner Gemahlin Judith, der Tochter Herzog Heinrichs des Schwarzen von Bayern, geboren.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22628:parenthood-father",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22628:parenthood-father",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-father",
+     "own": true,
+     "evidence": {
+      "start": 9,
+      "end": 67,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-father a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22628> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich wird als Sohn Herzog Friedrichs II. von Schwaben\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22628:parenthood-father",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-father",
+      "own": true,
+      "evidence": {
+       "start": 9,
+       "end": 67,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-father rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrichs II. von Schwaben",
+      "text": "Herzog Friedrichs II. von Schwaben in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22628:parenthood-father",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-father",
+      "own": true,
+      "evidence": {
+       "start": 9,
+       "end": 67,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-father rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:nameInSource \"Herzog Friedrichs II. von Schwaben\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog Friedrichs II. von Schwaben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22628:parenthood-mother",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22628:parenthood-mother",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-mother",
+     "own": true,
+     "evidence": {
+      "start": 9,
+      "end": 94,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-mother a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22628> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich wird als Sohn Herzog Friedrichs II. von Schwaben und seiner Gemahlin Judith\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22628:parenthood-mother",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-mother",
+      "own": true,
+      "evidence": {
+       "start": 9,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-mother rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Judith",
+      "text": "Judith in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22628:parenthood-mother",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-mother",
+      "own": true,
+      "evidence": {
+       "start": 9,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-mother rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000275> ; rf:nameInSource \"Judith\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-J000275"
+      ],
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Judith"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22628:marriage-parents",
+    "kind": "state",
+    "title": "Ehe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Ehe",
+     "text": "Ehe",
+     "triple": [
+      "urn:regesta:22628:marriage-parents",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Marriage"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "marriage-parents",
+     "own": true,
+     "evidence": {
+      "start": 33,
+      "end": 94,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22628:> .\nx:marriage-parents a rf:StateFactoid ;\n    rf:factoidType rv:Marriage ;\n    rf:source <urn:regesta:record:22628> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Herzog Friedrichs II. von Schwaben und seiner Gemahlin Judith\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrichs II. von Schwaben",
+      "text": "Herzog Friedrichs II. von Schwaben in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22628:marriage-parents",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage-parents",
+      "own": true,
+      "evidence": {
+       "start": 33,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22628:> .\nx:marriage-parents rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:nameInSource \"Herzog Friedrichs II. von Schwaben\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Judith",
+      "text": "Judith in der Rolle Ehepartner",
+      "triple": [
+       "urn:regesta:22628:marriage-parents",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "marriage-parents",
+      "own": true,
+      "evidence": {
+       "start": 33,
+       "end": 94,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22628:> .\nx:marriage-parents rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000275> ; rf:nameInSource \"Judith\" ; rf:role rv:Spouse ] .",
+      "role": "Ehepartner",
+      "actors": [
+       "urn:regesta:actor:RI004-002-J000275"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Gemahlin",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22628:marriage-parents",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 79,
+       "end": 87,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Ehe"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Herzog Friedrichs II. von Schwaben"
+     },
+     " und ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Judith"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22628:parenthood-judith",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22628:parenthood-judith",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-judith",
+     "own": true,
+     "evidence": {
+      "start": 88,
+      "end": 149,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-judith a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22628> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Judith, der Tochter Herzog Heinrichs des Schwarzen von Bayern\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Judith",
+      "text": "Judith in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22628:parenthood-judith",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-judith",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 149,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-judith rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000275> ; rf:nameInSource \"Judith\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-J000275"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Heinrichs des Schwarzen von Bayern",
+      "text": "Herzog Heinrichs des Schwarzen von Bayern in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22628:parenthood-judith",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-judith",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 149,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22628:> .\nx:parenthood-judith rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000468> ; rf:nameInSource \"Herzog Heinrichs des Schwarzen von Bayern\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000468"
+      ],
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Judith"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Herzog Heinrichs des Schwarzen von Bayern"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "parenthood-mother",
+    "start": 9,
+    "end": 94
+   },
+   {
+    "id": "parenthood-father",
+    "start": 9,
+    "end": 67
+   },
+   {
+    "id": "marriage-parents",
+    "start": 33,
+    "end": 94
+   },
+   {
+    "id": "t1",
+    "start": 79,
+    "end": 87
+   },
+   {
+    "id": "parenthood-judith",
+    "start": 88,
+    "end": 149
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The birth itself ('geboren') has no act or state type in the contract; only the parent, child and marriage relations the passage states were recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act or state type for a birth ('geboren'); the event that is the headline of the regest cannot be recorded, only the kinship it states.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "evidence-scope",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22628:parenthood-mother",
+     "description": "The selector for the mother relation starts at 'Friedrich wird als Sohn Herzog Friedrichs II.' and so also carries the father; it supports the factoid, but it is longer than the shortest passage the guidelines ask for. A shorter contiguous passage carrying both roles is hardly available, so this is a matter of taste.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 9,
+      "end": 94
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Wibald von Stablo berichtet in seinem Schreiben an Papst Eugen III. aus dem Jahre 1152 (Reg. "
+    },
+    {
+     "t": "73",
+     "regest": "22700"
+    },
+    {
+     "t": ") über das Alter des neuen Königs: "
+    },
+    {
+     "t": "nondum ut credimus annorum triginta",
+     "i": true
+    },
+    {
+     "t": ". Dieser Angabe folgte Simonsfeld, Jahrbücher 2 f.; Hofmeister, Puer, iuvenis, senex (FS. P. Kehr zum 65. Geb., 1926) 287 ff. trat nach einer Untersuchung der mittelalterlichen Altersbezeichnungen und gemäß einigen Angaben im Ligurinus für April 1124-Oktober 1130 (etwa 1125/26?) als Zeitpunkt der Geburt Friedrichs ein. Dagegen erklärte sich wieder Grundmann, Cappenberger Barbarossakopf (Münstersche Forschungen 12, 1959) 27 ff. mit guten Gründen für das Jahr 1122, eine Ansicht, der auch Heimpel, NDB 5 (1961) 459 folgte. - Zur weiteren Eingrenzung des Zeitraumes, in dem die Geburt Barbarossas erfolgte, vgl. jetzt Opll, Winterquatember, MIÖG 85 (1977) 332 ff. - Als Geburtsort gibt Tholomeus v. Lucca, Hist. eccl. nova c. 21, Rer. Ital. SS XI (1727) 1104, eine durchaus sekundäre Quelle, unter Berufung auf die Gesta Germanorum et Francorum und auf Vinzenz von Beauvais die Stammburg des Geschlechtes, den Hohenstaufen, an."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. I cap. 14, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 30. Zu Geburt und Taufe Friedrich Barbarossas vgl. zuletzt "
+    },
+    {
+     "t": "Balzer, Barbarossakopf",
+     "href": "http://opac.regesta-imperii.de/id/1931304"
+    },
+    {
+     "t": ", in: Frühmittelalterliche Studien 46 (2012), 241‒299, insbesondere 254‒271, die beachtenswerte Argumente für die Datierung der Taufe auf den Johannestag am 27. Dezember sowie für Hagenau als Ort von Geburt und Taufe des Staufers beibringt."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=15"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-E000589",
+    "(III.), Papst"
+   ],
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000468",
+    "der Schwarze, Herzog von Bayern, Großvater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H001115",
+    "Hohenstaufen (Ruine nordöstl. Göppingen, Bad.-Württ.), Stammburg der Staufer"
+   ],
+   [
+    "RI004-002-J000275",
+    "Herzogin von Schwaben, Mutter Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

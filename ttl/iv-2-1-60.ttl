@@ -1,0 +1,80 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-02-15_1_0_4_2_1_60_60
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22687> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrad (III.)" .
+
+<urn:regesta:actor:RI004-002-F000682> a crm:E21_Person ;
+    rdfs:label "Sohn Friedrich" .
+
+<urn:regesta:22687:reichsinsignien> a crm:E18_Physical_Thing ;
+    rdfs:label "Reichsinsignien" .
+
+<urn:regesta:22687:kinship-oheim> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22687> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich erhält von seinem auf den Tod erkrankten Oheim, König Konrad (III.)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "weshalb er seinen Neffen dazu für geeigneter ansieht" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Kin ; rf:nameInSource "König Konrad (III.)" ] ;
+    rf:qualifier "Oheim" , "Neffen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22687:grant-reichsinsignien> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22687> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich erhält von seinem auf den Tod erkrankten Oheim, König Konrad (III.), die Reichsinsignien" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Grantor ; rf:nameInSource "König Konrad (III.)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22687:reichsinsignien> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22687:parenthood-konrad-friedrich> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22687> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "dieser vertraut ihm seinen noch kleinen Sohn Friedrich an" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Parent ; rf:nameInSource "dieser" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000682> ; rf:role rv:Child ; rf:nameInSource "Sohn Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;
+    rf:verificationStatus rv:unchecked .
+
+# Entrusting the son is typed rv:Appointment (Beauftragung mit einer Aufgabe) provisionally; the
+# vocabulary has no entrustment or guardianship act. Reported as a model gap.
+<urn:regesta:22687:entrustment-son> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22687> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "dieser vertraut ihm seinen noch kleinen Sohn Friedrich an" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Grantor ; rf:nameInSource "dieser" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000682> ; rf:role rv:Participant ; rf:nameInSource "Sohn Friedrich" ] ;
+    rf:qualifier "vertraut" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;
+    rf:verificationStatus rv:unchecked .
+
+# Advice is typed rv:Request provisionally; the vocabulary has no advice or counsel act. The advice
+# does not establish that negotiations with the princes took place.
+<urn:regesta:22687:advice-succession> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22687> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Konrad rät diesem, wegen seiner Nachfolge mit den Fürsten in Unterhandlungen zu treten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Petitioner ; rf:nameInSource "Konrad" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "diesem" ] ;
+    rf:qualifier "rät" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;
+    rf:verificationStatus rv:unchecked .

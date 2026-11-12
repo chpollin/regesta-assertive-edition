@@ -1,0 +1,825 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-02_1_0_4_2_1_83_F83",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22710",
+  "identifier": "RI IV,2,1 n. †83",
+  "short": "RI IV,2,1 n. †83",
+  "sort": "004_002_001_000083_0000000#83",
+  "start": "1152-05-02",
+  "end": "1152-05-02",
+  "proseYears": [],
+  "lead": "Friedrich nimmt die von seinem Vorgänger Didius Julianus abstammende Familie Giuliano in Triest in seinen Schutz, gestattet ihr, einen gekrönten schwarzen Adler im Wappen zu führen, und ernennt ihre Mitglieder zu Pfalzgrafen. - Recognoscimus per praesentes .",
+  "date": [
+   {
+    "t": "1152 Mai 2"
+   }
+  ],
+  "place": [
+   {
+    "t": "Landau"
+   }
+  ],
+  "text": "Friedrich nimmt die von seinem Vorgänger Didius Julianus abstammende Familie Giuliano in Triest in seinen Schutz, gestattet ihr, einen gekrönten schwarzen Adler im Wappen zu führen, und ernennt ihre Mitglieder zu Pfalzgrafen. - Recognoscimus per praesentes .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:22710:appointment",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22710:appointment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "appointment",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 15,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22710:> .\nx:appointment a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22710> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22710:appointment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 15,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:appointment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "ihre Mitglieder",
+      "text": "ihre Mitglieder in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22710:appointment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 15,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:appointment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22710:local:mitglieder> ; rf:nameInSource \"ihre Mitglieder\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22710:local:mitglieder"
+      ],
+      "key": "k3",
+      "agentNotes": [
+       {
+        "text": "'ihre Mitglieder' is a regest-local group, kept separate from the family group RI004-002-J000286.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22710:appointment",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "appointment-2",
+      "own": true,
+      "evidence": {
+       "start": 186,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:appointment rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"ernennt ihre Mitglieder zu Pfalzgrafen\" ] .",
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "zu Pfalzgrafen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22710:appointment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 210,
+       "end": 224,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k4"
+      ],
+      "text": "Einsetzung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k4"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3",
+       "k4"
+      ],
+      "text": "ihre Mitglieder"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22710:arms-grant",
+    "kind": "act",
+    "title": "Rechtsverleihung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rechtsverleihung",
+     "text": "Rechtsverleihung",
+     "triple": [
+      "urn:regesta:22710:arms-grant",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/RightGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "arms-grant",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 15,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22710:> .\nx:arms-grant a rf:ActFactoid ;\n    rf:factoidType rv:RightGrant ;\n    rf:source <urn:regesta:record:22710> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22710:arms-grant",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "arms-grant",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 15,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:arms-grant rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Familie Giuliano in Triest",
+      "text": "Familie Giuliano in Triest in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22710:arms-grant",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "arms-grant",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 15,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:arms-grant rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000286:community> ; rf:nameInSource \"ihr\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-J000286:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22710:arms-grant",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "arms-grant-2",
+      "own": true,
+      "evidence": {
+       "start": 114,
+       "end": 180,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:arms-grant rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gestattet ihr, einen gekrönten schwarzen Adler im Wappen zu führen\" ] .",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "einen gekrönten schwarzen Adler im Wappen zu führen",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22710:arms-grant",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 129,
+       "end": 180,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6",
+       "k9"
+      ],
+      "text": "Rechtsverleihung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7",
+       "k9"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8",
+       "k9"
+      ],
+      "text": "Familie Giuliano in Triest"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22710:protection",
+    "kind": "act",
+    "title": "Schutznahme",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schutznahme",
+     "text": "Schutznahme",
+     "triple": [
+      "urn:regesta:22710:protection",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/ProtectionGrant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "protection",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 112,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22710:> .\nx:protection a rf:ActFactoid ;\n    rf:factoidType rv:ProtectionGrant ;\n    rf:source <urn:regesta:record:22710> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich nimmt die von seinem Vorgänger Didius Julianus abstammende Familie Giuliano in Triest in seinen Schutz\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22710:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 112,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Familie Giuliano in Triest",
+      "text": "Familie Giuliano in Triest in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22710:protection",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "protection",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 112,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:protection rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000286:community> ; rf:nameInSource \"Familie Giuliano in Triest\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-J000286:community"
+      ],
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Schutznahme"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Familie Giuliano in Triest"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22710:descent",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22710:descent",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "descent",
+     "own": true,
+     "evidence": {
+      "start": 20,
+      "end": 95,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22710:> .\nx:descent a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22710> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"von seinem Vorgänger Didius Julianus abstammende Familie Giuliano in Triest\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Didius Julianus",
+      "text": "Didius Julianus in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22710:descent",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "descent",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 95,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:descent rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000157> ; rf:nameInSource \"Didius Julianus\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-D000157"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Familie Giuliano in Triest",
+      "text": "Familie Giuliano in Triest in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22710:descent",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "descent",
+      "own": true,
+      "evidence": {
+       "start": 20,
+       "end": 95,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22710:> .\nx:descent rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000286:community> ; rf:nameInSource \"Familie Giuliano in Triest\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-J000286:community"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "abstammende",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22710:descent",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 57,
+       "end": 68,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Didius Julianus"
+     },
+     " und ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Familie Giuliano in Triest"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "protection",
+    "start": 0,
+    "end": 112
+   },
+   {
+    "id": "appointment",
+    "start": 0,
+    "end": 15
+   },
+   {
+    "id": "arms-grant",
+    "start": 0,
+    "end": 15
+   },
+   {
+    "id": "descent",
+    "start": 20,
+    "end": 95
+   },
+   {
+    "id": "t3",
+    "start": 57,
+    "end": 68
+   },
+   {
+    "id": "arms-grant-2",
+    "start": 114,
+    "end": 180
+   },
+   {
+    "id": "t2",
+    "start": 129,
+    "end": 180
+   },
+   {
+    "id": "appointment-2",
+    "start": 186,
+    "end": 224
+   },
+   {
+    "id": "t1",
+    "start": 210,
+    "end": 224
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Didius Julianus is identified with register candidate RI004-002-D000157, which the register types as 'ort'; typed here as crm:E21_Person.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for a right of arms ('einen gekrönten schwarzen Adler im Wappen zu führen'); the RightGrant carries no E30 node and keeps the wording in rf:qualifier.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Descent of a family from an ancestor ('abstammende') is recorded as Kinship between the person and a group; the vocabulary has no descent type. 'seinem Vorgänger' (predecessor relation) not extracted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The regest number carries a dagger (n. †83), marking the charter as spurious in the edition; the model has no place to carry the authenticity judgement, which lies outside summary_plain.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No document-level marker for a spurious or forged charter.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No right type for heraldic rights (Wappen).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No directed descent role; rv:Kin is symmetric.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "Predecessor in office (Vorgänger) between rulers is not expressible as a relation.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "source-status",
+     "severity": "Vermerk",
+     "subject": "22710",
+     "description": "The identifier carries a dagger (RI IV,2,1 n. †83), marking the charter as spurious. summary_plain does not state this, so the factoids correctly report only what the regest says, but a reader of the graph cannot see that the source charter is a forgery.",
+     "proposal": "No change to the factoids; record the missing document-level authenticity status as a model gap.",
+     "quote": {
+      "start": 0,
+      "end": 112
+     }
+    },
+    {
+     "category": "identity",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-D000157",
+     "description": "The register candidate for Didius Julianus is typed \"ort\" in the packet, while the candidate types him crm:E21_Person. The regest's wording (seinem Vorgänger) supports a person; the register type is a register error, not an extraction error.",
+     "proposal": "Keep crm:E21_Person; report the register type mismatch.",
+     "quote": {
+      "start": 20,
+      "end": 56
+     }
+    },
+    {
+     "category": "role-direction",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22710:descent",
+     "description": "Both parties carry rv:Kin, so the direction of descent (the family descends from Didius Julianus) is carried only by the qualifier \"abstammende\". This follows the guidelines.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 20,
+      "end": 95
+     }
+    },
+    {
+     "category": "missing-concerns",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22710:arms-grant",
+     "description": "The right to bear arms has no right type in rv:RightTypes, so the grant carries no crm:E30_Right node and the content survives only in rf:qualifier.",
+     "proposal": "None within the contract; record as model gap.",
+     "quote": {
+      "start": 114,
+      "end": 180
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The spurious status of the charter (n. †83) is invisible in the graph.",
+     "reason": "summary_plain does not state the forgery, so the factoids correctly report the regest; the contract has no document-level authenticity marker.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Das fehlende Inkarnationsjahr dieser neuzeitlichen Fälschung ergibt sich zweifelsfrei aus der Angabe des 1. Königsjahres."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Fälschung"
+    },
+    {
+     "t": "; Drucke: Ireneo della Croce, Historia di Trieste (1698) 295; Giacomo Filippo Tommasini, Commentarii dell'Istria lib. VI, L'Archeografo Triestino 4 (1837) 449 (mit dem Ausstellungsort: "
+    },
+    {
+     "t": "in Lindow",
+     "i": true
+    },
+    {
+     "t": "). Reg.: Stumpf 3623 a (mit der irrigen Seitenangabe 259 der Edition bei Ireneo della Croce)."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=31"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-D000157",
+    "Didius Julianus"
+   ],
+   [
+    "RI004-002-J000286",
+    "Familie in Triest"
+   ],
+   [
+    "RI004-002-L000108",
+    "Landau (<i>heute:</i> Landau in der Pfalz, südwestl. Speyer, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

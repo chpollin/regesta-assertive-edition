@@ -1,0 +1,114 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1122-00-00_1_0_4_2_1_2_2",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22629",
+  "identifier": "RI IV,2,1 n. 2",
+  "short": "RI IV,2,1 n. 2",
+  "sort": "004_002_001_000002_0000000002",
+  "start": "1122-01-01",
+  "end": "1122-12-31",
+  "proseYears": [],
+  "lead": "Friedrich wird von Graf Otto von Cappenberg aus der Taufe gehoben.",
+  "date": [
+   {
+    "t": "(1122 Ende)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich wird von Graf Otto von Cappenberg aus der Taufe gehoben.",
+  "status": "no_in_scope_claim",
+  "technical": true,
+  "claims": 0,
+  "blocks": [],
+  "spans": [],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Baptismal sponsorship ('aus der Taufe gehoben', Graf Otto von Cappenberg for Friedrich) states a spiritual kinship, but the contract has no type or role for godparenthood and the passage carries no kinship word for rv:Kinship; abstained rather than improvise. Graf Otto von Cappenberg would match candidate RI004-002-O000422 by name and title.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No type or roles for spiritual kinship (godparenthood, 'aus der Taufe gehoben').",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "no_in_scope_claim"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "abstention-scope",
+     "severity": "Vermerk",
+     "subject": "22629",
+     "description": "The regest states a godparent relation between Graf Otto von Cappenberg and Friedrich. The contract cannot express it without paraphrase, so the abstention is not an extraction error; it should be reported as a model gap rather than as 'no in-scope claim'.",
+     "proposal": "Keep the abstention, record the godparenthood as a model gap. If the vocabulary gains a spiritual-kinship type or godparent/godchild roles, extract a StateFactoid with Otto (urn:regesta:actor:RI004-002-O000422, name in source 'Graf Otto von Cappenberg') and Friedrich (shared ruler IRI).",
+     "quote": {
+      "start": 0,
+      "end": 66
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The abstention omits a godparent relation ('aus der Taufe gehoben') between Graf Otto von Cappenberg and Friedrich; it should be recorded as a model gap.",
+     "reason": "'Friedrich wird von Graf Otto von Cappenberg aus der Taufe gehoben' states a spiritual kinship. rv:Kinship and rv:Kin presuppose a kinship word in the exact wording for rf:qualifier, and the passage contains none; no type or role for godparenthood exists. The abstention file stays as it is.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Vgl. Simonsfeld, Jahrbücher 4 sowie Grundmann, Cappenberger Barbarossakopf (Münstersche Forschungen 12, 1959) 27 ff.; über den Zeitpunkt der Taufe zuletzt Opll, Winterquatember, MIÖG 85 (1977) 339 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Chron. reg. Col., ed. Waitz, MG. SS rer. Germ. in us. schol. 89 cod. A 2. add. Zu Geburt und Taufe Friedrich Barbarossas vgl. zuletzt "
+    },
+    {
+     "t": "Balzer, Barbarossakopf",
+     "href": "http://opac.regesta-imperii.de/id/1931304"
+    },
+    {
+     "t": ", in: Frühmittelalterliche Studien 46 (2012), 241‒299, insbesondere 254‒271, die beachtenswerte Argumente für die Datierung der Taufe auf den Johannestag am 27. Dezember sowie für Hagenau als Ort von Geburt und Taufe des Staufers beibringt."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=15"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-O000422",
+    "Propst (vorher: Graf) von Cappenberg"
+   ]
+  ]
+ }
+}

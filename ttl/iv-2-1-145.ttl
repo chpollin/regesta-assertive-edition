@@ -1,0 +1,60 @@
+# Barbarossa-Regesten mit belegten Aussagen. Eine Agentic Edition auf Grundlage der Regesta Imperii IV,2
+# Texte und Daten dieser Edition stehen unter CC BY 4.0, der Code unter MIT. Regesten und Register stammen aus Regesta Imperii Online (CC BY 4.0) und wurden bearbeitet.
+# Lauf factoid-1153-2026-11-11, Stand revised. Bearbeitet. Markup in Klartext überführt, Regest ausgewählt und verknüpft, Aussagen von LLM-basierten Agenten aus dem Regesttext erzeugt. Die Aussagen sind keine Aussagen der Regesta Imperii.
+# Quelle: https://www.regesta-imperii.de/id/1152-10-31_1_0_4_2_1_145_145
+
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22772> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-M000105:community> a crm:E74_Group ; rdfs:label "Kloster S. Simplician zu Mailand" .
+<urn:regesta:actor:RI004-002-H000341> a crm:E21_Person ; rdfs:label "Kaiser Heinrich (IV.)" .
+<urn:regesta:actor:RI004-002-L000682> a crm:E21_Person ; rdfs:label "Lothar (III.)" .
+<urn:regesta:actor:22772:local:klosterleute-treviglio> a crm:E74_Group ; rdfs:label "Klosterleute zu Treviglio" .
+
+<urn:regesta:22772:treviglio> a crm:E53_Place ; rdfs:label "Treviglio (Triuillio, qui dicitur Grasso)" .
+# The vocabulary has no exemption right type; the top concept rv:UsageRights is the safe placement.
+<urn:regesta:22772:befreiung> a crm:E30_Right ; crm:P2_has_type rv:UsageRights ; rdfs:label "die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben" .
+
+# Earlier acts of the precedent emperors. The regest says only "nach dem Vorgang"; whether
+# these were grants or confirmations is not stated (unresolved reading, typed as generic rv:Grant).
+<urn:regesta:22772:precedent-heinrich> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22772> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben" ] ;
+    rf:qualifier "nach dem Vorgang" ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000341> ; rf:role rv:Grantor ; rf:nameInSource "Heinrich (IV.)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22772:local:klosterleute-treviglio> ; rf:role rv:Beneficiary ; rf:nameInSource "Klosterleute zu Treviglio" ] ;
+    rf:concerns <urn:regesta:22772:treviglio> , <urn:regesta:22772:befreiung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22772:precedent-lothar> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22772> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben" ] ;
+    rf:qualifier "nach dem Vorgang" ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ; rf:role rv:Grantor ; rf:nameInSource "Lothar (III.)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22772:local:klosterleute-treviglio> ; rf:role rv:Beneficiary ; rf:nameInSource "Klosterleute zu Treviglio" ] ;
+    rf:concerns <urn:regesta:22772:treviglio> , <urn:regesta:22772:befreiung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22772:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22772> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Kloster S. Simplician zu Mailand (monasterio sanctorum martirum Geruasii et Protasii seu beatissimi antistitis Simpliciani) nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben mit Ausnahme des Fodrums bei Zügen des Königs ins regnum Lombardie und der scudassia an den Grafen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000105:community> ; rf:role rv:Recipient ; rf:nameInSource "Kloster S. Simplician zu Mailand" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22772:local:klosterleute-treviglio> ; rf:role rv:Beneficiary ; rf:nameInSource "Klosterleute zu Treviglio" ] ;
+    rf:concerns <urn:regesta:22772:treviglio> , <urn:regesta:22772:befreiung> ;
+    rf:exception "mit Ausnahme des Fodrums bei Zügen des Königs ins regnum Lombardie und der scudassia an den Grafen" ;
+    rf:refersToAct <urn:regesta:22772:precedent-heinrich> , <urn:regesta:22772:precedent-lothar> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;
+    rf:verificationStatus rv:unchecked .

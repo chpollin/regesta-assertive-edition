@@ -1,0 +1,955 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-04_1_0_4_2_1_64_64",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22691",
+  "identifier": "RI IV,2,1 n. 64",
+  "short": "RI IV,2,1 n. 64",
+  "sort": "004_002_001_000064_0000000064",
+  "start": "1152-03-04",
+  "end": "1152-03-04",
+  "proseYears": [],
+  "lead": "Königswahl : Friedrich wird gemäß dem Reichsrecht (Ottonis Gesta Frid. l II cap. 1: nam id iuris Romani imperii apex, videlicet non per sanguinis propaginem descendere, sed per principum electionem reges creare, sibi tamquam ex singulari vendicat prerogativa) in Anwesenheit einer großen Zahl von Fürsten, auch aus Italien, unter Zustimmung aller zum König gewählt.",
+  "date": [
+   {
+    "t": "1152 März 4"
+   }
+  ],
+  "place": [
+   {
+    "t": "Frankfurt"
+   }
+  ],
+  "text": "Königswahl : Friedrich wird gemäß dem Reichsrecht (Ottonis Gesta Frid. l II cap. 1: nam id iuris Romani imperii apex, videlicet non per sanguinis propaginem descendere, sed per principum electionem reges creare, sibi tamquam ex singulari vendicat prerogativa) in Anwesenheit einer großen Zahl von Fürsten, auch aus Italien, unter Zustimmung aller zum König gewählt. Die Erzbischöfe Arnold II. von Köln und Hillin von Trier treten besonders für ihn ein. Als Grund für diese Wahl nennt Otto von Freising die Verwandtschaft Friedrichs mit Staufern und Welfen, die eben dazu geführt habe, daß die Fürsten ihn nicht regis Conradi zelo, sondern unter Bedachtnahme auf das Gemeinwohl dem kleinen Sohn des verstorbenen Königs, Friedrich, vorgezogen haben. Nach durchgeführter Wahl läßt sich Friedrich von allen anwesenden Fürsten Treueid und Mannschaft leisten.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22691:election",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22691:election",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "election",
+     "own": true,
+     "evidence": {
+      "start": 13,
+      "end": 49,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22691:> .\nx:election a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22691> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich wird gemäß dem Reichsrecht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election",
+      "own": true,
+      "evidence": {
+       "start": 13,
+       "end": 49,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:election rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "einer großen Zahl von Fürsten, auch aus Italien",
+      "text": "einer großen Zahl von Fürsten, auch aus Italien in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election",
+      "own": true,
+      "evidence": {
+       "start": 13,
+       "end": 49,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:election rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22691:local:fuersten> ; rf:nameInSource \"einer großen Zahl von Fürsten, auch aus Italien\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22691:local:fuersten"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Arnold II. von Köln",
+      "text": "Arnold II. von Köln in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election",
+      "own": true,
+      "evidence": {
+       "start": 13,
+       "end": 49,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:election rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:nameInSource \"Arnold II. von Köln\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001202"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Hillin von Trier",
+      "text": "Hillin von Trier in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election",
+      "own": true,
+      "evidence": {
+       "start": 13,
+       "end": 49,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:election rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001017> ; rf:nameInSource \"Hillin von Trier\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001017"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election-2",
+      "own": true,
+      "evidence": {
+       "start": 260,
+       "end": 364,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:election rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"in Anwesenheit einer großen Zahl von Fürsten, auch aus Italien, unter Zustimmung aller zum König gewählt\" ] .",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election-3",
+      "own": true,
+      "evidence": {
+       "start": 366,
+       "end": 452,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:election rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Die Erzbischöfe Arnold II. von Köln und Hillin von Trier treten besonders für ihn ein.\" ] .",
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "Als Grund für diese Wahl nennt Otto von Freising die Verwandtschaft Friedrichs mit Staufern und Welfen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 453,
+       "end": 555,
+       "ambiguous": false
+      },
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "gemäß dem Reichsrecht",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 28,
+       "end": 49,
+       "ambiguous": false
+      },
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "unter Zustimmung aller",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 324,
+       "end": 346,
+       "ambiguous": false
+      },
+      "key": "k10"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "zum König gewählt",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22691:election",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 347,
+       "end": 364,
+       "ambiguous": false
+      },
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6",
+       "k7"
+      ],
+      "text": "Einsetzung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k2",
+       "k6",
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k3",
+       "k6",
+       "k7"
+      ],
+      "text": "einer großen Zahl von Fürsten, auch aus Italien"
+     },
+     ", ",
+     {
+      "keys": [
+       "k4",
+       "k6",
+       "k7"
+      ],
+      "text": "Arnold II. von Köln"
+     },
+     " und ",
+     {
+      "keys": [
+       "k5",
+       "k6",
+       "k7"
+      ],
+      "text": "Hillin von Trier"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22691:kinship-staufer-welfen",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:22691:kinship-staufer-welfen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-staufer-welfen",
+     "own": true,
+     "evidence": {
+      "start": 502,
+      "end": 555,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22691:> .\nx:kinship-staufer-welfen a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:22691> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Verwandtschaft Friedrichs mit Staufern und Welfen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-16> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22691:kinship-staufer-welfen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-staufer-welfen",
+      "own": true,
+      "evidence": {
+       "start": 502,
+       "end": 555,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:kinship-staufer-welfen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrichs\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Staufern",
+      "text": "Staufern in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22691:kinship-staufer-welfen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-staufer-welfen",
+      "own": true,
+      "evidence": {
+       "start": 502,
+       "end": 555,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:kinship-staufer-welfen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22691:local:staufer> ; rf:nameInSource \"Staufern\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:22691:local:staufer"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Welfen",
+      "text": "Welfen in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:22691:kinship-staufer-welfen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-staufer-welfen",
+      "own": true,
+      "evidence": {
+       "start": 502,
+       "end": 555,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:kinship-staufer-welfen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000275:community> ; rf:nameInSource \"Welfen\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000275:community"
+      ],
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Verwandtschaft",
+      "id": "t5",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22691:kinship-staufer-welfen",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 506,
+       "end": 520,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Staufern"
+     },
+     " und ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Welfen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22691:parenthood-king-son",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22691:parenthood-king-son",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-king-son",
+     "own": true,
+     "evidence": {
+      "start": 677,
+      "end": 728,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22691:> .\nx:parenthood-king-son a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22691> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"dem kleinen Sohn des verstorbenen Königs, Friedrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-16> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k17"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "dem kleinen Sohn des verstorbenen Königs, Friedrich",
+      "text": "dem kleinen Sohn des verstorbenen Königs, Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22691:parenthood-king-son",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-king-son",
+      "own": true,
+      "evidence": {
+       "start": 677,
+       "end": 728,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:parenthood-king-son rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22691:local:friedrich-sohn> ; rf:nameInSource \"dem kleinen Sohn des verstorbenen Königs, Friedrich\" ; rf:role rv:Child ] .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:22691:local:friedrich-sohn"
+      ],
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "des verstorbenen Königs",
+      "text": "des verstorbenen Königs in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22691:parenthood-king-son",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-king-son",
+      "own": true,
+      "evidence": {
+       "start": 677,
+       "end": 728,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22691:> .\nx:parenthood-king-son rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22691:local:verstorbener-koenig> ; rf:nameInSource \"des verstorbenen Königs\" ; rf:role rv:Parent ] .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:22691:local:verstorbener-koenig"
+      ],
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "dem kleinen Sohn des verstorbenen Königs, Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "des verstorbenen Königs"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "election",
+    "start": 13,
+    "end": 49
+   },
+   {
+    "id": "t2",
+    "start": 28,
+    "end": 49
+   },
+   {
+    "id": "election-2",
+    "start": 260,
+    "end": 364
+   },
+   {
+    "id": "t3",
+    "start": 324,
+    "end": 346
+   },
+   {
+    "id": "t4",
+    "start": 347,
+    "end": 364
+   },
+   {
+    "id": "election-3",
+    "start": 366,
+    "end": 452
+   },
+   {
+    "id": "t1",
+    "start": 453,
+    "end": 555
+   },
+   {
+    "id": "kinship-staufer-welfen",
+    "start": 502,
+    "end": 555
+   },
+   {
+    "id": "t5",
+    "start": 506,
+    "end": 520
+   },
+   {
+    "id": "parenthood-king-son",
+    "start": 677,
+    "end": 728
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'des verstorbenen Königs' is a local actor; the Latin 'regis Conradi zelo' suggests King Konrad, but the packet has no register candidate and no identification was made.",
+     "lang": "en"
+    },
+    {
+     "text": "'dem kleinen Sohn des verstorbenen Königs, Friedrich' is a local actor, kept apart from the ruler IRI.",
+     "lang": "en"
+    },
+    {
+     "text": "'Staufern' has no register candidate and is a local group; 'Welfen' uses the register candidate RI004-002-W000275 in its community form although the register types it as person.",
+     "lang": "en"
+    },
+    {
+     "text": "The princes ('einer großen Zahl von Fürsten, auch aus Italien') are a local group; the regest does not name them as electors in the active voice, so they carry rv:Participant.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No act type for a royal election; recorded as rv:Appointment with rf:qualifier 'zum König gewählt'.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for the oath of fealty and homage ('Treueid und Mannschaft leisten') after the election; the passage is left out rather than read as an rv:FeudalRelationship state.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "rf:ground cannot record that the reason for the election is attributed to Otto von Freising; the attribution to a narrative author is lost.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for supporters of a candidate; the archbishops who 'treten besonders für ihn ein' carry rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The princes' preference of Friedrich over the late king's son ('vorgezogen haben', 'unter Bedachtnahme auf das Gemeinwohl') has no place beyond the election factoid and is not recorded separately.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for an oath of fealty or homage; only the resulting state rv:FeudalRelationship can be expressed.",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No property for attributing a ground or statement to a narrative source named inside the regest (here Otto of Freising).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for supporters of a candidate in an election (Arnold and Hillin 'treten besonders für ihn ein') or for a passed-over rival.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "urn:regesta:22691:election: rf:ground replaced by the exact literal \"Als Grund für diese Wahl nennt Otto von Freising die Verwandtschaft Friedrichs mit Staufern und Welfen\"; producer set to correction-g4.",
+     "lang": "en"
+    },
+    {
+     "text": "urn:regesta:22691:kinship-staufer-welfen and urn:regesta:22691:parenthood-king-son unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "22691",
+     "description": "The final sentence reports that all princes present swore fealty and did homage to Friedrich after the election. This establishes a lord-vassal relation and is in scope, but no factoid represents it.",
+     "proposal": "Add a StateFactoid rv:FeudalRelationship (Friedrich rv:Lord, local group 'allen anwesenden Fürsten' rv:Vassal) with rf:qualifier \"Treueid und Mannschaft\" and \"Nach durchgeführter Wahl\", or report it as a model gap if an oath act type is wanted.",
+     "quote": {
+      "start": 748,
+      "end": 853
+     }
+    },
+    {
+     "category": "lost-attribution",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22691:election",
+     "description": "The regest explicitly attributes the reason for the election to Otto of Freising. As rf:ground of the election the reason appears as the regest's own, and the attribution is lost. The kinship StateFactoid rests on the same attributed passage.",
+     "proposal": "Extend the rf:ground literal to start with \"Als Grund für diese Wahl nennt Otto von Freising\" or add rf:qualifier \"nennt Otto von Freising\" on both the election and the kinship factoid.",
+     "quote": {
+      "start": 453,
+      "end": 555
+     }
+    },
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22691:election",
+     "description": "The preference of Friedrich over the young son of the deceased king, with the stated consideration of the common good, is not captured; only the parenthood is extracted from that clause.",
+     "proposal": "Add rf:ground \"unter Bedachtnahme auf das Gemeinwohl\" to the election and reference the son as a further participant, or record a model gap for a rival candidate role.",
+     "quote": {
+      "start": 639,
+      "end": 746
+     }
+    },
+    {
+     "category": "name-in-source",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22691:parenthood-king-son",
+     "description": "The child's nameInSource is the whole descriptive phrase rather than the naming wording.",
+     "proposal": "Use rf:nameInSource \"Friedrich\" (or \"dem kleinen Sohn\") for the Child reference.",
+     "quote": {
+      "start": 677,
+      "end": 728
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The closing oath of fealty and homage is not extracted; proposed as rv:FeudalRelationship.",
+     "reason": "'läßt sich Friedrich von allen anwesenden Fürsten Treueid und Mannschaft leisten' states an oath act, but the contract has no act type for fealty or homage, and rv:FeudalRelationship is defined as holding something as a fief ('trägt etwas von einem anderen zu Lehen'), which the passage does not state. Building that state would overstate the passage.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "The rf:ground loses the regest's attribution of the reason to Otto von Freising.",
+     "reason": "The regest gives the reason only as Otto's: 'Als Grund für diese Wahl nennt Otto von Freising die Verwandtschaft Friedrichs mit Staufern und Welfen'. The current ground 'die Verwandtschaft Friedrichs mit Staufern und Welfen' presents it as the regest's own. A longer exact literal keeps the attribution within the contract. The kinship state factoid stays unchanged; attributing a state to a narrative author has no property and remains a model gap.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The preference over the late king's son 'unter Bedachtnahme auf das Gemeinwohl' is not captured.",
+     "reason": "The clause belongs to Otto's account of the reason ('die eben dazu geführt habe, daß die Fürsten ihn ... dem kleinen Sohn des verstorbenen Königs, Friedrich, vorgezogen haben'). The vocabulary has no role for a passed-over rival, and adding the son as Participant would misstate his part; the parenthood already extracted is the in-scope content of the clause.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The child's rf:nameInSource is the whole descriptive phrase rather than 'Friedrich'.",
+     "reason": "The guidelines ask for the exact wording naming the actor in the passage; 'dem kleinen Sohn des verstorbenen Königs, Friedrich' is that wording and an exact substring, and it keeps the local son apart from the ruler, who is also named 'Friedrich'.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Wahl vgl. Simonsfeld, Jahrbücher 28 ff. und 667 ff., zur Datierung (bei Otto von Freising irrig zu März 5) a. a. O. 28 f. Anm. 48, zu den Teilnehmern a. a. O. 31 f. Neuerdings befaßt sich Engels, Beiträge zur Geschichte der Staufer, DA 27 (1971) 399 ff. eingehend mit der Wahl Friedrichs I. und deutet die in späteren Quellen, besonders bei Gislebert von Mons, vorhandenen Hinweise auf ein Intrigenspiel des Staufers in der Weise, daß hier die Zusagen Barbarossas für eine Wahlhilfe in verzerrter Form ihren Niederschlag gefunden hätten; vgl. dazu auch Unverhau, Approbatio-Reprobatio (Hist. Studien 424, 1973) 150 ff. - Zur Weihe Friedrichs vgl. Reinhardt, Stellung der Geistlichkeit bei den Königswahlen (Untersuch. u. Mat. zur Landesgesch. 4, 1975) 215 ff. "
+    },
+    {
+     "t": "Verbesserungen und Zusätze(2011):"
+    },
+    {
+     "t": " Die Königswahl Friedrich Barbarossas mit all ihren Begleiterscheinungen zählt zu den immer wieder neu aufgegriffenen Themata der mittelalterlichen Verfassungs- und Reichsgeschichte. Aus der Fülle der nach dem Erscheinen des ersten Bandes der Regesta Imperii (1980) vorgelegten Untersuchungen vgl. insbesondere Hechberger, Staufer und Welfen, 184 ff. und 239 ff. – Der von Dick, Königserhebung Friedrich Barbarossas, Zeitschr. f. Rechtsgesch., germ. Abt. 121 (2004) 200 ff. erhobene Vorwurf, Friedrich sei dabei in betrügerischer Weise vorgegangen, wurde zuletzt sowohl von Niederkorn, Zu glatt und daher verdächtig?, MIÖG 115 (2007) 1 ff., wie auch von mir: Opll, Regelung der bayerischen Frage, in: Die Geburt Österreichs, hg. von Schmid – Wanderwitz (Regensburger Kulturleben 4, 2007) 51 ff., zurückgewiesen."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Ottonis Gesta Frid. l. II cap. 1-3, ed. Waitz-Simson, MG. SS rer. Germ. in us. schol. 102 ff., Ann. Brunwilar., MG. SS XVI, 727 f.; vgl. den Bericht in den Schreiben Friedrichs und Wibalds an Papst Eugen III. (Regg. 72 und 73). Über den Versuch des Erzbischofs Heinrich von Mainz, die Wahl Friedrichs zu verhindern, vgl. Chron. reg. Col., ed. Waitz, MG. SS rer. Germ. in us. schol. 89 Rec. II. Eine Reihe späterer Quellen berichtet über Unregelmäßigkeiten bei der Wahl: Gislebert von Mons, ed. Vanderkindere, 92 f., weiters Auct. Vindobon., MG. SS IX, 723: "
+    },
+    {
+     "t": "per astuciam et magnam violenciam",
+     "i": true
+    },
+    {
+     "t": ", Balduini Ninov. Chron., MG. SS XXV, 533, völlig fabelhaft Chron. Albrici monachi Trium Fontium, MG. SS XXIII, 841, Chron. rhythm. Austriacum V. 22 ff., MG. SS XXV, 350 f., Galvaneus Flamma, Manipulus Florum, ed. Muratori, Rer. Ital. SS XI, Sp. 633 und Philipp Mousket, Hist. reg. Franc., MG. SS XXVI, 745. Das Chron. univ. anon. Laudun., MG. SS XXVI, 443 f. berichtet, Friedrich habe Heinrich den Löwen um die Krone betrogen, vgl. auch Chron. s. Mich. Luneburg., MG. SS XXIII, 396. Als Grund für die Wahl nennt Burchard von Ursberg, ed. Holder-Egger - Simson, MG. SS rer. Germ. in us. schol. 22: "
+    },
+    {
+     "t": "magis ex delegatione patrui sui quam ex electione principum",
+     "i": true
+    },
+    {
+     "t": ", während es in Gervasii Tilleber. Otia imp., MG. SS XXVII, 380 heißt: "
+    },
+    {
+     "t": "succedit Fredericus, plus ad hoc operante strenuitate sua quam electione Teutonicorum",
+     "i": true
+    },
+    {
+     "t": ". Die Nachfolge Friedrichs erwähnen ferner: Ann. s. Aegid. Brunsvic. ex., MG. SS XXX/1, 15, Ann. Augustani minores, MG. SS X, 8, Ann. Babenberg., MG. SS X, 4, Ann. Benedictobur., MG. SS XVII, 320, Ann. Blandinienses, ed. Grierson, Comm. royale d'hist. (Bruxelles 1937) 42, Ann. s. Blasii Brunsvic. mai. fragm., MG. SS XXX/1, 19, Ann. Campolil., ed. Haider, MIÖG 82 (1974) 115, Ann. Casinenses, MG. SS XIX, 310, Ann. Cavenses breves, MG. SS III, 192, Ann. Ceccanenses, MG. SS XIX, 284, Ann. s. Disibodi, MG. SS XVII, 28, Ann. Einsidl., MG. SS III, 147, Ann. Elwang., ed. Giefel, Württ. Geschichtsquellen 2 (1888) 15, Ann. Engelberg., MG. SS XVII, 279, Ann. Floreff., MG. SS XVI, 624, Ann. Fossenses, MG. SS IV, 31, Ann. Halesbrunn., MG. SS XVI, 14, Ann. Herbipol., MG. SS XVI, 8, Ann. s. Iacobi Leodienses, MG. SS XVI, 641, Ann. Isingrimi Ottenbur. mai., MG. SS XVII, 313, Ann. Laub. Cont., MG. SS IV, 23, Ann. Magdeburg., MG. SS XVI, 191, Ann. Marbacenses, ed. Bloch, MG. SS rer. Germ. in us. schol. 46, Ann. s. Mariae Ultraiect., ed. Muller, Bijdragen en mededeelingen v. h. hist. genootschap Utrecht 11 (1888) 480, Ann. Maurimonasterienses, ed. Bloch, MG. SS rer. Germ. in us. schol. 105, Ann. Montis s. Michaelis, MG. SS XXVI, 512, Ann. Neresheim., ed. Giefel, Württ. Geschichtsquellen 2 (1888) 17, Ann. Ottenbur. min., MG. SS XVII, 315, Ann. Palidenses, MG. SS XVI, 86, Ann. s. Pauli Virdun., MG. SS XVI, 501, Ann. s. Petri Erph. antiqui/breves/maiores, ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 19, 56 und 57, Ann. Pruvening., MG. SS XVII, 606, Ann. Ratispon., MG. SS XVII, 586, Ann. Reichersperg., MG. SS XVII, 464, Ann. Remenses et Colon. cont., MG. SS XVI, 733, Ann. Rodenses, MG. SS XVI, 722, Ann. s. Rudberti Salisburg., MG. SS IX, 775, Ann. Scheftlar. mai., MG. SS XVII, 336, Ann. s. Stephani Frising., MG. SS XIII, 54, Ann. Veron. antiqui, ed. Cipolla, Boll. dell'Ist. stor. ital. 29 (1908) 34, Ann. s. Vincentii Mett., MG. SS III, 158, Ann. Welf. Weingart., ed. König, Schwab. Chroniken d. Stauferzeit 1 (1938) 88, Ann. Zwifalt. mai. und min., ed. Schneider, Württ. Geschichtsquellen 3 (1889) 13 und 10, Breve Chron. Austriae Mellic., MG. SS XXIV, 71, Carmen de gestis V. 55 ff., ed. Schmale-Ott. MG. SS rer. Germ. in us. schol. 3, Cat. abb. Augiensium, MG. SS XIII, 332, Chron. Andreae Danduli, ed. Pastorelli, Rer. Ital. SS N. S. XII/1, 245, Chron. Ebersheimense, MG. SS XXIII, 446, Chron. Magni presb. Reichersperg., MG. SS XVII, 487, Chron. Montis Sereni, MG. SS XXIII, 149, Cont. Admunt, MG. SS IX, 581, Cont. Claustroneoburg. II und III, MG. SS IX, 615 und 629, Cont. Cremifan., MG. SS IX, 545 ("
+    },
+    {
+     "t": "ęligitur, nullo resistente",
+     "i": true
+    },
+    {
+     "t": "), Cont. Mellic., MG. SS IX, 504, Cont. Zwetl. I, MG. SS IX, 538, Cron. minor minoritae Erph., ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 639, Cron. s. Petri Erford. mod., ed. Holder-Egger, MG. SS rer. Germ. in us. schol. 177 f., Gestorum abb. Trudon. Cont. II lib. II cap. 5, MG. SS X, 343, Gottfried von Viterbo, Pantheon und Gesta, MG. SS XXII, 264 und 307, Helmold von Bosau l. I cap. 72, ed. Schmeidler, MG. SS rer. Germ. in us. schol. ("
+    },
+    {
+     "t": "3",
+     "sup": true
+    },
+    {
+     "t": " 1937) 138, Hermanni Altah. Ann., MG. SS XVII, 382, Hist. Welf., ed. König, Schwäb. Chroniken d. Stauferzeit 1 (1938) 56, Honorii Imago mundi Cont. VI, MG. SS X, 134, Hugonis Chron. cont. Weingart., MG. SS XXI, 474, Otto von St. Blasien cap. 5, ed. Hofmeister, MG. SS rer. Germ. in us. schol. 6, Radulfus Niger, Chron. universalis, MG. SS XXVII, 335, Roberti de Monte Cron., MG. SS VI, 499, S. Rudberti Salisburg. Ann. breves, MG. SS IX, 758, Sicard von Cremona, Cronica, MG. SS XXXI, 165, Sigeb. Auct. Affligemense, MG. SS VI, 132, Sigeb. Cont. Aquicinct., MG. SS VI, 407, Sigeb. Cont. Praemonstrat., MG. SS VI, 455, Thioderici aeditui Tuitiensis Summa Chron., MG. SS XIV, 572, Vinzenz von Prag, MG. SS XVII, 665. - Genauere Angaben über den Kreis der Teilnehmer an der Wahl bei Ligurinus l. I V. 175 ff., ed. Migne, PL 212, Sp. 336 f. - Vgl. auch die Zusammenstellung der Quellen bei Böhme, Königserhebung 2 (Hist. Texte/Mittelalter 15, 1970) 31 ff."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=24"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-F000384",
+    "Frankfurt (am Main)"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-I000211",
+    "Italien"
+   ],
+   [
+    "RI004-002-W000275",
+    "Welfen"
+   ]
+  ]
+ }
+}

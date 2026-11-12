@@ -1,0 +1,920 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-06-00_1_0_4_2_1_184_184",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22811",
+  "identifier": "RI IV,2,1 n. 184",
+  "short": "RI IV,2,1 n. 184",
+  "sort": "004_002_001_000184_0000000184",
+  "start": "1153-06-01",
+  "end": "1153-06-30",
+  "proseYears": [],
+  "lead": "Friedrich überträgt dem Erzbischof Hugo , dem Domdekan Wilhelm sowie deren Nachfolgern und dem Domkapitel von Vienne die Burg Pipet (Popetum), das Palais des Canaux (Candles), die Pfalz und die custodia der ausschließlich dem Reich unterstehenden Stadt Vienne während seiner Abwesenheit und schließt alle Laien von der Stadtherrschaft aus.",
+  "date": [
+   {
+    "t": "1153 (Juni)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Worms"
+   }
+  ],
+  "text": "Friedrich überträgt dem Erzbischof Hugo , dem Domdekan Wilhelm sowie deren Nachfolgern und dem Domkapitel von Vienne die Burg Pipet (Popetum), das Palais des Canaux (Candles), die Pfalz und die custodia der ausschließlich dem Reich unterstehenden Stadt Vienne während seiner Abwesenheit und schließt alle Laien von der Stadtherrschaft aus. Z.: Erzbischof Arnold von Köln, der zum Erzbischof von Mainz gewählte Kanzler Arnold, die Bischöfe Konrad von Augsburg, Konrad von Worms (Garmaciensem), Gunther von Speyer, Herzog Friedrich von Schwaben und Elsaß, der Sohn König Konrads, die Herzoge Heinrich von Sachsen, Heinrich von Bayern, Berthold von Breisgau (Briscoaudie), die Grafen Ulrich von Lenzburg (Lancesborc), Werner von Baden (Badana), Werner vom Elsaß (von Habsburg). - Arbertus ; unter Verwendung von DK. III. 132 für Raimund von Baux (VU. I) und DK. III. 145 (VU. II) von einem Empfängerschreiber mundiert. Principalem munificentiam decet .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22811:ausschluss-laien",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22811:ausschluss-laien",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "ausschluss-laien",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 19,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22811:> .\nx:ausschluss-laien a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22811> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich überträgt\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22811:ausschluss-laien",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "ausschluss-laien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:ausschluss-laien rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Stadt Vienne",
+      "text": "betrifft Stadt Vienne",
+      "triple": [
+       "urn:regesta:22811:ausschluss-laien",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22811:stadt-vienne"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "ausschluss-laien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:ausschluss-laien rf:concerns x:stadt-vienne .\nx:stadt-vienne a crm:E53_Place ;\n    rdfs:label \"Stadt Vienne\" .",
+      "object": "urn:regesta:22811:stadt-vienne",
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (Stadtherrschaft)",
+      "text": "betrifft Herrschafts- und Schutzrechte (Stadtherrschaft)",
+      "triple": [
+       "urn:regesta:22811:ausschluss-laien",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22811:stadtherrschaft"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "ausschluss-laien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:ausschluss-laien rf:concerns x:stadtherrschaft .\nx:stadtherrschaft a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"Stadtherrschaft\" .",
+      "object": "urn:regesta:22811:stadtherrschaft",
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Übertragung",
+      "text": "Teil von Übertragung",
+      "triple": [
+       "urn:regesta:22811:ausschluss-laien",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22811:uebertragung"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "ausschluss-laien",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 19,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:ausschluss-laien rf:partOf x:uebertragung .\nx:uebertragung a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:concerns x:burg-pipet , x:custodia , x:palais-des-canaux , x:pfalz , x:stadt-vienne ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich überträgt dem Erzbischof Hugo , dem Domdekan Wilhelm sowie deren Nachfolgern und dem Domkapitel von Vienne die Burg Pipet (Popetum), das Palais des Canaux (Candles), die Pfalz und die custodia der ausschließlich dem Reich unterstehenden Stadt Vienne während seiner Abwesenheit\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:qualifier \"während seiner Abwesenheit\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22811:local:nachfolger> ; rf:nameInSource \"deren Nachfolgern\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001273> ; rf:nameInSource \"Erzbischof Hugo\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000394:community> ; rf:nameInSource \"Domkapitel von Vienne\" ; rf:role rv:Recipient ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000540> ; rf:nameInSource \"Domdekan Wilhelm\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22811> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22811:uebertragung",
+      "objectClaim": "uebertragung",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22811:ausschluss-laien",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "ausschluss-laien-2",
+      "own": true,
+      "evidence": {
+       "start": 291,
+       "end": 338,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:ausschluss-laien rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"schließt alle Laien von der Stadtherrschaft aus\" ] .",
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k3",
+       "k6"
+      ],
+      "text": "Stadt Vienne"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4",
+       "k6"
+      ],
+      "text": "Herrschafts- und Schutzrechte (Stadtherrschaft)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k5",
+       "k6"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22811:uebertragung",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:22811:uebertragung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "uebertragung",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 286,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:22811> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich überträgt dem Erzbischof Hugo , dem Domdekan Wilhelm sowie deren Nachfolgern und dem Domkapitel von Vienne die Burg Pipet (Popetum), das Palais des Canaux (Candles), die Pfalz und die custodia der ausschließlich dem Reich unterstehenden Stadt Vienne während seiner Abwesenheit\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k7"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Erzbischof Hugo",
+      "text": "Erzbischof Hugo in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001273> ; rf:nameInSource \"Erzbischof Hugo\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001273"
+      ],
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domdekan Wilhelm",
+      "text": "Domdekan Wilhelm in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000540> ; rf:nameInSource \"Domdekan Wilhelm\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000540"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "deren Nachfolgern",
+      "text": "deren Nachfolgern in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22811:local:nachfolger> ; rf:nameInSource \"deren Nachfolgern\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:22811:local:nachfolger"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Domkapitel von Vienne",
+      "text": "Domkapitel von Vienne in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000394:community> ; rf:nameInSource \"Domkapitel von Vienne\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-V000394:community"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Burg Pipet",
+      "text": "betrifft Burg Pipet",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22811:burg-pipet"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:concerns x:burg-pipet .\nx:burg-pipet a crm:E18_Physical_Thing ;\n    rdfs:label \"Burg Pipet\" .",
+      "object": "urn:regesta:22811:burg-pipet",
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Herrschafts- und Schutzrechte (die custodia der ausschließlich dem Reich unterstehenden Stadt Vienne)",
+      "text": "betrifft Herrschafts- und Schutzrechte (die custodia der ausschließlich dem Reich unterstehenden Stadt Vienne)",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22811:custodia"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:concerns x:custodia .\nx:custodia a crm:E30_Right ;\n    crm:P2_has_type rv:LordshipRights ;\n    rdfs:label \"die custodia der ausschließlich dem Reich unterstehenden Stadt Vienne\" .",
+      "object": "urn:regesta:22811:custodia",
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Palais des Canaux",
+      "text": "betrifft Palais des Canaux",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22811:palais-des-canaux"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:concerns x:palais-des-canaux .\nx:palais-des-canaux a crm:E18_Physical_Thing ;\n    rdfs:label \"Palais des Canaux\" .",
+      "object": "urn:regesta:22811:palais-des-canaux",
+      "key": "k15"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "die Pfalz",
+      "text": "betrifft die Pfalz",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22811:pfalz"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:concerns x:pfalz .\nx:pfalz a crm:E18_Physical_Thing ;\n    rdfs:label \"die Pfalz\" .",
+      "object": "urn:regesta:22811:pfalz",
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Stadt Vienne",
+      "text": "betrifft Stadt Vienne",
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22811:stadt-vienne"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "uebertragung",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 286,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22811:> .\nx:uebertragung rf:concerns x:stadt-vienne .\nx:stadt-vienne a crm:E53_Place ;\n    rdfs:label \"Stadt Vienne\" .",
+      "object": "urn:regesta:22811:stadt-vienne",
+      "key": "k17"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "während seiner Abwesenheit",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22811:uebertragung",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 260,
+       "end": 286,
+       "ambiguous": false
+      },
+      "key": "k18"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Erzbischof Hugo"
+     },
+     ", ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Domdekan Wilhelm"
+     },
+     ", ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "deren Nachfolgern"
+     },
+     " und ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Domkapitel von Vienne"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Burg Pipet"
+     },
+     ", ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Herrschafts- und Schutzrechte (die custodia der ausschließlich dem Reich unterstehenden Stadt Vienne)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Palais des Canaux"
+     },
+     ", ",
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "die Pfalz"
+     },
+     " und ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Stadt Vienne"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "uebertragung",
+    "start": 0,
+    "end": 286
+   },
+   {
+    "id": "ausschluss-laien",
+    "start": 0,
+    "end": 19
+   },
+   {
+    "id": "t1",
+    "start": 260,
+    "end": 286
+   },
+   {
+    "id": "ausschluss-laien-2",
+    "start": 291,
+    "end": 338
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Domkapitel identified with register entry RI004-002-V000394 (typed 'ort' in the register, label 'Bischöfliche Kirche St. Maurice und Domkapitel') as a community IRI",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No right type for custodia of a city; typed with the top concept rv:LordshipRights, rv:Protection would be the alternative",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for an excluded party: 'alle Laien' excluded from the Stadtherrschaft is in the evidence only",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The state 'ausschließlich dem Reich unterstehenden Stadt Vienne' has no actor for the Reich and was not modelled as a separate factoid",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Kinship 'der Sohn König Konrads' stands in the witness list and was skipped per guidelines",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the party excluded or burdened by an enactment.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "literal-placement",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22811:uebertragung",
+     "description": "'während seiner Abwesenheit' limits the grant in time and functions as a condition; it is kept in exact wording as rf:qualifier, so it is not lost, but rf:condition would mark its legal force.",
+     "proposal": "Move or duplicate 'während seiner Abwesenheit' to rf:condition.",
+     "quote": {
+      "start": 203,
+      "end": 286
+     }
+    },
+    {
+     "category": "omitted-state",
+     "severity": "Vermerk",
+     "subject": "22811",
+     "description": "The city is described as exclusively subject to the Reich; this is kept only in the right label. A rv:RightHolding state for the Reich would make it queryable, as done for comparable phrases elsewhere in the run.",
+     "proposal": "Optionally add a StateFactoid rv:RightHolding with a local Reich actor concerning the city, rf:qualifier 'ausschließlich'.",
+     "quote": {
+      "start": 203,
+      "end": 259
+     }
+    },
+    {
+     "category": "omitted-actor",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22811:ausschluss-laien",
+     "description": "'alle Laien' are the group excluded by the enactment but are not referenced.",
+     "proposal": "Optionally reference a local group 'alle Laien' with rv:Participant.",
+     "quote": {
+      "start": 291,
+      "end": 338
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add a rv:RightHolding state for a local Reich actor ('regno ... subiecta', 'der ausschließlich dem Reich unterstehenden Stadt Vienne').",
+     "reason": "The wording is kept as rf:exception in 22806 and in the right labels in 22811 and 22812; the guidelines do not require a separate state for an attributive description, and the reviewer marks the addition as optional.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Move or duplicate 'während seiner Abwesenheit' to rf:condition.",
+     "reason": "'während seiner Abwesenheit' bounds the transfer in time; rf:qualifier is defined for temporal wording and keeps it exact. Duplicating it adds nothing.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "'alle Laien', the group excluded from the lordship of the city, are not referenced.",
+     "reason": "No role expresses a party excluded or burdened by an enactment; rv:Participant would misstate the excluded laymen as participants. The wording stays in the evidence 'schließt alle Laien von der Stadtherrschaft aus'. No correction.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zur Rekognition durch den Notar Albert vgl. Hausmann, Reichskanzlei 287 und Herkenrath, Notar Albert, ZAGV 80 (1970) 91 f. Die Übergabe der Stadtverwaltung von Vienne an Erzbischof Hugo wird in der Series episcoporum Viennensium, MG. SS XXIV, 815 erwähnt. Die Besiegelung durch eine Goldbulle ergibt sich aus der Siegelankündigung. Zum Ausdruck "
+    },
+    {
+     "t": "custodia",
+     "i": true
+    },
+    {
+     "t": " und über "
+    },
+    {
+     "t": "Canales",
+     "i": true
+    },
+    {
+     "t": " vgl. die Vorbemerkung zu DF. I. 62."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Notarielle Abschrift von 1237, Departementalarchiv Grenoble (B) ; Abschriften von 1340 Arm. 34 tom. 2, f. 194' (E) und Arm. 34 tom. 2 A, f. 45' (F) im Vatikanischen Archiv; Abschriften des 15. Jh. in B 3015 f. 57' (G) aus notarieller Abschrift von 1338 und f. 85 (H) aus notarieller Abschrift von 1281 im Departementalarchiv Grenoble; Abschrift von 1614 in Ms. lat. 5662 p. 178 der Nationalbibliothek Paris (I). Druck: MG. DF. I. 62. Reg.: Chevalier, Reg. Dauphinois 1, Sp. 658 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 3939; Stumpf 3674."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=68"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_62"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-A001209",
+    "H (= Albert von Sponheim), Notar der Reichskanzlei"
+   ],
+   [
+    "RI004-002-B000724",
+    "(IV.), Herzog von Zähringen, Breisgau und Burgund"
+   ],
+   [
+    "RI004-002-F000682",
+    "(IV.), Herzog von Elsass, Rothenburg und Schwaben, Sohn König Konrads III., Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-G001306",
+    "Bischof von Speyer"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000498",
+    "(Jasomirgott), Herzog von Österreich, vorher von Bayern"
+   ],
+   [
+    "RI004-002-H001273",
+    "Erzbischof von Vienne"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000322",
+    "Bischof von Augsburg, vorher (Dom)Dekan von Konstanz (<i>siehe dort</i>)"
+   ],
+   [
+    "RI004-002-K000333",
+    "(I.), Bischof von Worms"
+   ],
+   [
+    "RI004-002-P000728",
+    "Pipet (der Mont Pipet, bei Vienne, an der Rhône, Dép. Isère), Burg"
+   ],
+   [
+    "RI004-002-R000063",
+    "Graf von Baux"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-V000392",
+    "Stadt"
+   ],
+   [
+    "RI004-002-V000394",
+    "Bischöfliche Kirche St. Maurice und Domkapitel"
+   ],
+   [
+    "RI004-002-V000395",
+    "Palais des Canaux"
+   ],
+   [
+    "RI004-002-V000396",
+    "Pfalz"
+   ],
+   [
+    "RI004-002-W000325",
+    "Graf von Baden"
+   ],
+   [
+    "RI004-002-W000326",
+    "Graf vom Elsass, von Habsburg"
+   ],
+   [
+    "RI004-002-W000540",
+    "Domdekan von Vienne"
+   ],
+   [
+    "RI004-002-W000818",
+    "Worms (am Rhein, Rheinl.-Pf.)"
+   ]
+  ]
+ }
+}

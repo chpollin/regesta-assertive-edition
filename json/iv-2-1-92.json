@@ -1,0 +1,741 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-05-00_3_0_4_2_1_92_92",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22719",
+  "identifier": "RI IV,2,1 n. 92",
+  "short": "RI IV,2,1 n. 92",
+  "sort": "004_002_001_000092_0000000092",
+  "start": "1152-06-01",
+  "end": "1152-12-31",
+  "proseYears": [],
+  "lead": "Landgraf (Ludwig II. von Thüringen) dankt König (Friedrich) für dessen Brief (Reg. 91), bittet um ein Gut, um das er sich schon neulich bei ihm bemüht hat, und sagt, nachdem er genug über den Böhmenherzog gehört hat, sein Erscheinen auf dem Hoftag und seine volle Unterstützung zu.",
+  "date": [
+   {
+    "t": "(nach 1152 Mai)"
+   }
+  ],
+  "place": [],
+  "text": "Landgraf (Ludwig II. von Thüringen) dankt König (Friedrich) für dessen Brief (Reg. 91), bittet um ein Gut, um das er sich schon neulich bei ihm bemüht hat, und sagt, nachdem er genug über den Böhmenherzog gehört hat, sein Erscheinen auf dem Hoftag und seine volle Unterstützung zu.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22719:assurance",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:22719:assurance",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "assurance",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 59,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22719:> .\nx:assurance a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:22719> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Landgraf (Ludwig II. von Thüringen) dankt König (Friedrich)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Landgraf (Ludwig II. von Thüringen)",
+      "text": "Landgraf (Ludwig II. von Thüringen) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22719:assurance",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 59,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:assurance rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:nameInSource \"Landgraf (Ludwig II. von Thüringen)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000841"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König (Friedrich)",
+      "text": "König (Friedrich) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22719:assurance",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 59,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:assurance rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König (Friedrich)\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22719:assurance",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance-2",
+      "own": true,
+      "evidence": {
+       "start": 160,
+       "end": 280,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:assurance rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"sagt, nachdem er genug über den Böhmenherzog gehört hat, sein Erscheinen auf dem Hoftag und seine volle Unterstützung zu\" ] .",
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nachdem er genug über den Böhmenherzog gehört hat",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22719:assurance",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 166,
+       "end": 215,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k4"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2",
+       "k4"
+      ],
+      "text": "Landgraf (Ludwig II. von Thüringen)"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k3",
+       "k4"
+      ],
+      "text": "König (Friedrich)"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22719:request",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22719:request",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 59,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22719:> .\nx:request a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22719> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Landgraf (Ludwig II. von Thüringen) dankt König (Friedrich)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Landgraf (Ludwig II. von Thüringen)",
+      "text": "Landgraf (Ludwig II. von Thüringen) in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22719:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 59,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:nameInSource \"Landgraf (Ludwig II. von Thüringen)\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000841"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König (Friedrich)",
+      "text": "König (Friedrich) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22719:request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 59,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König (Friedrich)\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "ein Gut",
+      "text": "betrifft ein Gut",
+      "triple": [
+       "urn:regesta:22719:request",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22719:gut"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 59,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:request rf:concerns x:gut .\nx:gut a crm:E18_Physical_Thing ;\n    rdfs:label \"ein Gut\" .",
+      "object": "urn:regesta:22719:gut",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bitte",
+      "text": "bezieht sich auf Bitte",
+      "triple": [
+       "urn:regesta:22719:request",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22719:earlier-request"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 59,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:request rf:refersToAct x:earlier-request .\nx:earlier-request a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:concerns x:gut ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"um das er sich schon neulich bei ihm bemüht hat\" ] ;\n    rf:factoidType rv:Request ;\n    rf:qualifier \"schon neulich\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihm\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:nameInSource \"er\" ; rf:role rv:Petitioner ] ;\n    rf:source <urn:regesta:record:22719> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22719:earlier-request",
+      "objectClaim": "earlier-request",
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22719:request",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-2",
+      "own": true,
+      "evidence": {
+       "start": 88,
+       "end": 105,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:request rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bittet um ein Gut\" ] .",
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6",
+       "k11"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k7",
+       "k11"
+      ],
+      "text": "Landgraf (Ludwig II. von Thüringen)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k8",
+       "k11"
+      ],
+      "text": "König (Friedrich)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9",
+       "k11"
+      ],
+      "text": "ein Gut"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k10",
+       "k11"
+      ],
+      "text": "Bitte"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22719:earlier-request",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:22719:earlier-request",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-request",
+     "own": true,
+     "evidence": {
+      "start": 107,
+      "end": 154,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22719:> .\nx:earlier-request a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:22719> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"um das er sich schon neulich bei ihm bemüht hat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-23> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Landgraf (Ludwig II. von Thüringen)",
+      "text": "Landgraf (Ludwig II. von Thüringen) in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22719:earlier-request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-request",
+      "own": true,
+      "evidence": {
+       "start": 107,
+       "end": 154,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:earlier-request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:nameInSource \"er\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000841"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König (Friedrich)",
+      "text": "König (Friedrich) in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22719:earlier-request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-request",
+      "own": true,
+      "evidence": {
+       "start": 107,
+       "end": 154,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:earlier-request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihm\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "ein Gut",
+      "text": "betrifft ein Gut",
+      "triple": [
+       "urn:regesta:22719:earlier-request",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22719:gut"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-request",
+      "own": true,
+      "evidence": {
+       "start": 107,
+       "end": 154,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22719:> .\nx:earlier-request rf:concerns x:gut .\nx:gut a crm:E18_Physical_Thing ;\n    rdfs:label \"ein Gut\" .",
+      "object": "urn:regesta:22719:gut",
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "schon neulich",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22719:earlier-request",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 122,
+       "end": 135,
+       "ambiguous": false
+      },
+      "key": "k16"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Landgraf (Ludwig II. von Thüringen)"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "König (Friedrich)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "ein Gut"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "assurance",
+    "start": 0,
+    "end": 59
+   },
+   {
+    "id": "request",
+    "start": 0,
+    "end": 59
+   },
+   {
+    "id": "request-2",
+    "start": 88,
+    "end": 105
+   },
+   {
+    "id": "earlier-request",
+    "start": 107,
+    "end": 154
+   },
+   {
+    "id": "t2",
+    "start": 122,
+    "end": 135
+   },
+   {
+    "id": "assurance-2",
+    "start": 160,
+    "end": 280
+   },
+   {
+    "id": "t1",
+    "start": 166,
+    "end": 215
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "den Böhmenherzog: mentioned only as the subject of what Ludwig heard, not a party to any in-scope act; not referenced (candidate RI004-002-V000532 not used)",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Assurance of appearance at the Hoftag and of full support is recorded as rv:Assurance; whether a political promise of support is in the legal scope is a reading for review",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The clause 'nachdem er genug über den Böhmenherzog gehört hat' is kept as rf:qualifier; it is neither clearly a temporal qualifier nor a stated reason (rf:ground)",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The thanks for the king's letter (Reg. 91) is not extracted as out of scope",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Vermerk",
+     "subject": "22719",
+     "description": "Ludwig's letter as such and Friedrich's earlier letter for which he thanks are not modelled. The earlier letter belongs to another regest (Reg. 91) and may be modelled here only as an act this passage reports, without carrying over identification. Peripheral.",
+     "proposal": "Optionally add an rv:Communication factoid for Friedrich's earlier letter with Ludwig as rv:Addressee, and tie request and assurance to a letter factoid by rf:partOf.",
+     "quote": {
+      "start": 36,
+      "end": 86
+     }
+    },
+    {
+     "category": "reference",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22719:assurance",
+     "description": "The Bohemian duke (register candidate RI004-002-V000532 in this packet) appears only inside the qualifier. The qualifier is temporal-causal wording, not a qualifier of type or time in the narrow sense, but it is exact.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 166,
+      "end": 215
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Friedrich's earlier letter and Ludwig's letter could be added and tied by rf:partOf.",
+     "reason": "'dankt König (Friedrich) für dessen Brief (Reg. 91)' is a courtesy; request and assurance are already modelled, and the earlier letter belongs to another record. The reviewer marks it optional.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Zum Inhalt und zur zeitlichen Einordnung vgl. Reg. "
+    },
+    {
+     "t": "91",
+     "regest": "22718"
+    },
+    {
+     "t": ". Bei Hofe läßt sich Ludwig erstmals im Mai 1154 nachweisen (Reg. "
+    },
+    {
+     "t": "213"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Stilübung"
+    },
+    {
+     "t": " :, Reinhardsbrunner Briefsammlung, ed. Peeck, MG. Epp. sel. V, 66 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 78."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=35"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-L000841",
+    "(II., Raspo, der Eiserne), Landgraf von Thüringen"
+   ],
+   [
+    "RI004-002-V000532",
+    "(II.), Herzog, dann König von Böhmen"
+   ]
+  ]
+ }
+}

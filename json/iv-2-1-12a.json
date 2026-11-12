@@ -1,0 +1,1180 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/e6667b16-8e08-430c-bf98-e80cfb522e0d",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "220518",
+  "identifier": "RI IV,2,1 n. 12a",
+  "short": "RI IV,2,1 n. 12a",
+  "sort": "004_002_001_000576_000000012a",
+  "start": "1144-05-01",
+  "end": "1144-05-31",
+  "proseYears": [],
+  "lead": "Auf Betreiben Friedrichs (hier als „Graf“ bezeichnet), des nepos König Konrads III., sowie des Propstes Anselm (von Arnstein?) (admonente comite Friderico nepote nostro atque preposito prefatę ęcclesię Anshelmo), bestätigt Konrad III. dem unter Heranziehung von Prämonstratensern aus Arnstein wiederhergestellten Kloster Münster-Dreisen auf Bitten seines Bruders, Herzog Friedrichs von Schwaben, die von den Markgräfinnen Beatrix und Mathilde von Tuszien für das Seelenheil ihre beiden Ehemänner Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen) und Bonifaz’ (von Canossa, Markgraf von Tuszien) übertragenen Güter.",
+  "date": [
+   {
+    "t": "1144 (Mai)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Bamberg"
+   }
+  ],
+  "text": "Auf Betreiben Friedrichs (hier als „Graf“ bezeichnet), des nepos König Konrads III., sowie des Propstes Anselm (von Arnstein?) (admonente comite Friderico nepote nostro atque preposito prefatę ęcclesię Anshelmo), bestätigt Konrad III. dem unter Heranziehung von Prämonstratensern aus Arnstein wiederhergestellten Kloster Münster-Dreisen auf Bitten seines Bruders, Herzog Friedrichs von Schwaben, die von den Markgräfinnen Beatrix und Mathilde von Tuszien für das Seelenheil ihre beiden Ehemänner Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen) und Bonifaz’ (von Canossa, Markgraf von Tuszien) übertragenen Güter.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 4,
+  "blocks": [
+   {
+    "node": "urn:regesta:220518:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:220518:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 126,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:220518> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Auf Betreiben Friedrichs (hier als „Graf“ bezeichnet), des nepos König Konrads III., sowie des Propstes Anselm (von Arnstein?)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-53> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrichs (hier als „Graf“ bezeichnet)",
+      "text": "Friedrichs (hier als „Graf“ bezeichnet) in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 126,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrichs (hier als „Graf“ bezeichnet)\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Propstes Anselm (von Arnstein?)",
+      "text": "Propstes Anselm (von Arnstein?) in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 126,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000944> ; rf:nameInSource \"Propstes Anselm (von Arnstein?)\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A000944"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad III.",
+      "text": "Konrad III. in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 126,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad III.\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster Münster-Dreisen",
+      "text": "Kloster Münster-Dreisen in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 126,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M001342:community> ; rf:nameInSource \"Kloster Münster-Dreisen\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M001342:community"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrichs von Schwaben",
+      "text": "Herzog Friedrichs von Schwaben in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 126,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:nameInSource \"Herzog Friedrichs von Schwaben\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Güter",
+      "text": "betrifft Güter",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:220518:gueter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 126,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:concerns x:gueter .\nx:gueter a crm:E18_Physical_Thing ;\n    rdfs:label \"Güter\" .",
+      "object": "urn:regesta:220518:gueter",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Übertragung",
+      "text": "bezieht sich auf Übertragung",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:220518:earlier-transfer"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 126,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:refersToAct x:earlier-transfer .\nx:earlier-transfer a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-53> ;\n    rf:concerns x:gueter ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die von den Markgräfinnen Beatrix und Mathilde von Tuszien für das Seelenheil ihre beiden Ehemänner Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen) und Bonifaz’ (von Canossa, Markgraf von Tuszien) übertragenen Güter\" ] ;\n    rf:factoidType rv:Grant ;\n    rf:ground \"für das Seelenheil ihre beiden Ehemänner Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen) und Bonifaz’ (von Canossa, Markgraf von Tuszien)\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:220518:local:gottfried> ; rf:nameInSource \"Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen)\" ; rf:role rv:Beneficiary ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:220518:local:mathilde> ; rf:nameInSource \"Mathilde von Tuszien\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000348> ; rf:nameInSource \"Beatrix\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001131> ; rf:nameInSource \"Bonifaz’ (von Canossa, Markgraf von Tuszien)\" ; rf:role rv:Beneficiary ] ;\n    rf:source <urn:regesta:record:220518> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:220518:earlier-transfer",
+      "objectClaim": "earlier-transfer",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-2",
+      "own": true,
+      "evidence": {
+       "start": 213,
+       "end": 454,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt Konrad III. dem unter Heranziehung von Prämonstratensern aus Arnstein wiederhergestellten Kloster Münster-Dreisen auf Bitten seines Bruders, Herzog Friedrichs von Schwaben, die von den Markgräfinnen Beatrix und Mathilde von Tuszien\" ] .",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:220518:confirmation",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-3",
+      "own": true,
+      "evidence": {
+       "start": 651,
+       "end": 669,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:confirmation rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"übertragenen Güter\" ] .",
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k9",
+       "k10"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k4",
+       "k9",
+       "k10"
+      ],
+      "text": "Konrad III."
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k2",
+       "k9",
+       "k10"
+      ],
+      "text": "Friedrichs (hier als „Graf“ bezeichnet)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k3",
+       "k9",
+       "k10"
+      ],
+      "text": "Propstes Anselm (von Arnstein?)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6",
+       "k9",
+       "k10"
+      ],
+      "text": "Herzog Friedrichs von Schwaben"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k5",
+       "k9",
+       "k10"
+      ],
+      "text": "Kloster Münster-Dreisen"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k7",
+       "k9",
+       "k10"
+      ],
+      "text": "Güter"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k8",
+       "k9",
+       "k10"
+      ],
+      "text": "Übertragung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:220518:kinship-nepos",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:220518:kinship-nepos",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-nepos",
+     "own": true,
+     "evidence": {
+      "start": 14,
+      "end": 83,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220518:> .\nx:kinship-nepos a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:220518> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrichs (hier als „Graf“ bezeichnet), des nepos König Konrads III.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-53> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrichs (hier als „Graf“ bezeichnet)",
+      "text": "Friedrichs (hier als „Graf“ bezeichnet) in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:220518:kinship-nepos",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-nepos",
+      "own": true,
+      "evidence": {
+       "start": 14,
+       "end": 83,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:kinship-nepos rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrichs (hier als „Graf“ bezeichnet)\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad III.",
+      "text": "Konrad III. in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:220518:kinship-nepos",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-nepos",
+      "own": true,
+      "evidence": {
+       "start": 14,
+       "end": 83,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:kinship-nepos rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrads III.\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nepos",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220518:kinship-nepos",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 59,
+       "end": 64,
+       "ambiguous": false
+      },
+      "key": "k14"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Friedrichs (hier als „Graf“ bezeichnet)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Konrad III."
+     }
+    ]
+   },
+   {
+    "node": "urn:regesta:220518:kinship-bruder",
+    "kind": "state",
+    "title": "Verwandtschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Verwandtschaft",
+     "text": "Verwandtschaft",
+     "triple": [
+      "urn:regesta:220518:kinship-bruder",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Kinship"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "kinship-bruder",
+     "own": true,
+     "evidence": {
+      "start": 213,
+      "end": 234,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220518:> .\nx:kinship-bruder a rf:StateFactoid ;\n    rf:factoidType rv:Kinship ;\n    rf:source <urn:regesta:record:220518> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestätigt Konrad III.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-53> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k15"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Konrad III.",
+      "text": "Konrad III. in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:220518:kinship-bruder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-bruder",
+      "own": true,
+      "evidence": {
+       "start": 213,
+       "end": 234,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:kinship-bruder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"Konrad III.\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k16"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrichs von Schwaben",
+      "text": "Herzog Friedrichs von Schwaben in der Rolle Verwandter",
+      "triple": [
+       "urn:regesta:220518:kinship-bruder",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-bruder",
+      "own": true,
+      "evidence": {
+       "start": 213,
+       "end": 234,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:kinship-bruder rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:nameInSource \"Herzog Friedrichs von Schwaben\" ; rf:role rv:Kin ] .",
+      "role": "Verwandter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:220518:kinship-bruder",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "kinship-bruder-2",
+      "own": true,
+      "evidence": {
+       "start": 337,
+       "end": 394,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:kinship-bruder rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"auf Bitten seines Bruders, Herzog Friedrichs von Schwaben\" ] .",
+      "key": "k18"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Bruders",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220518:kinship-bruder",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 355,
+       "end": 362,
+       "ambiguous": false
+      },
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k15",
+       "k18"
+      ],
+      "text": "Verwandtschaft"
+     },
+     " mit ",
+     {
+      "keys": [
+       "k16",
+       "k18"
+      ],
+      "text": "Konrad III."
+     },
+     " und ",
+     {
+      "keys": [
+       "k17",
+       "k18"
+      ],
+      "text": "Herzog Friedrichs von Schwaben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:220518:earlier-transfer",
+    "kind": "act",
+    "title": "Übertragung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Übertragung",
+     "text": "Übertragung",
+     "triple": [
+      "urn:regesta:220518:earlier-transfer",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Grant"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-transfer",
+     "own": true,
+     "evidence": {
+      "start": 396,
+      "end": 669,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220518:> .\nx:earlier-transfer a rf:ActFactoid ;\n    rf:factoidType rv:Grant ;\n    rf:source <urn:regesta:record:220518> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die von den Markgräfinnen Beatrix und Mathilde von Tuszien für das Seelenheil ihre beiden Ehemänner Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen) und Bonifaz’ (von Canossa, Markgraf von Tuszien) übertragenen Güter\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-53> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k20"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Beatrix",
+      "text": "Beatrix in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220518:earlier-transfer",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-transfer",
+      "own": true,
+      "evidence": {
+       "start": 396,
+       "end": 669,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:earlier-transfer rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000348> ; rf:nameInSource \"Beatrix\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B000348"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Mathilde von Tuszien",
+      "text": "Mathilde von Tuszien in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220518:earlier-transfer",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-transfer",
+      "own": true,
+      "evidence": {
+       "start": 396,
+       "end": 669,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:earlier-transfer rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:220518:local:mathilde> ; rf:nameInSource \"Mathilde von Tuszien\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:220518:local:mathilde"
+      ],
+      "key": "k22",
+      "agentNotes": [
+       {
+        "text": "Mathilde von Tuszien has no register candidate in the packet; recorded as local actor.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen)",
+      "text": "Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:220518:earlier-transfer",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-transfer",
+      "own": true,
+      "evidence": {
+       "start": 396,
+       "end": 669,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:earlier-transfer rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:220518:local:gottfried> ; rf:nameInSource \"Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen)\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:220518:local:gottfried"
+      ],
+      "key": "k23",
+      "agentNotes": [
+       {
+        "text": "Gottfried: the regest itself leaves open der Bärtige (G000819) or der Bucklige (G000820); recorded as local actor.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bonifaz’ (von Canossa, Markgraf von Tuszien)",
+      "text": "Bonifaz’ (von Canossa, Markgraf von Tuszien) in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:220518:earlier-transfer",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-transfer",
+      "own": true,
+      "evidence": {
+       "start": 396,
+       "end": 669,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:earlier-transfer rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001131> ; rf:nameInSource \"Bonifaz’ (von Canossa, Markgraf von Tuszien)\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-B001131"
+      ],
+      "key": "k24"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Güter",
+      "text": "betrifft Güter",
+      "triple": [
+       "urn:regesta:220518:earlier-transfer",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:220518:gueter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-transfer",
+      "own": true,
+      "evidence": {
+       "start": 396,
+       "end": 669,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220518:> .\nx:earlier-transfer rf:concerns x:gueter .\nx:gueter a crm:E18_Physical_Thing ;\n    rdfs:label \"Güter\" .",
+      "object": "urn:regesta:220518:gueter",
+      "key": "k25"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "für das Seelenheil ihre beiden Ehemänner Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen) und Bonifaz’ (von Canossa, Markgraf von Tuszien)",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220518:earlier-transfer",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 455,
+       "end": 650,
+       "ambiguous": false
+      },
+      "key": "k26"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Übertragung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Beatrix"
+     },
+     " und ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Mathilde von Tuszien"
+     },
+     ", als Begünstigte ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Gottfried (des Bärtigen, Herzogs von Niederlothringen, oder: des Buckligen, Herzogs von Niederlothringen)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Bonifaz’ (von Canossa, Markgraf von Tuszien)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Güter"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 126
+   },
+   {
+    "id": "kinship-nepos",
+    "start": 14,
+    "end": 83
+   },
+   {
+    "id": "t1",
+    "start": 59,
+    "end": 64
+   },
+   {
+    "id": "confirmation-2",
+    "start": 213,
+    "end": 454
+   },
+   {
+    "id": "kinship-bruder",
+    "start": 213,
+    "end": 234
+   },
+   {
+    "id": "kinship-bruder-2",
+    "start": 337,
+    "end": 394
+   },
+   {
+    "id": "t2",
+    "start": 355,
+    "end": 362
+   },
+   {
+    "id": "earlier-transfer",
+    "start": 396,
+    "end": 669
+   },
+   {
+    "id": "t3",
+    "start": 455,
+    "end": 650
+   },
+   {
+    "id": "confirmation-3",
+    "start": 651,
+    "end": 669
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Kloster Münster-Dreisen identified with place candidate M001342 (role p_komment) as community IRI.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "Marriages of Beatrix and Mathilde with Gottfried and Bonifaz not recorded: 'ihre beiden Ehemänner' does not state which husband belongs to which margravine, and a pairing would be inference.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "'Auf Betreiben' (instigation) mapped to rv:Petitioner; the vocabulary has no instigator role distinct from petitioner.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The recipient of the margravines' earlier transfer is not stated; no recipient reference recorded.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Restoration of the monastery with Premonstratensians from Arnstein not recorded; no act type and no stated legal or economic relation.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No instigator role distinct from petitioner ('Auf Betreiben' versus 'auf Bitten').",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No way to record a collective marital statement whose pairing of spouses the regest leaves open.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Hinweis",
+     "subject": "220518",
+     "description": "The regest states a marital relation between the margravines and Gottfried and Bonifaz ('ihre beiden Ehemänner'), which is in scope as kinship. No rv:Marriage factoid records it. The pairing of each margravine with one husband is not stated, so a pairwise marriage would be inference; a candidate could still record the stated relation with the exact word 'Ehemänner' in rf:qualifier, or the gap should have been reported.",
+     "proposal": "Add a rf:StateFactoid of type rv:Marriage with rf:qualifier \"Ehemänner\" and rv:Spouse references to Beatrix, Mathilde, Gottfried (local) and Bonifaz only if the model accepts an unpaired collective marriage statement; otherwise report it as a model gap.",
+     "quote": {
+      "start": 396,
+      "end": 669
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:220518:confirmation",
+     "description": "Friedrich (Graf) and Propst Anselm act 'Auf Betreiben' (admonente), the duke 'auf Bitten'. Both are mapped to rv:Petitioner, which flattens the regest's distinction between instigation and petition. The vocabulary offers no instigator role.",
+     "proposal": "Keep rv:Petitioner but add rf:qualifier \"Auf Betreiben\" to mark the different wording, or report the missing role as a model gap.",
+     "quote": {
+      "start": 0,
+      "end": 126
+     }
+    },
+    {
+     "category": "identity",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:actor:RI004-002-A000944",
+     "description": "The regest marks Anselm's attribution to Arnstein with a question mark, and the Latin 'preposito prefatę ęcclesię' may point to the provost of the recipient church. The identification with the register candidate is admissible because the candidate carries the same doubt, but it remains uncertain.",
+     "proposal": "No change; flag the identification as uncertain for expert review.",
+     "quote": {
+      "start": 91,
+      "end": 126
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "The marital relation in 'ihre beiden Ehemänner' is not recorded as rv:Marriage.",
+     "reason": "The passage 'die von den Markgräfinnen Beatrix und Mathilde von Tuszien für das Seelenheil ihre beiden Ehemänner Gottfried (...) und Bonifaz’ (...)' leaves open which margravine was married to whom, and even which Gottfried is meant. One rv:Marriage factoid with four rv:Spouse references would assert a collective marriage, and pairwise factoids would be inferred genealogy, which the guidelines forbid. The contract cannot express an unpaired collective marital statement; the wording survives in rf:ground of urn:regesta:220518:earlier-transfer.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "'Auf Betreiben' (count Friedrich, Propst Anselm) and 'auf Bitten' (the duke) are both mapped to rv:Petitioner.",
+     "reason": "rv:Petitioner ('Auf wessen Bitten ein Akt geschieht') is the closest role for both instigation and petition, and the vocabulary has no instigator role. A factoid-level rf:qualifier \"Auf Betreiben\" could not say which of the three petitioners it applies to; the second evidence selector already carries the wording 'Auf Betreiben Friedrichs ...'. The missing instigator role stays a gap for the next model version.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "Anselm's identification with the Arnstein provost is uncertain.",
+     "reason": "The regest reads 'des Propstes Anselm (von Arnstein?)' and the packet candidate is 'Anselm ... Propst des Prämonstratenserstiftes Arnstein (?)'; name and title match, and the doubt is the register's own. The identification stays, flagged for expert review.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der Hinweis auf diese Erwähnung des jungen Friedrich Barbarossa am Hofe seines Onkels Konrad ist "
+    },
+    {
+     "t": "Freed, Frederick Barbarossa",
+     "href": "http://opac.regesta-imperii.de/id/2259607"
+    },
+    {
+     "t": ", 41, zu verdanken, wobei jedoch irrtümlich davon gesprochen wird, Konrad III. habe Friedrich auf Betreiben von dessen Vater ermahnt, sich nicht in die Übertragung dieser Besitzungen an das neue Prämonstratenserstift einzumengen. Es lässt sich nicht entscheiden, wer mit den mariti der beiden Markgräfinnen gemeint ist: Beatrix war in erster Ehe mit Bonifaz von Canossa (gest. 1052), in zweiter Ehe ab 1054 mit Herzog Gottfried von Niederlothringen verheiratet; Beatrix’ Tochter Mathilde ehelichte 1069/70 den Sohn ihres Stiefvaters, Herzog Gottfried den Bucklingen von Niederlothringen, und nach dessen Tod (1076) um 1090 Welf V., den Sohn Herzog Welfs IV. von Bayern."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnung in DK.III.104; vgl. "
+    },
+    {
+     "t": "B.-Niederkorn-Hruza",
+     "href": "http://opac.regesta-imperii.de/id/1211298"
+    },
+    {
+     "t": ", Reg. 297."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-A000944",
+    "Propst des Prämonstratenserstiftes Arnstein (<i>?</i>)"
+   ],
+   [
+    "RI004-002-A001287",
+    "Arnstein (an der Lahn, südl. Obernhof, nahe Nassau, Rhein-Lahn-Kr., Rheinl.-Pf.), Prämonstratenserstift"
+   ],
+   [
+    "RI004-002-B000348",
+    "Markgräfin von Tuszien"
+   ],
+   [
+    "RI004-002-B001131",
+    "Markgraf von Tuszien"
+   ],
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-G000819",
+    "der Bärtige, Herzog von Niederlothringen"
+   ],
+   [
+    "RI004-002-G000820",
+    "der Bucklige, Herzog von Niederlothringen"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-M001342",
+    "Münster-Dreisen, Münsterdreisen (an der Pfrimm, zwischen Dreisen und Standenbühl, nordöstl. Kaiserslautern, Donnersbergkr., Rheinl.-Pf.), Prämonstratenserstift"
+   ],
+   [
+    "RI004-002-W000271",
+    "(V.), Sohn Herzog Welfs (IV.) von Bayern"
+   ]
+  ]
+ }
+}

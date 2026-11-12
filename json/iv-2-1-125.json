@@ -1,0 +1,1739 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_8_0_4_2_1_125_125",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22752",
+  "identifier": "RI IV,2,1 n. 125",
+  "short": "RI IV,2,1 n. 125",
+  "sort": "004_002_001_000125_0000000125",
+  "start": "1152-07-20",
+  "end": "1152-08-10",
+  "proseYears": [],
+  "lead": "Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden (pacem diu desideratam et antea toti terre necessariam per universas regni partes habendam).",
+  "date": [
+   {
+    "t": "(wohl 1152 Ende Juli-Anfang August)"
+   }
+  ],
+  "place": [
+   {
+    "t": "(Ulm)"
+   }
+  ],
+  "text": "Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden (pacem diu desideratam et antea toti terre necessariam per universas regni partes habendam). Darin legt er als Strafe für Totschlag die Hinrichtung [§1] und die Maßnahmen bei Flucht von Friedensbrechern hinsichtlich ihrer Güter [§2] bzw. die Maßregeln für Burgherrn, auf deren Burg sich der Beklagte geflüchtet hat [§7], fest, bestimmt die Strafen für schwere [§3] und leichtere Körperverletzung bzw. auch für Schmähreden [§4 und 5] und die Maßnahmen bei Friedensbruch durch Kleriker [§6], ordnet das Verfahren bei Anklagen auf Friedensbruch zwischen Bauern und Rittern, Rittern und Bauern oder unter Rittern [§10], bei Streitigkeiten von zwei oder mehr Leuten um ein Lehen [§8 und 9] oder zwischen Ministerialen eines Herrn [§19], spricht das Verbot bzw. die Erlaubnis zum Waffentragen für Bauern, Kaufleute und Ritter [§12, 13 und 15] aus, erklärt Leute, die ein ihnen wegen schlechter Verwaltung abgesprochenes Lehensamt gewaltsam wiederzuerlangen trachten, als Friedensbrecher [§17], trifft Bestimmungen über die Strafen für Raub und Diebstahl [§16 und 18], beschränkt die Anwendung bestimmter Fanginstrumente auf einige Tierarten [§14] und regelt die Festsetzung des Getreidepreises durch den Grafen nach Mariä Geburt (September 8) [§11], das freie Weiderecht für alle zu Pferde Reisenden am Wegesrand sowie die Erlaubnis, Weide und Wald unter Hintanhaltung von Verwüstungen und Schäden für die eigenen Bedürfnisse zu verwenden [§20]. - Bis zur Arenga verfaßt von Heribert, allerdings unter teilweiser Übereinstimmung mit dem von AH (Albert) verfaßten D. 29 (Reg. 136), Quoniam divina preordinante .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 14,
+  "blocks": [
+   {
+    "node": "urn:regesta:22752:landfrieden",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:landfrieden",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "landfrieden",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 74,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:landfrieden a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22752:landfrieden",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "landfrieden",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 74,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:landfrieden rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "in allen Teilen des Reiches gültigen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22752:landfrieden",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 26,
+       "end": 62,
+       "ambiguous": false
+      },
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p1-totschlag",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p1-totschlag",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p1-totschlag",
+     "own": true,
+     "evidence": {
+      "start": 182,
+      "end": 227,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p1-totschlag a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"als Strafe für Totschlag die Hinrichtung [§1]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k4"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p1-totschlag",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p1-totschlag",
+      "own": true,
+      "evidence": {
+       "start": 182,
+       "end": 227,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p1-totschlag rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p2-flucht-gueter",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p2-flucht-gueter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p2-flucht-gueter",
+     "own": true,
+     "evidence": {
+      "start": 232,
+      "end": 307,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p2-flucht-gueter a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Maßnahmen bei Flucht von Friedensbrechern hinsichtlich ihrer Güter [§2]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p2-flucht-gueter",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p2-flucht-gueter",
+      "own": true,
+      "evidence": {
+       "start": 232,
+       "end": 307,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p2-flucht-gueter rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k7"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p7-burgherrn",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p7-burgherrn",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p7-burgherrn",
+     "own": true,
+     "evidence": {
+      "start": 313,
+      "end": 394,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p7-burgherrn a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Maßregeln für Burgherrn, auf deren Burg sich der Beklagte geflüchtet hat [§7]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k8"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p7-burgherrn",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p7-burgherrn",
+      "own": true,
+      "evidence": {
+       "start": 313,
+       "end": 394,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p7-burgherrn rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p3-5-koerperverletzung",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p3-5-koerperverletzung",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p3-5-koerperverletzung",
+     "own": true,
+     "evidence": {
+      "start": 402,
+      "end": 507,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p3-5-koerperverletzung a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bestimmt die Strafen für schwere [§3] und leichtere Körperverletzung bzw. auch für Schmähreden [§4 und 5]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p3-5-koerperverletzung",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p3-5-koerperverletzung",
+      "own": true,
+      "evidence": {
+       "start": 402,
+       "end": 507,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p3-5-koerperverletzung rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k11"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p6-kleriker",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p6-kleriker",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p6-kleriker",
+     "own": true,
+     "evidence": {
+      "start": 512,
+      "end": 563,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p6-kleriker a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Maßnahmen bei Friedensbruch durch Kleriker [§6]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k12"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p6-kleriker",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p6-kleriker",
+      "own": true,
+      "evidence": {
+       "start": 512,
+       "end": 563,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p6-kleriker rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p8-10-19-verfahren",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p8-10-19-verfahren",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p8-10-19-verfahren",
+     "own": true,
+     "evidence": {
+      "start": 565,
+      "end": 805,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p8-10-19-verfahren a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"ordnet das Verfahren bei Anklagen auf Friedensbruch zwischen Bauern und Rittern, Rittern und Bauern oder unter Rittern [§10], bei Streitigkeiten von zwei oder mehr Leuten um ein Lehen [§8 und 9] oder zwischen Ministerialen eines Herrn [§19]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k14"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p8-10-19-verfahren",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p8-10-19-verfahren",
+      "own": true,
+      "evidence": {
+       "start": 565,
+       "end": 805,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p8-10-19-verfahren rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p12-13-15-waffentragen",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p12-13-15-waffentragen",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p12-13-15-waffentragen",
+     "own": true,
+     "evidence": {
+      "start": 807,
+      "end": 915,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p12-13-15-waffentragen a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"spricht das Verbot bzw. die Erlaubnis zum Waffentragen für Bauern, Kaufleute und Ritter [§12, 13 und 15] aus\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bauern",
+      "text": "Bauern in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22752:p12-13-15-waffentragen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p12-13-15-waffentragen",
+      "own": true,
+      "evidence": {
+       "start": 807,
+       "end": 915,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p12-13-15-waffentragen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:bauern> ; rf:nameInSource \"Bauern\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22752:local:bauern"
+      ],
+      "key": "k17",
+      "agentNotes": [
+       {
+        "text": "Bauern, Kaufleute, Ritter and alle zu Pferde Reisenden are regest-local E74 groups for social categories, not communities with register entries.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ritter",
+      "text": "Ritter in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22752:p12-13-15-waffentragen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p12-13-15-waffentragen",
+      "own": true,
+      "evidence": {
+       "start": 807,
+       "end": 915,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p12-13-15-waffentragen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:ritter> ; rf:nameInSource \"Ritter\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22752:local:ritter"
+      ],
+      "key": "k18",
+      "agentNotes": [
+       {
+        "text": "Bauern, Kaufleute, Ritter and alle zu Pferde Reisenden are regest-local E74 groups for social categories, not communities with register entries.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kaufleute",
+      "text": "Kaufleute in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22752:p12-13-15-waffentragen",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p12-13-15-waffentragen",
+      "own": true,
+      "evidence": {
+       "start": 807,
+       "end": 915,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p12-13-15-waffentragen rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:kaufleute> ; rf:nameInSource \"Kaufleute\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22752:local:kaufleute"
+      ],
+      "key": "k19",
+      "agentNotes": [
+       {
+        "text": "Bauern, Kaufleute, Ritter and alle zu Pferde Reisenden are regest-local E74 groups for social categories, not communities with register entries.",
+        "lang": "en"
+       }
+      ]
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p12-13-15-waffentragen",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p12-13-15-waffentragen",
+      "own": true,
+      "evidence": {
+       "start": 807,
+       "end": 915,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p12-13-15-waffentragen rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k20"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Bauern"
+     },
+     ", ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Ritter"
+     },
+     " und ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Kaufleute"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p17-lehensamt",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p17-lehensamt",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p17-lehensamt",
+     "own": true,
+     "evidence": {
+      "start": 917,
+      "end": 1061,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p17-lehensamt a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"erklärt Leute, die ein ihnen wegen schlechter Verwaltung abgesprochenes Lehensamt gewaltsam wiederzuerlangen trachten, als Friedensbrecher [§17]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k21"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p17-lehensamt",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p17-lehensamt",
+      "own": true,
+      "evidence": {
+       "start": 917,
+       "end": 1061,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p17-lehensamt rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k22"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p16-18-raub-diebstahl",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p16-18-raub-diebstahl",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p16-18-raub-diebstahl",
+     "own": true,
+     "evidence": {
+      "start": 1063,
+      "end": 1135,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p16-18-raub-diebstahl a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"trifft Bestimmungen über die Strafen für Raub und Diebstahl [§16 und 18]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k23"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p16-18-raub-diebstahl",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p16-18-raub-diebstahl",
+      "own": true,
+      "evidence": {
+       "start": 1063,
+       "end": 1135,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p16-18-raub-diebstahl rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k24"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p14-fanginstrumente",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p14-fanginstrumente",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p14-fanginstrumente",
+     "own": true,
+     "evidence": {
+      "start": 1137,
+      "end": 1215,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p14-fanginstrumente a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"beschränkt die Anwendung bestimmter Fanginstrumente auf einige Tierarten [§14]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p14-fanginstrumente",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p14-fanginstrumente",
+      "own": true,
+      "evidence": {
+       "start": 1137,
+       "end": 1215,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p14-fanginstrumente rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k26"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Bestimmung"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p11-getreidepreis",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p11-getreidepreis",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p11-getreidepreis",
+     "own": true,
+     "evidence": {
+      "start": 1220,
+      "end": 1317,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p11-getreidepreis a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"regelt die Festsetzung des Getreidepreises durch den Grafen nach Mariä Geburt (September 8) [§11]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k27"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "den Grafen",
+      "text": "den Grafen in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22752:p11-getreidepreis",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p11-getreidepreis",
+      "own": true,
+      "evidence": {
+       "start": 1220,
+       "end": 1317,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p11-getreidepreis rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:graf> ; rf:nameInSource \"den Grafen\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22752:local:graf"
+      ],
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p11-getreidepreis",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p11-getreidepreis",
+      "own": true,
+      "evidence": {
+       "start": 1220,
+       "end": 1317,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p11-getreidepreis rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k29"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nach Mariä Geburt (September 8)",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22752:p11-getreidepreis",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1280,
+       "end": 1311,
+       "ambiguous": false
+      },
+      "key": "k30"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "den Grafen"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p20-weiderecht",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p20-weiderecht",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p20-weiderecht",
+     "own": true,
+     "evidence": {
+      "start": 1319,
+      "end": 1381,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p20-weiderecht a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"das freie Weiderecht für alle zu Pferde Reisenden am Wegesrand\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k31"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "alle zu Pferde Reisenden",
+      "text": "alle zu Pferde Reisenden in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22752:p20-weiderecht",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p20-weiderecht",
+      "own": true,
+      "evidence": {
+       "start": 1319,
+       "end": 1381,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p20-weiderecht rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:zu-pferde-reisende> ; rf:nameInSource \"alle zu Pferde Reisenden\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22752:local:zu-pferde-reisende"
+      ],
+      "key": "k32"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (das freie Weiderecht)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (das freie Weiderecht)",
+      "triple": [
+       "urn:regesta:22752:p20-weiderecht",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22752:right-weiderecht"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p20-weiderecht",
+      "own": true,
+      "evidence": {
+       "start": 1319,
+       "end": 1381,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p20-weiderecht rf:concerns x:right-weiderecht .\nx:right-weiderecht a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"das freie Weiderecht\" .",
+      "object": "urn:regesta:22752:right-weiderecht",
+      "key": "k33"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p20-weiderecht",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p20-weiderecht",
+      "own": true,
+      "evidence": {
+       "start": 1319,
+       "end": 1381,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p20-weiderecht rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k34"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k31"
+      ],
+      "text": "Bestimmung"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k32"
+      ],
+      "text": "alle zu Pferde Reisenden"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k33"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (das freie Weiderecht)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k34"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22752:p20-weide-wald",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22752:p20-weide-wald",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "p20-weide-wald",
+     "own": true,
+     "evidence": {
+      "start": 1388,
+      "end": 1513,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p20-weide-wald a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Erlaubnis, Weide und Wald unter Hintanhaltung von Verwüstungen und Schäden für die eigenen Bedürfnisse zu verwenden [§20]\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k35"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Nutzungs- und Einkünfterechte (Weide und Wald)",
+      "text": "betrifft Nutzungs- und Einkünfterechte (Weide und Wald)",
+      "triple": [
+       "urn:regesta:22752:p20-weide-wald",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22752:right-weide-wald"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p20-weide-wald",
+      "own": true,
+      "evidence": {
+       "start": 1388,
+       "end": 1513,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p20-weide-wald rf:concerns x:right-weide-wald .\nx:right-weide-wald a crm:E30_Right ;\n    crm:P2_has_type rv:UsageRights ;\n    rdfs:label \"Weide und Wald\" .",
+      "object": "urn:regesta:22752:right-weide-wald",
+      "key": "k36"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestimmung",
+      "text": "Teil von Bestimmung",
+      "triple": [
+       "urn:regesta:22752:p20-weide-wald",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22752:landfrieden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "p20-weide-wald",
+      "own": true,
+      "evidence": {
+       "start": 1388,
+       "end": 1513,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22752:> .\nx:p20-weide-wald rf:partOf x:landfrieden .\nx:landfrieden a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden\" ] ;\n    rf:factoidType rv:Enactment ;\n    rf:qualifier \"in allen Teilen des Reiches gültigen\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22752> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22752:landfrieden",
+      "objectClaim": "landfrieden",
+      "key": "k37"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "unter Hintanhaltung von Verwüstungen und Schäden",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22752:p20-weide-wald",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1418,
+       "end": 1466,
+       "ambiguous": false
+      },
+      "key": "k38"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "für die eigenen Bedürfnisse",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22752:p20-weide-wald",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 1467,
+       "end": 1494,
+       "ambiguous": false
+      },
+      "key": "k39"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k35"
+      ],
+      "text": "Bestimmung"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k36"
+      ],
+      "text": "Nutzungs- und Einkünfterechte (Weide und Wald)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k37"
+      ],
+      "text": "Bestimmung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "landfrieden",
+    "start": 0,
+    "end": 74
+   },
+   {
+    "id": "t1",
+    "start": 26,
+    "end": 62
+   },
+   {
+    "id": "p1-totschlag",
+    "start": 182,
+    "end": 227
+   },
+   {
+    "id": "p2-flucht-gueter",
+    "start": 232,
+    "end": 307
+   },
+   {
+    "id": "p7-burgherrn",
+    "start": 313,
+    "end": 394
+   },
+   {
+    "id": "p3-5-koerperverletzung",
+    "start": 402,
+    "end": 507
+   },
+   {
+    "id": "p6-kleriker",
+    "start": 512,
+    "end": 563
+   },
+   {
+    "id": "p8-10-19-verfahren",
+    "start": 565,
+    "end": 805
+   },
+   {
+    "id": "p12-13-15-waffentragen",
+    "start": 807,
+    "end": 915
+   },
+   {
+    "id": "p17-lehensamt",
+    "start": 917,
+    "end": 1061
+   },
+   {
+    "id": "p16-18-raub-diebstahl",
+    "start": 1063,
+    "end": 1135
+   },
+   {
+    "id": "p14-fanginstrumente",
+    "start": 1137,
+    "end": 1215
+   },
+   {
+    "id": "p11-getreidepreis",
+    "start": 1220,
+    "end": 1317
+   },
+   {
+    "id": "t2",
+    "start": 1280,
+    "end": 1311
+   },
+   {
+    "id": "p20-weiderecht",
+    "start": 1319,
+    "end": 1381
+   },
+   {
+    "id": "p20-weide-wald",
+    "start": 1388,
+    "end": 1513
+   },
+   {
+    "id": "t3",
+    "start": 1418,
+    "end": 1466
+   },
+   {
+    "id": "t4",
+    "start": 1467,
+    "end": 1494
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "den Grafen (§11) is a regest-local FunctionalActor; the Landfrieden names no individual count.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the persons or categories a norm applies to (norm addressee); Bauern, Kaufleute and Ritter in the arms provision are rv:Participant.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The mixed prohibition and permission of arms bearing (Verbot bzw. Erlaubnis) cannot be split per category without paraphrase, so §12, 13 and 15 stay one enactment.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Most Landfrieden provisions name penalties or procedures whose content the regest only summarises (Strafen, Maßnahmen, Verfahren); the factoids hold the wording but no structured penalty or offence.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The price-setting competence of the count (§11) has no fitting right type; no rf:concerns was recorded for it.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The Heribert drafting note is a chancery note and was skipped.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the group a general enactment regulates (addressees of a norm as distinct from addressees of a letter).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No role for an office-holder charged with a task by a provision (the count fixing the grain price).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "rdfs:label of <urn:regesta:22752:right-weide-wald> changed from \"die Erlaubnis, Weide und Wald\" to \"Weide und Wald\" (adjudication: correct).",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22752:p12-13-15-waffentragen",
+     "description": "Bauern, Kaufleute and Ritter are the groups the provision regulates, not participants in an act. rv:Participant is the vocabulary's fallback, but it blurs the difference between the enacting ruler and the regulated groups. The parallel procedural provision (§10), which names Bauern and Ritter in the same way, carries no references at all, so the treatment is inconsistent.",
+     "proposal": "Either drop the group references from both provisions or treat them consistently; record the lack of a role for the regulated party as a model gap.",
+     "quote": {
+      "start": 807,
+      "end": 915
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22752:p11-getreidepreis",
+     "description": "The count is the actor who is to fix the grain price under the provision; rv:Participant hides that the provision assigns him a task. Typing him as rf:FunctionalActor is correct.",
+     "proposal": "Keep as is or record the missing role for an actor charged by a provision as a model gap.",
+     "quote": {
+      "start": 1220,
+      "end": 1317
+     }
+    },
+    {
+     "category": "label",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22752:right-weide-wald",
+     "description": "The right label 'die Erlaubnis, Weide und Wald' is a truncated fragment that does not name the right; the permission is to use pasture and forest for one's own needs.",
+     "proposal": "Use 'Weide und Wald' or the full clause as label; keep the condition literal as it is.",
+     "quote": {
+      "start": 1388,
+      "end": 1513
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "beibehalten",
+     "finding": "Regulated groups Bauern, Kaufleute, Ritter recorded as rv:Participant; inconsistent with the reference-free §10 provision.",
+     "reason": "rv:Participant is defined as involvement without a more specific role, which fits groups a norm addresses in 'spricht das Verbot bzw. die Erlaubnis zum Waffentragen für Bauern, Kaufleute und Ritter [§12, 13 und 15] aus'. The contract does not require references on every provision, so the asymmetry with §10 is not an error. The missing role for the regulated party of a norm is a gap for the next model version.",
+     "lang": "en"
+    },
+    {
+     "decision": "beibehalten",
+     "finding": "The count charged with fixing the grain price is only rv:Participant.",
+     "reason": "'regelt die Festsetzung des Getreidepreises durch den Grafen' assigns him a task; the vocabulary has no role for an office-holder charged by a provision, and rv:Participant with rf:FunctionalActor is the correct fallback.",
+     "lang": "en"
+    },
+    {
+     "decision": "korrigiert",
+     "finding": "Right label 'die Erlaubnis, Weide und Wald' is a truncated fragment.",
+     "reason": "The label cuts the clause 'die Erlaubnis, Weide und Wald unter Hintanhaltung von Verwüstungen und Schäden für die eigenen Bedürfnisse zu verwenden [§20]' in the middle and does not name what the right is over. 'Weide und Wald' is a substring of the source and names the object of the usage right; condition and qualifier already keep the rest.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der vorliegenden Urkunde lag wohl ein Weistum zugrunde, wie die objektive Fassung der Bestimmungen vermuten läßt. Dieser älteste Landfriede Barbarossas galt nach dem deutschrechtlichen Charakter der Satzungen nur für Deutschland. - Die zeitliche Einordnung durch Stumpf richtete sich nach dem Kaisertitel im Landfrieden, doch kann es sich dabei auch - genauso wie etwaauch im Konstanzer Vertrag (Reg. "
+    },
+    {
+     "t": "169",
+     "regest": "22796"
+    },
+    {
+     "t": ") - um eine Vorwegnahme durch die Kanzlei handeln. Wegen der Erwähnung der Thronbesteigung des Herrschers wollte man das Gesetz dann in die erste Zeit der Regierung Friedrichs I. setzen, so etwa Simonsfeld, Jahrbücher 59 ff. im Anschluß an Küch, Landfriedensbestimmungen Friedrichs I., 12 ff. in den März 1152. Da derartige Hinweise auf die Thronbesteigung aber auch in späteren Diplomen des Jahres 1152 vorkommen (vgl. Regg. "
+    },
+    {
+     "t": "136",
+     "regest": "22763"
+    },
+    {
+     "t": " u. "
+    },
+    {
+     "t": "138",
+     "regest": "22765"
+    },
+    {
+     "t": "), ist danach keine allzu enge zeitliche Fixierung möglich. Dagegen spricht aber ein im Gesetz verwendeter terminus technicus des alamannischen Volksrechtes dafür, daß es auf schwäbischem Boden erlassen wurde, womit auch die Tatsache übereinstimmt, daß die Hungersnot in Schwaben (Ann. Ottenburani, MG. SS XVII, 313) eine Festsetzung der Getreidepreise (vgl. § 11) erforderlich machen mochte. Außerdem ist die gesetzgeberische Tätigkeit des Staufers damals in Ulm ja auch in der Errichtung eines Provinziallandfriedens zum Ausdruck gekommen (vgl. Reg. "
+    },
+    {
+     "t": "110",
+     "regest": "22737"
+    },
+    {
+     "t": "). - Zur Interpretation des Landfriedens vgl. Küch a. a. O. und Gernhuber, Landfriedensbewegung in Deutschland (Bonner rechtswiss. Abhandlungen 44, 1952)."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Abschrift des 13. Jh. im Cod. 545 f. 50', Bibliothèque publique, Tours (F); Abschriften des 14. Jh. im Msc. Can. 45 f. 73', Staatsbibliothek Bamberg (G), im Cod. 24 der Universitätsbibliothek zu Münster, Paulinische Bibliothek (durch Kriegseinwirkung vernichtet, H), im Cod. Y e 24 f. 11' a, Universitäts- und Landesbibliothek Halle (I), im Cod. 744 p. 108 der Stiftsbibliothek zu St. Gallen (K), im Ms. 64 der Stadtbibliothek zu Metz (durch Kriegseinwirkung vernichtet, L), im Cod. lat. 3509 f. 222, Staatsbibliothek München (M), im Cod. lat. 23.559 f. 56 ebenda (N), im Cod. lat. 4567 f. 122 der Nationalbibliothek zu Paris (O), im Cod. 216 der Stadtbibliothek zu Breslau (P), im Cod. M. p. j. f. 3 f. 194 der Universitätsbibliothek zu Würzburg (Q). Drucke: MG. Const. 1, 194 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 140; MG. DF. I. 25. Reg.: Stumpf 3756 zu 1156 Sept."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0044"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_25"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001209",
+    "H (= Albert von Sponheim), Notar der Reichskanzlei"
+   ],
+   [
+    "RI004-002-H000783",
+    "Notar der Reichskanzlei, Magister, Kapellan, Propst von Aachen (des kaiserlichen Hofes), dann Erzbischof von Besançon (<i>siehe: dort</i>)"
+   ],
+   [
+    "RI004-002-S000395",
+    "Schwaben"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ]
+  ]
+ }
+}

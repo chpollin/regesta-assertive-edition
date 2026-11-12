@@ -1,0 +1,770 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-00-00_1_0_4_2_1_134_134",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22761",
+  "identifier": "RI IV,2,1 n. 134",
+  "short": "RI IV,2,1 n. 134",
+  "sort": "004_002_001_000134_0000000134",
+  "start": "1152-01-01",
+  "end": "1152-12-31",
+  "proseYears": [],
+  "lead": "Wezel gratuliert Friedrich zu seiner Wahl, bedauert, daß er nicht die Bestätigung durch die Stadt Rom eingeholt habe, tritt gegen die Herrschaftsbestrebungen der Geistlichen ein, bezeichnet die Konstantinische Schenkung als offenkundiges Lügenwerk und rät ihm, die Grafen Rudolf von Ramsberg und Ulrich von Lenzburg sowie andere geeignete und rechtserfahrene Männer, wie Eberhard von Bodman, nach Rom zu entsenden und Vorsorge dafür zu treffen, daß in Rom selbst keine Neuerungen gegen ihn (offenbar die Wahl eines anderen zum Kaiser) Platz greifen.",
+  "date": [
+   {
+    "t": "(1152)"
+   }
+  ],
+  "place": [],
+  "text": "Wezel gratuliert Friedrich zu seiner Wahl, bedauert, daß er nicht die Bestätigung durch die Stadt Rom eingeholt habe, tritt gegen die Herrschaftsbestrebungen der Geistlichen ein, bezeichnet die Konstantinische Schenkung als offenkundiges Lügenwerk und rät ihm, die Grafen Rudolf von Ramsberg und Ulrich von Lenzburg sowie andere geeignete und rechtserfahrene Männer, wie Eberhard von Bodman, nach Rom zu entsenden und Vorsorge dafür zu treffen, daß in Rom selbst keine Neuerungen gegen ihn (offenbar die Wahl eines anderen zum Kaiser) Platz greifen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22761:advice-envoys",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22761:advice-envoys",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "advice-envoys",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 26,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22761:> .\nx:advice-envoys a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22761> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wezel gratuliert Friedrich\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wezel",
+      "text": "Wezel in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22761:advice-envoys",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-envoys",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 26,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:advice-envoys rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000417> ; rf:nameInSource \"Wezel\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000417"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22761:advice-envoys",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-envoys",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 26,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:advice-envoys rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"ihm\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Rudolf von Ramsberg",
+      "text": "Rudolf von Ramsberg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22761:advice-envoys",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-envoys",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 26,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:advice-envoys rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R001192> ; rf:nameInSource \"Rudolf von Ramsberg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R001192"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Ulrich von Lenzburg",
+      "text": "Ulrich von Lenzburg in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22761:advice-envoys",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-envoys",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 26,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:advice-envoys rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000179> ; rf:nameInSource \"Ulrich von Lenzburg\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000179"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Eberhard von Bodman",
+      "text": "Eberhard von Bodman in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22761:advice-envoys",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-envoys",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 26,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:advice-envoys rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000052> ; rf:nameInSource \"Eberhard von Bodman\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-E000052"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Schreiben",
+      "text": "Teil von Schreiben",
+      "triple": [
+       "urn:regesta:22761:advice-envoys",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22761:letter"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-envoys",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 26,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:advice-envoys rf:partOf x:letter .\nx:letter a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wezel gratuliert Friedrich zu seiner Wahl\" ] ;\n    rf:factoidType rv:Communication ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000417> ; rf:nameInSource \"Wezel\" ; rf:role rv:Participant ] ;\n    rf:source <urn:regesta:record:22761> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22761:letter",
+      "objectClaim": "letter",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:22761:advice-envoys",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "advice-envoys-2",
+      "own": true,
+      "evidence": {
+       "start": 252,
+       "end": 413,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:advice-envoys rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"rät ihm, die Grafen Rudolf von Ramsberg und Ulrich von Lenzburg sowie andere geeignete und rechtserfahrene Männer, wie Eberhard von Bodman, nach Rom zu entsenden\" ] .",
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "rät",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22761:advice-envoys",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 252,
+       "end": 255,
+       "ambiguous": false
+      },
+      "key": "k9"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1",
+       "k8"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligte ",
+     {
+      "keys": [
+       "k2",
+       "k8"
+      ],
+      "text": "Wezel"
+     },
+     ", ",
+     {
+      "keys": [
+       "k4",
+       "k8"
+      ],
+      "text": "Rudolf von Ramsberg"
+     },
+     ", ",
+     {
+      "keys": [
+       "k5",
+       "k8"
+      ],
+      "text": "Ulrich von Lenzburg"
+     },
+     " und ",
+     {
+      "keys": [
+       "k6",
+       "k8"
+      ],
+      "text": "Eberhard von Bodman"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3",
+       "k8"
+      ],
+      "text": "Friedrich"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k7",
+       "k8"
+      ],
+      "text": "Schreiben"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22761:letter",
+    "kind": "act",
+    "title": "Schreiben",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Schreiben",
+     "text": "Schreiben",
+     "triple": [
+      "urn:regesta:22761:letter",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Communication"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "letter",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 41,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22761:> .\nx:letter a rf:ActFactoid ;\n    rf:factoidType rv:Communication ;\n    rf:source <urn:regesta:record:22761> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Wezel gratuliert Friedrich zu seiner Wahl\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k10"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Wezel",
+      "text": "Wezel in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22761:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 41,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000417> ; rf:nameInSource \"Wezel\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-W000417"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22761:letter",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "letter",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 41,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:letter rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Schreiben"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Wezel"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22761:election",
+    "kind": "act",
+    "title": "Einsetzung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Einsetzung",
+     "text": "Einsetzung",
+     "triple": [
+      "urn:regesta:22761:election",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Appointment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "election",
+     "own": true,
+     "evidence": {
+      "start": 6,
+      "end": 41,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22761:> .\nx:election a rf:ActFactoid ;\n    rf:factoidType rv:Appointment ;\n    rf:source <urn:regesta:record:22761> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"gratuliert Friedrich zu seiner Wahl\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k13"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22761:election",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "election",
+      "own": true,
+      "evidence": {
+       "start": 6,
+       "end": 41,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22761:> .\nx:election rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "Wahl",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22761:election",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 37,
+       "end": 41,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Einsetzung"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "Friedrich"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "letter",
+    "start": 0,
+    "end": 41
+   },
+   {
+    "id": "advice-envoys",
+    "start": 0,
+    "end": 26
+   },
+   {
+    "id": "election",
+    "start": 6,
+    "end": 41
+   },
+   {
+    "id": "t2",
+    "start": 37,
+    "end": 41
+   },
+   {
+    "id": "advice-envoys-2",
+    "start": 252,
+    "end": 413
+   },
+   {
+    "id": "t1",
+    "start": 252,
+    "end": 255
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Electors of Friedrich not named",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No sender/author role for rv:Communication; Wezel recorded as rv:Participant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No act type for advice or recommendation: Wezel's advice to send Rudolf von Ramsberg, Ulrich von Lenzburg and Eberhard von Bodman to Rome is not a mission and was not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No way to record a non-occurrence or an assessment: 'nicht die Bestätigung durch die Stadt Rom eingeholt' and the judgement of the Konstantinische Schenkung as 'offenkundiges Lügenwerk' not extracted",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Royal election typed rv:Appointment with qualifier 'Wahl'; scope of an election under the appointment concept is an open question",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No representation of a negated act (a confirmation not obtained).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No act type for advice or a stated judgement about a document (Konstantinische Schenkung als Lügenwerk).",
+     "lang": "en",
+     "stage": "Review"
+    },
+    {
+     "text": "No sender role for a Communication.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Declared actors RI004-002-R001192 \"Rudolf von Ramsberg\", RI004-002-U000179 \"Ulrich von Lenzburg\", RI004-002-E000052 \"Eberhard von Bodman\" as crm:E21_Person (packet candidates).",
+     "lang": "en"
+    },
+    {
+     "text": "Added <urn:regesta:22761:advice-envoys> (rv:Communication, rf:partOf <urn:regesta:22761:letter>; Wezel rv:Participant, Friedrich rv:Addressee \"ihm\", the three proposed envoys rv:Participant; rf:qualifier \"rät\"); producer correction-g7. No Mission factoid added.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omission",
+     "severity": "Fehler",
+     "subject": "22761",
+     "description": "The advice to send named counts and jurists to Rome is omitted, although the contract can express it as rv:Request with Wezel, Friedrich as Addressee and the proposed envoys referenced (Rudolf R001192, Ulrich U000179, Eberhard E000052), without asserting that a mission took place. As extracted, three named actors of the regest disappear.",
+     "proposal": "Add a rv:Request factoid (partOf the letter) with Wezel as Petitioner or Participant, Friedrich as Addressee and the three named men with rv:Envoy or rv:Participant, plus the second advice on precautions in Rome as a further partOf factoid.",
+     "quote": {
+      "start": 252,
+      "end": 413
+     }
+    },
+    {
+     "category": "omission",
+     "severity": "Vermerk",
+     "subject": "22761",
+     "description": "The regret that Friedrich did not obtain confirmation by Rome states a confirmation that did not happen, and the denunciation of the Donation of Constantine is a judgement about a document. Neither negation nor stance can be expressed in the contract.",
+     "proposal": "Record as model gap.",
+     "quote": {
+      "start": 43,
+      "end": 116
+     }
+    },
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22761:election",
+     "description": "The election is supported only as the object of the congratulation; the electors are unnamed. Typing it rv:Appointment with Friedrich as Recipient is acceptable and asserts no date.",
+     "proposal": "None.",
+     "quote": {
+      "start": 6,
+      "end": 41
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "zurückhaltend korrigiert",
+     "finding": "Wezel's advice to send Counts Rudolf von Ramsberg and Ulrich von Lenzburg and Eberhard von Bodman to Rome is omitted, so three named actors disappear.",
+     "reason": "'rät ihm, die Grafen Rudolf von Ramsberg und Ulrich von Lenzburg sowie andere geeignete und rechtserfahrene Männer, wie Eberhard von Bodman, nach Rom zu entsenden' is the operative content of the letter. The vocabulary has no advice type; rv:Request ('bittet oder ersucht') and rv:Mission (would assert a sending) would change the meaning, so only a partOf Communication with the exact verb as qualifier is safe. The proposed envoys get rv:Participant, not rv:Envoy, because nobody is sent. Identifications match packet candidates by name and title: R001192 (Graf von ... Ramsberg), U000179 (Graf von Lenzburg), E000052 (von Bodman). The second advice on precautions in Rome names no actor and stays out.",
+     "lang": "en"
+    },
+    {
+     "decision": "als Modelllücke vermerkt",
+     "finding": "Regret over the missing Roman confirmation and the denunciation of the Donation of Constantine are not represented.",
+     "reason": "'bedauert, daß er nicht die Bestätigung durch die Stadt Rom eingeholt habe' is a negated act and 'bezeichnet die Konstantinische Schenkung als offenkundiges Lügenwerk' a judgement; the contract can express neither.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die zeitliche Einordnung dieses Schreibens ist nicht mit letzter Sicherheit durchzuführen. Mit Simonsfeld, Jahrbücher 131 setzen wir es seinem Inhalt nach (vgl. Reg. "
+    },
+    {
+     "t": "132",
+     "regest": "22759"
+    },
+    {
+     "t": ") etwa in den Herbst 1152. Simonsfeld, a. a. O. 103 erwägt auch eine frühere Einordnung, während Zatschek, Wibald, MÖIG Erg. Bd. 10 (1928) 424 f. nach der Eintragung des Briefes im Codex Wibaldi meint, er sei Ende Januar 1153 noch nicht am königlichen Hofe eingetroffen gewesen. - Zur Nennung der schwäbischen Grafen vgl. Schmid, Graf Rudolf von Pfullendorf (Forsch. zur oberrhein. LG 1, 1954) 56 f."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Jaffé, Mon. Corb. 539 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 404."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=47"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-E000052",
+    "von Bodman"
+   ],
+   [
+    "RI004-002-F000471",
+    "(I.), Barbarossa, Graf, Herzog von Schwaben (III.), König und Kaiser (<i>passim, wird nur in Auswahl ins Namenregister aufgenommen</i>)"
+   ],
+   [
+    "RI004-002-K000570",
+    "Konstantinische Schenkung"
+   ],
+   [
+    "RI004-002-R000885",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-R001192",
+    "Graf von Pfullendorf, Bregenz, Lindau, Ramsberg und Schweinshut"
+   ],
+   [
+    "RI004-002-U000179",
+    "Graf von Lenzburg"
+   ],
+   [
+    "RI004-002-W000417",
+    "[k.A.]"
+   ]
+  ]
+ }
+}

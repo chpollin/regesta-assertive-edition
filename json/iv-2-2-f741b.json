@@ -1,0 +1,628 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/f3736e8f-d592-4566-b0c7-7e2c34204186",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "220529",
+  "identifier": "RI IV,2,2 n. †741b",
+  "short": "RI IV,2,2 n. †741b",
+  "sort": "004_002_002_001260_00000#741b",
+  "start": "1152-01-01",
+  "end": "1165-12-31",
+  "proseYears": [],
+  "lead": "Friedrich sagt Bischof G(erhard) von Bologna die erbetene Hilfe zu und bittet ihn, seinen Kanzler (Rainald von Dassel), der in Reichsangelegenheiten an die Kurie reist, ehrwürdig zu empfangen und ihm bis Faenza das Geleit zu geben.",
+  "date": [
+   {
+    "t": "(1152–1165, wohl 1159)"
+   }
+  ],
+  "place": [],
+  "text": "Friedrich sagt Bischof G(erhard) von Bologna die erbetene Hilfe zu und bittet ihn, seinen Kanzler (Rainald von Dassel), der in Reichsangelegenheiten an die Kurie reist, ehrwürdig zu empfangen und ihm bis Faenza das Geleit zu geben.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:220529:assurance",
+    "kind": "act",
+    "title": "Zusicherung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Zusicherung",
+     "text": "Zusicherung",
+     "triple": [
+      "urn:regesta:220529:assurance",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Assurance"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "assurance",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 66,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220529:> .\nx:assurance a rf:ActFactoid ;\n    rf:factoidType rv:Assurance ;\n    rf:source <urn:regesta:record:220529> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich sagt Bischof G(erhard) von Bologna die erbetene Hilfe zu\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:220529:assurance",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:assurance rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof G(erhard) von Bologna",
+      "text": "Bischof G(erhard) von Bologna in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:220529:assurance",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:assurance rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"Bischof G(erhard) von Bologna\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000351"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bitte",
+      "text": "bezieht sich auf Bitte",
+      "triple": [
+       "urn:regesta:220529:assurance",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:220529:earlier-request"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "assurance",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:assurance rf:refersToAct x:earlier-request .\nx:earlier-request a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich sagt Bischof G(erhard) von Bologna die erbetene Hilfe zu\" ] ;\n    rf:factoidType rv:Request ;\n    rf:qualifier \"erbetene\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Addressee ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"Bischof G(erhard) von Bologna\" ; rf:role rv:Petitioner ] ;\n    rf:source <urn:regesta:record:220529> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:220529:earlier-request",
+      "objectClaim": "earlier-request",
+      "key": "k4"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Zusicherung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Bischof G(erhard) von Bologna"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Bitte"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:220529:earlier-request",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:220529:earlier-request",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-request",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 66,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220529:> .\nx:earlier-request a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:220529> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich sagt Bischof G(erhard) von Bologna die erbetene Hilfe zu\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k5"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:220529:earlier-request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:earlier-request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof G(erhard) von Bologna",
+      "text": "Bischof G(erhard) von Bologna in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:220529:earlier-request",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-request",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 66,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:earlier-request rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"Bischof G(erhard) von Bologna\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000351"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erbetene",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:220529:earlier-request",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 49,
+       "end": 57,
+       "ambiguous": false
+      },
+      "key": "k8"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bitte"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Bischof G(erhard) von Bologna"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:220529:request-escort",
+    "kind": "act",
+    "title": "Bitte",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bitte",
+     "text": "Bitte",
+     "triple": [
+      "urn:regesta:220529:request-escort",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Request"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "request-escort",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 44,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:220529:> .\nx:request-escort a rf:ActFactoid ;\n    rf:factoidType rv:Request ;\n    rf:source <urn:regesta:record:220529> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich sagt Bischof G(erhard) von Bologna\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g11> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k9"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:220529:request-escort",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-escort",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 44,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:request-escort rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k10"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof G(erhard) von Bologna",
+      "text": "Bischof G(erhard) von Bologna in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:220529:request-escort",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-escort",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 44,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:request-escort rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ; rf:nameInSource \"Bischof G(erhard) von Bologna\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000351"
+      ],
+      "key": "k11"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Rainald von Dassel",
+      "text": "Rainald von Dassel in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:220529:request-escort",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-escort",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 44,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:request-escort rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000076> ; rf:nameInSource \"Rainald von Dassel\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000076"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "evidence",
+      "phrase": "",
+      "text": "weiterer Beleg",
+      "triple": [
+       "urn:regesta:220529:request-escort",
+       "https://example.org/regesta/factoid/evidence",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "request-escort-2",
+      "own": true,
+      "evidence": {
+       "start": 71,
+       "end": 230,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:220529:> .\nx:request-escort rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"bittet ihn, seinen Kanzler (Rainald von Dassel), der in Reichsangelegenheiten an die Kurie reist, ehrwürdig zu empfangen und ihm bis Faenza das Geleit zu geben\" ] .",
+      "key": "k13"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k9",
+       "k13"
+      ],
+      "text": "Bitte"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k10",
+       "k13"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k11",
+       "k13"
+      ],
+      "text": "Bischof G(erhard) von Bologna"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k12",
+       "k13"
+      ],
+      "text": "Rainald von Dassel"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "assurance",
+    "start": 0,
+    "end": 66
+   },
+   {
+    "id": "earlier-request",
+    "start": 0,
+    "end": 66
+   },
+   {
+    "id": "request-escort",
+    "start": 0,
+    "end": 44
+   },
+   {
+    "id": "t1",
+    "start": 49,
+    "end": 57
+   },
+   {
+    "id": "request-escort-2",
+    "start": 71,
+    "end": 230
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The earlier request is attested only by the participle 'erbetene'; both factoids share one evidence passage and the earlier request carries no own wording of the request.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The request to receive the chancellor (Rainald von Dassel) and escort him to Faenza is travel and escort and was left out as out of scope.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Added actor urn:regesta:actor:RI004-002-R000076 (crm:E21_Person, label \"Rainald von Dassel\").",
+     "lang": "en"
+    },
+    {
+     "text": "Added rf:ActFactoid urn:regesta:220529:request-escort (rv:Request) with the two adjudicated evidence selectors and references Friedrich rv:Petitioner, Bischof G(erhard) von Bologna rv:Addressee, Rainald von Dassel rv:Beneficiary; producer correction-g11.",
+     "lang": "en"
+    },
+    {
+     "text": "The two existing factoids unchanged.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "omitted-passage",
+     "severity": "Fehler",
+     "subject": "220529",
+     "description": "Friedrich asks the bishop to receive his chancellor honourably and give him escort to Faenza. This is a request, an act type the contract defines, with the bishop as addressee and the chancellor as the person concerned; the chancellor's office is named in the same passage and the packet carries the matching candidate RI004-002-R000076. The travel to the Curia is out of scope, but the request itself is not travel and is half of the regest.",
+     "proposal": "Add an rf:ActFactoid of type rv:Request with rv:Petitioner Friedrich, rv:Addressee Bischof G(erhard) von Bologna (nameInSource \"ihn\") and rv:Beneficiary urn:regesta:actor:RI004-002-R000076 (nameInSource \"Rainald von Dassel\"), optionally an rv:OfficeHolding state for 'seinen Kanzler'. Do not assert that reception or escort took place.",
+     "quote": {
+      "start": 71,
+      "end": 230
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "Friedrich's request to the bishop to receive his chancellor and escort him to Faenza is omitted.",
+     "reason": "'und bittet ihn, seinen Kanzler (Rainald von Dassel), der in Reichsangelegenheiten an die Kurie reist, ehrwürdig zu empfangen und ihm bis Faenza das Geleit zu geben' is half of the regest. The request is an act of type rv:Request with an addressee, not travel or military movement; only the chancellor's journey is out of scope. The packet candidate RI004-002-R000076 'Rainald ... von Dassel ... Kanzler der Reichskanzlei' matches by name and title. The extractor's batch report shows the passage was dropped as travel, which misreads the scope rule.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Fiktives Schreiben (Antwort auf das Schreiben im vorigen Regest: N.IV – †741a), dessen Verfasser freilich gut über die Geschehnisse der Epoche informiert war. Zur zeitlichen Einordnung vgl. den Kommentar zum vorigen Regest (N.IV – †741a). Unklar bleiben in jedem Fall die Angaben über die Reise des Kanzlers, da die bekannte Legation vom Mai 1158 nicht direkt an die Kurie ging (vgl. Reg. I/546) und auch der Hinweis, dass der Weg von Bologna nach Rom nicht über Faenza, sondern über Florenz führte (Hartmann, ebda., 345 Anm. 11) nicht unbedingt zutreffend ist (Friedrich zog 1167 selbst entlang der Adriaküste nach dem Süden!)."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Briefe des Magisters Guido (Savignano sul Rubicone. Biblioteca dell’Accademia dei Filopatridi, MS. 45S [Zweite Sammlung], fol. 142r.) Reg.: "
+    },
+    {
+     "t": "Hartmann, Ars dictaminis",
+     "href": "http://opac.regesta-imperii.de/id/1854872"
+    },
+    {
+     "t": ", 345 Nr. 26."
+    }
+   ],
+   "links": []
+  },
+  "register": [
+   [
+    "RI004-002-B001063",
+    "Bologna (an der Via Emilia, ital. Prov.-Hptst.)"
+   ],
+   [
+    "RI004-002-F000009",
+    "Faenza (an der Via Emilia, ital. Prov. Ravenna)"
+   ],
+   [
+    "RI004-002-F000209",
+    "Florenz (am Arno)"
+   ],
+   [
+    "RI004-002-G000351",
+    "Bischof von Bologna"
+   ],
+   [
+    "RI004-002-R000076",
+    "von Dassel, Elekt und Erzbischof von Köln und Erzkanzler für Italien, vorher Dompropst von Hildesheim und Kanzler der Reichskanzlei"
+   ]
+  ]
+ }
+}

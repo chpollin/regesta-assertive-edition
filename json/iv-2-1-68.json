@@ -1,0 +1,1411 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-10_1_0_4_2_1_68_68",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22695",
+  "identifier": "RI IV,2,1 n. 68",
+  "short": "RI IV,2,1 n. 68",
+  "sort": "004_002_001_000068_0000000068",
+  "start": "1152-03-10",
+  "end": "1152-03-10",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt dem Kloster S. Remi zu Reims (cenobii sancti Remigii confessoris et Francorum apostoli, quod est in regno Francorum Remis) auf Bitten von dessen Abt Hugo, der am zweiten Tag nach seiner Krönung in der Aachener Pfalz vor ihm erschienen ist, alle in seinem Reich gelegenen Besitzungen, besonders das zu Meerssen gehörige Gut Leuth (Littam, que ad Marsnam pertinet), das Herzog Gottfried von Löwen erst nach Ermahnung durch König Konrad (III.) zurückgestellt hat, trifft eingehende Bestimmungen über die Vogtei, verbietet zusätzlich die Einsetzung von Untervögten und verordnet, daß die Meerssener Pfründen nach dem Tod ihrer Inhaber ohne Einspruch zur weiteren Verfügung der Mönche stehen sollen.",
+  "date": [
+   {
+    "t": "1152 März 10"
+   }
+  ],
+  "place": [
+   {
+    "t": "Aachen (in palatio Aquisgrani)"
+   }
+  ],
+  "text": "Friedrich bestätigt dem Kloster S. Remi zu Reims (cenobii sancti Remigii confessoris et Francorum apostoli, quod est in regno Francorum Remis) auf Bitten von dessen Abt Hugo, der am zweiten Tag nach seiner Krönung in der Aachener Pfalz vor ihm erschienen ist, alle in seinem Reich gelegenen Besitzungen, besonders das zu Meerssen gehörige Gut Leuth (Littam, que ad Marsnam pertinet), das Herzog Gottfried von Löwen erst nach Ermahnung durch König Konrad (III.) zurückgestellt hat, trifft eingehende Bestimmungen über die Vogtei, verbietet zusätzlich die Einsetzung von Untervögten und verordnet, daß die Meerssener Pfründen nach dem Tod ihrer Inhaber ohne Einspruch zur weiteren Verfügung der Mönche stehen sollen. Z.: die Erzbischöfe Arnold von Köln, Hillin von Trier, die Bischöfe Heinrich von Lüttich, Friedrich von Münster, Otto von Freising, Ortlieb (Orthleuus) von Basel, Hermann (irrig: Heinricus) von Konstanz, Markgraf Albrecht von Brandenburg, die Herzoge Heinrich von Sachsen, Matthäus von Oberlothringen, Gottfried von Löwen, die Grafen Heinrich von Namur, Heinrich von Limburg (Lemburch) und sein Bruder Gerard, Konrad von Dalhem. - Arnoldvs canc. vice Heinrici Moguntini archiep. et archicanc. ; VUU.: DD. K. III. 6 und 140; verfaßt und möglicherweise auch geschrieben von Wibald. Si venerabilium ac religiosorum .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 6,
+  "blocks": [
+   {
+    "node": "urn:regesta:22695:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22695:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 302,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster S. Remi zu Reims (cenobii sancti Remigii confessoris et Francorum apostoli, quod est in regno Francorum Remis) auf Bitten von dessen Abt Hugo, der am zweiten Tag nach seiner Krönung in der Aachener Pfalz vor ihm erschienen ist, alle in seinem Reich gelegenen Besitzungen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22695:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster S. Remi zu Reims",
+      "text": "Kloster S. Remi zu Reims in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22695:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ; rf:nameInSource \"Kloster S. Remi zu Reims\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000431:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Abt Hugo",
+      "text": "Abt Hugo in der Rolle Bittsteller",
+      "triple": [
+       "urn:regesta:22695:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:nameInSource \"Abt Hugo\" ; rf:role rv:Petitioner ] .",
+      "role": "Bittsteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H001291"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "alle in seinem Reich gelegenen Besitzungen",
+      "text": "betrifft alle in seinem Reich gelegenen Besitzungen",
+      "triple": [
+       "urn:regesta:22695:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22695:possessions"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 302,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation rf:concerns x:possessions .\nx:possessions a crm:E18_Physical_Thing ;\n    rdfs:label \"alle in seinem Reich gelegenen Besitzungen\" .",
+      "object": "urn:regesta:22695:possessions",
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Kloster S. Remi zu Reims"
+     },
+     ", als Bittsteller ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Abt Hugo"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "alle in seinem Reich gelegenen Besitzungen"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22695:confirmation-leuth",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22695:confirmation-leuth",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation-leuth",
+     "own": true,
+     "evidence": {
+      "start": 304,
+      "end": 382,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation-leuth a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"besonders das zu Meerssen gehörige Gut Leuth (Littam, que ad Marsnam pertinet)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k6"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22695:confirmation-leuth",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-leuth",
+      "own": true,
+      "evidence": {
+       "start": 304,
+       "end": 382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation-leuth rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Kloster S. Remi zu Reims",
+      "text": "Kloster S. Remi zu Reims in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22695:confirmation-leuth",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-leuth",
+      "own": true,
+      "evidence": {
+       "start": 304,
+       "end": 382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation-leuth rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ; rf:nameInSource \"Kloster S. Remi zu Reims\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-R000431:community"
+      ],
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das zu Meerssen gehörige Gut Leuth",
+      "text": "betrifft das zu Meerssen gehörige Gut Leuth",
+      "triple": [
+       "urn:regesta:22695:confirmation-leuth",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22695:leuth"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-leuth",
+      "own": true,
+      "evidence": {
+       "start": 304,
+       "end": 382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation-leuth rf:concerns x:leuth .\nx:leuth a crm:E18_Physical_Thing ;\n    rdfs:label \"das zu Meerssen gehörige Gut Leuth\" .",
+      "object": "urn:regesta:22695:leuth",
+      "key": "k9"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22695:confirmation-leuth",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22695:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation-leuth",
+      "own": true,
+      "evidence": {
+       "start": 304,
+       "end": 382,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:confirmation-leuth rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:concerns x:possessions ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster S. Remi zu Reims (cenobii sancti Remigii confessoris et Francorum apostoli, quod est in regno Francorum Remis) auf Bitten von dessen Abt Hugo, der am zweiten Tag nach seiner Krönung in der Aachener Pfalz vor ihm erschienen ist, alle in seinem Reich gelegenen Besitzungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:nameInSource \"Abt Hugo\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ; rf:nameInSource \"Kloster S. Remi zu Reims\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22695:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Kloster S. Remi zu Reims"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "das zu Meerssen gehörige Gut Leuth"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k10"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22695:restitution-leuth",
+    "kind": "act",
+    "title": "Rückgabe",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Rückgabe",
+     "text": "Rückgabe",
+     "triple": [
+      "urn:regesta:22695:restitution-leuth",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Restitution"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "restitution-leuth",
+     "own": true,
+     "evidence": {
+      "start": 339,
+      "end": 479,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22695:> .\nx:restitution-leuth a rf:ActFactoid ;\n    rf:factoidType rv:Restitution ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Gut Leuth (Littam, que ad Marsnam pertinet), das Herzog Gottfried von Löwen erst nach Ermahnung durch König Konrad (III.) zurückgestellt hat\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Gottfried von Löwen",
+      "text": "Herzog Gottfried von Löwen in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22695:restitution-leuth",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-leuth",
+      "own": true,
+      "evidence": {
+       "start": 339,
+       "end": 479,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:restitution-leuth rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000822> ; rf:nameInSource \"Herzog Gottfried von Löwen\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-G000822"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad (III.)",
+      "text": "König Konrad (III.) in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22695:restitution-leuth",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-leuth",
+      "own": true,
+      "evidence": {
+       "start": 339,
+       "end": 479,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:restitution-leuth rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrad (III.)\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "das zu Meerssen gehörige Gut Leuth",
+      "text": "betrifft das zu Meerssen gehörige Gut Leuth",
+      "triple": [
+       "urn:regesta:22695:restitution-leuth",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22695:leuth"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "restitution-leuth",
+      "own": true,
+      "evidence": {
+       "start": 339,
+       "end": 479,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:restitution-leuth rf:concerns x:leuth .\nx:leuth a crm:E18_Physical_Thing ;\n    rdfs:label \"das zu Meerssen gehörige Gut Leuth\" .",
+      "object": "urn:regesta:22695:leuth",
+      "key": "k14"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erst nach Ermahnung durch König Konrad (III.)",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22695:restitution-leuth",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 415,
+       "end": 460,
+       "ambiguous": false
+      },
+      "key": "k15"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Rückgabe"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "Herzog Gottfried von Löwen"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "König Konrad (III.)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "das zu Meerssen gehörige Gut Leuth"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22695:enactment-vogtei",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22695:enactment-vogtei",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "enactment-vogtei",
+     "own": true,
+     "evidence": {
+      "start": 481,
+      "end": 527,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22695:> .\nx:enactment-vogtei a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"trifft eingehende Bestimmungen über die Vogtei\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k16"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22695:enactment-vogtei",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-vogtei",
+      "own": true,
+      "evidence": {
+       "start": 481,
+       "end": 527,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:enactment-vogtei rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k17"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (die Vogtei)",
+      "text": "betrifft Vogtei (die Vogtei)",
+      "triple": [
+       "urn:regesta:22695:enactment-vogtei",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22695:right-vogtei"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-vogtei",
+      "own": true,
+      "evidence": {
+       "start": 481,
+       "end": 527,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:enactment-vogtei rf:concerns x:right-vogtei .\nx:right-vogtei a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"die Vogtei\" .",
+      "object": "urn:regesta:22695:right-vogtei",
+      "key": "k18"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22695:enactment-vogtei",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22695:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "enactment-vogtei",
+      "own": true,
+      "evidence": {
+       "start": 481,
+       "end": 527,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:enactment-vogtei rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:concerns x:possessions ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster S. Remi zu Reims (cenobii sancti Remigii confessoris et Francorum apostoli, quod est in regno Francorum Remis) auf Bitten von dessen Abt Hugo, der am zweiten Tag nach seiner Krönung in der Aachener Pfalz vor ihm erschienen ist, alle in seinem Reich gelegenen Besitzungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:nameInSource \"Abt Hugo\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ; rf:nameInSource \"Kloster S. Remi zu Reims\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22695:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k19"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k16"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k17"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Vogtei (die Vogtei)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22695:prohibition-untervoegte",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22695:prohibition-untervoegte",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "prohibition-untervoegte",
+     "own": true,
+     "evidence": {
+      "start": 529,
+      "end": 580,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22695:> .\nx:prohibition-untervoegte a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"verbietet zusätzlich die Einsetzung von Untervögten\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k20"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22695:prohibition-untervoegte",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-untervoegte",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 580,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:prohibition-untervoegte rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k21"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Vogtei (Einsetzung von Untervögten)",
+      "text": "betrifft Vogtei (Einsetzung von Untervögten)",
+      "triple": [
+       "urn:regesta:22695:prohibition-untervoegte",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22695:right-untervoegte"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-untervoegte",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 580,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:prohibition-untervoegte rf:concerns x:right-untervoegte .\nx:right-untervoegte a crm:E30_Right ;\n    crm:P2_has_type rv:Advocacy ;\n    rdfs:label \"Einsetzung von Untervögten\" .",
+      "object": "urn:regesta:22695:right-untervoegte",
+      "key": "k22"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22695:prohibition-untervoegte",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22695:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "prohibition-untervoegte",
+      "own": true,
+      "evidence": {
+       "start": 529,
+       "end": 580,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:prohibition-untervoegte rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:concerns x:possessions ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster S. Remi zu Reims (cenobii sancti Remigii confessoris et Francorum apostoli, quod est in regno Francorum Remis) auf Bitten von dessen Abt Hugo, der am zweiten Tag nach seiner Krönung in der Aachener Pfalz vor ihm erschienen ist, alle in seinem Reich gelegenen Besitzungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:nameInSource \"Abt Hugo\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ; rf:nameInSource \"Kloster S. Remi zu Reims\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22695:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k23"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "verbietet",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22695:prohibition-untervoegte",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 529,
+       "end": 538,
+       "ambiguous": false
+      },
+      "key": "k24"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "Friedrich"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k22"
+      ],
+      "text": "Vogtei (Einsetzung von Untervögten)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k23"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22695:provision-pfruenden",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22695:provision-pfruenden",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "provision-pfruenden",
+     "own": true,
+     "evidence": {
+      "start": 585,
+      "end": 713,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22695:> .\nx:provision-pfruenden a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"verordnet, daß die Meerssener Pfründen nach dem Tod ihrer Inhaber ohne Einspruch zur weiteren Verfügung der Mönche stehen sollen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k25"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22695:provision-pfruenden",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-pfruenden",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 713,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:provision-pfruenden rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k26"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "der Mönche",
+      "text": "der Mönche in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22695:provision-pfruenden",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-pfruenden",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 713,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:provision-pfruenden rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22695:local:moenche> ; rf:nameInSource \"der Mönche\" ; rf:role rv:Beneficiary ] .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:22695:local:moenche"
+      ],
+      "key": "k27"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Rechte an Kirchen und Ämtern (die Meerssener Pfründen)",
+      "text": "betrifft Rechte an Kirchen und Ämtern (die Meerssener Pfründen)",
+      "triple": [
+       "urn:regesta:22695:provision-pfruenden",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22695:right-pfruenden"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-pfruenden",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 713,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:provision-pfruenden rf:concerns x:right-pfruenden .\nx:right-pfruenden a crm:E30_Right ;\n    crm:P2_has_type rv:ChurchRights ;\n    rdfs:label \"die Meerssener Pfründen\" .",
+      "object": "urn:regesta:22695:right-pfruenden",
+      "key": "k28"
+     },
+     {
+      "kind": "line",
+      "rel": "partOf",
+      "phrase": "Bestätigung",
+      "text": "Teil von Bestätigung",
+      "triple": [
+       "urn:regesta:22695:provision-pfruenden",
+       "https://example.org/regesta/factoid/partOf",
+       "urn:regesta:22695:confirmation"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "provision-pfruenden",
+      "own": true,
+      "evidence": {
+       "start": 585,
+       "end": 713,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22695:> .\nx:provision-pfruenden rf:partOf x:confirmation .\nx:confirmation a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;\n    rf:concerns x:possessions ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt dem Kloster S. Remi zu Reims (cenobii sancti Remigii confessoris et Francorum apostoli, quod est in regno Francorum Remis) auf Bitten von dessen Abt Hugo, der am zweiten Tag nach seiner Krönung in der Aachener Pfalz vor ihm erschienen ist, alle in seinem Reich gelegenen Besitzungen\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:nameInSource \"Abt Hugo\" ; rf:role rv:Petitioner ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ; rf:nameInSource \"Kloster S. Remi zu Reims\" ; rf:role rv:Recipient ] ;\n    rf:source <urn:regesta:record:22695> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22695:confirmation",
+      "objectClaim": "confirmation",
+      "key": "k29"
+     },
+     {
+      "kind": "literal",
+      "label": "Bedingung",
+      "text": "nach dem Tod ihrer Inhaber",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22695:provision-pfruenden",
+       "https://example.org/regesta/factoid/condition",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 624,
+       "end": 650,
+       "ambiguous": false
+      },
+      "key": "k30"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "ohne Einspruch",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22695:provision-pfruenden",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 651,
+       "end": 665,
+       "ambiguous": false
+      },
+      "key": "k31"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k25"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k26"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k27"
+      ],
+      "text": "der Mönche"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k28"
+      ],
+      "text": "Rechte an Kirchen und Ämtern (die Meerssener Pfründen)"
+     },
+     ", Teil von ",
+     {
+      "keys": [
+       "k29"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 302
+   },
+   {
+    "id": "confirmation-leuth",
+    "start": 304,
+    "end": 382
+   },
+   {
+    "id": "restitution-leuth",
+    "start": 339,
+    "end": 479
+   },
+   {
+    "id": "t1",
+    "start": 415,
+    "end": 460
+   },
+   {
+    "id": "enactment-vogtei",
+    "start": 481,
+    "end": 527
+   },
+   {
+    "id": "prohibition-untervoegte",
+    "start": 529,
+    "end": 580
+   },
+   {
+    "id": "t2",
+    "start": 529,
+    "end": 538
+   },
+   {
+    "id": "provision-pfruenden",
+    "start": 585,
+    "end": 713
+   },
+   {
+    "id": "t3",
+    "start": 624,
+    "end": 650
+   },
+   {
+    "id": "t4",
+    "start": 651,
+    "end": 665
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "'der Mönche' kept as a local group, not merged with the monastery community RI004-002-R000431:community",
+     "lang": "en"
+    },
+    {
+     "text": "The register candidate RI004-002-R000431 is typed 'ort'; it is used as a community IRI for the monastery as recipient",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the admonishing party in the earlier restitution ('nach Ermahnung durch König Konrad (III.)'); Konrad is recorded as rv:Participant and the wording kept as rf:qualifier",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The recipient of the earlier restitution of Leuth is not named in the passage and is left out",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Kinship 'Heinrich von Limburg (Lemburch) und sein Bruder Gerard' stands only in the witness list (Z.:) and was skipped per the guidelines",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Meerssen benefices typed with the top concept rv:ChurchRights because no benefice (Pfründe) right type exists",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the party returning a possession in a restitution or for the admonishing ruler.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22695:restitution-leuth",
+     "description": "Duke Gottfried is given rv:Grantor for returning the estate and Konrad III rv:Participant for the admonition; the vocabulary has no restitutor or admonisher role, and the recipient of the restitution is only implicit.",
+     "proposal": "None required; consider an rv:Request factoid for the admonition by Konrad with Gottfried as rv:Addressee.",
+     "quote": {
+      "start": 384,
+      "end": 479
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Consider an rv:Request for Konrad's admonition with Gottfried as Addressee.",
+     "reason": "The admonition is kept in exact wording as rf:qualifier 'erst nach Ermahnung durch König Konrad (III.)'; the reviewer requires no change, and an admonition is not a request in the vocabulary's sense.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die Datierung dieses Diploms ergibt sich aus der Narratio, in der es heißt, daß Abt Hugo von S. Remi den König "
+    },
+    {
+     "t": "in palatio Aquisgrani secunda die, postquam unctionem sacram in Romanorum regem accepimus",
+     "i": true
+    },
+    {
+     "t": " aufgesucht habe; dazu vgl. schon Simonsfeld, Jahrbücher 46 Anm. 115. - Vgl. dazu auch DF. I. 8 (Reg. "
+    },
+    {
+     "t": "81",
+     "regest": "22708"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Cartulaire B von S. Remi Anf. 13. Jh. p. 104, Departementalarchiv Reims (B); drei Abschriften des 18. Jh. eines Transsumptes Herzog Antons von Lothringen von 1412 April 6: bei Charter n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 14 (E"
+    },
+    {
+     "t": "1",
+     "sup": true
+    },
+    {
+     "t": "), Cart. 17380 p. 1 (E"
+    },
+    {
+     "t": "2",
+     "sup": true
+    },
+    {
+     "t": ") und Cart. 17387 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 7 (E"
+    },
+    {
+     "t": "3",
+     "sup": true
+    },
+    {
+     "t": "), Reichsarchiv Maastricht. Drucke: MG. DF. I. 2. Reg.: Wauters, Table chronol. 2, 357; Stumpf 3617."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=26"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_2"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000009",
+    "(auch Stadt)"
+   ],
+   [
+    "RI004-002-A000018",
+    "Pfalz"
+   ],
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-F000657",
+    "Bischof von Münster"
+   ],
+   [
+    "RI004-002-G000381",
+    "Bruder des Grafen Heinrich von Limburg"
+   ],
+   [
+    "RI004-002-G000822",
+    "Herzog von Brabant, (Nieder)Lothringen und Löwen"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000392",
+    "II., Bischof von Lüttich"
+   ],
+   [
+    "RI004-002-H000470",
+    "der Löwe, Herzog von Bayern und Sachsen, Cousin Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-H000539",
+    "Graf von Limburg"
+   ],
+   [
+    "RI004-002-H000540",
+    "(IV., der Blinde), Graf von Luxemburg-Namur"
+   ],
+   [
+    "RI004-002-H000817",
+    "(I., von Arbon), Bischof von Konstanz"
+   ],
+   [
+    "RI004-002-H001017",
+    "Hillin, Erzbischof von Trier"
+   ],
+   [
+    "RI004-002-H001291",
+    "Abt von S. Remi zu Reims"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-K000445",
+    "von Dalhem"
+   ],
+   [
+    "RI004-002-L000416",
+    "Leuth (<i>bei Meerssen, nordöstl. bei Maastricht, niederländ. Prov. Limburg, wo?</i>)"
+   ],
+   [
+    "RI004-002-M000670",
+    "Herzog von (Ober-)Lothringen"
+   ],
+   [
+    "RI004-002-M000740",
+    "Meerssen (nordöstl. bei Maastricht, niederländ. Prov. Limburg)"
+   ],
+   [
+    "RI004-002-O000272",
+    "Bischof von Basel"
+   ],
+   [
+    "RI004-002-O000405",
+    "(I.), Bischof von Freising"
+   ],
+   [
+    "RI004-002-R000431",
+    "(Benediktiner- bzw. Cluniazenser-)Abtei S. Remi"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}

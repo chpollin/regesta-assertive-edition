@@ -1,0 +1,220 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1143-09-04_1_0_4_2_1_11_11",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22638",
+  "identifier": "RI IV,2,1 n. 11",
+  "short": "RI IV,2,1 n. 11",
+  "sort": "004_002_001_000011_0000000011",
+  "start": "1143-09-04",
+  "end": "1143-09-04",
+  "proseYears": [],
+  "lead": "Friedrich wird neben seinem Vater, Herzog Friedrich (II. von Schwaben), als Zeuge in dem vielleicht verunechteten DK. III. 95 für das Stift Ursberg genannt.",
+  "date": [
+   {
+    "t": "1143 September 4"
+   }
+  ],
+  "place": [
+   {
+    "t": "Ulm"
+   }
+  ],
+  "text": "Friedrich wird neben seinem Vater, Herzog Friedrich (II. von Schwaben), als Zeuge in dem vielleicht verunechteten DK. III. 95 für das Stift Ursberg genannt.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22638:parenthood-vater",
+    "kind": "state",
+    "title": "Elternschaft",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Elternschaft",
+     "text": "Elternschaft",
+     "triple": [
+      "urn:regesta:22638:parenthood-vater",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Parenthood"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "parenthood-vater",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 70,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22638:> .\nx:parenthood-vater a rf:StateFactoid ;\n    rf:factoidType rv:Parenthood ;\n    rf:source <urn:regesta:record:22638> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich wird neben seinem Vater, Herzog Friedrich (II. von Schwaben)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-3> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Kind",
+      "triple": [
+       "urn:regesta:22638:parenthood-vater",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22638:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-vater",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 70,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22638:> .\nx:parenthood-vater rf:reference x:ref-friedrich .\nx:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Child .",
+      "role": "Kind",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Herzog Friedrich (II. von Schwaben)",
+      "text": "Herzog Friedrich (II. von Schwaben) in der Rolle Elternteil",
+      "triple": [
+       "urn:regesta:22638:parenthood-vater",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22638:ref-vater"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "parenthood-vater",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 70,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22638:> .\nx:parenthood-vater rf:reference x:ref-vater .\nx:ref-vater a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000681> ;\n    rf:nameInSource \"Herzog Friedrich (II. von Schwaben)\" ;\n    rf:role rv:Parent .",
+      "role": "Elternteil",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000681"
+      ],
+      "key": "k3"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Elternschaft"
+     },
+     ", als Kind ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Elternteil ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Herzog Friedrich (II. von Schwaben)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "parenthood-vater",
+    "start": 0,
+    "end": 70
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "Being named as witness in a charter (DK. III. 95 for Stift Ursberg) is a formulaic witness-list mention; rv:Witness excludes it and the model has no type for attestation in another document, so it was not extracted. The charter's content for Ursberg is not stated and was not extracted.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "The qualification 'vielleicht verunechteten' of DK. III. 95 has no carrier in the model.",
+     "lang": "en",
+     "stage": "Extraktion"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Das vorliegende Zeugnis für die Anwesenheit Friedrichs bei Hofe wird gerne als Argument gegen eine Beteiligung des Staufers an den Unternehmungen seines Oheims, Herzog Welfs, vom Frühjahr 1143 (s. voriges Reg.) gebraucht. Da es sich aber um ein zweifelhaftes Stück handelt und außerdem seit dem Frühjahr schon fast ein halbes Jahr vergangen war, läßt sich diese Argumentation kaum aufrechterhalten."
+    }
+   ],
+   "transmission": [],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=16"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-F000681",
+    "(II.), Herzog von Schwaben, Vater Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ],
+   [
+    "RI004-002-U000315",
+    "Ursberg (südöstl. von und Ldkr. Günzburg, bayer. Reg.-Bez. Schwaben), Prämonstratenserstift"
+   ],
+   [
+    "RI004-002-W000272",
+    "(VI.), Herzog, Herzog von Spoleto, Markgraf von Tuszien, Fürst/Rektor von Sardinien, Herr des Mathildischen Erbes, von Ravensburg"
+   ]
+  ]
+ }
+}

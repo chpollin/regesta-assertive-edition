@@ -1,0 +1,944 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-03-00_5_0_4_2_1_75_75",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22702",
+  "identifier": "RI IV,2,1 n. 75",
+  "short": "RI IV,2,1 n. 75",
+  "sort": "004_002_001_000075_0000000075",
+  "start": "1152-03-01",
+  "end": "1152-03-31",
+  "proseYears": [],
+  "lead": "Vor Friedrich wird die bereits unter König Konrad III. abschlägig beschiedene Klage des Iwain von Gokesforde gegen das Kapitel von St. Johann zu Utrecht um den Hof zu Beusichem unter dem Vorsitz Bischof Hermanns von Utrecht erneut abgewiesen.",
+  "date": [
+   {
+    "t": "(1152 März)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Utrecht"
+   }
+  ],
+  "text": "Vor Friedrich wird die bereits unter König Konrad III. abschlägig beschiedene Klage des Iwain von Gokesforde gegen das Kapitel von St. Johann zu Utrecht um den Hof zu Beusichem unter dem Vorsitz Bischof Hermanns von Utrecht erneut abgewiesen.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 3,
+  "blocks": [
+   {
+    "node": "urn:regesta:22702:renewed-judgment",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22702:renewed-judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "renewed-judgment",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 241,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22702:> .\nx:renewed-judgment a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22702> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Vor Friedrich wird die bereits unter König Konrad III. abschlägig beschiedene Klage des Iwain von Gokesforde gegen das Kapitel von St. Johann zu Utrecht um den Hof zu Beusichem unter dem Vorsitz Bischof Hermanns von Utrecht erneut abgewiesen\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "renewed-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 241,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:renewed-judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Iwain von Gokesforde",
+      "text": "Iwain von Gokesforde in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "renewed-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 241,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:renewed-judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-I000267> ; rf:nameInSource \"Iwain von Gokesforde\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-I000267"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "das Kapitel von St. Johann zu Utrecht",
+      "text": "das Kapitel von St. Johann zu Utrecht in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "renewed-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 241,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:renewed-judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000334:community> ; rf:nameInSource \"das Kapitel von St. Johann zu Utrecht\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000334:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Hermanns von Utrecht",
+      "text": "Bischof Hermanns von Utrecht in der Rolle Richter",
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "renewed-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 241,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:renewed-judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000820> ; rf:nameInSource \"Bischof Hermanns von Utrecht\" ; rf:role rv:Judge ] .",
+      "role": "Richter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-H000820"
+      ],
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den Hof zu Beusichem",
+      "text": "betrifft den Hof zu Beusichem",
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22702:hof-beusichem"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "renewed-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 241,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:renewed-judgment rf:concerns x:hof-beusichem .\nx:hof-beusichem a crm:E18_Physical_Thing ;\n    rdfs:label \"den Hof zu Beusichem\" .",
+      "object": "urn:regesta:22702:hof-beusichem",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22702:claim"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "renewed-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 241,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:renewed-judgment rf:refersToAct x:claim .\nx:claim a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;\n    rf:concerns x:hof-beusichem ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Klage des Iwain von Gokesforde gegen das Kapitel von St. Johann zu Utrecht um den Hof zu Beusichem\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-I000267> ; rf:nameInSource \"Iwain von Gokesforde\" ; rf:role rv:Claimant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000334:community> ; rf:nameInSource \"das Kapitel von St. Johann zu Utrecht\" ; rf:role rv:Respondent ] ;\n    rf:source <urn:regesta:record:22702> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22702:claim",
+      "objectClaim": "claim",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Urteil",
+      "text": "bezieht sich auf Urteil",
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22702:earlier-judgment"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "renewed-judgment",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 241,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:renewed-judgment rf:refersToAct x:earlier-judgment .\nx:earlier-judgment a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:concerns x:hof-beusichem ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die bereits unter König Konrad III. abschlägig beschiedene Klage des Iwain von Gokesforde\" ] ;\n    rf:factoidType rv:Judgment ;\n    rf:qualifier \"abschlägig beschiedene\" , \"bereits\" ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22702:local:koenig-konrad-iii> ; rf:nameInSource \"König Konrad III.\" ; rf:role rv:Participant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-I000267> ; rf:nameInSource \"Iwain von Gokesforde\" ; rf:role rv:Claimant ] ;\n    rf:refersToAct x:claim ;\n    rf:source <urn:regesta:record:22702> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22702:earlier-judgment",
+      "objectClaim": "earlier-judgment",
+      "key": "k8"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "erneut abgewiesen",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 224,
+       "end": 241,
+       "ambiguous": false
+      },
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "unter dem Vorsitz",
+      "id": "t2",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22702:renewed-judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 177,
+       "end": 194,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Urteil"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Iwain von Gokesforde"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "das Kapitel von St. Johann zu Utrecht"
+     },
+     ", als Richter ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Bischof Hermanns von Utrecht"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "den Hof zu Beusichem"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Streit oder Klage"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Urteil"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22702:earlier-judgment",
+    "kind": "act",
+    "title": "Urteil",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Urteil",
+     "text": "Urteil",
+     "triple": [
+      "urn:regesta:22702:earlier-judgment",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Judgment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-judgment",
+     "own": true,
+     "evidence": {
+      "start": 19,
+      "end": 108,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22702:> .\nx:earlier-judgment a rf:ActFactoid ;\n    rf:factoidType rv:Judgment ;\n    rf:source <urn:regesta:record:22702> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die bereits unter König Konrad III. abschlägig beschiedene Klage des Iwain von Gokesforde\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrad III.",
+      "text": "König Konrad III. in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22702:earlier-judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-judgment",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:earlier-judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22702:local:koenig-konrad-iii> ; rf:nameInSource \"König Konrad III.\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:22702:local:koenig-konrad-iii"
+      ],
+      "key": "k12"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Iwain von Gokesforde",
+      "text": "Iwain von Gokesforde in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22702:earlier-judgment",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-judgment",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:earlier-judgment rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-I000267> ; rf:nameInSource \"Iwain von Gokesforde\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-I000267"
+      ],
+      "key": "k13"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den Hof zu Beusichem",
+      "text": "betrifft den Hof zu Beusichem",
+      "triple": [
+       "urn:regesta:22702:earlier-judgment",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22702:hof-beusichem"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-judgment",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:earlier-judgment rf:concerns x:hof-beusichem .\nx:hof-beusichem a crm:E18_Physical_Thing ;\n    rdfs:label \"den Hof zu Beusichem\" .",
+      "object": "urn:regesta:22702:hof-beusichem",
+      "key": "k14"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Streit oder Klage",
+      "text": "bezieht sich auf Streit oder Klage",
+      "triple": [
+       "urn:regesta:22702:earlier-judgment",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22702:claim"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-judgment",
+      "own": true,
+      "evidence": {
+       "start": 19,
+       "end": 108,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:earlier-judgment rf:refersToAct x:claim .\nx:claim a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;\n    rf:concerns x:hof-beusichem ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Klage des Iwain von Gokesforde gegen das Kapitel von St. Johann zu Utrecht um den Hof zu Beusichem\" ] ;\n    rf:factoidType rv:Dispute ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-I000267> ; rf:nameInSource \"Iwain von Gokesforde\" ; rf:role rv:Claimant ] , [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000334:community> ; rf:nameInSource \"das Kapitel von St. Johann zu Utrecht\" ; rf:role rv:Respondent ] ;\n    rf:source <urn:regesta:record:22702> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22702:claim",
+      "objectClaim": "claim",
+      "key": "k15"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "abschlägig beschiedene",
+      "id": "t3",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22702:earlier-judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 55,
+       "end": 77,
+       "ambiguous": false
+      },
+      "key": "k16"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "bereits",
+      "id": "t4",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22702:earlier-judgment",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 23,
+       "end": 30,
+       "ambiguous": false
+      },
+      "key": "k17"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Urteil"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "König Konrad III."
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k13"
+      ],
+      "text": "Iwain von Gokesforde"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k14"
+      ],
+      "text": "den Hof zu Beusichem"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k15"
+      ],
+      "text": "Streit oder Klage"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22702:claim",
+    "kind": "act",
+    "title": "Streit oder Klage",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Streit oder Klage",
+     "text": "Streit oder Klage",
+     "triple": [
+      "urn:regesta:22702:claim",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Dispute"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "claim",
+     "own": true,
+     "evidence": {
+      "start": 78,
+      "end": 176,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22702:> .\nx:claim a rf:ActFactoid ;\n    rf:factoidType rv:Dispute ;\n    rf:source <urn:regesta:record:22702> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Klage des Iwain von Gokesforde gegen das Kapitel von St. Johann zu Utrecht um den Hof zu Beusichem\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-18> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k18"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Iwain von Gokesforde",
+      "text": "Iwain von Gokesforde in der Rolle Kläger",
+      "triple": [
+       "urn:regesta:22702:claim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "claim",
+      "own": true,
+      "evidence": {
+       "start": 78,
+       "end": 176,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:claim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-I000267> ; rf:nameInSource \"Iwain von Gokesforde\" ; rf:role rv:Claimant ] .",
+      "role": "Kläger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-I000267"
+      ],
+      "key": "k19"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "das Kapitel von St. Johann zu Utrecht",
+      "text": "das Kapitel von St. Johann zu Utrecht in der Rolle Beklagter",
+      "triple": [
+       "urn:regesta:22702:claim",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "claim",
+      "own": true,
+      "evidence": {
+       "start": 78,
+       "end": 176,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:claim rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000334:community> ; rf:nameInSource \"das Kapitel von St. Johann zu Utrecht\" ; rf:role rv:Respondent ] .",
+      "role": "Beklagter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-U000334:community"
+      ],
+      "key": "k20"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "den Hof zu Beusichem",
+      "text": "betrifft den Hof zu Beusichem",
+      "triple": [
+       "urn:regesta:22702:claim",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22702:hof-beusichem"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "claim",
+      "own": true,
+      "evidence": {
+       "start": 78,
+       "end": 176,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22702:> .\nx:claim rf:concerns x:hof-beusichem .\nx:hof-beusichem a crm:E18_Physical_Thing ;\n    rdfs:label \"den Hof zu Beusichem\" .",
+      "object": "urn:regesta:22702:hof-beusichem",
+      "key": "k21"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k18"
+      ],
+      "text": "Streit oder Klage"
+     },
+     ", als Kläger ",
+     {
+      "keys": [
+       "k19"
+      ],
+      "text": "Iwain von Gokesforde"
+     },
+     ", als Beklagter ",
+     {
+      "keys": [
+       "k20"
+      ],
+      "text": "das Kapitel von St. Johann zu Utrecht"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k21"
+      ],
+      "text": "den Hof zu Beusichem"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "renewed-judgment",
+    "start": 0,
+    "end": 241
+   },
+   {
+    "id": "earlier-judgment",
+    "start": 19,
+    "end": 108
+   },
+   {
+    "id": "t4",
+    "start": 23,
+    "end": 30
+   },
+   {
+    "id": "t3",
+    "start": 55,
+    "end": 77
+   },
+   {
+    "id": "claim",
+    "start": 78,
+    "end": 176
+   },
+   {
+    "id": "t2",
+    "start": 177,
+    "end": 194
+   },
+   {
+    "id": "t1",
+    "start": 224,
+    "end": 241
+   }
+  ],
+  "notes": {
+   "unresolved": [
+    {
+     "text": "Role of Friedrich ('Vor Friedrich') and of König Konrad III. ('unter König Konrad III.') in the judgments is unclear between court lord and judge; both recorded as rv:Participant. Bischof Hermann recorded as rv:Judge because of 'unter dem Vorsitz'.",
+     "lang": "en"
+    },
+    {
+     "text": "Kapitel von St. Johann typed as community (E74_Group) although the register candidate is typed person.",
+     "lang": "en"
+    }
+   ],
+   "gaps": [
+    {
+     "text": "No role for the presiding lord of a court distinct from the judge.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the ruler in whose presence a court decides (Vor Friedrich) distinct from the presiding judge; rv:Participant is the fallback.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "urn:regesta:22702:earlier-judgment: rf:actor <urn:regesta:actor:RI004-002-K000316> replaced by <urn:regesta:actor:22702:local:koenig-konrad-iii>, role rv:Participant and nameInSource \"König Konrad III.\" kept; producer correction-g4.",
+     "lang": "en"
+    },
+    {
+     "text": "Declared <urn:regesta:actor:22702:local:koenig-konrad-iii> a crm:E21_Person with rdfs:label \"König Konrad III.\" and removed the node <urn:regesta:actor:RI004-002-K000316>. Resolves validation finding actor_outside_packet.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "identity-from-other-packet",
+     "severity": "Fehler",
+     "subject": "urn:regesta:22702:earlier-judgment",
+     "description": "König Konrad III. is identified as urn:regesta:actor:RI004-002-K000316, but this packet's identity_candidates contain no Konrad (they list B000861, G000786, H000820, I000267, U000329, U000334). The identification is carried over from another packet, which the guidelines forbid.",
+     "proposal": "Replace the actor with a regest-local IRI, e.g. urn:regesta:actor:22702:local:koenig-konrad-iii, typed crm:E21_Person with rdfs:label \"König Konrad III.\", and report the unresolved identity.",
+     "quote": {
+      "start": 19,
+      "end": 108
+     }
+    },
+    {
+     "category": "incomplete-roles",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22702:earlier-judgment",
+     "description": "The earlier rejection names the claimant but not the respondent, although the claim it decided is the same claim against the chapter. The link via rf:refersToAct to the claim factoid carries this indirectly.",
+     "proposal": "Optional: add the chapter as rv:Respondent to the earlier judgment.",
+     "quote": {
+      "start": 78,
+      "end": 176
+     }
+    },
+    {
+     "category": "role-choice",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22702:renewed-judgment",
+     "description": "Friedrich is rv:Participant (the court sits before him) and Bischof Hermann is rv:Judge (he presides). This follows the wording; the passive voice leaves open who pronounced the rejection, which the candidate does not overstate.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 177,
+      "end": 241
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "König Konrad III. is identified as RI004-002-K000316, which is not a candidate of this packet (validation: actor_outside_packet).",
+     "reason": "The candidates of packet 22702 are B000861, G000786, H000820, I000267, U000329 and U000334, none of them Konrad. The guidelines forbid carrying an identification over from another packet, so 'unter König Konrad III.' must name a regest-local actor.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add the chapter as rv:Respondent to the earlier judgment.",
+     "reason": "The earlier judgment is linked by rf:refersToAct to the claim, which carries the chapter as rv:Respondent; the contract does not require repeating it.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der Königstitel spricht für eine Einordnung dieser Nachricht vor 1155, die Angelegenheit weist auf einen Aufenthalt des Königs zu Utrecht hin, wie er uns in der Zeitspanne von 1152-1155 nur für den März 1152 bekannt ist (vgl. Reg. "
+    },
+    {
+     "t": "74",
+     "regest": "22701"
+    },
+    {
+     "t": ")."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erwähnt in der Urkunde des Bischofs Gottfried von Utrecht von 1176 (März 9-Juni 18), ed. Muller-Bouman, OB. Sticht Utrecht 1, 432 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 485: "
+    },
+    {
+     "t": "in conspectu regis Frederici, antequam imperatoris nomine gauderet, presidente Traiectensi ęcclesię Herimanno episcopo, eadem querimonia repullulavit, sed ea facilitate, qua mota est, consopita evanuit",
+     "i": true
+    },
+    {
+     "t": "."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=29"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-B000861",
+    "Beusichem (am Lek, südöstl. Utrecht, Niederlande)"
+   ],
+   [
+    "RI004-002-G000786",
+    "von Rhenen, Dompropst, dann Elekt und Bischof von Utrecht"
+   ],
+   [
+    "RI004-002-H000820",
+    "Bischof von Utrecht"
+   ],
+   [
+    "RI004-002-I000267",
+    "Iwain von <i>Gokesforde</i>"
+   ],
+   [
+    "RI004-002-U000329",
+    "Utrecht (niederländ. Prov.-Hptst.)"
+   ],
+   [
+    "RI004-002-U000334",
+    "Kapitel von St. Johann (<i>Kollegiatstift?</i>)"
+   ]
+  ]
+ }
+}

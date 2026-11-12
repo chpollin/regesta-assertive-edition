@@ -1,0 +1,748 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-04-00_2_0_4_2_1_80_80",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22707",
+  "identifier": "RI IV,2,1 n. 80",
+  "short": "RI IV,2,1 n. 80",
+  "sort": "004_002_001_000080_0000000080",
+  "start": "1152-04-01",
+  "end": "1152-04-30",
+  "proseYears": [],
+  "lead": "Friedrich bestätigt den Klöstern Liesborn (ecclesie sanctorum Cosme et Damiani in Lisborn) und St. Maria in Überwasser zu Münster (ecclesie sancte Marie in Monasterio) in Nachahmung König Konrads (III.) ihre im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien).",
+  "date": [
+   {
+    "t": "1152 (Ende April)"
+   }
+  ],
+  "place": [
+   {
+    "t": "Soest (Sosatie)"
+   }
+  ],
+  "text": "Friedrich bestätigt den Klöstern Liesborn (ecclesie sanctorum Cosme et Damiani in Lisborn) und St. Maria in Überwasser zu Münster (ecclesie sancte Marie in Monasterio) in Nachahmung König Konrads (III.) ihre im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien). Z.: (Erz)bischof Arnold II. von Köln, Propst Ulrich von Soest, Albert (Domdekan von Köln), Heinrich (Kanzleinotar); die Fürsten Markgraf Albrecht (der Bär), die Grafen Albert von Nörvenich (Ormenech) und Heinrich von Arnsberg; die Edelfreien Dietrich von Hachen, Ruthard von Rodenberg (Rathardus de Ruderberge), Vogt Walter von Soest, Ionatas von Volmarstein (Volmunstene), Philipp von Dortmund (Tremonia); die Ministerialen Vogt Hermann von Köln, Heinrich von Volmarstein, Adolf von Gürzenich, Amalrich von Wormersdorf (Vurmestorp), Thimo und Marsilius von Soest, Gottschalk von Paderborn. - Arnoldus canc. vice Heinrici Mogontini archiep. et archicapellani ; in Wiederholung des DK. III. 249 wahrscheinlich außerhalb der Kanzlei mundiert. Quotiens religiosorum virorum .",
+  "status": "extracted",
+  "technical": true,
+  "claims": 2,
+  "blocks": [
+   {
+    "node": "urn:regesta:22707:confirmation",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22707:confirmation",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "confirmation",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 319,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22707> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich bestätigt den Klöstern Liesborn (ecclesie sanctorum Cosme et Damiani in Lisborn) und St. Maria in Überwasser zu Münster (ecclesie sancte Marie in Monasterio) in Nachahmung König Konrads (III.) ihre im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"Friedrich\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Liesborn (ecclesie sanctorum Cosme et Damiani in Lisborn)",
+      "text": "Liesborn (ecclesie sanctorum Cosme et Damiani in Lisborn) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000452:community> ; rf:nameInSource \"Liesborn\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-L000452:community"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "St. Maria in Überwasser zu Münster (ecclesie sancte Marie in Monasterio)",
+      "text": "St. Maria in Überwasser zu Münster (ecclesie sancte Marie in Monasterio) in der Rolle Empfänger",
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M001332:community> ; rf:nameInSource \"St. Maria in Überwasser zu Münster\" ; rf:role rv:Recipient ] .",
+      "role": "Empfänger",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M001332:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien)",
+      "text": "betrifft im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien)",
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22707:goods-remagen"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation rf:concerns x:goods-remagen .\nx:goods-remagen a crm:E18_Physical_Thing ;\n    rdfs:label \"im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien)\" .",
+      "object": "urn:regesta:22707:goods-remagen",
+      "key": "k5"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Gimersheim",
+      "text": "betrifft Gimersheim",
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22707:place-gimersheim"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation rf:concerns x:place-gimersheim .\nx:place-gimersheim a crm:E53_Place ;\n    rdfs:label \"Gimersheim\" .",
+      "object": "urn:regesta:22707:place-gimersheim",
+      "key": "k6"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Green (Grien)",
+      "text": "betrifft Green (Grien)",
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22707:place-green"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation rf:concerns x:place-green .\nx:place-green a crm:E53_Place ;\n    rdfs:label \"Green (Grien)\" .",
+      "object": "urn:regesta:22707:place-green",
+      "key": "k7"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Lohrsdorf (Lorstorp)",
+      "text": "betrifft Lohrsdorf (Lorstorp)",
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22707:place-lohrsdorf"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation rf:concerns x:place-lohrsdorf .\nx:place-lohrsdorf a crm:E53_Place ;\n    rdfs:label \"Lohrsdorf (Lorstorp)\" .",
+      "object": "urn:regesta:22707:place-lohrsdorf",
+      "key": "k8"
+     },
+     {
+      "kind": "line",
+      "rel": "refersToAct",
+      "phrase": "Bestätigung",
+      "text": "bezieht sich auf Bestätigung",
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/refersToAct",
+       "urn:regesta:22707:earlier-act-konrad"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "confirmation",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 319,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:confirmation rf:refersToAct x:earlier-act-konrad .\nx:earlier-act-konrad a rf:ActFactoid ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"in Nachahmung König Konrads (III.)\" ] ;\n    rf:factoidType rv:Confirmation ;\n    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrads (III.)\" ; rf:role rv:Grantor ] ;\n    rf:source <urn:regesta:record:22707> ;\n    rf:verificationStatus rv:unchecked .",
+      "object": "urn:regesta:22707:earlier-act-konrad",
+      "objectClaim": "earlier-act-konrad",
+      "key": "k9"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "in Nachahmung",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22707:confirmation",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 168,
+       "end": 181,
+       "ambiguous": false
+      },
+      "key": "k10"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Empfänger ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Liesborn (ecclesie sanctorum Cosme et Damiani in Lisborn)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "St. Maria in Überwasser zu Münster (ecclesie sancte Marie in Monasterio)"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "im königlichen Gebiet um Remagen gelegenen Güter, nämlich in Lohrsdorf (Lorstorp), Gimersheim und Green (Grien)"
+     },
+     ", ",
+     {
+      "keys": [
+       "k6"
+      ],
+      "text": "Gimersheim"
+     },
+     ", ",
+     {
+      "keys": [
+       "k7"
+      ],
+      "text": "Green (Grien)"
+     },
+     " und ",
+     {
+      "keys": [
+       "k8"
+      ],
+      "text": "Lohrsdorf (Lorstorp)"
+     },
+     ", bezieht sich auf ",
+     {
+      "keys": [
+       "k9"
+      ],
+      "text": "Bestätigung"
+     },
+     "."
+    ]
+   },
+   {
+    "node": "urn:regesta:22707:earlier-act-konrad",
+    "kind": "act",
+    "title": "Bestätigung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestätigung",
+     "text": "Bestätigung",
+     "triple": [
+      "urn:regesta:22707:earlier-act-konrad",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Confirmation"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "earlier-act-konrad",
+     "own": true,
+     "evidence": {
+      "start": 168,
+      "end": 202,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22707:> .\nx:earlier-act-konrad a rf:ActFactoid ;\n    rf:factoidType rv:Confirmation ;\n    rf:source <urn:regesta:record:22707> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"in Nachahmung König Konrads (III.)\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k11"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Konrads (III.)",
+      "text": "König Konrads (III.) in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22707:earlier-act-konrad",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "earlier-act-konrad",
+      "own": true,
+      "evidence": {
+       "start": 168,
+       "end": 202,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22707:> .\nx:earlier-act-konrad rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:nameInSource \"König Konrads (III.)\" ; rf:role rv:Grantor ] .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-K000316"
+      ],
+      "key": "k12"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k11"
+      ],
+      "text": "Bestätigung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k12"
+      ],
+      "text": "König Konrads (III.)"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "confirmation",
+    "start": 0,
+    "end": 319
+   },
+   {
+    "id": "earlier-act-konrad",
+    "start": 168,
+    "end": 202
+   },
+   {
+    "id": "t1",
+    "start": 168,
+    "end": 181
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "'in Nachahmung König Konrads (III.)' implies an earlier act by Konrad III whose content and recipients the regest does not state; recorded as a bare earlier Confirmation with qualifier 'in Nachahmung', and whether imitation of a predecessor's charter is a confirmation of an earlier act is an open reading.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "'ihre ... Güter' not extracted as Possession, because the possessive stands only inside the confirmed object.",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No property for an act modelled on an earlier ruler's act (Nachahmung) without asserting what that earlier act was.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [
+    {
+     "text": "Moved rf:qualifier \"in Nachahmung\" from urn:regesta:22707:earlier-act-konrad to urn:regesta:22707:confirmation; both factoids' producer set to correction-g4.",
+     "lang": "en"
+    },
+    {
+     "text": "Earlier act's type rv:Confirmation, evidence and reference kept.",
+     "lang": "en"
+    }
+   ],
+   "status": "extracted",
+   "corrected": true
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "inferred-act",
+     "severity": "Hinweis",
+     "subject": "urn:regesta:22707:earlier-act-konrad",
+     "description": "The passage says only that Friedrich acts in imitation of König Konrad (III.). Typing Konrad's act as rv:Confirmation is a plausible reading but not stated; the regest does not say what Konrad did. The qualifier \"in Nachahmung\" describes the relation of Friedrich's act to Konrad's, not Konrad's act itself, so it sits on the wrong factoid.",
+     "proposal": "Move rf:qualifier \"in Nachahmung\" to urn:regesta:22707:confirmation; keep the earlier act but type it with the most general act type the contract allows (rv:Confirmation is acceptable only if a reviewer accepts the inference), and record the gap that the earlier act's content is unstated.",
+     "quote": {
+      "start": 168,
+      "end": 202
+     }
+    },
+    {
+     "category": "missing-claim",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22707:confirmation",
+     "description": "\"ihre ... Güter\" states that the goods belong to the monasteries. A rv:Possession state factoid could record this; the confirmation covers it implicitly.",
+     "proposal": "Optional: add a rv:Possession factoid with both monasteries as rv:Possessor.",
+     "quote": {
+      "start": 203,
+      "end": 256
+     }
+    }
+   ],
+   "decisions": [
+    {
+     "decision": "korrigiert",
+     "finding": "'in Nachahmung' describes Friedrich's act, not Konrad's, and sits on the wrong factoid; the earlier act's type is inferred.",
+     "reason": "In 'Friedrich bestätigt ... in Nachahmung König Konrads (III.) ihre ... Güter' the phrase qualifies Friedrich's confirmation. That Konrad's act was itself a confirmation is the natural reading of a confirmation made in imitation of him and stays, with the gap noted.",
+     "lang": "en"
+    },
+    {
+     "decision": "nicht erforderlich",
+     "finding": "Optionally add an rv:Possession factoid for 'ihre ... Güter'.",
+     "reason": "The possessive stands inside the confirmed object; the guidelines do not require a separate state factoid, and a confirmation establishes no possession by itself.",
+     "lang": "en"
+    }
+   ],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Die sehr wahrscheinliche Entstehung außerhalb der Kanzlei ergibt sich aus der Namensform "
+    },
+    {
+     "t": "Frethericus",
+     "i": true
+    },
+    {
+     "t": " und Kanzleiwidrigkeiten, wie etwa auch der Bezeichnung des Erzbischofs von Mainz in der Rekognition als "
+    },
+    {
+     "t": "archicapellanus",
+     "i": true
+    },
+    {
+     "t": ". - Die Einreihung des D. resultiert aus dem Itinerar des Königs. - Zu diesem Aufenthalt vgl. auch die Urkunde Erzbischof Arnolds von Köln für Siegburg von 1152, Soest (Knipping, Reg. Köln 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 533), ed. Wisplinghoff, Urkunden und Quellen von Siegburg 1, 130 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 58 sowie Jordan, Urk. Heinrichs des Löwen n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 19."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Kop.: Diplomatarium Liesbornense, angelegt 1777 von P. Placidus Chur, p. 14, Staatsarchiv Münster (D). Drucke: Wilmans-Philippi, Kaiserurk. d. Prov. Westfalen 2, 313 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 229; MG. DF. I. 7. Reg.: Erhard, Reg. Westf. 1777; Goerz, Mittelrhein. Reg. 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 5; Stumpf 3622."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=30"
+    },
+    {
+     "t": " | "
+    },
+    {
+     "t": "Druck in MGH DD",
+     "href": "http://www.mgh.de/dmgh/diplomata/resolving/D_F_I_7"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A000110",
+    "Propst von Aachen, zugleich Domdekan von Köln"
+   ],
+   [
+    "RI004-002-A000135",
+    "(der Bär), Markgraf von Brandenburg, von Sachsen, von Stade; <i>zu ihm siehe auch oben in der Einleitung, S. 31</i>"
+   ],
+   [
+    "RI004-002-A000154",
+    "Graf von Nörvenich"
+   ],
+   [
+    "RI004-002-A000382",
+    "von Gürzenich, Ministeriale"
+   ],
+   [
+    "RI004-002-A000461",
+    "von Wormersdorf, Kölner Ministeriale, Hintersasse"
+   ],
+   [
+    "RI004-002-A001202",
+    "(II., von Wied), Erzbischof von Köln, Erzkanzler für Italien, zuvor Dompropst von Köln"
+   ],
+   [
+    "RI004-002-A001203",
+    "(von Selenhofen), Erzbischof von Mainz, Erzkanzler für Deutschland, vorher Kanzler"
+   ],
+   [
+    "RI004-002-D000262",
+    "von Hachen"
+   ],
+   [
+    "RI004-002-G000589",
+    "Gimersheim (abgekommen, bei Lohrsdorf an der Ahr, <i>heute:</i> Teil von Bad Neuenahr-Ahrweiler, westl. Remagen, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-G000881",
+    "von Paderborn, Ministeriale"
+   ],
+   [
+    "RI004-002-G000969",
+    "Green (Teil von Bad Neuenahr-Ahrweiler, westl. Remagen, Ldkr. Ahrweiler, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-H000377",
+    "Erzbischof von Mainz, Erzkanzler für Deutschland"
+   ],
+   [
+    "RI004-002-H000404",
+    "Notar, dann Protonotar und zuletzt Kanzler der Reichskanzlei, Propst von St. Stephan in Mainz und Domkanoniker von Würzburg, Magister"
+   ],
+   [
+    "RI004-002-H000513",
+    "(der Ältere), Graf von Arnsberg"
+   ],
+   [
+    "RI004-002-H000679",
+    "von Volmarstein, Kölner Ministeriale, Hintersasse"
+   ],
+   [
+    "RI004-002-H000869",
+    "von Eppendorf, Vogt von Köln, Ministeriale"
+   ],
+   [
+    "RI004-002-J000234",
+    "von Volmarstein"
+   ],
+   [
+    "RI004-002-K000316",
+    "(III.), König, Onkel Friedrich Barbarossas"
+   ],
+   [
+    "RI004-002-L000452",
+    "Liesborn (Teil von Wadersloh, nordwestl. Lippstadt, Kr. Warendorf, Nordrh.-Westf.), (Benediktiner-)Kloster St. Cosmas und Damian"
+   ],
+   [
+    "RI004-002-L000595",
+    "Lohrsdorf (an der Ahr, Stadtteil von Bad Neuenahr-Ahrweiler, westsüdwestl. Remagen, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-M000556",
+    "von Soest, Ministeriale"
+   ],
+   [
+    "RI004-002-M001332",
+    "Kloster (recte: Kanonissenstift) St. Maria in Überwasser"
+   ],
+   [
+    "RI004-002-P000593",
+    "von Dortmund"
+   ],
+   [
+    "RI004-002-R000472",
+    "Remagen (am linken Rheinufer, Ldkr. Ahrweiler, Rheinl.-Pf.)"
+   ],
+   [
+    "RI004-002-R001293",
+    "von Rodenberg"
+   ],
+   [
+    "RI004-002-S000657",
+    "Siegburg (nordöstl. Bonn, Rhein-Sieg-Kr., Nordrh.-Westf.), (Benediktiner-)Abtei, Kloster"
+   ],
+   [
+    "RI004-002-S000885",
+    "Soest (Reg.-Bez. Arnsberg, Nordrh.-Westf.)"
+   ],
+   [
+    "RI004-002-T000214",
+    "von Soest, Ministeriale"
+   ],
+   [
+    "RI004-002-U000151",
+    "Propst von Soest"
+   ],
+   [
+    "RI004-002-W000160",
+    "Vogt von Soest"
+   ]
+  ]
+ }
+}

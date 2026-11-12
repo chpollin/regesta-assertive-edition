@@ -1,0 +1,344 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1152-07-00_1_0_4_2_1_118_D118",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22745",
+  "identifier": "RI IV,2,1 n. D118",
+  "short": "RI IV,2,1 n. D118",
+  "sort": "004_002_001_000118_000000D118",
+  "start": "1152-07-01",
+  "end": "1152-07-31",
+  "proseYears": [],
+  "lead": "Friedrich stellt dem Bischof Ardicio von Como eine Urkunde aus, die festlegt, daß die Grafschaft Chiavenna nicht ihm, sondern den Leuten von Chiavenna zusteht.",
+  "date": [
+   {
+    "t": "1152 Juli/August"
+   }
+  ],
+  "place": [
+   {
+    "t": "Ulm"
+   }
+  ],
+  "text": "Friedrich stellt dem Bischof Ardicio von Como eine Urkunde aus, die festlegt, daß die Grafschaft Chiavenna nicht ihm, sondern den Leuten von Chiavenna zusteht.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22745:county-determination",
+    "kind": "act",
+    "title": "Bestimmung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Bestimmung",
+     "text": "Bestimmung",
+     "triple": [
+      "urn:regesta:22745:county-determination",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Enactment"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "county-determination",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 158,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22745:> .\nx:county-determination a rf:ActFactoid ;\n    rf:factoidType rv:Enactment ;\n    rf:source <urn:regesta:record:22745> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich stellt dem Bischof Ardicio von Como eine Urkunde aus, die festlegt, daß die Grafschaft Chiavenna nicht ihm, sondern den Leuten von Chiavenna zusteht\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Friedrich",
+      "text": "Friedrich in der Rolle Aussteller",
+      "triple": [
+       "urn:regesta:22745:county-determination",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22745:county-determination:ref-friedrich"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "county-determination",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22745:> .\nx:county-determination rf:reference x:county-determination:ref-friedrich .\nx:county-determination:ref-friedrich a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-F000471> ;\n    rf:nameInSource \"Friedrich\" ;\n    rf:role rv:Grantor .",
+      "role": "Aussteller",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Bischof Ardicio von Como",
+      "text": "Bischof Ardicio von Como in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22745:county-determination",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22745:county-determination:ref-ardicio"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "county-determination",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22745:> .\nx:county-determination rf:reference x:county-determination:ref-ardicio .\nx:county-determination:ref-ardicio a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-A001103> ;\n    rf:nameInSource \"Bischof Ardicio von Como\" ;\n    rf:role rv:Addressee .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-A001103"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Leuten von Chiavenna",
+      "text": "Leuten von Chiavenna in der Rolle Begünstigter",
+      "triple": [
+       "urn:regesta:22745:county-determination",
+       "https://example.org/regesta/factoid/reference",
+       "urn:regesta:22745:county-determination:ref-leute"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "county-determination",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22745:> .\nx:county-determination rf:reference x:county-determination:ref-leute .\nx:county-determination:ref-leute a rf:Reference ;\n    rf:actor <urn:regesta:actor:RI004-002-C000614:community> ;\n    rf:nameInSource \"den Leuten von Chiavenna\" ;\n    rf:role rv:Beneficiary .",
+      "role": "Begünstigter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-C000614:community"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "line",
+      "rel": "concerns",
+      "phrase": "Grafschaft Chiavenna",
+      "text": "betrifft Grafschaft Chiavenna",
+      "triple": [
+       "urn:regesta:22745:county-determination",
+       "https://example.org/regesta/factoid/concerns",
+       "urn:regesta:22745:grafschaft-chiavenna"
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "county-determination",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 158,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22745:> .\nx:county-determination rf:concerns x:grafschaft-chiavenna .\nx:grafschaft-chiavenna a crm:E53_Place ;\n    rdfs:label \"Grafschaft Chiavenna\" .",
+      "object": "urn:regesta:22745:grafschaft-chiavenna",
+      "key": "k5"
+     },
+     {
+      "kind": "literal",
+      "label": "Wortlaut",
+      "text": "nicht ihm, sondern den Leuten von Chiavenna zusteht",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22745:county-determination",
+       "https://example.org/regesta/factoid/qualifier",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 107,
+       "end": 158,
+       "ambiguous": false
+      },
+      "key": "k6"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Bestimmung"
+     },
+     " durch ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "Friedrich"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Bischof Ardicio von Como"
+     },
+     ", als Begünstigter ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "Leuten von Chiavenna"
+     },
+     ", betrifft ",
+     {
+      "keys": [
+       "k5"
+      ],
+      "text": "Grafschaft Chiavenna"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "county-determination",
+    "start": 0,
+    "end": 158
+   },
+   {
+    "id": "t1",
+    "start": 107,
+    "end": 158
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "The charter's determination that the county belongs not to the bishop but to the people of Chiavenna is kept as one rv:Enactment with the bishop as Addressee and the people as Beneficiary; the model cannot express a denied right (not to the bishop) other than through the qualifier literal, and no right-holding state was asserted to avoid reading performance into the enactment",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No role for the party a provision decides against (Ardicio is addressee and losing claimant at once).",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "qualifier",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22745:county-determination",
+     "description": "The content of the determination (the county belongs not to Ardicio but to the people) is held in rf:qualifier; it is the substance of the provision rather than a qualification of type or time. Acceptable as exact wording.",
+     "proposal": "None required.",
+     "quote": {
+      "start": 107,
+      "end": 158
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Mit der hier gleichfalls genannten Urkunde für Chiavenna ist DF. I. 20 (Reg. "
+    },
+    {
+     "t": "117",
+     "regest": "22744"
+    },
+    {
+     "t": ") gemeint. Die zeitliche Einordnung des vorliegenden Deperditums ergibt auch sich aus der Erwähnung des Ulmer HT. Vgl. Simonsfeld, Jahrbücher 119."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Deperditum; erwähnt in DF. I. 54 (Reg. 173) für Bischof Ardicio von Como, in dem diesem die strittige Grafschaft gegen Chiavenna zugesprochen wird: "
+    },
+    {
+     "t": "Nos itaque unicuique sua iura conservare volentes utrique parti privilegia de suo iure tantum in ipsa causa concessimus",
+     "i": true
+    },
+    {
+     "t": ", ...; vgl. Stumpf 3638 a."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "http://regesta-imperii.digitale-sammlungen.de/seite/ri04-opl1980-0042"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-A001103",
+    "Bischof von Como"
+   ],
+   [
+    "RI004-002-C000614",
+    "Leute"
+   ],
+   [
+    "RI004-002-U000130",
+    "Ulm (an der Donau, Bad.-Württ.)"
+   ]
+  ]
+ }
+}

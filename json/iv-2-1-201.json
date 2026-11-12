@@ -1,0 +1,322 @@
+{
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "Die Regesten, Kommentare und Registereinträge zu Friedrich I. Barbarossa stammen aus den Regesta Imperii, Abteilung IV,2 (RI IV,2,1–4 und Register), herausgegeben von der Deutschen Kommission für die Bearbeitung der Regesta Imperii bei der Akademie der Wissenschaften und der Literatur Mainz, online in Regesta Imperii Online und als Daten im RI Lab. Sie stehen unter der Lizenz Creative Commons Namensnennung 4.0 International. Verwendet wurden ein CSV-Export der Regesten und die Registerdatei RI_004-002-Barbarossa.csv, deren Exportstand noch festzustellen ist. Die Edition hat die Daten verändert. Markup wurde in Klartext überführt, Regesten wurden ausgewählt und verknüpft, und aus dem Regesttext wurden mit einem Large Language Model (LLM) RDF-Aussagen erzeugt. Diese Aussagen, ihre Prüfstände und die Visualisierungen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. Die Akademie der Wissenschaften und der Literatur Mainz ist an der Edition nicht beteiligt und hat sie nicht geprüft. Jedes Regest verlinkt auf seine Einzelansicht in Regesta Imperii Online.",
+ "source": "https://www.regesta-imperii.de/id/1153-11-22_1_0_4_2_1_201_201",
+ "run": {
+  "id": "factoid-1153-2026-11-11",
+  "model": "claude-opus-5-5",
+  "scope": "summary_plain only; date_string for lexical context; register labels only for identity candidates",
+  "technical_pass": true,
+  "expert_accepted": false,
+  "validator": {
+   "python": "3.11.9",
+   "rdflib": "7.6.0",
+   "pyshacl": "0.40.1"
+  },
+  "dataModel": "factoid",
+  "stage": "revised"
+ },
+ "regest": {
+  "uid": "22828",
+  "identifier": "RI IV,2,1 n. 201",
+  "short": "RI IV,2,1 n. 201",
+  "sort": "004_002_001_000201_0000000201",
+  "start": "1153-11-22",
+  "end": "1153-11-22",
+  "proseYears": [],
+  "lead": "Der oströmische Kaiser Manuel schickt wegen der geplanten Eheverhandlungen und der von ihm gewünschten Verbindung beider Reiche (Vult enim inperium meum magis ac magis utrorumque regnorum unitionem) Boten an König Friedrich.",
+  "date": [
+   {
+    "t": "(Nach 1153 November 22)"
+   }
+  ],
+  "place": [],
+  "text": "Der oströmische Kaiser Manuel schickt wegen der geplanten Eheverhandlungen und der von ihm gewünschten Verbindung beider Reiche (Vult enim inperium meum magis ac magis utrorumque regnorum unitionem) Boten an König Friedrich.",
+  "status": "extracted",
+  "technical": true,
+  "claims": 1,
+  "blocks": [
+   {
+    "node": "urn:regesta:22828:mission",
+    "kind": "act",
+    "title": "Entsendung",
+    "head": {
+     "kind": "head",
+     "rel": "type",
+     "phrase": "Entsendung",
+     "text": "Entsendung",
+     "triple": [
+      "urn:regesta:22828:mission",
+      "https://example.org/regesta/factoid/factoidType",
+      "https://example.org/regesta/concept/Mission"
+     ],
+     "status": {
+      "asserted": true,
+      "technical": true,
+      "expert": false
+     },
+     "id": "mission",
+     "own": true,
+     "evidence": {
+      "start": 0,
+      "end": 224,
+      "ambiguous": false
+     },
+     "turtle": "@prefix x: <urn:regesta:22828:> .\nx:mission a rf:ActFactoid ;\n    rf:factoidType rv:Mission ;\n    rf:source <urn:regesta:record:22828> ;\n    rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Der oströmische Kaiser Manuel schickt wegen der geplanten Eheverhandlungen und der von ihm gewünschten Verbindung beider Reiche (Vult enim inperium meum magis ac magis utrorumque regnorum unitionem) Boten an König Friedrich.\" ] ;\n    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-49> ;\n    rf:verificationStatus rv:unchecked .",
+     "key": "k1"
+    },
+    "lines": [
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "oströmische Kaiser Manuel",
+      "text": "oströmische Kaiser Manuel in der Rolle Beteiligter",
+      "triple": [
+       "urn:regesta:22828:mission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22828:> .\nx:mission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000374> ; rf:nameInSource \"oströmische Kaiser Manuel\" ; rf:role rv:Participant ] .",
+      "role": "Beteiligter",
+      "actors": [
+       "urn:regesta:actor:RI004-002-M000374"
+      ],
+      "key": "k2"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "Boten",
+      "text": "Boten in der Rolle Gesandter",
+      "triple": [
+       "urn:regesta:22828:mission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22828:> .\nx:mission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22828:local:boten> ; rf:nameInSource \"Boten\" ; rf:role rv:Envoy ] .",
+      "role": "Gesandter",
+      "actors": [
+       "urn:regesta:actor:22828:local:boten"
+      ],
+      "key": "k3"
+     },
+     {
+      "kind": "line",
+      "rel": "role",
+      "phrase": "König Friedrich",
+      "text": "König Friedrich in der Rolle Adressat",
+      "triple": [
+       "urn:regesta:22828:mission",
+       "https://example.org/regesta/factoid/reference",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "id": "mission",
+      "own": true,
+      "evidence": {
+       "start": 0,
+       "end": 224,
+       "ambiguous": false
+      },
+      "turtle": "@prefix x: <urn:regesta:22828:> .\nx:mission rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:nameInSource \"König Friedrich\" ; rf:role rv:Addressee ] .",
+      "role": "Adressat",
+      "actors": [
+       "urn:regesta:actor:RI004-002-F000471"
+      ],
+      "key": "k4"
+     },
+     {
+      "kind": "literal",
+      "label": "Begründung laut Regest",
+      "text": "wegen der geplanten Eheverhandlungen und der von ihm gewünschten Verbindung beider Reiche",
+      "id": "t1",
+      "own": false,
+      "verbatim": true,
+      "triple": [
+       "urn:regesta:22828:mission",
+       "https://example.org/regesta/factoid/ground",
+       null
+      ],
+      "status": {
+       "asserted": true,
+       "technical": true,
+       "expert": false
+      },
+      "evidence": {
+       "start": 38,
+       "end": 127,
+       "ambiguous": false
+      },
+      "key": "k5"
+     }
+    ],
+    "sentence": [
+     {
+      "keys": [
+       "k1"
+      ],
+      "text": "Entsendung"
+     },
+     ", als Beteiligter ",
+     {
+      "keys": [
+       "k2"
+      ],
+      "text": "oströmische Kaiser Manuel"
+     },
+     ", als Gesandter ",
+     {
+      "keys": [
+       "k3"
+      ],
+      "text": "Boten"
+     },
+     ", als Adressat ",
+     {
+      "keys": [
+       "k4"
+      ],
+      "text": "König Friedrich"
+     },
+     "."
+    ]
+   }
+  ],
+  "spans": [
+   {
+    "id": "mission",
+    "start": 0,
+    "end": 224
+   },
+   {
+    "id": "t1",
+    "start": 38,
+    "end": 127
+   }
+  ],
+  "notes": {
+   "unresolved": [],
+   "gaps": [
+    {
+     "text": "No sender role for a mission; Manuel carries rv:Participant",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "Planned marriage negotiations have no factoid of their own; they are kept only in rf:ground of the mission, since no rv:Negotiation is stated as held",
+     "lang": "en",
+     "stage": "Extraktion"
+    },
+    {
+     "text": "No sender role for a Mission.",
+     "lang": "en",
+     "stage": "Review"
+    }
+   ],
+   "corrections": [],
+   "status": "extracted"
+  },
+  "history": {
+   "findings": [
+    {
+     "category": "role",
+     "severity": "Vermerk",
+     "subject": "urn:regesta:22828:mission",
+     "description": "Manuel as sender carries rv:Participant for lack of a sender role, which the extractor flags as model gap. The Latin wish for union of both realms stays inside the evidence, not in the ground literal, which is acceptable.",
+     "proposal": "No change; harmonise the sender convention across the run.",
+     "quote": {
+      "start": 0,
+      "end": 37
+     }
+    }
+   ],
+   "decisions": [],
+   "revised": null,
+   "final": null
+  },
+  "apparatus": {
+   "commentary": [
+    {
+     "t": "Der Brief, aus dem die vorliegende Nachricht stammt, ist Manuels Antwort auf das Schreiben Wibalds, Jaffé, Mon. Corb. 550 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 411 (vgl. Reg. "
+    },
+    {
+     "t": "197",
+     "regest": "22824"
+    },
+    {
+     "t": "). Zu dieser Gesandtschaft vgl. Lamma, Comneni e Staufer 1, 144 f. und Simonsfeld, Jahrbücher 201."
+    }
+   ],
+   "transmission": [
+    {
+     "t": "Erw. in Epp. Wibaldi, ed. Jaffé, Mon. Corb. 561 n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 424; Ioannes Cinnamus, Epitome l, IV cap. 1, ed. Meineke, CSHB 13 (1836) 135; vgl. Dölger, Reg. d. oström. Reiches 2, n"
+    },
+    {
+     "t": "o",
+     "sup": true
+    },
+    {
+     "t": " 1391 und 1392."
+    }
+   ],
+   "links": [
+    {
+     "t": "Digitalisat der RI-Buchseite",
+     "href": "https://mdz-nbn-resolving.de/bsb00009245?page=72"
+    }
+   ]
+  },
+  "register": [
+   [
+    "RI004-002-M000374",
+    "(I.) Komnenos, Kaiser der Griechen, von Byzanz, von Konstantinopel"
+   ],
+   [
+    "RI004-002-W000420",
+    "Abt von Corvey und Stablo"
+   ]
+  ]
+ }
+}
