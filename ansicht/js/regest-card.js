@@ -18,7 +18,7 @@ const REVIEW_WORD = "ungeprüft";
 const REVIEW_TIP = "Von LLM-basierten Agenten extrahiert, technisch geprüft, fachlich nicht abgenommen.";
 
 /** The regest text cut at every evidence boundary, each piece knowing its statements. */
-function markedText(text, spans) {
+export function markedText(text, spans) {
   const cuts = new Set([0, text.length]);
   for (const sp of spans) {
     cuts.add(Math.max(0, Math.min(text.length, sp.start)));
