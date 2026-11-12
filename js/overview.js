@@ -9,7 +9,7 @@
  * network come from build_data.py; nothing is simulated here.
  */
 import { h, regestHref } from "./dom.js";
-import { FAMILIES, familyOf } from "./relations.js";
+import { FAMILIES, familyIcon, familyOf } from "./relations.js";
 import { createSidebar } from "./sidebar.js";
 import { renderRegestCard } from "./regest-card.js";
 
@@ -425,33 +425,26 @@ function drawGraph(host, store, graph, height, selected, handlers) {
       wedgeEls.set(family.key, rim.appendChild(s("path", { d: `M${width / 2},${height / 2} L${a.x},${a.y} L${b.x},${b.y} Z`, class: "sector-wedge" })));
     }
     for (const family of FAMILIES) {
-      // The word sits on the sector's bearing just outside the shaded field, so it stays next
-      // to the relations it names; at the frame it drifted far from the circle in tall views.
-      // At narrow width the rings fill the frame, so the word goes back to where the bearing
-      // meets the frame.
+      // The sign sits on the sector's bearing just outside the shaded field, so it stays next
+      // to the relations it names. At narrow width the rings fill the frame, so the sign goes
+      // to where the bearing meets the frame.
       const rad = (family.angle * Math.PI) / 180;
       const dx = Math.sin(rad);
       const dy = -Math.cos(rad);
-      // One short word per direction in letter-spaced capitals, set apart from the act names
-      // inside the circle, so no relation name appears twice on screen. The full name stands
-      // in the list beside.
+      // One sign per direction, the same as in the list beside, where the family is named;
+      // the sign carries the name as its title. The relation names stand inside the circle.
       const used = ego.used.includes(family);
-      const w = family.short.length * 8.8 + 4;
-      const h = 14;
+      const w = 18;
+      const h = 18;
       let p;
       if (narrow) {
         const reach = Math.min(Math.abs(dx) > 0.01 ? (width / 2 - 4) / Math.abs(dx) : Infinity, Math.abs(dy) > 0.01 ? (height / 2 - 4) / Math.abs(dy) : Infinity);
         p = { x: width / 2 + dx * reach, y: height / 2 + dy * reach };
       } else p = ego.at(family.angle, 0.97);
-      // The word reaches outwards from its point, away from the rings, and is pulled back
-      // inside the frame where it would leave it.
-      const anchor = Math.abs(dx) < 0.3 ? "middle" : (dx > 0) !== narrow ? "start" : "end";
-      let x0 = anchor === "middle" ? p.x - w / 2 : anchor === "end" ? p.x - w : p.x;
-      x0 = Math.min(width - w - 2, Math.max(2, x0));
-      p.x = anchor === "middle" ? x0 + w / 2 : anchor === "end" ? x0 + w : x0;
+      const x0 = Math.min(width - w - 2, Math.max(2, p.x - w / 2));
       const top = Math.min(height - h - 2, Math.max(2, p.y - h / 2));
       sectorBoxes.push({ x0, x1: x0 + w, y0: top, y1: top + h, node: `label:sector-${family.key}` });
-      const label = s("text", { x: p.x, y: top + 11, "text-anchor": anchor, class: `sector-label${used ? " is-used" : ""}`, "data-family": family.key, text: family.short });
+      const label = familyIcon(family, { size: w, x: x0, y: top, title: true, cls: `sector-label${used ? " is-used" : ""}` });
       // Pointer shortcut to the list row; the keyboard reaches the same row in the list.
       if (used) label.addEventListener("click", () => handlers.onSector?.(family.key));
       rim.append(label);
