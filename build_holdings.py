@@ -50,6 +50,8 @@ import sys
 import tempfile
 from pathlib import Path
 
+from register_names import register_names
+
 MIN_REGESTA = 3
 LAT = (30.0, 62.0)
 LON = (-10.0, 45.0)
@@ -74,62 +76,9 @@ def _plain_text(raw: str) -> str:
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", raw))).strip()
 
 
-def _clauses(text: str) -> list[str]:
-    """Split at commas outside parentheses."""
-    parts, depth, current = [], 0, ""
-    for char in text:
-        depth += char == "("
-        depth -= char == ")"
-        if char == "," and depth == 0:
-            parts.append(current.strip())
-            current = ""
-        else:
-            current += char
-    return [*parts, current.strip()]
-
-
-def _unbracket(text: str) -> str:
-    """Drop parenthesised asides: „Otto (V., gest. 1183) der Ältere“ becomes „Otto der Ältere“."""
-    while "(" in text and ")" in text:
-        stripped = re.sub(r"\s*\([^()]*\)", "", text)
-        if stripped == text:
-            break
-        text = stripped
-    return " ".join(text.split())
-
-
-def _short_label(label: str, parent_label: str | None) -> str:
-    """A readable short name from a register label, for example „Rainald von Dassel“.
-
-    The label has name variants, `//`, and a description. The short name is the first
-    variant (without an attached ending such as „Philipp(us)“) and the first clause of the
-    description without its asides. A clause that is only an aside, such as „(von
-    Heinsberg)“ or „(I.)“, is unwrapped, and a short next clause („Barbarossa“) is added.
-    Where the first variant is empty the parent entry's label or the second variant is used.
-    """
-    text = _clean(label)
-    if "//" not in text:
-        short = _unbracket(_clauses(text)[0])
-        return short if len(short) <= 60 else short[:60].rsplit(" ", 1)[0]
-    names, rest = (part.strip() for part in text.split("//", 1))
-    variants = [v.strip() for v in names.split(",") if v.strip()]
-    first = variants[0] if variants and not names.startswith(",") else ""
-    if not first and parent_label:
-        first = _clean(parent_label).split("//")[0].split(",")[0].strip()
-    if not first and variants:
-        first = variants[0]
-    first = re.sub(r"(?<=\w)\(\w+\)$", "", first)
-    clauses = _clauses(rest)
-    head = clauses[0]
-    if re.fullmatch(r"\([^()]*\)", head):
-        head = head[1:-1]
-        if len(clauses) > 1 and len(clauses[1]) <= 20:
-            head = f"{head} {clauses[1]}"
-    else:
-        head = _unbracket(head)
-    if head.split(" ")[0] == first:
-        return head
-    return f"{first} {head}".strip()
+# Place labels the register delivery writes wrongly, corrected for display only; the register
+# id stays, so the correction is traceable. "Cremam(am Serio, östl. Lodi ...)" is Crema.
+PLACE_FIXES = {"RI004-002-C001005": "Crema"}
 
 
 def _place_label(label: str) -> str:
@@ -148,13 +97,12 @@ def build(source: Path, out: Path) -> dict:
     by_identifier = {r["identifier"]: r for r in regesta}
     with register_path.open(encoding="utf-8-sig", newline="") as handle:
         register = list(csv.DictReader(handle))
-    labels = {row["id"]: row["label"] for row in register}
 
     errors: list[dict] = []
     places: dict[str, dict] = {}
     issue_place: dict[str, str] = {}
     person_regesta: dict[str, set[str]] = {}
-    person_label: dict[str, tuple[str, str]] = {}
+    person_label: dict[str, str] = {}
     recipients: dict[str, set[str]] = {}
 
     for row in register:
@@ -189,19 +137,26 @@ def build(source: Path, out: Path) -> dict:
                 continue
             issue_place[uid] = row["id"]
             place = places.setdefault(
-                row["id"], {"l": _place_label(row["label"]), "la": round(lat, 4), "lo": round(lon, 4), "n": 0}
+                row["id"],
+                {
+                    "l": PLACE_FIXES.get(row["id"]) or _place_label(row["label"]),
+                    "la": round(lat, 4),
+                    "lo": round(lon, 4),
+                    "n": 0,
+                },
             )
             place["n"] += 1
         if kind == "person":
             person_regesta.setdefault(row["id"], set()).add(uid)
-            parent = None if _null(row["parentId"]) else labels.get(row["parentId"])
-            person_label[row["id"]] = (_short_label(row["label"], parent), _clean(row["label"]))
+            person_label[row["id"]] = _clean(row["label"])
             if roles & {"empfaenger", "adressat", "petent"}:
                 recipients.setdefault(uid, set()).add(row["id"])
 
     year = lambda r: int(r["start_date"][:4])  # noqa: E731 - one-line key, read once
     regesta.sort(key=lambda r: (r["start_date"], r["identifier"]))
     persons = {pid: uids for pid, uids in person_regesta.items() if len(uids) >= MIN_REGESTA}
+    # One naming rule with the run's graph (register_names.py), unique among the persons written.
+    short = register_names(register_path, set(persons))
     years: dict[int, int] = {}
     for r in regesta:
         years[year(r)] = years.get(year(r), 0) + 1
@@ -242,7 +197,7 @@ def build(source: Path, out: Path) -> dict:
         ],
         "places": places,
         "persons": {
-            pid: {"l": person_label[pid][0], "f": person_label[pid][1], "r": sorted(uids)}
+            pid: {"l": short.get(pid, person_label[pid]), "f": person_label[pid], "r": sorted(uids)}
             for pid, uids in persons.items()
         },
         "errors": errors,

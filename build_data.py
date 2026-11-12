@@ -62,11 +62,13 @@ import html
 import json
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import defaultdict
 from pathlib import Path
 
 import rdflib
 from rdflib import RDF, RDFS, SKOS, BNode, Dataset, Literal, URIRef
+
+from register_names import register_names
 
 CRM = rdflib.Namespace("http://www.cidoc-crm.org/cidoc-crm/")
 REG = rdflib.Namespace("https://example.org/regesta/ontology/")
@@ -352,56 +354,19 @@ def _read_register(csv_path: Path, identifiers: set[str]) -> dict[str, list[dict
     return by_identifier
 
 
-def _register_names(csv_path: Path) -> dict[str, str]:
-    """A short nominative name per register entry, for node labels.
-
-    The agents name an actor with the inflected form of its regest ("Heinrich dem Löwen"). The
-    register writes the name before "//" and its description after it; the name is the first
-    variant, and where the register leaves it out (", Fredericus" under the head Friedrich) the
-    most frequent first variant of the entry's siblings stands in. The description keeps its
-    first part, and the second one where the first is only a parenthesis ("(III.), König").
-    """
-    rows: list[dict] = []
-    with csv_path.open(encoding="utf-8-sig", newline="") as handle:
-        rows = list(csv.DictReader(handle, escapechar="\\", strict=True))
-
-    def plain_text(raw: str) -> str:
-        return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", raw))).strip()
-
-    def first_variant(row: dict) -> str:
-        return plain_text(row["label"].split("//", 1)[0].split(",", 1)[0])
-
-    heads: dict[str, Counter] = defaultdict(Counter)
-    for row in rows:
-        if first_variant(row):
-            heads[row["parentId"]][first_variant(row)] += 1
-    names: dict[str, str] = {}
-    for row in rows:
-        if row["id"] in names or row.get("type") != "person":
-            continue
-        if "//" not in row["label"]:
-            # A head entry names itself before its first comma ("Adela von Vohburg, Tochter ...").
-            head = re.split(r",\s*(?![^()]*\))", plain_text(row["label"]))[0].strip()
-            if head:
-                names[row["id"]] = head
-            continue
-        name = first_variant(row) or (heads[row["parentId"]].most_common(1) or [("", 0)])[0][0]
-        parts = [p.strip() for p in re.split(r",\s*(?![^()]*\))", plain_text(row["origLabel"])) if p.strip()]
-        if not name or not parts:
-            continue
-        description = parts[0] if not (parts[0].startswith("(") and len(parts) > 1) else f"{parts[0]}, {parts[1]}"
-        joiner = " " if description[0] in "(" or description[0].islower() else ", "
-        names[row["id"]] = f"{name}{joiner}{description}"
-    return names
-
-
-def _name_by_register(graph: dict, names: dict[str, str]) -> None:
-    """Name each actor node with a register entry by its register name; the source forms stay in labels."""
+def _name_by_register(graph: dict, register_csv: Path) -> None:
+    """Name each actor node with a register entry by its register name (register_names.py, the
+    rule shared with build_holdings.py); the source forms stay in labels."""
+    ids = {}
     for node in graph["nodes"]:
         match = re.fullmatch(r"urn:regesta:actor:(RI\d{3}-\d{3}-[A-Z]\d+)", node["id"])
+        if node["kind"] != "act" and match:
+            ids[node["id"]] = match.group(1)
+    names = register_names(register_csv, set(ids.values()))
+    for node in graph["nodes"]:
         # The nodes of the same-name case keep the agents' form, since their shared name is the case.
-        if node["kind"] != "act" and "case" not in node and match and match.group(1) in names:
-            node["label"] = names[match.group(1)]
+        if node["id"] in ids and "case" not in node and ids[node["id"]] in names:
+            node["label"] = names[ids[node["id"]]]
 
 
 # RDF: statements per regest.
@@ -2182,7 +2147,7 @@ def _build_factoid(
 
     graph = _factoid_graph(graphs, regests, same_name, labels)
     _attach_case_to_nodes(graph, crossrefs)
-    _name_by_register(graph, src["names"])
+    _name_by_register(graph, src["register_csv"])
     return regests, questions, crossrefs, graph, {"dataModel": "factoid", "stage": stage}
 
 
@@ -2258,7 +2223,7 @@ def _sources(source: Path, run: Path, order: list[str]) -> dict:
         "rows": rows,
         "exchange_to_uid": {rows[uid]["exchange_identifier"]: uid for uid in order},
         "register": _read_register(register_csv, {p["identifier"] for p in packets.values()}),
-        "names": _register_names(register_csv),
+        "register_csv": register_csv,
         "shorts": shorts,
         "regest_csv": regest_csv,
     }
@@ -2348,7 +2313,7 @@ def _build_pilot(run: Path, validation: dict, records: dict, src: dict, ds: Data
 
     graph = _person_graph(graphs, regests, same_name)
     _attach_case_to_nodes(graph, crossrefs)
-    _name_by_register(graph, src["names"])
+    _name_by_register(graph, src["register_csv"])
     return regests, questions, crossrefs, graph, {}
 
 
