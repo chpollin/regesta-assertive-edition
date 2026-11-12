@@ -89,3 +89,11 @@ Follows: one regest component as the detail on demand in every view, with a one-
 Relayed by the Research Coordination: the operator confirmed the views as the right direction and wants to show the edition publicly. No verbatim wording was relayed.
 
 Follows: the curated build is served by GitHub Pages from the branch `gh-pages`, every build as a further commit through `publish_site.py`. The word „null“ in the head of regesta without a place (seen on n. 72) is removed at its root in `build_holdings.py`; nodes with a register entry carry a nominative name. Status: built, published and read at the public address on 2026-11-12, not yet seen by the operator.
+
+## 2026-11-12, the circle around Friedrich is too dense and stretched
+
+„Das scheint noch nicht ganz gut zu passen. Hier sind viel zu viele Datenpunkte zu eng beieinander, oder? Auch das wird ein bisschen gestaucht von der Breite, oder?“
+
+Seen on his two screenshots (narrow and very wide window), as described by the Research Coordination: the figure takes the window's aspect ratio, so in the wide window the octagon becomes a flat ellipse and a sector sign leaves the image; around Friedrich nodes lie on each other in every sector, labels cover each other, names stand without a visible node, edges form grey areas. The coordination's direction: overview first and details on demand, bundled nodes with counts per sector, labels only for the few most connected counterparts, a sector opens on click or through the existing filters and time window; people with few statements such as Adela stay as they are; no new controls or explanatory text in the sidebar.
+
+Follows: the circle keeps its aspect ratio and fits the drawing area; a sector with more relations than fit stands as one bundle with its count and its three most connected people, and opens on a click on the bundle or its sign, or by itself once filters or the time window leave few relations. Status on 2026-11-12: built, published and checked on screenshots at 1280 and 2000 px, not seen by the operator. Around Friedrich 46 nodes in seven bundles instead of about 1100, no overlapping labels in the overview, with one sector open, with a single family or with the time window 1153, and the circle round in both widths; Adela unchanged.

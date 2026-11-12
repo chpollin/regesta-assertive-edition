@@ -63,8 +63,10 @@ The sidebar (`js/sidebar.js`) is the same in the flat and the space view: person
 ## Person graph
 
 - Data abstraction: actors (persons and groups, merged by IRI as the RDF merges them) and acts with at least one actor; role edges between act and actor, parent edges, the same-name pair. Co-mention creates no link.
-- Encoding: persons as circles, groups as squares, acts as small diamonds in neutral ink; parent edges heavier, the same-name pair dashed. Around a selected person eight fixed sectors (`js/relations.js`), named by one letter-spaced word at the rim.
+- Encoding: persons as circles, groups as squares, acts as small diamonds in neutral ink; parent edges heavier, the same-name pair dashed. Around a selected person eight fixed sectors (`js/relations.js`), marked by the family's sign at the rim.
 - Layout: a force layout computed once in `build_data.py` from a fixed start, so every build gives the same picture; the circle around a person is computed in the browser.
+- Overview first around a dense person (operator's feedback of 2026-11-12): the circle keeps one radius for both axes and fits the smaller side of the drawing area. A sector with more than twelve relations around the centre stands as one round bundle with its count of regesta, the same number as the family row in the sidebar, joined to its three most connected people; the bundle or the sector's sign opens it on click, Enter or Space, and a second click closes it. A sector opens by itself when the family filter leaves it alone or the time window thins it below the limit. A person with few relations, such as Adela, is drawn as before.
+- Label widths are measured in the label font (semibold), never below 7.4 px per character, after short words had been underestimated.
 - Labels avoid labels, nodes and edges; what finds no place appears on pointing. Pointing highlights after a 90 ms dwell and ends after a 220 ms grace.
 - Uncertainty: local identities stay visibly empty; two identities with the same name stay two nodes because the RDF keeps them apart.
 

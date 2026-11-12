@@ -8,6 +8,13 @@ updated: 2026-11-12
 
 # Journal
 
+## 2026-11-12 Overview first in the circle around a dense person
+
+After the operator's feedback on the circle around Friedrich (verbatim in [ui-feedback.md](ui-feedback.md)): the ego layout used separate radii for width and height, so the octagon followed the window's shape; it now has one radius. Sectors with more than twelve relations around the centre stand as bundles with their count of regesta and their three most connected people, and open on click, Enter, Space, a single family filter or a narrow time window (`bundleSectors` in `js/overview.js`). The case nodes had lost the agents' form in the previous step because the register naming ran before the case was attached; the order is corrected. Label widths are now measured in the label font.
+
+- Checks run: label overlap count, node count, bundles, rim signs inside the frame and the circle's aspect at 1280 × 800 and 2000 × 900 for Friedrich (overview, one sector open, single family, time window 1153 and 1152–1153), Adela and the whole network, every case without overlap; structure at most four text styles and nesting 2; keyboard opening by Enter and Space; the smoke walk of all pages and views, pytest, ruff, `node --check`; published as `9b4337e` and the same measurement repeated at the public address.
+- Open: colour, review sheet (in [plan.md](plan.md)). Draft, not accepted.
+
 ## 2026-11-12 Publication on GitHub Pages, borders, signs and name forms
 
 The Research Coordination gave the repository a private remote and served the first build from a branch `gh-pages`; the operator confirmed the views as direction. `publish_site.py` now makes every further build one fast-forward commit on that branch, built with a temporary git index so the working tree never switches branch, after a check for internal material. The literal „null“ that the delivery writes for a missing locality reached the head of regesta without a run place (n. 72) through the whole-delivery layer; `build_holdings.py` drops it and strips markup at the root. Actor nodes with a register entry carry a nominative name from the register instead of the inflected source form, except the two nodes of the same-name case. Each relation family has a stroke sign that replaces the direction words in the figures. The Empire about 1190 lies on the itinerary floor as a soft area, a rough hand trace of Shepherd's map (1926 edition, public domain stated by the Perry-Castañeda Library and checked there) georeferenced over fifteen town control points (largest residual 0.27 degrees); contracts in [data.md](data.md#empire-about-1190).
