@@ -135,6 +135,18 @@ export function renderItinerary(store, options) {
     })
     .catch(() => {});
 
+  // The Empire about 1190 as a soft area: a rough own digitisation after Shepherd's
+  // public-domain map (build_realm.py), named as this project's interpretation.
+  let realm = null;
+  fetch(new URL("./realm.json", import.meta.url))
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      realm = data;
+      renderSide();
+      update();
+    })
+    .catch(() => {});
+
   function build(width, height) {
     const svg = s("svg", { width, height, viewBox: `0 0 ${width} ${height}`, class: "space-svg", "aria-hidden": "true" });
     const frames = s("g", { class: "it-frames" });
@@ -144,9 +156,17 @@ export function renderItinerary(store, options) {
     const marks = s("g", { class: "it-marks it-flags" });
     const labels = s("g", { class: "sp-labels" });
     const pointer = s("g", { class: "it-pointer" });
-    svg.append(frames, map, line, dots, marks, labels, pointer);
+    // The realm lies under the coast, softened by a blur and cut to the undistorted core.
+    const defs = s("defs");
+    const clip = s("clipPath", { id: "it-core-clip" });
+    const clipShape = clip.appendChild(s("polygon"));
+    const blur = s("filter", { id: "it-realm-soft", x: "-5%", y: "-5%", width: "110%", height: "110%" });
+    blur.append(s("feGaussianBlur", { stdDeviation: 2.5 }));
+    defs.append(clip, blur);
+    const realmLayer = s("g", { class: "it-realm-layer", "clip-path": "url(#it-core-clip)" });
+    svg.append(defs, frames, realmLayer, map, line, dots, marks, labels, pointer);
     const dotEls = points.map((p) => dots.appendChild(s("circle", { class: evidenced.has(p.u) ? "it-dot is-evidenced" : "it-dot", r: evidenced.has(p.u) ? 3.6 : 2.2 })));
-    return { svg, width, height, frames, map, line, dots: dotEls, marks, labels, pointer };
+    return { svg, width, height, frames, map, realmLayer, clipShape, line, dots: dotEls, marks, labels, pointer };
   }
 
   function projector() {
@@ -199,6 +219,18 @@ export function renderItinerary(store, options) {
     frameAt(first, "it-floor");
     // The quiet base map on the floor: coastlines and the large rivers (Natural Earth).
     scene.map.replaceChildren();
+    scene.realmLayer.replaceChildren();
+    if (realm) {
+      const ring = [];
+      for (let a = 0; a < 360; a += 5) {
+        const rad = (a * Math.PI) / 180;
+        const q = pt(midLon + (Math.cos(rad) * core) / k, midLat + Math.sin(rad) * core, first);
+        ring.push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`);
+      }
+      scene.clipShape.setAttribute("points", ring.join(" "));
+      const outline = realm.ring.map(([lon, lat]) => pt(lon, lat, first)).map((q) => `${q.x.toFixed(1)},${q.y.toFixed(1)}`);
+      scene.realmLayer.append(s("polygon", { class: "it-realm", points: outline.join(" "), filter: "url(#it-realm-soft)" }));
+    }
     if (basemap) {
       // The map is drawn only inside the undistorted core; beyond it the projection
       // compresses, and a compressed coastline would read as a false shape.
@@ -487,6 +519,7 @@ export function renderItinerary(store, options) {
       { class: "it-legend" },
       h("p", {}, h("span", { class: "it-key" }), h("span", { class: "it-n", text: String(shown.length) }), " Regesten mit Ausstellungsort"),
       h("p", {}, h("span", { class: "it-key is-evidenced" }), h("span", { class: "it-n", text: String(shownEvidenced) }), " davon mit belegten Aussagen"),
+      realm ? h("p", { title: "Grobe eigene Digitalisierung nach der gemeinfreien Karte von W. R. Shepherd (1926)" }, h("span", { class: "it-key is-realm" }), h("span", { class: "it-n" }), "Reich um 1190, grob nach Shepherd") : null,
       checks
         ? h(
             "p",
@@ -514,6 +547,7 @@ export function renderItinerary(store, options) {
         h("p", { text: "Orte und Daten stammen aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM. Die belegten Aussagen haben LLM-basierte Agenten extrahiert; sie sind technisch geprüft und fachlich nicht abgenommen." }),
         h("p", { text: "Ein Skript prüft aufeinanderfolgende Stationen auf unmögliche Reisen. Es findet Kandidaten für falsche Koordinaten, Datierungen ohne Tag, Fälschungen und Urkunden anderer Aussteller; dass ein Punkt stimmt, beweist es nicht." }),
         h("p", { text: "Die Fernreisen nach Osten sind zur Mitte hin gestaucht. Die Grundkarte zeigt Küsten und große Flüsse nach Natural Earth (gemeinfrei)." }),
+        realm ? h("p", { text: "Die Fläche des Reichs um 1190 ist eine grobe eigene Digitalisierung dieses Projekts nach der gemeinfreien Karte „Europe and the Mediterranean Lands about 1190“ in W. R. Shepherds Historical Atlas (1926). Grenzen waren damals keine scharfen Linien; die Fläche zeigt eine Deutung, keinen Befund." }) : null,
       ),
     );
     const list = state.place

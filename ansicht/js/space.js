@@ -9,7 +9,7 @@
  * in knowledge/space-view.md.
  */
 import { h } from "./dom.js";
-import { FAMILIES, familyOf, directionOf } from "./relations.js";
+import { FAMILIES, familyIcon, familyOf, directionOf } from "./relations.js";
 import { createSidebar } from "./sidebar.js";
 import { renderRegestCard } from "./regest-card.js";
 
@@ -602,21 +602,34 @@ export function renderSpace(store, options = {}) {
       }
       return false;
     };
+    // A family sign takes a square box at the first free side of its point.
+    const tryPlaceSign = (family, p) => {
+      const size = 15;
+      for (const [dx, dy] of [[0, 8], [0, -8 - size], [9, -size / 2], [-9 - size, -size / 2]]) {
+        const x0 = dx === 0 ? p.x - size / 2 : p.x + dx;
+        const box = { x0: x0 - 1, x1: x0 + size + 1, y0: p.y + dy - 1, y1: p.y + dy + size + 1 };
+        if (fits(box)) {
+          boxes.push(box);
+          out.push(familyIcon(family, { size, x: x0, y: p.y + dy, title: true, cls: "sp-family" }));
+          return true;
+        }
+      }
+      return false;
+    };
     // The year scale comes first, so it is never dropped; then the selection and the case.
     const ranked = standing();
     const first = ranked.filter((it) => it.centre || caseIds.has(it.id));
     if (yearScaleShown) for (const y of scene.decades) tryPlace(String(y), pt(0, y, 0), "sp-year", ["left", "right"]);
     for (const it of first) placeItem(it);
-    // Direction words on the floor: the same short words in capitals as at the rim of the 2D
-    // circle, quieter than the data, set outside the floor ring so they stand at the edge of
-    // the figure and not inside it.
+    // Direction signs on the floor: the same signs as at the rim of the 2D circle and in the
+    // sidebar, quieter than the data, set outside the floor ring at the edge of the figure.
     for (const f of model.centre ? FAMILIES : []) {
       const w = polar(f.angle, RING * 1.18);
       const p = pt(w.x, span.lo, w.z);
       // Seen obliquely, the back half of the floor projects up into the figure; its words
       // stay away there, the sidebar names every direction anyway.
       if (state.view.pitch < 60 * DEG && p.depth > 0.2) continue;
-      tryPlace(f.short, p, "sp-family", ["below", "above", "right", "left", "below-right", "above-right"]);
+      tryPlaceSign(f, p);
     }
     for (const it of ranked.filter((x) => !first.includes(x))) placeItem(it);
     scene.labelLayer.replaceChildren(...out);

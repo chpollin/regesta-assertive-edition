@@ -11,7 +11,7 @@
  * citable reading view.
  */
 import { h } from "./dom.js";
-import { FAMILIES, familyOf } from "./relations.js";
+import { FAMILIES, familyIcon, familyOf } from "./relations.js";
 import { yearOf } from "./filters.js";
 
 /**
@@ -110,7 +110,7 @@ export function createSidebar(store, filters, options) {
         const details = h(
           "details",
           { class: "fam-group", "data-family": f.key, open: on && open.has(f.key) && uids.size > 0 },
-          h("summary", {}, h("span", { class: "fam-label", text: f.label }), h("span", { class: "fam-n", text: String(uids.size) })),
+          h("summary", {}, familyIcon(f), h("span", { class: "fam-label", text: f.label }), h("span", { class: "fam-n", text: String(uids.size) })),
           on ? h("ul", { class: "act-rows", role: "list" }, rows.map((r) => actRow(r, common))) : null,
         );
         details.addEventListener("toggle", () => (details.open ? open.add(f.key) : open.delete(f.key)));

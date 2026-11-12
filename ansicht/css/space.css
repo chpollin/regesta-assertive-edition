@@ -61,7 +61,7 @@
      semibold, numbers and direction words small. */
   .sp-label { fill: var(--text); font-size: 12.5px; paint-order: stroke; stroke: var(--stage); stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
   .sp-year { fill: var(--muted); font-size: 11px; font-variant-numeric: lining-nums tabular-nums; }
-  .sp-family { fill: var(--muted); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .sp-family { color: var(--muted); }
   .sp-act-label { fill: var(--muted); }
   .sp-case-label { fill: var(--accent-text); font-weight: 600; }
   .sp-centre-label { font-weight: 600; }
@@ -84,6 +84,7 @@
   .it-path.is-on { opacity: 0.7; stroke: var(--text); }
   .it-coast { fill: none; stroke: var(--map-coast); stroke-width: 0.9; stroke-linejoin: round; }
   .it-river { fill: none; stroke: var(--map-river); stroke-width: 0.8; stroke-linejoin: round; }
+  .it-realm { fill: var(--map-realm); stroke: none; }
   .it-dot { fill: var(--muted); r: var(--dot-r); }
   .it-dot.is-evidenced { fill: var(--layer2); stroke: var(--stage); stroke-width: 1; r: calc(var(--dot-r) * 1.6); }
   .it-place { fill: var(--text); }
@@ -101,5 +102,6 @@
   .it-notes p { margin-block-start: var(--space-1); }
   .it-key { display: inline-block; inline-size: 0.6em; block-size: 0.6em; border-radius: 50%; background: var(--muted); vertical-align: 0.05em; }
   .it-key.is-evidenced { background: var(--layer2); }
+  .it-key.is-realm { border-radius: 2px; inline-size: 0.9em; background: var(--map-realm); box-shadow: inset 0 0 0 1px var(--map-coast); }
   .it-ev { color: var(--accent-text); }
 }
