@@ -3,10 +3,17 @@ title: Journal
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-09
+updated: 2026-11-12
 ---
 
 # Journal
+
+## 2026-11-12 Publication on GitHub Pages, borders, signs and name forms
+
+The Research Coordination gave the repository a private remote and served the first build from a branch `gh-pages`; the operator confirmed the views as direction. `publish_site.py` now makes every further build one fast-forward commit on that branch, built with a temporary git index so the working tree never switches branch, after a check for internal material. The literal „null“ that the delivery writes for a missing locality reached the head of regesta without a run place (n. 72) through the whole-delivery layer; `build_holdings.py` drops it and strips markup at the root. Actor nodes with a register entry carry a nominative name from the register instead of the inflected source form, except the two nodes of the same-name case. Each relation family has a stroke sign that replaces the direction words in the figures. The Empire about 1190 lies on the itinerary floor as a soft area, a rough hand trace of Shepherd's map (1926 edition, public domain stated by the Perry-Castañeda Library and checked there) georeferenced over fifteen town control points (largest residual 0.27 degrees); contracts in [data.md](data.md#empire-about-1190).
+
+- Checks run: all 224 regest pages rendered without „null“ in the card head; structure measured on every changed view at 1280 × 800 and 360 × 740 (at most six text styles, nesting at most 2, no console error, no overflow); pytest (11 passed), ruff, `node --check`; `publish_site.py --dry-run` against the published state (only `.edition-build` differed), then the publication `702c7a2`; at the public address n. 72, the itinerary with the realm, the whole network with nominative names and the circle with eight rim signs read in Chrome, `knowledge/` and `.edition-build` answer 404.
+- Open: palette choice, public visibility of the repository, name forms of groups and local actors; next steps in [plan.md](plan.md). Draft, not accepted.
 
 ## 2026-11-11 Shell, whole delivery and the first curated build of the 1153 run
 

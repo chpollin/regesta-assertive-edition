@@ -137,8 +137,16 @@ site/
 
 - The Turtle file is the run's Turtle of the shown stage with a comment header naming licence, source link and modification; the RDF itself is unchanged. The JSON file is the regest entry of edition.json with licence, attribution, source link and run. The zip holds all three folders and `LICENSE-DATA.txt` with a fixed file date.
 - With JavaScript the regest page shows the shared card of the views app (`js/regest-card.js`) and keeps citation, downloads and the `zurueck` link below and above it; its static content is the reading without JavaScript. That static reading compares the stages by factoid IRI: a factoid whose sentence differs in the extracted stage shows that sentence, a factoid of the extracted stage missing from the revised one is listed once.
-- Actor pages take the address from the IRI after `urn:regesta:actor:`, lower case. Persons and groups are listed under the source form the agent gave; the register label comes from the first register row of the entry.
+- Actor pages take the address from the IRI after `urn:regesta:actor:`, lower case. Persons with a register entry are named by a short nominative form built from the register (`_register_names` in `build_data.py`: the first name variant before "//", or the most frequent one of the entry's siblings where the register leaves it empty, plus the first part of the description, e.g. "Heinrich der Löwe" for the agents' "Heinrich dem Löwen"); the two nodes of the same-name case keep the agents' form, since their shared name is the case. Groups and regest-local actors keep the source form, and every source form stays listed on the person page.
 - The build never deletes a directory. It records every file it writes in `.edition-build` and removes, file by file, what the previous build wrote and this one did not. `knowledge/` is never copied.
+
+## Publication
+
+`publish_site.py` turns `site/` into one commit on `gh-pages` (temporary git index with `site/` as work tree, `.nojekyll` added, `.edition-build` left out, parent `origin/gh-pages`) and pushes it as a fast-forward. Before that it aborts on files or links of internal material (knowledge, runs, review, checks, Markdown, Python). GitHub Pages serves the branch at https://chpollin.github.io/regesta-assertive-edition/.
+
+## Empire about 1190
+
+`build_realm.py` georeferences a rough hand trace (`edition/realm-1190-trace.json`) of the Empire's border on W. R. Shepherd's map "Europe and the Mediterranean Lands about 1190" (Historical Atlas, 1926; scan of the Perry-Castañeda Library, which states its scanned maps as public domain unless marked, checked on 2026-11-12) with a quadratic fit over fifteen town control points (largest residual 0.27 degrees), softens it and writes `js/realm.json`. Corsica and Sardinia are left out. The view names the area as this project's rough interpretation.
 
 ## Rights
 

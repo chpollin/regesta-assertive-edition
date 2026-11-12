@@ -8,7 +8,8 @@ Assertive edition of the Barbarossa regesta (RI IV,2) over the factoid runs of t
 - Everything shown comes from the run files or the delivery. The build aborts when an evidence text or a quoted review passage is not verbatim in `summary_plain`.
 - No runtime dependency from outside, no CDN, no SPARQL in the browser. Fonts are local under `fonts/` with their OFL texts.
 - The supplied data of Regesta Imperii are licensed CC BY 4.0 (`knowledge/data.md#rights`). Published derivatives carry attribution, licence link and a statement of modification; LLM statements never appear as statements of Regesta Imperii.
-- Since 2026-11-11 the operator's standing approval covers committing and pushing this work. Creating the public repository, force pushes, merges, tags, releases and visibility changes stay with the operator. Only the curated `site/` build is ever served publicly; `knowledge/`, runs and review material never.
+- Since 2026-11-11 the operator's standing approval covers committing and pushing this work. Force pushes, merges, tags, releases and visibility changes stay with the operator. Only the curated `site/` build is ever served publicly; `knowledge/`, runs and review material never.
+- Publication: the branch `gh-pages` carries only the content of `site/` plus `.nojekyll` and is served by GitHub Pages at https://chpollin.github.io/regesta-assertive-edition/ (repository private, decided 2026-11-12). Every build goes on it as a further commit, never by force push, and only through `publish_site.py`, which checks the build for internal material first and never switches the working tree's branch.
 
 ## Commands
 
@@ -19,6 +20,7 @@ python build_data.py --run factoid-1153-2026-11-11
 python build_holdings.py
 python check_itinerary.py
 python build_basemap.py
+python build_realm.py
 ```
 
 Build TEI and the curated edition site (default run `factoid-1153-2026-11-11`). The site goes to the gitignored `site/` and is never committed; `build_site.py` runs the data and TEI builds itself:
@@ -26,6 +28,14 @@ Build TEI and the curated edition site (default run `factoid-1153-2026-11-11`). 
 ```
 python build_site.py
 ```
+
+Publish the current `site/` build (check, commit on `origin/gh-pages`, fast-forward push; `--dry-run` builds the commit without pushing):
+
+```
+python publish_site.py
+```
+
+Then open the public address in a browser and check start page, a regest page and a view.
 
 Local servers, all bound to 127.0.0.1:
 
@@ -50,6 +60,7 @@ python -m pytest -q checks
 ## Layout
 
 - `build_data.py` run data into `data/edition.json` and `data/questions.json`; `build_holdings.py` the whole delivery into `data/holdings*.json`; `check_itinerary.py` into `data/itinerary-checks.json`; `build_basemap.py` into `js/basemap.json`
+- `build_realm.py` the Empire about 1190 from the trace `edition/realm-1190-trace.json` into `js/realm.json`; `publish_site.py` the publication on `gh-pages`
 - `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema
 - `build_site.py` curated static edition site into `site/`; `edition/texts.json` title, definition, licence and attribution; `js/edition/` its content pages
