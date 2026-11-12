@@ -19,10 +19,18 @@ import { yearOf } from "./filters.js";
 import { renderRegestCard } from "./regest-card.js";
 
 const SVG = "http://www.w3.org/2000/svg";
-const ROW = 18;
+// Row height: 20 px with a pointer, 28 px on a narrow touch screen, where a row is a target.
+const rowHeight = () => (matchMedia("(max-width: 40rem)").matches ? 28 : 20);
 const AXIS = 22;
-const ORDERS = Object.freeze({ anzahl: "Häufigkeit", zeit: "Erste Nennung" });
-const LIMITS = [40, 120, 400];
+const ORDERS = Object.freeze({ anzahl: "Häufigkeit", zeit: "Erste Nennung", name: "Name" });
+// Two mentions further apart than GAP years are not joined: a line from the first to the
+// last mention claimed presence in between (Wibald from 1123 to 1150, reviewed 2026-11-12).
+const GAP = 3;
+// South of this latitude and east of this longitude a place of issue counts as Italian; the
+// Alps run along about 46.3 degrees north between 6.5 and 13.5 east. Deliberate rough line.
+const ITALY = { lat: 46.3, lon: 6.5 };
+// The first choice fits the first screen at 1280 x 800 without scrolling.
+const LIMITS = [30, 120, 400];
 const ACTOR = "urn:regesta:actor:";
 const NOTE = "Nennung aus dem Register der Regesta Imperii, ohne LLM.";
 
@@ -67,10 +75,31 @@ export function renderTimeband(store, options) {
       .sort((a, b) => a.y - b.y),
   }));
   const byId = new Map(persons.map((p) => [p.id, p]));
+  // Years in Italy, from the delivery itself: years with at least three places of issue of
+  // which more than half lie south of the Alps, joined into runs of consecutive years.
+  const italyYears = (() => {
+    const per = new Map();
+    for (const r of H.regesta) {
+      const place = r.p ? H.places[r.p] : null;
+      if (!place) continue;
+      const y = Math.floor(yearOf(r.s));
+      const c = per.get(y) ?? { all: 0, it: 0 };
+      c.all += 1;
+      if (place.la < ITALY.lat && place.lo > ITALY.lon) c.it += 1;
+      per.set(y, c);
+    }
+    const years = [...per].filter(([, c]) => c.all >= 3 && c.it / c.all > 0.5).map(([y]) => y).sort((a, b) => a - b);
+    const runs = [];
+    for (const y of years) {
+      if (runs.length && runs.at(-1)[1] === y - 1) runs.at(-1)[1] = y;
+      else runs.push([y, y]);
+    }
+    return runs;
+  })();
   const params = new URLSearchParams(location.search);
   const state = {
     person: options.person && byId.has(options.person) ? options.person : null,
-    order: params.get("ordnung") === "zeit" ? "zeit" : "anzahl",
+    order: ["zeit", "name"].includes(params.get("ordnung")) ? params.get("ordnung") : "anzahl",
     limit: LIMITS.includes(Number(params.get("zeige"))) ? Number(params.get("zeige")) : LIMITS[0],
     pointed: null,
     opened: null,
@@ -87,6 +116,7 @@ export function renderTimeband(store, options) {
       if (chosen) top.push(chosen);
     }
     if (state.order === "zeit") top.sort((a, b) => a.hits[0].y - b.hits[0].y || b.hits.length - a.hits.length);
+    if (state.order === "name") top.sort((a, b) => a.p.label.localeCompare(b.p.label, "de"));
     return { named, top };
   }
 
@@ -104,6 +134,7 @@ export function renderTimeband(store, options) {
 
   let scene = null;
   let shown = [];
+  let ROW = rowHeight();
 
   /** Names are cut to the name column; the full name stays in the sidebar and the status line. */
   const measure = document.createElement("canvas").getContext("2d");
@@ -130,6 +161,7 @@ export function renderTimeband(store, options) {
     const g = geometry(width);
     const { top } = rows();
     shown = top;
+    ROW = rowHeight();
     const height = top.length * ROW + 8;
     // The year axis stays above the scrolling rows.
     const axis = s("svg", { width, height: AXIS, class: "tb-svg", "aria-hidden": "true" });
@@ -138,9 +170,15 @@ export function renderTimeband(store, options) {
     const body = s("g");
     const overlay = s("g", { class: "tb-overlay" });
     svg.append(grid, body, overlay);
-    // About one year label per 50 pixels, on round years.
+    // About one year label per 70 pixels, on round years.
     const span = filters.to + 1 - filters.from;
-    const step = [1, 2, 5, 10, 20].find((n) => ((g.x1 - g.x0) / span) * n >= 50) ?? 20;
+    const step = [1, 2, 5, 10, 20].find((n) => ((g.x1 - g.x0) / span) * n >= 70) ?? 20;
+    for (const [a, b] of italyYears) {
+      if (b < filters.from || a > filters.to) continue;
+      const xa = g.x(Math.max(a, filters.from));
+      grid.append(s("rect", { class: "tb-italy", x: xa, y: 0, width: Math.max(1, g.x(Math.min(b, filters.to) + 1) - xa), height }));
+      axis.append(s("rect", { class: "tb-italy", x: xa, y: 0, width: Math.max(1, g.x(Math.min(b, filters.to) + 1) - xa), height: AXIS }));
+    }
     for (let y = Math.ceil(filters.from / step) * step; y <= filters.to; y += step) {
       grid.append(s("line", { x1: g.x(y), x2: g.x(y), y1: 0, y2: height }));
       axis.append(s("text", { class: "tb-year", x: g.x(y), y: AXIS - 7, "text-anchor": "middle", text: String(y) }));
@@ -150,9 +188,10 @@ export function renderTimeband(store, options) {
       const row = s("g", { class: "tb-row", "data-id": p.id });
       row.append(s("rect", { class: "tb-row-bg", x: 0, y: y - ROW / 2, width, height: ROW }));
       row.append(s("text", { class: p.run ? "tb-name is-run" : "tb-name", x: g.nameW, y: y + 4, "text-anchor": "end", text: fit(p.label, g.nameW - 6) }));
-      const first = p.mentions[0].y;
-      const last = p.mentions.at(-1).y;
-      row.append(s("line", { class: "tb-life", x1: g.x(first), x2: Math.max(g.x(last), g.x(first) + 1), y1: y, y2: y }));
+      // Mentions closer than GAP years are joined; a longer silence stays open.
+      for (const [a, b] of p.mentions.slice(1).map((m, k) => [p.mentions[k].y, m.y])) {
+        if (b - a <= GAP) row.append(s("line", { class: "tb-life", x1: g.x(a), x2: Math.max(g.x(b), g.x(a) + 1), y1: y, y2: y }));
+      }
       for (const m of hits) row.append(s("line", { class: "tb-tick", x1: g.x(m.y), x2: g.x(m.y), y1: y - 4, y2: y + 4 }));
       body.append(row);
       return { row, y, hits };
@@ -292,12 +331,14 @@ export function renderTimeband(store, options) {
     const legend = h(
       "div",
       { class: "it-legend" },
-      h("p", {}, h("span", { class: "tb-key" }), h("span", { class: "it-n", text: String(runShown) }), ` ${runShown === 1 ? "Person" : "Personen"} auch in belegten Aussagen`),
+      h("p", {}, h("span", { class: "it-n", text: String(runShown) }), " ", h("span", { class: "tb-key-name", text: "Namen in Türkis" }), " auch in belegten Aussagen"),
+      italyYears.length ? h("p", {}, h("span", { class: "it-key tb-key-italy" }), h("span", { class: "it-n" }), "Jahre überwiegend in Italien") : null,
       h(
         "details",
         { class: "it-notes" },
         h("summary", { text: "Herkunft der Daten" }),
         h("p", { text: "Personen aus dem Register der Regesta Imperii, die in mindestens drei Regesten genannt sind, ohne LLM. Hervorgehobene Namen stehen auch in den Aussagen, die LLM-basierte Agenten extrahiert haben; diese sind technisch geprüft und fachlich nicht abgenommen." }),
+        h("p", { text: `Eine Linie verbindet Nennungen, die höchstens ${GAP} Jahre auseinanderliegen; eine längere Pause bleibt offen. Als Jahre in Italien gelten Jahre mit mindestens drei Ausstellungsorten, von denen mehr als die Hälfte südlich der Alpen liegt, aus dem Bestand berechnet.` }),
       ),
     );
     const list = person

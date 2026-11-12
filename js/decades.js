@@ -31,7 +31,11 @@ function s(tag, attrs = {}) {
   return el;
 }
 
-const decadeLabel = (d) => `${d}er`;
+// A decade with fewer regesta than MIN_PANEL joins its neighbour: the 1130s hold three, which
+// made an almost empty map (reviewed 2026-11-12).
+const MIN_PANEL = 10;
+// How many places a panel names at most, the largest first, none over another name.
+const NAMED = 4;
 
 /**
  * @param {import("./app.js").Store} store
@@ -41,13 +45,32 @@ export function renderDecades(store, options) {
   const { filters } = options;
   const H = store.holdings;
   const places = H.places;
-  const points = H.regesta
+  const raw = H.regesta
     .filter((r) => r.p && places[r.p])
     .map((r) => {
       const y = yearOf(r.s);
       return { u: r.u, i: r.i, p: r.p, y, d: Math.floor(y / 10) * 10 };
     });
+  // Panels: decades, with thin ones merged into the neighbour towards the middle.
+  const perDecade = new Map();
+  for (const p of raw) perDecade.set(p.d, (perDecade.get(p.d) ?? 0) + 1);
+  const allDecades = [...perDecade.keys()].sort((a, b) => a - b);
+  const groupOf = new Map(allDecades.map((d) => [d, d]));
+  const span = new Map(allDecades.map((d) => [d, [d, d]]));
+  for (const [i, d] of allDecades.entries()) {
+    if (perDecade.get(d) >= MIN_PANEL || allDecades.length < 2) continue;
+    const into = groupOf.get(i === 0 ? allDecades[1] : allDecades[i - 1]);
+    groupOf.set(d, into);
+    const sp = span.get(into);
+    span.set(into, [Math.min(sp[0], d), Math.max(sp[1], d)]);
+  }
+  const points = raw.map((p) => ({ ...p, d: groupOf.get(p.d) }));
   const decades = [...new Set(points.map((p) => p.d))].sort((a, b) => a - b);
+  const decadeLabel = (d) => (span.get(d)[0] === span.get(d)[1] ? `${d}er` : `${span.get(d)[0]}er und ${span.get(d)[1]}er`);
+  // The panel in which a place first appears as a place of issue: its dot is dark there and
+  // light in later panels, so new places stand apart from returns.
+  const firstPanel = new Map();
+  for (const p of [...points].sort((a, b) => a.y - b.y)) if (!firstPanel.has(p.p)) firstPanel.set(p.p, p.d);
   const params = new URLSearchParams(location.search);
   const askedDecade = Number(options.decade ?? params.get("jahrzehnt"));
   const state = { place: options.place ?? null, decade: decades.includes(askedDecade) ? askedDecade : null, pointed: null, opened: null };
@@ -112,6 +135,15 @@ export function renderDecades(store, options) {
       draw();
     })
     .catch(() => {});
+  // The Empire about 1190, as in the itinerary (build_realm.py), a soft area under the map.
+  let realm = null;
+  fetch(new URL("./realm.json", import.meta.url))
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      realm = data;
+      draw();
+    })
+    .catch(() => {});
 
   let scene = null;
 
@@ -145,7 +177,12 @@ export function renderDecades(store, options) {
     if (!host.clientWidth) return;
     const L = layout(width, height);
     const svg = s("svg", { width, height, viewBox: `0 0 ${width} ${height}`, class: "dc-svg", "aria-hidden": "true" });
-    const rMax = Math.max(5, Math.min(18, Math.min(L.cw, L.ch) * 0.075));
+    const rMax = Math.max(5, Math.min(16, Math.min(L.cw, L.ch) * 0.065));
+    const defs = s("defs");
+    const blur = s("filter", { id: "dc-realm-soft", x: "-5%", y: "-5%", width: "110%", height: "110%" });
+    blur.append(s("feGaussianBlur", { stdDeviation: 1.5 }));
+    defs.append(blur);
+    svg.append(defs);
     const radius = (n) => Math.max(1.6, rMax * Math.sqrt(n / maxCount));
     const panels = decades.map((d, idx) => {
       const col = idx % L.cols;
@@ -163,6 +200,16 @@ export function renderDecades(store, options) {
       if (row > 0) g.append(s("line", { class: "dc-sep", x1: ox + 6, x2: ox + L.cw - 6, y1: oy, y2: oy }));
       const mapG = s("g");
       g.append(mapG);
+      if (realm) {
+        // The undistorted core is a circle of radius one in map units; the area is cut to it.
+        const id = `dc-core-${d}`;
+        const [cx, cy] = at([0, 0]);
+        const clip = s("clipPath", { id });
+        clip.append(s("circle", { cx: cx.toFixed(1), cy: cy.toFixed(1), r: L.scale.toFixed(1) }));
+        defs.append(clip);
+        const pts = realm.ring.map(([lon, lat]) => at(mapXZ(lon, lat)).map((v) => v.toFixed(1)).join(","));
+        mapG.append(s("polygon", { class: "it-realm", points: pts.join(" "), "clip-path": `url(#${id})`, filter: "url(#dc-realm-soft)" }));
+      }
       if (basemap) {
         const drawLine = (coords, cls) => {
           let run = [];
@@ -190,20 +237,38 @@ export function renderDecades(store, options) {
       for (const [id, c] of order) {
         const [x, y] = at(placeXZ.get(id));
         screen.set(id, { x, y, r: radius(c), n: c });
-        dots.append(s("circle", { class: "dc-dot", "data-place": id, cx: x.toFixed(1), cy: y.toFixed(1), r: radius(c).toFixed(1) }));
+        dots.append(s("circle", { class: firstPanel.get(id) === d ? "dc-dot is-new" : "dc-dot", "data-place": id, cx: x.toFixed(1), cy: y.toFixed(1), r: radius(c).toFixed(1) }));
       }
       g.append(dots);
       const label = s("text", { class: "dc-label", x: ox + L.pad, y: oy + 16, text: decadeLabel(d) });
       g.append(label);
-      // The place with most regesta of the decade is named, so each panel can be read alone.
+      // The places with most regesta of the decade are named, up to NAMED, each only where it
+      // overlaps neither another name nor the panel edge, so each panel reads alone.
       const lead = order[0];
-      const leadLabel = lead ? nameAt(places[lead[0]].l, screen.get(lead[0]), ox + L.cw - 4) : null;
-      if (leadLabel) g.append(leadLabel);
+      const taken = [{ x0: ox, x1: ox + 150, y0: oy, y1: oy + 20 }];
+      let leadLabel = null;
+      const named = new Set();
+      for (const [id] of order.slice(0, L.cw < 260 ? 2 : NAMED)) {
+        const q = screen.get(id);
+        const text = places[id].l;
+        const w = text.length * 6.6;
+        for (const right of [true, false]) {
+          const x0 = right ? q.x + q.r + 4 : q.x - q.r - 4 - w;
+          const box = { x0, x1: x0 + w, y0: q.y - 8, y1: q.y + 6 };
+          if (box.x0 < ox + 2 || box.x1 > ox + L.cw - 4 || taken.some((o) => o.x0 < box.x1 && box.x0 < o.x1 && o.y0 < box.y1 && box.y0 < o.y1)) continue;
+          taken.push(box);
+          const t = s("text", { class: "sp-label", x: (right ? box.x0 : box.x1).toFixed(1), y: (q.y + 4).toFixed(1), "text-anchor": right ? "start" : "end", text });
+          g.append(t);
+          named.add(id);
+          if (id === lead?.[0]) leadLabel = t;
+          break;
+        }
+      }
       const marks = s("g", { class: "dc-marks" });
       g.append(marks);
       svg.append(g);
       const right = ox + L.cw - 4;
-      return { d, g, ox, oy, at, screen, dots, label, leadLabel, lead: lead?.[0] ?? null, marks, right };
+      return { d, g, ox, oy, at, screen, dots, label, leadLabel, named, lead: lead?.[0] ?? null, marks, right };
     });
     // The size key fills the cell after the last decade.
     const ki = decades.length;
@@ -220,6 +285,16 @@ export function renderDecades(store, options) {
       cx += Math.max(2 * r, 18) + 12;
     }
     key.append(s("text", { class: "tb-year", x: kx, y: base + 30, text: "Regesten je Ort und Jahrzehnt" }));
+    // Lightness tells new places from returns; one line each, a dot as sign.
+    const ly = base + 52;
+    key.append(s("circle", { class: "dc-dot is-new", cx: (kx + 5).toFixed(1), cy: (ly - 4).toFixed(1), r: 5 }));
+    key.append(s("text", { class: "tb-year", x: kx + 16, y: ly, text: "Ort zum ersten Mal Ausstellungsort" }));
+    key.append(s("circle", { class: "dc-dot", cx: (kx + 5).toFixed(1), cy: (ly + 14).toFixed(1), r: 5 }));
+    key.append(s("text", { class: "tb-year", x: kx + 16, y: ly + 18, text: "schon in einem früheren Jahrzehnt" }));
+    if (realm) {
+      key.append(s("rect", { class: "it-realm dc-key-realm", x: kx, y: ly + 28, width: 10, height: 10, rx: 2 }));
+      key.append(s("text", { class: "tb-year", x: kx + 16, y: ly + 37, text: "Reich um 1190 nach Shepherd" }));
+    }
     svg.append(key);
     host.replaceChildren(svg);
     scene = { svg, L, panels };
@@ -242,7 +317,7 @@ export function renderDecades(store, options) {
         const [x, y] = q ? [q.x, q.y] : panel.at(placeXZ.get(id));
         // Where the place has no regest in this decade, a small dotted ring says so.
         panel.marks.append(s("circle", { class: q ? cls : `${cls} is-absent`, cx: x.toFixed(1), cy: y.toFixed(1), r: ((q?.r ?? 2) + 3).toFixed(1) }));
-        if (q && id !== panel.lead && cls === "dc-ring") panel.marks.append(nameAt(places[id].l, q, panel.right));
+        if (q && !panel.named.has(id) && cls === "dc-ring") panel.marks.append(nameAt(places[id].l, q, panel.right));
       }
       if (state.opened && state.opened.d === panel.d) {
         const q = panel.screen.get(state.opened.p);

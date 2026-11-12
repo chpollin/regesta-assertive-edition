@@ -23,6 +23,9 @@
   .tb-row:hover .tb-row-bg { fill: var(--side); }
   .tb-row.is-selected .tb-row-bg { fill: var(--accent-faint); }
   .tb-life { stroke: var(--edge); stroke-width: 1; }
+  .tb-italy { fill: var(--map-realm); }
+  .tb-key-name { display: inline-block; min-inline-size: 0; color: var(--accent-text); font-weight: 600; }
+  .tb-key-italy { border-radius: 2px; inline-size: 0.9em; background: var(--map-realm); box-shadow: inset 0 0 0 1px var(--map-coast); }
   .tb-tick { stroke: var(--text); stroke-width: 1.4; }
   .tb-row.is-selected .tb-tick { stroke: var(--accent-text); stroke-width: 2; }
   .tb-pointed { fill: none; stroke: var(--accent); stroke-width: 2; }
@@ -39,7 +42,11 @@
   .dc-panel.is-out { opacity: 0.25; }
   .dc-label { fill: var(--text); font-size: 12.5px; font-weight: 600; }
   .dc-label.is-selected { fill: var(--accent-text); text-decoration: underline; text-decoration-color: var(--accent); }
-  .dc-dot { fill: var(--muted); fill-opacity: 0.55; stroke: var(--stage); stroke-width: 0.8; }
+  /* Lightness, not hue: a place new in its decade dark, a return light; ochre stays with the
+     evidenced statements and the accent with the selection. */
+  .dc-dot { fill: var(--edge); fill-opacity: 0.6; stroke: var(--stage); stroke-width: 0.8; }
+  .dc-dot.is-new { fill: var(--text); fill-opacity: 0.75; }
+  .dc-key-realm { stroke: var(--map-coast); stroke-width: 1; }
   .dc-dot.is-selected { fill: var(--accent); fill-opacity: 0.9; }
   .dc-ring { fill: none; stroke: var(--accent); stroke-width: 2; }
   .dc-chosen { fill: none; stroke: var(--accent-text); stroke-width: 1.4; }
