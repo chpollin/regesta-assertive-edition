@@ -49,13 +49,71 @@ function filteredGraph(graph, filters, keep) {
 }
 
 /**
+ * Overview first around a person with many relations, after the operator's feedback of
+ * 2026-11-12 ("viel zu viele Datenpunkte zu eng beieinander"). A sector with more than
+ * SECTOR_MAX relations around the centre stands as one bundle node with its count, joined to
+ * the TOP_PEOPLE people who share most of its relations; every other node of the sector
+ * goes. The open sector and every sector the filters or the time window have thinned out
+ * keep their single nodes, so a person with few relations is drawn as before.
+ */
+const SECTOR_MAX = 12;
+const TOP_PEOPLE = 3;
+
+function bundleSectors(graph, centre, openKey) {
+  const byId = new Map(graph.nodes.map((n) => [n.id, n]));
+  const inner = new Map(FAMILIES.map((f) => [f.key, new Set()]));
+  for (const e of graph.edges) {
+    if (e.kind === "same-name" || (e.source !== centre && e.target !== centre)) continue;
+    const other = byId.get(e.source === centre ? e.target : e.source);
+    if (!other) continue;
+    inner.get(other.kind === "act" ? familyOf(other.label).key : "kin").add(other.id);
+  }
+  const bundled = FAMILIES.filter((f) => f.key !== openKey && inner.get(f.key).size > SECTOR_MAX);
+  if (!bundled.length) return graph;
+  const drop = new Set();
+  const nodes = [];
+  const edges = [];
+  for (const family of bundled) {
+    const items = inner.get(family.key);
+    // People ranked by how many of the sector's relations they share with the centre.
+    const share = new Map();
+    for (const e of graph.edges) {
+      const [a, b] = items.has(e.source) ? [e.source, e.target] : items.has(e.target) ? [e.target, e.source] : [null, null];
+      if (!a || b === centre || items.has(b) || byId.get(b)?.kind === "act") continue;
+      share.set(b, (share.get(b) ?? 0) + 1);
+    }
+    for (const id of items) if (byId.get(id).kind !== "act") share.set(id, (share.get(id) ?? 0) + 1);
+    const top = [...share].sort((x, y) => y[1] - x[1] || byId.get(x[0]).label.localeCompare(byId.get(y[0]).label, "de")).slice(0, TOP_PEOPLE).map(([id]) => id);
+    for (const id of items) drop.add(id);
+    // The bundle counts regesta, like the family row in the sidebar, so both say one number.
+    const regests = new Set();
+    for (const id of items) if (byId.get(id).regest) regests.add(byId.get(id).regest);
+    for (const e of graph.edges) if (e.regest && ((e.source === centre && items.has(e.target)) || (e.target === centre && items.has(e.source)))) regests.add(e.regest);
+    const id = `bundle:${family.key}`;
+    nodes.push({ id, kind: "bundle", family: family.key, label: family.label, count: regests.size || items.size, x: 0, y: 0 });
+    edges.push({ source: centre, target: id, kind: "role", label: family.label, regest: null, claim: null });
+    for (const person of top) edges.push({ source: id, target: person, kind: "role", label: family.label, regest: null, claim: null });
+    for (const person of top) drop.delete(person);
+  }
+  const keptEdges = graph.edges.filter((e) => !drop.has(e.source) && !drop.has(e.target));
+  const all = [...keptEdges, ...edges];
+  const linked = new Set([centre]);
+  for (const e of all) if (e.kind !== "same-name") linked.add(e.source).add(e.target);
+  return {
+    nodes: [...graph.nodes.filter((n) => !drop.has(n.id) && linked.has(n.id)), ...nodes],
+    edges: all.filter((e) => linked.has(e.source) && linked.has(e.target)),
+  };
+}
+
+/**
  * @param {import("./app.js").Store} store
  * @param {{actor?: string|null, filters: ReturnType<import("./filters.js").createFilters>}} options
  */
 export function renderOverview(store, options) {
   const { filters } = options;
   const graph = store.edition.graph;
-  const state = { actor: options.actor ?? null };
+  // `open`: the sector shown with its single nodes although it is dense.
+  const state = { actor: options.actor ?? null, open: null };
 
   const graphHost = h("div", { class: "vis graph graph-fill" });
   const status = h("p", { class: "canvas-status", role: "status", "aria-live": "polite" });
@@ -88,6 +146,7 @@ export function renderOverview(store, options) {
 
   function select(id) {
     state.actor = id;
+    state.open = null;
     history.replaceState(null, "", `${location.search}${id ? `#/personen/${encodeURIComponent(id)}` : "#/"}`);
     sidebar.setPerson(id);
     draw();
@@ -98,7 +157,10 @@ export function renderOverview(store, options) {
     const width = graphHost.clientWidth;
     const height = element.clientHeight;
     if (!width || !height) return;
-    const shown = filteredGraph(graph, filters, state.actor);
+    const filtered = filteredGraph(graph, filters, state.actor);
+    // A sector opens on a click, or when the family filter leaves it as the only one.
+    const only = filters.families.size === 1 ? [...filters.families][0] : null;
+    const shown = state.actor ? bundleSectors(filtered, state.actor, state.open ?? only) : filtered;
     network = drawGraph(graphHost, store, shown, height, state.actor, {
       onPoint: (id) => {
         const n = id ? shown.nodes.find((x) => x.id === id) : null;
@@ -106,7 +168,11 @@ export function renderOverview(store, options) {
       },
       onSelect: (id) => select(state.actor === id ? null : id),
       onOpen: (uid, claim, actId) => open(uid, claim, actId),
-      onSector: (key) => sidebar.openFamily(key),
+      onSector: (key) => {
+        sidebar.openFamily(key);
+        state.open = state.open === key ? null : key;
+        draw();
+      },
     });
     network.highlight(null, state.actor, state.actor);
     network.pin(openAct);
@@ -165,7 +231,7 @@ function placeLabels(graph, px, py, width, height, degree, segments) {
   for (const n of actors) {
     const cx = px(n);
     const cy = py(n);
-    const w = n.label.length * charWidth;
+    const w = labelWidth(n.label, charWidth);
     const options = [
       { x: cx + 10, y: cy + 4, anchor: "start", box: { x0: cx + 9, x1: cx + 11 + w, y0: cy - 9, y1: cy + 6 } },
       { x: cx - 10, y: cy + 4, anchor: "end", box: { x0: cx - 11 - w, x1: cx - 9, y0: cy - 9, y1: cy + 6 } },
@@ -215,6 +281,17 @@ function placeLabels(graph, px, py, width, height, degree, segments) {
 }
 
 /**
+ * Width of a graph label in px. A fixed width per character underestimated short words
+ * ("Como" drawn 36 px wide, estimated 30), so the label font is measured, at the semibold
+ * weight a selected label takes, and the larger of both values counts.
+ */
+const measureCtx = document.createElement("canvas").getContext("2d");
+function labelWidth(text, perChar) {
+  measureCtx.font = `600 12.5px ${getComputedStyle(document.documentElement).getPropertyValue("--font-ui") || "sans-serif"}`;
+  return Math.max(text.length * perChar, measureCtx.measureText(text).width + 2);
+}
+
+/**
  * Labels in the circle around a person: the person, then the relations of the inner ring,
  * then the people of the outer ring, each turned outwards and kept clear of every placed
  * label and sector name. A label without room appears on pointing or focus.
@@ -235,17 +312,19 @@ function placeEgoLabels(graph, ego, selectedId, px, py, width, height, sectorBox
   for (const n of nodes) {
     const x = px(n);
     const y = py(n);
-    boxes.push({ x0: x - 8, x1: x + 8, y0: y - 8, y1: y + 8 });
+    const half = n.kind === "bundle" ? Math.min(22, 9 + Math.sqrt(n.count) * 1.4) + 2 : 8;
+    boxes.push({ x0: x - half, x1: x + half, y0: y - half, y1: y + half });
   }
   const sides = (x) => (x >= width / 2 ? [true, false] : [false, true]);
   const shifts = [0, -13, 13, -26, 26, -39, 39];
   for (const n of nodes) {
     const x = px(n);
     const y = py(n);
+    if (n.kind === "bundle") continue;
     if (n.case) {
       // The case keeps its two lines: name, and regest with register entry.
       const lines = caseLines(n);
-      const w = Math.max(...lines.map((l) => l.length)) * charWidth;
+      const w = Math.max(...lines.map((l) => labelWidth(l, charWidth)));
       found: for (const right of sides(x)) {
         const x0 = Math.min(Math.max(2, right ? x + 10 : x - 10 - w), width - 2 - w);
         for (const dy of shifts) {
@@ -259,7 +338,7 @@ function placeEgoLabels(graph, ego, selectedId, px, py, width, height, sectorBox
       }
       continue;
     }
-    const w = n.label.length * charWidth;
+    const w = labelWidth(n.label, charWidth);
     if (n.id === selectedId) {
       // Edges leave the centre in every direction, so the centre's name sits on a plate,
       // placed where it covers no node.
@@ -315,8 +394,11 @@ function egoLayout(graph, selectedId, width, height) {
   const cy = height / 2;
   // At narrow width the frame names take a larger share, so the rings draw closer in.
   const scale = width < 640 ? 0.8 : 1;
-  const rx = (width / 2 - 24) * scale;
-  const ry = (height / 2 - 18) * scale;
+  // One radius for both axes, so the circle keeps its shape in every window and fits the
+  // smaller side (the octagon was drawn as a flat ellipse in wide windows).
+  const r = Math.min(width / 2 - 24, height / 2 - 18) * scale;
+  const rx = r;
+  const ry = r;
   const pos = new Map([[selectedId, { x: cx, y: cy, ring: 0 }]]);
   const byId = new Map(graph.nodes.map((n) => [n.id, n]));
   const inner = new Map(FAMILIES.map((f) => [f.key, []]));
@@ -324,7 +406,7 @@ function egoLayout(graph, selectedId, width, height) {
     if (e.source !== selectedId && e.target !== selectedId) continue;
     const other = byId.get(e.source === selectedId ? e.target : e.source);
     if (!other || [...inner.values()].some((list) => list.includes(other))) continue;
-    const family = other.kind === "act" ? familyOf(other.label) : FAMILIES[0];
+    const family = other.kind === "act" ? familyOf(other.label) : other.kind === "bundle" ? FAMILIES.find((f) => f.key === other.family) : FAMILIES[0];
     inner.get(family.key).push(other);
   }
   const at = (angleDeg, f) => {
@@ -335,18 +417,20 @@ function egoLayout(graph, selectedId, width, height) {
   for (const family of FAMILIES) {
     const items = inner.get(family.key).sort((a, b) => (a.regest ?? "").localeCompare(b.regest ?? "") || a.label.localeCompare(b.label, "de"));
     if (items.length) used.push(family);
+    // An open dense sector borrows room from its bundled neighbours: up to 60 degrees each
+    // side, and three radii in turn.
+    const half = items.length > SECTOR_MAX ? Math.min(60, 15 + items.length) : 15;
     items.forEach((n, i) => {
-      // Spread inside the 45-degree sector, clear of its borders; a crowded sector alternates
-      // two radii.
-      const offset = items.length === 1 ? 0 : -15 + (30 * i) / (items.length - 1);
-      const f = items.length > 3 && i % 2 ? 0.4 : 0.3;
+      // Spread inside the sector, clear of its borders; a crowded sector alternates radii.
+      const offset = items.length === 1 ? 0 : -half + (2 * half * i) / (items.length - 1);
+      const f = n.kind === "bundle" ? 0.34 : items.length > SECTOR_MAX ? [0.26, 0.36, 0.46][i % 3] : items.length > 3 && i % 2 ? 0.4 : 0.3;
       pos.set(n.id, { ...at(family.angle + offset, f), ring: 1, angle: family.angle + offset });
     });
   }
   // Outer ring: the other people of each inner act stand on the act's own bearing, one
   // behind the other, so each relation reads as one line from the centre outwards.
   for (const [id, p] of [...pos]) {
-    if (p.ring !== 1 || byId.get(id).kind !== "act") continue;
+    if (p.ring !== 1 || (byId.get(id).kind !== "act" && byId.get(id).kind !== "bundle")) continue;
     const others = graph.edges
       .filter((e) => e.kind === "role" && (e.source === id || e.target === id))
       .map((e) => (e.source === id ? e.target : e.source))
@@ -479,6 +563,43 @@ function drawGraph(host, store, graph, height, selected, handlers) {
   for (const n of order) {
     const cx = px(n);
     const cy = py(n);
+    if (n.kind === "bundle") {
+      // A bundled sector: one round mark sized by its count, the count inside, the sector's
+      // name as accessible name; a click opens the sector, its sign at the rim does the same.
+      const radius = Math.min(22, 9 + Math.sqrt(n.count) * 1.4);
+      const g = s("a", { href: "#", class: "node node-bundle", tabindex: "-1", role: "button", "aria-label": `${n.label}: ${n.count} Regesten, aufklappen`, "data-family": n.family });
+      g.append(s("circle", { cx, cy, r: radius, class: "n-bundle" }), s("text", { x: cx, y: cy + 4, "text-anchor": "middle", class: "n-bundle-count", text: String(n.count) }));
+      const title = s("title", { text: `${n.label}: ${n.count} Regesten. Klick zeigt sie einzeln.` });
+      g.append(title);
+      g.addEventListener("click", (event) => {
+        event.preventDefault();
+        handlers.onSector?.(n.family);
+      });
+      g.addEventListener("keydown", (event) => {
+        if (event.key === " ") {
+          event.preventDefault();
+          handlers.onSector?.(n.family);
+          return;
+        }
+        const at = order.indexOf(n);
+        const next = { ArrowDown: at + 1, ArrowRight: at + 1, ArrowUp: at - 1, ArrowLeft: at - 1, Home: 0, End: order.length - 1 }[event.key];
+        if (next !== undefined) {
+          event.preventDefault();
+          nodeEls.get(order[Math.max(0, Math.min(order.length - 1, next))].id).focus();
+        }
+      });
+      g.addEventListener("mouseenter", () => hover(n.id));
+      g.addEventListener("mouseleave", () => hover(null));
+      g.addEventListener("focus", () => {
+        for (const [, el] of nodeEls) el.setAttribute("tabindex", "-1");
+        g.setAttribute("tabindex", "0");
+        hover(n.id, false, true);
+      });
+      g.addEventListener("blur", () => hover(null, false, true));
+      nodeEls.set(n.id, g);
+      nodeLayer.append(g);
+      continue;
+    }
     const isAct = n.kind === "act";
     const label = isAct ? `${n.label}, ${store.byUid.get(n.regest).short}` : n.label;
     // In the circle around a person an act is named by its relation type alone.
@@ -594,6 +715,7 @@ function drawGraph(host, store, graph, height, selected, handlers) {
   const familyOfNode = new Map();
   if (ego) {
     for (const n of graph.nodes) if (n.kind === "act" && ego.pos.has(n.id) && ego.pos.get(n.id).ring === 1) familyOfNode.set(n.id, familyOf(n.label).key);
+    for (const n of graph.nodes) if (n.kind === "bundle") familyOfNode.set(n.id, n.family);
     for (const e of graph.edges) if (e.kind === "parent" && (e.source === selected || e.target === selected)) familyOfNode.set(e.source === selected ? e.target : e.source, "kin");
   }
 
