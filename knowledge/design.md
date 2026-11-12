@@ -56,6 +56,13 @@ The operator's goal for the talk on 2026-11-20, verbatim: „Ziel ist es, wirkli
 
 Plausibility check (`check_itinerary.py`, writes `data/itinerary-checks.json`): consecutive stations are flagged when they lie further apart than 150 km, or 60 km per day between their start dates. This threshold is a stated assumption, not taken from a read source. The literature that should replace it was found but not read: the itinerary monograph on Friedrich I. (1978) and an article on the travel speed of the royal court in the 11th and 12th centuries (Blätter für deutsche Landesgeschichte 123, 1987). Flags are classed by the first matching reason (dating without a day, another issuer, forgery, deperditum, same day at two places, inferred place, unclear). The check finds candidates; it does not prove a point right. A wrong coordinate that causes no impossible jump is not found, and whether the machine date fits the dating prose is not checked. The regest card names provenance and every flag of its point.
 
+## Zeitband and Jahrzehnte
+
+Both views answer where and with whom over time, from the whole delivery without LLM. Revised on 2026-11-12 after the operator's question whether colour and the places could mean more (verbatim in ui-feedback.md).
+
+- Zeitband: a tick per mention; a line joins two mentions at most three years apart, so a long silence stays open. Years in which more than half of at least three places of issue lie south of the Alps stand as pale bands; the rule reproduces the known Italian campaigns from the data. Names in the accent also appear in the run's statements, said so in the legend. Order by frequency, first mention or name; thirty persons by default, so the first screen needs no scrolling; rows of 28 px on narrow touch screens.
+- Jahrzehnte: lightness, not a new hue, tells a place of issue new in its decade (dark) from a return (light), because ochre belongs to the evidenced statements and the accent to the selection. Up to four place names per map without overlap, two on small maps; the Empire about 1190 as in the itinerary; decades with fewer than ten regesta join their neighbour (the 1130s with the 1140s).
+
 ## Shell
 
 One frame for every view, after Shneiderman's mantra as the operator asked: overview first in the drawing area, zoom and filter in the sidebar on the left, details on demand in a narrow panel on the right that exists only while something is selected. The header carries the title and the navigation from `js/nav.json`, the current place underlined in the accent. In a view the three columns fill exactly one window; below 56 rem drawing, detail and filters stack in that order. Text pages use the same header without sidebar.

@@ -8,6 +8,13 @@ updated: 2026-11-12
 
 # Journal
 
+## 2026-11-12 One naming rule, a time band without false presence, decades with new places
+
+After the operator's question on the decade maps and the time band (verbatim in [ui-feedback.md](ui-feedback.md)). The duplicates in the time band were no unmerged persons: the old short-name rule of `build_holdings.py` gave different register entries the same name, among them seven persons as „Heinrich II.“ and Friedrich's envoys, children and ministerials as „Fredericus I. Barbarossa“. `register_names.py` now names every register person once for all views ([data.md](data.md#person-names)). The person list of the network puts actors known only by the regest's wording in a group of their own, each with its regest. Time band and decade maps changed as recorded in [design.md](design.md#zeitband-and-jahrzehnte).
+
+- Checks run: no duplicate name among the persons of the time band except the two pairs the register describes identically; the density check of `pruefansicht/tools/check_ui_density.cjs` in the work profile passes for time band, decade maps, itinerary, space view and network at 1280 × 800 and 360 × 740 (the time band had breached the text-element limit before); no overlapping place names in the decade maps; network circle unchanged without overlap; smoke walk of all pages, pytest, ruff, `node --check`; published through `publish_site.py`.
+- Not built: colour by relation family or kind of regest for the whole delivery, and certainty of the place of issue, because the delivery does not carry them.
+
 ## 2026-11-12 Colour settled and the review sheet for twenty regesta
 
 The operator left the colour to the implementing agent and confirmed title and definition „Agentic Edition“. W1 became the one palette with computed contrasts, hue and colour-vision distances; the switch `?farbe=` and the raw colour fallbacks in `css/pages.css` are gone (reasons in [design.md](design.md#colour)). For his own check of twenty regesta, `build_review_sheet.py` makes a stratified, reproducible choice and the local page `pruefbogen/` takes a verdict and a note per statement and saves them as a file ([data.md](data.md#review-sheet)).

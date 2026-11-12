@@ -144,6 +144,10 @@ site/
 
 `publish_site.py` turns `site/` into one commit on `gh-pages` (temporary git index with `site/` as work tree, `.nojekyll` added, `.edition-build` left out, parent `origin/gh-pages`) and pushes it as a fast-forward. Before that it aborts on files or links of internal material (knowledge, runs, review, checks, Markdown, Python). GitHub Pages serves the branch at https://chpollin.github.io/regesta-assertive-edition/.
 
+## Person names
+
+`register_names.py` gives every register person one short name, used by `build_data.py` for the graph and by `build_holdings.py` for the time band and the person lists: first name variant and first clause of the description in the nominative, asides and cross references cut, ordinals joined („Friedrich I. Barbarossa“), a siglum with its office („Rainald G, Notar der Reichskanzlei“). A sub-entry after a second „//“ names the people around a person and is shown as such („Kinder (Friedrich I. Barbarossa)“). Names that coincide among the persons a view shows are lengthened by a clause; two pairs stay alike because the register describes them identically (Adalbert, Bischof von Trient; Friedrich, Graf von Beichlingen). Where the register gives only Latin variants the German head stands („Fredericus“ to „Friedrich“). `PLACE_FIXES` in `build_holdings.py` corrects one place label the delivery writes wrongly („Cremam“ for Crema).
+
 ## Review sheet
 
 `build_review_sheet.py` chooses the twenty regesta of the operator's review from the edition data of the run and writes `pruefbogen/data/sheet.json`; the local page `pruefbogen/` (served from the repository root, http://127.0.0.1:8102/pruefbogen/) shows them and is never part of `site/`.
