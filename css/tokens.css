@@ -1,9 +1,11 @@
 /* Design tokens. The only file with raw colour values; components consume var() only.
-   Since 2026-11-11 the edition is light only, after the operator rejected the tinted grounds
-   and red as lead colour (verbatim in knowledge/ui-feedback.md): white ground, near-black
-   text, neutral greys, one accent #0097A7 as in his slide scheme. Text reaches at least 7:1
-   against white and against the sidebar grey; the accent itself (3.5:1) marks graphics and
-   selection only, text in the accent colour uses the darker --accent-text. */
+   Light only since 2026-11-11, after the operator rejected the tinted grounds and red as lead
+   colour (verbatim in knowledge/ui-feedback.md). Since 2026-11-12 one palette, worked out
+   from the warmer version W1 on the operator's word (knowledge/design.md#colour): white
+   ground, warm yellow-grey greys (OKLCH hue 68 to 85, no red cast), one accent #0097A7 as in
+   his slide scheme, ochre for the second data layer. Text reaches at least 7:1 against white
+   and the sidebar; the accent itself (3.5:1) marks graphics and selection only, text in the
+   accent hue uses the darker --accent-text. */
 @layer reset, base, tokens, layout, components, utilities;
 
 @font-face {
@@ -57,17 +59,18 @@
     --font-ui: "Instrument Sans", system-ui, sans-serif;
     --font-code: "Space Mono", ui-monospace, "Cascadia Mono", monospace;
 
-    /* Ground, text and lines. Contrast against white: text 17.4:1, muted 8.9:1. */
+    /* Ground, text and lines. Contrast: text 16.3:1 on white and 14.9:1 on the sidebar,
+       muted 9.2:1 and 8.4:1. The ground stays untinted; warmth lives in the greys. */
     --stage: #ffffff;
-    --side: #f6f6f6;
-    --text: #1a1a1a;
-    --muted: #4a4a4a;
-    --hairline: #dcdcdc;
-    /* Informative lines of the graphs, 3.4:1 against white. */
-    --edge: #8c8c8c;
+    --side: #f7f5f1;
+    --text: #22201c;
+    --muted: #4d4741;
+    --hairline: #e0dad1;
+    /* Informative lines of the graphs, 3.5:1 against white. */
+    --edge: #8f877c;
 
     /* The one accent. Graphics and selection in #0097A7; text in the accent hue uses the
-       darker value, 7.7:1 against white and 7.2:1 against the sidebar grey. */
+       darker value, 7.7:1 against white and 7.1:1 against the sidebar. */
     --accent: #0097a7;
     --accent-text: #005c64;
     --accent-faint: #e3f4f6;
@@ -75,9 +78,9 @@
     /* Older role names, kept so the views need no second set of rules: the source text lies
        on a neutral ground, what a machine wrote and every pointing or deciding mark take the
        accent. No red anywhere. */
-    --paper: #f6f6f6;
-    --paper-ink: #1a1a1a;
-    --paper-muted: #4a4a4a;
+    --paper: var(--side);
+    --paper-ink: var(--text);
+    --paper-muted: var(--muted);
     --machine: var(--accent-text);
     --machine-faint: var(--accent);
     --pen: var(--accent-text);
@@ -88,13 +91,13 @@
     --focus: #005c64;
 
     /* Regesta per year of the whole delivery, a quiet ground behind the time band. */
-    --bars: #d2d2d2;
+    --bars: #d8d1c6;
 
     /* The base map of the itinerary, quieter than every data mark. */
-    --map-coast: #c6cdd1;
-    --map-river: #d6dde0;
+    --map-coast: #cfc8bc;
+    --map-river: #ddd6cb;
     /* The Empire about 1190 as a soft area under the coast, the faintest fill of the page. */
-    --map-realm: #e7eef0;
+    --map-realm: #efeae1;
 
     --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
     --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
@@ -115,45 +118,14 @@
     --aside-width: 21rem;
     --detail-width: 26rem;
   }
-  /* The second data layer (statements extracted by LLM-based agents) and the weight of the
-     marks. By default the layer takes the accent. */
+  /* The second data layer (statements extracted by LLM-based agents) in ochre, 4.0:1 against
+     white as a graphic. It stays apart from the muted grey of the first layer and from the
+     accent also under simulated protanopia, deuteranopia and tritanopia (OKLab distance at
+     least 0.16), and an evidenced point is larger as well, so colour never carries it alone.
+     Marks a little heavier and names in the medium weight, as tried in W1. */
   :root {
-    --layer2: var(--accent);
-    --dot-r: 2.2px;
-    --label-weight: 400;
-  }
-
-  /* Two warmer versions for the operator's choice, reached as ?farbe=w1 or ?farbe=w2, after
-     his remark that the light design felt cold (2026-11-11, ui-feedback.md). The ground stays
-     white and untinted; warmth comes from the greys, the sidebar and the lines; the second
-     layer gets a muted colour of its own. Deliberate shortcut for the comparison: the chosen
-     version replaces the default values above and the parameter goes. */
-  :root[data-palette="w1"] {
-    --side: #f7f5f1;
-    --text: #22201c;
-    --muted: #4d4741;
-    --hairline: #e0dad1;
-    --edge: #8f877c;
-    --bars: #d8d1c6;
-    --map-coast: #cfc8bc;
-    --map-river: #ddd6cb;
-    --map-realm: #efeae1;
     --layer2: #9c7a2e;
     --dot-r: 2.5px;
-    --label-weight: 500;
-  }
-  :root[data-palette="w2"] {
-    --side: #f3efe8;
-    --text: #1f1c18;
-    --muted: #4d4741;
-    --hairline: #d9d2c7;
-    --edge: #857b6d;
-    --bars: #cfc6b8;
-    --map-coast: #c7bfb2;
-    --map-river: #d8d0c4;
-    --map-realm: #ece6dc;
-    --layer2: #4b4f86;
-    --dot-r: 2.7px;
     --label-weight: 500;
   }
 }
