@@ -8,11 +8,7 @@ updated: 2026-11-12
 
 # Plan
 
-Accepted next steps of the edition. Operator decisions behind them are tracked in the vault's ACTIVE-WORK anchors named per step; this document records only what the repository has to do. Steps finished on 2026-11-12 (borders, signs, name forms, publication) are recorded in the journal and in [design.md](design.md) and [data.md](data.md).
-
-## Colour
-
-Decided by the operator on 2026-11-12, verbatim: „farben die sehr gut für die webentwicklung und das tool passen. das kannst du ausarbeiten“. The implementing agent works out one palette from W1 under the rules of web-style and [design.md](design.md): white ground, warm greys without tinting the ground, no red cast, contrasts checked against the accessibility minima, the mark of evidenced statements distinguishable for colour-blind readers and never carried by colour alone. Then the switch `?farbe=` goes and the decision with its reasons goes into design.md, without presenting variants. Anchor: op-thm-edition-farbe.
+Accepted next steps of the edition. Operator decisions behind them are tracked in the vault's ACTIVE-WORK anchors named per step; this document records only what the repository has to do. Steps finished on 2026-11-12 (borders, signs, name forms, publication, the bundled circle, the colour) are recorded in the journal and in [design.md](design.md) and [data.md](data.md).
 
 ## Edition title
 

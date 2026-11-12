@@ -22,16 +22,22 @@ The operator rejected the dark stage, then the two tinted looks and red as lead 
 
 | Role | Token | Value | Use |
 |---|---|---|---|
-| Ground | `--stage` | `#ffffff` | page and drawing area |
-| Sidebar ground | `--side` | `#f6f6f6` | the one sidebar |
-| Text | `--text` | `#1a1a1a` | all reading text, 17.4:1 |
-| Muted text | `--muted` | `#4a4a4a` | secondary text, act marks and act names, 8.9:1 |
-| Hairline | `--hairline` | `#dcdcdc` | separators, rings, the shaded field |
-| Edge | `--edge` | `#8c8c8c` | relation lines, 3.4:1 as a graphic |
+| Ground | `--stage` | `#ffffff` | page and drawing area, untinted |
+| Sidebar ground | `--side` | `#f7f5f1` | the one sidebar |
+| Text | `--text` | `#22201c` | all reading text, 16.3:1 on white, 14.9:1 on the sidebar |
+| Muted text | `--muted` | `#4d4741` | secondary text, act marks and act names, the points of the whole delivery, 9.2:1 and 8.4:1 |
+| Hairline | `--hairline` | `#e0dad1` | separators, rings, the shaded field |
+| Edge | `--edge` | `#8f877c` | relation lines, 3.5:1 as a graphic |
 | Accent | `--accent` | `#0097a7` | selection, pointing, the case, pressed controls, time marks; graphics only, 3.5:1 |
-| Accent text | `--accent-text` | `#005c64` | text in the accent hue, links, family names, 7.7:1 on white, 7.2:1 on the sidebar |
+| Accent text | `--accent-text` | `#005c64` | text in the accent hue, links, family names, 7.7:1 on white, 7.1:1 on the sidebar |
 | Accent faint | `--accent-faint` | `#e3f4f6` | the marked evidence in a regest |
-| Density | `--bars` | `#d2d2d2` | regesta per year behind the time band |
+| Second layer | `--layer2` | `#9c7a2e` | points with evidenced statements, 4.0:1 as a graphic, larger than the other points |
+| Density | `--bars` | `#d8d1c6` | regesta per year behind the time band |
+| Map | `--map-coast`, `--map-river`, `--map-realm` | `#cfc8bc`, `#ddd6cb`, `#efeae1` | coast, rivers, the Empire about 1190 |
+
+## Colour
+
+Decided on 2026-11-12. The operator left the choice to the implementing agent („farben die sehr gut für die webentwicklung und das tool passen. das kannst du ausarbeiten“); the warmer version W1 of the two compared on 2026-11-11 was worked out into the one palette above and the switch `?farbe=` removed. Reasons: his remark that the light design felt cold, his rejection of tinted grounds and of red, and his slide scheme with the accent `#0097A7`. So the ground stays white and the warmth lives in greys of a yellow-grey hue (OKLCH hue 68 to 85 with chroma at most 0.02, far from red); the teal accent keeps selection and pointing, and the second data layer takes an ochre that stays apart from the grey points and from the accent also under simulated protanopia, deuteranopia and tritanopia (OKLab distance at least 0.16) and is drawn larger, so colour never carries the distinction alone. Contrasts were computed for every pair in the table. Names take the medium weight and marks a slightly larger radius, as in W1.
 
 Rules: light only, because no dark scheme reached the same legibility; text at least 7:1; no red anywhere, the old role names `--pen` and `--machine` point to the accent text; acts are neutral ink, the accent is reserved for what is selected or pointed at.
 
