@@ -8,6 +8,12 @@ updated: 2026-11-12
 
 # Journal
 
+## 2026-11-12 Qualifiers and literals shown at their statements
+
+The Research Coordination's reading of RI IV,2,2 n. 103a found the marriage of Eufemia reading as a lasting marriage. The run carries the qualifier „Witwe“ (`rf:qualifier`), but the annotated card showed none of the 323 qualifiers and 121 other literals (conditions, grounds, amounts, exceptions) of the slice. Short qualifiers now stand at the tag („Ehe 3 (Witwe)“, at most 24 characters together), the other literals as glosses under their passage („Bedingung 2“). The other three findings are patterns of the model, not of single regesta, and stand as open questions in `regesta-rdf-demo/knowledge/factoid-model.md`.
+
+- Checks run: all 224 regest pages at 1280 × 800 and 360 × 740, no overflow, three glosses touching another (n. 156, n. 183); six text styles; smoke walk; local review build rebuilt. Not published: the change waits for the coordination's word, as asked.
+
 ## 2026-11-12 Statements annotated in the regest, review on the product
 
 After the operator's rule that he never wants a review form as a page and his direction that the statements be marked in the edition itself (verbatim in [ui-feedback.md](ui-feedback.md)), the regest card shows each statement as a bracketed passage with kind and number, the participants' roles as glosses under their names, nested and crossing statements as nested or crossing brackets; the list under the text is gone. The plan stands in [design.md](design.md#annotated-regest-plan-of-2026-11-12). The separate review page `pruefbogen/` is removed; `build_site.py --review` builds `site-review/` with the verdict form under the cards of the twenty regesta and a Prüfliste, `publish_site.py` refuses such a build, and the result file goes into the public data as „menschlich geprüft“ per statement ([data.md](data.md#review-sheet)).

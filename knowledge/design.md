@@ -58,7 +58,7 @@ Plausibility check (`check_itinerary.py`, writes `data/itinerary-checks.json`): 
 
 ## Annotated regest, plan of 2026-11-12
 
-Built on 2026-11-12 after the plan below. Deviations from the plan, decided on the screen: glosses hang below their word outside the text flow and move to a second row or aside where they would touch (`placeGlosses`); tags take the head's number style instead of the accent colour, so the page keeps six text styles; the card head names the review state of the whole regest (ungeprüft, teilweise geprüft, menschlich geprüft).
+Built on 2026-11-12 after the plan below. Deviations from the plan, decided on the screen: glosses hang below their word outside the text flow and move to a second row or aside where they would touch (`placeGlosses`); tags take the head's number style instead of the accent colour, so the page keeps six text styles; the card head names the review state of the whole regest (ungeprüft, teilweise geprüft, menschlich geprüft). Since the same day the statement's verbatim literals show too: short qualifiers in brackets at the tag („Ehe 3 (Witwe)“), conditions, grounds, amounts and exceptions as glosses under their passage.
 
 The operator's direction, relayed by the Research Coordination: „Es soll quasi so sein, dass Urteil, Streit, Ehe und Amtsinhabe in der digitalen Edition direkt angemerkt sind … Wir checken das Endprodukt ja auch gleich ab.“ Review happens on the product, never in a separate form.
 
