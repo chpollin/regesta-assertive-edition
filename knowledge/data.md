@@ -150,11 +150,12 @@ site/
 
 ## Review sheet
 
-`build_review_sheet.py` chooses the twenty regesta of the operator's review from the edition data of the run and writes `pruefbogen/data/sheet.json`; the local page `pruefbogen/` (served from the repository root, http://127.0.0.1:8102/pruefbogen/) shows them and is never part of `site/`.
+`build_review_sheet.py` chooses the twenty regesta of the operator's review from the edition data of the run and writes `pruefbogen/data/sheet.json`. The review build (`build_site.py --review`, into `site-review/`, never published) copies it with page addresses to `pruefung/sheet.json`, lists the twenty on its Prüfliste and puts the verdict form under each of their regest cards. A regest without statements counts as one item, whether the abstention holds; the progress counts the 46 statements only.
 
 - Review state of a regest, by the first that applies: no statement in scope (keine Aussage), corrections after adjudication (korrigiert), review findings with the statements kept (beibehalten), no finding (ohne Befund).
 - Choice: the Adela case (RI IV,2,1 n. 46 and n. 167) always; then six korrigiert, five beibehalten, five ohne Befund and two keine Aussage; inside a state the regest whose main relation family is least covered so far, ties by a fixed hash of the uid; at most six statements per regest. The result covers all eight families and all four states. A regest without statements is judged as one item, whether the abstention holds.
-- The result file `pruefbogen-2026-11-12-ergebnis.json` holds per regest the uid, identifier and a note, and per statement its id, kind and participants as shown, the verdict (`stimmt`, `falsch`, `unklar` or null) and a note. The page keeps a draft in browser storage; the saved file is the result, and the page can load it back.
+- Result file `pruefbogen/data/pruefbogen-2026-11-12-ergebnis.json`: `sheet` (`pruefbogen-2026-11-12`), `run`, `saved`, and `items`, one per regest with `uid`, `identifier`, `note` (free text, what is missing) and `statements`, one per statement with `id` (the statement id of the run, `__keine__` for an abstention), `kind`, `verdict` (`stimmt`, `falsch` or `unklar`; `stimmt nicht` is read as `falsch`; null when not judged) and `note`. The review build saves it and loads it back; a draft in browser storage only survives a reload.
+- `build_site.py` reads the result file into the public data: a statement with a verdict carries `head.review = {verdict, by: "menschlich geprüft"}`, shown as a sign at its tag with the verdict as title, and the card head says ungeprüft, teilweise geprüft or menschlich geprüft. Notes never enter the public data.
 
 ## Empire about 1190
 

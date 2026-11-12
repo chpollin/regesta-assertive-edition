@@ -14,9 +14,9 @@ Accepted next steps of the edition. Operator decisions behind them are tracked i
 
 Title and definition „Agentic Edition“ as on the start page, confirmed by the operator on 2026-11-12. Anchor: op-thm-edition-titel.
 
-## Review sheet for twenty regesta
+## Review of twenty regesta on the product
 
-Decided on 2026-11-12: the operator checks twenty regesta against their statements himself. A usable local page shows per regest the text with marked evidence and per statement a judgement (stimmt, stimmt nicht, unklar) and a free field, and saves the result as a file the agent can read back. The twenty are chosen with reasons, stratified by statement type and review state, the Adela case among them. The page is a work tool, served locally under its own address and never published; structure measured in the work profile. Anchor: op-thm-regesten-pruefung. Built on 2026-11-12 at http://127.0.0.1:8102/pruefbogen/ (choice and file format in [data.md](data.md#review-sheet)); next: read the operator's saved file back and record the verdicts per regest.
+Decided on 2026-11-12: the operator checks twenty regesta against their statements himself, on the edition itself. A separate review page was built and retired the same day after his rule that he never wants a review form as an HTML page. The statements stand annotated in the regest text of the public edition; the local review build adds one verdict per annotated statement under the card of each of the twenty regesta, with a Prüfliste at http://127.0.0.1:8102/pruefung/. The choice of the twenty stays (`pruefbogen/data/sheet.json`). Next: the result file `pruefbogen/data/pruefbogen-2026-11-12-ergebnis.json`, delivered by the Research Coordination, goes into the public build as „menschlich geprüft“ per statement (format in [data.md](data.md#review-sheet)). Anchor: op-thm-regesten-pruefung.
 
 ## Review of the regesta
 

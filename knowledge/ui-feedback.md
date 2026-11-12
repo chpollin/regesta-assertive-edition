@@ -106,3 +106,9 @@ Seen by the Research Coordination on the same screens: duplicate and damaged nam
 
 Follows: one naming rule from the register for all views; sub-entries of a person named as such; local actors in their own group of the list; in the time band a named legend, lines only across short gaps, years in Italy as pale bands computed from the places of issue, a third order by name; in the decade maps lightness for new against returning places, up to four names per map, the Empire as in the itinerary, smaller circles, thin decades merged. Status on 2026-11-12: built, published and checked on screenshots at 1280 and 360 px, not seen by the operator. Not built because the data do not carry it: colour by relation family or by kind of regest for the whole delivery (only the 224 regesta of the run have statement types), certainty of the place of issue (not recorded per regest in the delivery).
 
+## 2026-11-12, no review form, check the product
+
+„Ich brauche nie einen Prüfbogen als HTML-Seiten. Das soll eine generelle Regel sein. Das macht keinen Sinn, so die Sachen einzutragen, weil alle diese Fragen, die dort stehen, die sollst du mir im Chat geben.“ and „Und wenn, dann sollte genau das ein Tool sein, damit ich gleich schön das abnehmen kann. Es soll quasi so sein, dass Urteil, Streit, Ehe und Amtsinhabe in der digitalen Edition direkt angemerkt sind. Das wäre doch viel besser, oder? Wir checken das Endprodukt ja auch gleich ab. Wenn das Endprodukt klar ist, was Urteil, Streit, Ehe und Amtsinhabe im Regest sind, dann funktioniert es ja auch.“
+
+Follows: the separate review page is retired; the statements stand annotated in the regest text of the edition (kind and number at a bracket, roles under the names); the local review build adds the verdicts on the regest pages themselves. Status on 2026-11-12: built and published; checked on all 224 regest pages at 1280 and 360 px (one gloss touches another in n. 183 at 360 px), not seen by the operator.
+

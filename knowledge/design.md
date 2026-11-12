@@ -56,6 +56,63 @@ The operator's goal for the talk on 2026-11-20, verbatim: „Ziel ist es, wirkli
 
 Plausibility check (`check_itinerary.py`, writes `data/itinerary-checks.json`): consecutive stations are flagged when they lie further apart than 150 km, or 60 km per day between their start dates. This threshold is a stated assumption, not taken from a read source. The literature that should replace it was found but not read: the itinerary monograph on Friedrich I. (1978) and an article on the travel speed of the royal court in the 11th and 12th centuries (Blätter für deutsche Landesgeschichte 123, 1987). Flags are classed by the first matching reason (dating without a day, another issuer, forgery, deperditum, same day at two places, inferred place, unclear). The check finds candidates; it does not prove a point right. A wrong coordinate that causes no impossible jump is not found, and whether the machine date fits the dating prose is not checked. The regest card names provenance and every flag of its point.
 
+## Annotated regest, plan of 2026-11-12
+
+Built on 2026-11-12 after the plan below. Deviations from the plan, decided on the screen: glosses hang below their word outside the text flow and move to a second row or aside where they would touch (`placeGlosses`); tags take the head's number style instead of the accent colour, so the page keeps six text styles; the card head names the review state of the whole regest (ungeprüft, teilweise geprüft, menschlich geprüft).
+
+The operator's direction, relayed by the Research Coordination: „Es soll quasi so sein, dass Urteil, Streit, Ehe und Amtsinhabe in der digitalen Edition direkt angemerkt sind … Wir checken das Endprodukt ja auch gleich ab.“ Review happens on the product, never in a separate form.
+
+```text
+Interface plan: regest card (citable page and detail panel), annotated
+
+Readers and tasks
+  reader of the edition: read the regest, see which statement the agent read from which words, with whom in which role
+  the operator (local review build only): judge each statement, note what is missing, save the result
+
+Parts, in order
+  1. head line          purpose: which regest, when, where, state       main element: one line (unchanged)
+  2. annotated text     purpose: the regest with its statements in place main element: the text
+  3. Mehr               purpose: commentary, transmission, gaps, RDF   main element: closed details (unchanged)
+  4. review (local)     purpose: one verdict per statement             main element: form, numbered as in 2
+  Removed: the statement list under the text; the annotated text carries kind and participants, so the list said everything twice.
+
+Main figure: the annotated text
+  Shows: each statement as a bracketed passage. An opening tag before the passage names the kind and carries the
+  statement's number („Urteil 1“), a thin closing bracket ends it; nested and crossing statements simply nest or
+  cross their brackets, as in a critical apparatus, so no geometry is needed and 1102 nested and 87 crossing pairs
+  of the run read the same way. Each participant's name inside the passage carries its role as a small gloss
+  under the word, with the statement number where a name serves two statements („Beteiligte 2, Ehepartnerin 3“).
+  A participant the text does not name in the passage stands after the opening tag. Pointing at a tag lights its
+  passage.
+  Terms: kind of statement (the vocabulary's German labels), role, „menschlich geprüft“ once a verdict exists.
+
+Budget
+  Text: no prose beyond the regest itself; tags one or two words, glosses one word each.
+  Levels per statement: tag with number / passage / glosses.
+
+States
+  No statement: the text plain, one line „keine Aussage im Rahmen des Laufs“ (unchanged).
+  Reviewed: the tag carries the verdict as a sign with its words as title (✓ stimmt, ✗ stimmt nicht, ? unklar),
+  „menschlich geprüft“ in the title; the input itself never appears in the public build.
+  Long or dense: tags wrap with the text; n. 103a, the densest case, is the acceptance case.
+
+Wireframe, regest page at 1280 px
+  | RI IV,2,2 n. 103a  (1152 Juni/Juli)  RI Online  ungeprüft                     |
+  | [Urteil 1 ⟨ Vor König Friedrich ... wird der [Streit oder Klage 2 ⟨ Streit    |
+  |                 Beteiligter 1                                                  |
+  | zwischen Eufemia, [Ehe 3 ⟨ der Witwe Heinrichs von Hegilen ⟩ ...              |
+  |          Beteiligte 2, Ehepartnerin 3      Ehepartner 3                        |
+  | ... entschieden. ⟩                                                             |
+  | ▸ Mehr                                                                          |
+  | (local only) 1 Urteil  ( ) stimmt ( ) stimmt nicht ( ) unklar  [Anmerkung]      |
+
+Review build (local only)
+  build_site.py --review writes site-review/ (gitignored) with the verdict form under each card of the twenty
+  regesta of pruefbogen/data/sheet.json and a Prüfliste page with progress; publish_site.py refuses a build that
+  carries the review marker. Verdicts save to pruefbogen/data/pruefbogen-2026-11-12-ergebnis.json; the next public
+  build reads that file and shows the result per statement.
+```
+
 ## Zeitband and Jahrzehnte
 
 Both views answer where and with whom over time, from the whole delivery without LLM. Revised on 2026-11-12 after the operator's question whether colour and the places could mean more (verbatim in ui-feedback.md).

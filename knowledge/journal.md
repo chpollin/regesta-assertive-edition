@@ -8,6 +8,13 @@ updated: 2026-11-12
 
 # Journal
 
+## 2026-11-12 Statements annotated in the regest, review on the product
+
+After the operator's rule that he never wants a review form as a page and his direction that the statements be marked in the edition itself (verbatim in [ui-feedback.md](ui-feedback.md)), the regest card shows each statement as a bracketed passage with kind and number, the participants' roles as glosses under their names, nested and crossing statements as nested or crossing brackets; the list under the text is gone. The plan stands in [design.md](design.md#annotated-regest-plan-of-2026-11-12). The separate review page `pruefbogen/` is removed; `build_site.py --review` builds `site-review/` with the verdict form under the cards of the twenty regesta and a Prüfliste, `publish_site.py` refuses such a build, and the result file goes into the public data as „menschlich geprüft“ per statement ([data.md](data.md#review-sheet)).
+
+- Checks run: all 224 regest pages at 1280 × 800 and 360 × 740 without a gloss on a word and without horizontal overflow, one gloss touching another in n. 183 at 360 px; the regest page with six text styles; the card in the detail panel of the network; judging, saving, loading back and the Prüfliste in the review build; the public rendering of verdicts with injected data, notes absent from the data; `publish_site.py` refusing the review build; smoke walk, pytest, ruff, `node --check`; published through `publish_site.py`.
+- Open: the operator's verdicts. Draft, not accepted.
+
 ## 2026-11-12 One naming rule, a time band without false presence, decades with new places
 
 After the operator's question on the decade maps and the time band (verbatim in [ui-feedback.md](ui-feedback.md)). The duplicates in the time band were no unmerged persons: the old short-name rule of `build_holdings.py` gave different register entries the same name, among them seven persons as „Heinrich II.“ and Friedrich's envoys, children and ministerials as „Fredericus I. Barbarossa“. `register_names.py` now names every register person once for all views ([data.md](data.md#person-names)). The person list of the network puts actors known only by the regest's wording in a group of their own, each with its regest. Time band and decade maps changed as recorded in [design.md](design.md#zeitband-and-jahrzehnte).
