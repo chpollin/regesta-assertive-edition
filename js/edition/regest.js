@@ -24,7 +24,15 @@ export async function init(root) {
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({})));
   const claim = location.hash.startsWith("#f-") ? decodeURIComponent(location.hash.slice(3)) : null;
-  host.replaceChildren(renderRegestCard(store, uid, { claim, texts, page: true }));
+  const card = renderRegestCard(store, uid, { claim, texts, page: true });
+  host.replaceChildren(card);
+  // Local review build only: the verdict form under the card (js/edition/review.js).
+  if (document.querySelector('meta[name="edition-review"]')) {
+    const [{ loadReview, mountReview }, { statementsOf }] = await Promise.all([import("./review.js"), import(siteUrl(root, "ansicht/js/regest-card.js"))]);
+    const review = await loadReview(root);
+    const numbers = new Map(statementsOf(store.byUid.get(uid)).map((st) => [st.id, st.n]));
+    if (review) mountReview(review, uid, card, numbers, root);
+  }
 }
 
 /** Validated return address: same origin, http or https, otherwise nothing is shown. */

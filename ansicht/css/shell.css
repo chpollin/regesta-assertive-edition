@@ -121,7 +121,7 @@
   .act-open:hover .act-name, .act-open:focus-visible .act-name { text-decoration: underline; }
 
   /* The regest component, the same in the detail panel and on the citable page. */
-  .regest-card { display: grid; gap: var(--space-3); font-size: var(--step--1); }
+  .regest-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); font-size: var(--step--1); }
   .card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
   .card-id { font-weight: 600; }
   .card-meta { color: var(--muted); }
@@ -131,10 +131,27 @@
   .card-text { font-size: var(--step-0); line-height: 1.6; }
   .card-text .ev { text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 0.2em; }
   .card-text .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
-  .card-claims { display: grid; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
-  .card-claims li { padding: 2px var(--space-2); border-inline-start: 2px solid transparent; cursor: default; }
-  .card-claims li.is-on, .card-claims li:focus-visible { border-inline-start-color: var(--accent); background: var(--accent-faint); }
-  .claim-kind { font-weight: 600; }
+  /* The annotated text: tags and brackets in the accent text colour of the interface face,
+     roles as a small muted gloss under the name; the line height leaves room for the glosses. */
+  .card-text.is-annotated { line-height: 3; overflow-wrap: anywhere; }
+  /* Tags take the style of the regest number in the head (interface face, semibold, text
+     colour), so the page keeps six text styles; the accent bar and bracket mark the layer. */
+  .ann-open, .ann-close { font-family: var(--font-ui); font-size: 0.8em; font-weight: 600; color: var(--text); white-space: nowrap; }
+  .regest-card.is-page .ann-open { font-size: var(--step-0); }
+  .ann-open { margin-inline: 0.15em 0.25em; padding: 0 0.25em; border-inline-start: 2px solid var(--accent); }
+  .ann-close { margin-inline: 0.1em 0.2em; }
+  .regest-card.is-page .ann-close { font-size: var(--step-0); }
+  .ann-open.is-on, .ann-close.is-on { background: var(--accent-faint); }
+  .ann-verdict { margin-inline-start: 0.3em; }
+  .ann-verdict.is-falsch { color: var(--warn); }
+  .ann-extra { margin-inline-start: 0.4em; font-weight: 400; color: var(--muted); white-space: normal; }
+  .regest-card.is-page .ann-role { font-size: var(--step--1); }
+  .card-text.is-annotated .ev { text-decoration: none; }
+  .card-text.is-annotated .ev.is-on { background: var(--accent-faint); }
+  .ann-name { position: relative; white-space: nowrap; }
+  .ann-name.is-long { white-space: normal; }
+  .ann-role { position: absolute; inset-inline-start: 0; top: calc(100% + var(--row, 0) * 1.25em); font-family: var(--font-ui); font-size: 0.6em; font-style: normal; line-height: 1.2; color: var(--muted); white-space: nowrap; pointer-events: none; translate: var(--shift, 0) 0; }
+  .ann-role.is-end { inset-inline-start: auto; inset-inline-end: 0; }
   .claim-flag { color: var(--warn); font-weight: 600; margin-inline-start: var(--space-1); }
   .card-none, .card-note { color: var(--muted); }
   .card-note.is-flag { color: var(--warn); }

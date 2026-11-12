@@ -10,6 +10,7 @@ const loaders = {
   start: () => import("./start.js"),
   regest: () => import("./regest.js"),
   personen: () => import("./persons.js"),
+  pruefung: () => import("./review.js"),
 };
 
 const load = loaders[document.body.dataset.page];
