@@ -519,7 +519,7 @@ export function renderItinerary(store, options) {
       { class: "it-legend" },
       h("p", {}, h("span", { class: "it-key" }), h("span", { class: "it-n", text: String(shown.length) }), " Regesten mit Ausstellungsort"),
       h("p", {}, h("span", { class: "it-key is-evidenced" }), h("span", { class: "it-n", text: String(shownEvidenced) }), " davon mit belegten Aussagen"),
-      realm ? h("p", { title: "Grobe eigene Digitalisierung nach der gemeinfreien Karte von W. R. Shepherd (1926)" }, h("span", { class: "it-key is-realm" }), h("span", { class: "it-n" }), "Reich um 1190, grob nach Shepherd") : null,
+      realm ? h("p", { title: "Grobe eigene Digitalisierung nach der gemeinfreien Karte von W. R. Shepherd (1926)" }, h("span", { class: "it-key is-realm" }), h("span", { class: "it-n" }), "Reich um 1190 nach Shepherd") : null,
       checks
         ? h(
             "p",

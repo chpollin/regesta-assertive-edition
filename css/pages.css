@@ -1,23 +1,22 @@
 /* Content pages of the static edition: start text, regest list, single regest, persons,
    method, data, about. The frame (header, navigation, footer) belongs to css/shell.css and
    colours to css/tokens.css; the --pg names below only alias those tokens for this file.
-   Operator decision of 2026-11-11: white ground, very dark text, neutral grey lines, one
-   calm accent and no red. The accent #0097a7 marks underlines, rules and focus; text in the
-   accent hue uses --accent-text, because #0097a7 on white reaches only about 3.4:1. */
+   The accent marks underlines, rules and focus; text in the accent hue uses --accent-text.
+   Every page loads tokens.css first, so the aliases need no fallback values. */
 
 :root {
-  --pg-ground: var(--stage, #fff);
-  --pg-ink: var(--text, #1a1a1a);
-  --pg-muted: var(--muted, #4a4a4a);
-  --pg-line: var(--hairline, #dcdcdc);
-  --pg-accent: var(--accent, #0097a7);
-  --pg-tint: var(--accent-faint, #e3f4f6);
+  --pg-ground: var(--stage);
+  --pg-ink: var(--text);
+  --pg-muted: var(--muted);
+  --pg-line: var(--hairline);
+  --pg-accent: var(--accent);
+  --pg-tint: var(--accent-faint);
 }
 
 /* Base for the static pages, which do not load the views' app.css. */
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-family: var(--font-ui, system-ui, sans-serif); font-size: var(--step-0, 1rem); line-height: 1.5; }
-:focus-visible { outline: 2px solid var(--focus, #005c64); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .site-main { max-inline-size: 76rem; margin-inline: auto; inline-size: 100%; }
 .site-main h1 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); font-weight: 600; line-height: 1.2; margin: 0 0 0.75rem; }
 .site-main h2 { font-size: var(--step-0, 1rem); font-weight: 600; margin: 2rem 0 0.5rem; }
@@ -42,8 +41,8 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .entries > li > a { font-weight: 600; }
 .jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
 .jump[hidden] { display: none; }
-.jump input, .filter input { font: inherit; padding: 0.25rem 0.5rem; border: 1px solid #8a8a8a; border-radius: 2px; background: #fff; color: var(--pg-ink); }
-.jump button { font: inherit; padding: 0.25rem 0.75rem; border: 1px solid var(--pg-ink); border-radius: 2px; background: #fff; color: var(--pg-ink); cursor: pointer; }
+.jump input, .filter input { font: inherit; padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--pg-ink); }
+.jump button { font: inherit; padding: 0.25rem 0.75rem; border: 1px solid var(--pg-ink); border-radius: 2px; background: var(--stage); color: var(--pg-ink); cursor: pointer; }
 .jump-msg { color: var(--pg-muted); }
 
 /* Tables of regesta, persons and files */
@@ -102,7 +101,7 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .step-title::before { content: counter(step) ". "; }
 .steps li > p:last-child { margin: 0.25rem 0 0; }
 .code { white-space: pre-wrap; overflow-wrap: anywhere; padding: 0.75rem; border: 1px solid var(--pg-line); border-radius: 2px; max-inline-size: 80ch; }
-.placeholder { padding: 0.5rem 0.75rem; border: 1px dashed #8a8a8a; max-inline-size: 64ch; }
+.placeholder { padding: 0.5rem 0.75rem; border: 1px dashed var(--edge); max-inline-size: 64ch; }
 
 @media (max-width: 40rem) {
   .list tbody th { white-space: normal; }
