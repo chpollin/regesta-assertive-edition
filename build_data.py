@@ -2181,8 +2181,8 @@ def _build_factoid(
     _link_case(regests, crossrefs, src)
 
     graph = _factoid_graph(graphs, regests, same_name, labels)
-    _name_by_register(graph, src["names"])
     _attach_case_to_nodes(graph, crossrefs)
+    _name_by_register(graph, src["names"])
     return regests, questions, crossrefs, graph, {"dataModel": "factoid", "stage": stage}
 
 
@@ -2347,8 +2347,8 @@ def _build_pilot(run: Path, validation: dict, records: dict, src: dict, ds: Data
     _link_case(regests, crossrefs, src)
 
     graph = _person_graph(graphs, regests, same_name)
-    _name_by_register(graph, src["names"])
     _attach_case_to_nodes(graph, crossrefs)
+    _name_by_register(graph, src["names"])
     return regests, questions, crossrefs, graph, {}
 
 
