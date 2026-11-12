@@ -4,7 +4,8 @@ Regime: single script of the pipeline, standard library only.
 
 Data flow: the edition data of the run (site/ansicht/data/edition.json, written by
 build_site.py) and the relation families of js/relations.js -> a stratified, deterministic
-choice of twenty regesta -> pruefbogen/data/sheet.json, read by the local page pruefbogen/.
+choice of twenty regesta -> pruefbogen/data/sheet.json, read by the local review build
+(build_site.py --review), where the regest pages themselves carry the verdicts.
 
 Usage:
     python build_review_sheet.py [--edition site/ansicht/data/edition.json]

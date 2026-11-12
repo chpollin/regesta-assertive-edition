@@ -34,6 +34,8 @@ BRANCH = "gh-pages"
 INTERNAL_PARTS = {"knowledge", "runs", "review", "checks", "handoff", "journal", ".git", "__pycache__"}
 INTERNAL_SUFFIXES = {".md", ".py", ".pyc", ".jsonl"}
 # Links into internal material inside served pages.
+# The local review build marks its pages; such a build is never published.
+REVIEW_MARK = 'name="edition-review"'
 INTERNAL_LINK = re.compile(r"""(?:href|src)=["'][^"']*(?:knowledge/|runs/|review/)""")
 EXCLUDE = {".edition-build"}
 
@@ -63,6 +65,10 @@ def _check_site() -> list[Path]:
             problems.append(f"internal file: {rel.as_posix()}")
         elif path.suffix == ".html" and INTERNAL_LINK.search(path.read_text(encoding="utf-8")):
             problems.append(f"link into internal material: {rel.as_posix()}")
+        elif path.suffix == ".html" and REVIEW_MARK in path.read_text(encoding="utf-8"):
+            problems.append(f"page of the review build: {rel.as_posix()}")
+        elif rel.parts and rel.parts[0] == "pruefung":
+            problems.append(f"review material: {rel.as_posix()}")
     if problems:
         raise PublishError("build carries internal material:\n" + "\n".join(problems))
     return files

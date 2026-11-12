@@ -63,6 +63,12 @@ MARKER = ".edition-build"
 # it no longer produces. The house rule forbids recursive deletes inside repositories.
 WRITTEN: set[Path] = set()
 STEP_PRODUCERS = ("deterministischer Workflow", "unrevidierter LLM-basierter Agent", "menschlich verifiziert")
+# The operator's review on the product (knowledge/design.md, Annotated regest): the twenty
+# regesta of the sheet and the result file; the review build marks its pages with REVIEW_META.
+REVIEW_SHEET = HERE / "pruefbogen" / "data" / "sheet.json"
+REVIEW_RESULT = HERE / "pruefbogen" / "data" / "pruefbogen-2026-11-12-ergebnis.json"
+REVIEW_META = '<meta name="edition-review" content="pruefbogen-2026-11-12">'
+VERDICTS = {"stimmt": "stimmt", "falsch": "falsch", "stimmt nicht": "falsch", "unklar": "unklar"}
 
 
 class BuildError(Exception):
@@ -134,7 +140,10 @@ def _copytree(src: Path, dst: Path, ignore: object = None) -> None:
 class Site:
     """Run-wide inputs every page needs; built once, read by the page functions."""
 
-    def __init__(self, source: Path, run_id: str, out: Path, edition: dict, extracted: dict) -> None:
+    def __init__(
+        self, source: Path, run_id: str, out: Path, edition: dict, extracted: dict, review: bool = False
+    ) -> None:
+        self.review = review
         self.source = source
         self.run_id = run_id
         self.out = out
@@ -219,6 +228,8 @@ class Site:
         links = "\n".join(f'  <link rel="stylesheet" href="{href}">' for href in css)
         full_title = title if key == "start" else f"{title} | {self.texts['title']}"
         meta = f'  <meta name="description" content="{esc(description)}">\n' if description else ""
+        if self.review:
+            meta += f"  {REVIEW_META}\n"
         footer = (
             f'<footer class="site-footer"><p>{esc(self.texts["licenceLine"])}</p>'
             f'<p class="link-row"><a href="{root}ueber/">Über die Edition</a> <a href="{root}methode/">Methode</a></p></footer>'
@@ -811,13 +822,53 @@ def copy_assets(site: Site, edition_json: Path, questions_json: Path) -> None:
     _copytree(HERE / "js", app / "js", ignore=shutil.ignore_patterns("edition"))
     _copytree(HERE / "css", app / "css")
     _copytree(HERE / "fonts", app / "fonts")
-    _copy(edition_json, app / "data" / "edition.json")
+    _write(
+        app / "data" / "edition.json",
+        json.dumps(_with_verdicts(_load(edition_json)), ensure_ascii=False, separators=(",", ":")),
+    )
     _copy(questions_json, app / "data" / "questions.json")
     routes = {
         "regests": {uid: f"regesten/{s}/" for uid, s in site.slugs.items()},
         "persons": {iri: f"personen/{s}/" for iri, s in site.pslugs.items()},
     }
     _write(out / "data" / "routes.json", json.dumps(routes, ensure_ascii=False, indent=1) + "\n")
+
+
+def _with_verdicts(edition: dict) -> dict:
+    """The operator's verdicts from the result file, per statement, as „menschlich geprüft“.
+
+    Only the verdict enters the data; the note stays in the result file, so the public build
+    shows the outcome of the review and never its input.
+    """
+    if not REVIEW_RESULT.is_file():
+        return edition
+    result = _load(REVIEW_RESULT)
+    verdicts = {}
+    for item in result.get("items", []):
+        for st in item.get("statements", []):
+            verdict = VERDICTS.get(st.get("verdict") or "")
+            if verdict and st.get("id"):
+                verdicts[(item.get("uid"), st["id"])] = verdict
+    for r in edition["regests"]:
+        for block in r.get("blocks", []):
+            head = block.get("head") or {}
+            verdict = verdicts.get((r["uid"], head.get("id")))
+            if verdict:
+                head["review"] = {"verdict": verdict, "by": "menschlich geprüft"}
+    return edition
+
+
+def review_pages(site: Site) -> None:
+    """The review build's Prüfliste and its sheet with page addresses (local only)."""
+    sheet = _load(REVIEW_SHEET)
+    for item in sheet["items"]:
+        item["slug"] = site.slugs[item["uid"]]
+    _write(site.out / "pruefung" / "sheet.json", json.dumps(sheet, ensure_ascii=False, indent=1) + "\n")
+    main = (
+        "<h1>Prüfliste</h1>\n<p>Die zwanzig ausgewählten Regesten. Geprüft wird auf der Regestseite selbst, "
+        'an den Aussagen im Text.</p>\n<div id="review-list"></div>'
+    )
+    site.page(path="pruefung", key="regesten", kind="pruefung", title="Prüfliste", main=main)
 
 
 def tei_excerpt(path: Path) -> str:
@@ -830,7 +881,7 @@ def tei_excerpt(path: Path) -> str:
     return "\n".join(re.sub(r"\n\s+", "\n  ", p) for p in parts if p)
 
 
-def build(source: Path, run_id: str, out: Path) -> None:
+def build(source: Path, run_id: str, out: Path, review: bool = False) -> None:
     marker = out / MARKER
     if out.exists() and any(out.iterdir()) and not marker.is_file():
         raise BuildError(f"{out} exists and is not a build folder of this script")
@@ -861,7 +912,7 @@ def build(source: Path, run_id: str, out: Path) -> None:
         _run(["build_holdings.py", "--source", str(source), "--out", str(data)])
         _run(["check_itinerary.py", "--source", str(source), "--out", str(data / "itinerary-checks.json")])
         WRITTEN.update(p.resolve() for p in (*data.glob("holdings*.json"), data / "itinerary-checks.json"))
-        site = Site(source, run_id, out, _load(rev / "edition.json"), _load(ext / "edition.json"))
+        site = Site(source, run_id, out, _load(rev / "edition.json"), _load(ext / "edition.json"), review=review)
         copy_assets(site, rev / "edition.json", rev / "questions.json")
     package = write_files(site, "revised")
     start_page(site)
@@ -873,6 +924,8 @@ def build(source: Path, run_id: str, out: Path) -> None:
     method_page(site, tei_excerpt(out / "tei" / f"{site.slugs[first]}.xml"))
     about_page(site)
     data_page(site, package)
+    if review:
+        review_pages(site)
     # Only the TEI files of this run's regesta count as written; a TEI file of an earlier
     # run with other regesta is stale, even though it still lies in the folder.
     current = set(site.slugs.values())
@@ -896,13 +949,19 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--source", type=Path, default=HERE.parent / "regesta-rdf-demo")
     parser.add_argument("--run", default="factoid-1153-2026-11-11")
-    parser.add_argument("--out", type=Path, default=HERE / "site")
+    parser.add_argument("--out", type=Path, default=None)
+    parser.add_argument("--review", action="store_true", help="local review build into site-review/, never published")
     args = parser.parse_args()
+    if args.out is None:
+        args.out = HERE / ("site-review" if args.review else "site")
+    if args.review and args.out.resolve() == (HERE / "site").resolve():
+        print("the review build never goes to site/, which is published", file=sys.stderr)
+        return 2
     if args.out.resolve().is_relative_to(args.source.resolve()):
         print("refusing to write into the source repository", file=sys.stderr)
         return 2
     try:
-        build(args.source, args.run, args.out.resolve())
+        build(args.source, args.run, args.out.resolve(), review=args.review)
     except BuildError as exc:
         print(f"site build failed: {exc}", file=sys.stderr)
         return 1
