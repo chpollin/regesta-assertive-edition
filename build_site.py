@@ -822,11 +822,11 @@ def about_page(site: Site, package: str) -> None:
     src = t["source"]
     ae = t["agenticEdition"]
     main = f"""<h1>Über die Edition</h1>
-<p class="intro">{esc(ae["definition"])} {esc(ae["provisionalNote"]) if ae["provisional"] else ""} Diese Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, jede an ihren Wortlaut gebunden und mit Urheber und Prüfstand. Die Aussagen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii; technisch geprüft heißt nicht historisch richtig oder vollständig.</p>
+<p class="intro">Diese Edition ist ein Experiment. Sie erprobt, wie weit LLM-basierte Agenten eine Edition erzeugen und prüfen können, und ist kein abgeschlossenes oder fachlich abgenommenes Werk. {esc(ae["definition"])} {esc(ae["provisionalNote"]) if ae["provisional"] else ""} Diese Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, jede an ihren Wortlaut gebunden und mit Urheber und Prüfstand. Die Aussagen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii; technisch geprüft heißt nicht historisch richtig oder vollständig.</p>
 <section aria-labelledby="methode"><h2 id="methode">Wie die Aussagen entstehen</h2>
 <ol class="steps" role="list">{items}</ol></section>
 <section aria-labelledby="daten"><h2 id="daten">Daten</h2>
-<p>Turtle ist die maßgebliche Fassung der Aussagen, TEI gibt Regesttext und Aussagen in Standoff wieder, JSON ist die Grundlage dieser Seiten. Jede Regestseite bietet ihre drei Dateien an.</p>
+<p>Turtle ist die maßgebliche Fassung der Aussagen. TEI-XML gibt je Regest den Regesttext mit den Aussagen in Standoff wieder und ist gegen das Schema tei_all geprüft, JSON ist die Grundlage dieser Seiten. Jede Regestseite bietet ihre drei Dateien an.</p>
 <ul class="downloads" role="list"><li><a href="../daten/{esc(package)}" download>Alle Regesten als Paket</a></li></ul></section>
 <section aria-labelledby="lizenz"><h2 id="lizenz">Quellen und Lizenz</h2>
 <p>{esc(t["attribution"])} Texte und Daten der Edition stehen unter <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, der Code unter <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>. Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}.</p>
