@@ -104,13 +104,13 @@ Wireframe, regest page at 1280 px
   |          Beteiligte 2, Ehepartnerin 3      Ehepartner 3                        |
   | ... entschieden. ⟩                                                             |
   | ▸ Mehr                                                                          |
-  | (local only) 1 Urteil  ( ) stimmt ( ) stimmt nicht ( ) unklar  [Anmerkung]      |
 
-Review build (local only)
-  build_site.py --review writes site-review/ (gitignored) with the verdict form under each card of the twenty
-  regesta of pruefbogen/data/sheet.json and a Prüfliste page with progress; publish_site.py refuses a build that
-  carries the review marker. Verdicts save to pruefbogen/data/pruefbogen-2026-11-12-ergebnis.json; the next public
-  build reads that file and shows the result per statement.
+Agent review (local preview only, since 2026-11-14)
+  build_site.py --preview writes site-preview/ (gitignored): at each statement of the twenty regesta the
+  outcome of two LLM-based readers as sign and word („✓ Agenten: stimmt“, „? Agenten: unklar“,
+  „≠ Agenten: strittig“), the readers' reasons unfolding below where the outcome is not „stimmt“; the card
+  head says „von LLM-Agenten gelesen“ with model and date. Never „menschlich geprüft“. publish_site.py refuses
+  the preview; the review list and the verdict form of 2026-11-12 are gone (knowledge/data.md, Agent review).
 ```
 
 ## Frontend by objects, 2026-11-14

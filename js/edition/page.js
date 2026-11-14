@@ -11,7 +11,6 @@ const loaders = {
   regest: () => import("./regest.js"),
   regesten: () => import("./listfilter.js"),
   personen: () => import("./listfilter.js"),
-  pruefung: () => import("./review.js"),
 };
 
 const load = loaders[document.body.dataset.page];

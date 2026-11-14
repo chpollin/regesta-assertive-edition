@@ -14,13 +14,13 @@ Accepted next steps of the edition. Operator decisions behind them are tracked i
 
 Title and definition „Agentic Edition“ as on the start page, confirmed by the operator on 2026-11-12. Anchor: op-thm-edition-titel.
 
-## Review of twenty regesta on the product
+## Review of twenty regesta
 
-Decided on 2026-11-12: the operator checks twenty regesta against their statements himself, on the edition itself. A separate review page was built and retired the same day after his rule that he never wants a review form as an HTML page. The statements stand annotated in the regest text of the public edition; the local review build adds one verdict per annotated statement under the card of each of the twenty regesta, with a Prüfliste at http://127.0.0.1:8102/pruefung/. The choice of the twenty stays (`pruefbogen/data/sheet.json`). Next: the result file `pruefbogen/data/pruefbogen-2026-11-12-ergebnis.json`, delivered by the Research Coordination, goes into the public build as „menschlich geprüft“ per statement (format in [data.md](data.md#review-sheet)). Anchor: op-thm-regesten-pruefung.
+Decided on 2026-11-12: the operator checks twenty regesta against their statements himself, on the edition itself. Superseded on 2026-11-14 by his instruction to have an agent evaluate them and to remove the review list („beauftrage einen ai operator der das evaluieren alles umsetzen soll … muss dann entfernt werden weil wir das dann nicht mehr brauchen“, relayed by the Research Coordination). Two independent LLM-based readers per statement evaluated the 46 statements; the result is agentic review and is shown only in the local preview (data.md, Agent review). Next: the operator decides from n. 103a whether the agents' verdicts go public, and the contested and unclear cases go to the model questions and to experts. No statement is verified by a person.
 
 ## Review of the regesta
 
-The 224 regesta of `factoid-1153-2026-11-11` are technically checked (agent reviews, adjudication, correction, SHACL) and not accepted. The site says so per regest. The review sheet above is the first step of the scholarly review.
+The 224 regesta of `factoid-1153-2026-11-11` are technically checked (agent reviews, adjudication, correction, SHACL) and not accepted. The site says so per regest. The agent review of twenty regesta above is no scholarly review; that step has no owner since the operator gave up his own check.
 
 ## Public visibility
 

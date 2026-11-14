@@ -64,12 +64,12 @@ CURRENT = ' aria-current="page"'
 # it no longer produces. The house rule forbids recursive deletes inside repositories.
 WRITTEN: set[Path] = set()
 STEP_PRODUCERS = ("deterministischer Workflow", "unrevidierter LLM-basierter Agent", "menschlich verifiziert")
-# The operator's review on the product (knowledge/design.md, Annotated regest): the twenty
-# regesta of the sheet and the result file; the review build marks its pages with REVIEW_META.
-REVIEW_SHEET = HERE / "pruefbogen" / "data" / "sheet.json"
-REVIEW_RESULT = HERE / "pruefbogen" / "data" / "pruefbogen-2026-11-12-ergebnis.json"
-REVIEW_META = '<meta name="edition-review" content="pruefbogen-2026-11-12">'
-VERDICTS = {"stimmt": "stimmt", "falsch": "falsch", "stimmt nicht": "falsch", "unklar": "unklar"}
+# The agent review of twenty regesta (knowledge/data.md, Agent review): two LLM-based readers
+# per statement. It is agentic review, never a human verdict, and is shown only in the local
+# preview build (--preview, site-preview/) until the operator decides on publication; the
+# preview marks its pages with PREVIEW_META, and publish_site.py refuses them.
+AGENT_REVIEW = HERE / "edition" / "agent-review-2026-11-14.json"
+PREVIEW_META = '<meta name="edition-preview" content="agent-review-2026-11-14">'
 
 
 class BuildError(Exception):
@@ -142,9 +142,9 @@ class Site:
     """Run-wide inputs every page needs; built once, read by the page functions."""
 
     def __init__(
-        self, source: Path, run_id: str, out: Path, edition: dict, extracted: dict, review: bool = False
+        self, source: Path, run_id: str, out: Path, edition: dict, extracted: dict, preview: bool = False
     ) -> None:
-        self.review = review
+        self.preview = preview
         self.source = source
         self.run_id = run_id
         self.out = out
@@ -243,8 +243,8 @@ class Site:
         links = "\n".join(f'  <link rel="stylesheet" href="{href}">' for href in css)
         full_title = title if key == "start" else f"{title} | {self.texts['title']}"
         meta = f'  <meta name="description" content="{esc(description)}">\n' if description else ""
-        if self.review:
-            meta += f"  {REVIEW_META}\n"
+        if self.preview:
+            meta += f"  {PREVIEW_META}\n"
         footer = (
             f'<footer class="site-footer"><p>{esc(self.texts["licenceLine"])}</p>'
             f'<p class="link-row"><a href="{root}ueber/">Über die Edition</a></p></footer>'
@@ -797,9 +797,17 @@ def about_page(site: Site, package: str) -> None:
             f"{reviewers} Agenten prüfen unabhängig, ein weiterer wägt ab, ein dritter korrigiert; danach läuft die technische Prüfung erneut.",
         ),
         (
-            "Fachliche Prüfung",
-            2,
-            "Eine Auswahl wird am Regesttext geprüft. Bisher ist keine Aussage menschlich verifiziert.",
+            (
+                "Agentische Prüfung einer Auswahl",
+                1,
+                "Zwei weitere LLM-basierte Agenten lesen zwanzig ausgewählte Regesten unabhängig gegen den Regesttext und urteilen je Aussage. Keine Aussage ist menschlich verifiziert.",
+            )
+            if site.preview
+            else (
+                "Fachliche Prüfung",
+                2,
+                "Eine Auswahl wird am Regesttext geprüft. Bisher ist keine Aussage menschlich verifiziert.",
+            )
         ),
         (
             "TEI und Website",
@@ -882,7 +890,7 @@ def copy_assets(site: Site, edition_json: Path, questions_json: Path) -> None:
     _copytree(HERE / "fonts", app / "fonts")
     _write(
         app / "data" / "edition.json",
-        json.dumps(_with_verdicts(_load(edition_json)), ensure_ascii=False, separators=(",", ":")),
+        json.dumps(_with_agent_review(_load(edition_json), site.preview), ensure_ascii=False, separators=(",", ":")),
     )
     _copy(questions_json, app / "data" / "questions.json")
     routes = {
@@ -892,41 +900,28 @@ def copy_assets(site: Site, edition_json: Path, questions_json: Path) -> None:
     _write(out / "data" / "routes.json", json.dumps(routes, ensure_ascii=False, indent=1) + "\n")
 
 
-def _with_verdicts(edition: dict) -> dict:
-    """The operator's verdicts from the result file, per statement, as „menschlich geprüft“.
-
-    Only the verdict enters the data; the note stays in the result file, so the public build
-    shows the outcome of the review and never its input.
-    """
-    if not REVIEW_RESULT.is_file():
+def _with_agent_review(edition: dict, preview: bool) -> dict:
+    """The agent review per statement, in the preview build only, as what it is: two LLM-based
+    readers, their verdicts and one outcome, with producer, model and date. It never sets the
+    expert status of a statement, which stays for a person's verification."""
+    if not preview:
         return edition
-    result = _load(REVIEW_RESULT)
-    verdicts = {}
-    for item in result.get("items", []):
-        for st in item.get("statements", []):
-            verdict = VERDICTS.get(st.get("verdict") or "")
-            if verdict and st.get("id"):
-                verdicts[(item.get("uid"), st["id"])] = verdict
+    review = _load(AGENT_REVIEW)
+    by = {(item["uid"], st["id"]): st for item in review["items"] for st in item["statements"]}
+    producer = review["producer"]
     for r in edition["regests"]:
         for block in r.get("blocks", []):
             head = block.get("head") or {}
-            verdict = verdicts.get((r["uid"], head.get("id")))
-            if verdict:
-                head["review"] = {"verdict": verdict, "by": "menschlich geprüft"}
+            st = by.get((r["uid"], head.get("id")))
+            if st:
+                head["agentReview"] = {
+                    "outcome": st["outcome"],
+                    "readers": [{"verdict": x["verdict"], "reason": x["reason"]} for x in st["readers"]],
+                    "by": producer["label"],
+                    "model": producer["model"],
+                    "date": producer["date"],
+                }
     return edition
-
-
-def review_pages(site: Site) -> None:
-    """The review build's Prüfliste and its sheet with page addresses (local only)."""
-    sheet = _load(REVIEW_SHEET)
-    for item in sheet["items"]:
-        item["slug"] = site.slugs[item["uid"]]
-    _write(site.out / "pruefung" / "sheet.json", json.dumps(sheet, ensure_ascii=False, indent=1) + "\n")
-    main = (
-        "<h1>Prüfliste</h1>\n<p>Die zwanzig ausgewählten Regesten. Geprüft wird auf der Regestseite selbst, "
-        'an den Aussagen im Text.</p>\n<div id="review-list"></div>'
-    )
-    site.page(path="pruefung", key="regesten", kind="pruefung", title="Prüfliste", main=main)
 
 
 def tei_excerpt(path: Path) -> str:
@@ -939,7 +934,7 @@ def tei_excerpt(path: Path) -> str:
     return "\n".join(re.sub(r"\n\s+", "\n  ", p) for p in parts if p)
 
 
-def build(source: Path, run_id: str, out: Path, review: bool = False) -> None:
+def build(source: Path, run_id: str, out: Path, preview: bool = False) -> None:
     marker = out / MARKER
     if out.exists() and any(out.iterdir()) and not marker.is_file():
         raise BuildError(f"{out} exists and is not a build folder of this script")
@@ -970,7 +965,7 @@ def build(source: Path, run_id: str, out: Path, review: bool = False) -> None:
         _run(["build_holdings.py", "--source", str(source), "--out", str(data)])
         _run(["check_itinerary.py", "--source", str(source), "--out", str(data / "itinerary-checks.json")])
         WRITTEN.update(p.resolve() for p in (*data.glob("holdings*.json"), data / "itinerary-checks.json"))
-        site = Site(source, run_id, out, _load(rev / "edition.json"), _load(ext / "edition.json"), review=review)
+        site = Site(source, run_id, out, _load(rev / "edition.json"), _load(ext / "edition.json"), preview=preview)
         copy_assets(site, rev / "edition.json", rev / "questions.json")
     package = write_files(site, "revised")
     start_page(site)
@@ -982,8 +977,6 @@ def build(source: Path, run_id: str, out: Path, review: bool = False) -> None:
     method_page(site, tei_excerpt(out / "tei" / f"{site.slugs[first]}.xml"))
     about_page(site, package)
     data_page(site, package)
-    if review:
-        review_pages(site)
     # Only the TEI files of this run's regesta count as written; a TEI file of an earlier
     # run with other regesta is stale, even though it still lies in the folder.
     current = set(site.slugs.values())
@@ -1008,18 +1001,20 @@ def main() -> int:
     parser.add_argument("--source", type=Path, default=HERE.parent / "regesta-rdf-demo")
     parser.add_argument("--run", default="factoid-1153-2026-11-11")
     parser.add_argument("--out", type=Path, default=None)
-    parser.add_argument("--review", action="store_true", help="local review build into site-review/, never published")
+    parser.add_argument(
+        "--preview", action="store_true", help="local preview with the agent review into site-preview/, never published"
+    )
     args = parser.parse_args()
     if args.out is None:
-        args.out = HERE / ("site-review" if args.review else "site")
-    if args.review and args.out.resolve() == (HERE / "site").resolve():
-        print("the review build never goes to site/, which is published", file=sys.stderr)
+        args.out = HERE / ("site-preview" if args.preview else "site")
+    if args.preview and args.out.resolve() == (HERE / "site").resolve():
+        print("the preview build never goes to site/, which is published", file=sys.stderr)
         return 2
     if args.out.resolve().is_relative_to(args.source.resolve()):
         print("refusing to write into the source repository", file=sys.stderr)
         return 2
     try:
-        build(args.source, args.run, args.out.resolve(), review=args.review)
+        build(args.source, args.run, args.out.resolve(), preview=args.preview)
     except BuildError as exc:
         print(f"site build failed: {exc}", file=sys.stderr)
         return 1

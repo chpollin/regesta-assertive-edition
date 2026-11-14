@@ -42,10 +42,9 @@ Local servers, all bound to 127.0.0.1:
 ```
 python -m http.server 8100 --bind 127.0.0.1 --directory site
 python -m http.server 8096 --bind 127.0.0.1
-python -m http.server 8102 --bind 127.0.0.1 --directory site-review
 ```
 
-8100 serves the curated build (views under `ansicht/`), 8096 the repository root for working on the views, 8102 the local review build (`python build_site.py --review` into the gitignored `site-review/`), where the operator judges the statements on the regest pages themselves, starting from http://127.0.0.1:8102/pruefung/; `publish_site.py` refuses such a build. No separate review form exists: the operator's rule of 2026-11-12 is that questions come in the chat and checks happen on the product. Port 8091 is the operator's; checks use other ports.
+8100 serves the curated build (views under `ansicht/`), 8096 the repository root for working on the views. `python build_site.py --preview` writes the gitignored `site-preview/` with the agent review shown at the statements; `publish_site.py` refuses such a build, and it goes public only on the operator's word. Questions come in the chat and checks happen on the product (operator's rule of 2026-11-12). Port 8091 is the operator's; checks use other ports.
 
 Checks:
 
@@ -61,7 +60,7 @@ python -m pytest -q checks
 ## Layout
 
 - `build_data.py` run data into `data/edition.json` and `data/questions.json`; `build_holdings.py` the whole delivery into `data/holdings*.json`; `check_itinerary.py` into `data/itinerary-checks.json`; `build_basemap.py` into `js/basemap.json`
-- `build_review_sheet.py` the choice of twenty regesta for the operator's review (`pruefbogen/data/sheet.json`); `js/edition/review.js` the verdicts on the regest pages of the review build; the operator's result file `pruefbogen/data/pruefbogen-2026-11-12-ergebnis.json` is read by `build_site.py` into the public build
+- `prepare_agent_review.py` the reader input of the agent review from the run's revised Turtle; `build_agent_review.py` joins the two readers into `edition/agent-review-2026-11-14.json`, read by `build_site.py --preview` (knowledge/data.md, Agent review)
 - `build_realm.py` the Empire about 1190 from the trace `edition/realm-1190-trace.json` into `js/realm.json`; `publish_site.py` the publication on `gh-pages`
 - `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema

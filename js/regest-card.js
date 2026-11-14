@@ -22,16 +22,23 @@ import { h, regestHref } from "./dom.js";
 const REVIEW_WORD = "ungeprüft";
 const REVIEW_TIP = "Von LLM-basierten Agenten extrahiert, technisch geprüft, fachlich nicht abgenommen.";
 
-// The human verdict at a tag: sign and word together (rule 7: a sign never stands alone).
-const VERDICT_SIGN = { stimmt: ["✓", "bestätigt"], falsch: ["✗", "verworfen"], unklar: ["?", "unklar"] };
+// The agent review at a statement (knowledge/data.md, Agent review): sign and word together
+// (rule 7: a sign never stands alone), and always named as the agents' verdict, since no
+// person has verified it. „strittig“: the two readers disagree, and both readings stay.
+const AGENT_SIGN = { stimmt: "✓", "stimmt nicht": "✗", unklar: "?", strittig: "≠" };
+const slug = (outcome) => outcome.replace(/\s+/g, "-");
 
-/** The regest's review state in one word: ungeprüft, teilweise geprüft or menschlich geprüft. */
+/** The regest's review state in one word: ungeprüft, or read by agents with who and when. */
 function reviewState(regest) {
   const heads = (regest.blocks ?? []).map((b) => b.head).filter((hd) => hd?.evidence);
-  const done = heads.filter((hd) => hd.review).length;
-  if (!done) return h("abbr", { class: "card-state", title: REVIEW_TIP, text: REVIEW_WORD });
-  const all = done === heads.length;
-  return h("abbr", { class: "card-state is-reviewed", title: `${done} von ${heads.length} Aussagen menschlich geprüft; das Zeichen am Tag nennt das Urteil.`, text: all ? "menschlich geprüft" : "teilweise geprüft" });
+  const read = heads.filter((hd) => hd.agentReview);
+  if (!read.length) return h("abbr", { class: "card-state", title: REVIEW_TIP, text: REVIEW_WORD });
+  const { model, date } = read[0].agentReview;
+  return h("abbr", {
+    class: "card-state",
+    title: `${read.length} von ${heads.length} Aussagen von zwei LLM-basierten Agenten unabhängig gegen den Regesttext gelesen (${model}, ${date}). Keine Aussage ist menschlich verifiziert.`,
+    text: "von LLM-Agenten gelesen",
+  });
 }
 
 /** Short qualifiers for the tag, at most QUAL_MAX characters together; every other literal is glossed. */
@@ -61,7 +68,7 @@ export function statementsOf(regest) {
       kind: b.title,
       start: b.head.evidence.start,
       end: b.head.evidence.end,
-      review: b.head.review ?? null,
+      agent: b.head.agentReview ?? null,
       people: (b.lines ?? [])
         .filter((l) => l.phrase && (l.rel === "role" || l.rel === "concerns"))
         .map((l) => ({ phrase: l.phrase, role: l.role ?? (l.rel === "concerns" ? "Gegenstand" : "") })),
@@ -104,7 +111,7 @@ export function notesOf(statements) {
     "ol",
     { class: "card-notes", "aria-label": "Aussagen zu diesem Regest" },
     statements.map((st) => {
-      const sign = st.review ? VERDICT_SIGN[st.review.verdict] : null;
+      const agent = st.agent;
       // Participants grouped by role, each role named once: „Zeuge: Otto von Moos, Erbo von Biburg“.
       const byRole = new Map();
       for (const pp of st.people) byRole.set(pp.role || "beteiligt", [...(byRole.get(pp.role || "beteiligt") ?? []), pp.phrase]);
@@ -118,9 +125,18 @@ export function notesOf(statements) {
           h("span", { class: "note-n", text: String(st.n) }),
           h("span", { class: "note-kind", text: st.kind }),
           st.qualifiers?.length ? h("span", { class: "note-qual", text: ` (${st.qualifiers.join(", ")})` }) : null,
-          sign ? h("span", { class: `ann-verdict is-${st.review.verdict}`, text: `${sign[0]} ${sign[1]}` }) : null,
+          agent ? h("span", { class: `ann-verdict is-${slug(agent.outcome)}`, text: `${AGENT_SIGN[agent.outcome]} Agenten: ${agent.outcome}` }) : null,
         ),
         people ? h("p", { class: "note-people", text: people }) : h("p", { class: "note-people", text: "ohne genannte Beteiligte" }),
+        // Where the agents doubt, their reasons unfold; a plain „stimmt“ needs none.
+        agent && agent.outcome !== "stimmt"
+          ? h(
+              "details",
+              { class: "note-review" },
+              h("summary", {}, "Begründung der LLM-Agenten"),
+              agent.readers.map((r, i) => h("p", {}, `Leser ${i + 1}, ${r.verdict}: ${r.reason}`)),
+            )
+          : null,
       );
     }),
   );
