@@ -163,4 +163,12 @@
   .regest-page { max-inline-size: 46rem; }
   .regest-card.is-page { font-size: var(--step-0); gap: var(--space-4); }
   .regest-card.is-page .card-text { font-size: var(--step-1); }
+
+  /* Switch between the representations of an object (operator's rule 39), the same on the
+     static pages and at the top of a view's sidebar: words in a row, the current one
+     underlined in the accent. */
+  .view-switch { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin: 0 0 var(--space-3); }
+  .view-switch a { color: var(--muted); text-decoration: none; padding-block: 2px; }
+  .view-switch a:hover, .view-switch a:focus-visible { color: var(--text); text-decoration: underline; }
+  .view-switch a[aria-current="page"] { color: var(--text); font-weight: 600; box-shadow: inset 0 -2px 0 var(--accent); }
 }

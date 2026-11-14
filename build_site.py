@@ -49,7 +49,7 @@ import sys
 import tempfile
 import unicodedata
 import zipfile
-from collections import Counter, defaultdict
+from collections import defaultdict
 from itertools import pairwise
 from pathlib import Path
 from urllib.parse import quote
@@ -59,6 +59,7 @@ TAG_RE = re.compile(r"<[^>]+>")
 LINK_RE = re.compile(r"<link\s+(\S+)[^>]*>(.*?)</link>", re.S)
 ZIP_DATE = (2026, 1, 1, 0, 0, 0)
 MARKER = ".edition-build"
+CURRENT = ' aria-current="page"'
 # Every file this build writes, so a rebuild removes exactly the files of the previous build
 # it no longer produces. The house rule forbids recursive deletes inside repositories.
 WRITTEN: set[Path] = set()
@@ -203,6 +204,17 @@ class Site:
     def regest_href(self, root: str, uid: str, claim: str | None = None) -> str:
         return f"{root}regesten/{self.slugs[uid]}/" + (f"#f-{claim}" if claim else "")
 
+    def view_switch(self, key: str, root: str) -> str:
+        """The switch between the representations of the object a page belongs to."""
+        item = next((it for it in self.nav if any(v["key"] == key for v in it.get("views", []))), None)
+        if not item:
+            return ""
+        links = "".join(
+            f'<a href="{root}{esc(v["href"])}"{CURRENT if v["key"] == key else ""}>{esc(v["label"])}</a>'
+            for v in item["views"]
+        )
+        return f'<nav class="view-switch" aria-label="Darstellung der {esc(item["label"])}">{links}</nav>'
+
     def page(
         self,
         *,
@@ -217,8 +229,11 @@ class Site:
         """Write one page in the shared frame: header from nav.json, main, footer licence line."""
         root = "../" * (len(path.split("/")) if path else 0)
         current = ' aria-current="page"'
+        # A page belongs to an object of the navigation either directly or as one of its
+        # representations (the person list is the Personen object's „Liste“).
+        owner = next((it["key"] for it in self.nav if any(v["key"] == key for v in it.get("views", []))), key)
         nav = "".join(
-            f'<a href="{root}{esc(item["href"])}"{current if item["key"] == key else ""}>{esc(item["label"])}</a>'
+            f'<a href="{root}{esc(item["href"])}"{current if item["key"] == owner else ""}>{esc(item["label"])}</a>'
             for item in self.nav
         )
         css = [f"{root}css/tokens.css", f"{root}{self.shell_css}"]
@@ -308,23 +323,32 @@ def marked_text(regest: dict) -> str:
 # Pages
 
 
+EXAMPLE = "RI IV,2,2 n. 103a"
+
+
 def start_page(site: Site) -> None:
+    """Title, the confirmed definition, the linked overview of time, places and persons, the
+    worked case n. 103a and the jump by RI number (operator's rule 42 of 2026-11-14)."""
     t = site.texts
-    persons = len(site.actors)
     fallback = (
-        '<p class="figure-fallback">Hier steht das Itinerar aller Regesten der Lieferung nach Ort und Zeit. '
-        'Die Ansicht braucht JavaScript, die <a href="regesten/">Liste der Regesten</a> nicht.</p>'
+        '<p class="figure-fallback">Hier stehen Zeit, Orte und Personen der Lieferung als verknüpfte Übersicht. '
+        'Die Übersicht braucht JavaScript, die <a href="regesten/">Liste der Regesten</a> nicht.</p>'
+    )
+    example = next((r for r in site.regests if r["identifier"] == EXAMPLE), None)
+    example_html = (
+        f'<section class="example" aria-label="Beispiel {esc(EXAMPLE)}"><p class="example-lead">Jede Aussage steht am Wortlaut, '
+        f"auf dem sie beruht, mit Art, Nummer und den Rollen der Beteiligten:</p>"
+        f'<div id="example" data-uid="{esc(example["uid"])}"><p><a href="{site.slugs[example["uid"]]}/">{esc(EXAMPLE)}</a></p></div></section>'
+        if example
+        else ""
     )
     # The header already shows the title; the h1 stays for screen readers, and the subtitle
     # opens the one sentence of description (measured subtractive pass of 2026-11-11).
     main = f"""<h1 class="visually-hidden">{esc(t["title"])}. {esc(t["subtitle"])}</h1>
 <p class="lede">{esc(t["subtitle"])}. {esc(t["description"])}</p>
 <div class="figure" id="figure">{fallback}</div>
-<ul class="entries" role="list">
-<li><a href="regesten/">{len(site.regests)} Regesten</a></li>
-<li><a href="personen/">{persons} Personen und Gruppen</a></li>
-<li><form class="jump" id="jump" hidden><label for="jump-n">Regest nach RI-Nummer</label> <input id="jump-n" name="n" inputmode="text" autocomplete="off" placeholder="z. B. 46" size="8"> <button type="submit">Öffnen</button> <span class="jump-msg" role="status"></span></form></li>
-</ul>"""
+{example_html}
+<form class="jump" id="jump" hidden><label for="jump-n">Regest nach RI-Nummer</label> <input id="jump-n" name="n" inputmode="text" autocomplete="off" placeholder="z. B. 46" size="8"> <button type="submit">Öffnen</button> <span class="jump-msg" role="status"></span></form>"""
     site.page(path="", key="start", kind="start", title=t["title"], main=main, views=True, description=t["description"])
 
 
@@ -339,20 +363,72 @@ def status_marks(regest: dict) -> str:
     return ", ".join(marks)
 
 
+def _families() -> tuple[dict[str, str], list[tuple[str, str, str, str]]]:
+    """The eight relation families of js/relations.js, the one definition shared with the views:
+    act type -> family key, and per family key, short word, full label and sign path."""
+    src = (HERE / "js" / "relations.js").read_text(encoding="utf-8")
+    fams = re.findall(r'key: "(\w+)", short: "([^"]+)", label: "([^"]+)".*?types: \[([^\]]*)\]', src)
+    icons = dict(re.findall(r'^\s+(\w+): "(M[^"]+)",$', src, re.M))
+    if len(fams) != 8 or set(icons) != {f[0] for f in fams}:
+        raise BuildError("js/relations.js: eight families with a sign each expected")
+    by_type = {t: key for key, _, _, types in fams for t in re.findall(r'"([^"]+)"', types)}
+    return by_type, [(key, short, label, icons[key]) for key, short, label, _ in fams]
+
+
+FAMILY_OF, FAMILIES = _families()
+
+
+def family_sign(key: str) -> str:
+    """The family's sign as inline SVG, as js/relations.js draws it in the views."""
+    path = next(p for k, _, _, p in FAMILIES if k == key)
+    return (
+        '<svg class="fam-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" '
+        f'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="{path}"/></svg>'
+    )
+
+
+def family_cell(keys: set[str]) -> str:
+    """The signs of a row's families in the families' fixed order, with their names for screen readers."""
+    ordered = [(k, label) for k, _, label, _ in FAMILIES if k in keys]
+    signs = "".join(family_sign(k) for k, _ in ordered)
+    names = ", ".join(label for _, label in ordered)
+    return f'<span class="fams">{signs}</span><span class="visually-hidden">{esc(names)}</span>' if ordered else ""
+
+
+def list_filter(placeholder: str) -> str:
+    """Search field and one switch per relation family above a list; js/edition/listfilter.js
+    shows and drives it, so without JavaScript the full list stands without dead controls.
+    The switches carry sign and word, so they are the legend of the signs in the rows."""
+    toggles = "".join(
+        f'<button type="button" class="fam-toggle" aria-pressed="false" data-f="{k}">'
+        f"{family_sign(k)}<span>{esc(label)}</span></button>"
+        for k, _, label, _ in FAMILIES
+    )
+    return (
+        f'<div class="list-filter" hidden><input type="search" class="list-q" aria-label="{esc(placeholder)}" '
+        f'placeholder="{esc(placeholder)}" autocomplete="off">'
+        f'<span class="fam-toggles" role="group" aria-label="Art der Aussage">{toggles}</span>'
+        '<span class="filter-count" role="status"></span></div>'
+    )
+
+
 def regest_list_page(site: Site) -> None:
     rows = []
     for r in site.regests:
         date = segments_html(r["date"], site, "../") or '<span class="missing">ohne Datierung</span>'
         place = segments_html(r["place"], site, "../") if r["place"] and r["place"][0]["t"] != "null" else ""
+        fams = {FAMILY_OF.get(b["title"], "order") for b in r["blocks"]}
+        marks = status_marks(r)
+        q = re.sub(r"[^a-z0-9 ]", "", _fold(" ".join([r["identifier"], r["text"] or ""])))
         rows.append(
-            f'<tr><th scope="row"><a href="{site.slugs[r["uid"]]}/">{esc(r["identifier"])}</a></th>'
+            f'<tr data-q="{esc(q)}" data-f="{" ".join(sorted(fams))}"><th scope="row"><a href="{site.slugs[r["uid"]]}/">{esc(r["identifier"])}</a></th>'
             f"<td>{date}</td><td>{place or '<span class=missing>ohne Ort</span>'}</td>"
-            f'<td class="num">{r["claims"]}</td><td>{esc(status_marks(r))}</td></tr>'
+            f"<td>{family_cell(fams)}{f'<span class=mark>{esc(marks)}</span>' if marks else ''}</td></tr>"
         )
-    main = f"""<h1>Regesten</h1>
-<p class="intro">{len(site.regests)} Regesten in der Ordnung der Regesta Imperii. Ihre Aussagen hat ein LLM-basierter Agent erzeugt, sie sind technisch geprüft und fachlich nicht geprüft. Wie die Auswahl entstand, beschreibt die <a href="../methode/">Methode</a>.</p>
-<div class="table-wrap"><table class="list">
-<thead><tr><th scope="col">Regest</th><th scope="col">Datierung</th><th scope="col">Ort</th><th scope="col" class="num">Aussagen</th><th scope="col">Abweichung</th></tr></thead>
+    main = f"""<h1 class="visually-hidden">Regesten</h1>
+{list_filter("Regesttext oder Nummer")}
+<div class="table-wrap"><table class="list regests">
+<thead><tr><th scope="col">Regest</th><th scope="col">Datierung</th><th scope="col">Ort</th><th scope="col">Aussagen</th></tr></thead>
 <tbody>
 {chr(10).join(rows)}
 </tbody></table></div>"""
@@ -568,34 +644,52 @@ def _register_id(iri: str) -> str | None:
 
 def persons_pages(site: Site) -> None:
     roles = _roles(site)
-    rows = []
-    for n in sorted(site.actors, key=lambda n: (_sort_key(n["label"]), n["id"])):
-        counts = Counter(x["role"] for x in roles.get(n["id"], []))
-        role_text = ", ".join(
-            f"{r} {c}" if c > 1 else r for r, c in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
+    # Persons with a register entry first, the most often named on top; actors the agents
+    # named only by the regest's wording („den Fürsten“) follow as a group of their own,
+    # each with its regest, since the same words stand for different people.
+    registered = sorted(
+        (n for n in site.actors if not n["local"]), key=lambda n: (-len(n["regests"]), _sort_key(n["label"]))
+    )
+    local = sorted((n for n in site.actors if n["local"]), key=lambda n: (_sort_key(n["label"]), n["id"]))
+    groups = []
+    for title, nodes in (("Im Register der Regesta Imperii", registered), ("Nur im Wortlaut eines Regests", local)):
+        rows = []
+        for n in nodes:
+            rels = roles.get(n["id"], [])
+            fams = {"kin" if x["act"] == "Elternschaft" else FAMILY_OF.get(x["act"], "order") for x in rels}
+            where = (
+                f' <span class="mark">{esc(site.by_uid[n["regests"][0]]["identifier"])}</span>'
+                if n["local"] and n["regests"]
+                else ""
+            )
+            q = re.sub(r"[^a-z0-9 ]", "", _fold(" ".join([n["label"], *(lb["label"] for lb in n["labels"])])))
+            rows.append(
+                f'<tr data-q="{esc(q)}" data-f="{" ".join(sorted(fams))}"><th scope="row"><a href="{site.pslugs[n["id"]]}/">{esc(n["label"])}</a>{where}</th>'
+                f'<td>{family_cell(fams)}</td><td class="num">{len(n["regests"])}</td></tr>'
+            )
+            person_page(site, n, rels)
+        groups.append(
+            f'<tbody><tr class="group"><th scope="rowgroup" colspan="3">{esc(title)}</th></tr>\n{chr(10).join(rows)}</tbody>'
         )
-        mark = ' <span class="mark">(ohne Registereintrag)</span>' if n["local"] else ""
-        q = re.sub(r"[^a-z0-9 ]", "", _fold(" ".join([n["label"], *(lb["label"] for lb in n["labels"])])))
-        rows.append(
-            f'<tr data-q="{esc(q)}"><th scope="row"><a href="{site.pslugs[n["id"]]}/">{esc(n["label"])}</a>{mark}</th>'
-            f'<td>{esc(role_text)}</td><td class="num">{len(n["regests"])}</td></tr>'
-        )
-        person_page(site, n, roles.get(n["id"], []))
-    main = f"""<h1>Personen und Gruppen</h1>
-<p class="intro">Die Namen stehen in der Form, die das Regest verwendet, verknüpft mit dem Registereintrag der Regesta Imperii, wo der Agent einen zugeordnet hat. Rollen und Zahl der Regesten stammen aus den Aussagen.</p>
-<p class="filter" hidden><label for="name-filter">Name enthält</label> <input id="name-filter" type="search" autocomplete="off"> <span class="filter-count" role="status"></span></p>
+    main = f"""<h1 class="visually-hidden">Personen und Gruppen</h1>
+{site.view_switch("personen-liste", "../")}
+{list_filter("Name")}
 <div class="table-wrap"><table class="list persons">
-<thead><tr><th scope="col">Name</th><th scope="col">Rollen</th><th scope="col" class="num">Regesten</th></tr></thead>
-<tbody>
-{chr(10).join(rows)}
-</tbody></table></div>"""
-    site.page(path="personen", key="personen", kind="personen", title="Personen und Gruppen", main=main)
+<thead><tr><th scope="col">Name</th><th scope="col">Aussagen</th><th scope="col" class="num">Regesten mit Aussagen</th></tr></thead>
+{chr(10).join(groups)}
+</table></div>"""
+    site.page(path="personen", key="personen-liste", kind="personen", title="Personen und Gruppen", main=main)
 
 
 def _fold(text: str) -> str:
-    """Search folding: lower case, German umlauts spelled out, other diacritics stripped."""
-    text = text.casefold().replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss")
-    return "".join(c for c in unicodedata.normalize("NFD", text) if not unicodedata.combining(c))
+    """Search folding: lower case, German umlauts spelled out, other diacritics stripped. The
+    field carries a second folding with umlauts reduced to their base letter, so „Lowe“ finds
+    „Löwe“ as well as „Loewe“ does (the query side folds umlauts spelled out)."""
+    low = text.casefold()
+    spelled = low.replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss")
+    strip = lambda t: "".join(c for c in unicodedata.normalize("NFD", t) if not unicodedata.combining(c))  # noqa: E731
+    spelled, base = strip(spelled), strip(low.replace("ß", "ss"))
+    return spelled if spelled == base else f"{spelled} {base}"
 
 
 def person_page(site: Site, node: dict, rels: list[dict]) -> None:

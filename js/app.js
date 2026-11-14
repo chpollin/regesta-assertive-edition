@@ -59,18 +59,33 @@ async function loadJson(path) {
 }
 
 /**
- * The navigation of the whole edition from js/nav.json. Inside the curated build this app
- * lives under ansicht/, so static pages are one level up; the two interactive views are
- * local hash routes. In the repository the static pages do not exist and their links are
- * left out, so no link leads nowhere.
+ * The navigation of the whole edition from js/nav.json: one link per object (Regesten,
+ * Personen, Orte, ...), and inside a view the switch between the representations of its
+ * object (operator's rule 39 of 2026-11-14). Inside the curated build this app lives under
+ * ansicht/, so static pages are one level up and views are local hash routes. In the
+ * repository the static pages do not exist and their links are left out.
  */
+const inBuild = location.pathname.includes("/ansicht/");
+const VIEW_PREFIX = "ansicht/";
+const hrefOf = (href) => (href.startsWith(VIEW_PREFIX) ? href.slice(VIEW_PREFIX.length) : `../${href}`);
+const reachable = (href) => inBuild || href.startsWith(VIEW_PREFIX);
+let navItems = [];
 function buildNav(items) {
-  const inBuild = location.pathname.includes("/ansicht/");
-  const local = { "zeit-netz": "#/", itinerar: "#/itinerar", zeitband: "#/zeitband", jahrzehnte: "#/jahrzehnte", raum: "#/raum" };
-  nav.replaceChildren(
-    ...items
-      .filter((it) => inBuild || it.key in local)
-      .map((it) => h("a", { href: it.key in local ? local[it.key] : `../${it.href}`, "data-nav": it.key }, it.label)),
+  navItems = items;
+  nav.replaceChildren(...items.filter((it) => reachable(it.href)).map((it) => h("a", { href: hrefOf(it.href), "data-nav": it.key }, it.label)));
+}
+
+/** The object a view belongs to, and the switch between its representations. */
+function objectOf(viewKey) {
+  return navItems.find((it) => (it.views ?? []).some((v) => v.key === viewKey)) ?? null;
+}
+function viewSwitch(viewKey) {
+  const object = objectOf(viewKey);
+  if (!object) return null;
+  return h(
+    "nav",
+    { class: "view-switch", "aria-label": `Darstellung der ${object.label}` },
+    object.views.filter((v) => reachable(v.href)).map((v) => h("a", { href: hrefOf(v.href), "aria-current": v.key === viewKey ? "page" : null }, v.label)),
   );
 }
 
@@ -121,8 +136,9 @@ function route(store, filters) {
   }
   if (navKey) lastView = `${location.search}${location.hash}`;
   document.title = `${title} | Barbarossa-Regesten mit belegten Aussagen`;
+  const objectKey = objectOf(navKey)?.key ?? navKey;
   for (const link of nav.querySelectorAll("[data-nav]")) {
-    if (link.getAttribute("data-nav") === navKey) link.setAttribute("aria-current", "page");
+    if (link.getAttribute("data-nav") === objectKey) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   }
   dispose?.();
@@ -132,7 +148,8 @@ function route(store, filters) {
   main.dataset.view = view === "personen" ? "" : view === "raum" ? "raum" : `${view}/${parts[1] ?? ""}`;
   document.body.dataset.layout = content.aside ? "view" : "page";
   main.replaceChildren(content.element);
-  aside.replaceChildren(...(content.aside ? [content.aside] : []));
+  const switcher = content.aside ? viewSwitch(navKey) : null;
+  aside.replaceChildren(...[switcher, content.aside].filter(Boolean));
   aside.hidden = !content.aside;
   // Move focus only when the view itself changed; a selection inside a view keeps it.
   if (previousView !== main.dataset.view) {
