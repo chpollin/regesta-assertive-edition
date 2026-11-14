@@ -12,6 +12,7 @@ import { h, regestHref } from "./dom.js";
 import { FAMILIES, familyIcon, familyOf } from "./relations.js";
 import { createSidebar } from "./sidebar.js";
 import { renderRegestCard } from "./regest-card.js";
+import { drawPersonNetwork, personNetwork } from "./person-overview.js";
 
 const SVG = "http://www.w3.org/2000/svg";
 const LABELLED_HUBS = 8;
@@ -117,10 +118,24 @@ export function renderOverview(store, options) {
 
   const graphHost = h("div", { class: "vis graph graph-fill" });
   const status = h("p", { class: "canvas-status", role: "status", "aria-live": "polite" });
+  // The person who takes part in most statements; the overview leaves this person out and
+  // says so in one line with the way to the person's circle.
+  const roleCount = new Map();
+  for (const e of graph.edges) if (e.kind === "role") roleCount.set(e.target, (roleCount.get(e.target) ?? 0) + 1);
+  const centre = [...roleCount].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+  const centreNode = graph.nodes.find((n) => n.id === centre);
+  const centreNote = h(
+    "p",
+    { class: "po-note" },
+    `${centreNode?.label ?? ""} ist an fast allen Aussagen beteiligt und steht deshalb nicht im Bild; `,
+    h("a", { href: `#/personen/${encodeURIComponent(centre ?? "")}`, onclick: (e) => (e.preventDefault(), select(centre)) }, "sein Kreis"),
+    " zeigt sie.",
+  );
   const element = h(
     "section",
     { class: "canvas", "aria-labelledby": "net-title" },
     h("h1", { id: "net-title", class: "visually-hidden", text: "Zeit und Netz: Personen und ihre belegten Beziehungen" }),
+    centreNote,
     graphHost,
     status,
   );
@@ -158,6 +173,20 @@ export function renderOverview(store, options) {
     const height = element.clientHeight;
     if (!width || !height) return;
     const filtered = filteredGraph(graph, filters, state.actor);
+    if (!state.actor) {
+      // Overview first: without a selected person the persons network, the centre left out.
+      const net = personNetwork(filtered, centre);
+      drawPersonNetwork(graphHost, net, {
+        onSelect: (id) => select(id),
+        onPoint: (label) => {
+          status.textContent = label ?? "";
+        },
+      });
+      network = { highlight() {}, pin() {}, point() {}, sector() {}, focus: (id) => graphHost.querySelector(`a[href$="${CSS.escape(encodeURIComponent(id))}"]`)?.focus() };
+      centreNote.hidden = false;
+      return;
+    }
+    centreNote.hidden = true;
     // A sector opens on a click, or when the family filter leaves it as the only one.
     const only = filters.families.size === 1 ? [...filters.families][0] : null;
     const shown = state.actor ? bundleSectors(filtered, state.actor, state.open ?? only) : filtered;

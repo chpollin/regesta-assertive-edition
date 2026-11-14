@@ -162,7 +162,7 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
    the page grows with the map instead of clipping it. */
 .embed-start .embed-aside { padding: var(--space-3); background: var(--side); }
 .so-band { margin-block-end: var(--space-4); }
-.so-label { margin: 0 0 var(--space-1); color: var(--pg-muted); }
+.so-label { display: flex; justify-content: space-between; margin: 0 0 var(--space-1); color: var(--pg-muted); }
 .so-persons, .so-places { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
 .so-persons li, .so-places li { display: flex; justify-content: space-between; gap: var(--space-3); }
 .so-persons a, .so-places a { text-decoration: none; }
@@ -214,3 +214,6 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 @media (min-width: 40.01rem) {
   .list.persons thead th.num { white-space: nowrap; }
 }
+
+.so-svg polygon, .so-svg polyline, .so-svg text { pointer-events: none; }
+.so-place:focus-visible circle { stroke: var(--focus); stroke-width: 2; }

@@ -126,8 +126,8 @@ export function mountReview(review, uid, card, numbers, root) {
   const item = review.sheet.items[index];
   const a = review.answerOf(item);
   const light = (id) => {
-    for (const el of card.querySelectorAll(".ev")) el.classList.toggle("is-on", !!id && el.dataset.ids.split(" ").includes(id));
-    for (const el of card.querySelectorAll(".ann-open, .ann-close")) el.classList.toggle("is-on", !!id && el.dataset.id === id);
+    for (const el of card.querySelectorAll(".ev, .ann-n")) el.classList.toggle("is-on", !!id && el.dataset.ids.split(" ").includes(id));
+    for (const el of card.querySelectorAll(".card-notes > li")) el.classList.toggle("is-on", !!id && el.dataset.id === id);
   };
   const status = h("p", { class: "review-status", role: "status", "aria-live": "polite" });
   const next = review.sheet.items[index + 1];
