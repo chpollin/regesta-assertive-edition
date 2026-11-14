@@ -133,27 +133,40 @@
   .card-text .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
   /* The annotated text: tags and brackets in the accent text colour of the interface face,
      roles as a small muted gloss under the name; the line height leaves room for the glosses. */
-  .card-text.is-annotated { line-height: 3; overflow-wrap: anywhere; }
   /* Tags take the style of the regest number in the head (interface face, semibold, text
      colour), so the page keeps six text styles; the accent bar and bracket mark the layer. */
-  .ann-open, .ann-close { font-family: var(--font-ui); font-size: 0.8em; font-weight: 600; color: var(--text); white-space: nowrap; }
-  .regest-card.is-page .ann-open { font-size: var(--step-0); }
-  .ann-open { margin-inline: 0.15em 0.25em; padding: 0 0.25em; border-inline-start: 2px solid var(--accent); }
-  .ann-open { white-space: normal; }
-  .ann-kind, .ann-qual { white-space: nowrap; }
-  .ann-close { margin-inline: 0.1em 0.2em; }
-  .regest-card.is-page .ann-close { font-size: var(--step-0); }
-  .ann-open.is-on, .ann-close.is-on { background: var(--accent-faint); }
-  .ann-verdict { margin-inline-start: 0.3em; }
+  /* The regest with its statements as notes (since 2026-11-14): the text reads as text, a
+     small number marks where a statement's passage begins, and the note beside or below
+     names kind, participants and roles; pointing at either lights the other. */
+  .card-text.is-noted { line-height: 1.7; }
+  .card-text.is-noted .ev { text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 0.2em; }
+  .card-text.is-noted .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
+  .ann-n { font-family: var(--font-ui); font-size: 0.62em; font-weight: 600; color: var(--accent-text); margin-inline: 0.05em 0.15em; }
+  .ann-n.is-on { background: var(--accent-faint); }
+  .card-body { position: relative; }
+  .regest-card.has-margin .card-body { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: var(--space-5); align-items: start; }
+  .card-notes { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+  .regest-card.has-margin .card-notes { display: block; position: relative; }
+  .regest-card.has-margin .card-notes > li { position: absolute; inset-inline: 0; }
+  .card-notes > li { padding: 2px var(--space-2); border-inline-start: 2px solid var(--hairline); cursor: default; }
+  .card-notes > li.is-on, .card-notes > li:focus-visible { border-inline-start-color: var(--accent); background: var(--accent-faint); outline: none; }
+  .note-head { margin: 0; }
+  .note-n { color: var(--accent-text); font-weight: 600; margin-inline-end: 0.4em; }
+  .note-kind { font-weight: 600; }
+  .note-people { margin: 0; color: var(--muted); font-size: var(--step--1); }
+  .ann-verdict { margin-inline-start: 0.4em; }
+
+  /* The persons overview of the whole network (js/person-overview.js): circles by number of
+     statements, lines by shared statements, the centre person named in one line above. */
+  .po-note { position: absolute; inset-block-start: var(--space-2); inset-inline-start: var(--space-3); z-index: 1; margin: 0; max-inline-size: 40rem; color: var(--muted); font-size: var(--step--1); background: color-mix(in srgb, var(--stage) 85%, transparent); }
+  .po-edge { stroke: var(--edge); stroke-opacity: 0.55; stroke-linecap: round; }
+  .po-edge.is-on { stroke: var(--accent); stroke-opacity: 1; }
+  .po-dot { fill: var(--text); stroke: var(--stage); stroke-width: 1.5; }
+  .po-node:hover .po-dot, .po-node:focus-visible .po-dot { fill: var(--accent); }
+  .po-node.is-dim { opacity: 0.25; }
+  .po-node .n-label.on-demand { display: none; }
+  .po-node:hover .n-label.on-demand, .po-node:focus-visible .n-label.on-demand { display: inline; }
   .ann-verdict.is-falsch { color: var(--warn); }
-  .ann-extra { margin-inline-start: 0.4em; font-weight: 400; color: var(--muted); white-space: normal; }
-  .regest-card.is-page .ann-role { font-size: var(--step--1); }
-  .card-text.is-annotated .ev { text-decoration: none; }
-  .card-text.is-annotated .ev.is-on { background: var(--accent-faint); }
-  .ann-name { position: relative; white-space: nowrap; }
-  .ann-name.is-long { white-space: normal; }
-  .ann-role { position: absolute; inset-inline-start: 0; top: calc(100% + var(--row, 0) * 1.25em); font-family: var(--font-ui); font-size: 0.6em; font-style: normal; line-height: 1.2; color: var(--muted); white-space: nowrap; pointer-events: none; translate: var(--shift, 0) 0; }
-  .ann-role.is-end { inset-inline-start: auto; inset-inline-end: 0; }
   .claim-flag { color: var(--warn); font-weight: 600; margin-inline-start: var(--space-1); }
   .card-none, .card-note { color: var(--muted); }
   .card-note.is-flag { color: var(--warn); }
