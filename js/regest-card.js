@@ -23,7 +23,8 @@ import { h, regestHref } from "./dom.js";
 const REVIEW_WORD = "ungeprüft";
 const REVIEW_TIP = "Von LLM-basierten Agenten extrahiert, technisch geprüft, fachlich nicht abgenommen.";
 
-const VERDICT_SIGN = { stimmt: ["✓", "stimmt"], falsch: ["✗", "stimmt nicht"], unklar: ["?", "unklar"] };
+// The human verdict at a tag: sign and word together (rule 7: a sign never stands alone).
+const VERDICT_SIGN = { stimmt: ["✓", "bestätigt"], falsch: ["✗", "verworfen"], unklar: ["?", "unklar"] };
 
 /** The regest's review state in one word: ungeprüft, teilweise geprüft or menschlich geprüft. */
 function reviewState(regest) {
@@ -129,10 +130,10 @@ export function annotatedText(text, statements) {
     const extra = missing.get(st.id) ?? [];
     return h(
       "span",
-      { class: "ann-open", "data-id": st.id, title: sign ? `menschlich geprüft: ${sign[1]}` : null },
+      { class: "ann-open", "data-id": st.id },
       h("span", { class: "ann-kind", text: `${st.kind} ${st.n}` }),
       st.qualifiers?.length ? h("span", { class: "ann-qual", text: ` (${st.qualifiers.join(", ")})` }) : null,
-      sign ? h("span", { class: `ann-verdict is-${st.review.verdict}`, "aria-label": `menschlich geprüft: ${sign[1]}`, text: sign[0] }) : null,
+      sign ? h("span", { class: `ann-verdict is-${st.review.verdict}`, text: `${sign[0]} ${sign[1]}` }) : null,
       extra.length ? h("span", { class: "ann-extra", text: extra.map((p) => (p.role ? `${p.phrase}: ${p.role}` : p.phrase)).join(", ") }) : null,
     );
   };

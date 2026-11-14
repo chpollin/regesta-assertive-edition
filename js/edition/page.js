@@ -9,7 +9,8 @@ const root = document.documentElement.dataset.root ?? "";
 const loaders = {
   start: () => import("./start.js"),
   regest: () => import("./regest.js"),
-  personen: () => import("./persons.js"),
+  regesten: () => import("./listfilter.js"),
+  personen: () => import("./listfilter.js"),
   pruefung: () => import("./review.js"),
 };
 
