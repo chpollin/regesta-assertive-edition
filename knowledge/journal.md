@@ -13,9 +13,20 @@ updated: 2026-11-14
 - The operator has not yet judged on screen the revision of 2026-11-14 (notes beside the regest, persons overview of the whole network, leaner start page, one page „Über die Edition“), published as gh-pages `748afea`. His next words go verbatim into ui-feedback.md.
 - The verdicts on the twenty regesta are outstanding. The Research Coordination delivers them as `pruefbogen/data/pruefbogen-2026-11-12-ergebnis.json` (format in data.md, Review sheet); then `build_site.py` and `publish_site.py` show them as „menschlich geprüft“ per statement. The local review build is `build_site.py --review`, served by the coordination on port 8102 from `site-review/`.
 - Test tasks with computed answers per user story, RI IV,2,2 n. 103a as the fixed task, are planned and not built (plan.md, Test tasks).
-- Open interface findings: no legend of the node shapes in the circle and the space view; the longest register names wrap in the person index; the regest page at 360 px holds 116 words against the limit of 110 through the regest text itself; „Über die Edition“ exceeds the page profile, as the former pages did; the headings under „Mehr“ are h3 after an h1.
+- The operator asks whether the start page and the place view belong together, wants the regest list better integrated and finds the whole still too text-heavy (ui-feedback.md, 2026-11-14, start page with the places). The direction is his decision; nothing is built for it yet.
+- Open interface findings: the longest register names wrap in the person index; the regest page at 360 px holds 116 words against the limit of 110 through the regest text itself; „Über die Edition“ exceeds the page profile, as the former pages did; the headings under „Mehr“ are h3 after an h1.
+- The key of the signs (gh-pages after this entry) is not yet seen by the operator.
 - `checks/ui_check.py` still asserts the first slice and is to be rewritten for the shell or retired.
 - Questions outside this repository: the model questions from n. 103a (presiding lord, losing party, witness lists, office holding) wait for the operator in `regesta-rdf-demo/knowledge/factoid-model.md`; whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
+
+## 2026-11-14 Key of the signs in network and space
+
+- Trigger: the reviewer's open finding that neither the circle around a person nor the space view explains its node shapes; the operator asked for the key.
+- Found: the space view drew acts as squares, the network as diamonds, and the persons overview drew groups as circles, so one key could not hold for all three.
+- Decided: acts are diamonds and groups squares in every drawing; one line at the lower right lists only the signs the drawing contains; the drawing leaves the key's height free.
+- Rejected: the key in the sidebar, since at 800 px height it falls below the family rows and out of sight.
+- Changed: js/shape-key.js (new), js/overview.js, js/space.js, js/person-overview.js, css/shell.css, design.md.
+- Evidence: screenshots of the overview, the circle and the space view around Heinrich der Löwe at 1280 and 375 px; density check `--profile work` ok for all three at both widths; pytest 11 passed.
 
 ## 2026-11-14 Notes beside the regest, a persons overview, one page about the edition
 

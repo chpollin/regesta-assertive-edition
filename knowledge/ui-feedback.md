@@ -124,3 +124,9 @@ On the whole network (ansicht/#/): „die gefällt mir nicht“. On the start pa
 
 Follows: without a selected person the network shows the forty persons most often named in statements, Friedrich left out with one line saying why and leading to his circle, lines by shared statements; the start page drops the place list and long captions; the regest reads as text with a small number where a statement's passage begins and the statements as notes in the margin, participants grouped by role; Methode, Daten and Über die Edition become one page in the order of the project README, the old addresses forwarding to its sections. Status on 2026-11-14: built, checked and published; not yet judged by the operator on screen.
 
+## 2026-11-14, start page with the places, regest list, text
+
+On the start page (public address): „hier möchte ich die Startseite ausbauen, weil ich finde, dass die Startseite und die Orte-Visualisierung ja zusammen gehören. Das gehört ja irgendwie zusammen, oder?“ Then: „Gesten Explorer gehört auch irgendwie besser integriert, und es ist immer noch zu textlastig insgesamt.“ („Gesten Explorer“ read as the regest list, Regesten.)
+
+Follows: a direction question on merging the start page with the itinerary and on integrating the regest list, answered with an assessment and not yet decided; the text load across all views is open. Status on 2026-11-14: open.
+

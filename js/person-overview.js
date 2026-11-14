@@ -35,7 +35,7 @@ export function personNetwork(graph, centre) {
     actsOf.get(e.target).add(e.source);
   }
   const top = [...actsOf].sort((a, b) => b[1].size - a[1].size || byId.get(a[0]).label.localeCompare(byId.get(b[0]).label, "de")).slice(0, TOP);
-  const nodes = top.map(([id, acts]) => ({ id, label: byId.get(id).label, n: acts.size, acts }));
+  const nodes = top.map(([id, acts]) => ({ id, label: byId.get(id).label, n: acts.size, acts, group: byId.get(id).kind === "group" }));
   const links = [];
   for (let i = 0; i < nodes.length; i += 1) {
     for (let j = i + 1; j < nodes.length; j += 1) {
@@ -95,19 +95,21 @@ function layout(net, width, height) {
   const ys = pos.map((p) => p.y);
   const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
   const padX = Math.min(170, width * 0.18);
-  const padY = 28;
+  // Room above for the line on the left-out person; the key below has its own room.
+  const padTop = 56;
+  const padBottom = 24;
   const sx = (width - 2 * padX) / Math.max(1, x1 - x0);
-  const sy = (height - 2 * padY) / Math.max(1, y1 - y0);
-  return pos.map((p) => ({ x: padX + (p.x - x0) * sx, y: padY + (p.y - y0) * sy }));
+  const sy = (height - padTop - padBottom) / Math.max(1, y1 - y0);
+  return pos.map((p) => ({ x: padX + (p.x - x0) * sx, y: padTop + (p.y - y0) * sy }));
 }
 
 /**
  * Draw the overview into host. onSelect(id) opens a person's circle; onPoint(label|null)
  * names the pointed person in the view's status line.
  */
-export function drawPersonNetwork(host, net, { onSelect, onPoint }) {
+export function drawPersonNetwork(host, net, { onSelect, onPoint, height: given }) {
   const width = Math.max(320, host.clientWidth);
-  const height = Math.max(320, host.clientHeight || 600);
+  const height = Math.max(320, given || host.clientHeight || 600);
   const pos = layout(net, width, height);
   const max = Math.max(1, ...net.nodes.map((n) => n.n));
   const r = (n) => 4 + 12 * Math.sqrt(n.n / max);
@@ -139,7 +141,9 @@ export function drawPersonNetwork(host, net, { onSelect, onPoint }) {
   }
   const nodeEls = net.nodes.map((n, i) => {
     const a = s("a", { href: `#/personen/${encodeURIComponent(n.id)}`, class: "node po-node", "aria-label": `${n.label}, ${n.n} Aussagen` });
-    a.append(s("circle", { cx: pos[i].x.toFixed(1), cy: pos[i].y.toFixed(1), r: r(n).toFixed(1), class: "po-dot" }));
+    // A group is a square, as in the circle of a person, so the key means the same in both.
+    const rr = r(n);
+    a.append(n.group ? s("rect", { x: (pos[i].x - rr * 0.9).toFixed(1), y: (pos[i].y - rr * 0.9).toFixed(1), width: (rr * 1.8).toFixed(1), height: (rr * 1.8).toFixed(1), class: "po-dot" }) : s("circle", { cx: pos[i].x.toFixed(1), cy: pos[i].y.toFixed(1), r: rr.toFixed(1), class: "po-dot" }));
     const spot = label.get(i);
     a.append(
       s("text", {
