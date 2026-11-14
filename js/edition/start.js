@@ -1,8 +1,9 @@
 /**
- * Start page: the linked overview of time, places and persons of the whole delivery
- * (ansicht/js/start-overview.js, operator's rule 42 of 2026-11-14), the annotated regest
- * RI IV,2,2 n. 103a as the worked case of the edition, and the jump to a regest by its RI
- * number. Places and persons lead into the views with the chosen years kept.
+ * Start page: the space-time cube of the whole delivery with places, persons and the regesta
+ * of the selection (ansicht/js/itinerary.js), after the operator's wish of 2026-11-14 that
+ * start page, places and the regest list belong together and that persons join the cube.
+ * The card below shows the regest opened in the cube; before any choice it is the worked
+ * case RI IV,2,2 n. 103a. The jump to a regest by its RI number stays.
  */
 import { bridge, demoteHeadings, loadRoutes, loadStore, siteUrl } from "./views.js";
 
@@ -13,20 +14,32 @@ export async function init(root) {
   initJump(root, store, routes);
   await initExample(root, store);
   if (!store.holdings || !host) return;
-  const [{ createFilters }, { renderStartOverview }] = await Promise.all([
+  const [{ createFilters }, { renderItinerary }] = await Promise.all([
     import(siteUrl(root, "ansicht/js/filters.js")),
-    import(siteUrl(root, "ansicht/js/start-overview.js")),
+    import(siteUrl(root, "ansicht/js/itinerary.js")),
   ]);
   const filters = createFilters(store);
-  // A view address with the chosen years, so the view opens on the same selection.
-  const href = (route) => siteUrl(root, `ansicht/${location.search}#/${route}`);
-  const view = renderStartOverview(store, { filters, href });
+  const slot = document.getElementById("example");
+  let textsPromise = null;
+  const texts = () =>
+    (textsPromise ??= fetch(siteUrl(root, "ansicht/data/holdings-texts.json"))
+      .then((r) => (r.ok ? r.json() : {}))
+      .catch(() => ({})));
+  // A regest opened in the cube takes the place of the worked case below the figure.
+  const detail = {
+    show(card) {
+      card.classList.add("is-page");
+      slot?.replaceChildren(card);
+    },
+    hide() {},
+  };
+  const view = renderItinerary(store, { place: null, filters, detail, texts });
   const drawing = document.createElement("div");
   drawing.className = "embed-main";
   drawing.append(view.element);
   const aside = document.createElement("aside");
   aside.className = "embed-aside site-aside";
-  aside.setAttribute("aria-label", "Zeitraum und Personen");
+  aside.setAttribute("aria-label", "Orte, Personen und Zeitraum");
   aside.append(view.aside);
   host.classList.add("embed", "embed-start");
   host.replaceChildren(aside, drawing);

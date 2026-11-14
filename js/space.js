@@ -11,7 +11,8 @@
 import { h } from "./dom.js";
 import { FAMILIES, familyIcon, familyOf, directionOf } from "./relations.js";
 import { createSidebar } from "./sidebar.js";
-import { keyRoom, keysOf, shapeKey } from "./shape-key.js";
+import { keyRoom, keysOf, shapeKey, standKeys } from "./shape-key.js";
+import { standOf } from "./stand.js";
 import { renderRegestCard } from "./regest-card.js";
 
 const SVG = "http://www.w3.org/2000/svg";
@@ -391,7 +392,7 @@ export function renderSpace(store, options = {}) {
         parts.marks.push(s("path", { class: "sp-act-mark" }));
       } else {
         if (!it.centre && it.years.length > 1) parts.column = s("line", { class: "sp-column" });
-        for (let i = 0; i < (it.centre ? 0 : it.years.length); i += 1) parts.marks.push(n.kind === "group" ? s("rect", { class: "sp-group" }) : s("circle", { class: `sp-person${n.local ? " sp-local" : ""}` }));
+        for (let i = 0; i < (it.centre ? 0 : it.years.length); i += 1) parts.marks.push(n.kind === "group" ? s("rect", { class: `sp-group st-${standOf(store, n)}` }) : s("circle", { class: `sp-person${n.local ? " sp-local" : ""} st-${standOf(store, n)}` }));
         if (it.centre) parts.marks.push(s("circle", { class: "sp-person sp-centre" }), s("circle", { class: "sp-person sp-centre" }));
       }
       parts.hit = s("circle", { class: "sp-hit", r: 10 });
@@ -811,6 +812,7 @@ export function renderSpace(store, options = {}) {
     const items = [...model.items.values()];
     const keys = keysOf(items.filter((it) => !it.centre).map((it) => it.node), model.edges.map((ed) => ed.e));
     if (items.some((it) => !it.centre && it.kind === "person" && it.years.length > 1)) keys.push("years");
+    keys.push(...standKeys(store, items.filter((it) => !it.centre).map((it) => it.node)));
     const next = shapeKey(keys);
     if (key) key.replaceWith(next);
     else element.append(next);

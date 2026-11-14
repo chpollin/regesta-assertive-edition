@@ -11,9 +11,15 @@
  * a head line (number, date, place, link to Regesta Imperii Online), the regest text in the
  * reading face with the evidence marked, and the statements as a compact list in text size,
  * each with its kind and participants. Pointing at a statement lights its passage in the
- * text and the reverse. The review state stands once, as a short word with a tooltip; only a
- * statement that deviates from it carries a mark. Commentary, transmission, model gaps,
- * review findings and the RDF sit behind one „Mehr“.
+ * text and the reverse. The review state stands once, as a short word with a tooltip.
+ *
+ * After the operator's feedback of 2026-11-14 on the page („das Mehr mit dem Ausklappen finde
+ * ich schlecht“, „extrem textlastig“, „Daten … symbolisch und einheitlich“): the head is one
+ * line of signs (date, place, Regesta Imperii Online, the files), a note shows number, kind,
+ * qualifier and the agents' sign, and its participants appear only while the note or its
+ * passage is pointed at or focused. „Mehr“ is gone: on the page the source apparatus
+ * (transmission, commentary) stands below the text; model gaps, review findings and the RDF
+ * stay in the files.
  *
  * Regesta of the whole delivery without statements show the same head and their text.
  */
@@ -28,17 +34,43 @@ const REVIEW_TIP = "Von LLM-basierten Agenten extrahiert, technisch geprüft, fa
 const AGENT_SIGN = { stimmt: "✓", "stimmt nicht": "✗", unklar: "?", strittig: "≠" };
 const slug = (outcome) => outcome.replace(/\s+/g, "-");
 
+// Small line signs for the head, drawn in the text colour; the word beside or the accessible
+// name carries the meaning, so a sign never stands alone (rule 7).
+const SVGNS = "http://www.w3.org/2000/svg";
+const ICON = {
+  date: "M3 4.5h10v8.5H3zM3 7h10M5.5 3v3M10.5 3v3",
+  place: "M8 14s4.5-4.2 4.5-7.5a4.5 4.5 0 0 0-9 0C3.5 9.8 8 14 8 14zM8 8.2a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4z",
+  out: "M9 3h4v4M13 3 7.5 8.5M11 9.5V13H3V5h3.5",
+  file: "M4 2.5h5l3 3V13.5H4zM9 2.5v3h3",
+  agents: "M5.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM10.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 13c0-2.2 1.6-4 3.5-4S9 10.8 9 13M7 13c0-2.2 1.6-4 3.5-4S14 10.8 14 13",
+};
+function icon(name) {
+  const svg = document.createElementNS(SVGNS, "svg");
+  svg.setAttribute("viewBox", "0 0 16 16");
+  svg.setAttribute("class", "head-icon");
+  svg.setAttribute("aria-hidden", "true");
+  const path = document.createElementNS(SVGNS, "path");
+  path.setAttribute("d", ICON[name]);
+  svg.append(path);
+  return svg;
+}
+
 /** The regest's review state in one word: ungeprüft, or read by agents with who and when. */
 function reviewState(regest) {
   const heads = (regest.blocks ?? []).map((b) => b.head).filter((hd) => hd?.evidence);
   const read = heads.filter((hd) => hd.agentReview);
   if (!read.length) return h("abbr", { class: "card-state", title: REVIEW_TIP, text: REVIEW_WORD });
   const { model, date } = read[0].agentReview;
-  return h("abbr", {
-    class: "card-state",
-    title: `${read.length} von ${heads.length} Aussagen von zwei LLM-basierten Agenten unabhängig gegen den Regesttext gelesen (${model}, ${date}). Keine Aussage ist menschlich verifiziert.`,
-    text: "von LLM-Agenten gelesen",
-  });
+  return h(
+    "abbr",
+    {
+      class: "card-state",
+      tabindex: "0",
+      title: `${read.length} von ${heads.length} Aussagen von zwei LLM-basierten Agenten unabhängig gegen den Regesttext gelesen (${model}, ${date}). ✓ beide: stimmt, ? beide: unklar, ≠ die beiden urteilen verschieden. Keine Aussage ist menschlich verifiziert.`,
+    },
+    icon("agents"),
+    "von LLM-Agenten gelesen",
+  );
 }
 
 /** Short qualifiers for the tag, at most QUAL_MAX characters together; every other literal is glossed. */
@@ -125,18 +157,22 @@ export function notesOf(statements) {
           h("span", { class: "note-n", text: String(st.n) }),
           h("span", { class: "note-kind", text: st.kind }),
           st.qualifiers?.length ? h("span", { class: "note-qual", text: ` (${st.qualifiers.join(", ")})` }) : null,
-          agent ? h("span", { class: `ann-verdict is-${slug(agent.outcome)}`, text: `${AGENT_SIGN[agent.outcome]} Agenten: ${agent.outcome}` }) : null,
+          agent
+            ? h("span", {
+                class: `ann-verdict is-${slug(agent.outcome)}`,
+                title: `Zwei LLM-Agenten: ${agent.outcome}`,
+                "aria-label": `LLM-Agenten: ${agent.outcome}`,
+                text: agent.outcome === "stimmt" ? AGENT_SIGN.stimmt : `${AGENT_SIGN[agent.outcome]} ${agent.outcome}`,
+              })
+            : null,
         ),
-        people ? h("p", { class: "note-people", text: people }) : h("p", { class: "note-people", text: "ohne genannte Beteiligte" }),
-        // Where the agents doubt, their reasons unfold; a plain „stimmt“ needs none.
-        agent && agent.outcome !== "stimmt"
-          ? h(
-              "details",
-              { class: "note-review" },
-              h("summary", {}, "Begründung der LLM-Agenten"),
-              agent.readers.map((r, i) => h("p", {}, `Leser ${i + 1}, ${r.verdict}: ${r.reason}`)),
-            )
-          : null,
+        // Shown while the note or its passage is pointed at or focused (css: .note-detail).
+        h(
+          "div",
+          { class: "note-detail" },
+          h("p", { class: "note-people", text: people || "ohne genannte Beteiligte" }),
+          agent && agent.outcome !== "stimmt" ? agent.readers.map((r, i) => h("p", { class: "note-review" }, `LLM-Leser ${i + 1}, ${r.verdict}: ${r.reason}`)) : null,
+        ),
       );
     }),
   );
@@ -181,14 +217,24 @@ export function renderRegestCard(store, uid, options = {}) {
   const date = regest ? regest.date.map((seg) => seg.t).join("") : delivered?.s ?? "";
   const place = regest?.place?.map((seg) => seg.t).join("") || delivered?.l || "";
   const pi = delivered?.pi;
+  const files = options.files;
 
   const head = h(
-    "p",
+    "div",
     { class: "card-head" },
     h("span", { class: "card-id", text: identifier }),
-    date ? h("span", { class: "card-meta", text: date }) : null,
-    place ? h("span", { class: "card-meta", text: place }) : null,
-    pi ? h("a", { class: "card-ri", href: `https://www.regesta-imperii.de/id/${pi}`, title: "Dieses Regest in Regesta Imperii Online" }, "RI Online") : null,
+    date ? h("span", { class: "card-meta", title: "Datierung" }, icon("date"), date) : null,
+    place ? h("span", { class: "card-meta", title: "Ausstellungsort" }, icon("place"), place) : null,
+    pi ? h("a", { class: "card-meta card-ri", href: `https://www.regesta-imperii.de/id/${pi}`, title: "Dieses Regest in Regesta Imperii Online" }, icon("out"), "RI Online") : null,
+    files
+      ? h(
+          "span",
+          { class: "card-meta card-files", title: "Dateien dieses Regests" },
+          icon("file"),
+          ["TEI", "TTL", "JSON"].map((k) => h("a", { href: files[k], download: "" }, k)),
+        )
+      : null,
+    regest && !options.page ? h("a", { class: "card-meta", href: regestHref(uid), title: "Eigene Seite dieses Regests, zum Zitieren" }, icon("out"), "Seite") : null,
     regest ? reviewState(regest) : null,
     options.onClose ? h("button", { type: "button", class: "card-close", "aria-label": "Regest schließen", title: "Schließen", onclick: options.onClose }, "×") : null,
   );
@@ -227,7 +273,7 @@ export function renderRegestCard(store, uid, options = {}) {
       body.append(textEl, notesEl);
       placeNotes(card, textEl, notesEl);
     } else card.append(h("p", { class: "card-none", text: "Zu diesem Regest gibt es keine Aussage im Rahmen des Laufs." }));
-    card.append(more(regest));
+    if (options.page) card.append(apparatus(regest));
     if (options.claim) requestAnimationFrame(() => light(options.claim));
   } else {
     textEl.textContent = "…";
@@ -241,20 +287,16 @@ export function renderRegestCard(store, uid, options = {}) {
   return card;
 }
 
-/** Everything a first reading does not need, behind one switch. */
-function more(regest) {
-  const parts = [];
+/** The source apparatus of Regesta Imperii on the page: transmission and commentary, quiet. */
+function apparatus(regest) {
   const plain = (segments) => (segments ?? []).map((seg) => seg.t).join("");
-  const commentary = plain(regest.apparatus?.commentary);
-  const transmission = plain(regest.apparatus?.transmission);
-  if (commentary) parts.push(h("h3", { text: "Kommentar" }), h("p", { class: "source", text: commentary }));
-  if (transmission) parts.push(h("h3", { text: "Überlieferung" }), h("p", { class: "source", text: transmission }));
-  const gaps = regest.notes?.gaps ?? [];
-  if (gaps.length) parts.push(h("h3", { text: "Modelllücken" }), h("ul", {}, gaps.map((g) => h("li", { text: g.text }))));
-  const findings = regest.history?.findings ?? [];
-  if (findings.length) parts.push(h("h3", { text: "Befunde der Reviews" }), h("ul", {}, findings.map((f) => h("li", { text: f.description }))));
-  const turtle = (regest.blocks ?? []).flatMap((b) => [b.head?.turtle, ...(b.lines ?? []).map((l) => l.turtle)]).filter(Boolean);
-  if (turtle.length) parts.push(h("h3", { text: "RDF" }), h("pre", { class: "card-rdf" }, h("code", { text: [...new Set(turtle)].join("\n\n") })));
-  parts.push(h("p", {}, h("a", { href: regestHref(regest.uid) }, "Eigene Seite dieses Regests, zum Zitieren")));
-  return h("details", { class: "card-more" }, h("summary", { text: "Mehr" }), ...parts);
+  const parts = [
+    ["Überlieferung", plain(regest.apparatus?.transmission)],
+    ["Kommentar", plain(regest.apparatus?.commentary)],
+  ].filter(([, text]) => text);
+  return h(
+    "div",
+    { class: "card-apparatus", hidden: parts.length === 0 },
+    parts.map(([label, text]) => h("p", {}, h("span", { class: "run-in", text: label }), ` ${text}`)),
+  );
 }

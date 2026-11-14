@@ -247,7 +247,7 @@ class Site:
             meta += f"  {PREVIEW_META}\n"
         footer = (
             f'<footer class="site-footer"><p>{esc(self.texts["licenceLine"])}</p>'
-            f'<p class="link-row"><a href="{root}ueber/">Über die Edition</a></p></footer>'
+            f'<a href="{root}ueber/">Über die Edition</a></footer>'
         )
         doc = f"""<!doctype html>
 <html lang="de" class="no-js" data-root="{root}">
@@ -260,7 +260,7 @@ class Site:
 </head>
 <body data-page="{kind}" data-layout="page">
 <a class="skip" href="#main">Zum Inhalt</a>
-<header class="site-header"><a class="site-title" href="{root or "./"}">{esc(self.texts["title"])}</a><nav class="site-nav" aria-label="Edition">{nav}</nav></header>
+<header class="site-header"><a class="site-title" href="{root or "./"}">{esc(self.texts["title"])} <span class="site-tag">{esc(self.texts["tag"])}</span></a><nav class="site-nav" aria-label="Edition">{nav}</nav></header>
 <div class="site-body"><main class="site-main" id="main">
 {main}
 </main></div>
@@ -331,7 +331,7 @@ def start_page(site: Site) -> None:
     worked case n. 103a and the jump by RI number (operator's rule 42 of 2026-11-14)."""
     t = site.texts
     fallback = (
-        '<p class="figure-fallback">Hier stehen Zeit, Orte und Personen der Lieferung als verknüpfte Übersicht. '
+        '<p class="figure-fallback">Hier stehen Orte, Personen und Jahre der Lieferung als Raum-Zeit-Würfel. '
         'Die Übersicht braucht JavaScript, die <a href="regesten/">Liste der Regesten</a> nicht.</p>'
     )
     example = next((r for r in site.regests if r["identifier"] == EXAMPLE), None)
@@ -344,7 +344,7 @@ def start_page(site: Site) -> None:
     # The header already shows the title; the h1 stays for screen readers, and the subtitle
     # opens the one sentence of description (measured subtractive pass of 2026-11-11).
     main = f"""<h1 class="visually-hidden">{esc(t["title"])}. {esc(t["subtitle"])}</h1>
-<p class="lede">{esc(t["subtitle"])}. {esc(t["description"])}</p>
+<p class="lede">{esc(t["subtitle"])}. <a href="ueber/">Über die Edition</a></p>
 <div class="figure" id="figure">{fallback}</div>
 {example_html}
 <form class="jump" id="jump" hidden><label for="jump-n">Regest nach RI-Nummer</label> <input id="jump-n" name="n" inputmode="text" autocomplete="off" placeholder="z. B. 46" size="8"> <button type="submit">Öffnen</button> <span class="jump-msg" role="status"></span></form>"""
@@ -509,16 +509,16 @@ def regest_page(site: Site, index: int) -> None:
     uid, s = r["uid"], site.slugs[r["uid"]]
     root = "../../"
     row = site.rows[uid]
-    prev_link = (
-        f'<a href="../{site.slugs[site.regests[index - 1]["uid"]]}/" rel="prev">Vorheriges, {esc(site.regests[index - 1]["short"])}</a>'
-        if index
-        else ""
-    )
-    next_link = (
-        f'<a href="../{site.slugs[site.regests[index + 1]["uid"]]}/" rel="next">Nächstes, {esc(site.regests[index + 1]["short"])}</a>'
-        if index + 1 < len(site.regests)
-        else ""
-    )
+
+    # Paging as two arrows in the head line of the card (operator, 2026-11-14: the line
+    # „Nächstes, …“ above the regest „so überhaupt nicht gut“); the name is the accessible label.
+    def pager_link(i: int, rel: str, word: str, sign: str) -> str:
+        other = site.regests[i]
+        label = f"{word} Regest, {other['short']}"
+        return f'<a href="../{site.slugs[other["uid"]]}/" rel="{rel}" aria-label="{esc(label)}" title="{esc(label)}">{sign}</a>'
+
+    prev_link = pager_link(index - 1, "prev", "Vorheriges", "←") if index else ""
+    next_link = pager_link(index + 1, "next", "Nächstes", "→") if index + 1 < len(site.regests) else ""
     date = segments_html(r["date"], site, root) or '<span class="missing">ohne Datierung</span>'
     place = segments_html(r["place"], site, root) if r["place"] and r["place"][0]["t"] != "null" else ""
     fields = []
@@ -575,19 +575,18 @@ def regest_page(site: Site, index: int) -> None:
     else:
         statements = '<p class="review-state">Der LLM-basierte Agent hat aus diesem Regest keine Aussage im Rahmen des Modells gewonnen.</p>'
 
+    # Without JavaScript the files stand in the static reading; the card puts them in its head.
     downloads = (
-        '<section class="downloads" aria-labelledby="dl-title"><h2 id="dl-title">Daten zu diesem Regest</h2><ul role="list">'
-        f'<li><a href="{root}tei/{s}.xml" download>TEI</a></li>'
-        f'<li><a href="{root}ttl/{s}.ttl" download>Turtle</a></li>'
-        f'<li><a href="{root}json/{s}.json" download>JSON</a></li>'
-        f'<li><a href="{root}ueber/#daten">Alle Regesten als Paket</a></li></ul></section>'
+        f'<p class="paper-meta"><a href="{root}tei/{s}.xml" download>TEI</a> '
+        f'<a href="{root}ttl/{s}.ttl" download>Turtle</a> <a href="{root}json/{s}.json" download>JSON</a></p>'
     )
     # The page shows the shared regest card of the views app (js/regest-card.js), rendered by
     # js/edition/regest.js into #card. The static content of #card is the reading without
     # JavaScript; citation and downloads stand below it in both cases.
     main = f"""<div class="title-row"><h1 class="visually-hidden">{esc(r["identifier"])}</h1><nav class="pager" aria-label="Blättern">{prev_link}{next_link}<span class="back-slot"></span></nav></div>
-<div class="card-host" id="card" data-uid="{esc(uid)}">
+<div class="card-host" id="card" data-uid="{esc(uid)}" data-slug="{esc(s)}">
 <p class="paper-meta"><span>{esc(r["identifier"])}</span><span>{date}</span>{f"<span>{place}</span>" if place else ""}</p>
+{downloads}
 <p class="regest-text">{marked_text(r)}</p>
 <h2>Aussagen</h2>
 {statements}
@@ -596,8 +595,7 @@ def regest_page(site: Site, index: int) -> None:
 </div>
 <div class="cite">{f'<ul class="ext" role="list">{book}</ul>' if book else ""}
 <p><span class="run-in">Zitierweise des Regests</span> {esc(citation_ri)}</p>
-<p><span class="run-in">Zitierweise dieser Edition</span> {esc(citation_ed)}</p></div>
-{downloads}"""
+<p><span class="run-in">Zitierweise dieser Edition</span> {esc(citation_ed)}</p></div>"""
     site.page(
         path=f"regesten/{s}",
         key="regesten",

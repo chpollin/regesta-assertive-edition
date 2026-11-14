@@ -143,7 +143,7 @@ export function drawPersonNetwork(host, net, { onSelect, onPoint, height: given 
     const a = s("a", { href: `#/personen/${encodeURIComponent(n.id)}`, class: "node po-node", "aria-label": `${n.label}, ${n.n} Aussagen` });
     // A group is a square, as in the circle of a person, so the key means the same in both.
     const rr = r(n);
-    a.append(n.group ? s("rect", { x: (pos[i].x - rr * 0.9).toFixed(1), y: (pos[i].y - rr * 0.9).toFixed(1), width: (rr * 1.8).toFixed(1), height: (rr * 1.8).toFixed(1), class: "po-dot" }) : s("circle", { cx: pos[i].x.toFixed(1), cy: pos[i].y.toFixed(1), r: rr.toFixed(1), class: "po-dot" }));
+    a.append(n.group ? s("rect", { x: (pos[i].x - rr * 0.9).toFixed(1), y: (pos[i].y - rr * 0.9).toFixed(1), width: (rr * 1.8).toFixed(1), height: (rr * 1.8).toFixed(1), class: `po-dot st-${n.stand ?? "open"}` }) : s("circle", { cx: pos[i].x.toFixed(1), cy: pos[i].y.toFixed(1), r: rr.toFixed(1), class: `po-dot st-${n.stand ?? "open"}` }));
     const spot = label.get(i);
     a.append(
       s("text", {

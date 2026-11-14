@@ -24,8 +24,13 @@ export async function init(root) {
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({})));
   const claim = location.hash.startsWith("#f-") ? decodeURIComponent(location.hash.slice(3)) : null;
-  const card = renderRegestCard(store, uid, { claim, texts, page: true });
+  const slug = host.dataset.slug;
+  const files = slug ? { TEI: siteUrl(root, `tei/${slug}.xml`), TTL: siteUrl(root, `ttl/${slug}.ttl`), JSON: siteUrl(root, `json/${slug}.json`) } : null;
+  const card = renderRegestCard(store, uid, { claim, texts, page: true, files });
   host.replaceChildren(card);
+  // Paging moves into the head line of the card, as two arrows.
+  const pager = document.querySelector(".pager");
+  if (pager) card.querySelector(".card-head")?.append(pager);
 }
 
 /** Validated return address: same origin, http or https, otherwise nothing is shown. */

@@ -10,7 +10,8 @@
  */
 import { h, regestHref } from "./dom.js";
 import { FAMILIES, familyIcon, familyOf } from "./relations.js";
-import { keyRoom, keysOf, shapeKey } from "./shape-key.js";
+import { keyRoom, keysOf, shapeKey, standKeys } from "./shape-key.js";
+import { standOf } from "./stand.js";
 import { createSidebar } from "./sidebar.js";
 import { renderRegestCard } from "./regest-card.js";
 import { drawPersonNetwork, personNetwork } from "./person-overview.js";
@@ -189,6 +190,7 @@ export function renderOverview(store, options) {
     if (!state.actor) {
       // Overview first: without a selected person the persons network, the centre left out.
       const net = personNetwork(filtered, centre);
+      for (const n of net.nodes) n.stand = standOf(store, graph.nodes.find((x) => x.id === n.id));
       drawPersonNetwork(graphHost, net, {
         height,
         onSelect: (id) => select(id),
@@ -198,7 +200,7 @@ export function renderOverview(store, options) {
       });
       network = { highlight() {}, pin() {}, point() {}, sector() {}, focus: (id) => graphHost.querySelector(`a[href$="${CSS.escape(encodeURIComponent(id))}"]`)?.focus() };
       centreNote.hidden = false;
-      setKey(net.nodes.some((n) => n.group) ? ["person", "group", "size", "shared"] : ["size", "shared"]);
+      setKey([...(net.nodes.some((n) => n.group) ? ["person", "group"] : []), ...standKeys(store, net.nodes.map((n) => graph.nodes.find((x) => x.id === n.id))), "size", "shared"]);
       return;
     }
     centreNote.hidden = true;
@@ -653,8 +655,8 @@ function drawGraph(host, store, graph, height, selected, handlers) {
     const g = s("a", isAct ? { href: regestHref(n.regest, n.claim), class: "node node-act", tabindex: "-1", "aria-label": label } : { href: `#/personen/${encodeURIComponent(n.id)}`, class: "node", tabindex: "-1", "aria-label": `${label}${n.local ? ", lokale Kennung" : ""}${caseText}` });
     // An act is a small diamond, so it never reads as a group (square) or a person (circle).
     if (isAct) g.append(s("path", { d: `M${cx},${cy - 5} L${cx + 5},${cy} L${cx},${cy + 5} L${cx - 5},${cy} Z`, class: "n-act" }));
-    else if (n.kind === "group") g.append(s("rect", { x: cx - 5, y: cy - 5, width: 10, height: 10, class: "n-group" }));
-    else g.append(s("circle", { cx, cy, r: 5.5, class: `n-person${n.local ? " n-local" : ""}` }));
+    else if (n.kind === "group") g.append(s("rect", { x: cx - 5, y: cy - 5, width: 10, height: 10, class: `n-group st-${standOf(store, n)}` }));
+    else g.append(s("circle", { cx, cy, r: 5.5, class: `n-person${n.local ? " n-local" : ""} st-${standOf(store, n)}` }));
     g.append(s("circle", { cx, cy, r: 12, class: "n-hit" }));
     const spot = labelSpots.get(n.id);
     const fallbackEnd = cx > width - 160;
@@ -766,7 +768,7 @@ function drawGraph(host, store, graph, height, selected, handlers) {
 
   const api = {
     /** The signs this drawing contains, for the key under it. */
-    keys: [...keysOf(order, edgeEls.map((x) => x.e)), ...(order.some((n) => n.kind === "bundle") ? ["bundle"] : [])],
+    keys: [...keysOf(order, edgeEls.map((x) => x.e)), ...(order.some((n) => n.kind === "bundle") ? ["bundle"] : []), ...standKeys(store, order)],
     highlight(uid, actorFocus, selected) {
       lastArgs = [uid, actorFocus, selected];
       if (sectorKey && !previewId && !uid) {

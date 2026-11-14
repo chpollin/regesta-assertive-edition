@@ -135,7 +135,7 @@ function route(store, filters) {
     content = { element: h("p", { text: "Diese Adresse führt zu keiner Ansicht. Die Navigation oben führt zu Zeit und Netz und zum Raum." }) };
   }
   if (navKey) lastView = `${location.search}${location.hash}`;
-  document.title = `${title} | Barbarossa-Regesten mit belegten Aussagen`;
+  document.title = `${title} | Barbarossa-Regesten`;
   const objectKey = objectOf(navKey)?.key ?? navKey;
   for (const link of nav.querySelectorAll("[data-nav]")) {
     if (link.getAttribute("data-nav") === objectKey) link.setAttribute("aria-current", "page");

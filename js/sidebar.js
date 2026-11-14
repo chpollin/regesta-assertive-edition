@@ -53,6 +53,15 @@ export function createSidebar(store, filters, options) {
     element.replaceChildren(selectionPart(shown), familiesPart(inTime));
   }
 
+  /** The selected person's regesta of the whole delivery as a trace in the space-time cube. */
+  function traceLink() {
+    const reg = person?.match(/actor:(RI\d{3}-\d{3}-[A-Z]\d{6})$/)?.[1];
+    const entry = reg ? store.holdings?.persons?.[reg] : null;
+    if (!entry) return null;
+    const app = new URL("../", import.meta.url).pathname;
+    return h("a", { class: "side-trace", href: `${app}?personen=${reg}#/itinerar` }, `Spur im Itinerar, ${entry.r.length} Regesten`);
+  }
+
   /** Person, time band, and the line saying what applies only when something deviates. */
   function selectionPart(shown) {
     const picker = h(
@@ -72,6 +81,7 @@ export function createSidebar(store, filters, options) {
       "section",
       { class: "side-part side-selection", "aria-label": "Auswahl und Filter" },
       picker,
+      traceLink(),
       timeBand(store, filters, new Set(relations().map((r) => Math.floor(yearOf(store.byUid.get(r.uid).start))))),
       filters.active()
         ? h("p", { class: "side-applies" }, `${time}${fams}, ${regestCount} ${regestCount === 1 ? "Regest" : "Regesten"}. `, h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen"))

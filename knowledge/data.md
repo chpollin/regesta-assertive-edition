@@ -152,6 +152,10 @@ site/
 
 The delivery carries „RI IV,2,2 n. 103a“ with the sort key of RI IV,1,2 (`004_001_002_000793_000000103a`, start 1138) and, separately, „RI IV,2,1 n. 103a“ with the same regest text. The lists keep the delivery's sort key, so the first regest stands before RI IV,2,1 n. 1. Which identifier is right is a question to the Regesta Imperii delivery, not decided here.
 
+## Estate
+
+`js/stand.js` gives a person or group one of four estates for the colour of the person drawings: Herrscher, geistlich, weltlich, ohne Angabe. It reads the register description of the person from holdings.json, or the name forms of the run where the register has none. A ruler's own title (König, Kaiser, Königin, Kaiserin, Sultan, Doge; in a register description not followed by a capitalised genitive, which names another person, as in „missus König Konrads III.“) decides first; otherwise the estate word that stands first in the text. It is a deterministic rule on the delivery, not a statement of the source, and it errs on name forms without a title (Konrad III. as a regest-local node stays without an estate) and on forms that name a ruler in passing („der nach dem König zweite Vogt“).
+
 ## Agent review
 
 On 2026-11-14 the operator gave up checking the twenty selected regesta himself and had their statements evaluated by agents. The choice of the twenty stays as decided on 2026-11-12 (`edition/agent-review-2026-11-14/selection.json`): the Adela case (RI IV,2,1 n. 46 and n. 167) always, then by review state of the run six korrigiert, five beibehalten, five ohne Befund and two keine Aussage, inside a state the least covered relation family first, at most six statements per regest. The two regesta without statements are not judged.

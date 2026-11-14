@@ -14,6 +14,13 @@
  * read faster, single points in time not; exact reading stays with the list in the sidebar.
  * Three snapping orthographic views as in the space view: the top view is the map of all
  * places, the side view is time against west and east.
+ *
+ * Persons in the cube (operator, 2026-11-14: „die Personen in diesen Space Time Cube
+ * integrieren … in eine gemeinsame Visualisierung zusammenführen“): a person of the register
+ * becomes the trace of the regesta that name them, through places and years; two persons can
+ * be compared, and the regesta naming both are marked. The register of the delivery names a
+ * person for every regest, so the trace covers the whole reign; the relations with roles
+ * exist only for the regesta of the run and stay in the person views.
  */
 import { h } from "./dom.js";
 import { timeBand } from "./sidebar.js";
@@ -58,6 +65,23 @@ export function renderItinerary(store, options) {
   const params = new URLSearchParams(location.search);
   const startView = VIEWS[params.get("ansicht")] ? params.get("ansicht") : "schraeg";
   const state = { flags: false, place: options.place ?? null, view: { yaw: VIEWS[startView].yaw, pitch: VIEWS[startView].pitch, zoom: 1 }, snap: startView, pointed: null };
+  // Persons of the register with at least three regesta (holdings.json), at most two at once.
+  const persons = H.persons ?? {};
+  state.persons = (params.get("personen") ?? "").split(",").filter((id) => persons[id]).slice(0, 2);
+  let personSets = state.persons.map((id) => new Set(persons[id].r));
+  const memberOf = (uid) => personSets.map((set) => set.has(uid));
+  const personMark = (m) => (m[0] && m[1] ? "is-pab" : m[0] ? "is-pa" : m[1] ? "is-pb" : "");
+  function setPersons(ids) {
+    state.persons = ids.slice(0, 2);
+    personSets = state.persons.map((id) => new Set(persons[id].r));
+    const q = new URLSearchParams(location.search);
+    if (state.persons.length) q.set("personen", state.persons.join(","));
+    else q.delete("personen");
+    const query = q.toString();
+    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    renderSide();
+    update();
+  }
 
   // The map: an equirectangular projection around the median place of issue. The core that
   // holds 95 percent of the documents fills the cube; the far journeys (the crusades of 1147
@@ -152,6 +176,7 @@ export function renderItinerary(store, options) {
     const frames = s("g", { class: "it-frames" });
     const map = s("g", { class: "it-map" });
     const line = s("polyline", { class: "it-path" });
+    const traces = s("g", { class: "it-traces" });
     const dots = s("g", { class: "it-dots" });
     const marks = s("g", { class: "it-marks it-flags" });
     const labels = s("g", { class: "sp-labels" });
@@ -164,9 +189,9 @@ export function renderItinerary(store, options) {
     blur.append(s("feGaussianBlur", { stdDeviation: 2.5 }));
     defs.append(clip, blur);
     const realmLayer = s("g", { class: "it-realm-layer", "clip-path": "url(#it-core-clip)" });
-    svg.append(defs, frames, realmLayer, map, line, dots, marks, labels, pointer);
+    svg.append(defs, frames, realmLayer, map, line, traces, dots, marks, labels, pointer);
     const dotEls = points.map((p) => dots.appendChild(s("circle", { class: evidenced.has(p.u) ? "it-dot is-evidenced" : "it-dot", r: evidenced.has(p.u) ? 3.6 : 2.2 })));
-    return { svg, width, height, frames, map, realmLayer, clipShape, line, dots: dotEls, marks, labels, pointer };
+    return { svg, width, height, frames, map, realmLayer, clipShape, line, traces, dots: dotEls, marks, labels, pointer };
   }
 
   function projector() {
@@ -260,16 +285,27 @@ export function renderItinerary(store, options) {
     }
     screen = points.map((p) => pt(places[p.p].lo, places[p.p].la, p.y));
     const path = [];
+    const trace = state.persons.map(() => []);
     points.forEach((p, i) => {
       const q = screen[i];
-      const on = inside(p.y) && (!state.place || p.p === state.place);
+      const m = memberOf(p.u);
+      const on = inside(p.y) && (!state.place || p.p === state.place) && (!state.persons.length || m.some(Boolean));
       const dot = scene.dots[i];
       dot.setAttribute("cx", q.x.toFixed(1));
       dot.setAttribute("cy", q.y.toFixed(1));
-      dot.setAttribute("opacity", on ? "1" : "0.12");
+      dot.setAttribute("opacity", on ? "1" : state.persons.length ? "0.07" : "0.12");
+      dot.classList.remove("is-pa", "is-pb", "is-pab");
+      const mark = personMark(m);
+      if (mark) dot.classList.add(mark);
       if (inside(p.y)) path.push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`);
+      m.forEach((yes, j) => yes && inside(p.y) && trace[j].push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`));
     });
     scene.line.setAttribute("points", path.join(" "));
+    // A person's trace: their regesta in time order, through the places of issue.
+    scene.traces.replaceChildren(...trace.map((pts, j) => s("polyline", { class: `it-trace is-p${j}`, points: pts.join(" ") })));
+    scene.line.classList.toggle("is-quiet", state.persons.length > 0);
+    // Selected marks above the rest: re-append them, so no faint point covers them.
+    if (state.persons.length) for (const dot of scene.dots) if (dot.classList.length > 1 && /is-p/.test(dot.getAttribute("class"))) scene.dots[0].parentNode.append(dot);
     // Flagged jumps, when switched on: a line between the two stations in the warning ink.
     scene.marks.replaceChildren();
     if (state.flags && checks) {
@@ -346,6 +382,7 @@ export function renderItinerary(store, options) {
     let dist = 64;
     points.forEach((p, i) => {
       if (!filters.inYear(Math.floor(p.y)) || (state.place && p.p !== state.place)) return;
+      if (state.persons.length && !memberOf(p.u).some(Boolean)) return;
       const d = (screen[i].x - x) ** 2 + (screen[i].y - y) ** 2;
       if (d < dist) {
         dist = d;
@@ -360,7 +397,8 @@ export function renderItinerary(store, options) {
     if (i === null) status.textContent = "";
     else {
       const p = points[i];
-      status.textContent = `${Math.floor(p.y)}, ${places[p.p].l}, ${p.i}${evidenced.has(p.u) ? ", mit belegten Aussagen" : ""}`;
+      const names = state.persons.filter((id, j) => personSets[j].has(p.u)).map((id) => persons[id].l);
+      status.textContent = `${Math.floor(p.y)}, ${places[p.p].l}, ${p.i}${evidenced.has(p.u) ? ", mit belegten Aussagen" : ""}${names.length ? `, nennt ${names.join(" und ")}` : ""}`;
     }
     pointer();
   }
@@ -550,11 +588,52 @@ export function renderItinerary(store, options) {
         realm ? h("p", { text: "Die Fläche des Reichs um 1190 ist eine grobe eigene Digitalisierung dieses Projekts nach der gemeinfreien Karte „Europe and the Mediterranean Lands about 1190“ in W. R. Shepherds Historical Atlas (1926). Grenzen waren damals keine scharfen Linien; die Fläche zeigt eine Deutung, keinen Befund." }) : null,
       ),
     );
-    const list = state.place
+    // Persons: a search over the register, the chosen ones as removable chips with their count.
+    const byLabel = new Map();
+    const personOptions = Object.entries(persons)
+      .sort((a, b) => b[1].r.length - a[1].r.length)
+      .map(([id, pp]) => {
+        const text = `${pp.l} (${pp.r.length})`;
+        byLabel.set(text, id);
+        return h("option", { value: text });
+      });
+    const listId = "it-person-list";
+    const search = h("input", {
+      type: "search",
+      class: "side-select it-person-search",
+      list: listId,
+      placeholder: state.persons.length >= 2 ? "Zwei Personen gewählt" : state.persons.length ? "Zweite Person zum Vergleich" : "Person suchen",
+      "aria-label": "Person im Register suchen",
+      disabled: state.persons.length >= 2,
+      onchange: (e) => {
+        const id = byLabel.get(e.target.value);
+        if (id && !state.persons.includes(id)) setPersons([...state.persons, id]);
+      },
+    });
+    const both = state.persons.length === 2 ? personSets[0].size && [...personSets[0]].filter((u) => personSets[1].has(u)).length : 0;
+    const chips = state.persons.length
+      ? h(
+          "ul",
+          { class: "it-persons", role: "list" },
+          state.persons.map((id, j) =>
+            h(
+              "li",
+              {},
+              h("span", { class: `it-pkey is-p${j}` }),
+              h("span", { class: "it-pname", text: persons[id].l, title: persons[id].f }),
+              h("span", { class: "it-n", text: String(inRange.filter((p) => personSets[j].has(p.u)).length) }),
+              h("button", { type: "button", class: "link-button", "aria-label": `${persons[id].l} entfernen`, title: "Entfernen", onclick: () => setPersons(state.persons.filter((x) => x !== id)) }, "×"),
+            ),
+          ),
+          state.persons.length === 2 ? h("li", {}, h("span", { class: "it-pkey is-pab" }), h("span", { class: "it-pname", text: "beide genannt" }), h("span", { class: "it-n", text: String(both) })) : null,
+        )
+      : null;
+    const selection = inRange.filter((p) => (!state.place || p.p === state.place) && (!state.persons.length || memberOf(p.u).some(Boolean)));
+    const list = state.place || state.persons.length
       ? h(
           "ul",
           { class: "act-rows it-rows", role: "list" },
-          atPlace.map((p) => {
+          selection.map((p) => {
             const i = points.indexOf(p);
             return h(
               "li",
@@ -563,23 +642,25 @@ export function renderItinerary(store, options) {
                 "button",
                 { type: "button", class: "act-open", onclick: () => openRegest(i), onmouseenter: () => point(i), onmouseleave: () => point(null), onfocus: () => point(i), onblur: () => point(null) },
                 h("span", { class: "act-year", text: String(Math.floor(p.y)) }),
-                h("span", { class: "act-name", text: p.i }),
-                evidenced.has(p.u) ? h("span", { class: "it-key is-evidenced", title: "mit belegten Aussagen" }) : h("span"),
+                h("span", { class: "act-name", text: state.place ? p.i : `${p.i}, ${places[p.p].l}` }),
+                state.persons.length ? h("span", { class: `it-pkey ${personMark(memberOf(p.u))}`, title: "Person" }) : evidenced.has(p.u) ? h("span", { class: "it-key is-evidenced", title: "mit belegten Aussagen" }) : h("span"),
               ),
             );
           }),
         )
-      : h("p", { class: "side-empty", text: "Wähle einen Ort im Würfel oder in der Liste oben, um seine Regesten zu lesen." });
+      : h("p", { class: "side-empty", text: "Wähle einen Ort oder eine Person, um die Regesten zu lesen." });
     aside.replaceChildren(
       h(
         "section",
         { class: "side-part side-selection", "aria-label": "Auswahl und Filter" },
         picker,
+        h("div", { class: "it-person-pick" }, search, h("datalist", { id: listId }, personOptions)),
+        chips,
         timeBand(store, filters, markYears),
         applies ? h("p", { class: "side-applies" }, applies, h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen")) : null,
         legend,
       ),
-      h("section", { class: "side-part side-acts", "aria-label": "Regesten des Ortes" }, list),
+      h("section", { class: "side-part side-acts", "aria-label": "Regesten der Auswahl" }, list),
     );
   }
 

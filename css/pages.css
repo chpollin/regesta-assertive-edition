@@ -66,7 +66,7 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .pager a { white-space: nowrap; text-decoration: none; color: var(--pg-muted); }
 .pager a:hover { text-decoration: underline; text-decoration-color: var(--pg-accent); }
 .back-slot:empty { display: none; }
-.card-host { max-inline-size: 72ch; }
+.card-host { max-inline-size: 72rem; }
 .paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
 .regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
 .fields, .cite { margin-block-start: 1.5rem; max-inline-size: 72ch; }
@@ -123,9 +123,10 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 /* Footer and skip link of the static pages; shell.css does not style them yet. */
 .skip { position: absolute; inset-inline-start: -999rem; }
 .skip:focus { inset-inline-start: 0.5rem; inset-block-start: 0.5rem; background: var(--pg-ground); padding: 0.5rem; z-index: 6; }
-.site-footer { max-inline-size: 76rem; margin-inline: auto; padding: 1rem 1.5rem 2rem; border-block-start: 1px solid var(--pg-line); color: var(--pg-muted); font-size: var(--step--1, 0.875rem); }
-.site-footer p { margin: 0 0 0.25rem; max-inline-size: 80ch; }
-.site-footer a { color: inherit; text-decoration-color: var(--pg-accent); margin-inline-end: 1rem; }
+/* The footer: one quiet line, licence on the left, the page about the edition on the right. */
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1.5rem; max-inline-size: 76rem; margin-inline: auto; padding: 0.75rem 1.5rem 1.25rem; border-block-start: 1px solid var(--pg-line); color: var(--pg-muted); font-size: var(--step--1, 0.875rem); }
+.site-footer p { margin: 0; }
+.site-footer a { color: inherit; text-decoration-color: var(--pg-accent); }
 
 /* Filter row of the lists: search and the eight family switches with sign and word; the
    switches are the legend of the signs in the rows (rule 7). */
@@ -138,32 +139,14 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--pg-muted); margin-inline-end: var(--space-2); }
 .list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--pg-muted); border-block-end: 1px solid var(--pg-line); }
 
-/* Start overview (operator's rule 42): filters left as in the views, the map to the right;
-   the page grows with the map instead of clipping it. */
+/* Start page (2026-11-14): the space-time cube with its sidebar on the left as in the views,
+   one window high; the card of the opened regest follows below. */
 .embed-start .embed-aside { padding: var(--space-3); background: var(--side); }
-.so-band { margin-block-end: var(--space-4); }
-.so-label { display: flex; justify-content: space-between; margin: 0 0 var(--space-1); color: var(--pg-muted); }
-.so-persons, .so-places { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
-.so-persons li, .so-places li { display: flex; justify-content: space-between; gap: var(--space-3); }
-.so-persons a, .so-places a { text-decoration: none; }
-.so-persons a:hover, .so-places a:hover, .so-persons a:focus-visible, .so-places a:focus-visible { text-decoration: underline; }
-.so-n { color: var(--pg-muted); font-variant-numeric: tabular-nums; }
-.so-canvas { padding: var(--space-2) var(--space-3); }
-.so-svg { display: block; max-inline-size: 100%; }
-.so-place { cursor: pointer; }
-
-.so-caption { margin: var(--space-1) 0 var(--space-2); color: var(--pg-muted); }
-.so-places { grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); column-gap: var(--space-5); }
-.example { max-inline-size: 48rem; margin-block: var(--space-6) var(--space-4); }
-.example-lead { margin: 0 0 var(--space-2); color: var(--pg-muted); }
+.example { max-inline-size: 72rem; margin-block: var(--space-6) var(--space-4); }
 @media (min-width: 56rem) {
-  .embed.embed-start { grid-template-columns: var(--aside-width, 21rem) minmax(0, 1fr); block-size: auto; }
-  .embed-start .embed-main, .embed-start .embed-aside { overflow: visible; }
+  .embed.embed-start { grid-template-columns: var(--aside-width, 21rem) minmax(0, 1fr); block-size: min(80dvh, 52rem); }
   .embed-start .embed-aside { border-inline-start: 0; border-inline-end: 1px solid var(--pg-line); }
 }
-.so-side.sidebar { gap: 0; align-content: start; }
-.so-place circle { fill: var(--edge); fill-opacity: 0.6; stroke: var(--stage); stroke-width: 0.8; }
-.so-place:hover circle, .so-place:focus-visible circle { fill: var(--accent); fill-opacity: 0.9; }
 /* Narrow: the regest list keeps number, date and the kinds of statements; the place stands
    on the regest page and in the Orte object, so a row stays within two lines at 360 px. */
 @media (max-width: 40rem) {
@@ -195,5 +178,3 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
   .list.persons thead th.num { white-space: nowrap; }
 }
 
-.so-svg polygon, .so-svg polyline, .so-svg text { pointer-events: none; }
-.so-place:focus-visible circle { stroke: var(--focus); stroke-width: 2; }

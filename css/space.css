@@ -50,6 +50,8 @@
   .sp-act-mark { fill: var(--muted); }
   .sp-person { fill: var(--text); stroke: var(--stage); stroke-width: 1.25; }
   .sp-local { fill: var(--stage); stroke: var(--text); stroke-width: 1.5; }
+  .sp-person[class*="st-"]:not(.sp-centre), .sp-group[class*="st-"] { fill: var(--st); }
+  .sp-local[class*="st-"] { fill: var(--stage); stroke: var(--st); }
   .sp-group { fill: var(--text); stroke: var(--stage); stroke-width: 1; }
   .sp-centre { fill: var(--accent, var(--pen)); stroke: var(--stage); }
   .sp-column { stroke: var(--muted); stroke-width: 1.25; }
@@ -94,6 +96,23 @@
   .it-flag-toggle[aria-pressed="true"] { background: var(--warn); border-color: var(--warn); }
   .it-drop { stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 3 3; }
   .it-pointed { fill: none; stroke: var(--accent); stroke-width: 2; }
+  /* Persons in the cube: the first in the accent, the second in the text ink, a regest that
+     names both in the accent with an ink ring; each person's trace joins their regesta. */
+  .it-dot.is-pa { fill: var(--accent); r: calc(var(--dot-r) * 2); stroke: var(--stage); stroke-width: 1; }
+  .it-dot.is-pb { fill: var(--text); r: calc(var(--dot-r) * 2); stroke: var(--stage); stroke-width: 1; }
+  .it-dot.is-pab { fill: var(--accent); r: calc(var(--dot-r) * 2.6); stroke: var(--text); stroke-width: 2; }
+  .it-trace { fill: none; stroke-width: 1.4; stroke-linejoin: round; stroke-opacity: 0.75; }
+  .it-trace.is-p0 { stroke: var(--accent); }
+  .it-trace.is-p1 { stroke: var(--text); stroke-dasharray: 4 3; }
+  .it-path.is-quiet { opacity: 0.25; }
+  .it-person-pick { display: grid; }
+  .it-persons { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+  .it-persons li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; align-items: center; gap: var(--space-2); }
+  .it-pname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .it-pkey { display: inline-block; inline-size: 0.7em; block-size: 0.7em; border-radius: 50%; }
+  .it-pkey.is-p0, .it-pkey.is-pa { background: var(--accent); }
+  .it-pkey.is-p1, .it-pkey.is-pb { background: var(--text); }
+  .it-pkey.is-pab { background: var(--accent); box-shadow: 0 0 0 2px var(--text); }
   .it-opened { fill: none; stroke: var(--accent-text); stroke-width: 2.5; }
   .it-legend { display: grid; gap: var(--space-1); }
   .it-legend .it-n { display: inline-block; min-inline-size: 3.5ch; margin-inline: var(--space-2) var(--space-1); text-align: end; font-variant-numeric: tabular-nums; font-weight: 600; }
