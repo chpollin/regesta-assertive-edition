@@ -11,6 +11,7 @@
 import { h } from "./dom.js";
 import { FAMILIES, familyIcon, familyOf, directionOf } from "./relations.js";
 import { createSidebar } from "./sidebar.js";
+import { keyRoom, keysOf, shapeKey } from "./shape-key.js";
 import { renderRegestCard } from "./regest-card.js";
 
 const SVG = "http://www.w3.org/2000/svg";
@@ -179,6 +180,7 @@ export function renderSpace(store, options = {}) {
     sceneHost,
     tip,
   );
+  let key = null;
 
   /** World model of the current mode: items with column position and years, edges with ends. */
   let model = buildModel();
@@ -386,7 +388,7 @@ export function renderSpace(store, options = {}) {
       const g = s("g", { class: `sp-node${it.kind === "act" ? " sp-act" : ""}${it.centre ? " is-selected" : ""}${caseIds.has(it.id) ? " is-case" : ""}` });
       const parts = { g, column: null, marks: [] };
       if (it.kind === "act") {
-        parts.marks.push(s("rect", { class: "sp-act-mark" }));
+        parts.marks.push(s("path", { class: "sp-act-mark" }));
       } else {
         if (!it.centre && it.years.length > 1) parts.column = s("line", { class: "sp-column" });
         for (let i = 0; i < (it.centre ? 0 : it.years.length); i += 1) parts.marks.push(n.kind === "group" ? s("rect", { class: "sp-group" }) : s("circle", { class: `sp-person${n.local ? " sp-local" : ""}` }));
@@ -473,8 +475,10 @@ export function renderSpace(store, options = {}) {
       const op = fog(ps[0]) * (it.centre || it.years.some(inside) ? 1 : SLICE_OUT);
       parts.g.setAttribute("opacity", op.toFixed(2));
       if (it.kind === "act") {
-        const size = 6.5 * ps[0].k;
-        setAttrs(parts.marks[0], { x: ps[0].x - size / 2, y: ps[0].y - size / 2, width: size, height: size });
+        // A small diamond, as in the flat network.
+        const r = 4.2 * ps[0].k;
+        const { x, y } = ps[0];
+        setAttrs(parts.marks[0], { d: `M${x.toFixed(1)},${(y - r).toFixed(1)} L${(x + r).toFixed(1)},${y.toFixed(1)} L${x.toFixed(1)},${(y + r).toFixed(1)} L${(x - r).toFixed(1)},${y.toFixed(1)} Z` });
       } else if (it.centre) {
         // The selected person is the axis; its ends carry a mark each.
         setAttrs(parts.marks[0], { cx: ps[0].x, cy: ps[0].y, r: 6 * ps[0].k });
@@ -798,9 +802,21 @@ export function renderSpace(store, options = {}) {
   function draw() {
     // The scene fills the drawing area of the shell.
     const width = Math.max(280, element.clientWidth);
-    const height = Math.max(320, element.clientHeight);
+    const room = keyRoom(key);
+    const height = Math.max(320, element.clientHeight - room);
     scene = buildScene(width, height);
     sceneHost.replaceChildren(scene.svg);
+    // The key lists the signs of this scene; a person with marks in several years shows the
+    // column that joins them.
+    const items = [...model.items.values()];
+    const keys = keysOf(items.filter((it) => !it.centre).map((it) => it.node), model.edges.map((ed) => ed.e));
+    if (items.some((it) => !it.centre && it.kind === "person" && it.years.length > 1)) keys.push("years");
+    const next = shapeKey(keys);
+    if (key) key.replaceWith(next);
+    else element.append(next);
+    key = next;
+    // A key of another height draws the scene once more, leaving its height free.
+    if (keyRoom(key) !== room) requestAnimationFrame(draw);
     syncControls();
     update();
   }

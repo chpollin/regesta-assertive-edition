@@ -10,6 +10,7 @@
  */
 import { h, regestHref } from "./dom.js";
 import { FAMILIES, familyIcon, familyOf } from "./relations.js";
+import { keyRoom, keysOf, shapeKey } from "./shape-key.js";
 import { createSidebar } from "./sidebar.js";
 import { renderRegestCard } from "./regest-card.js";
 import { drawPersonNetwork, personNetwork } from "./person-overview.js";
@@ -118,6 +119,16 @@ export function renderOverview(store, options) {
 
   const graphHost = h("div", { class: "vis graph graph-fill" });
   const status = h("p", { class: "canvas-status", role: "status", "aria-live": "polite" });
+  let key = shapeKey([]);
+  // The drawing leaves the key's height free below it. A new key of another height draws
+  // once more; the layouts are deterministic, so the second drawing only moves to fit.
+  let usedRoom = 0;
+  const setKey = (keys) => {
+    const next = shapeKey(keys);
+    key.replaceWith(next);
+    key = next;
+    if (keyRoom(key) !== usedRoom) requestAnimationFrame(draw);
+  };
   // The person who takes part in most statements; the overview leaves this person out and
   // says so in one line with the way to the person's circle.
   const roleCount = new Map();
@@ -138,6 +149,7 @@ export function renderOverview(store, options) {
     centreNote,
     graphHost,
     status,
+    key,
   );
   let network = null;
   const sidebar = createSidebar(store, filters, {
@@ -170,13 +182,15 @@ export function renderOverview(store, options) {
 
   function draw() {
     const width = graphHost.clientWidth;
-    const height = element.clientHeight;
-    if (!width || !height) return;
+    usedRoom = keyRoom(key);
+    const height = element.clientHeight - usedRoom;
+    if (!width || height <= 0) return;
     const filtered = filteredGraph(graph, filters, state.actor);
     if (!state.actor) {
       // Overview first: without a selected person the persons network, the centre left out.
       const net = personNetwork(filtered, centre);
       drawPersonNetwork(graphHost, net, {
+        height,
         onSelect: (id) => select(id),
         onPoint: (label) => {
           status.textContent = label ?? "";
@@ -184,6 +198,7 @@ export function renderOverview(store, options) {
       });
       network = { highlight() {}, pin() {}, point() {}, sector() {}, focus: (id) => graphHost.querySelector(`a[href$="${CSS.escape(encodeURIComponent(id))}"]`)?.focus() };
       centreNote.hidden = false;
+      setKey(net.nodes.some((n) => n.group) ? ["person", "group", "size", "shared"] : ["size", "shared"]);
       return;
     }
     centreNote.hidden = true;
@@ -205,6 +220,7 @@ export function renderOverview(store, options) {
     });
     network.highlight(null, state.actor, state.actor);
     network.pin(openAct);
+    setKey(network.keys);
   }
 
   const unsubscribe = filters.onChange(draw);
@@ -749,6 +765,8 @@ function drawGraph(host, store, graph, height, selected, handlers) {
   }
 
   const api = {
+    /** The signs this drawing contains, for the key under it. */
+    keys: [...keysOf(order, edgeEls.map((x) => x.e)), ...(order.some((n) => n.kind === "bundle") ? ["bundle"] : [])],
     highlight(uid, actorFocus, selected) {
       lastArgs = [uid, actorFocus, selected];
       if (sectorKey && !previewId && !uid) {
