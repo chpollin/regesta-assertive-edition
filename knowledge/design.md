@@ -123,6 +123,13 @@ Commissioned by the operator through the Research Coordination on 2026-11-14 (ve
 - Regest card: a human verdict stands at its tag as sign and word (bestätigt, verworfen, unklar).
 - Checked by an independent read-only reviewer on 2026-11-14; fixed after its report: focus kept on the year handle of the start page, search folding that finds „Lowe“ for „Löwe“, list links without underline at rest, the family switches with the full family names of the sidebar, units of the counts, a sentence for the empty filter result. Open from the same report: role glosses of n. 103a that drop to a second row or stand off their word, no legend of the node shapes in network and space view, the h3 headings under „Mehr“.
 
+## Revision after the operator's look, 2026-11-14
+
+- Annotated regest: the bracketed tags and role glosses inside the sentence are retired („unübersichtlich“). The text keeps a small number where a statement's passage begins; each statement is a note beside the text at the height of its passage, with kind, qualifiers, verdict and the participants grouped by role; pointing at either lights the other. Below 760 px card width, and in the detail panel, the notes follow the text as a numbered list (`notedText`, `notesOf`, `placeNotes` in `js/regest-card.js`).
+- Whole network: overview first. Without a selected person, `js/person-overview.js` draws the forty persons most often named in statements, without the person who takes part in nearly all of them (Friedrich), named in one line with the way to his circle; a line joins persons who share statements, its weight their number; a deterministic force layout. The former drawing of all 1101 nodes is gone.
+- Start page: no list of places under the map (the circles are links with name and count), a short caption, the persons' unit as column head, no lead sentence above the example.
+- One page „Über die Edition“ for method, data and the edition, in the order of the project README; `methode/` and `daten/` forward to its sections. The head has four items: Regesten, Personen, Orte, Über die Edition.
+
 ## Zeitband and Jahrzehnte
 
 Both views answer where and with whom over time, from the whole delivery without LLM. Revised on 2026-11-12 after the operator's question whether colour and the places could mean more (verbatim in ui-feedback.md).

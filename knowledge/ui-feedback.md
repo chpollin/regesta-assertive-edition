@@ -118,3 +118,9 @@ Relayed verbatim by the Research Coordination: „beim regesten frontend will ic
 
 Follows: navigation by objects with a switch between representations, the start page as linked overview of time, places and persons with the annotated n. 103a, filters with family signs in both lists, verdicts as sign and word (design.md, Frontend by objects). Status on 2026-11-14: built, checked on screenshots at 1280 and 360 px, by keyboard and pointer, by the density check and by an independent read-only reviewer, and published on the operator's word („veröffentliche das neue Frontend“) as gh-pages `3f9ba34`; not yet judged by him on screen.
 
+## 2026-11-14, network, start text, annotated regest, one page about the edition
+
+On the whole network (ansicht/#/): „die gefällt mir nicht“. On the start page: „das ist sehr gut! aber kann man es optimieren? wie mit text umgehen?“. On the annotated n. 103a: „das ist unübersichtlich“. On the text pages: „methoden daten und über die edition in einen kompakten text zusammenführen der dem readme entspricht?“
+
+Follows: without a selected person the network shows the forty persons most often named in statements, Friedrich left out with one line saying why and leading to his circle, lines by shared statements; the start page drops the place list and long captions; the regest reads as text with a small number where a statement's passage begins and the statements as notes in the margin, participants grouped by role; Methode, Daten and Über die Edition become one page in the order of the project README, the old addresses forwarding to its sections. Status on 2026-11-14: built, checked and published; not yet judged by the operator on screen.
+

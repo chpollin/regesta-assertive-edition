@@ -8,6 +8,12 @@ updated: 2026-11-12
 
 # Journal
 
+## 2026-11-14 Notes beside the regest, a persons overview, one page about the edition
+
+After the operator's look at the published frontend (verbatim in ui-feedback.md) the annotated regest became text with notes in the margin, the whole network a persons overview without the centre person, the start page lost its duplicate place list, and method, data and about became one page. Changes in design.md, Revision after the operator's look.
+
+- Checks run: density check (work profile) for start, regest list, person index, network and regest page at 1280 × 800 and 360 × 740, within limits except the regest page at 360 px (116 words against 110, the regest text itself) and the merged page in the page profile (as the former pages); sixteen tasks by pointer and keyboard; pytest, ruff, `node --check`; published through `publish_site.py`.
+
 ## 2026-11-14 The frontend by objects, published
 
 The operator asked for the whole frontend improved („erzeuge das gesamte verbesserte frontend“, verbatim in ui-feedback.md) and, after the build, to publish it. Navigation by objects with switches between representations, the start page as linked overview of time, places and persons with the annotated n. 103a, list filters with family signs and verdicts as sign and word are built (design.md, Frontend by objects) and published as gh-pages `3f9ba34` from source `f937d6e`, together with the qualifier display waiting since 2026-11-12.
