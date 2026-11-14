@@ -795,17 +795,9 @@ def about_page(site: Site, package: str) -> None:
             f"{reviewers} Agenten prüfen unabhängig, ein weiterer wägt ab, ein dritter korrigiert; danach läuft die technische Prüfung erneut.",
         ),
         (
-            (
-                "Agentische Prüfung einer Auswahl",
-                1,
-                "Zwei weitere LLM-basierte Agenten lesen zwanzig ausgewählte Regesten unabhängig gegen den Regesttext und urteilen je Aussage. Keine Aussage ist menschlich verifiziert.",
-            )
-            if site.preview
-            else (
-                "Fachliche Prüfung",
-                2,
-                "Eine Auswahl wird am Regesttext geprüft. Bisher ist keine Aussage menschlich verifiziert.",
-            )
+            "Agentische Prüfung einer Auswahl",
+            1,
+            "Zwei unabhängige Lesungen desselben LLM prüfen zwanzig ausgewählte Regesten gegen den Regesttext und urteilen je Aussage. Keine Aussage ist menschlich verifiziert.",
         ),
         (
             "TEI und Website",

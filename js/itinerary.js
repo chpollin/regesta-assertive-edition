@@ -599,7 +599,7 @@ export function renderItinerary(store, options) {
     opened = i;
     related = relate(i);
     update();
-    status.textContent = `${points[i].i}: ${related.steps.size} Nachbarstationen, ${related.place.size} weitere Regesten am Ort, ${related.people.size} Regesten mit gemeinsamen Personen${related.persons.length ? ` (${related.persons.map((id) => persons[id].l).join(", ")})` : ""}`;
+    status.textContent = `${points[i].i}: vorige und nächste Station des Itinerars, ${related.place.size} weitere Regesten am selben Ort, ${related.people.size} Regesten, die eine seiner Personen nennen${related.persons.length ? ` (${related.persons.map((id) => persons[id].l).join(", ")})` : ""}`;
     // Where the point comes from, and what the plausibility check says about it.
     const notes = ["Ort und Datum aus der Lieferung der Regesta Imperii, Koordinate aus ihrem Register, ohne LLM."];
     for (const f of flagsOf.get(points[i].u) ?? []) notes.push(`Auffällig: ${f.km} km in ${f.days} ${f.days === 1 ? "Tag" : "Tagen"} zu ${f.other.identifier} (${f.other.place}). Vermutlicher Grund: ${f.class}.`);

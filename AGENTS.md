@@ -55,7 +55,7 @@ python -m ruff format --check .
 python -m pytest -q checks
 ```
 
-`checks/ui_check.py` still asserts the layout of the first slice and does not apply to the current shell (see `knowledge/plan.md`).
+The interface is checked on the rendered state: `node tools/check_ui_density.cjs --profile work <url>` from the repository `pruefansicht` at 1280 and 360 px, screenshots of every changed view, and a fresh reader who answers task questions from the rendered page alone. The browser check of the first slice (`checks/ui_check.py`) was retired on 2026-11-14.
 
 ## Layout
 

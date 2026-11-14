@@ -322,6 +322,7 @@ function pageView(store, regest, options) {
     h(
       "dl",
       {},
+      field("Echtheit", regest.identifier.includes("†") ? "Fälschung (das Kreuz † der Regesta Imperii)" : ""),
       field("Datierung", date),
       field("Ausstellungsort", place),
       ...(meta.fields ?? []).filter((f) => f.where === "meta").map((f) => field(f.label, f.text)),
@@ -330,7 +331,7 @@ function pageView(store, regest, options) {
       field(
         "Prüfstand",
         regest.technical ? "von LLM-Agenten erzeugt, technisch geprüft, keine Aussage menschlich verifiziert" : "von LLM-Agenten erzeugt, technische Prüfung nicht bestanden",
-        read.length ? `; ${read.length} von ${statements.length} Aussagen von zwei LLM-Agenten gelesen (${read[0].agent.model}, ${read[0].agent.date})` : "",
+        read.length ? `; ${read.length} von ${statements.length} Aussagen von zwei unabhängigen Lesungen desselben LLM gegen den Regesttext geprüft (${read[0].agent.model}, ${read[0].agent.date})` : "",
       ),
       ...(meta.links ?? []).map((l) => field(l.label, h("a", { href: l.href, rel: "noopener" }, l.text))),
       ...(meta.citations ?? []).map((c) => field(c.label, h("span", { class: "reg-cite", text: c.text }))),
@@ -376,13 +377,13 @@ function pageView(store, regest, options) {
   const comments = h(
     "section",
     { class: "reg-comments", "aria-labelledby": "reg-comments-h" },
-    h("h2", { id: "reg-comments-h", class: "reg-area", text: "Kommentare" }),
+    h("h2", { id: "reg-comments-h", class: "reg-area", text: "Kommentare und Aussagen" }),
     statements.length
       ? h(
           "div",
           { class: "reg-block" },
           h("h3", { class: "reg-block-h", text: "Aussagen der LLM-Agenten" }),
-          h("p", { class: "reg-producer", text: "Aus dem Regesttext erzeugt, an ihren Wortlaut gebunden. Das Schild nennt das Urteil zweier LLM-Leser: stimmt, unklar oder strittig, wenn sie verschieden urteilen. Kein Mensch hat die Aussagen geprüft." }),
+          h("p", { class: "reg-producer", text: "Von einem LLM aus dem Regesttext erzeugt, an ihren Wortlaut gebunden. Das Schild nennt das Urteil zweier unabhängiger Lesungen desselben LLM: stimmt, unklar, oder strittig, wenn sie verschieden urteilen. Kein Mensch hat die Aussagen geprüft." }),
           notesEl,
         )
       : null,

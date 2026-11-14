@@ -10,15 +10,24 @@ updated: 2026-11-14
 
 ## Open
 
-- The operator has not yet judged on screen the revision of 2026-11-14 (notes beside the regest, persons overview of the whole network, leaner start page, one page „Über die Edition“), published as gh-pages `748afea`. His next words go verbatim into ui-feedback.md.
-- The agent review of the twenty regesta is shown only in the local preview (`python build_site.py --preview`, `site-preview/`). Whether it goes public is the operator's decision, to be taken from RI IV,2,2 n. 103a; the public method text still names a human check of a selection until then. The unclear and contested cases (data.md, Agent review; entry below) wait for the model questions and for experts.
-- Test tasks with computed answers per user story, RI IV,2,2 n. 103a as the fixed task, are planned and not built (plan.md, Test tasks).
-- The rebuilt regest page, header and footer, the estate colours and the cube with persons as start page (entry below) are in the local preview (`site-preview/`, served on 8132 by this session) and wait for the operator's look; nothing of it is published, and the public build waits with the agent review for his word.
-- The regest pages exceed the word budget of the work profile by their source text alone (n. 116 at 1280 px 282 against 260, at 360 px 136 against 110; n. 103a at 360 px 114 against 110): regest, transmission and commentary are the content.
-- Open interface findings: the longest register names wrap in the person index; the regest page at 360 px holds 116 words against the limit of 110 through the regest text itself; „Über die Edition“ exceeds the page profile, as the former pages did; the headings under „Mehr“ are h3 after an h1.
-- The key of the signs (gh-pages after this entry) is not yet seen by the operator.
-- `checks/ui_check.py` still asserts the first slice and is to be rewritten for the shell or retired.
-- Questions outside this repository: the model questions from n. 103a (presiding lord, losing party, witness lists, office holding) wait for the operator in `regesta-rdf-demo/knowledge/factoid-model.md`; whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
+- The operator has not seen the pass of 2026-11-14 evening in the local preview (`python build_site.py --preview` into `site-preview/`, served with `python -m http.server 8132 --bind 127.0.0.1 --directory site-preview`): the regest page in three areas with the annotation system, the start page as the full-screen cube, the regest tooltip and relations in the cube, persons as traces in the cube, estate colours, header and footer. His next words go verbatim into ui-feedback.md.
+- Nothing of it is published. The agents' verdicts go public only on his word after he has seen the restructured regest page; the coordination read his „ja, aber“ as yes in principle. The public method text changes with the next publication to the agentic check of the twenty regesta, in both builds.
+- Itinerar and Jahrzehnte: put to the operator as a question with an example (the decade 1150 to 1159 chosen in the time band shows 433 regesta at 104 places, Würzburg and Crema with 28 each); the switch is not rebuilt before his answer.
+- The specification carries five requirements derived from his verdicts as proposals with acceptance criteria; the older list of the first slice stays as history until he adopts them (specification.md).
+- Findings of the fresh reader not yet acted on: the statement „Urteil“ of n. 103a bundles king, witnesses, judge and beneficiary; statements of a forged regest (n. †193) read like facts, the metadata now say „Fälschung“ but the statements carry no mark; the place picker lists register entries that are regions, rivers or a person (Italien, Po, Johannes).
+- The regest pages exceed the word budget of the work profile by their source text alone (regest, transmission, commentary).
+- No executable browser check covers the shell since `checks/ui_check.py` was retired; test tasks with computed answers per user story are planned and not built (plan.md, Test tasks).
+- The estate rule (js/stand.js, data.md Estate) errs on name forms without a title (Konrad III. as a regest-local node) and on forms that name a ruler in passing.
+- Questions outside this repository: the model questions, now with the agent review's cases, wait in `regesta-rdf-demo/knowledge/factoid-model.md`; whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
+
+## 2026-11-15 Promptotyping pass: distill, curate, refactor
+
+- Trigger: the operator's order, relayed by the Research Coordination, to run distill, curate, refactor and handoff in every project.
+- Distilled: the operator's verdicts on regest page, start page and place view as five requirements with acceptance criteria in specification.md (proposals); the annotation system and the regest page as rules in design.md; the agent review's cases as model questions in regesta-rdf-demo.
+- Corrected: specification.md named a timeline, paper and red pen that no longer exist and a browser check that asserted the first slice, now marked as history; the method text named a human check of a selection in the public build, now the agentic check in both builds; ui-feedback.md statuses of the three verdicts; plan.md and AGENTS.md on the retired check.
+- Refactored: 115 one-line CSS rules whose classes no code, page or build writes any more (earlier views: the first slice's panels, legends, timeline and case marks) removed; `checks/ui_check.py` removed; the method step without a build branch; `js/dom.js` appends nested children, which the page view needs.
+- Evidence: screenshots of eleven views at 1280 × 800 and 360 × 740 after the removal, no page error; pytest 11 passed, ruff and node clean; a fresh reader on n. 103a, n. †193 and the cube with n. 135.
+- Not done: grounding against outside sources; a review of the knowledge documents by a fresh context.
 
 ## 2026-11-14 Regest page, estate colours, persons in the cube as start page
 

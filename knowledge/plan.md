@@ -34,7 +34,7 @@ Taken up on 2026-11-14 from a working method the Research Coordination passed on
 
 - Name forms of regest-local actors. Actors without a register entry (groups such as "des Vogtes", "seinen Leuten") keep the inflected form of their regest; a normalisation rule for German inflection would guess and is not built. Friedrich I. and his father keep the agents' form, because the register leaves the head name of the Friedrich entries empty.
 - The borders after Shepherd show the Empire only. Kingdoms beside it (France, Hungary, Sicily) are not drawn.
-- `checks/ui_check.py` asserts the layout of the first slice. It is to be rewritten for the shell or retired.
+- An executable browser check of the current shell (tasks with computed answers, see Test tasks) replaces the retired check of the first slice.
 - The validator note of `regesta-rdf-demo` (status after correction is read from the corrections log since 2026-11-11) is to be mentioned on the method page once the page lists the error logs per step.
 - Export date of the regest file, model of the adjudicating and correcting agent, imprint.
 - Deletion candidates in the knowledge folder and the views are collected under op-thm-loeschkandidaten.
