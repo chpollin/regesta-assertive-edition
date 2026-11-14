@@ -247,7 +247,7 @@ class Site:
             meta += f"  {REVIEW_META}\n"
         footer = (
             f'<footer class="site-footer"><p>{esc(self.texts["licenceLine"])}</p>'
-            f'<p class="link-row"><a href="{root}ueber/">Über die Edition</a> <a href="{root}methode/">Methode</a></p></footer>'
+            f'<p class="link-row"><a href="{root}ueber/">Über die Edition</a></p></footer>'
         )
         doc = f"""<!doctype html>
 <html lang="de" class="no-js" data-root="{root}">
@@ -336,8 +336,7 @@ def start_page(site: Site) -> None:
     )
     example = next((r for r in site.regests if r["identifier"] == EXAMPLE), None)
     example_html = (
-        f'<section class="example" aria-label="Beispiel {esc(EXAMPLE)}"><p class="example-lead">Jede Aussage steht am Wortlaut, '
-        f"auf dem sie beruht, mit Art, Nummer und den Rollen der Beteiligten:</p>"
+        f'<section class="example" aria-label="Beispiel {esc(EXAMPLE)}">'
         f'<div id="example" data-uid="{esc(example["uid"])}"><p><a href="{site.slugs[example["uid"]]}/">{esc(EXAMPLE)}</a></p></div></section>'
         if example
         else ""
@@ -581,7 +580,7 @@ def regest_page(site: Site, index: int) -> None:
         f'<li><a href="{root}tei/{s}.xml" download>TEI</a></li>'
         f'<li><a href="{root}ttl/{s}.ttl" download>Turtle</a></li>'
         f'<li><a href="{root}json/{s}.json" download>JSON</a></li>'
-        f'<li><a href="{root}daten/">Alle Regesten als Paket</a></li></ul></section>'
+        f'<li><a href="{root}ueber/#daten">Alle Regesten als Paket</a></li></ul></section>'
     )
     # The page shows the shared regest card of the views app (js/regest-card.js), rendered by
     # js/edition/regest.js into #card. The static content of #card is the reading without
@@ -738,129 +737,94 @@ def person_page(site: Site, node: dict, rels: list[dict]) -> None:
     )
 
 
+def redirect_page(path: str, target: str, title: str, licence: str) -> None:
+    """An earlier address that now lives as a section of another page: a short page that
+    forwards at once and keeps a link for readers without automatic forwarding."""
+    doc = f"""<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url={esc(target)}">
+  <link rel="canonical" href="{esc(target)}">
+  <title>{esc(title)}</title>
+</head>
+<body><h1>{esc(title)}</h1><p><a href="{esc(target)}">Weiter zu {esc(title)}</a></p><p>{esc(licence)} <a href="../ueber/">Über die Edition</a></p></body>
+</html>
+"""
+    _write(SITE_OUT[0] / path / "index.html", doc)
+
+
+SITE_OUT: list[Path] = []
+
+
 def method_page(site: Site, tei_excerpt: str) -> None:
+    """Method, data and about stand on one page since 2026-11-14; this address forwards."""
+    SITE_OUT[:] = [site.out]
+    redirect_page("methode", "../ueber/#methode", "Über die Edition, Methode", site.texts["licenceLine"])
+
+
+def data_page(site: Site, package: str) -> None:
+    """The address of the former data page forwards to the data section of the one page."""
+    SITE_OUT[:] = [site.out]
+    redirect_page("daten", "../ueber/#daten", "Über die Edition, Daten", site.texts["licenceLine"])
+
+
+def about_page(site: Site, package: str) -> None:
+    """Method, data and the edition in one compact text, after the operator's wish of
+    2026-11-14 („methoden daten und über die edition in einen kompakten text zusammenführen
+    der dem readme entspricht“): what the edition is and is not, how its statements arise,
+    which files there are, and its sources and licences, each part short, in the order of
+    the project's README."""
+    t = site.texts
     m = site.manifest
     reviewers = len(list((site.source / "runs" / site.run_id / "review").glob("review-*.json")))
     steps = [
         (
-            "Export und Erkundung",
+            "Auswahl und Pakete",
             0,
-            "Die Regesten und das Register von RI IV,2 liegen als CSV-Export vor. Das Manifest des Laufs hält die Prüfsummen beider Dateien fest.",
-        ),
-        (
-            "Auswahl",
-            0,
-            f"Ein Skript wählt die Regesten des Laufs nach einem festgelegten Kriterium aus und hält Auswahl und Grund im Manifest fest. In diesem Arbeitsstand sind es {len(site.regests)} Regesten, darunter der Fall Adela in RI IV,2,1 n. 46 und n. 167.",
-        ),
-        (
-            "Pakete",
-            0,
-            "Für jedes Regest entsteht ein Paket mit Klartext, Datierung, Ort und den Registerkandidaten, jedes mit Prüfsumme im Manifest des Laufs.",
+            f"Ein Skript wählt {len(site.regests)} Regesten aus dem CSV-Export von RI IV,2 und schreibt je Regest ein Paket mit Text, Datierung, Ort und Registerkandidaten.",
         ),
         (
             "Extraktion",
             1,
-            f"LLM-basierte Agenten ({esc(m['model'])}) lesen die Pakete einzeln nach eingefrorenem Prompt und Richtlinien und schreiben Aussagen als RDF, jede mit wörtlichem Beleg. Kein Mensch hat diese Ausgabe überarbeitet.",
+            f"LLM-basierte Agenten ({esc(m['model'])}) schreiben die Aussagen als RDF, jede an ihren Wortlaut gebunden.",
         ),
+        ("Technische Prüfung", 0, "Ein Validator prüft Form, Vokabular und den wörtlichen Beleg jeder Aussage."),
         (
-            "Technische Prüfung",
-            0,
-            "Ein Validator prüft jede Datei gegen SHACL-Formen und Vokabular, prüft jeden Beleg auf wörtliches Vorkommen im Regest und läuft vorher gegen eigene Fehlerfälle.",
-        ),
-        (
-            "Reviews und Abwägung",
+            "Review und Korrektur",
             1,
-            f"{reviewers} LLM-basierte Agenten prüfen die Aussagen unabhängig voneinander, ohne die Berichte der Extraktion zu kennen. Ein weiterer Agent wägt ihre Befunde ab und entscheidet über Korrekturen.",
-        ),
-        (
-            "Korrektur",
-            1,
-            "Ein LLM-basierter Agent setzt die angenommenen Korrekturen um, danach läuft die technische Prüfung erneut. Die Edition zeigt diesen überarbeiteten Stand und daneben den extrahierten.",
+            f"{reviewers} Agenten prüfen unabhängig, ein weiterer wägt ab, ein dritter korrigiert; danach läuft die technische Prüfung erneut.",
         ),
         (
             "Fachliche Prüfung",
             2,
-            "Eine Teilmenge soll von einer Historikerin oder einem Historiker am Regesttext geprüft werden. Diese Prüfung hat noch nicht stattgefunden, keine Aussage dieses Arbeitsstands ist menschlich verifiziert.",
+            "Eine Auswahl wird am Regesttext geprüft. Bisher ist keine Aussage menschlich verifiziert.",
         ),
         (
             "TEI und Website",
             0,
-            "Skripte erzeugen nach Regeln je Regest eine TEI-Datei und diese Seiten. Sie fügen keine Aussage hinzu.",
+            "Skripte erzeugen nach Regeln je Regest eine TEI-Datei und diese Seiten, ohne eine Aussage hinzuzufügen.",
         ),
     ]
     items = "".join(
-        f'<li><p class="step-head"><span class="step-title">{esc(title)}</span> <span class="producer">{STEP_PRODUCERS[who]}</span></p><p>{text}</p></li>'
+        f'<li><span class="step-title">{esc(title)}</span> <span class="producer">({"Mensch" if who == 2 else STEP_PRODUCERS[who]})</span> {text}</li>'
         for title, who, text in steps
     )
-    t = site.texts
-    main = f"""<h1>Methode</h1>
-<p class="intro">Jeder Schritt nennt, wer ihn ausgeführt hat, damit erkennbar bleibt, was eine Regel und was ein LLM erzeugt hat.</p>
-<ol class="steps" role="list">{items}</ol>
-<section aria-labelledby="tei-title"><h2 id="tei-title">Umsetzung in TEI</h2>
-<p>Der Regesttext steht verlustfrei in einem Absatz. Jede Belegstelle ist ein <code>seg</code>, jeder Name ein <code>persName</code> oder <code>orgName</code> mit Verweis auf die Person in <code>standOff</code>. Jede Aussage ist ein <code>event</code> in <code>listEvent</code>, das über <code>@corresp</code> auf ihre Belege, über <code>@resp</code> auf den erzeugenden Agenten und über <code>@ana</code> auf ihren Prüfstand zeigt. Die Rollen sind <code>relation</code>-Elemente in <code>listRelation</code>. Die maßgebliche Fassung bleibt das RDF des Laufs. Was TEI davon nicht abbildet, sind die Typen der betroffenen Rechte und Sachen als eigene Knoten, sie stehen als Vermerk an der Aussage. So sieht RI IV,2,1 n. 46 aus:</p>
-<pre class="code"><code>{esc(tei_excerpt)}</code></pre></section>
-<section aria-labelledby="def-title"><h2 id="def-title">{esc(t["agenticEdition"]["term"])}</h2>
-<p>{esc(t["agenticEdition"]["definition"])} {esc(t["agenticEdition"]["provisionalNote"]) if t["agenticEdition"]["provisional"] else ""}</p>
-<p>{esc(t["genre"])}</p></section>"""
-    site.page(path="methode", key="methode", kind="text", title="Methode", main=main)
-
-
-def about_page(site: Site) -> None:
-    t = site.texts
-    m = site.manifest
-    rows = [
-        (
-            "Regesten, Kommentare, Überlieferung, Register",
-            "Regesta Imperii",
-            "übernommen, in Klartext überführt",
-            "CC BY 4.0",
-        ),
-        (
-            "Auswahl, Pakete, TEI, Website",
-            "Skripte des Projekts",
-            "deterministischer Workflow",
-            "Code MIT, Daten CC BY 4.0",
-        ),
-        ("Aussagen", f"LLM-basierte Agenten ({m['model']})", "unrevidierter LLM-basierter Agent", "CC BY 4.0"),
-        ("Technische Prüfung", "Validator des Projekts", "deterministischer Workflow", "MIT"),
-        ("Reviews, Abwägung, Korrektur", "LLM-basierte Agenten", "unrevidierter LLM-basierter Agent", "CC BY 4.0"),
-        ("Fachliche Prüfung", "noch offen", "menschlich verifiziert, noch keine Aussage", ""),
-    ]
-    table = "".join(
-        f'<tr><th scope="row">{esc(a)}</th><td>{esc(b)}</td><td>{esc(c)}</td><td>{esc(d)}</td></tr>'
-        for a, b, c, d in rows
-    )
     src = t["source"]
+    ae = t["agenticEdition"]
     main = f"""<h1>Über die Edition</h1>
-<p class="intro">{esc(t["description"])} Ihre Aussagen und Prüfstände sind von LLM-basierten Agenten erzeugt und keine Aussagen der Regesta Imperii.</p>
-<section aria-labelledby="src-title"><h2 id="src-title">Quellen und Namensnennung</h2>
-<p>{esc(t["attribution"])}</p>
-<p class="link-row"><a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a> <a href="{esc(src["lab"])}" rel="noopener">RI Lab, Daten</a> <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">Lizenztext CC BY 4.0</a></p></section>
-<section aria-labelledby="prod-title"><h2 id="prod-title">Wer was erzeugt hat</h2>
-<div class="table-wrap"><table class="list"><thead><tr><th scope="col">Teil</th><th scope="col">Urheber</th><th scope="col">Art</th><th scope="col">Lizenz</th></tr></thead><tbody>{table}</tbody></table></div></section>
-<section aria-labelledby="lic-title"><h2 id="lic-title">Lizenzen</h2>
-<p>Texte und Daten der Edition stehen unter <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, der Code unter <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>. Abbildungen Dritter, etwa Digitalisate der Buchseiten, sind nur verlinkt und stehen unter den Bedingungen ihrer Anbieter.</p></section>
-<section aria-labelledby="rel-title"><h2 id="rel-title">Fassungen</h2>
-<p>Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}, {esc(t["release"]["state"])}. Die Aussagen stammen aus dem Lauf {esc(site.run_id)}.</p></section>
-<section aria-labelledby="imp-title"><h2 id="imp-title">Impressum</h2>
+<p class="intro">{esc(ae["definition"])} {esc(ae["provisionalNote"]) if ae["provisional"] else ""} Diese Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, jede an ihren Wortlaut gebunden und mit Urheber und Prüfstand. Die Aussagen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii; technisch geprüft heißt nicht historisch richtig oder vollständig.</p>
+<section aria-labelledby="methode"><h2 id="methode">Wie die Aussagen entstehen</h2>
+<ol class="steps" role="list">{items}</ol></section>
+<section aria-labelledby="daten"><h2 id="daten">Daten</h2>
+<p>Turtle ist die maßgebliche Fassung der Aussagen, TEI gibt Regesttext und Aussagen in Standoff wieder, JSON ist die Grundlage dieser Seiten. Jede Regestseite bietet ihre drei Dateien an.</p>
+<ul class="downloads" role="list"><li><a href="../daten/{esc(package)}" download>Alle Regesten als Paket</a></li></ul></section>
+<section aria-labelledby="lizenz"><h2 id="lizenz">Quellen und Lizenz</h2>
+<p>{esc(t["attribution"])} Texte und Daten der Edition stehen unter <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, der Code unter <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>. Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}.</p>
+<p class="link-row"><a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a> <a href="{esc(src["lab"])}" rel="noopener">RI Lab, Daten</a></p>
 <p class="placeholder">{esc(t["imprint"])}</p></section>"""
     site.page(path="ueber", key="ueber", kind="text", title="Über die Edition", main=main)
-
-
-def data_page(site: Site, package: str) -> None:
-    rows = "".join(
-        f'<tr><th scope="row"><a href="../regesten/{site.slugs[r["uid"]]}/">{esc(r["identifier"])}</a></th>'
-        f'<td><a href="../tei/{site.slugs[r["uid"]]}.xml" download>TEI</a></td>'
-        f'<td><a href="../ttl/{site.slugs[r["uid"]]}.ttl" download>Turtle</a></td>'
-        f'<td><a href="../json/{site.slugs[r["uid"]]}.json" download>JSON</a></td></tr>'
-        for r in site.regests
-    )
-    main = f"""<h1>Daten</h1>
-<p class="intro">Je Regest gibt es drei Dateien. Turtle ist die maßgebliche Fassung der Aussagen, TEI gibt den Regesttext verlustfrei und die Aussagen mit dem auf der Methodenseite genannten Verlust wieder, JSON ist die Datengrundlage dieser Seiten. Alle Dateien stehen unter CC BY 4.0 mit der Namensnennung der Regesta Imperii.</p>
-<section class="downloads" aria-labelledby="pkg-title"><h2 id="pkg-title">Alles in einer Datei</h2>
-<ul role="list"><li><a href="{esc(package)}" download>{esc(package)}</a></li></ul></section>
-<div class="table-wrap"><table class="list data"><thead><tr><th scope="col">Regest</th><th scope="col">TEI</th><th scope="col">Turtle</th><th scope="col">JSON</th></tr></thead><tbody>{rows}</tbody></table></div>"""
-    site.page(path="daten", key="daten", kind="text", title="Daten", main=main)
 
 
 # Files
@@ -1016,7 +980,7 @@ def build(source: Path, run_id: str, out: Path, review: bool = False) -> None:
     persons_pages(site)
     first = site.case["regests"][0] if site.case else site.regests[0]["uid"]
     method_page(site, tei_excerpt(out / "tei" / f"{site.slugs[first]}.xml"))
-    about_page(site)
+    about_page(site, package)
     data_page(site, package)
     if review:
         review_pages(site)

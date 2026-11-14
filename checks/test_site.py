@@ -48,7 +48,6 @@ class SiteBuild(unittest.TestCase):
                 self.assertEqual(doc.count("<h1"), 1, where)
                 self.assertIn(html.escape(texts["licenceLine"]), doc, where)
                 self.assertRegex(doc, r'href="[./]*ueber/"', where)
-                self.assertRegex(doc, r'href="[./]*methode/"', where)
             edition = json.loads((out / "ansicht" / "data" / "edition.json").read_text(encoding="utf-8"))
             for r in edition["regests"]:
                 s = build_site.slug(r["identifier"])

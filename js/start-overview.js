@@ -72,14 +72,13 @@ export function renderStartOverview(store, options) {
     drawMap();
   });
 
-  const mapHost = h("div", { class: "so-map", role: "group", "aria-label": "Karte der Ausstellungsorte. Die Orte stehen auch in der Liste unter der Karte." });
-  const placeList = h("ol", { class: "so-places", "aria-label": "Häufigste Ausstellungsorte" });
+  const mapHost = h("div", { class: "so-map", role: "group", "aria-label": "Karte der Ausstellungsorte; jeder Ort ist ein Link mit seiner Zahl" });
   const caption = h("p", { class: "so-caption" });
-  const element = h("section", { class: "canvas so-canvas", "aria-labelledby": "so-title" }, h("h1", { id: "so-title", class: "visually-hidden", text: "Übersicht über Zeit, Orte und Personen" }), mapHost, caption, placeList);
+  const element = h("section", { class: "canvas so-canvas", "aria-labelledby": "so-title" }, h("h1", { id: "so-title", class: "visually-hidden", text: "Übersicht über Zeit, Orte und Personen" }), mapHost, caption);
 
   const persons = h("ol", { class: "so-persons", "aria-label": "Meistgenannte Personen" });
   const band = h("div", { class: "so-band" });
-  const aside = h("div", { class: "sidebar so-side" }, band, h("p", { class: "so-label", text: "Meistgenannte Personen, Regesten der Lieferung" }), persons);
+  const aside = h("div", { class: "sidebar so-side" }, band, h("p", { class: "so-label" }, h("span", { text: "Meistgenannte Personen" }), h("span", { class: "so-n", text: "Regesten" })), persons);
 
   const inRange = (y) => filters.inYear(y);
 
@@ -97,7 +96,7 @@ export function renderStartOverview(store, options) {
     const left = (width - (x1 - x0) * scale) / 2;
     const top = (height - (z1 - z0) * scale) / 2;
     const at = ([x, z]) => [left + (x - x0) * scale, top + (z1 - z) * scale];
-    const svg = s("svg", { width, height, viewBox: `0 0 ${width} ${height}`, class: "so-svg", "aria-hidden": "true" });
+    const svg = s("svg", { width, height, viewBox: `0 0 ${width} ${height}`, class: "so-svg" });
     const defs = s("defs");
     const blur = s("filter", { id: "so-soft", x: "-5%", y: "-5%", width: "110%", height: "110%" });
     blur.append(s("feGaussianBlur", { stdDeviation: 2 }));
@@ -106,6 +105,7 @@ export function renderStartOverview(store, options) {
     clip.append(s("circle", { cx, cy, r: scale }));
     defs.append(blur, clip);
     svg.append(defs);
+    defs.setAttribute("aria-hidden", "true");
     if (realm) {
       const pts = realm.ring.map(([lon, lat]) => at(project(lon, lat)).map((v) => v.toFixed(1)).join(","));
       svg.append(s("polygon", { class: "it-realm", points: pts.join(" "), "clip-path": "url(#so-core)", filter: "url(#so-soft)" }));
@@ -137,7 +137,8 @@ export function renderStartOverview(store, options) {
     // Largest first, so the small places stay visible on top.
     for (const [id, n] of order) {
       const [x, y] = at(project(places[id].lo, places[id].la));
-      const a = s("a", { href: href(`itinerar/${encodeURIComponent(id)}`), class: "so-place", tabindex: "-1" });
+      // The circles are the keyboard way to the places as well: links in order of size.
+      const a = s("a", { href: href(`itinerar/${encodeURIComponent(id)}`), class: "so-place", "aria-label": `${places[id].l}, ${n} Regesten` });
       a.append(s("circle", { cx: x.toFixed(1), cy: y.toFixed(1), r: radius(n).toFixed(1), class: "dc-dot" }), s("title", { text: `${places[id].l}, ${n} Regesten` }));
       dots.append(a);
     }
@@ -159,11 +160,7 @@ export function renderStartOverview(store, options) {
     }
     mapHost.replaceChildren(svg);
     const total = [...counts.values()].reduce((a, b) => a + b, 0);
-    caption.textContent = `${total} Regesten der ganzen Lieferung mit Ausstellungsort, ein Kreis je Ort nach ihrer Zahl.`;
-    // The keyboard and text equivalent of the map: the most frequent places as links.
-    placeList.replaceChildren(
-      ...order.slice(0, 8).map(([id, n]) => h("li", {}, h("a", { href: href(`itinerar/${encodeURIComponent(id)}`) }, places[id].l), h("span", { class: "so-n", text: String(n) }))),
-    );
+    caption.textContent = `Kreis je Ort nach Zahl der Regesten, ${total} mit Ausstellungsort`;
   }
 
   function drawSide() {
