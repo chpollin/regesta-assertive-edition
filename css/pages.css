@@ -146,3 +146,71 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .review-list li { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: 2px; border-block-end: 1px solid var(--hairline); }
 .review-list li[data-state="done"] .review-count { color: var(--accent-text); font-weight: 600; }
 .review-count { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Filter row of the lists: search and the eight family switches with sign and word; the
+   switches are the legend of the signs in the rows (rule 7). */
+.list-filter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0 0 var(--space-3); }
+.list-q { font: inherit; inline-size: min(100%, 16rem); padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--pg-ink); }
+.fam-toggles { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.fam-toggle { display: inline-flex; align-items: center; gap: 0.3em; font: inherit; font-size: var(--step--1); padding: 2px var(--space-2); border: 1px solid var(--hairline); border-radius: 2px; background: var(--stage); color: var(--pg-muted); cursor: pointer; }
+.fam-toggle[aria-pressed="true"] { border-color: var(--accent-text); color: var(--pg-ink); box-shadow: inset 0 -2px 0 var(--pg-accent); }
+.filter-count { color: var(--pg-muted); font-variant-numeric: tabular-nums; }
+.fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--pg-muted); margin-inline-end: var(--space-2); }
+.list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--pg-muted); border-block-end: 1px solid var(--pg-line); }
+
+/* Start overview (operator's rule 42): filters left as in the views, the map to the right;
+   the page grows with the map instead of clipping it. */
+.embed-start .embed-aside { padding: var(--space-3); background: var(--side); }
+.so-band { margin-block-end: var(--space-4); }
+.so-label { margin: 0 0 var(--space-1); color: var(--pg-muted); }
+.so-persons, .so-places { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.so-persons li, .so-places li { display: flex; justify-content: space-between; gap: var(--space-3); }
+.so-persons a, .so-places a { text-decoration: none; }
+.so-persons a:hover, .so-places a:hover, .so-persons a:focus-visible, .so-places a:focus-visible { text-decoration: underline; }
+.so-n { color: var(--pg-muted); font-variant-numeric: tabular-nums; }
+.so-canvas { padding: var(--space-2) var(--space-3); }
+.so-svg { display: block; max-inline-size: 100%; }
+.so-place { cursor: pointer; }
+
+.so-caption { margin: var(--space-1) 0 var(--space-2); color: var(--pg-muted); }
+.so-places { grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); column-gap: var(--space-5); }
+.example { max-inline-size: 48rem; margin-block: var(--space-6) var(--space-4); }
+.example-lead { margin: 0 0 var(--space-2); color: var(--pg-muted); }
+@media (min-width: 56rem) {
+  .embed.embed-start { grid-template-columns: var(--aside-width, 21rem) minmax(0, 1fr); block-size: auto; }
+  .embed-start .embed-main, .embed-start .embed-aside { overflow: visible; }
+  .embed-start .embed-aside { border-inline-start: 0; border-inline-end: 1px solid var(--pg-line); }
+}
+.so-side.sidebar { gap: 0; align-content: start; }
+.so-place circle { fill: var(--edge); fill-opacity: 0.6; stroke: var(--stage); stroke-width: 0.8; }
+.so-place:hover circle, .so-place:focus-visible circle { fill: var(--accent); fill-opacity: 0.9; }
+/* Narrow: the regest list keeps number, date and the kinds of statements; the place stands
+   on the regest page and in the Orte object, so a row stays within two lines at 360 px. */
+@media (max-width: 40rem) {
+  .list.regests thead { display: none; }
+  .list.regests, .list.regests tbody { display: block; }
+  .list.regests td:last-child { white-space: normal; text-align: end; }
+  .list.regests tr { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--pg-line); }
+  .list.regests th, .list.regests td { padding: 0; border: 0; }
+  .list.regests td:nth-child(3) { display: none; }
+  .list.regests td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--pg-muted); }
+  .list.regests td:nth-child(4) { justify-self: end; }
+  .table-wrap:has(.list.regests) { overflow: visible; }
+}
+@media (max-width: 40rem) {
+  .list.persons, .list.persons tbody { display: block; }
+  .list.persons thead { display: none; }
+  .list.persons tr { display: grid; grid-template-columns: 1fr auto; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--pg-line); }
+  .list.persons th, .list.persons td { padding: 0; border: 0; white-space: normal; }
+  .list.persons tr.group { display: block; }
+  .list.persons td:nth-child(2) { grid-row: 2; grid-column: 1 / -1; }
+  .list.persons td.num { grid-row: 1; grid-column: 2; }
+}
+/* Links in list rows rest without underline and underline on pointing and focus (rule 10);
+   the semibold weight of the first column tells them from the text beside. */
+.list tbody th a { text-decoration: none; }
+.list tbody th a:hover, .list tbody th a:focus-visible { text-decoration: underline; }
+
+@media (min-width: 40.01rem) {
+  .list.persons thead th.num { white-space: nowrap; }
+}
