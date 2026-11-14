@@ -24,14 +24,16 @@
  * Regesta of the whole delivery without statements show the same head and their text.
  */
 import { h, regestHref } from "./dom.js";
+import { familyIcon, familyOf } from "./relations.js";
 
 const REVIEW_WORD = "ungeprüft";
 const REVIEW_TIP = "Von LLM-basierten Agenten extrahiert, technisch geprüft, fachlich nicht abgenommen.";
 
-// The agent review at a statement (knowledge/data.md, Agent review): sign and word together
-// (rule 7: a sign never stands alone), and always named as the agents' verdict, since no
-// person has verified it. „strittig“: the two readers disagree, and both readings stay.
-const AGENT_SIGN = { stimmt: "✓", "stimmt nicht": "✗", unklar: "?", strittig: "≠" };
+// The agent review at a statement (knowledge/data.md, Agent review): a small word plate, no
+// glyph, since the family signs of the annotation system include a check mark (Bestätigung);
+// always named as the readers' verdict, since no person has verified it. „strittig“: the
+// two readers disagree, and both readings stay.
+const verdictPlate = (agent) => h("span", { class: `ann-verdict is-${slug(agent.outcome)}`, title: `Urteil zweier LLM-Leser: ${agent.outcome}` }, agent.outcome);
 const slug = (outcome) => outcome.replace(/\s+/g, "-");
 
 // Small line signs for the head, drawn in the text colour; the word beside or the accessible
@@ -41,7 +43,6 @@ const ICON = {
   date: "M3 4.5h10v8.5H3zM3 7h10M5.5 3v3M10.5 3v3",
   place: "M8 14s4.5-4.2 4.5-7.5a4.5 4.5 0 0 0-9 0C3.5 9.8 8 14 8 14zM8 8.2a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4z",
   out: "M9 3h4v4M13 3 7.5 8.5M11 9.5V13H3V5h3.5",
-  file: "M4 2.5h5l3 3V13.5H4zM9 2.5v3h3",
   agents: "M5.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM10.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 13c0-2.2 1.6-4 3.5-4S9 10.8 9 13M7 13c0-2.2 1.6-4 3.5-4S14 10.8 14 13",
 };
 function icon(name) {
@@ -66,7 +67,7 @@ function reviewState(regest) {
     {
       class: "card-state",
       tabindex: "0",
-      title: `${read.length} von ${heads.length} Aussagen von zwei LLM-basierten Agenten unabhängig gegen den Regesttext gelesen (${model}, ${date}). ✓ beide: stimmt, ? beide: unklar, ≠ die beiden urteilen verschieden. Keine Aussage ist menschlich verifiziert.`,
+      title: `${read.length} von ${heads.length} Aussagen von zwei LLM-basierten Agenten unabhängig gegen den Regesttext gelesen (${model}, ${date}). Das Schild an einer Aussage nennt ihr Urteil, „strittig“, wenn sie verschieden urteilen. Keine Aussage ist menschlich verifiziert.`,
     },
     icon("agents"),
     "von LLM-Agenten gelesen",
@@ -126,7 +127,8 @@ export function notedText(text, statements) {
   for (let i = 0; i < points.length - 1; i += 1) {
     const [a, b] = [points[i], points[i + 1]];
     const starting = statements.filter((st) => clamp(st.start) === a && clamp(st.end) > a);
-    if (starting.length) out.push(h("sup", { class: "ann-n", "data-ids": starting.map((st) => st.id).join(" "), "aria-hidden": "true", text: starting.map((st) => st.n).join(",") }));
+    // The opening sign of a statement: its family's sign and its number (design.md, Annotation system).
+    if (starting.length) out.push(h("span", { class: "ann-n", "data-ids": starting.map((st) => st.id).join(" "), "aria-hidden": "true" }, starting.map((st) => h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 11 }), String(st.n)))));
     const ids = statements.filter((st) => st.start <= a && st.end >= b).map((st) => st.id);
     const piece = text.slice(a, b);
     out.push(ids.length ? h("span", { class: "ev", "data-ids": ids.join(" ") }, piece) : piece);
@@ -157,14 +159,7 @@ export function notesOf(statements) {
           h("span", { class: "note-n", text: String(st.n) }),
           h("span", { class: "note-kind", text: st.kind }),
           st.qualifiers?.length ? h("span", { class: "note-qual", text: ` (${st.qualifiers.join(", ")})` }) : null,
-          agent
-            ? h("span", {
-                class: `ann-verdict is-${slug(agent.outcome)}`,
-                title: `Zwei LLM-Agenten: ${agent.outcome}`,
-                "aria-label": `LLM-Agenten: ${agent.outcome}`,
-                text: agent.outcome === "stimmt" ? AGENT_SIGN.stimmt : `${AGENT_SIGN[agent.outcome]} ${agent.outcome}`,
-              })
-            : null,
+          agent ? verdictPlate(agent) : null,
         ),
         // Shown while the note or its passage is pointed at or focused (css: .note-detail).
         h(
@@ -212,12 +207,12 @@ export function placeNotes(card, textEl, notesEl) {
  */
 export function renderRegestCard(store, uid, options = {}) {
   const regest = store.byUid.get(uid) ?? null;
+  if (options.page && regest) return pageView(store, regest, options);
   const delivered = store.holdings?.regesta.find((r) => r.u === uid) ?? null;
   const identifier = regest?.identifier ?? delivered?.i ?? uid;
   const date = regest ? regest.date.map((seg) => seg.t).join("") : delivered?.s ?? "";
   const place = regest?.place?.map((seg) => seg.t).join("") || delivered?.l || "";
   const pi = delivered?.pi;
-  const files = options.files;
 
   const head = h(
     "div",
@@ -226,14 +221,6 @@ export function renderRegestCard(store, uid, options = {}) {
     date ? h("span", { class: "card-meta", title: "Datierung" }, icon("date"), date) : null,
     place ? h("span", { class: "card-meta", title: "Ausstellungsort" }, icon("place"), place) : null,
     pi ? h("a", { class: "card-meta card-ri", href: `https://www.regesta-imperii.de/id/${pi}`, title: "Dieses Regest in Regesta Imperii Online" }, icon("out"), "RI Online") : null,
-    files
-      ? h(
-          "span",
-          { class: "card-meta card-files", title: "Dateien dieses Regests" },
-          icon("file"),
-          ["TEI", "TTL", "JSON"].map((k) => h("a", { href: files[k], download: "" }, k)),
-        )
-      : null,
     regest && !options.page ? h("a", { class: "card-meta", href: regestHref(uid), title: "Eigene Seite dieses Regests, zum Zitieren" }, icon("out"), "Seite") : null,
     regest ? reviewState(regest) : null,
     options.onClose ? h("button", { type: "button", class: "card-close", "aria-label": "Regest schließen", title: "Schließen", onclick: options.onClose }, "×") : null,
@@ -273,7 +260,6 @@ export function renderRegestCard(store, uid, options = {}) {
       body.append(textEl, notesEl);
       placeNotes(card, textEl, notesEl);
     } else card.append(h("p", { class: "card-none", text: "Zu diesem Regest gibt es keine Aussage im Rahmen des Laufs." }));
-    if (options.page) card.append(apparatus(regest));
     if (options.claim) requestAnimationFrame(() => light(options.claim));
   } else {
     textEl.textContent = "…";
@@ -287,16 +273,148 @@ export function renderRegestCard(store, uid, options = {}) {
   return card;
 }
 
-/** The source apparatus of Regesta Imperii on the page: transmission and commentary, quiet. */
-function apparatus(regest) {
+/**
+ * The citable regest page in three areas that keep their place on every page (operator,
+ * 2026-11-14: „einen richtigen Lesebereich“, „einen Bereich, wo alle Meta-Daten sind, und
+ * einen Bereich, wo alle zusätzlichen Kommentare sind“; design.md, Regest page and Annotation
+ * system):
+ * - metadata: everything about the regest and its edition as labelled fields;
+ * - reading: the regest text, each annotated passage opened by the sign of its family and its
+ *   number, its extent shown when it or its statement is chosen;
+ * - comments: what is said about the text, the agents' statements and the apparatus of the
+ *   Regesta Imperii in two blocks named by their producer.
+ * The static page hands in what only it knows (options.meta: citation forms, further fields
+ * and links of the delivery).
+ */
+function pageView(store, regest, options) {
+  const statements = statementsOf(regest);
+  const meta = options.meta ?? {};
+  const delivered = store.holdings?.regesta.find((r) => r.u === regest.uid) ?? null;
+  const date = regest.date.map((seg) => seg.t).join("");
+  const place = regest.place?.map((seg) => seg.t).join("") || "";
+  const files = options.files;
+
+  const textEl = h("p", { class: "card-text source is-noted" }, ...notedText(regest.text, statements));
+  const present = [...new Map(statements.map((st) => [familyOf(st.kind).key, familyOf(st.kind)])).values()];
+  const reading = h(
+    "section",
+    { class: "reg-reading", "aria-label": "Regesttext" },
+    h("p", { class: "reg-title" }, h("span", { class: "reg-id", text: regest.identifier }), options.pager ?? null),
+    textEl,
+    statements.length
+      ? h(
+          "p",
+          { class: "reg-legend" },
+          "Zeichen im Text: Beginn einer Aussage, nach ihrer Art. ",
+          present.map((f) => h("span", { class: "reg-legend-item" }, familyIcon(f, { size: 14 }), f.label)),
+        )
+      : h("p", { class: "reg-legend", text: "Zu diesem Regest gibt es keine Aussage im Rahmen des Laufs." }),
+  );
+
+  // Metadata: labelled fields, one per row.
+  const field = (label, ...value) => (value.flat().some((v) => v !== null && v !== "" && v !== undefined) ? [h("dt", { text: label }), h("dd", {}, ...value)] : []);
+  const pi = delivered?.pi;
+  const read = statements.filter((st) => st.agent);
+  const metaEl = h(
+    "section",
+    { class: "reg-meta", "aria-labelledby": "reg-meta-h" },
+    h("h2", { id: "reg-meta-h", class: "reg-area", text: "Metadaten" }),
+    h(
+      "dl",
+      {},
+      field("Datierung", date),
+      field("Ausstellungsort", place),
+      ...(meta.fields ?? []).filter((f) => f.where === "meta").map((f) => field(f.label, f.text)),
+      field("Regesta Imperii", pi ? h("a", { href: `https://www.regesta-imperii.de/id/${pi}`, rel: "noopener" }, "Regest in RI Online") : ""),
+      field("Dateien", files ? ["TEI", "TTL", "JSON"].map((k, i) => [i ? " " : "", h("a", { href: files[k], download: "" }, k)]) : ""),
+      field(
+        "Prüfstand",
+        regest.technical ? "von LLM-Agenten erzeugt, technisch geprüft, keine Aussage menschlich verifiziert" : "von LLM-Agenten erzeugt, technische Prüfung nicht bestanden",
+        read.length ? `; ${read.length} von ${statements.length} Aussagen von zwei LLM-Agenten gelesen (${read[0].agent.model}, ${read[0].agent.date})` : "",
+      ),
+      ...(meta.links ?? []).map((l) => field(l.label, h("a", { href: l.href, rel: "noopener" }, l.text))),
+      ...(meta.citations ?? []).map((c) => field(c.label, h("span", { class: "reg-cite", text: c.text }))),
+    ),
+  );
+
+  // Comments: the agents' statements, then the apparatus of the Regesta Imperii.
+  const notesEl = h(
+    "ol",
+    { class: "reg-notes", "aria-label": "Aussagen zu diesem Regest" },
+    statements.map((st) => {
+      const f = familyOf(st.kind);
+      const byRole = new Map();
+      for (const pp of st.people) byRole.set(pp.role || "beteiligt", [...(byRole.get(pp.role || "beteiligt") ?? []), pp.phrase]);
+      const agent = st.agent;
+      return h(
+        "li",
+        { "data-id": st.id, tabindex: "0" },
+        h(
+          "p",
+          { class: "note-head" },
+          h("span", { class: "ann-chip" }, familyIcon(f, { size: 13 }), String(st.n)),
+          h("span", { class: "note-kind", text: st.kind }),
+          agent ? verdictPlate(agent) : null,
+        ),
+        h(
+          "dl",
+          { class: "note-fields" },
+          st.qualifiers.length ? [h("dt", { text: "Wortlaut" }), h("dd", { text: st.qualifiers.map((q) => `„${q}“`).join(", ") })] : null,
+          [...byRole].map(([role, names]) => [h("dt", { text: role }), h("dd", { text: names.join(", ") })]),
+          st.literals.map((l) => [h("dt", { text: l.label }), h("dd", { text: regest.text.slice(l.start, l.end) })]),
+        ),
+        agent && agent.outcome !== "stimmt" ? agent.readers.map((r, i) => h("p", { class: "note-review" }, `LLM-Leser ${i + 1}, ${r.verdict}: ${r.reason}`)) : null,
+      );
+    }),
+  );
   const plain = (segments) => (segments ?? []).map((seg) => seg.t).join("");
-  const parts = [
+  const apparatusRows = [
     ["Überlieferung", plain(regest.apparatus?.transmission)],
     ["Kommentar", plain(regest.apparatus?.commentary)],
+    ...(meta.fields ?? []).filter((f) => f.where === "comment").map((f) => [f.label, f.text]),
   ].filter(([, text]) => text);
-  return h(
-    "div",
-    { class: "card-apparatus", hidden: parts.length === 0 },
-    parts.map(([label, text]) => h("p", {}, h("span", { class: "run-in", text: label }), ` ${text}`)),
+  const comments = h(
+    "section",
+    { class: "reg-comments", "aria-labelledby": "reg-comments-h" },
+    h("h2", { id: "reg-comments-h", class: "reg-area", text: "Kommentare" }),
+    statements.length
+      ? h(
+          "div",
+          { class: "reg-block" },
+          h("h3", { class: "reg-block-h", text: "Aussagen der LLM-Agenten" }),
+          h("p", { class: "reg-producer", text: "Aus dem Regesttext erzeugt, an ihren Wortlaut gebunden. Das Schild nennt das Urteil zweier LLM-Leser: stimmt, unklar oder strittig, wenn sie verschieden urteilen. Kein Mensch hat die Aussagen geprüft." }),
+          notesEl,
+        )
+      : null,
+    apparatusRows.length
+      ? h(
+          "div",
+          { class: "reg-block" },
+          h("h3", { class: "reg-block-h", text: "Apparat der Regesta Imperii" }),
+          h("p", { class: "reg-producer", text: "Von den Bearbeitern der Regesta Imperii, unverändert." }),
+          h("dl", { class: "reg-apparatus" }, apparatusRows.map(([label, text]) => [h("dt", { text: label }), h("dd", { class: "source", text })])),
+        )
+      : null,
   );
+
+  const page = h("article", { class: "regest-page-grid", "aria-label": `Regest ${regest.identifier}` }, metaEl, reading, comments);
+  // One statement lit at a time: its passage extent in the text, its chip and its entry.
+  const light = (id) => {
+    for (const el of textEl.querySelectorAll(".ev, .ann-n")) el.classList.toggle("is-on", !!id && el.dataset.ids.split(" ").includes(id));
+    for (const el of notesEl.children) el.classList.toggle("is-on", !!id && el.dataset.id === id);
+  };
+  textEl.addEventListener("mouseover", (e) => {
+    const ev = e.target.closest(".ann-n, .ev");
+    light(ev ? ev.dataset.ids.split(" ").at(-1) : null);
+  });
+  textEl.addEventListener("mouseleave", () => light(options.claim ?? null));
+  for (const li of notesEl.children) {
+    const id = li.dataset.id;
+    li.addEventListener("mouseenter", () => light(id));
+    li.addEventListener("mouseleave", () => light(options.claim ?? null));
+    li.addEventListener("focus", () => light(id));
+    li.addEventListener("blur", () => light(options.claim ?? null));
+  }
+  if (options.claim) requestAnimationFrame(() => light(options.claim));
+  return page;
 }

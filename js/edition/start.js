@@ -2,8 +2,9 @@
  * Start page: the space-time cube of the whole delivery with places, persons and the regesta
  * of the selection (ansicht/js/itinerary.js), after the operator's wish of 2026-11-14 that
  * start page, places and the regest list belong together and that persons join the cube.
- * The card below shows the regest opened in the cube; before any choice it is the worked
- * case RI IV,2,2 n. 103a. The jump to a regest by its RI number stays.
+ * The page is one window high (operator, 2026-11-14); a regest opened in the cube appears in
+ * a panel over the right edge of the figure, the worked case RI IV,2,2 n. 103a is one link
+ * above it, and the jump to a regest by its RI number stays.
  */
 import { bridge, demoteHeadings, loadRoutes, loadStore, siteUrl } from "./views.js";
 
@@ -12,31 +13,35 @@ export async function init(root) {
   const [store, routes] = await Promise.all([loadStore(root), loadRoutes(root)]);
   bridge(root, routes);
   initJump(root, store, routes);
-  await initExample(root, store);
   if (!store.holdings || !host) return;
   const [{ createFilters }, { renderItinerary }] = await Promise.all([
     import(siteUrl(root, "ansicht/js/filters.js")),
     import(siteUrl(root, "ansicht/js/itinerary.js")),
   ]);
   const filters = createFilters(store);
-  const slot = document.getElementById("example");
+  const panel = document.createElement("div");
+  panel.className = "start-detail";
+  panel.hidden = true;
   let textsPromise = null;
   const texts = () =>
     (textsPromise ??= fetch(siteUrl(root, "ansicht/data/holdings-texts.json"))
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({})));
-  // A regest opened in the cube takes the place of the worked case below the figure.
+  // A regest opened in the cube stands in a panel over the right edge of the figure.
   const detail = {
     show(card) {
-      card.classList.add("is-page");
-      slot?.replaceChildren(card);
+      panel.replaceChildren(card);
+      panel.hidden = false;
     },
-    hide() {},
+    hide() {
+      panel.hidden = true;
+      panel.replaceChildren();
+    },
   };
   const view = renderItinerary(store, { place: null, filters, detail, texts });
   const drawing = document.createElement("div");
   drawing.className = "embed-main";
-  drawing.append(view.element);
+  drawing.append(view.element, panel);
   const aside = document.createElement("aside");
   aside.className = "embed-aside site-aside";
   aside.setAttribute("aria-label", "Orte, Personen und Zeitraum");
@@ -44,15 +49,6 @@ export async function init(root) {
   host.classList.add("embed", "embed-start");
   host.replaceChildren(aside, drawing);
   demoteHeadings(host);
-}
-
-/** The worked case: the annotated card of the regest named in #example. */
-async function initExample(root, store) {
-  const slot = document.getElementById("example");
-  const uid = slot?.dataset.uid;
-  if (!slot || !store.byUid.has(uid)) return;
-  const { renderRegestCard } = await import(siteUrl(root, "ansicht/js/regest-card.js"));
-  slot.replaceChildren(renderRegestCard(store, uid, { page: true }));
 }
 
 /** Normalised RI number: "n. 103a", "103A" and "RI IV,2,2 n. 103a" all give "103a". */

@@ -26,11 +26,22 @@ export async function init(root) {
   const claim = location.hash.startsWith("#f-") ? decodeURIComponent(location.hash.slice(3)) : null;
   const slug = host.dataset.slug;
   const files = slug ? { TEI: siteUrl(root, `tei/${slug}.xml`), TTL: siteUrl(root, `ttl/${slug}.ttl`), JSON: siteUrl(root, `json/${slug}.json`) } : null;
-  const card = renderRegestCard(store, uid, { claim, texts, page: true, files });
-  host.replaceChildren(card);
-  // Paging moves into the head line of the card, as two arrows.
+  // What only the static page knows moves into the areas of the page view: further fields of
+  // the delivery (Originaldatierung to the metadata, Literatur and Anmerkungen to the
+  // apparatus), the external links and the citation forms. The static blocks then go.
+  const run = (p) => p.querySelector(".run-in")?.textContent.trim() ?? "";
+  const rest = (p) => p.textContent.slice(run(p).length).trim();
+  const fields = [...host.querySelectorAll(".fields p")]
+    .map((p) => ({ label: run(p), text: rest(p) }))
+    .filter((f) => f.label && f.label !== "Überlieferung" && f.label !== "Kommentar")
+    .map((f) => ({ ...f, where: f.label === "Originaldatierung" ? "meta" : "comment" }));
+  const cite = document.querySelector(".cite");
+  const citations = [...(cite?.querySelectorAll(":scope > p") ?? [])].map((p) => ({ label: run(p), text: rest(p) }));
+  const links = [...(cite?.querySelectorAll(".ext a") ?? [])].map((a) => ({ label: "Digitalisat", text: a.textContent.trim(), href: a.href }));
   const pager = document.querySelector(".pager");
-  if (pager) card.querySelector(".card-head")?.append(pager);
+  const card = renderRegestCard(store, uid, { claim, texts, page: true, files, pager, meta: { fields, citations, links } });
+  host.replaceChildren(card);
+  cite?.remove();
 }
 
 /** Validated return address: same origin, http or https, otherwise nothing is shown. */

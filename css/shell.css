@@ -159,9 +159,8 @@
      small number marks where a statement's passage begins, and the note beside or below
      names kind, participants and roles; pointing at either lights the other. */
   .card-text.is-noted { line-height: 1.7; }
-  .card-text.is-noted .ev { text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 0.2em; }
   .card-text.is-noted .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
-  .ann-n { font-family: var(--font-ui); font-size: 0.62em; font-weight: 600; color: var(--accent-text); margin-inline: 0.05em 0.15em; }
+  .ann-n { white-space: nowrap; }
   .ann-n.is-on { background: var(--accent-faint); }
   .card-body { position: relative; }
   .regest-card.has-margin .card-body { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: var(--space-5); align-items: start; }
@@ -180,7 +179,7 @@
   .note-detail { display: none; }
   .card-notes > li.is-on .note-detail, .card-notes > li:hover .note-detail, .card-notes > li:focus-within .note-detail { display: grid; gap: var(--space-1); padding-block: var(--space-1); }
   .regest-card.has-margin .card-notes > li.is-on, .regest-card.has-margin .card-notes > li:hover, .regest-card.has-margin .card-notes > li:focus-within { z-index: 3; background: var(--stage); box-shadow: 0 0 0 1px var(--hairline); }
-  .ann-verdict { margin-inline-start: 0.4em; }
+  .ann-verdict { margin-inline-start: 0.4em; padding: 0 0.4em; border: 1px solid var(--hairline); border-radius: 2px; font-size: 0.85em; color: var(--muted); white-space: nowrap; }
 
   /* The persons overview of the whole network (js/person-overview.js): circles by number of
      statements, lines by shared statements, the centre person named in one line above. */
@@ -192,7 +191,7 @@
   .po-node.is-dim { opacity: 0.25; }
   .po-node .n-label.on-demand { display: none; }
   .po-node:hover .n-label.on-demand, .po-node:focus-visible .n-label.on-demand { display: inline; }
-  .ann-verdict.is-stimmt-nicht, .ann-verdict.is-strittig { color: var(--warn); }
+  .ann-verdict.is-stimmt-nicht, .ann-verdict.is-strittig, .ann-verdict.is-unklar { color: var(--warn); border-color: currentColor; }
   .note-review { margin: 0; color: var(--muted); font-size: var(--step--1); }
   .card-apparatus { display: grid; gap: var(--space-2); max-inline-size: 44rem; color: var(--muted); font-size: var(--step--1); padding-block-start: var(--space-3); border-block-start: 1px solid var(--hairline); }
   .card-apparatus p { margin: 0; }
@@ -201,6 +200,57 @@
   .card-none, .card-note { color: var(--muted); }
   .card-note.is-flag { color: var(--warn); }
   .regest-page { max-inline-size: 46rem; }
+
+  /* The regest page in three areas (design.md, Regest page): metadata, reading, comments,
+     side by side from 72rem, reading and comments from 48rem with the metadata below, one
+     column below that with the reading first. */
+  .regest-page-grid { display: grid; gap: var(--space-5) var(--space-6); grid-template-columns: minmax(0, 1fr); grid-template-areas: "reading" "comments" "meta"; align-items: start; }
+  .reg-reading { grid-area: reading; display: grid; gap: var(--space-3); max-inline-size: 42rem; }
+  .reg-meta { grid-area: meta; }
+  .reg-comments { grid-area: comments; display: grid; gap: var(--space-5); }
+  @container page (inline-size > 48rem) {
+    .regest-page-grid { grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem); grid-template-areas: "reading comments" "meta comments"; }
+  }
+  @container page (inline-size > 72rem) {
+    .regest-page-grid { grid-template-columns: minmax(13rem, 16rem) minmax(0, 42rem) minmax(18rem, 24rem); grid-template-areas: "meta reading comments"; }
+  }
+  .reg-title { display: flex; align-items: center; gap: var(--space-3); margin: 0; }
+  .reg-id { font-size: var(--step-1); font-weight: 600; }
+  .reg-title .pager { display: inline-flex; gap: var(--space-1); margin-inline-start: auto; }
+  .reg-title .pager a { display: inline-grid; place-items: center; inline-size: 2rem; block-size: 2rem; border-radius: 2px; color: var(--muted); text-decoration: none; }
+  .reg-title .pager a:hover, .reg-title .pager a:focus-visible { color: var(--text); background: var(--accent-faint); }
+  .reg-title .back-slot a { font-size: var(--step--1); }
+  .reg-reading .card-text { font-size: var(--step-1); line-height: 1.75; margin: 0; }
+  .reg-legend { margin: 0; color: var(--muted); font-size: var(--step--1); display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); align-items: center; }
+  .reg-legend-item { display: inline-flex; align-items: center; gap: 0.3em; }
+  .reg-area { margin: 0 0 var(--space-2); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .reg-meta dl { display: grid; gap: var(--space-2); margin: 0; font-size: var(--step--1); }
+  .reg-meta dt { color: var(--muted); }
+  .reg-meta dd { margin: 0; overflow-wrap: anywhere; }
+  .reg-meta a { text-decoration-color: var(--accent); }
+  .reg-cite { color: var(--muted); }
+  .reg-block { display: grid; gap: var(--space-2); }
+  .reg-block-h { margin: 0; font-size: var(--step-0); font-weight: 600; }
+  .reg-producer { margin: 0; color: var(--muted); font-size: var(--step--1); }
+  .reg-notes { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; font-size: var(--step--1); }
+  .reg-notes > li { padding: var(--space-1) var(--space-2); border-inline-start: 2px solid var(--hairline); }
+  .reg-notes > li.is-on, .reg-notes > li:focus-visible { border-inline-start-color: var(--accent); background: var(--accent-faint); outline: none; }
+  .reg-notes .note-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
+  .note-fields { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 var(--space-2); margin: var(--space-1) 0 0; }
+  .note-fields dt { color: var(--muted); }
+  .note-fields dd { margin: 0; }
+  .reg-apparatus { display: grid; gap: var(--space-2); margin: 0; font-size: var(--step--1); }
+  .reg-apparatus dt { font-weight: 600; }
+  .reg-apparatus dd { margin: 0; color: var(--muted); }
+  /* Annotation system: an opening chip (family sign and number) where a statement's passage
+     begins; the passage itself is unmarked until it or its statement is chosen. */
+  .ann-chip { display: inline-flex; align-items: center; gap: 1px; font-family: var(--font-ui); font-size: 0.6em; font-weight: 600; color: var(--accent-text); vertical-align: 0.45em; margin-inline-end: 0.1em; }
+  .ann-chip .fam-icon { stroke: currentColor; }
+  .note-head .ann-chip { font-size: 0.9em; vertical-align: baseline; }
+  .ann-n { cursor: default; }
+  .ann-n.is-on .ann-chip { background: var(--accent-faint); }
+  .card-text.is-noted .ev { text-decoration: none; }
+  .card-text.is-noted .ev.is-on { background: var(--accent-faint); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
   .regest-card.is-page { font-size: var(--step-0); gap: var(--space-4); }
   .regest-card.is-page .card-text { font-size: var(--step-1); }
 

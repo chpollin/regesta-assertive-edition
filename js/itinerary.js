@@ -21,10 +21,20 @@
  * be compared, and the regesta naming both are marked. The register of the delivery names a
  * person for every regest, so the trace covers the whole reign; the relations with roles
  * exist only for the regesta of the run and stay in the person views.
+ *
+ * The regest in the figure (operator, 2026-11-14: „ein schöner Tooltip, … damit ich dann das
+ * Regest direkt lesen kann und dabei aber noch die Visualisierung und den Kontext sehe“): a
+ * pointed or focused point or row shows the regest in a small card beside it, in the
+ * annotation system of the regest page (family chip, kind, the readers' verdict). An opened
+ * regest is marked strongly with what it depends on: the stations before and after it on
+ * the itinerary, the other regesta of its place, and the regesta that share a person of the
+ * register with it (persons named in at most RELATED_MAX regesta, so the ruler and his
+ * chancellors do not join everything); the rest recedes.
  */
 import { h } from "./dom.js";
 import { timeBand } from "./sidebar.js";
-import { renderRegestCard } from "./regest-card.js";
+import { renderRegestCard, statementsOf } from "./regest-card.js";
+import { familyIcon, familyOf } from "./relations.js";
 
 const SVG = "http://www.w3.org/2000/svg";
 const DEG = Math.PI / 180;
@@ -38,6 +48,8 @@ const HEIGHT = 3.2;
 const BOX = 1.5;
 /** Standing place names on the floor: the places with most documents, as larger points. */
 const NAMED_PLACES = 5;
+/** A person named in more regesta than this does not make two regesta related. */
+const RELATED_MAX = 60;
 
 /** @param {string} tag @param {Record<string, any>} [attrs] */
 function s(tag, attrs = {}) {
@@ -69,6 +81,8 @@ export function renderItinerary(store, options) {
   const persons = H.persons ?? {};
   state.persons = (params.get("personen") ?? "").split(",").filter((id) => persons[id]).slice(0, 2);
   let personSets = state.persons.map((id) => new Set(persons[id].r));
+  const personsOf = new Map();
+  for (const [id, pp] of Object.entries(persons)) for (const u of pp.r) personsOf.set(u, [...(personsOf.get(u) ?? []), id]);
   const memberOf = (uid) => personSets.map((set) => set.has(uid));
   const personMark = (m) => (m[0] && m[1] ? "is-pab" : m[0] ? "is-pa" : m[1] ? "is-pb" : "");
   function setPersons(ids) {
@@ -115,6 +129,7 @@ export function renderItinerary(store, options) {
   const sceneHost = h("div", { class: "space-scene", tabindex: "0", role: "group", "aria-label": "Itinerar als Raum-Zeit-Würfel. Pfeiltasten drehen, Plus und Minus zoomen, Pos1 kehrt zur Schrägansicht zurück. Orte und Regesten sind in der Seitenleiste mit der Tastatur erreichbar." });
   const viewButtons = Object.entries(VIEWS).map(([key, v]) => h("button", { type: "button", class: "seg", "aria-pressed": "false", "data-view": key, onclick: () => snapTo(key) }, v.label));
   const freeMark = h("span", { class: "seg seg-note", text: "frei gedreht" });
+  const tip = h("div", { class: "it-tip", role: "tooltip", hidden: true });
   const element = h(
     "section",
     { class: "canvas space itinerary", "aria-labelledby": "it-title" },
@@ -128,6 +143,7 @@ export function renderItinerary(store, options) {
       h("button", { type: "button", class: "tool", "aria-label": "Verkleinern", onclick: () => zoom(1 / 1.15) }, "−"),
     ),
     sceneHost,
+    tip,
     status,
   );
 
@@ -289,11 +305,11 @@ export function renderItinerary(store, options) {
     points.forEach((p, i) => {
       const q = screen[i];
       const m = memberOf(p.u);
-      const on = inside(p.y) && (!state.place || p.p === state.place) && (!state.persons.length || m.some(Boolean));
+      const on = inside(p.y) && (!state.place || p.p === state.place) && (!state.persons.length || m.some(Boolean)) && (!related || related.all.has(i));
       const dot = scene.dots[i];
       dot.setAttribute("cx", q.x.toFixed(1));
       dot.setAttribute("cy", q.y.toFixed(1));
-      dot.setAttribute("opacity", on ? "1" : state.persons.length ? "0.07" : "0.12");
+      dot.setAttribute("opacity", on ? "1" : state.persons.length || related ? "0.07" : "0.12");
       dot.classList.remove("is-pa", "is-pb", "is-pab");
       const mark = personMark(m);
       if (mark) dot.classList.add(mark);
@@ -361,6 +377,13 @@ export function renderItinerary(store, options) {
     if (!scene) return;
     scene.pointer.replaceChildren();
     const P = projector();
+    if (related && opened !== null && screen[opened]) {
+      const o = screen[opened];
+      const seg = (i, cls) => screen[i] && scene.pointer.append(s("line", { class: cls, x1: o.x, y1: o.y, x2: screen[i].x, y2: screen[i].y }));
+      for (const i of related.people) seg(i, "it-link");
+      for (const i of related.steps) seg(i, "it-step");
+      for (const i of related.place) screen[i] && scene.pointer.append(s("circle", { class: "it-same-place", cx: screen[i].x, cy: screen[i].y, r: 4.5 }));
+    }
     // The regest whose card is open keeps a ring and its drop line; pointing adds another.
     for (const [i, cls] of [
       [opened, "it-opened"],
@@ -394,6 +417,7 @@ export function renderItinerary(store, options) {
 
   function point(i) {
     state.pointed = i;
+    showTip(i);
     if (i === null) status.textContent = "";
     else {
       const p = points[i];
@@ -401,6 +425,54 @@ export function renderItinerary(store, options) {
       status.textContent = `${Math.floor(p.y)}, ${places[p.p].l}, ${p.i}${evidenced.has(p.u) ? ", mit belegten Aussagen" : ""}${names.length ? `, nennt ${names.join(" und ")}` : ""}`;
     }
     pointer();
+  }
+
+  /** The regest beside its point: head line, text, statements in the annotation system. */
+  function showTip(i) {
+    if (i === null || i === undefined || !screen[i]) {
+      tip.hidden = true;
+      return;
+    }
+    const p = points[i];
+    const regest = store.byUid.get(p.u);
+    const text = h("p", { class: "it-tip-text source", text: regest ? regest.text : "…" });
+    if (!regest) options.texts?.().then((t) => (text.textContent = t[p.u] || "Kein Regesttext geliefert."));
+    const sts = regest ? statementsOf(regest) : [];
+    tip.replaceChildren(
+      h("p", { class: "it-tip-head" }, h("span", { class: "card-id", text: p.i }), ` ${Math.floor(p.y)}, ${places[p.p].l}`),
+      text,
+      sts.length
+        ? h(
+            "ul",
+            { class: "it-tip-sts", role: "list" },
+            sts.map((st) => h("li", {}, h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 12 }), String(st.n)), ` ${st.kind}`, st.agent ? h("span", { class: `ann-verdict is-${st.agent.outcome.replace(/\s+/g, "-")}` }, st.agent.outcome) : null)),
+          )
+        : h("p", { class: "it-tip-none", text: regest ? "Keine Aussage im Rahmen des Laufs." : "Ohne Aussagen des Laufs, Text aus der Lieferung." }),
+      h("p", { class: "it-tip-foot", text: "Klick oder Eingabe öffnet das Regest mit seinen Bezügen." }),
+    );
+    tip.hidden = false;
+    // Beside the point, inside the drawing, on the side with more room.
+    const q = screen[i];
+    const w = Math.min(340, element.clientWidth - 24);
+    const left = q.x + 18 + w < element.clientWidth ? q.x + 18 : Math.max(8, q.x - 18 - w);
+    tip.style.inlineSize = `${w}px`;
+    tip.style.left = `${left}px`;
+    tip.style.top = `${Math.max(48, Math.min(q.y - 40, element.clientHeight - tip.offsetHeight - 36))}px`;
+  }
+
+  /** What the opened regest depends on: stations before and after, its place, shared persons. */
+  let related = null;
+  function relate(i) {
+    if (i === null) return null;
+    const p = points[i];
+    const place = new Set();
+    points.forEach((x, j) => x.p === p.p && j !== i && place.add(j));
+    const steps = new Set([i - 1, i + 1].filter((j) => j >= 0 && j < points.length));
+    const mine = (personsOf.get(p.u) ?? []).filter((id) => persons[id].r.length <= RELATED_MAX);
+    const people = new Set();
+    const at = new Map(points.map((x, j) => [x.u, j]));
+    for (const id of mine) for (const u of persons[id].r) if (u !== p.u && at.has(u)) people.add(at.get(u));
+    return { place, steps, people, all: new Set([i, ...place, ...steps, ...people]), persons: mine };
   }
 
   function select(placeId) {
@@ -499,6 +571,14 @@ export function renderItinerary(store, options) {
     if (scene) point(nearest(e));
   });
   sceneHost.addEventListener("pointerleave", () => point(null));
+  sceneHost.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && opened !== null) {
+      opened = null;
+      related = null;
+      update();
+      options.detail?.hide();
+    }
+  });
   sceneHost.addEventListener("pointerup", (e) => {
     if (drag && !drag.moved && scene) {
       const i = nearest(e);
@@ -517,7 +597,9 @@ export function renderItinerary(store, options) {
   let opened = null;
   function openRegest(i) {
     opened = i;
-    pointer();
+    related = relate(i);
+    update();
+    status.textContent = `${points[i].i}: ${related.steps.size} Nachbarstationen, ${related.place.size} weitere Regesten am Ort, ${related.people.size} Regesten mit gemeinsamen Personen${related.persons.length ? ` (${related.persons.map((id) => persons[id].l).join(", ")})` : ""}`;
     // Where the point comes from, and what the plausibility check says about it.
     const notes = ["Ort und Datum aus der Lieferung der Regesta Imperii, Koordinate aus ihrem Register, ohne LLM."];
     for (const f of flagsOf.get(points[i].u) ?? []) notes.push(`Auffällig: ${f.km} km in ${f.days} ${f.days === 1 ? "Tag" : "Tagen"} zu ${f.other.identifier} (${f.other.place}). Vermutlicher Grund: ${f.class}.`);
@@ -527,7 +609,8 @@ export function renderItinerary(store, options) {
         texts: options.texts,
         onClose: () => {
           opened = null;
-          pointer();
+          related = null;
+          update();
           options.detail?.hide();
         },
       }),
@@ -555,9 +638,9 @@ export function renderItinerary(store, options) {
     const legend = h(
       "div",
       { class: "it-legend" },
-      h("p", {}, h("span", { class: "it-key" }), h("span", { class: "it-n", text: String(shown.length) }), " Regesten mit Ausstellungsort"),
-      h("p", {}, h("span", { class: "it-key is-evidenced" }), h("span", { class: "it-n", text: String(shownEvidenced) }), " davon mit belegten Aussagen"),
-      realm ? h("p", { title: "Grobe eigene Digitalisierung nach der gemeinfreien Karte von W. R. Shepherd (1926)" }, h("span", { class: "it-key is-realm" }), h("span", { class: "it-n" }), "Reich um 1190 nach Shepherd") : null,
+      h("p", { title: "Regesten mit Ausstellungsort im gewählten Zeitraum" }, h("span", { class: "it-key" }), h("span", { class: "it-n", text: String(shown.length) }), " Regesten mit Ort"),
+      h("p", { title: "davon mit belegten Aussagen der LLM-Agenten" }, h("span", { class: "it-key is-evidenced" }), h("span", { class: "it-n", text: String(shownEvidenced) }), " mit Aussagen"),
+      realm ? h("p", { title: "Grobe eigene Digitalisierung nach der gemeinfreien Karte von W. R. Shepherd (1926)" }, h("span", { class: "it-key is-realm" }), h("span", { class: "it-n" }), "Reich um 1190") : null,
       checks
         ? h(
             "p",
@@ -579,13 +662,9 @@ export function renderItinerary(store, options) {
           )
         : null,
       h(
-        "details",
+        "p",
         { class: "it-notes" },
-        h("summary", { text: "Herkunft der Daten" }),
-        h("p", { text: "Orte und Daten stammen aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM. Die belegten Aussagen haben LLM-basierte Agenten extrahiert; sie sind technisch geprüft und fachlich nicht abgenommen." }),
-        h("p", { text: "Ein Skript prüft aufeinanderfolgende Stationen auf unmögliche Reisen. Es findet Kandidaten für falsche Koordinaten, Datierungen ohne Tag, Fälschungen und Urkunden anderer Aussteller; dass ein Punkt stimmt, beweist es nicht." }),
-        h("p", { text: "Die Fernreisen nach Osten sind zur Mitte hin gestaucht. Die Grundkarte zeigt Küsten und große Flüsse nach Natural Earth (gemeinfrei)." }),
-        realm ? h("p", { text: "Die Fläche des Reichs um 1190 ist eine grobe eigene Digitalisierung dieses Projekts nach der gemeinfreien Karte „Europe and the Mediterranean Lands about 1190“ in W. R. Shepherds Historical Atlas (1926). Grenzen waren damals keine scharfen Linien; die Fläche zeigt eine Deutung, keinen Befund." }) : null,
+        h("a", { href: new URL("../../ueber/#daten", import.meta.url).href, title: "Orte und Daten aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM; Fernreisen zur Mitte gestaucht; Reich um 1190 als grobe eigene Deutung nach Shepherd (1926); auffällige Sprünge sind Kandidaten, keine Befunde." }, "Herkunft der Daten"),
       ),
     );
     // Persons: a search over the register, the chosen ones as removable chips with their count.

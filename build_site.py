@@ -334,20 +334,20 @@ def start_page(site: Site) -> None:
         '<p class="figure-fallback">Hier stehen Orte, Personen und Jahre der Lieferung als Raum-Zeit-Würfel. '
         'Die Übersicht braucht JavaScript, die <a href="regesten/">Liste der Regesten</a> nicht.</p>'
     )
+    # The start page is the figure, one window high (operator, 2026-11-14: „Man soll nicht
+    # runterscrollen können“); the worked case is one entry in the sidebar's head.
     example = next((r for r in site.regests if r["identifier"] == EXAMPLE), None)
-    example_html = (
-        f'<section class="example" aria-label="Beispiel {esc(EXAMPLE)}">'
-        f'<div id="example" data-uid="{esc(example["uid"])}"><p><a href="{site.slugs[example["uid"]]}/">{esc(EXAMPLE)}</a></p></div></section>'
+    example_link = (
+        f'<a class="start-example" href="regesten/{site.slugs[example["uid"]]}/">Beispiel {esc(EXAMPLE)}</a>'
         if example
         else ""
     )
     # The header already shows the title; the h1 stays for screen readers, and the subtitle
     # opens the one sentence of description (measured subtractive pass of 2026-11-11).
     main = f"""<h1 class="visually-hidden">{esc(t["title"])}. {esc(t["subtitle"])}</h1>
-<p class="lede">{esc(t["subtitle"])}. <a href="ueber/">Über die Edition</a></p>
-<div class="figure" id="figure">{fallback}</div>
-{example_html}
-<form class="jump" id="jump" hidden><label for="jump-n">Regest nach RI-Nummer</label> <input id="jump-n" name="n" inputmode="text" autocomplete="off" placeholder="z. B. 46" size="8"> <button type="submit">Öffnen</button> <span class="jump-msg" role="status"></span></form>"""
+<div class="start-head"><p class="start-lede">{esc(t["subtitle"])}. <a href="ueber/">Über die Edition</a></p>{example_link}
+<form class="jump" id="jump" hidden><label for="jump-n" class="visually-hidden">Regest nach RI-Nummer</label><input id="jump-n" name="n" inputmode="text" autocomplete="off" placeholder="RI-Nummer, z. B. 46" size="14"> <button type="submit">Öffnen</button> <span class="jump-msg" role="status"></span></form></div>
+<div class="figure" id="figure">{fallback}</div>"""
     site.page(path="", key="start", kind="start", title=t["title"], main=main, views=True, description=t["description"])
 
 

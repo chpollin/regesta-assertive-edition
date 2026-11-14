@@ -175,3 +175,38 @@ Vault notes read for the first states: "Daten- und Task-Abstraktion", "Nested Mo
 
 Built on 2026-11-14 after the operator's question whether persons could join the space-time cube. A person of the register with at least three regesta (holdings.json) is searched in the itinerary's sidebar and becomes the trace of the regesta that name them through places and years; a second person can be added for comparison, the regesta naming both marked with a ring and counted. The first person is drawn in the accent, the second in the text ink with a dashed trace; the other points recede. The list in the sidebar shows the regesta of the selection, place and persons combined, each opening its card. The address keeps the persons (`?personen=`). The person views lead there („Spur im Itinerar“ under the person picker). The network is not dissolved: the circle around a person with its fixed directions stays, since the relations with roles exist only for the regesta of the run, while the register names persons for the whole reign.
 
+## One pass over the shell, 2026-11-14 evening
+
+Three verdicts of the operator within an hour (regest page, place view, start page; ui-feedback.md) share one core: more room for the figure, fewer layers, clear areas, a narrow sidebar with signs and tooltips. They are one pass over the shell, in this order: the regest page with its areas and the annotation system first, since the tooltip of the cube and the start page reuse them; then the start page and the place view.
+
+## Regest page
+
+Three areas that keep their place on every regest page, labelled as areas:
+
+```
++--------------+---------------------------+------------------+
+| METADATEN    | RI IV,2,2 n. 103a     ← → | KOMMENTARE       |
+| Datierung    |                           | Aussagen der     |
+| Ort          |  regest text, reading     |  LLM-Agenten     |
+| Original-    |  face; an opening chip    |  1 Urteil stimmt |
+|  datierung   |  (family sign + number)   |   Wortlaut, Rol- |
+| RI Online    |  where a statement's      |   len, Literale  |
+| Dateien      |  passage begins           |   reasons if not |
+| Prüfstand    |                           |   „stimmt“       |
+| Digitalisat  |  legend: the families     | Apparat der RI   |
+| Zitierweisen |  present on this page     |  Überlieferung,  |
+|              |                           |  Kommentar, Lit. |
++--------------+---------------------------+------------------+
+```
+
+From 72rem of page width the three stand side by side; from 48rem reading and comments, the metadata below the reading; narrower one column with the reading first, then comments, then metadata. The comment area names the producer of each block: the agents' statements („Aussagen der LLM-Agenten“, with the readers' verdict) and the apparatus of the Regesta Imperii („von den Bearbeitern der Regesta Imperii, unverändert“), so the editors' commentary and the agents' statements are never confused. The views keep the compact card in their detail panel.
+
+## Annotation system
+
+The rule for every annotated regest text in the edition, on the page, in the detail panel and in tooltips:
+
+- A statement opens where its evidence passage begins, with one chip: the sign of its relation family (js/relations.js, the same signs as at the rim of the circle and in the lists) and its number. Several statements opening at one place stand as several chips.
+- The passage itself carries no mark at rest, since passages nest and overlap (a judgment spans the whole sentence that contains its dispute); its extent appears, as a tint with an accent underline, while the passage, its chip or its statement is pointed at or focused.
+- The statement in the comment area repeats chip, kind and number, then the verbatim qualifier in quotation marks („Witwe“), the participants by role, further literals (Ausnahme, Begründung) with their wording, and a word plate with the readers' verdict (stimmt, unklar, strittig); the plate carries no glyph, because the family sign of Bestätigung is a check mark.
+- A legend under the text names the families present on the page with their signs.
+

@@ -139,12 +139,24 @@ body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-famil
 .fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--pg-muted); margin-inline-end: var(--space-2); }
 .list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--pg-muted); border-block-end: 1px solid var(--pg-line); }
 
-/* Start page (2026-11-14): the space-time cube with its sidebar on the left as in the views,
-   one window high; the card of the opened regest follows below. */
+/* Start page (2026-11-14): the figure is the page, full width and one window high under the
+   header with one line above it; at narrow widths it scrolls, the figure first. */
+body[data-page="start"] .site-main { max-inline-size: none; padding: 0; }
+body[data-page="start"] .site-footer { display: none; }
+.start-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-4); padding: var(--space-2) var(--space-4); border-block-end: 1px solid var(--pg-line); font-size: var(--step--1); }
+.start-lede { margin: 0; color: var(--pg-muted); }
+.start-example { font-weight: 600; }
+.start-head .jump { margin: 0 0 0 auto; display: inline-flex; gap: var(--space-1); align-items: center; }
+.start-head .jump input { font: inherit; padding: 2px var(--space-2); border: 1px solid var(--edge); border-radius: 2px; }
+.start-head .jump button { font: inherit; padding: 2px var(--space-2); border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); cursor: pointer; }
 .embed-start .embed-aside { padding: var(--space-3); background: var(--side); }
-.example { max-inline-size: 72rem; margin-block: var(--space-6) var(--space-4); }
+.embed-start .embed-main { position: relative; }
+.start-detail { position: absolute; inset-block: var(--space-2); inset-inline-end: var(--space-2); inline-size: min(30rem, calc(100% - 2 * var(--space-2))); overflow-y: auto; padding: var(--space-3); background: var(--stage); border: 1px solid var(--pg-line); box-shadow: 0 4px 18px rgb(0 0 0 / 0.08); z-index: 4; }
 @media (min-width: 56rem) {
-  .embed.embed-start { grid-template-columns: var(--aside-width, 21rem) minmax(0, 1fr); block-size: min(80dvh, 52rem); }
+  html:has(body[data-page="start"]) { overflow: hidden; }
+  body[data-page="start"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
+  body[data-page="start"] .site-main { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; }
+  .embed.embed-start { grid-template-columns: var(--aside-width, 19rem) minmax(0, 1fr); block-size: 100%; min-block-size: 0; }
   .embed-start .embed-aside { border-inline-start: 0; border-inline-end: 1px solid var(--pg-line); }
 }
 /* Narrow: the regest list keeps number, date and the kinds of statements; the place stands
