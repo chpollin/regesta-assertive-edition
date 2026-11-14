@@ -3,10 +3,19 @@ title: Journal
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-12
+updated: 2026-11-14
 ---
 
 # Journal
+
+## Open
+
+- The operator has not yet judged on screen the revision of 2026-11-14 (notes beside the regest, persons overview of the whole network, leaner start page, one page „Über die Edition“), published as gh-pages `748afea`. His next words go verbatim into ui-feedback.md.
+- The verdicts on the twenty regesta are outstanding. The Research Coordination delivers them as `pruefbogen/data/pruefbogen-2026-11-12-ergebnis.json` (format in data.md, Review sheet); then `build_site.py` and `publish_site.py` show them as „menschlich geprüft“ per statement. The local review build is `build_site.py --review`, served by the coordination on port 8102 from `site-review/`.
+- Test tasks with computed answers per user story, RI IV,2,2 n. 103a as the fixed task, are planned and not built (plan.md, Test tasks).
+- Open interface findings: no legend of the node shapes in the circle and the space view; the longest register names wrap in the person index; the regest page at 360 px holds 116 words against the limit of 110 through the regest text itself; „Über die Edition“ exceeds the page profile, as the former pages did; the headings under „Mehr“ are h3 after an h1.
+- `checks/ui_check.py` still asserts the first slice and is to be rewritten for the shell or retired.
+- Questions outside this repository: the model questions from n. 103a (presiding lord, losing party, witness lists, office holding) wait for the operator in `regesta-rdf-demo/knowledge/factoid-model.md`; whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
 
 ## 2026-11-14 Notes beside the regest, a persons overview, one page about the edition
 
