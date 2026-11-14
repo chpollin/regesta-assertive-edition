@@ -8,6 +8,13 @@ updated: 2026-11-12
 
 # Journal
 
+## 2026-11-14 The frontend by objects, published
+
+The operator asked for the whole frontend improved („erzeuge das gesamte verbesserte frontend“, verbatim in ui-feedback.md) and, after the build, to publish it. Navigation by objects with switches between representations, the start page as linked overview of time, places and persons with the annotated n. 103a, list filters with family signs and verdicts as sign and word are built (design.md, Frontend by objects) and published as gh-pages `3f9ba34` from source `f937d6e`, together with the qualifier display waiting since 2026-11-12.
+
+- Checks run: density check of `pruefansicht` in the work profile for eight views at 1280 × 800 and 360 × 740; sixteen tasks by pointer and keyboard, locally and at the public address, console clean; data assertion of the start map (every regest with a place once); ruff, pytest, `node --check`; an independent read-only reviewer, whose material findings were fixed; the public build without review markers or knowledge, `knowledge/` and `pruefung/` answering 404.
+- Open: the findings named under Frontend by objects in design.md; test tasks with computed answers (plan.md). Not seen by the operator on screen yet.
+
 ## 2026-11-12 Qualifiers and literals shown at their statements
 
 The Research Coordination's reading of RI IV,2,2 n. 103a found the marriage of Eufemia reading as a lasting marriage. The run carries the qualifier „Witwe“ (`rf:qualifier`), but the annotated card showed none of the 323 qualifiers and 121 other literals (conditions, grounds, amounts, exceptions) of the slice. Short qualifiers now stand at the tag („Ehe 3 (Witwe)“, at most 24 characters together), the other literals as glosses under their passage („Bedingung 2“). The other three findings are patterns of the model, not of single regesta, and stand as open questions in `regesta-rdf-demo/knowledge/factoid-model.md`.
