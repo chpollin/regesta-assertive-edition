@@ -136,3 +136,21 @@ Dictated, with screenshots of the preview of RI IV,2,2 n. 103a, the whole networ
 
 Follows: the „Mehr“ disclosure, the unused width of the regest page, the text load of the notes, the „Nächstes“ line, the site title, symbolic and uniform metadata, header, footer and overall look are open; colour with meaning in the network and a merge of persons into the space-time cube are direction questions put to the operator with a plan. The operator approved the whole plan („Ja, setze das mal alles um.“). Status on 2026-11-14: built in the local preview (regest card without „Mehr“ and without the „Nächstes“ line, head line of signs, compact notes, full width, header and footer, short title, estate colours, persons in the cube, cube as start page), checked on screenshots at 1280 and 360 px and by the density check; not yet seen by the operator, not published.
 
+## 2026-11-14, place view: regest in the figure, marking, sidebar, Itinerar and Jahrzehnte
+
+Relayed verbatim by the Research Coordination, with a screenshot of the itinerary (row „1152, Würzburg, RI IV,2,1 n. 135, mit belegten Aussagen“): „Könnten wir die Regesten an sich direkt in diese Visualisierung integrieren? Wenn ich hier über ein Regest fahre, könnte ja ein sinnvolles, kleines, aber ausreichendes Tooltip, so ein schöner Tooltip, auftauchen, damit ich dann das Regest direkt lesen kann und dabei aber noch die Visualisierung und den Kontext sehe. Vielleicht kann ich das, was markiert wird, noch stärker markieren, damit ich dieses eine Regest in seinem Kontext und in seinen Abhängigkeiten besser verstehe. Und vielleicht könnten wir noch irgendwie überlegen, ob wir diese Informationsvisualisierung, die schon sehr gut ist, noch weiter optimieren können, damit sie noch besser handhabbar ist. Vielleicht braucht sie auch ein bisschen mehr Platz. Das würde aber heißen, dass wir diese Sidebar irgendwie noch optimieren müssten. Vielleicht können wir die ein bisschen schmäler machen, weil wir wieder besser mit Icons arbeiten und mit Tooltips nur wirklich ausklappen, wenn es sein muss. Itinera und Jahrzehnte: Macht das Sinn? Was ist das für eine Einteilung? Kann man das irgendwie in diesen Filter einarbeiten? Da gibt es sicher noch Optimierungen.“
+
+Follows: the regest readable in a tooltip at the pointed or focused point and row, reachable by keyboard and touch; the selected regest and what it depends on marked strongly, the rest dimmed; more room for the figure and a narrower sidebar with icons; the division Itinerar and Jahrzehnte put to the operator with a merged example. Status on 2026-11-14: open.
+
+## 2026-11-14, regest page: reading area, metadata area, comment area
+
+Relayed verbatim by the Research Coordination, on the preview of RI IV,2,2 n. 103a with the agents' verdicts: „ja, aber das ist trotzdem irgendwie viel zu unordentlich. Da muss ja auch deutlich mehr Struktur rein. Ich kenne mich nicht aus, wenn ich mir das anschaue. Es ist jetzt besser geworden, aber eigentlich brauche ich einen richtigen Lesebereich, und ich möchte wirklich ein sinnvolles System haben, wie der Text annotiert ist. Dieses Regest: Ich möchte einen Bereich, wo alle Meta-Daten sind, und einen Bereich, wo alle zusätzlichen Kommentare sind.“ The coordination reads the „ja“ as yes to showing agent verdicts in principle, not as a release of this page.
+
+Follows: three areas that keep their place on every regest page (reading area, metadata area, comment area) and one annotation system written down as a rule with its legend. Status on 2026-11-14: open.
+
+## 2026-11-14, start page: the figure fills the screen
+
+Relayed verbatim by the Research Coordination, with a screenshot of an earlier state of the start page (time band, „Meistgenannte Personen“, map, n. 103a below): „Die Infografik soll deutlich mehr Platz einnehmen. Man soll nicht runterscrollen können. Auch hier ist wieder: Das passt noch nicht.“
+
+Follows: the start page is the figure, full width and height under the header, no page scroll at desktop sizes; the introduction one line at most; the worked case leaves the start page with one visible entry. Status on 2026-11-14: open. The three verdicts of this evening are treated as one pass over the shell (design.md).
+
