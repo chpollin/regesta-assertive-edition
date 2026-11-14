@@ -148,6 +148,10 @@ site/
 
 `register_names.py` gives every register person one short name, used by `build_data.py` for the graph and by `build_holdings.py` for the time band and the person lists: first name variant and first clause of the description in the nominative, asides and cross references cut, ordinals joined („Friedrich I. Barbarossa“), a siglum with its office („Rainald G, Notar der Reichskanzlei“). A sub-entry after a second „//“ names the people around a person and is shown as such („Kinder (Friedrich I. Barbarossa)“). Names that coincide among the persons a view shows are lengthened by a clause; two pairs stay alike because the register describes them identically (Adalbert, Bischof von Trient; Friedrich, Graf von Beichlingen). Where the register gives only Latin variants the German head stands („Fredericus“ to „Friedrich“). `PLACE_FIXES` in `build_holdings.py` corrects one place label the delivery writes wrongly („Cremam“ for Crema).
 
+## Identifier and sort key of n. 103a
+
+The delivery carries „RI IV,2,2 n. 103a“ with the sort key of RI IV,1,2 (`004_001_002_000793_000000103a`, start 1138) and, separately, „RI IV,2,1 n. 103a“ with the same regest text. The lists keep the delivery's sort key, so the first regest stands before RI IV,2,1 n. 1. Which identifier is right is a question to the Regesta Imperii delivery, not decided here.
+
 ## Review sheet
 
 `build_review_sheet.py` chooses the twenty regesta of the operator's review from the edition data of the run and writes `pruefbogen/data/sheet.json`. The review build (`build_site.py --review`, into `site-review/`, never published) copies it with page addresses to `pruefung/sheet.json`, lists the twenty on its Prüfliste and puts the verdict form under each of their regest cards. A regest without statements counts as one item, whether the abstention holds; the progress counts the 46 statements only.

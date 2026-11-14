@@ -113,6 +113,16 @@ Review build (local only)
   build reads that file and shows the result per statement.
 ```
 
+## Frontend by objects, 2026-11-14
+
+Commissioned by the operator through the Research Coordination on 2026-11-14 (verbatim in ui-feedback.md); the plan was shown in the chat and built, since it carries out his rules 39 to 42 of the same day and holds no direction question of his. Accepted elements stay: the bundled circle, the annotated regest, the itinerary with the realm, the time band and the decade maps.
+
+- Navigation by objects (rule 39): Regesten, Personen, Orte, Methode, Daten, Über die Edition, from `js/nav.json`. The representations of an object are a switch at the top of its view or page: Personen with Netz, Zeitband, Raum and Liste, Orte with Itinerar and Jahrzehnte. Every earlier view address keeps working.
+- Start page (rule 42): time band (the filter of the views) and the most named persons on the left, a map of the places of issue on the right, one circle per place sized by its regesta in the chosen years (`js/start-overview.js`); the years filter map and persons, a place opens the itinerary, a person the network (or the time band where the run does not name the person), the years kept. Below, the annotated RI IV,2,2 n. 103a as the worked case, then the jump by RI number. The title and definition the operator confirmed stay unchanged above.
+- Regest list and person index: a search and the eight family switches with sign and word above the list; the switches are the legend of the signs in the rows (rule 7), their state is kept in the address (`?q=`, `?art=`). The person index shows persons with a register entry first by number of regesta, then actors named only by the regest's wording as a group of their own; the column of roles is gone, since the family signs show the kinds of relation and the person page the roles, so a row keeps one line except for the longest register names. Counts are named by their unit: the person list counts regesta of the run with statements, the start page regesta of the whole delivery. Below 40 rem both lists become two-line entries without horizontal scrolling. Page titles of the two lists stand for screen readers only, since the head marks the object.
+- Regest card: a human verdict stands at its tag as sign and word (bestätigt, verworfen, unklar).
+- Checked by an independent read-only reviewer on 2026-11-14; fixed after its report: focus kept on the year handle of the start page, search folding that finds „Lowe“ for „Löwe“, list links without underline at rest, the family switches with the full family names of the sidebar, units of the counts, a sentence for the empty filter result. Open from the same report: role glosses of n. 103a that drop to a second row or stand off their word, no legend of the node shapes in network and space view, the h3 headings under „Mehr“.
+
 ## Zeitband and Jahrzehnte
 
 Both views answer where and with whom over time, from the whole delivery without LLM. Revised on 2026-11-12 after the operator's question whether colour and the places could mean more (verbatim in ui-feedback.md).

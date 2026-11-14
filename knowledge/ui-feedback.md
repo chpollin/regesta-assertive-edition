@@ -112,3 +112,9 @@ Follows: one naming rule from the register for all views; sub-entries of a perso
 
 Follows: the separate review page is retired; the statements stand annotated in the regest text of the edition (kind and number at a bracket, roles under the names); the local review build adds the verdicts on the regest pages themselves. Status on 2026-11-12: built and published; checked on all 224 regest pages at 1280 and 360 px (one gloss touches another in n. 183 at 360 px), not seen by the operator.
 
+## 2026-11-14, the whole frontend improved
+
+Relayed verbatim by the Research Coordination: „beim regesten frontend will ich jetzt auch weiter arbeiten. analysier alles was wir sehr gut wissen um design ui und UX und wie wir es optimieren können erzeuge das gesamte verbesserte frontend. mit den innovativen und sehr guten lösungen.“
+
+Follows: navigation by objects with a switch between representations, the start page as linked overview of time, places and persons with the annotated n. 103a, filters with family signs in both lists, verdicts as sign and word (design.md, Frontend by objects). Status on 2026-11-14: built in the local review build, checked on screenshots at 1280 and 360 px, by keyboard and pointer, by the density check and by an independent read-only reviewer; not seen by the operator, not published.
+
