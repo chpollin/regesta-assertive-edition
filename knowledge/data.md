@@ -8,9 +8,9 @@ updated: 2026-11-11
 
 # Data interface
 
-`build_data.py` reads one run of `regesta-rdf-demo` at one stage (`--stage revised`, the default, or `--stage extracted`) and writes two JSON files that the page loads once. The source of truth for every value is the run directory and the two source CSVs. The JSON is a derived, deterministic product, and the same inputs give byte-identical files.
+`build_data.py` reads one run of `pipeline/` at one stage (`--stage revised`, the default, or `--stage extracted`) and writes two JSON files that the page loads once. The source of truth for every value is the run directory and the two source CSVs. The JSON is a derived, deterministic product, and the same inputs give byte-identical files.
 
-The build reads two data models into the same schema. It detects the model from the RDF of the run, by whether `rf:ActFactoid` or `rf:StateFactoid` nodes occur, and never from the run name. The pilot model (`pilot-2026-11-09`) is read from its revised stage only. The factoid model (`factoid-2026-11-11`, described in `regesta-rdf-demo/knowledge/factoid-model.md`) is mapped as set out under [Factoid model](#factoid-model).
+The build reads two data models into the same schema. It detects the model from the RDF of the run, by whether `rf:ActFactoid` or `rf:StateFactoid` nodes occur, and never from the run name. The pilot model (`pilot-2026-11-09`) is read from its revised stage only. The factoid model (`factoid-2026-11-11`, described in [factoid-model.md](factoid-model.md)) is mapped as set out under [Factoid model](#factoid-model).
 
 ## Inputs
 
@@ -172,4 +172,4 @@ On 2026-11-14 the operator gave up checking the twenty selected regesta himself 
 
 ## Rights
 
-The rights study of 2026-11-11 (summarised in `regesta-rdf-demo/knowledge/edition-plan.md`, section Rights) found the regesta database of Regesta Imperii under CC BY 4.0 and the register file byte-identical with the public RI Lab file; for the regest export the licence follows from the database licence, without an identical public copy. The site therefore carries the attribution, the licence link, the persistent link per regest and the modification statement of `edition/texts.json`, and links third-party images only. The Research Coordination treats the rights as clarified for publishing the curated build (2026-11-11); the public repository is still to be created, and the export date of the regest file is still to be established.
+The rights study of 2026-11-11 (summarised in the former edition plan of `regesta-rdf-demo` at f65887c, section Rights) found the regesta database of Regesta Imperii under CC BY 4.0 and the register file byte-identical with the public RI Lab file; for the regest export the licence follows from the database licence, without an identical public copy. The site therefore carries the attribution, the licence link, the persistent link per regest and the modification statement of `edition/texts.json`, and links third-party images only. The Research Coordination treats the rights as clarified for publishing the curated build (2026-11-11); the public repository is still to be created, and the export date of the regest file is still to be established.

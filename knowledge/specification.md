@@ -8,7 +8,7 @@ updated: 2026-11-15
 
 # Specification
 
-The requirements come from the operator's commission and three rounds of his feedback on 2026-11-09, and from the proposed user stories US03 to US08 and US11 of `regesta-rdf-demo/knowledge/user-stories.md`. The research questions that the interface answers are kept in [questions.md](questions.md). None of the requirements records an expert acceptance.
+The requirements come from the operator's commission and three rounds of his feedback on 2026-11-09, and from the proposed user stories US03 to US08 and US11 of [user-stories.md](user-stories.md). The research questions that the interface answers are kept in [questions.md](questions.md). None of the requirements records an expert acceptance.
 
 ## Requirements from the operator's verdicts of 2026-11-14 (proposal)
 

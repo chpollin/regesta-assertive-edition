@@ -1,10 +1,10 @@
 # AGENTS.md
 
-Assertive edition of the Barbarossa regesta (RI IV,2) over the factoid runs of the sibling repository `regesta-rdf-demo`, with the whole delivery as a deterministic second layer. Read `knowledge/project.md` first, then `knowledge/plan.md` for the next steps, `knowledge/specification.md`, `knowledge/design.md`, `knowledge/ui-feedback.md` and `knowledge/data.md`.
+Assertive edition of the Barbarossa regesta (RI IV,2) over the factoid runs of its own pipeline in `pipeline/`, with the whole delivery as a deterministic second layer. Read `knowledge/project.md` first, then `knowledge/plan.md` for the next steps, `knowledge/specification.md`, `knowledge/design.md`, `knowledge/ui-feedback.md` and `knowledge/data.md`. For the pipeline read `knowledge/pipeline.md`, `knowledge/factoid-model.md`, `knowledge/source-data.md` and `knowledge/testing.md`; `knowledge/annotation-guidelines.md`, `knowledge/domain-ontology.md` (pilot, archive), `knowledge/user-stories.md`, `knowledge/prompt-log.md` and `knowledge/ide-criteria.md` (snapshot of 2026-11-11) answer narrower questions. The pipeline came from the repository `regesta-rdf-demo` at f65887c on 2026-11-17; that repository stays as history and is no longer worked in.
 
 ## Boundaries
 
-- `regesta-rdf-demo` is read only. `build_data.py` refuses an output path inside it.
+- The edition builds read `pipeline/` and never write into it; `build_data.py` refuses an output path inside it. Inside `pipeline/` only its own scripts write: validation reports, `review-overview.md` and new runs. Frozen runs, contracts and `source-material/` are never edited, because manifests record their hashes.
 - Everything shown comes from the run files or the delivery. The build aborts when an evidence text or a quoted review passage is not verbatim in `summary_plain`.
 - No runtime dependency from outside, no CDN, no SPARQL in the browser. Fonts are local under `fonts/` with their OFL texts.
 - The supplied data of Regesta Imperii are licensed CC BY 4.0 (`knowledge/data.md#rights`). Published derivatives carry attribution, licence link and a statement of modification; LLM statements never appear as statements of Regesta Imperii.
@@ -12,6 +12,16 @@ Assertive edition of the Barbarossa regesta (RI IV,2) over the factoid runs of t
 - Publication: the branch `gh-pages` carries only the content of `site/` plus `.nojekyll` and is served by GitHub Pages at https://chpollin.github.io/regesta-assertive-edition/ (repository private, decided 2026-11-12). Every build goes on it as a further commit, never by force push, and only through `publish_site.py`, which checks the build for internal material first and never switches the working tree's branch.
 
 ## Commands
+
+The RDF workflow runs step by step through `run.py` (knowledge/pipeline.md, The eight steps):
+
+```
+uv run run.py validate
+uv run run.py review
+uv run run.py build
+uv run run.py check
+```
+
 
 Build the interface data of a run, the whole-delivery layer, the itinerary check and the base map (Python 3.11 with rdflib 7.6.0, numpy and shapely, or `uv run`):
 
@@ -65,5 +75,6 @@ The interface is checked on the rendered state: `node tools/check_ui_density.cjs
 - `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema
 - `build_site.py` curated static edition site into `site/`; `edition/texts.json` title, definition, licence and attribution; `js/edition/` its content pages
-- `checks/` contract tests and the outdated browser check; `review/` screenshots
+- `checks/` contract tests, the transfer checks `test_pipeline.py` and the outdated browser check; `review/` screenshots
+- `run.py` the entry point of the RDF workflow; `pipeline/` the pipeline with its scripts, `contracts/`, `runs/`, `source-material/` (Regesta Imperii CSV, CC BY 4.0), `generated/` and its own `ruff.toml`
 - `knowledge/` project knowledge

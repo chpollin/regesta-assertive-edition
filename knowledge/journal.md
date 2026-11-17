@@ -3,7 +3,7 @@ title: Journal
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-14
+updated: 2026-11-17
 ---
 
 # Journal
@@ -18,7 +18,19 @@ updated: 2026-11-14
 - The regest pages exceed the word budget of the work profile by their source text alone (regest, transmission, commentary).
 - No executable browser check covers the shell since `checks/ui_check.py` was retired; test tasks with computed answers per user story are planned and not built (plan.md, Test tasks).
 - The estate rule (js/stand.js, data.md Estate) errs on name forms without a title (Konrad III. as a regest-local node) and on forms that name a ruler in passing.
-- Questions outside this repository: the model questions, now with the agent review's cases, wait in `regesta-rdf-demo/knowledge/factoid-model.md`; whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
+- The model questions in factoid-model.md (Open questions for experts) wait for the operator and for experts, including the cases of the agent review of 2026-11-14: grants beside a confirmation as part of it or separate (n. †193), predecessors' acts typed as Grant (n. 145, n. 116), an exchange without a vocabulary term (n. 96), a complaint without a forum (n. 191).
+- The demonstration slides Demo 1 to Demo 4 of the THM deck still name paths of `regesta-rdf-demo`; the new paths went to the Research Coordination on 2026-11-17.
+- `data/edition.json` in the repository still holds the pilot run (`run.id` pilot-2026-11-09, last built 2026-11-11), while the site builds its own data from `factoid-1153-2026-11-11`; whether the tracked file is rebuilt or dropped is open.
+- Questions outside this repository: whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
+
+## 2026-11-17 Pipeline moved into this repository
+
+- Trigger: the operator's decision that everything lies in this one repository, and his wish that the workflow be clean enough to learn from and tested for faithful transfer (relayed by the Research Coordination).
+- Decided: the pipeline of `regesta-rdf-demo` at f65887c moves as a closed folder `pipeline/` with its inner layout unchanged, so the relative paths in manifests and contracts and every hash stay valid. Its knowledge documents join `knowledge/`: architecture and pipeline specification as pipeline.md, its data document as source-data.md, the others under their names; project, plan and journal took up what was open. The former edition plan stays in the old repository as history. `run.py` is the single entry point; `pipeline/summarize_review.py` derives a review overview from the adjudications.
+- Rejected: reformatting the pipeline scripts to this repository's line length, since the validator's hash is recorded in every validation report; they keep `pipeline/ruff.toml`. Merging the Git histories, which stays with the operator.
+- Found: the CSV start date of n. 103a (1138-06-01) contradicts its date string (1152 Juni/Juli); the edition carries it over unchanged, as a transfer should.
+- Changed: pipeline/, run.py, checks/test_pipeline.py, the `--source` defaults of the build and check scripts, AGENTS.md, knowledge/.
+- Evidence: the validation reports of both stages and the outputs of `build_data.py` and `build_tei.py` at the new place are byte-identical with those built from f65887c; every copied file matches its Git blob; `checks/` passes, and each of the four transfer checks fails on its mutations.
 
 ## 2026-11-15 Promptotyping pass: distill, curate, refactor
 

@@ -3,7 +3,7 @@ title: Plan
 status: draft
 language: en
 created: 2026-11-11
-updated: 2026-11-12
+updated: 2026-11-17
 ---
 
 # Plan
@@ -28,13 +28,22 @@ The build is served by GitHub Pages from the private repository since 2026-11-12
 
 ## Test tasks with computed answers
 
-Taken up on 2026-11-14 from a working method the Research Coordination passed on at the operator's wish. Each user story of `regesta-rdf-demo/knowledge/user-stories.md` that the edition serves gets one test task whose correct answer a script computes from the data, independent of the interface; RI IV,2,2 n. 103a is a fixed task in every round (which statements, which evidence, which roles). Per round one fresh subagent receives only task and address, solves it in the browser and records path, wrong turns and answer, which is compared with the computed one; the same task set runs again after every rebuild, and each finding is assigned to the story, the design or the data. The rule check and the recount of shown numbers stay with the existing density check, figure check and independent reviewer. Limit: an agent finds dead ends and wrong numbers, not whether a view feels slow or the question is the right one.
+Taken up on 2026-11-14 from a working method the Research Coordination passed on at the operator's wish. Each user story of [user-stories.md](user-stories.md) that the edition serves gets one test task whose correct answer a script computes from the data, independent of the interface; RI IV,2,2 n. 103a is a fixed task in every round (which statements, which evidence, which roles). Per round one fresh subagent receives only task and address, solves it in the browser and records path, wrong turns and answer, which is compared with the computed one; the same task set runs again after every rebuild, and each finding is assigned to the story, the design or the data. The rule check and the recount of shown numbers stay with the existing density check, figure check and independent reviewer. Limit: an agent finds dead ends and wrong numbers, not whether a view feels slow or the question is the right one.
+
+## Pipeline after the guest unit
+
+Accepted on 2026-11-17 with the move of the pipeline; not before 20 November.
+
+- A transfer check that every accepted review finding (`correct`, `correct_conservatively`) is carried out in `revised/` and every rejected one is not.
+- `validate_pilot.py`, `select_fresh.py`, the pilot run and the pilot ontology into `pipeline/archive/`, with their paths in manifests and knowledge followed.
+- A reference set verified by a historian, with precision and recall measured against it. It has no owner (Review of the regesta above).
+- Open from the former edition plan: the historical research question and the primary audience, and with them the selection principle beyond the demonstration slice (ide-criteria.md, 2.1, 3.2, 3.3).
 
 ## Smaller open points
 
 - Name forms of regest-local actors. Actors without a register entry (groups such as "des Vogtes", "seinen Leuten") keep the inflected form of their regest; a normalisation rule for German inflection would guess and is not built. Friedrich I. and his father keep the agents' form, because the register leaves the head name of the Friedrich entries empty.
 - The borders after Shepherd show the Empire only. Kingdoms beside it (France, Hungary, Sicily) are not drawn.
 - An executable browser check of the current shell (tasks with computed answers, see Test tasks) replaces the retired check of the first slice.
-- The validator note of `regesta-rdf-demo` (status after correction is read from the corrections log since 2026-11-11) is to be mentioned on the method page once the page lists the error logs per step.
+- The validator note of the pipeline (status after correction is read from the corrections log since 2026-11-11) is to be mentioned on the method page once the page lists the error logs per step.
 - Export date of the regest file, model of the adjudicating and correcting agent, imprint.
 - Deletion candidates in the knowledge folder and the views are collected under op-thm-loeschkandidaten.
