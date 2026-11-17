@@ -18,6 +18,7 @@ Read the `## Open` section of the [Journal](journal.md), then the document answe
 - How does it look, and what did the operator say? [Design](design.md), [UI feedback](ui-feedback.md), [Space view](space-view.md)
 - What do the view data, TEI and site contain? [Edition data](data.md)
 - Which questions do the views answer? [Questions](questions.md)
+- How is the whole interface to be rebuilt? [Interface plan](interface-plan.md), accepted 2026-11-17, built slice by slice
 
 ## Pipeline
 
@@ -26,7 +27,7 @@ Read the `## Open` section of the [Journal](journal.md), then the document answe
 - How are statements modelled, and what is open for experts? [Factoid model](factoid-model.md); the binding guideline is the contract's own [annotation guidelines](../pipeline/contracts/factoid-2026-11-11/knowledge/annotation-guidelines.md)
 - How is the reusable graph exported? [Pipeline](pipeline.md#graph-export)
 - What is checked, and what remains unverified? [Testing](testing.md)
-- The archived pilot: [Domain ontology](domain-ontology.md) and its [annotation guidelines](annotation-guidelines.md) (pilot, archive)
+- The archived pilot: [Domain ontology](domain-ontology.md) and its [annotation guidelines](../pipeline/knowledge/annotation-guidelines.md) (pilot, archive)
 
 ## Context
 

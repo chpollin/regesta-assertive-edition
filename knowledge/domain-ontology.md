@@ -20,7 +20,7 @@ The pilot run `pilot-2026-11-09` used a frozen, provisional CIDOC CRM applicatio
 
 Represent actors, context-bound roles, relationship states and events that establish, confirm, contest or end them. Preserve concerned rights or objects, conditions, exceptions and temporal qualifications. One regest can report several differently dated acts. Co-mention establishes no relationship. Diplomatic description and formulaic witness lists fall outside the pilot scope.
 
-The pilot reads summary_plain only. Register entries supply identity candidates. Their biographical labels and the editorial commentary cannot add historical facts. [Data](source-data.md) defines the source fields. [Annotation guidelines](annotation-guidelines.md) fix the extraction contract.
+The pilot reads summary_plain only. Register entries supply identity candidates. Their biographical labels and the editorial commentary cannot add historical facts. [Data](source-data.md) defines the source fields. [Annotation guidelines](../pipeline/knowledge/annotation-guidelines.md) fix the extraction contract.
 
 ## Formal core
 

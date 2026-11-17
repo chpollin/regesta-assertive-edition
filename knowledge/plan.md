@@ -32,7 +32,7 @@ Accepted on 2026-11-17 with the move of the pipeline; not before 20 November.
 
 - A transfer check that every accepted review finding (`correct`, `correct_conservatively`) is carried out in `revised/` and every rejected one is not.
 - `validate_pilot.py`, `select_fresh.py`, the pilot run and the pilot ontology into `pipeline/archive/`, with their paths in manifests and knowledge followed.
-- The pilot path of `build_data.py`, pending the operator's decision.
+- The pilot path of `build_data.py` goes with the pilot archive move after 20 November (operator's decision of 2026-11-17).
 - `build_site.py` onto the shared helpers of `edition_io.py` (BuildError, JSON loader, CSV reader, shown run).
 - A stable namespace for the `rf:` and `rv:` terms, an open decision of the operator; `build_graph.py` takes it as a parameter.
 - A reference set verified by a historian, with precision and recall measured against it. It has no owner (Review of the regesta above).

@@ -26,6 +26,13 @@ updated: 2026-11-17
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-17 Operator's decisions on interface, pilot guideline and pilot path
+
+- Trigger: the operator's yes to four questions put to him after the audits.
+- Decided: the interface is rebuilt after [Interface plan](interface-plan.md), including the removal of the view Raum and the head line in place of the metadata column of the regest page, both of which change earlier verdicts of his; the Atlas slice comes first and is shown to him. The pilot path of build_data.py goes with the pilot archive after 20 November.
+- Changed: knowledge/annotation-guidelines.md deleted on his word. It was the pilot guideline, identical in content to pipeline/knowledge/annotation-guidelines.md, which the pilot manifest hashes; INDEX.md, domain-ontology.md and AGENTS.md point there. interface-plan.md added.
+- Evidence: a diff of the two guideline bodies was empty before the deletion.
+
 ## 2026-11-17 Dating prose in the holdings data
 
 - Trigger: the card head showed the ISO date for delivery regesta, because holdings.json had no dating prose (open point of the interface clean-up).
