@@ -26,6 +26,14 @@ updated: 2026-11-17
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-17 Dry run of the four demonstration prompt chains
+
+- Trigger: the operator's order to play the demo prompts of the guest unit through before 20 November.
+- Found: an agent ran the four chains in a fresh clone outside this repository; all ran, and the new run of n. 3166a passed the technical check. Two independent review agents agreed on the missing parenthood („dessen Sohn“), on Grantor as an ill-fitting role for the sender of an embassy, and on the summons of Folmar having no act type; only the parenthood was corrected, the rest are model questions. One reviewer miscopied a register ID. `run.py validate` ended with exit 1 on a new run because the revised stage did not exist yet; `prepare_pilot.py` writes its pilot default as the LLM into the manifest unless `--model` is given; the house rule for interfaces stops an agent after its plan unless the prompt releases it.
+- Changed: `run.py validate` checks only the stages a run has and returns the result of the last one. The prompts on the slides name the contract, `run.py prepare`, a folder `demo/` and the released plan.
+- Open: `run.py prepare` should pass the LLM explicitly; the sender of an embassy has no role in the vocabulary (Open questions for experts in factoid-model.md name the related cases).
+- Evidence: the clone and its run `demo-3166a-2026-11-20` lay in the session scratch folder and are not part of this repository.
+
 ## 2026-11-17 Operator's decisions on interface, pilot guideline and pilot path
 
 - Trigger: the operator's yes to four questions put to him after the audits.

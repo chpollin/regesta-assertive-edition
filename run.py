@@ -102,6 +102,12 @@ def validate(run: str, allow_validator_change: bool) -> int:
             file=sys.stderr,
         )
         return 2
+    # A new run has no revised stage until its correction step; checking it would only report
+    # every file as missing, so the result is that of the last stage that exists.
+    stages = [stage for stage in STAGES if (PIPELINE / "runs" / run / stage).is_dir()]
+    if not stages:
+        print(f"[FAIL] run {run} has no stage to validate", file=sys.stderr)
+        return 2
     codes = [
         _uv(
             "validate_factoid.py",
@@ -109,11 +115,11 @@ def validate(run: str, allow_validator_change: bool) -> int:
             *("--stage", stage, "--self-test"),
             cwd=PIPELINE,
         )
-        for stage in STAGES
+        for stage in stages
     ]
     # The extracted stage may fail by design: its findings are what review and correction fix.
-    print(f"extracted exit {codes[0]}, revised exit {codes[1]}")
-    return codes[1]
+    print(", ".join(f"{stage} exit {code}" for stage, code in zip(stages, codes, strict=True)))
+    return codes[-1]
 
 
 def review(run: str) -> int:
