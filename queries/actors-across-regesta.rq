@@ -1,0 +1,13 @@
+# Which actors appear in more than one regest? Joined only through the register ID in the actor IRI.
+PREFIX rf:   <https://example.org/regesta/factoid/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?actor (SAMPLE(?label) AS ?name) (COUNT(DISTINCT ?record) AS ?regesta)
+WHERE {
+  ?factoid rf:source ?record ;
+           rf:reference/rf:actor ?actor .
+  OPTIONAL { ?actor rdfs:label ?label }
+}
+GROUP BY ?actor
+HAVING (COUNT(DISTINCT ?record) > 1)
+ORDER BY DESC(?regesta) ?actor

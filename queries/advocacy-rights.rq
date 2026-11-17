@@ -1,0 +1,17 @@
+# Which factoids concern a right of advocacy (Vogtei)? Change the VALUES line for another right type.
+PREFIX rf:   <https://example.org/regesta/factoid/>
+PREFIX rv:   <https://example.org/regesta/concept/>
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?record ?factoid ?type ?right
+WHERE {
+  VALUES ?rightType { rv:Advocacy }
+  ?factoid rf:concerns ?node ;
+           rf:factoidType ?type ;
+           rf:source ?record .
+  ?node a crm:E30_Right ;
+        crm:P2_has_type ?rightType ;
+        rdfs:label ?right .
+}
+ORDER BY ?record ?factoid

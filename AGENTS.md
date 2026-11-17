@@ -20,8 +20,10 @@ uv run run.py validate
 uv run run.py review
 uv run run.py build
 uv run run.py check
+uv run run.py graph
 ```
 
+`graph` loads the revised Turtle of the run into one rdflib graph in memory and prints the answers of the SPARQL queries in `queries/`; no triple store and no merged graph file.
 
 Build the interface data of a run, the whole-delivery layer, the itinerary check and the base map (Python 3.11 with rdflib 7.6.0, numpy and shapely, or `uv run`):
 

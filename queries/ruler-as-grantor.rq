@@ -1,0 +1,17 @@
+# Which acts name Friedrich Barbarossa, the shared ruler of every packet, as grantor?
+PREFIX rf:  <https://example.org/regesta/factoid/>
+PREFIX rv:  <https://example.org/regesta/concept/>
+PREFIX oa:  <http://www.w3.org/ns/oa#>
+
+SELECT ?record ?act ?type (SAMPLE(?exact) AS ?evidence)
+WHERE {
+  ?act a rf:ActFactoid ;
+       rf:factoidType ?type ;
+       rf:source ?record ;
+       rf:evidence/oa:exact ?exact ;
+       rf:reference ?reference .
+  ?reference rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+             rf:role rv:Grantor .
+}
+GROUP BY ?record ?act ?type
+ORDER BY ?record ?act

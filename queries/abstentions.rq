@@ -1,0 +1,12 @@
+# Which regesta did the extraction abstain on? Their record is declared, but no factoid cites it.
+PREFIX rf:   <https://example.org/regesta/factoid/>
+PREFIX crm:  <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?record ?identifier
+WHERE {
+  ?record a crm:E31_Document .
+  OPTIONAL { ?record rdfs:label ?identifier }
+  FILTER NOT EXISTS { ?factoid rf:source ?record }
+}
+ORDER BY ?record

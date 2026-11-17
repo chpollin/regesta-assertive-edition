@@ -18,7 +18,8 @@ current run, so what is shown in teaching is exactly what runs.
                 pipeline/summarize_review.py  review-overview.md, derived from the adjudications
     7 correct   agent task                    revised/*.ttl, then validate again
     8 build     build_data.py, build_tei.py   data/edition.json, site/tei/
-      check     the transfer checks of checks/ and ruff
+      check     the transfer and graph checks of checks/ and ruff
+      graph     queries/run_queries.py        the revised Turtle as one graph in memory, queries/*.rq
 
 Python never calls an LLM. Steps 1 and 2 refuse an existing output folder, so they only
 start a new run; the frozen run factoid-1153-2026-11-11 is validated, built and checked.
@@ -29,6 +30,7 @@ Usage
     uv run run.py review
     uv run run.py build
     uv run run.py check
+    uv run run.py graph
     uv run run.py select --output pipeline/runs/<new-run>
 """
 
@@ -85,6 +87,10 @@ def build(run: str) -> int:
     )
 
 
+def graph(run: str) -> int:
+    return _uv("queries/run_queries.py", "--run", run)
+
+
 def check() -> int:
     deps = [arg for dep in CHECK_DEPS for arg in ("--with", dep)]
     return (
@@ -95,7 +101,7 @@ def check() -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("step", choices=("select", "prepare", "validate", "review", "build", "check"))
+    parser.add_argument("step", choices=("select", "prepare", "validate", "review", "build", "check", "graph"))
     parser.add_argument("--run", default=RUN)
     args, rest = parser.parse_known_args()
     if args.step == "select":
@@ -108,6 +114,8 @@ def main() -> int:
         return review(args.run)
     if args.step == "build":
         return build(args.run)
+    if args.step == "graph":
+        return graph(args.run)
     return check()
 
 
