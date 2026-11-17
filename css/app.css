@@ -1,8 +1,9 @@
-/* Layout and components. Colours, faces and steps come from tokens.css. */
+/* Components of the views app (ansicht/) and the start page. Colours, faces and steps come
+   from tokens.css; the base every page shares (box sizing, body, visually hidden) from
+   shell.css. */
 
 @layer reset {
-  *, *::before, *::after { box-sizing: border-box; }
-  :where(body, h1, h2, p, ul, figure, pre, table) { margin: 0; }
+  :where(h1, h2, p, ul, figure, pre, table) { margin: 0; }
   :where(ul[role="list"]) { list-style: none; padding: 0; }
   :where(button, input, select) { font: inherit; color: inherit; }
   :where(table) { border-collapse: collapse; }
@@ -10,13 +11,6 @@
 
 @layer base {
   html { -webkit-text-size-adjust: 100%; }
-  body {
-    background: var(--stage);
-    color: var(--text);
-    font-family: var(--font-ui);
-    font-size: var(--step-0);
-    line-height: 1.5;
-  }
   a { color: inherit; text-decoration-color: var(--muted); text-underline-offset: 0.2em; }
   a:hover { text-decoration-color: currentColor; }
   :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: var(--radius); }
@@ -25,26 +19,7 @@
   h1:focus { outline: none; }
   code, pre { font-family: var(--font-code); font-size: 0.8125em; }
   q { quotes: "„" "“"; }
-  .source { font-family: var(--font-source); }
-  .machine { color: var(--machine); }
   summary { cursor: pointer; }
-}
-
-@layer layout {
-  /* Header, navigation and the main area are in css/shell.css. */
-  .title-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-2) var(--space-5);
-    margin-block-end: var(--space-5);
-  }
-
-  .reading { display: grid; gap: var(--space-6); grid-template-columns: minmax(0, 1fr); }
-  @container page (inline-size > 60rem) {
-    .reading { grid-template-columns: minmax(0, 46rem) minmax(0, 1fr); gap: var(--space-7); align-items: start; }
-  }
 }
 
 @layer components {
@@ -52,109 +27,21 @@
   .skip:focus { inset-inline-start: var(--space-2); inset-block-start: var(--space-2); background: var(--stage); padding: var(--space-2); z-index: 2; }
   .loading { color: var(--muted); }
   .error { color: var(--warn); }
-  .missing { color: var(--paper-muted); font-family: var(--font-ui); font-size: var(--step--1); }
+  /* Written by sourceField in js/dom.js. */
+  .missing { color: var(--muted); font-family: var(--font-ui); font-size: var(--step--1); }
 
-  .pager { display: flex; flex-wrap: wrap; gap: 0 var(--space-5); }
-  .pager a { color: var(--muted); text-decoration: none; padding-block: var(--space-1); white-space: nowrap; }
-  .pager a:hover { color: var(--text); }
-
-  /* Paper: the only surface. It holds the edition's text and nothing else. */
-  .paper {
-    background: var(--paper);
-    color: var(--paper-ink);
-    padding: var(--space-5) var(--space-6) var(--space-6);
-    border-radius: var(--radius);
-  }
-  .paper-meta { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-1) var(--space-5); color: var(--paper-muted); font-variant-numeric: lining-nums; margin-block-end: var(--space-4); }
-  .paper-meta .gap { display: none; }
-  .regest { font-family: var(--font-source); font-size: var(--step-1); line-height: 1.7; }
-  .regest:focus-visible { outline-color: var(--pen-on-paper); outline-offset: 10px; }
-  .regest .ev { cursor: default; }
-  .regest .pen { text-decoration: underline 2px var(--pen-on-paper); text-underline-offset: 0.25em; text-decoration-skip-ink: none; }
-
-  .apparatus, .history { margin-block-start: var(--space-5); font-size: var(--step--1); color: var(--muted); }
-  .apparatus[open], .history[open] { color: var(--text); }
-  .apparatus > p, .history > p, .history .finding { margin-block-start: var(--space-3); max-inline-size: 78ch; }
-  .apparatus summary, .history summary { font-weight: 600; color: var(--text); }
-  .run-in { font-weight: 600; font-family: var(--font-ui); }
-  .history .finding p + p { margin-block-start: var(--space-1); }
-
-  /* Statements */
-  .review-state { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); font-size: var(--step--1); color: var(--muted); margin-block-end: var(--space-5); }
-  .state { display: inline-flex; align-items: center; gap: var(--space-2); }
-  .st { display: inline-block; inline-size: 0.6rem; block-size: 0.6rem; background: var(--machine); border: 1.5px solid var(--machine); }
-  .st-asserted { border-radius: 50%; }
-  .st-technical { border-radius: 1px; }
-  .st-expert { transform: rotate(45deg) scale(0.85); background: var(--pen); border-color: var(--pen); }
-  .st.is-open { background: transparent; }
-
-  .acts { display: grid; gap: var(--space-5); }
-  .act-type { font-weight: 600; }
-  .phrase {
-    display: inline;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    background: none;
-    border: 0;
-    padding: 0;
-    color: inherit;
-    cursor: pointer;
-    text-align: start;
-    text-decoration: underline 1px transparent;
-    text-underline-offset: 0.28em;
-    border-radius: var(--radius);
-  }
-  .phrase:hover, .phrase.is-pointed { text-decoration: underline 2px var(--pen); }
-  .phrase.is-pinned { color: var(--text); text-decoration: underline 2px var(--pen); }
-
-
-  .evq { display: none; }
-  @container page (inline-size <= 60rem) {
-    .act.is-open .evq:not(:empty) { display: block; font-size: var(--step--1); margin-block-end: var(--space-2); }
-  }
-  .rdf { font-size: var(--step--1); color: var(--muted); }
-  .rdf .code { margin-block-start: var(--space-2); padding: var(--space-3); border: 1px dashed var(--hairline); border-radius: var(--radius); color: var(--text); white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.5; }
-
-
-  /* Junicode runs small beside the grotesque; this keeps register wording at reading size. */
-  .iri { overflow-wrap: anywhere; color: var(--machine); }
-
-  /* Holdings: timeline and person graph */
-  .legend-item { display: inline-flex; align-items: center; gap: var(--space-2); }
-  .glyph { flex: none; overflow: visible; }
+  /* The person network (js/overview.js) and its key. */
   .vis { inline-size: 100%; }
   .vis-svg { display: block; overflow: visible; font-family: var(--font-ui); }
-  .axis line { stroke: var(--hairline); }
-  .axis text { fill: var(--muted); font-size: 12px; font-variant-numeric: lining-nums; }
-  .m-hit, .n-hit { fill: transparent; }
-  .mark { cursor: pointer; outline: none; }
-  .mark:focus-visible .m-hit, .node:focus-visible .n-hit { stroke: var(--focus); stroke-width: 2; }
-  .mark.is-dim { opacity: 0.35; }
-  .case-label { fill: var(--pen); font-size: 13px; font-weight: 600; }
-
-  /* Holdings: one screen. Toolbar line, time strip across the width, graph and panel below. */
-  .holdings { display: grid; gap: var(--space-2) var(--space-5); grid-template-columns: minmax(0, 1fr); grid-template-areas: "bar" "strip" "graph" "side"; }
-  @container page (inline-size > 56rem) {
-    .holdings { grid-template-columns: minmax(0, 1fr) 21rem; grid-template-areas: "bar bar" "strip strip" "graph side"; }
-    .side { max-block-size: var(--graph-height, 70dvh); overflow-y: auto; }
-  }
-  .strip { grid-area: strip; }
-  .side { grid-area: side; }
-  .tools { display: flex; gap: var(--space-2); flex: none; position: relative; }
+  .n-hit { fill: transparent; }
+  .node:focus-visible .n-hit { stroke: var(--focus); stroke-width: 2; }
   .tool { background: none; border: 1px solid var(--hairline); color: var(--text); border-radius: var(--radius); padding: var(--space-1) var(--space-3); cursor: pointer; font-size: var(--step--1); list-style: none; }
-  .tool::-webkit-details-marker { display: none; }
-  .tool[aria-pressed="true"] { border-color: var(--text); }
-  .tip { font-size: var(--step--1); color: var(--muted); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; visibility: hidden; }
-  .tip.is-on { visibility: visible; }
-  /* In the side panel the lists stay short: citation and mark, the regest opens on click. */
-  /* Sector names at the rim of the circle around a selected person. */
-  /* Direction words at the rim: small capitals, so they never read as an act name. */
+  /* The sign of a relation family at the rim of the circle around a selected person. */
   .sector-label { color: var(--muted); opacity: 0.5; }
-  .sector-label.is-used { opacity: 1; color: var(--machine); cursor: pointer; }
-  .sector-wedge { fill: var(--machine); opacity: 0.06; }
+  .sector-label.is-used { opacity: 1; color: var(--accent-text); cursor: pointer; }
+  .sector-wedge { fill: var(--accent-text); opacity: 0.06; }
   .sector-wedge.is-on { opacity: 0.16; }
   .label-plate { fill: var(--stage); stroke: var(--hairline); stroke-width: 1; }
-  /* The list beside the circle: one row per family, opened in place. */
   /* Highlight changes fade instead of jumping; without motion they switch at once. */
   .nodes .node, .edges line, .sector-wedge { transition: opacity 140ms ease-out; }
   @media (prefers-reduced-motion: reduce) {
@@ -164,23 +51,13 @@
   /* In the circle the centre's name either has its plate or stays in the panel heading. */
   .is-ego .node.is-selected .n-label.on-demand { display: none; }
 
-  .regest-list, .person-list { display: grid; gap: var(--space-2); margin-block-start: var(--space-3); color: var(--text); }
-  .regest-list a, .person-list a { text-decoration-color: var(--hairline); }
-  .lead { font-size: var(--step-0); }
-  @container page (inline-size <= 40rem) {
-  }
-
   /* The network fills the drawing area of the shell. */
   .graph-fill { position: absolute; inset: 0; }
-  @container page (inline-size > 60rem) {
-    /* The network fills the drawing area of the shell. */
-  .graph-fill { position: absolute; inset: 0; }
-  }
   .edges line { stroke-linecap: round; }
   .e-role { stroke: var(--edge); stroke-width: 1; }
   .e-parent { stroke: var(--text); stroke-width: 1.75; }
-  .e-same { stroke: var(--pen); stroke-width: 2; stroke-dasharray: 5 4; }
-  .edges .is-on.e-role { stroke: var(--machine); stroke-width: 1.5; }
+  .e-same { stroke: var(--accent-text); stroke-width: 2; stroke-dasharray: 5 4; }
+  .edges .is-on.e-role { stroke: var(--accent-text); stroke-width: 1.5; }
   .edges .is-dim { opacity: 0.25; }
   .n-person { fill: var(--text); stroke: var(--stage); stroke-width: 1.5; }
   .n-local { fill: var(--stage); stroke: var(--text); stroke-width: 1.75; }
@@ -206,21 +83,8 @@
   .node:hover .n-label, .node:focus-visible .n-label, .node.is-selected .n-label { display: inline; }
   .node { cursor: pointer; outline: none; }
   .node.is-dim { opacity: 0.3; }
-  .node.is-selected .n-person, .node.is-selected .n-group { stroke: var(--pen); stroke-width: 3; }
-  .node.is-selected .n-local { stroke: var(--pen); }
+  .node.is-selected .n-person, .node.is-selected .n-group { stroke: var(--accent-text); stroke-width: 3; }
+  .node.is-selected .n-local { stroke: var(--accent-text); }
   .link-button { background: none; border: 0; padding: 0; color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 0.2em; cursor: pointer; }
   .link-button:hover { text-decoration-color: currentColor; }
-
-  .empty { display: grid; gap: var(--space-2); max-inline-size: 70ch; }
-}
-
-@layer utilities {
-  .visually-hidden {
-    position: absolute !important;
-    inline-size: 1px;
-    block-size: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
 }

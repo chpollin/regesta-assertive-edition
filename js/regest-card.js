@@ -25,6 +25,7 @@
  */
 import { h, regestHref } from "./dom.js";
 import { familyIcon, familyOf } from "./relations.js";
+import { s } from "./svg.js";
 
 const REVIEW_WORD = "ungeprüft";
 const REVIEW_TIP = "Von LLM-basierten Agenten extrahiert, technisch geprüft, fachlich nicht abgenommen.";
@@ -38,7 +39,6 @@ const slug = (outcome) => outcome.replace(/\s+/g, "-");
 
 // Small line signs for the head, drawn in the text colour; the word beside or the accessible
 // name carries the meaning, so a sign never stands alone (rule 7).
-const SVGNS = "http://www.w3.org/2000/svg";
 const ICON = {
   date: "M3 4.5h10v8.5H3zM3 7h10M5.5 3v3M10.5 3v3",
   place: "M8 14s4.5-4.2 4.5-7.5a4.5 4.5 0 0 0-9 0C3.5 9.8 8 14 8 14zM8 8.2a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4z",
@@ -46,14 +46,7 @@ const ICON = {
   agents: "M5.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM10.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 13c0-2.2 1.6-4 3.5-4S9 10.8 9 13M7 13c0-2.2 1.6-4 3.5-4S14 10.8 14 13",
 };
 function icon(name) {
-  const svg = document.createElementNS(SVGNS, "svg");
-  svg.setAttribute("viewBox", "0 0 16 16");
-  svg.setAttribute("class", "head-icon");
-  svg.setAttribute("aria-hidden", "true");
-  const path = document.createElementNS(SVGNS, "path");
-  path.setAttribute("d", ICON[name]);
-  svg.append(path);
-  return svg;
+  return s("svg", { viewBox: "0 0 16 16", class: "head-icon", "aria-hidden": "true" }, s("path", { d: ICON[name] }));
 }
 
 /** The regest's review state in one word: ungeprüft, or read by agents with who and when. */
@@ -136,6 +129,38 @@ export function notedText(text, statements) {
   return out;
 }
 
+/** The participants of a statement grouped by role, each role once, in the regest's own words. */
+function byRoleOf(st) {
+  const byRole = new Map();
+  for (const pp of st.people) byRole.set(pp.role || "beteiligt", [...(byRole.get(pp.role || "beteiligt") ?? []), pp.phrase]);
+  return byRole;
+}
+
+/**
+ * Link the annotated text and the notes of its statements, in the card and on the page: a
+ * pointed passage or chip lights its statement, a pointed or focused note lights its passage
+ * and chip; `claim` keeps one statement lit at rest. notesEl is null without statements.
+ */
+function linkStatements(textEl, notesEl, claim) {
+  const light = (id) => {
+    for (const el of textEl.querySelectorAll(".ev, .ann-n")) el.classList.toggle("is-on", !!id && el.dataset.ids.split(" ").includes(id));
+    for (const el of notesEl?.children ?? []) el.classList.toggle("is-on", !!id && el.dataset.id === id);
+  };
+  textEl.addEventListener("mouseover", (e) => {
+    const ev = e.target.closest(".ev, .ann-n");
+    light(ev ? ev.dataset.ids.split(" ").at(-1) : null);
+  });
+  textEl.addEventListener("mouseleave", () => light(claim ?? null));
+  for (const li of notesEl?.children ?? []) {
+    const id = li.dataset.id;
+    li.addEventListener("mouseenter", () => light(id));
+    li.addEventListener("mouseleave", () => light(claim ?? null));
+    li.addEventListener("focus", () => light(id));
+    li.addEventListener("blur", () => light(claim ?? null));
+  }
+  if (claim) requestAnimationFrame(() => light(claim));
+}
+
 /**
  * One note per statement: kind and number, the short qualifiers, the human verdict as sign
  * and word, and below the participants with their roles in the regest's own words.
@@ -146,10 +171,8 @@ export function notesOf(statements) {
     { class: "card-notes", "aria-label": "Aussagen zu diesem Regest" },
     statements.map((st) => {
       const agent = st.agent;
-      // Participants grouped by role, each role named once: „Zeuge: Otto von Moos, Erbo von Biburg“.
-      const byRole = new Map();
-      for (const pp of st.people) byRole.set(pp.role || "beteiligt", [...(byRole.get(pp.role || "beteiligt") ?? []), pp.phrase]);
-      const people = [...byRole].map(([role, names]) => `${role}: ${names.join(", ")}`).join(". ");
+      // Each role named once: „Zeuge: Otto von Moos, Erbo von Biburg“.
+      const people = [...byRoleOf(st)].map(([role, names]) => `${role}: ${names.join(", ")}`).join(". ");
       return h(
         "li",
         { "data-id": st.id, tabindex: "0" },
@@ -210,7 +233,9 @@ export function renderRegestCard(store, uid, options = {}) {
   if (options.page && regest) return pageView(store, regest, options);
   const delivered = store.holdings?.regesta.find((r) => r.u === uid) ?? null;
   const identifier = regest?.identifier ?? delivered?.i ?? uid;
-  const date = regest ? regest.date.map((seg) => seg.t).join("") : delivered?.s ?? "";
+  // The dating prose of the delivery (date_string, field d of holdings.json) where the layer
+  // carries it, as the run's regesta show it; the machine date only as fallback.
+  const date = regest ? regest.date.map((seg) => seg.t).join("") : delivered?.d || delivered?.s || "";
   const place = regest?.place?.map((seg) => seg.t).join("") || delivered?.l || "";
   const pi = delivered?.pi;
 
@@ -230,37 +255,18 @@ export function renderRegestCard(store, uid, options = {}) {
   // On its own citable page the component reads at page size, in a panel at sidebar size.
   const card = h("article", { class: `regest-card${options.page ? " is-page" : ""}`, "aria-label": `Regest ${identifier}` }, head, textEl);
 
-  // A pointed tag lights its passage; options.claim keeps one statement lit.
-  let notesEl = null;
-  const light = (id) => {
-    for (const el of textEl.querySelectorAll(".ev, .ann-n")) el.classList.toggle("is-on", !!id && el.dataset.ids.split(" ").includes(id));
-    for (const el of notesEl?.children ?? []) el.classList.toggle("is-on", !!id && el.dataset.id === id);
-  };
-
   if (regest) {
     const statements = statementsOf(regest);
     textEl.append(...notedText(regest.text, statements));
-    textEl.addEventListener("mouseover", (e) => {
-      const ev = e.target.closest(".ev, .ann-n");
-      light(ev ? ev.dataset.ids.split(" ").at(-1) : null);
-    });
-    textEl.addEventListener("mouseleave", () => light(options.claim ?? null));
-    if (statements.length) {
-      notesEl = notesOf(statements);
-      for (const li of notesEl.children) {
-        const id = li.dataset.id;
-        li.addEventListener("mouseenter", () => light(id));
-        li.addEventListener("mouseleave", () => light(options.claim ?? null));
-        li.addEventListener("focus", () => light(id));
-        li.addEventListener("blur", () => light(options.claim ?? null));
-      }
+    const notesEl = statements.length ? notesOf(statements) : null;
+    linkStatements(textEl, notesEl, options.claim);
+    if (notesEl) {
       // Text and notes share one row, so the notes can stand beside their passages.
       const body = h("div", { class: "card-body" });
       textEl.replaceWith(body);
       body.append(textEl, notesEl);
       placeNotes(card, textEl, notesEl);
     } else card.append(h("p", { class: "card-none", text: "Zu diesem Regest gibt es keine Aussage im Rahmen des Laufs." }));
-    if (options.claim) requestAnimationFrame(() => light(options.claim));
   } else {
     textEl.textContent = "…";
     options.texts?.().then((texts) => {
@@ -344,8 +350,7 @@ function pageView(store, regest, options) {
     { class: "reg-notes", "aria-label": "Aussagen zu diesem Regest" },
     statements.map((st) => {
       const f = familyOf(st.kind);
-      const byRole = new Map();
-      for (const pp of st.people) byRole.set(pp.role || "beteiligt", [...(byRole.get(pp.role || "beteiligt") ?? []), pp.phrase]);
+      const byRole = byRoleOf(st);
       const agent = st.agent;
       return h(
         "li",
@@ -400,22 +405,6 @@ function pageView(store, regest, options) {
 
   const page = h("article", { class: "regest-page-grid", "aria-label": `Regest ${regest.identifier}` }, metaEl, reading, comments);
   // One statement lit at a time: its passage extent in the text, its chip and its entry.
-  const light = (id) => {
-    for (const el of textEl.querySelectorAll(".ev, .ann-n")) el.classList.toggle("is-on", !!id && el.dataset.ids.split(" ").includes(id));
-    for (const el of notesEl.children) el.classList.toggle("is-on", !!id && el.dataset.id === id);
-  };
-  textEl.addEventListener("mouseover", (e) => {
-    const ev = e.target.closest(".ann-n, .ev");
-    light(ev ? ev.dataset.ids.split(" ").at(-1) : null);
-  });
-  textEl.addEventListener("mouseleave", () => light(options.claim ?? null));
-  for (const li of notesEl.children) {
-    const id = li.dataset.id;
-    li.addEventListener("mouseenter", () => light(id));
-    li.addEventListener("mouseleave", () => light(options.claim ?? null));
-    li.addEventListener("focus", () => light(id));
-    li.addEventListener("blur", () => light(options.claim ?? null));
-  }
-  if (options.claim) requestAnimationFrame(() => light(options.claim));
+  linkStatements(textEl, notesEl, options.claim);
   return page;
 }

@@ -6,7 +6,10 @@
    his slide scheme, ochre for the second data layer. Text reaches at least 7:1 against white
    and the sidebar; the accent itself (3.5:1) marks graphics and selection only, text in the
    accent hue uses the darker --accent-text. */
-@layer reset, base, tokens, layout, components, utilities;
+/* `pages` holds css/pages.css, the content pages of the static build. It comes after the
+   components, so a page rule wins over a shared component rule, as it did while the file
+   was unlayered. */
+@layer reset, base, tokens, layout, components, pages, utilities;
 
 @font-face {
   font-family: "Junicode";
@@ -75,17 +78,6 @@
     --accent-text: #005c64;
     --accent-faint: #e3f4f6;
 
-    /* Older role names, kept so the views need no second set of rules: the source text lies
-       on a neutral ground, what a machine wrote and every pointing or deciding mark take the
-       accent. No red anywhere. */
-    --paper: var(--side);
-    --paper-ink: var(--text);
-    --paper-muted: var(--muted);
-    --machine: var(--accent-text);
-    --machine-faint: var(--accent);
-    --pen: var(--accent-text);
-    --pen-on-paper: var(--accent-text);
-
     /* A missing basis: a dark amber, always with a word. */
     --warn: #6b4a00;
     --focus: #005c64;
@@ -121,7 +113,6 @@
     --space-6: 2.25rem;
     --space-7: 3.5rem;
 
-    --measure: 62ch;
     --radius: 2px;
     --header-height: 3rem;
     --aside-width: 18rem;

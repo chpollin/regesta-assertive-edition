@@ -15,21 +15,13 @@
  */
 import { h } from "./dom.js";
 import { timeBand } from "./sidebar.js";
-import { yearOf } from "./filters.js";
 import { renderRegestCard } from "./regest-card.js";
 import { focusKey } from "./timeband.js";
+import { s, yearOf } from "./svg.js";
+import { mapProjection } from "./map.js";
+import { param, writeAddress } from "./url.js";
 
-const SVG = "http://www.w3.org/2000/svg";
-const DEG = Math.PI / 180;
 const NOTE = "Ort und Datum aus der Lieferung der Regesta Imperii, Koordinate aus ihrem Register, ohne LLM.";
-
-/** @param {string} tag @param {Record<string, any>} [attrs] */
-function s(tag, attrs = {}) {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) if (k !== "text" && v !== null && v !== undefined) el.setAttribute(k, String(v));
-  if (attrs.text) el.textContent = attrs.text;
-  return el;
-}
 
 // A decade with fewer regesta than MIN_PANEL joins its neighbour: the 1130s hold three, which
 // made an almost empty map (reviewed 2026-11-12).
@@ -71,29 +63,11 @@ export function renderDecades(store, options) {
   // light in later panels, so new places stand apart from returns.
   const firstPanel = new Map();
   for (const p of [...points].sort((a, b) => a.y - b.y)) if (!firstPanel.has(p.p)) firstPanel.set(p.p, p.d);
-  const params = new URLSearchParams(location.search);
-  const askedDecade = Number(options.decade ?? params.get("jahrzehnt"));
+  const askedDecade = Number(options.decade ?? param("jahrzehnt"));
   const state = { place: options.place ?? null, decade: decades.includes(askedDecade) ? askedDecade : null, pointed: null, opened: null };
 
-  // The map is the itinerary's: an equirectangular projection around the median place, the
-  // core holding 95 percent of the documents undistorted, the far journeys compressed beyond
-  // it. Repeated here because js/itinerary.js keeps it private; upgrade path is a shared
-  // projection module both views import.
-  const median = (values) => [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)];
-  const midLat = median(points.map((p) => places[p.p].la));
-  const midLon = median(points.map((p) => places[p.p].lo));
-  const k = Math.cos(midLat * DEG);
-  const dist = points.map((p) => Math.hypot((places[p.p].lo - midLon) * k, places[p.p].la - midLat)).sort((a, b) => a - b);
-  const core = dist[Math.floor(dist.length * 0.95)] || 1;
-  const mapXZ = (lon, lat) => {
-    const dx = (lon - midLon) * k;
-    const dz = lat - midLat;
-    const d = Math.hypot(dx, dz) / core;
-    const r = d <= 1 ? d : 1 + 0.45 * Math.tanh((d - 1) / 1.2);
-    const f = d ? r / d / core : 0;
-    return [dx * f, dz * f];
-  };
-  const inCore = (lon, lat) => Math.hypot((lon - midLon) * k, lat - midLat) <= core;
+  // The map is the itinerary's (js/map.js), its undistorted core within radius one.
+  const { mapXZ, inCore } = mapProjection(points, places);
   const placeXZ = new Map(Object.entries(places).map(([id, p]) => [id, mapXZ(p.lo, p.la)]));
   const used = [...new Set(points.map((p) => p.p))].map((id) => placeXZ.get(id));
   const bounds = {
@@ -368,11 +342,7 @@ export function renderDecades(store, options) {
   function select(place, decade = state.decade) {
     state.place = place;
     state.decade = decade;
-    const q = new URLSearchParams(location.search);
-    q.delete("jahrzehnt");
-    if (decade !== null) q.set("jahrzehnt", String(decade));
-    const query = q.toString();
-    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}#/jahrzehnte${place ? `/${encodeURIComponent(place)}` : ""}`);
+    writeAddress({ jahrzehnt: decade }, `#/jahrzehnte${place ? `/${encodeURIComponent(place)}` : ""}`);
     mark();
     renderSide();
   }

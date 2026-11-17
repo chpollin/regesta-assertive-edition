@@ -35,8 +35,10 @@ import { h } from "./dom.js";
 import { timeBand } from "./sidebar.js";
 import { renderRegestCard, statementsOf } from "./regest-card.js";
 import { familyIcon, familyOf } from "./relations.js";
+import { s, yearOf } from "./svg.js";
+import { mapProjection } from "./map.js";
+import { param, writeAddress } from "./url.js";
 
-const SVG = "http://www.w3.org/2000/svg";
 const DEG = Math.PI / 180;
 const VIEWS = Object.freeze({
   schraeg: { label: "Schräg", yaw: -20 * DEG, pitch: 24 * DEG },
@@ -51,19 +53,6 @@ const NAMED_PLACES = 5;
 /** A person named in more regesta than this does not make two regesta related. */
 const RELATED_MAX = 60;
 
-/** @param {string} tag @param {Record<string, any>} [attrs] */
-function s(tag, attrs = {}) {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) if (k !== "text" && v !== null && v !== undefined) el.setAttribute(k, String(v));
-  if (attrs.text) el.textContent = attrs.text;
-  return el;
-}
-
-function yearOf(iso) {
-  const [y, m, d] = iso.split("-").map(Number);
-  return y + ((m - 1) * 30.4 + (d - 1)) / 365;
-}
-
 /**
  * @param {import("./app.js").Store & {holdings: any}} store
  * @param {{place?: string|null, filters: any}} options
@@ -74,12 +63,11 @@ export function renderItinerary(store, options) {
   const places = H.places;
   const evidenced = new Set(store.edition.regests.map((r) => r.uid));
   const points = H.regesta.filter((r) => r.p && places[r.p]).map((r) => ({ ...r, y: yearOf(r.s) }));
-  const params = new URLSearchParams(location.search);
-  const startView = VIEWS[params.get("ansicht")] ? params.get("ansicht") : "schraeg";
+  const startView = Object.hasOwn(VIEWS, param("ansicht") ?? "") ? param("ansicht") : "schraeg";
   const state = { flags: false, place: options.place ?? null, view: { yaw: VIEWS[startView].yaw, pitch: VIEWS[startView].pitch, zoom: 1 }, snap: startView, pointed: null };
   // Persons of the register with at least three regesta (holdings.json), at most two at once.
   const persons = H.persons ?? {};
-  state.persons = (params.get("personen") ?? "").split(",").filter((id) => persons[id]).slice(0, 2);
+  state.persons = (param("personen") ?? "").split(",").filter((id) => persons[id]).slice(0, 2);
   let personSets = state.persons.map((id) => new Set(persons[id].r));
   const personsOf = new Map();
   for (const [id, pp] of Object.entries(persons)) for (const u of pp.r) personsOf.set(u, [...(personsOf.get(u) ?? []), id]);
@@ -88,38 +76,15 @@ export function renderItinerary(store, options) {
   function setPersons(ids) {
     state.persons = ids.slice(0, 2);
     personSets = state.persons.map((id) => new Set(persons[id].r));
-    const q = new URLSearchParams(location.search);
-    if (state.persons.length) q.set("personen", state.persons.join(","));
-    else q.delete("personen");
-    const query = q.toString();
-    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    writeAddress({ personen: state.persons.join(",") });
     renderSide();
     update();
   }
 
-  // The map: an equirectangular projection around the median place of issue. The core that
-  // holds 95 percent of the documents fills the cube; the far journeys (the crusades of 1147
-  // and 1189/90) are compressed beyond it, so they stay visible without shrinking the core.
-  // The legend says so.
-  const median = (values) => [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)];
-  const midLat = median(points.map((p) => places[p.p].la));
-  const midLon = median(points.map((p) => places[p.p].lo));
-  const k = Math.cos(midLat * DEG);
-  const dist = points.map((p) => Math.hypot((places[p.p].lo - midLon) * k, places[p.p].la - midLat)).sort((a, b) => a - b);
-  const core = dist[Math.floor(dist.length * 0.95)] || 1;
-  const squeeze = (dx, dz) => {
-    const d = Math.hypot(dx, dz) / core;
-    const r = d <= 1 ? d : 1 + 0.45 * Math.tanh((d - 1) / 1.2);
-    return d ? r / d : 0;
-  };
-  const mapXZ = (lon, lat) => {
-    const dx = (lon - midLon) * k;
-    const dz = lat - midLat;
-    const f = (squeeze(dx, dz) / core) * 1.25;
-    return [dx * f, dz * f];
-  };
-  const mapX = (lon, lat) => mapXZ(lon, lat)[0];
-  const mapZ = (lon, lat) => mapXZ(lon, lat)[1];
+  // The map of js/map.js; its undistorted core fills radius 1.25 of the cube's floor.
+  const { midLat, midLon, k, core, mapXZ: unitXZ, inCore } = mapProjection(points, places);
+  const mapX = (lon, lat) => unitXZ(lon, lat)[0] * 1.25;
+  const mapZ = (lon, lat) => unitXZ(lon, lat)[1] * 1.25;
   // Height spans the years with a place of issue; earlier regesta have none.
   const first = Math.floor(Math.min(...points.map((p) => p.y)));
   const last = Math.floor(Math.max(...points.map((p) => p.y)));
@@ -275,7 +240,6 @@ export function renderItinerary(store, options) {
     if (basemap) {
       // The map is drawn only inside the undistorted core; beyond it the projection
       // compresses, and a compressed coastline would read as a false shape.
-      const inCore = (lon, lat) => Math.hypot((lon - midLon) * k, lat - midLat) <= core;
       const draw = (coords, cls) => {
         let run = [];
         const flush = () => {
@@ -477,13 +441,16 @@ export function renderItinerary(store, options) {
 
   function select(placeId) {
     state.place = placeId;
-    history.replaceState(null, "", `${location.search}#/itinerar${placeId ? `/${encodeURIComponent(placeId)}` : ""}`);
+    writeAddress({}, `#/itinerar${placeId ? `/${encodeURIComponent(placeId)}` : ""}`);
     renderSide();
     update();
   }
 
   function draw() {
-    scene = build(Math.max(280, element.clientWidth), Math.max(320, element.clientHeight));
+    // Rounded down: clientHeight rounds a fractional height up, and the drawing then stood
+    // one pixel below the window.
+    const box = element.getBoundingClientRect();
+    scene = build(Math.max(280, Math.floor(box.width)), Math.max(320, Math.floor(box.height)));
     sceneHost.replaceChildren(scene.svg);
     sync();
     update();
@@ -492,11 +459,7 @@ export function renderItinerary(store, options) {
   function sync() {
     for (const b of viewButtons) b.setAttribute("aria-pressed", String(b.dataset.view === state.snap));
     freeMark.hidden = state.snap !== "frei";
-    const q = new URLSearchParams(location.search);
-    q.delete("ansicht");
-    if (state.snap !== "schraeg" && state.snap !== "frei") q.set("ansicht", state.snap);
-    const query = q.toString();
-    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    writeAddress({ ansicht: state.snap !== "schraeg" && state.snap !== "frei" ? state.snap : null });
   }
 
   let animation = {};
@@ -598,8 +561,11 @@ export function renderItinerary(store, options) {
   function openRegest(i) {
     opened = i;
     related = relate(i);
+    // The card opens beside the figure; the tooltip would stand over it.
+    tip.hidden = true;
     update();
-    status.textContent = `${points[i].i}: vorige und nächste Station des Itinerars, ${related.place.size} weitere Regesten am selben Ort, ${related.people.size} Regesten, die eine seiner Personen nennen${related.persons.length ? ` (${related.persons.map((id) => persons[id].l).join(", ")})` : ""}`;
+    // One short sentence: count and kind of the relations; the names stand in the card.
+    status.textContent = `${points[i].i}: ${related.steps.size} Stationen davor und danach, ${related.place.size} am selben Ort, ${related.people.size} mit gemeinsamer Person.`;
     // Where the point comes from, and what the plausibility check says about it.
     const notes = ["Ort und Datum aus der Lieferung der Regesta Imperii, Koordinate aus ihrem Register, ohne LLM."];
     for (const f of flagsOf.get(points[i].u) ?? []) notes.push(`Auffällig: ${f.km} km in ${f.days} ${f.days === 1 ? "Tag" : "Tagen"} zu ${f.other.identifier} (${f.other.place}). Vermutlicher Grund: ${f.class}.`);

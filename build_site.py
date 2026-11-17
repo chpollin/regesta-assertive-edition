@@ -164,13 +164,12 @@ class Site:
         self.pslugs = {n["id"]: person_slug(n["id"]) for n in self.actors}
         if len(set(self.pslugs.values())) != len(self.pslugs):
             raise BuildError("two actors share a page address")
-        self.case = self._case()
-        self.shell_css = "css/shell.css" if (HERE / "css" / "shell.css").is_file() else "css/shell-interim.css"
 
     def _rows(self) -> dict[str, dict]:
         path = self.source / "source-material" / "RI_004-002-ReggBarbarossa.csv"
         with path.open(encoding="utf-8-sig", newline="") as fh:
-            rows = {r["uid"]: r for r in csv.DictReader(fh) if r["uid"] in self.by_uid}
+            # The same dialect as the register; on this file both dialects give the same rows.
+            rows = {r["uid"]: r for r in csv.DictReader(fh, escapechar="\\", strict=True) if r["uid"] in self.by_uid}
         if rows.keys() != self.by_uid.keys():
             raise BuildError("regest CSV does not cover every regest of the run")
         return rows
@@ -182,24 +181,13 @@ class Site:
         }
         path = self.source / "source-material" / "RI_004-002-RegisterBarbarossa.csv"
         out: dict[str, dict] = {}
+        # The register escapes double quotes with a backslash; the default dialect shifts the
+        # fields of those rows (the entries RI004-002-K000373 and RI004-002-P000183 among them).
         with path.open(encoding="utf-8-sig", newline="") as fh:
-            for row in csv.DictReader(fh):
+            for row in csv.DictReader(fh, escapechar="\\", strict=True):
                 if row["id"] in wanted and row["id"] not in out:
                     out[row["id"]] = row
         return out
-
-    def _case(self) -> dict | None:
-        """The child and the two same-name parents, from the same-name edge of the graph."""
-        edges = self.edition["graph"]["edges"]
-        pair = next((e for e in edges if e["kind"] == "same-name"), None)
-        if pair is None:
-            return None
-        parents = [pair["source"], pair["target"]]
-        child = next((e["source"] for e in edges if e["kind"] == "parent" and e["target"] in parents), None)
-        if child is None:
-            return None
-        regests = sorted({self.nodes[p]["case"]["regest"] for p in parents}, key=lambda u: self.by_uid[u]["sort"])
-        return {"child": child, "parents": parents, "regests": regests}
 
     def regest_href(self, root: str, uid: str, claim: str | None = None) -> str:
         return f"{root}regesten/{self.slugs[uid]}/" + (f"#f-{claim}" if claim else "")
@@ -228,15 +216,14 @@ class Site:
     ) -> None:
         """Write one page in the shared frame: header from nav.json, main, footer licence line."""
         root = "../" * (len(path.split("/")) if path else 0)
-        current = ' aria-current="page"'
         # A page belongs to an object of the navigation either directly or as one of its
         # representations (the person list is the Personen object's „Liste“).
         owner = next((it["key"] for it in self.nav if any(v["key"] == key for v in it.get("views", []))), key)
         nav = "".join(
-            f'<a href="{root}{esc(item["href"])}"{current if item["key"] == owner else ""}>{esc(item["label"])}</a>'
+            f'<a href="{root}{esc(item["href"])}"{CURRENT if item["key"] == owner else ""}>{esc(item["label"])}</a>'
             for item in self.nav
         )
-        css = [f"{root}css/tokens.css", f"{root}{self.shell_css}"]
+        css = [f"{root}css/tokens.css", f"{root}css/shell.css"]
         if views:
             css += [f"{root}ansicht/css/app.css", f"{root}ansicht/css/space.css"]
         css.append(f"{root}css/pages.css")
@@ -422,7 +409,7 @@ def regest_list_page(site: Site) -> None:
         rows.append(
             f'<tr data-q="{esc(q)}" data-f="{" ".join(sorted(fams))}"><th scope="row"><a href="{site.slugs[r["uid"]]}/">{esc(r["identifier"])}</a></th>'
             f"<td>{date}</td><td>{place or '<span class=missing>ohne Ort</span>'}</td>"
-            f"<td>{family_cell(fams)}{f'<span class=mark>{esc(marks)}</span>' if marks else ''}</td></tr>"
+            f"<td>{family_cell(fams)}{f'<span class=row-mark>{esc(marks)}</span>' if marks else ''}</td></tr>"
         )
     main = f"""<h1 class="visually-hidden">Regesten</h1>
 {list_filter("Regesttext oder Nummer")}
@@ -540,11 +527,12 @@ def regest_page(site: Site, index: int) -> None:
     if footnotes:
         fields.append(f'<p><span class="run-in">Anmerkungen</span> {esc(footnotes)}</p>')
     uri = ri_uri(site, uid)
+    external = LINK_RE.findall(row.get("external_links") or "")
     book = "".join(
         f'<li><a href="{esc(target)}" rel="noopener">{esc(plain(label))}</a> (Bayerische Staatsbibliothek, extern)</li>'
         if "bsb" in target or "mdz" in target
         else f'<li><a href="{esc(target)}" rel="noopener">{esc(plain(label))}</a> (extern)</li>'
-        for target, label in LINK_RE.findall(row.get("external_links") or "")
+        for target, label in external
     )
     t = site.texts
     citation_ri = f"{r['identifier']}, in: Regesta Imperii Online, URI: {uri}, CC BY 4.0, bearbeitet."
@@ -552,6 +540,21 @@ def regest_page(site: Site, index: int) -> None:
         f"{t['title']}. {t['subtitle']}, {r['identifier']}, Fassung {t['release']['version']} "
         f"vom {t['release']['date']}, Aussagen aus dem Lauf {site.run_id}."
     )
+    # What the page view of js/regest-card.js takes from the delivery beyond edition.json:
+    # further fields (Originaldatierung to the metadata, Literatur and Anmerkungen to the
+    # apparatus), the external links and the citation forms; js/edition/regest.js reads it.
+    extra_fields = [("Originaldatierung", original, "meta"), ("Literatur", literature, "comment")]
+    extra_fields.append(("Anmerkungen", footnotes, "comment"))
+    page_meta = {
+        "fields": [{"label": lb, "text": text, "where": where} for lb, text, where in extra_fields if text],
+        "citations": [
+            {"label": "Zitierweise des Regests", "text": citation_ri},
+            {"label": "Zitierweise dieser Edition", "text": citation_ed},
+        ],
+        "links": [{"label": "Digitalisat", "text": str(plain(label)), "href": target} for target, label in external],
+    }
+    # A JSON island: every "<" is escaped, so no value can close or comment out the script element.
+    meta_json = json.dumps(page_meta, ensure_ascii=False).replace("<", "\\u003c")
 
     ext = site.extracted.get(uid)
     before_by_node = {b["node"]: b for b in ext["blocks"]} if ext else {}
@@ -595,7 +598,8 @@ def regest_page(site: Site, index: int) -> None:
 </div>
 <div class="cite">{f'<ul class="ext" role="list">{book}</ul>' if book else ""}
 <p><span class="run-in">Zitierweise des Regests</span> {esc(citation_ri)}</p>
-<p><span class="run-in">Zitierweise dieser Edition</span> {esc(citation_ed)}</p></div>"""
+<p><span class="run-in">Zitierweise dieser Edition</span> {esc(citation_ed)}</p></div>
+<script type="application/json" id="regest-meta">{meta_json}</script>"""
     site.page(
         path=f"regesten/{s}",
         key="regesten",
@@ -655,7 +659,7 @@ def persons_pages(site: Site) -> None:
             rels = roles.get(n["id"], [])
             fams = {"kin" if x["act"] == "Elternschaft" else FAMILY_OF.get(x["act"], "order") for x in rels}
             where = (
-                f' <span class="mark">{esc(site.by_uid[n["regests"][0]]["identifier"])}</span>'
+                f' <span class="row-mark">{esc(site.by_uid[n["regests"][0]]["identifier"])}</span>'
                 if n["local"] and n["regests"]
                 else ""
             )
@@ -735,7 +739,7 @@ def person_page(site: Site, node: dict, rels: list[dict]) -> None:
     )
 
 
-def redirect_page(path: str, target: str, title: str, licence: str) -> None:
+def redirect_page(out: Path, path: str, target: str, title: str, licence: str) -> None:
     """An earlier address that now lives as a section of another page: a short page that
     forwards at once and keeps a link for readers without automatic forwarding."""
     doc = f"""<!doctype html>
@@ -750,22 +754,17 @@ def redirect_page(path: str, target: str, title: str, licence: str) -> None:
 <body><h1>{esc(title)}</h1><p><a href="{esc(target)}">Weiter zu {esc(title)}</a></p><p>{esc(licence)} <a href="../ueber/">Über die Edition</a></p></body>
 </html>
 """
-    _write(SITE_OUT[0] / path / "index.html", doc)
+    _write(out / path / "index.html", doc)
 
 
-SITE_OUT: list[Path] = []
-
-
-def method_page(site: Site, tei_excerpt: str) -> None:
+def method_page(site: Site) -> None:
     """Method, data and about stand on one page since 2026-11-14; this address forwards."""
-    SITE_OUT[:] = [site.out]
-    redirect_page("methode", "../ueber/#methode", "Über die Edition, Methode", site.texts["licenceLine"])
+    redirect_page(site.out, "methode", "../ueber/#methode", "Über die Edition, Methode", site.texts["licenceLine"])
 
 
-def data_page(site: Site, package: str) -> None:
+def data_page(site: Site) -> None:
     """The address of the former data page forwards to the data section of the one page."""
-    SITE_OUT[:] = [site.out]
-    redirect_page("daten", "../ueber/#daten", "Über die Edition, Daten", site.texts["licenceLine"])
+    redirect_page(site.out, "daten", "../ueber/#daten", "Über die Edition, Daten", site.texts["licenceLine"])
 
 
 def about_page(site: Site, package: str) -> None:
@@ -869,9 +868,11 @@ def write_files(site: Site, stage: str) -> str:
 def copy_assets(site: Site, edition_json: Path, questions_json: Path) -> None:
     """Static assets of the pages and the views app under ansicht/; knowledge/ never."""
     out = site.out
-    for name in ("tokens.css", "pages.css", Path(site.shell_css).name):
+    for name in ("tokens.css", "pages.css", "shell.css"):
         _copy(HERE / "css" / name, out / "css" / name)
     _copytree(HERE / "js" / "edition", out / "js" / "edition")
+    # The address helper the static pages import as ../url.js, as the views app does.
+    _copy(HERE / "js" / "url.js", out / "js" / "url.js")
     _copytree(HERE / "fonts", out / "fonts")
     app = out / "ansicht"
     _copy(HERE / "index.html", app / "index.html")
@@ -914,16 +915,6 @@ def _with_agent_review(edition: dict, preview: bool) -> dict:
     return edition
 
 
-def tei_excerpt(path: Path) -> str:
-    """The body paragraph, the first event and its relations of one TEI file, for the method page."""
-    text = path.read_text(encoding="utf-8")
-    para = re.search(r"<p><persName.*?</p>", text, re.S)
-    event = re.search(r"<event .*?</event>", text, re.S)
-    rels = re.findall(r'<relation [^>]*passive="#f-marriage"[^>]*/>', text)
-    parts = [para.group(0) if para else "", event.group(0) if event else "", *rels]
-    return "\n".join(re.sub(r"\n\s+", "\n  ", p) for p in parts if p)
-
-
 def build(source: Path, run_id: str, out: Path, preview: bool = False) -> None:
     marker = out / MARKER
     if out.exists() and any(out.iterdir()) and not marker.is_file():
@@ -963,10 +954,9 @@ def build(source: Path, run_id: str, out: Path, preview: bool = False) -> None:
     for i in range(len(site.regests)):
         regest_page(site, i)
     persons_pages(site)
-    first = site.case["regests"][0] if site.case else site.regests[0]["uid"]
-    method_page(site, tei_excerpt(out / "tei" / f"{site.slugs[first]}.xml"))
+    method_page(site)
     about_page(site, package)
-    data_page(site, package)
+    data_page(site)
     # Only the TEI files of this run's regesta count as written; a TEI file of an earlier
     # run with other regesta is stale, even though it still lies in the folder.
     current = set(site.slugs.values())

@@ -7,20 +7,10 @@
  */
 import { h } from "./dom.js";
 import { STANDS, standOf } from "./stand.js";
-
-const SVG = "http://www.w3.org/2000/svg";
+import { s } from "./svg.js";
 
 function sign(...shapes) {
-  const svg = document.createElementNS(SVG, "svg");
-  svg.setAttribute("viewBox", "0 0 18 12");
-  svg.setAttribute("class", "key-sign");
-  svg.setAttribute("aria-hidden", "true");
-  for (const [tag, attrs] of shapes) {
-    const el = document.createElementNS(SVG, tag);
-    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, String(v));
-    svg.append(el);
-  }
-  return svg;
+  return s("svg", { viewBox: "0 0 18 12", class: "key-sign", "aria-hidden": "true" }, shapes.map(([tag, attrs]) => s(tag, attrs)));
 }
 
 const ENTRIES = {

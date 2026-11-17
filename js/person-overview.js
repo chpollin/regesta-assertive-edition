@@ -10,15 +10,9 @@
  * steps), so the same data give the same picture. It honours the shared filters, since it is
  * computed from the filtered graph the view hands in.
  */
-const SVG = "http://www.w3.org/2000/svg";
-const TOP = 40;
+import { s } from "./svg.js";
 
-function s(tag, attrs = {}) {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) if (k !== "text" && v !== null && v !== undefined) el.setAttribute(k, String(v));
-  if (attrs.text) el.textContent = attrs.text;
-  return el;
-}
+const TOP = 40;
 
 /**
  * @param {{nodes: any[], edges: any[]}} graph  the filtered graph of the view

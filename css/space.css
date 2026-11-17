@@ -10,12 +10,10 @@
   .segs { display: inline-flex; align-items: center; border: 1px solid var(--hairline); border-radius: var(--radius); }
   .seg { background: none; border: 0; color: var(--text); padding: var(--space-1) var(--space-3); font-size: var(--step--1); cursor: pointer; }
   .seg + .seg { border-inline-start: 1px solid var(--hairline); }
-  .seg[aria-pressed="true"] { box-shadow: inset 0 -2px 0 var(--accent, var(--pen)); font-weight: 600; }
+  .seg[aria-pressed="true"] { box-shadow: inset 0 -2px 0 var(--accent); font-weight: 600; }
   .seg-note { color: var(--muted); cursor: default; font-style: italic; }
-  /* The display rule above would otherwise override the hidden attribute. */
-  .space-slice[hidden], .seg[hidden] { display: none; }
   .space-width { max-inline-size: 100%; background: var(--stage); color: var(--text); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); font-size: var(--step--1); }
-  .sp-slice { stroke: var(--accent, var(--pen)); --w: 1.6px; stroke-linecap: round; }
+  .sp-slice { stroke: var(--accent); --w: 1.6px; stroke-linecap: round; }
   /* One line of fixed height, so pointing at a panel button never shifts the panel under the pointer. */
 
   .space-scene { overflow: hidden; cursor: grab; touch-action: none; border-radius: var(--radius); user-select: none; }
@@ -29,14 +27,14 @@
   .sp-floor { stroke: var(--hairline); --w: 1px; stroke-dasharray: 1 5; stroke-linecap: round; }
   .sp-spoke { stroke: var(--hairline); --w: 0.8px; stroke-dasharray: 1 5; stroke-linecap: round; }
   .sp-axis { stroke: var(--muted); stroke-width: 1.25; }
-  .sp-axis.is-person { stroke: var(--accent, var(--pen)); stroke-width: 3; }
+  .sp-axis.is-person { stroke: var(--accent); stroke-width: 3; }
   .sp-tick { stroke: var(--muted); stroke-width: 1.25; }
 
   .sp-edges line { stroke-linecap: round; }
   .sp-role { stroke: var(--edge); --w: 1.1px; }
   .sp-parent { stroke: var(--text); --w: 1.9px; }
-  .sp-same { stroke: var(--accent, var(--pen)); --w: 2px; stroke-dasharray: 5 4; }
-  .sp-edges .is-on.sp-role { stroke: var(--accent, var(--machine)); --w: 2px; }
+  .sp-same { stroke: var(--accent); --w: 2px; stroke-dasharray: 5 4; }
+  .sp-edges .is-on.sp-role { stroke: var(--accent); --w: 2px; }
 
   .sp-node { cursor: pointer; }
   .sp-act-mark { fill: var(--muted); }
@@ -45,11 +43,11 @@
   .sp-person[class*="st-"]:not(.sp-centre), .sp-group[class*="st-"] { fill: var(--st); }
   .sp-local[class*="st-"] { fill: var(--stage); stroke: var(--st); }
   .sp-group { fill: var(--text); stroke: var(--stage); stroke-width: 1; }
-  .sp-centre { fill: var(--accent, var(--pen)); stroke: var(--stage); }
+  .sp-centre { fill: var(--accent); stroke: var(--stage); }
   .sp-column { stroke: var(--muted); stroke-width: 1.25; }
   .sp-hit { fill: transparent; }
-  .sp-node.is-pointed .sp-person, .sp-node.is-pointed .sp-group { stroke: var(--accent, var(--pen)); stroke-width: 2.5; }
-  .sp-node.is-pointed .sp-act-mark, .sp-node.is-pinned .sp-act-mark { fill: var(--accent, var(--pen)); }
+  .sp-node.is-pointed .sp-person, .sp-node.is-pointed .sp-group { stroke: var(--accent); stroke-width: 2.5; }
+  .sp-node.is-pointed .sp-act-mark, .sp-node.is-pinned .sp-act-mark { fill: var(--accent); }
 
   /* One typeface in two sizes and two weights: names regular, the selection and the case
      semibold, numbers and direction words small. */
@@ -97,7 +95,8 @@
   .it-tip-sts { display: grid; gap: 2px; padding: 0; list-style: none; }
   .it-tip-sts .ann-chip { font-size: 0.85em; vertical-align: baseline; }
   .it-tip-none, .it-tip-foot { color: var(--muted); }
-  .it-link { stroke: var(--stand-church); stroke-width: 1.2; stroke-opacity: 0.7; }
+  /* Shared persons in a neutral ink: the estate colours belong to the person drawings. */
+  .it-link { stroke: var(--muted); stroke-width: 1.2; stroke-opacity: 0.7; }
   .it-step { stroke: var(--accent); stroke-width: 2.5; }
   .it-same-place { fill: none; stroke: var(--accent-text); stroke-width: 1.5; }
   .it-person-pick { display: grid; }

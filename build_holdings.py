@@ -157,6 +157,8 @@ def build(source: Path, out: Path) -> dict:
                 "u": r["uid"],
                 "i": r["identifier"],
                 "s": r["start_date"],
+                # The dating prose of the delivery, shown in the card head like on run regesta.
+                "d": None if is_null(r.get("date_string")) else plain_text(r["date_string"]),
                 "p": issue_place.get(r["uid"]),
                 # The delivery writes a missing value as the string "null" and some localities
                 # with markup; neither may reach a page.

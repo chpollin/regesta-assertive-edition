@@ -1,11 +1,15 @@
-"""Check of build_site.py against the real factoid run.
+"""Check of build_site.py against the factoid run the edition shows.
 
 Builds the curated site into a temporary folder and asserts the contract of the build:
 every content page carries exactly one h1, the licence line and links to the about and
 method pages, every regest has its TEI, Turtle and JSON file and a page that holds its
 regest text, the evidence pieces of a regest page give back the regest text, and nothing
-from knowledge/ is part of the build. Skipped when the sibling repository or the run is
-missing.
+from knowledge/ is part of the build. The shown run must be present: a missing run fails
+the check instead of skipping it, so a renamed or moved run cannot pass unnoticed.
+
+A second, cheap check guards the stylesheets: the hidden attribute must hide in every page,
+also where a component sets its own display (the tooltip of the itinerary stood visible
+while hidden until 2026-11-17).
 
 Usage
     python -m pytest -q checks/test_site.py
@@ -29,12 +33,12 @@ import build_site
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "pipeline"
-RUN = "factoid-2026-11-11"
+RUN = "factoid-1153-2026-11-11"
 
 
-@unittest.skipUnless((SOURCE / "runs" / RUN / "manifest.json").is_file(), "factoid run not available")
 class SiteBuild(unittest.TestCase):
     def test_pages_files_and_boundary(self) -> None:
+        self.assertTrue((SOURCE / "runs" / RUN / "manifest.json").is_file(), f"shown run {RUN} missing")
         texts = json.loads((ROOT / "edition" / "texts.json").read_text(encoding="utf-8"))
         with tempfile.TemporaryDirectory() as tmp, redirect_stdout(StringIO()):
             out = Path(tmp) / "site"
@@ -57,6 +61,15 @@ class SiteBuild(unittest.TestCase):
                 para = re.search(r'<p class="regest-text">(.*?)</p>', doc, re.S).group(1)
                 self.assertEqual(html.unescape(re.sub(r"<[^>]+>", "", para)), r["text"], s)
             self.assertFalse(any("knowledge" in p.parts for p in out.rglob("*")))
+
+
+class HiddenAttribute(unittest.TestCase):
+    def test_global_hidden_rule(self) -> None:
+        # css/shell.css is the one stylesheet every static page and the views load.
+        css = (ROOT / "css" / "shell.css").read_text(encoding="utf-8")
+        self.assertRegex(css, r"@layer reset\s*\{\s*\[hidden\]\s*\{\s*display:\s*none\s*!important;?\s*\}")
+        self.assertIn("css/shell.css", (ROOT / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("css/shell.css", (ROOT / "build_site.py").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

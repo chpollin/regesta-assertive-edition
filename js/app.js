@@ -93,44 +93,68 @@ let dispose = null;
 /** The last view address, so the reading view can lead back with person and filters kept. */
 let lastView = "#/";
 
+/**
+ * The view contract. Every view is a function render(store, options) with options
+ * {filters, detail, texts} and the subject of its address (actor, place or person), and
+ * returns {element, aside?, dispose?, focus?}: element fills the drawing area, aside the
+ * sidebar (a view without aside is laid out as a page), dispose releases listeners and
+ * observers before the next route, focus places the keyboard focus after rendering.
+ *
+ * The routes: the first part of the hash picks the entry, `subject` turns the rest of the
+ * address into the view's subject (null when it names nothing known). `holdings` marks the
+ * views that need the whole-delivery layer; without it their address falls to the notice.
+ */
+const ROUTES = {
+  "": { navKey: "zeit-netz", title: "Zeit und Netz", render: (store, rest, ctx) => renderOverview(store, { actor: null, ...ctx }) },
+  personen: { navKey: "zeit-netz", title: "Zeit und Netz", render: (store, rest, ctx) => renderOverview(store, { actor: actorIn(store, rest), ...ctx }) },
+  itinerar: { navKey: "itinerar", title: "Itinerar", holdings: true, render: (store, rest, ctx) => renderItinerary(store, { place: keyIn(store.holdings.places, rest), ...ctx }) },
+  zeitband: { navKey: "zeitband", title: "Zeitband", holdings: true, render: (store, rest, ctx) => renderTimeband(store, { person: keyIn(store.holdings.persons, rest), ...ctx }) },
+  jahrzehnte: { navKey: "jahrzehnte", title: "Jahrzehnte", holdings: true, render: (store, rest, ctx) => renderDecades(store, { place: keyIn(store.holdings.places, rest), ...ctx }) },
+  raum: { navKey: "raum", title: "Raum", render: (store, rest, ctx) => renderSpace(store, { actor: actorIn(store, rest), ...ctx }) },
+};
+
+/** The rest of the address as one decoded id. */
+const idOf = (rest) => decodeURIComponent(rest.join("/"));
+/** A person or group of the run's graph named by the address, or null. */
+function actorIn(store, rest) {
+  const id = idOf(rest);
+  return store.edition.graph.nodes.some((n) => n.id === id && n.kind !== "act") ? id : null;
+}
+/** A key of a table of the whole delivery (places, persons) named by the address, or null. */
+function keyIn(table, rest) {
+  const id = idOf(rest);
+  return table[id] ? id : null;
+}
+
+/** The citable page of a regest: the same component as the detail panel, at page size. */
+function regestPage(store, regest, claim) {
+  return {
+    element: h(
+      "div",
+      { class: "regest-page" },
+      h("p", { class: "back-link" }, h("a", { href: lastView }, "Zurück zur Ansicht")),
+      h("h1", { class: "visually-hidden", text: regest.identifier }),
+      renderRegestCard(store, regest.uid, { claim, texts, page: true }),
+    ),
+  };
+}
+
 /** @param {Store} store @param {ReturnType<typeof createFilters>} filters */
 function route(store, filters) {
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   const view = parts[0] ?? "";
-  const actorOf = (rest, allowActs = false) => {
-    const id = decodeURIComponent(rest.join("/"));
-    return store.edition.graph.nodes.some((n) => n.id === id && (allowActs || n.kind !== "act")) ? id : null;
-  };
+  const entry = Object.hasOwn(ROUTES, view) ? ROUTES[view] : null;
   let content;
   let navKey = "zeit-netz";
   let title = "Zeit und Netz";
   if (view === "regest" && store.byUid.has(parts[1])) {
-    // The citable page of a regest shows the same component as the detail panel.
     const regest = store.byUid.get(parts[1]);
-    content = { element: h("div", { class: "regest-page" }, h("p", { class: "back-link" }, h("a", { href: lastView }, "Zurück zur Ansicht")), h("h1", { class: "visually-hidden", text: regest.identifier }), renderRegestCard(store, regest.uid, { claim: parts[2] ?? null, texts, page: true })) };
+    content = regestPage(store, regest, parts[2] ?? null);
     title = regest.identifier;
     navKey = "";
-  } else if (view === "" || view === "personen") {
-    content = renderOverview(store, { actor: view === "personen" ? actorOf(parts.slice(1)) : null, filters, detail, texts });
-  } else if (view === "itinerar" && store.holdings) {
-    const place = decodeURIComponent(parts.slice(1).join("/"));
-    content = renderItinerary(store, { place: store.holdings.places[place] ? place : null, filters, detail, texts });
-    navKey = "itinerar";
-    title = "Itinerar";
-  } else if (view === "zeitband" && store.holdings) {
-    const person = decodeURIComponent(parts.slice(1).join("/"));
-    content = renderTimeband(store, { person: store.holdings.persons[person] ? person : null, filters, detail, texts });
-    navKey = "zeitband";
-    title = "Zeitband";
-  } else if (view === "jahrzehnte" && store.holdings) {
-    const place = decodeURIComponent(parts.slice(1).join("/"));
-    content = renderDecades(store, { place: store.holdings.places[place] ? place : null, filters, detail, texts });
-    navKey = "jahrzehnte";
-    title = "Jahrzehnte";
-  } else if (view === "raum") {
-    content = renderSpace(store, { actor: actorOf(parts.slice(1)), filters, detail, texts });
-    navKey = "raum";
-    title = "Raum";
+  } else if (entry && (!entry.holdings || store.holdings)) {
+    content = entry.render(store, parts.slice(1), { filters, detail, texts });
+    ({ navKey, title } = entry);
   } else {
     content = { element: h("p", { text: "Diese Adresse führt zu keiner Ansicht. Die Navigation oben führt zu Zeit und Netz und zum Raum." }) };
   }

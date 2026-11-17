@@ -15,10 +15,10 @@
  */
 import { h } from "./dom.js";
 import { timeBand } from "./sidebar.js";
-import { yearOf } from "./filters.js";
+import { s, yearOf } from "./svg.js";
 import { renderRegestCard } from "./regest-card.js";
+import { param, writeAddress } from "./url.js";
 
-const SVG = "http://www.w3.org/2000/svg";
 // Row height: 20 px with a pointer, 28 px on a narrow touch screen, where a row is a target.
 const rowHeight = () => (matchMedia("(max-width: 40rem)").matches ? 28 : 20);
 const AXIS = 22;
@@ -45,14 +45,6 @@ export function focusKey(root) {
   const key = (e) => `${e.tagName}|${e.getAttribute("aria-label") ?? e.textContent}`;
   const wanted = key(el);
   return () => [...root.querySelectorAll("select, button, input, summary")].find((e) => key(e) === wanted)?.focus();
-}
-
-/** @param {string} tag @param {Record<string, any>} [attrs] */
-function s(tag, attrs = {}) {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) if (k !== "text" && v !== null && v !== undefined) el.setAttribute(k, String(v));
-  if (attrs.text) el.textContent = attrs.text;
-  return el;
 }
 
 /**
@@ -96,11 +88,10 @@ export function renderTimeband(store, options) {
     }
     return runs;
   })();
-  const params = new URLSearchParams(location.search);
   const state = {
     person: options.person && byId.has(options.person) ? options.person : null,
-    order: ["zeit", "name"].includes(params.get("ordnung")) ? params.get("ordnung") : "anzahl",
-    limit: LIMITS.includes(Number(params.get("zeige"))) ? Number(params.get("zeige")) : LIMITS[0],
+    order: ["zeit", "name"].includes(param("ordnung")) ? param("ordnung") : "anzahl",
+    limit: LIMITS.includes(Number(param("zeige"))) ? Number(param("zeige")) : LIMITS[0],
     pointed: null,
     opened: null,
   };
@@ -254,7 +245,7 @@ export function renderTimeband(store, options) {
 
   function select(id, { scroll = false } = {}) {
     state.person = id;
-    history.replaceState(null, "", `${location.search}#/zeitband${id ? `/${encodeURIComponent(id)}` : ""}`);
+    writeAddress({}, `#/zeitband${id ? `/${encodeURIComponent(id)}` : ""}`);
     const listed = shown.some((r) => r.p.id === id);
     if (id && !listed) draw();
     else mark();
@@ -292,12 +283,8 @@ export function renderTimeband(store, options) {
 
   function setting(key, value) {
     state[key] = value;
-    const q = new URLSearchParams(location.search);
-    q.delete(key === "order" ? "ordnung" : "zeige");
-    if (key === "order" && value !== "anzahl") q.set("ordnung", value);
-    if (key === "limit" && value !== LIMITS[0]) q.set("zeige", String(value));
-    const query = q.toString();
-    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    if (key === "order") writeAddress({ ordnung: value !== "anzahl" ? value : null });
+    else writeAddress({ zeige: value !== LIMITS[0] ? value : null });
     draw();
     renderSide();
   }

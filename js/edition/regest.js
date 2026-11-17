@@ -5,6 +5,7 @@
  * becomes a link back to the view the reader came from, same origin only.
  */
 import { bridge, loadRoutes, loadStore, siteUrl } from "./views.js";
+import { param } from "../url.js";
 
 export async function init(root) {
   backLink();
@@ -28,25 +29,23 @@ export async function init(root) {
   const files = slug ? { TEI: siteUrl(root, `tei/${slug}.xml`), TTL: siteUrl(root, `ttl/${slug}.ttl`), JSON: siteUrl(root, `json/${slug}.json`) } : null;
   // What only the static page knows moves into the areas of the page view: further fields of
   // the delivery (Originaldatierung to the metadata, Literatur and Anmerkungen to the
-  // apparatus), the external links and the citation forms. The static blocks then go.
-  const run = (p) => p.querySelector(".run-in")?.textContent.trim() ?? "";
-  const rest = (p) => p.textContent.slice(run(p).length).trim();
-  const fields = [...host.querySelectorAll(".fields p")]
-    .map((p) => ({ label: run(p), text: rest(p) }))
-    .filter((f) => f.label && f.label !== "Überlieferung" && f.label !== "Kommentar")
-    .map((f) => ({ ...f, where: f.label === "Originaldatierung" ? "meta" : "comment" }));
-  const cite = document.querySelector(".cite");
-  const citations = [...(cite?.querySelectorAll(":scope > p") ?? [])].map((p) => ({ label: run(p), text: rest(p) }));
-  const links = [...(cite?.querySelectorAll(".ext a") ?? [])].map((a) => ({ label: "Digitalisat", text: a.textContent.trim(), href: a.href }));
+  // apparatus), the external links and the citation forms, as build_site.py writes them into
+  // the JSON island #regest-meta. The static citation block then goes.
+  let meta = {};
+  try {
+    meta = JSON.parse(document.getElementById("regest-meta")?.textContent ?? "{}");
+  } catch {
+    // Without the island the page view shows the regest's own fields only.
+  }
   const pager = document.querySelector(".pager");
-  const card = renderRegestCard(store, uid, { claim, texts, page: true, files, pager, meta: { fields, citations, links } });
+  const card = renderRegestCard(store, uid, { claim, texts, page: true, files, pager, meta });
   host.replaceChildren(card);
-  cite?.remove();
+  document.querySelector(".cite")?.remove();
 }
 
 /** Validated return address: same origin, http or https, otherwise nothing is shown. */
 function backLink() {
-  const raw = new URLSearchParams(location.search).get("zurueck");
+  const raw = param("zurueck");
   const slot = document.querySelector(".back-slot");
   if (!raw || !slot) return;
   let url;

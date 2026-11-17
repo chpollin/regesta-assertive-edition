@@ -38,7 +38,16 @@ export async function init(root) {
       panel.replaceChildren();
     },
   };
-  const view = renderItinerary(store, { place: null, filters, detail, texts });
+  // The itinerary writes a chosen place into the address as #/itinerar/<place>; a reload
+  // opens on it again.
+  let asked = "";
+  try {
+    asked = decodeURIComponent(location.hash.match(/^#\/itinerar\/(.+)$/)?.[1] ?? "");
+  } catch {
+    // A malformed address opens on all places.
+  }
+  const place = Object.hasOwn(store.holdings.places, asked) ? asked : null;
+  const view = renderItinerary(store, { place, filters, detail, texts });
   const drawing = document.createElement("div");
   drawing.className = "embed-main";
   drawing.append(view.element, panel);

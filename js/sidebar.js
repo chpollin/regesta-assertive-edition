@@ -12,7 +12,7 @@
  */
 import { h } from "./dom.js";
 import { FAMILIES, familyIcon, familyOf } from "./relations.js";
-import { yearOf } from "./filters.js";
+import { yearOf } from "./svg.js";
 
 /**
  * @param {{edition: any, byUid: Map<string, any>}} store

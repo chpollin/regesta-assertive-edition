@@ -24,7 +24,13 @@ updated: 2026-11-17
 - Questions outside this repository: whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
 - The graph export writes the `rf:` and `rv:` terms under the provisional example.org namespaces until the operator decides a stable namespace; `build_graph.py --rf-namespace --rv-namespace` takes it (plan.md, Pipeline after the guest unit).
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
-- `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id and the skip on a missing run; they are to move onto `edition_io.py`.
+- `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
+
+## 2026-11-17 Dating prose in the holdings data
+
+- Trigger: the card head showed the ISO date for delivery regesta, because holdings.json had no dating prose (open point of the interface clean-up).
+- Changed: build_holdings.py writes `d`, the delivery's date_string as plain text, per regest; regest-card.js already reads it. design.md no longer names the removed tokens `--pen` and `--machine`.
+- Evidence: every regest of the rebuilt holdings.json has `d`; `uv run run.py check` passes.
 
 ## 2026-11-17 Frontend clean-up, phase 1: defects and refactoring without visual change
 

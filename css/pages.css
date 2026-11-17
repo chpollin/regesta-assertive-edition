@@ -1,191 +1,171 @@
-/* Content pages of the static edition: start text, regest list, single regest, persons,
-   method, data, about. The frame (header, navigation, footer) belongs to css/shell.css and
-   colours to css/tokens.css; the --pg names below only alias those tokens for this file.
-   The accent marks underlines, rules and focus; text in the accent hue uses --accent-text.
-   Every page loads tokens.css first, so the aliases need no fallback values. */
+/* Content pages of the static edition: start, regest list, single regest, persons, about.
+   The frame (header, navigation) and the base every page shares belong to css/shell.css,
+   colours to css/tokens.css, which every page loads first. The layer `pages` comes after the
+   components (tokens.css), so a rule here wins over a shared component rule. The accent
+   marks underlines, rules and focus; text in the accent hue uses --accent-text. */
 
-:root {
-  --pg-ground: var(--stage);
-  --pg-ink: var(--text);
-  --pg-muted: var(--muted);
-  --pg-line: var(--hairline);
-  --pg-accent: var(--accent);
-  --pg-tint: var(--accent-faint);
+@layer pages {
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .site-main { max-inline-size: 76rem; margin-inline: auto; inline-size: 100%; }
+  .site-main h1 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); font-weight: 600; line-height: 1.2; margin: 0 0 0.75rem; }
+  .site-main h2 { font-size: var(--step-0); font-weight: 600; margin: 2rem 0 0.5rem; }
+  .site-main p { margin: 0 0 0.75rem; }
+  .site-main a { color: var(--text); text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .site-main a:hover { text-decoration-thickness: 2px; }
+  .site-main code, .site-main pre { font-family: var(--font-code); font-size: 0.8125rem; }
+  .intro, .site-main section > p { max-inline-size: 72ch; }
+  .link-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+  .run-in { font-weight: 600; margin-inline-end: 0.35em; }
+  .missing { font-style: italic; }
+  /* A short note after a list entry: status of a regest, the regest of a local name. */
+  .row-mark { font-weight: 400; margin-inline-start: 0.35em; }
+  .regest-text { font-family: var(--font-source); }
+
+  /* Start */
+  .figure { margin-block: 1rem 1.5rem; min-block-size: 4rem; }
+  .figure-fallback { color: var(--muted); max-inline-size: 72ch; }
+  .jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+  .jump input { font: inherit; padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--text); }
+  .jump button { font: inherit; padding: 0.25rem 0.75rem; border: 1px solid var(--text); border-radius: 2px; background: var(--stage); color: var(--text); cursor: pointer; }
+  .jump-msg { color: var(--muted); }
+
+  /* Tables of regesta and persons */
+  .table-wrap { overflow-x: auto; max-inline-size: 100%; }
+  .list { border-collapse: collapse; inline-size: 100%; max-inline-size: 64rem; }
+  .list th, .list td { text-align: start; vertical-align: baseline; padding: 0.4rem 1rem 0.4rem 0; border-block-end: 1px solid var(--hairline); }
+  .list thead th { font-weight: 600; }
+  .list tbody th { font-weight: 600; }
+  .list:not(.persons) tbody th, .list td:last-child { white-space: nowrap; }
+  .persons td:last-child { inline-size: 6rem; }
+  .list .num { text-align: end; font-variant-numeric: tabular-nums; }
+
+  /* Single regest, the reading without JavaScript */
+  .title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; margin-block-end: 1rem; }
+  .title-row h1 { margin: 0; }
+  .pager { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+  .pager a { white-space: nowrap; text-decoration: none; color: var(--muted); }
+  .pager a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+  .back-slot:empty { display: none; }
+  .card-host { max-inline-size: 72rem; }
+  .paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
+  .regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
+  .fields, .cite { margin-block-start: 1.5rem; max-inline-size: 72ch; }
+  .cite { padding-block-start: 0.75rem; border-block-start: 1px solid var(--hairline); overflow-wrap: anywhere; }
+  .ext { list-style: none; padding: 0; margin: 0 0 0.75rem; }
+
+  .review-state { max-inline-size: 64ch; }
+  .factoid-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
+  .sentence { margin: 0; max-inline-size: 64ch; }
+  .act-type { font-weight: 600; }
+  .evq, .lit, .case-note, .before { margin: 0.25rem 0 0; max-inline-size: 64ch; }
+  .evq { font-family: var(--font-source); }
+  .history { margin-block-start: 1.5rem; }
+  .history summary { cursor: pointer; font-weight: 600; }
+  .history ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; margin-block-start: 0.75rem; max-inline-size: 72ch; }
+
+  .downloads { margin-block-start: 2rem; padding: 0.75rem 1rem; background: var(--accent-faint); border-radius: 2px; max-inline-size: 40rem; }
+  .downloads h2 { margin: 0 0 0.5rem; }
+  .downloads ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+  .downloads a { font-weight: 600; }
+
+  /* Persons */
+  .register, .forms { max-inline-size: 72ch; }
+  .mentions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; max-inline-size: 72ch; }
+  .mention-head { font-weight: 600; margin-inline-end: 0.35em; }
+
+  /* About */
+  .steps { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; max-inline-size: 72ch; counter-reset: step; }
+  .steps li { counter-increment: step; }
+  .step-title { font-weight: 600; }
+  .step-title::before { content: counter(step) ". "; }
+  .steps li > p:last-child { margin: 0.25rem 0 0; }
+  .placeholder { padding: 0.5rem 0.75rem; border: 1px dashed var(--edge); max-inline-size: 64ch; }
+
+  @media (max-width: 40rem) {
+    .list tbody th { white-space: normal; }
+  }
+
+  /* Embedded view (start page): drawing area and its sidebar side by side, one window high
+     at wide widths, stacked below 56rem as in the shell. */
+  .embed { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .embed-main { container: page / inline-size; min-inline-size: 0; block-size: 70dvh; }
+  .embed-aside { border-inline-start: 0; }
+  @media (min-width: 56.01rem) {
+    .embed { grid-template-columns: minmax(0, 1fr) var(--aside-width, 22rem); block-size: min(78dvh, 46rem); }
+    .embed-main { block-size: auto; }
+    .embed-main, .embed-aside { min-block-size: 0; overflow: hidden; }
+    .embed-aside { border-inline-start: 1px solid var(--hairline); }
+    .embed-aside { overflow-y: auto; }
+  }
+
+  /* Skip link and footer of the static pages. */
+  .skip { position: absolute; inset-inline-start: -999rem; }
+  .skip:focus { inset-inline-start: 0.5rem; inset-block-start: 0.5rem; background: var(--stage); padding: 0.5rem; z-index: 6; }
+  /* The footer: one quiet line, licence on the left, the page about the edition on the right. */
+  .site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1.5rem; max-inline-size: 76rem; margin-inline: auto; padding: 0.75rem 1.5rem 1.25rem; border-block-start: 1px solid var(--hairline); color: var(--muted); font-size: var(--step--1); }
+  .site-footer p { margin: 0; }
+  .site-footer a { color: inherit; text-decoration-color: var(--accent); }
+
+  /* Filter row of the lists: search and the eight family switches with sign and word; the
+     switches are the legend of the signs in the rows (rule 7). */
+  .list-filter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0 0 var(--space-3); }
+  .list-q { font: inherit; inline-size: min(100%, 16rem); padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--text); }
+  .fam-toggles { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+  .fam-toggle { display: inline-flex; align-items: center; gap: 0.3em; font: inherit; font-size: var(--step--1); padding: 2px var(--space-2); border: 1px solid var(--hairline); border-radius: 2px; background: var(--stage); color: var(--muted); cursor: pointer; }
+  .fam-toggle[aria-pressed="true"] { border-color: var(--accent-text); color: var(--text); box-shadow: inset 0 -2px 0 var(--accent); }
+  .filter-count { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--muted); margin-inline-end: var(--space-2); }
+  .list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--muted); border-block-end: 1px solid var(--hairline); }
+
+  /* Start page (2026-11-14): the figure is the page, full width and one window high under the
+     header with one line above it; at narrow widths it scrolls, the figure first. */
+  body[data-page="start"] .site-main { max-inline-size: none; padding: 0; }
+  body[data-page="start"] .site-footer { display: none; }
+  .start-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-4); padding: var(--space-2) var(--space-4); border-block-end: 1px solid var(--hairline); font-size: var(--step--1); }
+  .start-lede { margin: 0; color: var(--muted); }
+  .start-example { font-weight: 600; }
+  .start-head .jump { margin: 0 0 0 auto; display: inline-flex; gap: var(--space-1); align-items: center; }
+  .start-head .jump input { font: inherit; padding: 2px var(--space-2); border: 1px solid var(--edge); border-radius: 2px; }
+  .start-head .jump button { font: inherit; padding: 2px var(--space-2); border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); cursor: pointer; }
+  .embed-start .embed-aside { padding: var(--space-3); background: var(--side); }
+  .embed-start .embed-main { position: relative; }
+  .start-detail { position: absolute; inset-block: var(--space-2); inset-inline-end: var(--space-2); inline-size: min(30rem, calc(100% - 2 * var(--space-2))); overflow-y: auto; padding: var(--space-3); background: var(--stage); border: 1px solid var(--hairline); box-shadow: 0 4px 18px rgb(0 0 0 / 0.08); z-index: 4; }
+  @media (min-width: 56rem) {
+    html:has(body[data-page="start"]) { overflow: hidden; }
+    body[data-page="start"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
+    body[data-page="start"] .site-main { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; }
+    /* No margin: the figure fills its row exactly, the margin of .figure pushed it 1rem below the window. */
+    .embed.embed-start { grid-template-columns: var(--aside-width, 19rem) minmax(0, 1fr); block-size: 100%; min-block-size: 0; margin-block: 0; }
+    .embed-start .embed-aside { border-inline-start: 0; border-inline-end: 1px solid var(--hairline); }
+  }
+  /* Narrow: the regest list keeps number, date and the kinds of statements; the place stands
+     on the regest page and in the Orte object, so a row stays within two lines at 360 px. */
+  @media (max-width: 40rem) {
+    .list.regests thead { display: none; }
+    .list.regests, .list.regests tbody { display: block; }
+    .list.regests td:last-child { white-space: normal; text-align: end; }
+    .list.regests tr { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--hairline); }
+    .list.regests th, .list.regests td { padding: 0; border: 0; }
+    .list.regests td:nth-child(3) { display: none; }
+    .list.regests td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--muted); }
+    .list.regests td:nth-child(4) { justify-self: end; }
+    .table-wrap:has(.list.regests) { overflow: visible; }
+  }
+  @media (max-width: 40rem) {
+    .list.persons, .list.persons tbody { display: block; }
+    .list.persons thead { display: none; }
+    .list.persons tr { display: grid; grid-template-columns: 1fr auto; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--hairline); }
+    .list.persons th, .list.persons td { padding: 0; border: 0; white-space: normal; }
+    .list.persons tr.group { display: block; }
+    .list.persons td:nth-child(2) { grid-row: 2; grid-column: 1 / -1; }
+    .list.persons td.num { grid-row: 1; grid-column: 2; }
+  }
+  /* Links in list rows rest without underline and underline on pointing and focus (rule 10);
+     the semibold weight of the first column tells them from the text beside. */
+  .list tbody th a { text-decoration: none; }
+  .list tbody th a:hover, .list tbody th a:focus-visible { text-decoration: underline; }
+
+  @media (min-width: 40.01rem) {
+    .list.persons thead th.num { white-space: nowrap; }
+  }
 }
-
-/* Base for the static pages, which do not load the views' app.css. */
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-family: var(--font-ui, system-ui, sans-serif); font-size: var(--step-0, 1rem); line-height: 1.5; }
-:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.site-main { max-inline-size: 76rem; margin-inline: auto; inline-size: 100%; }
-.site-main h1 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); font-weight: 600; line-height: 1.2; margin: 0 0 0.75rem; }
-.site-main h2 { font-size: var(--step-0, 1rem); font-weight: 600; margin: 2rem 0 0.5rem; }
-.site-main p { margin: 0 0 0.75rem; }
-.site-main a { color: var(--pg-ink); text-decoration-color: var(--pg-accent); text-underline-offset: 0.2em; }
-.site-main a:hover { text-decoration-thickness: 2px; }
-.site-main code, .site-main pre { font-family: var(--font-code, ui-monospace, monospace); font-size: 0.8125rem; }
-.intro, .lede, .site-main section > p { max-inline-size: 72ch; }
-.link-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
-.run-in { font-weight: 600; margin-inline-end: 0.35em; }
-.missing { font-style: italic; }
-.mark { font-weight: 400; margin-inline-start: 0.35em; }
-.source, .regest-text { font-family: var(--font-source, Georgia, serif); }
-
-.visually-hidden { position: absolute !important; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-
-/* Start */
-.lede { font-size: var(--step-0, 1rem); }
-.figure { margin-block: 1rem 1.5rem; min-block-size: 4rem; }
-.figure-fallback { color: var(--pg-muted); max-inline-size: 72ch; }
-.entries { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 2rem; list-style: none; padding: 0; margin: 0; }
-.entries > li > a { font-weight: 600; }
-.jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.jump[hidden] { display: none; }
-.jump input, .filter input { font: inherit; padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--pg-ink); }
-.jump button { font: inherit; padding: 0.25rem 0.75rem; border: 1px solid var(--pg-ink); border-radius: 2px; background: var(--stage); color: var(--pg-ink); cursor: pointer; }
-.jump-msg { color: var(--pg-muted); }
-
-/* Tables of regesta, persons and files */
-.table-wrap { overflow-x: auto; max-inline-size: 100%; }
-.list { border-collapse: collapse; inline-size: 100%; max-inline-size: 64rem; }
-.list th, .list td { text-align: start; vertical-align: baseline; padding: 0.4rem 1rem 0.4rem 0; border-block-end: 1px solid var(--pg-line); }
-.list thead th { font-weight: 600; }
-.list tbody th { font-weight: 600; }
-.list:not(.persons) tbody th, .list td:last-child { white-space: nowrap; }
-.persons td:last-child { inline-size: 6rem; }
-.list .num { text-align: end; font-variant-numeric: tabular-nums; }
-.list.data { max-inline-size: 40rem; }
-.filter { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.filter[hidden] { display: none; }
-.filter-count { color: var(--pg-muted); }
-
-/* Single regest */
-.title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; margin-block-end: 1rem; }
-.title-row h1 { margin: 0; }
-.pager { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
-.pager a { white-space: nowrap; text-decoration: none; color: var(--pg-muted); }
-.pager a:hover { text-decoration: underline; text-decoration-color: var(--pg-accent); }
-.back-slot:empty { display: none; }
-.card-host { max-inline-size: 72rem; }
-.paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
-.regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
-.fields, .cite { margin-block-start: 1.5rem; max-inline-size: 72ch; }
-.cite { padding-block-start: 0.75rem; border-block-start: 1px solid var(--pg-line); overflow-wrap: anywhere; }
-.ext { list-style: none; padding: 0; margin: 0 0 0.75rem; }
-
-.review-state { max-inline-size: 64ch; }
-.factoid-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
-.sentence { margin: 0; max-inline-size: 64ch; }
-.act-type { font-weight: 600; }
-.evq, .lit, .case-note, .before { margin: 0.25rem 0 0; max-inline-size: 64ch; }
-.evq { font-family: var(--font-source, Georgia, serif); }
-.history { margin-block-start: 1.5rem; }
-.history summary { cursor: pointer; font-weight: 600; }
-.history ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; margin-block-start: 0.75rem; max-inline-size: 72ch; }
-
-.downloads { margin-block-start: 2rem; padding: 0.75rem 1rem; background: var(--pg-tint); border-radius: 2px; max-inline-size: 40rem; }
-.downloads h2 { margin: 0 0 0.5rem; }
-.downloads ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
-.downloads a { font-weight: 600; }
-
-/* Persons */
-.register, .forms { max-inline-size: 72ch; }
-.mentions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; max-inline-size: 72ch; }
-.mention-head { font-weight: 600; margin-inline-end: 0.35em; }
-
-/* Method and about */
-.steps { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; max-inline-size: 72ch; counter-reset: step; }
-.steps li { counter-increment: step; }
-.step-title { font-weight: 600; }
-.step-title::before { content: counter(step) ". "; }
-.steps li > p:last-child { margin: 0.25rem 0 0; }
-.code { white-space: pre-wrap; overflow-wrap: anywhere; padding: 0.75rem; border: 1px solid var(--pg-line); border-radius: 2px; max-inline-size: 80ch; }
-.placeholder { padding: 0.5rem 0.75rem; border: 1px dashed var(--edge); max-inline-size: 64ch; }
-
-@media (max-width: 40rem) {
-  .list tbody th { white-space: normal; }
-}
-
-/* Embedded views (start and person pages): drawing area and its sidebar side by side, one
-   window high at wide widths, stacked below 56rem as in the shell. */
-.embed { display: grid; grid-template-columns: minmax(0, 1fr); }
-.embed-main { container: page / inline-size; min-inline-size: 0; block-size: 70dvh; }
-.embed-aside { border-inline-start: 0; }
-@media (min-width: 56.01rem) {
-  .embed { grid-template-columns: minmax(0, 1fr) var(--aside-width, 22rem); block-size: min(78dvh, 46rem); }
-  .embed-main { block-size: auto; }
-  .embed-main, .embed-aside { min-block-size: 0; overflow: hidden; }
-  .embed-aside { border-inline-start: 1px solid var(--pg-line); }
-  .embed-aside { overflow-y: auto; }
-}
-
-/* Footer and skip link of the static pages; shell.css does not style them yet. */
-.skip { position: absolute; inset-inline-start: -999rem; }
-.skip:focus { inset-inline-start: 0.5rem; inset-block-start: 0.5rem; background: var(--pg-ground); padding: 0.5rem; z-index: 6; }
-/* The footer: one quiet line, licence on the left, the page about the edition on the right. */
-.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1.5rem; max-inline-size: 76rem; margin-inline: auto; padding: 0.75rem 1.5rem 1.25rem; border-block-start: 1px solid var(--pg-line); color: var(--pg-muted); font-size: var(--step--1, 0.875rem); }
-.site-footer p { margin: 0; }
-.site-footer a { color: inherit; text-decoration-color: var(--pg-accent); }
-
-/* Filter row of the lists: search and the eight family switches with sign and word; the
-   switches are the legend of the signs in the rows (rule 7). */
-.list-filter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0 0 var(--space-3); }
-.list-q { font: inherit; inline-size: min(100%, 16rem); padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--pg-ink); }
-.fam-toggles { display: flex; flex-wrap: wrap; gap: var(--space-1); }
-.fam-toggle { display: inline-flex; align-items: center; gap: 0.3em; font: inherit; font-size: var(--step--1); padding: 2px var(--space-2); border: 1px solid var(--hairline); border-radius: 2px; background: var(--stage); color: var(--pg-muted); cursor: pointer; }
-.fam-toggle[aria-pressed="true"] { border-color: var(--accent-text); color: var(--pg-ink); box-shadow: inset 0 -2px 0 var(--pg-accent); }
-.filter-count { color: var(--pg-muted); font-variant-numeric: tabular-nums; }
-.fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--pg-muted); margin-inline-end: var(--space-2); }
-.list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--pg-muted); border-block-end: 1px solid var(--pg-line); }
-
-/* Start page (2026-11-14): the figure is the page, full width and one window high under the
-   header with one line above it; at narrow widths it scrolls, the figure first. */
-body[data-page="start"] .site-main { max-inline-size: none; padding: 0; }
-body[data-page="start"] .site-footer { display: none; }
-.start-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-4); padding: var(--space-2) var(--space-4); border-block-end: 1px solid var(--pg-line); font-size: var(--step--1); }
-.start-lede { margin: 0; color: var(--pg-muted); }
-.start-example { font-weight: 600; }
-.start-head .jump { margin: 0 0 0 auto; display: inline-flex; gap: var(--space-1); align-items: center; }
-.start-head .jump input { font: inherit; padding: 2px var(--space-2); border: 1px solid var(--edge); border-radius: 2px; }
-.start-head .jump button { font: inherit; padding: 2px var(--space-2); border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); cursor: pointer; }
-.embed-start .embed-aside { padding: var(--space-3); background: var(--side); }
-.embed-start .embed-main { position: relative; }
-.start-detail { position: absolute; inset-block: var(--space-2); inset-inline-end: var(--space-2); inline-size: min(30rem, calc(100% - 2 * var(--space-2))); overflow-y: auto; padding: var(--space-3); background: var(--stage); border: 1px solid var(--pg-line); box-shadow: 0 4px 18px rgb(0 0 0 / 0.08); z-index: 4; }
-@media (min-width: 56rem) {
-  html:has(body[data-page="start"]) { overflow: hidden; }
-  body[data-page="start"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
-  body[data-page="start"] .site-main { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; }
-  .embed.embed-start { grid-template-columns: var(--aside-width, 19rem) minmax(0, 1fr); block-size: 100%; min-block-size: 0; }
-  .embed-start .embed-aside { border-inline-start: 0; border-inline-end: 1px solid var(--pg-line); }
-}
-/* Narrow: the regest list keeps number, date and the kinds of statements; the place stands
-   on the regest page and in the Orte object, so a row stays within two lines at 360 px. */
-@media (max-width: 40rem) {
-  .list.regests thead { display: none; }
-  .list.regests, .list.regests tbody { display: block; }
-  .list.regests td:last-child { white-space: normal; text-align: end; }
-  .list.regests tr { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--pg-line); }
-  .list.regests th, .list.regests td { padding: 0; border: 0; }
-  .list.regests td:nth-child(3) { display: none; }
-  .list.regests td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--pg-muted); }
-  .list.regests td:nth-child(4) { justify-self: end; }
-  .table-wrap:has(.list.regests) { overflow: visible; }
-}
-@media (max-width: 40rem) {
-  .list.persons, .list.persons tbody { display: block; }
-  .list.persons thead { display: none; }
-  .list.persons tr { display: grid; grid-template-columns: 1fr auto; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--pg-line); }
-  .list.persons th, .list.persons td { padding: 0; border: 0; white-space: normal; }
-  .list.persons tr.group { display: block; }
-  .list.persons td:nth-child(2) { grid-row: 2; grid-column: 1 / -1; }
-  .list.persons td.num { grid-row: 1; grid-column: 2; }
-}
-/* Links in list rows rest without underline and underline on pointing and focus (rule 10);
-   the semibold weight of the first column tells them from the text beside. */
-.list tbody th a { text-decoration: none; }
-.list tbody th a:hover, .list tbody th a:focus-visible { text-decoration: underline; }
-
-@media (min-width: 40.01rem) {
-  .list.persons thead th.num { white-space: nowrap; }
-}
-

@@ -1,6 +1,24 @@
 /* The shell of the edition: header with navigation, drawing area, one sidebar. The same
    class names are used by the static pages of the curated build. Colours from tokens.css. */
 
+/* The hidden attribute always hides: a component's display rule (.it-tip { display: grid })
+   otherwise overrides it. Important in the first layer, so no later layer can undo it. This
+   file is the one stylesheet every page and the views load. */
+@layer reset {
+  [hidden] { display: none !important; }
+  *, *::before, *::after { box-sizing: border-box; }
+}
+
+/* The base every page and the views share. */
+@layer base {
+  body { margin: 0; background: var(--stage); color: var(--text); font-family: var(--font-ui); font-size: var(--step-0); line-height: 1.5; }
+  .source { font-family: var(--font-source); }
+}
+
+@layer utilities {
+  .visually-hidden { position: absolute !important; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
 @layer layout {
   body { min-block-size: 100dvh; }
 
@@ -42,7 +60,6 @@
   body[data-layout="page"] .site-main { padding: var(--space-6) var(--space-5) var(--space-7); max-inline-size: 104rem; margin-inline: auto; inline-size: 100%; }
   .site-main:focus { outline: none; }
   .site-aside { min-inline-size: 0; overflow-y: auto; background: var(--side); border-inline-end: 1px solid var(--hairline); padding: var(--space-4); }
-  .site-aside[hidden], .site-detail[hidden] { display: none; }
   .site-detail { min-inline-size: 0; overflow-y: auto; border-inline-start: 1px solid var(--hairline); padding: var(--space-4); background: var(--stage); }
 
   /* Narrow windows: the drawing first, the sidebar below it at its natural height. */
@@ -82,11 +99,6 @@
   .band-scale { display: flex; justify-content: space-between; color: var(--muted); font-variant-numeric: tabular-nums; }
   .band-label { color: var(--text); font-weight: 600; }
 
-  .fam-toggles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-1); }
-  .fam-toggle { display: flex; justify-content: space-between; gap: var(--space-1); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); cursor: pointer; font-size: 0.8125rem; color: var(--muted); }
-  .fam-toggle[aria-pressed="true"] { color: var(--text); border-color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
-  .fam-toggle:disabled { opacity: 0.45; cursor: default; box-shadow: none; border-color: var(--hairline); }
-
   .fam-group { border-block-end: 1px solid var(--hairline); }
   .fam-group > summary { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: var(--space-2); list-style: none; }
   .fam-group > summary::-webkit-details-marker { display: none; }
@@ -96,9 +108,6 @@
   .fam-group > summary .fam-icon { flex: none; align-self: center; color: var(--muted); }
   .fam-n { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .act-rows { display: grid; gap: var(--space-1); padding: 0 0 var(--space-2) calc(1em + var(--space-2)); margin: 0; }
-  .act-row summary { display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: var(--space-2); list-style: none; padding-block: 2px; }
-  .act-row summary::-webkit-details-marker { display: none; }
-  .act-row summary:hover .act-name { text-decoration: underline; }
   .act-year, .act-short { color: var(--muted); font-variant-numeric: tabular-nums; }
 
   /* A small view bar placed on the drawing area. */
@@ -135,23 +144,12 @@
   .side-trace { color: var(--accent-text); text-decoration: none; font-size: var(--step--1); }
   .side-trace:hover, .side-trace:focus-visible { text-decoration: underline; }
   .head-icon { inline-size: 1em; block-size: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
-  .card-head .pager { display: inline-flex; gap: var(--space-1); margin-inline-start: auto; }
-  .card-head .pager a { display: inline-grid; place-items: center; inline-size: 2rem; block-size: 2rem; border-radius: 2px; color: var(--muted); text-decoration: none; }
-  .card-head .pager a:hover, .card-head .pager a:focus-visible { color: var(--text); background: var(--accent-faint); }
-  .card-head .back-slot a { font-size: var(--step--1); }
   .card-close { margin-inline-start: auto; background: none; border: 0; font-size: inherit; line-height: 1; cursor: pointer; color: var(--muted); padding: 0 var(--space-1); }
   .card-text { font-size: var(--step-0); line-height: 1.6; }
-  .card-text .ev { text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 0.2em; }
-  .card-text .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
-  /* The annotated text: tags and brackets in the accent text colour of the interface face,
-     roles as a small muted gloss under the name; the line height leaves room for the glosses. */
-  /* Tags take the style of the regest number in the head (interface face, semibold, text
-     colour), so the page keeps six text styles; the accent bar and bracket mark the layer. */
   /* The regest with its statements as notes (since 2026-11-14): the text reads as text, a
      small number marks where a statement's passage begins, and the note beside or below
      names kind, participants and roles; pointing at either lights the other. */
   .card-text.is-noted { line-height: 1.7; }
-  .card-text.is-noted .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
   .ann-n { white-space: nowrap; }
   .ann-n.is-on { background: var(--accent-faint); }
   .card-body { position: relative; }

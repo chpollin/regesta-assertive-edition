@@ -14,8 +14,9 @@ import { createSidebar } from "./sidebar.js";
 import { keyRoom, keysOf, shapeKey, standKeys } from "./shape-key.js";
 import { standOf } from "./stand.js";
 import { renderRegestCard } from "./regest-card.js";
+import { s, yearOf } from "./svg.js";
+import { param, writeAddress } from "./url.js";
 
-const SVG = "http://www.w3.org/2000/svg";
 const DEG = Math.PI / 180;
 /**
  * Three snapping views of the same cube in orthographic projection, after the space-time
@@ -35,25 +36,6 @@ const START = Object.freeze({ yaw: VIEWS.schraeg.yaw, pitch: VIEWS.schraeg.pitch
 /** World units: acts on radius 1, the time column 3.2 high, the floor ring at radius 1.75. */
 const HEIGHT = 3.2;
 const RING = 1.9;
-
-/** @param {string} tag @param {Record<string, any>} [attrs] @param {...any} children */
-function s(tag, attrs = {}, ...children) {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) {
-    if (v === null || v === undefined || v === false) continue;
-    if (k === "text") el.textContent = v;
-    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
-    else el.setAttribute(k, String(v));
-  }
-  for (const c of children.flat()) if (c) el.append(c);
-  return el;
-}
-
-/** Fractional year of an ISO date, the same rule as the timeline. */
-function yearOf(iso) {
-  const [y, m, d] = iso.split("-").map(Number);
-  return y + ((m - 1) * 30.4 + (d - 1)) / 365;
-}
 
 /** Horizontal world position for an angle in degrees (clockwise from north) and a radius. */
 function polar(angle, radius) {
@@ -105,8 +87,7 @@ export function renderSpace(store, options = {}) {
   // range and families come from the shared filters of the sidebar; the hash keeps the
   // route and the person.
   const filters = options.filters;
-  const params = new URLSearchParams(location.search);
-  const startView = VIEWS[params.get("ansicht")] ? params.get("ansicht") : "schraeg";
+  const startView = Object.hasOwn(VIEWS, param("ansicht") ?? "") ? param("ansicht") : "schraeg";
   const state = {
     actor: /** @type {string|null} */ (options.actor ?? null),
     view: { yaw: VIEWS[startView].yaw, pitch: VIEWS[startView].pitch, zoom: 1 },
@@ -114,7 +95,7 @@ export function renderSpace(store, options = {}) {
     snap: startView,
     preview: /** @type {string|null} */ (null),
     /** Corpus mode: the minimum number of statements a person needs to be shown. */
-    corpus: { min: [1, 2, 3, 5].includes(Number(params.get("mindestens"))) ? Number(params.get("mindestens")) : 2 },
+    corpus: { min: [1, 2, 3, 5].includes(Number(param("mindestens"))) ? Number(param("mindestens")) : 2 },
   };
 
   const tip = h("p", { class: "canvas-status", role: "status", "aria-live": "polite" });
@@ -569,12 +550,10 @@ export function renderSpace(store, options = {}) {
     freeMark.hidden = state.snap !== "frei";
     minSelect.hidden = !!state.actor;
     minSelect.value = String(state.corpus.min);
-    const q = new URLSearchParams(location.search);
-    for (const k of ["ansicht", "mindestens"]) q.delete(k);
-    if (!state.actor && state.corpus.min !== 2) q.set("mindestens", String(state.corpus.min));
-    if (state.snap !== "schraeg" && state.snap !== "frei") q.set("ansicht", state.snap);
-    const query = q.toString();
-    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    writeAddress({
+      mindestens: !state.actor && state.corpus.min !== 2 ? state.corpus.min : null,
+      ansicht: state.snap !== "schraeg" && state.snap !== "frei" ? state.snap : null,
+    });
   }
 
   /** Where a node's label hangs: an act at its mark, a person at its earliest year. */
@@ -719,7 +698,7 @@ export function renderSpace(store, options = {}) {
   function select(id) {
     state.actor = id;
     state.preview = null;
-    history.replaceState(null, "", `${location.search}${id ? `#/raum/${encodeURIComponent(id)}` : "#/raum"}`);
+    writeAddress({}, id ? `#/raum/${encodeURIComponent(id)}` : "#/raum");
     model = buildModel();
     sidebar.setPerson(id);
     draw();

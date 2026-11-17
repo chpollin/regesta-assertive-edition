@@ -15,22 +15,10 @@ import { standOf } from "./stand.js";
 import { createSidebar } from "./sidebar.js";
 import { renderRegestCard } from "./regest-card.js";
 import { drawPersonNetwork, personNetwork } from "./person-overview.js";
+import { s } from "./svg.js";
+import { writeAddress } from "./url.js";
 
-const SVG = "http://www.w3.org/2000/svg";
 const LABELLED_HUBS = 8;
-
-/** @param {string} tag @param {Record<string, any>} [attrs] @param {...any} children */
-function s(tag, attrs = {}, ...children) {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) {
-    if (v === null || v === undefined || v === false) continue;
-    if (k === "text") el.textContent = v;
-    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
-    else el.setAttribute(k, String(v));
-  }
-  for (const c of children.flat()) if (c) el.append(c);
-  return el;
-}
 
 /**
  * The graph restricted by the shared filters: acts of a family that is switched on and of a
@@ -175,7 +163,7 @@ export function renderOverview(store, options) {
   function select(id) {
     state.actor = id;
     state.open = null;
-    history.replaceState(null, "", `${location.search}${id ? `#/personen/${encodeURIComponent(id)}` : "#/"}`);
+    writeAddress({}, id ? `#/personen/${encodeURIComponent(id)}` : "#/");
     sidebar.setPerson(id);
     draw();
     if (id) network?.focus(id);

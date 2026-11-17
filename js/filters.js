@@ -8,12 +8,8 @@
  * the hash keeps route and person.
  */
 import { FAMILIES } from "./relations.js";
-
-/** Fractional year of an ISO date, the same rule as everywhere in the interface. */
-export function yearOf(iso) {
-  const [y, m, d] = iso.split("-").map(Number);
-  return y + ((m - 1) * 30.4 + (d - 1)) / 365;
-}
+import { yearOf } from "./svg.js";
+import { param, writeAddress } from "./url.js";
 
 /**
  * @param {{edition: any, holdings?: any}} store
@@ -26,18 +22,17 @@ export function createFilters(store) {
   const starts = store.holdings ? store.holdings.years.map(([y]) => y) : store.edition.regests.map((r) => Math.floor(yearOf(r.start)));
   const lo = Math.min(...starts);
   const hi = Math.max(...starts);
-  const params = new URLSearchParams(location.search);
   const clampYear = (v, fallback) => (Number.isFinite(v) && v >= lo && v <= hi ? v : fallback);
   const known = new Set(FAMILIES.map((f) => f.key));
-  const listed = (params.get("familien") ?? "").split(",").filter((k) => known.has(k));
+  const listed = (param("familien") ?? "").split(",").filter((k) => known.has(k));
   const listeners = new Set();
   const year = new Map(store.edition.regests.map((r) => [r.uid, Math.floor(yearOf(r.start))]));
 
   const state = {
     lo,
     hi,
-    from: clampYear(Number(params.get("von")), lo),
-    to: clampYear(Number(params.get("bis")), hi),
+    from: clampYear(Number(param("von")), lo),
+    to: clampYear(Number(param("bis")), hi),
     families: new Set(listed.length ? listed : known),
     onChange(fn) {
       listeners.add(fn);
@@ -70,13 +65,11 @@ export function createFilters(store) {
   };
 
   function write() {
-    const q = new URLSearchParams(location.search);
-    for (const k of ["von", "bis", "familien"]) q.delete(k);
-    if (state.from !== lo) q.set("von", String(state.from));
-    if (state.to !== hi) q.set("bis", String(state.to));
-    if (state.families.size !== known.size) q.set("familien", [...state.families].join(","));
-    const query = q.toString();
-    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    writeAddress({
+      von: state.from !== lo ? state.from : null,
+      bis: state.to !== hi ? state.to : null,
+      familien: state.families.size !== known.size ? [...state.families].join(",") : null,
+    });
   }
 
   return state;
