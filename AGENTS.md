@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Assertive edition of the Barbarossa regesta (RI IV,2) over the factoid runs of its own pipeline in `pipeline/`, with the whole delivery as a deterministic second layer. Read `knowledge/project.md` first, then `knowledge/plan.md` for the next steps, `knowledge/specification.md`, `knowledge/design.md`, `knowledge/ui-feedback.md` and `knowledge/data.md`. For the pipeline read `knowledge/pipeline.md`, `knowledge/factoid-model.md`, `knowledge/source-data.md` and `knowledge/testing.md`; `knowledge/annotation-guidelines.md`, `knowledge/domain-ontology.md` (pilot, archive), `knowledge/user-stories.md`, `knowledge/prompt-log.md` and `knowledge/ide-criteria.md` (snapshot of 2026-11-11) answer narrower questions. The pipeline came from the repository `regesta-rdf-demo` at f65887c on 2026-11-17; that repository stays as history and is no longer worked in.
+Assertive edition of the Barbarossa regesta (RI IV,2) over the factoid runs of its own pipeline in `pipeline/`, with the whole delivery as a deterministic second layer. Read `knowledge/INDEX.md` and the ` `knowledge/plan.md` for the next steps, `knowledge/specification.md`, `knowledge/design.md`, `knowledge/ui-feedback.md` and `knowledge/data.md`. For the pipeline read `knowledge/pipeline.md`, `knowledge/factoid-model.md`, `knowledge/source-data.md` and `knowledge/testing.md`; `knowledge/annotation-guidelines.md`, `knowledge/domain-ontology.md` (pilot, archive), `knowledge/user-stories.md`, `knowledge/prompt-log.md` and `knowledge/ide-criteria.md` (snapshot of 2026-11-11) answer narrower questions. The pipeline came from the repository `regesta-rdf-demo` at f65887c on 2026-11-17; that repository stays as history and is no longer worked in.
 
 ## Boundaries
 
@@ -75,6 +75,6 @@ The interface is checked on the rendered state: `node tools/check_ui_density.cjs
 - `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema
 - `build_site.py` curated static edition site into `site/`; `edition/texts.json` title, definition, licence and attribution; `js/edition/` its content pages
-- `checks/` contract tests, the transfer checks `test_pipeline.py` and the outdated browser check; `review/` screenshots
+- `checks/` contract tests and the transfer checks `test_pipeline.py`
 - `run.py` the entry point of the RDF workflow; `pipeline/` the pipeline with its scripts, `contracts/`, `runs/`, `source-material/` (Regesta Imperii CSV, CC BY 4.0), `generated/` and its own `ruff.toml`
 - `knowledge/` project knowledge

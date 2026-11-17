@@ -20,7 +20,6 @@ updated: 2026-11-17
 - The estate rule (js/stand.js, data.md Estate) errs on name forms without a title (Konrad III. as a regest-local node) and on forms that name a ruler in passing.
 - The model questions in factoid-model.md (Open questions for experts) wait for the operator and for experts, including the cases of the agent review of 2026-11-14: grants beside a confirmation as part of it or separate (n. †193), predecessors' acts typed as Grant (n. 145, n. 116), an exchange without a vocabulary term (n. 96), a complaint without a forum (n. 191).
 - The demonstration slides Demo 1 to Demo 4 of the THM deck still name paths of `regesta-rdf-demo`; the new paths went to the Research Coordination on 2026-11-17.
-- `data/edition.json` in the repository still holds the pilot run (`run.id` pilot-2026-11-09, last built 2026-11-11), while the site builds its own data from `factoid-1153-2026-11-11`; whether the tracked file is rebuilt or dropped is open.
 - Questions outside this repository: whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
 
 ## 2026-11-17 Pipeline moved into this repository
@@ -30,6 +29,7 @@ updated: 2026-11-17
 - Rejected: reformatting the pipeline scripts to this repository's line length, since the validator's hash is recorded in every validation report; they keep `pipeline/ruff.toml`. Merging the Git histories, which stays with the operator.
 - Found: the CSV start date of n. 103a (1138-06-01) contradicts its date string (1152 Juni/Juli); the edition carries it over unchanged, as a transfer should.
 - Changed: pipeline/, run.py, checks/test_pipeline.py, the `--source` defaults of the build and check scripts, AGENTS.md, knowledge/.
+- Tidied: README.md and knowledge/INDEX.md added; `data/edition.json` and `data/questions.json` rebuilt from `factoid-1153-2026-11-11` as AGENTS.md prescribes (they still held the pilot run of 2026-11-11, and the working views at 8096 load them without console errors); the unreferenced screenshots of the first slice in `review/` removed.
 - Evidence: the validation reports of both stages and the outputs of `build_data.py` and `build_tei.py` at the new place are byte-identical with those built from f65887c; every copied file matches its Git blob; `checks/` passes, and each of the four transfer checks fails on its mutations.
 
 ## 2026-11-15 Promptotyping pass: distill, curate, refactor
