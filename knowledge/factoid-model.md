@@ -9,7 +9,7 @@ method:
 status: draft
 language: en
 created: 2026-11-11
-updated: 2026-11-12
+updated: 2026-11-17
 ---
 
 # Factoid model
@@ -36,6 +36,18 @@ A factoid records what one passage of a regest says, read by a named producer. I
 - No direct projection triples. A query view can be derived as a separate graph.
 
 The vocabulary has schemes for act types, state types, roles, right types and status. Its definitions and the grouping of right types are drafts of an LLM agent and unchecked. Investiture and advocacy link to GND subject headings with `skos:closeMatch`.
+
+## Identity across regesta
+
+Actor IRIs are minted from the Regesta Imperii register ID (`urn:regesta:actor:RI004-002-F000471`), so a register entry that appears in several regesta is one node once the per-regest files are loaded into one graph. In the revised stage of `factoid-1153-2026-11-11` this joins a minority of the register actors across regesta, the ruler most often, then Pope Eugene III, Wibald of Stablo and bishops (count of 2026-11-17 over `revised/*.ttl`). Regest-local actors (`:local:`) stay unjoined. The identity is therefore the register's assignment, adopted as it stands. The project does not merge actors itself, and an error of the register becomes an error of the graph. The sentence on Adela's father below describes this: the data repeat what the register says per regest.
+
+## Proposed extensions
+
+Proposals of 2026-11-17, agreed in principle by the operator and not yet built. They make the model say explicitly what it already means, that a factoid is an assertion of an AI agent referred back to its source.
+
+- Describe the producer. `prov:wasAttributedTo` names an extraction batch today. A `prov:SoftwareAgent` per run with LLM, prompt version and date, linked from the batch, makes each assertion traceable to the run that produced it. The values exist in the run manifest.
+- Record a human judgement as a second assertion. A later confirmation or rejection by a person with expertise becomes its own node that points to the factoid, names the person and the date, and leaves the agent's factoid and its `rv:unchecked` unchanged. The graph then shows who said what, and the status of a factoid is read from the judgements about it.
+- RDF 1.2 triple terms with reifiers express the same pattern directly on a triple. The factoid node remains the form used here, because RDF 1.2 is a Candidate Recommendation and tool support is preliminary ([W3C 2026](https://www.w3.org/TR/rdf12-concepts/)).
 
 ## Contact with GOSSIP
 

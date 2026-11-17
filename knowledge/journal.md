@@ -20,7 +20,16 @@ updated: 2026-11-17
 - The estate rule (js/stand.js, data.md Estate) errs on name forms without a title (Konrad III. as a regest-local node) and on forms that name a ruler in passing.
 - The model questions in factoid-model.md (Open questions for experts) wait for the operator and for experts, including the cases of the agent review of 2026-11-14: grants beside a confirmation as part of it or separate (n. †193), predecessors' acts typed as Grant (n. 145, n. 116), an exchange without a vocabulary term (n. 96), a complaint without a forum (n. 191).
 - The demonstration slides Demo 1 to Demo 4 of the THM deck still name paths of `regesta-rdf-demo`; the new paths went to the Research Coordination on 2026-11-17.
+- The two assertion extensions in factoid-model.md (Proposed extensions) are agreed in principle and not built; building them needs a new contract and run. A definition of a clean knowledge graph in four levels (formal, structural, reviewed, expert-confirmed) was proposed in the chat and is not yet written down.
 - Questions outside this repository: whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
+
+## 2026-11-17 Identity across regesta and assertion extensions
+
+- Trigger: the operator's question how the data are modelled, and his reading that a factoid is an assertion of an AI agent referred back to its source.
+- Found: actor IRIs are minted from the register ID, so register actors already join across regesta in a loaded graph; pipeline.md said they were never merged, which held only for the pipeline's own behaviour.
+- Decided: the operator agreed in principle to two extensions, a described producer per run and human judgements as separate assertions (factoid-model.md, Proposed extensions). Not built.
+- Changed: factoid-model.md, pipeline.md.
+- Evidence: a count of actor IRIs over `pipeline/runs/factoid-1153-2026-11-11/revised/*.ttl`.
 
 ## 2026-11-17 Pipeline moved into this repository
 

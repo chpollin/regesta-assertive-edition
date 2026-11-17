@@ -88,7 +88,7 @@ The LLM of each run stands in its manifest. The pilot ran with `gpt-6.1-terra`, 
 
 ## Identity and provenance
 
-Register IDs are identity candidates per regest and are never merged across regesta. The factoid contract admits register entries of the regest's own packet, the shared ruler, regest-local actors and office-bound functional actors ([Factoid model](factoid-model.md)). Each factoid names its producer and carries the review state `unchecked`. Every packet keeps the source UID, summary, selected metadata and register context, and the local filenames and hashes identify the inputs.
+Register IDs are attached per regest, and the pipeline never merges actors itself. Because actor IRIs are minted from the register ID, the same register entry is one node across regesta once the files are loaded together ([Factoid model](factoid-model.md#identity-across-regesta)). The factoid contract admits register entries of the regest's own packet, the shared ruler, regest-local actors and office-bound functional actors ([Factoid model](factoid-model.md)). Each factoid names its producer and carries the review state `unchecked`. Every packet keeps the source UID, summary, selected metadata and register context, and the local filenames and hashes identify the inputs.
 
 ## Pilot pipeline, archive
 
