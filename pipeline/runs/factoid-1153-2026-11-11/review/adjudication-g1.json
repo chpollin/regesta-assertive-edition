@@ -1,0 +1,97 @@
+{
+  "group": 1,
+  "adjudicator": "urn:regesta:agent:factoid-1153-2026-11-11:adjudication-g1",
+  "expert_accepted": false,
+  "basis": "Every warning and every note that proposes a change of the graph or a gap record in review-g1-A and review-g1-B was checked against summary_plain and the identity candidates of the packets 22628 to 22647, the extracted Turtle files, the batch reports and the frozen contract factoid-2026-11-11 (regesta-core.ttl, vocabulary.ttl, shapes.ttl, annotation-guidelines.md, review.md, correct.md); validation/extracted.json lists no technical issue for any of these UIDs, so no validation decision is needed, and notes without a proposed change (22628 evidence length, 22631 forgery, 22637 undirected rv:Kin, 22640 label inflection, 22643 abstention, 22645 Participant role, 22647 forum clause) stay as reviewer remarks.",
+  "decisions": [
+    {
+      "uids": ["22640"],
+      "source": ["review-g1-B"],
+      "subject": "urn:regesta:22640:consent",
+      "finding": "A consent (Zustimmung) to the foundation of Lochgarten is typed rv:Confirmation; the founders Konstantin and Giselbert carry rv:Beneficiary.",
+      "decision": "correct_conservatively",
+      "reason": "The passage reads 'seine Zustimmung zur Errichtung des Frauenstiftes Lochgarten durch die Untertanen von Lorch, Konstantin und Giselbert'. rv:Confirmation is defined as confirming 'Besitz, Rechte oder einen früheren Akt', and the guidelines model a confirmation as two act factoids joined by rf:refersToAct; the regest reports no earlier act or existing right that is confirmed, only consent to an act of others. The vocabulary has no consent type and no generic act type, so the current typing turns a model limit into a different historical meaning, which correct.md forbids, and the qualifier 'Zustimmung' does not undo the false membership in queries for confirmations. Reclassifying under another type would be a new reading. The only safe fix is removal with a recorded gap. The Vogtei holding and the parenthood factoid of the same passage are supported and stay.",
+      "instruction": "In 22640 remove the act factoid <urn:regesta:22640:consent> with all its triples and its two preceding comment lines, the four reference nodes <urn:regesta:22640:consent-ref-friedrich>, <urn:regesta:22640:consent-ref-father>, <urn:regesta:22640:consent-ref-konstantin> and <urn:regesta:22640:consent-ref-giselbert>, and the actor nodes <urn:regesta:actor:RI004-002-K000569>, <urn:regesta:actor:RI004-002-G000630> and <urn:regesta:actor:RI004-002-L000545:community>, which nothing else references afterwards. Keep <urn:regesta:22640:parenthood>, <urn:regesta:22640:vogtei-holding>, their references, <urn:regesta:22640:right-vogtei-lorch> and <urn:regesta:actor:RI004-002-L000660:community> unchanged. Record in the correction log as model gaps: no act type for consent ('Zustimmung') to another party's act; no act type for the foundation ('Errichtung') of a church institution and no founder role."
+    },
+    {
+      "uids": ["22645"],
+      "source": ["review-g1-B"],
+      "subject": "urn:regesta:22645:parenthood-friedrich; urn:regesta:22645:kinship-oheim",
+      "finding": "The possessive 'seinem' after 'zwingt diesen' is grammatically ambiguous between Friedrich and Herzog Konrad; the Child and Kin references to Friedrich rest on a reading the passage alone does not secure.",
+      "decision": "keep",
+      "reason": "The ambiguity is real in 'zwingt diesen, vor seinem Vater (Friedrich von Schwaben) und seinem Oheim (König Konrad III.) zu erscheinen', but Friedrich is the grammatical subject of the whole regest, the parenthetical names identify the father and uncle by name and title with the packet candidates RI004-002-F000681 and RI004-002-K000316, and the extractor declared the reading as an unresolved identity in batch-5 and in a Turtle comment. The contract has no property to mark a contested antecedent inside the graph, and removing both factoids would discard a defensible reading. The ambiguity stays open for expert review through the batch report; a factoid records the producer's reading, not a fact.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22637"],
+      "source": ["review-g1-A"],
+      "subject": "22637",
+      "finding": "The genitive 'Gütern König Konrads (III.)' states a possession that should be added as an rv:Possession state factoid.",
+      "decision": "not_required",
+      "reason": "In 'Friedrich unterstützt seinen Oheim, Herzog Welf, bei der Verwüstung von Gütern König Konrads (III.)' the genitive only identifies the object of the devastation, a military act that is out of scope. The passage states no act or state about Konrad's holding; whether the goods are royal or personal possession is a historical judgement the genitive does not settle. The contract admits a correction that adds a passage only where it is central, and this attribute is not; the extracted Oheim factoid covers the passage's in-scope relation.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22645"],
+      "source": ["review-g1-B"],
+      "subject": "22645",
+      "finding": "'Burg des Herzogs' and 'dessen Stammburg' state a possession of Herzog Konrad that should be added as an rv:Possession state factoid.",
+      "decision": "not_required",
+      "reason": "In 'erobert eine für uneinnehmbar geltende Burg des Herzogs' and 'bis zu dessen Stammburg vor' the genitive and the possessive identify the targets of an advance and a conquest, which the guidelines exclude as military action. They are attributes of an out-of-scope act, not a central statement of possession, and the same decision is taken for the parallel genitive in 22637. The in-scope kinship and request factoids of the passage are recorded.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22630"],
+      "source": ["review-g1-A"],
+      "subject": "urn:regesta:22630:parenthood-father",
+      "finding": "The Child reference gives rf:nameInSource 'Friedrich' instead of '(Friedrich)' and loses the editorial bracket.",
+      "decision": "keep",
+      "reason": "rf:nameInSource requires 'the exact wording that names the actor in this passage', and 'Friedrich' is that wording and a substring of '(Friedrich) wird neben seinem Vater'. The bracket is an editorial mark of the regest, which the evidence selector keeps verbatim. The contract does not require the mark in the name, so the candidate's reading is defensible.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22633"],
+      "source": ["review-g1-A"],
+      "subject": "22633",
+      "finding": "The settlement 'einem Vergleich zwischen dem Bischof von Basel und dem Kloster St. Blasien' is omitted; proposed as rv:Dispute with qualifier 'Vergleich' and two rv:Participant references, or as a model gap.",
+      "decision": "model_gap",
+      "reason": "The passage characterises the charter DK. III. 57 as a 'Vergleich', an agreement, and states no dispute. rv:Dispute is 'Ein Streit oder eine Klage vor einem Gericht oder Herrscher' and rv:Judgment a 'Spruch'; typing the settlement as a dispute with a qualifier would infer a dispute the passage does not state and turn a model limit into a different meaning. The vocabulary has no type for a settlement or agreement.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22647"],
+      "source": ["review-g1-B"],
+      "subject": "22647",
+      "finding": "The settlement ('Beilegung des Streites') of the recorded dispute is omitted for lack of a type.",
+      "decision": "model_gap",
+      "reason": "'Beilegung des Streites zwischen Erzbischof Adalbero von Trier und Graf Heinrich von Namur' reports a settlement; rv:Judgment requires decision by 'Spruch', which the passage does not state, and no settlement type exists. The dispute itself is recorded with both parties as rv:Participant, correctly since 'zwischen' names no claimant. Once a settlement type exists, the settlement becomes an act factoid with rf:refersToAct to the dispute.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22629"],
+      "source": ["review-g1-A"],
+      "subject": "22629",
+      "finding": "The abstention omits a godparent relation ('aus der Taufe gehoben') between Graf Otto von Cappenberg and Friedrich; it should be recorded as a model gap.",
+      "decision": "model_gap",
+      "reason": "'Friedrich wird von Graf Otto von Cappenberg aus der Taufe gehoben' states a spiritual kinship. rv:Kinship and rv:Kin presuppose a kinship word in the exact wording for rf:qualifier, and the passage contains none; no type or role for godparenthood exists. The abstention file stays as it is.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22634"],
+      "source": ["review-g1-A"],
+      "subject": "22634",
+      "finding": "Father and son appear 'als Intervenient in DK. III. 58 für das Kloster Remiremont'; no act factoid can carry the intervention.",
+      "decision": "model_gap",
+      "reason": "rv:Petitioner needs an act to attach to, and the passage names neither act type nor content of DK. III. 58, only its number and recipient. Building an act factoid would require an inferred type. The parenthood factoid stays.",
+      "instruction": ""
+    }
+  ],
+  "summary": {
+    "correct": 0,
+    "correct_conservatively": 1,
+    "keep": 2,
+    "not_required": 2,
+    "model_gap": 4,
+    "reject": 0
+  }
+}

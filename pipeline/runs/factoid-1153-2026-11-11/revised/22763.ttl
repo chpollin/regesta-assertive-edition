@@ -1,0 +1,89 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22763> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 136" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-M000388:community> a crm:E74_Group ;
+    rdfs:label "Stift Marbach (Marchbach)" .
+
+<urn:regesta:actor:RI004-002-M000390:community> a crm:E74_Group ;
+    rdfs:label "seiner Kanoniker" .
+
+<urn:regesta:actor:22763:local:eltern> a crm:E74_Group ;
+    rdfs:label "seiner Eltern" .
+
+<urn:regesta:22763:gerichtsbarkeit> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "der üblichen Gerichtsbarkeit" .
+
+<urn:regesta:22763:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "alle gegenwärtigen und künftigen Besitzungen" .
+
+<urn:regesta:22763:request> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22763> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "auf Bitten seiner Kanoniker" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000390:community> ; rf:role rv:Petitioner ; rf:nameInSource "seiner Kanoniker" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22763:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22763> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das Stift Marbach (Marchbach) auf Bitten seiner Kanoniker zum Seelenheil seiner Eltern in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:role rv:Recipient ; rf:nameInSource "Stift Marbach" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000390:community> ; rf:role rv:Petitioner ; rf:nameInSource "seiner Kanoniker" ] ;
+    rf:ground "zum Seelenheil seiner Eltern" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22763:parenthood> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22763> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "zum Seelenheil seiner Eltern" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22763:local:eltern> ; rf:role rv:Parent ; rf:nameInSource "seiner Eltern" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Child ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22763:liberty> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22763> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "befreit es von jeder kirchlichen und weltlichen Herrschaft (ab omni ecclesiastice secularisve persone dominio vel potestate liberum)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:role rv:Recipient ; rf:nameInSource "es" ] ;
+    rf:partOf <urn:regesta:22763:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22763:jurisdiction-exemption> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22763> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nimmt es von der üblichen Gerichtsbarkeit aus (ab omnium hominum iurisdictione separatus)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:role rv:Recipient ; rf:nameInSource "es" ] ;
+    rf:concerns <urn:regesta:22763:gerichtsbarkeit> ;
+    rf:partOf <urn:regesta:22763:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22763:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22763> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm alle gegenwärtigen und künftigen Besitzungen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000388:community> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22763:besitzungen> ;
+    rf:qualifier "gegenwärtigen und künftigen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .

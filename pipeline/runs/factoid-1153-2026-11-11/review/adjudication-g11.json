@@ -1,0 +1,196 @@
+{
+  "group": 11,
+  "adjudicator": "urn:regesta:agent:factoid-1153-2026-11-11:adjudication-g11",
+  "expert_accepted": false,
+  "basis": "Each warning, error and change-proposing note of review-g11-A and review-g11-B was checked against summary_plain and the identity candidates of the packet and the extracted Turtle file of its UID, against the frozen contract factoid-2026-11-11 (regesta-core.ttl, vocabulary.ttl, shapes.ttl, annotation-guidelines.md, review.md, correct.md) and against the batch reports 51 to 55; validation/extracted.json lists no technical issues for any of the 18 UIDs of this group, so no technical decision is needed.",
+  "decisions": [
+    {
+      "uids": ["22861"],
+      "source": ["review-g11-A"],
+      "subject": "urn:regesta:22861:vogtei-heinrich",
+      "finding": "The derivation of the Vogtei 'aus der Hand des Königs' survives only as a qualifier; no role exists for the origin of a held right.",
+      "decision": "model_gap",
+      "reason": "The passage 'aus der Hand des Königs innehat' does not say 'zu Lehen', so rv:FeudalRelationship with rv:Lord would overread it, and the role scheme has no concept for the source of a held right. The qualifier keeps the exact wording; no correction."
+    },
+    {
+      "uids": ["22861"],
+      "source": ["review-g11-A"],
+      "subject": "urn:regesta:22861:wasseiges",
+      "finding": "Wasseiges and Evrehailles have packet candidates but receive regest-local IRIs.",
+      "decision": "not_required",
+      "reason": "The guidelines (Actors and identity) regulate register IRIs for actors only; places are nodes 'crm:E53_Place, each with an rdfs:label' under urn:regesta:UID:SLUG. Whether places should take register IRIs is a contract question for the next version, not a defect of this file."
+    },
+    {
+      "uids": ["22862"],
+      "source": ["review-g11-A"],
+      "subject": "urn:regesta:22862:zollfreiheit",
+      "finding": "The toll exemption is typed rv:Toll, the right to levy toll, which is the opposite position.",
+      "decision": "model_gap",
+      "reason": "rv:RightTypes has no exemption or immunity concept, and the shape requires a RightTypes concept on every crm:E30_Right. Switching to the group concept rv:UsageRights would be equally misleading. The label 'Zollfreiheit der Reichsleute von Kaiserswerth' stays as controlling wording; record the missing exemption type as a gap."
+    },
+    {
+      "uids": ["22862"],
+      "source": ["review-g11-A"],
+      "subject": "urn:regesta:22862:zollstaetten",
+      "finding": "'Zollstätten' are installations, typed as a toll right; optionally relabel the right node.",
+      "decision": "keep",
+      "reason": "Reading 'allen anderen Inhabern von Zollstätten' as holders of a toll right is defensible, and the label 'Zollstätten' is source wording. The reviewer itself calls the reading acceptable."
+    },
+    {
+      "uids": ["22945"],
+      "source": ["review-g11-A"],
+      "subject": "urn:regesta:22945:bestellung-vertreter",
+      "finding": "Amadeus as rv:Recipient; rv:Representative would carry 'zu seinem Vertreter' more precisely.",
+      "decision": "keep",
+      "reason": "In an rv:Appointment the appointee is the one to whom the office or task is conferred, which rv:Recipient defines ('Wem etwas übertragen ... wird'). The stated relation 'zu seinem Vertreter in Regierungsgeschäften' is already kept verbatim as rf:qualifier, and the shape allows exactly one role per reference."
+    },
+    {
+      "uids": ["134420"],
+      "source": ["review-g11-A"],
+      "subject": "urn:regesta:134420:confirmation",
+      "finding": "The confirmation concerns 'die Rechte und Besitzungen', but rf:concerns points only to the possessions.",
+      "decision": "model_gap",
+      "reason": "The omission is real ('bestätigt dem Kloster Château-Chalon die Rechte und Besitzungen'), but a crm:E30_Right must carry a concept of rv:RightTypes (RightShape), and unspecified 'Rechte' fit no concept; assigning a group concept would invent a right type. Relabelling the crm:E18_Physical_Thing node as 'Rechte und Besitzungen' would type rights as a physical thing. The words stay in the evidence selector; record the missing generic right type as a gap."
+    },
+    {
+      "uids": ["135064"],
+      "source": ["review-g11-A"],
+      "subject": "urn:regesta:135064:judgment",
+      "finding": "The word 'erwählten' that marks the judge as chosen for this case is dropped.",
+      "decision": "correct",
+      "reason": "The passage reads 'durch Spruch des erwählten Richters Markgraf Engelbert von Kraiburg (Istrien)'. A chosen judge qualifies the kind of judgment (a decision by an elected judge, not an office court), which the vocabulary does not capture; rf:qualifier takes such exact wording, and the evidence selector already contains it.",
+      "instruction": "On urn:regesta:135064:judgment add rf:qualifier \"erwählten Richters\" beside the existing rf:qualifier \"zugunsten des Stiftes\". Change nothing else in the factoid; keep rv:Judge for Markgraf Engelbert von Kraiburg and rv:Participant for König Friedrich."
+    },
+    {
+      "uids": ["135064"],
+      "source": ["review-g11-A"],
+      "subject": "urn:regesta:135064:dispute",
+      "finding": "Optionally add Propst Heinrich as rv:Representative of the Stift in the dispute.",
+      "decision": "not_required",
+      "reason": "'dem Stift Berchtesgaden unter Propst Heinrich' names the head of the Stift at the time, not his acting for it in the dispute; his office is already recorded in urn:regesta:135064:provost-heinrich. The contract does not require a further reference."
+    },
+    {
+      "uids": ["220518"],
+      "source": ["review-g11-B"],
+      "subject": "220518",
+      "finding": "The marital relation in 'ihre beiden Ehemänner' is not recorded as rv:Marriage.",
+      "decision": "model_gap",
+      "reason": "The passage 'die von den Markgräfinnen Beatrix und Mathilde von Tuszien für das Seelenheil ihre beiden Ehemänner Gottfried (...) und Bonifaz’ (...)' leaves open which margravine was married to whom, and even which Gottfried is meant. One rv:Marriage factoid with four rv:Spouse references would assert a collective marriage, and pairwise factoids would be inferred genealogy, which the guidelines forbid. The contract cannot express an unpaired collective marital statement; the wording survives in rf:ground of urn:regesta:220518:earlier-transfer."
+    },
+    {
+      "uids": ["220518"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:220518:confirmation",
+      "finding": "'Auf Betreiben' (count Friedrich, Propst Anselm) and 'auf Bitten' (the duke) are both mapped to rv:Petitioner.",
+      "decision": "keep",
+      "reason": "rv:Petitioner ('Auf wessen Bitten ein Akt geschieht') is the closest role for both instigation and petition, and the vocabulary has no instigator role. A factoid-level rf:qualifier \"Auf Betreiben\" could not say which of the three petitioners it applies to; the second evidence selector already carries the wording 'Auf Betreiben Friedrichs ...'. The missing instigator role stays a gap for the next model version."
+    },
+    {
+      "uids": ["220518"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:actor:RI004-002-A000944",
+      "finding": "Anselm's identification with the Arnstein provost is uncertain.",
+      "decision": "keep",
+      "reason": "The regest reads 'des Propstes Anselm (von Arnstein?)' and the packet candidate is 'Anselm ... Propst des Prämonstratenserstiftes Arnstein (?)'; name and title match, and the doubt is the register's own. The identification stays, flagged for expert review."
+    },
+    {
+      "uids": ["220519"],
+      "source": ["review-g11-B"],
+      "subject": "220519",
+      "finding": "Konrad III's consent that Barbarossa take the cross, the regest's main statement, is not recorded.",
+      "decision": "model_gap",
+      "reason": "'weil dieser zugestimmt hat, dass sein Sohn Friedrich (Barbarossa) ... das Kreuz nimmt' needs a consent type and a crusade-vow type, neither of which the act scheme has; forcing it into rv:Enactment or rv:Confirmation would change its meaning. No correction; record consent and taking the cross as gaps."
+    },
+    {
+      "uids": ["220528"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:220528:request",
+      "finding": "The counts of Panizo are rv:Participant although they are the party against whom action is requested; rv:Respondent proposed.",
+      "decision": "model_gap",
+      "reason": "The factoid is a rv:Request ('bittet den Kaiser, gegen die Grafen von Panizo vorzugehen'), not a rv:Dispute, and rv:Respondent ('Beklagter') belongs to a lawsuit, which the regest does not report. No role covers the target of a requested action, so rv:Participant, the contract's role for involvement without a more specific role, stays; the extractor already reported the gap."
+    },
+    {
+      "uids": ["220528"],
+      "source": ["review-g11-B"],
+      "subject": "220528",
+      "finding": "The possession of the goods by the church of Bologna is not recorded, although a matching candidate exists.",
+      "decision": "correct",
+      "reason": "The regest states 'die Güter der Bologneser Kirche', an economic relation in scope that rv:Possession and rv:Possessor express; the packet candidate RI004-002-B001067 'Bologna // Bistum, Diözese, Kirche' matches 'Bologneser Kirche' by name and kind. The same reading is used in this group for the monastery goods in 22861. The plundering itself stays only in rf:ground.",
+      "instruction": "Add <urn:regesta:actor:RI004-002-B001067:community> a crm:E74_Group ; rdfs:label \"Bologneser Kirche\". Add a rf:StateFactoid <urn:regesta:220528:possession-church> with rf:factoidType rv:Possession, rf:source <urn:regesta:record:220528>, rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Güter der Bologneser Kirche\" ], one rf:Reference with rf:actor <urn:regesta:actor:RI004-002-B001067:community>, rf:role rv:Possessor, rf:nameInSource \"Bologneser Kirche\", rf:concerns <urn:regesta:220528:goods>, prov:wasAttributedTo the corrector's producer IRI and rf:verificationStatus rv:unchecked. Leave urn:regesta:220528:request unchanged and assert no plundering factoid."
+    },
+    {
+      "uids": ["220529"],
+      "source": ["review-g11-B"],
+      "subject": "220529",
+      "finding": "Friedrich's request to the bishop to receive his chancellor and escort him to Faenza is omitted.",
+      "decision": "correct",
+      "reason": "'und bittet ihn, seinen Kanzler (Rainald von Dassel), der in Reichsangelegenheiten an die Kurie reist, ehrwürdig zu empfangen und ihm bis Faenza das Geleit zu geben' is half of the regest. The request is an act of type rv:Request with an addressee, not travel or military movement; only the chancellor's journey is out of scope. The packet candidate RI004-002-R000076 'Rainald ... von Dassel ... Kanzler der Reichskanzlei' matches by name and title. The extractor's batch report shows the passage was dropped as travel, which misreads the scope rule.",
+      "instruction": "Add <urn:regesta:actor:RI004-002-R000076> a crm:E21_Person ; rdfs:label \"Rainald von Dassel\". Add a rf:ActFactoid <urn:regesta:220529:request-escort> with rf:factoidType rv:Request, rf:source <urn:regesta:record:220529>, two evidence selectors with oa:exact \"bittet ihn, seinen Kanzler (Rainald von Dassel), der in Reichsangelegenheiten an die Kurie reist, ehrwürdig zu empfangen und ihm bis Faenza das Geleit zu geben\" and oa:exact \"Friedrich sagt Bischof G(erhard) von Bologna\", and three references: <urn:regesta:actor:RI004-002-F000471> rv:Petitioner nameInSource \"Friedrich\"; <urn:regesta:actor:RI004-002-G000351> rv:Addressee nameInSource \"Bischof G(erhard) von Bologna\"; <urn:regesta:actor:RI004-002-R000076> rv:Beneficiary nameInSource \"Rainald von Dassel\". Add prov:wasAttributedTo the corrector's producer IRI and rf:verificationStatus rv:unchecked. Do not add a factoid for the journey, the reception or the escort, no rf:concerns for Faenza, and no office-holding factoid; leave the two existing factoids unchanged."
+    },
+    {
+      "uids": ["220530"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:220530:report",
+      "finding": "The condition 'nicht ohne päpstliche Erlaubnis' qualifies the bishop's unwillingness to swear, not the letter; the stance has no factoid of its own.",
+      "decision": "model_gap",
+      "reason": "The passage 'den er nicht ohne päpstliche Erlaubnis schwören wolle' states the bishop's intention about an oath. The contract has no act or state type for an oath of fealty or its refusal, so a separate factoid would need an invented type; rf:condition is the only exact-wording slot, and the content reported in the communication includes this stance. The condition stays on the communication with its second selector; record the oath and refusal types as gaps."
+    },
+    {
+      "uids": ["220530"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:220530:oath-demand",
+      "finding": "The demand is reported speech ('gefordert habe') but stands as an independent act.",
+      "decision": "model_gap",
+      "reason": "rf:partOf is defined for provisions or secondary acts belonging to a main act, not for reported content, and rf:qualifier is for type or time, not for epistemic status. The link rf:refersToAct from the communication and the evidence containing the subjunctive 'gefordert habe' are what the contract allows; a way to mark reported content belongs to the next model version."
+    },
+    {
+      "uids": ["220530"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:220530:report",
+      "finding": "The sender is rv:Grantor and the demand is typed rv:Request.",
+      "decision": "model_gap",
+      "reason": "The vocabulary has no sender role and no demand type; rv:Grantor ('Aussteller') is the closest role for the issuer of a letter and rv:Request the closest act type for 'gefordert'. No change; the reviewer asks only for gap reporting."
+    },
+    {
+      "uids": ["220531"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:220531:permission",
+      "finding": "The emperor as rv:Participant implies involvement in the papal permission; rv:Beneficiary or removal proposed.",
+      "decision": "keep",
+      "reason": "In 'erlaubt Bischof G(erhard) von Bologna ..., dem Kaiser ... den Treueid zu leisten' the emperor is the prospective recipient of the oath. rv:Beneficiary would read the papal permission as made in the emperor's favour, which the passage does not say, and removing the reference loses a mention. rv:Participant ('Beteiligt, ohne dass das Regest eine bestimmtere Rolle trägt') is the contract's weakest role; the missing role for the person to whom an oath is sworn stays a gap, already reported by the extractor."
+    },
+    {
+      "uids": ["220531"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:220531:permission",
+      "finding": "Replace rf:qualifier \"erlaubt\" with \"nach Rücksprache mit den Kardinälen\".",
+      "decision": "keep",
+      "reason": "rf:qualifier takes 'exact wording that qualifies the type ... that the vocabulary does not capture'. The factoid is typed rv:Enactment for want of a permission type, so \"erlaubt\" is exactly the qualifying word that marks it as a permission. The consultation is already carried by the cardinals' reference with nameInSource \"den Kardinälen\"."
+    },
+    {
+      "uids": ["220532"],
+      "source": ["review-g11-B"],
+      "subject": "220532",
+      "finding": "The abstention is unjustified: the letter and the announced intercession with the emperor are expressible acts.",
+      "decision": "correct_conservatively",
+      "reason": "The guidelines exclude only 'military movement alone, travel, and hostage taking'. 'Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit, dass er sich beim Kaiser für ihn einsetzen werde' is a letter (rv:Communication) carrying an assurance (rv:Assurance), the same kind of communication the run models in 220530. The coming with troops and the support against enemies remain out of scope as military. The fix is conservative because the vocabulary has no intercession type and no role for the person before whom one intercedes: the emperor gets no reference and the intercession stays in exact wording as rf:qualifier. Welf and Guido match the packet candidates W000272 and G001188 by name and title.",
+      "instruction": "Replace the abstention by: <urn:regesta:actor:RI004-002-W000272> a crm:E21_Person ; rdfs:label \"Herzog Welf (VI.)\"; <urn:regesta:actor:RI004-002-G001188> a crm:E21_Person ; rdfs:label \"Guido (III.) Guerra, Graf von Tuszien\". (1) rf:ActFactoid <urn:regesta:220532:letter> with rf:factoidType rv:Communication, rf:source <urn:regesta:record:220532>, evidence oa:exact \"Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit\", references W000272 rv:Grantor nameInSource \"Herzog Welf (VI.)\" and G001188 rv:Addressee nameInSource \"Guido (III.) Guerra\". (2) rf:ActFactoid <urn:regesta:220532:assurance-intercession> with rf:factoidType rv:Assurance, rf:partOf <urn:regesta:220532:letter>, rf:source <urn:regesta:record:220532>, two evidence selectors oa:exact \"dass er sich beim Kaiser für ihn einsetzen werde\" and oa:exact \"Herzog Welf (VI.) teilt Guido (III.) Guerra, Graf von Tuszien, mit\", references W000272 rv:Grantor nameInSource \"Herzog Welf (VI.)\" and G001188 rv:Beneficiary nameInSource \"Guido (III.) Guerra\", and rf:qualifier \"sich beim Kaiser für ihn einsetzen werde\". Both factoids carry prov:wasAttributedTo the corrector's producer IRI and rf:verificationStatus rv:unchecked. Give the emperor no reference, assert no performed intercession, and add nothing for 'demnächst mit Truppen zu Alexander (III.) kommen werde' or the support against enemies; record the missing intercession type and the role of the person interceded with as gaps."
+    },
+    {
+      "uids": ["220541"],
+      "source": ["review-g11-B"],
+      "subject": "urn:regesta:220541:privilege-grant",
+      "finding": "rv:RightGrant may exceed 'ein Privileg ausstellen'; rv:Grant proposed.",
+      "decision": "keep",
+      "reason": "'Friedrich stellt der Stadt St. Gallen ein Privileg aus' reports the issuing of a privilege, which by its kind confers a right; rv:RightGrant ('Verleihung eines Rechts') is defensible, and rv:Grant ('überträgt ... ein Recht, einen Besitz oder eine Einrichtung') would not be safer. No right node is asserted, and the extractor reported the missing type for a privilege of unstated content."
+    }
+  ],
+  "summary": {
+    "correct": 3,
+    "correct_conservatively": 1,
+    "keep": 7,
+    "not_required": 2,
+    "model_gap": 9,
+    "reject": 0
+  }
+}

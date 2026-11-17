@@ -1,0 +1,338 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g9-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22803",
+      "coverage_note": "Covers the confirmation with petitioner and recipient, Konrad III's earlier dispositions as referred act, the imperial ownership of the Grone chapel and Friedrich's own donation in Roßdorf. Witness list and chancery notes correctly skipped. No unsupported factoid found; defects lie in the grouping of amounts and the thin earlier act.",
+      "findings": [
+        {
+          "category": "lost-association",
+          "severity": "warning",
+          "subject": "urn:regesta:22803:donation",
+          "description": "Both amounts sit as literals on one donation factoid that concerns two hides, a mill and Roßdorf, so the reading that 20 Solidi belong to the hides and 4 Solidi to the mill is lost. The contract could keep it by two donation factoids, one per item, each with its own amount.",
+          "evidence_quote": "fügt selber die Schenkung zweier Hufen mit dem Ertrag von 20 Solidi, sowie einer Mühle mit 4 Solidi Ertrag in Roßdorf",
+          "proposed_correction": "Split into a donation of 'zweier Hufen' with rf:amount 'mit dem Ertrag von 20 Solidi' and a donation of 'einer Mühle' with rf:amount 'mit 4 Solidi Ertrag' concerning Roßdorf, both rf:partOf or linked to the confirmation."
+        },
+        {
+          "category": "incomplete-earlier-act",
+          "severity": "note",
+          "subject": "urn:regesta:22803:konrad-verfuegungen",
+          "description": "Konrad III's earlier act carries only the grantor. The regest says Friedrich renews these dispositions in favour of Fredelsloh, so the stift as recipient and the chapel, protection and advocacy as concerned items rest on the same clause. Typing it rv:Enactment rather than rv:Grant is cautious and defensible.",
+          "evidence_quote": "in Erneuerung der Verfügungen Konrads (III.)",
+          "proposed_correction": "Optionally add the Fredelsloh community as rv:Recipient and rf:concerns to the three items; keep the act undated."
+        },
+        {
+          "category": "act-grouping",
+          "severity": "note",
+          "subject": "urn:regesta:22803:donation",
+          "description": "The regest marks the donation as Friedrich's own addition beyond the renewal ('fügt selber ... hinzu'). rf:partOf the confirmation is admissible as a secondary act, but it blurs that this is a new grant, not part of what is confirmed.",
+          "evidence_quote": "fügt selber die Schenkung zweier Hufen mit dem Ertrag von 20 Solidi, sowie einer Mühle mit 4 Solidi Ertrag in Roßdorf",
+          "proposed_correction": "Consider dropping rf:partOf and keeping the donation as an independent act factoid of the same charter."
+        },
+        {
+          "category": "literal-placement",
+          "severity": "note",
+          "subject": "urn:regesta:22803:confirmation",
+          "description": "'als Seelgerät' states the pious purpose of the act rather than a type or time qualification; rf:ground would fit it better. The exclusivity of royal advocacy is kept only inside the right label and evidence, not as a literal.",
+          "evidence_quote": "die ausschließliche Unterstellung unter die königliche Vogtei (ne advocatum aliquem preter nos nostrosque successores reges seu imperatores predictus locus habeat)",
+          "proposed_correction": "Move 'als Seelgerät' to rf:ground; optionally add rf:exception 'preter nos nostrosque successores reges seu imperatores' to the advocacy provision."
+        }
+      ],
+      "model_gaps": [
+        "rf:amount attaches to the factoid, not to a concerned thing, so several amounts in one act cannot be bound to their items.",
+        "No property for the purpose of an act (Seelgerät, pro remedio animae) distinct from rf:ground."
+      ]
+    },
+    {
+      "uid": "22804",
+      "coverage_note": "Covers the subordination of Hilwartshausen to Provost Bertram, Konrad III's earlier act on petition of the legate Thietwin, the abbey's belonging to the Reich, the provision on free election with its condition, the provision on alienated possessions and the reservation of advocacy. Conditions and the reservation are kept in exact wording. No unsupported factoid found.",
+      "findings": [
+        {
+          "category": "incomplete-earlier-act",
+          "severity": "note",
+          "subject": "urn:regesta:22804:konrad-grant",
+          "description": "'wie dies schon Konrad (III.) ... tat' refers to the same subordination, so Bertram or the provost of Fredelsloh as recipient is implied but not stated by name for the earlier act. Leaving the recipient out is cautious and acceptable.",
+          "evidence_quote": "wie dies schon Konrad (III.) auf Bitten des päpstlichen Legaten Bischof Thietwin (auch Dietwin) tat",
+          "proposed_correction": "No change required; optionally note in the qualifier that the earlier act repeats the subordination."
+        },
+        {
+          "category": "literal-placement",
+          "severity": "note",
+          "subject": "urn:regesta:22804:subordination",
+          "description": "rf:qualifier 'unterstellt' repeats the verb instead of qualifying type or time. Harmless but adds nothing the factoid type does not say.",
+          "evidence_quote": "Friedrich unterstellt die Reichsabtei Hilwartshausen",
+          "proposed_correction": "Drop the qualifier or keep it only if the subordination needs to be distinguished from an ordinary grant."
+        },
+        {
+          "category": "vocabulary-limit",
+          "severity": "note",
+          "subject": "urn:regesta:22804:propstwahl",
+          "description": "The right of free election is typed with the top concept rv:ChurchRights because no election right exists; the nuns are rv:Beneficiary, where rv:RightHolder would also be defensible.",
+          "evidence_quote": "legt für den Fall des Todes oder des Verzichtes Bertrams auf seine Propstei die freie Propstwahl durch die Nonnen fest",
+          "proposed_correction": "No change within the contract; record the missing election-right concept as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No right type for a right of election (Propstwahl, Vogtwahl, Abtwahl) under rv:ChurchRights.",
+        "No act type for subordinating one church to another or to a prelate; rv:Grant is the closest fit."
+      ]
+    },
+    {
+      "uid": "22805",
+      "coverage_note": "Covers the dispute over the duchy of Bavaria with correct claimant (Heinrich of Saxony) and respondent (Heinrich of Bavaria), and the election of chancellor Arnold as successor in Mainz caused by Friedrich. The court diet itself is rightly left out. The deposition of the archbishop of Mainz and three bishops, the central legal act of the regest, is not recorded at all.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22805",
+          "description": "Friedrich has the cardinal legates depose Archbishop Heinrich of Mainz and the bishops Burchard of Eichstätt, Bernhard of Hildesheim and Heinrich of Minden. This is the core legal act of the record and is absent; the regest also gives grounds for each deposition in quoted source wording. The vocabulary has no deposition act type, so a fully correct factoid is not possible, but the prelates' office holding, the cardinal legates as functional actors and the quoted grounds as rf:ground could have been recorded, and the omission should at least be reported.",
+          "evidence_quote": "durch die Kardinallegaten absetzen",
+          "proposed_correction": "Once a deposition type exists, add one act factoid per deposed prelate with Friedrich as causing actor, 'die Kardinallegaten' as rf:FunctionalActor, the prelate as affected party and the quoted reasons (for example 'ob inutilitatem') as rf:ground; until then report the passage as a model gap."
+        },
+        {
+          "category": "role-precision",
+          "severity": "note",
+          "subject": "urn:regesta:22805:wahl-arnold-mainz",
+          "description": "The electors are rv:Participant and Friedrich, who has the election carried out, is rv:Grantor. Both are the best available roles; the vocabulary lacks an elector role and a role for causing an act.",
+          "evidence_quote": "seinen Kanzler Arnold durch anwesende Mitglieder des Klerus und des Volkes zu Heinrichs Nachfolger in Mainz wählen",
+          "proposed_correction": "No change within the contract."
+        },
+        {
+          "category": "omitted-detail",
+          "severity": "note",
+          "subject": "urn:regesta:22805:klage-herzogtum-bayern",
+          "description": "The respondent's refusal to negotiate is kept only in the evidence, as the extractor's comment says. Correctly reported as a gap.",
+          "evidence_quote": "Herzog Heinrich von Bayern weigert sich, über die Klage des gleichfalls anwesenden Herzogs Heinrich von Sachsen um das Herzogtum Bayern zu verhandeln",
+          "proposed_correction": "No change within the contract."
+        }
+      ],
+      "model_gaps": [
+        "No act type for deposition from office (Absetzung).",
+        "No role for an actor who causes an act carried out by others (Friedrich läßt ... absetzen / wählen) and no elector role.",
+        "No act type or qualifier for refusal to negotiate or to submit to a court."
+      ]
+    },
+    {
+      "uid": "22806",
+      "coverage_note": "Covers the earlier donation of Baume-les-Messieurs by Pope Eugen III, Archbishop Humbert and Count Wilhelm, Friedrich's confirmation on petition of Abbot Peter with the reservation of royal rights in exact wording, the homage provision, the free election of the advocate, royal protection and the possessions. Identifications match the packet candidates. No unsupported factoid found.",
+      "findings": [
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22806:freie-vogtwahl",
+          "description": "'verbrieft' can mean confirming as well as granting. rv:RightGrant reads the free election of the advocate as a new grant, while the possessions under the same verb are typed rv:Confirmation. The two provisions of one clause are typed inconsistently.",
+          "evidence_quote": "verbrieft die freie Vogtwahl durch den Abt von Cluny, den königlichen Schutz sowie die teilweise einzeln angeführten Besitzungen von Baume-les-Messieurs",
+          "proposed_correction": "Type the three provisions of the 'verbrieft' clause consistently, or record 'verbrieft' as rf:qualifier on each."
+        },
+        {
+          "category": "omitted-state",
+          "severity": "note",
+          "subject": "urn:regesta:22806:bestaetigung-baume",
+          "description": "The reservation states that the church of Baume is subject to the kingdom. It is kept as rf:exception, which is correct; a separate rv:RightHolding state for the Reich, analogous to other records of this run, was not created.",
+          "evidence_quote": "salvo tamen iure, quo regno eadem Balmensis ęcclesia subiecta esse cognoscitur",
+          "proposed_correction": "Optionally add a StateFactoid rv:RightHolding with a local Reich actor concerning the abbey."
+        },
+        {
+          "category": "role-precision",
+          "severity": "note",
+          "subject": "urn:regesta:22806:mannschaft-vasallen",
+          "description": "rv:Vassal and rv:Lord inside an enactment describe the intended relation the provision creates, not an established feudal state. Acceptable as long as no FeudalRelationship state is derived from it.",
+          "evidence_quote": "bestimmt, daß die Vasallen der Abtei nunmehr dem Abt von Cluny die Mannschaft leisten sollen",
+          "proposed_correction": "No change required."
+        }
+      ],
+      "model_gaps": [
+        "No right type for the right to elect an advocate; rv:Advocacy covers the advocacy itself, not its election."
+      ]
+    },
+    {
+      "uid": "22807",
+      "coverage_note": "Covers the judgment on the inalienability of the archiepiscopal table goods, Friedrich's approval at Dortmund, the charter for Arnold II, the recovery of toll and dues, the purchases and their confirmation. The content of the judgment in the quoted Latin is not modelled, and the Fürstenspruch with its witnesses is attached to the 1151 judgment, an ambiguous reading the extractor flagged.",
+      "findings": [
+        {
+          "category": "ambiguous-attachment",
+          "severity": "warning",
+          "subject": "urn:regesta:22807:urteil-tafelgueter",
+          "description": "The 'durch'-clause can attach to the 1151 judgment or to Friedrich's present 'verbrieft'. Folding it into the 1151 judgment makes Herzog Heinrich von Bayern a judge and Gottfried of Arnsberg and Markward of Grumbach witnesses of an act dated by the qualifier '(1151)', which the passage does not establish. The two readings should not be collapsed into one dated factoid.",
+          "evidence_quote": "durch einen nach dem Zeugnis des Grafen Gottfried von Arnsberg und Markwards von Grumbach von Herzog Heinrich von Bayern formulierten Fürstenspruch",
+          "proposed_correction": "Model the Fürstenspruch as its own rv:Judgment factoid without date, with Heinrich von Bayern as rv:Judge and the two witnesses as rv:Witness, and leave its link to the 1151 judgment or the 1153 charter open in a qualifier or as reported ambiguity; keep Konrad III and '(1151)' only on the earlier judgment."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "urn:regesta:22807:urteil-tafelgueter",
+          "description": "The judgment's content is not modelled: goods that the former archbishop Friedrich enfeoffed shall return to the archbishop, and such donations made against the peace of the realm have no legal force. The contract could express this as provisions of the judgment (rv:Revocation or rv:Enactment, rf:partOf the judgment) and the earlier enfeoffment by the former archbishop, with 'contra pacem regni' as rf:ground.",
+          "evidence_quote": "quatenus omnia bona, que Fredericus quondam Coloniensis archiepiscopus ... inbeneficiavit, ad potestatem archiepiscopi redire debere nec tales donationes, que contra pacem regni facte dinoscuntur, aliquam vim iuris habere",
+          "proposed_correction": "Add an earlier rv:Enfeoffment by 'Fredericus quondam Coloniensis archiepiscopus' (packet candidate RI004-002-F000654) and a rv:Revocation provision rf:partOf the judgment with rf:ground 'contra pacem regni'."
+        },
+        {
+          "category": "role-precision",
+          "severity": "note",
+          "subject": "urn:regesta:22807:urteil-tafelgueter",
+          "description": "'unter Konrad III. gefällt' places the judgment under Konrad's reign or presidency; rv:Judge is a stronger claim than the wording carries.",
+          "evidence_quote": "das unter Konrad III. dort (1151) gefällte",
+          "proposed_correction": "Consider rv:Participant with rf:qualifier 'unter Konrad III.'."
+        },
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22807:wiedereinziehung-zoll",
+          "description": "'Wiedereinziehung' is a recovery by the church, typed rv:Restitution (Rückgabe). Acceptable, though the actor who recovers is not named and no restitution by another party is stated.",
+          "evidence_quote": "Wiedereinziehung des Zolls und andere Gefälle in Köln",
+          "proposed_correction": "No change required; keep the actors unstated."
+        }
+      ],
+      "model_gaps": [
+        "No way to record an attachment ambiguity of a clause between two act factoids other than a comment.",
+        "No act type for recovery or reclamation of alienated rights distinct from restitution by another party."
+      ]
+    },
+    {
+      "uid": "22808",
+      "coverage_note": "Covers Arnold I's earlier holding of the Worringen advocacy, Arnold II's purchase as cathedral provost for 100 marks with its condition in exact wording, Konrad III's charter and Friedrich's confirmation to Provost Walter and his successors on petition of Arnold II. Identifications of Arnold I, Arnold II and Walter match the candidates. No unsupported factoid found.",
+      "findings": [
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22808:urkunde-konrad",
+          "description": "Konrad III's charter is typed rv:Communication because its content is not stated; Friedrich confirms 'gemäß' it, which points to an earlier confirmation, but the cautious typing is reported by the extractor and acceptable.",
+          "evidence_quote": "gemäß einer Urkunde König Konrads (III.)",
+          "proposed_correction": "No change required."
+        },
+        {
+          "category": "omitted-detail",
+          "severity": "note",
+          "subject": "urn:regesta:22808:vogtei-arnold-i",
+          "description": "Count Gerhard the Younger of Jülich appears only inside a qualifier. The regest does not state that he held the advocacy, so not making him a right holder is correct.",
+          "evidence_quote": "nach dem Tod des erbenlosen Grafen Gerhard des Jüngeren von Jülich",
+          "proposed_correction": "No change required."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a royal charter whose legal content the regest does not state."
+      ]
+    },
+    {
+      "uid": "22809",
+      "coverage_note": "Covers the enfeoffment of Silvius of Clérieux and his heirs with the reservation and the service condition in exact wording, the service obligation, his possession of further goods from the Reich and the provision on homage. No unsupported factoid found.",
+      "findings": [
+        {
+          "category": "role-precision",
+          "severity": "note",
+          "subject": "urn:regesta:22809:mannschaft",
+          "description": "The provision names to whom homage is due (Friedrich and his successors, as rv:Beneficiary) but not who owes it; Silvius as the party bound to homage is missing. rv:Lord for Friedrich and rv:Vassal for Silvius would state the intended relation more precisely.",
+          "evidence_quote": "bestimmt, daß die Mannschaft ausschließlich ihm und seinen Nachfolgenrn zu leisten sei",
+          "proposed_correction": "Add Silvius with rv:Obligor or rv:Vassal; consider rv:Lord for Friedrich and the successors."
+        },
+        {
+          "category": "state-type",
+          "severity": "note",
+          "subject": "urn:regesta:22809:besitz-vom-reich",
+          "description": "'die er vom Reich besitzt' describes holding from the Reich, which is closer to rv:FeudalRelationship than plain rv:Possession; the qualifier 'vom Reich' keeps the wording, so nothing is lost.",
+          "evidence_quote": "den anderen Gütern, die er vom Reich besitzt",
+          "proposed_correction": "Optionally retype as rv:FeudalRelationship with a local Reich actor as rv:Lord."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22810",
+      "coverage_note": "Covers the brotherhood of Hugo, Wilhelm, Bertrand and Gerbert of Baux, their request to Wibald and their pledge of fidelity to the ruler. Wibald's earlier efforts at court for Wilhelm, the second request for information and the Count of Barcelona as the threat named in the pledge are not recorded.",
+      "findings": [
+        {
+          "category": "omitted-actor",
+          "severity": "warning",
+          "subject": "urn:regesta:22810:treuegeloebnis",
+          "description": "The pledge of fidelity is made against the attacks of the Count of Barcelona; neither the count (packet candidate RI004-002-B000184) nor this wording appears in the factoid. The exact phrase could have been kept as rf:qualifier or rf:ground.",
+          "evidence_quote": "dem sie gegen die Angriffe des Grafen von Barcelona (Barcinonensis) Treue geloben",
+          "proposed_correction": "Add rf:ground or rf:qualifier 'gegen die Angriffe des Grafen von Barcelona (Barcinonensis)'; reference the count with the closest available role or report the missing opponent role."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "22810",
+          "description": "Wibald's earlier efforts at the royal court in favour of Wilhelm are only used as evidence for the request. An intercession has no act type; the passage is borderline in scope.",
+          "evidence_quote": "danken Abt Wibald von Stablo für seine Bemühungen am kaiserlichen Hofe zugunsten Wilhelms",
+          "proposed_correction": "Report as model gap, or record an earlier rv:Request with Wibald as rv:Representative and Wilhelm as rv:Beneficiary if the expert accepts that reading."
+        },
+        {
+          "category": "omitted-detail",
+          "severity": "note",
+          "subject": "urn:regesta:22810:bitte",
+          "description": "The request has a second object, information about what they may expect from the ruler's arrival, which is neither in the evidence nor separately recorded; the ruler as the one before whom support is sought is not referenced.",
+          "evidence_quote": "und um Mitteilung darüber, was sie sich von dessen Ankunft erhoffen können",
+          "proposed_correction": "Optionally add a second selector or a second rv:Request factoid."
+        },
+        {
+          "category": "identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-F000471",
+          "description": "The ruler is called 'Kaiser (!)', the editor's mark that the title is anachronistic for 1152. Identification with the shared ruler IRI is correct; the label 'Kaiser' should not be read as a title in 1152.",
+          "evidence_quote": "Kaiser (!)",
+          "proposed_correction": "No change required."
+        }
+      ],
+      "model_gaps": [
+        "No role for an opponent or the party against whom an assurance or pledge is directed.",
+        "No act type for intercession on behalf of another at court."
+      ]
+    },
+    {
+      "uid": "22811",
+      "coverage_note": "Covers the transfer of the castle Pipet, the Palais des Canaux, the palace and the custodia of Vienne to Archbishop Hugo, Dean Wilhelm, their successors and the chapter, and the exclusion of laymen from the lordship of the city. Identifications match the candidates. No unsupported factoid found.",
+      "findings": [
+        {
+          "category": "literal-placement",
+          "severity": "note",
+          "subject": "urn:regesta:22811:uebertragung",
+          "description": "'während seiner Abwesenheit' limits the grant in time and functions as a condition; it is kept in exact wording as rf:qualifier, so it is not lost, but rf:condition would mark its legal force.",
+          "evidence_quote": "der ausschließlich dem Reich unterstehenden Stadt Vienne während seiner Abwesenheit",
+          "proposed_correction": "Move or duplicate 'während seiner Abwesenheit' to rf:condition."
+        },
+        {
+          "category": "omitted-state",
+          "severity": "note",
+          "subject": "22811",
+          "description": "The city is described as exclusively subject to the Reich; this is kept only in the right label. A rv:RightHolding state for the Reich would make it queryable, as done for comparable phrases elsewhere in the run.",
+          "evidence_quote": "der ausschließlich dem Reich unterstehenden Stadt Vienne",
+          "proposed_correction": "Optionally add a StateFactoid rv:RightHolding with a local Reich actor concerning the city, rf:qualifier 'ausschließlich'."
+        },
+        {
+          "category": "omitted-actor",
+          "severity": "note",
+          "subject": "urn:regesta:22811:ausschluss-laien",
+          "description": "'alle Laien' are the group excluded by the enactment but are not referenced.",
+          "evidence_quote": "schließt alle Laien von der Stadtherrschaft aus",
+          "proposed_correction": "Optionally reference a local group 'alle Laien' with rv:Participant."
+        }
+      ],
+      "model_gaps": [
+        "No role for the party excluded or burdened by an enactment."
+      ]
+    },
+    {
+      "uid": "22812",
+      "coverage_note": "Covers the commission of Archbishop Hugo and Dean Wilhelm with the custodia of Vienne and the restriction that it may be handed over only to Friedrich during his presence, with the condition in exact wording. The recommendation of the mandate's bearer is not recorded, which is defensible as out of scope.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "22812",
+          "description": "The recommendation of the bearer of the mandate to the two addressees is not recorded. It states no kinship, economic or legal relation and is borderline out of scope.",
+          "evidence_quote": "und empfiehlt ihnen den Überbringer dieses Mandats",
+          "proposed_correction": "No change required; optionally a rv:Communication with the bearer as rv:Envoy and Hugo and Wilhelm as rv:Addressee."
+        },
+        {
+          "category": "omitted-state",
+          "severity": "note",
+          "subject": "urn:regesta:22812:custodia",
+          "description": "As in 22811, the city's exclusive subjection to the Reich is kept only in the right label.",
+          "evidence_quote": "der ausschließlich dem Reich unterstehenden Stadt Vienne",
+          "proposed_correction": "Optionally add a rv:RightHolding state for a local Reich actor."
+        }
+      ],
+      "model_gaps": []
+    }
+  ]
+}

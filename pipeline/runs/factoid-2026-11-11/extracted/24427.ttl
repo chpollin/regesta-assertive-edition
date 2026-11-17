@@ -1,0 +1,27 @@
+@prefix rf: <https://example.org/regesta/factoid/> .
+@prefix rv: <https://example.org/regesta/concept/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:24427> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-P000762:community> a crm:E74_Group ; rdfs:label "die Konsuln von Pisa" .
+<urn:regesta:actor:RI004-002-P000579> a crm:E21_Person ; rdfs:label "Kanzler Philipp" .
+
+<urn:regesta:24427:safe-conduct> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "Geleit in die Provence" .
+
+# Promise of safe-conduct; the later journey and transport are travel and stay out of scope.
+<urn:regesta:24427:assurance> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:24427> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Konsuln von Pisa Kanzler Philipp auf dessen Bitten Geleit in die Provence zugesagt haben" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000762:community> ; rf:role rv:Grantor ; rf:nameInSource "Konsuln von Pisa" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000579> ; rf:role rv:Recipient ; rf:nameInSource "Kanzler Philipp" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000579> ; rf:role rv:Petitioner ; rf:nameInSource "dessen" ] ;
+    rf:concerns <urn:regesta:24427:safe-conduct> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,55 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22810> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-H001329> a crm:E21_Person ; rdfs:label "Hugo von Baux" .
+<urn:regesta:actor:RI004-002-W000573> a crm:E21_Person ; rdfs:label "Wilhelm" .
+<urn:regesta:actor:RI004-002-B000801> a crm:E21_Person ; rdfs:label "Bertrand" .
+<urn:regesta:actor:RI004-002-G000337> a crm:E21_Person ; rdfs:label "Gerbert" .
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ; rdfs:label "Abt Wibald von Stablo" .
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Kaiser" .
+
+<urn:regesta:22810:brueder> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22810> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Hugo von Baux und seine Brüder (Wilhelm , Bertrand und Gerbert )" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001329> ; rf:role rv:Kin ; rf:nameInSource "Hugo von Baux" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000573> ; rf:role rv:Kin ; rf:nameInSource "Wilhelm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000801> ; rf:role rv:Kin ; rf:nameInSource "Bertrand" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000337> ; rf:role rv:Kin ; rf:nameInSource "Gerbert" ] ;
+    rf:qualifier "Brüder" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22810:bitte> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22810> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Hugo von Baux und seine Brüder (Wilhelm , Bertrand und Gerbert ) danken Abt Wibald von Stablo" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "bitten ihn um weitere Unterstützung beim Kaiser (!)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001329> ; rf:role rv:Petitioner ; rf:nameInSource "Hugo von Baux" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000573> ; rf:role rv:Petitioner ; rf:nameInSource "Wilhelm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000801> ; rf:role rv:Petitioner ; rf:nameInSource "Bertrand" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000337> ; rf:role rv:Petitioner ; rf:nameInSource "Gerbert" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:role rv:Addressee ; rf:nameInSource "Abt Wibald von Stablo" ] ;
+    rf:qualifier "weitere" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22810:treuegeloebnis> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22810> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "beim Kaiser (!), dem sie gegen die Angriffe des Grafen von Barcelona (Barcinonensis) Treue geloben" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Hugo von Baux und seine Brüder (Wilhelm , Bertrand und Gerbert )" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001329> ; rf:role rv:Grantor ; rf:nameInSource "Hugo von Baux" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000573> ; rf:role rv:Grantor ; rf:nameInSource "Wilhelm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000801> ; rf:role rv:Grantor ; rf:nameInSource "Bertrand" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000337> ; rf:role rv:Grantor ; rf:nameInSource "Gerbert" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "Kaiser" ] ;
+    rf:qualifier "Treue" , "gegen die Angriffe des Grafen von Barcelona (Barcinonensis)" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;
+    rf:verificationStatus rv:unchecked .

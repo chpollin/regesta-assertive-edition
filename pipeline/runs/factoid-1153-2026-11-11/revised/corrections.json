@@ -1,0 +1,1228 @@
+{
+  "stage": "revised; not expert-accepted",
+  "expert_accepted": false,
+  "note": "Corrections by eleven Opus correction agents, one per review group, applying only the adjudicated decisions 'correct' and 'correct_conservatively' (review/adjudication-gN.json) and validation findings. Per-group logs stay in revised/corrections-gN.json. Records without an accepted correction are byte copies of extracted/. The six reused regesta are byte copies of runs/factoid-2026-11-11/revised/ and were not corrected again.",
+  "status_change_note": "validate_factoid.py takes each record's status from the extraction batch reports. Where a correction turned a record into an abstention or an abstention into factoids, status_after here is the corrected outcome, and the revised validation reports the mismatch.",
+  "records": [
+    {
+      "group": 1,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g1",
+      "uid": "22640",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Removed the act factoid <urn:regesta:22640:consent> (typed rv:Confirmation) with all its triples and its two preceding comment lines, following adjudication-g1 decision correct_conservatively.",
+        "Removed the reference nodes <urn:regesta:22640:consent-ref-friedrich>, <urn:regesta:22640:consent-ref-father>, <urn:regesta:22640:consent-ref-konstantin> and <urn:regesta:22640:consent-ref-giselbert>.",
+        "Removed the actor nodes <urn:regesta:actor:RI004-002-K000569>, <urn:regesta:actor:RI004-002-G000630> and <urn:regesta:actor:RI004-002-L000545:community>, which no remaining triple references.",
+        "Kept <urn:regesta:22640:parenthood>, <urn:regesta:22640:vogtei-holding>, their references, <urn:regesta:22640:right-vogtei-lorch> and <urn:regesta:actor:RI004-002-L000660:community> byte-for-byte unchanged with their original producer; no factoid was added or changed, so no factoid carries the correction producer."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for consent ('Zustimmung') to another party's act; the consent of Friedrich and Herzog Friedrich (II. von Schwaben) is not recorded.",
+        "Model gap: no act type for the foundation ('Errichtung') of a church institution and no founder role; the foundation of the Frauenstift Lochgarten by Konstantin and Giselbert is not recorded."
+      ]
+    },
+    {
+      "group": 2,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g2",
+      "uid": "22653",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Kept <urn:regesta:22653:parenthood-friedrich> unchanged.",
+        "Added place node <urn:regesta:22653:herzogtum-schwaben> (crm:E53_Place, label 'Herzogtum Schwaben').",
+        "Added rf:StateFactoid <urn:regesta:22653:officeholding-schwaben> of type rv:OfficeHolding with Friedrich (shared ruler RI004-002-F000471) as rv:Officeholder, rf:concerns the place node, evidence of the whole regest sentence, attributed to correction-g2.",
+        "Replaced the file comment by one naming the succession act and the predecessor role as model gaps."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for succession, so the act of succeeding in the duchy is not recorded.",
+        "Model gap: no predecessor role, so Herzog Friedrich II. is not referenced in the office-holding factoid as predecessor."
+      ]
+    },
+    {
+      "group": 3,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g3",
+      "uid": "22669",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Replaced the abstention with two act factoids per adjudication-g3, keeping <urn:regesta:record:22669> a crm:E31_Document.",
+        "Added <urn:regesta:22669:letter> (rv:Communication) with evidence 'König Roger von Sizilien gibt den Leuten Herzog Welfs einen Brief an Herzog Friedrich von Schwaben mit' and references Roger (RI004-002-R000806, rv:Participant), the local group 'den Leuten Herzog Welfs' (rv:Envoy) and the local person 'Herzog Friedrich von Schwaben' (rv:Addressee).",
+        "Added <urn:regesta:22669:request> (rv:Request, rf:partOf the letter) with the two evidence selectors of the instruction and references Herzog Friedrich von Schwaben (rv:Addressee, nameInSource 'dieser') and Welf (RI004-002-W000272, rv:Beneficiary, nameInSource 'des Welfen').",
+        "Added the four actor nodes with the labels the instruction gives; both factoids attributed to correction-g3 and rf:verificationStatus rv:unchecked."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Unresolved identity: Herzog Friedrich von Schwaben may be identical with the shared ruler (RI004-002-F000471); not asserted, because the packet has no candidate carrying the ducal title.",
+        "Model gap: no sender role for a letter; Roger is rv:Participant.",
+        "Model gap: no role for the party against whom requested support is directed; König Konrad III. stays unreferenced.",
+        "Neither the delivery of the letter nor the requested support is asserted."
+      ]
+    },
+    {
+      "group": 3,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g3",
+      "uid": "22671",
+      "status_after": "no_in_scope_claim",
+      "factoids_after": 0,
+      "changes": [
+        "Removed <urn:regesta:22671:execution> (rv:Judgment), its references execution-ref-friedrich (rv:Judge) and execution-ref-ministerialen (rv:Respondent), and the then unused actor nodes <urn:regesta:actor:RI004-002-F000471> and <urn:regesta:actor:22671:local:ministerialen>.",
+        "Kept only <urn:regesta:record:22671> a crm:E31_Document, with a comment naming the model gap."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for a punishment or execution; the ground 'wegen Störung des Landfriedens' and the wording 'am Galgen hinrichten' are left unrecorded for that reason.",
+        "Model gap (adjudicated, not acted on): the service dependency in 'einige seiner Ministerialen' has no state type."
+      ]
+    },
+    {
+      "group": 3,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g3",
+      "uid": "22678",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "In <urn:regesta:22678:request> extended the oa:exact of the evidence selector to end with ', bis er den König gesprochen habe' (now the whole of summary_plain without the final period).",
+        "Added rf:qualifier 'bis er den König gesprochen habe' beside 'brieflich'.",
+        "Attributed <urn:regesta:22678:request> to correction-g3 as a changed factoid; the kinship factoid keeps extraction-batch-13."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap (adjudicated, not acted on): no role for the king at whom the requested intercession aims; he stays unreferenced.",
+        "Unresolved reading carried over from extraction: the antecedent of 'seines' in 'seines Verwandten Gebhard'."
+      ]
+    },
+    {
+      "group": 3,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g3",
+      "uid": "22682",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "In <urn:regesta:22682:peace> changed rf:factoidType rv:Negotiation to rv:Enactment and added rf:qualifier 'Frieden'; changed the roles of peace-ref-konrad and peace-ref-welf from rv:Negotiator to rv:Participant; kept Friedrich as rv:Mediator, the evidence and the provisions' rf:partOf; updated the Turtle comment.",
+        "In <urn:regesta:22682:revenues> changed rf:factoidType rv:Grant to rv:Enactment, kept rf:partOf the peace, the evidence and rf:concerns; changed revenues-ref-welf from rv:Recipient to rv:Beneficiary; rewrote the comment as a provision while keeping the separate-act reading of 'außerdem' open for expert review.",
+        "Attributed the two changed factoids to correction-g3; prisoners and no-fighting keep extraction-batch-14."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for a concluded peace settlement; rv:Enactment with qualifier 'Frieden' is used.",
+        "Open reading for expert review: whether 'außerdem erhält Welf auch Reichseinkünfte' is a term of the peace or a separate act; no grantor is asserted.",
+        "Model gap (adjudicated, not acted on): no property for the reciprocity 'dafür' between the two provisions; the word stays in the evidence."
+      ]
+    },
+    {
+      "group": 4,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g4",
+      "uid": "22691",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "urn:regesta:22691:election: rf:ground replaced by the exact literal \"Als Grund für diese Wahl nennt Otto von Freising die Verwandtschaft Friedrichs mit Staufern und Welfen\"; producer set to correction-g4.",
+        "urn:regesta:22691:kinship-staufer-welfen and urn:regesta:22691:parenthood-king-son unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No property for attributing a statement to a narrative source named in the regest (Otto von Freising); the kinship state factoid carries no attribution.",
+        "Oath of fealty and homage ('Treueid und Mannschaft') not extracted: no act type for fealty or homage (adjudicated model_gap).",
+        "Preference over the late king's son: no role for a passed-over rival (adjudicated model_gap)."
+      ]
+    },
+    {
+      "group": 4,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g4",
+      "uid": "22693",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "Added urn:regesta:22693:mission-legation (rv:Mission, qualifier \"wird beschlossen\") with Hillin (H001017), Eberhard (E000011), Adam (A000294) as rv:Envoy and Papst Eugen (E000589) as rv:Addressee; the four actors declared crm:E21_Person with rdfs:label equal to their nameInSource; producer correction-g4.",
+        "No sender reference and no reference for Rome or Italy, as instructed."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Refused pardon of a ministerial after withdrawal of favour: no act type (adjudicated model_gap).",
+        "Rome and Italy as addressees of the legation stay only in the evidence wording; they are places, not community actors."
+      ]
+    },
+    {
+      "group": 4,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g4",
+      "uid": "22699",
+      "status_after": "extracted",
+      "factoids_after": 11,
+      "changes": [
+        "Added urn:regesta:22699:assurance-restore-empire (rv:Assurance, partOf communication, qualifier \"unter Beachtung des Grundsatzes von den zwei Gewalten\"); producer correction-g4.",
+        "Added urn:regesta:22699:anointing (rv:Appointment, qualifier \"Königssalbung sowie die Thronsetzung\") with Friedrich rv:Recipient, Arnold (A001202) rv:Grantor, local groups andere-bischoefe and volk as rv:Participant; declared A001202 crm:E21_Person \"Erzbischof A(rnold) von Köln\" and the two local actors crm:E74_Group; producer correction-g4.",
+        "Added urn:regesta:22699:request-return-abbot (rv:Request, qualifier \"baldige\", partOf communication) with Friedrich rv:Participant, Eugen rv:Addressee, Abbot of Ebrach (A000294) rv:Participant; producer correction-g4. A000294 was already declared with label \"Abt A(dam) von Ebrach\" and kept unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No act type for a recommendation ('empfiehlt ihm seine Legaten').",
+        "No requester role; the sender of the request stays rv:Participant.",
+        "No sender role in the communication (adjudicated keep)."
+      ]
+    },
+    {
+      "group": 4,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g4",
+      "uid": "22700",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "urn:regesta:22700:election: added rf:qualifier \"nach dem Tode König Konrads (III.)\" beside \"zu dessen Nachfolger\"; no reference for Konrad; producer correction-g4."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No role for the predecessor succeeded in an election; König Konrad (III.) is kept only in qualifier wording.",
+        "Aachen deliberations on the Italian expedition out of scope (adjudicated not_required)."
+      ]
+    },
+    {
+      "group": 4,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g4",
+      "uid": "22702",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "urn:regesta:22702:earlier-judgment: rf:actor <urn:regesta:actor:RI004-002-K000316> replaced by <urn:regesta:actor:22702:local:koenig-konrad-iii>, role rv:Participant and nameInSource \"König Konrad III.\" kept; producer correction-g4.",
+        "Declared <urn:regesta:actor:22702:local:koenig-konrad-iii> a crm:E21_Person with rdfs:label \"König Konrad III.\" and removed the node <urn:regesta:actor:RI004-002-K000316>. Resolves validation finding actor_outside_packet."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Identity of 'König Konrad III.' unresolved: the packet carries no register candidate for him, so he stays regest-local."
+      ]
+    },
+    {
+      "group": 4,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g4",
+      "uid": "22705",
+      "status_after": "extracted",
+      "factoids_after": 7,
+      "changes": [
+        "urn:regesta:22705:restitution: added rf:refersToAct <urn:regesta:22705:donation>; no link to judgment-hofgericht; producer correction-g4.",
+        "urn:regesta:22705:possession-kirche-koeln: added rf:qualifier \"gehört\"; producer correction-g4."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No state type distinguishing ownership from possession; 'gehört' kept as qualifier.",
+        "Founder relation ('ihrem Gründer') has no act or state type (adjudicated model_gap)."
+      ]
+    },
+    {
+      "group": 4,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g4",
+      "uid": "22706",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "urn:regesta:22706:judgment: removed reference <urn:regesta:22706:judgment-ref-fuersten>, deleted that reference node and the actor node <urn:regesta:actor:22706:local:fuersten>; Friedrich and Arnold references unchanged.",
+        "urn:regesta:22706:judgment: added rf:qualifier \"Fürstenspruch\" and \"entgegen den Veräußerungen\" beside \"Unveräußerlichkeit\"; rf:refersToAct <urn:regesta:22706:alienations> kept; producer correction-g4."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The judging princes are not named in the passage, so the judgment carries no judge reference.",
+        "No property expressing opposition between the judgment and the referred alienations; kept only as qualifier wording."
+      ]
+    },
+    {
+      "group": 4,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g4",
+      "uid": "22707",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Moved rf:qualifier \"in Nachahmung\" from urn:regesta:22707:earlier-act-konrad to urn:regesta:22707:confirmation; both factoids' producer set to correction-g4.",
+        "Earlier act's type rv:Confirmation, evidence and reference kept."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The content of the imitated earlier act of König Konrad (III.) is unstated; its type rv:Confirmation is a reading of the imitation."
+      ]
+    },
+    {
+      "group": 5,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g5",
+      "uid": "22711",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "Added rf:concerns <urn:regesta:22711:right-unterordnung> to <urn:regesta:22711:privilege-lothar> and <urn:regesta:22711:privilege-konrad>; both factoids now attributed to correction-g5. Type, grantor references and evidence unchanged; no date, no recipient."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Kept as adjudicated: Waulsort stays rv:Beneficiary of the confirmation."
+      ]
+    },
+    {
+      "group": 5,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g5",
+      "uid": "22713",
+      "status_after": "extracted",
+      "factoids_after": 8,
+      "changes": [
+        "Added <urn:regesta:22713:election> (rf:ActFactoid, rv:Appointment) with evidence \"die Botschaft von seiner Wahl\", reference RI004-002-F000471 rv:Recipient nameInSource \"seiner\", rf:qualifier \"Wahl\"; no electors, no date, no rf:partOf.",
+        "Added rf:refersToAct <urn:regesta:22713:election> to <urn:regesta:22713:approbation>; approbation otherwise unchanged and now attributed to correction-g5.",
+        "Added <urn:regesta:22713:legate-announcement> (rf:ActFactoid, rv:Communication) with evidence \"kündigt die baldige Entsendung eines Legaten an\" and \"Papst Eugen (III.) schreibt an König F(riedrich)\", references E000589 rv:Participant and F000471 rv:Addressee, rf:qualifier \"baldige\", rf:partOf <urn:regesta:22713:letter>. No rv:Mission, no legate actor, no outcome."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Not required per adjudication: Oktavian's good report and an rf:concerns for the imperial coronation are not modelled."
+      ]
+    },
+    {
+      "group": 5,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g5",
+      "uid": "22714",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "Added to <urn:regesta:22714:predecessor-grants> a second selector \"bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte\" and a reference RI004-002-C000961:community rv:Recipient nameInSource \"ihm\"; factoid now attributed to correction-g5. No date, no further object."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Not required per adjudication: legal acts narrated inside the witness list (Sven receives, Knut resigns the kingdom) stay excluded under the witness-list rule; the boundary question belongs to the next contract version."
+      ]
+    },
+    {
+      "group": 5,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g5",
+      "uid": "22715",
+      "status_after": "extracted",
+      "factoids_after": 13,
+      "changes": [
+        "Added regest-local actor <urn:regesta:actor:22715:local:partei-hazzos> (crm:E74_Group, \"die Partei Hazzos\").",
+        "Added <urn:regesta:22715:f-hazzo-party-decision> (rf:ActFactoid, rv:Appointment) with evidence \"bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden\" and \"Friedrich greift in die Magdeburger Doppelwahl ein\", references partei-hazzos rv:Participant, W000436 rv:Recipient, F000471 rv:Participant, rf:qualifier \"entscheiden\". Not linked to the regalia grant or the dispute; no installation in office asserted."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no renunciation or resignation act type; Knut's renunciation stays rv:Grant with qualifier \"verzichtet\".",
+        "Model gap: no act type for homage (Treueid und Mannschaft) or coronation of Sven; kept as qualifier of the kingdom grant.",
+        "No property for Bishop Daniel preventing Friedrich's promise to Ulrich (model limit)."
+      ]
+    },
+    {
+      "group": 5,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g5",
+      "uid": "22717",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Added regest-local actor <urn:regesta:actor:22717:local:abt-pruem> (crm:E21_Person, \"den Abt von Prüm\"); not identified with RI004-002-R000500.",
+        "Added <urn:regesta:22717:f-request-spare-abbot> (rf:ActFactoid, rv:Request) with evidence \"den Abt von Prüm möge er schonen, damit sich der König nicht versündige\" and \"Wibald schreibt an Erzbischof Arnold von Köln\", references W000420 rv:Petitioner, A001202 rv:Addressee, abt-pruem rv:Beneficiary, rf:ground \"damit sich der König nicht versündige\", rf:partOf <urn:regesta:22717:f-letter>."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for the counteraction of chancellor Arnold and notary Heinrich at court; not modelled.",
+        "Kept as adjudicated: the reason 'wegen seiner Verdienste ...' stays in evidence only, not as rf:ground of the disposition."
+      ]
+    },
+    {
+      "group": 5,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g5",
+      "uid": "22721",
+      "status_after": "extracted",
+      "factoids_after": 17,
+      "changes": [
+        "Added rf:qualifier \"vom Grafen Wilhelm oder anderen Fürsten\" to <urn:regesta:22721:fruehere-investitur>, keeping qualifier \"bisher\" and both grantor references; factoid now attributed to correction-g5."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no means to express a disjunction of actors; the two rv:Grantor references still read as parallel, the alternative survives only in the qualifier.",
+        "Model gap: no directional kin roles; 'Nichte' stays two rv:Kin with the kinship word in rf:qualifier."
+      ]
+    },
+    {
+      "group": 5,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g5",
+      "uid": "22722",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Added actors <urn:regesta:actor:22722:local:gesandte> (crm:E74_Group, \"Gesandten\"), <urn:regesta:actor:22722:local:rom-staedte-italiens> (crm:E74_Group, \"Rom und die übrigen Städte Italiens\") and <urn:regesta:actor:RI004-002-E000589> (crm:E21_Person, \"Papst Eugen (III.)\").",
+        "Added <urn:regesta:22722:gesandtschaft> (rf:ActFactoid, rv:Mission) with evidence \"Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten\", references gesandte rv:Envoy, E000589 rv:Addressee, rom-staedte-italiens rv:Addressee. No sender, no qualifier for 'mit guten Nachrichten', no outcome."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for Friedrich's coronation in St. Emmeram; not modelled.",
+        "The sender of the mission is not named in the passage and stays open."
+      ]
+    },
+    {
+      "group": 6,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g6",
+      "uid": "22732",
+      "status_after": "extracted",
+      "factoids_after": 1,
+      "changes": [
+        "Changed rf:role of <urn:regesta:22732:ref-gesandter> from rv:Envoy to rv:Participant; actor and nameInSource \"seines Gesandten\" unchanged.",
+        "Set prov:wasAttributedTo of <urn:regesta:22732:complaint> to the corrector."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No act type for the threat of war ('droht ihm mit Krieg') and therefore no factoid to carry its condition 'falls der Gefangene nicht freigelassen werde' (adjudicated model_gap).",
+        "The doubtful identification '(Friedrich?)' with the shared ruler IRI cannot be marked as uncertain in the contract (adjudicated model_gap)."
+      ]
+    },
+    {
+      "group": 6,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g6",
+      "uid": "22733",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Removed <urn:regesta:22733:proclamation> rf:partOf <urn:regesta:22733:confirmation>.",
+        "Added <urn:regesta:22733:confirmation> rf:refersToAct <urn:regesta:22733:proclamation>; the proclamation keeps rf:refersToAct <urn:regesta:22733:regensburg-law>, its type, evidence, references and qualifier.",
+        "Set prov:wasAttributedTo of the confirmation and the proclamation to the corrector; updated the section comment of the proclamation accordingly."
+      ],
+      "not_applied": [],
+      "remaining_gaps": []
+    },
+    {
+      "group": 6,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g6",
+      "uid": "22735",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Changed rdfs:label of <urn:regesta:actor:RI004-002-F000471> from \"ihm\" to \"Friedrich\"; nameInSource \"ihm\" and role rv:Participant of ref-judgment-friedrich unchanged. No factoid changed, so producers stay."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No act type for Friedrich's intervention in the Augsburg election in favour of Dean Konrad of Konstanz (adjudicated model_gap)."
+      ]
+    },
+    {
+      "group": 6,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g6",
+      "uid": "22736",
+      "status_after": "extracted",
+      "factoids_after": 1,
+      "changes": [
+        "Replaced the abstention with one rf:ActFactoid <urn:regesta:22736:letter> of type rv:Communication, evidence \"Hildegard von Bingen schreibt an Friedrich und gemahnt ihn an seine Pflichten als König\", attributed to the corrector, rv:unchecked, no qualifier.",
+        "Added actors <urn:regesta:actor:RI004-002-H000987> (\"Hildegard von Bingen\", rv:Participant) and the shared ruler <urn:regesta:actor:RI004-002-F000471> (\"Friedrich\", rv:Addressee); record node and its label kept, abstention comment dropped.",
+        "Status changed from no_in_scope_claim to extracted."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No role for the author of a communication; the writer carries rv:Participant.",
+        "The admonition's content ('gemahnt ihn an seine Pflichten als König') is no qualifier of type or time and stays only in the evidence."
+      ]
+    },
+    {
+      "group": 6,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g6",
+      "uid": "22740",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Deleted the factoid <urn:regesta:22740:chapel-grant> with all its triples and inline reference nodes.",
+        "Added <urn:regesta:22740:kapelle-kuenheim> to rf:concerns of <urn:regesta:22740:confirmation> next to <urn:regesta:22740:besitzungen>, and rf:qualifier \"unter Hinzufügung\"; evidence selectors kept.",
+        "Set prov:wasAttributedTo of the confirmation to the corrector."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Burchard's donation names no donee; no recipient was inferred (adjudicated keep)."
+      ]
+    },
+    {
+      "group": 6,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g6",
+      "uid": "22744",
+      "status_after": "extracted",
+      "factoids_after": 5,
+      "changes": [
+        "Deleted <urn:regesta:22744:konrad-privilege>, its reference <urn:regesta:22744:konrad-privilege:ref-konrad> and the actor node <urn:regesta:actor:RI004-002-K000316>, which no other factoid used. No remaining factoid changed, so producers stay."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No act type for an unspecified privilege ('den Nachweis eines Privilegs Konrads (III.)').",
+        "No property links the possession state to the princes' judgment that emphasises it (adjudicated model_gap)."
+      ]
+    },
+    {
+      "group": 6,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g6",
+      "uid": "22750",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Changed <urn:regesta:22750:promised-sum> from rf:ActFactoid rv:Assurance to rf:StateFactoid rv:Obligation, keeping its IRI, both evidence selectors, references ref-sum-buerger (rv:Obligor), ref-sum-folkwin and ref-sum-widekind (rv:Creditor) and rf:qualifier \"versprochenen\"; comment updated.",
+        "Removed <urn:regesta:22750:prohibition-payment> rf:refersToAct <urn:regesta:22750:promised-sum>, which ActTypeShape no longer permits.",
+        "Set prov:wasAttributedTo of promised-sum and prohibition-payment to the corrector."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Who made the promise of the sum is not stated in the regest; no promisor is recorded.",
+        "No property links the prohibition to the obligation it concerns once rf:refersToAct is restricted to act factoids."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22752",
+      "status_after": "extracted",
+      "factoids_after": 14,
+      "changes": [
+        "rdfs:label of <urn:regesta:22752:right-weide-wald> changed from \"die Erlaubnis, Weide und Wald\" to \"Weide und Wald\" (adjudication: correct)."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The change touches only the right node; the factoid <urn:regesta:22752:p20-weide-wald> itself is unchanged and keeps its extraction producer, as the instruction says 'Change nothing else'.",
+        "No role for the regulated party of a norm (Bauern, Kaufleute, Ritter stay rv:Participant) and none for an office-holder charged by a provision (den Grafen stays rv:Participant); recorded by the adjudication as gaps for the next model version."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22753",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "Added rf:qualifier \"investiert worden sei\" to <urn:regesta:22753:investitur>, keeping \"durch königliche Gunst\" and \"auch schon\"; producer set to correction-g7 (adjudication: correct_conservatively)."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no way to mark a factoid as the reported assertion of an actor within the regest (the investiture stands in the subjunctive of the papal letter); the qualifier keeps the mood-bearing wording only."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22759",
+      "status_after": "extracted",
+      "factoids_after": 5,
+      "changes": [
+        "Added <urn:regesta:22759:report-conspiracy> (rv:Communication; pope rv:Participant, Wibald rv:Addressee) with the two selectors named by the adjudication; producer correction-g7.",
+        "Added <urn:regesta:22759:mandate-inform-king> (rv:Appointment; pope rv:Grantor, Wibald rv:Recipient, König Friedrich rv:Addressee; rf:qualifier \"vertraulich\"; rf:ground \"damit dieser die nötigen Anordnungen treffen könne\"); producer correction-g7."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no factoid for the conspiracy in Rome, the planned new regime or the planned imperial election ('geplant sei'); these stay unasserted.",
+        "Model gap: no role for the subject of a report, so Arnold von Brescia (candidate A001236) is not referenced.",
+        "No sender role for rv:Communication; the pope is rv:Participant on the report."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22760",
+      "status_after": "extracted",
+      "factoids_after": 7,
+      "changes": [
+        "Added second rf:evidence selector \"Friedrich nimmt das Kloster S. Benedetto di Polirone\" to <urn:regesta:22760:kinship-konrad>; existing selector, references and qualifier unchanged; producer correction-g7 (adjudication: correct)."
+      ],
+      "not_applied": [],
+      "remaining_gaps": []
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22761",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "Declared actors RI004-002-R001192 \"Rudolf von Ramsberg\", RI004-002-U000179 \"Ulrich von Lenzburg\", RI004-002-E000052 \"Eberhard von Bodman\" as crm:E21_Person (packet candidates).",
+        "Added <urn:regesta:22761:advice-envoys> (rv:Communication, rf:partOf <urn:regesta:22761:letter>; Wezel rv:Participant, Friedrich rv:Addressee \"ihm\", the three proposed envoys rv:Participant; rf:qualifier \"rät\"); producer correction-g7. No Mission factoid added."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for advice; the advice is carried as part of the letter with the verb as qualifier.",
+        "Model gap: the second advice on precautions in Rome ('Vorsorge dafür zu treffen, daß in Rom selbst keine Neuerungen gegen ihn ... Platz greifen') names no actor and is omitted.",
+        "Model gap (adjudication): the regret over the missing Roman confirmation and the judgement on the Donation of Constantine are not expressible."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22762",
+      "status_after": "extracted",
+      "factoids_after": 12,
+      "changes": [
+        "Declared RI004-002-H000498 \"Heinrich Jasomirgott\" as crm:E21_Person (packet candidate).",
+        "Added <urn:regesta:22762:summons-jasomirgott> (rv:Dispute, one reference Heinrich Jasomirgott rv:Respondent, no date); producer correction-g7.",
+        "In <urn:regesta:22762:apulian-complaint> changed Roger's role from rv:Respondent to rv:Participant; nameInSource, ground and other references kept; producer correction-g7.",
+        "Added second rf:evidence selector \"Friedrich verleiht seinem Oheim, Herzog Welf\" to <urn:regesta:22762:grant-welf-revenues>; producer correction-g7."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no summons type (summons carried as rv:Dispute, as in 22756); the summoner is not named and gets no reference.",
+        "Model gap: the non-appearance ('erscheint ... nicht bei Hofe') and the renewed summons ('erneut vorgeladen werden muß') are not represented.",
+        "Model gap (adjudication): no settlement or arbitration type; <urn:regesta:22762:settlement> stays rv:Judgment with qualifier \"Ausgleich\".",
+        "The expulsion of the Apulians by Roger has no act type."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22765",
+      "status_after": "extracted",
+      "factoids_after": 15,
+      "changes": [
+        "Declared RI004-002-K000316 \"Konrads III.\" as crm:E21_Person (packet candidate).",
+        "Added <urn:regesta:22765:earlier-proceeding-konrad> (rv:Revocation; Konrad III. rv:Grantor; rf:qualifier \"Vorgangsweise\"; no rf:concerns, no date); producer correction-g7.",
+        "Added rf:refersToAct <urn:regesta:22765:earlier-proceeding-konrad> to <urn:regesta:22765:revocation-schismatics> beside the existing link; rf:ground kept; producer correction-g7."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The object of Konrad III.'s earlier proceeding is not stated in the regest, so the earlier act has no rf:concerns."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22766",
+      "status_after": "extracted",
+      "factoids_after": 8,
+      "changes": [
+        "In <urn:regesta:22766:earlier-privileges> changed the role of <urn:regesta:actor:22766:local:vorgaenger-privilegien> from rv:Grantor to rv:Participant; actor, label and nameInSource \"seiner Vorgänger\" kept; producer correction-g7.",
+        "Removed <urn:regesta:22766:kinship-brueder>; added <urn:regesta:22766:kinship-brueder-albert> (Alberts and ihrer Brüder, rv:Kin) and <urn:regesta:22766:kinship-brueder-heinrich> (Heinrichs and ihrer Brüder, rv:Kin), each rv:Kinship with qualifier \"Brüder\"; producer correction-g7."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Unresolved identity: the possessive in 'alle Privilegien seiner Vorgänger' may refer to Friedrich (issuing predecessors) or to Walo (predecessors holding the privileges); the passage does not decide.",
+        "Both new kinship factoids reference the one local group <urn:regesta:actor:22766:local:ihre-brueder> as instructed; whether Albert's and Heinrich's brothers are the same persons is not stated."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22769",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "Added <urn:regesta:22769:parenthood> (rv:Parenthood; local group seine Eltern rv:Parent, Friedrich rv:Child; selector \"Friedrich schenkt als Seelgerät für seine Eltern\"); producer correction-g7. Beneficiary reference on the donation kept."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The realm as property holder (rv:Possession with E74_Group 'regno') has no dedicated category; recorded by the adjudication as a gap for the next model version."
+      ]
+    },
+    {
+      "group": 7,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g7",
+      "uid": "22771",
+      "status_after": "extracted",
+      "factoids_after": 6,
+      "changes": [
+        "Added <urn:regesta:22771:besitzungen-berta-odo> a crm:E18_Physical_Thing, rdfs:label \"allen Besitzungen\".",
+        "In <urn:regesta:22771:possession-berta-odo> replaced rf:concerns <urn:regesta:22771:burg-monteacuto> with <urn:regesta:22771:besitzungen-berta-odo>; producer correction-g7. Confirmation and grant-rudolf unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Whether the castle Monteacuto was also Berta's and Odo's possession is not stated; the grant and the confirmation still concern the node bundling castle and possessions."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22772",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "Added right node urn:regesta:22772:befreiung (crm:E30_Right, rv:UsageRights, label 'die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben').",
+        "Added urn:regesta:22772:befreiung to rf:concerns of confirmation, precedent-heinrich and precedent-lothar, keeping urn:regesta:22772:treviglio; producer of these three factoids set to correction-g8."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No exemption right type in the vocabulary; the top concept rv:UsageRights is used.",
+        "Precedent acts stay typed rv:Grant; the act scheme has no neutral type for an earlier act of unstated kind (adjudicated model_gap)."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22774",
+      "status_after": "extracted",
+      "factoids_after": 6,
+      "changes": [
+        "Added act factoid urn:regesta:22774:gruendung (rv:Grant) with the instructed evidence, Konrad (K000446) and Luitgard (L000872) as rv:Grantor, Abbot Nikolaus (N000153) as rv:Participant, the Alteburg community as rv:Recipient, qualifiers 'Gründung', 'mit Rat und Hilfe', 'als Tochterniederlassung dieser Abtei', rf:concerns besitzungen, no date; producer correction-g8.",
+        "On urn:regesta:22774:confirmation removed the three rv:Participant references to K000446, L000872, N000153 and the qualifier 'als Tochterniederlassung dieser Abtei', added rf:refersToAct urn:regesta:22774:gruendung; producer set to correction-g8.",
+        "Replaced the now inaccurate comment that the foundation is not modelled by a comment stating the rv:Grant approximation."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No foundation act type; foundation approximated by rv:Grant with qualifier 'Gründung'.",
+        "Filiation to Siegburg has no state type or role; kept as qualifier only."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22775",
+      "status_after": "extracted",
+      "factoids_after": 7,
+      "changes": [
+        "Removed rf:partOf urn:regesta:22775:commission from urn:regesta:22775:document-drafted; producer set to correction-g8.",
+        "Changed the type of urn:regesta:actor:22775:local:erzbischoefe from rf:FunctionalActor to crm:E74_Group, keeping IRI, label and the rv:Participant reference on dispute-before-king (the factoid itself is unchanged and keeps its producer)."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Archbishops remain an unidentified regest-local group; register candidates not applied by instruction.",
+        "No truce act type and no act type for the invalidation outcome, as recorded in the extracted file."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22777",
+      "status_after": "extracted",
+      "factoids_after": 5,
+      "changes": [
+        "Removed rf:refersToAct urn:regesta:22777:konrad-dispositions from confirmation-possessions, confirmation-abbot-election and confirmation-further-possessions; kept it on protection; kept qualifier 'darüber hinaus'; producer of the three confirmations set to correction-g8.",
+        "Adjusted the comment on konrad-dispositions so it no longer claims the confirmations refer to it."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The contract cannot mark whether 'gemäß den Verfügungen König Konrads (III.)' extends to the coordinated confirmations; left to expert review."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22779",
+      "status_after": "extracted",
+      "factoids_after": 9,
+      "changes": [
+        "On urn:regesta:22779:right-toll-exemption replaced crm:P2_has_type rv:Toll by rv:UsageRights, label kept, comment added. No factoid was changed, so all producers are kept."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No exemption right type in the vocabulary; rv:UsageRights used as top concept."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22781",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Added actor urn:regesta:actor:RI004-002-M000670 (crm:E21_Person, label 'Herzog Matthäus von Lothringen').",
+        "Added state factoid urn:regesta:22781:besitz-matthaeus (rv:Possession) with evidence 'die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat', Matthäus as rv:Possessor, qualifier 'unrechtmäßig usurpiert', rf:concerns burg-homburg, no date; producer correction-g8.",
+        "Removed the comment sentence saying the usurpation is not encoded."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No usurpation act type; the holding is approximated as rv:Possession with qualifier 'unrechtmäßig usurpiert'.",
+        "No transferring party for the acquisition; rv:Grant remains an approximation."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22786",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Added rf:partOf urn:regesta:22786:confirmation-bulgaro to urn:regesta:22786:protection-erwerbungen; no new references; exception kept; producer set to correction-g8."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The protected persons are not named in the protection clause; the recipients reach it only through rf:partOf."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22787",
+      "status_after": "extracted",
+      "factoids_after": 6,
+      "changes": [
+        "On urn:regesta:22787:confirmation-besitzstand added a second selector 'bestätigt dem Kloster' and a reference to urn:regesta:actor:RI004-002-P000278:community as rv:Recipient, nameInSource 'Kloster'; producer set to correction-g8."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The reference of 'befreit es' (monastery or Kerzers) stays open for expert review (adjudicated keep)."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22788",
+      "status_after": "extracted",
+      "factoids_after": 9,
+      "changes": [
+        "Removed urn:regesta:22788:strafe.",
+        "Added urn:regesta:22788:strafe-frei (rv:Enactment; selectors 'Strafe von 70 Pfund für einen Freien' and 'si liber est, septuaginta libris legalem bannum componat'; Friedrich rv:Grantor; amounts '70 Pfund', 'septuaginta libris'; conditions 'für einen Freien', 'si liber est'; partOf erneuerung-immunitaet; producer correction-g8).",
+        "Added urn:regesta:22788:strafe-unfrei (rv:Enactment; selectors 'ebensovielen Schlägen für einen Unfreien' and 'si vero servus, tot ictus accipiat'; Friedrich rv:Grantor; amounts 'ebensovielen Schlägen', 'tot ictus'; conditions 'für einen Unfreien', 'si vero servus'; partOf erneuerung-immunitaet; producer correction-g8)."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No role for the adversely affected Dienstmannen zu Lutry; rv:Participant fallback kept (adjudicated model_gap)."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22789",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Added group urn:regesta:actor:22789:local:bewohner (crm:E74_Group, label 'Bewohner').",
+        "Added right urn:regesta:22789:freiheit-bewohner (crm:E30_Right, rv:Protection, label 'die Freiheit der Bewohner von Verpfändungen oder Bedrückungen wegen Nichtleistung städtischer Dienste').",
+        "Added partial confirmation urn:regesta:22789:bestaetigung-freiheit-bewohner (rv:Confirmation) with the instructed evidence, Bewohner as rv:Beneficiary, rf:concerns freiheit-bewohner, rf:partOf bestaetigung; producer correction-g8. Main confirmation unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No right type for 'die alten Gewohnheiten des Stiftes' and 'die gerichtliche Klärung unrechtmäßiger Besitzansprüche'; they stay only in the evidence.",
+        "No exemption right type; the inhabitants' freedom is typed rv:Protection.",
+        "No role for the person subject to a jurisdiction; Zöllner von St. Paul stays rv:Participant (adjudicated model_gap)."
+      ]
+    },
+    {
+      "group": 8,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g8",
+      "uid": "22791",
+      "status_after": "extracted",
+      "factoids_after": 10,
+      "changes": [
+        "Removed urn:regesta:22791:p3-griechen-koenig; added p3-keine-gebiete-koenig (no condition, concerns gebiete-diesseits) and p3-vertreibung-koenig (two selectors, condition 'im Falle einer Invasion'), both rv:Assurance, partOf vorvertrag, Friedrich rv:Grantor 'er', Greek ruler rv:Participant 'dem griechischen Herrscher', producer correction-g8.",
+        "Removed urn:regesta:22791:p6-griechen-papst; added p6-kein-land-papst (no condition, concerns gebiete-diesseits) and p6-vertreibung-papst (two selectors, condition 'im Falle einer Invasion'), both rv:Assurance, partOf vorvertrag, pope E000589 rv:Grantor 'der Papst', Greek ruler rv:Participant 'Dem griechischen Herrscher', producer correction-g8.",
+        "On p4-kroenung added seven rv:Grantor references with nameInSource 'den genannten Kardinälen' for G000972, H001250, B000622, O000158, R000856, G000973, G001157; pope and king references kept; producer correction-g8.",
+        "On p5-exkommunikation added rf:condition 'Wer sich anmaßen sollte, die Gerechtsame des Reiches (iusticiam et honorem regni) zu mißachten'; existing conditions and references kept; producer correction-g8."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No role for an opposing or excluded third party; Romans, Roger of Sicily and the Greek ruler stay rv:Participant (adjudicated model_gap).",
+        "No treaty act type; the preliminary treaty stays rv:Enactment."
+      ]
+    },
+    {
+      "group": 9,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g9",
+      "uid": "22793",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Replaced every occurrence of <urn:regesta:actor:RI004-002-C000615> (actor node and Addressee reference of urn:regesta:22793:summons) with <urn:regesta:actor:RI004-002-C000615:community>; kept a crm:E74_Group, rdfs:label and rf:nameInSource \"die Vertreter von Chiavenna\".",
+        "Adjusted the comment above the actor node to name the community IRI convention.",
+        "urn:regesta:22793:summons now attributed to the corrector; urn:regesta:22793:dispute-chiavenna unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gaps adjudicated for this group and not corrected here: no purpose property for 'um dort ... zu klären' (kept as rf:ground); cross-record typing of the Grafschaft Chiavenna (place here, right in 22800) left to the expert."
+      ]
+    },
+    {
+      "group": 9,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g9",
+      "uid": "22796",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "urn:regesta:22796:confirmation: rf:refersToAct reduced to <urn:regesta:22796:treaty-negotiation>; oath and promise removed; comment added explaining why.",
+        "urn:regesta:22796:treaty-negotiation: added selector \"Friedrich verbrieft Papst Eugen (III.)\" and two rv:Participant references (Friedrich, nameInSource \"Friedrich\"; RI004-002-E000589, nameInSource \"Papst Eugen (III.)\"); rv:Negotiation and the negotiators' reference kept.",
+        "urn:regesta:22796:oath: role of the reference to RI004-002-F000471 (nameInSource \"regis\") changed from rv:Grantor to rv:Participant; rf:qualifier \"in anima regis\" and \"nachdem\" kept.",
+        "The three changed factoids are attributed to the corrector; urn:regesta:22796:promise unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No relation for a fulfilled precondition between acts (oath and promise as preconditions of the confirmation); only rf:qualifier \"nachdem\" keeps the temporal relation.",
+        "No role for the principal on whose soul an oath is sworn by another ('in anima regis'); rv:Participant used.",
+        "No act type for a concluded agreement or treaty; rv:Negotiation kept (adjudicated model gap)."
+      ]
+    },
+    {
+      "group": 9,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g9",
+      "uid": "22800",
+      "status_after": "extracted",
+      "factoids_after": 6,
+      "changes": [
+        "urn:regesta:22800:judgment: rf:qualifier \"entgegen\" replaced with \"entgegen seiner im Vorjahr zu Ulm getroffenen Verfügung\"; \"zu Ostern (April 19)\" and all three rf:refersToAct values kept; factoid attributed to the corrector."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No 'contrary to' relation between acts; the opposition to the Ulm disposition is kept only as exact wording in rf:qualifier.",
+        "Typing of the Grafschaft Chiavenna as a right here versus a place in 22792/22793 left to the expert (adjudicated not_required)."
+      ]
+    },
+    {
+      "group": 9,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g9",
+      "uid": "22803",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "rdfs:label of <urn:regesta:22803:hufen> changed to \"zweier Hufen mit dem Ertrag von 20 Solidi\".",
+        "rdfs:label of <urn:regesta:22803:muehle> changed to \"einer Mühle mit 4 Solidi Ertrag\".",
+        "Factoid urn:regesta:22803:donation left unchanged, including both rf:amount literals and its producer, because only the labels of the concerned things changed and the instruction keeps the factoid unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "rf:amount attaches to the factoid and cannot be bound to a concerned thing; the binding of 20 Solidi to the hides and 4 Solidi to the mill lives only in the thing labels."
+      ]
+    },
+    {
+      "group": 9,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g9",
+      "uid": "22807",
+      "status_after": "extracted",
+      "factoids_after": 9,
+      "changes": [
+        "urn:regesta:22807:urteil-tafelgueter: removed the Fürstenspruch selector and the references to RI004-002-H000498, RI004-002-G000825 and RI004-002-M000513; role of RI004-002-K000316 (nameInSource \"Konrad III.\") changed from rv:Judge to rv:Participant; added rf:qualifier \"unter Konrad III.\" beside \"(1151)\"; comment replaced to state the ambiguous attachment of the 'durch'-clause; factoid attributed to the corrector.",
+        "Added urn:regesta:22807:fuerstenspruch (rv:Judgment, undated, no partOf or refersToAct) with the Fürstenspruch selector, Herzog Heinrich von Bayern as rv:Participant and Gottfried von Arnsberg and Markward von Grumbach as rv:Witness, concerning the Tafelgüter.",
+        "Added actor <urn:regesta:actor:RI004-002-F000654> (crm:E21_Person, label \"Fredericus quondam Coloniensis archiepiscopus\") and thing <urn:regesta:22807:bona> (crm:E18_Physical_Thing, label \"omnia bona\").",
+        "Added urn:regesta:22807:belehnung-fredericus (rv:Enfeoffment, Fredericus as rv:Grantor, concerns bona, rf:qualifier \"quondam\", no date, recipients not identified).",
+        "Added urn:regesta:22807:urteil-bestimmung (rv:Enactment, rf:partOf urteil-tafelgueter, rf:refersToAct belehnung-fredericus, concerns bona, rf:condition \"que contra pacem regni facte dinoscuntur\").",
+        "All new factoids carry rf:source <urn:regesta:record:22807>, the corrector as producer and rv:unchecked; the other five factoids are unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Attachment ambiguity: the contract cannot record that the 'durch'-clause attaches either to the 1151 judgment or to the present charter; the Fürstenspruch stands as a separate unlinked factoid.",
+        "Konrad III.'s part ('unter Konrad III.') has no specific role; rv:Participant with the exact phrase as qualifier.",
+        "Herzog Heinrich von Bayern as formulator of the Fürstenspruch has no specific role; rv:Participant used.",
+        "The recipients of the enfeoffment by Fredericus are not stated and not identified."
+      ]
+    },
+    {
+      "group": 9,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g9",
+      "uid": "22810",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "urn:regesta:22810:treuegeloebnis: added rf:qualifier \"gegen die Angriffe des Grafen von Barcelona (Barcinonensis)\" beside \"Treue\"; no reference to the count added; factoid attributed to the corrector."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No role for the opponent against whom a pledge is directed; the Count of Barcelona (candidate RI004-002-B000184) stays unreferenced and appears only in the qualifier wording."
+      ]
+    },
+    {
+      "group": 10,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g10",
+      "uid": "22813",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Added a second rf:evidence selector to <urn:regesta:22813:confirmation> carrying the enumeration 'nämlich die Hafenanlagen ... und Salon'; producer of the confirmation set to correction-g10.",
+        "<urn:regesta:22813:grant-ludwig> unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": []
+    },
+    {
+      "group": 10,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g10",
+      "uid": "22816",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Replaced the selector of <urn:regesta:22816:request> by the full request clause ending 'zu beseitigen'; producer of the request set to correction-g10. No reference for the king added.",
+        "<urn:regesta:22816:dispute-unrecht> unchanged (adjudication: keep)."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No role for the party whose intervention a request seeks (der König).",
+        "No type for a suffered injury and no outcome property for the dispute (adjudication: model gap)."
+      ]
+    },
+    {
+      "group": 10,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g10",
+      "uid": "22820",
+      "status_after": "extracted",
+      "factoids_after": 6,
+      "changes": [
+        "Removed rf:qualifier \"in verfälschter Fassung\" from <urn:regesta:22820:confirmation>; not moved to <urn:regesta:22820:privilege-lucius>; producer of the confirmation set to correction-g10.",
+        "Other five factoids unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No way to mark an inserted text or a charter as forged (n. †193)."
+      ]
+    },
+    {
+      "group": 10,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g10",
+      "uid": "22823",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Replaced the local actor <urn:regesta:actor:22823:local:heinrich-von-bayern> by <urn:regesta:actor:RI004-002-H000498> (crm:E21_Person, label \"Heinrich von Bayern\") in its declaration and in the reference of <urn:regesta:22823:dispute-dukes>; role rv:Participant and nameInSource unchanged; removed the local node and its two comment lines; producer of dispute-dukes set to correction-g10.",
+        "Divorce, mission and parenthood factoids unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No sender or initiator role for Friedrich in the mission (adjudication: model gap).",
+        "No succession type for Wilhelm succeeding Roger (adjudication: model gap)."
+      ]
+    },
+    {
+      "group": 10,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g10",
+      "uid": "22824",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "Removed the rv:Participant reference to <urn:regesta:actor:22824:local:verwandte-manuels> from <urn:regesta:22824:assurance-relations>; selectors, rf:ground and rf:qualifier kept; producer of the assurance set to correction-g10.",
+        "Actor node and <urn:regesta:22824:kinship-relative-manuel> unchanged; other factoids unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": []
+    },
+    {
+      "group": 10,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g10",
+      "uid": "22826",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Declared <urn:regesta:actor:22826:local:leute> a crm:E74_Group with label \"seinen Leuten\" and added it to <urn:regesta:22826:restitution-order> as rv:Beneficiary with nameInSource \"seinen Leuten\"; not identified with Wibald; producer of the restitution order set to correction-g10.",
+        "<urn:regesta:22826:communication> unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The referent of the possessive 'seinen' stays open; the group is regest-local."
+      ]
+    },
+    {
+      "group": 10,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g10",
+      "uid": "22829",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Added <urn:regesta:22829:adjournment> (rf:ActFactoid, rv:Dispute) with the selector 'Da sich Heinrich (von Bayern) ... vertagt', references H000498 (rv:Participant, \"Heinrich (von Bayern)\") and F000471 (rv:Participant, \"der König\"), rf:ground, rf:qualifier \"vertagt\", rf:refersToAct <urn:regesta:22829:summons>, rf:verificationStatus rv:unchecked. No reference to Heinrich (von Sachsen), no date.",
+        "<urn:regesta:22829:summons> unchanged."
+      ],
+      "not_applied": [
+        "The instruction to give the new factoid prov:wasAttributedTo 'as the existing factoid' (extraction-batch-50) was not followed; the task brief requires an added factoid to carry the corrector correction-g10 as its single producer."
+      ],
+      "remaining_gaps": [
+        "No act type for adjournment.",
+        "No role for the presiding ruler."
+      ]
+    },
+    {
+      "group": 11,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g11",
+      "uid": "135064",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "urn:regesta:135064:judgment: added rf:qualifier \"erwählten Richters\" beside \"zugunsten des Stiftes\"; producer set to correction-g11. Roles, evidence and all other factoids unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The vocabulary has no concept for a judgment by a chosen (elected) judge; carried only as qualifier wording.",
+        "Propst Heinrich is not a reference of the dispute (adjudication: not_required)."
+      ]
+    },
+    {
+      "group": 11,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g11",
+      "uid": "220528",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Added actor urn:regesta:actor:RI004-002-B001067:community (crm:E74_Group, label \"Bologneser Kirche\").",
+        "Added rf:StateFactoid urn:regesta:220528:possession-church (rv:Possession, evidence \"die Güter der Bologneser Kirche\", Bologneser Kirche as rv:Possessor, rf:concerns urn:regesta:220528:goods), producer correction-g11.",
+        "urn:regesta:220528:request unchanged; no plundering factoid asserted."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No role for the target of a requested action; the counts of Panizo stay rv:Participant (adjudication: model_gap).",
+        "The plundering stays only in rf:ground of the request."
+      ]
+    },
+    {
+      "group": 11,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g11",
+      "uid": "220529",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "Added actor urn:regesta:actor:RI004-002-R000076 (crm:E21_Person, label \"Rainald von Dassel\").",
+        "Added rf:ActFactoid urn:regesta:220529:request-escort (rv:Request) with the two adjudicated evidence selectors and references Friedrich rv:Petitioner, Bischof G(erhard) von Bologna rv:Addressee, Rainald von Dassel rv:Beneficiary; producer correction-g11.",
+        "The two existing factoids unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "The chancellor's journey, the reception and the escort to Faenza are not modelled as factoids, and Faenza is not linked (travel out of scope, per instruction).",
+        "Rainald's office as chancellor ('seinen Kanzler') is not recorded as office holding, per instruction."
+      ]
+    },
+    {
+      "group": 11,
+      "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g11",
+      "uid": "220532",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Replaced the abstention: added actors urn:regesta:actor:RI004-002-W000272 (\"Herzog Welf (VI.)\") and urn:regesta:actor:RI004-002-G001188 (\"Guido (III.) Guerra, Graf von Tuszien\").",
+        "Added rf:ActFactoid urn:regesta:220532:letter (rv:Communication), Welf rv:Grantor, Guido rv:Addressee; producer correction-g11.",
+        "Added rf:ActFactoid urn:regesta:220532:assurance-intercession (rv:Assurance, rf:partOf the letter), two evidence selectors, Welf rv:Grantor, Guido rv:Beneficiary, rf:qualifier \"sich beim Kaiser für ihn einsetzen werde\"; producer correction-g11."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No act type for intercession; carried as qualifier wording under rv:Assurance.",
+        "No role for the person before whom one intercedes; the emperor has no reference.",
+        "The announced coming with troops to Alexander (III.) and the support against enemies are not recorded (military, out of scope)."
+      ]
+    }
+  ],
+  "copied_unchanged": [
+    "22628",
+    "22629",
+    "22630",
+    "22631",
+    "22632",
+    "22633",
+    "22634",
+    "22635",
+    "22636",
+    "22637",
+    "22638",
+    "22639",
+    "22641",
+    "22642",
+    "22643",
+    "22644",
+    "22645",
+    "22646",
+    "22647",
+    "22648",
+    "22649",
+    "22650",
+    "22651",
+    "22652",
+    "22654",
+    "22655",
+    "22656",
+    "22657",
+    "22658",
+    "22659",
+    "22660",
+    "22661",
+    "22662",
+    "22663",
+    "22664",
+    "22665",
+    "22666",
+    "22667",
+    "22668",
+    "22670",
+    "22672",
+    "22674",
+    "22675",
+    "22676",
+    "22677",
+    "22679",
+    "22680",
+    "22681",
+    "22683",
+    "22684",
+    "22685",
+    "22686",
+    "22687",
+    "22688",
+    "22689",
+    "22690",
+    "22692",
+    "22695",
+    "22697",
+    "22698",
+    "22701",
+    "22703",
+    "22704",
+    "22708",
+    "22709",
+    "22710",
+    "22712",
+    "22716",
+    "22718",
+    "22719",
+    "22720",
+    "22723",
+    "22724",
+    "22725",
+    "22726",
+    "22727",
+    "22729",
+    "22730",
+    "22731",
+    "22734",
+    "22737",
+    "22738",
+    "22739",
+    "22741",
+    "22742",
+    "22743",
+    "22745",
+    "22746",
+    "22747",
+    "22748",
+    "22749",
+    "22751",
+    "22754",
+    "22755",
+    "22756",
+    "22757",
+    "22758",
+    "22763",
+    "22764",
+    "22767",
+    "22768",
+    "22770",
+    "22773",
+    "22776",
+    "22778",
+    "22780",
+    "22782",
+    "22783",
+    "22784",
+    "22785",
+    "22790",
+    "22792",
+    "22795",
+    "22797",
+    "22798",
+    "22799",
+    "22801",
+    "22802",
+    "22804",
+    "22805",
+    "22806",
+    "22808",
+    "22809",
+    "22811",
+    "22812",
+    "22814",
+    "22815",
+    "22817",
+    "22818",
+    "22819",
+    "22821",
+    "22822",
+    "22825",
+    "22827",
+    "22828",
+    "22830",
+    "22831",
+    "22844",
+    "22861",
+    "22862",
+    "22945",
+    "134373",
+    "134419",
+    "134420",
+    "134421",
+    "210553",
+    "220518",
+    "220519",
+    "24069",
+    "220530",
+    "220531",
+    "220541"
+  ],
+  "reused_from_factoid-2026-11-11": [
+    "134441",
+    "22673",
+    "22694",
+    "22696",
+    "22728",
+    "22794"
+  ]
+}

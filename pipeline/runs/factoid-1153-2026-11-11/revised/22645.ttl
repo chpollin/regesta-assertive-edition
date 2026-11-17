@@ -1,0 +1,66 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22645> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 18" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-F000681> a crm:E21_Person ;
+    rdfs:label "Friedrich von Schwaben" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrad III." .
+
+<urn:regesta:actor:RI004-002-K000398> a crm:E21_Person ;
+    rdfs:label "Herzog Konrad von Zähringen" .
+
+# The possessive "seinem" follows "zwingt diesen" and is grammatically ambiguous between Friedrich
+# and Herzog Konrad. The reading below takes Friedrich as the child and nephew; see batch report.
+<urn:regesta:22645:parenthood-friedrich> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22645> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "seinem Vater (Friedrich von Schwaben)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich dringt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ;
+            rf:role rv:Parent ; rf:nameInSource "Friedrich von Schwaben" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+            rf:role rv:Child ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-5> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22645:kinship-oheim> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:qualifier "Oheim" ;
+    rf:source <urn:regesta:record:22645> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "seinem Oheim (König Konrad III.)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich dringt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+            rf:role rv:Kin ; rf:nameInSource "König Konrad III." ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+            rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-5> ;
+    rf:verificationStatus rv:unchecked .
+
+# The request for peace is compelled by Friedrich. The contract has no role for the coercing party,
+# so Friedrich is recorded as Participant (model gap). Father and Oheim are addressees only.
+<urn:regesta:22645:request-peace> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22645> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "zwingt diesen, vor seinem Vater (Friedrich von Schwaben) und seinem Oheim (König Konrad III.) zu erscheinen und um Frieden zu bitten" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Fehde mit Herzog Konrad von Zähringen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000398> ;
+            rf:role rv:Petitioner ; rf:nameInSource "Herzog Konrad von Zähringen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ;
+            rf:role rv:Addressee ; rf:nameInSource "Friedrich von Schwaben" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+            rf:role rv:Addressee ; rf:nameInSource "König Konrad III." ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+            rf:role rv:Participant ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-5> ;
+    rf:verificationStatus rv:unchecked .

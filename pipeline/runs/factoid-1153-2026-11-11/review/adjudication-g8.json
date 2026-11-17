@@ -1,0 +1,358 @@
+{
+  "group": 8,
+  "adjudicator": "urn:regesta:agent:factoid-1153-2026-11-11:adjudication-g8",
+  "expert_accepted": false,
+  "basis": "Every error, warning and change-proposing note of review-g8-A and review-g8-B was checked against summary_plain and the register candidates of the packets 22772 to 22791, the extracted Turtle files and the frozen contract factoid-2026-11-11 (regesta-core.ttl, vocabulary.ttl, shapes.ttl, annotation-guidelines.md, review.md, correct.md); validation/extracted.json reports no technical issue for any of the twenty UIDs, so no validation decision is needed.",
+  "decisions": [
+    {
+      "uids": ["22772"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22772:precedent-heinrich",
+      "finding": "The precedent acts of Heinrich (IV.) and Lothar (III.) are typed rv:Grant although the regest says only 'nach dem Vorgang'; applies equally to urn:regesta:22772:precedent-lothar.",
+      "decision": "model_gap",
+      "reason": "The passage 'nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.) die Befreiung ... von allen Abgaben' attests earlier acts about the exemption but not their kind. The candidate already keeps rf:qualifier 'nach dem Vorgang' and comments the unresolved reading; the act scheme has no neutral type for an earlier act of unstated kind, and rv:Confirmation would assert just as much as rv:Grant. No correction; gap recorded."
+    },
+    {
+      "uids": ["22772"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22772:confirmation",
+      "finding": "The exemption that is the object of the confirmation has no right node; rf:concerns points only to the place Treviglio.",
+      "decision": "correct_conservatively",
+      "reason": "The confirmed object is 'die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben'. The contract can express it as a crm:E30_Right; since the vocabulary has no exemption type, only the top concept rv:UsageRights is safe, as used for the gaulum exemption in 22780.",
+      "instruction": "Add <urn:regesta:22772:befreiung> a crm:E30_Right ; crm:P2_has_type rv:UsageRights ; rdfs:label \"die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben\" . Add it to rf:concerns of urn:regesta:22772:confirmation, urn:regesta:22772:precedent-heinrich and urn:regesta:22772:precedent-lothar, keeping urn:regesta:22772:treviglio. Record the missing exemption right type as a model gap."
+    },
+    {
+      "uids": ["22773"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22773:enfeoffment",
+      "finding": "rf:refersToAct from the renewed enfeoffment to the judgment misuses a property meant for confirmations.",
+      "decision": "keep",
+      "reason": "rf:refersToAct is defined for 'a later act such as a confirmation or assurance', so the list is not exclusive. The regest ties the renewed enfeoffment to the judgment ('belehnt ... erneut ..., nachdem ... ein diesbezüglicher Spruch gefällt worden ist'); a reference from the later act to the earlier one the same regest reports is defensible and implies no date."
+    },
+    {
+      "uids": ["22773"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:actor:RI004-002-N000177:community",
+      "finding": "The community IRI for the Niederaltaich monks widens 'einiger Mönche' to the whole body.",
+      "decision": "keep",
+      "reason": "N000177 is the packet's own register entry 'Niederaltaich ... // Mönche', matching the passage by name; the label 'einiger Mönche' and rf:nameInSource keep the restriction in the source wording. A regest-local group would discard a valid packet identification."
+    },
+    {
+      "uids": ["22774"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22774:confirmation",
+      "finding": "The foundation of Alteburg, the earlier act Friedrich confirms, is collapsed into the confirmation; founders and the advising abbot are listed as participants of Friedrich's act.",
+      "decision": "correct_conservatively",
+      "reason": "The regest reads 'Friedrich bestätigt die Gründung des Klosters Alteburg (Aldenburg) ... durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg'. The guidelines require a confirmation of an earlier act to give two act factoids joined by rf:refersToAct, and Konrad, Luitgard and Nikolaus did not take part in Friedrich's confirmation. The missing foundation type does not license dropping the act; the closest act type rv:Grant with the exact word 'Gründung' in rf:qualifier is the safe approximation, as 22783 likewise models a foundation by an existing transfer type.",
+      "instruction": "Add <urn:regesta:22774:gruendung> a rf:ActFactoid ; rf:factoidType rv:Grant ; rf:source <urn:regesta:record:22774> ; rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg als Tochterniederlassung dieser Abtei mit ihren einzeln angeführten Besitzungen\" ] ; references: <urn:regesta:actor:RI004-002-K000446> rv:Grantor nameInSource \"Konrad von Dreieichenhain (Hagen)\", <urn:regesta:actor:RI004-002-L000872> rv:Grantor nameInSource \"Luitgard\", <urn:regesta:actor:RI004-002-N000153> rv:Participant nameInSource \"Abtes Nikolaus von Siegburg\", <urn:regesta:actor:RI004-002-A000721:community> rv:Recipient nameInSource \"Klosters Alteburg (Aldenburg)\" ; rf:qualifier \"Gründung\" , \"mit Rat und Hilfe\" , \"als Tochterniederlassung dieser Abtei\" ; rf:concerns <urn:regesta:22774:besitzungen> ; no date ; prov:wasAttributedTo and rf:verificationStatus rv:unchecked as for every factoid. On urn:regesta:22774:confirmation remove the three rv:Participant references to K000446, L000872 and N000153, remove rf:qualifier \"als Tochterniederlassung dieser Abtei\", and add rf:refersToAct <urn:regesta:22774:gruendung>. Record the missing foundation act type as a model gap."
+    },
+    {
+      "uids": ["22774"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22774:confirmation",
+      "finding": "Optionally add the Siegburg abbey as an actor for the filiation.",
+      "decision": "not_required",
+      "reason": "'als Tochterniederlassung dieser Abtei' states a filiation the contract has no state type or role for; the wording is kept as qualifier (after correction on the foundation factoid). The reviewer marks the addition as optional."
+    },
+    {
+      "uids": ["22774"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22774:advocate-from-founder-kin",
+      "finding": "The Gründersippe as rv:Beneficiary is interpretive; rv:Participant proposed.",
+      "decision": "keep",
+      "reason": "'des Vogtes, der stets der Gründersippe entnommen werden soll' reserves the advocacy to the founders' kin, which is a provision in their favour; rv:Beneficiary ('Zu wessen Gunsten etwas geschieht') is a defensible reading."
+    },
+    {
+      "uids": ["22775"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22775:enfeoffment",
+      "finding": "The fiefs should be part of the enfeoffment's object, not only a pre-existing state.",
+      "decision": "keep",
+      "reason": "'verleiht er Graf Dietrich ... neben seinen Lehen auch die Oberhoheit über das Bistum Cambrai' admits two readings: granting the fiefs and the overlordship, or granting the overlordship in addition to fiefs Dietrich already holds. The candidate's second reading is grammatically defensible and keeps the fiefs as a separate state without inferring a lord; the reviewer itself calls the passage ambiguous."
+    },
+    {
+      "uids": ["22775"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22775:document-drafted",
+      "finding": "rf:partOf links the drafting of the charter to Dietrich's commission, but it is a subsequent act, not a provision.",
+      "decision": "correct",
+      "reason": "rf:partOf is 'a provision or secondary act belonging to a main act ... such as the rights that come with a donation'. 'dieser ruft einen Schreiber, der ... eine vom König zu besiegelnde Urkunde ausfertigt' is a later act by Matthäus and a scribe, not a component of the commission.",
+      "instruction": "Remove rf:partOf <urn:regesta:22775:commission> from urn:regesta:22775:document-drafted. Change nothing else on the factoid."
+    },
+    {
+      "uids": ["22775"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:actor:22775:local:erzbischoefe",
+      "finding": "Three archbishops are merged into one rf:FunctionalActor.",
+      "decision": "correct_conservatively",
+      "reason": "rf:FunctionalActor is one actor determined by office; 'der Erzbischöfe von Köln, Mainz und Trier' names three office holders as a plurality. Splitting into three actors would require labels that are not source wording ('Erzbischof von Mainz' does not occur), and the passage gives no personal names for a register identification. The safe fix is to type the plurality as a regest-local group, as the run does for 'der anwesenden Reichsfürsten' in 22773.",
+      "instruction": "Change the type of <urn:regesta:actor:22775:local:erzbischoefe> from rf:FunctionalActor to crm:E74_Group. Keep the IRI, the label \"Erzbischöfe von Köln, Mainz und Trier\" and the existing rv:Participant reference on urn:regesta:22775:dispute-before-king unchanged. Do not apply register candidates."
+    },
+    {
+      "uids": ["22775"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22775:truce",
+      "finding": "Use rv:Participant instead of rv:Beneficiary for the bishop in the truce.",
+      "decision": "keep",
+      "reason": "The factoid reads the truce as Dietrich's consent extracted by Friedrich ('indem er Dietrich die Einwilligung zu einem Waffenstillstand ... abringt'); within that reading the bishop, against whom hostilities are halted, is the party in whose favour the consent is given. The approximation and the missing truce type are already documented."
+    },
+    {
+      "uids": ["22776"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22776:request-consecration",
+      "finding": "Optionally add qualifiers for the new election and the simony suspicion.",
+      "decision": "not_required",
+      "reason": "rf:qualifier is for wording that qualifies type or time of the factoid; 'der zu Unrecht der Simonie verdächtigt wurde' describes the abbot and would need an accusation type the contract lacks. The wording stays in the evidence; the reviewer marks it optional."
+    },
+    {
+      "uids": ["22777"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22777:confirmation-further-possessions",
+      "finding": "Linking all confirmations, including the items after 'darüber hinaus', to Konrad's dispositions overreaches.",
+      "decision": "correct_conservatively",
+      "reason": "'gemäß den Verfügungen König Konrads (III.)' stands in the clause 'nimmt ... das Stift Floreffe in seinen Schutz'; whether it extends to the coordinated 'und bestätigt ihm ...' is a reading, and 'darüber hinaus' may mark additions beyond those dispositions. The contract cannot mark a link as ambiguous, so the safe fix is to keep the link only where the passage places it; the confirmations stay connected through rf:partOf to the protection.",
+      "instruction": "Remove rf:refersToAct <urn:regesta:22777:konrad-dispositions> from urn:regesta:22777:confirmation-possessions, urn:regesta:22777:confirmation-abbot-election and urn:regesta:22777:confirmation-further-possessions. Keep it on urn:regesta:22777:protection. Keep rf:qualifier \"darüber hinaus\"."
+    },
+    {
+      "uids": ["22777", "22779"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22777:confirmation-possessions",
+      "finding": "Coordinate confirmations and grants are linked by rf:partOf to the protection; drop partOf (22777) or keep only where subordinate (22779).",
+      "decision": "keep",
+      "reason": "rf:partOf covers 'a provision or secondary act belonging to a main act of the same regest'. The confirmations and grants of one diploma following the protection clause are defensibly secondary dispositions of that act, and the run applies the same pattern in 22780, 22783 and 22788. Dropping the links would leave the parts of one charter unconnected."
+    },
+    {
+      "uids": ["22777"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22777:right-leffe-revenues",
+      "finding": "The provostship and church custody of Leffe have no right node.",
+      "decision": "not_required",
+      "reason": "The thing node 'die Kirche von Leffe mit allem Zubehör' already covers the appurtenances, and the full list stays in the evidence. A separate node for 'prepositura, templi custodia' is a refinement the contract does not require."
+    },
+    {
+      "uids": ["22779"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22779:right-toll-exemption",
+      "finding": "The exemption from tolls is typed rv:Toll, the right to levy tolls.",
+      "decision": "correct",
+      "reason": "The passage grants 'die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich'. rv:Toll ('Zollrecht') denotes the opposite relation and would return the inhabitants as holders of a toll. The top concept rv:UsageRights is expressible and does not assert a levy right.",
+      "instruction": "On <urn:regesta:22779:right-toll-exemption> replace crm:P2_has_type rv:Toll by crm:P2_has_type rv:UsageRights. Keep the label. Record the missing exemption right type as a model gap."
+    },
+    {
+      "uids": ["22780"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22780:bestaetigung-gaulum",
+      "finding": "The relative clause naming the Count of Flanders as habitual unlawful collector of the gaulum is omitted.",
+      "decision": "model_gap",
+      "reason": "'die der Graf von Flandern widerrechtlich einzuheben pflegt' states a contested levy, but the contract has neither an act or state type for a wrongful exaction nor a role for an adverse party. A rv:Participant reference on the confirmation would assert that the count takes part in confirming the exemption, and no state type (Possession, RightHolding, Obligation) renders an unlawful levy without changing its meaning. No correction; the wrongful-levy type and the adverse-party role are recorded as gaps. The wording remains retrievable from the source."
+    },
+    {
+      "uids": ["22780"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22780:bestaetigung-immunitaet",
+      "finding": "The partial confirmations of immunity and royal protection carry no references.",
+      "decision": "not_required",
+      "reason": "Their evidence 'insbesondere die Immunität' and 'den Königsschutz' names no actor, and grantor and recipient follow from rf:partOf to urn:regesta:22780:bestaetigung, the pattern the run also uses for the sub-confirmations of 22783. The contract does not require references on every factoid."
+    },
+    {
+      "uids": ["22781"],
+      "source": ["review-g8-A"],
+      "subject": "urn:regesta:22781:burg-homburg",
+      "finding": "The usurpation of Homburg by Duke Matthäus, half of the regest, is omitted together with its actor.",
+      "decision": "correct_conservatively",
+      "reason": "'die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat' is central and in scope (a legal relation to a castle). The act type for usurpation is missing, but the resulting holding is expressible as rv:Possession, defined 'wie das Regest es sagt', with the exact wording 'unrechtmäßig usurpiert' as qualifier so that no lawful possession is asserted. 'Herzog Matthäus von Lothringen' matches the packet candidate RI004-002-M000670 'Matthäus // Herzog von (Ober-)Lothringen' by name and title.",
+      "instruction": "Add <urn:regesta:actor:RI004-002-M000670> a crm:E21_Person ; rdfs:label \"Herzog Matthäus von Lothringen\" . Add <urn:regesta:22781:besitz-matthaeus> a rf:StateFactoid ; rf:factoidType rv:Possession ; rf:source <urn:regesta:record:22781> ; rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat\" ] ; rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:role rv:Possessor ; rf:nameInSource \"Herzog Matthäus von Lothringen\" ] ; rf:qualifier \"unrechtmäßig usurpiert\" ; rf:concerns <urn:regesta:22781:burg-homburg> ; no date ; prov:wasAttributedTo and rf:verificationStatus rv:unchecked as for every factoid. Remove the sentence of the comment saying the usurpation is not encoded, and record the missing usurpation act type as a model gap."
+    },
+    {
+      "uids": ["22782"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22782:teil-vogtei",
+      "finding": "Optionally add the monastery of Stablo to rf:concerns of the donation.",
+      "decision": "not_required",
+      "reason": "The right's label 'den Teil der Vogtei des Klosters' keeps the wording, and the only candidate S001047 is an 'ort' entry; the reviewer itself requires no change."
+    },
+    {
+      "uids": ["22783"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22783:recht-vogtwahl",
+      "finding": "The right to choose the Vogt is typed rv:Advocacy; rv:ChurchRights proposed.",
+      "decision": "keep",
+      "reason": "'der auch das Recht hat, den Vogt zu wählen' is a right concerning the advocacy; rv:Advocacy is a defensible placement, and the hierarchy of right types is explicitly reserved for expert review in the vocabulary. Neither concept is clearly more correct."
+    },
+    {
+      "uids": ["22783"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22783:stiftung",
+      "finding": "The monastery as rv:Recipient of its own foundation is strained; rv:Beneficiary as alternative.",
+      "decision": "keep",
+      "reason": "The reviewer recommends keeping it pending a foundation type. Under the approximating transfer type the founded house is the one to which the foundation is made over; the same choice is prescribed for 22774 above for consistency."
+    },
+    {
+      "uids": ["22784"],
+      "source": ["review-g8-B"],
+      "subject": "22784",
+      "finding": "The rebuilding of Hohenburg on clerical advice, the father's destruction and Bishop Burchard's help with the re-establishment and the Augustinian rule are omitted.",
+      "decision": "model_gap",
+      "reason": "The passage 'Friedrich läßt auf Anraten geistlicher Personen das von seinem Vater beinahe gänzlich zerstörte Chorfrauenstift in Hohenburg ... wieder aufbauen' and 'der bei der Wiedererrichtung des Stiftes und der Einführung der Augustinerregel Bischof Burchard von Straßburg behilflich ist' is central, but no act type of the vocabulary (Grant, Restitution, Enactment, Appointment) expresses rebuilding, re-establishment, the introduction of a rule or destruction without changing the historical meaning. Attaching Burchard to the appointment of Rilint would misplace him, since his help concerns the re-establishment. No correction; the gaps are recorded."
+    },
+    {
+      "uids": ["22784"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22784:appointment-rilint",
+      "finding": "The second selector 'Friedrich läßt' belongs to the rebuilding clause.",
+      "decision": "keep",
+      "reason": "The appointment 'vertraut die Leitung der Äbtissin Rilint an' has its subject only in the coordinated opening 'Friedrich läßt'; the guidelines allow a second selector where a role rests on a different passage, and this selector supports the grantor reference."
+    },
+    {
+      "uids": ["22785"],
+      "source": ["review-g8-B"],
+      "subject": "22785",
+      "finding": "The heir relation of Count Hugo (von Dagsburg) to Eberhard is not extracted; a rv:Kinship factoid with qualifier 'heredis' is proposed.",
+      "decision": "model_gap",
+      "reason": "'in comitatu predicti quondam Everhardi, nunc autem heredis sui Hvgonis comitis (von Dagsburg)' states succession as heir in a locating clause, not a kinship word; recording it as rv:Kinship would infer a genealogy the guidelines forbid. The contract has no heir role or succession state type. No correction; gap recorded."
+    },
+    {
+      "uids": ["22785"],
+      "source": ["review-g8-B"],
+      "subject": "22785",
+      "finding": "The foundation of Altdorf by Eberhard's ancestors is not recorded as an earlier act, unlike in 22783.",
+      "decision": "not_required",
+      "reason": "Friedrich confirms 'Markt, Münze, Schenke und Zoll ... wie sie einst Kaiser Otto (III.) dem Grafen Eberhard verliehen hatte'; the foundation is a descriptive participle of the monastery, not the object of the confirmation, and that earlier act is already modelled. The foundation is therefore not central, and the contract lacks a foundation type. The ancestor relation from the same clause is kept."
+    },
+    {
+      "uids": ["22786"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22786:protection-erwerbungen",
+      "finding": "The protection names only the ruler; the lords of Bulgaro, whose acquisitions are protected, are missing.",
+      "decision": "correct_conservatively",
+      "reason": "'und nimmt die Erwerbungen aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.) ... in seinen Schutz' is coordinated with the confirmation to the lords of Bulgaro but names no protected persons, so assigning them as rv:Recipient rests on ellipsis. The safe fix is the reviewer's alternative: connect the protection as a secondary act to the confirmation, which carries the recipients.",
+      "instruction": "Add rf:partOf <urn:regesta:22786:confirmation-bulgaro> to urn:regesta:22786:protection-erwerbungen. Add no new references. Keep rf:exception \"unter Vorbehalt der königlichen Gerechtsame\"."
+    },
+    {
+      "uids": ["22786"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22786:protection-erwerbungen",
+      "finding": "Optionally add the time span as rf:qualifier.",
+      "decision": "not_required",
+      "reason": "The wording 'aus der Zeit Heinrichs (V.), Lothars (III.) und Konrads (III.)' is kept in the label of the thing node and the evidence, and no date is derived; the reviewer marks the addition optional."
+    },
+    {
+      "uids": ["22787"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22787:enactment-befreiung",
+      "finding": "'befreit es' refers to the monastery, not to the court at Kerzers.",
+      "decision": "keep",
+      "reason": "In 'die Vogtei über den Hof des Klosters Peterlingen zu Kerzers ... ab, befreit es von allen vogteirechtlichen Ansprüchen' the neuter pronoun can refer to 'Klosters Peterlingen' or to the place name 'Kerzers', which is neuter in German. The reviewer's argument from gender overlooks the place name, and the immediate context (the advocacy over the court is denied, then 'es' is freed from advocacy claims) supports the candidate's reading. The reading stays open for expert review."
+    },
+    {
+      "uids": ["22787"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22787:judgment-vogtei-kerzers",
+      "finding": "The princes' sentence is collapsed into rf:ground; a separate rv:Judgment factoid with a functional actor 'Fürsten' is proposed.",
+      "decision": "keep",
+      "reason": "'auf Grund eines Fürstenspruches' is a reason the regest gives for Friedrich's act, which is exactly what rf:ground records in exact wording. The passage names no princes; creating a judging actor from the compound 'Fürstenspruch' would add an actor the text does not name. Friedrich pronounces the denial ('spricht ... ab'), so rv:Judge stands."
+    },
+    {
+      "uids": ["22787"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:actor:22787:local:abt-von-cluny",
+      "finding": "Consider an additional reference to the register entry C000775 for the present abbot of Cluny.",
+      "decision": "not_required",
+      "reason": "The guideline adds an individual holder only 'where the passage names an individual holder too'. 'der Abt von Cluny und seine Nachfolger' names no individual, and C000775 is an office entry without a personal name, so it cannot be matched by name and title."
+    },
+    {
+      "uids": ["22787"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22787:confirmation-besitzstand",
+      "finding": "The confirmation of the property names no recipient.",
+      "decision": "correct",
+      "reason": "In 'bestätigt dem Kloster das ... Vorrecht ... und verbrieft den zum Teil namentlich angeführten Besitzstand' the dative 'dem Kloster' governs both coordinated verbs. The recipient is expressible with the identification already used on urn:regesta:22787:confirmation-vorrecht, and the guidelines allow a second selector where a role rests on a different passage.",
+      "instruction": "On urn:regesta:22787:confirmation-besitzstand add a second selector [ a oa:TextQuoteSelector ; oa:exact \"bestätigt dem Kloster\" ] and a reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000278:community> ; rf:role rv:Recipient ; rf:nameInSource \"Kloster\" ]. Change nothing else."
+    },
+    {
+      "uids": ["22788"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22788:strafe",
+      "finding": "Four amounts and four conditions on one factoid lose which penalty applies under which condition.",
+      "decision": "correct",
+      "reason": "The passage sets two conditional rules: 'Strafe von 70 Pfund für einen Freien bzw. ebensovielen Schlägen für einen Unfreien (si liber est, septuaginta libris legalem bannum componat, si vero servus, tot ictus accipiat)'. On one node the graph admits 70 Pfund for an unfree man. Two enactment factoids keep each amount with its condition. 'ebensovielen Schlägen' is a counted quantity in its historical unit and may stay rf:amount.",
+      "instruction": "Remove urn:regesta:22788:strafe. Add <urn:regesta:22788:strafe-frei> a rf:ActFactoid ; rf:factoidType rv:Enactment ; evidence selectors \"Strafe von 70 Pfund für einen Freien\" and \"si liber est, septuaginta libris legalem bannum componat\" ; reference Friedrich (urn:regesta:actor:RI004-002-F000471) rv:Grantor nameInSource \"Friedrich\" ; rf:amount \"70 Pfund\" , \"septuaginta libris\" ; rf:condition \"für einen Freien\" , \"si liber est\" ; rf:partOf <urn:regesta:22788:erneuerung-immunitaet>. Add <urn:regesta:22788:strafe-unfrei> a rf:ActFactoid ; rf:factoidType rv:Enactment ; evidence selectors \"ebensovielen Schlägen für einen Unfreien\" and \"si vero servus, tot ictus accipiat\" ; reference Friedrich rv:Grantor nameInSource \"Friedrich\" ; rf:amount \"ebensovielen Schlägen\" , \"tot ictus\" ; rf:condition \"für einen Unfreien\" , \"si vero servus\" ; rf:partOf <urn:regesta:22788:erneuerung-immunitaet>. Both with rf:source, prov:wasAttributedTo and rf:verificationStatus rv:unchecked."
+    },
+    {
+      "uids": ["22788"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22788:bestaetigung-abgabenfreiheit",
+      "finding": "The Dienstmannen of Lutry as rv:Participant overstate their part; keep or drop.",
+      "decision": "model_gap",
+      "reason": "'von allen Abgaben an die Dienstmannen zu Lutry' makes them the party to whom dues are no longer owed. rv:Participant is the vocabulary's declared fallback ('Beteiligt, ohne dass das Regest eine bestimmtere Rolle trägt'); dropping the reference would lose the actor. No correction; the missing role for an adversely affected party is recorded."
+    },
+    {
+      "uids": ["22789"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22789:bestaetigung",
+      "finding": "The toll collector of St. Paul is the subject of a jurisdiction, not a participant of the confirmation.",
+      "decision": "model_gap",
+      "reason": "'die Gerichtsbarkeit über den Zöllner von St. Paul' makes him the person subject to the confirmed jurisdiction. The contract has no role for that relation; rv:Participant is the declared fallback and the right node keeps the exact wording. Dropping the reference would lose the register identification B001873. No correction; gap recorded."
+    },
+    {
+      "uids": ["22789"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22789:bestaetigung",
+      "finding": "The customs, the inhabitants' freedom and the judicial clarification have no node and no factoid; the inhabitants as beneficiaries are lost.",
+      "decision": "correct_conservatively",
+      "reason": "'die Freiheit der Bewohner von Verpfändungen oder Bedrückungen wegen Nichtleistung städtischer Dienste' names a beneficiary group distinct from the recipient, which cannot be carried by the main confirmation without misattributing the role; it is expressible as a partial confirmation as in 22783 and 22788, typed like the comparable 'Freiheit ... von Bedrückungen' in 22783. 'die alten Gewohnheiten des Stiftes' and 'die gerichtliche Klärung unrechtmäßiger Besitzansprüche' have no fitting right type and would need an arbitrary type, so they stay only in the evidence.",
+      "instruction": "Add <urn:regesta:actor:22789:local:bewohner> a crm:E74_Group ; rdfs:label \"Bewohner\" . Add <urn:regesta:22789:freiheit-bewohner> a crm:E30_Right ; crm:P2_has_type rv:Protection ; rdfs:label \"die Freiheit der Bewohner von Verpfändungen oder Bedrückungen wegen Nichtleistung städtischer Dienste\" . Add <urn:regesta:22789:bestaetigung-freiheit-bewohner> a rf:ActFactoid ; rf:factoidType rv:Confirmation ; rf:source <urn:regesta:record:22789> ; rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"die Freiheit der Bewohner von Verpfändungen oder Bedrückungen wegen Nichtleistung städtischer Dienste\" ] ; rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22789:local:bewohner> ; rf:role rv:Beneficiary ; rf:nameInSource \"Bewohner\" ] ; rf:concerns <urn:regesta:22789:freiheit-bewohner> ; rf:partOf <urn:regesta:22789:bestaetigung> ; prov:wasAttributedTo and rf:verificationStatus rv:unchecked. Leave the main confirmation unchanged. Record the missing types for customs, judicial clarification and exemption as model gaps."
+    },
+    {
+      "uids": ["22789"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22789:vorbild-vorgaenger",
+      "finding": "Narrow the evidence to 'nach dem Vorbild seiner Vorgänger' and add the Stift as rv:Recipient.",
+      "decision": "keep",
+      "reason": "'nach dem Vorbild seiner Vorgänger' alone does not carry the act type; the current selector includes the object that makes it a confirmation, as the guideline on the shortest passage carrying type and roles allows. Adding the Stift as recipient of the predecessors' acts would assert a recipient the passage only implies."
+    },
+    {
+      "uids": ["22791"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22791:p3-griechen-koenig",
+      "finding": "'im Falle einer Invasion' conditions only the expulsion promise but sits on a factoid that also holds the unconditional non-concession; the same applies to urn:regesta:22791:p6-griechen-papst.",
+      "decision": "correct",
+      "reason": "'Auch dem griechischen Herrscher wird er keine Gebiete diesseits des Meeres zugestehen und im Falle einer Invasion sich nach Kräften bemühen, ihn möglichst rasch zu vertreiben' contains two promises, of which only the second is conditional; clause 6 is built identically. A condition on the combined factoid conditions the whole, which the passage does not support.",
+      "instruction": "Remove urn:regesta:22791:p3-griechen-koenig and add two rv:Assurance factoids, both rf:partOf <urn:regesta:22791:vorvertrag>, each with Friedrich rv:Grantor nameInSource \"er\" and the griechischer-herrscher actor rv:Participant nameInSource \"dem griechischen Herrscher\": <urn:regesta:22791:p3-keine-gebiete-koenig> with evidence \"Auch dem griechischen Herrscher wird er keine Gebiete diesseits des Meeres zugestehen\", rf:concerns <urn:regesta:22791:gebiete-diesseits> and no condition; <urn:regesta:22791:p3-vertreibung-koenig> with evidence selectors \"Auch dem griechischen Herrscher wird er\" and \"im Falle einer Invasion sich nach Kräften bemühen, ihn möglichst rasch zu vertreiben\" and rf:condition \"im Falle einer Invasion\". Likewise remove urn:regesta:22791:p6-griechen-papst and add <urn:regesta:22791:p6-kein-land-papst> (evidence \"Dem griechischen Herrscher wird auch der Papst diesseits des Meeres kein Land zugestehen\", rf:concerns <urn:regesta:22791:gebiete-diesseits>, no condition) and <urn:regesta:22791:p6-vertreibung-papst> (evidence selectors \"Dem griechischen Herrscher wird auch der Papst\" and \"im Falle einer Invasion sich nach Kräften bemühen, ihn möglichst rasch zu vertreiben\", rf:condition \"im Falle einer Invasion\"), each with the pope (urn:regesta:actor:RI004-002-E000589) rv:Grantor nameInSource \"der Papst\" and the griechischer-herrscher actor rv:Participant nameInSource \"Dem griechischen Herrscher\". All with rf:source, prov:wasAttributedTo and rf:verificationStatus rv:unchecked."
+    },
+    {
+      "uids": ["22791"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22791:p1-kein-frieden",
+      "finding": "The Romans, Roger of Sicily and the Greek ruler, against whom the promises are directed, appear as rv:Participant; applies also to p1-roemer-unterwerfen, p3 and p6.",
+      "decision": "model_gap",
+      "reason": "In 'weder Waffenstillstand noch Frieden ... mit den Römern und Roger von Sizilien' and the Greek-ruler clauses these actors are the third parties the promises concern. The vocabulary has no role for an opposing or excluded party, rv:Participant is its declared fallback, and dropping the references would lose identified actors. No correction; gap recorded."
+    },
+    {
+      "uids": ["22791"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22791:p4-kroenung",
+      "finding": "The cardinals who promise together with the pope are not referenced.",
+      "decision": "correct",
+      "reason": "'Der Papst verspricht kraft seines apostolischen Amtes gemeinsam mit den genannten Kardinälen' makes the cardinals co-promisors. 'den genannten Kardinälen' refers back to the seven cardinals named in the same regest and already identified with packet candidates in this file; Abbot Bruno of Chiaravalle is not a cardinal and is excluded.",
+      "instruction": "On urn:regesta:22791:p4-kroenung add seven references with rf:role rv:Grantor and rf:nameInSource \"den genannten Kardinälen\" for the actors <urn:regesta:actor:RI004-002-G000972>, <urn:regesta:actor:RI004-002-H001250>, <urn:regesta:actor:RI004-002-B000622>, <urn:regesta:actor:RI004-002-O000158>, <urn:regesta:actor:RI004-002-R000856>, <urn:regesta:actor:RI004-002-G000973>, <urn:regesta:actor:RI004-002-G001157>. Keep the pope as rv:Grantor and the king as rv:Beneficiary."
+    },
+    {
+      "uids": ["22791"],
+      "source": ["review-g8-B"],
+      "subject": "urn:regesta:22791:p5-exkommunikation",
+      "finding": "The triggering condition of clause 5 is not kept as rf:condition; rv:Petitioner for the king considered.",
+      "decision": "correct",
+      "reason": "The admonition and excommunication apply only to one who 'sich anmaßen sollte, die Gerechtsame des Reiches (iusticiam et honorem regni) zu mißachten'; this is a condition in exact wording and is lost. The king stays rv:Beneficiary: rv:Petitioner means the one at whose request the act happens, while the promise itself is not made at his request; 'auf Ersuchen des Königs' is already kept as condition of the future admonition.",
+      "instruction": "On urn:regesta:22791:p5-exkommunikation add rf:condition \"Wer sich anmaßen sollte, die Gerechtsame des Reiches (iusticiam et honorem regni) zu mißachten\". Keep the existing conditions and references unchanged."
+    }
+  ],
+  "summary": {
+    "correct": 7,
+    "correct_conservatively": 7,
+    "keep": 12,
+    "not_required": 8,
+    "model_gap": 7,
+    "reject": 0
+  }
+}

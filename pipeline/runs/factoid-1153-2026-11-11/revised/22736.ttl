@@ -1,0 +1,37 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22736> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 109" .
+
+<urn:regesta:actor:RI004-002-H000987> a crm:E21_Person ;
+    rdfs:label "Hildegard von Bingen" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+# The letter. No role exists for the author of a communication, so the writer is a Participant
+# (model gap). The admonition's content stays in the evidence only.
+<urn:regesta:22736:letter> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22736> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Hildegard von Bingen schreibt an Friedrich und gemahnt ihn an seine Pflichten als König" ] ;
+    rf:reference <urn:regesta:22736:ref-letter-hildegard> ,
+        <urn:regesta:22736:ref-letter-friedrich> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22736:ref-letter-hildegard> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000987> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Hildegard von Bingen" .
+
+<urn:regesta:22736:ref-letter-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Addressee ;
+    rf:nameInSource "Friedrich" .

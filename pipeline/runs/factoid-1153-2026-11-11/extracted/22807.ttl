@@ -1,0 +1,151 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22807> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 180" .
+
+# Earlier act: the judgment under Konrad III. Read with the Fürstenspruch clause as the form of
+# this judgment; the attachment of the "durch"-clause is ambiguous (reported).
+<urn:regesta:22807:urteil-tafelgueter> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22807> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "das unter Konrad III. dort (1151) gefällte" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Urteil über die Unveräußerlichkeit der erzbischöflichen Tafelgüter" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "durch einen nach dem Zeugnis des Grafen Gottfried von Arnsberg und Markwards von Grumbach von Herzog Heinrich von Bayern formulierten Fürstenspruch" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+        rf:role rv:Judge ;
+        rf:nameInSource "Konrad III." ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000498> ;
+        rf:role rv:Judge ;
+        rf:nameInSource "Herzog Heinrich von Bayern" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-G000825> ;
+        rf:role rv:Witness ;
+        rf:nameInSource "Grafen Gottfried von Arnsberg" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-M000513> ;
+        rf:role rv:Witness ;
+        rf:nameInSource "Markwards von Grumbach" ] ;
+    rf:concerns <urn:regesta:22807:tafelgueter> ;
+    rf:qualifier "(1151)" .
+
+# Earlier act: Friedrich's approval at Dortmund.
+<urn:regesta:22807:billigung-dortmund> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22807> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "von ihm 1152 zu Dortmund (in burgo Tremonia, vgl. Reg. 79) gebilligte Urteil" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich verbrieft" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:refersToAct <urn:regesta:22807:urteil-tafelgueter> ;
+    rf:concerns <urn:regesta:22807:tafelgueter> ;
+    rf:qualifier "1152" .
+
+# Main act: the charter for Archbishop Arnold II.
+<urn:regesta:22807:verbriefung-urteil> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22807> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich verbrieft dem Erzbischof Arnold II. von Köln das unter Konrad III. dort (1151) gefällte" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A001202> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Erzbischof Arnold II. von Köln" ] ;
+    rf:refersToAct <urn:regesta:22807:urteil-tafelgueter> ;
+    rf:concerns <urn:regesta:22807:tafelgueter> .
+
+# Earlier act: recovery of the toll and other dues. Who recovered them is not stated.
+<urn:regesta:22807:wiedereinziehung-zoll> a rf:ActFactoid ;
+    rf:factoidType rv:Restitution ;
+    rf:source <urn:regesta:record:22807> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Wiedereinziehung des Zolls und andere Gefälle in Köln (teloneum urbis Colonie et multa episcopalia servicia)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:concerns <urn:regesta:22807:zoll-koeln> , <urn:regesta:22807:gefaelle-koeln> ;
+    rf:qualifier "vollzogenen" .
+
+# Earlier act: purchases. The buyer is not stated.
+<urn:regesta:22807:kauf-odenkirchen-hoefe> a rf:ActFactoid ;
+    rf:factoidType rv:Sale ;
+    rf:source <urn:regesta:record:22807> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Kauf des Kastells Odenkirchen (Vdenkirken) und in Westfalen der Höfe in Homede, Anröchte (Anervst), Prummern (Brumeram), Segeroth (Segerode), Vuermůnte, Wintzen (Winisen) sowie der Güter der Ministerialen in Gevelsdorf (Geuersdorp)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:concerns <urn:regesta:22807:kastell-odenkirchen> , <urn:regesta:22807:hof-homede> ,
+        <urn:regesta:22807:hof-anroechte> , <urn:regesta:22807:hof-prummern> ,
+        <urn:regesta:22807:hof-segeroth> , <urn:regesta:22807:hof-vuermuente> ,
+        <urn:regesta:22807:hof-wintzen> , <urn:regesta:22807:gueter-gevelsdorf> ;
+    rf:qualifier "vollzogenen" .
+
+# Second act of the charter: confirmation of the recoveries.
+<urn:regesta:22807:bestaetigung-wiedererwerbungen> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22807> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt weiters die vollzogenen Wiedererwerbungen" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich verbrieft dem Erzbischof Arnold II. von Köln" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A001202> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Erzbischof Arnold II. von Köln" ] ;
+    rf:refersToAct <urn:regesta:22807:wiedereinziehung-zoll> , <urn:regesta:22807:kauf-odenkirchen-hoefe> .
+
+<urn:regesta:22807:tafelgueter> a crm:E18_Physical_Thing ;
+    rdfs:label "erzbischöflichen Tafelgüter" .
+<urn:regesta:22807:zoll-koeln> a crm:E30_Right ;
+    crm:P2_has_type rv:Toll ;
+    rdfs:label "Zolls ... in Köln (teloneum urbis Colonie)" .
+<urn:regesta:22807:gefaelle-koeln> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "andere Gefälle in Köln (multa episcopalia servicia)" .
+<urn:regesta:22807:kastell-odenkirchen> a crm:E18_Physical_Thing ;
+    rdfs:label "Kastells Odenkirchen (Vdenkirken)" .
+<urn:regesta:22807:hof-homede> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof in Homede" .
+<urn:regesta:22807:hof-anroechte> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof in Anröchte (Anervst)" .
+<urn:regesta:22807:hof-prummern> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof in Prummern (Brumeram)" .
+<urn:regesta:22807:hof-segeroth> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof in Segeroth (Segerode)" .
+<urn:regesta:22807:hof-vuermuente> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof in Vuermůnte" .
+<urn:regesta:22807:hof-wintzen> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof in Wintzen (Winisen)" .
+<urn:regesta:22807:gueter-gevelsdorf> a crm:E18_Physical_Thing ;
+    rdfs:label "Güter der Ministerialen in Gevelsdorf (Geuersdorp)" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ;
+    rdfs:label "Erzbischof Arnold II. von Köln" .
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "Konrad III." .
+<urn:regesta:actor:RI004-002-H000498> a crm:E21_Person ;
+    rdfs:label "Herzog Heinrich von Bayern" .
+<urn:regesta:actor:RI004-002-G000825> a crm:E21_Person ;
+    rdfs:label "Grafen Gottfried von Arnsberg" .
+<urn:regesta:actor:RI004-002-M000513> a crm:E21_Person ;
+    rdfs:label "Markwards von Grumbach" .

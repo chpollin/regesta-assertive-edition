@@ -1,0 +1,285 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g7-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22762",
+      "coverage_note": "Covers the Apulian complaint, the sworn Italienzug, the dispute and settlement between Heinrich der Löwe and Albrecht der Bär with both inheritances, the kinship and grant to Welf, the earlier grant by Konrad III and the Höxter decision. The sentence on Heinrich Jasomirgott's failure to appear and his renewed summons is omitted. The Hoftag sentence is left out, which is defensible because the vocabulary has no type for holding a court assembly.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "error",
+          "subject": "22762",
+          "description": "The summons of Heinrich Jasomirgott, his non-appearance and the renewed summons are a legal act in a court context and are not extracted, although the packet holds the matching candidate RI004-002-H000498 and the contract could express at least the renewed summons as a Communication (or a Dispute) with Friedrich as issuer and Heinrich Jasomirgott as Addressee.",
+          "evidence_quote": "Entgegen seiner Vorladung (s. Reg. 95) erscheint Heinrich Jasomirgott nicht bei Hofe, so daß er erneut vorgeladen werden muß.",
+          "proposed_correction": "Add an ActFactoid of type rv:Communication (or rv:Dispute) for the renewed summons with a reference to urn:regesta:actor:RI004-002-H000498 as rv:Addressee (nameInSource \"Heinrich Jasomirgott\"), keep the earlier summons as an undated act with rf:qualifier \"erneut\" on the renewed one, and report the non-appearance itself as a model gap."
+        },
+        {
+          "category": "act-type",
+          "severity": "warning",
+          "subject": "urn:regesta:22762:settlement",
+          "description": "The settlement is typed rv:Judgment, defined as decision of a dispute by verdict, while the passage reports a negotiated settlement (Ausgleich) that Friedrich achieves; the factoid itself gives Friedrich the role Mediator, which contradicts the judgment type. The vocabulary has no settlement type, so this is partly a model gap.",
+          "evidence_quote": "Friedrich erzielt im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären (vgl. Reg. 88) einen Ausgleich",
+          "proposed_correction": "Keep rf:qualifier \"Ausgleich\" and record the type mismatch as a model gap (no settlement or arbitration type); until the vocabulary has one, mark the choice of rv:Judgment as a forced approximation in the batch report."
+        },
+        {
+          "category": "actor-role",
+          "severity": "warning",
+          "subject": "urn:regesta:22762:apulian-complaint",
+          "description": "Roger is given the role Respondent, but the passage names him only in the relative clause describing the Apulians' expulsion; it does not say that the complaint was directed against Roger before a court. Friedrich as Addressee is acceptable.",
+          "evidence_quote": "auf die Klage von einigen Apuliern, die von Roger aus ihrer Heimat vertrieben worden sind",
+          "proposed_correction": "Change Roger's role to rv:Participant, or move the expulsion into its own factoid and report the missing act type for expulsion as a model gap."
+        },
+        {
+          "category": "evidence-scope",
+          "severity": "note",
+          "subject": "urn:regesta:22762:grant-welf-revenues",
+          "description": "Friedrich's grantor role rests on the verb in the preceding part of the sentence, which the selector does not include; the guideline asks for a second selector where a role rests on a different passage.",
+          "evidence_quote": "Friedrich verleiht seinem Oheim, Herzog Welf",
+          "proposed_correction": "Add a second selector \"Friedrich verleiht seinem Oheim, Herzog Welf\"."
+        },
+        {
+          "category": "actor-role",
+          "severity": "note",
+          "subject": "urn:regesta:22762:hoexter-decision",
+          "description": "Wibald is the source of complaints (Klagen) on which the decision is based; Claimant fits the wording better than Petitioner. The complaints could also form their own Dispute factoid.",
+          "evidence_quote": "gemäß den Klagen Wibalds",
+          "proposed_correction": "Use rv:Claimant for Wibald or add a separate rv:Dispute factoid for his complaints."
+        }
+      ],
+      "model_gaps": [
+        "No act type for holding a court assembly (Hoftag).",
+        "No act type for a negotiated settlement or arbitration (Ausgleich); rv:Judgment presupposes a verdict.",
+        "No act type for expulsion from a homeland and no way to state non-appearance at court.",
+        "rv:Kin is symmetrical, so the direction of Oheim is only recoverable from the literal qualifier."
+      ]
+    },
+    {
+      "uid": "22763",
+      "coverage_note": "Covers request, protection, both exemptions, confirmation of present and future possessions and the parent relation behind the Seelgerät. Witness list, chancery note and incipit are correctly skipped. No omission found.",
+      "findings": [
+        {
+          "category": "actor-identification",
+          "severity": "note",
+          "subject": "urn:regesta:22763:parenthood",
+          "description": "The possessive in \"seiner Eltern\" is grammatically ambiguous in a sentence where \"seiner Kanoniker\" refers to the Stift; reading it as Friedrich's parents is the plausible interpretation but remains the producer's reading. The parents are also bundled into one group reference.",
+          "evidence_quote": "zum Seelenheil seiner Eltern",
+          "proposed_correction": "Keep the factoid and record the possessive reading in the batch report as an identification decision."
+        }
+      ],
+      "model_gaps": [
+        "Exemption from all lordship and from ordinary jurisdiction can only be typed as rv:Enactment; the vocabulary has no immunity or exemption type."
+      ]
+    },
+    {
+      "uid": "22764",
+      "coverage_note": "Covers the confirmation of Hof Kusel, the inspected privileges of the predecessors, the Oheim relation to Konrad, the restitution of goods, Albert's earlier donation and his former office as Vogt. Witnesses and chancery notes are correctly skipped. No central omission.",
+      "findings": [
+        {
+          "category": "structure",
+          "severity": "note",
+          "subject": "urn:regesta:22764:restitution-gueter",
+          "description": "The restitution is a coordinated act of its own, not a provision of the confirmation of Hof Kusel; rf:partOf overstates the dependency.",
+          "evidence_quote": "und stellt ihm Güter in Thüringen (in ducatu Turingorum)",
+          "proposed_correction": "Drop rf:partOf from the restitution or record that coordinated acts are linked with partOf by convention."
+        },
+        {
+          "category": "actor-role",
+          "severity": "note",
+          "subject": "urn:regesta:22764:earlier-privileges",
+          "description": "Abt Hugo's act of presenting the privileges and the monastery as their recipient are not referenced; the grantor readings of Karl, Otto, Heinrich and Konrad are supported by the genitive of the predecessors.",
+          "evidence_quote": "nach Einsicht in die durch Abt Hugo vorgelegten Privilegien seiner Vorgänger Karl, Otto, Heinrich und seines Oheims Konrad",
+          "proposed_correction": "Optionally add Abt Hugo as rv:Participant with nameInSource \"Abt Hugo\"."
+        }
+      ],
+      "model_gaps": [
+        "No state type for membership in a monastic community (jetziger Mönch des Klosters)."
+      ]
+    },
+    {
+      "uid": "22765",
+      "coverage_note": "Covers protection with petitioners and intervenors, confirmation of possessions, the three cassations with their earlier alienations and enfeoffments, the papal prohibition, the right grants for mills and Trino and the hundred-year prescription period. Ardicio is correctly kept local rather than merged with Bischof Uguccio. Konrad III's earlier proceeding is only kept as a literal.",
+      "findings": [
+        {
+          "category": "omitted-actor",
+          "severity": "warning",
+          "subject": "urn:regesta:22765:revocation-schismatics",
+          "description": "The passage states that the cassation follows Konrad III's proceeding, which reports an earlier comparable act of Konrad III; the packet holds the candidate RI004-002-K000316, but Konrad III appears neither as a reference nor as an earlier act.",
+          "evidence_quote": "gemäß der Vorgangsweise Konrads III.",
+          "proposed_correction": "Add an undated earlier ActFactoid (rv:Revocation) with urn:regesta:actor:RI004-002-K000316 as rv:Grantor, nameInSource \"Konrads III.\", and link the cassation to it with rf:refersToAct; the literal can stay as rf:ground."
+        },
+        {
+          "category": "actor-identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22765:local:domkirche",
+          "description": "The Domkirche gets a second local actor beside the local actor for \"seiner Kirche (sancti Eusebii)\"; the regest may name the same church twice. Keeping them apart avoids an identity merge but should be reported as an unresolved identity.",
+          "evidence_quote": "sowie dem Bischof, der Domkirche und der Kirche S. Maria eine Verjährungszeit von hundert Jahren",
+          "proposed_correction": "List the two local church actors as unresolved identity in the batch report."
+        },
+        {
+          "category": "structure",
+          "severity": "note",
+          "subject": "urn:regesta:22765:revocation-anselm",
+          "description": "The cassations and right grants are attached to the protection with rf:partOf, although they are coordinated acts of the charter rather than provisions of the protection.",
+          "evidence_quote": "erklärt er für ungültig",
+          "proposed_correction": "Drop rf:partOf on coordinated acts or document the convention."
+        }
+      ],
+      "model_gaps": [
+        "No role distinguishing intervention (intercedente) from petition; both become rv:Petitioner.",
+        "No right type for a period of prescription (Verjährungszeit).",
+        "No way to state that the alienating bishops were schismatic or lacked consecration other than a literal."
+      ]
+    },
+    {
+      "uid": "22766",
+      "coverage_note": "Covers the investiture with the imperial fiefs, the permission to recover alienated fiefs with its exception and condition, the earlier alienation, the brothers, the fortification right and the confirmation of privileges. Witnesses, chancery and seal notes are correctly skipped.",
+      "findings": [
+        {
+          "category": "actor-role",
+          "severity": "warning",
+          "subject": "urn:regesta:22766:earlier-privileges",
+          "description": "\"seiner Vorgänger\" is ambiguous between Friedrich's predecessors as issuers and Walo's predecessors as holders of the privileges. Giving the functional actor the role Grantor asserts issuance, which the passage does not decide, and the label does not say whose predecessors are meant.",
+          "evidence_quote": "bestätigt ihm alle Privilegien seiner Vorgänger",
+          "proposed_correction": "Use rv:Participant for the functional actor, or keep Grantor only with an explicit reading recorded in the batch report; report the ambiguous possessive as an unresolved identity."
+        },
+        {
+          "category": "kinship",
+          "severity": "warning",
+          "subject": "urn:regesta:22766:kinship-brueder",
+          "description": "One Kinship factoid with Albert, Heinrich and their brothers as three Kin references reads as one relation among all three and thus suggests that Albert and Heinrich are related to each other, which the passage leaves open; the comment in the file acknowledges this but the data do not.",
+          "evidence_quote": "Alberts und Heinrichs sowie ihrer Brüder",
+          "proposed_correction": "Split into two Kinship factoids, Albert with \"ihrer Brüder\" and Heinrich with \"ihrer Brüder\", each with rf:qualifier \"Brüder\"."
+        }
+      ],
+      "model_gaps": [
+        "No right type for the right of fortification or for Banngewalt as distinct from jurisdiction; they are approximated with LordshipRights and Jurisdiction."
+      ]
+    },
+    {
+      "uid": "22767",
+      "coverage_note": "Covers protection with both petitioners, confirmation for the chapter and S. Maria, and the prescription period for both churches. The parallel grant to the bishop is a cross-reference to Reg. 138 and is reasonably not restated. No omission found.",
+      "findings": [
+        {
+          "category": "actor-identification",
+          "severity": "note",
+          "subject": "urn:regesta:22767:grant-verjaehrung",
+          "description": "Both recipients carry the same nameInSource \"den beiden Kirchen\" while one of them is the chapter (Domkapitel) rather than a church; the reading is plausible but the mapping of \"Kirchen\" to the chapter is the producer's.",
+          "evidence_quote": "gewährt den beiden Kirchen ebenso wie dem Bischof (Reg. 138) eine Verjährungszeit von hundert Jahren",
+          "proposed_correction": "Record the mapping of \"den beiden Kirchen\" to the chapter and S. Maria in the batch report."
+        }
+      ],
+      "model_gaps": [
+        "No right type for a period of prescription (Verjährungszeit)."
+      ]
+    },
+    {
+      "uid": "22768",
+      "coverage_note": "One confirmation with recipient, petition and both objects; it covers the operative passage completely. The note on the repetition of DH. IV. 293 a is diplomatic commentary and correctly not turned into an earlier act.",
+      "findings": [
+        {
+          "category": "scope",
+          "severity": "note",
+          "subject": "22768",
+          "description": "The regest is marked as spurious (†) and states that it repeats an unfinished and unexecuted diploma of Heinrich IV; the factoid cannot carry this authenticity status.",
+          "evidence_quote": "Wiederholung des unvollendeten und unvollzogenen DH. IV. 293 a.",
+          "proposed_correction": "No change to the Turtle; report the authenticity status as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No way to mark a factoid's source as a forgery or as a repetition of an unexecuted diploma."
+      ]
+    },
+    {
+      "uid": "22769",
+      "coverage_note": "Covers the donation with its two grounds and the possession clause of the Latin. The stated parent relation behind the Seelgerät is not extracted, unlike the parallel case in 22763.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22769",
+          "description": "The guideline turns a stated parent relation into a Parenthood factoid; \"seine Eltern\" of Friedrich is extracted only as a Beneficiary group, so the parent relation is missing.",
+          "evidence_quote": "als Seelgerät für seine Eltern",
+          "proposed_correction": "Add a StateFactoid rv:Parenthood with the local group urn:regesta:actor:22769:local:eltern as rv:Parent and Friedrich as rv:Child."
+        },
+        {
+          "category": "actor-identification",
+          "severity": "note",
+          "subject": "urn:regesta:22769:possession-berwartstein",
+          "description": "The realm (regno) is modelled as an E74_Group actor and possessor; this is an interpretive move, and \"attinet\" expresses belonging rather than possession in the strict sense.",
+          "evidence_quote": "castrum Berwartstein, quod regno ac nobis attinet",
+          "proposed_correction": "Keep the factoid but report the realm-as-actor reading as a model gap."
+        },
+        {
+          "category": "actor-role",
+          "severity": "note",
+          "subject": "urn:regesta:22769:donation",
+          "description": "Bischof Gunther appears only through the reason for the donation; rv:Participant is acceptable, as the passage does not make him recipient.",
+          "evidence_quote": "wegen der treuen Dienste Bischof Gunthers",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No actor category for the realm (regnum) as a holder of property."
+      ]
+    },
+    {
+      "uid": "22770",
+      "coverage_note": "Covers protection, confirmation of possessions, the provisions on the Vogtei with restriction, revenues and condition, the transfer of the right of Fulda and Reichenau and the forest. No omission found.",
+      "findings": [
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22770:grant-bannforst",
+          "description": "\"verbrieft\" can mean confirmation by charter as well as grant; typing it as rv:Grant is a reading, which the qualifier \"verbrieft\" keeps visible.",
+          "evidence_quote": "verbrieft ihm den Bannforst Virgunda in den angegebenen Grenzen",
+          "proposed_correction": "Keep, and record the reading in the batch report."
+        },
+        {
+          "category": "actor-identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22770:local:vogt",
+          "description": "The packet holds a candidate for the Vogt of Ellwangen (RI004-002-E000288); a local functional actor is defensible because the provision addresses the respective advocate, but the choice should be reported.",
+          "evidence_quote": "Der Vogt darf nur dreimal im Jahr mit zwölf Berittenen im Kloster Gericht halten",
+          "proposed_correction": "Report the choice between the register candidate and the functional actor as unresolved identity."
+        },
+        {
+          "category": "concerns",
+          "severity": "note",
+          "subject": "urn:regesta:22770:grant-recht-fulda-reichenau",
+          "description": "The right is defined by reference to the abbeys of Fulda and Reichenau, which are not linked; the right's content is otherwise unstated.",
+          "evidence_quote": "das Recht der Abteien Fulda und Reichenau",
+          "proposed_correction": "Optionally add rf:concerns to place nodes for Fulda and Reichenau."
+        }
+      ],
+      "model_gaps": [
+        "No way to express a right defined as the status of another institution (Recht der Abteien Fulda und Reichenau)."
+      ]
+    },
+    {
+      "uid": "22771",
+      "coverage_note": "Covers the confirmation with all objects, Rudolf's earlier grant, the possession of Berta and Odo, the parent and marriage relations and the privileged jurisdiction with heirs, exception and condition. Odo is correctly identified with the candidate for Rudolf's son-in-law. No omission found.",
+      "findings": [
+        {
+          "category": "concerns",
+          "severity": "note",
+          "subject": "urn:regesta:22771:possession-berta-odo",
+          "description": "The relative clause on the possessions of Berta and Odo may refer only to \"allen Besitzungen\", while the object node bundles the Burg Monteacuto with them; the possession of the castle itself by Berta and Odo is not clearly stated.",
+          "evidence_quote": "die Burg Monteacuto mit allen Besitzungen, die Rudolf von Monteacuto dem Grafen aus dem Besitz seiner Tochter Berta und ihres Gatten Odo gegeben hat",
+          "proposed_correction": "Separate the castle from \"allen Besitzungen\" and let the possession factoid concern only the latter."
+        },
+        {
+          "category": "omitted-actor",
+          "severity": "note",
+          "subject": "urn:regesta:22771:grant-gerichtsstand",
+          "description": "The successors named in the exception are kept only in the literal; a functional actor would make them addressable.",
+          "evidence_quote": "nisi ante nostram vel successorum nostrorum celsitudinem",
+          "proposed_correction": "Optionally add a FunctionalActor for \"successorum nostrorum\" as rv:Judge."
+        }
+      ],
+      "model_gaps": [
+        "rf:concerns cannot distinguish possessions from rights within one object node (die Besitzungen und Rechte)."
+      ]
+    }
+  ]
+}

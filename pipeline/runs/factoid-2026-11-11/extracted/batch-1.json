@@ -1,0 +1,60 @@
+{
+  "batch": 1,
+  "producer": "urn:regesta:agent:factoid-2026-11-11:extraction-batch-1",
+  "records": [
+    {
+      "uid": "134441",
+      "status": "extracted",
+      "files": ["134441.ttl"],
+      "factoids": 4,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "The regest does not say which party brought the dispute, so both parties carry rv:Participant; the vocabulary has no neutral role for a party to a dispute.",
+        "No role for the head under whom a community appears as party (Stift Berchtesgaden unter Propst Heinrich); recorded as a separate rv:OfficeHolding factoid and Heinrich kept out of the dispute roles.",
+        "The ruler's presence at the judgment (Vor König Friedrich, coram rege Friderico) has no specific role and is recorded as rv:Participant.",
+        "The basis of the judgment (nach dem Zeugnis der Edelfreien ...) is carried only by rv:Witness references, not by rf:ground.",
+        "Saline und Salzpfanne zu Reichenhall is a regest-local crm:E18_Physical_Thing; the register entry RI004-002-R000410 (Salzpfanne) is not linked because the model has no link from a thing to a register entry."
+      ]
+    },
+    {
+      "uid": "23717",
+      "status": "extracted",
+      "files": ["23717.ttl"],
+      "factoids": 7,
+      "unresolved_identities": [
+        "sein Vorgänger / dieser (predecessor of Bischof H(einrich)): kept as rf:FunctionalActor urn:regesta:actor:23717:local:vorgaenger; the regest suggests but does not state in these passages that he is Bischof Ardicio (RI004-002-A001103)."
+      ],
+      "model_gaps": [
+        "No class or property for the debts released (Wucherzinsen und Zahlungsverpflichtungen); their wording is kept in rf:qualifier on the debt release, and no rf:concerns is given.",
+        "No creditors are named for the church's indebtedness; the rv:Obligation state has only the debtor.",
+        "Recipients of the predecessor's enfeoffments are not named; the earlier rv:Enfeoffment has only the grantor.",
+        "The predecessor's death is a temporal anchor (vor seinem Tod) and has no factoid type; it is kept only in rf:qualifier."
+      ]
+    },
+    {
+      "uid": "24618",
+      "status": "extracted",
+      "files": ["24618.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "The offices consul comunis, consules causarum and Reichslegat für Italien are not recorded; they do not carry the economic or legal statement.",
+        "The subject of the talks is not stated, so the rv:Negotiation has no rf:concerns.",
+        "von ihnen names the envoys as payers; whether they paid on behalf of the city of Genua is not stated, so Genua is not a payer. The model has no role for paying on behalf of a principal."
+      ]
+    },
+    {
+      "uid": "23187",
+      "status": "extracted",
+      "files": ["23187.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "König Vladislavs: no register candidate in this packet; kept as urn:regesta:actor:23187:local:vladislav."
+      ],
+      "model_gaps": [
+        "The complaint of the Lombards (Klage geführt) names no addressee or forum; recorded as rv:Dispute without a judge or addressee. Borderline in scope, because it stands in a military context.",
+        "Mailand (RI004-002-M000086) is a place entry used as community IRI for the city as respondent."
+      ]
+    }
+  ]
+}

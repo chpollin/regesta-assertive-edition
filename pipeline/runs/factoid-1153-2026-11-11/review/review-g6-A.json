@@ -1,0 +1,267 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g6-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22732",
+      "coverage_note": "One Dispute factoid covers the complaint. The second clause, the threat of war with its condition, is not extracted, so the condition 'falls der Gefangene nicht freigelassen werde' is lost. Actor identification of the King of Hungary matches the packet candidate.",
+      "findings": [
+        {
+          "category": "lost-condition",
+          "severity": "warning",
+          "subject": "22732",
+          "description": "The threat of war is a second act of the same passage and carries an explicit condition. The candidate drops both. No act type fits a threat exactly, but the contract could carry it as an act with rf:condition in exact wording, or the omission should at least be reported as a model gap.",
+          "evidence_quote": "droht ihm mit Krieg, falls der Gefangene nicht freigelassen werde",
+          "proposed_correction": "Add an ActFactoid for the threat (closest available type, e.g. rv:Communication, or report it as a model gap) with Friedrich as Grantor, the King of Hungary as Addressee and rf:condition \"falls der Gefangene nicht freigelassen werde\"; link it to the complaint."
+        },
+        {
+          "category": "role",
+          "severity": "warning",
+          "subject": "urn:regesta:22732:ref-gesandter",
+          "description": "The envoy is not acting as an envoy in this act; he is the person whose capture the complaint is about. rv:Envoy (who is sent or delivers a message) describes his general function, not his role in the complaint.",
+          "evidence_quote": "über die Gefangennahme seines Gesandten",
+          "proposed_correction": "Use rv:Participant (or rv:Beneficiary) for the envoy in the Dispute factoid, or move the envoy relation into a separate statement."
+        },
+        {
+          "category": "identity-uncertainty",
+          "severity": "warning",
+          "subject": "urn:regesta:22732:ref-friedrich",
+          "description": "The regest marks the sender as uncertain with a question mark. The candidate maps the mention to the shared ruler IRI without any trace of that doubt beyond the label literal, so a query over rf:actor treats the identification as certain.",
+          "evidence_quote": "(Friedrich?) klagt bei König",
+          "proposed_correction": "Keep the shared ruler IRI only with an explicit uncertainty marker (rf:qualifier \"(Friedrich?)\" on the factoid at minimum), or use a regest-local actor labelled \"Friedrich?\"; report the missing uncertainty mechanism as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a threat or ultimatum.",
+        "No way to mark an actor identification that the regest itself flags as uncertain."
+      ]
+    },
+    {
+      "uid": "22733",
+      "coverage_note": "Complaint, confirmation, the Regensburg law and its proclamation are all extracted, with actors matched to packet candidates. The structure between confirmation and Weistum is inverted, and the parties of the rights demarcation are given as participants of the enactment.",
+      "findings": [
+        {
+          "category": "collapsed-act",
+          "severity": "warning",
+          "subject": "urn:regesta:22733:proclamation",
+          "description": "Friedrich confirms a Weistum; the second clause describes that Weistum (the old law proclaimed and reaffirmed in the presence of Adelgoz and Burggraf Konrad). The candidate makes the proclamation rf:partOf the confirmation instead of treating it as the act the confirmation refers to, so the Weistum is merged into its own confirmation.",
+          "evidence_quote": "ohne Hinzufügung von Neuerungen wird in Gegenwart des Vogtes Adelgoz und des Burggrafen Konrad das auf dem Regensburger Hoftag (unter Heinrich IV.) festgelegte Recht verkündet und bekräftigt",
+          "proposed_correction": "Remove rf:partOf from the proclamation and add rf:refersToAct <urn:regesta:22733:proclamation> on <urn:regesta:22733:confirmation>; keep the proclamation's rf:refersToAct to the Regensburg law."
+        },
+        {
+          "category": "role",
+          "severity": "warning",
+          "subject": "urn:regesta:22733:regensburg-law",
+          "description": "Vögte and Domkanoniker are the parties whose rights the law delimits, not participants in the enactment under Heinrich IV. Heinrich IV. is likewise named only as the ruler under whom the diet met; Participant is acceptable for him but the passage does not say he enacted it.",
+          "evidence_quote": "in dem es vor allem um die Abgrenzung der Rechte zwischen den Vögten und den Domkanonikern geht",
+          "proposed_correction": "Give Vögte and Domkanoniker rv:Beneficiary or carry them via rf:concerns on a right node 'Abgrenzung der Rechte'; keep Heinrich IV. as rv:Participant with rf:qualifier \"unter Heinrich IV.\"."
+        },
+        {
+          "category": "omission",
+          "severity": "note",
+          "subject": "22733",
+          "description": "The Latin insert says Friedrich ordered the parties to declare the law (pronunciare precepit), i.e. the Weistum was produced on his order. Not extracted; a minor gap.",
+          "evidence_quote": "pronunciare precepit",
+          "proposed_correction": "Optionally add an Enactment or Appointment factoid for the order to declare the law, partOf the confirmation."
+        },
+        {
+          "category": "vocabulary",
+          "severity": "note",
+          "subject": "urn:regesta:22733:stadtrechte",
+          "description": "Stadtrechte are typed with the top concept rv:LordshipRights; no narrower concept for town law exists.",
+          "evidence_quote": "ein Weistum über die Stadtrechte",
+          "proposed_correction": "Keep; report as vocabulary gap."
+        }
+      ],
+      "model_gaps": [
+        "No right type for town law (Stadtrecht).",
+        "No role for persons present at an act who are not formulaic witnesses (in Gegenwart); Participant is a fallback."
+      ]
+    },
+    {
+      "uid": "22734",
+      "coverage_note": "summary_plain is null. The abstention (source document node only) is correct; nothing can be extracted.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22735",
+      "coverage_note": "The election dispute and its decision before Friedrich are extracted. The main statement of the regest, Friedrich's intervention in favour of Dean Konrad of Konstanz, is missing entirely, and Konrad (candidate RI004-002-K000376) does not appear.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "22735",
+          "description": "The central passage of the regest is not extracted. The vocabulary has no type for an intervention in an election, which is why this is a warning and a model gap rather than an error; still, the candidate neither approximates it nor records Konrad as beneficiary.",
+          "evidence_quote": "Friedrich interveniert bei der Augsburger Bischofswahl zugunsten des Dekans Konrad von Konstanz",
+          "proposed_correction": "Add an ActFactoid for the intervention (closest type, or flagged gap) with Friedrich as Grantor and urn:regesta:actor:RI004-002-K000376 as rv:Beneficiary, nameInSource \"Dekans Konrad von Konstanz\"; link the judgment as preceding with rf:qualifier \"nachdem\"."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22735:ref-judgment-friedrich",
+          "description": "The dispute was decided 'vor ihm', so Friedrich is the forum of the decision; rv:Judge would fit the passage better than rv:Participant, though the passive voice leaves the deciding party open. The actor label 'ihm' is a pronoun rather than a naming wording.",
+          "evidence_quote": "nachdem vor ihm die Streitigkeiten",
+          "proposed_correction": "Consider rv:Judge; label the ruler with \"Friedrich\" from the first clause."
+        }
+      ],
+      "model_gaps": [
+        "No act type for intervention in an episcopal election (Wahlbeeinflussung, Intervention)."
+      ]
+    },
+    {
+      "uid": "22736",
+      "coverage_note": "Abstention. The regest reports a letter from Hildegard to Friedrich, which the contract can express as rv:Communication with an Addressee. The abstention's stated ground (no kinship, economic or legal relation) applies the exclusion rule for military movement, travel and hostage taking, which does not cover letters.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "error",
+          "subject": "22736",
+          "description": "Unjustified abstention. The only passage of the regest is an in-scope act that the vocabulary covers directly (rv:Communication: a letter is written or addressed, delivery not implied). Both actors have matching candidates in the packet (RI004-002-H000987 Hildegard, the ruler as addressee).",
+          "evidence_quote": "Hildegard von Bingen schreibt an Friedrich und gemahnt ihn an seine Pflichten als König.",
+          "proposed_correction": "Add an ActFactoid of type rv:Communication with urn:regesta:actor:RI004-002-H000987 as rv:Grantor (nameInSource \"Hildegard von Bingen\") and the ruler IRI as rv:Addressee (nameInSource \"Friedrich\"); optionally rf:qualifier \"gemahnt ihn an seine Pflichten als König\"."
+        }
+      ],
+      "model_gaps": [
+        "No role for the author or sender of a communication; Grantor is a stretch."
+      ]
+    },
+    {
+      "uid": "22737",
+      "coverage_note": "Both in-scope passages, the peace established with the princes' consent and the lay princes' resolution, are extracted as Enactments with fitting roles. The court diet itself is rightly not a factoid.",
+      "findings": [
+        {
+          "category": "lost-condition",
+          "severity": "note",
+          "subject": "urn:regesta:22737:resolution",
+          "description": "The scope of the resolution (cases of robbery and arson against church goods) stays only in the evidence text; neither rf:condition nor rf:concerns carries it.",
+          "evidence_quote": "bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern",
+          "proposed_correction": "Add rf:condition \"bei der Bestrafung von Raub und Brandstiftung an kirchlichen Gütern\"."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22737:peace-ref-fuersten",
+          "description": "The princes consent; rv:Participant is the available fallback. A consent role does not exist.",
+          "evidence_quote": "unter Zustimmung der Fürsten",
+          "proposed_correction": "Keep, or add rf:qualifier \"unter Zustimmung der Fürsten\"; report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No role for consenting parties (Zustimmung)."
+      ]
+    },
+    {
+      "uid": "22738",
+      "coverage_note": "Earlier donation by Welf VI and Friedrich's confirmation are extracted and joined by rf:refersToAct, without dating the earlier act. Welf VI is correctly a regest-local actor because this packet has no candidate for him. The donation lacks its recipient.",
+      "findings": [
+        {
+          "category": "missing-role",
+          "severity": "warning",
+          "subject": "urn:regesta:22738:donation",
+          "description": "The donation by Welf has only a Grantor reference. The passage confirms to the Stift the donation of the estate and the advocacy, so the Stift is the recipient of the earlier donation as the regest presents it.",
+          "evidence_quote": "dem Augustiner Chorherrenstift St. Laurentius zu Ittingen gemäß einer Urkunde Herzog Welfs (VI.) die von diesem vollzogene Schenkung",
+          "proposed_correction": "Add a reference to urn:regesta:actor:RI004-002-I000255:community with rv:Recipient to the donation factoid, with a second selector covering the Stift."
+        },
+        {
+          "category": "evidence",
+          "severity": "note",
+          "subject": "urn:regesta:22738:confirmation",
+          "description": "The confirmation's evidence is the whole sentence rather than the shortest supporting passage; the basis 'gemäß einer Urkunde' is not recorded separately.",
+          "evidence_quote": "gemäß einer Urkunde Herzog Welfs (VI.)",
+          "proposed_correction": "Shorten the selector; optionally rf:qualifier \"gemäß einer Urkunde Herzog Welfs (VI.)\"."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22739",
+      "coverage_note": "The fodrum privilege is extracted with condition, amount and qualifier in exact wording, and the Treviglio inhabitants match the packet candidate. Witness list and chancery notes are correctly skipped.",
+      "findings": [
+        {
+          "category": "vocabulary",
+          "severity": "note",
+          "subject": "urn:regesta:22739:fodrum-privilege",
+          "description": "No rf:concerns right node, because no right type fits a capped fodrum obligation; the act type RightGrant is reasonable.",
+          "evidence_quote": "das Vorrecht ein, bei Italienzügen einen Betrag von 6 Mark als Fodrum zu entrichten",
+          "proposed_correction": "Keep; report as vocabulary gap."
+        },
+        {
+          "category": "scope",
+          "severity": "note",
+          "subject": "22739",
+          "description": "The note that the charter repeats a diploma of Konrad III. is chancery apparatus and rightly not a confirmation factoid; an expert may want it as an earlier act.",
+          "evidence_quote": "Wiederholung von DK. III. 178",
+          "proposed_correction": "None under the current guidelines."
+        }
+      ],
+      "model_gaps": [
+        "No right type for privileges limiting a tax or service obligation (fodrum)."
+      ]
+    },
+    {
+      "uid": "22740",
+      "coverage_note": "Protection, Burchard's earlier donation, the confirmation, the chapel and the ban on sub-advocates are all extracted with candidates of this packet. Witnesses and the Eugen III note are rightly skipped. The chapel is read as a separate grant by Friedrich, which the wording supports only ambiguously.",
+      "findings": [
+        {
+          "category": "overreach",
+          "severity": "warning",
+          "subject": "urn:regesta:22740:chapel-grant",
+          "description": "The regest says Friedrich confirms the possessions with the addition of a chapel. That supports the chapel being included in the confirmation; it does not clearly say Friedrich himself grants it. Typing it rv:Grant with Friedrich as Grantor reads more than the passage states.",
+          "evidence_quote": "bestätigt ihm unter Hinzufügung einer Kapelle zu Künheim (Chuannehim) die von Bischof Burchard von Basel (†) geschenkten und verbrieften Besitzungen",
+          "proposed_correction": "Attach the chapel via rf:concerns to the confirmation with rf:qualifier \"unter Hinzufügung einer Kapelle zu Künheim (Chuannehim)\", or keep a separate factoid typed rv:Confirmation rather than rv:Grant."
+        },
+        {
+          "category": "missing-role",
+          "severity": "note",
+          "subject": "urn:regesta:22740:burchard-donation",
+          "description": "Burchard's donation has no recipient reference, although the regest presents the possessions as given to the monastery.",
+          "evidence_quote": "die von Bischof Burchard von Basel (†) geschenkten und verbrieften Besitzungen",
+          "proposed_correction": "Add the monastery as rv:Recipient with a selector covering 'ihm'."
+        },
+        {
+          "category": "vocabulary",
+          "severity": "note",
+          "subject": "urn:regesta:22740:untervogtei",
+          "description": "The right node is labelled with the prohibited act ('Einsetzung von Untervögten') rather than a right; typing as Advocacy is acceptable.",
+          "evidence_quote": "verbietet die Einsetzung von Untervögten",
+          "proposed_correction": "Label the right 'Untervögten' or keep and note."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22741",
+      "coverage_note": "All dispositive passages are extracted: founders' possession and donation, request, protection, confirmation, single-advocate rule, Oudelard's office, the succession provision with condition and future clause, and the advocate's court with the abbot's consent as condition. Candidates of this packet are used correctly, including Oudelard as founder and advocate.",
+      "findings": [
+        {
+          "category": "structure",
+          "severity": "note",
+          "subject": "urn:regesta:22741:confirmation",
+          "description": "The confirmation concerns 'die genannten Besitzungen', which point back to the founders' donation; no rf:refersToAct links them. The provisions (single advocate, succession, court) are not linked by rf:partOf to the protection or confirmation.",
+          "evidence_quote": "bestätigt ihm die genannten Besitzungen",
+          "proposed_correction": "Optionally add rf:refersToAct to the founders' donation and rf:partOf from the provisions to the protection act."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22741:advocate-court",
+          "description": "The enactment has no Grantor reference because of the passive wording; acceptable. The Vogt is a functional actor although the regest names Oudelard as the current holder; per guidelines a separate holder reference is only needed where the passage names him, which this sentence does not.",
+          "evidence_quote": "Schließlich wird festgelegt",
+          "proposed_correction": "None required."
+        },
+        {
+          "category": "representation",
+          "severity": "note",
+          "subject": "urn:regesta:22741:kloster-beinwil",
+          "description": "The monastery appears both as a physical thing (object of the founders' donation) and as a group actor (recipient of protection), without a link between them.",
+          "evidence_quote": "von ihnen dem hl. Petrus übergebene Kloster Beinwil",
+          "proposed_correction": "Keep; report the dual representation of institutions as a model question."
+        }
+      ],
+      "model_gaps": [
+        "No link between an institution as thing (donated object) and as actor (community)."
+      ]
+    }
+  ]
+}

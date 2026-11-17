@@ -1,0 +1,29 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22662> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrad III." .
+
+<urn:regesta:actor:RI004-002-L000820> a crm:E21_Person ;
+    rdfs:label "dem französischen König Ludwig VII." .
+
+# The commission only; the message and the request for help it names are not reported as performed.
+<urn:regesta:22662:mission-to-ludwig> a rf:ActFactoid ;
+    rf:factoidType rv:Mission ;
+    rf:source <urn:regesta:record:22662> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich wird nach der Katastrophe des Kreuzheeres" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "von König Konrad III. beauftragt, dem französischen König Ludwig VII. von den Ereignissen Mitteilung zu machen und ihn um Hilfe zu bitten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Grantor ; rf:nameInSource "König Konrad III." ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Envoy ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000820> ; rf:role rv:Addressee ; rf:nameInSource "dem französischen König Ludwig VII." ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-9> ;
+    rf:verificationStatus rv:unchecked .

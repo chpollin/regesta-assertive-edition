@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import build_data
 
-SOURCE = Path(__file__).resolve().parent.parent.parent / "regesta-rdf-demo"
+SOURCE = Path(__file__).resolve().parent.parent / "pipeline"
 RUN = "factoid-2026-11-11"
 
 

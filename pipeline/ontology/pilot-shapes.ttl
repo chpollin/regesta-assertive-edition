@@ -1,0 +1,33 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix reg: <https://example.org/regesta/ontology/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix v: <https://example.org/regesta/vocab/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+reg:ParticipationShape a sh:NodeShape ;
+ sh:targetClass reg:Participation ;
+ sh:property [sh:path reg:context; sh:minCount 1; sh:maxCount 1; sh:nodeKind sh:IRI;
+   sh:or ([sh:class crm:E7_Activity] [sh:class crm:E5_Event] [sh:class reg:RelationshipState])] ;
+ sh:property [sh:path reg:actor; sh:minCount 1; sh:maxCount 1; sh:nodeKind sh:IRI;
+   sh:or ([sh:class crm:E21_Person] [sh:class crm:E74_Group] [sh:class crm:E39_Actor])] ;
+ sh:property [sh:path reg:role; sh:minCount 1; sh:maxCount 1; sh:in (v:Spouse v:Child v:Parent v:Grantor v:Recipient v:Beneficiary v:Petitioner v:Debtor v:Creditor v:Payer v:Payee v:Donor v:Buyer v:Seller v:Pledgor v:Pledgee v:Claimant v:Respondent v:Judge v:Witness v:Mediator v:Representative v:Obligor v:Officeholder v:Negotiator)] .
+
+reg:AssertionShape a sh:NodeShape ;
+ sh:targetClass crm:E13_Attribute_Assignment ;
+ sh:property [sh:path crm:P140_assigned_attribute_to; sh:minCount 1; sh:maxCount 1; sh:nodeKind sh:IRI] ;
+ sh:property [sh:path crm:P177_assigned_property_of_type; sh:minCount 1; sh:maxCount 1; sh:nodeKind sh:IRI] ;
+ sh:property [sh:path crm:P141_assigned; sh:minCount 1; sh:maxCount 1; sh:nodeKind sh:IRI] ;
+ sh:property [sh:path reg:source; sh:minCount 1; sh:maxCount 1; sh:nodeKind sh:IRI; sh:class crm:E31_Document] ;
+ sh:property [sh:path reg:evidence; sh:minCount 1; sh:or ([sh:datatype xsd:string] [sh:datatype rdf:langString])] .
+
+reg:RelationshipShape a sh:NodeShape ;
+ sh:targetClass reg:RelationshipState ;
+ sh:property [sh:path crm:P2_has_type; sh:minCount 1; sh:in (v:Marriage v:RightHolding v:PaymentObligation v:FeudalRelationship v:ProtectionRelationship)] .
+
+reg:TemporalTextShape a sh:NodeShape ;
+ sh:targetSubjectsOf reg:condition ;
+ sh:targetSubjectsOf reg:exception ;
+ sh:property [sh:path reg:condition; sh:or ([sh:datatype xsd:string] [sh:datatype rdf:langString])] ;
+ sh:property [sh:path reg:exception; sh:or ([sh:datatype xsd:string] [sh:datatype rdf:langString])] .
+

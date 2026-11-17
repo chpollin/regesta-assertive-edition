@@ -1,0 +1,62 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22861> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 234" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-H000540> a crm:E21_Person ;
+    rdfs:label "Grafen Heinrich von Namur" .
+
+<urn:regesta:actor:RI004-002-L000936:community> a crm:E74_Group ;
+    rdfs:label "Klosters St. Laurentius zu Lüttich" .
+
+<urn:regesta:22861:vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die Vogtei über die Güter des Klosters St. Laurentius zu Lüttich in Wasseiges (Wasegga) und Evrehailles (Eurehalia)" .
+
+<urn:regesta:22861:gueter> a crm:E18_Physical_Thing ;
+    rdfs:label "Güter des Klosters St. Laurentius zu Lüttich in Wasseiges (Wasegga) und Evrehailles (Eurehalia)" .
+
+<urn:regesta:22861:wasseiges> a crm:E53_Place ;
+    rdfs:label "Wasseiges (Wasegga)" .
+
+<urn:regesta:22861:evrehailles> a crm:E53_Place ;
+    rdfs:label "Evrehailles (Eurehalia)" .
+
+<urn:regesta:22861:befehl-keine-untervoegte> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22861> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich befiehlt dem Grafen Heinrich von Namur" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "daselbst keine Untervögte zu dulden" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000540> ; rf:role rv:Addressee ; rf:nameInSource "Grafen Heinrich von Namur" ] ;
+    rf:concerns <urn:regesta:22861:vogtei> , <urn:regesta:22861:wasseiges> , <urn:regesta:22861:evrehailles> ;
+    rf:ground "auf Grund der Berichte der Mönche und der Einsicht in die älteren Privilegien seiner Vorgänger" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-51> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22861:vogtei-heinrich> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22861> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Heinrich von Namur , der die Vogtei über die Güter des Klosters St. Laurentius zu Lüttich in Wasseiges (Wasegga) und Evrehailles (Eurehalia) aus der Hand des Königs innehat" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000540> ; rf:role rv:RightHolder ; rf:nameInSource "Heinrich von Namur" ] ;
+    rf:concerns <urn:regesta:22861:vogtei> ;
+    rf:qualifier "aus der Hand des Königs" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-51> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22861:gueter-kloster> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22861> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Güter des Klosters St. Laurentius zu Lüttich in Wasseiges (Wasegga) und Evrehailles (Eurehalia)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000936:community> ; rf:role rv:Possessor ; rf:nameInSource "Klosters St. Laurentius zu Lüttich" ] ;
+    rf:concerns <urn:regesta:22861:gueter> , <urn:regesta:22861:wasseiges> , <urn:regesta:22861:evrehailles> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-51> ;
+    rf:verificationStatus rv:unchecked .

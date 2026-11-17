@@ -1,0 +1,58 @@
+{
+  "batch": 43,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43",
+  "records": [
+    {
+      "uid": "22801",
+      "status": "extracted",
+      "files": ["22801.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [
+        "Recipient read as the person Bischof Ardicio von Como (RI004-002-A001103); whether the bishopric of Como as institution is the recipient is not settled by the regest."
+      ],
+      "model_gaps": [
+        "No right type for regalia or for comital/sovereign rights (honor, districtus); 'Hoheitsrechte (honorem, districtum)' and 'allen Regalien' typed with the top concept rv:LordshipRights.",
+        "No IRI pattern for places with register candidates; Gravedona and Domaso are regest-local E53_Place nodes without link to RI004-002-G000955 and RI004-002-D000353."
+      ]
+    },
+    {
+      "uid": "22802",
+      "status": "no_in_scope_claim",
+      "files": ["22802.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22803",
+      "status": "extracted",
+      "files": ["22803.ttl"],
+      "factoids": 4,
+      "unresolved_identities": [
+        "Reich as possessor of the chapel Grone is a regest-local group without register candidate.",
+        "Stift Fredelsloh identified as community of register place RI004-002-F000421."
+      ],
+      "model_gaps": [
+        "The content of Konrad's earlier 'Verfügungen' is only implied by 'in Erneuerung'; the earlier act is typed rv:Enactment without rf:concerns, since the regest does not state which items Konrad granted.",
+        "rf:amount cannot be bound to an individual thing: '20 Solidi' belongs to the two Hufen, '4 Solidi' to the mill, both sit on one donation factoid. The amounts are yields (Ertrag), not prices, and the model has no property for revenue yield.",
+        "'als Seelgerät' (pious purpose) has no dedicated property; kept as rf:qualifier on the confirmation."
+      ]
+    },
+    {
+      "uid": "22804",
+      "status": "extracted",
+      "files": ["22804.ttl"],
+      "factoids": 6,
+      "unresolved_identities": [
+        "'die Nonnen' and 'regni' (Reich) are regest-local groups.",
+        "Abbey Hilwartshausen identified as community of register place RI004-002-H001023."
+      ],
+      "model_gaps": [
+        "No act type for subordinating an abbey to a provost (Unterstellung); typed rv:Grant with rf:qualifier 'unterstellt'.",
+        "No right type for a free election right (Propstwahl); typed with top concept rv:ChurchRights.",
+        "Konrad's earlier act ('wie dies schon ... tat') gets no recipient, since 'dies' leaves open whether Konrad subordinated the abbey to Bertram himself.",
+        "The reservation of the Vogtei is recorded both as its own Enactment factoid and as rf:exception; the model has no reservation act type."
+      ]
+    }
+  ]
+}

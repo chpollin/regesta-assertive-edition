@@ -1,0 +1,60 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22829> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 202" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-H000498> a crm:E21_Person ;
+    rdfs:label "Heinrich (von Bayern )" .
+
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ;
+    rdfs:label "Heinrich (von Sachsen )" .
+
+# Court summons. The vocabulary has no act type for a summons, so the closest act type
+# rv:Communication is used and the exact verb is kept as qualifier (reported as model gap).
+<urn:regesta:22829:summons> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:qualifier "lädt" ;
+    rf:source <urn:regesta:record:22829> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich lädt die beiden Herzoge Heinrich (von Bayern ) und Heinrich (von Sachsen ) nach Speyer" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000498> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "Heinrich (von Bayern )" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000470> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "Heinrich (von Sachsen )" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-50> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22829:adjournment> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22829> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein, wird die Angelegenheit, die der König wegen des Italienzuges beenden wollte, vertagt" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000498> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Heinrich (von Bayern)" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "der König" ] ;
+    rf:ground "Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein" ;
+    rf:qualifier "vertagt" ;
+    rf:refersToAct <urn:regesta:22829:summons> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;
+    rf:verificationStatus rv:unchecked .

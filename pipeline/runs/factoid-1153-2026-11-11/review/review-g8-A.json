@@ -1,0 +1,338 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g8-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22772",
+      "coverage_note": "The confirmation, its exception and the two precedent acts are covered; witness list and chancery note correctly skipped. Roles and identifications (ruler, S. Simplician community, Heinrich IV., Lothar III.) match the packet. Remaining issues concern the typing of the precedent acts and the absence of a right node for the exemption.",
+      "findings": [
+        {
+          "category": "type-overreach",
+          "severity": "warning",
+          "subject": "urn:regesta:22772:precedent-heinrich",
+          "description": "The passage says only that Friedrich acts 'nach dem Vorgang' of Heinrich (IV.) and Lothar (III.); it does not say whether the emperors granted or themselves confirmed the exemption. Typing both precedent factoids as rv:Grant with the emperors as Grantor asserts a grant the passage does not state. The same applies to urn:regesta:22772:precedent-lothar.",
+          "evidence_quote": "nach dem Vorgang der Kaiser Heinrich (IV.) und Lothar (III.)",
+          "proposed_correction": "Keep the two earlier act factoids and the qualifier 'nach dem Vorgang', but flag the act type as unresolved for expert review and report the lack of a neutral type for an unspecified earlier act as a model gap."
+        },
+        {
+          "category": "missing-right-node",
+          "severity": "note",
+          "subject": "urn:regesta:22772:confirmation",
+          "description": "The object of the confirmation is the exemption of the monastery's people from all dues, but rf:concerns points only to the place Treviglio. The exemption itself is not represented as a right.",
+          "evidence_quote": "die Befreiung der Klosterleute zu Treviglio (Triuillio, qui dicitur Grasso) von allen Abgaben",
+          "proposed_correction": "Add a crm:E30_Right labelled with the exemption wording (closest type rv:UsageRights) to rf:concerns of the confirmation and the precedent factoids, and report the missing exemption type."
+        }
+      ],
+      "model_gaps": [
+        "No neutral act type for an earlier act whose nature the regest leaves open ('nach dem Vorgang').",
+        "No right type for an exemption or immunity from dues; rv:Revenue and rv:Toll denote the right to levy, not freedom from it."
+      ]
+    },
+    {
+      "uid": "22773",
+      "coverage_note": "All in-scope passages are covered: the monks' discontent, the judgment by Bishop Heinrich with the princes' consent, the renewed enfeoffment, the order of induction and the advocate's office. Identifications match the packet candidates. Only minor modelling points.",
+      "findings": [
+        {
+          "category": "relation-misuse",
+          "severity": "note",
+          "subject": "urn:regesta:22773:enfeoffment",
+          "description": "rf:refersToAct is defined for a confirmation or assurance referring to an earlier act. The enfeoffment follows the judgment ('nachdem') but does not confirm it. The 'erneut' implies an earlier enfeoffment that the regest does not report as an act, so the qualifier alone is adequate.",
+          "evidence_quote": "Friedrich belehnt Bischof Eberhard von Bamberg erneut mit der Abtei Niederaltaich, nachdem",
+          "proposed_correction": "Either drop rf:refersToAct or keep it with an explicit note that it expresses sequence, not confirmation."
+        },
+        {
+          "category": "identity-scope",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-N000177:community",
+          "description": "The register entry denotes the monks of Niederaltaich as a body, while the passage speaks of 'einiger Mönche', a subset. Using the community IRI slightly widens the actor.",
+          "evidence_quote": "wegen der Unmutsäußerungen einiger Mönche",
+          "proposed_correction": "Use a regest-local group 'einiger Mönche' or keep the register IRI with a note that only some monks are meant."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22773:induction-order",
+          "description": "Berthold von Bogen is the advocate through whom the induction is to be carried out; rv:Participant is acceptable but the vocabulary has no executor role.",
+          "evidence_quote": "befiehlt, ihn in den Besitz des Klosters durch den Klostervogt, (Graf) Berthold von Bogen, einweisen zu lassen",
+          "proposed_correction": "No change required; report the missing executor role as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No role for the executor of an order (the person through whom an act is to be carried out)."
+      ]
+    },
+    {
+      "uid": "22774",
+      "coverage_note": "The confirmation, the marriage, and the three provisions on the advocate (rights, choice from the founders' kin, royal jurisdiction over complaints) are covered; witness and chancery notes correctly skipped. The foundation itself, an earlier act with its own actors, is collapsed into the confirmation.",
+      "findings": [
+        {
+          "category": "collapsed-earlier-act",
+          "severity": "error",
+          "subject": "urn:regesta:22774:confirmation",
+          "description": "The regest reports an earlier act, the foundation of Alteburg by Konrad von Dreieichenhain and his wife Luitgard with the advice and help of Abbot Nikolaus of Siegburg, which Friedrich confirms. The candidate does not model this act and instead lists the founders and the abbot as rv:Participant of Friedrich's confirmation, which misplaces them in an act they did not perform. The guidelines require a confirmation to yield two act factoids joined by rf:refersToAct; the extractor's note cites the missing foundation type, which is a real gap but does not license dropping the act.",
+          "evidence_quote": "die Gründung des Klosters Alteburg (Aldenburg) bei der Burg Arnsburg durch den Reichsministerialen Konrad von Dreieichenhain (Hagen) und seine Gattin Luitgard mit Rat und Hilfe des Abtes Nikolaus von Siegburg",
+          "proposed_correction": "Add an earlier rf:ActFactoid for the foundation (closest type rv:Grant, flagged as a type gap) with Konrad and Luitgard as rv:Grantor, Abbot Nikolaus as rv:Participant with rf:qualifier 'mit Rat und Hilfe', the Alteburg community as rv:Recipient and the possessions in rf:concerns; link it from the confirmation with rf:refersToAct and remove the three Participant references from the confirmation."
+        },
+        {
+          "category": "omitted-actor",
+          "severity": "note",
+          "subject": "urn:regesta:22774:confirmation",
+          "description": "The filiation to Siegburg is kept only as a qualifier string; the abbey of Siegburg (packet candidate RI004-002-S000657) does not appear as an actor.",
+          "evidence_quote": "als Tochterniederlassung dieser Abtei",
+          "proposed_correction": "Optionally add the Siegburg community as a reference; report the missing filiation relation as a model gap."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22774:advocate-from-founder-kin",
+          "description": "Reading the founders' kin as rv:Beneficiary of the rule that the advocate is always to be taken from it is interpretive; the passage states a selection rule, not a benefit.",
+          "evidence_quote": "des Vogtes, der stets der Gründersippe entnommen werden soll",
+          "proposed_correction": "Use rv:Participant for the Gründersippe, or keep Beneficiary with a note."
+        }
+      ],
+      "model_gaps": [
+        "No act type for the foundation of a church or monastery.",
+        "No state type or role for filiation of a monastery to a mother house (Tochterniederlassung)."
+      ]
+    },
+    {
+      "uid": "22775",
+      "coverage_note": "Narrative regest. Covered: the enfeoffment with overlordship over Cambrai, the existing fiefs, the nephew relation, the commission of Matthäus, the drafting of the charter, the bishop's intervention and the truce. The Christmas ceremony and sword-bearing are reasonably left out as ceremonial. Weaknesses lie in the object of the enfeoffment, a misused partOf and the merged archbishops.",
+      "findings": [
+        {
+          "category": "object-scope",
+          "severity": "warning",
+          "subject": "urn:regesta:22775:enfeoffment",
+          "description": "The sentence reads most naturally as Friedrich granting Dietrich his fiefs and in addition the overlordship ('verleiht ... neben seinen Lehen auch'). The candidate treats the fiefs only as a pre-existing state without lord and lets the enfeoffment concern only the overlordship, so part of the grant's object is lost.",
+          "evidence_quote": "neben seinen Lehen auch die Oberhoheit über das Bistum Cambrai",
+          "proposed_correction": "Add urn:regesta:22775:lehen to rf:concerns of the enfeoffment; keep or drop the separate FeudalRelationship state, and mark the reading as ambiguous for expert review."
+        },
+        {
+          "category": "relation-misuse",
+          "severity": "warning",
+          "subject": "urn:regesta:22775:document-drafted",
+          "description": "rf:partOf is for a provision or secondary act belonging to a main act. Matthäus summoning a scribe who drafts a charter is a subsequent act by another actor, not a provision of Dietrich's commission.",
+          "evidence_quote": "dieser ruft einen Schreiber, der gemäß dem Wunsch des Grafen eine vom König zu besiegelnde Urkunde ausfertigt",
+          "proposed_correction": "Remove rf:partOf from the drafting factoid and keep it as an independent act."
+        },
+        {
+          "category": "actor-merge",
+          "severity": "warning",
+          "subject": "urn:regesta:actor:22775:local:erzbischoefe",
+          "description": "Three distinct office holders (the archbishops of Köln, Mainz and Trier) are merged into one rf:FunctionalActor. FunctionalActor is meant for an actor determined by function, not for a collective of three individuals; the merge prevents later identification of each.",
+          "evidence_quote": "mit Unterstützung der Erzbischöfe von Köln, Mainz und Trier sowie des Lütticher Bischofs",
+          "proposed_correction": "Create three separate regest-local actors (archbishop of Köln, of Mainz, of Trier), each with its own reference; leave identification with the packet candidates to expert review since the passage gives no personal names."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22775:dispute-before-king",
+          "description": "The king is the authority before whom the bishop prevents the charter from gaining validity; rv:Addressee is a cautious reading. The outcome itself (validity prevented) has no factoid.",
+          "evidence_quote": "vor dem König verhindern, daß die Urkunde Gültigkeit erlangt",
+          "proposed_correction": "No change required; report the outcome type as a model gap."
+        },
+        {
+          "category": "kinship-direction",
+          "severity": "note",
+          "subject": "urn:regesta:22775:kinship-nephew",
+          "description": "Both actors carry rv:Kin, so the direction (Matthäus is the count's nephew) survives only in the qualifier 'Neffen' without telling whose nephew. This follows the guidelines but loses direction.",
+          "evidence_quote": "Der abreisende Graf beauftragt seinen Neffen, Herzog Matthäus von Lothringen",
+          "proposed_correction": "No change under the current contract; report as model gap."
+        },
+        {
+          "category": "type-approximation",
+          "severity": "note",
+          "subject": "urn:regesta:22775:truce",
+          "description": "A truce between count and bishop is modelled as Dietrich's unilateral assurance with the bishop as Beneficiary; the passage describes a bilateral cessation of hostilities extracted by Friedrich.",
+          "evidence_quote": "indem er Dietrich die Einwilligung zu einem Waffenstillstand bis zum nächsten Pfingstfest abringt",
+          "proposed_correction": "Keep as approximation with rv:Participant for the bishop, and report the truce type gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a truce (Waffenstillstand).",
+        "No act type for preventing a charter from gaining validity.",
+        "rv:Kin cannot express the direction of a kinship relation such as nephew and uncle.",
+        "No role for supporters of a party in a dispute."
+      ]
+    },
+    {
+      "uid": "22776",
+      "coverage_note": "The single in-scope act, the renewed demand to consecrate the newly elected abbot of Prüm, is covered with correct identifications (Hillin, Rether). The simony suspicion and the election stay only inside the evidence string.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22776:request-consecration:ref-friedrich",
+          "description": "rv:Petitioner is defined as the one at whose petition an act happens; here Friedrich is the one who demands. The vocabulary has no requester role, so the choice is an approximation.",
+          "evidence_quote": "Friedrich fordert Erzbischof Hillin von Trier abermals auf",
+          "proposed_correction": "No change under the current contract; report the missing requester role."
+        },
+        {
+          "category": "unstructured-content",
+          "severity": "note",
+          "subject": "urn:regesta:22776:request-consecration",
+          "description": "The abbot's recent election and the (according to the regest unjustified) suspicion of simony are in-scope legal context but are not represented beyond the evidence passage.",
+          "evidence_quote": "dem neugewählten Abt (Rether) von Prüm , der zu Unrecht der Simonie verdächtigt wurde",
+          "proposed_correction": "Optionally add rf:qualifier 'neugewählten' and 'der zu Unrecht der Simonie verdächtigt wurde'; report the missing accusation type."
+        }
+      ],
+      "model_gaps": [
+        "No role for the actor who issues a request or demand, distinct from rv:Petitioner.",
+        "No act or state type for an accusation or suspicion (simony)."
+      ]
+    },
+    {
+      "uid": "22777",
+      "coverage_note": "Protection, confirmation of possessions, of free abbatial election and of the listed further possessions are covered, together with Konrad III.'s earlier dispositions; all listed estates appear as things. Witness list and chancery notes correctly skipped. Issues concern the reach of 'gemäß den Verfügungen' and the use of partOf.",
+      "findings": [
+        {
+          "category": "scope-overreach",
+          "severity": "warning",
+          "subject": "urn:regesta:22777:confirmation-further-possessions",
+          "description": "'gemäß den Verfügungen König Konrads (III.)' stands in the protection clause. The candidate links all three confirmations to Konrad's dispositions, including the items introduced by 'darüber hinaus', which may mark additions beyond what those dispositions contained.",
+          "evidence_quote": "und darüber hinaus die Kirche von Leffe mit allem Zubehör",
+          "proposed_correction": "Remove rf:refersToAct from confirmation-further-possessions, and mark the link from the other two confirmations as an ambiguous reading."
+        },
+        {
+          "category": "relation-misuse",
+          "severity": "note",
+          "subject": "urn:regesta:22777:confirmation-possessions",
+          "description": "The confirmations are coordinate main acts ('und bestätigt'), not provisions of the protection; rf:partOf overstates their dependence. Applies to all three confirmation factoids.",
+          "evidence_quote": "in seinen Schutz und bestätigt ihm den Besitzstand",
+          "proposed_correction": "Drop rf:partOf from the confirmation factoids."
+        },
+        {
+          "category": "partial-object",
+          "severity": "note",
+          "subject": "urn:regesta:22777:right-leffe-revenues",
+          "description": "The revenue right covers only the altar offerings and prebend revenues; the provostship and church custody named in the same appurtenance list are not represented.",
+          "evidence_quote": "scilicet prepositura, templi custodia, oblationibus altaris et prebendarum redditibus",
+          "proposed_correction": "Add a right node for 'prepositura, templi custodia' typed rv:ChurchRights, or extend the thing label of the church to the full appurtenance wording."
+        }
+      ],
+      "model_gaps": [
+        "No specific right type for free abbatial election; rv:ChurchRights is used as a top concept."
+      ]
+    },
+    {
+      "uid": "22778",
+      "coverage_note": "Complaint of abbot and brothers, the order to release the ship, the prohibition of repetition and the community's possession of the ship are covered. The note on Wibald as author is correctly skipped. Identifications follow the packet. Only minor points.",
+      "findings": [
+        {
+          "category": "identity-match",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-F000204:community",
+          "description": "The passage says 'Brüder', the register candidate is 'Mönche' of Floreffe; the match rests on synonymy rather than name and title. Plausible but worth flagging.",
+          "evidence_quote": "auf Klagen des Abtes und der Brüder der Kirche von Floreffe",
+          "proposed_correction": "Keep, with a note that the identification rests on synonymy."
+        },
+        {
+          "category": "omitted-relation",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-H000006",
+          "description": "H. von Thiel is called Friedrich's ministerial; this dependence is not represented. The contract has no fitting state type.",
+          "evidence_quote": "Friedrich befiehlt seinem Ministerialen H. von Thiel (Tiela)",
+          "proposed_correction": "No change under the current contract; report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No state type for ministerial dependence on a lord."
+      ]
+    },
+    {
+      "uid": "22779",
+      "coverage_note": "All dispositive clauses are covered: protection at the petition of Arnold and other princes, freedom from lordship, the sub-advocate provision, the conditional election right, fortification right, toll exemption, the earlier donations of Otto and Wilbodo and their confirmation to Abbot Arnulf. Condition 'nach dem Tod Abt Arnulfs' is kept. Main defect is the right type of the exemption.",
+      "findings": [
+        {
+          "category": "right-type",
+          "severity": "warning",
+          "subject": "urn:regesta:22779:right-toll-exemption",
+          "description": "The node is typed rv:Toll ('Zollrecht'), the right to levy tolls, while the passage grants exemption from all tolls and dues, the opposite relation. A query for toll rights would return this exemption as if the inhabitants held a toll.",
+          "evidence_quote": "die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich",
+          "proposed_correction": "Type the node rv:UsageRights (top concept) and report the missing exemption type as model gap."
+        },
+        {
+          "category": "implied-state",
+          "severity": "note",
+          "subject": "urn:regesta:22779:provision-subadvocate",
+          "description": "'der nach dem König zweite Vogt' implies that the king holds the first advocacy; this is not modelled. It is an implication rather than a statement, so leaving it out is defensible.",
+          "evidence_quote": "der nach dem König zweite Vogt",
+          "proposed_correction": "Leave to expert decision whether a RightHolding (rv:Advocacy) for the ruler should be recorded."
+        },
+        {
+          "category": "relation-misuse",
+          "severity": "note",
+          "subject": "urn:regesta:22779:confirmation-donations",
+          "description": "The confirmations and grants are coordinate acts of the charter rather than provisions of the protection; rf:partOf to the protection overstates their dependence. Applies to all partOf links in this file.",
+          "evidence_quote": "und bekräftigt Abt Arnulf die Schenkungen Kaiser Ottos und Bischof Wilbodos von Lüttich",
+          "proposed_correction": "Keep partOf only where a clause is clearly subordinate, or accept it as a project convention."
+        }
+      ],
+      "model_gaps": [
+        "No right type for exemption from tolls and dues.",
+        "No right type for freedom from any lordship; rv:LordshipRights is used as a top concept."
+      ]
+    },
+    {
+      "uid": "22780",
+      "coverage_note": "The general confirmation, the predecessors' dispositions and the three highlighted items (immunity, royal protection, freedom from the gaulum) are covered. The relative clause naming the Count of Flanders as the one who habitually levies the gaulum unlawfully is omitted.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "error",
+          "subject": "urn:regesta:22780:bestaetigung-gaulum",
+          "description": "The passage states that the Count of Flanders habitually and unlawfully levies the gaulum. This is a central legal relation with an actor, and it is entirely absent: neither the count nor the contested levy appears. The contract could at least record the count as a reference on the exemption factoid and keep 'widerrechtlich einzuheben pflegt' in exact wording.",
+          "evidence_quote": "die der Graf von Flandern widerrechtlich einzuheben pflegt",
+          "proposed_correction": "Add a regest-local actor 'der Graf von Flandern' (the passage gives no personal name, so the candidate RI004-002-D000242 is left to expert review) and either a reference on bestaetigung-gaulum with rv:Participant and rf:qualifier 'widerrechtlich einzuheben pflegt', or a separate StateFactoid recording the habitual levy with that qualifier; report the missing wrongful-exaction type."
+        },
+        {
+          "category": "missing-references",
+          "severity": "note",
+          "subject": "urn:regesta:22780:bestaetigung-immunitaet",
+          "description": "The partial confirmations of immunity and royal protection carry no references, so grantor and recipient are recoverable only through rf:partOf. Their evidence fragments name no actor.",
+          "evidence_quote": "insbesondere die Immunität, den Königsschutz",
+          "proposed_correction": "Add Friedrich as rv:Grantor and the church of Cambrai as rv:Recipient to both factoids."
+        },
+        {
+          "category": "right-type",
+          "severity": "note",
+          "subject": "urn:regesta:22780:rechte",
+          "description": "The generic 'Rechte' is typed rv:LordshipRights although the passage does not characterise them; the shape forces a type.",
+          "evidence_quote": "die Besitzungen und Rechte",
+          "proposed_correction": "Keep with a note, and report the lack of an unspecified right type."
+        }
+      ],
+      "model_gaps": [
+        "No act or state type for a wrongful or contested levy.",
+        "No right type for exemption from a due.",
+        "No unspecified right type for generic 'Rechte'."
+      ]
+    },
+    {
+      "uid": "22781",
+      "coverage_note": "The acquisition of Homburg by Bishop Stephan with Friedrich's help is covered. The usurpation of the castle by Duke Matthäus, the second half of a two-clause regest, is omitted together with its actor.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "error",
+          "subject": "urn:regesta:22781:burg-homburg",
+          "description": "The regest states that Duke Matthäus of Lorraine had wrongfully usurped the castle. The candidate omits this clause and the actor, citing the lack of a type for wrongful seizure. The contract could express it as a StateFactoid rv:Possession (defined neutrally as possession 'wie das Regest es sagt') with Matthäus as rv:Possessor and the exact wording as qualifier. Matthäus matches the packet candidate RI004-002-M000670 by name and title.",
+          "evidence_quote": "die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat",
+          "proposed_correction": "Add a StateFactoid rv:Possession concerning the castle with a reference to urn:regesta:actor:RI004-002-M000670 (rv:Possessor, nameInSource 'Herzog Matthäus von Lothringen') and rf:qualifier 'unrechtmäßig usurpiert'; report the usurpation act type as model gap."
+        },
+        {
+          "category": "type-approximation",
+          "severity": "note",
+          "subject": "urn:regesta:22781:erwerb-homburg",
+          "description": "rv:Grant presupposes a transferring actor; the passage names none and speaks of acquisition with the ruler's help. The extractor reports this as a model gap, which is accurate.",
+          "evidence_quote": "Bischof Stephan von Metz erwirbt mit Hilfe Kaiser (!) Friedrichs die Burg Homburg",
+          "proposed_correction": "Keep as approximation; report the acquisition type gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for an acquisition without a named transferor.",
+        "No act type for usurpation or wrongful seizure."
+      ]
+    }
+  ]
+}

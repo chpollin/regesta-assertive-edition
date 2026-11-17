@@ -1,0 +1,358 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g5-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22711",
+      "coverage_note": "The single dispositive clause (confirmation of the subordination of Hastière under Waulsort, following the privileges of Lothar III. and Konrad III.) is covered with a confirmation and two earlier act factoids. Witness list, chancery note and the Vorurkunden commentary are correctly left out. Defects are of role choice and underspecified earlier acts, not of unsupported content.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22711:confirmation",
+          "description": "Waulsort is referenced as rv:Beneficiary. The confirmed subordination is a right of Waulsort over Hastière, so Waulsort is the party to whom something is confirmed, which the vocabulary defines as rv:Recipient. Beneficiary is not wrong but weaker than the passage allows.",
+          "evidence_quote": "die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort (Walcidorensis)",
+          "proposed_correction": "Use rv:Recipient for the Waulsort reference; keep Hastière in rf:concerns."
+        },
+        {
+          "category": "underspecified-earlier-act",
+          "severity": "warning",
+          "subject": "urn:regesta:22711:privilege-lothar",
+          "description": "The two earlier privilege factoids carry only the grantor. The passage says the confirmation follows these privileges, so the earlier acts concern the same subordination; without rf:concerns and without Waulsort they are free-floating grants of unknown object. The rf:Grant type is a generic reading of 'Privilegien' that the passage does not narrow; this is acceptable, but the object link is recoverable. Same for urn:regesta:22711:privilege-konrad.",
+          "evidence_quote": "gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III.",
+          "proposed_correction": "Add rf:concerns <urn:regesta:22711:right-unterordnung> to both earlier act factoids, or record in the batch report that the object of the earlier privileges is left unstated on purpose."
+        },
+        {
+          "category": "scope-boundary",
+          "severity": "note",
+          "subject": "22711",
+          "description": "The witness list carries a stated kinship ('dominus Welf, der Oheim des Königs'). The guidelines exclude formulaic witness lists, so the omission is contract-conform, but a kinship word inside Z.: is not formulaic and would otherwise be an rv:Kinship factoid.",
+          "evidence_quote": "dominus Welf, der Oheim des Königs",
+          "proposed_correction": "No change under the frozen contract; report as a boundary question for the guidelines."
+        }
+      ],
+      "model_gaps": [
+        "The relation of predecessor in office ('seiner Vorgänger, Lothar III. und Konrad III.') has no state type or role; rv:OfficeHolding cannot express succession.",
+        "Whether kinship statements inside witness lists are in scope is not settled by the guidelines."
+      ]
+    },
+    {
+      "uid": "22712",
+      "coverage_note": "Confirmation of possessions to Stift Georgenberg with three petitioners, the bishop's Obsorge as right holding and the kinship to Duke Heinrich are covered. Witness list and chancery notes are correctly left out. The kinship factoid rests on resolving an ambiguous possessive.",
+      "findings": [
+        {
+          "category": "actor-identification",
+          "severity": "warning",
+          "subject": "urn:regesta:22712:kinship-heinrich",
+          "description": "The factoid makes Friedrich the kin of Duke Heinrich. In the passage 'seines Verwandten' follows directly on 'des dortigen Propstes Benno', so the possessive can grammatically point to Benno as well as to the sentence subject Friedrich. Regest convention favours Friedrich, but the second selector 'Friedrich bestätigt' only shows that Friedrich is the subject, not that the possessive refers to him; the register label 'Cousin Friedrich Barbarossas' may not be used as evidence. The reading is plausible but is an interpretation that the file does not mark.",
+          "evidence_quote": "des dortigen Propstes Benno und seines Verwandten, des Herzogs Heinrich von Sachsen und Bayern",
+          "proposed_correction": "Keep the factoid only with the antecedent recorded as unresolved in the batch report, or give expert review the choice between Friedrich and Benno as second kin."
+        },
+        {
+          "category": "right-typing",
+          "severity": "note",
+          "subject": "urn:regesta:22712:right-obsorge",
+          "description": "'Obsorge' of the bishop over the Stift is typed rv:LordshipRights. This is a defensible top-level choice; a more specific type does not exist in the scheme.",
+          "evidence_quote": "dessen Obsorge das Stift untersteht",
+          "proposed_correction": "None required."
+        },
+        {
+          "category": "scope-boundary",
+          "severity": "note",
+          "subject": "22712",
+          "description": "The witness list states several kinship relations (Lutolf and his sons, Hoger as brother of Lutolf, Rudolf de Capella and his son Ulrich). Omitted per the witness-list exclusion; noted as a boundary case because these are stated relations, not formulae.",
+          "evidence_quote": "Hoger (der Bruder Graf Lutolfs von Wöltingerode)",
+          "proposed_correction": "No change under the frozen contract."
+        }
+      ],
+      "model_gaps": [
+        "An ambiguous antecedent cannot be recorded inside a factoid; the model has no way to mark an identification as uncertain other than the batch report.",
+        "Kinship inside witness lists is excluded by rule, not by content."
+      ]
+    },
+    {
+      "uid": "22713",
+      "coverage_note": "The papal letter, the approbation, the reminder of the predecessor's promises and the coronation oath, and the prospect of imperial coronation are covered. The election that is approbated is not modelled as an earlier act, the cardinal's report and the announced legation are omitted.",
+      "findings": [
+        {
+          "category": "collapsed-act",
+          "severity": "error",
+          "subject": "urn:regesta:22713:approbation",
+          "description": "The pope approbates 'diese Wahl', Friedrich's election, which the passage reports as an earlier act ('die Botschaft von seiner Wahl'). The guidelines require the earlier act as its own act factoid joined by rf:refersToAct from the confirmation. The candidate folds the election into the second evidence selector of the approbation and gives the approbation Friedrich as Recipient, so the earlier act is collapsed into its confirmation.",
+          "evidence_quote": "approbiert diese Wahl ausdrücklich",
+          "proposed_correction": "Add an rf:ActFactoid of type rv:Appointment for the election (Friedrich as rv:Recipient, electors unnamed, no date) with evidence 'die Botschaft von seiner Wahl', and add rf:refersToAct from urn:regesta:22713:approbation to it."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22713",
+          "description": "The announcement of a legate is omitted. It is an act of the letter that the contract can express as a communication part of the letter; modelling it as rv:Mission would overreach, since only the announcement is stated.",
+          "evidence_quote": "kündigt die baldige Entsendung eines Legaten an",
+          "proposed_correction": "Add an rv:Communication factoid (or rv:Assurance) with rf:partOf the letter, the pope as sender reference, Friedrich as rv:Addressee and rf:qualifier 'baldige'."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22713",
+          "description": "The pope reports having heard good things about Friedrich from cardinal priest Oktavian. Oktavian has a register candidate in this packet (RI004-002-O000158) and is not referenced at all. The report is a communication from Oktavian to the pope that the contract can express.",
+          "evidence_quote": "als er schon von Kardinalpriester O(ktavian) Gutes über ihn gehört habe",
+          "proposed_correction": "Add an rv:Communication factoid with Oktavian as sender (rv:Participant) and the pope as rv:Addressee, with rf:qualifier 'schon'."
+        },
+        {
+          "category": "type-strength",
+          "severity": "note",
+          "subject": "urn:regesta:22713:imperial-coronation-prospect",
+          "description": "'in Aussicht stellen' is weaker than a Zusicherung. The qualifier 'in Aussicht' preserves the weakening, so the factoid does not overstate; the coronation itself is not given as rf:concerns.",
+          "evidence_quote": "stellt ihm die Kaiserkrönung in Aussicht",
+          "proposed_correction": "Optionally add rf:concerns to a node labelled 'die Kaiserkrönung'."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22713:letter",
+          "description": "The pope as writer is rv:Participant because the role scheme has no sender role. Consistent with the vocabulary, but the author of a communication is not distinguishable from other participants.",
+          "evidence_quote": "Papst Eugen (III.) schreibt an König F(riedrich)",
+          "proposed_correction": "None under the frozen contract."
+        }
+      ],
+      "model_gaps": [
+        "No sender or author role for rv:Communication.",
+        "No act type for a coronation or a coronation oath; the oath is approximated as rv:Assurance."
+      ]
+    },
+    {
+      "uid": "22714",
+      "coverage_note": "Protection of Corvey on Wibald's petition with its ground and the confirmation of rights granted by predecessors with its earlier act are covered. The dispositive part is complete. Narrative acts embedded in the witness list (Sven receiving and Knut resigning the kingdom, Welf as uncle) are omitted under the witness-list exclusion.",
+      "findings": [
+        {
+          "category": "underspecified-earlier-act",
+          "severity": "note",
+          "subject": "urn:regesta:22714:predecessor-grants",
+          "description": "The earlier grant by the predecessors lacks Corvey as recipient; the passage ties the rights to the same monastery ('bestätigt ihm ... die von seinen Vorgängern verliehenen Rechte').",
+          "evidence_quote": "bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte",
+          "proposed_correction": "Add a rv:Recipient reference to <urn:regesta:actor:RI004-002-C000961:community> with nameInSource 'ihm'."
+        },
+        {
+          "category": "scope-boundary",
+          "severity": "warning",
+          "subject": "22714",
+          "description": "The witness list contains two non-formulaic legal acts: Sven receives the kingdom from the king's hand, Knut resigns it into the king's hand. They are in-scope legal relations and are expressible, but the guidelines exclude Z.: wholesale. The omission is contract-conform; the warning records that substantive content is lost by the rule. The same acts are covered in 22715 and may not be carried over.",
+          "evidence_quote": "Sven, der König der Dänen, der daselbst das Königreich aus der Hand des Königs empfing, Knut, ein zweiter Däne, der daselbst das Königreich in die Hand des Königs aufließ",
+          "proposed_correction": "No change under the frozen contract; raise the witness-list boundary for the next contract."
+        },
+        {
+          "category": "reference",
+          "severity": "note",
+          "subject": "urn:regesta:22714:protection",
+          "description": "The ground names König Konrad (III.), who has a register candidate in this packet (RI004-002-K000316); he appears only inside the ground literal. Wibald's fidelity to Konrad is a relation the vocabulary cannot type.",
+          "evidence_quote": "wegen dessen Treue gegen seinen Vorgänger, König Konrad (III.), und bei seiner Königswahl",
+          "proposed_correction": "None required; the ground literal is exact."
+        }
+      ],
+      "model_gaps": [
+        "No state type for fidelity or loyalty between persons.",
+        "Legal acts narrated inside witness lists fall under a blanket exclusion."
+      ]
+    },
+    {
+      "uid": "22715",
+      "coverage_note": "A long narrative regest. Covered: Danish judgment with Knut's renunciation, Knut's provinces, Sven's kingdom, Waldemar's share; Ulrich's parentage, the promise to Ulrich, Daniel's mission and the Königgrätz fief; the Magdeburg dispute and Wichmann's regalia; the failed mediation of the inheritance dispute. Weak points are the typing of Knut's renunciation, the omitted homage, the omitted choice of Wichmann by Hazzo's party and several unlinked side acts.",
+      "findings": [
+        {
+          "category": "type-overreach",
+          "severity": "warning",
+          "subject": "urn:regesta:22715:f-knut-renounces",
+          "description": "Knut's renunciation is typed rv:Grant with Knut as Grantor and Friedrich as Recipient of the kingdom. The passage states a renunciation performed by handing over the sword; it does not state that the kingdom is transferred to Friedrich. The qualifier 'verzichtet' preserves the wording, but the type and roles assert a transfer.",
+          "evidence_quote": "Knut verzichtet auf das Königreich, indem er Friedrich nach dem Brauch des Hofes",
+          "proposed_correction": "Report renunciation as a model gap; until the vocabulary has a renunciation type, keep rv:Grant only with Friedrich as rv:Addressee or rv:Participant rather than rv:Recipient, or use rv:Restitution with a note for expert review."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "urn:regesta:22715:f-sven-kingdom",
+          "description": "Sven's oath of fealty and homage is reduced to a qualifier of the grant. The homage is an act of its own that founds a relation to Friedrich; the vocabulary has no homage act type, and rv:FeudalRelationship would be an inference since 'Lehen' is not said. The coronation by Friedrich is likewise only inside the evidence. rv:Enfeoffment would fit the act better than generic rv:Grant, but the regest does not use the word Lehen.",
+          "evidence_quote": "Peter (Sven) erhält nach Leistung von Treueid und Mannschaft das Königreich aus der Hand des Königs, der ihm die Königskrone aufsetzt",
+          "proposed_correction": "Keep the grant; record homage and coronation as model gaps in the batch report rather than as a qualifier only."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22715",
+          "description": "Friedrich brings Hazzo's party to decide for Bishop Wichmann. This election choice is the outcome of the Magdeburg intervention and an act the contract can express (rv:Appointment with Hazzo's party as actor, Wichmann as Recipient, Friedrich as rv:Mediator or rv:Petitioner). Only the regalia grant is modelled, so Wichmann appears without the act that makes him the candidate.",
+          "evidence_quote": "bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden",
+          "proposed_correction": "Add an rv:Appointment factoid for the decision of Hazzo's party with a local group actor 'die Partei Hazzos', Wichmann as rv:Recipient, Friedrich as rv:Mediator, and link the regalia grant to it."
+        },
+        {
+          "category": "evidence-support",
+          "severity": "note",
+          "subject": "urn:regesta:22715:f-regalia-wichmann",
+          "description": "The first selector 'Friedrich greift in die Magdeburger Doppelwahl ein' is used only to anchor Friedrich as subject; it does not carry the grant. Acceptable, but the Magdeburg see (register M000041) is nowhere referenced. The regalia are typed rv:ChurchRights, whereas regalia are temporal rights granted by the ruler; the type is a historical judgement for expert review.",
+          "evidence_quote": "dem er nach Erscheinen die Regalien verleiht",
+          "proposed_correction": "Consider rv:LordshipRights or leave for expert review; add Magdeburg as rf:concerns to the dispute factoid."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22715:f-magdeburg-dispute",
+          "description": "Gerhard and Hazzo are the candidates of the two sides, not the disputing parties themselves; rv:Participant is broad enough not to misstate this.",
+          "evidence_quote": "die eine Seite für Dompropst Gerhard, die andere dagegen für Domdekan Hazzo eintritt",
+          "proposed_correction": "None required."
+        },
+        {
+          "category": "literal-property",
+          "severity": "note",
+          "subject": "urn:regesta:22715:f-promise-ulrich",
+          "description": "'gegen eine große Geldsumme' is a counter-performance on which the promise depends; rf:amount records it but loses its conditional character. The prevention of the promise by Daniel ('Dies kann jedoch ... verhindern') is not linked to the promise.",
+          "evidence_quote": "versprochen, ihm gegen eine große Geldsumme das väterliche Herzogtum zuzuwenden",
+          "proposed_correction": "Add rf:condition 'gegen eine große Geldsumme' alongside rf:amount; report the prevention relation as a model gap."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "22715",
+          "description": "Minor acts are omitted: the summoning of the two pretenders by an embassy, and Vladislav's summons to the court, which he did not obey. Both are expressible in principle (rv:Mission, rv:Communication) but peripheral. The Pentecost crown-wearing with Sven bearing the sword is ceremonial and plausibly out of scope.",
+          "evidence_quote": "entgegen seiner Vorladung auf den Hoftag nicht erschienene Herzog Vladislav von Böhmen",
+          "proposed_correction": "Optionally add a Communication factoid for the summons with Vladislav as rv:Addressee."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22715:f-mission-daniel",
+          "description": "Vladislav as the sending duke is rv:Participant because there is no sender role; Daniel as rv:Envoy and Friedrich as rv:Addressee are correct.",
+          "evidence_quote": "den der entgegen seiner Vorladung auf den Hoftag nicht erschienene Herzog Vladislav von Böhmen an den neuen König abgeordnet hat",
+          "proposed_correction": "None under the frozen contract."
+        }
+      ],
+      "model_gaps": [
+        "No act type for renunciation or resignation of a right into the lord's hand.",
+        "No act type for homage or oath of fealty, and none for coronation.",
+        "No property linking an act to another act it prevents or frustrates (refersToAct is meant for confirmations).",
+        "No sender role for missions and communications."
+      ]
+    },
+    {
+      "uid": "22716",
+      "coverage_note": "Abstention. The regest states that Friedrich witnesses a charter of Duke Heinrich for Stift Weißenau without naming its content, followed by a witness list. The abstention is defensible: the dispositive content is unknown and the vocabulary's rv:Witness role is defined for narrated disputes, not charter witnessing.",
+      "findings": [
+        {
+          "category": "abstention",
+          "severity": "note",
+          "subject": "22716",
+          "description": "The main clause is not part of the Z.: list; it reports that a charter of Heinrich for Weißenau exists and that Friedrich witnesses it. An rv:Communication factoid (issuance of a charter) with Heinrich as issuer and Weißenau as recipient would be expressible, but the witnessing itself has no fitting role, so abstention is a reasonable reading.",
+          "evidence_quote": "Friedrich ist Zeuge in einer Urkunde Herzog Heinrichs von Bayern und Sachsen für das Stift Weißenau",
+          "proposed_correction": "None required; record the case as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No role for witnessing a charter in the regest's main statement, as distinct from formulaic witness lists and witnesses in a dispute.",
+        "No act type for issuing a charter of unknown content."
+      ]
+    },
+    {
+      "uid": "22717",
+      "coverage_note": "Wibald's letter to Archbishop Arnold, the king's leaving Lotharingia to Arnold's disposition and the free disposal of the castle are covered. The request to spare the abbot of Prüm and the counteraction of chancellor and notary are omitted, and the stated reason for the king's favour is lost.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "error",
+          "subject": "22717",
+          "description": "The final clause is a request in the letter: Arnold should spare the abbot of Prüm so that the king does not sin. The contract can express it fully (rv:Request with Wibald as petitioner, Arnold as rv:Addressee, the abbot as a local or functional actor, rf:ground in exact wording). It is a distinct act of the letter, not commentary, and it is omitted.",
+          "evidence_quote": "den Abt von Prüm möge er schonen, damit sich der König nicht versündige",
+          "proposed_correction": "Add an rv:Request factoid with rf:partOf the letter, Wibald as rv:Petitioner, Arnold as rv:Addressee, the abbot ('den Abt von Prüm', a local actor since the regest gives no name) as rv:Beneficiary, and rf:ground 'damit sich der König nicht versündige'."
+        },
+        {
+          "category": "lost-ground",
+          "severity": "warning",
+          "subject": "urn:regesta:22717:f-lothringen-disposition",
+          "description": "The regest gives the reason for the king's gratitude and favour: Arnold's merits concerning the election and his later services. The candidate keeps the words in the evidence selector but records no rf:ground, so the reason is not a queryable part of the factoid.",
+          "evidence_quote": "wegen seiner Verdienste um seine Wahl und der späteren Leistungen",
+          "proposed_correction": "Add rf:ground 'wegen seiner Verdienste um seine Wahl und der späteren Leistungen'."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22717",
+          "description": "Chancellor Arnold and notary Heinrich counteract the efforts of some lay princes at court concerning Lotharingia. Both have register candidates in this packet (RI004-002-A001203, RI004-002-H000404) and are not referenced. The vocabulary has no act type for support or counteraction, so only a partial expression (rv:Dispute with participants) is possible.",
+          "evidence_quote": "der Kanzler (Arnold) und der Notar (Heinrich) den Bemühungen einiger Laien(fürsten) beim König entgegenwirken",
+          "proposed_correction": "Either add an rv:Dispute factoid with the chancellor, the notary and a local group 'einiger Laien(fürsten)' as participants, concerning Lotharingia, or report the clause as a model gap."
+        },
+        {
+          "category": "reported-speech",
+          "severity": "note",
+          "subject": "urn:regesta:22717:f-lothringen-disposition",
+          "description": "The grant is reported by Wibald, not enacted in the regested document. rf:partOf the letter is the only marker of this; the guidelines use partOf for provisions of a main act, so the reported status is implicit.",
+          "evidence_quote": "Lothringen (regnum Lotharingiae) seiner Disposition überlasse",
+          "proposed_correction": "None under the frozen contract; report reported speech as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No way to mark a factoid as reported by a letter writer rather than enacted by the document.",
+        "No act type for support of or opposition to a request at court.",
+        "No sender role for rv:Communication."
+      ]
+    },
+    {
+      "uid": "22718",
+      "coverage_note": "Friedrich's letter, the decision to punish Vladislav with ground and condition in exact wording, and the kinship between the recipient and the duke are covered. The addressee follows the editor's correction. The summons that Vladislav disobeyed and the friendship are not expressed.",
+      "findings": [
+        {
+          "category": "actor-identification",
+          "severity": "note",
+          "subject": "urn:regesta:22718:f-letter",
+          "description": "The regest names the addressee as Herzog (Heinrich) von Sachsen and corrects it to Landgraf Ludwig II. The candidate follows the correction and records the choice in a comment. This is the regest's own reading and acceptable; the transmitted addressee is lost, and the kinship factoid's 'des Empfängers' depends on the same correction.",
+          "evidence_quote": "Herzog (Heinrich) von Sachsen (richtig: Landgraf Ludwig II. von Thüringen )",
+          "proposed_correction": "None required; keep the identification flagged as unresolved in the batch report."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "22718",
+          "description": "The imperial command to appear at the court is an earlier act; it survives only inside the rf:ground literal. Peripheral, expressible as an rv:Communication with Vladislav as rv:Addressee.",
+          "evidence_quote": "trotz kaiserlichen Befehls nicht auf dem Hoftag (zu Merseburg, vgl. Reg. 88) erschienen sei",
+          "proposed_correction": "Optional."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22718:f-decision-to-punish",
+          "description": "Vladislav is rv:Respondent in an rv:Enactment; there is no dispute, so the role borrows dispute vocabulary for the object of a sanction. The condition literal correctly keeps the possible mitigation for the recipient's sake.",
+          "evidence_quote": "er dies nach Beratung mit den Fürsten zu ahnden beschlossen habe",
+          "proposed_correction": "None under the frozen contract."
+        }
+      ],
+      "model_gaps": [
+        "Friendship ('sehr befreundet') has no state type.",
+        "No role for the person a sanction is directed at."
+      ]
+    },
+    {
+      "uid": "22719",
+      "coverage_note": "The current request for an estate with its earlier request, and the assurance of attendance and support are covered correctly; the assurance is not read as performance. The letter itself, the thanks for Friedrich's letter and the Bohemian duke are not referenced.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "22719",
+          "description": "Ludwig's letter as such and Friedrich's earlier letter for which he thanks are not modelled. The earlier letter belongs to another regest (Reg. 91) and may be modelled here only as an act this passage reports, without carrying over identification. Peripheral.",
+          "evidence_quote": "dankt König (Friedrich) für dessen Brief (Reg. 91)",
+          "proposed_correction": "Optionally add an rv:Communication factoid for Friedrich's earlier letter with Ludwig as rv:Addressee, and tie request and assurance to a letter factoid by rf:partOf."
+        },
+        {
+          "category": "reference",
+          "severity": "note",
+          "subject": "urn:regesta:22719:assurance",
+          "description": "The Bohemian duke (register candidate RI004-002-V000532 in this packet) appears only inside the qualifier. The qualifier is temporal-causal wording, not a qualifier of type or time in the narrow sense, but it is exact.",
+          "evidence_quote": "nachdem er genug über den Böhmenherzog gehört hat",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22720",
+      "coverage_note": "Abstention. The regest states only a visit to Erfurt, which is travel and out of scope. The abstention is correct.",
+      "findings": [],
+      "model_gaps": []
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22754> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-E000589> a crm:E21_Person ; rdfs:label "Papst Eugen (III.)" .
+<urn:regesta:actor:22754:local:eberhard-salzburg> a crm:E21_Person ; rdfs:label "Eberhard von Salzburg" .
+<urn:regesta:actor:22754:local:hartwig-bremen> a crm:E21_Person ; rdfs:label "Hartwig von Bremen" .
+<urn:regesta:actor:22754:local:hillin-trier> a crm:E21_Person ; rdfs:label "Hillin von Trier" .
+<urn:regesta:actor:RI004-002-E000011> a crm:E21_Person ; rdfs:label "Eberhard von Bamberg" .
+<urn:regesta:actor:RI004-002-H000817> a crm:E21_Person ; rdfs:label "Hermann von Konstanz" .
+<urn:regesta:actor:RI004-002-H000397> a crm:E21_Person ; rdfs:label "Heinrich von Regensburg" .
+<urn:regesta:actor:RI004-002-O000405> a crm:E21_Person ; rdfs:label "Otto von Freising" .
+<urn:regesta:actor:RI004-002-K000327> a crm:E21_Person ; rdfs:label "Konrad von Passau" .
+<urn:regesta:actor:RI004-002-D000047> a crm:E21_Person ; rdfs:label "Daniel von Prag" .
+<urn:regesta:actor:RI004-002-A000934> a crm:E21_Person ; rdfs:label "Anselm von Havelberg" .
+<urn:regesta:actor:RI004-002-B001562> a crm:E21_Person ; rdfs:label "Burchard von Eichstätt" .
+<urn:regesta:actor:RI004-002-W000436> a crm:E21_Person ; rdfs:label "Wichmanns" .
+
+<urn:regesta:22754:magdeburger-stuhl> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "den Magdeburger Stuhl" .
+
+<urn:regesta:22754:schreiben-reg103> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22754> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "in Antwort auf deren Schreiben (Reg. 103)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "ihr Eintreten in der Magdeburger Angelegenheit" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22754:local:eberhard-salzburg> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22754:local:hartwig-bremen> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22754:local:hillin-trier> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000817> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000397> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000405> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000327> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000934> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001562> ; rf:role rv:Participant ; rf:nameInSource "deren" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22754:antwortschreiben> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22754> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Papst Eugen (III.) schreibt an die Erzbischöfe Eberhard von Salzburg , Hartwig von Bremen und Hillin von Trier sowie an die Bischöfe Eberhard von Bamberg , Hermann von Konstanz , Heinrich von Regensburg , Otto von Freising , Konrad von Passau , Daniel von Prag , Anselm von Havelberg und Burchard von Eichstätt in Antwort auf deren Schreiben (Reg. 103)" ] ;
+    rf:refersToAct <urn:regesta:22754:schreiben-reg103> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Participant ; rf:nameInSource "Papst Eugen (III.)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22754:local:eberhard-salzburg> ; rf:role rv:Addressee ; rf:nameInSource "Eberhard von Salzburg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22754:local:hartwig-bremen> ; rf:role rv:Addressee ; rf:nameInSource "Hartwig von Bremen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22754:local:hillin-trier> ; rf:role rv:Addressee ; rf:nameInSource "Hillin von Trier" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Addressee ; rf:nameInSource "Eberhard von Bamberg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000817> ; rf:role rv:Addressee ; rf:nameInSource "Hermann von Konstanz" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000397> ; rf:role rv:Addressee ; rf:nameInSource "Heinrich von Regensburg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000405> ; rf:role rv:Addressee ; rf:nameInSource "Otto von Freising" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000327> ; rf:role rv:Addressee ; rf:nameInSource "Konrad von Passau" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:role rv:Addressee ; rf:nameInSource "Daniel von Prag" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000934> ; rf:role rv:Addressee ; rf:nameInSource "Anselm von Havelberg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001562> ; rf:role rv:Addressee ; rf:nameInSource "Burchard von Eichstätt" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22754:verweigerung-zustimmung> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22754> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "er zur Transferierung Wichmanns auf den Magdeburger Stuhl aus den dargelegten Gründen niemals seine Zustimmung geben werde" ] ;
+    rf:partOf <urn:regesta:22754:antwortschreiben> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Grantor ; rf:nameInSource "er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:role rv:Participant ; rf:nameInSource "Wichmanns" ] ;
+    rf:concerns <urn:regesta:22754:magdeburger-stuhl> ;
+    rf:ground "aus den dargelegten Gründen" ;
+    rf:qualifier "niemals" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .

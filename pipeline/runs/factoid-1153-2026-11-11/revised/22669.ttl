@@ -1,0 +1,70 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22669> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-R000806> a crm:E21_Person ;
+    rdfs:label "König Roger von Sizilien" .
+<urn:regesta:actor:RI004-002-W000272> a crm:E21_Person ;
+    rdfs:label "Herzog Welfs" .
+<urn:regesta:actor:22669:local:leute-herzog-welfs> a crm:E74_Group ;
+    rdfs:label "den Leuten Herzog Welfs" .
+# Possible identity with the shared ruler is not asserted; the packet has no candidate
+# carrying the ducal title.
+<urn:regesta:actor:22669:local:herzog-friedrich-von-schwaben> a crm:E21_Person ;
+    rdfs:label "Herzog Friedrich von Schwaben" .
+
+# The letter. The vocabulary has no sender role, so Roger is a participant. Delivery is not
+# asserted.
+<urn:regesta:22669:letter> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22669> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "König Roger von Sizilien gibt den Leuten Herzog Welfs einen Brief an Herzog Friedrich von Schwaben mit" ] ;
+    rf:reference <urn:regesta:22669:letter-ref-roger> ,
+        <urn:regesta:22669:letter-ref-leute> ,
+        <urn:regesta:22669:letter-ref-friedrich> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22669:letter-ref-roger> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000806> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "König Roger von Sizilien" .
+<urn:regesta:22669:letter-ref-leute> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22669:local:leute-herzog-welfs> ;
+    rf:role rv:Envoy ;
+    rf:nameInSource "den Leuten Herzog Welfs" .
+<urn:regesta:22669:letter-ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22669:local:herzog-friedrich-von-schwaben> ;
+    rf:role rv:Addressee ;
+    rf:nameInSource "Herzog Friedrich von Schwaben" .
+
+# The request contained in the letter. The passage is passive, so no petitioner is named; the
+# support is not asserted as given, and Konrad III., against whom it is requested, has no role
+# in the vocabulary and stays unreferenced (model gap).
+<urn:regesta:22669:request> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:partOf <urn:regesta:22669:letter> ;
+    rf:source <urn:regesta:record:22669> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "in dem dieser zur Unterstützung des Welfen gegen König Konrad III. aufgefordert wird" ] ,
+        [ a oa:TextQuoteSelector ;
+        oa:exact "einen Brief an Herzog Friedrich von Schwaben" ] ;
+    rf:reference <urn:regesta:22669:request-ref-friedrich> ,
+        <urn:regesta:22669:request-ref-welf> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22669:request-ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22669:local:herzog-friedrich-von-schwaben> ;
+    rf:role rv:Addressee ;
+    rf:nameInSource "dieser" .
+<urn:regesta:22669:request-ref-welf> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000272> ;
+    rf:role rv:Beneficiary ;
+    rf:nameInSource "des Welfen" .

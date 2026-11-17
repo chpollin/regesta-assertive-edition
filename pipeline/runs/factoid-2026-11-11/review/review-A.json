@@ -1,0 +1,456 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-2026-11-11:review-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "134441",
+      "coverage_note": "The dispute, the judgment with the elected judge and the three narrated witnesses, the widowhood and the provost's office are covered. The second sentence (local witnesses) is a formulaic witness list and correctly skipped. All actor IRIs come from this packet's candidates and match by name and title. No unsupported factoid found.",
+      "findings": [
+        {
+          "category": "role_left_at_participant",
+          "severity": "note",
+          "subject": "urn:regesta:134441:judgment-ref-ruler",
+          "description": "The king is the forum before whom the case is decided; he neither judges (the elected judge Engelbert does) nor is a party. rv:Participant is the only available role, so this is a vocabulary gap rather than an extraction error.",
+          "evidence_quote": "Vor König Friedrich (coram rege Friderico)",
+          "proposed_correction": "Keep rv:Participant until the vocabulary offers a role for the presiding authority or court forum; record the gap."
+        },
+        {
+          "category": "role_left_at_participant",
+          "severity": "note",
+          "subject": "urn:regesta:134441:dispute",
+          "description": "Both parties carry rv:Participant. The passage names a Streit 'zwischen' two parties and does not say who brought the claim, so Claimant/Respondent would be overreach. The reading is correct; the provost Heinrich, who heads the Stift in the dispute, has no reference in the dispute factoid.",
+          "evidence_quote": "der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich",
+          "proposed_correction": "Optionally add a reference for Propst Heinrich (rv:Representative) to the dispute; keep the parties at rv:Participant."
+        },
+        {
+          "category": "property_use",
+          "severity": "note",
+          "subject": "urn:regesta:134441:judgment",
+          "description": "rf:refersToAct is defined for a later act such as a confirmation or assurance that refers to an earlier act. Linking the judgment to the dispute it decides stretches that definition; the judgment and the dispute are reported in one clause, not as earlier act and later confirmation.",
+          "evidence_quote": "durch Spruch des erwählten Richters Markgraf Engelbert von Kraiburg (Istrien) zugunsten des Stiftes entschieden",
+          "proposed_correction": "Keep the link but record that the ontology lacks a property for 'decides dispute'; alternatively use rf:partOf."
+        }
+      ],
+      "model_gaps": [
+        "No role for the presiding authority or forum before whom a case is heard (coram rege).",
+        "No property linking a judgment to the dispute it decides; rf:refersToAct is defined for confirmations."
+      ]
+    },
+    {
+      "uid": "22673",
+      "coverage_note": "Both in-scope statements (the marriage and Adela's parentage) are covered with the correct act and state types, exact evidence and packet-local identifications (A000306, T000162). No date is asserted. No findings.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22694",
+      "coverage_note": "Protection grant with petitioner, earlier dispositions of the predecessors, confirmation of jurisdiction, the Latin clause and the added minting, toll and market rights are covered. Witness list and chancery notes are correctly skipped. Gaps: 'alle Vorrechte' is not represented, and one reference lacks its name in source.",
+      "findings": [
+        {
+          "category": "missing_name_in_source",
+          "severity": "warning",
+          "subject": "urn:regesta:22694:bestaetigung (Grantor reference to urn:regesta:actor:RI004-002-F000471)",
+          "description": "The guidelines require rf:nameInSource on every reference. The Grantor reference of the confirmation has none.",
+          "evidence_quote": "Friedrich nimmt auf Bitten Abt Wibalds",
+          "proposed_correction": "Add rf:nameInSource \"Friedrich\" and an evidence selector carrying the subject, as done for the right grant."
+        },
+        {
+          "category": "omitted_passage",
+          "severity": "warning",
+          "subject": "urn:regesta:22694:bestaetigung",
+          "description": "The confirmation covers 'alle Vorrechte' as well as the abbot's jurisdiction, but rf:concerns points only to the jurisdiction. The general privileges are cited in the evidence selector without being modelled.",
+          "evidence_quote": "alle Vorrechte und die alleinige Gerichtsbarkeit des Abtes",
+          "proposed_correction": "Add a crm:E30_Right labelled \"alle Vorrechte\" (type left at a top concept or flagged as gap) to rf:concerns of the confirmation."
+        },
+        {
+          "category": "incomplete_factoid",
+          "severity": "note",
+          "subject": "urn:regesta:22694:bestimmung-reichsdienst",
+          "description": "The Latin clause is typed rv:Enactment but carries no reference and no rf:concerns. In the regest it is a parenthetical characterising the 'Reichskloster' (remaining under the king's and successors' hand and service). As an enactment without grantor and object it states little.",
+          "evidence_quote": "semper ad nostram successorumque nostrorum manum et servitium inconvulsa stabilitate permaneat",
+          "proposed_correction": "Add a Grantor reference (Friedrich) and the monastery as Recipient or concerns, or record the clause as a model gap for the status of an imperial monastery."
+        },
+        {
+          "category": "actor_identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22694:local:abt",
+          "description": "'des Abtes' is modelled as a functional actor, which is defensible because the jurisdiction belongs to the office. The passage itself names the holder Wibald earlier; the guideline asks for a separate holder reference where the passage names one. Here the clause does not name him, so the reading is acceptable.",
+          "evidence_quote": "die alleinige Gerichtsbarkeit des Abtes",
+          "proposed_correction": "No change required; an expert may decide whether the right holder is the office or Wibald."
+        },
+        {
+          "category": "evidence_selection",
+          "severity": "note",
+          "subject": "urn:regesta:22694:rechtsverleihung",
+          "description": "The second selector 'bestätigt dem Reichskloster' supports a confirmation, not the added right grant; the recipient of 'fügt er ... hinzu' is implicit.",
+          "evidence_quote": "außerdem fügt er das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo hinzu",
+          "proposed_correction": "Keep the recipient but note that it is inferred from the sentence context; the selector should not suggest a confirmation."
+        }
+      ],
+      "model_gaps": [
+        "No state or right type for the status of an imperial monastery (Reichskloster, ad manum et servitium).",
+        "No right type for unspecified privileges ('alle Vorrechte')."
+      ]
+    },
+    {
+      "uid": "22696",
+      "coverage_note": "Donation with petitioner, recipients, grounds and kinship (Oheim) is covered, as are the provisions on investiture, advocacy, reserved revenues, dues to the fisc and the bishop's obligations, all linked with rf:partOf. Witness list and chancery notes are skipped. Main issues: the investiture right stated as a state is modelled as a right grant, and several provisions lack the grantor.",
+      "findings": [
+        {
+          "category": "state_as_act",
+          "severity": "warning",
+          "subject": "urn:regesta:22696:investitur",
+          "description": "The passage states a state ('hat das Recht'), not a granting act. It is modelled as rv:RightGrant without a Grantor. The bishop and his successor hold the right; Recipient is the role of an act.",
+          "evidence_quote": "Der Bischof oder sein kanonisch gewählter Nachfolger hat das Recht der Investitur des Abtes",
+          "proposed_correction": "Model as rf:StateFactoid of type rv:RightHolding with both references at rv:RightHolder, keep rf:partOf to the donation, and keep the alternative 'oder' visible (e.g. rf:qualifier \"oder\" or a note)."
+        },
+        {
+          "category": "actor_identification",
+          "severity": "note",
+          "subject": "urn:regesta:22696:ref-investitur-bischof",
+          "description": "'Der Bischof' in a standing provision alongside 'sein kanonisch gewählter Nachfolger' reads as the respective holder of the see. Identifying it with Eberhard (E000011) is plausible for the present holder but narrows a general provision.",
+          "evidence_quote": "Der Bischof oder sein kanonisch gewählter Nachfolger",
+          "proposed_correction": "Either keep Eberhard and add a functional actor for the respective bishop, or leave as is with an expert flag."
+        },
+        {
+          "category": "missing_reference",
+          "severity": "warning",
+          "subject": "urn:regesta:22696:vogtei, urn:regesta:22696:abgaben, urn:regesta:22696:investitur",
+          "description": "The provisions typed rv:RightGrant have no Grantor reference. The grantor is implied by the main donation only through rf:partOf.",
+          "evidence_quote": "die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts geht an die Bamberger Kirche über",
+          "proposed_correction": "Add a Grantor reference to Friedrich with nameInSource \"Friedrich\" (and a second selector), or document that the grantor is inherited through rf:partOf."
+        },
+        {
+          "category": "role_choice",
+          "severity": "note",
+          "subject": "urn:regesta:22696:ref-schenkung-konrad",
+          "description": "Konrad III is the person commemorated ('zu ... ewigem Angedenken'), not a beneficiary of the transfer in the ordinary sense. rv:Beneficiary is the closest available role.",
+          "evidence_quote": "zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken",
+          "proposed_correction": "Keep rv:Beneficiary and record a model gap for a commemorated person (memoria)."
+        },
+        {
+          "category": "omitted_passage",
+          "severity": "note",
+          "subject": "urn:regesta:22696:verpflichtungen",
+          "description": "The Latin purpose clause ('quatenus ... valeat') gives the reason for transferring the dues and obligations; it is not kept as rf:ground. The realm as the party owed the obligations has no reference.",
+          "evidence_quote": "quatenus episcopus vice abbatis plenius et devotius curię regali deservire et necessitatibus predicti monasterii commodius et uberius providere valeat",
+          "proposed_correction": "Add rf:ground with the Latin clause in its exact wording on the dues or obligations provision."
+        },
+        {
+          "category": "omitted_passage",
+          "severity": "note",
+          "subject": "urn:regesta:22696:oheim",
+          "description": "'Vorgängers' (Konrad III as predecessor in kingship) is not recorded; it is an office succession relation, not kinship.",
+          "evidence_quote": "Oheims und Vorgängers",
+          "proposed_correction": "Record as a model gap or as rv:OfficeHolding of Konrad III with qualifier \"Vorgängers\"."
+        }
+      ],
+      "model_gaps": [
+        "No role for a commemorated person in a memorial donation.",
+        "No relation for succession in office (Vorgänger, Nachfolger) between named actors.",
+        "No way to express an alternative between two right holders ('oder')."
+      ]
+    },
+    {
+      "uid": "22794",
+      "coverage_note": "Covered: the Lodi complaint, the letter to the Milanese, the divorce with ground, the marriage and Adela's parentage. Not covered: the earlier synod deliberation on the divorce, the Hoftag and the papal legates' mission. The complaint models the market as a market right, and the father of Adela is identified with a candidate that conflicts with Adela's own register label and with record 22673. The document node has no label.",
+      "findings": [
+        {
+          "category": "actor_identification",
+          "severity": "warning",
+          "subject": "urn:regesta:22794:parenthood-adela (reference to urn:regesta:actor:RI004-002-T000163)",
+          "description": "The extraction follows the rule and uses this packet's only Diepold candidate, T000163 'Diepold (VI.), Markgraf von Vohburg'. Record 22673 identifies Adela's father as T000162 (III.), and Adela's register label in both packets names Diepold III. The packet's own register links point to two different persons as Adela's father. This is not an extraction error under the guidelines, but it produces two conflicting parent statements for one actor and needs expert resolution.",
+          "evidence_quote": "der Tochter des Markgrafen Diepold von Vohburg",
+          "proposed_correction": "Keep the packet-local IRI but flag it as unresolved identity in the batch report; an expert decides whether the register link to T000163 is wrong."
+        },
+        {
+          "category": "omitted_passage",
+          "severity": "warning",
+          "subject": "urn:regesta:22794:divorce",
+          "description": "The earlier deliberation of archbishops and bishops at a synod about the divorce is an in-scope earlier act and is omitted. Its temporal qualifier 'schon vorher' is lost, so the divorce appears without its preceding procedure.",
+          "evidence_quote": "nachdem schon vorher die Erzbischöfe und Bischöfe auf einer Synode darüber beraten haben",
+          "proposed_correction": "Add an undated act factoid for the synodal deliberation with rf:qualifier \"schon vorher\", the bishops as a local group, and link it from the divorce. The act type needs a model decision (see gaps)."
+        },
+        {
+          "category": "wrong_concerns",
+          "severity": "warning",
+          "subject": "urn:regesta:22794:market",
+          "description": "The complaint is about oppression and the forcible relocation of a market. Typing the object as crm:E30_Right of type rv:Market asserts a market right that the passage does not mention.",
+          "evidence_quote": "besonders über die gewaltsame Verlegung eines Marktes",
+          "proposed_correction": "Model the market as crm:E53_Place or crm:E18_Physical_Thing labelled \"eines Marktes\", or keep only the label without a right type."
+        },
+        {
+          "category": "role_left_at_participant",
+          "severity": "note",
+          "subject": "urn:regesta:22794:divorce",
+          "description": "The legates and Bishop Hermann are the forum before whom the divorce takes place. rv:Participant is the fallback; rv:Judge would overreach. The legates' identification from the earlier sentence is a sound in-record coreference.",
+          "evidence_quote": "vor den päpstlichen Legaten und Bischof Hermann von Konstanz",
+          "proposed_correction": "Keep rv:Participant and record the vocabulary gap for a presiding forum."
+        },
+        {
+          "category": "role_choice",
+          "severity": "note",
+          "subject": "urn:regesta:22794:letter",
+          "description": "Friedrich is given rv:Grantor for issuing a letter. Grantor is defined as one who transfers, confirms, grants or enacts. There is no sender role for rv:Communication.",
+          "evidence_quote": "worauf Friedrich durch seinen Kanzler (Arnold) ein Schreiben an die Mailänder ausfertigen läßt",
+          "proposed_correction": "Keep for now and record a model gap for the issuer of a communication."
+        },
+        {
+          "category": "omitted_passage",
+          "severity": "note",
+          "subject": "urn:regesta:record:22794",
+          "description": "Bishop Hermann's request that led the Lodi citizens to Konstanz is an act (rv:Request with the citizens as addressees), although its outcome is travel. The legates are described as legates of Eugen III, a mission relation. Both are borderline under the travel exclusion and are not modelled.",
+          "evidence_quote": "die auf Bitten des Bischofs Hermann von Konstanz die Stadt Konstanz aufgesucht haben",
+          "proposed_correction": "Decide scope: either add an undated rv:Request (Hermann, addressees Albernardus and Homobonus) and an rv:Mission (Eugen III, envoys Bernhard and Gregor), or record the omission as deliberate."
+        },
+        {
+          "category": "document_node",
+          "severity": "note",
+          "subject": "urn:regesta:record:22794",
+          "description": "The source document node has no rdfs:label, unlike most other files of the run.",
+          "evidence_quote": "Friedrich hält einen Hoftag",
+          "proposed_correction": "Add rdfs:label \"RI IV,2,1 n. 167\"."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a deliberation or consultation (synodal deliberation); rv:Negotiation is defined for future agreements.",
+        "No role for a presiding forum (legates and bishop before whom a divorce or complaint is heard).",
+        "No issuer or sender role for rv:Communication.",
+        "No property linking a responding act to the act that prompted it ('worauf').",
+        "No state type for citizenship or membership (Bürger von Lodi)."
+      ]
+    },
+    {
+      "uid": "23717",
+      "coverage_note": "Debt release with its exception, the church's indebtedness, Ardicio's office, the restitution to Bishop H(einrich), the predecessor's possession, the predecessor's enfeoffments and their revocation are covered. Chancery notes are skipped. The earlier enfeoffment keeps its relative time span as qualifier and receives no date. No unsupported factoid found.",
+      "findings": [
+        {
+          "category": "actor_identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:23717:local:vorgaenger",
+          "description": "'sein Vorgänger' and 'dieser ... vor seinem Tod' are left unidentified, although the regest names the deceased Bishop Ardicio as the bishop under whom the church became indebted. The coreference is strongly suggested but not stated; keeping a functional actor is conservative and acceptable.",
+          "evidence_quote": "die sein Vorgänger innehatte",
+          "proposed_correction": "Keep the local actor and flag the likely identity with RI004-002-A001103 for expert decision."
+        },
+        {
+          "category": "literal_misuse",
+          "severity": "note",
+          "subject": "urn:regesta:23717:debt-release",
+          "description": "rf:qualifier is defined for wording that qualifies type or time. 'von allen Wucherzinsen und Zahlungsverpflichtungen' is the object of the release, not a qualifier.",
+          "evidence_quote": "von allen Wucherzinsen und Zahlungsverpflichtungen ledig",
+          "proposed_correction": "Model the released obligations as the object of rf:concerns (see model gap) and drop the qualifier."
+        },
+        {
+          "category": "evidence_selection",
+          "severity": "note",
+          "subject": "urn:regesta:23717:restitution, urn:regesta:23717:revocation",
+          "description": "The second selector 'Friedrich erklärt' belongs to the debt release clause. It establishes the subject name but its verb does not support restitution or revocation.",
+          "evidence_quote": "Friedrich erklärt",
+          "proposed_correction": "Acceptable as a subject-bearing selector; document that it only carries the actor's name."
+        }
+      ],
+      "model_gaps": [
+        "No node type for debts or obligations as the object of a debt release (rf:concerns expects a right, thing, place or community)."
+      ]
+    },
+    {
+      "uid": "22728",
+      "coverage_note": "Covered: the confirmation, Margareta's claim against Abbot Albert, the princes' judgment excluding female succession, Margareta's parentage and her father's fief. Witness list and chancery note skipped. Not covered: that Hartwig died without a male heir and that he was a ministerial of the monastery. The formulator of the princes' judgment is left at rv:Participant and the judging princes have no reference.",
+      "findings": [
+        {
+          "category": "omitted_passage",
+          "severity": "warning",
+          "subject": "urn:regesta:22728:dispute",
+          "description": "That Hartwig died without a male heir is the factual premise of the claim and of the exclusion of female succession. It is only part of an evidence string, not a factoid or literal.",
+          "evidence_quote": "ohne männlichen Erben verstorbenen",
+          "proposed_correction": "Keep the wording as rf:condition or rf:qualifier \"ohne männlichen Erben verstorbenen\" on the dispute, or record it as a model gap if no state type fits."
+        },
+        {
+          "category": "role_left_at_participant",
+          "severity": "warning",
+          "subject": "urn:regesta:22728:judgment-ref-ulrich",
+          "description": "Ulrich formulated the princes' judgment. The judging body (the princes) has no reference, and Ulrich is left at rv:Participant. rv:Judge would fit the princes; for the formulating Vitztum the vocabulary has no exact role.",
+          "evidence_quote": "einen vom (Regensburger) Vitztum Ulrich formulierten Fürstenspruch",
+          "proposed_correction": "Add a local group for the princes with rv:Judge (nameInSource from 'Fürstenspruch' is awkward; flag) and keep Ulrich with a recorded model gap for the formulator of a judgment."
+        },
+        {
+          "category": "omitted_passage",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-H000204",
+          "description": "Hartwig's status as a ministerial of the monastery ('Klosterministerialen') is a legal dependency relation and is not modelled; the feudal state leaves the lord unnamed.",
+          "evidence_quote": "Klosterministerialen Hartwig von Herrnwahlthann (Danne)",
+          "proposed_correction": "Record as model gap (ministeriality) or add the monastery as rv:Lord of the fief only if the expert accepts that 'Lehen des Klosters' covers Hartwig's fief."
+        },
+        {
+          "category": "literal_choice",
+          "severity": "note",
+          "subject": "urn:regesta:22728:confirmation",
+          "description": "rf:ground 'auf Grund der Klage Margaretas' is exact and appropriate. The confirmation has no link to the dispute factoid itself, only the literal.",
+          "evidence_quote": "auf Grund der Klage Margaretas",
+          "proposed_correction": "Optionally link the dispute to the confirmation; no correction needed."
+        }
+      ],
+      "model_gaps": [
+        "No role for the formulator (Urteilsfinder) of a judgment distinct from the judging body.",
+        "No state type for ministeriality or dependency on a church.",
+        "No representation for a death without male heir as a stated condition of an inheritance case."
+      ]
+    },
+    {
+      "uid": "23174",
+      "coverage_note": "Covered: protection grant, confirmation of possessions with the earlier sale and the earlier donation (both undated and linked with rf:refersToAct), the advocacy prohibition, Uda's parentage and the commission of the respective archbishop. Witness list and chancery notes skipped; the witness archbishop is correctly not merged with the functional archbishop. Two Grantor references lack a name in source.",
+      "findings": [
+        {
+          "category": "missing_name_in_source",
+          "severity": "warning",
+          "subject": "urn:regesta:23174:bestaetigung, urn:regesta:23174:beauftragung-erzbischof (Grantor references)",
+          "description": "The Grantor references to Friedrich have no rf:nameInSource, which the guidelines require for every reference.",
+          "evidence_quote": "Friedrich nimmt das Nonnenkloster Rolandswerth",
+          "proposed_correction": "Add rf:nameInSource \"Friedrich\" and a selector carrying the name."
+        },
+        {
+          "category": "provision_attribution",
+          "severity": "note",
+          "subject": "urn:regesta:23174:verbot-vogtei-erbrecht",
+          "description": "The relative clause on the advocacy attaches to the sold Hof. It may be Friedrich's enactment or a term of Konrad's sale; the regest does not say who prohibits. Attaching it with rf:partOf to the confirmation is a reading. The factoid has no Grantor reference.",
+          "evidence_quote": "dessen Vogtei von niemandem zu Erbrecht erworben werden darf",
+          "proposed_correction": "Keep as rv:Enactment without asserting a grantor and flag the attachment for expert review."
+        },
+        {
+          "category": "omitted_reference",
+          "severity": "note",
+          "subject": "urn:regesta:23174:stiftung-auenheim",
+          "description": "The Seelgerät is for Uda herself and 'die ihren'; only the daughter is a Beneficiary reference. Uda and her kin as beneficiaries of the memorial are kept only in the rf:ground literal.",
+          "evidence_quote": "als Seelgerät für sich und die ihren",
+          "proposed_correction": "Optionally add Uda (rv:Beneficiary) and a local group 'die ihren'."
+        },
+        {
+          "category": "omitted_passage",
+          "severity": "note",
+          "subject": "urn:regesta:actor:23174:local:tochter",
+          "description": "The daughter lives in the monastery as a nun, a membership state the vocabulary cannot express; it survives only in the actor label.",
+          "evidence_quote": "in dem Kloster als Nonne lebende Tochter",
+          "proposed_correction": "Record as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No state type for membership in a religious community (nun in a convent)."
+      ]
+    },
+    {
+      "uid": "25230",
+      "coverage_note": "Every disposition of the dispositive part is represented as its own factoid, and the repeated prohibition is linked with rf:refersToAct and qualifier 'abermals'. The witness list, including a filiation inside it, is correctly skipped. Main issues: the documented conversion collapsed into a confirmation, the consent of a deceased bishop treated as concurrent participation, a misused rf:exception, the duke left at rv:Participant where a fitting role exists, and missing Grantor references on most of Friedrich's enactments.",
+      "findings": [
+        {
+          "category": "collapsed_act",
+          "severity": "warning",
+          "subject": "urn:regesta:25230:beurkundung-umwandlung",
+          "description": "Friedrich documents a conversion that is itself an act (Umwandlung of the parish church into a canons' foundation). The conversion is collapsed into a rv:Confirmation; the regest does not say who performed it.",
+          "evidence_quote": "Friedrich beurkundet die Umwandlung der Pfarrkirche in Waldsee/Wallsee in ein Augustiner-Chorherrenstift",
+          "proposed_correction": "Add an undated act factoid for the conversion without an actor, and let the documentation refer to it with rf:refersToAct. The act type needs a model decision."
+        },
+        {
+          "category": "collapsed_act",
+          "severity": "warning",
+          "subject": "urn:regesta:25230:ref-unterstellung-hermann",
+          "description": "The editorial dagger marks Bishop Hermann as deceased. His consent therefore precedes this charter and is an earlier act, but it is folded into the enactment as a concurrent rv:Participant.",
+          "evidence_quote": "mit Zustimmung Bischof Hermanns von Konstanz (†)",
+          "proposed_correction": "Represent the consent as an undated earlier act referred to by the enactment, or at least keep the dagger as rf:qualifier; record the missing consent role and act type."
+        },
+        {
+          "category": "literal_misuse",
+          "severity": "warning",
+          "subject": "urn:regesta:25230:unterstellung-bischof",
+          "description": "rf:exception holds 'sondern nur ihren Bischöfen', which is the positive content of the provision, not an exception to it. Read as an exception, it would invert the subordination.",
+          "evidence_quote": "keinem Archidiakon oder Dekan, sondern nur ihren Bischöfen (= von Konstanz) untertan sein sollen",
+          "proposed_correction": "Remove rf:exception; the bishops are already referenced as rv:RightHolder and the right's label carries the wording."
+        },
+        {
+          "category": "role_left_at_participant",
+          "severity": "warning",
+          "subject": "urn:regesta:25230:ref-propstei-herzog",
+          "description": "The provost is to receive the provostship from the hand of the Duke of Swabia. The duke is the one who invests, so rv:Grantor (or rv:RightHolder of the investiture right) fits; he is left at rv:Participant.",
+          "evidence_quote": "der Propst die Propstei aus der Hand des Herzogs von Schwaben empfangen soll",
+          "proposed_correction": "Change the duke's role to rv:RightHolder (holder of the investiture right) or rv:Grantor."
+        },
+        {
+          "category": "missing_reference",
+          "severity": "warning",
+          "subject": "urn:regesta:25230:unterstellung-bischof, propstei-aus-hand-herzog, verbot-entfremdung, schutzpflicht, kein-verkauf, begraebnisrecht, verbot-veraeusserung-abermals",
+          "description": "Seven of Friedrich's dispositions (legt fest, bestimmt, gewährt, gesteht zu, betont abermals) have no Grantor reference, while the permission and the subordination of the ministerials do. The enacting actor of each provision is thus missing.",
+          "evidence_quote": "gesteht den Ministerialen das freie Begräbnisrecht in dieser Kirche zu",
+          "proposed_correction": "Add a Grantor reference to Friedrich on each, with nameInSource \"Friedrich\" or \"Er\" and a selector carrying the name."
+        },
+        {
+          "category": "role_left_at_participant",
+          "severity": "note",
+          "subject": "urn:regesta:25230:ref-unterstellung-m-ministerialen",
+          "description": "The ministerials subordinated to the duke are left at rv:Participant. No role for a subordinated or dependent party exists.",
+          "evidence_quote": "Er unterstellt die Ministerialen von Waldsee/Wallsee ausschließlich dem Herzog von Schwaben",
+          "proposed_correction": "Keep and record the gap."
+        },
+        {
+          "category": "actor_identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:25230:local:ministerialen, urn:regesta:actor:25230:local:kinderlose-ministerialen",
+          "description": "'den Ministerialen' (burial right) and 'kinderlosen Ministerialen' are local groups, while 'die Ministerialen von Waldsee/Wallsee' uses the packet candidate W000061. In context all three refer to the same ministerials of the foundation; the inconsistency splits one group into three actors.",
+          "evidence_quote": "gesteht den Ministerialen das freie Begräbnisrecht",
+          "proposed_correction": "Use W000061 for the burial clause, keep 'kinderlosen' as rf:condition on the permission with the same group."
+        },
+        {
+          "category": "actor_identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-S000400",
+          "description": "'des Herzogs von Schwaben' is a provision for the respective duke. The packet candidate S000400 is the office entry, which fits; a rf:FunctionalActor would be equally defensible. The individual duke F000684 is correctly not used.",
+          "evidence_quote": "aus der Hand des Herzogs von Schwaben",
+          "proposed_correction": "No change required; flag for expert decision between register office entry and functional actor."
+        },
+        {
+          "category": "evidence_selection",
+          "severity": "note",
+          "subject": "urn:regesta:25230:verbot-entfremdung, urn:regesta:25230:schutzpflicht",
+          "description": "Both selectors start with the preceding provision on the provostship, contrary to the shortest-passage rule.",
+          "evidence_quote": "die Güter der Kirche nicht entfremden oder verpfänden dürfe",
+          "proposed_correction": "Shorten each selector to its own clause."
+        },
+        {
+          "category": "lost_condition",
+          "severity": "note",
+          "subject": "urn:regesta:25230:begraebnisrecht",
+          "description": "'wo immer sie sterben mögen' qualifies the burial right; it survives only inside the right's label, not as rf:condition.",
+          "evidence_quote": "wo immer sie sterben mögen",
+          "proposed_correction": "Add rf:condition \"wo immer sie sterben mögen\"."
+        }
+      ],
+      "model_gaps": [
+        "No act type for founding or converting an institution (Umwandlung einer Pfarrkirche in ein Stift).",
+        "No role or act type for consent (Zustimmung) by a third party, including consent given earlier.",
+        "No role for a party subordinated to a lord (Unterstellung of ministerials).",
+        "The right types do not distinguish exemption from archdeacons, freedom of election or burial right; they fall back to broad concepts (ChurchRights, Jurisdiction)."
+      ]
+    },
+    {
+      "uid": "24821",
+      "coverage_note": "The earlier pledge (undated, with amount and ground in exact wording), the subsequent confirmation with 'nachträglich' and petitioner, and the assurance with its condition are covered and linked correctly. The Latin summons to the expedition is military and out of scope. No unsupported factoid found. The document node has no label.",
+      "findings": [
+        {
+          "category": "omitted_passage",
+          "severity": "note",
+          "subject": "urn:regesta:24821:hof-hilden, urn:regesta:24821:hof-elberfeld",
+          "description": "The estates are 'Höfe des Erzstifts', a possession of the archiepiscopal church that the pledgor acts for. This possession is not recorded, and the Latin form in the Elberfeld label covers both estates.",
+          "evidence_quote": "die Höfe des Erzstifts zu Hilden und Elberfeld (Helede et Elberuelde)",
+          "proposed_correction": "Optionally add an rv:Possession state with a local Erzstift group; give Elberfeld the label 'Elberfeld'."
+        },
+        {
+          "category": "document_node",
+          "severity": "note",
+          "subject": "urn:regesta:record:24821",
+          "description": "The source document node has no rdfs:label.",
+          "evidence_quote": "Friedrich bestätigt Erzbischof Philipp von Köln",
+          "proposed_correction": "Add rdfs:label \"RI IV,2,3 n. 2186\"."
+        }
+      ],
+      "model_gaps": []
+    }
+  ]
+}

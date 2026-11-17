@@ -1,0 +1,287 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:25230> a crm:E31_Document ;
+    rdfs:label "RI IV,2,4 n. 2594" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-H000817> a crm:E21_Person ;
+    rdfs:label "Bischof Hermanns von Konstanz (†)" .
+
+<urn:regesta:actor:RI004-002-S000400> a crm:E21_Person ;
+    rdfs:label "Herzog von Schwaben" .
+
+<urn:regesta:actor:RI004-002-W000058:community> a crm:E74_Group ;
+    rdfs:label "Augustiner-Chorherrenstift" .
+
+<urn:regesta:actor:RI004-002-W000061:community> a crm:E74_Group ;
+    rdfs:label "die Ministerialen von Waldsee/Wallsee" .
+
+<urn:regesta:actor:25230:local:propst> a rf:FunctionalActor ;
+    rdfs:label "der Propst" .
+
+<urn:regesta:actor:25230:local:untertanen-des-propstes> a crm:E74_Group ;
+    rdfs:label "dessen Untertanen" .
+
+<urn:regesta:actor:25230:local:bischoefe-von-konstanz> a rf:FunctionalActor ;
+    rdfs:label "ihren Bischöfen (= von Konstanz)" .
+
+<urn:regesta:actor:25230:local:kinderlose-ministerialen> a crm:E74_Group ;
+    rdfs:label "kinderlosen Ministerialen" .
+
+<urn:regesta:actor:25230:local:zensualen> a crm:E74_Group ;
+    rdfs:label "den freien Zensualen und Menschen gleich welchen Standes, die zur Herrschaft des Stiftes gehören" .
+
+<urn:regesta:actor:25230:local:ministerialen> a crm:E74_Group ;
+    rdfs:label "den Ministerialen" .
+
+# Things and rights
+
+<urn:regesta:25230:thing-pfarrkirche> a crm:E18_Physical_Thing ;
+    rdfs:label "Pfarrkirche in Waldsee/Wallsee" .
+
+<urn:regesta:25230:thing-gueter-der-kirche> a crm:E18_Physical_Thing ;
+    rdfs:label "die Güter der Kirche" .
+
+<urn:regesta:25230:thing-gueter-der-ministerialen> a crm:E18_Physical_Thing ;
+    rdfs:label "ihre Güter" .
+
+<urn:regesta:25230:right-propstwahl> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "die Freiheit der Propstwahl" .
+
+<urn:regesta:25230:right-unterstellung-bischof> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "keinem Archidiakon oder Dekan, sondern nur ihren Bischöfen (= von Konstanz) untertan" .
+
+<urn:regesta:25230:right-propstei> a crm:E30_Right ;
+    crm:P2_has_type rv:Investiture ;
+    rdfs:label "die Propstei aus der Hand des Herzogs von Schwaben empfangen" .
+
+<urn:regesta:25230:right-schutz> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "das Stift und dessen Güter zu schützen" .
+
+<urn:regesta:25230:right-kein-verkauf> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "das Recht, dass niemand sie nomine beneficii verkaufen dürfe" .
+
+<urn:regesta:25230:right-begraebnis> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "das freie Begräbnisrecht in dieser Kirche, wo immer sie sterben mögen" .
+
+<urn:regesta:25230:right-herrschaft-ministerialen> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Ministerialen von Waldsee/Wallsee ausschließlich dem Herzog von Schwaben" .
+
+# Documentation of the conversion of the parish church into a canons' foundation
+
+<urn:regesta:25230:beurkundung-umwandlung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich beurkundet die Umwandlung der Pfarrkirche in Waldsee/Wallsee in ein Augustiner-Chorherrenstift" ] ;
+    rf:reference <urn:regesta:25230:ref-beurkundung-friedrich> , <urn:regesta:25230:ref-beurkundung-stift> ;
+    rf:concerns <urn:regesta:25230:thing-pfarrkirche> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-beurkundung-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" .
+<urn:regesta:25230:ref-beurkundung-stift> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000058:community> ; rf:role rv:Recipient ; rf:nameInSource "Augustiner-Chorherrenstift" .
+
+# Grant of free election of the provost
+
+<urn:regesta:25230:propstwahl> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich beurkundet die Umwandlung der Pfarrkirche in Waldsee/Wallsee in ein Augustiner-Chorherrenstift, gewährt die Freiheit der Propstwahl" ] ;
+    rf:reference <urn:regesta:25230:ref-propstwahl-friedrich> , <urn:regesta:25230:ref-propstwahl-stift> ;
+    rf:concerns <urn:regesta:25230:right-propstwahl> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-propstwahl-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" .
+<urn:regesta:25230:ref-propstwahl-stift> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000058:community> ; rf:role rv:Recipient ; rf:nameInSource "Augustiner-Chorherrenstift" .
+
+# Enactment: provost and his subjects subject only to their bishops, with consent of Bishop Hermann
+
+<urn:regesta:25230:unterstellung-bischof> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "legt mit Zustimmung Bischof Hermanns von Konstanz (†) fest, dass der Propst und dessen Untertanen keinem Archidiakon oder Dekan, sondern nur ihren Bischöfen (= von Konstanz) untertan sein sollen" ] ;
+    rf:reference <urn:regesta:25230:ref-unterstellung-hermann> ,
+        <urn:regesta:25230:ref-unterstellung-propst> ,
+        <urn:regesta:25230:ref-unterstellung-untertanen> ,
+        <urn:regesta:25230:ref-unterstellung-bischoefe> ;
+    rf:concerns <urn:regesta:25230:right-unterstellung-bischof> ;
+    rf:exception "sondern nur ihren Bischöfen (= von Konstanz)" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-unterstellung-hermann> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000817> ; rf:role rv:Participant ; rf:nameInSource "Bischof Hermanns von Konstanz (†)" .
+<urn:regesta:25230:ref-unterstellung-propst> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:propst> ; rf:role rv:Beneficiary ; rf:nameInSource "der Propst" .
+<urn:regesta:25230:ref-unterstellung-untertanen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:untertanen-des-propstes> ; rf:role rv:Beneficiary ; rf:nameInSource "dessen Untertanen" .
+<urn:regesta:25230:ref-unterstellung-bischoefe> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:bischoefe-von-konstanz> ; rf:role rv:RightHolder ; rf:nameInSource "ihren Bischöfen (= von Konstanz)" .
+
+# Enactment: the provost receives the provostship from the hand of the Duke of Swabia
+
+<urn:regesta:25230:propstei-aus-hand-herzog> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bestimmt, dass der Propst die Propstei aus der Hand des Herzogs von Schwaben empfangen soll" ] ;
+    rf:reference <urn:regesta:25230:ref-propstei-propst> , <urn:regesta:25230:ref-propstei-herzog> ;
+    rf:concerns <urn:regesta:25230:right-propstei> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-propstei-propst> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:propst> ; rf:role rv:Recipient ; rf:nameInSource "der Propst" .
+<urn:regesta:25230:ref-propstei-herzog> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-S000400> ; rf:role rv:Participant ; rf:nameInSource "des Herzogs von Schwaben" .
+
+# Enactment: prohibition on alienating or pledging the church's goods
+
+<urn:regesta:25230:verbot-entfremdung> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "dass der Propst die Propstei aus der Hand des Herzogs von Schwaben empfangen soll, die Güter der Kirche nicht entfremden oder verpfänden dürfe" ] ;
+    rf:reference <urn:regesta:25230:ref-verbot-propst> ;
+    rf:concerns <urn:regesta:25230:thing-gueter-der-kirche> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-verbot-propst> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:propst> ; rf:role rv:Obligor ; rf:nameInSource "der Propst" .
+
+# Enactment: provost and Duke of Swabia to protect the foundation and its goods together
+
+<urn:regesta:25230:schutzpflicht> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "dass der Propst die Propstei aus der Hand des Herzogs von Schwaben empfangen soll, die Güter der Kirche nicht entfremden oder verpfänden dürfe und gemeinsam mit dem Herzog von Schwaben das Stift und dessen Güter zu schützen habe" ] ;
+    rf:reference <urn:regesta:25230:ref-schutz-propst> ,
+        <urn:regesta:25230:ref-schutz-herzog> ,
+        <urn:regesta:25230:ref-schutz-stift> ;
+    rf:concerns <urn:regesta:25230:right-schutz> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-schutz-propst> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:propst> ; rf:role rv:Obligor ; rf:nameInSource "der Propst" .
+<urn:regesta:25230:ref-schutz-herzog> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-S000400> ; rf:role rv:Obligor ; rf:nameInSource "dem Herzog von Schwaben" .
+<urn:regesta:25230:ref-schutz-stift> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000058:community> ; rf:role rv:Beneficiary ; rf:nameInSource "das Stift" .
+
+# Permission for childless ministerials to transfer their goods to the convent
+
+<urn:regesta:25230:erlaubnis-uebertragung> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Er erlaubt kinderlosen Ministerialen, ihre Güter dem Konvent zu übertragen" ] ;
+    rf:reference <urn:regesta:25230:ref-erlaubnis-friedrich> ,
+        <urn:regesta:25230:ref-erlaubnis-ministerialen> ,
+        <urn:regesta:25230:ref-erlaubnis-konvent> ;
+    rf:concerns <urn:regesta:25230:thing-gueter-der-ministerialen> ;
+    rf:condition "kinderlosen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-erlaubnis-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Er" .
+<urn:regesta:25230:ref-erlaubnis-ministerialen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:kinderlose-ministerialen> ; rf:role rv:Recipient ; rf:nameInSource "kinderlosen Ministerialen" .
+<urn:regesta:25230:ref-erlaubnis-konvent> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000058:community> ; rf:role rv:Beneficiary ; rf:nameInSource "dem Konvent" .
+
+# Grant to free censuales and dependants: no one may sell them nomine beneficii
+
+<urn:regesta:25230:kein-verkauf> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gewährt den freien Zensualen und Menschen gleich welchen Standes, die zur Herrschaft des Stiftes gehören, das Recht, dass niemand sie nomine beneficii verkaufen dürfe" ] ;
+    rf:reference <urn:regesta:25230:ref-kein-verkauf-zensualen> ;
+    rf:concerns <urn:regesta:25230:right-kein-verkauf> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-kein-verkauf-zensualen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:zensualen> ; rf:role rv:Recipient ;
+    rf:nameInSource "den freien Zensualen und Menschen gleich welchen Standes, die zur Herrschaft des Stiftes gehören" .
+
+# Grant of free burial right in this church to the ministerials
+
+<urn:regesta:25230:begraebnisrecht> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gesteht den Ministerialen das freie Begräbnisrecht in dieser Kirche zu, wo immer sie sterben mögen" ] ;
+    rf:reference <urn:regesta:25230:ref-begraebnis-ministerialen> ;
+    rf:concerns <urn:regesta:25230:right-begraebnis> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-begraebnis-ministerialen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:ministerialen> ; rf:role rv:Recipient ; rf:nameInSource "den Ministerialen" .
+
+# Enactment: the ministerials of Waldsee/Wallsee are subordinated exclusively to the Duke of Swabia
+
+<urn:regesta:25230:unterstellung-ministerialen> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Er unterstellt die Ministerialen von Waldsee/Wallsee ausschließlich dem Herzog von Schwaben" ] ;
+    rf:reference <urn:regesta:25230:ref-unterstellung-m-friedrich> ,
+        <urn:regesta:25230:ref-unterstellung-m-ministerialen> ,
+        <urn:regesta:25230:ref-unterstellung-m-herzog> ;
+    rf:concerns <urn:regesta:25230:right-herrschaft-ministerialen> ;
+    rf:qualifier "ausschließlich" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-unterstellung-m-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Er" .
+<urn:regesta:25230:ref-unterstellung-m-ministerialen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000061:community> ; rf:role rv:Participant ; rf:nameInSource "die Ministerialen von Waldsee/Wallsee" .
+<urn:regesta:25230:ref-unterstellung-m-herzog> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-S000400> ; rf:role rv:RightHolder ; rf:nameInSource "dem Herzog von Schwaben" .
+
+# Repeated prohibition: no alienation of the church's goods by pledge, enfeoffment or sale
+
+<urn:regesta:25230:verbot-veraeusserung-abermals> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:25230> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "betont abermals, dass der Propst der Kirche deren Güter weder durch Verpfändung noch durch Verlehnung oder Verkauf veräußern darf" ] ;
+    rf:reference <urn:regesta:25230:ref-abermals-propst> ;
+    rf:concerns <urn:regesta:25230:thing-gueter-der-kirche> ;
+    rf:qualifier "abermals" ;
+    rf:refersToAct <urn:regesta:25230:verbot-entfremdung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:25230:ref-abermals-propst> a rf:Reference ;
+    rf:actor <urn:regesta:actor:25230:local:propst> ; rf:role rv:Obligor ; rf:nameInSource "der Propst" .

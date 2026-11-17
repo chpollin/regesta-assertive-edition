@@ -1,0 +1,189 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22783> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-O000410> a crm:E21_Person ;
+    rdfs:label "Bischof Otto von Straßburg" .
+
+<urn:regesta:actor:RI004-002-F000680> a crm:E21_Person ;
+    rdfs:label "Herzog Friedrich (I.) von Schwaben" .
+
+<urn:regesta:actor:RI004-002-L000852> a crm:E21_Person ;
+    rdfs:label "Ludwig" .
+
+<urn:regesta:actor:RI004-002-K000461> a crm:E21_Person ;
+    rdfs:label "Konrad" .
+
+<urn:regesta:actor:RI004-002-W000125> a crm:E21_Person ;
+    rdfs:label "Walter" .
+
+<urn:regesta:actor:RI004-002-S000362:community> a crm:E74_Group ;
+    rdfs:label "Kloster St. Fides in Schlettstadt" .
+
+<urn:regesta:actor:RI004-002-C000901> a crm:E21_Person ;
+    rdfs:label "den Abt von Conques" .
+
+<urn:regesta:actor:22783:local:ahnen> a crm:E74_Group ;
+    rdfs:label "seinen Ahnen" .
+
+# Earlier act: the foundation by the ancestors. The contract has no foundation type;
+# rv:Donation is the closest act type and is reported as a model gap. No date.
+<urn:regesta:22783:stiftung> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig, Konrad und Walter, gestifteten Kloster St. Fides in Schlettstadt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000410> ; rf:role rv:Grantor ; rf:nameInSource "Bischof Otto von Straßburg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000680> ; rf:role rv:Grantor ; rf:nameInSource "Herzog Friedrich (I.) von Schwaben" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000852> ; rf:role rv:Grantor ; rf:nameInSource "Ludwig" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000461> ; rf:role rv:Grantor ; rf:nameInSource "Konrad" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000125> ; rf:role rv:Grantor ; rf:nameInSource "Walter" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:role rv:Recipient ; rf:nameInSource "Kloster St. Fides in Schlettstadt" ] ;
+    rf:qualifier "gestifteten" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+# Stated kinship: each named founder is called an ancestor (Vorfahr) of Friedrich. One factoid per pair, no chain.
+<urn:regesta:22783:vorfahr-otto> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000410> ; rf:role rv:Kin ; rf:nameInSource "Bischof Otto von Straßburg" ] ;
+    rf:qualifier "Vorfahren" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:vorfahr-friedrich-schwaben> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000680> ; rf:role rv:Kin ; rf:nameInSource "Herzog Friedrich (I.) von Schwaben" ] ;
+    rf:qualifier "Vorfahren" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:vorfahr-ludwig> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000852> ; rf:role rv:Kin ; rf:nameInSource "Ludwig" ] ;
+    rf:qualifier "Vorfahren" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:vorfahr-konrad> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig, Konrad" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000461> ; rf:role rv:Kin ; rf:nameInSource "Konrad" ] ;
+    rf:qualifier "Vorfahren" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:vorfahr-walter> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem von seinen Vorfahren, Bischof Otto von Straßburg, Herzog Friedrich (I.) von Schwaben, Ludwig, Konrad und Walter" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000125> ; rf:role rv:Kin ; rf:nameInSource "Walter" ] ;
+    rf:qualifier "Vorfahren" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+# Earlier act: the provisions of the ancestors that the confirmation follows. No date.
+<urn:regesta:22783:bestimmungen-ahnen> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "gemäß den von seinen Ahnen getroffenen Bestimmungen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22783:local:ahnen> ; rf:role rv:Grantor ; rf:nameInSource "seinen Ahnen" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:bestaetigung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Kloster St. Fides in Schlettstadt (ecclesiam Slezstat), das nach dem Vorbilde des Grabes des Herrn errichtet wurde, gemäß den von seinen Ahnen getroffenen Bestimmungen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000362:community> ; rf:role rv:Recipient ; rf:nameInSource "Kloster St. Fides in Schlettstadt" ] ;
+    rf:refersToAct <urn:regesta:22783:bestimmungen-ahnen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:bestaetigung-unterstellung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Unterstellung unter den Abt von Conques (sancte Fidei in Concha)" ] ;
+    rf:partOf <urn:regesta:22783:bestaetigung> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000901> ; rf:role rv:Beneficiary ; rf:nameInSource "den Abt von Conques" ] ;
+    rf:concerns <urn:regesta:22783:unterstellung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:unterstellung> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "die Unterstellung unter den Abt von Conques" .
+
+<urn:regesta:22783:vogtwahl-abt> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den Abt von Conques (sancte Fidei in Concha), der auch das Recht hat, den Vogt zu wählen" ] ;
+    rf:partOf <urn:regesta:22783:bestaetigung> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000901> ; rf:role rv:RightHolder ; rf:nameInSource "den Abt von Conques" ] ;
+    rf:concerns <urn:regesta:22783:recht-vogtwahl> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:recht-vogtwahl> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "das Recht hat, den Vogt zu wählen" .
+
+<urn:regesta:22783:bestaetigung-freiheit> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener" ] ;
+    rf:partOf <urn:regesta:22783:bestaetigung> ;
+    rf:concerns <urn:regesta:22783:freiheit> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:freiheit> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "die Freiheit von feindlichen Einfällen und von Bedrückungen der Bischöfe sowie ihrer Diener" .
+
+<urn:regesta:22783:bestaetigung-begraebnisrecht> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "das Begräbnisrecht" ] ;
+    rf:partOf <urn:regesta:22783:bestaetigung> ;
+    rf:concerns <urn:regesta:22783:begraebnisrecht> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:begraebnisrecht> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "das Begräbnisrecht" .
+
+<urn:regesta:22783:bestaetigung-besitzungen> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22783> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Besitzungen, frei von aller weltlichen Herrschaft" ] ;
+    rf:partOf <urn:regesta:22783:bestaetigung> ;
+    rf:qualifier "frei von aller weltlichen Herrschaft" ;
+    rf:concerns <urn:regesta:22783:besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22783:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "die Besitzungen" .

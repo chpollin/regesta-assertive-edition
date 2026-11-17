@@ -1,0 +1,184 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22762> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 135" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-A001019:community> a crm:E74_Group ;
+    rdfs:label "einigen Apuliern" .
+
+<urn:regesta:actor:RI004-002-R000806> a crm:E21_Person ;
+    rdfs:label "Roger" .
+
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ;
+    rdfs:label "Heinrich dem Löwen" .
+
+<urn:regesta:actor:RI004-002-A000135> a crm:E21_Person ;
+    rdfs:label "Albrecht dem Bären" .
+
+<urn:regesta:actor:RI004-002-W000272> a crm:E21_Person ;
+    rdfs:label "Herzog Welf" .
+
+<urn:regesta:actor:22762:local:konrad-iii> a crm:E21_Person ;
+    rdfs:label "Konrad III." .
+
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ;
+    rdfs:label "Wibalds" .
+
+<urn:regesta:actor:22762:local:fuersten> a crm:E74_Group ;
+    rdfs:label "den Fürsten" .
+
+<urn:regesta:22762:herzogtum-spoleto> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "das Herzogtum Spoleto" .
+
+<urn:regesta:22762:markgrafschaft-tuszien> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Markgrafschaft Tuszien" .
+
+<urn:regesta:22762:principatus-sardinien> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "den principatus Sardinien" .
+
+<urn:regesta:22762:hausgut-mathilde> a crm:E18_Physical_Thing ;
+    rdfs:label "das Hausgut der Gräfin Mathilde" .
+
+<urn:regesta:22762:reichseinkuenfte> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "Reichseinkünfte" .
+
+<urn:regesta:22762:dorf-mertingen> a crm:E18_Physical_Thing ;
+    rdfs:label "dem Dorfe Mertingen" .
+
+<urn:regesta:22762:winzenburger-erbe> a crm:E18_Physical_Thing ;
+    rdfs:label "das Winzenburger" .
+
+<urn:regesta:22762:ploetzkesches-erbe> a crm:E18_Physical_Thing ;
+    rdfs:label "das Plötzkesche Erbe" .
+
+<urn:regesta:22762:befestigungen-hoexter> a crm:E18_Physical_Thing ;
+    rdfs:label "der Befestigungen von Höxter" .
+
+<urn:regesta:22762:apulian-complaint> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "auf die Klage von einigen Apuliern, die von Roger aus ihrer Heimat vertrieben worden sind" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001019:community> ; rf:role rv:Claimant ; rf:nameInSource "einigen Apuliern" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000806> ; rf:role rv:Respondent ; rf:nameInSource "Roger" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "Friedrich" ] ;
+    rf:ground "die von Roger aus ihrer Heimat vertrieben worden sind" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:italienzug-oath> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich läßt auf die Klage von einigen Apuliern, die von Roger aus ihrer Heimat vertrieben worden sind, den Antritt des Italienzuges, der dem Erwerb der Kaiserkrone dienen soll, innerhalb der nächsten zwei Jahre beschwören" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    rf:ground "auf die Klage von einigen Apuliern" ;
+    rf:qualifier "innerhalb der nächsten zwei Jahre" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:dispute-heinrich-albrecht> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Participant ; rf:nameInSource "Heinrich dem Löwen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:role rv:Participant ; rf:nameInSource "Albrecht dem Bären" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:settlement> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich erzielt im Streit zwischen Heinrich dem Löwen und Albrecht dem Bären (vgl. Reg. 88) einen Ausgleich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Mediator ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Participant ; rf:nameInSource "Heinrich dem Löwen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:role rv:Participant ; rf:nameInSource "Albrecht dem Bären" ] ;
+    rf:refersToAct <urn:regesta:22762:dispute-heinrich-albrecht> ;
+    rf:qualifier "Ausgleich" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:settlement-winzenburg> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "indem der Welfe das Winzenburger" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Recipient ; rf:nameInSource "der Welfe" ] ;
+    rf:concerns <urn:regesta:22762:winzenburger-erbe> ;
+    rf:partOf <urn:regesta:22762:settlement> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:settlement-ploetzke> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "der Askanier das Plötzkesche Erbe erhält" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:role rv:Recipient ; rf:nameInSource "der Askanier" ] ;
+    rf:concerns <urn:regesta:22762:ploetzkesches-erbe> ;
+    rf:partOf <urn:regesta:22762:settlement> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:kinship-welf> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich verleiht seinem Oheim, Herzog Welf" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:role rv:Kin ; rf:nameInSource "Herzog Welf" ] ;
+    rf:qualifier "Oheim" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:grant-welf> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich verleiht seinem Oheim, Herzog Welf, das Herzogtum Spoleto, die Markgrafschaft Tuszien, den principatus Sardinien und das Hausgut der Gräfin Mathilde" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:role rv:Recipient ; rf:nameInSource "Herzog Welf" ] ;
+    rf:concerns <urn:regesta:22762:herzogtum-spoleto> , <urn:regesta:22762:markgrafschaft-tuszien> , <urn:regesta:22762:principatus-sardinien> , <urn:regesta:22762:hausgut-mathilde> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:earlier-grant-konrad> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die ihm schon von Konrad III. übertragenenReichseinkünfte mit dem Dorfe Mertingen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22762:local:konrad-iii> ; rf:role rv:Grantor ; rf:nameInSource "Konrad III." ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22762:reichseinkuenfte> , <urn:regesta:22762:dorf-mertingen> ;
+    rf:qualifier "schon" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:grant-welf-revenues> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "sowie die ihm schon von Konrad III. übertragenenReichseinkünfte mit dem Dorfe Mertingen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000272> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22762:reichseinkuenfte> , <urn:regesta:22762:dorf-mertingen> ;
+    rf:partOf <urn:regesta:22762:grant-welf> ;
+    rf:refersToAct <urn:regesta:22762:earlier-grant-konrad> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22762:hoexter-decision> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22762> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Vor Friedrich und den Fürsten wird gemäß den Klagen Wibalds (vgl. Regg. 119-123) der Wiederaufbau der Befestigungen von Höxter beschlossen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22762:local:fuersten> ; rf:role rv:Participant ; rf:nameInSource "den Fürsten" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:role rv:Petitioner ; rf:nameInSource "Wibalds" ] ;
+    rf:concerns <urn:regesta:22762:befestigungen-hoexter> ;
+    rf:ground "gemäß den Klagen Wibalds" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .

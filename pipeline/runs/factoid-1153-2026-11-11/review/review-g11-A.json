@@ -1,0 +1,201 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g11-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22861",
+      "coverage_note": "Three factoids: the royal order not to tolerate sub-advocates (Enactment with ground), Heinrich's holding of the Vogtei, and the monastery's possession of the goods. All in-scope passages of summary_plain are covered; the order is correctly read as an enactment, not as its performance, and the count correctly as addressee. Actor identifications match the packet candidates.",
+      "findings": [
+        {
+          "category": "qualifier-reading",
+          "severity": "note",
+          "subject": "urn:regesta:22861:vogtei-heinrich",
+          "description": "The holding 'aus der Hand des Königs' is kept as a qualifier only. It states that the Vogtei derives from the king, which an expert might read as a feudal or delegated relation with the king as lord. The passage does not say 'zu Lehen', so not modelling a FeudalRelationship is defensible; the derivation from the king is recorded only as a literal.",
+          "evidence_quote": "aus der Hand des Königs innehat",
+          "proposed_correction": "Keep as is; optionally add a reference to the ruler in a role that the contract does not yet offer (source of a held right) once the vocabulary allows it."
+        },
+        {
+          "category": "earlier-act",
+          "severity": "note",
+          "subject": "urn:regesta:22861:befehl-keine-untervoegte",
+          "description": "The 'älteren Privilegien seiner Vorgänger' are earlier acts that the order relies on. They appear only inside rf:ground. Since the passage names neither the predecessors nor the content of the privileges, leaving them unmodelled is acceptable.",
+          "evidence_quote": "der Einsicht in die älteren Privilegien seiner Vorgänger",
+          "proposed_correction": "None required."
+        },
+        {
+          "category": "place-identity",
+          "severity": "note",
+          "subject": "urn:regesta:22861:wasseiges",
+          "description": "Wasseiges and Evrehailles have register candidates in this packet (RI004-002-W000192, RI004-002-E000618) but receive regest-local IRIs. The guidelines regulate actor identity only, so this is not a violation, but it loses a linkage the packet offers.",
+          "evidence_quote": "in Wasseiges (Wasegga) und Evrehailles (Eurehalia)",
+          "proposed_correction": "Decide at contract level whether places with packet candidates should use register-based IRIs."
+        }
+      ],
+      "model_gaps": [
+        "No role or property for the origin of a held right (a right held 'aus der Hand des Königs') short of a full feudal relationship."
+      ]
+    },
+    {
+      "uid": "22862",
+      "coverage_note": "Three factoids: the order to respect the toll exemption (Enactment, addressees as Addressee, Reichsleute as Beneficiary), the Reichsleute's toll exemption as right holding, and the addressees' holding of toll stations. The clerk note on Wibald is correctly skipped. Coverage is complete; identifications match the packet.",
+      "findings": [
+        {
+          "category": "right-type",
+          "severity": "note",
+          "subject": "urn:regesta:22862:zollfreiheit",
+          "description": "A toll exemption is typed rv:Toll (Zollrecht), the right to levy toll. The exemption is the opposite position, freedom from toll. The vocabulary has no exemption or immunity type, so this is a vocabulary limit, but the typing could mislead a query for toll rights.",
+          "evidence_quote": "die Zollfreiheit der Reichsleute von Kaiserswerth",
+          "proposed_correction": "Report as model gap; keep the label 'Zollfreiheit' as the controlling wording until an exemption type exists."
+        },
+        {
+          "category": "right-type",
+          "severity": "note",
+          "subject": "urn:regesta:22862:zollstaetten",
+          "description": "'Zollstätten' are toll stations, which the candidate types as a right (E30_Right, rv:Toll). Reading 'Inhabern von Zollstätten' as holding a toll right is a reasonable interpretation; the passage itself names places or installations.",
+          "evidence_quote": "allen anderen Inhabern von Zollstätten",
+          "proposed_correction": "Acceptable; alternatively label the right node 'Inhabern von Zollstätten' to make the interpretive step explicit."
+        },
+        {
+          "category": "earlier-act",
+          "severity": "note",
+          "subject": "urn:regesta:22862:zollfreiheit-reichsleute",
+          "description": "The 'alten Privilegien' that ground the exemption are earlier unnamed acts, kept only as a qualifier on both factoids. Acceptable, since no grantor or date is named.",
+          "evidence_quote": "gemäß ihren alten Privilegien",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No right type for exemptions or immunities (Zollfreiheit); rv:Toll denotes the opposite position."
+      ]
+    },
+    {
+      "uid": "22945",
+      "coverage_note": "Two factoids: the appointment of Amadeus as royal representative in the diocese with the Latin mandate kept verbatim as qualifier, and Amadeus as chancellor. Coverage of summary_plain is complete. The record identifier marks the diploma as spurious (D†); the candidate cannot and does not record this.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22945:bestellung-vertreter",
+          "description": "Amadeus is referenced as rv:Recipient. The passage makes him Friedrich's 'Vertreter', and the vocabulary has rv:Representative. Recipient is defensible for an appointment, but Representative carries the stated relation more precisely.",
+          "evidence_quote": "zu seinem Vertreter in Regierungsgeschäften",
+          "proposed_correction": "Consider rv:Representative for Amadeus, or keep Recipient and rely on the qualifier."
+        },
+        {
+          "category": "office",
+          "severity": "note",
+          "subject": "urn:regesta:22945:kanzler-amadeus",
+          "description": "The chancellorship is a relation to Friedrich ('seinen Kanzler'), which survives only in the qualifier; the bishop's office of Lausanne is not recorded as a separate office holding. Both are acceptable under 'where needed'.",
+          "evidence_quote": "seinen Kanzler, Bischof Amadeus von Lausanne",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No way to mark that the regest summarises a spurious or forged charter (identifier D†); the contract's source node carries no authenticity status, so factoids from forgeries are indistinguishable from those of genuine diplomas.",
+        "No role for the principal of a representation (Friedrich as the one represented) distinct from Grantor."
+      ]
+    },
+    {
+      "uid": "134373",
+      "coverage_note": "Abstention. The regest reports only the dedication of the Vita Heinrici II to Friedrich, by an unnamed author. It states no kinship, economic or legal relation. A dedication could at most be stretched to a rv:Communication with Friedrich as addressee, but it is not a legal act; the abstention is justified.",
+      "findings": [
+        {
+          "category": "abstention",
+          "severity": "note",
+          "subject": "134373",
+          "description": "Abstention judged correct. The only act is a literary dedication with no named author.",
+          "evidence_quote": "Die Vita Kaiser Heinrichs II. wird dem magnificus rex Fridericus gewidmet.",
+          "proposed_correction": "None."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "134419",
+      "coverage_note": "Abstention. Taking the cross and resolving to travel to Jerusalem is crusade movement; the guidelines exclude military movement and travel unless a kinship, economic or legal relation is stated. Taking the cross is a vow with legal consequences in canon law, but the vocabulary has no type for it and the regest states no such consequence. Abstention justified.",
+      "findings": [
+        {
+          "category": "abstention",
+          "severity": "note",
+          "subject": "134419",
+          "description": "Abstention judged correct under the scope rule. The source node also lacks the rdfs:label carrying the identifier that other files give it; harmless.",
+          "evidence_quote": "nimmt gemeinsam mit Herzog Welf VI. und vielen anderen, darunter Bischöfen und Rittern, das Kreuz und beschließt, nach Jerusalem zu ziehen",
+          "proposed_correction": "None."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a vow (taking the cross), which in this period is a legal status change, not mere travel."
+      ]
+    },
+    {
+      "uid": "134420",
+      "coverage_note": "One confirmation factoid with Friedrich as grantor and the monastery as recipient. Identification of the nunnery matches the packet's recipient candidate. The confirmed 'Rechte' are not represented.",
+      "findings": [
+        {
+          "category": "omitted-object",
+          "severity": "warning",
+          "subject": "urn:regesta:134420:confirmation",
+          "description": "The confirmation concerns 'die Rechte und Besitzungen', but rf:concerns points only to the possessions. Half of the confirmed object is lost. The contract requires a right node to carry a RightTypes concept, and an unspecified 'Rechte' fits none, which explains but does not justify the silent omission.",
+          "evidence_quote": "die Rechte und Besitzungen",
+          "proposed_correction": "Add a node labelled 'Rechte' (or label the thing node 'Rechte und Besitzungen') and report the missing generic right type as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No generic or unspecified right type in rv:RightTypes for confirmations of 'Rechte' without further specification."
+      ]
+    },
+    {
+      "uid": "134421",
+      "coverage_note": "Three factoids: Arnold as chancellor, his installation as archbishop of Mainz by Friedrich at the Hoftag, and Konrad's installation as bishop of Eichstätt without an inferred appointer. The passive construction for Konrad is handled correctly. Identifications match the packet. No defects found.",
+      "findings": [
+        {
+          "category": "evidence",
+          "severity": "note",
+          "subject": "urn:regesta:134421:appointment-arnold",
+          "description": "The second selector 'Friedrich hält einen Hoftag' supplies the grantor's name, since the main passage has only 'er'. Correct use of a second selector; the Hoftag itself is rightly not modelled as an act.",
+          "evidence_quote": "Friedrich hält einen Hoftag",
+          "proposed_correction": "None."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "135064",
+      "coverage_note": "Four factoids: Eufemia's marriage to Heinrich von Hegilen (qualifier 'Witwe'), Heinrich as provost, the dispute over the saltworks with both parties as participants, and the judgment by the elected judge in favour of the Stift, with the three free nobles as witnesses and the king present. The formulaic witness list of the second sentence is correctly skipped. Identifications match the packet candidates.",
+      "findings": [
+        {
+          "category": "lost-qualifier",
+          "severity": "note",
+          "subject": "urn:regesta:135064:judgment",
+          "description": "The judge is 'erwählten', chosen for this case, which distinguishes him from an office judge. The candidate drops the word. The contract could carry it as rf:qualifier.",
+          "evidence_quote": "des erwählten Richters Markgraf Engelbert von Kraiburg",
+          "proposed_correction": "Add rf:qualifier \"erwählten\" to the judgment."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:135064:judgment",
+          "description": "Friedrich is a Participant, which is the only available role for 'coram rege'. The passage does not say he decided, so not making him Judge is correct.",
+          "evidence_quote": "Vor König Friedrich (coram rege Friderico)",
+          "proposed_correction": "None; see model gap."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:135064:dispute",
+          "description": "Propst Heinrich is not referenced in the dispute, although the Stift is a party 'unter Propst Heinrich'. His office holding is recorded separately, so the information is present; a rv:Representative reference in the dispute would be optional.",
+          "evidence_quote": "dem Stift Berchtesgaden unter Propst Heinrich",
+          "proposed_correction": "Optional: add Propst Heinrich as rv:Representative of the Stift in the dispute."
+        }
+      ],
+      "model_gaps": [
+        "No role for the presiding authority before whom a case is decided (coram rege), distinct from Judge and Participant."
+      ]
+    },
+    {
+      "uid": "210553",
+      "coverage_note": "One protection grant with Friedrich as grantor and the monastery of Settimo as recipient under a local IRI, since the packet has no candidates. Coverage complete, no defects found.",
+      "findings": [],
+      "model_gaps": []
+    }
+  ]
+}

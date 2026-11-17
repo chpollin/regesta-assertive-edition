@@ -1,0 +1,126 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22694> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 67" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ;
+    rdfs:label "Abt Wibalds" .
+
+<urn:regesta:actor:RI004-002-S001047:community> a crm:E74_Group ;
+    rdfs:label "Kloster Stablo" .
+
+<urn:regesta:actor:22694:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seiner genannten Vorgänger" .
+
+<urn:regesta:actor:22694:local:abt> a rf:FunctionalActor ;
+    rdfs:label "des Abtes" .
+
+# Rights and things
+
+<urn:regesta:22694:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "all seinen Besitzungen" .
+
+<urn:regesta:22694:gerichtsbarkeit> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo" .
+
+<urn:regesta:22694:muenzrecht> a crm:E30_Right ;
+    crm:P2_has_type rv:Minting ;
+    rdfs:label "das Recht der Münzprägung" .
+
+<urn:regesta:22694:zollrecht> a crm:E30_Right ;
+    crm:P2_has_type rv:Toll ;
+    rdfs:label "des Zolls" .
+
+<urn:regesta:22694:marktrecht> a crm:E30_Right ;
+    crm:P2_has_type rv:Market ;
+    rdfs:label "des Abhaltens öffentlicher Märkte in Stablo" .
+
+# Factoids
+
+<urn:regesta:22694:verfuegungen-vorgaenger> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22694> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "gemäß den Verfügungen seiner genannten Vorgänger" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22694:local:vorgaenger> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "seiner genannten Vorgänger" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22694:schutznahme> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22694> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt auf Bitten Abt Wibalds dessen Kloster Stablo gemäß den Verfügungen seiner genannten Vorgänger mit all seinen Besitzungen in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-W000420> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Abt Wibalds" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-S001047:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Kloster Stablo" ] ;
+    rf:concerns <urn:regesta:22694:besitzungen> ;
+    rf:refersToAct <urn:regesta:22694:verfuegungen-vorgaenger> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22694:bestaetigung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22694> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "alle Vorrechte und die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "bestätigt dem Reichskloster" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-S001047:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Reichskloster" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22694:local:abt> ;
+        rf:role rv:RightHolder ;
+        rf:nameInSource "des Abtes" ] ;
+    rf:concerns <urn:regesta:22694:gerichtsbarkeit> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22694:bestimmung-reichsdienst> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22694> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "semper ad nostram successorumque nostrorum manum et servitium inconvulsa stabilitate permaneat et libertate sibi collata pacifice potiatur" ] ;
+    rf:partOf <urn:regesta:22694:bestaetigung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22694:rechtsverleihung> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22694> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "außerdem fügt er das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo hinzu" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "bestätigt dem Reichskloster" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "er" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-S001047:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Reichskloster" ] ;
+    rf:concerns <urn:regesta:22694:muenzrecht> , <urn:regesta:22694:zollrecht> , <urn:regesta:22694:marktrecht> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .

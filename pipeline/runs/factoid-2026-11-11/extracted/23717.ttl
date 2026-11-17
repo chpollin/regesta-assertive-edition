@@ -1,0 +1,168 @@
+@prefix rf: <https://example.org/regesta/factoid/> .
+@prefix rv: <https://example.org/regesta/concept/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:23717> a crm:E31_Document ;
+    rdfs:label "RI IV,2,2 n. 1088" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-C000861:community> a crm:E74_Group ;
+    rdfs:label "Kirche von Como" .
+
+<urn:regesta:actor:RI004-002-A001103> a crm:E21_Person ;
+    rdfs:label "Bischof Ardicio" .
+
+<urn:regesta:actor:RI004-002-H000386> a crm:E21_Person ;
+    rdfs:label "Bischof H(einrich)" .
+
+# Determined only as the predecessor of bishop H(einrich); not identified with a register entry.
+<urn:regesta:actor:23717:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "sein Vorgänger" .
+
+<urn:regesta:23717:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "alle Besitzungen, die sein Vorgänger innehatte" .
+
+<urn:regesta:23717:lehen> a crm:E18_Physical_Thing ;
+    rdfs:label "Lehen" .
+
+# Indebtedness of the church
+
+<urn:regesta:23717:obligation-church> a rf:StateFactoid ;
+    rf:factoidType rv:Obligation ;
+    rf:source <urn:regesta:record:23717> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "unter dem verstorbenen Bischof Ardicio schwer verschuldete Kirche von Como" ] ;
+    rf:reference <urn:regesta:23717:obligation-ref-church> ;
+    rf:qualifier "schwer verschuldete" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23717:obligation-ref-church> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000861:community> ;
+    rf:role rv:Debtor ;
+    rf:nameInSource "Kirche von Como" .
+
+# Ardicio as bishop of the church
+
+<urn:regesta:23717:office-ardicio> a rf:StateFactoid ;
+    rf:factoidType rv:OfficeHolding ;
+    rf:source <urn:regesta:record:23717> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "unter dem verstorbenen Bischof Ardicio schwer verschuldete Kirche von Como" ] ;
+    rf:reference <urn:regesta:23717:office-ref-ardicio> ;
+    rf:concerns <urn:regesta:actor:RI004-002-C000861:community> ;
+    rf:qualifier "verstorbenen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23717:office-ref-ardicio> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A001103> ;
+    rf:role rv:Officeholder ;
+    rf:nameInSource "Bischof Ardicio" .
+
+# Release from debts, with exception
+
+<urn:regesta:23717:debt-release> a rf:ActFactoid ;
+    rf:factoidType rv:DebtRelease ;
+    rf:source <urn:regesta:record:23717> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich erklärt die unter dem verstorbenen Bischof Ardicio schwer verschuldete Kirche von Como von allen Wucherzinsen und Zahlungsverpflichtungen ledig, außer von denen, die nachweislich im Dienst des Reiches oder zum Nutzen der Kirche eingegangen wurden" ] ;
+    rf:reference <urn:regesta:23717:release-ref-ruler> , <urn:regesta:23717:release-ref-church> ;
+    rf:qualifier "von allen Wucherzinsen und Zahlungsverpflichtungen" ;
+    rf:exception "außer von denen, die nachweislich im Dienst des Reiches oder zum Nutzen der Kirche eingegangen wurden" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23717:release-ref-ruler> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:23717:release-ref-church> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000861:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Kirche von Como" .
+
+# Restitution of the predecessor's possessions
+
+<urn:regesta:23717:restitution> a rf:ActFactoid ;
+    rf:factoidType rv:Restitution ;
+    rf:source <urn:regesta:record:23717> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "stellt dem Bischof H(einrich) alle Besitzungen zurück, die sein Vorgänger innehatte" ] ,
+        [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich erklärt" ] ;
+    rf:reference <urn:regesta:23717:restitution-ref-ruler> , <urn:regesta:23717:restitution-ref-heinrich> ;
+    rf:concerns <urn:regesta:23717:besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23717:restitution-ref-ruler> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:23717:restitution-ref-heinrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000386> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Bischof H(einrich)" .
+
+# Earlier possession by the predecessor
+
+<urn:regesta:23717:possession-predecessor> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:23717> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "alle Besitzungen zurück, die sein Vorgänger innehatte" ] ;
+    rf:reference <urn:regesta:23717:possession-ref-predecessor> ;
+    rf:concerns <urn:regesta:23717:besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23717:possession-ref-predecessor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:23717:local:vorgaenger> ;
+    rf:role rv:Possessor ;
+    rf:nameInSource "sein Vorgänger" .
+
+# Earlier enfeoffments by the predecessor, revoked
+
+<urn:regesta:23717:enfeoffment-predecessor> a rf:ActFactoid ;
+    rf:factoidType rv:Enfeoffment ;
+    rf:source <urn:regesta:record:23717> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Vergabe von Lehen, die dieser in den letzten acht Tagen vor seinem Tod durchführte" ] ;
+    rf:reference <urn:regesta:23717:enfeoffment-ref-predecessor> ;
+    rf:concerns <urn:regesta:23717:lehen> ;
+    rf:qualifier "in den letzten acht Tagen vor seinem Tod" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23717:enfeoffment-ref-predecessor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:23717:local:vorgaenger> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "dieser" .
+
+<urn:regesta:23717:revocation> a rf:ActFactoid ;
+    rf:factoidType rv:Revocation ;
+    rf:source <urn:regesta:record:23717> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "widerruft die Vergabe von Lehen, die dieser in den letzten acht Tagen vor seinem Tod durchführte" ] ,
+        [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich erklärt" ] ;
+    rf:refersToAct <urn:regesta:23717:enfeoffment-predecessor> ;
+    rf:reference <urn:regesta:23717:revocation-ref-ruler> ;
+    rf:concerns <urn:regesta:23717:lehen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23717:revocation-ref-ruler> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .

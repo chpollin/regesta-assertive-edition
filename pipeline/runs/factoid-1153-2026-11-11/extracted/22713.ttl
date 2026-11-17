@@ -1,0 +1,99 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22713> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "König F(riedrich)" .
+
+<urn:regesta:actor:RI004-002-E000589> a crm:E21_Person ;
+    rdfs:label "Papst Eugen (III.)" .
+
+<urn:regesta:actor:22713:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seines Vorgängers" .
+
+<urn:regesta:actor:22713:local:roemische-kirche> a crm:E74_Group ;
+    rdfs:label "der römischen Kirche" .
+
+<urn:regesta:22713:letter> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22713> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Papst Eugen (III.) schreibt an König F(riedrich)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ;
+        rf:role rv:Participant ; rf:nameInSource "Papst Eugen (III.)" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ; rf:nameInSource "König F(riedrich)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22713:approbation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22713> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "approbiert diese Wahl ausdrücklich" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Papst Eugen (III.) schreibt an König F(riedrich), daß er die Botschaft von seiner Wahl" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ;
+        rf:role rv:Grantor ; rf:nameInSource "Papst Eugen (III.)" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Recipient ; rf:nameInSource "König F(riedrich)" ] ;
+    rf:qualifier "ausdrücklich" ;
+    rf:partOf <urn:regesta:22713:letter> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22713:reminder> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22713> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "erinnert ihn an die Erfüllung der Versprechen seines Vorgängers gegenüber der römischen Kirche und auch seines Krönungseides" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Papst Eugen (III.) schreibt an König F(riedrich)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ;
+        rf:role rv:Participant ; rf:nameInSource "Papst Eugen (III.)" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ; rf:nameInSource "König F(riedrich)" ] ;
+    rf:partOf <urn:regesta:22713:letter> ;
+    rf:refersToAct <urn:regesta:22713:promises-predecessor> , <urn:regesta:22713:coronation-oath> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22713:promises-predecessor> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22713> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "der Versprechen seines Vorgängers gegenüber der römischen Kirche" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22713:local:vorgaenger> ;
+        rf:role rv:Grantor ; rf:nameInSource "seines Vorgängers" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:22713:local:roemische-kirche> ;
+        rf:role rv:Beneficiary ; rf:nameInSource "der römischen Kirche" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22713:coronation-oath> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22713> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "erinnert ihn an die Erfüllung der Versprechen seines Vorgängers gegenüber der römischen Kirche und auch seines Krönungseides" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "ihn" ] ;
+    rf:qualifier "Krönungseides" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22713:imperial-coronation-prospect> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22713> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "stellt ihm die Kaiserkrönung in Aussicht" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Papst Eugen (III.) schreibt an König F(riedrich)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ;
+        rf:role rv:Grantor ; rf:nameInSource "Papst Eugen (III.)" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:qualifier "in Aussicht" ;
+    rf:partOf <urn:regesta:22713:letter> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,54 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22628> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-F000681> a crm:E21_Person ;
+    rdfs:label "Herzog Friedrichs II. von Schwaben" .
+<urn:regesta:actor:RI004-002-J000275> a crm:E21_Person ;
+    rdfs:label "Judith" .
+<urn:regesta:actor:RI004-002-H000468> a crm:E21_Person ;
+    rdfs:label "Herzog Heinrichs des Schwarzen von Bayern" .
+
+<urn:regesta:22628:parenthood-father> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22628> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich wird als Sohn Herzog Friedrichs II. von Schwaben" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:role rv:Parent ; rf:nameInSource "Herzog Friedrichs II. von Schwaben" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Child ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22628:parenthood-mother> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22628> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich wird als Sohn Herzog Friedrichs II. von Schwaben und seiner Gemahlin Judith" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000275> ; rf:role rv:Parent ; rf:nameInSource "Judith" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Child ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22628:marriage-parents> a rf:StateFactoid ;
+    rf:factoidType rv:Marriage ;
+    rf:qualifier "Gemahlin" ;
+    rf:source <urn:regesta:record:22628> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Herzog Friedrichs II. von Schwaben und seiner Gemahlin Judith" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000681> ; rf:role rv:Spouse ; rf:nameInSource "Herzog Friedrichs II. von Schwaben" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000275> ; rf:role rv:Spouse ; rf:nameInSource "Judith" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22628:parenthood-judith> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22628> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Judith, der Tochter Herzog Heinrichs des Schwarzen von Bayern" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000468> ; rf:role rv:Parent ; rf:nameInSource "Herzog Heinrichs des Schwarzen von Bayern" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-J000275> ; rf:role rv:Child ; rf:nameInSource "Judith" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,164 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22746> a crm:E31_Document .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Kaiser Friedrich" .
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ; rdfs:label "Wibald (von Stablo)" .
+<urn:regesta:actor:RI004-002-F000280> a crm:E21_Person ; rdfs:label "Folkwin" .
+<urn:regesta:actor:RI004-002-W000454> a crm:E21_Person ; rdfs:label "Widekind (von Schwalenberg)" .
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ; rdfs:label "Konrads III." .
+<urn:regesta:actor:RI004-002-C000961:community> a crm:E74_Group ; rdfs:label "Corvey" .
+<urn:regesta:actor:RI004-002-C000965:community> a crm:E74_Group ; rdfs:label "Mönchen" .
+<urn:regesta:actor:RI004-002-C000967:community> a crm:E74_Group ; rdfs:label "Hintersassen des Klosters Corvey" .
+<urn:regesta:actor:22746:local:vornehmere-gefangene> a crm:E74_Group ; rdfs:label "den vornehmeren Gefangenen" .
+
+# Things, places and rights
+
+<urn:regesta:22746:hoexter> a crm:E53_Place ; rdfs:label "Stadt Höxter (oppidum nostrum Huxariam)" .
+<urn:regesta:22746:befestigungen> a crm:E18_Physical_Thing ; rdfs:label "Befestigungen (vallum et munitiones)" .
+<urn:regesta:22746:vogtei-hoexter> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "Vögte dieses Ortes" .
+
+# Wibald's complaint before Friedrich
+
+<urn:regesta:22746:complaint> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22746> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Wibald (von Stablo) führt bei Kaiser Friedrich Klage über die Gewalttaten seiner Lehensleute (homines nostri, qui nobis fidelitatem iuraverunt et magna beneficia a nobis habent) Folkwin und Widekind (von Schwalenberg)" ] ;
+    rf:reference <urn:regesta:22746:complaint:ref-wibald> ,
+                 <urn:regesta:22746:complaint:ref-friedrich> ,
+                 <urn:regesta:22746:complaint:ref-folkwin> ,
+                 <urn:regesta:22746:complaint:ref-widekind> ;
+    rf:ground "Gewalttaten" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22746:complaint:ref-wibald> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:role rv:Claimant ; rf:nameInSource "Wibald (von Stablo)" .
+<urn:regesta:22746:complaint:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "Kaiser Friedrich" .
+<urn:regesta:22746:complaint:ref-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000280> ; rf:role rv:Respondent ; rf:nameInSource "Folkwin" .
+<urn:regesta:22746:complaint:ref-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000454> ; rf:role rv:Respondent ; rf:nameInSource "Widekind (von Schwalenberg)" .
+
+# Folkwin and Widekind as Wibald's vassals
+
+<urn:regesta:22746:vassalage> a rf:StateFactoid ;
+    rf:factoidType rv:FeudalRelationship ;
+    rf:source <urn:regesta:record:22746> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Wibald (von Stablo) führt bei Kaiser Friedrich Klage über die Gewalttaten seiner Lehensleute (homines nostri, qui nobis fidelitatem iuraverunt et magna beneficia a nobis habent) Folkwin und Widekind (von Schwalenberg)" ] ;
+    rf:reference <urn:regesta:22746:vassalage:ref-wibald> ,
+                 <urn:regesta:22746:vassalage:ref-folkwin> ,
+                 <urn:regesta:22746:vassalage:ref-widekind> ;
+    rf:qualifier "Lehensleute" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22746:vassalage:ref-wibald> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:role rv:Lord ; rf:nameInSource "Wibald (von Stablo)" .
+<urn:regesta:22746:vassalage:ref-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000280> ; rf:role rv:Vassal ; rf:nameInSource "Folkwin" .
+<urn:regesta:22746:vassalage:ref-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000454> ; rf:role rv:Vassal ; rf:nameInSource "Widekind (von Schwalenberg)" .
+
+# Höxter as belonging to Corvey
+
+<urn:regesta:22746:hoexter-belongs-corvey> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22746> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die zu Corvey gehörende Stadt Höxter (oppidum nostrum Huxariam)" ] ;
+    rf:reference <urn:regesta:22746:hoexter-belongs-corvey:ref-corvey> ;
+    rf:concerns <urn:regesta:22746:hoexter> ;
+    rf:qualifier "zu Corvey gehörende" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22746:hoexter-belongs-corvey:ref-corvey> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000961:community> ; rf:role rv:Possessor ; rf:nameInSource "Corvey" .
+
+# Folkwin and Widekind as advocates of Höxter
+
+<urn:regesta:22746:advocacy> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22746> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "als Vögte dieses Ortes" ] ,
+                [ a oa:TextQuoteSelector ; oa:exact "Folkwin und Widekind (von Schwalenberg), die die zu Corvey gehörende Stadt Höxter" ] ;
+    rf:reference <urn:regesta:22746:advocacy:ref-folkwin> ,
+                 <urn:regesta:22746:advocacy:ref-widekind> ;
+    rf:concerns <urn:regesta:22746:vogtei-hoexter> , <urn:regesta:22746:hoexter> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22746:advocacy:ref-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000280> ; rf:role rv:RightHolder ; rf:nameInSource "Folkwin" .
+<urn:regesta:22746:advocacy:ref-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000454> ; rf:role rv:RightHolder ; rf:nameInSource "Widekind (von Schwalenberg)" .
+
+# Money extorted from the more distinguished prisoners, as the complaint reports it
+
+<urn:regesta:22746:extortion> a rf:ActFactoid ;
+    rf:factoidType rv:Payment ;
+    rf:source <urn:regesta:record:22746> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "von den vornehmeren Gefangenen 253 Pfund erpreßt" ] ,
+                [ a oa:TextQuoteSelector ; oa:exact "Folkwin und Widekind (von Schwalenberg), die die zu Corvey gehörende Stadt Höxter" ] ;
+    rf:reference <urn:regesta:22746:extortion:ref-gefangene> ,
+                 <urn:regesta:22746:extortion:ref-folkwin> ,
+                 <urn:regesta:22746:extortion:ref-widekind> ;
+    rf:amount "253 Pfund" ;
+    rf:qualifier "erpreßt" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22746:extortion:ref-gefangene> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22746:local:vornehmere-gefangene> ; rf:role rv:Payer ; rf:nameInSource "den vornehmeren Gefangenen" .
+<urn:regesta:22746:extortion:ref-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000280> ; rf:role rv:Payee ; rf:nameInSource "Folkwin" .
+<urn:regesta:22746:extortion:ref-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000454> ; rf:role rv:Payee ; rf:nameInSource "Widekind (von Schwalenberg)" .
+
+# Earlier permission of Konrad III for the fortifications
+
+<urn:regesta:22746:konrad-permission> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22746> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die mit Erlaubnis Konrads III. angelegten Befestigungen (vallum et munitiones)" ] ;
+    rf:reference <urn:regesta:22746:konrad-permission:ref-konrad> ;
+    rf:concerns <urn:regesta:22746:befestigungen> ;
+    rf:qualifier "Erlaubnis" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22746:konrad-permission:ref-konrad> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Grantor ; rf:nameInSource "Konrads III." .
+
+# Request to punish the deed
+
+<urn:regesta:22746:request-punishment> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22746> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Er bittet ihn daher gemeinsam mit den Mönchen und Hintersassen des Klosters Corvey, diese Untat (hanc insignem contumeliam) zu bestrafen" ] ;
+    rf:reference <urn:regesta:22746:request-punishment:ref-wibald> ,
+                 <urn:regesta:22746:request-punishment:ref-moenche> ,
+                 <urn:regesta:22746:request-punishment:ref-hintersassen> ,
+                 <urn:regesta:22746:request-punishment:ref-friedrich> ;
+    rf:ground "da er sonst weder ihm und dem Reich dienen noch ehrenvoll in Sachsen leben könne" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22746:request-punishment:ref-wibald> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:role rv:Petitioner ; rf:nameInSource "Er" .
+<urn:regesta:22746:request-punishment:ref-moenche> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000965:community> ; rf:role rv:Petitioner ; rf:nameInSource "Mönchen" .
+<urn:regesta:22746:request-punishment:ref-hintersassen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000967:community> ; rf:role rv:Petitioner ; rf:nameInSource "Hintersassen des Klosters Corvey" .
+<urn:regesta:22746:request-punishment:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "ihn" .

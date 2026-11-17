@@ -1,0 +1,157 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22752> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:22752:local:zu-pferde-reisende> a crm:E74_Group ;
+    rdfs:label "alle zu Pferde Reisenden" .
+
+<urn:regesta:actor:22752:local:graf> a rf:FunctionalActor ;
+    rdfs:label "den Grafen" .
+
+<urn:regesta:actor:22752:local:bauern> a crm:E74_Group ;
+    rdfs:label "Bauern" .
+
+<urn:regesta:actor:22752:local:kaufleute> a crm:E74_Group ;
+    rdfs:label "Kaufleute" .
+
+<urn:regesta:actor:22752:local:ritter> a crm:E74_Group ;
+    rdfs:label "Ritter" .
+
+<urn:regesta:22752:landfrieden> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich verkündet einen in allen Teilen des Reiches gültigen Landfrieden" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    rf:qualifier "in allen Teilen des Reiches gültigen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p1-totschlag> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "als Strafe für Totschlag die Hinrichtung [§1]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p2-flucht-gueter> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Maßnahmen bei Flucht von Friedensbrechern hinsichtlich ihrer Güter [§2]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p7-burgherrn> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Maßregeln für Burgherrn, auf deren Burg sich der Beklagte geflüchtet hat [§7]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p3-5-koerperverletzung> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestimmt die Strafen für schwere [§3] und leichtere Körperverletzung bzw. auch für Schmähreden [§4 und 5]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p6-kleriker> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Maßnahmen bei Friedensbruch durch Kleriker [§6]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p8-10-19-verfahren> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "ordnet das Verfahren bei Anklagen auf Friedensbruch zwischen Bauern und Rittern, Rittern und Bauern oder unter Rittern [§10], bei Streitigkeiten von zwei oder mehr Leuten um ein Lehen [§8 und 9] oder zwischen Ministerialen eines Herrn [§19]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p12-13-15-waffentragen> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "spricht das Verbot bzw. die Erlaubnis zum Waffentragen für Bauern, Kaufleute und Ritter [§12, 13 und 15] aus" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:bauern> ; rf:role rv:Participant ; rf:nameInSource "Bauern" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:kaufleute> ; rf:role rv:Participant ; rf:nameInSource "Kaufleute" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:ritter> ; rf:role rv:Participant ; rf:nameInSource "Ritter" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p17-lehensamt> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "erklärt Leute, die ein ihnen wegen schlechter Verwaltung abgesprochenes Lehensamt gewaltsam wiederzuerlangen trachten, als Friedensbrecher [§17]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p16-18-raub-diebstahl> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "trifft Bestimmungen über die Strafen für Raub und Diebstahl [§16 und 18]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p14-fanginstrumente> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "beschränkt die Anwendung bestimmter Fanginstrumente auf einige Tierarten [§14]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:p11-getreidepreis> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "regelt die Festsetzung des Getreidepreises durch den Grafen nach Mariä Geburt (September 8) [§11]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:graf> ; rf:role rv:Participant ; rf:nameInSource "den Grafen" ] ;
+    rf:qualifier "nach Mariä Geburt (September 8)" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:right-weiderecht> a crm:E30_Right ;
+    crm:P2_has_type rv:UsageRights ;
+    rdfs:label "das freie Weiderecht" .
+
+<urn:regesta:22752:p20-weiderecht> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "das freie Weiderecht für alle zu Pferde Reisenden am Wegesrand" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22752:local:zu-pferde-reisende> ; rf:role rv:Beneficiary ; rf:nameInSource "alle zu Pferde Reisenden" ] ;
+    rf:concerns <urn:regesta:22752:right-weiderecht> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22752:right-weide-wald> a crm:E30_Right ;
+    crm:P2_has_type rv:UsageRights ;
+    rdfs:label "die Erlaubnis, Weide und Wald" .
+
+<urn:regesta:22752:p20-weide-wald> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22752> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Erlaubnis, Weide und Wald unter Hintanhaltung von Verwüstungen und Schäden für die eigenen Bedürfnisse zu verwenden [§20]" ] ;
+    rf:partOf <urn:regesta:22752:landfrieden> ;
+    rf:concerns <urn:regesta:22752:right-weide-wald> ;
+    rf:condition "unter Hintanhaltung von Verwüstungen und Schäden" ;
+    rf:qualifier "für die eigenen Bedürfnisse" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-31> ;
+    rf:verificationStatus rv:unchecked .

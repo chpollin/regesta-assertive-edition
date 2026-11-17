@@ -1,0 +1,113 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22803> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-J000146> a crm:E21_Person ;
+    rdfs:label "'Bruders' Johannes (des Stiftsverwalters)" .
+
+<urn:regesta:actor:RI004-002-F000421:community> a crm:E74_Group ;
+    rdfs:label "Stift Fredelsloh (cenobium Fridessele)" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "Konrads (III.)" .
+
+<urn:regesta:actor:22803:local:reich> a crm:E74_Group ;
+    rdfs:label "Reich" .
+
+<urn:regesta:22803:kapelle-grone> a crm:E18_Physical_Thing ;
+    rdfs:label "die dem Reich gehörige Kapelle Grone" .
+
+<urn:regesta:22803:koenigsschutz> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "den Königsschutz" .
+
+<urn:regesta:22803:koenigliche-vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die ausschließliche Unterstellung unter die königliche Vogtei" .
+
+<urn:regesta:22803:hufen> a crm:E18_Physical_Thing ;
+    rdfs:label "zweier Hufen mit dem Ertrag von 20 Solidi" .
+
+<urn:regesta:22803:muehle> a crm:E18_Physical_Thing ;
+    rdfs:label "einer Mühle mit 4 Solidi Ertrag" .
+
+<urn:regesta:22803:rossdorf> a crm:E53_Place ;
+    rdfs:label "Roßdorf" .
+
+<urn:regesta:22803:konrad-verfuegungen> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22803> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Verfügungen Konrads (III.)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-K000316> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Konrads (III.)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22803:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22803> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt auf Bitten des 'Bruders' Johannes (des Stiftsverwalters) dem Stift Fredelsloh (cenobium Fridessele) in Erneuerung der Verfügungen Konrads (III.)" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "als Seelgerät die dem Reich gehörige Kapelle Grone, den Königsschutz, die ausschließliche Unterstellung unter die königliche Vogtei (ne advocatum aliquem preter nos nostrosque successores reges seu imperatores predictus locus habeat)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-J000146> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Johannes" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000421:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Stift Fredelsloh" ] ;
+    rf:concerns <urn:regesta:22803:kapelle-grone> , <urn:regesta:22803:koenigsschutz> , <urn:regesta:22803:koenigliche-vogtei> ;
+    rf:refersToAct <urn:regesta:22803:konrad-verfuegungen> ;
+    rf:qualifier "als Seelgerät" , "in Erneuerung" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22803:grone-reich> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22803> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die dem Reich gehörige Kapelle Grone" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22803:local:reich> ;
+        rf:role rv:Possessor ;
+        rf:nameInSource "Reich" ] ;
+    rf:concerns <urn:regesta:22803:kapelle-grone> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22803:donation> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22803> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "fügt selber die Schenkung zweier Hufen mit dem Ertrag von 20 Solidi, sowie einer Mühle mit 4 Solidi Ertrag in Roßdorf" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "dem Stift Fredelsloh (cenobium Fridessele)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000421:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Stift Fredelsloh" ] ;
+    rf:concerns <urn:regesta:22803:hufen> , <urn:regesta:22803:muehle> , <urn:regesta:22803:rossdorf> ;
+    rf:amount "mit dem Ertrag von 20 Solidi" , "mit 4 Solidi Ertrag" ;
+    rf:qualifier "selber" ;
+    rf:partOf <urn:regesta:22803:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-43> ;
+    rf:verificationStatus rv:unchecked .

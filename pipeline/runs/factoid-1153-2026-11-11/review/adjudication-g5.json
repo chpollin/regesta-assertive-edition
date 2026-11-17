@@ -1,0 +1,420 @@
+{
+  "group": 5,
+  "adjudicator": "urn:regesta:agent:factoid-1153-2026-11-11:adjudication-g5",
+  "expert_accepted": false,
+  "basis": "Every error and warning and every note proposing a graph change in review-g5-A and review-g5-B was checked against summary_plain and the identity candidates of its packet and against the frozen contract factoid-2026-11-11 (ontology, vocabulary, shapes, annotation guidelines, review and correction prompts); validation/extracted.json reports no technical issues for the twenty UIDs, so no validation decision arises.",
+  "decisions": [
+    {
+      "uids": [
+        "22711"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22711:confirmation",
+      "finding": "Waulsort should be rv:Recipient instead of rv:Beneficiary.",
+      "decision": "keep",
+      "reason": "The passage names no dative recipient ('bestätigt ... die volle Unterordnung des Klosters Hastière (Hasteriensis) unter die Abtei Waulsort'); the confirmation is in Waulsort's favour, which rv:Beneficiary states without asserting receipt."
+    },
+    {
+      "uids": [
+        "22711"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22711:privilege-lothar",
+      "finding": "The two earlier privilege factoids lack the object they concern.",
+      "decision": "correct",
+      "reason": "The confirmation of the subordination is made 'gemäß den Privilegien seiner Vorgänger, Lothar III. und Konrad III.', so the passage itself ties the earlier privileges to the same subordination; the right node already exists in the file.",
+      "instruction": "Add rf:concerns <urn:regesta:22711:right-unterordnung> to <urn:regesta:22711:privilege-lothar> and to <urn:regesta:22711:privilege-konrad>. Change nothing else in either factoid (type rv:Grant, grantor references and evidence stay; no date, no recipient)."
+    },
+    {
+      "uids": [
+        "22712"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22712:kinship-heinrich",
+      "finding": "The antecedent of 'seines Verwandten' may be Benno rather than Friedrich.",
+      "decision": "keep",
+      "reason": "In 'auf Bitten Bischof Bernhards von Hildesheim, dessen Obsorge das Stift untersteht, des dortigen Propstes Benno und seines Verwandten' the regest uses 'dessen' for a non-subject antecedent and 'seines' for the sentence subject Friedrich; the candidate's reading follows this grammar and does not rest on the register label. The model cannot mark uncertainty inside a factoid; the residual doubt belongs to expert review, not to correction."
+    },
+    {
+      "uids": [
+        "22713"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22713:approbation",
+      "finding": "The election approbated by the pope is collapsed into the approbation instead of being its own earlier act.",
+      "decision": "correct",
+      "reason": "The passage reports the election as an earlier act ('die Botschaft von seiner Wahl') and then 'approbiert diese Wahl ausdrücklich'. The guidelines require the earlier act as its own act factoid joined by rf:refersToAct from the confirmation; rv:Appointment is the type the run uses for an election (cf. 22730).",
+      "instruction": "Add <urn:regesta:22713:election> a rf:ActFactoid with rf:factoidType rv:Appointment; rf:evidence one oa:TextQuoteSelector with oa:exact \"die Botschaft von seiner Wahl\"; one rf:Reference with rf:actor <urn:regesta:actor:RI004-002-F000471>, rf:role rv:Recipient, rf:nameInSource \"seiner\"; rf:qualifier \"Wahl\"; no electors, no date, no rf:partOf; standard rf:source, prov:wasAttributedTo and rf:verificationStatus rv:unchecked. Add rf:refersToAct <urn:regesta:22713:election> to <urn:regesta:22713:approbation> and leave the approbation otherwise unchanged."
+    },
+    {
+      "uids": [
+        "22713"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22713",
+      "finding": "The announcement of a legate is omitted.",
+      "decision": "correct_conservatively",
+      "reason": "'kündigt die baldige Entsendung eines Legaten an' is a distinct act of the letter and in scope, but only the announcement is stated; an rv:Mission would assert a sending the passage does not report. The letter's other contents are already modelled as rv:Communication parts of the letter, so the same weak form is safe.",
+      "instruction": "Add <urn:regesta:22713:legate-announcement> a rf:ActFactoid with rf:factoidType rv:Communication; two selectors with oa:exact \"kündigt die baldige Entsendung eines Legaten an\" and oa:exact \"Papst Eugen (III.) schreibt an König F(riedrich)\"; references <urn:regesta:actor:RI004-002-E000589> rv:Participant nameInSource \"Papst Eugen (III.)\" and <urn:regesta:actor:RI004-002-F000471> rv:Addressee nameInSource \"König F(riedrich)\"; rf:qualifier \"baldige\"; rf:partOf <urn:regesta:22713:letter>. Do not use rv:Mission, add no legate actor and no outcome."
+    },
+    {
+      "uids": [
+        "22713"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22713",
+      "finding": "The pope's report of having heard good things from cardinal priest Oktavian is omitted.",
+      "decision": "not_required",
+      "reason": "'als er schon von Kardinalpriester O(ktavian) Gutes über ihn gehört habe' is a subordinate clause explaining the pope's joy, not a dispositive act or a kinship, economic or legal relation; adding it would widen the scope beyond central passages."
+    },
+    {
+      "uids": [
+        "22713"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22713:imperial-coronation-prospect",
+      "finding": "Optionally add rf:concerns to a node 'die Kaiserkrönung'.",
+      "decision": "not_required",
+      "reason": "The guidelines reserve rf:concerns for a right, thing, place or community; a coronation is none of these, and the qualifier 'in Aussicht' with the evidence already carries the wording."
+    },
+    {
+      "uids": [
+        "22714"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22714:predecessor-grants",
+      "finding": "The earlier grant by the predecessors lacks Corvey as recipient.",
+      "decision": "correct",
+      "reason": "The passage confirms to Corvey 'ihm umfassend die von seinen Vorgängern verliehenen Rechte'; the rights confirmed to the monastery are those the predecessors granted to it, and the actor is the register community already used in the file.",
+      "instruction": "Add to <urn:regesta:22714:predecessor-grants> a second selector with oa:exact \"bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte\" and a rf:Reference with rf:actor <urn:regesta:actor:RI004-002-C000961:community>, rf:role rv:Recipient, rf:nameInSource \"ihm\". Add no date and no further object."
+    },
+    {
+      "uids": [
+        "22714"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22714",
+      "finding": "Legal acts narrated inside the witness list (Sven receives, Knut resigns the kingdom) are lost.",
+      "decision": "not_required",
+      "reason": "The guidelines exclude formulaic witness lists ('Z.:') wholesale and the reviewer proposes no change; the boundary question belongs to the next contract version, and the same acts must not be carried over from 22715."
+    },
+    {
+      "uids": [
+        "22715"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22715:f-knut-renounces",
+      "finding": "Knut's renunciation is typed rv:Grant with Friedrich as recipient, asserting a transfer.",
+      "decision": "model_gap",
+      "reason": "The passage states 'Knut verzichtet auf das Königreich, indem er Friedrich nach dem Brauch des Hofes ... sein Schwert überreicht' and quotes the custom 'ut regna per gladium ... a principe tradantur vel recipiantur', so handing the realm into Friedrich's hand is a defensible reading and the qualifier 'verzichtet' keeps the wording. A renunciation or resignation act type does not exist; no correction, record the gap."
+    },
+    {
+      "uids": [
+        "22715"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22715:f-sven-kingdom",
+      "finding": "Homage and coronation of Sven are reduced to a qualifier.",
+      "decision": "model_gap",
+      "reason": "'nach Leistung von Treueid und Mannschaft' and 'der ihm die Königskrone aufsetzt' have no act type in the vocabulary, and rv:FeudalRelationship would infer a fief the passage does not name. The reviewer itself proposes keeping the grant."
+    },
+    {
+      "uids": [
+        "22715"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22715",
+      "finding": "Friedrich bringing Hazzo's party to decide for Wichmann is omitted.",
+      "decision": "correct_conservatively",
+      "reason": "'bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden' is the outcome of Friedrich's intervention and the act that makes Wichmann the candidate who then receives the regalia; it is central and in scope. The specific roles the reviewer proposes (Friedrich as Mediator) are not stated, so only generic roles are safe.",
+      "instruction": "Add <urn:regesta:actor:22715:local:partei-hazzos> a crm:E74_Group with rdfs:label \"die Partei Hazzos\". Add <urn:regesta:22715:f-hazzo-party-decision> a rf:ActFactoid with rf:factoidType rv:Appointment; selectors oa:exact \"bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden\" and oa:exact \"Friedrich greift in die Magdeburger Doppelwahl ein\"; references <urn:regesta:actor:22715:local:partei-hazzos> rv:Participant nameInSource \"die Partei Hazzos\", <urn:regesta:actor:RI004-002-W000436> rv:Recipient nameInSource \"Bischof Wichmann von Naumburg\", <urn:regesta:actor:RI004-002-F000471> rv:Participant nameInSource \"Friedrich\"; rf:qualifier \"entscheiden\". Do not link it to the regalia grant or the dispute and do not assert an installation in office."
+    },
+    {
+      "uids": [
+        "22715"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22715:f-regalia-wichmann",
+      "finding": "Regalia typed rv:ChurchRights; Magdeburg not referenced as concerned by the dispute.",
+      "decision": "not_required",
+      "reason": "The right typing is a historical judgement reserved for expert review, and the reviewer offers no definite alternative. 'Magdeburger Doppelwahl' names the see only adjectivally; adding it to the dispute is not required by the contract."
+    },
+    {
+      "uids": [
+        "22715"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22715:f-promise-ulrich",
+      "finding": "Add rf:condition 'gegen eine große Geldsumme' alongside rf:amount.",
+      "decision": "not_required",
+      "reason": "rf:amount already holds 'eine große Geldsumme' in exact wording and the full clause stands in the evidence; duplicating it as a condition adds nothing the contract requires. The prevention by Daniel has no property and stays a model limit."
+    },
+    {
+      "uids": [
+        "22715"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22715",
+      "finding": "Summons of the pretenders and Vladislav's summons are omitted.",
+      "decision": "not_required",
+      "reason": "Both are peripheral to the settled acts; Vladislav's disobeyed summons survives in the mission evidence ('entgegen seiner Vorladung auf den Hoftag nicht erschienene'), and the reviewer marks the addition as optional."
+    },
+    {
+      "uids": [
+        "22717"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22717",
+      "finding": "The request to spare the abbot of Prüm is omitted.",
+      "decision": "correct",
+      "reason": "'den Abt von Prüm möge er schonen, damit sich der König nicht versündige' is a distinct request of the letter, expressible with rv:Request and rf:ground. The passage names the abbot only by office, so the register candidate Rether (RI004-002-R000500) cannot be matched by name; a regest-local actor is required.",
+      "instruction": "Add <urn:regesta:actor:22717:local:abt-pruem> a crm:E21_Person with rdfs:label \"den Abt von Prüm\". Add <urn:regesta:22717:f-request-spare-abbot> a rf:ActFactoid with rf:factoidType rv:Request; selectors oa:exact \"den Abt von Prüm möge er schonen, damit sich der König nicht versündige\" and oa:exact \"Wibald schreibt an Erzbischof Arnold von Köln\"; references <urn:regesta:actor:RI004-002-W000420> rv:Petitioner nameInSource \"Wibald\", <urn:regesta:actor:RI004-002-A001202> rv:Addressee nameInSource \"Erzbischof Arnold von Köln\", <urn:regesta:actor:22717:local:abt-pruem> rv:Beneficiary nameInSource \"den Abt von Prüm\"; rf:ground \"damit sich der König nicht versündige\"; rf:partOf <urn:regesta:22717:f-letter>. Do not identify the abbot with RI004-002-R000500."
+    },
+    {
+      "uids": [
+        "22717"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "urn:regesta:22717:f-lothringen-disposition",
+      "finding": "The reason 'wegen seiner Verdienste um seine Wahl und der späteren Leistungen' is not recorded as rf:ground.",
+      "decision": "keep",
+      "reason": "In 'daß ihm der König wegen seiner Verdienste um seine Wahl und der späteren Leistungen sehr dankbar sei, Lothringen ... seiner Disposition überlasse' the reason belongs grammatically to the gratitude clause; attaching it to the disposition would assert a reason the regest does not give for that act. The wording stays in the evidence."
+    },
+    {
+      "uids": [
+        "22717"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22717",
+      "finding": "The counteraction of chancellor Arnold and notary Heinrich is omitted.",
+      "decision": "model_gap",
+      "reason": "'der Kanzler (Arnold) und der Notar (Heinrich) den Bemühungen einiger Laien(fürsten) beim König entgegenwirken' is opposition at court, for which the vocabulary has no act type; rv:Dispute would turn it into a lawsuit the passage does not report."
+    },
+    {
+      "uids": [
+        "22718"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22718",
+      "finding": "The imperial command Vladislav disobeyed could be added as rv:Communication.",
+      "decision": "not_required",
+      "reason": "The command survives in exact wording in the rf:ground of the decision ('trotz kaiserlichen Befehls nicht auf dem Hoftag ... erschienen sei'); the reviewer marks it optional and it is not central."
+    },
+    {
+      "uids": [
+        "22719"
+      ],
+      "source": [
+        "review-g5-A"
+      ],
+      "subject": "22719",
+      "finding": "Friedrich's earlier letter and Ludwig's letter could be added and tied by rf:partOf.",
+      "decision": "not_required",
+      "reason": "'dankt König (Friedrich) für dessen Brief (Reg. 91)' is a courtesy; request and assurance are already modelled, and the earlier letter belongs to another record. The reviewer marks it optional."
+    },
+    {
+      "uids": [
+        "22721"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22721:fruehere-investitur",
+      "finding": "The disjunction 'vom Grafen Wilhelm oder anderen Fürsten' is lost; two parallel grantors read as joint investiture.",
+      "decision": "correct",
+      "reason": "The passage says 'Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden'; the alternative can be kept in exact wording as a qualifier without changing the structure.",
+      "instruction": "Add rf:qualifier \"vom Grafen Wilhelm oder anderen Fürsten\" to <urn:regesta:22721:fruehere-investitur>, keeping the existing qualifier \"bisher\" and both grantor references unchanged. Record the missing means to express a disjunction of actors as a model gap."
+    },
+    {
+      "uids": [
+        "22721"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22721:investitur-herzog",
+      "finding": "rf:refersToAct to the earlier investitures overstates the relation; the duke could be rv:Grantor.",
+      "decision": "keep",
+      "reason": "rf:refersToAct is defined for a later act 'such as' a confirmation or assurance that refers to an earlier act of the same regest; the provision does refer to the earlier investitures to define who receives investiture. rv:RightHolder with the investiture right is a defensible reading of 'empfangen ihre Investitur vom Herzog'."
+    },
+    {
+      "uids": [
+        "22721"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22721:berthold-italienzug",
+      "finding": "The king is not named as beneficiary of the Italy campaign provision.",
+      "decision": "keep",
+      "reason": "The clause 'für den Italienzug, an dem er teilnehmen wird' names no beneficiary, unlike 'für den Burgundzug des Königs'; the candidate follows the wording."
+    },
+    {
+      "uids": [
+        "22721"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22721:wilhelm-nichte",
+      "finding": "The direction of 'Nichte' is not expressible with two rv:Kin roles.",
+      "decision": "model_gap",
+      "reason": "The contract gives rv:Kinship with rv:Kin roles and the kinship word in rf:qualifier; it has no directional kin roles."
+    },
+    {
+      "uids": [
+        "22722"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "22722",
+      "finding": "Friedrich's coronation in St. Emmeram is omitted.",
+      "decision": "model_gap",
+      "reason": "'wird in St. Emmeram ... gekrönt' has no act type; rv:Appointment is defined as installation in an office or commission and would turn the coronation of the reigning king into an installation. No correction, record the gap."
+    },
+    {
+      "uids": [
+        "22722"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "22722",
+      "finding": "The embassy to Pope Eugen, Rome and the Italian cities is omitted.",
+      "decision": "correct_conservatively",
+      "reason": "'Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten kehren mit guten Nachrichten (vgl. Reg. 86) zurück' reports a mission the vocabulary provides for; the sender is not named and the return with news must not become an outcome, so only the mission with envoys and addressees is safe. Papst Eugen (III.) matches candidate RI004-002-E000589 by name and title; Rome and the cities are kept as one regest-local addressee instead of a register place identification.",
+      "instruction": "Add <urn:regesta:actor:22722:local:gesandte> a crm:E74_Group with rdfs:label \"Gesandten\", <urn:regesta:actor:22722:local:rom-staedte-italiens> a crm:E74_Group with rdfs:label \"Rom und die übrigen Städte Italiens\", and <urn:regesta:actor:RI004-002-E000589> a crm:E21_Person with rdfs:label \"Papst Eugen (III.)\". Add <urn:regesta:22722:gesandtschaft> a rf:ActFactoid with rf:factoidType rv:Mission; selector oa:exact \"Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten\"; references <urn:regesta:actor:22722:local:gesandte> rv:Envoy nameInSource \"Gesandten\", <urn:regesta:actor:RI004-002-E000589> rv:Addressee nameInSource \"Papst Eugen (III.)\", <urn:regesta:actor:22722:local:rom-staedte-italiens> rv:Addressee nameInSource \"Rom und die übrigen Städte Italiens\". No sender reference, no qualifier or literal for 'mit guten Nachrichten', no outcome."
+    },
+    {
+      "uids": [
+        "22722"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22722:vorladung",
+      "finding": "Friedrich as rv:Grantor fits loosely; the second selector is redundant.",
+      "decision": "keep",
+      "reason": "rv:Grantor ('wer ... bestimmt') is an acceptable stand-in for the summoning ruler, and the second selector supports the referent of 'beide' in 'lädt beide auf einen Hoftag in Würzburg im Oktober vor'."
+    },
+    {
+      "uids": [
+        "22722"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:actor:RI004-002-H000498",
+      "finding": "The collective mention 'den beiden Herzogen Heinrich' is resolved to two packet candidates.",
+      "decision": "keep",
+      "reason": "'Streit um das Herzogtum Bayern zwischen den beiden Herzogen Heinrich' names two dukes called Heinrich, and the packet holds exactly two Heinrich candidates titled Herzog with a Bavarian title (H000470, H000498); the identification uses only this packet and matches name and title."
+    },
+    {
+      "uids": [
+        "22723"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:actor:RI004-002-O000442",
+      "finding": "O000442 versus O000441 for 'Pfalzgrafen Otto dem Älteren von Wittelsbach' is undocumented.",
+      "decision": "keep",
+      "reason": "Candidate O000442 carries 'Otto (V., gest. 1183) der Ältere, Pfalzgraf von Wittelsbach', matching name, title and the epithet of the passage; O000441 lacks the epithet. Documenting residual doubt is a report matter, not a graph correction."
+    },
+    {
+      "uids": [
+        "22724"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22724:exchange",
+      "finding": "Add rf:qualifier 'in Gegenwart' to mark the archbishop's mere presence.",
+      "decision": "model_gap",
+      "reason": "'in Gegenwart Erzbischof Eberhards von Salzburg' qualifies one actor's role, not the type or time of the factoid, so rf:qualifier cannot bind it to the archbishop; the vocabulary lacks a presence role and a represented-party role."
+    },
+    {
+      "uids": [
+        "22725"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22725:appointment",
+      "finding": "Add qualifiers 'Vor' and 'auf den Vorschlag' to distinguish presence and proposal.",
+      "decision": "model_gap",
+      "reason": "'Vor Friedrich und den Fürsten' and 'auf den Vorschlag Erzbischof Eberhards von Salzburg' are role distinctions; a factoid-level qualifier cannot bind them to the actors, and the vocabulary has no presence or proposer role."
+    },
+    {
+      "uids": [
+        "22726"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22726:confirmation",
+      "finding": "The confirmed right to accept donations of allodial goods is missing from rf:concerns.",
+      "decision": "model_gap",
+      "reason": "The passage confirms 'das Recht, Schenkungen von Allodialgütern anzunehmen', but a crm:E30_Right must carry a concept of rv:RightTypes and none fits a capacity to acquire donations; forcing the nearest concept would be a historical judgement the correction prompt excludes ('Where the vocabulary does not suffice, leave the detail out and record the gap')."
+    },
+    {
+      "uids": [
+        "22726"
+      ],
+      "source": [
+        "review-g5-B"
+      ],
+      "subject": "urn:regesta:22726:confirmation",
+      "finding": "'nach dem Beispiel seiner Vorgänger' is a qualifier here but an earlier act in 22729; treatment should be uniform.",
+      "decision": "keep",
+      "reason": "The passages differ: 22726 states only a precedent ('nach dem Beispiel seiner Vorgänger'), whereas 22729 reports an earlier act ('die schon von seinen Vorgängern ... ausgezeichnet worden war'). Different modelling follows the wording."
+    }
+  ],
+  "summary": {
+    "correct": 5,
+    "correct_conservatively": 3,
+    "keep": 9,
+    "not_required": 8,
+    "model_gap": 8,
+    "reject": 0
+  }
+}

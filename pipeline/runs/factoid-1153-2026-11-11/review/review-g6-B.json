@@ -1,0 +1,253 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g6-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22742",
+      "coverage_note": "The single dispositive sentence is covered by two confirmation factoids, Friedrich's and Konrad's earlier one, joined by rf:refersToAct, with no date on the earlier act. Witness list, chancery and script notes are correctly skipped. The second object of the confirmation, the legal subordination to Cluny, is carried only as a qualifier literal.",
+      "findings": [
+        {
+          "category": "object-as-qualifier",
+          "severity": "warning",
+          "subject": "urn:regesta:22742:confirmation",
+          "description": "The confirmation has two objects, the Besitzstand and the rechtliche Unterordnung unter die Abtei Cluny. Only the Besitzstand is a rf:concerns node; the subordination sits in rf:qualifier, which the ontology reserves for wording that qualifies type or time. A query over what was confirmed misses the subordination. The same applies to urn:regesta:22742:konrad-confirmation.",
+          "evidence_quote": "den Besitzstand und die rechtliche Unterordnung unter die Abtei Cluny",
+          "proposed_correction": "Add a rf:concerns node for the subordination, e.g. a crm:E30_Right labelled \"die rechtliche Unterordnung unter die Abtei Cluny\" typed rv:ChurchRights, or report it as a model gap; drop the qualifier on both factoids."
+        },
+        {
+          "category": "qualifier",
+          "severity": "note",
+          "subject": "urn:regesta:22742:konrad-confirmation",
+          "description": "The earlier act rests only on the comparative wie; the factoid carries no qualifier marking that Konrad's act is reported as a precedent. Acceptable, but the wording would make the inference visible.",
+          "evidence_quote": "wie Konrad (III.)",
+          "proposed_correction": "Optionally add rf:qualifier \"wie\" to the Konrad factoid."
+        }
+      ],
+      "model_gaps": [
+        "No state or right type for the subordination of a monastery under an abbey (Cluniac dependency); rv:ChurchRights is only an approximation."
+      ]
+    },
+    {
+      "uid": "22743",
+      "coverage_note": "Protection of the counts, the predecessors' protection, the confirmation of possessions, the marriage of Manfred and Berta, Berta's allodial goods and their protection are all covered with correct actors from the packet. The predecessors' factoid correctly names no recipients, since the passage does not say whom Karl, Otto and Heinrich protected. The kinship statements inside the Latin name list are not extracted, and the confirmed Rechte are lost.",
+      "findings": [
+        {
+          "category": "omitted-kinship",
+          "severity": "warning",
+          "subject": "22743",
+          "description": "The name list states kinship: Cavalcasella and his brothers (fratres), and Ardicio and Crollamons as sons of Wilhelm and Guido. Wilhelm (RI004-002-W000559) and Guido (RI004-002-G001184) are register candidates of this packet. The distributive reading of filios Wilielmi et Guidonis is ambiguous, so a Parenthood with one parent per child would overreach, but the brother relation and the filiation could be recorded as rv:Kinship with the exact word in rf:qualifier, or the ambiguity reported.",
+          "evidence_quote": "Caualkasellam et fratres et Ardicionem et Crollamontem filios Wilielmi et Guidonis comites de Castello",
+          "proposed_correction": "Add a rv:Kinship state with qualifier \"fratres\" (Cavalcasella, local fratres group) and record the filiation either as rv:Kinship with qualifier \"filios Wilielmi et Guidonis\" or as an unresolved gap in the batch report."
+        },
+        {
+          "category": "lost-object",
+          "severity": "warning",
+          "subject": "urn:regesta:22743:confirmation",
+          "description": "Friedrich confirms Besitzungen und Rechte; only the Besitzungen appear as a rf:concerns node. The rights are dropped.",
+          "evidence_quote": "bestätigt ihnen ihre Besitzungen und Rechte",
+          "proposed_correction": "Add a crm:E30_Right node labelled \"Rechte\" (top concept as type, or report the missing generic type) to rf:concerns."
+        },
+        {
+          "category": "redundancy",
+          "severity": "note",
+          "subject": "urn:regesta:22743:berta-possession",
+          "description": "Berta's possession of the Eigengüter is supported by the genitive, but it duplicates the object of the protection factoid. Acceptable.",
+          "evidence_quote": "die Eigengüter der Gattin Manfreds von Castello, Berta",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No generic right type for unspecified 'Rechte' in rv:RightTypes.",
+        "Parenthood requires one parent and one child; an ambiguous collective filiation (sons of A and B) cannot be expressed without over- or under-claiming."
+      ]
+    },
+    {
+      "uid": "22744",
+      "coverage_note": "Enfeoffment of the consuls with ground and reservation, the princes' judgment, the 30-year possession it emphasises, Konrad's privilege and the competing claims of Ardicio and Henricus de Hostia are covered; identifications follow the packet. The weakest point is the typing of Konrad's privilege as a grant.",
+      "findings": [
+        {
+          "category": "unsupported-type",
+          "severity": "warning",
+          "subject": "urn:regesta:22744:konrad-privilege",
+          "description": "The regest mentions only the proof of a privilege of Konrad III; it says neither what it granted nor to whom. rv:Grant asserts a transfer that the passage does not state; the privilege could equally have been a confirmation or protection.",
+          "evidence_quote": "den Nachweis eines Privilegs Konrads (III.)",
+          "proposed_correction": "Report the act type as unresolved (model gap for an unspecified privilege) or keep the factoid with an explicit note that the type is the producer's reading; do not add recipient or object."
+        },
+        {
+          "category": "embedded-claim",
+          "severity": "note",
+          "subject": "urn:regesta:22744:consuls-possession",
+          "description": "The 30-year possession is what the Fürstenspruch emphasises, not a statement of the regest in its own voice. The factoid's evidence includes Fürstenspruches, but nothing in the graph links the state to the judgment that asserts it.",
+          "evidence_quote": "der den durch 30 Jahre hindurch ununterbrochenen Besitz der Grafschaft Chiavenna durch die dortigen Konsuln",
+          "proposed_correction": "No change possible within the contract; report as model gap."
+        },
+        {
+          "category": "redundancy",
+          "severity": "note",
+          "subject": "urn:regesta:22744:reservation",
+          "description": "The reservation is held twice, as rf:exception on the enfeoffment and as a separate Enactment with rf:partOf. The separate factoid names no grantor. Matter of taste; the guideline allows a reserving provision as its own factoid.",
+          "evidence_quote": "vorbehaltlich des königlichen Rechts mit der genannten Grafschaft",
+          "proposed_correction": "Optionally add Friedrich as rv:Grantor to the reservation factoid."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22744:princes-judgment",
+          "description": "Albert von Kiburg found (gefunden) the princes' judgment; rv:Judge is a reasonable approximation of the Urteilsfinder, though the judgment is the princes' and the court presumably the king's.",
+          "evidence_quote": "eines von Albert von Kiburg (Chiburch) gefundenen Fürstenspruches",
+          "proposed_correction": "None required; an Urteilsfinder role would be a vocabulary extension."
+        }
+      ],
+      "model_gaps": [
+        "No way to mark a state as asserted by another act of the same regest (the judgment emphasises the possession).",
+        "No act type for an unspecified privilege.",
+        "No role distinguishing the finder of a judgment from the judge."
+      ]
+    },
+    {
+      "uid": "22745",
+      "coverage_note": "The single sentence is covered by one Enactment with Friedrich as issuer, Bishop Ardicio as addressee and the people of Chiavenna as beneficiary. The determination is correctly kept as an enactment and not turned into a right-holding state. Identifications match the packet. No defect found beyond style.",
+      "findings": [
+        {
+          "category": "qualifier",
+          "severity": "note",
+          "subject": "urn:regesta:22745:county-determination",
+          "description": "The content of the determination (the county belongs not to Ardicio but to the people) is held in rf:qualifier; it is the substance of the provision rather than a qualification of type or time. Acceptable as exact wording.",
+          "evidence_quote": "nicht ihm, sondern den Leuten von Chiavenna zusteht",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No role for the party a provision decides against (Ardicio is addressee and losing claimant at once)."
+      ]
+    },
+    {
+      "uid": "22746",
+      "coverage_note": "Complaint, vassalage, Corvey's possession of Höxter, the advocacy of Folkwin and Widekind, the extorted 253 Pfund, Konrad's permission for the fortifications and the request to punish with its reason are covered with packet identifications. Omitted are the damage of about 900 Pfund and the destruction of the fortifications, which the vocabulary cannot type. All statements are Wibald's allegations; the model cannot mark that.",
+      "findings": [
+        {
+          "category": "allegation-as-fact",
+          "severity": "note",
+          "subject": "urn:regesta:22746:extortion",
+          "description": "The extortion is part of Wibald's complaint, typed rv:Payment. The passage supports that the complaint reports it, and the qualifier erpreßt keeps the nature; but the factoid stands as an act without any link to the complaint that alleges it. The same holds for the vassalage, advocacy and possession factoids, which are less problematic.",
+          "evidence_quote": "von den vornehmeren Gefangenen 253 Pfund erpreßt",
+          "proposed_correction": "No change within the contract; report as model gap (reported allegation)."
+        },
+        {
+          "category": "ground",
+          "severity": "note",
+          "subject": "urn:regesta:22746:complaint",
+          "description": "rf:ground \"Gewalttaten\" names the subject of the complaint rather than a reason the regest gives for it. Acceptable but stretches the property.",
+          "evidence_quote": "führt bei Kaiser Friedrich Klage über die Gewalttaten",
+          "proposed_correction": "Optionally move the wording to rf:qualifier."
+        },
+        {
+          "category": "omitted-economic",
+          "severity": "note",
+          "subject": "22746",
+          "description": "The damage of about 900 Pfund Pfennigen is an economic statement of the passage; the vocabulary has no act type for damage, so the omission is a model gap rather than an extraction error. The same applies to the destruction of the fortifications by the advocates.",
+          "evidence_quote": "dadurch einen Schaden von etwa 900 Pfund Pfennigen angerichtet",
+          "proposed_correction": "Report as model gap in the batch report."
+        }
+      ],
+      "model_gaps": [
+        "No act type for damage or destruction of property, so the 900 Pfund damage and the destruction of the fortifications cannot be recorded.",
+        "No means to mark factoids as allegations reported within a complaint.",
+        "Konrad's permission has no stated recipient; rv:Grant without recipient is the closest available form."
+      ]
+    },
+    {
+      "uid": "22747",
+      "coverage_note": "The mandate is covered as one Appointment factoid with Friedrich, Duke Heinrich, the two perpetrators and Corvey. Folkwin and Widekind correctly get regest-local IRIs, since this packet has no candidates for them. Roles are approximations.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22747:mandate-judgment",
+          "description": "Duke Heinrich is the one charged with the task; rv:Addressee is defensible, but in an Appointment rv:Recipient or rv:Judge would state the commission more precisely. Corvey, the injured party, is rv:Participant where rv:Beneficiary would fit the passage.",
+          "evidence_quote": "über die Gewalttaten F(olkwins) und W(idekinds von Schwalenberg) gegenüber dem Kloster Corvey zu richten",
+          "proposed_correction": "Optionally give Heinrich rv:Recipient and Corvey rv:Beneficiary."
+        }
+      ],
+      "model_gaps": [
+        "No role for the injured party of a wrong."
+      ]
+    },
+    {
+      "uid": "22748",
+      "coverage_note": "The promise of revenge is correctly kept as an assurance, and the brother relation is recorded with its exact word. The second dispositive clause, the summons of Wibald to the Hoftag at Würzburg on 13 October, is omitted.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22748",
+          "description": "The regest reports a second act, the invitation of Wibald to a curia generalis at Würzburg. It is not military movement or travel but a summons, which the contract can express as rv:Communication with Wibald as rv:Addressee and Würzburg as a place. Whether a court summons is in scope is arguable, but no abstention is recorded for it.",
+          "evidence_quote": "lädt ihn für den 13. Oktober zu einem Hoftag (curiam generalem) nach Würzburg",
+          "proposed_correction": "Add a rv:Communication act factoid (Friedrich rv:Grantor, Wibald rv:Addressee with nameInSource \"ihn\", concerns a crm:E53_Place \"Würzburg\", qualifier \"für den 13. Oktober\"), or record the scope decision in the batch report."
+        }
+      ],
+      "model_gaps": [
+        "No role for the perpetrators of a wrong to be avenged; rv:Participant is a placeholder."
+      ]
+    },
+    {
+      "uid": "22749",
+      "coverage_note": "Promise of revenge, the brother relation and the command to resume worship are covered; the command is correctly an enactment without performance, and the convent as addressee rests on a second selector. The earlier suspension of worship as protest is a religious act outside the scope and rightly omitted.",
+      "findings": [],
+      "model_gaps": [
+        "No role for the perpetrators of a wrong to be avenged; rv:Participant is a placeholder."
+      ]
+    },
+    {
+      "uid": "22750",
+      "coverage_note": "Promise of revenge, the prohibition of payment, the earlier promise of a sum it refers to, and the command to rebuild the fortifications are covered. The prohibition is correctly not read as non-payment. The earlier promise is an inference about who promised.",
+      "findings": [
+        {
+          "category": "inferred-actor",
+          "severity": "warning",
+          "subject": "urn:regesta:22750:promised-sum",
+          "description": "The regest says only versprochenen Geldsumme; it does not say who promised it. That the citizens made the promise is inferred from the prohibition addressed to them. The factoid also has no rv:Grantor, so the act of promising has no actor, while the citizens appear as rv:Obligor, a state role.",
+          "evidence_quote": "untersagt ihnen die Entrichtung der versprochenen Geldsumme an die Genannten",
+          "proposed_correction": "Either model the earlier promise as a rv:Obligation state (citizens rv:Obligor, Folkwin and Widekind rv:Creditor, qualifier \"versprochenen\") that rests directly on the passage, or keep the act and name the inference in the batch report."
+        },
+        {
+          "category": "identity",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-H001241:community",
+          "description": "The citizens are identified as the community of the place candidate Höxter. This follows the community rule, and the extractor flagged it as unresolved.",
+          "evidence_quote": "den Bürgern von Höxter (Huxera)",
+          "proposed_correction": "None required; leave for expert identity review."
+        }
+      ],
+      "model_gaps": [
+        "No role for the perpetrators of a wrong to be avenged; rv:Participant is a placeholder."
+      ]
+    },
+    {
+      "uid": "22751",
+      "coverage_note": "The restitution is covered with issuer, recipient church, the bishop as petitioner, the pious ground, the royal reservation, both rights and all seven places. The church's former lordship over the places and its loss through fighting and unrest are not recorded; the model has no way to bound or end a state.",
+      "findings": [
+        {
+          "category": "right-type",
+          "severity": "note",
+          "subject": "urn:regesta:22751:right-districtus",
+          "description": "districtus is typed rv:Jurisdiction and fodrum rv:Revenue. Both are plausible but historical judgements for expert review; districtus covers more than jurisdiction.",
+          "evidence_quote": "den districtus und das Fodrum folgender Orte",
+          "proposed_correction": "None required."
+        },
+        {
+          "category": "omitted-context",
+          "severity": "note",
+          "subject": "22751",
+          "description": "The places had withdrawn from the lordship of the church of Como through fighting and unrest. A rv:RightHolding state for the church would assert a current lordship the passage denies, so the omission is right within the contract.",
+          "evidence_quote": "die sich der Herrschaft der Kirche von Como infolge von Kämpfen und beständigen Unruhen entzogen hatten",
+          "proposed_correction": "Report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No way to record a former state that has ended (the church's lost lordship) or its cause.",
+        "rf:concerns cannot tie each right to the places it applies to; rights and places sit side by side on the restitution."
+      ]
+    }
+  ]
+}

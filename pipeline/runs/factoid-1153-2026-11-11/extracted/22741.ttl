@@ -1,0 +1,132 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22741> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-B000381:community> a crm:E74_Group ; rdfs:label "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm)" .
+<urn:regesta:actor:RI004-002-N000262> a crm:E21_Person ; rdfs:label "Noker" .
+<urn:regesta:actor:RI004-002-O000566> a crm:E21_Person ; rdfs:label "Oudelard" .
+<urn:regesta:actor:RI004-002-B001612> a crm:E21_Person ; rdfs:label "Burchard" .
+<urn:regesta:actor:RI004-002-U000242> a crm:E21_Person ; rdfs:label "Ulrich" .
+<urn:regesta:actor:22741:local:hl-petrus> a crm:E21_Person ; rdfs:label "hl. Petrus" .
+<urn:regesta:actor:22741:local:brueder> a crm:E74_Group ; rdfs:label "der dortigen Brüder" .
+<urn:regesta:actor:22741:local:naechster-erbe> a rf:FunctionalActor ; rdfs:label "dessen nächster Erbe" .
+<urn:regesta:actor:22741:local:hintersassen> a crm:E74_Group ; rdfs:label "die Hintersassen des Klosters" .
+<urn:regesta:actor:22741:local:abt> a rf:FunctionalActor ; rdfs:label "des Abtes" .
+<urn:regesta:actor:22741:local:vogt> a rf:FunctionalActor ; rdfs:label "des Vogtes" .
+
+<urn:regesta:22741:eigengut> a crm:E18_Physical_Thing ; rdfs:label "Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich" .
+<urn:regesta:22741:kloster-beinwil> a crm:E18_Physical_Thing ; rdfs:label "Kloster Beinwil" .
+<urn:regesta:22741:besitzungen> a crm:E18_Physical_Thing ; rdfs:label "die genannten Besitzungen" .
+<urn:regesta:22741:vogtei> a crm:E30_Right ; crm:P2_has_type rv:Advocacy ; rdfs:label "officium advocatię" .
+<urn:regesta:22741:vogtgericht> a crm:E30_Right ; crm:P2_has_type rv:Jurisdiction ; rdfs:label "Gericht des Vogtes" .
+
+<urn:regesta:22741:eigengut-possession> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "auf Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich erbaute" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000262> ; rf:role rv:Possessor ; rf:nameInSource "Noker" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000566> ; rf:role rv:Possessor ; rf:nameInSource "Oudelard" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001612> ; rf:role rv:Possessor ; rf:nameInSource "Burchard" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000242> ; rf:role rv:Possessor ; rf:nameInSource "Ulrich" ] ;
+    rf:concerns <urn:regesta:22741:eigengut> ;
+    rf:qualifier "Eigengut" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22741:founders-donation> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "auf Eigengut der Edlen Noker, Oudelard, Burchard und Ulrich erbaute und von ihnen dem hl. Petrus übergebene Kloster Beinwil" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000262> ; rf:role rv:Grantor ; rf:nameInSource "Noker" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000566> ; rf:role rv:Grantor ; rf:nameInSource "Oudelard" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001612> ; rf:role rv:Grantor ; rf:nameInSource "Burchard" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000242> ; rf:role rv:Grantor ; rf:nameInSource "Ulrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:hl-petrus> ; rf:role rv:Recipient ; rf:nameInSource "hl. Petrus" ] ;
+    rf:concerns <urn:regesta:22741:kloster-beinwil> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22741:brothers-request> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "auf Bitten der dortigen Brüder" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:brueder> ; rf:role rv:Petitioner ; rf:nameInSource "dortigen Brüder" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22741:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Kloster Beinwil (monasterio beati Vincentii omniumque sanctorm) auf Bitten der dortigen Brüder in seinen Schutz" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das auf Eigengut" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000381:community> ; rf:role rv:Recipient ; rf:nameInSource "Kloster Beinwil" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:brueder> ; rf:role rv:Petitioner ; rf:nameInSource "dortigen Brüder" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22741:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm die genannten Besitzungen" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das auf Eigengut" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000381:community> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22741:besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22741:single-advocate> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "verfügt er, daß das Kloster nur einen Vogt haben" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das auf Eigengut" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000381:community> ; rf:role rv:Beneficiary ; rf:nameInSource "Kloster" ] ;
+    rf:concerns <urn:regesta:22741:vogtei> ;
+    rf:qualifier "nur einen Vogt" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22741:oudelard-advocate> a rf:StateFactoid ;
+    rf:factoidType rv:OfficeHolding ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "des jetzigen Vogtes, Oudelard" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000566> ; rf:role rv:Officeholder ; rf:nameInSource "Oudelard" ] ;
+    rf:concerns <urn:regesta:22741:vogtei> ;
+    rf:qualifier "jetzigen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22741:advocacy-succession> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "daß nach dem Tod des jetzigen Vogtes, Oudelard, dessen nächster Erbe ihm in seinem Amt (officium advocatię) nachfolgen solle, was auch künftig zu beobachten sei" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das auf Eigengut" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:naechster-erbe> ; rf:role rv:Beneficiary ; rf:nameInSource "dessen nächster Erbe" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000566> ; rf:role rv:Participant ; rf:nameInSource "Oudelard" ] ;
+    rf:concerns <urn:regesta:22741:vogtei> ;
+    rf:condition "nach dem Tod des jetzigen Vogtes, Oudelard" ;
+    rf:qualifier "was auch künftig zu beobachten sei" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22741:advocate-court> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22741> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Schließlich wird festgelegt, daß die Hintersassen des Klosters einmal jährlich mit Zustimmung des Abtes vor das Gericht des Vogtes gerufen werden sollen, der nach den Rechtsgewohnheiten dieser Kirche über ihre Vergehen urteilt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:hintersassen> ; rf:role rv:Participant ; rf:nameInSource "Hintersassen des Klosters" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:abt> ; rf:role rv:Participant ; rf:nameInSource "des Abtes" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22741:local:vogt> ; rf:role rv:RightHolder ; rf:nameInSource "des Vogtes" ] ;
+    rf:concerns <urn:regesta:22741:vogtgericht> ;
+    rf:condition "mit Zustimmung des Abtes" ;
+    rf:qualifier "einmal jährlich" , "nach den Rechtsgewohnheiten dieser Kirche" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .

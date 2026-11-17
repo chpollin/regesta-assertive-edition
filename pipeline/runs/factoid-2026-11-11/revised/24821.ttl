@@ -1,0 +1,61 @@
+@prefix rf: <https://example.org/regesta/factoid/> .
+@prefix rv: <https://example.org/regesta/concept/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:24821> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-P000579> a crm:E21_Person ; rdfs:label "Erzbischof Philipp von Köln" .
+<urn:regesta:actor:RI004-002-E000343> a crm:E21_Person ; rdfs:label "Graf Engelbert von Berg" .
+<urn:regesta:actor:24821:local:erben-engelbert> a rf:FunctionalActor ; rdfs:label "seinen Erben" .
+
+<urn:regesta:24821:hof-hilden> a crm:E18_Physical_Thing ; rdfs:label "Höfe des Erzstifts zu Hilden" .
+<urn:regesta:24821:hof-elberfeld> a crm:E18_Physical_Thing ; rdfs:label "Elberfeld (Helede et Elberuelde)" .
+
+# Earlier act reported by the confirmation; it receives no date of its own.
+<urn:regesta:24821:pledge> a rf:ActFactoid ;
+    rf:factoidType rv:Pledge ;
+    rf:source <urn:regesta:record:24821> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Höfe des Erzstifts zu Hilden und Elberfeld (Helede et Elberuelde) für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Erzbischof Philipp von Köln" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000579> ; rf:role rv:Pledgor ; rf:nameInSource "Erzbischof Philipp von Köln" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000343> ; rf:role rv:Pledgee ; rf:nameInSource "Graf Engelbert von Berg" ] ;
+    rf:concerns <urn:regesta:24821:hof-hilden> , <urn:regesta:24821:hof-elberfeld> ;
+    rf:amount "400 Mark Silber" ;
+    rf:ground "zur Deckung seiner Aufwendungen für die Reichsheerfahrt nach Italien" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:24821:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:24821> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt Erzbischof Philipp von Köln auf dessen bei Hofe vorgetragene Bitten nachträglich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000579> ; rf:role rv:Recipient ; rf:nameInSource "Erzbischof Philipp von Köln" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000579> ; rf:role rv:Petitioner ; rf:nameInSource "dessen" ] ;
+    rf:refersToAct <urn:regesta:24821:pledge> ;
+    rf:qualifier "nachträglich" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:24821:free-disposal> a crm:E30_Right ;
+    crm:P2_has_type rv:UsageRights ;
+    rdfs:label "die freie Verfügung über diese Pfandschaften" .
+
+# Assurance to the count and his heirs; it does not establish later redemption or possession.
+<urn:regesta:24821:assurance> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:24821> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "sichert dem Grafen und seinen Erben die freie Verfügung über diese Pfandschaften bis zu deren Einlösung zu" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000343> ; rf:role rv:Recipient ; rf:nameInSource "Grafen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:24821:local:erben-engelbert> ; rf:role rv:Recipient ; rf:nameInSource "seinen Erben" ] ;
+    rf:concerns <urn:regesta:24821:free-disposal> , <urn:regesta:24821:hof-hilden> , <urn:regesta:24821:hof-elberfeld> ;
+    rf:condition "bis zu deren Einlösung" ;
+    rf:partOf <urn:regesta:24821:confirmation> ;
+    rf:refersToAct <urn:regesta:24821:pledge> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-5> ;
+    rf:verificationStatus rv:unchecked .

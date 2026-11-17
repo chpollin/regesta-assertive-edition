@@ -1,0 +1,101 @@
+@prefix rf: <https://example.org/regesta/factoid/> .
+@prefix rv: <https://example.org/regesta/concept/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:24618> a crm:E31_Document ;
+    rdfs:label "RI IV,2,3 n. 1986" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-C000646> a crm:E21_Person ;
+    rdfs:label "Erzbischof Christian von Mainz" .
+
+<urn:regesta:actor:RI004-002-G000280:community> a crm:E74_Group ;
+    rdfs:label "Stadt Genua" .
+
+<urn:regesta:actor:RI004-002-C000950> a crm:E21_Person ;
+    rdfs:label "consul comunis Corsus" .
+
+<urn:regesta:actor:RI004-002-R000827> a crm:E21_Person ;
+    rdfs:label "Rogerius de Justa" .
+
+<urn:regesta:actor:RI004-002-P000594> a crm:E21_Person ;
+    rdfs:label "Philippus Baraterius" .
+
+# Talks with the Genoese envoys
+
+<urn:regesta:24618:negotiation> a rf:ActFactoid ;
+    rf:factoidType rv:Negotiation ;
+    rf:source <urn:regesta:record:24618> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche" ] ;
+    rf:reference <urn:regesta:24618:negotiation-ref-christian> ,
+        <urn:regesta:24618:negotiation-ref-genua> ,
+        <urn:regesta:24618:negotiation-ref-corsus> ,
+        <urn:regesta:24618:negotiation-ref-rogerius> ,
+        <urn:regesta:24618:negotiation-ref-philippus> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:24618:negotiation-ref-christian> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000646> ;
+    rf:role rv:Negotiator ;
+    rf:nameInSource "Erzbischof Christian von Mainz" .
+
+<urn:regesta:24618:negotiation-ref-genua> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-G000280:community> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Stadt Genua" .
+
+<urn:regesta:24618:negotiation-ref-corsus> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000950> ;
+    rf:role rv:Envoy ;
+    rf:nameInSource "Corsus" .
+
+<urn:regesta:24618:negotiation-ref-rogerius> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000827> ;
+    rf:role rv:Envoy ;
+    rf:nameInSource "Rogerius de Justa" .
+
+<urn:regesta:24618:negotiation-ref-philippus> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-P000594> ;
+    rf:role rv:Envoy ;
+    rf:nameInSource "Philippus Baraterius" .
+
+# Receipt of 500 Pfund from the envoys
+
+<urn:regesta:24618:payment> a rf:ActFactoid ;
+    rf:factoidType rv:Payment ;
+    rf:source <urn:regesta:record:24618> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche und erhält von ihnen 500 Pfund." ] ;
+    rf:reference <urn:regesta:24618:payment-ref-christian> ,
+        <urn:regesta:24618:payment-ref-corsus> ,
+        <urn:regesta:24618:payment-ref-rogerius> ,
+        <urn:regesta:24618:payment-ref-philippus> ;
+    rf:amount "500 Pfund" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-1> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:24618:payment-ref-christian> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000646> ;
+    rf:role rv:Payee ;
+    rf:nameInSource "Erzbischof Christian von Mainz" .
+
+<urn:regesta:24618:payment-ref-corsus> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000950> ;
+    rf:role rv:Payer ;
+    rf:nameInSource "Corsus" .
+
+<urn:regesta:24618:payment-ref-rogerius> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-R000827> ;
+    rf:role rv:Payer ;
+    rf:nameInSource "Rogerius de Justa" .
+
+<urn:regesta:24618:payment-ref-philippus> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-P000594> ;
+    rf:role rv:Payer ;
+    rf:nameInSource "Philippus Baraterius" .

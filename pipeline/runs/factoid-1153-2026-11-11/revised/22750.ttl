@@ -1,0 +1,136 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22750> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 123" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+# The packet's candidate RI004-002-H001241 is the place Höxter; the citizens are read as its
+# community. This identification is the producer's reading and is reported as unresolved.
+<urn:regesta:actor:RI004-002-H001241:community> a crm:E74_Group ;
+    rdfs:label "Bürgern von Höxter (Huxera)" .
+
+<urn:regesta:actor:RI004-002-F000280> a crm:E21_Person ;
+    rdfs:label "Folkwin" .
+
+<urn:regesta:actor:RI004-002-W000454> a crm:E21_Person ;
+    rdfs:label "Widekind (von Schwalenberg)" .
+
+# The promise of revenge is an assurance; it does not establish that revenge was taken.
+<urn:regesta:22750:promise-revenge> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22750> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich verspricht den Bürgern von Höxter (Huxera), das ihnen von Folkwin und Widekind (von Schwalenberg) zugefügte Unrecht zu rächen" ] ;
+    rf:reference <urn:regesta:22750:ref-promise-friedrich> ,
+        <urn:regesta:22750:ref-promise-buerger> ,
+        <urn:regesta:22750:ref-promise-folkwin> ,
+        <urn:regesta:22750:ref-promise-widekind> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22750:ref-promise-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22750:ref-promise-buerger> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H001241:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Bürgern von Höxter (Huxera)" .
+
+# The perpetrators of the wrong to be avenged have no dedicated role; Participant is used (model gap).
+<urn:regesta:22750:ref-promise-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000280> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Folkwin" .
+
+<urn:regesta:22750:ref-promise-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000454> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Widekind (von Schwalenberg)" .
+
+# The promised sum due from the citizens to Folkwin and Widekind, as an obligation. Who made
+# the promise is not stated. It establishes neither an amount nor a payment.
+<urn:regesta:22750:promised-sum> a rf:StateFactoid ;
+    rf:factoidType rv:Obligation ;
+    rf:source <urn:regesta:record:22750> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "untersagt ihnen die Entrichtung der versprochenen Geldsumme an die Genannten" ] ,
+        [ a oa:TextQuoteSelector ;
+        oa:exact "den Bürgern von Höxter (Huxera), das ihnen von Folkwin und Widekind (von Schwalenberg)" ] ;
+    rf:reference <urn:regesta:22750:ref-sum-buerger> ,
+        <urn:regesta:22750:ref-sum-folkwin> ,
+        <urn:regesta:22750:ref-sum-widekind> ;
+    rf:qualifier "versprochenen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22750:ref-sum-buerger> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H001241:community> ;
+    rf:role rv:Obligor ;
+    rf:nameInSource "ihnen" .
+
+<urn:regesta:22750:ref-sum-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000280> ;
+    rf:role rv:Creditor ;
+    rf:nameInSource "Folkwin" .
+
+<urn:regesta:22750:ref-sum-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000454> ;
+    rf:role rv:Creditor ;
+    rf:nameInSource "Widekind (von Schwalenberg)" .
+
+# The prohibition is an enactment; whether the sum was withheld is not established.
+<urn:regesta:22750:prohibition-payment> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22750> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "untersagt ihnen die Entrichtung der versprochenen Geldsumme an die Genannten" ] ;
+    rf:reference <urn:regesta:22750:ref-prohibition-friedrich> ,
+        <urn:regesta:22750:ref-prohibition-buerger> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22750:ref-prohibition-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22750:ref-prohibition-buerger> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H001241:community> ;
+    rf:role rv:Addressee ;
+    rf:nameInSource "ihnen" .
+
+# The command is an enactment; its performance is not established.
+<urn:regesta:22750:command-fortifications> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22750> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "befiehlt den Wiederaufbau der zerstörten Befestigungen" ] ,
+        [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich verspricht den Bürgern von Höxter (Huxera)" ] ;
+    rf:reference <urn:regesta:22750:ref-command-friedrich> ,
+        <urn:regesta:22750:ref-command-buerger> ;
+    rf:concerns <urn:regesta:22750:befestigungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-30> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22750:ref-command-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22750:ref-command-buerger> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H001241:community> ;
+    rf:role rv:Addressee ;
+    rf:nameInSource "Bürgern von Höxter (Huxera)" .
+
+<urn:regesta:22750:befestigungen> a crm:E18_Physical_Thing ;
+    rdfs:label "zerstörten Befestigungen" .

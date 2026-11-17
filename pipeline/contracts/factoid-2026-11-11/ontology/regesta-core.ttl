@@ -1,0 +1,114 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+rf:
+    rdfs:label "Regesten-Faktoidmodell, Entwurf 2026-11-11"@de ;
+    rdfs:comment "Draft project ontology after the factoid pattern. A factoid records what one passage of one regest says, as read by a named producer; it is not a claim about what happened. The namespace is provisional."@en ;
+    rdfs:seeAlso <https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html> , <https://github.com/johnBradley501/FPO> .
+
+rf:Factoid a rdfs:Class ;
+    rdfs:subClassOf crm:E13_Attribute_Assignment ;
+    rdfs:label "Faktoid"@de ;
+    rdfs:comment "What one passage of a regest says about actors, acts or states, recorded with its exact wording, its producer and its verification status. Following CIDOC CRM E13, the knowledge base stays neutral to its validity."@en .
+
+rf:ActFactoid a rdfs:Class ;
+    rdfs:subClassOf rf:Factoid ;
+    rdfs:label "Faktoid über einen Akt"@de ;
+    rdfs:comment "A factoid reporting an act: a grant, confirmation, request, dispute, judgment, payment or similar. Promises and provisions are acts of enactment, not their later performance."@en .
+
+rf:StateFactoid a rdfs:Class ;
+    rdfs:subClassOf rf:Factoid ;
+    rdfs:label "Faktoid über einen Zustand"@de ;
+    rdfs:comment "A factoid reporting a state that holds over time: kinship, marriage, holding a right, an obligation or an office. Mention dates do not bound it."@en .
+
+rf:Reference a rdfs:Class ;
+    rdfs:label "Nennung"@de ;
+    rdfs:comment "One mention of an actor inside a factoid, with the role the passage gives it and the wording that names it there."@en .
+
+rf:FunctionalActor a rdfs:Class ;
+    rdfs:subClassOf crm:E39_Actor ;
+    rdfs:label "Funktional bestimmter Akteur"@de ;
+    rdfs:comment "An actor the regest determines by office or function rather than by name, such as the respective archbishop or an elected successor. It is local to the regest and asserts no individual identity."@en .
+
+rf:factoidType a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range skos:Concept ;
+    rdfs:label "hat Faktoidtyp"@de ;
+    rdfs:comment "The kind of act or state, a concept of the act or state scheme of the project vocabulary."@en .
+
+rf:source a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range crm:E31_Document ;
+    rdfs:label "hat Quelle"@de ;
+    rdfs:comment "The regest record the passage belongs to. The regest is a modern summary of a charter or narrative; whether the factoid's source should be the charter is an open expert question."@en .
+
+rf:evidence a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range oa:TextQuoteSelector ;
+    rdfs:label "hat Beleg"@de ;
+    rdfs:comment "The passage, as a Web Annotation text quote selector whose oa:exact is a contiguous, case-sensitive substring of the regest summary."@en .
+
+rf:verificationStatus a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range skos:Concept ;
+    rdfs:label "hat Prüfstatus"@de ;
+    rdfs:comment "unchecked until a scholar has judged the factoid against the source. Technical validation does not change it."@en .
+
+rf:reference a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range rf:Reference ;
+    rdfs:label "nennt"@de .
+
+rf:actor a rdf:Property ;
+    rdfs:domain rf:Reference ; rdfs:range crm:E39_Actor ;
+    rdfs:label "bezeichnet Akteur"@de ;
+    rdfs:comment "The actor a mention is identified with: a register entry of this regest, the shared ruler, or a regest-local actor. The identification is the producer's reading."@en .
+
+rf:role a rdf:Property ;
+    rdfs:domain rf:Reference ; rdfs:range skos:Concept ;
+    rdfs:label "hat Rolle"@de .
+
+rf:nameInSource a rdf:Property ;
+    rdfs:domain rf:Reference ; rdfs:range rdfs:Literal ;
+    rdfs:label "Namensform in der Quelle"@de ;
+    rdfs:comment "The exact wording that names the actor in this passage."@en .
+
+rf:concerns a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range crm:E1_CRM_Entity ;
+    rdfs:label "betrifft"@de ;
+    rdfs:comment "The right, thing, place or community the act or state is about. Involvement establishes neither ownership nor validity."@en .
+
+rf:partOf a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range rf:ActFactoid ;
+    rdfs:label "ist Teil von"@de ;
+    rdfs:comment "A provision or secondary act belonging to a main act of the same regest, such as the rights that come with a donation."@en .
+
+rf:refersToAct a rdf:Property ;
+    rdfs:domain rf:ActFactoid ; rdfs:range rf:ActFactoid ;
+    rdfs:label "bezieht sich auf Akt"@de ;
+    rdfs:comment "A later act such as a confirmation or assurance that refers to an earlier act the same regest reports. It implies no date for the earlier act."@en .
+
+rf:condition a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range rdfs:Literal ;
+    rdfs:label "hat Bedingung"@de ;
+    rdfs:comment "A condition in the exact wording of the regest. No logical evaluation."@en .
+
+rf:exception a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range rdfs:Literal ;
+    rdfs:label "hat Ausnahme"@de ;
+    rdfs:comment "An exception or reservation in the exact wording of the regest."@en .
+
+rf:ground a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range rdfs:Literal ;
+    rdfs:label "hat Begründung laut Regest"@de ;
+    rdfs:comment "A reason the regest gives for the act, in its exact wording. Whether the reason holds is not asserted."@en .
+
+rf:amount a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range rdfs:Literal ;
+    rdfs:label "hat Betrag"@de ;
+    rdfs:comment "An amount with its historical unit in the exact wording of the regest. Units are not normalised."@en .
+
+rf:qualifier a rdf:Property ;
+    rdfs:domain rf:Factoid ; rdfs:range rdfs:Literal ;
+    rdfs:label "hat Bestimmung im Wortlaut"@de ;
+    rdfs:comment "Exact wording that qualifies the type or time of the factoid and that the vocabulary does not capture, such as a degree of kinship or a temporal word like künftig or nachträglich."@en .

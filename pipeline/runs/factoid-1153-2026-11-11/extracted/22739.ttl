@@ -1,0 +1,39 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22739> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 112" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-T000478:community> a crm:E74_Group ;
+    rdfs:label "Bewohnern von Treviglio" .
+
+# The privilege is not attached as an E30_Right node, because no concept of rv:RightTypes fits a
+# capped fodrum payment; see the batch report.
+<urn:regesta:22739:fodrum-privilege> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22739> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich räumt den Bewohnern von Treviglio (Triuillio Grasso) das Vorrecht ein, bei Italienzügen einen Betrag von 6 Mark als Fodrum zu entrichten." ] ;
+    rf:reference <urn:regesta:22739:ref-friedrich> , <urn:regesta:22739:ref-bewohner> ;
+    rf:condition "bei Italienzügen" ;
+    rf:amount "6 Mark" ;
+    rf:qualifier "als Fodrum" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-27> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22739:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22739:ref-bewohner> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-T000478:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Bewohnern von Treviglio" .

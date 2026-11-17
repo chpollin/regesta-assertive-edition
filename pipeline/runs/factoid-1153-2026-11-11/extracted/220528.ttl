@@ -1,0 +1,36 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:220528> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-G000351> a crm:E21_Person ;
+    rdfs:label "Bischof G(erhard) von Bologna" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Kaiser" .
+
+<urn:regesta:actor:RI004-002-P000103:community> a crm:E74_Group ;
+    rdfs:label "Grafen von Panizo" .
+
+<urn:regesta:220528:goods> a crm:E18_Physical_Thing ;
+    rdfs:label "Güter der Bologneser Kirche" .
+
+<urn:regesta:220528:request> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:220528> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Bischof G(erhard) von Bologna bittet den Kaiser, gegen die Grafen von Panizo vorzugehen, welche die Güter der Bologneser Kirche plündern" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Bischof G(erhard) von Bologna" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ; rf:nameInSource "den Kaiser" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000103:community> ;
+        rf:role rv:Participant ; rf:nameInSource "die Grafen von Panizo" ] ;
+    rf:concerns <urn:regesta:220528:goods> ;
+    rf:ground "welche die Güter der Bologneser Kirche plündern" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;
+    rf:verificationStatus rv:unchecked .

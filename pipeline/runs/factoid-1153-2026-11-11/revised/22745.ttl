@@ -1,0 +1,35 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22745> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-A001103> a crm:E21_Person ; rdfs:label "Bischof Ardicio von Como" .
+<urn:regesta:actor:RI004-002-C000614:community> a crm:E74_Group ; rdfs:label "Leuten von Chiavenna" .
+
+<urn:regesta:22745:grafschaft-chiavenna> a crm:E53_Place ; rdfs:label "Grafschaft Chiavenna" .
+
+# Charter issued to Bishop Ardicio determining to whom the county belongs
+
+<urn:regesta:22745:county-determination> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22745> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich stellt dem Bischof Ardicio von Como eine Urkunde aus, die festlegt, daß die Grafschaft Chiavenna nicht ihm, sondern den Leuten von Chiavenna zusteht" ] ;
+    rf:reference <urn:regesta:22745:county-determination:ref-friedrich> ,
+                 <urn:regesta:22745:county-determination:ref-ardicio> ,
+                 <urn:regesta:22745:county-determination:ref-leute> ;
+    rf:concerns <urn:regesta:22745:grafschaft-chiavenna> ;
+    rf:qualifier "nicht ihm, sondern den Leuten von Chiavenna zusteht" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22745:county-determination:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" .
+<urn:regesta:22745:county-determination:ref-ardicio> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A001103> ; rf:role rv:Addressee ; rf:nameInSource "Bischof Ardicio von Como" .
+<urn:regesta:22745:county-determination:ref-leute> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000614:community> ; rf:role rv:Beneficiary ; rf:nameInSource "den Leuten von Chiavenna" .

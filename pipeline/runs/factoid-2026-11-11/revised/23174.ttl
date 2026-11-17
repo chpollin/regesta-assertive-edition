@@ -1,0 +1,160 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:23174> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 545" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-R000880:community> a crm:E74_Group ;
+    rdfs:label "Nonnenkloster Rolandswerth" .
+
+<urn:regesta:actor:RI004-002-K000410> a crm:E21_Person ;
+    rdfs:label "Graf Konrad von Bonn" .
+
+<urn:regesta:actor:RI004-002-U000065> a crm:E21_Person ;
+    rdfs:label "Gräfin Uda von Deutz" .
+
+<urn:regesta:actor:23174:local:tochter> a crm:E21_Person ;
+    rdfs:label "ihre in dem Kloster als Nonne lebende Tochter" .
+
+<urn:regesta:actor:23174:local:koelner-erzbischof> a rf:FunctionalActor ;
+    rdfs:label "den jeweiligen Kölner Erzbischof" .
+
+# Rights and things
+
+<urn:regesta:23174:hof-woellstadt> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof zu Ober- und Niederwöllstadt (Wllenstede)" .
+
+<urn:regesta:23174:hof-kessel> a crm:E18_Physical_Thing ;
+    rdfs:label "den Hof zu Kessel" .
+
+<urn:regesta:23174:hof-auenheim> a crm:E18_Physical_Thing ;
+    rdfs:label "den zu Auenheim (Ouuenheim)" .
+
+<urn:regesta:23174:vogtei-woellstadt> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "dessen Vogtei" .
+
+<urn:regesta:23174:schutz-erzdioezese> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "den Schutz über die in der Erzdiözese Köln gelegenen Güter" .
+
+# Factoids
+
+<urn:regesta:23174:schutznahme> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:23174> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das Nonnenkloster Rolandswerth (ecclesiam beate Marie, que sita est in insula Rheni Růlecheswerde) in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000880:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Nonnenkloster Rolandswerth" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23174:bestaetigung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:23174> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm die Besitzungen, darunter den ihm von Graf Konrad von Bonn verkauften Hof zu Ober- und Niederwöllstadt (Wllenstede)" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "den Hof zu Kessel und den zu Auenheim (Ouuenheim)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000880:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:23174:hof-woellstadt> , <urn:regesta:23174:hof-kessel> , <urn:regesta:23174:hof-auenheim> ;
+    rf:refersToAct <urn:regesta:23174:verkauf-woellstadt> , <urn:regesta:23174:stiftung-auenheim> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23174:verkauf-woellstadt> a rf:ActFactoid ;
+    rf:factoidType rv:Sale ;
+    rf:source <urn:regesta:record:23174> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den ihm von Graf Konrad von Bonn verkauften Hof zu Ober- und Niederwöllstadt (Wllenstede)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-K000410> ;
+        rf:role rv:Seller ;
+        rf:nameInSource "Graf Konrad von Bonn" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000880:community> ;
+        rf:role rv:Buyer ;
+        rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:23174:hof-woellstadt> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23174:verbot-vogtei-erbrecht> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:23174> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "dessen Vogtei von niemandem zu Erbrecht erworben werden darf" ] ;
+    rf:concerns <urn:regesta:23174:vogtei-woellstadt> ;
+    rf:qualifier "zu Erbrecht" ;
+    rf:partOf <urn:regesta:23174:bestaetigung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23174:stiftung-auenheim> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:23174> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den zu Auenheim (Ouuenheim), den Gräfin Uda von Deutz (Tuiciensis) für ihre in dem Kloster als Nonne lebende Tochter und als Seelgerät für sich und die ihren gestiftet hat" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-U000065> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Gräfin Uda von Deutz" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000880:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "dem Kloster" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:23174:local:tochter> ;
+        rf:role rv:Beneficiary ;
+        rf:nameInSource "ihre in dem Kloster als Nonne lebende Tochter" ] ;
+    rf:concerns <urn:regesta:23174:hof-auenheim> ;
+    rf:ground "für ihre in dem Kloster als Nonne lebende Tochter und als Seelgerät für sich und die ihren" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23174:elternschaft-uda-tochter> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:23174> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Gräfin Uda von Deutz (Tuiciensis) für ihre in dem Kloster als Nonne lebende Tochter" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-U000065> ;
+        rf:role rv:Parent ;
+        rf:nameInSource "Gräfin Uda von Deutz" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:23174:local:tochter> ;
+        rf:role rv:Child ;
+        rf:nameInSource "ihre in dem Kloster als Nonne lebende Tochter" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23174:beauftragung-erzbischof> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:23174> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "beauftragt den jeweiligen Kölner Erzbischof, den Schutz über die in der Erzdiözese Köln gelegenen Güter in seiner Vertretung auszuüben" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:23174:local:koelner-erzbischof> ;
+        rf:role rv:Representative ;
+        rf:nameInSource "den jeweiligen Kölner Erzbischof" ] ;
+    rf:concerns <urn:regesta:23174:schutz-erzdioezese> ;
+    rf:partOf <urn:regesta:23174:schutznahme> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .

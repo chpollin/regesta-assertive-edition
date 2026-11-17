@@ -1,0 +1,64 @@
+{
+  "batch": 17,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17",
+  "records": [
+    {
+      "uid": "22693",
+      "status": "extracted",
+      "files": ["22693.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "'denselben Bischöfen' (consecrators of the bishop of Münster) kept as a local group; the passage refers back to Arnold of Cologne and the other bishops, but no identity merge is asserted",
+        "'anderer Bischöfe' and 'des Volkes' are local groups without register candidates"
+      ],
+      "model_gaps": [
+        "Royal coronation and episcopal consecration are typed rv:Appointment for lack of a coronation or consecration act type; whether coronation is an in-scope legal act is a reading for expert review",
+        "Withdrawal of grace from a ministerial 'wegen seiner Vergehen' and the refusal to pardon him have no act type (no Huldentzug or pardon concept); the ministerial dependency 'einem seiner Ministerialen' has no state type; not extracted",
+        "The decision to send a legation ('wird beschlossen') has no decision act type; rv:Mission would assert the sending itself; not extracted. The postponed Italian campaign and the coronation oath were treated as out of scope"
+      ]
+    },
+    {
+      "uid": "22695",
+      "status": "extracted",
+      "files": ["22695.ttl"],
+      "factoids": 6,
+      "unresolved_identities": [
+        "'der Mönche' kept as a local group, not merged with the monastery community RI004-002-R000431:community",
+        "The register candidate RI004-002-R000431 is typed 'ort'; it is used as a community IRI for the monastery as recipient"
+      ],
+      "model_gaps": [
+        "No role for the admonishing party in the earlier restitution ('nach Ermahnung durch König Konrad (III.)'); Konrad is recorded as rv:Participant and the wording kept as rf:qualifier",
+        "The recipient of the earlier restitution of Leuth is not named in the passage and is left out",
+        "Kinship 'Heinrich von Limburg (Lemburch) und sein Bruder Gerard' stands only in the witness list (Z.:) and was skipped per the guidelines",
+        "Meerssen benefices typed with the top concept rv:ChurchRights because no benefice (Pfründe) right type exists"
+      ]
+    },
+    {
+      "uid": "22697",
+      "status": "extracted",
+      "files": ["22697.ttl"],
+      "factoids": 7,
+      "unresolved_identities": [
+        "'seinen Oheim' kept as a local person; identification with Konrad III. (RI004-002-K000316, named earlier in the same regest) would be an inference and is not asserted",
+        "'des Stiftes' kept as a local group; not merged with the Domkapitel RI004-002-L000934",
+        "'des Hofgerichts' is a local group without register candidate"
+      ],
+      "model_gaps": [
+        "No right type for generic privileges ('die Privilegien der Stadt und des Stiftes'); the confirmation and the earlier renewal carry no rf:concerns",
+        "No role for the ruler under whom a judgment was renewed ('unter Konrad III.'); Konrad is recorded as rv:Participant",
+        "Domkapitel's role in the fixing of the advocates' rights is not stated; recorded as rv:Participant",
+        "Schöffen und Dorfbewohner, whose testimony bounds the dues, are kept only inside the rf:condition literal"
+      ]
+    },
+    {
+      "uid": "22698",
+      "status": "no_in_scope_claim",
+      "files": ["22698.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "Commission of seal dies by Wibald 'im Auftrag des Königs' is a chancery-administrative act without kinship, economic or legal content; abstained"
+      ]
+    }
+  ]
+}

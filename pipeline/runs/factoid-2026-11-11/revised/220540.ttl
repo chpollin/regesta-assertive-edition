@@ -1,0 +1,112 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:220540> a crm:E31_Document ;
+    rdfs:label "RI IV,2,4 n. 3166a" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "den Kaiser" .
+
+<urn:regesta:actor:RI004-002-C000754> a crm:E21_Person ;
+    rdfs:label "Papst Clemens (III.)" .
+
+<urn:regesta:actor:RI004-002-P000396> a crm:E21_Person ;
+    rdfs:label "Peter von S. Pietro in Vincoli" .
+
+<urn:regesta:actor:RI004-002-J000239> a crm:E21_Person ;
+    rdfs:label "Jordan von S. Pudenziana" .
+
+<urn:regesta:actor:RI004-002-H000344> a crm:E21_Person ;
+    rdfs:label "König Heinrich (VI.)" .
+
+<urn:regesta:actor:RI004-002-F000257> a crm:E21_Person ;
+    rdfs:label "Erzbischof Folmar von Trier" .
+
+# Rights
+
+<urn:regesta:220540:sicherheit-folmar> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "Sicherheit für Erzbischof Folmar von Trier" .
+
+# Factoids
+
+<urn:regesta:220540:wahlstreit> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:220540> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "des Trierer Wahlstreites" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:220540:entsendung> a rf:ActFactoid ;
+    rf:factoidType rv:Mission ;
+    rf:source <urn:regesta:record:220540> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Papst Clemens (III.) entsendet die Kardinalpresbyter Peter von S. Pietro in Vincoli und Jordan von S. Pudenziana zur Beilegung des Trierer Wahlstreites an den Kaiser und dessen Sohn, König Heinrich (VI.)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-C000754> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Papst Clemens (III.)" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-P000396> ;
+        rf:role rv:Envoy ;
+        rf:nameInSource "Peter von S. Pietro in Vincoli" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-J000239> ;
+        rf:role rv:Envoy ;
+        rf:nameInSource "Jordan von S. Pudenziana" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "den Kaiser" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000344> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "König Heinrich (VI.)" ] ;
+    rf:ground "zur Beilegung des Trierer Wahlstreites" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:220540:ersuchen-sicherheit> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:220540> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die er um Sicherheit für Erzbischof Folmar von Trier ersucht" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "an den Kaiser und dessen Sohn, König Heinrich (VI.)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-C000754> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "er" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "den Kaiser" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000344> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "König Heinrich (VI.)" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000257> ;
+        rf:role rv:Beneficiary ;
+        rf:nameInSource "Erzbischof Folmar von Trier" ] ;
+    rf:concerns <urn:regesta:220540:sicherheit-folmar> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:220540:elternschaft-kaiser-heinrich> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:220540> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den Kaiser und dessen Sohn, König Heinrich (VI.)" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Parent ;
+        rf:nameInSource "den Kaiser" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000344> ;
+        rf:role rv:Child ;
+        rf:nameInSource "König Heinrich (VI.)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .

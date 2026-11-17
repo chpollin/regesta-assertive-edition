@@ -1,0 +1,275 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-2026-11-11:review-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "24618",
+      "coverage_note": "Both in-scope passages are covered: the talks with the Genoese envoys and the stated receipt of 500 Pfund. The receipt is stated in the regest ('erhält von ihnen'), so rv:Payment is supported and is not a provision read as performance. Actor identifications (Christian, Corsus, Rogerius, Philippus, Genua) come from this packet's candidates and match by name. Offices (Reichslegat, consul comunis, consules causarum) are not modelled, which the guidelines allow because they are not needed for the statements.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:24618:negotiation-ref-genua",
+          "description": "The city is left at rv:Participant. The passage makes it the party on whose behalf the envoys act, not a participant in the talks. The vocabulary offers no role for the sending party of envoys, so this is a model gap rather than an extraction error.",
+          "evidence_quote": "mit Gesandten der Stadt Genua",
+          "proposed_correction": "Keep rv:Participant until the vocabulary has a principal or sending-party role; record the gap."
+        },
+        {
+          "category": "type",
+          "severity": "note",
+          "subject": "urn:regesta:24618:negotiation",
+          "description": "The regest reports talks ('Gespräche') without naming their object. rv:Negotiation is defined as negotiation about a future agreement, which the passage does not state.",
+          "evidence_quote": "führt mit Gesandten der Stadt Genua",
+          "proposed_correction": "Keep rv:Negotiation but add rf:qualifier \"Gespräche\" so the unspecified nature of the talks stays visible, or record a type for talks without stated object."
+        },
+        {
+          "category": "evidence",
+          "severity": "note",
+          "subject": "urn:regesta:24618:payment",
+          "description": "The payment evidence is the whole summary although the guidelines ask for the shortest passage carrying type and roles. In the payment clause the payers are named only by 'ihnen'; the names come from the first clause.",
+          "evidence_quote": "erhält von ihnen 500 Pfund",
+          "proposed_correction": "Use \"erhält von ihnen 500 Pfund\" as first selector and the envoy apposition as second selector for the payer roles."
+        }
+      ],
+      "model_gaps": [
+        "No role for the principal on whose behalf envoys act (Stadt Genua).",
+        "No act type for talks whose object the regest does not name; rv:Negotiation presupposes a future agreement."
+      ]
+    },
+    {
+      "uid": "25897",
+      "coverage_note": "The marriage negotiation is correctly kept as rv:Negotiation and not turned into a marriage. Both parent relations are stated in the passage and are modelled with one rv:Parent and one rv:Child. Identifications (Konrad K000396, Berengaria B000546, Alfons A000647) come from this packet and follow the editorial brackets of summary_plain. The stay at court is travel and rightly left out. King Alfons is missing from the negotiation factoid.",
+      "findings": [
+        {
+          "category": "missing_reference",
+          "severity": "warning",
+          "subject": "urn:regesta:25897:negotiation",
+          "description": "The negotiation takes place at King Alfons' court and concerns his daughter; he is the evident counterpart, but the negotiation factoid carries no reference to him. He appears only in the parenthood factoid.",
+          "evidence_quote": "weilt am Hofe König Alfons’ (VIII.) von Kastilien und verhandelt",
+          "proposed_correction": "Add a reference to urn:regesta:actor:RI004-002-A000647 with rf:nameInSource \"König Alfons’ (VIII.) von Kastilien\" and rv:Participant; the passage does not say he negotiates himself, so rv:Negotiator would overreach."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:25897:negotiation-ref-konrad, urn:regesta:25897:negotiation-ref-berengaria",
+          "description": "Konrad and Berengaria are the prospective spouses about whom the messenger negotiates, not participants in the negotiation. rv:Participant suggests involvement the passage does not state, but the vocabulary has no role for the persons a marriage negotiation concerns.",
+          "evidence_quote": "über eine Heirat zwischen dem Sohn des Kaisers (Herzog Konrad von Rothenburg) und der Tochter (Berengaria)",
+          "proposed_correction": "Keep the references until a role such as prospective spouse exists; record the gap."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:25897:negotiation-ref-kaiser, urn:regesta:25897:negotiation-ref-bote",
+          "description": "The emperor is the principal of the messenger, not a participant; the messenger is both envoy and negotiator, and only rv:Negotiator is recorded. No principal role exists in the vocabulary.",
+          "evidence_quote": "Ein Bote Kaiser (Friedrichs)",
+          "proposed_correction": "Add a second reference for the messenger with rv:Envoy (as 24427 does for one actor with two roles); keep the emperor at rv:Participant until a principal role exists."
+        }
+      ],
+      "model_gaps": [
+        "No role for the prospective spouses whom a marriage negotiation concerns.",
+        "No role for the principal who sends a messenger or envoy."
+      ]
+    },
+    {
+      "uid": "220540",
+      "coverage_note": "The mission, the request for security and the parent relation are covered; the cardinals and both addressees are identified from this packet, and the addressees are correctly rv:Addressee rather than participants. The request is not read as granted. The summons of Folmar to the Apostolic See is missing, and the pope's role in the mission is misassigned.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "warning",
+          "subject": "urn:regesta:220540:entsendung (reference to urn:regesta:actor:RI004-002-C000754)",
+          "description": "The pope is given rv:Grantor in the mission. rv:Grantor is defined as the actor who transfers, confirms, grants or determines; sending envoys is none of these. The vocabulary has no sender role.",
+          "evidence_quote": "Papst Clemens (III.) entsendet",
+          "proposed_correction": "Use rv:Participant until a sender role exists; record the gap."
+        },
+        {
+          "category": "missing_passage",
+          "severity": "warning",
+          "subject": "urn:regesta:220540 (no factoid)",
+          "description": "The regest states that Folmar is summoned to the Apostolic See for 12 February (1189). This is an in-scope legal act in the election dispute and is not extracted. The summoning party is not named (passive), and the date is the appearance date, not the date of the summons.",
+          "evidence_quote": "der auf den 12. Februar (1189) an den Apostolischen Stuhl geladen wird",
+          "proposed_correction": "Add an rf:ActFactoid for the summons with a reference to urn:regesta:actor:RI004-002-F000257 (nameInSource \"der\" or \"Erzbischof Folmar von Trier\" via second selector) and rf:qualifier \"auf den 12. Februar (1189)\"; leave the summoning party out. No act type fits; record the gap."
+        },
+        {
+          "category": "identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-F000257",
+          "description": "The text calls him 'Erzbischof Folmar von Trier'; the packet candidate describes Folmar as 'Elekt von Trier'. The name matches and the candidate is from this packet, but the title does not match exactly as the guidelines require.",
+          "evidence_quote": "Erzbischof Folmar von Trier",
+          "proposed_correction": "Keep the identification but flag the title divergence for expert review."
+        },
+        {
+          "category": "structure",
+          "severity": "note",
+          "subject": "urn:regesta:220540:wahlstreit, urn:regesta:220540:entsendung",
+          "description": "The dispute factoid has no reference and no rf:concerns, and the mission is not linked to it; the link survives only as the literal rf:ground, which here holds a purpose clause rather than a reason.",
+          "evidence_quote": "zur Beilegung des Trierer Wahlstreites",
+          "proposed_correction": "Optionally add rf:concerns to a place node for Trier (candidate RI004-002-T000539 is in this packet). Record the missing act-to-act link for purposes as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No role for the sender of a mission.",
+        "No act type for a summons or citation, and no role for the summoned party.",
+        "No property linking an act to the act or dispute it is meant to settle; rf:ground mixes reasons and purposes."
+      ]
+    },
+    {
+      "uid": "26099",
+      "coverage_note": "All three in-scope passages are covered: the law, the oath obligation of the army and the appointment of judges, with partOf links to the law. The law is not read as observed. The oath clause is modelled only as a state, and the tent fellowships are given a role the passage does not support.",
+      "findings": [
+        {
+          "category": "act_state",
+          "severity": "warning",
+          "subject": "urn:regesta:26099:eid-heer",
+          "description": "'verpflichtet wird' reports an act, the binding of the army by oath (agent unstated), from which the obligation results. Only the resulting state is modelled, so the act of oath-binding is lost.",
+          "evidence_quote": "zu dessen Einhaltung das (Kreuz)heer durch Eid verpflichtet wird",
+          "proposed_correction": "Add an rf:ActFactoid (rv:Enactment, rf:partOf the law, kreuzheer as rv:Obligor, rf:qualifier \"durch Eid\") or retype the factoid as an act; a resulting state may stay beside it."
+        },
+        {
+          "category": "role",
+          "severity": "warning",
+          "subject": "urn:regesta:26099:ref-einsetzung-zeltgenossenschaften",
+          "description": "The tent fellowships are the units for which judges are set; the passage does not say the appointment is for their benefit. rv:Beneficiary overreads.",
+          "evidence_quote": "für die einzelnen Zeltgenossenschaften Richter einsetzt",
+          "proposed_correction": "Remove the rv:Beneficiary reference and add rf:concerns <urn:regesta:actor:26099:local:zeltgenossenschaften> (a community)."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:26099:ref-gesetz-fuersten",
+          "description": "The princes give counsel; rv:Participant is the only available role. Model gap, not an extraction error.",
+          "evidence_quote": "mit Rat der Fürsten",
+          "proposed_correction": "Keep rv:Participant; record a counsel or consent role as a gap."
+        },
+        {
+          "category": "literal",
+          "severity": "note",
+          "subject": "urn:regesta:26099:right-richteramt",
+          "description": "The right is labelled with a Latin relative clause quoted from a narrative source inside the regest. It names the judges' task, not a right, and whether quoted narrative counts as regest evidence is an expert question.",
+          "evidence_quote": "qui transgressores legitime punirent",
+          "proposed_correction": "Keep, but flag the label and the use of the embedded quotation for expert review."
+        },
+        {
+          "category": "content",
+          "severity": "note",
+          "subject": "urn:regesta:26099:gesetz-lagerfrieden",
+          "description": "rf:concerns points to the place 'Lager'; the subject matter of the law, keeping the peace, is only in the evidence.",
+          "evidence_quote": "über die Aufrechterhaltung des Friedens im Lager",
+          "proposed_correction": "No change possible within the model; record the gap."
+        }
+      ],
+      "model_gaps": [
+        "No role for counsel or consent to an act (mit Rat der Fürsten).",
+        "No literal property for the subject matter of an enactment.",
+        "No act type for binding by oath; rv:Enactment is only the nearest fit."
+      ]
+    },
+    {
+      "uid": "24392",
+      "coverage_note": "Abstention. Travel, support in movement, hostage distribution and flight from the Lombard army are out of scope, so the abstention largely holds. Two phrases state the margrave's lordship and possession incidentally; whether such incidental statements count as in-scope legal relations is a scope decision for the expert. The document node carries no rdfs:label, unlike the other abstention file 24369 (harmless).",
+      "findings": [
+        {
+          "category": "abstention",
+          "severity": "note",
+          "subject": "urn:regesta:record:24392",
+          "description": "The passage states a lordship of the margrave ('Herrschaftsgebiet des Markgrafen') and margravial castles. These are legal and possession relations the guidelines would admit if stated, although they only frame the hostage distribution.",
+          "evidence_quote": "in das Herrschaftsgebiet des Markgrafen, wo er die ihm verbliebenen lombardischen Geiseln auf verschiedenen markgräflichen Burgen aufteilen läßt",
+          "proposed_correction": "Expert decision. If in scope, add an rf:StateFactoid rv:RightHolding (or rv:Possession for the castles) with a reference to urn:regesta:actor:RI004-002-W000552 (nameInSource \"des Markgrafen\"), taken from this packet. Otherwise keep the abstention."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "23187",
+      "coverage_note": "The brother relation and the Lombards' complaint are covered; the campaign and participant list are rightly left out as military movement. Vladislav has no candidate in this packet and is correctly local; Theobald is identified from this packet. The complaint is an earlier act and correctly carries no date. The Lombards' identification uses an army entry.",
+      "findings": [
+        {
+          "category": "identification",
+          "severity": "warning",
+          "subject": "urn:regesta:actor:RI004-002-L000621:community",
+          "description": "The candidate L000621 is the register entry for the Lombard army and troops ('Lombarden, Heer, Truppen'). The passage names the oppressed Lombards as complainants, not troops, so the candidate does not match by meaning.",
+          "evidence_quote": "die unterdrückten Lombarden Klage geführt haben",
+          "proposed_correction": "Use a local actor urn:regesta:actor:23187:local:lombarden (crm:E74_Group, label \"die unterdrückten Lombarden\") and set nameInSource to \"die unterdrückten Lombarden\"."
+        },
+        {
+          "category": "missing_passage",
+          "severity": "note",
+          "subject": "urn:regesta:23187 (no factoid)",
+          "description": "Gervasius is named as chancellor of the Bohemian king, an office in a service relation to another actor. The guidelines admit rv:OfficeHolding only where needed for the statement, so this is a borderline omission.",
+          "evidence_quote": "Propst Gervasius von Wischehrad, Kanzler des Böhmenkönigs",
+          "proposed_correction": "Expert decision; if in scope, add an rv:OfficeHolding state with reference to urn:regesta:actor:RI004-002-G000537 and qualifier \"Kanzler des Böhmenkönigs\", without merging the Böhmenkönig with König Vladislav."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "23644",
+      "coverage_note": "Good coverage. The earlier enfeoffment and its confirmation are separate act factoids joined by rf:refersToAct, the earlier act is undated, the heritable fief wording is kept as qualifier, the brother relation keeps the source word 'Bruder' rather than the register's 'Halbbruder', and 'er selbst' is resolved to Konrad with a reason. Wido has no candidate in this packet and is correctly local; the Guido of Biandrate candidate of another packet was not carried over. The witness list is skipped.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:23644:confirmation-ref-wido",
+          "description": "The regest says Friedrich confirms that Konrad enfeoffed Wido; it does not say to whom the confirmation is issued. Wido as recipient is a plausible reading but an inference from summary_plain (the recipient markup is only in summary_raw).",
+          "evidence_quote": "Friedrich bestätigt, daß sein Bruder",
+          "proposed_correction": "Consider rv:Beneficiary for Wido in the confirmation, or keep rv:Recipient and flag for expert review."
+        },
+        {
+          "category": "identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:23644:local:reich",
+          "description": "The Reich is modelled as an actor group in the role of lord. The wording supports the fief relation, but treating the Reich as an actor is a modelling choice the guidelines do not settle.",
+          "evidence_quote": "die er selbst vom Reich zu Lehen trägt",
+          "proposed_correction": "Keep; flag the Reich-as-lord modelling for expert review."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "23963",
+      "coverage_note": "The earlier donation and its confirmation are separate act factoids joined by rf:refersToAct, and the donation is undated and left without donor or donee because the regest names neither. The protection grant is covered. Identifications (Rainald, Hubert, Heinrich of Liège, Tongerloo) come from this packet. Hubert's journey and the witness list are rightly left out. The protection grant has a reference without name in source and omits the imperial side of the protection.",
+      "findings": [
+        {
+          "category": "contract",
+          "severity": "error",
+          "subject": "urn:regesta:23963:schutznahme (reference to urn:regesta:actor:RI004-002-R000076)",
+          "description": "The rv:Grantor reference has no rf:nameInSource, which the guidelines require for every reference.",
+          "evidence_quote": "nimmt die Abtei Tongerloo in seinen und den kaiserlichen Schutz",
+          "proposed_correction": "Add rf:nameInSource \"seinen\", or \"Elekt Rainald von Köln\" with a second evidence selector on that name."
+        },
+        {
+          "category": "missing_reference",
+          "severity": "warning",
+          "subject": "urn:regesta:23963:schutznahme",
+          "description": "The abbey is taken into Rainald's and the imperial protection; the emperor, as the second protecting power, is not referenced. The vocabulary has no role for the authority in whose protection a third party places someone, and rv:Grantor would overstate that the emperor acted.",
+          "evidence_quote": "in seinen und den kaiserlichen Schutz",
+          "proposed_correction": "Add a reference to the shared ruler urn:regesta:actor:RI004-002-F000471 with rf:nameInSource \"kaiserlichen\" and rv:Participant; record the gap."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:23963:bestaetigung (reference to urn:regesta:actor:RI004-002-H000392)",
+          "description": "rv:Witness is defined for testimony in a narrated dispute; here the testimony supports a confirmation without a dispute. The role fits by sense but not by definition. The friendship ('seines Freundes', referent ambiguous) is out of scope and rightly not modelled.",
+          "evidence_quote": "nach dem Zeugnis seines Freundes, Bischof Heinrichs von Lüttich",
+          "proposed_correction": "Keep rv:Witness; widen the definition of rv:Witness to testimony underlying an act."
+        }
+      ],
+      "model_gaps": [
+        "No role for the authority into whose protection a third party places someone (den kaiserlichen Schutz).",
+        "The definition of rv:Witness covers only narrated disputes, not testimony underlying a confirmation."
+      ]
+    },
+    {
+      "uid": "24369",
+      "coverage_note": "Abstention holds. The regest reports only that Friedrich burns S. Vito e Marta, a military destruction without any kinship, economic or legal relation. No finding.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "24427",
+      "coverage_note": "The promise of safe-conduct is modelled as rv:Assurance with the consuls as grantor and Philipp as recipient and petitioner; both identifications come from this packet. The later journey and transport to Fréjus are left out as travel, and the promise is not read as its performance, which the passive 'gebracht wird' would not support either. The earlier promise carries no date. The document node has no rdfs:label (harmless). No finding.",
+      "findings": [],
+      "model_gaps": []
+    }
+  ]
+}

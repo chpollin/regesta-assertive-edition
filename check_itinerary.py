@@ -5,7 +5,7 @@
 """Check the itinerary of the whole delivery for implausible jumps, deterministically.
 
 Regime: single-file script, standard library only. It reads the sibling repository
-regesta-rdf-demo, never writes there, and imports nothing from this repository.
+pipeline/, never writes there, and imports nothing from this repository.
 
 The itinerary view (`#/itinerar`, built from data/holdings.json by build_holdings.py) draws
 one point per regest with a place of issue and joins the points in start_date order. This
@@ -22,7 +22,7 @@ Data flow
 
 Usage
     python check_itinerary.py
-    python check_itinerary.py --source ../regesta-rdf-demo --out data/itinerary-checks.json
+    python check_itinerary.py --source pipeline --out data/itinerary-checks.json
     python check_itinerary.py --check       synthetic assertions, then a consistency run
 
 Design decisions
@@ -227,7 +227,7 @@ def build(source: Path) -> dict:
     register_path = source / "source-material" / "RI_004-002-RegisterBarbarossa.csv"
     for path in (regesta_path, register_path):
         if not path.exists():
-            sys.exit(f"Missing input {path}; run explore_regesta.py in regesta-rdf-demo first.")
+            sys.exit(f"Missing input {path}; run pipeline/explore_regesta.py first.")
     regesta = [json.loads(line) for line in regesta_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     by_identifier = {r["identifier"]: r for r in regesta}
     with register_path.open(encoding="utf-8-sig", newline="") as handle:
@@ -375,7 +375,7 @@ def _check(source: Path) -> None:
 def main() -> None:
     here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--source", type=Path, default=here.parent / "regesta-rdf-demo")
+    parser.add_argument("--source", type=Path, default=here / "pipeline")
     parser.add_argument("--out", type=Path, default=here / "data" / "itinerary-checks.json")
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()

@@ -1,0 +1,15 @@
+@prefix reg: <https://example.org/regesta/ontology/> .
+@prefix v: <https://example.org/regesta/vocab/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix x: <urn:regesta:22673:> .
+
+<urn:regesta:record:22673> a crm:E31_Document .
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-A000306> a crm:E21_Person ; rdfs:label "Adela" ; crm:P152_has_parent <urn:regesta:actor:RI004-002-T000162> .
+<urn:regesta:actor:RI004-002-T000162> a crm:E21_Person ; rdfs:label "Markgraf Diepold von Vohburg" .
+x:marriage a crm:E7_Activity ; crm:P2_has_type v:MarriageConclusion ; crm:P11_had_participant <urn:regesta:actor:RI004-002-F000471>, <urn:regesta:actor:RI004-002-A000306> .
+x:a1 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:marriage ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:MarriageConclusion ; reg:source <urn:regesta:record:22673> ; reg:evidence "Friedrich heiratet Adela, die Tochter Markgraf Diepolds von Vohburg" .
+x:a2 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:marriage ; crm:P177_assigned_property_of_type crm:P11_had_participant ; crm:P141_assigned <urn:regesta:actor:RI004-002-F000471> ; reg:source <urn:regesta:record:22673> ; reg:evidence "Friedrich heiratet Adela" .
+x:a3 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:marriage ; crm:P177_assigned_property_of_type crm:P11_had_participant ; crm:P141_assigned <urn:regesta:actor:RI004-002-A000306> ; reg:source <urn:regesta:record:22673> ; reg:evidence "Friedrich heiratet Adela" .
+x:a4 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:actor:RI004-002-A000306> ; crm:P177_assigned_property_of_type crm:P152_has_parent ; crm:P141_assigned <urn:regesta:actor:RI004-002-T000162> ; reg:source <urn:regesta:record:22673> ; reg:evidence "Adela, die Tochter Markgraf Diepolds von Vohburg" .

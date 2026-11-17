@@ -4,8 +4,8 @@
 # ///
 """Generate one TEI P5 file per regest from the source CSV fields and the factoids of a run.
 
-Regime: single-file script with inline dependencies. It reads one run of the sibling
-repository regesta-rdf-demo and never writes there.
+Regime: single-file script with inline dependencies. It reads one run of the
+pipeline folder and never writes there.
 
 Data flow
     runs/<run>/manifest.json            run id, LLM, selection, source and contract hashes
@@ -633,15 +633,15 @@ def build(source: Path, run_id: str, out: Path, stage: str, texts_path: Path, sc
 def main() -> int:
     here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--source", type=Path, default=here.parent / "regesta-rdf-demo")
-    parser.add_argument("--run", default="factoid-2026-11-11")
+    parser.add_argument("--source", type=Path, default=here / "pipeline")
+    parser.add_argument("--run", default="factoid-1153-2026-11-11")
     parser.add_argument("--stage", choices=("extracted", "revised"), default="revised")
     parser.add_argument("--out", type=Path, default=here / "site" / "tei")
     parser.add_argument("--texts", type=Path, default=here / "edition" / "texts.json")
     parser.add_argument("--schema", type=Path, default=None, help="RELAX NG schema, e.g. schema/tei_all-4.12.0.rng")
     args = parser.parse_args()
     if args.out.resolve().is_relative_to(args.source.resolve()):
-        print("refusing to write into the source repository", file=sys.stderr)
+        print("refusing to write into the pipeline folder", file=sys.stderr)
         return 2
     try:
         errors = build(args.source, args.run, args.out, args.stage, args.texts, args.schema)

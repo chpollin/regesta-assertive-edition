@@ -1,0 +1,80 @@
+@prefix reg:  <https://example.org/regesta/ontology/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+reg:
+    rdfs:label "Regesten-Beziehungsontologie, Kernentwurf"@de ;
+    rdfs:comment "Draft RDFS extension. The namespace is provisional."@en ;
+    rdfs:seeAlso <https://cidoc-crm.org/html/cidoc_crm_v7.1.3.html> .
+
+reg:RelationshipState a rdfs:Class ;
+    rdfs:subClassOf crm:E2_Temporal_Entity ;
+    rdfs:label "Zeitlich bestehendes Verhältnis"@de ;
+    rdfs:comment "A social, economic or legal relationship holding over one contiguous temporal extent. Separate interrupted episodes. Mention dates do not determine its duration."@en .
+
+reg:Participation a rdfs:Class ;
+    rdfs:subClassOf crm:E1_CRM_Entity ;
+    rdfs:label "Kontextgebundene Beteiligtenrolle"@de ;
+    rdfs:comment "A reified association of one actor with one role in one temporal context. It is not an additional event and implies no agency or responsibility. No identity key is asserted."@en .
+
+reg:context a rdf:Property ;
+    rdfs:domain reg:Participation ;
+    rdfs:range crm:E2_Temporal_Entity ;
+    rdfs:label "hat Kontext"@de ;
+    rdfs:comment "The particular event or relationship state within which the role applies."@en .
+
+reg:actor a rdf:Property ;
+    rdfs:domain reg:Participation ;
+    rdfs:range crm:E39_Actor ;
+    rdfs:label "hat Akteur"@de ;
+    rdfs:comment "The person or collective actor bearing the role in this context."@en .
+
+reg:role a rdf:Property ;
+    rdfs:domain reg:Participation ;
+    rdfs:range crm:E55_Type ;
+    rdfs:label "hat Rolle"@de ;
+    rdfs:comment "The context-specific role. A controlled term must define its meaning in the relevant context."@en .
+
+reg:concerns a rdf:Property ;
+    rdfs:domain crm:E2_Temporal_Entity ;
+    rdfs:range crm:E1_CRM_Entity ;
+    rdfs:label "betrifft"@de ;
+    rdfs:comment "The concrete right, asset, performance or other object concerned. Its involvement does not establish ownership or valid entitlement."@en .
+
+reg:establishes a rdf:Property ;
+    rdfs:domain crm:E5_Event ;
+    rdfs:range reg:RelationshipState ;
+    rdfs:label "begründet Verhältnis"@de ;
+    rdfs:comment "The event brings this particular relationship state into existence. Confirmation alone does not imply establishment."@en .
+
+reg:terminates a rdf:Property ;
+    rdfs:domain crm:E5_Event ;
+    rdfs:range reg:RelationshipState ;
+    rdfs:label "beendet Verhältnis"@de ;
+    rdfs:comment "The event ends this particular relationship state. The terminating event need not be intentional."@en .
+
+reg:condition a rdf:Property ;
+    rdfs:domain crm:E2_Temporal_Entity ;
+    rdfs:range rdfs:Literal ;
+    rdfs:label "hat Geltungsbedingung"@de ;
+    rdfs:comment "A source-supported condition of the described phenomenon, retained as text. This draft provides no logical evaluation of the condition."@en .
+
+reg:exception a rdf:Property ;
+    rdfs:domain crm:E2_Temporal_Entity ;
+    rdfs:range rdfs:Literal ;
+    rdfs:label "hat Ausnahme"@de ;
+    rdfs:comment "A source-supported exception to the scope of the described phenomenon, retained as text. It must not be silently omitted."@en .
+
+reg:source a rdf:Property ;
+    rdfs:domain crm:E13_Attribute_Assignment ;
+    rdfs:range crm:E31_Document ;
+    rdfs:label "hat Textgrundlage"@de ;
+    rdfs:comment "The document supplying evidence for the recorded interpretation. This link alone asserts neither historical truth nor use of the document by a historical actor."@en .
+
+reg:evidence a rdf:Property ;
+    rdfs:domain crm:E13_Attribute_Assignment ;
+    rdfs:range rdfs:Literal ;
+    rdfs:label "hat Belegtext"@de ;
+    rdfs:comment "An exact textual passage supporting this interpretation. The document or passage identifier must preserve the source field and processing version."@en .
+

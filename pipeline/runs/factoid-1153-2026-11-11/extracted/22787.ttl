@@ -1,0 +1,140 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22787> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 160" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-O000567> a crm:E21_Person ;
+    rdfs:label "Ovdelhardus von Vivers" .
+
+<urn:regesta:actor:RI004-002-P000278:community> a crm:E74_Group ;
+    rdfs:label "Klosters Peterlingen" .
+
+<urn:regesta:actor:RI004-002-P000280:community> a crm:E74_Group ;
+    rdfs:label "Mönchen" .
+
+<urn:regesta:actor:22787:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seinen Vorgängern" .
+
+<urn:regesta:actor:22787:local:abt-von-cluny> a rf:FunctionalActor ;
+    rdfs:label "der Abt von Cluny und seine Nachfolger" .
+
+<urn:regesta:22787:right-vogtei-kerzers> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die Vogtei über den Hof des Klosters Peterlingen zu Kerzers" .
+
+<urn:regesta:22787:thing-hof-kerzers> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof des Klosters Peterlingen zu Kerzers" .
+
+<urn:regesta:22787:right-vogteinsetzung> a crm:E30_Right ;
+    crm:P2_has_type rv:Investiture ;
+    rdfs:label "Vorrecht, daß der Abt von Cluny und seine Nachfolger den von den Mönchen erwählten Vogt einzusetzen haben" .
+
+<urn:regesta:22787:thing-besitzstand> a crm:E18_Physical_Thing ;
+    rdfs:label "den zum Teil namentlich angeführten Besitzstand" .
+
+<urn:regesta:22787:judgment-vogtei-kerzers> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22787> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich spricht dem Ovdelhardus von Vivers auf Grund eines Fürstenspruches die Vogtei über den Hof des Klosters Peterlingen zu Kerzers (Chiètres; Kerters) ab" ] ;
+    rf:reference <urn:regesta:22787:judgment-vogtei-kerzers-judge> , <urn:regesta:22787:judgment-vogtei-kerzers-respondent> ;
+    rf:concerns <urn:regesta:22787:right-vogtei-kerzers> , <urn:regesta:22787:thing-hof-kerzers> ;
+    rf:ground "auf Grund eines Fürstenspruches" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22787:judgment-vogtei-kerzers-judge> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Judge ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22787:judgment-vogtei-kerzers-respondent> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-O000567> ;
+    rf:role rv:Respondent ;
+    rf:nameInSource "Ovdelhardus von Vivers" .
+
+<urn:regesta:22787:enactment-befreiung> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22787> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "befreit es von allen vogteirechtlichen Ansprüchen (aliquis aliquod ius advocatię sibi usurpare presumat)" ] ;
+    rf:reference <urn:regesta:22787:enactment-befreiung-grantor> ;
+    rf:concerns <urn:regesta:22787:thing-hof-kerzers> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22787:enactment-befreiung-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor .
+
+<urn:regesta:22787:grant-vorgaenger-vorrecht> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22787> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "das von seinen Vorgängern verliehene Vorrecht" ] ;
+    rf:reference <urn:regesta:22787:grant-vorgaenger-vorrecht-grantor> ;
+    rf:concerns <urn:regesta:22787:right-vogteinsetzung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22787:grant-vorgaenger-vorrecht-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22787:local:vorgaenger> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "seinen Vorgängern" .
+
+<urn:regesta:22787:provision-vogteinsetzung> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22787> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "daß der Abt von Cluny und seine Nachfolger den von den Mönchen erwählten Vogt einzusetzen haben" ] ;
+    rf:reference <urn:regesta:22787:provision-vogteinsetzung-abt> , <urn:regesta:22787:provision-vogteinsetzung-moenche> ;
+    rf:concerns <urn:regesta:22787:right-vogteinsetzung> ;
+    rf:partOf <urn:regesta:22787:grant-vorgaenger-vorrecht> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22787:provision-vogteinsetzung-abt> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22787:local:abt-von-cluny> ;
+    rf:role rv:RightHolder ;
+    rf:nameInSource "der Abt von Cluny und seine Nachfolger" .
+
+<urn:regesta:22787:provision-vogteinsetzung-moenche> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-P000280:community> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Mönchen" .
+
+<urn:regesta:22787:confirmation-vorrecht> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22787> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt dem Kloster das von seinen Vorgängern verliehene Vorrecht, daß der Abt von Cluny und seine Nachfolger den von den Mönchen erwählten Vogt einzusetzen haben" ] ;
+    rf:reference <urn:regesta:22787:confirmation-vorrecht-grantor> , <urn:regesta:22787:confirmation-vorrecht-recipient> ;
+    rf:concerns <urn:regesta:22787:right-vogteinsetzung> ;
+    rf:refersToAct <urn:regesta:22787:grant-vorgaenger-vorrecht> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22787:confirmation-vorrecht-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor .
+
+<urn:regesta:22787:confirmation-vorrecht-recipient> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-P000278:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Kloster" .
+
+<urn:regesta:22787:confirmation-besitzstand> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22787> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "verbrieft den zum Teil namentlich angeführten Besitzstand" ] ;
+    rf:reference <urn:regesta:22787:confirmation-besitzstand-grantor> ;
+    rf:concerns <urn:regesta:22787:thing-besitzstand> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22787:confirmation-besitzstand-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor .

@@ -1,0 +1,78 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22693> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ;
+    rdfs:label "Erzbischof Arnold von Köln" .
+
+<urn:regesta:actor:22693:local:andere-bischoefe> a crm:E74_Group ;
+    rdfs:label "anderer Bischöfe" .
+
+<urn:regesta:actor:22693:local:volk> a crm:E74_Group ;
+    rdfs:label "des Volkes" .
+
+<urn:regesta:actor:RI004-002-F000657> a crm:E21_Person ;
+    rdfs:label "der neue Bischof von Münster, der ebenfalls Friedrich heißt" .
+
+<urn:regesta:actor:22693:local:dieselben-bischoefe> a crm:E74_Group ;
+    rdfs:label "denselben Bischöfen" .
+
+<urn:regesta:22693:coronation> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22693> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich wird am Sonntag Letare Jerusalem (März 9) in der Marienkirche von Erzbischof Arnold von Köln unter Mitwirkung anderer Bischöfe nach Ablegung des herkömmlichen Krönungseides unter Akklamation des Volkes gesalbt, gekrönt und auf den Thron Karls des Großen gesetzt" ] ;
+    rf:qualifier "gesalbt, gekrönt und auf den Thron Karls des Großen gesetzt" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:role rv:Grantor ; rf:nameInSource "Erzbischof Arnold von Köln" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22693:local:andere-bischoefe> ; rf:role rv:Participant ; rf:nameInSource "anderer Bischöfe" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22693:local:volk> ; rf:role rv:Participant ; rf:nameInSource "des Volkes" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22693:consecration-muenster> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22693> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Am selben Tag wird von denselben Bischöfen auch der neue Bischof von Münster, der ebenfalls Friedrich heißt, geweiht" ] ;
+    rf:qualifier "geweiht" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000657> ; rf:role rv:Recipient ; rf:nameInSource "der neue Bischof von Münster, der ebenfalls Friedrich heißt" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22693:local:dieselben-bischoefe> ; rf:role rv:Grantor ; rf:nameInSource "denselben Bischöfen" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:actor:RI004-002-H001017> a crm:E21_Person ;
+    rdfs:label "dem Elekten Hillin von Trier" .
+
+<urn:regesta:actor:RI004-002-E000011> a crm:E21_Person ;
+    rdfs:label "Bischof Eberhard von Bamberg" .
+
+<urn:regesta:actor:RI004-002-A000294> a crm:E21_Person ;
+    rdfs:label "Abt Adam von Ebrach" .
+
+<urn:regesta:actor:RI004-002-E000589> a crm:E21_Person ;
+    rdfs:label "Papst Eugen (III.)" .
+
+<urn:regesta:22693:mission-legation> a rf:ActFactoid ;
+    rf:factoidType rv:Mission ;
+    rf:source <urn:regesta:record:22693> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Die Entsendung einer Legation, bestehend aus dem Elekten Hillin von Trier, Bischof Eberhard von Bamberg und Abt Adam von Ebrach (vgl. Reg. 72), an Papst Eugen (III.), die Stadt Rom und ganz Italien zur Anzeige der Wahl des neuen Königs wird beschlossen" ] ;
+    rf:qualifier "wird beschlossen" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001017> ; rf:role rv:Envoy ; rf:nameInSource "dem Elekten Hillin von Trier" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Envoy ; rf:nameInSource "Bischof Eberhard von Bamberg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000294> ; rf:role rv:Envoy ; rf:nameInSource "Abt Adam von Ebrach" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Addressee ; rf:nameInSource "Papst Eugen (III.)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .

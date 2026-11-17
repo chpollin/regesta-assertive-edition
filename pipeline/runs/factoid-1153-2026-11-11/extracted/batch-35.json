@@ -1,0 +1,64 @@
+{
+  "batch": 35,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35",
+  "records": [
+    {
+      "uid": "22768",
+      "status": "extracted",
+      "files": ["22768.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "No right type for river rights; 'Gerechtsame an den Flüssen Cervo und Sesia' typed with the top concept rv:UsageRights.",
+        "The diplomatic note 'Wiederholung des unvollendeten und unvollzogenen DH. IV. 293 a' (an unexecuted earlier draft of Heinrich IV.) is not modelled as an earlier act; the model has no way to express an unexecuted or incomplete act, and the record is marked spurious (†) in its identifier."
+      ]
+    },
+    {
+      "uid": "22769",
+      "status": "extracted",
+      "files": ["22769.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "Recipient 'bischöflichen Kirche von Speyer' identified with candidate RI004-002-S000970 (typed ort, label 'Bischöfliche Kirche St. Maria, Bistum') as community; the candidate is a place entry.",
+        "'seine Eltern', 'seine königlichen und kaiserlichen Vorfahren' and 'regno' are regest-local groups."
+      ],
+      "model_gaps": [
+        "No role for the person whose merits ground an act (Bischof Gunther, 'wegen der treuen Dienste'); recorded as rv:Participant plus rf:ground.",
+        "Seelgerät beneficiaries recorded with rv:Beneficiary; the model has no memorial or soul-gift type distinct from rv:Donation."
+      ]
+    },
+    {
+      "uid": "22770",
+      "status": "extracted",
+      "files": ["22770.ttl"],
+      "factoids": 7,
+      "unresolved_identities": [
+        "'Der Vogt' is modelled as a regest-local rf:FunctionalActor; the packet candidate RI004-002-E000288 (Ellwangen Kloster // Vogt) was not used because the passage names no individual holder.",
+        "The monastery of Ellwangen has no candidate of its own and is a regest-local group.",
+        "'des Abtes' in the Vogt provision is a functional actor; whether it means Abt Adalbert is not stated."
+      ],
+      "model_gaps": [
+        "'das Recht der Abteien Fulda und Reichenau' is a privileged status by reference to other abbeys; no right type fits, typed with the top concept rv:ChurchRights, and the reference abbeys (candidates RI004-002-F000805, RI004-002-R000396) cannot be linked as a standard of comparison.",
+        "No role for the actor whose wish conditions an act (Abt in 'nur auf Wunsch des Abtes'); recorded as rv:Participant plus rf:condition.",
+        "The Vogt's restricted court-holding and revenue are an enactment that limits a right; role rv:Obligor is an approximation, there is no role for the holder of a regulated right in an enactment.",
+        "'verbrieft' (Bannforst Virgunda) is ambiguous between grant and confirmation; recorded as rv:Grant with qualifier 'verbrieft'. No right type for forest ban; the Bannforst is modelled as a thing."
+      ]
+    },
+    {
+      "uid": "22771",
+      "status": "extracted",
+      "files": ["22771.ttl"],
+      "factoids": 6,
+      "unresolved_identities": [
+        "'Odo' identified with candidate RI004-002-O000483 (Otto/Odo, Schwiegersohn des Rudolf von Monteacuto) by name form and the stated relation.",
+        "'eius heredes' (heirs of the count) is a regest-local group."
+      ],
+      "model_gaps": [
+        "No right type for regalia or fodrum as royal rights; 'Regalien zu Castano und Lonate' typed rv:LordshipRights, 'Fodrum in der Grafschaft' typed rv:Revenue.",
+        "Scope of the relative clause is ambiguous: whether Rudolf gave the Burg Monteacuto together with the possessions or only the possessions; the earlier grant and the possession state both concern 'die Burg Monteacuto mit allen Besitzungen'.",
+        "'Besitzungen' are modelled as E18 things; the model has no type for an unspecified bundle of possessions and rights.",
+        "'nisi ante nostram vel successorum nostrorum celsitudinem' is kept as an exception literal; the future royal successors are not modelled as functional actors because no role fits a forum."
+      ]
+    }
+  ]
+}

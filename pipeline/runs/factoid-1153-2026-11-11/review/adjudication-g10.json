@@ -1,0 +1,231 @@
+{
+  "group": 10,
+  "adjudicator": "urn:regesta:agent:factoid-1153-2026-11-11:adjudication-g10",
+  "expert_accepted": false,
+  "basis": "Every warning and error and every note proposing a graph change in review-g10-A and review-g10-B was checked against summary_plain and the identity candidates of the packets 22813 to 22831 and 22844, the extracted Turtle files and the frozen contract factoid-2026-11-11 (regesta-core.ttl, vocabulary.ttl, shapes.ttl, annotation-guidelines.md, review.md, correct.md), with the run conventions of adjudications g1 to g8 for senders and summonses; validation/extracted.json lists no technical issue for any of these UIDs, so no validation decision is needed, and notes without a proposed change (22813 scope of Ludwig's grant, 22814, 22817, 22818, 22822 qualifier, 22824 designation type, 22825, 22828, 22830 Petitioner, 22831 daughter, 22844) stay as reviewer remarks.",
+  "decisions": [
+    {
+      "uids": ["22813"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22813:confirmation",
+      "finding": "The confirmation concerns the harbour installations, the Crau rights and the six castles, but its only selector ends at 'an Erzbischof Manasse'.",
+      "decision": "correct",
+      "reason": "The confirmed objects are enumerated after 'nämlich' ('nämlich die Hafenanlagen sowohl der Griechen ... und Salon'), and the confirmation's rf:concerns points to all of them; the guidelines require the evidence to support the whole factoid, so the enumeration needs its own selector.",
+      "instruction": "In 22813, add a second rf:evidence selector to <urn:regesta:22813:confirmation>: [ a oa:TextQuoteSelector ; oa:exact \"nämlich die Hafenanlagen sowohl der Griechen als auch anderer Völker (tam portus Grecorum quam aliarum gentium ad civitatem tuam venientium), alle Wasser- und Weiderechte auf der Plaine de la Crau (de lapidoso agro, qui vulgari tuo Crau nuncupatur) und die Kastelle Fos-sur-Mer (Fossis), Albaron, Vernègues (Aluernis), Alleins (Aualone), Mondragon (Monte Draconis) und Salon\" ]. Keep the existing selector and change nothing else."
+    },
+    {
+      "uids": ["22815"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22815:donation-bertha",
+      "finding": "Friedrich carries rv:Participant and Hugo rv:Representative although the passage coordinates them ('durch ihn und den Klostervogt').",
+      "decision": "keep",
+      "reason": "Hugo is named by the office 'Klostervogt', which grounds his acting for the monastery, so rv:Representative is supported; the passage gives the king no such capacity, and rv:Participant is the contract's safe role for him. The missing intermediary role for a donation made 'durch' someone is a model gap."
+    },
+    {
+      "uids": ["22815"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:actor:RI004-002-H001317",
+      "finding": "Optionally add an rv:OfficeHolding state for Hugo as 'Klostervogt'.",
+      "decision": "not_required",
+      "reason": "rv:OfficeHolding is defined for an office named 'wo das für die Aussage nötig ist'; the office is already carried by the actor label and the Representative role, and the regest states no separate claim about the office."
+    },
+    {
+      "uids": ["22816"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22816:dispute-unrecht",
+      "finding": "The wrong done to Stephan and the church is typed rv:Dispute, which stretches the vocabulary.",
+      "decision": "keep",
+      "reason": "'das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei' reports a conflict that a mediator tried to settle and that is to be brought before the king; rv:Dispute ('Streit oder Klage') with Bernhard as rv:Mediator is the nearest type and asserts no verdict. The injured parties stay rv:Participant because the wrongdoer is unnamed. The missing type for a suffered injury and the missing outcome property are model gaps."
+    },
+    {
+      "uids": ["22816"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22816:request",
+      "finding": "The request's content, that Wibald induce the king to remove the wrong, is lost; the selector stops before 'zu beseitigen' and the king is not referenced.",
+      "decision": "correct_conservatively",
+      "reason": "The selector ends mid-clause and does not carry what is requested ('den König veranlassen möge ... zu beseitigen'). Extending it is safe. Adding the king as rv:Participant is not: he is the party whose intervention is sought, not a participant in the request, and the guidelines keep the addressed and the intended apart; the missing role is a model gap.",
+      "instruction": "In 22816, replace the only rf:evidence selector of <urn:regesta:22816:request> by [ a oa:TextQuoteSelector ; oa:exact \"Bischof Stephan von Metz bittet Abt Wibald von Stablo , daß er den König veranlassen möge, das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei, zu beseitigen\" ]. Add no reference for the king. Record as model gap: no role for the party whose intervention a request seeks."
+    },
+    {
+      "uids": ["22819"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22819:mission-sicher",
+      "finding": "Optionally add an rv:Communication for Sicher's report of the failed mission.",
+      "decision": "not_required",
+      "reason": "'Friedrich erfährt von seinem Legaten Sicher ... vom Mißerfolg' reports learning of an outcome, not a legal or economic relation; the mission itself is recorded, and the outcome is not expressible."
+    },
+    {
+      "uids": ["22819"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22819:intercession-cremona-pavia",
+      "finding": "Optionally add Lodi as rv:Beneficiary of the intercession.",
+      "decision": "not_required",
+      "reason": "'für Lodi' names the city, which the factoid already carries as rf:concerns <urn:regesta:22819:place-lodi>; turning it into the community reference L000556 would rest on the candidate label 'Bewohner', not on the wording 'Lodi'."
+    },
+    {
+      "uids": ["22820"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22820:confirmation",
+      "finding": "The qualifier 'in verfälschter Fassung' is attached to Friedrich's confirmation, although it qualifies the inserted papal privilege as an editorial text-critical remark.",
+      "decision": "correct_conservatively",
+      "reason": "In 'das wörtlich inserierte Privileg Papst Lucius' II. von 1144 März 20 (in verfälschter Fassung, JL. 8530; ...)' the parenthesis describes the inserted text, not the act of confirming; moving it to the privilege would claim the papal act itself was falsified, which the passage does not say. Removal is the only safe fix, and the forgery status of the transmission is a model gap.",
+      "instruction": "In 22820, remove the triple rf:qualifier \"in verfälschter Fassung\" from <urn:regesta:22820:confirmation>. Do not add it to <urn:regesta:22820:privilege-lucius>. Change nothing else. Record as model gap: no way to mark an inserted text or a charter as forged (n. †193)."
+    },
+    {
+      "uids": ["22820"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22820:grant-death-dues",
+      "finding": "The four grants are linked by rf:partOf to the confirmation and carry the selector 'Friedrich bestätigt'.",
+      "decision": "keep",
+      "reason": "The subject of 'gewährt ihm' is the 'Friedrich' of 'Friedrich bestätigt', so the second selector is needed for the Grantor's nameInSource; rf:partOf is defined for secondary acts belonging to a main act of the same regest and does not make the grants content of the papal privilege."
+    },
+    {
+      "uids": ["22821"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22821:confirmation",
+      "finding": "'die Freiheit vom Reichsdienst' lies in the selector but has no right node.",
+      "decision": "model_gap",
+      "reason": "An E30_Right must carry a type from rv:RightTypes, whose groups are lordship and protection, church and office, and usage and revenue rights; an exemption from imperial service fits none of them, and placing it under rv:LordshipRights would assert a legal classification the vocabulary flags as expert judgement. The wording stays in the evidence; the missing exemption or immunity type is a gap."
+    },
+    {
+      "uids": ["22822"],
+      "source": ["review-g10-A"],
+      "subject": "urn:regesta:22822:mission",
+      "finding": "Optionally link the mission to the summons with rf:partOf.",
+      "decision": "not_required",
+      "reason": "The contract does not require the link; the summons already carries the second selector 'Friedrich schickt seine Boten', and the regest does not state the summons as a provision of the mission."
+    },
+    {
+      "uids": ["22823"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:22823:mission-manuel",
+      "finding": "Friedrich as sender of the envoys carries rv:Participant; the run handles senders inconsistently.",
+      "decision": "model_gap",
+      "reason": "The vocabulary has no sender role; rv:Participant is the contract's fallback, as adjudication g7 decided for 22754. No correction; the missing sender or initiator role is a gap."
+    },
+    {
+      "uids": ["22823"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:actor:22823:local:heinrich-von-bayern",
+      "finding": "Heinrich von Bayern stays regest-local although H000498 is the only remaining packet candidate; 22829 assigns H000498 to the same wording.",
+      "decision": "correct",
+      "reason": "The passage names 'der beiden Herzoge (Heinrich von Bayern und Heinrich von Sachsen )'; H000470 ('Herzog von Bayern und Sachsen') is assigned to 'Heinrich von Sachsen', and H000498 ('Herzog von Österreich, vorher von Bayern') in the same packet matches 'Heinrich von Bayern' by name and title. The identification uses only this packet's candidates and aligns the record with 22829.",
+      "instruction": "In 22823, replace the actor <urn:regesta:actor:22823:local:heinrich-von-bayern> by <urn:regesta:actor:RI004-002-H000498> a crm:E21_Person ; rdfs:label \"Heinrich von Bayern\", in its declaration and in the reference of <urn:regesta:22823:dispute-dukes> (role rv:Participant and nameInSource \"Heinrich von Bayern\" unchanged). Remove the local actor node and its two comment lines. Change nothing else."
+    },
+    {
+      "uids": ["22823"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:actor:RI004-002-W000509",
+      "finding": "Wilhelm's succession to his father Roger is not extracted; optionally an rv:OfficeHolding with qualifier 'successerat'.",
+      "decision": "model_gap",
+      "reason": "'qui patre suo Rogerio noviter defuncto successerat' names no office, so an rv:OfficeHolding would supply one the passage does not state; the act scheme has no succession type. The parenthood is recorded."
+    },
+    {
+      "uids": ["22824"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:22824:assurance-relations",
+      "finding": "The unnamed relative of Manuel is referenced as rv:Participant of the assurance although she is only the intended partner of a planned marriage.",
+      "decision": "correct",
+      "reason": "In 'die er durch seine Heirat mit einer Verwandten Manuels befestigen will' she appears only in an intention of Friedrich; she takes no part in the assurance. The kinship factoid already carries her, and rf:qualifier \"befestigen will\" keeps the planned character.",
+      "instruction": "In 22824, remove from <urn:regesta:22824:assurance-relations> the reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22824:local:verwandte-manuels> ; rf:role rv:Participant ; rf:nameInSource \"einer Verwandten Manuels\" ]. Keep the actor node, <urn:regesta:22824:kinship-relative-manuel>, the selectors, rf:ground and rf:qualifier unchanged."
+    },
+    {
+      "uids": ["22824"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:actor:RI004-002-M000374",
+      "finding": "Manuel's earlier letter sent through a messenger, and Friedrich's own letter of thanks, are not recorded as rv:Communication.",
+      "decision": "not_required",
+      "reason": "'für dessen durch einen Boten übersandtes Schreiben' states a letter without stated content or legal relation; the substantive content of Friedrich's letter is recorded as the assurance, the kinship and the designation. The run abstains from letters without in-scope content (22814), so neither is a central omission."
+    },
+    {
+      "uids": ["22826"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:22826:restitution-order",
+      "finding": "The order names no party in whose favour the restitution is ordered.",
+      "decision": "correct_conservatively",
+      "reason": "'das seinen Leuten entfremdete Lehen zurückzustellen' names the people to whom the fief is to be restored, which is central to the order. The possessive 'seinen' is not determinate in the passage, so identifying them with Wibald or his people would be a reading; a regest-local group in the source wording is safe.",
+      "instruction": "In 22826, declare <urn:regesta:actor:22826:local:leute> a crm:E74_Group ; rdfs:label \"seinen Leuten\". Add to <urn:regesta:22826:restitution-order> the reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22826:local:leute> ; rf:role rv:Beneficiary ; rf:nameInSource \"seinen Leuten\" ]. Do not identify the group with Wibald. Change nothing else."
+    },
+    {
+      "uids": ["22826"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:22826:restitution-order",
+      "finding": "The count palatine carries rv:Addressee; rv:Obligor is an alternative.",
+      "decision": "keep",
+      "reason": "'er habe dem Pfalzgrafen ... befohlen' directs an order to him; rv:Addressee fits its definition and, unlike rv:Obligor, does not imply that an obligation is established beyond the order."
+    },
+    {
+      "uids": ["22826"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:record:22826",
+      "finding": "The summons of Wibald to Köln for 1 November is not extracted.",
+      "decision": "not_required",
+      "reason": "'beruft ihn für den 1. November nach Köln' calls Wibald to a court gathering without a stated dispute; adjudications g5 and g6 treated such summonses to a court day as not required, and the run types a summons as rv:Dispute only where a legal proceeding against the summoned is stated."
+    },
+    {
+      "uids": ["22827"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:record:22827",
+      "finding": "Friedrich having the convicted knight beheaded is absent.",
+      "decision": "model_gap",
+      "reason": "'läßt den Ritter Bernhard ... enthaupten' reports a performed execution; rv:Enactment is defined as a legal provision whose performance is not established, and rv:Judgment as deciding a dispute, which the passage attributes to no one. Either type would change the meaning. The extractor already records the missing punishment type."
+    },
+    {
+      "uids": ["22827"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:22827:accusation",
+      "finding": "Count Hermann von Winzenburg, the murder victim, is not referenced although candidate H000860 exists.",
+      "decision": "not_required",
+      "reason": "Hermann appears only in the ground 'wegen des Mordes an Graf Hermann von Winzenburg', which the factoid keeps verbatim; he is not a party to the accusation, and an rv:Participant reference would assert involvement in it."
+    },
+    {
+      "uids": ["22827"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:22827:accusation",
+      "finding": "Accusation and conviction are one Dispute factoid; optionally split into rv:Dispute and rv:Judgment.",
+      "decision": "not_required",
+      "reason": "'angeklagt und überführt worden war' names no judging authority; the qualifier 'angeklagt und überführt' keeps the conviction in its wording, and a Judgment without a judge adds no expressible content."
+    },
+    {
+      "uids": ["22829"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:record:22829",
+      "finding": "Heinrich (von Bayern)'s renewed objection that he was not lawfully summoned and the adjournment of the matter are missing.",
+      "decision": "correct_conservatively",
+      "reason": "'Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein, wird die Angelegenheit, die der König wegen des Italienzuges beenden wollte, vertagt' is the legal core of the regest and expressible as rv:Dispute, the run's type for court proceedings (adjudication g7, 22762). The proposed roles go too far: the sentence does not name Heinrich (von Sachsen) as party, and 'beenden wollte' states an intention, not a judging act, so the king gets rv:Participant rather than rv:Judge.",
+      "instruction": "In 22829, add <urn:regesta:22829:adjournment> a rf:ActFactoid with rf:factoidType rv:Dispute, rf:source <urn:regesta:record:22829>, rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein, wird die Angelegenheit, die der König wegen des Italienzuges beenden wollte, vertagt\" ], references [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000498> ; rf:role rv:Participant ; rf:nameInSource \"Heinrich (von Bayern)\" ] and [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource \"der König\" ], rf:ground \"Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein\", rf:qualifier \"vertagt\", rf:refersToAct <urn:regesta:22829:summons>, prov:wasAttributedTo as the existing factoid and rf:verificationStatus rv:unchecked. Do not reference Heinrich (von Sachsen) and give no date. Record as model gaps: no act type for adjournment and no role for the presiding ruler."
+    },
+    {
+      "uids": ["22830"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:record:22830",
+      "finding": "Count Emicho von Leiningen's withholding of the gift is absent; proposed rv:Possession with qualifier 'vorenthält' or at minimum an rf:ground on the request.",
+      "decision": "model_gap",
+      "reason": "'das ihm Graf Emicho von Leiningen vorenthält' states withholding, not possession; rv:Possession would turn the withholding into a holding the regest does not assert. The clause is a relative clause on the gift, not a reason the regest gives for the request, so rf:ground would also be a reading. The missing type for withholding a thing from its entitled recipient is a gap; the clause remains evidence of the royal-gift factoid."
+    },
+    {
+      "uids": ["22830"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:22830:royal-gift",
+      "finding": "'des Königs' is identified with the shared ruler; a FunctionalActor is an alternative.",
+      "decision": "keep",
+      "reason": "The guidelines direct that the ruler uses the packet's shared ruler IRI, and the passage gives no sign of another king; the identification remains the producer's reading for the expert."
+    },
+    {
+      "uids": ["22831"],
+      "source": ["review-g10-B"],
+      "subject": "urn:regesta:record:22831",
+      "finding": "Wladislaw's reception into Friedrich's grace is not extracted.",
+      "decision": "model_gap",
+      "reason": "'wird von Friedrich in Gnaden aufgenommen' is a reconciliation; rv:ProtectionGrant would assert a protection the passage does not state. The missing type for reception into grace is a gap."
+    }
+  ],
+  "summary": {
+    "correct": 3,
+    "correct_conservatively": 4,
+    "keep": 5,
+    "not_required": 8,
+    "model_gap": 6,
+    "reject": 0
+  }
+}

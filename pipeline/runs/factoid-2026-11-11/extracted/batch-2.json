@@ -1,0 +1,60 @@
+{
+  "batch": 2,
+  "producer": "urn:regesta:agent:factoid-2026-11-11:extraction-batch-2",
+  "records": [
+    {
+      "uid": "22673",
+      "status": "extracted",
+      "files": ["22673.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "Only the act of marriage (rv:MarriageConclusion) is recorded; no separate rv:Marriage state was added, since the guidelines do not say whether a reported marriage act should also yield a state factoid."
+      ]
+    },
+    {
+      "uid": "22728",
+      "status": "extracted",
+      "files": ["22728.ttl"],
+      "factoids": 5,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "No role for the person who formulates a judgment without pronouncing it; Vitztum Ulrich is recorded as rv:Participant. The princes who pronounce the Fürstenspruch are named only inside that compound and get no reference.",
+        "No way to express that a right is excluded; the exclusion of 'weibliche Erbfolge' is kept only as rf:qualifier \"ausgeschlossen\" on the judgment.",
+        "The regest links the dispute to the confirmation only through 'auf Grund der Klage'; rf:refersToAct is reserved for later acts referring to earlier ones, so the link is kept only as rf:ground on the confirmation, and the judgment is not linked to the dispute.",
+        "No state type for death without male heir ('ohne männlichen Erben verstorbenen'); left out.",
+        "Hartwig's status as Klosterministeriale is not recorded; rv:OfficeHolding does not fit a dependent status and the lord of the paternal fief is not named, so the feudal-relationship factoid carries no rv:Lord."
+      ]
+    },
+    {
+      "uid": "25897",
+      "status": "extracted",
+      "files": ["25897.ttl"],
+      "factoids": 3,
+      "unresolved_identities": [
+        "Ein Bote Kaiser (Friedrichs): kept as regest-local rf:FunctionalActor; the packet's candidate RI004-002-F000473 is a collective register sub-entry for envoys of the emperor, not an individual."
+      ],
+      "model_gaps": [
+        "No role for the principal on whose behalf an envoy negotiates; the emperor is recorded as rv:Participant.",
+        "No role for the prospective partners of a negotiated marriage; Konrad and Berengaria are recorded as rv:Participant, not rv:Spouse.",
+        "No role for the host at whose court a negotiation takes place; König Alfons is not given a reference in the negotiation, only as parent of Berengaria.",
+        "The object of the negotiation is kept only as rf:qualifier \"eine Heirat\"."
+      ]
+    },
+    {
+      "uid": "23644",
+      "status": "extracted",
+      "files": ["23644.ttl"],
+      "factoids": 4,
+      "unresolved_identities": [
+        "Grafen Wido von Biandrate: no register candidate in the packet; regest-local actor.",
+        "Reich: regest-local group actor as lord of Konrad's fief."
+      ],
+      "model_gaps": [
+        "'er selbst vom Reich zu Lehen trägt' is read as referring to Konrad; the pronoun is a reading.",
+        "The heritable character of the enfeoffment is kept only as rf:qualifier \"als erbliche Lehen\"; no state factoid for Wido's resulting fief was created, because the regest states only the act.",
+        "Canale is not modelled as a separate crm:E53_Place; it stays within the label of the possessions."
+      ]
+    }
+  ]
+}

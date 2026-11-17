@@ -1,0 +1,123 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22695> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-R000431:community> a crm:E74_Group ;
+    rdfs:label "Kloster S. Remi zu Reims" .
+
+<urn:regesta:actor:RI004-002-H001291> a crm:E21_Person ;
+    rdfs:label "Abt Hugo" .
+
+<urn:regesta:actor:RI004-002-G000822> a crm:E21_Person ;
+    rdfs:label "Herzog Gottfried von Löwen" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrad (III.)" .
+
+<urn:regesta:actor:22695:local:moenche> a crm:E74_Group ;
+    rdfs:label "der Mönche" .
+
+<urn:regesta:22695:possessions> a crm:E18_Physical_Thing ;
+    rdfs:label "alle in seinem Reich gelegenen Besitzungen" .
+
+<urn:regesta:22695:leuth> a crm:E18_Physical_Thing ;
+    rdfs:label "das zu Meerssen gehörige Gut Leuth" .
+
+<urn:regesta:22695:right-vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die Vogtei" .
+
+<urn:regesta:22695:right-untervoegte> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "Einsetzung von Untervögten" .
+
+<urn:regesta:22695:right-pfruenden> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "die Meerssener Pfründen" .
+
+<urn:regesta:22695:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22695> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt dem Kloster S. Remi zu Reims (cenobii sancti Remigii confessoris et Francorum apostoli, quod est in regno Francorum Remis) auf Bitten von dessen Abt Hugo, der am zweiten Tag nach seiner Krönung in der Aachener Pfalz vor ihm erschienen ist, alle in seinem Reich gelegenen Besitzungen" ] ;
+    rf:concerns <urn:regesta:22695:possessions> ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ; rf:role rv:Recipient ; rf:nameInSource "Kloster S. Remi zu Reims" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001291> ; rf:role rv:Petitioner ; rf:nameInSource "Abt Hugo" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22695:confirmation-leuth> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22695> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "besonders das zu Meerssen gehörige Gut Leuth (Littam, que ad Marsnam pertinet)" ] ;
+    rf:partOf <urn:regesta:22695:confirmation> ;
+    rf:concerns <urn:regesta:22695:leuth> ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ; rf:role rv:Recipient ; rf:nameInSource "Kloster S. Remi zu Reims" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22695:restitution-leuth> a rf:ActFactoid ;
+    rf:factoidType rv:Restitution ;
+    rf:source <urn:regesta:record:22695> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Gut Leuth (Littam, que ad Marsnam pertinet), das Herzog Gottfried von Löwen erst nach Ermahnung durch König Konrad (III.) zurückgestellt hat" ] ;
+    rf:concerns <urn:regesta:22695:leuth> ;
+    rf:qualifier "erst nach Ermahnung durch König Konrad (III.)" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000822> ; rf:role rv:Grantor ; rf:nameInSource "Herzog Gottfried von Löwen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Participant ; rf:nameInSource "König Konrad (III.)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22695:enactment-vogtei> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22695> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "trifft eingehende Bestimmungen über die Vogtei" ] ;
+    rf:partOf <urn:regesta:22695:confirmation> ;
+    rf:concerns <urn:regesta:22695:right-vogtei> ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22695:prohibition-untervoegte> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22695> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "verbietet zusätzlich die Einsetzung von Untervögten" ] ;
+    rf:partOf <urn:regesta:22695:confirmation> ;
+    rf:concerns <urn:regesta:22695:right-untervoegte> ;
+    rf:qualifier "verbietet" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22695:provision-pfruenden> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22695> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "verordnet, daß die Meerssener Pfründen nach dem Tod ihrer Inhaber ohne Einspruch zur weiteren Verfügung der Mönche stehen sollen" ] ;
+    rf:partOf <urn:regesta:22695:confirmation> ;
+    rf:concerns <urn:regesta:22695:right-pfruenden> ;
+    rf:condition "nach dem Tod ihrer Inhaber" ;
+    rf:qualifier "ohne Einspruch" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22695:local:moenche> ; rf:role rv:Beneficiary ; rf:nameInSource "der Mönche" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .

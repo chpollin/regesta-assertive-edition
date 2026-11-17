@@ -1,0 +1,51 @@
+{
+  "batch": 49,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-49",
+  "records": [
+    {
+      "uid": "22825",
+      "status": "no_in_scope_claim",
+      "files": ["22825.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22826",
+      "status": "extracted",
+      "files": ["22826.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "'seinen Leuten': the possessor of 'seinen' (Wibald/Corvey or the Pfalzgraf) is ambiguous, so no beneficiary reference was set",
+        "'beruft ihn für den 1. November nach Köln': 'ihn' may be Wibald or the Pfalzgraf; the summons was not extracted"
+      ],
+      "model_gaps": [
+        "No act type for a command or order to restore; the order is recorded as rv:Enactment with qualifier 'befohlen', not as rv:Restitution, since performance is not stated",
+        "No role for the person commanded; the Pfalzgraf carries rv:Addressee"
+      ]
+    },
+    {
+      "uid": "22827",
+      "status": "extracted",
+      "files": ["22827.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "No act type for punishment or execution; Friedrich's ordered beheading of Bernhard ('läßt ... enthaupten') is not extracted",
+        "No victim role; Graf Hermann von Winzenburg appears only inside the rf:ground literal",
+        "No link property from the execution to the earlier accusation and conviction"
+      ]
+    },
+    {
+      "uid": "22828",
+      "status": "extracted",
+      "files": ["22828.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "No sender role for a mission; Manuel carries rv:Participant",
+        "Planned marriage negotiations have no factoid of their own; they are kept only in rf:ground of the mission, since no rv:Negotiation is stated as held"
+      ]
+    }
+  ]
+}

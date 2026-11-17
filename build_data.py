@@ -5,7 +5,7 @@
 """Build the JSON data of the assertive edition prototype from one regesta run.
 
 Regime: single-file script with inline dependencies. It reads one finished run of the
-sibling repository regesta-rdf-demo and never writes there.
+pipeline folder and never writes there.
 
 Data flow
     packets/<uid>.json            regest text, dating, locality, register candidates
@@ -28,7 +28,7 @@ run (rf: factoid classes present or not), never from the run name.
 
 Usage
     python build_data.py
-    python build_data.py --source ../regesta-rdf-demo --run pilot-2026-11-09 --out data
+    python build_data.py --source pipeline --run pilot-2026-11-09 --out data
     python build_data.py --run factoid-2026-11-11 --stage extracted --out <dir>
 
 Design decisions
@@ -2402,13 +2402,13 @@ def _write(path: Path, data: object) -> None:
 def main() -> int:
     here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--source", type=Path, default=here.parent / "regesta-rdf-demo")
-    parser.add_argument("--run", default="pilot-2026-11-09")
+    parser.add_argument("--source", type=Path, default=here / "pipeline")
+    parser.add_argument("--run", default="factoid-1153-2026-11-11")
     parser.add_argument("--out", type=Path, default=here / "data")
     parser.add_argument("--stage", choices=("extracted", "revised"), default="revised")
     args = parser.parse_args()
     if args.out.resolve().is_relative_to(args.source.resolve()):
-        print("refusing to write into the source repository", file=sys.stderr)
+        print("refusing to write into the pipeline folder", file=sys.stderr)
         return 2
     try:
         build(args.source, args.run, args.out, args.stage)

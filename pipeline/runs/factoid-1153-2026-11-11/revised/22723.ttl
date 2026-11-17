@@ -1,0 +1,49 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22723> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-E000010> a crm:E21_Person ;
+    rdfs:label "Erzbischof Eberhard von Salzburg" .
+
+<urn:regesta:actor:RI004-002-A000358:community> a crm:E74_Group ;
+    rdfs:label "Kloster Admont" .
+
+<urn:regesta:actor:RI004-002-O000442> a crm:E21_Person ;
+    rdfs:label "Pfalzgrafen Otto dem Älteren von Wittelsbach" .
+
+# Earlier act: the exchange of goods. The vocabulary has no exchange type; rv:Grant with the
+# exact word in rf:qualifier is the nearest concept and is reported as a model gap.
+<urn:regesta:22723:exchange> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:qualifier "Gütertausch" ;
+    rf:source <urn:regesta:record:22723> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "einen Gütertausch zwischen dem Kloster Admont und dem Pfalzgrafen Otto dem Älteren von Wittelsbach" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-A000358:community> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Kloster Admont" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-O000442> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "Pfalzgrafen Otto dem Älteren von Wittelsbach" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22723:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:refersToAct <urn:regesta:22723:exchange> ;
+    rf:source <urn:regesta:record:22723> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bestätigt Erzbischof Eberhard von Salzburg einen Gütertausch zwischen dem Kloster Admont und dem Pfalzgrafen Otto dem Älteren von Wittelsbach" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-E000010> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Erzbischof Eberhard von Salzburg" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-24> ;
+    rf:verificationStatus rv:unchecked .

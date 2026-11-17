@@ -1,0 +1,31 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix reg: <https://example.org/regesta/ontology/> .
+@prefix v: <https://example.org/regesta/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+<urn:regesta:record:134441> a crm:E31_Document .
+<urn:regesta:actor:RI004-002-E000587> a crm:E21_Person ; rdfs:label "Eufemia" .
+<urn:regesta:actor:RI004-002-H000615> a crm:E21_Person ; rdfs:label "Heinrich von Hegilen" .
+<urn:regesta:actor:RI004-002-B000513:community> a crm:E74_Group ; rdfs:label "Stift Berchtesgaden" .
+<urn:regesta:actor:RI004-002-E000342> a crm:E21_Person ; rdfs:label "Markgraf Engelbert von Kraiburg" .
+<urn:regesta:actor:RI004-002-O000481> a crm:E21_Person ; rdfs:label "Otto von Moos" .
+<urn:regesta:actor:RI004-002-E000440> a crm:E21_Person ; rdfs:label "Erbo von Biburg" .
+<urn:regesta:actor:RI004-002-H000788> a crm:E21_Person ; rdfs:label "Herbord von Hebingen" .
+<urn:regesta:134441:marriage> a reg:RelationshipState ; crm:P2_has_type v:Marriage ; crm:P3_has_note "Eufemia wird als Witwe Heinrichs bezeichnet; Dauer und Ende sind nicht datiert." .
+<urn:regesta:134441:a1> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:marriage> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:Marriage ; reg:source <urn:regesta:record:134441> ; reg:evidence "Eufemia, der Witwe Heinrichs von Hegilen" .
+<urn:regesta:134441:spouse1> a reg:Participation ; reg:context <urn:regesta:134441:marriage> ; reg:actor <urn:regesta:actor:RI004-002-E000587> ; reg:role v:Spouse .
+<urn:regesta:134441:spouse2> a reg:Participation ; reg:context <urn:regesta:134441:marriage> ; reg:actor <urn:regesta:actor:RI004-002-H000615> ; reg:role v:Spouse .
+<urn:regesta:134441:a2> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:spouse1> ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Spouse ; reg:source <urn:regesta:record:134441> ; reg:evidence "Eufemia, der Witwe Heinrichs von Hegilen" .
+<urn:regesta:134441:a3> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:spouse2> ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Spouse ; reg:source <urn:regesta:record:134441> ; reg:evidence "Eufemia, der Witwe Heinrichs von Hegilen" .
+<urn:regesta:134441:dispute> a crm:E5_Event ; crm:P2_has_type v:Dispute ; crm:P3_has_note "Streit um Saline und Salzpfanne zu Reichenhall." ; crm:P11_had_participant <urn:regesta:actor:RI004-002-E000587>, <urn:regesta:actor:RI004-002-B000513:community> .
+<urn:regesta:134441:a4> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:dispute> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:Dispute ; reg:source <urn:regesta:record:134441> ; reg:evidence "der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden unter Propst Heinrich um Saline und Salzpfanne zu Reichenhall" .
+<urn:regesta:134441:a5> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:dispute> ; crm:P177_assigned_property_of_type crm:P11_had_participant ; crm:P141_assigned <urn:regesta:actor:RI004-002-E000587> ; reg:source <urn:regesta:record:134441> ; reg:evidence "der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden" .
+<urn:regesta:134441:a6> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:dispute> ; crm:P177_assigned_property_of_type crm:P11_had_participant ; crm:P141_assigned <urn:regesta:actor:RI004-002-B000513:community> ; reg:source <urn:regesta:record:134441> ; reg:evidence "der Streit zwischen Eufemia, der Witwe Heinrichs von Hegilen, und dem Stift Berchtesgaden" .
+<urn:regesta:134441:judgment> a crm:E7_Activity ; crm:P2_has_type v:Judgment ; crm:P14_carried_out_by <urn:regesta:actor:RI004-002-E000342> ; crm:P3_has_note "Entscheidung zugunsten des Stiftes nach dem Zeugnis Ottos von Moos, Erbos von Biburg und Herbords von Hebingen." .
+<urn:regesta:134441:a7> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:judgment> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:Judgment ; reg:source <urn:regesta:record:134441> ; reg:evidence "durch Spruch des erwählten Richters Markgraf Engelbert von Kraiburg (Istrien) zugunsten des Stiftes entschieden" .
+<urn:regesta:134441:a8> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:judgment> ; crm:P177_assigned_property_of_type crm:P14_carried_out_by ; crm:P141_assigned <urn:regesta:actor:RI004-002-E000342> ; reg:source <urn:regesta:record:134441> ; reg:evidence "durch Spruch des erwählten Richters Markgraf Engelbert von Kraiburg (Istrien)" .
+<urn:regesta:134441:witness1> a reg:Participation ; reg:context <urn:regesta:134441:judgment> ; reg:actor <urn:regesta:actor:RI004-002-O000481> ; reg:role v:Witness .
+<urn:regesta:134441:witness2> a reg:Participation ; reg:context <urn:regesta:134441:judgment> ; reg:actor <urn:regesta:actor:RI004-002-E000440> ; reg:role v:Witness .
+<urn:regesta:134441:witness3> a reg:Participation ; reg:context <urn:regesta:134441:judgment> ; reg:actor <urn:regesta:actor:RI004-002-H000788> ; reg:role v:Witness .
+<urn:regesta:134441:a9> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:witness1> ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Witness ; reg:source <urn:regesta:record:134441> ; reg:evidence "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen" .
+<urn:regesta:134441:a10> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:witness2> ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Witness ; reg:source <urn:regesta:record:134441> ; reg:evidence "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen" .
+<urn:regesta:134441:a11> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:134441:witness3> ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Witness ; reg:source <urn:regesta:record:134441> ; reg:evidence "nach dem Zeugnis der Edelfreien Otto von Moos, Erbo von Biburg und Herbord von Hebingen" .

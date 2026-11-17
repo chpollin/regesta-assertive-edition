@@ -1,0 +1,178 @@
+{
+  "group": 3,
+  "adjudicator": "urn:regesta:agent:factoid-1153-2026-11-11:adjudication-g3",
+  "expert_accepted": false,
+  "basis": "Each finding of review-g3-A and review-g3-B was checked against summary_plain and the identity candidates of its packet, the extracted Turtle file and the frozen contract factoid-2026-11-11 (regesta-core.ttl, vocabulary.ttl, shapes.ttl, annotation-guidelines.md, review.md, correct.md); validation/extracted.json reports no technical issue for any UID of this group, so no validation decision arises.",
+  "decisions": [
+    {
+      "uids": ["22668"],
+      "source": ["review-g3-A"],
+      "subject": "urn:regesta:22668:treaty",
+      "finding": "Optional separate provision factoid for the joint action against King Roger, with the wording as rf:qualifier.",
+      "decision": "not_required",
+      "reason": "The provision 'der ein gemeinsames Vorgehen gegen König Roger von Sizilien vorsieht' is already inside the treaty's evidence and is not read as performed. A joint military action is near the out-of-scope military boundary, the vocabulary has no role for Roger, and rf:qualifier is for wording that qualifies type or time, not for the content of a provision.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22669"],
+      "source": ["review-g3-A"],
+      "subject": "22669",
+      "finding": "Abstention omits the central in-scope letter of Roger and the request for support of Welf.",
+      "decision": "correct_conservatively",
+      "reason": "The regest states 'König Roger von Sizilien gibt den Leuten Herzog Welfs einen Brief an Herzog Friedrich von Schwaben mit, in dem dieser zur Unterstützung des Welfen gegen König Konrad III. aufgefordert wird'. This is a communication and a request, not military movement, and rv:Communication, rv:Request, rv:Envoy, rv:Addressee and rv:Beneficiary express it. Roger (R000806, König von Sizilien) and Welf (W000272, Herzog) match packet candidates by name and title. Herzog Friedrich von Schwaben has no candidate in this packet and the shared ruler label 'Friedrich Barbarossa' does not carry the ducal title, so he gets a regest-local actor. The letter's sender has no specific role, so Roger is rv:Participant, and he is not made petitioner of the request because the passage is passive. Konrad III., against whom support is requested, has no role and stays unreferenced.",
+      "instruction": "Replace the abstention with two act factoids, keeping <urn:regesta:record:22669> a crm:E31_Document. (1) <urn:regesta:22669:letter> a rf:ActFactoid; rf:factoidType rv:Communication; rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"König Roger von Sizilien gibt den Leuten Herzog Welfs einen Brief an Herzog Friedrich von Schwaben mit\" ]; references <urn:regesta:22669:letter-ref-roger> (rf:actor <urn:regesta:actor:RI004-002-R000806>, rf:role rv:Participant, rf:nameInSource \"König Roger von Sizilien\"), <urn:regesta:22669:letter-ref-leute> (rf:actor <urn:regesta:actor:22669:local:leute-herzog-welfs>, rf:role rv:Envoy, rf:nameInSource \"den Leuten Herzog Welfs\"), <urn:regesta:22669:letter-ref-friedrich> (rf:actor <urn:regesta:actor:22669:local:herzog-friedrich-von-schwaben>, rf:role rv:Addressee, rf:nameInSource \"Herzog Friedrich von Schwaben\"). (2) <urn:regesta:22669:request> a rf:ActFactoid; rf:factoidType rv:Request; rf:partOf <urn:regesta:22669:letter>; rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"in dem dieser zur Unterstützung des Welfen gegen König Konrad III. aufgefordert wird\" ] , [ a oa:TextQuoteSelector ; oa:exact \"einen Brief an Herzog Friedrich von Schwaben\" ]; references <urn:regesta:22669:request-ref-friedrich> (rf:actor <urn:regesta:actor:22669:local:herzog-friedrich-von-schwaben>, rf:role rv:Addressee, rf:nameInSource \"dieser\"), <urn:regesta:22669:request-ref-welf> (rf:actor <urn:regesta:actor:RI004-002-W000272>, rf:role rv:Beneficiary, rf:nameInSource \"des Welfen\"). Both factoids: rf:source <urn:regesta:record:22669>, prov:wasAttributedTo the corrector IRI of the correction task, rf:verificationStatus rv:unchecked. Actor nodes: <urn:regesta:actor:RI004-002-R000806> a crm:E21_Person ; rdfs:label \"König Roger von Sizilien\"; <urn:regesta:actor:RI004-002-W000272> a crm:E21_Person ; rdfs:label \"Herzog Welfs\"; <urn:regesta:actor:22669:local:leute-herzog-welfs> a crm:E74_Group ; rdfs:label \"den Leuten Herzog Welfs\"; <urn:regesta:actor:22669:local:herzog-friedrich-von-schwaben> a crm:E21_Person ; rdfs:label \"Herzog Friedrich von Schwaben\". Do not reference Konrad III., do not assert that the support or delivery happened. Log as unresolved identity: possible identity of Herzog Friedrich von Schwaben with the shared ruler, not asserted. Log as model gaps: no sender role for a letter; no role for the party against whom requested support is directed."
+    },
+    {
+      "uids": ["22670"],
+      "source": ["review-g3-A"],
+      "subject": "22670",
+      "finding": "'von Konrad III. vorausgeschickt' could be read as rv:Mission; scope question.",
+      "decision": "keep",
+      "reason": "'Friedrich kehrt, von Konrad III. vorausgeschickt, vom Kreuzzug in die Heimat zurück' reports travel; the sending ahead belongs to the same return and states no kinship, economic or legal relation. The abstention follows the source boundary; whether such dispatches count as missions is an expert question.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22671"],
+      "source": ["review-g3-A"],
+      "subject": "urn:regesta:22671:execution",
+      "finding": "rv:Judgment with rv:Judge and rv:Respondent asserts a judicial proceeding the regest does not report.",
+      "decision": "correct_conservatively",
+      "reason": "'Friedrich läßt einige seiner Ministerialen wegen Störung des Landfriedens am Galgen hinrichten' names no dispute, trial or sentence, while rv:Judgment is defined as 'Entscheidung eines Streits durch Spruch' and Judge and Respondent are litigation roles. No act type of the contract expresses a punishment or execution, so any retyping would be a new reading. The extractor itself records the overreach as a model gap.",
+      "instruction": "Remove <urn:regesta:22671:execution>, its references <urn:regesta:22671:execution-ref-friedrich> and <urn:regesta:22671:execution-ref-ministerialen>, and the then unused actor nodes <urn:regesta:actor:RI004-002-F000471> and <urn:regesta:actor:22671:local:ministerialen>. Keep only <urn:regesta:record:22671> a crm:E31_Document. Log the record as no in-scope claim expressible under the contract and record the model gap: no act type for a punishment or execution, with the ground 'wegen Störung des Landfriedens' and the wording 'am Galgen hinrichten' left unrecorded for that reason."
+    },
+    {
+      "uids": ["22671"],
+      "source": ["review-g3-A"],
+      "subject": "urn:regesta:actor:22671:local:ministerialen",
+      "finding": "The dependency in 'seiner Ministerialen' is not captured.",
+      "decision": "model_gap",
+      "reason": "'einige seiner Ministerialen' states a service dependency; the state scheme has no ministeriality type and rv:FeudalRelationship would overreach.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22678"],
+      "source": ["review-g3-A"],
+      "subject": "urn:regesta:22678:request",
+      "finding": "The temporal limit of the requested postponement is lost.",
+      "decision": "correct",
+      "reason": "The request reads 'oder wenigstens eine Verschiebung der Entscheidung bewirken, bis er den König gesprochen habe'; the evidence stops at 'bewirken', so the bound of the alternative request is in neither the evidence nor a literal. It is a temporal qualification in exact wording, which rf:qualifier carries.",
+      "instruction": "In <urn:regesta:22678:request> replace the oa:exact of the evidence selector with \"Landgraf L(udwig II. von Thüringen) bittet Herzog F(riedrich von Schwaben) brieflich, er möge sich beim König für die Erhebung seines Verwandten Gebhard auf den Würzburger Bischofsstuhl einsetzen oder wenigstens eine Verschiebung der Entscheidung bewirken, bis er den König gesprochen habe\" and add rf:qualifier \"bis er den König gesprochen habe\" beside the existing \"brieflich\". Change nothing else."
+    },
+    {
+      "uids": ["22678"],
+      "source": ["review-g3-A"],
+      "subject": "urn:regesta:22678:request",
+      "finding": "The king, at whom the intercession aims, carries no reference.",
+      "decision": "model_gap",
+      "reason": "'er möge sich beim König ... einsetzen': the king is neither addressee nor beneficiary of the request, and the vocabulary has no role for the target of an intercession. Leaving him unreferenced is correct.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22679"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:22679:grant-endowment",
+      "finding": "rv:Donation instead of rv:Grant.",
+      "decision": "keep",
+      "reason": "'Übergabe der Ausstattung von Eußerthal an das dortige Kloster' does not state that the transfer was gratuitous, which rv:Donation presupposes. The broader rv:Grant with qualifier 'Übergabe' asserts no more than the passage.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22679"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:actor:RI004-002-R000015",
+      "finding": "Optional rv:OfficeHolding for Rapoto's later bishopric.",
+      "decision": "not_required",
+      "reason": "'Rapoto, den späteren Bischof von Speyer' names an office held later, not at the act; the guidelines restrict office holding to where the statement needs it, and the wording is kept in nameInSource and label.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22681", "22683", "22684", "22685", "22686"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:record:22681, urn:regesta:record:22683, urn:regesta:record:22684, urn:regesta:record:22685, urn:regesta:record:22686",
+      "finding": "Source document node of the abstention lacks an rdfs:label with the identifier.",
+      "decision": "not_required",
+      "reason": "The guidelines require an abstention file to contain the source document node typed crm:E31_Document; no label is required, and the reviewer itself calls it no semantic defect.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22682"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:22682:peace",
+      "finding": "rv:Negotiation understates a mediated peace with stated terms.",
+      "decision": "correct",
+      "reason": "'Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden, nach dem Welf ...' reports a peace brokered with its terms, while rv:Negotiation is defined as not establishing a conclusion, so the provisions hang off an act that by definition has no outcome. rv:Enactment, a settlement made without its observance being established, expresses it within the contract and matches the treatment of the treaty in 22668 of this group. The regest does not say that Konrad and Welf negotiated, so the parties take rv:Participant.",
+      "instruction": "In <urn:regesta:22682:peace> change rf:factoidType rv:Negotiation to rv:Enactment and add rf:qualifier \"Frieden\". Change rf:role of <urn:regesta:22682:peace-ref-konrad> and <urn:regesta:22682:peace-ref-welf> from rv:Negotiator to rv:Participant. Keep Friedrich as rv:Mediator, the evidence and the provisions' rf:partOf. Update the Turtle comment accordingly and log the model gap: no act type for a concluded peace settlement."
+    },
+    {
+      "uids": ["22682"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:22682:revenues",
+      "finding": "The revenue clause combines rf:partOf the peace with a performed rv:Grant.",
+      "decision": "correct_conservatively",
+      "reason": "'außerdem erhält Welf auch Reichseinkünfte mit dem Dorf Mertingen' stands in the same present-tense series as 'nach dem Welf die Gefangenen zurückerhält', which the candidate types as a provision; 'auch' links it to the terms of the peace. The guidelines make a provision an act of enactment that does not establish its performance, so the safe reading keeps rf:partOf and types the clause as a provision, without asserting a grantor or a completed transfer.",
+      "instruction": "In <urn:regesta:22682:revenues> change rf:factoidType rv:Grant to rv:Enactment; keep rf:partOf <urn:regesta:22682:peace>, the evidence and rf:concerns <urn:regesta:22682:reichseinkuenfte> , <urn:regesta:22682:mertingen>. Change rf:role of <urn:regesta:22682:revenues-ref-welf> from rv:Recipient to rv:Beneficiary. Keep the comment that the separate-act reading of 'außerdem' remains open for expert review."
+    },
+    {
+      "uids": ["22682"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:22682:no-fighting",
+      "finding": "Reciprocity 'dafür' between the two provisions is not represented.",
+      "decision": "model_gap",
+      "reason": "'und dafür künftig nicht mehr gegen den König kämpfen wird': the contract has no property for consideration between provisions, and rf:qualifier is for wording that qualifies type or time, not for a relation between factoids. The word stays in the evidence.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22682"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:22682:mertingen",
+      "finding": "Mertingen typed crm:E53_Place instead of crm:E18_Physical_Thing.",
+      "decision": "keep",
+      "reason": "'Reichseinkünfte mit dem Dorf Mertingen' can be read as the place the revenues attach to or as an estate; the regest does not decide it, and E53 with the label 'Dorf Mertingen' asserts nothing the passage does not carry.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22687"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:record:22687",
+      "finding": "Konrad's doubt about his son's succession and preference for his nephew have no factoid; optional rf:ground 'wegen seiner Jugend' on the entrustment.",
+      "decision": "model_gap",
+      "reason": "'an dessen Nachfolge im Königreich er wegen seiner Jugend zweifelt, weshalb er seinen Neffen dazu für geeigneter ansieht' is an assessment, neither an act nor a state of the schemes. 'wegen seiner Jugend' is the reason for the doubt, not for the entrustment, so attaching it as rf:ground of the entrustment would misattribute it. The extractor records the gap in its batch report.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22687"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:22687:advice-succession",
+      "finding": "Optional rf:qualifier 'wegen seiner Nachfolge' on the advice.",
+      "decision": "not_required",
+      "reason": "'wegen seiner Nachfolge' states the subject of the advised negotiations, not a qualification of type or time, and it stays in the evidence. The contract does not require it as a literal.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22687"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:22687:grant-reichsinsignien",
+      "finding": "Optional rf:qualifier 'auf den Tod erkrankten' on the handover of the insignia.",
+      "decision": "not_required",
+      "reason": "'von seinem auf den Tod erkrankten Oheim' describes Konrad's condition, not the type or time of the act, and is in the evidence already.",
+      "instruction": ""
+    },
+    {
+      "uids": ["22688"],
+      "source": ["review-g3-B"],
+      "subject": "urn:regesta:22688:exchange",
+      "finding": "Evidence selector starts inside the Latin parenthesis and omits 'wirkt'.",
+      "decision": "keep",
+      "reason": "The selector 'per manum Friderici, ... an einem Tauschgeschäft zwischen Graf Berthold von Plassenburg-Andechs und dem Zisterzienserkloster Langheim mit' is a contiguous substring that carries the exchange, both parties and Friedrich's per manum part; the guidelines ask for the shortest passage carrying type and roles.",
+      "instruction": ""
+    }
+  ],
+  "summary": {
+    "correct": 2,
+    "correct_conservatively": 3,
+    "keep": 4,
+    "not_required": 5,
+    "model_gap": 4,
+    "reject": 0
+  }
+}

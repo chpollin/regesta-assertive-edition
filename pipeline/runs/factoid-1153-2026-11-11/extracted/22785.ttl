@@ -1,0 +1,126 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22785> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 158" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:22785:local:abt-berthold> a crm:E21_Person ;
+    rdfs:label "Abt Berthold" .
+
+<urn:regesta:actor:RI004-002-A000702:community> a crm:E74_Group ;
+    rdfs:label "Klosters Altdorf" .
+
+<urn:regesta:actor:RI004-002-O000394> a crm:E21_Person ;
+    rdfs:label "Kaiser Otto (III.)" .
+
+<urn:regesta:actor:RI004-002-E000040> a crm:E21_Person ;
+    rdfs:label "Grafen Eberhard" .
+
+<urn:regesta:actor:22785:local:vorfahren-eberhard> a crm:E74_Group ;
+    rdfs:label "Vorfahren des Grafen Eberhard" .
+
+<urn:regesta:22785:right-markt> a crm:E30_Right ;
+    crm:P2_has_type rv:Market ;
+    rdfs:label "Markt" .
+
+<urn:regesta:22785:right-muenze> a crm:E30_Right ;
+    crm:P2_has_type rv:Minting ;
+    rdfs:label "Münze" .
+
+<urn:regesta:22785:right-schenke> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "Schenke" .
+
+<urn:regesta:22785:right-zoll> a crm:E30_Right ;
+    crm:P2_has_type rv:Toll ;
+    rdfs:label "Zoll" .
+
+<urn:regesta:22785:thing-stiftungen> a crm:E18_Physical_Thing ;
+    rdfs:label "alle anderen Stiftungen der Gründerfamilie" .
+
+<urn:regesta:22785:confirmation-altdorf> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22785> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Abt Berthold des von den Vorfahren des Grafen Eberhard auf seinem Allod gegründeten Klosters Altdorf im Elsaß" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Markt, Münze, Schenke und Zoll" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "und alle anderen Stiftungen der Gründerfamilie" ] ;
+    rf:reference <urn:regesta:22785:confirmation-altdorf-grantor> , <urn:regesta:22785:confirmation-altdorf-recipient> , <urn:regesta:22785:confirmation-altdorf-beneficiary> ;
+    rf:concerns <urn:regesta:22785:right-markt> , <urn:regesta:22785:right-muenze> , <urn:regesta:22785:right-schenke> , <urn:regesta:22785:right-zoll> , <urn:regesta:22785:thing-stiftungen> ;
+    rf:refersToAct <urn:regesta:22785:grant-otto-eberhard> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22785:confirmation-altdorf-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22785:confirmation-altdorf-recipient> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22785:local:abt-berthold> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Abt Berthold" .
+
+<urn:regesta:22785:confirmation-altdorf-beneficiary> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A000702:community> ;
+    rf:role rv:Beneficiary ;
+    rf:nameInSource "Klosters Altdorf" .
+
+<urn:regesta:22785:grant-otto-eberhard> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22785> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "wie sie einst Kaiser Otto (III.) dem Grafen Eberhard verliehen hatte" ] ;
+    rf:reference <urn:regesta:22785:grant-otto-eberhard-grantor> , <urn:regesta:22785:grant-otto-eberhard-recipient> ;
+    rf:concerns <urn:regesta:22785:right-markt> , <urn:regesta:22785:right-muenze> , <urn:regesta:22785:right-schenke> , <urn:regesta:22785:right-zoll> ;
+    rf:qualifier "einst" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22785:grant-otto-eberhard-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-O000394> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Kaiser Otto (III.)" .
+
+<urn:regesta:22785:grant-otto-eberhard-recipient> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000040> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Grafen Eberhard" .
+
+<urn:regesta:22785:enactment-koenigsbann> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22785> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Verstöße sollen mit dem gleichen Königsbann wie im Falle des Mainzer, Kölner und Straßburger Marktes geahndet werden" ] ;
+    rf:reference <urn:regesta:22785:enactment-koenigsbann-grantor> ;
+    rf:concerns <urn:regesta:22785:right-markt> , <urn:regesta:22785:right-muenze> , <urn:regesta:22785:right-schenke> , <urn:regesta:22785:right-zoll> ;
+    rf:partOf <urn:regesta:22785:confirmation-altdorf> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22785:enactment-koenigsbann-grantor> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor .
+
+<urn:regesta:22785:kinship-vorfahren-eberhard> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22785> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "von den Vorfahren des Grafen Eberhard" ] ;
+    rf:reference <urn:regesta:22785:kinship-vorfahren-eberhard-ancestors> , <urn:regesta:22785:kinship-vorfahren-eberhard-eberhard> ;
+    rf:qualifier "Vorfahren" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-39> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22785:kinship-vorfahren-eberhard-ancestors> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22785:local:vorfahren-eberhard> ;
+    rf:role rv:Kin ;
+    rf:nameInSource "Vorfahren" .
+
+<urn:regesta:22785:kinship-vorfahren-eberhard-eberhard> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000040> ;
+    rf:role rv:Kin ;
+    rf:nameInSource "Grafen Eberhard" .

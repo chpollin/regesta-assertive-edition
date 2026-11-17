@@ -1,0 +1,254 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g3-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22679",
+      "coverage_note": "The handover of the endowment by Rapoto and his two brothers to the monastery before King Konrad and the two stated brother relations are captured with correct identifications from this packet. Friedrich's witness role is rightly left out. Remaining points are vocabulary choices and one unrecorded office mention.",
+      "findings": [
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22679:grant-endowment",
+          "description": "The handover of an endowment (Ausstattung) to a monastery is a gratuitous transfer to a church, which the narrower rv:Donation covers; rv:Grant is correct but less specific.",
+          "evidence_quote": "Übergabe der Ausstattung von Eußerthal an das dortige Kloster",
+          "proposed_correction": "Consider rv:Donation instead of rv:Grant."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22679:ref-grant-konrad",
+          "description": "King Konrad is the ruler before whom the handover is performed. rv:Participant is the only available fit; the vocabulary has no role for the authority before whom an act takes place.",
+          "evidence_quote": "vor König Konrad vollzogenen Übergabe",
+          "proposed_correction": "Keep rv:Participant; record the missing role as model gap."
+        },
+        {
+          "category": "omission",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-R000015",
+          "description": "Rapoto's later office is kept only in the name literal. An rv:OfficeHolding factoid with rf:qualifier \"späteren\" would be expressible, but the guidelines restrict office holding to where the statement needs it, so leaving it out is defensible.",
+          "evidence_quote": "Rapoto, den späteren Bischof von Speyer",
+          "proposed_correction": "Optional: add an rv:OfficeHolding state factoid with rf:qualifier \"späteren\", without dating it."
+        },
+        {
+          "category": "concerns",
+          "severity": "note",
+          "subject": "urn:regesta:22679:ausstattung",
+          "description": "The endowment is typed crm:E18_Physical_Thing. The regest gives no content of the Ausstattung, which may comprise rights as well as land; the type is a reading, though the contract offers nothing better.",
+          "evidence_quote": "Ausstattung von Eußerthal",
+          "proposed_correction": "Keep, or note that the composition of the endowment is not stated."
+        }
+      ],
+      "model_gaps": [
+        "No role for the ruler or authority before whom an act is performed (coram rege).",
+        "No act or role for attesting a transaction outside a dispute; Friedrich's witness role cannot be recorded even where the regest centres on it."
+      ]
+    },
+    {
+      "uid": "22680",
+      "coverage_note": "Abstention. The regest states only that Friedrich is named as witness in a charter whose content it does not give. Witness mentions are out of scope (rv:Witness excludes charter witness lists), and no kinship, economic or legal relation is stated. The abstention is justified.",
+      "findings": [],
+      "model_gaps": [
+        "The existence of a royal charter for a named recipient (DK. III. 246 for St. Walburg) cannot be recorded without stating its content."
+      ]
+    },
+    {
+      "uid": "22681",
+      "coverage_note": "Abstention. The regest states only that Friedrich is named as witness in a charter whose content it does not give. Witness mentions are out of scope (rv:Witness excludes charter witness lists), and no kinship, economic or legal relation is stated. The abstention is justified.",
+      "findings": [
+        {
+          "category": "document-node",
+          "severity": "note",
+          "subject": "urn:regesta:record:22681",
+          "description": "The source document node carries no rdfs:label with the identifier, unlike 22680. Not a semantic defect.",
+          "evidence_quote": "Friedrich, Herzog von Schwaben, wird als Zeuge in DK. III. 255",
+          "proposed_correction": "Add rdfs:label \"RI IV,2,1 n. 54\" for consistency."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22682",
+      "coverage_note": "Mediation, both peace provisions and the revenue grant are extracted, and Friedrich, Konrad and Welf are correctly identified. The typing of the peace understates what the regest reports, and the revenue clause combines a performed grant with membership in the peace.",
+      "findings": [
+        {
+          "category": "act-type",
+          "severity": "warning",
+          "subject": "urn:regesta:22682:peace",
+          "description": "The regest reports a peace mediated with stated terms, not merely a negotiation. rv:Negotiation is defined as not establishing a conclusion, so the factoid loses that a peace was reached, and the provisions then hang off an act that by definition has no outcome. rv:Enactment (a legal settlement made) would express the concluded peace within the contract; Friedrich as rv:Mediator fits either type.",
+          "evidence_quote": "Friedrich vermittelt zwischen König Konrad (III.) und Herzog Welf (VI.) einen Frieden",
+          "proposed_correction": "Type the peace as rv:Enactment with rf:qualifier \"Frieden\", keep Friedrich as rv:Mediator and Konrad and Welf as parties; report the missing peace-settlement type as model gap."
+        },
+        {
+          "category": "provision-read-as-performance",
+          "severity": "warning",
+          "subject": "urn:regesta:22682:revenues",
+          "description": "The revenue clause is attached by rf:partOf to the peace yet typed as a performed rv:Grant, while the two other terms of the same peace are rv:Enactment. Either it is a term of the peace, then it is a provision (rv:Enactment), or it is a separate grant introduced by außerdem, then rf:partOf overreaches. The candidate's own comment marks the question as unresolved, but the triples assert one reading.",
+          "evidence_quote": "außerdem erhält Welf auch Reichseinkünfte mit dem Dorf Mertingen",
+          "proposed_correction": "Drop rf:partOf and keep a separate rv:Grant, or keep rf:partOf and type it rv:Enactment; do not combine both."
+        },
+        {
+          "category": "lost-relation",
+          "severity": "note",
+          "subject": "urn:regesta:22682:no-fighting",
+          "description": "The reciprocity (dafür) between the return of the prisoners and Welf's undertaking is only implicit in the shared evidence span. The contract has no property linking two provisions as consideration.",
+          "evidence_quote": "nach dem Welf die Gefangenen zurückerhält und dafür künftig nicht mehr gegen den König kämpfen wird",
+          "proposed_correction": "Optionally keep rf:qualifier \"dafür\"; report as model gap."
+        },
+        {
+          "category": "concerns",
+          "severity": "note",
+          "subject": "urn:regesta:22682:mertingen",
+          "description": "Mertingen is typed crm:E53_Place, while the regest has Welf receive the village together with the revenues, as an object of transfer. A crm:E18_Physical_Thing for the village would be closer.",
+          "evidence_quote": "Reichseinkünfte mit dem Dorf Mertingen",
+          "proposed_correction": "Type the village as crm:E18_Physical_Thing labelled \"Dorf Mertingen\"."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a concluded peace or settlement.",
+        "No relation for consideration between provisions (one term in return for another)."
+      ]
+    },
+    {
+      "uid": "22683",
+      "coverage_note": "Abstention. The regest states only that Friedrich is named as witness in a charter whose content it does not give. Witness mentions are out of scope (rv:Witness excludes charter witness lists), and no kinship, economic or legal relation is stated. The abstention is justified.",
+      "findings": [
+        {
+          "category": "document-node",
+          "severity": "note",
+          "subject": "urn:regesta:record:22683",
+          "description": "Source document node without rdfs:label. Not a semantic defect.",
+          "evidence_quote": "Friedrich, Herzog von Schwaben, wird als Zeuge in DK. III. 267",
+          "proposed_correction": "Add rdfs:label \"RI IV,2,1 n. 56\"."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22684",
+      "coverage_note": "Abstention. The regest states only that Friedrich is named as witness in a charter whose content it does not give. Witness mentions are out of scope (rv:Witness excludes charter witness lists), and no kinship, economic or legal relation is stated. The abstention is justified.",
+      "findings": [
+        {
+          "category": "document-node",
+          "severity": "note",
+          "subject": "urn:regesta:record:22684",
+          "description": "Source document node without rdfs:label. Not a semantic defect.",
+          "evidence_quote": "Friedrich, Herzog von Schwaben, wird als Zeuge in DK. III. 268",
+          "proposed_correction": "Add rdfs:label \"RI IV,2,1 n. 57\"."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22685",
+      "coverage_note": "Abstention. The regest states only that Friedrich is named as witness in a charter whose content it does not give. Witness mentions are out of scope (rv:Witness excludes charter witness lists), and no kinship, economic or legal relation is stated. The abstention is justified.",
+      "findings": [
+        {
+          "category": "document-node",
+          "severity": "note",
+          "subject": "urn:regesta:record:22685",
+          "description": "Source document node without rdfs:label. Not a semantic defect.",
+          "evidence_quote": "Friedrich, Herzog von Schwaben, wird als Zeuge in DK. III. 269",
+          "proposed_correction": "Add rdfs:label \"RI IV,2,1 n. 58\"."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22686",
+      "coverage_note": "Abstention. The regest states only that Friedrich is named as witness in a charter whose content it does not give. Witness mentions are out of scope (rv:Witness excludes charter witness lists), and no kinship, economic or legal relation is stated. The abstention is justified. The regest also states that Heinrich (der Löwe) issued a charter for Stift Wilten; without its content this is no in-scope act, so the abstention holds.",
+      "findings": [
+        {
+          "category": "document-node",
+          "severity": "note",
+          "subject": "urn:regesta:record:22686",
+          "description": "Source document node without rdfs:label. Not a semantic defect.",
+          "evidence_quote": "in einer Urkunde Herzog Heinrichs (des Löwen) von Sachsen für das Stift Wilten",
+          "proposed_correction": "Add rdfs:label \"RI IV,2,1 n. 59\"."
+        }
+      ],
+      "model_gaps": [
+        "An issued charter of a third party for a named recipient, without content, has no in-scope representation."
+      ]
+    },
+    {
+      "uid": "22687",
+      "coverage_note": "Kinship (Oheim and Neffe), the handover of the insignia, Konrad's parenthood of the young Friedrich, the entrustment and the advice are captured with correct identifications from this packet. Konrad's judgment on the succession is not represented, and two acts rest on stretched act types.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "urn:regesta:record:22687",
+          "description": "The regest's central political statement, that Konrad doubts his son's succession because of his youth and considers his nephew more suitable, has no factoid. As an assessment rather than an act or state it falls outside the act and state schemes, so this is mainly a model gap rather than an extraction error; but the ground wegen seiner Jugend could have been kept as rf:ground on a related factoid, and the file records the omission nowhere.",
+          "evidence_quote": "an dessen Nachfolge im Königreich er wegen seiner Jugend zweifelt, weshalb er seinen Neffen dazu für geeigneter ansieht",
+          "proposed_correction": "Record as model gap (no type for a stated preference or designation of a successor); optionally add rf:ground \"wegen seiner Jugend\" to the entrustment factoid if the expert reads the doubt as its reason."
+        },
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22687:entrustment-son",
+          "description": "Entrusting the young son is typed rv:Appointment (Beauftragung mit einer Aufgabe) with Konrad as rv:Grantor and Friedrich as rv:Recipient. This is a stretch the candidate flags itself; the son as rv:Participant is acceptable. Within the contract it is a reasonable provisional choice.",
+          "evidence_quote": "dieser vertraut ihm seinen noch kleinen Sohn Friedrich an",
+          "proposed_correction": "Keep provisionally; record entrustment or guardianship as model gap."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22687:advice-succession",
+          "description": "Advice is typed rv:Request with Konrad as rv:Petitioner. rv:Petitioner is defined as the one at whose request an act happens, so it fits the advising party only loosely; the purpose wegen seiner Nachfolge is not kept. rv:Addressee for Friedrich and the refusal to infer that negotiations took place are correct.",
+          "evidence_quote": "Konrad rät diesem, wegen seiner Nachfolge mit den Fürsten in Unterhandlungen zu treten",
+          "proposed_correction": "Keep rv:Request provisionally; optionally add rf:qualifier \"wegen seiner Nachfolge\"; record advice as model gap."
+        },
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22687:grant-reichsinsignien",
+          "description": "The handover of the insignia by the dying king is typed rv:Grant. The regest does not say whether a right is transferred or the objects are handed over; the type is acceptable, but rf:qualifier \"auf den Tod erkrankten\" would keep the circumstance that frames the act.",
+          "evidence_quote": "Friedrich erhält von seinem auf den Tod erkrankten Oheim, König Konrad (III.), die Reichsinsignien",
+          "proposed_correction": "Optional: add the circumstance as rf:qualifier."
+        }
+      ],
+      "model_gaps": [
+        "No type for a stated preference, doubt or designation regarding succession.",
+        "No act type for entrusting a person into another's care (guardianship).",
+        "No act type for advice or counsel distinct from a request."
+      ]
+    },
+    {
+      "uid": "22688",
+      "coverage_note": "The consultation with the two bishops, Friedrich's participation in the exchange and his ducal office are captured with correct identifications from this packet. Typing rests on provisional choices the contract forces; no unsupported factoid found.",
+      "findings": [
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22688:exchange",
+          "description": "The exchange is typed rv:Grant, whose definition presupposes a one-directional transfer. With both parties as rv:Participant no direction is asserted, and the qualifier keeps Tauschgeschäft, so the reading stays within the passage. Friedrich's per manum role is rendered as rv:Mediator; rv:Representative would be equally defensible.",
+          "evidence_quote": "an einem Tauschgeschäft zwischen Graf Berthold von Plassenburg-Andechs und dem Zisterzienserkloster Langheim mit",
+          "proposed_correction": "Keep provisionally; record exchange and intermediary (per manum) as model gaps."
+        },
+        {
+          "category": "evidence",
+          "severity": "note",
+          "subject": "urn:regesta:22688:exchange",
+          "description": "The evidence selector starts inside the Latin parenthesis and omits the verb wirkt that carries Friedrich's participation; the support is complete only together with the office factoid's span.",
+          "evidence_quote": "wirkt noch als Herzog von Schwaben (per manum Friderici, tunc strenui ducis postea gloriosi Romanorum regis) an einem Tauschgeschäft",
+          "proposed_correction": "Use a selector beginning at \"wirkt noch als Herzog von Schwaben\"."
+        },
+        {
+          "category": "literal-use",
+          "severity": "note",
+          "subject": "urn:regesta:22688:office-duke",
+          "description": "rf:qualifier \"Herzog von Schwaben\" names the office itself rather than qualifying type or time; the contract has no slot for the office. The temporal noch is correctly kept, and the later kingship (postea ... regis) is rightly not extracted as a state of this date.",
+          "evidence_quote": "wirkt noch als Herzog von Schwaben",
+          "proposed_correction": "Keep; report the missing office slot as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for an exchange.",
+        "No role for acting as intermediary or through whose hand (per manum) a transaction is performed.",
+        "No property naming the office in an rv:OfficeHolding factoid.",
+        "No act type for a meeting or consultation."
+      ]
+    }
+  ]
+}

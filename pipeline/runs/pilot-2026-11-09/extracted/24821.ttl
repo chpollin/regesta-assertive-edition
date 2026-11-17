@@ -1,0 +1,15 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix reg: <https://example.org/regesta/ontology/> .
+@prefix v: <https://example.org/regesta/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+<urn:regesta:record:24821> a crm:E31_Document .
+<urn:regesta:actor:RI004-002-P000579> a crm:E21_Person ; rdfs:label "Erzbischof Philipp von Köln" .
+<urn:regesta:actor:RI004-002-E000343> a crm:E21_Person ; rdfs:label "Graf Engelbert von Berg" .
+<urn:regesta:24821:pledge> a crm:E7_Activity ; crm:P2_has_type v:Pledge ; crm:P3_has_note "Höfe des Erzstifts zu Hilden und Elberfeld; 400 Mark Silber; zur Deckung seiner Aufwendungen für die Reichsheerfahrt nach Italien." .
+<urn:regesta:24821:a1> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:24821:pledge> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:Pledge ; reg:source <urn:regesta:record:24821> ; reg:evidence "die Höfe des Erzstifts zu Hilden und Elberfeld (Helede et Elberuelde) für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat" .
+<urn:regesta:24821:pledger> a reg:Participation ; reg:context <urn:regesta:24821:pledge> ; reg:actor <urn:regesta:actor:RI004-002-P000579> ; reg:role v:Pledgor .
+<urn:regesta:24821:a2> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:24821:pledger> ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Pledgor ; reg:source <urn:regesta:record:24821> ; reg:evidence "Erzbischof Philipp von Köln auf dessen bei Hofe vorgetragene Bitten nachträglich, daß er zur Deckung seiner Aufwendungen für die Reichsheerfahrt nach Italien (pro necessitate perficiendę expeditionis, ad quam nostro fuit invitatus precepto) die Höfe des Erzstifts zu Hilden und Elberfeld (Helede et Elberuelde) für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat" .
+<urn:regesta:24821:pledgee> a reg:Participation ; reg:context <urn:regesta:24821:pledge> ; reg:actor <urn:regesta:actor:RI004-002-E000343> ; reg:role v:Pledgee .
+<urn:regesta:24821:a3> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:24821:pledgee> ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Pledgee ; reg:source <urn:regesta:record:24821> ; reg:evidence "für 400 Mark Silber an Graf Engelbert von Berg verpfändet hat" .
+<urn:regesta:24821:confirmation> a crm:E7_Activity ; crm:P2_has_type v:RightConfirmation ; crm:P3_has_note "Nachträgliche Bestätigung der Verpfändung und Zusicherung der freien Verfügung an den Grafen und seine Erben." ; reg:condition "bis zu deren Einlösung" .
+<urn:regesta:24821:a4> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:24821:confirmation> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:RightConfirmation ; reg:source <urn:regesta:record:24821> ; reg:evidence "sichert dem Grafen und seinen Erben die freie Verfügung über diese Pfandschaften bis zu deren Einlösung zu" .

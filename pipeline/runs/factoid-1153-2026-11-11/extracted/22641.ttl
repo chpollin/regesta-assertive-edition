@@ -1,0 +1,35 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22641> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 14" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-F000681> a crm:E21_Person ;
+    rdfs:label "Herzog Friedrich (II.) von Schwaben" .
+
+# The witness mention in DK. III. 128 is a formulaic witness list and stays out of scope.
+<urn:regesta:22641:parenthood> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22641> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich wird neben seinem Vater, Herzog Friedrich (II.) von Schwaben" ] ;
+    rf:reference <urn:regesta:22641:parenthood-ref-parent> , <urn:regesta:22641:parenthood-ref-child> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22641:parenthood-ref-parent> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000681> ;
+    rf:role rv:Parent ;
+    rf:nameInSource "Herzog Friedrich (II.) von Schwaben" .
+
+<urn:regesta:22641:parenthood-ref-child> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Child ;
+    rf:nameInSource "Friedrich" .

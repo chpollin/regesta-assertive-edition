@@ -1,0 +1,55 @@
+{
+  "batch": 19,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19",
+  "records": [
+    {
+      "uid": "22703",
+      "status": "no_in_scope_claim",
+      "files": ["22703.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22704",
+      "status": "no_in_scope_claim",
+      "files": ["22704.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22705",
+      "status": "extracted",
+      "files": ["22705.ttl"],
+      "factoids": 7,
+      "unresolved_identities": [
+        "'dessen Kirche' (Cologne church as possessor of Hof Bendorf) has no register candidate; local group IRI urn:regesta:actor:22705:local:kirche-koeln.",
+        "'der Fürsten' in the confirmation are unnamed; local group IRI urn:regesta:actor:22705:local:fuersten.",
+        "The pope named only in the Latin quotation (Eugenii secundi ... pontificis) and as 'päpstlichen Gewalt' has no candidate and is not referenced; his authority is kept as the qualifier wording only."
+      ],
+      "model_gaps": [
+        "Founding relation ('ihrem Gründer, Pfalzgraf Heinrich') has no act or state type; not recorded beyond the donation.",
+        "Role of Konrad III. in the earlier Hofgericht judgment ('unter Konrad III.') is recorded as Participant, because 'unter' does not establish him as judge.",
+        "No property for the authority basis of an act; 'kraft seiner und der päpstlichen Gewalt' is kept in rf:qualifier rather than rf:ground.",
+        "The regest says the court belongs to the Cologne church and was donated to Laach by its founder; the model cannot express the relation between these tenures (e.g. a fief or a superior right), so both are recorded side by side without a link.",
+        "The payment is typed Payment from the reported compensation 'durch die Zahlung von 60 Mark entschädigt'; no compensation type exists."
+      ]
+    },
+    {
+      "uid": "22706",
+      "status": "extracted",
+      "files": ["22706.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "'seines Vorgängers Friedrich' (Arnold's predecessor as archbishop) has no register candidate; local person IRI urn:regesta:actor:22706:local:vorgaenger-friedrich.",
+        "The princes who pronounce the 'Fürstenspruch' are not named; local group IRI urn:regesta:actor:22706:local:fuersten, with nameInSource 'Fürstenspruch' as the only wording."
+      ],
+      "model_gaps": [
+        "No act type for an unspecified alienation ('Veräußerungen'); typed with the top concept Grant and the exact word kept in rf:qualifier.",
+        "No right type or status for inalienability ('Unveräußerlichkeit'); kept as qualifier of the judgment, with the Tafelgüter as the concerned thing.",
+        "The predecessor relation in office ('seines Vorgängers') has no state type and is not recorded."
+      ]
+    }
+  ]
+}

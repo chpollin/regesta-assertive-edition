@@ -1,0 +1,36 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22756> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 129" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-F000280> a crm:E21_Person ;
+    rdfs:label "Folkwin" .
+<urn:regesta:actor:RI004-002-W000454> a crm:E21_Person ;
+    rdfs:label "Widekind von Schwalenberg" .
+<urn:regesta:actor:RI004-002-C000961:community> a crm:E74_Group ;
+    rdfs:label "Kloster Corvey" .
+
+# Summons before the ruler's court; the vocabulary has no summons type, so Dispute is used (model gap).
+<urn:regesta:22756:summons> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22756> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Auf diesen Termin lädt Friedrich Folkwin und Widekind von Schwalenberg wegen ihrer Gewalttaten gegen das Kloster Corvey vor." ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+            rf:role rv:Judge ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000280> ;
+            rf:role rv:Respondent ; rf:nameInSource "Folkwin" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000454> ;
+            rf:role rv:Respondent ; rf:nameInSource "Widekind von Schwalenberg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ;
+            rf:role rv:Participant ; rf:nameInSource "Kloster Corvey" ] ;
+    rf:ground "wegen ihrer Gewalttaten gegen das Kloster Corvey" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-32> ;
+    rf:verificationStatus rv:unchecked .

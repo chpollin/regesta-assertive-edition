@@ -1,0 +1,68 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22797> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 170" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-H000817> a crm:E21_Person ;
+    rdfs:label "Bischofs Hermann von Konstanz" .
+
+<urn:regesta:actor:RI004-002-B000996:community> a crm:E74_Group ;
+    rdfs:label "Kloster S. Columban in Bobbio" .
+
+<urn:regesta:actor:22797:local:abt> a rf:FunctionalActor ;
+    rdfs:label "den Abt" .
+
+<urn:regesta:22797:besitzstand> a crm:E18_Physical_Thing ;
+    rdfs:label "den namentlich angeführten Besitzstand" .
+
+<urn:regesta:22797:exemtion> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "die Exemtion" .
+
+<urn:regesta:22797:koeniglicher-schutz> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "den königlichen Schutz" .
+
+<urn:regesta:22797:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "Besitzungen" .
+
+<urn:regesta:22797:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22797> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt auf Bitten des Bischofs Hermann von Konstanz dem Kloster S. Columban in Bobbio , das dem Apostel Petrus geweiht ist, den namentlich angeführten Besitzstand, die Exemtion, den königlichen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000817> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Bischofs Hermann von Konstanz" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000996:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "Kloster S. Columban in Bobbio" ] ;
+    rf:concerns <urn:regesta:22797:besitzstand> , <urn:regesta:22797:exemtion> , <urn:regesta:22797:koeniglicher-schutz> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22797:alienation-prohibition> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22797> ;
+    rf:partOf <urn:regesta:22797:confirmation> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "verbietet die Veräußerung von Besitzungen durch den Abt zum Schaden des Klosters" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:22797:local:abt> ;
+        rf:role rv:Obligor ; rf:nameInSource "den Abt" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000996:community> ;
+        rf:role rv:Beneficiary ; rf:nameInSource "Klosters" ] ;
+    rf:concerns <urn:regesta:22797:besitzungen> ;
+    rf:qualifier "zum Schaden des Klosters" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-42> ;
+    rf:verificationStatus rv:unchecked .

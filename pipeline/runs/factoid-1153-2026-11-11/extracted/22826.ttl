@@ -1,0 +1,59 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22826> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ;
+    rdfs:label "Abt Wibald von Corvey" .
+
+<urn:regesta:actor:RI004-002-F000686> a crm:E21_Person ;
+    rdfs:label "Pfalzgrafen (Friedrich) von Sommerschenburg" .
+
+<urn:regesta:22826:gut-nienstedt> a crm:E18_Physical_Thing ;
+    rdfs:label "Gut Nienstedt" .
+
+<urn:regesta:22826:entfremdetes-lehen> a crm:E18_Physical_Thing ;
+    rdfs:label "das seinen Leuten entfremdete Lehen" .
+
+# The earlier order to restore; the regest reports it in the letter. Its performance is not stated.
+<urn:regesta:22826:restitution-order> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22826> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "er habe dem Pfalzgrafen (Friedrich) von Sommerschenburg befohlen, das Gut Nienstedt und das seinen Leuten entfremdete Lehen zurückzustellen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000686> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "Pfalzgrafen (Friedrich) von Sommerschenburg" ] ;
+    rf:concerns <urn:regesta:22826:gut-nienstedt> , <urn:regesta:22826:entfremdetes-lehen> ;
+    rf:qualifier "befohlen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-49> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22826:communication> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22826> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich teilt dem Abt Wibald von Corvey mit, er habe dem Pfalzgrafen (Friedrich) von Sommerschenburg befohlen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-W000420> ;
+        rf:role rv:Addressee ;
+        rf:nameInSource "Abt Wibald von Corvey" ] ;
+    rf:refersToAct <urn:regesta:22826:restitution-order> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-49> ;
+    rf:verificationStatus rv:unchecked .

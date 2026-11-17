@@ -1,0 +1,68 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22735> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "ihm" .
+
+<urn:regesta:actor:22735:local:ministerialen> a crm:E74_Group ;
+    rdfs:label "den Ministerialen" .
+
+<urn:regesta:actor:22735:local:kanoniker> a crm:E74_Group ;
+    rdfs:label "den Kanonikern der Augsburger Kirche" .
+
+# The dispute over the episcopal election
+
+<urn:regesta:22735:election-dispute> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22735> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Streitigkeiten zwischen den Ministerialen und den Kanonikern der Augsburger Kirche um die Bischofswahl" ] ;
+    rf:reference <urn:regesta:22735:ref-dispute-ministerialen> ,
+        <urn:regesta:22735:ref-dispute-kanoniker> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-26> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22735:ref-dispute-ministerialen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22735:local:ministerialen> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "den Ministerialen" .
+
+<urn:regesta:22735:ref-dispute-kanoniker> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22735:local:kanoniker> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "den Kanonikern der Augsburger Kirche" .
+
+# The decision of that dispute, made before Friedrich
+
+<urn:regesta:22735:election-judgment> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22735> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "nachdem vor ihm die Streitigkeiten zwischen den Ministerialen und den Kanonikern der Augsburger Kirche um die Bischofswahl zugunsten der letzteren entschieden worden sind" ] ;
+    rf:reference <urn:regesta:22735:ref-judgment-friedrich> ,
+        <urn:regesta:22735:ref-judgment-kanoniker> ,
+        <urn:regesta:22735:ref-judgment-ministerialen> ;
+    rf:qualifier "nachdem" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-26> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22735:ref-judgment-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "ihm" .
+
+<urn:regesta:22735:ref-judgment-kanoniker> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22735:local:kanoniker> ;
+    rf:role rv:Beneficiary ;
+    rf:nameInSource "der letzteren" .
+
+<urn:regesta:22735:ref-judgment-ministerialen> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22735:local:ministerialen> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "den Ministerialen" .

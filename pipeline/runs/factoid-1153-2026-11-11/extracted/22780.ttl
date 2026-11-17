@@ -1,0 +1,95 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22780> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-C000083:community> a crm:E74_Group ;
+    rdfs:label "Kirche von Cambrai" .
+
+<urn:regesta:actor:RI004-002-C000082:community> a crm:E74_Group ;
+    rdfs:label "der Stadt" .
+
+<urn:regesta:actor:22780:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seiner genannten Vorgänger" .
+
+<urn:regesta:actor:22780:local:bischof> a rf:FunctionalActor ;
+    rdfs:label "des Bischofs" .
+
+# Earlier act: the dispositions of the predecessors the confirmation follows. No date.
+<urn:regesta:22780:verfuegungen-vorgaenger> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22780> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "gemäß den Verfügungen seiner genannten Vorgänger" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22780:local:vorgaenger> ; rf:role rv:Grantor ; rf:nameInSource "seiner genannten Vorgänger" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22780:bestaetigung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22780> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt der Kirche von Cambrai gemäß den Verfügungen seiner genannten Vorgänger die Besitzungen und Rechte" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000083:community> ; rf:role rv:Recipient ; rf:nameInSource "Kirche von Cambrai" ] ;
+    rf:refersToAct <urn:regesta:22780:verfuegungen-vorgaenger> ;
+    rf:concerns <urn:regesta:22780:besitzungen> , <urn:regesta:22780:rechte> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22780:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "die Besitzungen" .
+
+<urn:regesta:22780:rechte> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "Rechte" .
+
+<urn:regesta:22780:bestaetigung-immunitaet> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22780> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "insbesondere die Immunität" ] ;
+    rf:partOf <urn:regesta:22780:bestaetigung> ;
+    rf:concerns <urn:regesta:22780:immunitaet> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22780:immunitaet> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Immunität" .
+
+<urn:regesta:22780:bestaetigung-koenigsschutz> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22780> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den Königsschutz" ] ;
+    rf:partOf <urn:regesta:22780:bestaetigung> ;
+    rf:concerns <urn:regesta:22780:koenigsschutz> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22780:koenigsschutz> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "den Königsschutz" .
+
+<urn:regesta:22780:bestaetigung-gaulum> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22780> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Freiheit des Bischofs, der Stadt, der Kirche und des Territoriums von der gaulum genannten Abgabe" ] ;
+    rf:partOf <urn:regesta:22780:bestaetigung> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22780:local:bischof> ; rf:role rv:Beneficiary ; rf:nameInSource "des Bischofs" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000082:community> ; rf:role rv:Beneficiary ; rf:nameInSource "der Stadt" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000083:community> ; rf:role rv:Beneficiary ; rf:nameInSource "der Kirche" ] ;
+    rf:concerns <urn:regesta:22780:freiheit-gaulum> , <urn:regesta:22780:territorium> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22780:freiheit-gaulum> a crm:E30_Right ;
+    crm:P2_has_type rv:UsageRights ;
+    rdfs:label "die Freiheit des Bischofs, der Stadt, der Kirche und des Territoriums von der gaulum genannten Abgabe" .
+
+<urn:regesta:22780:territorium> a crm:E53_Place ;
+    rdfs:label "des Territoriums" .

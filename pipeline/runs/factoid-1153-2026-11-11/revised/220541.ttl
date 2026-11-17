@@ -1,0 +1,30 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:220541> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-G000054:community> a crm:E74_Group ;
+    rdfs:label "Stadt St. Gallen" .
+
+# The regest names no content of the privilege, so no right node is asserted (model gap reported).
+<urn:regesta:220541:privilege-grant> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:220541> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich stellt der Stadt St. Gallen ein Privileg aus" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-G000054:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Stadt St. Gallen" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-55> ;
+    rf:verificationStatus rv:unchecked .

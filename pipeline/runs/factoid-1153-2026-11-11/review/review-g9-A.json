@@ -1,0 +1,291 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g9-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22792",
+      "coverage_note": "The single sentence is covered by a summons factoid (Communication) with Friedrich and Bishop Ardicio as addressee, and a party-less Dispute factoid for the contested affiliation of the county. Actor identifications match the packet candidates. No temporal overreach. Remaining points are vocabulary limits.",
+      "findings": [
+        {
+          "category": "role-vocabulary",
+          "severity": "note",
+          "subject": "urn:regesta:22792:summons",
+          "description": "Friedrich, who summons, carries rv:Grantor. The vocabulary has no sender or summoner role; Grantor ('wer ... bestimmt') is the closest fit but reads oddly for a summons.",
+          "evidence_quote": "Friedrich beruft Bischof Ardicio von Como nach Konstanz",
+          "proposed_correction": "Keep as is for this contract; record the missing sender/summoner role as a model gap."
+        },
+        {
+          "category": "literal-property",
+          "severity": "note",
+          "subject": "urn:regesta:22792:summons",
+          "description": "rf:ground holds a purpose clause ('um ... zu klären'), not a reason. The wording is exact, so nothing is paraphrased, but the contract has no property for the purpose of an act.",
+          "evidence_quote": "um dort die strittige Frage der Zugehörigkeit der Grafschaft Chiavenna zu klären",
+          "proposed_correction": "Acceptable under the contract; flag purpose versus ground for the ontology review."
+        }
+      ],
+      "model_gaps": [
+        "No property for the place of an act or a meeting: the destination Konstanz cannot be recorded except through rf:concerns, which would misstate it as the object of the act.",
+        "No role for the sender of a summons and no property for the purpose of an act."
+      ]
+    },
+    {
+      "uid": "22793",
+      "coverage_note": "Parallel to 22792: summons factoid with Friedrich and the representatives of Chiavenna as addressee, plus a party-less Dispute factoid. Coverage is complete; one identifier-convention defect.",
+      "findings": [
+        {
+          "category": "identifier-convention",
+          "severity": "warning",
+          "subject": "urn:regesta:actor:RI004-002-C000615",
+          "description": "The representatives are typed crm:E74_Group but use the bare register IRI. The guidelines reserve the bare register IRI for crm:E21_Person and require the ':community' suffix for a group. The same register ID may be used as a person IRI in other files, which would give one IRI two classes across the run.",
+          "evidence_quote": "die Vertreter von Chiavenna",
+          "proposed_correction": "Use urn:regesta:actor:RI004-002-C000615:community typed crm:E74_Group, or keep the bare IRI typed crm:E21_Person consistently with the register entry type 'person'."
+        },
+        {
+          "category": "consistency",
+          "severity": "note",
+          "subject": "urn:regesta:22793:grafschaft-chiavenna",
+          "description": "The county is modelled as crm:E53_Place here and in 22792, but as crm:E30_Right (LordshipRights) in 22800. Both readings are defensible; the inconsistency hinders querying the Chiavenna dispute across records.",
+          "evidence_quote": "der Zugehörigkeit der Grafschaft Chiavenna",
+          "proposed_correction": "Decide one treatment for a Grafschaft as object of a dispute and apply it across 22792, 22793 and 22800."
+        }
+      ],
+      "model_gaps": [
+        "No property for the place of a meeting (Konstanz)."
+      ]
+    },
+    {
+      "uid": "22795",
+      "coverage_note": "Complaint (Dispute) and mandate (Enactment) are extracted with correct identifications of the two Lodi citizens, the Milanese and Friedrich. Reading 'ihnen' as the Milanese is supported by the Latin quotation and the address of the mandate. The affected community of Lodi and the content of the Latin narratio are not represented.",
+      "findings": [
+        {
+          "category": "omitted-actor",
+          "severity": "warning",
+          "subject": "urn:regesta:22795:complaints",
+          "description": "The Lodesans, whose market was moved and who were compelled to hold it in the open field, appear in no reference. They are the injured party of the dispute and the holders of the market right named by the passage. No community candidate exists in the packet, so a regest-local group would be needed.",
+          "evidence_quote": "Verlegung eines Marktes der Lodesaner",
+          "proposed_correction": "Add a local group urn:regesta:actor:22795:local:lodesaner (crm:E74_Group, label 'Lodesaner') as rv:Beneficiary of the complaint, or a StateFactoid rv:RightHolding with the Lodesans as rv:RightHolder of the market."
+        },
+        {
+          "category": "relation-misuse",
+          "severity": "note",
+          "subject": "urn:regesta:22795:mandate",
+          "description": "rf:refersToAct links the mandate to the complaints. The contract defines refersToAct for a later confirmation or assurance referring to an earlier act; a mandate issued upon complaints is a response, not a confirmation. The link is useful but stretches the definition.",
+          "evidence_quote": "nach Klagen der Bürger Albernardus Alamanus und Magister Homobonus von Lodi",
+          "proposed_correction": "Keep the link but record that the contract lacks an 'occasioned by' relation, or use rf:ground with the exact wording 'nach Klagen der Bürger Albernardus Alamanus und Magister Homobonus von Lodi' on the mandate."
+        },
+        {
+          "category": "identification-reading",
+          "severity": "note",
+          "subject": "urn:regesta:22795:complaints",
+          "description": "The Milanese are referenced as rv:Respondent via the pronoun 'ihnen'. The German sentence is grammatically ambiguous; the reading rests on the Latin quotation and on the mandate's address. It is plausible but is an interpretive step an expert should confirm.",
+          "evidence_quote": "wegen der von ihnen gewaltsam vorgenommenen Verlegung eines Marktes der Lodesaner",
+          "proposed_correction": "No change; mark the pronoun resolution for expert review."
+        },
+        {
+          "category": "type-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22795:market-lodesaner",
+          "description": "The market is typed crm:E30_Right with rv:Market. The passage speaks of moving a market (an event and place), not of a market privilege. The right reading is defensible but not stated by the regest.",
+          "evidence_quote": "Verlegung eines Marktes der Lodesaner",
+          "proposed_correction": "Consider crm:E18_Physical_Thing or a place for the market itself, or keep the right with an editorial note."
+        }
+      ],
+      "model_gaps": [
+        "No relation for an act occasioned by another act (mandate upon complaint).",
+        "The Latin narratio (removal from the burgus Placentinus, relocation to an uninhabited open field, compulsion of the Lodesans) can only be kept as an exact literal; the contract has no property for the content of a mandate or the former and new location of a moved market."
+      ]
+    },
+    {
+      "uid": "22796",
+      "coverage_note": "The issuance of the treaty text, the formulation of the treaty by the negotiators, the ministerial's oath and the king's solemn promise are each extracted; witness list and chancery notes are correctly skipped, and no witness (e.g. the chamberlain Anselm) is speculatively identified with the unnamed ministerial. The relation of the confirmation to the oath and the promise is mismodelled, and the treaty factoid lacks its parties.",
+      "findings": [
+        {
+          "category": "relation-misuse",
+          "severity": "warning",
+          "subject": "urn:regesta:22796:confirmation",
+          "description": "The confirmation points with rf:refersToAct to the oath and the promise as if it confirmed them. The regest gives them as preconditions completed before the issuance ('nachdem ... vollzogen worden sind'); the object of the issuance is the treaty text only. The temporal precondition is thereby turned into an object of confirmation.",
+          "evidence_quote": "nachdem die noch ausständigen Rechtshandlungen, nämlich die Eidesleistung eines Reichsministerialen in anima regis und die feierliche Zusage des Königs in die Hand des päpstlichen Legaten vollzogen worden sind",
+          "proposed_correction": "Keep rf:refersToAct only to urn:regesta:22796:treaty-negotiation; record the precondition on the confirmation as rf:qualifier (or rf:condition) with the exact wording 'nachdem die noch ausständigen Rechtshandlungen ... vollzogen worden sind' and report the missing precondition relation as a model gap."
+        },
+        {
+          "category": "omitted-actor",
+          "severity": "warning",
+          "subject": "urn:regesta:22796:treaty-negotiation",
+          "description": "The treaty factoid names only the negotiators as one functional actor. 'beiderseitigen' marks two sides, Friedrich and Pope Eugen, who are the parties of the treaty; neither is referenced, so the earlier act is detached from its parties.",
+          "evidence_quote": "des von den beiderseitigen Unterhändlern formulierten Vertrages",
+          "proposed_correction": "Add references to Friedrich and urn:regesta:actor:RI004-002-E000589 with rv:Participant (or rv:Negotiator for the sides) on the treaty factoid, supported by the evidence 'Friedrich verbrieft Papst Eugen (III.)'."
+        },
+        {
+          "category": "type-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22796:treaty-negotiation",
+          "description": "A formulated treaty text is more than a negotiation, while rv:Negotiation explicitly denies a conclusion. The vocabulary has no type for an agreement or treaty; Negotiation is the most cautious available choice.",
+          "evidence_quote": "formulierten Vertrages",
+          "proposed_correction": "Keep for this contract; record the missing agreement/treaty act type."
+        },
+        {
+          "category": "role-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22796:oath",
+          "description": "Friedrich carries rv:Grantor in an oath sworn by a ministerial on the king's soul. The king is the principal bound by the oath, not a grantor; the vocabulary offers no principal role.",
+          "evidence_quote": "die Eidesleistung eines Reichsministerialen in anima regis",
+          "proposed_correction": "Consider rv:Obligor for the king or record the missing principal role as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No relation or property for a fulfilled precondition between acts ('nachdem ... vollzogen worden sind').",
+        "No act type for an agreement or treaty; Negotiation explicitly excludes conclusion.",
+        "No role for the principal on whose behalf an oath is sworn."
+      ]
+    },
+    {
+      "uid": "22797",
+      "coverage_note": "The confirmation of possessions, exemption and royal protection with petitioner and recipient, and the prohibition of alienation by the abbot as a provision, are both extracted. Witness list and chancery prose correctly skipped. Only minor points.",
+      "findings": [
+        {
+          "category": "literal-property",
+          "severity": "note",
+          "subject": "urn:regesta:22797:alienation-prohibition",
+          "description": "'zum Schaden des Klosters' restricts the scope of the prohibition (only alienation to the monastery's detriment is forbidden). Stored as rf:qualifier it is kept verbatim, but rf:condition or rf:exception would make the limitation explicit.",
+          "evidence_quote": "verbietet die Veräußerung von Besitzungen durch den Abt zum Schaden des Klosters",
+          "proposed_correction": "Move 'zum Schaden des Klosters' to rf:condition."
+        },
+        {
+          "category": "identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22797:local:abt",
+          "description": "The packet holds a register candidate for the abbot of Bobbio (RI004-002-B001886, 'Abt'). The extractor chose a local FunctionalActor. Because the prohibition binds whoever holds the office, the functional reading is defensible, but the register candidate matches by title.",
+          "evidence_quote": "durch den Abt",
+          "proposed_correction": "Either keep the FunctionalActor and note the candidate, or use urn:regesta:actor:RI004-002-B001886."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22798",
+      "coverage_note": "The confirmation with its petitioners and interveners, three partOf confirmations (silver revenue, freedom from the oath of fealty, papal privileges), the predecessors' privileges as earlier act, and two kinship statements are extracted. Identifications follow the packet. Points concern collapsed predecessor privileges and the forgery mark of the record, which the contract cannot express.",
+      "findings": [
+        {
+          "category": "collapsed-acts",
+          "severity": "note",
+          "subject": "urn:regesta:22798:predecessor-privileges",
+          "description": "Privileges of nine rulers are collapsed into one rv:Grant factoid without recipient or object. The regest gives neither the content nor the recipient of these privileges, so one cautious factoid is defensible; 'Grant' is still a reading, since the privileges could themselves be confirmations.",
+          "evidence_quote": "gemäß den Privilegien seiner Vorgänger",
+          "proposed_correction": "Acceptable; optionally note that the type of the earlier privileges is not stated."
+        },
+        {
+          "category": "label",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-O000393",
+          "description": "Otto II. and Otto III. carry the label and nameInSource 'Otto I., II. und III.', which also names Otto I. The source wording cannot be split, so this is an artefact of the substring rule.",
+          "evidence_quote": "Otto I., II. und III.",
+          "proposed_correction": "No change under the contract; note the limit of exact-substring names for coordinated ordinals."
+        },
+        {
+          "category": "role-vocabulary",
+          "severity": "note",
+          "subject": "urn:regesta:22798:confirmation",
+          "description": "The interveners are given rv:Petitioner, the same role as the abbot who requests. The regest distinguishes 'Bitten' from 'Intervention'; the vocabulary has no intervener role.",
+          "evidence_quote": "auf seine Bitten und die Intervention des Erzbischofs",
+          "proposed_correction": "Keep; record the missing intervener role."
+        }
+      ],
+      "model_gaps": [
+        "The record is marked as a forgery in its identifier (†171); the contract cannot record that a factoid rests on a regest of a forged charter.",
+        "No intervener role distinct from petitioner.",
+        "No payer reference for 'vom Hof' without a court actor; the court as source of the annual silver is lost."
+      ]
+    },
+    {
+      "uid": "22799",
+      "coverage_note": "Only the papal commission to the two cardinal legates to depose certain bishops is extracted (Appointment, Apostolic See as grantor). The festal coronation of Friedrich at Easter in Bamberg is not extracted; the vocabulary has no act type for it, so this is a model gap rather than an extraction error. The presence of the legates is participation in a ceremony and rightly not extracted.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "22799",
+          "description": "The main passage, the festal coronation, is not represented. No act type of the contract fits a Festkrönung (it is neither an appointment nor an enactment), so the omission is justified but leaves the record's main content outside the graph.",
+          "evidence_quote": "Am Osterfest findet in Bamberg eine Festkrönung König Friedrichs statt",
+          "proposed_correction": "No extraction change; record the missing ceremonial or coronation act type."
+        },
+        {
+          "category": "omitted-actor",
+          "severity": "note",
+          "subject": "urn:regesta:22799:deposition-mandate",
+          "description": "The bishops to be deposed are kept only in rf:qualifier. A FunctionalActor 'gewisser Bischöfe' with a role would make them queryable; the vocabulary has no target or affected role, so the qualifier is the cautious choice.",
+          "evidence_quote": "die Absetzung gewisser Bischöfe",
+          "proposed_correction": "Optional: add a FunctionalActor for 'gewisser Bischöfe' if an affected-party role is introduced."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a coronation or festal crowning.",
+        "No role for the party affected by a commissioned act (the bishops to be deposed)."
+      ]
+    },
+    {
+      "uid": "22800",
+      "coverage_note": "Dispute, adjourned hearing, the Ulm disposition, the judgment with grounds and Easter date, Friedrich's parenthood from the Latin quotation and the royal privilege to the Chiavennese are extracted. Identifications use only this packet's candidates; the people of Chiavenna are correctly regest-local. The witness list, including its nepos statement and the list of representatives present, is skipped as the guidelines require. Weak points: the beneficiary 'Como' and the reduction of 'entgegen' to a refersToAct link.",
+      "findings": [
+        {
+          "category": "actor-identification",
+          "severity": "warning",
+          "subject": "urn:regesta:actor:22800:local:como",
+          "description": "'zugunsten von Como' is modelled as a regest-local group labelled 'Como'. In this regest Como stands for the episcopal side of the dispute (Bishop Ardicio and his church), not for a community of Como; a bare group 'Como' invites reading it as the commune. The party that wins, Bishop Ardicio, is not referenced in the judgment at all.",
+          "evidence_quote": "durch einen von Bischof Konrad von Augsburg formulierten Fürstenspruch zugunsten von Como",
+          "proposed_correction": "Reference urn:regesta:actor:RI004-002-A001103 as rv:Beneficiary of the judgment (supported by the dispute passage) and drop or relabel the local group as the church of Como."
+        },
+        {
+          "category": "relation-misuse",
+          "severity": "warning",
+          "subject": "urn:regesta:22800:judgment",
+          "description": "The judgment points to the Ulm disposition with rf:refersToAct and keeps 'entgegen' only as a free qualifier. The regest says the judgment goes against that earlier disposition; refersToAct, defined for confirmations and assurances, reads as if the judgment built on it. The opposition is lost as a relation.",
+          "evidence_quote": "entgegen seiner im Vorjahr zu Ulm getroffenen Verfügung",
+          "proposed_correction": "Keep rf:refersToAct only to the dispute and the hearing; put 'entgegen seiner im Vorjahr zu Ulm getroffenen Verfügung' as rf:qualifier on the judgment and record the missing 'contrary to' relation as a model gap."
+        },
+        {
+          "category": "missing-literal",
+          "severity": "note",
+          "subject": "urn:regesta:22800:royal-privilege-chiavenna",
+          "description": "The recipient reference has no rf:nameInSource; the Latin names the recipients as 'eos'. Allowed by the shapes, but the identification of 'eos' with the people of Chiavenna is an unmarked reading.",
+          "evidence_quote": "aliquam investituram eos seu privilegium suscepisse cognovimus",
+          "proposed_correction": "Add rf:nameInSource \"eos\" to the recipient reference."
+        },
+        {
+          "category": "consistency",
+          "severity": "note",
+          "subject": "urn:regesta:22800:grafschaft-chiavenna",
+          "description": "The county is a crm:E30_Right here and a crm:E53_Place in 22792 and 22793.",
+          "evidence_quote": "um die Grafschaft Chiavenna",
+          "proposed_correction": "Align the treatment across the three records."
+        }
+      ],
+      "model_gaps": [
+        "No relation for an act contrary to or overriding an earlier act ('entgegen').",
+        "Negated acts cannot be expressed: the Latin states that the Chiavennese received no investiture from Duke Friedrich or from Friedrich as duke.",
+        "No property for places of acts (Bamberger Pfalz, Konstanz, Ulm).",
+        "The witness list carries a kinship statement (Martinus de Castello, nepos of the bishop) and the list of representatives present; the guidelines exclude witness lists wholesale, so these are not extractable."
+      ]
+    },
+    {
+      "uid": "22801",
+      "coverage_note": "The donation to Bishop Ardicio of the lordship rights, the fodrum and all regalia at Gravedona and Domaso is extracted as one Donation with correct actors and objects. Witness list and chancery notes skipped. No defect found beyond a typing nuance.",
+      "findings": [
+        {
+          "category": "type-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22801:hoheitsrechte",
+          "description": "The rights 'honorem, districtum' are typed with the top concept rv:LordshipRights; districtum would also fit rv:Jurisdiction. The broader concept is the cautious choice.",
+          "evidence_quote": "die Hoheitsrechte (honorem, districtum)",
+          "proposed_correction": "Keep, or split districtum as rv:Jurisdiction after expert review."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22802",
+      "coverage_note": "Abstention. The regest states only a visit (travel), which the guidelines place out of scope; no kinship, economic or legal relation is stated. The abstention is correct.",
+      "findings": [],
+      "model_gaps": []
+    }
+  ]
+}

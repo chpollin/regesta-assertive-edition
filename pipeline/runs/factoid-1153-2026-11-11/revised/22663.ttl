@@ -1,0 +1,54 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22663> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrad III." .
+
+<urn:regesta:actor:RI004-002-O000429> a crm:E21_Person ;
+    rdfs:label "Odo von Deuil" .
+
+<urn:regesta:actor:RI004-002-D000313:community> a crm:E74_Group ;
+    rdfs:label "das Kloster St. Denis bei Paris" .
+
+# No register candidate for Ludwig VII. in this packet, so the actor stays regest-local.
+<urn:regesta:actor:22663:local:ludwig-vii> a crm:E21_Person ;
+    rdfs:label "König Ludwigs VII. von Frankreich" .
+
+<urn:regesta:22663:possessions> a crm:E18_Physical_Thing ;
+    rdfs:label "Besitzungen zu Hohkönigsburg (bei Schlettstadt) und Eßlingen" .
+
+<urn:regesta:22663:kinship-konrad> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22663> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich lehnt gemeinsam mit seinem Oheim, König Konrad III." ] ;
+    rf:qualifier "Oheim" ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Kin ; rf:nameInSource "König Konrad III." ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-9> ;
+    rf:verificationStatus rv:unchecked .
+
+# The attempt to obtain restitution. Its refusal by Friedrich and Konrad has no act type in the
+# contract and is reported as a model gap; no restitution and no possession is asserted.
+# Friedrich and Konrad as addressees is the producer's reading of "lehnt ... ab".
+<urn:regesta:22663:request-restitution> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:22663> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich lehnt gemeinsam mit seinem Oheim, König Konrad III., die Restitution von Besitzungen zu Hohkönigsburg (bei Schlettstadt) und Eßlingen an das Kloster St. Denis bei Paris ab" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "die der Kapellan König Ludwigs VII. von Frankreich und Mönch von St. Denis, Odo von Deuil, durch die Vermittlung seines König erreichen wollte" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-O000429> ; rf:role rv:Petitioner ; rf:nameInSource "Odo von Deuil" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22663:local:ludwig-vii> ; rf:role rv:Mediator ; rf:nameInSource "seines König" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000313:community> ; rf:role rv:Beneficiary ; rf:nameInSource "das Kloster St. Denis bei Paris" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Addressee ; rf:nameInSource "König Konrad III." ] ;
+    rf:concerns <urn:regesta:22663:possessions> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-9> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,154 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g2-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22648",
+      "coverage_note": "Abstention. The regest states only that Friedrich appears as witness in DK. III. 175 for Waldsassen. The guidelines skip formulaic witness attestations and rv:Witness is restricted to testimony in a narrated dispute; the ducal title is a mention, not a statement that needs rv:OfficeHolding. Abstention is consistent with the contract.",
+      "findings": [],
+      "model_gaps": ["Attestation of a charter as witness (Zeuge in DK. III. 175) has no act type or role in the contract, so the ruler's itinerary and presence at court are not recordable."]
+    },
+    {
+      "uid": "22649",
+      "coverage_note": "Abstention. Witness attestation in DK. III. 176 for Rüeggisberg only; no kinship, economic or legal relation is stated. Abstention is consistent with the contract.",
+      "findings": [],
+      "model_gaps": ["Charter witness attestation not expressible (rv:Witness restricted to narrated disputes)."]
+    },
+    {
+      "uid": "22650",
+      "coverage_note": "Abstention. Witness attestation in DK. III. 177 for Nienburg only. Abstention is consistent with the contract.",
+      "findings": [],
+      "model_gaps": ["Charter witness attestation not expressible (rv:Witness restricted to narrated disputes)."]
+    },
+    {
+      "uid": "22651",
+      "coverage_note": "Abstention. Witness attestation in DK. III. 178 for the inhabitants of Treviglio only. Abstention is consistent with the contract.",
+      "findings": [],
+      "model_gaps": ["Charter witness attestation not expressible (rv:Witness restricted to narrated disputes)."]
+    },
+    {
+      "uid": "22652",
+      "coverage_note": "All three acts of the regest are covered: the earlier donation of Kemnade and Fischbeck to Corvey (no donor, no date, correct), the Fürstenspruch by Bischof Burchard, and Friedrich's accession joined by rf:refersToAct. Actor identifications follow the packet (B001563, C000961; shared ruler for Friedrich, no competing candidate). The substantive content of the Spruch, freedom from all imperial services, survives only in the evidence text.",
+      "findings": [
+        {
+          "category": "type-approximation",
+          "severity": "note",
+          "subject": "urn:regesta:22652:beitritt",
+          "description": "Friedrich's accession (Beitritt) to a judgment is typed rv:Confirmation with role rv:Grantor. Accession or assent is not a confirmation of possession or rights; the extractor flagged this as a model gap in its comment. Acceptable as the nearest available type, but a later query for confirmations will over-count.",
+          "evidence_quote": "tritt einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei",
+          "proposed_correction": "Keep for this run; add an assent/accession act type and an assenting-party role to the vocabulary and retype."
+        },
+        {
+          "category": "content-not-structured",
+          "severity": "note",
+          "subject": "urn:regesta:22652:fuerstenspruch",
+          "description": "The decisive content of the judgment, that the Stifte remain free of all imperial services, is not represented by rf:concerns on a right or exemption; the factoid concerns only the two Stifte. rv:RightTypes has no immunity or exemption concept, so this is a model gap rather than an extraction error. The temporal word 'auch weiterhin' is correctly kept as rf:qualifier.",
+          "evidence_quote": "auch weiterhin frei von allen Reichsdiensten sein sollen",
+          "proposed_correction": "Add an exemption/immunity concept to rv:RightTypes and attach an E30_Right labelled 'frei von allen Reichsdiensten' via rf:concerns."
+        },
+        {
+          "category": "evidence-span",
+          "severity": "note",
+          "subject": "urn:regesta:22652:fuerstenspruch",
+          "description": "The judgment's evidence starts inside the accession clause and includes the verb particle 'bei' of Friedrich's act; the shortest passage carrying the judgment would begin at 'einem von Bischof Burchard' and could omit 'bei'. Cosmetic.",
+          "evidence_quote": "einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei, nach dem",
+          "proposed_correction": "None needed; optionally split into two selectors without 'bei'."
+        }
+      ],
+      "model_gaps": [
+        "No act type for assent or accession to another actor's act (Beitritt).",
+        "No right type for exemption or immunity from imperial services (frei von allen Reichsdiensten)."
+      ]
+    },
+    {
+      "uid": "22653",
+      "coverage_note": "The parenthood between Herzog Friedrich II. (F000681) and Friedrich (shared ruler) is correctly extracted with the kinship word in rf:qualifier. The central statement of the regest, the succession in the duchy of Swabia, is not recorded; the extractor documented this as a model gap.",
+      "findings": [
+        {
+          "category": "omitted-central-passage",
+          "severity": "warning",
+          "subject": "22653",
+          "description": "The succession in the Herzogtum Schwaben is the main content of the regest and is omitted. The act scheme has no succession type, so the act itself is a model gap, but the contract could have recorded part of it: rv:Appointment is defined as Einsetzung in ein Amt, or a rf:StateFactoid rv:OfficeHolding with Friedrich as rv:Officeholder, rf:concerns the place Herzogtum Schwaben (candidate S000398) and rf:qualifier 'folgt ... nach' in exact wording. The father as predecessor would need a role the vocabulary lacks.",
+          "evidence_quote": "Friedrich folgt seinem Vater, Herzog Friedrich II., im Herzogtum Schwaben nach.",
+          "proposed_correction": "Add a factoid for the succession: either rv:Appointment with Friedrich as rv:Recipient and the father as rv:Participant, or rv:OfficeHolding for Friedrich concerning <urn:regesta:actor:RI004-002-S000398> (E53_Place 'Herzogtum Schwaben'), with evidence the full sentence; report succession and predecessor role as model gaps."
+        }
+      ],
+      "model_gaps": [
+        "No act type for succession in an office or lordship, and no predecessor/successor role."
+      ]
+    },
+    {
+      "uid": "22654",
+      "coverage_note": "Both acts are covered: the earlier handover of the Bamberger Ministerialien by Bischof Eberhard to the king, with the reason in exact wording as rf:ground, and the king's committal of the Ministerialien to the duke's protection with the Latin reservation 'non in ius advocatię' as rf:exception and a Protection right. Actors E000011, K000316 and B000133 match the packet. Findings concern identification, unreferenced actors and role choices, none of them unsupported by the text.",
+      "findings": [
+        {
+          "category": "actor-identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-F000471",
+          "description": "'Herzog Friedrichs von Schwaben' is identified with the shared ruler although candidate F000681 (Herzog von Schwaben, father of Barbarossa) also matches by name and title. The candidate carries only role p_komment, not nennung, which supports reading the summary's duke as the ruler; the extractor flagged the identification as a reading. Defensible, but it rests on the candidate role, not on the summary text.",
+          "evidence_quote": "dem Schutz Herzog Friedrichs von Schwaben",
+          "proposed_correction": "Keep; list as an unresolved identity for expert review (shared ruler versus F000681)."
+        },
+        {
+          "category": "unreferenced-actors",
+          "severity": "note",
+          "subject": "urn:regesta:22654:uebergabe",
+          "description": "Konrad von Rietfeld (K000502) and Berengar von Albeck (B000529) are named in the summary and have matching candidates, but appear only inside the rf:ground literal, so the graph cannot find them. The oppression has no act type (rv:Dispute does not fit), and no role covers an oppressor in a reason clause.",
+          "evidence_quote": "wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck",
+          "proposed_correction": "Optionally add references with rv:Participant to the handover factoid, or report the oppression as a model gap so the two actors are at least listed."
+        },
+        {
+          "category": "role-and-link-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22654:schutzunterstellung",
+          "description": "The protected Ministerialien are rv:Beneficiary and the duke rv:Recipient; this is a reasonable reading (the duke receives the charge, the Ministerialien benefit), but the Latin 'in manus ... commisit' makes the Ministerialien the object handed over. rf:refersToAct is defined for confirmations or assurances referring to an earlier act; here it links a consequent act to its precondition, a stretch of the property. Typing the bishop's handover of persons as rv:Grant (transfer of a right, possession or institution) is also an approximation.",
+          "evidence_quote": "die ihm von Bischof Eberhard (II.) wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck übergeben worden sind",
+          "proposed_correction": "Keep for this run; consider a sequence relation distinct from rf:refersToAct and a commendation or handover type for persons in the next contract."
+        }
+      ],
+      "model_gaps": [
+        "No act type for oppression or violence that a reason clause reports, and no role for its perpetrators.",
+        "rf:refersToAct is limited to confirmations and assurances; no relation for a consequent act building on an earlier one.",
+        "No act type for handing over persons (Ministerialen) into another's power or protection distinct from a grant of property."
+      ]
+    },
+    {
+      "uid": "22655",
+      "coverage_note": "Abstention. Witness attestation in DK. III. 188 for Ichtershausen only. Abstention is consistent with the contract.",
+      "findings": [],
+      "model_gaps": ["Charter witness attestation not expressible (rv:Witness restricted to narrated disputes)."]
+    },
+    {
+      "uid": "22656",
+      "coverage_note": "Abstention. Witness attestation in DK. III. 189 for Pforta only. Abstention is consistent with the contract.",
+      "findings": [],
+      "model_gaps": ["Charter witness attestation not expressible (rv:Witness restricted to narrated disputes)."]
+    },
+    {
+      "uid": "22657",
+      "coverage_note": "The content of the Traditionsnotiz is covered: Welf's transfer of two Höfe to the monastery (Wessobrunn, W000382, identified via 'Wessobrunner Traditionsnotiz') and the 10 Pfund he receives, with the amount in exact wording and rf:partOf to the transfer. Friedrich's witness role is correctly left out as formulaic. The payer is not named in the summary and is correctly not referenced.",
+      "findings": [
+        {
+          "category": "act-type-precision",
+          "severity": "warning",
+          "subject": "urn:regesta:22657:transfer",
+          "description": "The transfer is typed with the generic rv:Grant although the summary states a counter-payment for it ('der dafür 10 Pfund erhält'). The contract has rv:Sale, defined as Übertragung gegen Entgelt, which the passage supports more precisely; the separate payment factoid shows the extractor read the consideration but did not type the main act accordingly. Whether a Tradition with Gegengabe is legally a sale is an expert question, so this is not an error.",
+          "evidence_quote": "welche die Übergabe zweier Höfe an das Kloster durch Herzog Welf zum Inhalt hat, der dafür 10 Pfund erhält",
+          "proposed_correction": "Retype to rv:Sale with Welf as rv:Seller and the monastery as rv:Buyer, keeping the payment factoid with rf:partOf; or keep rv:Grant and add rf:qualifier \"dafür\" so the consideration link stays visible."
+        },
+        {
+          "category": "abstention-scope",
+          "severity": "note",
+          "subject": "22657",
+          "description": "The parenthetical 'tunc dux Suevie postmodum imperator' states Friedrich's then and later office. Leaving it out is consistent with the guideline that office holding is recorded only where the statement needs it.",
+          "evidence_quote": "tunc dux Suevie postmodum imperator",
+          "proposed_correction": "None."
+        }
+      ],
+      "model_gaps": [
+        "Charter witness attestation not expressible (rv:Witness restricted to narrated disputes).",
+        "The intermediate source layer (the regest reports the content of a Traditionsnotiz) is not modelled; rf:source points only to the regest."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "batch": 9,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-9",
+  "records": [
+    {
+      "uid": "22660",
+      "status": "extracted",
+      "files": ["22660.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "Scope reading: the commission 'im Auftrag König Konrads III.' is extracted as rv:Appointment (Beauftragung); whether a commission to punitive retaliation is in the legal scope needs expert judgement.",
+        "No act type for robbery or killing ('ausgeplündert und getötet'), the punitive execution ('hinrichten läßt') or the attempted recovery of stolen money ('versucht, das geraubte Geld wieder herbeizuschaffen'); rv:Restitution would assert a performed return, so the attempt is not extracted.",
+        "Mediation preventing an armed conflict ('Vermittlung des griechischen Feldherrn Prosuch') fits neither rv:Dispute (court or ruler) nor any other act type; not extracted. Register candidate for Prosuch is typed 'ort' with role 'austOrt', an apparent register type error."
+      ]
+    },
+    {
+      "uid": "22661",
+      "status": "extracted",
+      "files": ["22661.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "Kinship 'Oheim' recorded with two rv:Kin references; the contract has no directional roles, so who is uncle of whom stays in the wording only."
+      ]
+    },
+    {
+      "uid": "22662",
+      "status": "extracted",
+      "files": ["22662.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "The sender of a mission has no dedicated role; Konrad III. is given rv:Grantor ('bestimmt'). The message and request for help are only commissioned, so no rv:Communication or rv:Request factoid is created."
+      ]
+    },
+    {
+      "uid": "22663",
+      "status": "extracted",
+      "files": ["22663.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "Ludwig VII. ('König Ludwigs VII. von Frankreich', 'seines König') has no register candidate in this packet; regest-local IRI urn:regesta:actor:22663:local:ludwig-vii."
+      ],
+      "model_gaps": [
+        "No act type for a refusal or rejection of a request: the regest's main act, Friedrich and Konrad III. 'lehnt ... ab' the restitution, is captured only indirectly through the rv:Request factoid with them as addressees; neither restitution nor possession by any party is asserted.",
+        "Mediator reference uses the anaphoric wording 'seines König' as name in source; its identification with Ludwig VII. rests on the preceding phrase.",
+        "Odo's offices ('Kapellan König Ludwigs VII. von Frankreich und Mönch von St. Denis') are not extracted as rv:OfficeHolding because they are not needed for the claim."
+      ]
+    }
+  ]
+}

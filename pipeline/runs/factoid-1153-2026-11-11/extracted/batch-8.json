@@ -1,0 +1,51 @@
+{
+  "batch": 8,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-8",
+  "records": [
+    {
+      "uid": "22656",
+      "status": "no_in_scope_claim",
+      "files": ["22656.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22657",
+      "status": "extracted",
+      "files": ["22657.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "Payer of the 10 Pfund is not named; the payment factoid carries only Welf as payee."
+      ],
+      "model_gaps": [
+        "The transfer of two Höfe against 10 Pfund could be read as rv:Sale; typed as rv:Grant with a separate rv:Payment part because the regest says 'Übergabe', not sale. Expert decision on Traditionsnotiz transfers with counter-payment needed."
+      ]
+    },
+    {
+      "uid": "22658",
+      "status": "extracted",
+      "files": ["22658.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [
+        "Contracting party is given disjunctively as '(Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach)'; the only Friedrich candidate in the packet (RI004-002-F000681) is Barbarossa's father, a p_komment candidate, so the identification of 'Friedrich, Herzog von Schwaben' here is unresolved."
+      ],
+      "model_gaps": [
+        "No act type for a concluded bilateral agreement or treaty ('befristeten Vertrag'); the contract about 'gewisse Burgen, Dienstleute und Allodialgüter' is not extracted.",
+        "No means to express an alternative (either-or) actor in a reference; assigning both would assert participation of both."
+      ]
+    },
+    {
+      "uid": "22659",
+      "status": "extracted",
+      "files": ["22659.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [
+        "'Friedrich' identified with the shared ruler IRI of the packet; no register candidate for Friedrich in this packet."
+      ],
+      "model_gaps": [
+        "Kinship roles are symmetric (rv:Kin for both); the direction of 'Oheims' (Konrad as uncle of Friedrich) survives only in the qualifier wording."
+      ]
+    }
+  ]
+}

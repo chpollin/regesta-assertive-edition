@@ -1,0 +1,66 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22824> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 197" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrads III." .
+
+<urn:regesta:actor:RI004-002-M000374> a crm:E21_Person ;
+    rdfs:label "oströmischen Kaiser Manuel" .
+
+# Unnamed in the regest; the register candidate M000439 is not assigned because no name matches.
+<urn:regesta:actor:22824:local:verwandte-manuels> a crm:E21_Person ;
+    rdfs:label "einer Verwandten Manuels" .
+
+<urn:regesta:22824:kinship-konrad> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22824> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "seines Oheims, König Konrads III." ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Kin ; rf:nameInSource "König Konrads III." ] ;
+    rf:qualifier "Oheims" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22824:designation-successor> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22824> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "König Konrads III., der ihn zu seinem Nachfolger erklärt hat" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Grantor ; rf:nameInSource "König Konrads III." ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "Friedrich" ] ;
+    rf:qualifier "zu seinem Nachfolger erklärt hat" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22824:assurance-relations> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22824> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "versichert ihn gemäß dem Rat seines Oheims, König Konrads III., der ihn zu seinem Nachfolger erklärt hat, seines Willens zu guten gegenseitigen Beziehungen, die er durch seine Heirat mit einer Verwandten Manuels befestigen will" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich dankt dem oströmischen Kaiser Manuel" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000374> ; rf:role rv:Addressee ; rf:nameInSource "oströmischen Kaiser Manuel" ] ;
+    rf:ground "gemäß dem Rat seines Oheims, König Konrads III." ;
+    rf:qualifier "befestigen will" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g10> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22824:kinship-relative-manuel> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22824> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "einer Verwandten Manuels" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22824:local:verwandte-manuels> ; rf:role rv:Kin ; rf:nameInSource "einer Verwandten Manuels" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000374> ; rf:role rv:Kin ; rf:nameInSource "Manuels" ] ;
+    rf:qualifier "Verwandten" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .

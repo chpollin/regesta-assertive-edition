@@ -1,0 +1,162 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g2-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22658",
+      "coverage_note": "One Parenthood factoid (Konrad III. parent, Heinrich (VI.) child) is supported by the apposition and correctly typed. The central passage, the fixed-term contract about castles, Dienstleute and Allodialgüter, is not extracted; the comment in the file names the reason. The register candidate RI004-002-F000681 (the father, Herzog von Schwaben) was rightly not merged with the shared ruler IRI.",
+      "findings": [
+        {
+          "category": "model-gap-omission",
+          "severity": "note",
+          "subject": "22658",
+          "description": "The only substantive act of the regest, a bilateral fixed-term contract, is omitted. The contract has no act type for an agreement or treaty, and no way to state an alternative party ('A oder B'). The omission is therefore a model gap rather than an extraction error; forcing Grant or Negotiation would misstate the act.",
+          "evidence_quote": "(Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach) schließt mit König Heinrich (VI.), dem Sohn König Konrads III., einen befristeten Vertrag über gewisse Burgen, Dienstleute und Allodialgüter.",
+          "proposed_correction": "None under the current contract. With an Agreement act type and a way to express disjunctive actor identity, extract one ActFactoid with both alternatives, Heinrich (VI.) as party, rf:qualifier \"befristeten\" and rf:concerns \"gewisse Burgen, Dienstleute und Allodialgüter\"."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a bilateral agreement or contract (Vertrag).",
+        "No representation of an alternative, uncertain actor identification given by the regest itself ('Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach')."
+      ]
+    },
+    {
+      "uid": "22659",
+      "coverage_note": "One Kinship factoid with qualifier 'Oheims' between Friedrich (shared ruler IRI) and Konrad III. (packet candidate). Supported by the passage. Crusade participation is rightly left out as military movement.",
+      "findings": [
+        {
+          "category": "label-wording",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-K000316",
+          "description": "The actor label and name in source take the genitive form 'König Konrads III.'. It is exact source wording and therefore admissible, but as rdfs:label it yields an inflected label for the actor node.",
+          "evidence_quote": "seines Oheims, König Konrads III.",
+          "proposed_correction": "Acceptable as is; if a nominative label is preferred, this needs a contract rule, since the guidelines require source wording."
+        }
+      ],
+      "model_gaps": [
+        "Kinship with two rv:Kin references and the qualifier 'Oheims' does not say which party is the Oheim; the direction of an asymmetric kinship term is not expressible."
+      ]
+    },
+    {
+      "uid": "22660",
+      "coverage_note": "One Appointment factoid (Konrad III. commissions Friedrich to retaliate). The commission is supported by 'im Auftrag König Konrads III.'. The burning, executions, the murder of the crusader and the averted conflict are military or violent events and rightly not extracted. The register lists Prosuch as type 'ort', a register anomaly that did not affect the file.",
+      "findings": [
+        {
+          "category": "scope",
+          "severity": "note",
+          "subject": "urn:regesta:22660:commission-retaliation",
+          "description": "The commission concerns a punitive military action. The guidelines exclude military movement but do not settle whether a commission to act militarily is a legal relation in scope. Extracting it is defensible; the case should be decided in the guidelines so that extractors treat it uniformly.",
+          "evidence_quote": "im Auftrag König Konrads III. Vergeltung",
+          "proposed_correction": "Keep, and record a guideline decision on commissions for military or punitive action."
+        },
+        {
+          "category": "role-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22660:commission-retaliation",
+          "description": "The commissioner is given rv:Grantor and the commissioned person rv:Recipient. The role definitions (who transfers, confirms, grants or determines; to whom something is transferred) fit a commission only loosely.",
+          "evidence_quote": "im Auftrag König Konrads III.",
+          "proposed_correction": "Acceptable under the current vocabulary; a principal and agent role pair would fit Appointment better."
+        },
+        {
+          "category": "model-gap-omission",
+          "severity": "note",
+          "subject": "22660",
+          "description": "The attempted recovery of the stolen money is an economic act, but only as an attempt. The contract has rv:Restitution for a performed return and no way to mark an act as attempted, so leaving it out is correct.",
+          "evidence_quote": "versucht, das geraubte Geld wieder herbeizuschaffen",
+          "proposed_correction": "None under the current contract."
+        }
+      ],
+      "model_gaps": [
+        "No marker for an attempted, unaccomplished act (versucht, ... herbeizuschaffen).",
+        "No principal and agent roles for a commission (Auftrag)."
+      ]
+    },
+    {
+      "uid": "22661",
+      "coverage_note": "One Kinship factoid with qualifier 'Oheim' between Friedrich and Welf (VI.), packet candidate RI004-002-W000272. Supported. Camping and the storm disaster are rightly out of scope. No defects found.",
+      "findings": [],
+      "model_gaps": [
+        "Direction of the kinship term 'Oheim' is not expressible with two symmetric rv:Kin references."
+      ]
+    },
+    {
+      "uid": "22662",
+      "coverage_note": "One Mission factoid: Konrad III. commissions Friedrich to inform Ludwig VII. and ask him for help, Ludwig kept as rv:Addressee. The file correctly does not assert that the message or request was delivered. Identities taken from this packet's candidates.",
+      "findings": [
+        {
+          "category": "role-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22662:mission-to-ludwig",
+          "description": "The sender of the mission is given rv:Grantor; the vocabulary has no sender or principal role for a Mission.",
+          "evidence_quote": "von König Konrad III. beauftragt",
+          "proposed_correction": "Acceptable under the current vocabulary; a sender role would be more precise."
+        },
+        {
+          "category": "temporal-qualifier",
+          "severity": "note",
+          "subject": "urn:regesta:22662:mission-to-ludwig",
+          "description": "The relative time anchor 'nach der Katastrophe des Kreuzheeres' is part of the evidence but not kept as rf:qualifier. No temporal overreach results; it is a matter of completeness.",
+          "evidence_quote": "nach der Katastrophe des Kreuzheeres",
+          "proposed_correction": "Optionally add rf:qualifier \"nach der Katastrophe des Kreuzheeres\"."
+        }
+      ],
+      "model_gaps": [
+        "No sender or principal role for rv:Mission."
+      ]
+    },
+    {
+      "uid": "22663",
+      "coverage_note": "Kinship factoid Friedrich and Konrad III. ('Oheim') is supported. A Request factoid records Odo von Deuil's attempt to obtain restitution for St. Denis, with Ludwig VII. (regest-local, no candidate in this packet, correctly not carried over) as mediator and Friedrich and Konrad as addressees. No restitution and no possession is asserted, which is correct. The refusal itself, the main act of the regest, is not represented.",
+      "findings": [
+        {
+          "category": "omitted-central-passage",
+          "severity": "warning",
+          "subject": "urn:regesta:22663:request-restitution",
+          "description": "The main statement of the regest is the joint refusal by Friedrich and Konrad III. The candidate records only the request and puts the refusal passage into the request's evidence, so the graph does not say that the request was rejected. The contract has no refusal type; at most the claim before rulers could be read as rv:Dispute. The defect is mostly a model gap, but as it stands a query for this factoid returns an open request whose outcome the regest states.",
+          "evidence_quote": "Friedrich lehnt gemeinsam mit seinem Oheim, König Konrad III., die Restitution von Besitzungen zu Hohkönigsburg (bei Schlettstadt) und Eßlingen an das Kloster St. Denis bei Paris ab",
+          "proposed_correction": "Under the current contract, record the refusal in the report as a model gap and keep only the second selector as evidence of the request; with a Refusal act type, add an ActFactoid with Friedrich and Konrad as deciding actors, rf:refersToAct to the request and rf:concerns the possessions."
+        },
+        {
+          "category": "role-reading",
+          "severity": "note",
+          "subject": "urn:regesta:22663:request-restitution",
+          "description": "Ludwig VII. as rv:Mediator and Friedrich and Konrad as rv:Addressee are inferences. The regest says Odo wanted to achieve restitution through his king's mediation; it does not name the addressee of the request. The reading is plausible and the file marks it as the producer's reading.",
+          "evidence_quote": "durch die Vermittlung seines König erreichen wollte",
+          "proposed_correction": "Keep, with the addressee inference flagged for expert review."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a refusal or rejection of a request (lehnt ... ab).",
+        "Direction of the kinship term 'Oheim' is not expressible with two symmetric rv:Kin references."
+      ]
+    },
+    {
+      "uid": "22664",
+      "coverage_note": "One Kinship factoid ('Oheim') between Friedrich and Konrad III. Supported. Konrad gets a regest-local IRI because this packet carries no register candidate for him; that follows the rule against carrying identifications over from other packets. The sea voyage is rightly out of scope. No defects found.",
+      "findings": [],
+      "model_gaps": [
+        "Direction of the kinship term 'Oheim' is not expressible with two symmetric rv:Kin references."
+      ]
+    },
+    {
+      "uid": "22665",
+      "coverage_note": "Abstention. The regest states only that Friedrich came into contact with the Hospital of St John in Jerusalem, illustrated by quotations from later diplomas about what he saw there. No kinship, economic or legal relation is stated; the abstention is justified.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22666",
+      "coverage_note": "Abstention. The regest reports Friedrich's participation in the kings' deliberations at which an attack on Damascus is decided. This is a military decision without a stated kinship, economic or legal relation; the abstention is justified under the source boundary. The vocabulary also has no type for a council or deliberation.",
+      "findings": [],
+      "model_gaps": [
+        "No act type for participation in a council or deliberation (Beratungen); relevant only if political assemblies come into scope."
+      ]
+    },
+    {
+      "uid": "22667",
+      "coverage_note": "Abstention. Friedrich's distinction in the fighting before Damascus is purely military; the abstention is justified.",
+      "findings": [],
+      "model_gaps": []
+    }
+  ]
+}

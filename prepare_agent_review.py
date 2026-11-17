@@ -8,7 +8,7 @@ dropped 24 literals; its answers are kept under round1-incomplete-input/ and not
 in the Turtle are the producing run's notes and do not reach the readers, since the subgraph is
 serialised anew. Embedded acts the statement points to stay out; they are statements of their own.
 
-Usage: python prepare_agent_review.py [--source ../regesta-rdf-demo] [--run factoid-1153-2026-11-11]
+Usage: python prepare_agent_review.py [--source pipeline] [--run factoid-1153-2026-11-11]
 """
 
 from __future__ import annotations
@@ -46,7 +46,7 @@ def _subgraph(g: Graph, factoid: URIRef) -> Graph:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--source", type=Path, default=HERE.parent / "regesta-rdf-demo")
+    parser.add_argument("--source", type=Path, default=HERE / "pipeline")
     parser.add_argument("--run", default="factoid-1153-2026-11-11")
     args = parser.parse_args()
     revised = args.source / "runs" / args.run / "revised"

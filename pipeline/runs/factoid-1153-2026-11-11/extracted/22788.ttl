@@ -1,0 +1,166 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22788> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-B000824:community> a crm:E74_Group ;
+    rdfs:label "Domkanoniker zu Besançon" .
+
+<urn:regesta:actor:RI004-002-L000928:community> a crm:E74_Group ;
+    rdfs:label "Dienstmannen zu Lutry" .
+
+<urn:regesta:actor:22788:local:archiepiscopus> a rf:FunctionalActor ;
+    rdfs:label "archiepiscopus" .
+
+<urn:regesta:actor:22788:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seiner Vorgänger" .
+
+<urn:regesta:22788:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "die Besitzungen der Domkanoniker zu Besançon" .
+
+<urn:regesta:22788:vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "Vogtei" .
+
+<urn:regesta:22788:cully> a crm:E53_Place ;
+    rdfs:label "Cully (Cusliacum)" .
+
+<urn:regesta:22788:riex> a crm:E53_Place ;
+    rdfs:label "Riex (Roaldum)" .
+
+<urn:regesta:22788:muenze> a crm:E30_Right ;
+    crm:P2_has_type rv:Minting ;
+    rdfs:label "den Anteil an der Münze" .
+
+<urn:regesta:22788:geleitrecht> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "das Geleitrecht in der Stadt" .
+
+<urn:regesta:22788:stadt> a crm:E53_Place ;
+    rdfs:label "in der Stadt" .
+
+# Protection over the canons' possessions
+<urn:regesta:22788:schutznahme> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22788> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich nimmt die Besitzungen der Domkanoniker zu Besançon (matris ecclesiae sancti Ioannis) in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "Domkanoniker zu Besançon" ] ;
+    rf:concerns <urn:regesta:22788:besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Subjection to the ruler's advocacy, a provision of the protection grant
+<urn:regesta:22788:vogtei-unterstellung> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22788> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "unterstellt sie ausschließlich seiner Vogtei" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:RightHolder ; rf:nameInSource "seiner" ] ;
+    rf:concerns <urn:regesta:22788:vogtei> , <urn:regesta:22788:besitzungen> ;
+    rf:qualifier "ausschließlich" ;
+    rf:partOf <urn:regesta:22788:schutznahme> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Confirmation of the exemption of Cully and Riex from dues to the Dienstmannen of Lutry
+<urn:regesta:22788:bestaetigung-abgabenfreiheit> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22788> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bestätigt ihnen die Freiheit der Orte Cully (Cusliacum) und Riex (Roaldum) von allen Abgaben an die Dienstmannen zu Lutry (a ministris de Lustriaco)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "ihnen" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000928:community> ;
+        rf:role rv:Participant ; rf:nameInSource "Dienstmannen zu Lutry" ] ;
+    rf:concerns <urn:regesta:22788:cully> , <urn:regesta:22788:riex> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Confirmation of the share in the mint of Besançon
+<urn:regesta:22788:bestaetigung-muenze> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22788> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "den Anteil an der Münze (Tertiam etiam partem Bisuntinae monetae cum custodia ferramentorum, quibus ipsa cuditur, ita quod ipsi habeant mediam partem et archiepiscopus aliam et neutri parti sine alia cudere liceat)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "ihnen" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:22788:local:archiepiscopus> ;
+        rf:role rv:Participant ; rf:nameInSource "archiepiscopus" ] ;
+    rf:concerns <urn:regesta:22788:muenze> ;
+    rf:qualifier "Tertiam etiam partem Bisuntinae monetae cum custodia ferramentorum, quibus ipsa cuditur" ;
+    rf:condition "ita quod ipsi habeant mediam partem et archiepiscopus aliam et neutri parti sine alia cudere liceat" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Confirmation of the conduct right in the city
+<urn:regesta:22788:bestaetigung-geleit> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22788> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "das Geleitrecht in der Stadt (conductum in civilate)" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "bestätigt ihnen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "ihnen" ] ;
+    rf:concerns <urn:regesta:22788:geleitrecht> , <urn:regesta:22788:stadt> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Earlier immunity grants of the predecessors, undated
+<urn:regesta:22788:immunitaet-vorgaenger> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22788> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Immunitätsverleihungen seiner Vorgänger" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22788:local:vorgaenger> ;
+        rf:role rv:Grantor ; rf:nameInSource "seiner Vorgänger" ] ;
+    rf:qualifier "Immunitätsverleihungen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Renewal of those immunity grants
+<urn:regesta:22788:erneuerung-immunitaet> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22788> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "erneuert ihnen die Immunitätsverleihungen seiner Vorgänger" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000824:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "ihnen" ] ;
+    rf:qualifier "erneuert" ;
+    rf:refersToAct <urn:regesta:22788:immunitaet-vorgaenger> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .
+
+# Penalty fixed with the renewal
+<urn:regesta:22788:strafe> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22788> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bei Festsetzung einer Strafe von 70 Pfund für einen Freien bzw. ebensovielen Schlägen für einen Unfreien (si liber est, septuaginta libris legalem bannum componat, si vero servus, tot ictus accipiat)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    rf:amount "70 Pfund" , "septuaginta libris" , "ebensovielen Schlägen" , "tot ictus" ;
+    rf:condition "für einen Freien" , "für einen Unfreien" , "si liber est" , "si vero servus" ;
+    rf:partOf <urn:regesta:22788:erneuerung-immunitaet> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-40> ;
+    rf:verificationStatus rv:unchecked .

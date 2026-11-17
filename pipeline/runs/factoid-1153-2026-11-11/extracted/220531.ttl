@@ -1,0 +1,38 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:220531> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-H000026> a crm:E21_Person ;
+    rdfs:label "Papst G. (recte: Hadrian IV.)" .
+
+<urn:regesta:actor:RI004-002-G000351> a crm:E21_Person ;
+    rdfs:label "Bischof G(erhard) von Bologna" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Kaiser" .
+
+<urn:regesta:actor:220531:local:kardinaele> a crm:E74_Group ;
+    rdfs:label "den Kardinälen" .
+
+<urn:regesta:220531:permission> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:220531> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Papst G. (recte: Hadrian IV.) erlaubt Bischof G(erhard) von Bologna nach Rücksprache mit den Kardinälen, dem Kaiser salva ecclesie ac pontificum reverentia den Treueid zu leisten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000026> ;
+        rf:role rv:Grantor ; rf:nameInSource "Papst G. (recte: Hadrian IV.)" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ;
+        rf:role rv:Recipient ; rf:nameInSource "Bischof G(erhard) von Bologna" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:220531:local:kardinaele> ;
+        rf:role rv:Participant ; rf:nameInSource "den Kardinälen" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Participant ; rf:nameInSource "dem Kaiser" ] ;
+    rf:qualifier "erlaubt" ;
+    rf:exception "salva ecclesie ac pontificum reverentia" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;
+    rf:verificationStatus rv:unchecked .

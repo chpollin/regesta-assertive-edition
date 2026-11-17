@@ -1,0 +1,58 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22740> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-B000240:community> a crm:E74_Group ; rdfs:label "Kloster St. Alban zu Basel" .
+<urn:regesta:actor:RI004-002-B001561> a crm:E21_Person ; rdfs:label "Bischof Burchard von Basel" .
+
+<urn:regesta:22740:besitzungen> a crm:E18_Physical_Thing ; rdfs:label "Besitzungen" .
+<urn:regesta:22740:kapelle-kuenheim> a crm:E18_Physical_Thing ; rdfs:label "Kapelle zu Künheim (Chuannehim)" .
+<urn:regesta:22740:untervogtei> a crm:E30_Right ; crm:P2_has_type rv:Advocacy ; rdfs:label "Einsetzung von Untervögten" .
+
+<urn:regesta:22740:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22740> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das Kloster St. Alban zu Basel in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000240:community> ; rf:role rv:Recipient ; rf:nameInSource "Kloster St. Alban zu Basel" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22740:burchard-donation> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22740> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die von Bischof Burchard von Basel (†) geschenkten und verbrieften Besitzungen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B001561> ; rf:role rv:Grantor ; rf:nameInSource "Bischof Burchard von Basel" ] ;
+    rf:concerns <urn:regesta:22740:besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22740:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22740> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm unter Hinzufügung einer Kapelle zu Künheim (Chuannehim) die von Bischof Burchard von Basel (†) geschenkten und verbrieften Besitzungen" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das Kloster St. Alban zu Basel" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000240:community> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22740:besitzungen> , <urn:regesta:22740:kapelle-kuenheim> ;
+    rf:qualifier "unter Hinzufügung" ;
+    rf:refersToAct <urn:regesta:22740:burchard-donation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g6> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22740:subadvocate-prohibition> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22740> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "verbietet die Einsetzung von Untervögten" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das Kloster St. Alban zu Basel" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000240:community> ; rf:role rv:Beneficiary ; rf:nameInSource "Kloster St. Alban zu Basel" ] ;
+    rf:concerns <urn:regesta:22740:untervogtei> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-28> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,34 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:134420> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-C000578:community> a crm:E74_Group ;
+    rdfs:label "Kloster Château-Chalon" .
+
+<urn:regesta:134420:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "Besitzungen" .
+
+<urn:regesta:134420:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:134420> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt dem Kloster Château-Chalon die Rechte und Besitzungen" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-C000578:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Kloster Château-Chalon" ] ;
+    rf:concerns <urn:regesta:134420:besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-52> ;
+    rf:verificationStatus rv:unchecked .

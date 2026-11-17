@@ -1,0 +1,54 @@
+{
+  "batch": 20,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20",
+  "records": [
+    {
+      "uid": "22707",
+      "status": "extracted",
+      "files": ["22707.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "'in Nachahmung König Konrads (III.)' implies an earlier act by Konrad III whose content and recipients the regest does not state; recorded as a bare earlier Confirmation with qualifier 'in Nachahmung', and whether imitation of a predecessor's charter is a confirmation of an earlier act is an open reading.",
+        "'ihre ... Güter' not extracted as Possession, because the possessive stands only inside the confirmed object."
+      ]
+    },
+    {
+      "uid": "22708",
+      "status": "extracted",
+      "files": ["22708.ttl"],
+      "factoids": 7,
+      "unresolved_identities": [
+        "'den König' and 'den Grafen' in the provision on Abgaben are modelled as FunctionalActors, not as the ruler and not as Goswin; whether 'den Grafen' means the Vogt Goswin is unresolved."
+      ],
+      "model_gaps": [
+        "No actor for 'das Reich' as holder of 'die Rechte des Reiches'; no RightHolding factoid was built and the right is typed only with the top concept rv:LordshipRights.",
+        "The parties of 'die Streitigkeiten mit dem Vogt' other than Goswin are not stated; only Goswin is referenced as Participant. Goswin's Vogt office is recorded as OfficeHolding with qualifier 'Vogt' without its object.",
+        "rf:refersToAct links the confirmation to the envoys' written report on which it is based; the model has no distinct 'based on' relation."
+      ]
+    },
+    {
+      "uid": "22709",
+      "status": "no_in_scope_claim",
+      "files": ["22709.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22710",
+      "status": "extracted",
+      "files": ["22710.ttl"],
+      "factoids": 4,
+      "unresolved_identities": [
+        "Didius Julianus is identified with register candidate RI004-002-D000157, which the register types as 'ort'; typed here as crm:E21_Person.",
+        "'ihre Mitglieder' is a regest-local group, kept separate from the family group RI004-002-J000286."
+      ],
+      "model_gaps": [
+        "No right type for a right of arms ('einen gekrönten schwarzen Adler im Wappen zu führen'); the RightGrant carries no E30 node and keeps the wording in rf:qualifier.",
+        "Descent of a family from an ancestor ('abstammende') is recorded as Kinship between the person and a group; the vocabulary has no descent type. 'seinem Vorgänger' (predecessor relation) not extracted.",
+        "The regest number carries a dagger (n. †83), marking the charter as spurious in the edition; the model has no place to carry the authenticity judgement, which lies outside summary_plain."
+      ]
+    }
+  ]
+}

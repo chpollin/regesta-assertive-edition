@@ -1,0 +1,140 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22697> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "Konrad III." .
+
+<urn:regesta:actor:22697:local:hofgericht> a crm:E74_Group ;
+    rdfs:label "des Hofgerichts" .
+
+<urn:regesta:actor:22697:local:voegte> a rf:FunctionalActor ;
+    rdfs:label "der Vögte des Domkapitels zu Lüttich" .
+
+<urn:regesta:actor:RI004-002-L000934:community> a crm:E74_Group ;
+    rdfs:label "Domkapitels zu Lüttich" .
+
+<urn:regesta:actor:22697:local:koenigsbann-belehnter> a rf:FunctionalActor ;
+    rdfs:label "der mit dem Königsbann Belehnte" .
+
+<urn:regesta:actor:RI004-002-L000932:community> a crm:E74_Group ;
+    rdfs:label "der Stadt" .
+
+<urn:regesta:actor:22697:local:stift> a crm:E74_Group ;
+    rdfs:label "des Stiftes" .
+
+<urn:regesta:actor:22697:local:oheim> a crm:E21_Person ;
+    rdfs:label "seinen Oheim" .
+
+<urn:regesta:22697:right-voegte> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die Rechte der Vögte des Domkapitels zu Lüttich" .
+
+<urn:regesta:22697:right-vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die Vogtei" .
+
+<urn:regesta:22697:right-abgaben> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "Abgaben" .
+
+<urn:regesta:22697:earlier-judgment> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22697> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts" ] ;
+    rf:qualifier "erneuerten" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:hofgericht> ; rf:role rv:Judge ; rf:nameInSource "des Hofgerichts" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Participant ; rf:nameInSource "Konrad III." ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22697:enactment-voegte> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22697> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich legt auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts die Rechte der Vögte des Domkapitels zu Lüttich (ius advocatorum et terminum iuris eorum) fest" ] ;
+    rf:refersToAct <urn:regesta:22697:earlier-judgment> ;
+    rf:ground "auf Grund eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts" ;
+    rf:concerns <urn:regesta:22697:right-voegte> ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:voegte> ; rf:role rv:RightHolder ; rf:nameInSource "der Vögte des Domkapitels zu Lüttich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000934:community> ; rf:role rv:Participant ; rf:nameInSource "Domkapitels zu Lüttich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22697:provision-koenigsbann> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22697> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bestimmt, daß die Vogtei nur der mit dem Königsbann Belehnte (nisi quem constaret bannum regie auctoritatis habere) ausüben dürfe" ] ;
+    rf:partOf <urn:regesta:22697:enactment-voegte> ;
+    rf:concerns <urn:regesta:22697:right-vogtei> ;
+    rf:condition "nur der mit dem Königsbann Belehnte" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:koenigsbann-belehnter> ; rf:role rv:RightHolder ; rf:nameInSource "der mit dem Königsbann Belehnte" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22697:prohibition-abgaben> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22697> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "verbietet das Eintreiben von Abgaben in einer Höhe, die dem Zeugnis und den Urkunden der Schöffen und Dorfbewohner (quod auctoritas privilegiorum et testimonium scabinorum et villarum fidelium perhiberet veraci attestatione) widerspricht" ] ;
+    rf:partOf <urn:regesta:22697:enactment-voegte> ;
+    rf:concerns <urn:regesta:22697:right-abgaben> ;
+    rf:qualifier "verbietet" ;
+    rf:condition "in einer Höhe, die dem Zeugnis und den Urkunden der Schöffen und Dorfbewohner (quod auctoritas privilegiorum et testimonium scabinorum et villarum fidelium perhiberet veraci attestatione) widerspricht" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22697:earlier-renewal> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22697> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Privilegien der Stadt und des Stiftes, die durch seinen Oheim erneuert worden sind" ] ;
+    rf:qualifier "erneuert" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:oheim> ; rf:role rv:Grantor ; rf:nameInSource "seinen Oheim" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000932:community> ; rf:role rv:Recipient ; rf:nameInSource "der Stadt" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:stift> ; rf:role rv:Recipient ; rf:nameInSource "des Stiftes" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22697:confirmation-privileges> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22697> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bestätigt die Privilegien der Stadt und des Stiftes, die durch seinen Oheim erneuert worden sind" ] ;
+    rf:refersToAct <urn:regesta:22697:earlier-renewal> ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000932:community> ; rf:role rv:Recipient ; rf:nameInSource "der Stadt" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:stift> ; rf:role rv:Recipient ; rf:nameInSource "des Stiftes" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22697:kinship-oheim> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22697> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "durch seinen Oheim" ] ;
+    rf:qualifier "Oheim" ;
+    rf:reference
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "seinen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22697:local:oheim> ; rf:role rv:Kin ; rf:nameInSource "seinen Oheim" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-17> ;
+    rf:verificationStatus rv:unchecked .

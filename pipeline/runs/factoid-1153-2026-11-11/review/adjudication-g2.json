@@ -1,0 +1,145 @@
+{
+  "group": 2,
+  "adjudicator": "urn:regesta:agent:factoid-1153-2026-11-11:adjudication-g2",
+  "expert_accepted": false,
+  "basis": "Each finding of review-g2-A and review-g2-B was checked against summary_plain and the identity candidates of its packet, the extracted Turtle file, and the frozen contract contracts/factoid-2026-11-11 (regesta-core.ttl, vocabulary.ttl, shapes.ttl, annotation-guidelines.md, review.md, correct.md); validation/extracted.json reports no technical issues for any of the twenty UIDs, so no validation decision is needed.",
+  "decisions": [
+    {
+      "uids": ["22652"],
+      "source": ["review-g2-A"],
+      "subject": "urn:regesta:22652:beitritt",
+      "finding": "Friedrich's accession (Beitritt) to the Fürstenspruch is typed rv:Confirmation with rv:Grantor although accession is not a confirmation.",
+      "decision": "model_gap",
+      "reason": "The passage 'tritt einem von Bischof Burchard von Straßburg gefällten Fürstenspruch bei' states assent to another actor's judgment. The act scheme has no assent or accession type; rv:Confirmation ('bestätigt ... einen früheren Akt') is the nearest concept, and its definition explicitly does not claim validity. The current typing stays, the extractor's comment already marks the approximation; the missing type is a gap for the next model version."
+    },
+    {
+      "uids": ["22652"],
+      "source": ["review-g2-A"],
+      "subject": "urn:regesta:22652:fuerstenspruch",
+      "finding": "The content of the judgment, freedom from all imperial services, is not structured as a right via rf:concerns.",
+      "decision": "model_gap",
+      "reason": "'auch weiterhin frei von allen Reichsdiensten sein sollen' describes an exemption. rv:RightTypes has no exemption or immunity concept, and RightShape requires a crm:P2_has_type from that scheme, so an E30_Right cannot be typed honestly. Forcing rv:LordshipRights or rv:Protection would change the historical meaning, which correct.md forbids. The wording survives in the evidence and 'auch weiterhin' in rf:qualifier."
+    },
+    {
+      "uids": ["22652"],
+      "source": ["review-g2-A"],
+      "subject": "urn:regesta:22652:fuerstenspruch",
+      "finding": "The judgment's evidence selector includes the particle 'bei' of Friedrich's accession; optionally split.",
+      "decision": "not_required",
+      "reason": "The selector is a contiguous substring that carries type and roles of the judgment. The guideline asks for the shortest supporting passage but does not invalidate a selector for one extra particle, and the reviewer itself calls it cosmetic."
+    },
+    {
+      "uids": ["22653"],
+      "source": ["review-g2-A"],
+      "subject": "22653",
+      "finding": "The central statement, Friedrich's succession in the duchy of Swabia, is omitted; only the parenthood is extracted.",
+      "decision": "correct_conservatively",
+      "reason": "'Friedrich folgt seinem Vater, Herzog Friedrich II., im Herzogtum Schwaben nach.' is the whole regest; succeeding in a duchy is a legal relation in scope. There is no succession act type and no predecessor role, and rv:Appointment ('Einsetzung in ein Amt') would assert an appointing act the passage does not state. What the passage does state and the contract can express is that Friedrich holds the duchy: rv:OfficeHolding with rv:Officeholder. The father gets no reference in this factoid, because rv:Participant would claim involvement in Friedrich's office holding that the vocabulary cannot qualify as predecessorship. The place gets a regest-local node, as the guidelines prescribe for places, not the register candidate IRI as an actor.",
+      "instruction": "In 22653.ttl keep <urn:regesta:22653:parenthood-friedrich> unchanged. Add the node <urn:regesta:22653:herzogtum-schwaben> a crm:E53_Place ; rdfs:label \"Herzogtum Schwaben\" . Add the factoid <urn:regesta:22653:officeholding-schwaben> a rf:StateFactoid ; rf:factoidType rv:OfficeHolding ; rf:source <urn:regesta:record:22653> ; rf:evidence [ a oa:TextQuoteSelector ; oa:exact \"Friedrich folgt seinem Vater, Herzog Friedrich II., im Herzogtum Schwaben nach\" ] ; rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Officeholder ; rf:nameInSource \"Friedrich\" ] ; rf:concerns <urn:regesta:22653:herzogtum-schwaben> ; prov:wasAttributedTo the corrector's producer IRI ; rf:verificationStatus rv:unchecked . Add no reference for Herzog Friedrich II. to this factoid and no rf:qualifier. Replace the existing comment by one stating that the succession act and the predecessor role remain model gaps, and record both gaps in the correction log."
+    },
+    {
+      "uids": ["22654"],
+      "source": ["review-g2-A"],
+      "subject": "urn:regesta:actor:RI004-002-F000471",
+      "finding": "'Herzog Friedrichs von Schwaben' is identified with the shared ruler although candidate F000681 also matches by name and title.",
+      "decision": "keep",
+      "reason": "F000681 is the father ('Herzog von Schwaben, Vater Friedrich Barbarossas') and carries only role p_komment in this packet, while the regest belongs to the Barbarossa regesta and the preceding record 22653 of the same series reports the son's succession in the duchy. The identification with the shared ruler is defensible; the file's comment already marks it as a reading, which the corrector keeps as an open identity."
+    },
+    {
+      "uids": ["22654"],
+      "source": ["review-g2-A"],
+      "subject": "urn:regesta:22654:uebergabe",
+      "finding": "Konrad von Rietfeld (K000502) and Berengar von Albeck (B000529) appear only inside the rf:ground literal and are not referenced.",
+      "decision": "model_gap",
+      "reason": "'wegen ihrer Bedrückung durch Konrad von Rietfeld und Berengar von Albeck' names them as the cause of the handover, not as parties to it. Adding them as rv:Participant to the handover factoid would assert participation in the bishop's transfer that the passage does not state. The oppression itself has no act type and its perpetrators no role; the ground literal keeps the exact wording."
+    },
+    {
+      "uids": ["22654"],
+      "source": ["review-g2-A"],
+      "subject": "urn:regesta:22654:schutzunterstellung",
+      "finding": "Roles rv:Beneficiary for the Ministerialien and rv:Recipient for the duke, rf:refersToAct from the protection grant to the handover, and rv:Grant for a handover of persons are approximations.",
+      "decision": "keep",
+      "reason": "The duke receives the charge ('in manus Friderici ducis Suevię ... commisit') and the Ministerialien are those placed under protection, so Recipient and Beneficiary read the passage correctly. rf:refersToAct is defined for 'a later act such as a confirmation or assurance' that refers to an earlier act of the same regest; 'die genannten Bamberger Ministerialien, die ihm ... übergeben worden sind' is such a reference, and no date is asserted. rv:Grant is the nearest available type for the handover; a person-handover type is a gap for the next version, not a correction."
+    },
+    {
+      "uids": ["22657"],
+      "source": ["review-g2-A"],
+      "subject": "urn:regesta:22657:transfer",
+      "finding": "The transfer is typed rv:Grant although the counter-payment would support rv:Sale.",
+      "decision": "keep",
+      "reason": "'die Übergabe zweier Höfe an das Kloster durch Herzog Welf ..., der dafür 10 Pfund erhält' reports a Tradition with a counter-gift. Whether that is a sale is a legal judgment the regest does not make; rv:Grant is the broader concept that the passage certainly supports, and the separate rv:Payment factoid with rf:amount \"10 Pfund\" and rf:partOf already records the consideration. The reviewer itself declines to call it an error."
+    },
+    {
+      "uids": ["22658"],
+      "source": ["review-g2-B"],
+      "subject": "22658",
+      "finding": "The fixed-term contract about castles, Dienstleute and Allodialgüter, the only substantive act, is omitted.",
+      "decision": "model_gap",
+      "reason": "'(Friedrich, Herzog von Schwaben, oder Graf Gebhard von Sulzbach) schließt ... einen befristeten Vertrag' needs an agreement act type and a way to state the regest's alternative party; the contract has neither. rv:Grant or rv:Negotiation would misstate the act, and a reference to only one of the alternatives would invent an identity. The omission and the comment in the file stand."
+    },
+    {
+      "uids": ["22659"],
+      "source": ["review-g2-B"],
+      "subject": "urn:regesta:actor:RI004-002-K000316",
+      "finding": "The actor label and name in source use the genitive 'König Konrads III.'.",
+      "decision": "not_required",
+      "reason": "The guidelines require actor labels and rf:nameInSource in the wording of the source; 'König Konrads III.' is that wording in 'seines Oheims, König Konrads III.'. A nominative label would need a contract rule."
+    },
+    {
+      "uids": ["22660"],
+      "source": ["review-g2-B"],
+      "subject": "urn:regesta:22660:commission-retaliation",
+      "finding": "Extracting a commission to a punitive military action may be out of scope.",
+      "decision": "keep",
+      "reason": "rv:Appointment is defined as 'Einsetzung in ein Amt oder Beauftragung mit einer Aufgabe', and 'im Auftrag König Konrads III. Vergeltung' states such a commission. The factoid records only the commission, not the burning, executions or recovery attempt, so no military movement is recorded. A guideline decision on such commissions belongs to the next contract version."
+    },
+    {
+      "uids": ["22660"],
+      "source": ["review-g2-B"],
+      "subject": "urn:regesta:22660:commission-retaliation",
+      "finding": "rv:Grantor and rv:Recipient fit commissioner and commissioned person only loosely.",
+      "decision": "keep",
+      "reason": "rv:Grantor covers 'wer ... bestimmt', which includes the one who gives the commission, and no principal or agent role exists. The roles are the nearest available; a principal and agent pair is a gap for the next version."
+    },
+    {
+      "uids": ["22662"],
+      "source": ["review-g2-B"],
+      "subject": "urn:regesta:22662:mission-to-ludwig",
+      "finding": "The sender of the mission is given rv:Grantor.",
+      "decision": "keep",
+      "reason": "'von König Konrad III. beauftragt' makes Konrad the one who determines the mission; the vocabulary has no sender role, and Envoy and Addressee are correctly assigned to Friedrich and Ludwig VII."
+    },
+    {
+      "uids": ["22662"],
+      "source": ["review-g2-B"],
+      "subject": "urn:regesta:22662:mission-to-ludwig",
+      "finding": "Optionally add rf:qualifier \"nach der Katastrophe des Kreuzheeres\".",
+      "decision": "not_required",
+      "reason": "rf:qualifier is for wording that qualifies type or time and that the vocabulary does not capture; the relative anchor is already contained in the first evidence selector 'Friedrich wird nach der Katastrophe des Kreuzheeres', no date is asserted, and the contract does not require duplicating it."
+    },
+    {
+      "uids": ["22663"],
+      "source": ["review-g2-B"],
+      "subject": "urn:regesta:22663:request-restitution",
+      "finding": "The joint refusal of restitution by Friedrich and Konrad III., the main statement, is not represented; reviewer suggests trimming the request's evidence to the second selector.",
+      "decision": "model_gap",
+      "reason": "'Friedrich lehnt gemeinsam mit seinem Oheim, König Konrad III., die Restitution ... ab' is a refusal, for which the act scheme has no type; rv:Judgment or rv:Revocation would change the meaning. The first selector stays, because the rv:Addressee references for Friedrich and Konrad rest on that passage, as the guideline on a second selector for a role resting on a different passage allows. The file's comment already reports the refusal as a model gap, and no restitution or possession is asserted."
+    },
+    {
+      "uids": ["22663"],
+      "source": ["review-g2-B"],
+      "subject": "urn:regesta:22663:request-restitution",
+      "finding": "Ludwig VII. as rv:Mediator and Friedrich and Konrad as rv:Addressee are inferences.",
+      "decision": "keep",
+      "reason": "'die ... Odo von Deuil, durch die Vermittlung seines König erreichen wollte' supports Mediator for Ludwig VII.; the addressee reading follows from the same sentence, in which Friedrich and Konrad decline the restitution Odo sought. Ludwig stays regest-local because the packet has no candidate for him. The comment marks the addressee reading as the producer's."
+    }
+  ],
+  "summary": {
+    "correct": 0,
+    "correct_conservatively": 1,
+    "keep": 7,
+    "not_required": 3,
+    "model_gap": 5,
+    "reject": 0
+  }
+}

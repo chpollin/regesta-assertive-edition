@@ -1,0 +1,191 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22715> a crm:E31_Document .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-S001332> a crm:E21_Person ; rdfs:label "Peter, der auch Sven genannt wird" .
+<urn:regesta:actor:RI004-002-K000225> a crm:E21_Person ; rdfs:label "Knut" .
+<urn:regesta:actor:RI004-002-W000038> a crm:E21_Person ; rdfs:label "Waldemar" .
+<urn:regesta:actor:RI004-002-U000167> a crm:E21_Person ; rdfs:label "Ulrich" .
+<urn:regesta:actor:RI004-002-S000880> a crm:E21_Person ; rdfs:label "Herzogs Sobeslav von Böhmen" .
+<urn:regesta:actor:RI004-002-D000047> a crm:E21_Person ; rdfs:label "Bischof Daniel von Prag" .
+<urn:regesta:actor:RI004-002-V000532> a crm:E21_Person ; rdfs:label "Herzog Vladislav von Böhmen" .
+<urn:regesta:actor:RI004-002-G000363> a crm:E21_Person ; rdfs:label "Dompropst Gerhard" .
+<urn:regesta:actor:RI004-002-H000257> a crm:E21_Person ; rdfs:label "Domdekan Hazzo" .
+<urn:regesta:actor:RI004-002-W000436> a crm:E21_Person ; rdfs:label "Bischof Wichmann von Naumburg" .
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ; rdfs:label "Herzog Heinrich dem Löwen" .
+<urn:regesta:actor:RI004-002-A000135> a crm:E21_Person ; rdfs:label "Markgraf Albrecht dem Bären" .
+<urn:regesta:actor:22715:local:vornehmste> a crm:E74_Group ; rdfs:label "der Vornehmsten" .
+<urn:regesta:actor:22715:local:partei-hazzos> a crm:E74_Group ; rdfs:label "die Partei Hazzos" .
+
+# Places, things, rights
+
+<urn:regesta:22715:place-koenigreich> a crm:E53_Place ; rdfs:label "das Königreich" .
+<urn:regesta:22715:place-provinzen> a crm:E53_Place ; rdfs:label "einige Provinzen" .
+<urn:regesta:22715:place-seeland> a crm:E53_Place ; rdfs:label "Seeland" .
+<urn:regesta:22715:place-teil-daenemarks> a crm:E53_Place ; rdfs:label "einen Teil Dänemarks" .
+<urn:regesta:22715:place-herzogtum> a crm:E53_Place ; rdfs:label "das väterliche Herzogtum" .
+<urn:regesta:22715:thing-koeniggraetz> a crm:E18_Physical_Thing ; rdfs:label "die Burg Königgrätz (Gradek ultra Albim)" .
+<urn:regesta:22715:right-regalien> a crm:E30_Right ; crm:P2_has_type rv:ChurchRights ; rdfs:label "die Regalien" .
+<urn:regesta:22715:right-erbe> a crm:E30_Right ; crm:P2_has_type rv:Inheritance ;
+    rdfs:label "das Erbe des ermordeten Grafen Hermann von Winzenburg und das des Grafen Bernhard (von Plötzke)" .
+
+# Danish throne dispute and its settlement
+
+<urn:regesta:22715:f-judgment-denmark> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich entscheidet den dänischen Thronstreit zwischen den beiden Prätendenten Peter, der auch Sven genannt wird, und Knut" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "nach dem Urteil und dem Rat der Vornehmsten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Judge ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001332> ; rf:role rv:Participant ; rf:nameInSource "Peter, der auch Sven genannt wird" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:role rv:Participant ; rf:nameInSource "Knut" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22715:local:vornehmste> ; rf:role rv:Participant ; rf:nameInSource "der Vornehmsten" ] ;
+    rf:concerns <urn:regesta:22715:place-koenigreich> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-knut-renounces> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:qualifier "verzichtet" ;
+    rf:partOf <urn:regesta:22715:f-judgment-denmark> ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Knut verzichtet auf das Königreich, indem er Friedrich nach dem Brauch des Hofes" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:role rv:Grantor ; rf:nameInSource "Knut" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22715:place-koenigreich> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-knut-provinces> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:partOf <urn:regesta:22715:f-judgment-denmark> ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Knut verzichtet auf das Königreich" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "und erhält einige Provinzen, darunter besonders Seeland" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000225> ; rf:role rv:Recipient ; rf:nameInSource "Knut" ] ;
+    rf:concerns <urn:regesta:22715:place-provinzen> , <urn:regesta:22715:place-seeland> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-sven-kingdom> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:qualifier "nach Leistung von Treueid und Mannschaft" ;
+    rf:partOf <urn:regesta:22715:f-judgment-denmark> ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Peter (Sven) erhält nach Leistung von Treueid und Mannschaft das Königreich aus der Hand des Königs, der ihm die Königskrone aufsetzt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "des Königs" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001332> ; rf:role rv:Recipient ; rf:nameInSource "Peter (Sven)" ] ;
+    rf:concerns <urn:regesta:22715:place-koenigreich> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-waldemar-part> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:partOf <urn:regesta:22715:f-judgment-denmark> ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Ein dritter Prinz namens Waldemar erhält ebenfalls einen Teil Dänemarks" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000038> ; rf:role rv:Recipient ; rf:nameInSource "Waldemar" ] ;
+    rf:concerns <urn:regesta:22715:place-teil-daenemarks> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+# Bohemia
+
+<urn:regesta:22715:f-ulrich-parent> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Ulrich, dem Sohn des Herzogs Sobeslav von Böhmen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000880> ; rf:role rv:Parent ; rf:nameInSource "Herzogs Sobeslav von Böhmen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000167> ; rf:role rv:Child ; rf:nameInSource "Ulrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-promise-ulrich> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:amount "eine große Geldsumme" ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich hat Ulrich, dem Sohn des Herzogs Sobeslav von Böhmen, versprochen, ihm gegen eine große Geldsumme das väterliche Herzogtum zuzuwenden" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000167> ; rf:role rv:Recipient ; rf:nameInSource "Ulrich" ] ;
+    rf:concerns <urn:regesta:22715:place-herzogtum> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-mission-daniel> a rf:ActFactoid ;
+    rf:factoidType rv:Mission ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Bischof Daniel von Prag, den der entgegen seiner Vorladung auf den Hoftag nicht erschienene Herzog Vladislav von Böhmen an den neuen König abgeordnet hat" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000532> ; rf:role rv:Participant ; rf:nameInSource "Herzog Vladislav von Böhmen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:role rv:Envoy ; rf:nameInSource "Bischof Daniel von Prag" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "den neuen König" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-koeniggraetz-fief> a rf:ActFactoid ;
+    rf:factoidType rv:Enfeoffment ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Dies kann jedoch Bischof Daniel von Prag" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "indem er dem genannten Ulrich die Burg Königgrätz (Gradek ultra Albim) als Lehen verschafft" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000047> ; rf:role rv:Participant ; rf:nameInSource "Bischof Daniel von Prag" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000167> ; rf:role rv:Recipient ; rf:nameInSource "dem genannten Ulrich" ] ;
+    rf:concerns <urn:regesta:22715:thing-koeniggraetz> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+# Magdeburg
+
+<urn:regesta:22715:f-magdeburg-dispute> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:qualifier "schon längere Zeit" ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die eine Seite für Dompropst Gerhard, die andere dagegen für Domdekan Hazzo eintritt und der Streit schon längere Zeit andauert" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000363> ; rf:role rv:Participant ; rf:nameInSource "Dompropst Gerhard" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000257> ; rf:role rv:Participant ; rf:nameInSource "Domdekan Hazzo" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-regalia-wichmann> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:qualifier "nach Erscheinen" ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich greift in die Magdeburger Doppelwahl ein" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Bischof Wichmann von Naumburg zu entscheiden, dem er nach Erscheinen die Regalien verleiht" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:role rv:Recipient ; rf:nameInSource "Bischof Wichmann von Naumburg" ] ;
+    rf:concerns <urn:regesta:22715:right-regalien> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22715:f-hazzo-party-decision> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:qualifier "entscheiden" ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bringt die Partei Hazzos dazu, sich für Bischof Wichmann von Naumburg zu entscheiden" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich greift in die Magdeburger Doppelwahl ein" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22715:local:partei-hazzos> ; rf:role rv:Participant ; rf:nameInSource "die Partei Hazzos" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000436> ; rf:role rv:Recipient ; rf:nameInSource "Bischof Wichmann von Naumburg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;
+    rf:verificationStatus rv:unchecked .
+
+# Inheritance dispute
+
+<urn:regesta:22715:f-inheritance-dispute> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:qualifier "versucht erfolglos" ;
+    rf:source <urn:regesta:record:22715> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich versucht erfolglos, den Streit zwischen Herzog Heinrich dem Löwen und Markgraf Albrecht dem Bären um das Erbe des ermordeten Grafen Hermann von Winzenburg und das des Grafen Bernhard (von Plötzke) beizulegen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Mediator ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Participant ; rf:nameInSource "Herzog Heinrich dem Löwen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000135> ; rf:role rv:Participant ; rf:nameInSource "Markgraf Albrecht dem Bären" ] ;
+    rf:concerns <urn:regesta:22715:right-erbe> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .

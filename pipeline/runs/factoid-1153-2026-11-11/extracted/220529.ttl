@@ -1,0 +1,40 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:220529> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-G000351> a crm:E21_Person ;
+    rdfs:label "Bischof G(erhard) von Bologna" .
+
+<urn:regesta:220529:earlier-request> a rf:ActFactoid ;
+    rf:factoidType rv:Request ;
+    rf:source <urn:regesta:record:220529> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich sagt Bischof G(erhard) von Bologna die erbetene Hilfe zu" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Bischof G(erhard) von Bologna" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Addressee ; rf:nameInSource "Friedrich" ] ;
+    rf:qualifier "erbetene" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:220529:assurance> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:220529> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich sagt Bischof G(erhard) von Bologna die erbetene Hilfe zu" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000351> ;
+        rf:role rv:Recipient ; rf:nameInSource "Bischof G(erhard) von Bologna" ] ;
+    rf:refersToAct <urn:regesta:220529:earlier-request> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-54> ;
+    rf:verificationStatus rv:unchecked .

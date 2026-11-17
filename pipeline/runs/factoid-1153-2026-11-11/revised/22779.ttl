@@ -1,0 +1,259 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22779> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-A001203> a crm:E21_Person ;
+    rdfs:label "seines Kanzlers Arnold" .
+
+<urn:regesta:actor:22779:local:andere-fuersten> a crm:E74_Group ;
+    rdfs:label "anderer Fürsten" .
+
+<urn:regesta:actor:RI004-002-G000251:community> a crm:E74_Group ;
+    rdfs:label "Kloster Gembloux (Gemblacensem)" .
+
+<urn:regesta:actor:22779:local:zweiter-vogt> a rf:FunctionalActor ;
+    rdfs:label "der nach dem König zweite Vogt" .
+
+<urn:regesta:actor:RI004-002-G000250:community> a crm:E74_Group ;
+    rdfs:label "Bewohner der Stadt Gembloux" .
+
+<urn:regesta:actor:RI004-002-A001272> a crm:E21_Person ;
+    rdfs:label "Abt Arnulf" .
+
+<urn:regesta:actor:RI004-002-O000392> a crm:E21_Person ;
+    rdfs:label "Kaiser Ottos" .
+
+<urn:regesta:actor:RI004-002-W000497> a crm:E21_Person ;
+    rdfs:label "Bischof Wilbodos von Lüttich" .
+
+# Main act: protection of Gembloux at the request of the chancellor and other princes.
+<urn:regesta:22779:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich nimmt auf Bitten seines Kanzlers Arnold und anderer Fürsten das Kloster Gembloux (Gemblacensem) in seinen Schutz" ] ;
+    rf:reference <urn:regesta:22779:protection:ref-friedrich> ,
+        <urn:regesta:22779:protection:ref-arnold> ,
+        <urn:regesta:22779:protection:ref-fuersten> ,
+        <urn:regesta:22779:protection:ref-gembloux> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:protection:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22779:protection:ref-arnold> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A001203> ;
+    rf:role rv:Petitioner ;
+    rf:nameInSource "seines Kanzlers Arnold" .
+
+<urn:regesta:22779:protection:ref-fuersten> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22779:local:andere-fuersten> ;
+    rf:role rv:Petitioner ;
+    rf:nameInSource "anderer Fürsten" .
+
+<urn:regesta:22779:protection:ref-gembloux> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-G000251:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Kloster Gembloux (Gemblacensem)" .
+
+# Confirmation of freedom from any lordship.
+<urn:regesta:22779:confirmation-freedom> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "das Kloster Gembloux (Gemblacensem) in seinen Schutz, bestätigt ihm die Freiheit von jeder Herrschaft" ] ;
+    rf:reference <urn:regesta:22779:confirmation-freedom:ref-friedrich> ,
+        <urn:regesta:22779:confirmation-freedom:ref-gembloux> ;
+    rf:concerns <urn:regesta:22779:right-freedom> ;
+    rf:partOf <urn:regesta:22779:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:confirmation-freedom:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22779:confirmation-freedom:ref-gembloux> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-G000251:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Kloster Gembloux (Gemblacensem)" .
+
+<urn:regesta:22779:right-freedom> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Freiheit von jeder Herrschaft" .
+
+# Provision: the second advocate may install only one sub-advocate, whose rights are fixed.
+<urn:regesta:22779:provision-subadvocate> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bestimmt, daß der nach dem König zweite Vogt nur einen einzigen Untervogt einsetzen darf, dessen Rechte genau festgelegt werden" ] ;
+    rf:reference <urn:regesta:22779:provision-subadvocate:ref-friedrich> ,
+        <urn:regesta:22779:provision-subadvocate:ref-vogt> ;
+    rf:concerns <urn:regesta:22779:right-subadvocate> ;
+    rf:qualifier "nur einen einzigen" ;
+    rf:partOf <urn:regesta:22779:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:provision-subadvocate:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22779:provision-subadvocate:ref-vogt> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22779:local:zweiter-vogt> ;
+    rf:role rv:Obligor ;
+    rf:nameInSource "der nach dem König zweite Vogt" .
+
+<urn:regesta:22779:right-subadvocate> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "einen einzigen Untervogt einsetzen" .
+
+# Grant: free election of abbot and advocate after the death of abbot Arnulf.
+<urn:regesta:22779:grant-election> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gewährt nach dem Tod Abt Arnulfs das freie Abt- und Vogtwahlrecht" ] ;
+    rf:reference <urn:regesta:22779:grant-election:ref-friedrich> ,
+        <urn:regesta:22779:grant-election:ref-gembloux> ;
+    rf:concerns <urn:regesta:22779:right-election> ;
+    rf:condition "nach dem Tod Abt Arnulfs" ;
+    rf:partOf <urn:regesta:22779:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:grant-election:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22779:grant-election:ref-gembloux> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-G000251:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Kloster Gembloux (Gemblacensem)" .
+
+<urn:regesta:22779:right-election> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights , rv:Advocacy ;
+    rdfs:label "das freie Abt- und Vogtwahlrecht" .
+
+# Grant: right of fortification in the area around Gembloux.
+<urn:regesta:22779:grant-fortification> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gewährt nach dem Tod Abt Arnulfs das freie Abt- und Vogtwahlrecht, das Befestigungsrecht im Gebiet um Gembloux" ] ;
+    rf:reference <urn:regesta:22779:grant-fortification:ref-friedrich> ,
+        <urn:regesta:22779:grant-fortification:ref-gembloux> ;
+    rf:concerns <urn:regesta:22779:right-fortification> , <urn:regesta:22779:place-gebiet-gembloux> ;
+    rf:partOf <urn:regesta:22779:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:grant-fortification:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22779:grant-fortification:ref-gembloux> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-G000251:community> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Kloster Gembloux (Gemblacensem)" .
+
+<urn:regesta:22779:right-fortification> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "das Befestigungsrecht" .
+
+<urn:regesta:22779:place-gebiet-gembloux> a crm:E53_Place ;
+    rdfs:label "Gebiet um Gembloux" .
+
+# Grant: exemption of the inhabitants of the town from all tolls and dues in the realm.
+<urn:regesta:22779:grant-toll-exemption> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "gewährt nach dem Tod Abt Arnulfs das freie Abt- und Vogtwahlrecht, das Befestigungsrecht im Gebiet um Gembloux, die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich" ] ;
+    rf:reference <urn:regesta:22779:grant-toll-exemption:ref-friedrich> ,
+        <urn:regesta:22779:grant-toll-exemption:ref-inhabitants> ;
+    rf:concerns <urn:regesta:22779:right-toll-exemption> ;
+    rf:partOf <urn:regesta:22779:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:grant-toll-exemption:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22779:grant-toll-exemption:ref-inhabitants> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-G000250:community> ;
+    rf:role rv:Beneficiary ;
+    rf:nameInSource "Bewohner der Stadt Gembloux" .
+
+# The vocabulary has no exemption right type; rv:Toll would denote a levy right, so the top concept is used.
+<urn:regesta:22779:right-toll-exemption> a crm:E30_Right ;
+    crm:P2_has_type rv:UsageRights ;
+    rdfs:label "die Befreiung der Bewohner der Stadt Gembloux von allen Zöllen und Abgaben im Reich" .
+
+# Earlier acts: the donations of Emperor Otto and of Bishop Wilbodo of Liège (undated, recipient not stated).
+<urn:regesta:22779:donation-otto> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Schenkungen Kaiser Ottos" ] ;
+    rf:reference <urn:regesta:22779:donation-otto:ref-otto> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:donation-otto:ref-otto> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-O000392> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Kaiser Ottos" .
+
+<urn:regesta:22779:donation-wilbodo> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Schenkungen Kaiser Ottos und Bischof Wilbodos von Lüttich" ] ;
+    rf:reference <urn:regesta:22779:donation-wilbodo:ref-wilbodo> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:donation-wilbodo:ref-wilbodo> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-W000497> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Bischof Wilbodos von Lüttich" .
+
+# Confirmation of these donations to abbot Arnulf.
+<urn:regesta:22779:confirmation-donations> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22779> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bekräftigt Abt Arnulf die Schenkungen Kaiser Ottos und Bischof Wilbodos von Lüttich" ] ;
+    rf:reference <urn:regesta:22779:confirmation-donations:ref-friedrich> ,
+        <urn:regesta:22779:confirmation-donations:ref-arnulf> ;
+    rf:refersToAct <urn:regesta:22779:donation-otto> , <urn:regesta:22779:donation-wilbodo> ;
+    rf:partOf <urn:regesta:22779:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-37> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22779:confirmation-donations:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22779:confirmation-donations:ref-arnulf> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A001272> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Abt Arnulf" .

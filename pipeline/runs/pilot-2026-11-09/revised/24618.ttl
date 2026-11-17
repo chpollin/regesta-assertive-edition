@@ -1,0 +1,19 @@
+@prefix reg: <https://example.org/regesta/ontology/> .
+@prefix v: <https://example.org/regesta/vocab/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix x: <urn:regesta:24618:> .
+<urn:regesta:record:24618> a crm:E31_Document .
+<urn:regesta:actor:RI004-002-C000646> a crm:E21_Person ; rdfs:label "Erzbischof Christian von Mainz" .
+<urn:regesta:actor:RI004-002-C000950> a crm:E21_Person ; rdfs:label "Corsus" .
+<urn:regesta:actor:RI004-002-R000827> a crm:E21_Person ; rdfs:label "Rogerius de Justa" .
+<urn:regesta:actor:RI004-002-P000594> a crm:E21_Person ; rdfs:label "Philippus Baraterius" .
+x:payment a crm:E7_Activity ; crm:P2_has_type v:Payment ; crm:P3_has_note "500 Pfund" .
+x:payee a reg:Participation ; reg:context x:payment ; reg:actor <urn:regesta:actor:RI004-002-C000646> ; reg:role v:Payee .
+<urn:regesta:actor:24618:local:envoys> a crm:E74_Group ; rdfs:label "Gesandte der Stadt Genua: Corsus, Rogerius de Justa und Philippus Baraterius" .
+x:payer a reg:Participation ; reg:context x:payment ; reg:actor <urn:regesta:actor:24618:local:envoys> ; reg:role v:Payer .
+x:conversation a crm:E7_Activity ; crm:P2_has_type v:Communication ; crm:P11_had_participant <urn:regesta:actor:RI004-002-C000646>, <urn:regesta:actor:RI004-002-C000950>, <urn:regesta:actor:RI004-002-R000827>, <urn:regesta:actor:RI004-002-P000594> .
+x:a1 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:payment ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:Payment ; reg:source <urn:regesta:record:24618> ; reg:evidence "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche und erhält von ihnen 500 Pfund" .
+x:a2 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:payee ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Payee ; reg:source <urn:regesta:record:24618> ; reg:evidence "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche und erhält von ihnen 500 Pfund" .
+x:a3 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:payer ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Payer ; reg:source <urn:regesta:record:24618> ; reg:evidence "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche und erhält von ihnen 500 Pfund" .
+x:a6 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:conversation ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:Communication ; reg:source <urn:regesta:record:24618> ; reg:evidence "Erzbischof Christian von Mainz, Reichslegat für Italien, führt mit Gesandten der Stadt Genua, dem consul comunis Corsus und den beiden consules causarum Rogerius de Justa und Philippus Baraterius, Gespräche" .

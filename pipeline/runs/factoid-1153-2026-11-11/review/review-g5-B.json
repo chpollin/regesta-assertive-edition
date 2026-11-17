@@ -1,0 +1,231 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g5-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22721",
+      "coverage_note": "All in-scope clauses of the Burgundy agreement are covered: the contract, the king's undertaking, the deadline, Wilhelm's duty of account and his holding, the niece relation, the king's lordship with its condition, the reserved bishoprics, the investiture provision with the earlier investitures, the sureties, Berthold's troop and pledge undertakings, the allod and the oath. Provisions are kept as enactments, the pledge is not read as performed, and the drafting note on Wibald is correctly skipped. Actor identifications agree with the packet candidates.",
+      "findings": [
+        {
+          "category": "lost-condition",
+          "severity": "warning",
+          "subject": "urn:regesta:22721:fruehere-investitur",
+          "description": "The passage names the earlier investing parties disjunctively ('oder'). Two parallel rv:Grantor references read as if Graf Wilhelm and the other princes jointly invested the same bishops; the alternative is lost.",
+          "evidence_quote": "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden",
+          "proposed_correction": "Keep the alternative explicitly, for example rf:qualifier \"vom Grafen Wilhelm oder anderen Fürsten\", or split into two factoids that each carry the 'oder' wording; report the disjunction as a model gap."
+        },
+        {
+          "category": "relation-misuse",
+          "severity": "note",
+          "subject": "urn:regesta:22721:investitur-herzog",
+          "description": "rf:refersToAct is defined for a confirmation or assurance referring to an earlier act. The investiture provision does not confirm the earlier investitures; it only identifies the bishops by them. The link overstates the relation.",
+          "evidence_quote": "Bischöfe, die bisher vom Grafen Wilhelm oder anderen Fürsten investiert wurden, empfangen ihre Investitur vom Herzog",
+          "proposed_correction": "Drop rf:refersToAct here; the functional actor label already carries the identifying clause. The duke's role could be rv:Grantor (he invests), with rv:Investiture as the concerned right."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22721:berthold-italienzug",
+          "description": "The parallel factoid for the Burgundy campaign names the king as beneficiary; the Italy campaign provision of the same sentence does not, although the troops are owed for the king's campaign.",
+          "evidence_quote": "für den Italienzug, an dem er teilnehmen wird, für die Zeit seiner Anwesenheit fünfhundert Panzerreiter und fünfzig Armbrustschützen (arcobalistarios) zu stellen",
+          "proposed_correction": "Optional: leave as is, since the passage does not name the king in this clause; otherwise state the asymmetry deliberately."
+        },
+        {
+          "category": "kinship-direction",
+          "severity": "note",
+          "subject": "urn:regesta:22721:wilhelm-nichte",
+          "description": "Both actors carry rv:Kin and the qualifier 'Nichte' does not say who is the niece of whom. The passage is clear that Beatrix is Wilhelm's niece; the graph cannot express the direction.",
+          "evidence_quote": "von seiner Nichte (Beatrix, die spätere Kaiserin) her innehat",
+          "proposed_correction": "No change possible within the contract; record as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a bilateral agreement or contract (Vertrag); rv:Enactment with two rv:Participant references is a stand-in.",
+        "No surety role (Bürge); sureties are forced into rv:Obligor under an rv:Obligation state.",
+        "No oath act type (schwören); rv:Assurance is a stand-in.",
+        "rv:Kinship with two rv:Kin roles cannot encode the direction of an asymmetric kinship word such as Nichte.",
+        "No means to express a disjunction of actors ('oder')."
+      ]
+    },
+    {
+      "uid": "22722",
+      "coverage_note": "The Bavarian dispute, Friedrich's reconciliation effort and the summons to Würzburg are captured without asserting an outcome or the appearance of the dukes. The Hungarian campaign and the non-campaign to Burgundy are correctly left out as military movement. The coronation and the embassy to Pope Eugen, both expressible, are not extracted.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "22722",
+          "description": "The coronation of Friedrich is an act of installation in office and could be expressed as rv:Appointment (or rv:OfficeHolding) with Friedrich as recipient and the wording 'gekrönt' as qualifier. It is the opening statement of the regest and is not extracted. Severity is warning rather than error because the guidelines do not state explicitly whether a coronation falls into the kinship, economic or legal scope.",
+          "evidence_quote": "Friedrich hält einen Hoftag und wird in St. Emmeram - der Dom war nämlich einem Feuer zum Opfer gefallen - gekrönt",
+          "proposed_correction": "Add an rv:Appointment factoid with Friedrich as rv:Recipient, rf:qualifier \"gekrönt\", evidence the coronation clause; do not name a crowning actor, since none is given."
+        },
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "22722",
+          "description": "The embassy to Pope Eugen, Rome and the Italian cities is an rv:Mission the vocabulary provides for, with the addressees as rv:Addressee. Its return 'mit guten Nachrichten' must not become an outcome, but the mission itself is in scope. Eugen III has a candidate in this packet (RI004-002-E000589).",
+          "evidence_quote": "Die an Papst Eugen (III.), Rom und die übrigen Städte Italiens abgeordneten Gesandten kehren mit guten Nachrichten (vgl. Reg. 86) zurück",
+          "proposed_correction": "Add an rv:Mission factoid with local functional envoys (rv:Envoy), Papst Eugen (III.) as rv:Addressee and Rom / die übrigen Städte Italiens as addressees or concerned places; keep 'mit guten Nachrichten' as qualifier at most, without asserting a result."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22722:vorladung",
+          "description": "Friedrich as summoner is typed rv:Grantor, whose definition (überträgt, bestätigt, verleiht, bestimmt) fits a summons only loosely. The second selector repeats the reconciliation passage and is not needed for any role.",
+          "evidence_quote": "lädt beide auf einen Hoftag in Würzburg im Oktober vor",
+          "proposed_correction": "Acceptable stand-in; report the missing sender or summoner role as a model gap and drop the redundant selector."
+        },
+        {
+          "category": "identity",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-H000498",
+          "description": "The collective mention 'den beiden Herzogen Heinrich' is resolved to the two Heinrich candidates of the packet (der Löwe and Jasomirgott). The reading is plausible and uses only this packet, but it is an identification from one undifferentiated mention and both references share the same nameInSource.",
+          "evidence_quote": "zwischen den beiden Herzogen Heinrich",
+          "proposed_correction": "Keep, but mark the resolution as unresolved identity for expert review."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a summons (Vorladung) and no role for the summoning party.",
+        "No act type for mediation or reconciliation efforts; rv:Negotiation is a stand-in.",
+        "rf:refersToAct is used to tie the reconciliation and the summons to the dispute, which stretches its confirmation-oriented definition."
+      ]
+    },
+    {
+      "uid": "22723",
+      "coverage_note": "Earlier exchange and archiepiscopal confirmation are kept as two acts joined by rf:refersToAct; no date is put on the exchange; the witness list is correctly skipped. The Hoftag context of Friedrich is only a setting and rightly not turned into a factoid.",
+      "findings": [
+        {
+          "category": "identity",
+          "severity": "warning",
+          "subject": "urn:regesta:actor:RI004-002-O000442",
+          "description": "The packet carries two Pfalzgraf Otto von Wittelsbach candidates, O000441 (Otto IV., gest. 1156) and O000442 (Otto V., 'der Ältere'). The choice of O000442 follows the literal epithet 'dem Älteren', which is a legitimate name match, but the ambiguity is not documented in the Turtle file and the epithet may distinguish a father from a son in this source rather than match the register's usage.",
+          "evidence_quote": "dem Pfalzgrafen Otto dem Älteren von Wittelsbach",
+          "proposed_correction": "Keep the identification as a reading, but record it as unresolved identity between O000441 and O000442 for expert review."
+        }
+      ],
+      "model_gaps": [
+        "No act type for an exchange (Gütertausch); rv:Grant with qualifier is a stand-in and leaves both sides as rv:Participant."
+      ]
+    },
+    {
+      "uid": "22724",
+      "coverage_note": "The performed exchange (vollzogen) is extracted as one act with its parties, the Vogt acting for the abbot, and the archbishop's presence; the advocacy is recorded as a right holding. Witnesses are skipped.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22724:exchange",
+          "description": "Erzbischof Eberhard is only present ('in Gegenwart'), but rv:Participant suggests involvement in the transaction. Abt Gottfried is the party for whom the Vogt acts; rv:Participant hides that he is represented.",
+          "evidence_quote": "wird in Gegenwart Erzbischof Eberhards von Salzburg ein Tauschgeschäft zwischen Graf Berthold von Andechs und dem Kloster Admont, für dessen Abt Gottfried der Vogt, Graf Gebhard von Burghausen, tätig ist, vollzogen",
+          "proposed_correction": "Keep the stand-in but add rf:qualifier \"in Gegenwart\" to make the archbishop's presence visible; report missing presence and represented-party roles as model gaps."
+        }
+      ],
+      "model_gaps": [
+        "No exchange act type.",
+        "No role for presence at an act (in Gegenwart).",
+        "No role for the party on whose behalf a representative acts."
+      ]
+    },
+    {
+      "uid": "22725",
+      "coverage_note": "The appointment of Otakar as Vogt of Seckau keeps the petitioner, the proposer, the condition in exact wording and the preceding assent as a separate act; later compliance is not asserted. Otakar is resolved to the candidate with role nennung, and the alternative is documented.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22725:appointment",
+          "description": "Friedrich and the princes appear only as the forum ('Vor'), and the archbishop as proposer; all three are rv:Participant, which flattens presence and proposal into generic involvement. The appointing actor is left unnamed, which correctly follows the passive.",
+          "evidence_quote": "Vor Friedrich und den Fürsten wird Markgraf Otakar von Steier auf den Vorschlag Erzbischof Eberhards von Salzburg",
+          "proposed_correction": "Add rf:qualifier \"Vor\" and \"auf den Vorschlag\" or keep as is and report the missing roles."
+        }
+      ],
+      "model_gaps": [
+        "No role for proposer (Vorschlag) distinct from petitioner.",
+        "No role for presence before a ruler or assembly.",
+        "No property for the content of an undertaking beyond rf:condition."
+      ]
+    },
+    {
+      "uid": "22726",
+      "coverage_note": "The confirmation for Moggio with its petitioner and recipient is extracted; the witness list (including the kinship statements inside it) and the chancery notes are skipped as the guidelines require. The second confirmed object, the right to accept donations of allodial goods, is left out of rf:concerns.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "urn:regesta:22726:confirmation",
+          "description": "The confirmation covers two objects, the Besitzstand and the right to accept donations of allodial goods. Only the Besitzstand is a concerned node. The contract could carry the right as a crm:E30_Right with an rdfs:label in the source wording and the nearest draft right type (for example a top concept), reporting the poor fit as a model gap, instead of leaving it only in the evidence.",
+          "evidence_quote": "das Recht, Schenkungen von Allodialgütern anzunehmen",
+          "proposed_correction": "Add <urn:regesta:22726:right:schenkungen-annehmen> a crm:E30_Right with rdfs:label \"das Recht, Schenkungen von Allodialgütern anzunehmen\" and the nearest rv:RightTypes concept, and add it to rf:concerns."
+        },
+        {
+          "category": "consistency",
+          "severity": "note",
+          "subject": "urn:regesta:22726:confirmation",
+          "description": "'nach dem Beispiel seiner Vorgänger' points to earlier confirmations by predecessors. The extractor keeps it as a qualifier only, whereas the analogous 'schon von seinen Vorgängern' in 22729 became an earlier act. Both readings are defensible; the treatment should be uniform across the run.",
+          "evidence_quote": "nach dem Beispiel seiner Vorgänger",
+          "proposed_correction": "Decide one convention for precedent phrases (qualifier only versus earlier act with a functional actor) and apply it consistently."
+        }
+      ],
+      "model_gaps": [
+        "No right type for a capacity to acquire or accept donations.",
+        "Kinship stated inside witness lists ('seine Söhne Otto und Friedrich', 'sein Bruder') is excluded by the source boundary and therefore lost."
+      ]
+    },
+    {
+      "uid": "22727",
+      "coverage_note": "Friedrich's protection grant and the earlier protection by Konrad III are extracted as two acts joined by rf:refersToAct, the earlier one undated and qualified by 'wie König Konrad (III.)'. Konrad III has no candidate in this packet and correctly receives a local IRI. Witnesses and chancery notes are skipped. No defect found.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22729",
+      "coverage_note": "The earlier endowment by the predecessors, the confirmation of Bamberg's rights over Niederaltaich and the choice of Berthold as Vogt are extracted; the princes' counsel and consent stays in exact wording; no date is placed on the earlier act.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22729:bestaetigung",
+          "description": "The princes give counsel and consent ('auf Rat und mit Zustimmung'), which rv:Participant flattens; the qualifier preserves the wording, so no information is lost.",
+          "evidence_quote": "auf Rat und mit Zustimmung der Fürsten",
+          "proposed_correction": "No change needed; report the missing consent role as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No role for counsel or consent (Rat und Zustimmung)."
+      ]
+    },
+    {
+      "uid": "22730",
+      "coverage_note": "The letter to Eugen III, the intercession for the confirmation of Wichmann's election and the election itself are extracted; the pope is an addressee, not a participant, and no papal confirmation is asserted. All eleven senders are resolved to packet candidates.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22730:schreiben",
+          "description": "The senders of the letter are rv:Participant because the vocabulary has no sender role; the Request factoid carries the more specific rv:Petitioner. Acceptable stand-in.",
+          "evidence_quote": "schreiben an Papst Eugen III.",
+          "proposed_correction": "No change; report the missing sender role as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No sender or author role for rv:Communication.",
+        "No role for electors; the election is recorded without its electing body because the passage names none."
+      ]
+    },
+    {
+      "uid": "22731",
+      "coverage_note": "Heinrich's request for the return of Bavaria is extracted with petitioner, addressee, the concerned duchy and the stated purpose in exact wording. No earlier possession and no fulfilment is asserted.",
+      "findings": [
+        {
+          "category": "literal",
+          "severity": "note",
+          "subject": "urn:regesta:22731:bitte-rueckgabe",
+          "description": "The final clause is a stated purpose rather than a justification; rf:ground is the nearest property and keeps the exact wording. 'Rückgabe' implies an earlier holding that is correctly not turned into a factoid.",
+          "evidence_quote": "um ihm im Notfall mit um so größerer Macht beistehen zu können",
+          "proposed_correction": "No change."
+        }
+      ],
+      "model_gaps": []
+    }
+  ]
+}

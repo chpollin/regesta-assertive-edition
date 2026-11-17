@@ -1,0 +1,63 @@
+{
+  "batch": 4,
+  "producer": "urn:regesta:agent:factoid-2026-11-11:extraction-batch-4",
+  "records": [
+    {
+      "uid": "22696",
+      "status": "extracted",
+      "files": ["22696.ttl"],
+      "factoids": 7,
+      "unresolved_identities": [
+        "'den Bischof' (revenue and obligation clauses) identified with RI004-002-E000011 Eberhard; could instead be the office of the bishop of Bamberg as a functional actor.",
+        "'seinen Nachfolgern' and 'sein kanonisch gewählter Nachfolger' kept as two separate local functional actors; no identity asserted between them.",
+        "'Reichsabtei Niederaltaich' modelled as crm:E18_Physical_Thing (object of the donation) rather than via register candidate RI004-002-N000175, which is typed as a place; the abbey as community is not referenced."
+      ],
+      "model_gaps": [
+        "No state type or role for succession in office ('Vorgängers'); Konrad III. as predecessor not recorded.",
+        "No role for the person invested (the abbot as object of 'das Recht der Investitur des Abtes').",
+        "No actor role for the party an obligation is owed to ('gegenüber dem Reich'); the Reich and the former recipient 'den Fiskus' are not referenced.",
+        "Dependent persons attached to a right ('mit den Ministerialen und Hörigen beiderlei Geschlechts') can only be kept in the right's label.",
+        "Memorial motive kept as rf:ground; Konrad III. given rv:Beneficiary as the person commemorated, which is a reading of the memoria formula."
+      ]
+    },
+    {
+      "uid": "25230",
+      "status": "extracted",
+      "files": ["25230.ttl"],
+      "factoids": 11,
+      "unresolved_identities": [
+        "'Herzog von Schwaben' identified with the generic register entry RI004-002-S000400 (Schwaben // Herzog); alternatives are RI004-002-F000684 (Friedrich, Herzog von Schwaben, son of Barbarossa) or a regest-local functional actor, since the provisions address the office.",
+        "'den Ministerialen' (burial right) and 'kinderlosen Ministerialen' kept as local groups; the regest does not say whether they are the 'Ministerialen von Waldsee/Wallsee' (RI004-002-W000061), which is used only where the text names them so.",
+        "'dem Konvent' and 'das Stift' identified with the foundation RI004-002-W000058 as community."
+      ],
+      "model_gaps": [
+        "No act type for the conversion (Umwandlung) of a parish church into a canons' foundation; only Friedrich's 'beurkundet' is recorded, as rv:Confirmation without rf:refersToAct to an earlier act.",
+        "No role for consent (Zustimmung); Bischof Hermann von Konstanz recorded as rv:Participant. The '(†)' mark is not modelled.",
+        "No role for the actor who hands over an office ('aus der Hand des Herzogs von Schwaben'); the duke recorded as rv:Participant there.",
+        "No role for persons placed under a lordship ('unterstellt die Ministerialen'); recorded as rv:Participant.",
+        "Right types for free provost election and burial right fall back to the top concept rv:ChurchRights.",
+        "Witness list contains a parent relation ('Berthold, der Sohn des Eberhard (von Waldsee/Wallsee)'); skipped per the guideline on formulaic witness lists, flagged for the operator."
+      ]
+    },
+    {
+      "uid": "26099",
+      "status": "extracted",
+      "files": ["26099.ttl"],
+      "factoids": 3,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "No role for counsel ('mit Rat der Fürsten'); the princes recorded as rv:Participant.",
+        "No act type for swearing an oath; the binding of the army is recorded as rv:Obligation state with rf:qualifier 'durch Eid' and no stated obligee.",
+        "The law's subject 'Aufrechterhaltung des Friedens im Lager' has no right or concept type; only the place 'Lager' is linked via rf:concerns."
+      ]
+    },
+    {
+      "uid": "24369",
+      "status": "no_in_scope_claim",
+      "files": ["24369.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": []
+    }
+  ]
+}

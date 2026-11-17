@@ -1,0 +1,104 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22775> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-D000242> a crm:E21_Person ; rdfs:label "Graf Dietrich von Flandern" .
+<urn:regesta:actor:RI004-002-M000670> a crm:E21_Person ; rdfs:label "Herzog Matthäus von Lothringen" .
+<urn:regesta:actor:RI004-002-N000147> a crm:E21_Person ; rdfs:label "Bischof Nikolaus von Cambrai" .
+<urn:regesta:actor:22775:local:weltliche-fuersten> a crm:E74_Group ; rdfs:label "der weltlichen Fürsten" .
+<urn:regesta:actor:22775:local:schreiber> a crm:E21_Person ; rdfs:label "einen Schreiber" .
+# The passage names the archbishops and the bishop of Liège by see only, without personal names,
+# so the register candidates are not applied (unresolved identity).
+<urn:regesta:actor:22775:local:erzbischoefe> a crm:E74_Group ; rdfs:label "Erzbischöfe von Köln, Mainz und Trier" .
+<urn:regesta:actor:22775:local:luetticher-bischof> a rf:FunctionalActor ; rdfs:label "des Lütticher Bischofs" .
+
+<urn:regesta:22775:oberhoheit-cambrai> a crm:E30_Right ; crm:P2_has_type rv:LordshipRights ; rdfs:label "Oberhoheit über das Bistum Cambrai" .
+<urn:regesta:22775:bistum-cambrai> a crm:E53_Place ; rdfs:label "Bistum Cambrai" .
+<urn:regesta:22775:lehen> a crm:E18_Physical_Thing ; rdfs:label "seinen Lehen" .
+<urn:regesta:22775:urkunde> a crm:E18_Physical_Thing ; rdfs:label "eine vom König zu besiegelnde Urkunde" .
+
+<urn:regesta:22775:enfeoffment> a rf:ActFactoid ;
+    rf:factoidType rv:Enfeoffment ;
+    rf:source <urn:regesta:record:22775> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Am folgenden Tag verleiht er Graf Dietrich von Flandern in Anwesenheit und mit Zustimmung der weltlichen Fürsten (ducibus totius monarchiae cum satrapis adstantibus regique faventibus) nach Leistung des Lehnseides neben seinen Lehen auch die Oberhoheit über das Bistum Cambrai" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "er" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:role rv:Recipient ; rf:nameInSource "Graf Dietrich von Flandern" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22775:local:weltliche-fuersten> ; rf:role rv:Participant ; rf:nameInSource "der weltlichen Fürsten" ] ;
+    rf:qualifier "nach Leistung des Lehnseides" ;
+    rf:concerns <urn:regesta:22775:oberhoheit-cambrai> , <urn:regesta:22775:bistum-cambrai> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+# The lord of the existing fiefs is not named in the passage and is not inferred.
+<urn:regesta:22775:existing-fiefs> a rf:StateFactoid ;
+    rf:factoidType rv:FeudalRelationship ;
+    rf:source <urn:regesta:record:22775> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Graf Dietrich von Flandern in Anwesenheit und mit Zustimmung der weltlichen Fürsten (ducibus totius monarchiae cum satrapis adstantibus regique faventibus) nach Leistung des Lehnseides neben seinen Lehen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:role rv:Vassal ; rf:nameInSource "Graf Dietrich von Flandern" ] ;
+    rf:concerns <urn:regesta:22775:lehen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22775:kinship-nephew> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22775> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Der abreisende Graf beauftragt seinen Neffen, Herzog Matthäus von Lothringen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:role rv:Kin ; rf:nameInSource "Der abreisende Graf" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:role rv:Kin ; rf:nameInSource "Herzog Matthäus von Lothringen" ] ;
+    rf:qualifier "Neffen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22775:commission> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22775> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Der abreisende Graf beauftragt seinen Neffen, Herzog Matthäus von Lothringen, mit der Förderung seiner Angelegenheiten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:role rv:Grantor ; rf:nameInSource "Der abreisende Graf" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:role rv:Representative ; rf:nameInSource "Herzog Matthäus von Lothringen" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22775:document-drafted> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22775> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "dieser ruft einen Schreiber, der gemäß dem Wunsch des Grafen eine vom König zu besiegelnde Urkunde ausfertigt, die ihm allerorten Gehorsam verschaffen soll" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:role rv:Representative ; rf:nameInSource "dieser" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22775:local:schreiber> ; rf:role rv:Participant ; rf:nameInSource "einen Schreiber" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:role rv:Petitioner ; rf:nameInSource "des Grafen" ] ;
+    rf:qualifier "vom König zu besiegelnde" ;
+    rf:concerns <urn:regesta:22775:urkunde> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;
+    rf:verificationStatus rv:unchecked .
+
+# The outcome (the document does not gain validity) has no act type of its own (model gap) and
+# stays in the evidence of the dispute factoid.
+<urn:regesta:22775:dispute-before-king> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22775> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Bischof Nikolaus von Cambrai, der von diesen Bestrebungen des flandrischen Grafen gehört hat, eilt herbei und kann mit Unterstützung der Erzbischöfe von Köln, Mainz und Trier sowie des Lütticher Bischofs vor dem König verhindern, daß die Urkunde Gültigkeit erlangt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000147> ; rf:role rv:Claimant ; rf:nameInSource "Bischof Nikolaus von Cambrai" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:role rv:Respondent ; rf:nameInSource "des flandrischen Grafen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22775:local:erzbischoefe> ; rf:role rv:Participant ; rf:nameInSource "Erzbischöfe von Köln, Mainz und Trier" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22775:local:luetticher-bischof> ; rf:role rv:Participant ; rf:nameInSource "des Lütticher Bischofs" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "dem König" ] ;
+    rf:concerns <urn:regesta:22775:urkunde> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+# A truce has no act type; it is read as Dietrich's assurance obtained by Friedrich (model gap).
+<urn:regesta:22775:truce> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22775> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Nur mit großer Mühe kann Friedrich dem Ausbruch von Feindseligkeiten zwischen dem erzürnt zurückgekehrten Grafen und dem Bischof Einhalt gebieten, indem er Dietrich die Einwilligung zu einem Waffenstillstand bis zum nächsten Pfingstfest abringt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-D000242> ; rf:role rv:Grantor ; rf:nameInSource "Dietrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Mediator ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000147> ; rf:role rv:Beneficiary ; rf:nameInSource "dem Bischof" ] ;
+    rf:qualifier "bis zum nächsten Pfingstfest" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .

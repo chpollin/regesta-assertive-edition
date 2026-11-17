@@ -1,0 +1,191 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22696> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 69" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-E000011> a crm:E21_Person ;
+    rdfs:label "Bischof Eberhards II. von Bamberg" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrad III." .
+
+<urn:regesta:actor:RI004-002-B000114:community> a crm:E74_Group ;
+    rdfs:label "die Bamberger Kirche" .
+
+<urn:regesta:actor:22696:local:nachfolger> a rf:FunctionalActor ;
+    rdfs:label "seinen Nachfolgern" .
+
+<urn:regesta:actor:22696:local:kanonisch-gewaehlter-nachfolger> a rf:FunctionalActor ;
+    rdfs:label "sein kanonisch gewählter Nachfolger" .
+
+<urn:regesta:actor:22696:local:abt> a rf:FunctionalActor ;
+    rdfs:label "dem Abt" .
+
+<urn:regesta:actor:22696:local:moenche> a crm:E74_Group ;
+    rdfs:label "den Mönchen" .
+
+# Things and rights
+
+<urn:regesta:22696:thing-niederaltaich> a crm:E18_Physical_Thing ;
+    rdfs:label "Reichsabtei Niederaltaich (abbatiam nostram Altaha)" .
+
+<urn:regesta:22696:right-investitur> a crm:E30_Right ;
+    crm:P2_has_type rv:Investiture ;
+    rdfs:label "das Recht der Investitur des Abtes" .
+
+<urn:regesta:22696:right-vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts" .
+
+<urn:regesta:22696:right-stipendia> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "ihre Einkünfte (stipendia)" .
+
+<urn:regesta:22696:right-abgaben> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "die jährlichen Abgaben an den Fiskus (Ea vero, quę fisco exrinde annuatim solvebantur)" .
+
+# Donation of Niederaltaich (main act)
+
+<urn:regesta:22696:schenkung> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22696> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken auf Bitten Bischof Eberhards II. von Bamberg diesem, seinen Nachfolgern und seiner Kirche zur Hebung des religiösen Lebens die in weltlicher und geistlicher Hinsicht in trostlosem Zustand befindliche Reichsabtei Niederaltaich (abbatiam nostram Altaha)" ] ;
+    rf:reference <urn:regesta:22696:ref-schenkung-friedrich> ,
+        <urn:regesta:22696:ref-schenkung-eberhard-bitte> ,
+        <urn:regesta:22696:ref-schenkung-eberhard> ,
+        <urn:regesta:22696:ref-schenkung-nachfolger> ,
+        <urn:regesta:22696:ref-schenkung-kirche> ,
+        <urn:regesta:22696:ref-schenkung-konrad> ;
+    rf:concerns <urn:regesta:22696:thing-niederaltaich> ;
+    rf:ground "zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III., ewigem Angedenken" ,
+        "zur Hebung des religiösen Lebens" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22696:ref-schenkung-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" .
+<urn:regesta:22696:ref-schenkung-eberhard-bitte> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Petitioner ; rf:nameInSource "Bischof Eberhards II. von Bamberg" .
+<urn:regesta:22696:ref-schenkung-eberhard> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Recipient ; rf:nameInSource "diesem" .
+<urn:regesta:22696:ref-schenkung-nachfolger> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22696:local:nachfolger> ; rf:role rv:Recipient ; rf:nameInSource "seinen Nachfolgern" .
+<urn:regesta:22696:ref-schenkung-kirche> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-B000114:community> ; rf:role rv:Recipient ; rf:nameInSource "seiner Kirche" .
+<urn:regesta:22696:ref-schenkung-konrad> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Beneficiary ; rf:nameInSource "König Konrad III." .
+
+# Kinship: Konrad III. as Oheim of Friedrich
+
+<urn:regesta:22696:oheim> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22696> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich schenkt zu seinem und seines in der Domkirche zu Bamberg beigesetzten Oheims und Vorgängers, König Konrad III." ] ;
+    rf:reference <urn:regesta:22696:ref-oheim-friedrich> , <urn:regesta:22696:ref-oheim-konrad> ;
+    rf:qualifier "Oheims" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22696:ref-oheim-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" .
+<urn:regesta:22696:ref-oheim-konrad> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Kin ; rf:nameInSource "König Konrad III." .
+
+# Provision: right of investiture of the abbot
+
+<urn:regesta:22696:investitur> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22696> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Der Bischof oder sein kanonisch gewählter Nachfolger hat das Recht der Investitur des Abtes" ] ;
+    rf:reference <urn:regesta:22696:ref-investitur-bischof> , <urn:regesta:22696:ref-investitur-nachfolger> ;
+    rf:concerns <urn:regesta:22696:right-investitur> ;
+    rf:partOf <urn:regesta:22696:schenkung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22696:ref-investitur-bischof> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:RightHolder ; rf:nameInSource "Der Bischof" .
+<urn:regesta:22696:ref-investitur-nachfolger> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22696:local:kanonisch-gewaehlter-nachfolger> ; rf:role rv:RightHolder ; rf:nameInSource "sein kanonisch gewählter Nachfolger" .
+
+# Provision: advocacy passes to the Bamberg church
+
+<urn:regesta:22696:vogtei> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22696> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Vogtei mit den Ministerialen und Hörigen beiderlei Geschlechts geht an die Bamberger Kirche über" ] ;
+    rf:reference <urn:regesta:22696:ref-vogtei-kirche> ;
+    rf:concerns <urn:regesta:22696:right-vogtei> ;
+    rf:partOf <urn:regesta:22696:schenkung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22696:ref-vogtei-kirche> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-B000114:community> ; rf:role rv:Recipient ; rf:nameInSource "die Bamberger Kirche" .
+
+# Provision: reservation of the revenues of abbot and monks
+
+<urn:regesta:22696:vorbehalt-stipendia> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22696> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "wobei dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen" ] ;
+    rf:reference <urn:regesta:22696:ref-vorbehalt-abt> , <urn:regesta:22696:ref-vorbehalt-moenche> ;
+    rf:concerns <urn:regesta:22696:right-stipendia> ;
+    rf:exception "dem Abt und den Mönchen ihre Einkünfte (stipendia) aber unvermindert erhalten bleiben sollen" ;
+    rf:partOf <urn:regesta:22696:schenkung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22696:ref-vorbehalt-abt> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22696:local:abt> ; rf:role rv:Beneficiary ; rf:nameInSource "dem Abt" .
+<urn:regesta:22696:ref-vorbehalt-moenche> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22696:local:moenche> ; rf:role rv:Beneficiary ; rf:nameInSource "den Mönchen" .
+
+# Provision: the annual dues to the fisc fall to the bishop in future
+
+<urn:regesta:22696:abgaben> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22696> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die jährlichen Abgaben an den Fiskus (Ea vero, quę fisco exrinde annuatim solvebantur) fallen künftig an den Bischof" ] ;
+    rf:reference <urn:regesta:22696:ref-abgaben-bischof> ;
+    rf:concerns <urn:regesta:22696:right-abgaben> ;
+    rf:qualifier "künftig" ;
+    rf:partOf <urn:regesta:22696:schenkung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22696:ref-abgaben-bischof> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Recipient ; rf:nameInSource "den Bischof" .
+
+# Provision: the bishop takes over the abbey's obligations towards the realm and provides for the abbey
+
+<urn:regesta:22696:verpflichtungen> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22696> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "den Bischof, der aber die bisherigen Verpflichtungen des Klosters gegenüber dem Reich übernimmt und für die Bedürfnisse der Abtei sorgt" ] ;
+    rf:reference <urn:regesta:22696:ref-verpflichtungen-bischof> ;
+    rf:concerns <urn:regesta:22696:thing-niederaltaich> ;
+    rf:partOf <urn:regesta:22696:schenkung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22696:ref-verpflichtungen-bischof> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Obligor ; rf:nameInSource "den Bischof" .

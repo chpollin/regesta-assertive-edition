@@ -1,0 +1,66 @@
+{
+  "batch": 34,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34",
+  "records": [
+    {
+      "uid": "22764",
+      "status": "extracted",
+      "files": ["22764.ttl"],
+      "factoids": 6,
+      "unresolved_identities": [
+        "Heinrich among the predecessors identified with RI004-002-H000359 (Kaiser, welcher?); the register itself leaves the individual open.",
+        "The recipient of Albert's donation of the Eigengut in Boppard is not named; no recipient reference was set."
+      ],
+      "model_gaps": [
+        "The content and kind of the predecessors' privileges (Karl, Otto, Heinrich, Konrad) are not stated; recorded as generic rv:Grant, and the relation 'nach Einsicht in' (inspection as basis of the confirmation) is approximated with rf:refersToAct.",
+        "No property for a former office distinct from a current one other than rf:qualifier 'früheren'; Albert's status as monk was not recorded."
+      ]
+    },
+    {
+      "uid": "22765",
+      "status": "extracted",
+      "files": ["22765.ttl"],
+      "factoids": 14,
+      "unresolved_identities": [
+        "Schismatic bishop Ardicio given a local IRI: the only register candidate carrying the alias Ardicio is RI004-002-U000108, the recipient Uguccio himself, so the identification was not made.",
+        "'der Domkirche' given a local community IRI; 'der Kirche S. Maria' identified with RI004-002-V000199, whose register label conflates S. Maria Maggiore and Domkirche.",
+        "'seiner Kirche (sancti Eusebii)' given a local community IRI; no register candidate for S. Eusebio in this packet."
+      ],
+      "model_gaps": [
+        "No right type for a prescription period (Verjährungszeit von hundert Jahren); kept as rf:qualifier on an rv:RightGrant without an E30 node.",
+        "No right type for fortification or for buying and moving mills; mapped to the top concepts rv:LordshipRights and rv:UsageRights.",
+        "No way to reference Konrad III as the precedent of the cassation; kept only as rf:ground 'gemäß der Vorgangsweise Konrads III.'.",
+        "Intervention (intercedente) and petition are both mapped to rv:Petitioner; no distinct intervener role.",
+        "Gisulf's oath and the imperial decrees (Erlässe römischer Kaiser) are kept only in rf:ground, not as own factoids; the papal prohibition is a separate rv:Enactment whose content the regest does not state."
+      ]
+    },
+    {
+      "uid": "22766",
+      "status": "extracted",
+      "files": ["22766.ttl"],
+      "factoids": 7,
+      "unresolved_identities": [
+        "Albert and Heinrich identified with the register entries RI004-002-A000276 and RI004-002-H000721, which carry no title ([k.A.]); match by name only.",
+        "'seiner Vorgänger' in 'alle Privilegien seiner Vorgänger' is ambiguous between Friedrich's and Walo's predecessors; kept as a separate functional actor from Walo's predecessors in the recovery clause."
+      ],
+      "model_gaps": [
+        "'Alberts und Heinrichs sowie ihrer Brüder' does not say whether Albert and Heinrich are brothers of each other; the kinship factoid links both with an unnamed group 'ihrer Brüder' and asserts no chain.",
+        "The condition 'falls diese nichts von den Regalien veräußert haben' attaches to the exception, not to the permission; the model cannot attach a condition to an exception.",
+        "No right type for fortification (Befestigungsrecht) or for regalia in general; mapped to rv:LordshipRights."
+      ]
+    },
+    {
+      "uid": "22767",
+      "status": "extracted",
+      "files": ["22767.ttl"],
+      "factoids": 3,
+      "unresolved_identities": [
+        "'den beiden Kirchen' read as the Domkapitel (RI004-002-V000200, typed as person in the register, here as community) and S. Maria (RI004-002-V000199)."
+      ],
+      "model_gaps": [
+        "No right type for a prescription period; kept as rf:qualifier.",
+        "The cross-reference 'ebenso wie dem Bischof (Reg. 138)' points to an act in another regest; no cross-regest relation exists, so no factoid was made for the bishop's grant."
+      ]
+    }
+  ]
+}

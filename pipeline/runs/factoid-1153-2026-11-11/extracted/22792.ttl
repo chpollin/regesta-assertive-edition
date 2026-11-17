@@ -1,0 +1,36 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22792> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-A001103> a crm:E21_Person ;
+    rdfs:label "Bischof Ardicio von Como" .
+
+<urn:regesta:22792:grafschaft-chiavenna> a crm:E53_Place ;
+    rdfs:label "Grafschaft Chiavenna" .
+
+<urn:regesta:22792:summons> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22792> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich beruft Bischof Ardicio von Como nach Konstanz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001103> ; rf:role rv:Addressee ; rf:nameInSource "Bischof Ardicio von Como" ] ;
+    rf:concerns <urn:regesta:22792:grafschaft-chiavenna> ;
+    rf:ground "um dort die strittige Frage der Zugehörigkeit der Grafschaft Chiavenna zu klären" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-41> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22792:dispute-chiavenna> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22792> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die strittige Frage der Zugehörigkeit der Grafschaft Chiavenna" ] ;
+    rf:concerns <urn:regesta:22792:grafschaft-chiavenna> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-41> ;
+    rf:verificationStatus rv:unchecked .

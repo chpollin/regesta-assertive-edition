@@ -1,0 +1,136 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22708> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-R000431:community> a crm:E74_Group ;
+    rdfs:label "Klosters S. Remi zu Reims (ęcclesia sancti Remigii)" .
+
+<urn:regesta:actor:RI004-002-R000578> a crm:E21_Person ;
+    rdfs:label "Dekans R(icher) von (St. Adalbert zu) Aachen" .
+
+<urn:regesta:actor:RI004-002-A000005> a crm:E21_Person ;
+    rdfs:label "Schultheißen A." .
+
+<urn:regesta:actor:RI004-002-M000019> a crm:E21_Person ;
+    rdfs:label "Marschalls Macelinus" .
+
+<urn:regesta:actor:RI004-002-G000763> a crm:E21_Person ;
+    rdfs:label "Goswin von Heinsberg" .
+
+<urn:regesta:actor:22708:local:koenig> a rf:FunctionalActor ;
+    rdfs:label "den König" .
+
+<urn:regesta:actor:22708:local:graf> a rf:FunctionalActor ;
+    rdfs:label "den Grafen" .
+
+<urn:regesta:22708:hof-meerssen> a crm:E18_Physical_Thing ;
+    rdfs:label "Hof Meerssen (Marnensi)" .
+
+<urn:regesta:22708:right-reich> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "die Rechte des Reiches an dem diesem Kloster gehörenden Hof Meerssen (Marnensi)" .
+
+<urn:regesta:22708:right-abgaben> a crm:E30_Right ;
+    crm:P2_has_type rv:Revenue ;
+    rdfs:label "die Abgaben und deren Aufteilung auf den König, den Grafen und den Hof" .
+
+<urn:regesta:22708:right-vogtei> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "die Vogtei über diesen Hof" .
+
+<urn:regesta:22708:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22708> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt auf Veranlassung des Klosters S. Remi zu Reims (ęcclesia sancti Remigii)" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "die Rechte des Reiches an dem diesem Kloster gehörenden Hof Meerssen (Marnensi), um die Streitigkeiten mit dem Vogt, Goswin von Heinsberg, beizulegen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Klosters S. Remi zu Reims" ] ;
+    rf:concerns <urn:regesta:22708:right-reich> , <urn:regesta:22708:hof-meerssen> ;
+    rf:ground "um die Streitigkeiten mit dem Vogt, Goswin von Heinsberg, beizulegen" ;
+    rf:refersToAct <urn:regesta:22708:envoy-report> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22708:envoy-report> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22708> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "nach dem schriftlichen Bericht (scripti attestatione) seiner Gesandten, des Dekans R(icher) von (St. Adalbert zu) Aachen, des Schultheißen A. und seines Marschalls Macelinus" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000578> ;
+        rf:role rv:Envoy ; rf:nameInSource "Dekans R(icher) von (St. Adalbert zu) Aachen" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000005> ;
+        rf:role rv:Envoy ; rf:nameInSource "Schultheißen A." ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000019> ;
+        rf:role rv:Envoy ; rf:nameInSource "Marschalls Macelinus" ] ;
+    rf:qualifier "schriftlichen Bericht (scripti attestatione)" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22708:possession-hof> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22708> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "dem diesem Kloster gehörenden Hof Meerssen (Marnensi)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000431:community> ;
+        rf:role rv:Possessor ; rf:nameInSource "diesem Kloster" ] ;
+    rf:concerns <urn:regesta:22708:hof-meerssen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22708:dispute-vogt> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22708> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die Streitigkeiten mit dem Vogt, Goswin von Heinsberg" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000763> ;
+        rf:role rv:Participant ; rf:nameInSource "Goswin von Heinsberg" ] ;
+    rf:concerns <urn:regesta:22708:hof-meerssen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22708:office-vogt> a rf:StateFactoid ;
+    rf:factoidType rv:OfficeHolding ;
+    rf:source <urn:regesta:record:22708> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "dem Vogt, Goswin von Heinsberg" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000763> ;
+        rf:role rv:Officeholder ; rf:nameInSource "Goswin von Heinsberg" ] ;
+    rf:qualifier "Vogt" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22708:provision-abgaben> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22708> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "im einzelnen werden die Abgaben und deren Aufteilung auf den König, den Grafen und den Hof bei den drei jährlichen Gerichtstagen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22708:local:koenig> ;
+        rf:role rv:Beneficiary ; rf:nameInSource "den König" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:22708:local:graf> ;
+        rf:role rv:Beneficiary ; rf:nameInSource "den Grafen" ] ;
+    rf:concerns <urn:regesta:22708:right-abgaben> , <urn:regesta:22708:hof-meerssen> ;
+    rf:qualifier "bei den drei jährlichen Gerichtstagen" ;
+    rf:partOf <urn:regesta:22708:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22708:provision-vogtei> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22708> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "sowie die Vogtei über diesen Hof geregelt" ] ;
+    rf:concerns <urn:regesta:22708:right-vogtei> , <urn:regesta:22708:hof-meerssen> ;
+    rf:partOf <urn:regesta:22708:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-20> ;
+    rf:verificationStatus rv:unchecked .

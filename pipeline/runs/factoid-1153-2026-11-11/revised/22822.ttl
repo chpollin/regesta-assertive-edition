@@ -1,0 +1,42 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22822> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 195" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:22822:local:boten> a crm:E74_Group ;
+    rdfs:label "seine Boten" .
+
+<urn:regesta:actor:22822:local:fuersten> a rf:FunctionalActor ;
+    rdfs:label "allen geistlichen und weltlichen Fürsten" .
+
+<urn:regesta:22822:place-roncaglia> a crm:E53_Place ;
+    rdfs:label "Roncaglia" .
+
+<urn:regesta:22822:mission> a rf:ActFactoid ;
+    rf:factoidType rv:Mission ;
+    rf:source <urn:regesta:record:22822> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich schickt seine Boten in alle Teile des Reiches" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22822:local:boten> ; rf:role rv:Envoy ; rf:nameInSource "seine Boten" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22822:summons> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22822> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "befiehlt allen geistlichen und weltlichen Fürsten, am Fest des hl. Michael (September 29) übers Jahr (usque ad festivitatem sancti Michaelis proxime venientis et unum annum) in Roncaglia zu erscheinen" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich schickt seine Boten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22822:local:fuersten> ; rf:role rv:Addressee ; rf:nameInSource "allen geistlichen und weltlichen Fürsten" ] ;
+    rf:concerns <urn:regesta:22822:place-roncaglia> ;
+    rf:qualifier "am Fest des hl. Michael (September 29) übers Jahr" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-48> ;
+    rf:verificationStatus rv:unchecked .

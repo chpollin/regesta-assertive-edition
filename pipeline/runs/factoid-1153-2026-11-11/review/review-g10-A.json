@@ -1,0 +1,262 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g10-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22813",
+      "coverage_note": "Confirmation by Friedrich to Archbishop Raimund and the earlier grant of Ludwig (the Blind) to Archbishop Manasse are both extracted, joined by rf:refersToAct, the earlier act undated. Actor identifications (ruler, R000054, L000818, M000298) match the packet candidates. Chancery note and incipit correctly skipped. All confirmed objects appear as concerns nodes.",
+      "findings": [
+        {
+          "category": "evidence-coverage",
+          "severity": "warning",
+          "subject": "urn:regesta:22813:confirmation",
+          "description": "The confirmation concerns the harbour installations, the Crau rights and the six castles, but its only selector ends at 'an Erzbischof Manasse'. The objects of the confirmation from 'nämlich' onwards rest on a passage the confirmation's evidence does not contain, so the selector does not support the whole factoid.",
+          "evidence_quote": "nämlich die Hafenanlagen sowohl der Griechen als auch anderer Völker",
+          "proposed_correction": "Add a second selector to the confirmation covering the enumerated objects, or extend the selector through 'Mondragon (Monte Draconis) und Salon'."
+        },
+        {
+          "category": "scope-of-earlier-act",
+          "severity": "note",
+          "subject": "urn:regesta:22813:grant-ludwig",
+          "description": "Reading the castles as part of Ludwig's grants follows the 'nämlich' enumeration and is grammatically supported; the regest does not exclude that the castles were confirmed independently. The reading is defensible but should be checked by the expert against the charter.",
+          "evidence_quote": "die Verleihungen Ludwigs (des Blinden) an Erzbischof Manasse, nämlich",
+          "proposed_correction": "None required; flag for expert check."
+        }
+      ],
+      "model_gaps": [
+        "The Latin right terms (regalia, tolonea [!], pedatica, iusticias) have no property; only the German labels are kept.",
+        "'Regalien' has no specific right type; the top concept rv:LordshipRights is used as nearest fit."
+      ]
+    },
+    {
+      "uid": "22814",
+      "coverage_note": "Abstention. The regest reports an admonition by Hildegard (von Bingen) to King Friedrich without a stated kinship, economic or legal relation. The abstention is consistent with the scope rule; the contract could formally express it as rv:Communication, but it carries no in-scope relation.",
+      "findings": [
+        {
+          "category": "abstention",
+          "severity": "note",
+          "subject": "22814",
+          "description": "Abstention judged defensible: a warning letter to the king is neither a kinship, economic nor legal relation. If the project later widens scope to communications, this would become an rv:Communication with Friedrich as rv:Addressee.",
+          "evidence_quote": "mahnt König Friedrich, sich in den bevorstehenden Widerwärtigkeiten",
+          "proposed_correction": "None under the current scope."
+        }
+      ],
+      "model_gaps": [
+        "The role scheme has no sender or author role for a communication; rv:Grantor's definition does not cover it."
+      ]
+    },
+    {
+      "uid": "22815",
+      "coverage_note": "Confirmation by Friedrich, Bertha's donation of the Hof Besigheim to Markgraf Hermann with the qualifier 'zu freiem Eigen', and Agnes's earlier transfer to the monastery with 'einst' are extracted. Identifications match the packet candidates. The witness list (including 'Konrad, der Bruder des Königs') is correctly skipped as a formulaic Z.-list.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "warning",
+          "subject": "urn:regesta:22815:donation-bertha",
+          "description": "The regest coordinates Friedrich and the Klostervogt as the joint means of the donation ('durch ihn und den Klostervogt'), yet Friedrich receives rv:Participant and Hugo rv:Representative. The asymmetric roles impose a distinction the passage does not draw.",
+          "evidence_quote": "durch ihn und den Klostervogt Graf Hugo von Dagsburg",
+          "proposed_correction": "Give both references the same role (rv:Representative, or rv:Participant for both) and report the missing intermediary role as a model gap."
+        },
+        {
+          "category": "omitted-state",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-H001317",
+          "description": "Hugo is called 'Klostervogt'; an rv:OfficeHolding state (or rv:RightHolding of rv:Advocacy over the monastery) could be recorded, since his office explains his role in the act.",
+          "evidence_quote": "Klostervogt Graf Hugo von Dagsburg",
+          "proposed_correction": "Optionally add a StateFactoid rv:OfficeHolding with Hugo as rv:Officeholder and the qualifier 'Klostervogt'."
+        }
+      ],
+      "model_gaps": [
+        "No role for an intermediary through whose hand a donation is made (Salmann-type agency)."
+      ]
+    },
+    {
+      "uid": "22816",
+      "coverage_note": "Request of Bishop Stephan to Abbot Wibald and the wrong done to Stephan and the church, with Bernhard of Clairvaux's mediation, are extracted. Identifications S001143, W000420, B000633 match. Wibald correctly stays rv:Addressee.",
+      "findings": [
+        {
+          "category": "factoid-type-and-roles",
+          "severity": "warning",
+          "subject": "urn:regesta:22816:dispute-unrecht",
+          "description": "The passage reports a wrong inflicted on Stephan and the church and a failed mediation, not a dispute or suit before a court or ruler as rv:Dispute defines it. The injured parties are given rv:Participant, and the party that inflicted the wrong is unnamed. The typing as Dispute stretches the vocabulary.",
+          "evidence_quote": "das ihm und der Kirche zugefügte Unrecht, das auch durch die Vermittlung Abt Bernhards von Clairvaux nicht aus der Welt geschafft sei",
+          "proposed_correction": "Keep the factoid but mark the type choice as a vocabulary limit in the batch report, or record only the request and the mediation; report the missing type for an injury or conflict."
+        },
+        {
+          "category": "omitted-content",
+          "severity": "warning",
+          "subject": "urn:regesta:22816:request",
+          "description": "The request's content, that Wibald induce the king to remove the wrong, is lost: the king is not referenced and the selector stops before 'zu beseitigen'. The factoid states only that Stephan asks Wibald something about the wrong.",
+          "evidence_quote": "daß er den König veranlassen möge, das ihm und der Kirche zugefügte Unrecht",
+          "proposed_correction": "Extend the selector through 'zu beseitigen' and add a reference to the ruler IRI with nameInSource 'den König' (rv:Participant as nearest role), reporting the missing role for the intended intervener as a model gap."
+        },
+        {
+          "category": "outcome",
+          "severity": "note",
+          "subject": "urn:regesta:22816:dispute-unrecht",
+          "description": "The failure of Bernhard's mediation is visible only in the selector; no property records it.",
+          "evidence_quote": "nicht aus der Welt geschafft sei",
+          "proposed_correction": "None possible within the contract; report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for an injury or wrong suffered outside a formal dispute.",
+        "No role for the party whose intervention a request seeks (here the king).",
+        "No property for the outcome of a mediation."
+      ]
+    },
+    {
+      "uid": "22817",
+      "coverage_note": "Abstention. The regest reports only a conversation of the cardinal legates Bernhard and Gregor with King Friedrich, without stated subject or relation. Abstention judged correct.",
+      "findings": [
+        {
+          "category": "abstention",
+          "severity": "note",
+          "subject": "22817",
+          "description": "No kinship, economic or legal content is stated; an rv:Negotiation would overstate the passage since no object of negotiation is named.",
+          "evidence_quote": "haben mit König Friedrich eine Unterredung",
+          "proposed_correction": "None."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a meeting or conversation without stated content."
+      ]
+    },
+    {
+      "uid": "22818",
+      "coverage_note": "The monks' complaints against Count Heinrich von Salm are extracted as rv:Dispute with claimant and respondent. Heinrich has no packet candidate and correctly gets a local IRI. Wibald's return on the order of the king and the legates is left out as movement.",
+      "findings": [
+        {
+          "category": "scope",
+          "severity": "note",
+          "subject": "22818",
+          "description": "The command of the king and the cardinal legates concerns Wibald's return and is movement under the scope rule; omitting it is defensible. The Dispute factoid names no forum, as the extractor's comment acknowledges.",
+          "evidence_quote": "auf Befehl des Königs und der Kardinallegaten",
+          "proposed_correction": "None."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22819",
+      "coverage_note": "Sicher's earlier mission, the Lodesans' golden key and request for protection, Friedrich's protection grant, the Milanese cup with its ground, and the intercession and gifts of Cremona and Pavia are extracted. Communities use the packet candidates with the :community suffix. The earlier mission carries no date. The protection grant is stated as granted in the regest, so it is not a request read as performance.",
+      "findings": [
+        {
+          "category": "omitted-content",
+          "severity": "note",
+          "subject": "urn:regesta:22819:mission-sicher",
+          "description": "Friedrich learns from Sicher of the mission's failure; neither the report (rv:Communication) nor the failure is recorded. The failure is not expressible as an outcome property.",
+          "evidence_quote": "vom Mißerfolg der diesem aufgetragenen Mission",
+          "proposed_correction": "Optionally add an rv:Communication with Sicher as rv:Envoy and Friedrich as rv:Addressee; report the outcome as model gap."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22819:intercession-cremona-pavia",
+          "description": "'für Lodi' names a beneficiary that could be a reference with rv:Beneficiary rather than only a concerns place; 'gegen Mailand' has no role, as the extractor noted.",
+          "evidence_quote": "gegen Mailand und für Lodi bei Friedrich eintreten",
+          "proposed_correction": "Optionally add the Lodi community as rv:Beneficiary with nameInSource 'Lodi'."
+        },
+        {
+          "category": "vocabulary-limit",
+          "severity": "note",
+          "subject": "urn:regesta:22819:gift-key-lodesanen",
+          "description": "The golden key and the golden cup are typed rv:Grant; the vocabulary has no type for a symbolic or placatory gift, so Grant is the nearest fit.",
+          "evidence_quote": "heimlich einen goldenen Schlüssel",
+          "proposed_correction": "None; report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a gift or symbolic submission distinct from a transfer of rights or possessions.",
+        "No role for the party an intercession is directed against.",
+        "No property for the outcome of a mission."
+      ]
+    },
+    {
+      "uid": "22820",
+      "coverage_note": "Confirmation of the inserted privilege of Pope Lucius II, the undated earlier privilege, and Friedrich's four grants (security for acquisitions, death dues, appointment of ministerials, jurisdiction) are extracted. Identifications match the packet candidates. The chancery note on the Weingarten forgery is correctly skipped.",
+      "findings": [
+        {
+          "category": "misplaced-literal",
+          "severity": "warning",
+          "subject": "urn:regesta:22820:confirmation",
+          "description": "The qualifier 'in verfälschter Fassung' qualifies the inserted papal privilege (and is the editor's text-critical remark), not Friedrich's act of confirmation. Attached to the confirmation it reads as a property of the confirming act.",
+          "evidence_quote": "in verfälschter Fassung",
+          "proposed_correction": "Move the qualifier to urn:regesta:22820:privilege-lucius or drop it as editorial commentary and report it as model gap."
+        },
+        {
+          "category": "structure",
+          "severity": "note",
+          "subject": "urn:regesta:22820:grant-death-dues",
+          "description": "The four grants are Friedrich's own acts ('gewährt ihm') but are linked by rf:partOf to the confirmation of the papal privilege, and carry the selector 'Friedrich bestätigt', which supports the confirmation verb rather than the grant. A reader may take them as content of the confirmed papal privilege.",
+          "evidence_quote": "gewährt ihm Sicherheit für Gütererwerbungen aller Art",
+          "proposed_correction": "Use 'Friedrich' only for the actor or keep the selector but state in the batch report that partOf denotes the same charter, not the papal privilege."
+        },
+        {
+          "category": "omitted-literal",
+          "severity": "note",
+          "subject": "urn:regesta:22820:privilege-lucius",
+          "description": "The regest dates the earlier privilege explicitly; the contract forbids a date on the earlier act, so the date is lost. The omission follows the guidelines.",
+          "evidence_quote": "von 1144 März 20",
+          "proposed_correction": "None within the contract; report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No way to mark the regest or the charter as a forgery (n. †193).",
+        "No property for an explicit date the regest gives for an earlier act."
+      ]
+    },
+    {
+      "uid": "22821",
+      "coverage_note": "Confirmation of rights to Weingarten, the protection grant with the possessions, and the kinship of Friedrich with Herzog Welf (qualifier 'Vorfahren (nostre nobilitatis proavus)', no chain built) are extracted. Weingarten has no packet candidate and correctly gets a local IRI. The witness list and the long chancery note are correctly skipped.",
+      "findings": [
+        {
+          "category": "omitted-content",
+          "severity": "warning",
+          "subject": "urn:regesta:22821:confirmation",
+          "description": "Of the two rights the regest names, only 'die Verfügungsgewalt über seine Hintersassen' becomes a concerns node; 'die Freiheit vom Reichsdienst' lies inside the selector but has no right node, although the contract could express it as crm:E30_Right with the nearest right type.",
+          "evidence_quote": "die Freiheit vom Reichsdienst",
+          "proposed_correction": "Add a crm:E30_Right labelled 'die Freiheit vom Reichsdienst' (type rv:LordshipRights as nearest) to the confirmation's concerns and report the missing exemption type."
+        },
+        {
+          "category": "omitted-earlier-act",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-W000270",
+          "description": "The foundation of the monastery by Herzog Welf is an earlier act stated in the regest; the act scheme has no foundation type, so the omission follows from the vocabulary.",
+          "evidence_quote": "Herzog Welf gegründeten Kloster Weingarten",
+          "proposed_correction": "None within the contract; report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for the foundation of a church or monastery.",
+        "No right type for an exemption or immunity such as freedom from imperial service.",
+        "No way to mark the regest or charter as a forgery (n. †194)."
+      ]
+    },
+    {
+      "uid": "22822",
+      "coverage_note": "The dispatch of messengers and the summons of the princes to Roncaglia are extracted. The summons is an rv:Enactment, not a record of the princes' appearance, and its target date stays a qualifier rather than a date, avoiding temporal overreach. The princes are a FunctionalActor and an rv:Addressee.",
+      "findings": [
+        {
+          "category": "scope-and-completeness",
+          "severity": "note",
+          "subject": "urn:regesta:22822:mission",
+          "description": "The mission carries no concerns for the regions the messengers are sent to; the mission alone is close to the movement exclusion and is in scope only as the vehicle of the summons. Recording it is acceptable.",
+          "evidence_quote": "Friedrich schickt seine Boten in alle Teile des Reiches",
+          "proposed_correction": "Optionally link the mission to the summons with rf:partOf, or leave as is."
+        },
+        {
+          "category": "literal",
+          "severity": "note",
+          "subject": "urn:regesta:22822:summons",
+          "description": "The qualifier includes the editorial insertion '(September 29)'; it is an exact substring and acceptable, but the Latin wording 'usque ad festivitatem sancti Michaelis proxime venientis et unum annum' is the source's own formulation of the term.",
+          "evidence_quote": "am Fest des hl. Michael (September 29) übers Jahr",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No role for the issuer of a command distinct from rv:Grantor, and no sender role for a mission (Friedrich is rv:Participant)."
+      ]
+    }
+  ]
+}

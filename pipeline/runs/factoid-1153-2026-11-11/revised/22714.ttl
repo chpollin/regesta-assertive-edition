@@ -1,0 +1,64 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22714> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-C000961:community> a crm:E74_Group ;
+    rdfs:label "Kloster Corvey" .
+
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ;
+    rdfs:label "Abtes Wibald" .
+
+<urn:regesta:actor:22714:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seinen Vorgängern" .
+
+<urn:regesta:22714:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22714> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich nimmt das Kloster Corvey auf Bitten des Abtes Wibald wegen dessen Treue gegen seinen Vorgänger, König Konrad (III.), und bei seiner Königswahl in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "Kloster Corvey" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Abtes Wibald" ] ;
+    rf:ground "wegen dessen Treue gegen seinen Vorgänger, König Konrad (III.), und bei seiner Königswahl" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22714:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22714> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das Kloster Corvey" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:qualifier "umfassend" ;
+    rf:refersToAct <urn:regesta:22714:predecessor-grants> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22714:predecessor-grants> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22714> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "die von seinen Vorgängern verliehenen Rechte" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "bestätigt ihm umfassend die von seinen Vorgängern verliehenen Rechte" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22714:local:vorgaenger> ;
+        rf:role rv:Grantor ; rf:nameInSource "seinen Vorgängern" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-C000961:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g5> ;
+    rf:verificationStatus rv:unchecked .

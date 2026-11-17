@@ -1,0 +1,35 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Unaccepted candidate, extraction batch 3.
+
+<urn:regesta:record:22639> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 12" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-F000681> a crm:E21_Person ;
+    rdfs:label "Herzog Friedrich (II. von Schwaben)" .
+
+<urn:regesta:22639:parenthood-vater> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:reference <urn:regesta:22639:ref-vater> , <urn:regesta:22639:ref-friedrich> ;
+    rf:source <urn:regesta:record:22639> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich wird neben seinem Vater, Herzog Friedrich (II. von Schwaben)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22639:ref-vater> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000681> ;
+    rf:role rv:Parent ;
+    rf:nameInSource "Herzog Friedrich (II. von Schwaben)" .
+
+<urn:regesta:22639:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Child ;
+    rf:nameInSource "Friedrich" .

@@ -1,0 +1,74 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22712> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-G000732:community> a crm:E74_Group ;
+    rdfs:label "Stift Georgenberg zu Goslar" .
+
+<urn:regesta:actor:RI004-002-B000625> a crm:E21_Person ;
+    rdfs:label "Bischof Bernhards von Hildesheim" .
+
+<urn:regesta:actor:RI004-002-B000489> a crm:E21_Person ;
+    rdfs:label "Propstes Benno" .
+
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ;
+    rdfs:label "Herzogs Heinrich von Sachsen und Bayern" .
+
+<urn:regesta:22712:besitzungen> a crm:E18_Physical_Thing ;
+    rdfs:label "die genannten Besitzungen" .
+
+<urn:regesta:22712:right-obsorge> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "Obsorge" .
+
+<urn:regesta:22712:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22712> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt dem Stift Georgenberg zu Goslar auf Bitten Bischof Bernhards von Hildesheim, dessen Obsorge das Stift untersteht, des dortigen Propstes Benno und seines Verwandten, des Herzogs Heinrich von Sachsen und Bayern, die genannten Besitzungen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000732:community> ;
+        rf:role rv:Recipient ; rf:nameInSource "Stift Georgenberg zu Goslar" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000625> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Bischof Bernhards von Hildesheim" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000489> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Propstes Benno" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ;
+        rf:role rv:Petitioner ; rf:nameInSource "Herzogs Heinrich von Sachsen und Bayern" ] ;
+    rf:concerns <urn:regesta:22712:besitzungen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22712:obsorge> a rf:StateFactoid ;
+    rf:factoidType rv:RightHolding ;
+    rf:source <urn:regesta:record:22712> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Bischof Bernhards von Hildesheim, dessen Obsorge das Stift untersteht" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000625> ;
+        rf:role rv:RightHolder ; rf:nameInSource "Bischof Bernhards von Hildesheim" ] ;
+    rf:concerns <urn:regesta:22712:right-obsorge> , <urn:regesta:actor:RI004-002-G000732:community> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22712:kinship-heinrich> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22712> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "seines Verwandten, des Herzogs Heinrich von Sachsen und Bayern" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000470> ;
+        rf:role rv:Kin ; rf:nameInSource "Herzogs Heinrich von Sachsen und Bayern" ] ,
+      [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ;
+    rf:qualifier "Verwandten" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-21> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,161 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g1-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22628",
+      "coverage_note": "All kinship statements of the regest are covered: father and mother of Friedrich as two Parenthood factoids, the marriage of the parents with the exact word 'Gemahlin', and Judith as daughter of Heinrich the Black. Actors match the packet's candidates by name and title; the ruler uses the shared IRI. The birth itself has no act type in the contract and is correctly not forced into one.",
+      "findings": [
+        {
+          "category": "evidence-scope",
+          "severity": "note",
+          "subject": "urn:regesta:22628:parenthood-mother",
+          "description": "The selector for the mother relation starts at 'Friedrich wird als Sohn Herzog Friedrichs II.' and so also carries the father; it supports the factoid, but it is longer than the shortest passage the guidelines ask for. A shorter contiguous passage carrying both roles is hardly available, so this is a matter of taste.",
+          "evidence_quote": "Friedrich wird als Sohn Herzog Friedrichs II. von Schwaben und seiner Gemahlin Judith",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No act or state type for a birth ('geboren'); the event that is the headline of the regest cannot be recorded, only the kinship it states."
+      ]
+    },
+    {
+      "uid": "22629",
+      "coverage_note": "Abstention. The regest reports a baptismal sponsorship (godparenthood), a spiritual kinship relation. The contract's Kinship type is defined over kinship words such as Oheim, Bruder, Witwe and has no godparent role; forcing the sponsorship into rv:Kinship would require a paraphrased qualifier, since the regest contains no kinship noun. The abstention is defensible under the contract, but the regest is not empty of a relation the project cares about.",
+      "findings": [
+        {
+          "category": "abstention-scope",
+          "severity": "note",
+          "subject": "22629",
+          "description": "The regest states a godparent relation between Graf Otto von Cappenberg and Friedrich. The contract cannot express it without paraphrase, so the abstention is not an extraction error; it should be reported as a model gap rather than as 'no in-scope claim'.",
+          "evidence_quote": "Friedrich wird von Graf Otto von Cappenberg aus der Taufe gehoben.",
+          "proposed_correction": "Keep the abstention, record the godparenthood as a model gap. If the vocabulary gains a spiritual-kinship type or godparent/godchild roles, extract a StateFactoid with Otto (urn:regesta:actor:RI004-002-O000422, name in source 'Graf Otto von Cappenberg') and Friedrich (shared ruler IRI)."
+        }
+      ],
+      "model_gaps": [
+        "No type or roles for spiritual kinship (godparenthood, 'aus der Taufe gehoben')."
+      ]
+    },
+    {
+      "uid": "22630",
+      "coverage_note": "The father relation stated in the regest is covered correctly. The witnessing in DK. III. 8 for Kloster Laach is not extracted; the contract has no act type for attestation in a charter and rv:Witness is explicitly restricted to narrated disputes, so the omission is a model gap rather than an error.",
+      "findings": [
+        {
+          "category": "name-in-source",
+          "severity": "note",
+          "subject": "urn:regesta:22630:parenthood-father",
+          "description": "The child is named '(Friedrich)' in brackets, an editorial supplement of the regest; the reference gives 'Friedrich' without the brackets. It is a valid substring, but the editorial marking of the name is lost.",
+          "evidence_quote": "(Friedrich) wird neben seinem Vater, Herzog Friedrich (II. von Schwaben)",
+          "proposed_correction": "Use '(Friedrich)' as rf:nameInSource to keep the editorial supplement visible."
+        }
+      ],
+      "model_gaps": [
+        "No act type for witnessing or appearing in a charter of another issuer (here DK. III. 8 for Kloster Laach); rv:Witness covers only narrated disputes."
+      ]
+    },
+    {
+      "uid": "22631",
+      "coverage_note": "The father relation is covered correctly. The witness mention stands in a charter the regest itself calls 'unecht'; the parenthood statement is the regest's own wording and does not depend on the forgery, so extracting it is sound. The witnessing is not extractable under the contract.",
+      "findings": [
+        {
+          "category": "source-criticism",
+          "severity": "note",
+          "subject": "22631",
+          "description": "The regest marks DK. III. 278 as forged ('unecht'). Should the witnessing ever become extractable, the forgery qualification must travel with it; the contract has no field for the authenticity of the reported charter other than rf:qualifier.",
+          "evidence_quote": "in dem unechten DK. III. 278 für das Kloster St. Walburg im Heiligen Forst genannt",
+          "proposed_correction": "None for the current file."
+        }
+      ],
+      "model_gaps": [
+        "No act type for witnessing in a charter of another issuer.",
+        "No way to mark that a reported charter is judged forged by the editor, beyond a free qualifier."
+      ]
+    },
+    {
+      "uid": "22632",
+      "coverage_note": "The father relation is covered correctly with the packet's candidate and the shared ruler IRI. The witnessing in DK. III. 56 for St. Jakob zu Lüttich is not expressible under the contract.",
+      "findings": [],
+      "model_gaps": [
+        "No act type for witnessing in a charter of another issuer."
+      ]
+    },
+    {
+      "uid": "22633",
+      "coverage_note": "The father relation is covered correctly. The regest also characterises DK. III. 57 as a settlement ('Vergleich') between the bishop of Basel and Kloster St. Blasien, a legal relation between two named parties that the file omits.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22633",
+          "description": "The settlement between the bishop of Basel and St. Blasien is a legal relation stated by the regest and is in scope. The contract has no settlement type; rv:Dispute would only be acceptable with the exact word 'Vergleich' as qualifier and the two parties as rv:Participant, since a dispute is implied rather than stated. The omission was not reported as a gap in the candidate file.",
+          "evidence_quote": "einem Vergleich zwischen dem Bischof von Basel und dem Kloster St. Blasien",
+          "proposed_correction": "Either add an ActFactoid of type rv:Dispute with rf:qualifier 'Vergleich', references to the bishop (urn:regesta:actor:RI004-002-O000272, name in source 'Bischof von Basel', rv:Participant) and the monastery (urn:regesta:actor:RI004-002-B000974:community, typed crm:E74_Group, name in source 'Kloster St. Blasien', rv:Participant), or record the settlement explicitly as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a settlement or agreement (Vergleich) distinct from dispute and judgment.",
+        "No act type for witnessing in a charter of another issuer."
+      ]
+    },
+    {
+      "uid": "22634",
+      "coverage_note": "The father relation is covered correctly; Friedrich is named here 'Herzog Friedrich (III.)' and the shared ruler IRI is right. Father and son appear together as intervenors in DK. III. 58 for Remiremont; the regest does not state what the charter grants, so no act factoid with a Petitioner role can be built without inference.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "22634",
+          "description": "Intervention ('Intervenient') is close to rv:Petitioner, but the regest names neither the act nor its content, only the charter number and recipient. Building an act factoid would require an act type the passage does not supply, so the omission is a model gap. The ducal title of the son ('Herzog Friedrich (III.)') could be an OfficeHolding factoid, but the guidelines restrict office holding to where it is needed for the statement; leaving it out is defensible.",
+          "evidence_quote": "als Intervenient in DK. III. 58 für das Kloster Remiremont genannt",
+          "proposed_correction": "None required; report the intervention as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for intervening in a charter whose content the regest does not give; rv:Petitioner needs an act to attach to."
+      ]
+    },
+    {
+      "uid": "22635",
+      "coverage_note": "The father relation is covered correctly, with the name form 'Herzog Friedrich (II.) von Schwaben' exactly as in this regest. The witnessing in DK. III. 72 for Salem is not expressible under the contract.",
+      "findings": [],
+      "model_gaps": [
+        "No act type for witnessing in a charter of another issuer."
+      ]
+    },
+    {
+      "uid": "22636",
+      "coverage_note": "Abstention, judged correct. The regest reports joint knightly training and a friendship with Prince Sven of Denmark; neither is a kinship, economic or legal relation in the contract's sense, and 'gleichaltrig' states no kinship.",
+      "findings": [],
+      "model_gaps": [
+        "No state type for friendship or other social bonds ('schließt mit ihm Freundschaft').",
+        "No act type for education or training ('in den ritterlichen Fertigkeiten unterwiesen')."
+      ]
+    },
+    {
+      "uid": "22637",
+      "coverage_note": "The Oheim relation between Friedrich and Herzog Welf is extracted with the exact kinship word. The passage also states that the devastated goods belonged to King Konrad (III.), a possession relation the contract could express and which the military context does not remove from scope; it is omitted. Friedrich's support of Welf (an alliance) is not expressible.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22637",
+          "description": "The guidelines exclude military action only unless the passage also states an economic or legal relation. 'Gütern König Konrads (III.)' states that the goods are Konrad's, which rv:Possession can carry with Konrad as rv:Possessor. The packet's candidate RI004-002-K000316 matches by name and title ('König', '(III.)'). The devastation itself stays out of scope.",
+          "evidence_quote": "Gütern König Konrads (III.)",
+          "proposed_correction": "Add a StateFactoid of type rv:Possession with a reference to urn:regesta:actor:RI004-002-K000316 (crm:E21_Person, rdfs:label 'König Konrads (III.)', role rv:Possessor, name in source 'König Konrads (III.)') and rf:concerns a crm:E18_Physical_Thing labelled 'Gütern'."
+        },
+        {
+          "category": "role-direction",
+          "severity": "note",
+          "subject": "urn:regesta:22637:kinship-oheim",
+          "description": "Both references carry rv:Kin, so the factoid does not say who is whose Oheim; the direction lives only in the possessive 'seinen' of the evidence. This is a vocabulary limit, not an extraction error.",
+          "evidence_quote": "Friedrich unterstützt seinen Oheim, Herzog Welf",
+          "proposed_correction": "None under the current contract."
+        }
+      ],
+      "model_gaps": [
+        "rv:Kin is undirected; asymmetric kinship words such as Oheim lose their direction.",
+        "No act or state type for support or alliance ('unterstützt')."
+      ]
+    }
+  ]
+}

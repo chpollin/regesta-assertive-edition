@@ -1,0 +1,65 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22809> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-S000784> a crm:E21_Person ; rdfs:label "Silvius von Clerieux" .
+<urn:regesta:actor:22809:local:erben> a rf:FunctionalActor ; rdfs:label "dessen Erben" .
+<urn:regesta:actor:22809:local:nachfolger> a rf:FunctionalActor ; rdfs:label "seinen Nachfolgenrn" .
+
+<urn:regesta:22809:burg-clerieux> a crm:E18_Physical_Thing ; rdfs:label "Burg Clérieux" .
+<urn:regesta:22809:charmagnieu> a crm:E18_Physical_Thing ; rdfs:label "Charmagnieu" .
+<urn:regesta:22809:zoelle> a crm:E30_Right ; crm:P2_has_type rv:Toll ; rdfs:label "dazugehörigen Zöllen und Weggeldern" .
+<urn:regesta:22809:andere-gueter> a crm:E18_Physical_Thing ; rdfs:label "den anderen Gütern, die er vom Reich besitzt" .
+
+<urn:regesta:22809:belehnung> a rf:ActFactoid ;
+    rf:factoidType rv:Enfeoffment ;
+    rf:source <urn:regesta:record:22809> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich belehnt den Edlen Silvius von Clerieux (Clariaco) und dessen Erben mit der Burg Clérieux sowie mit Charmagnieu (Charamaneum) samt dazugehörigen Zöllen und Weggeldern und den anderen Gütern, die er vom Reich besitzt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000784> ; rf:role rv:Recipient ; rf:nameInSource "Silvius von Clerieux" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22809:local:erben> ; rf:role rv:Recipient ; rf:nameInSource "dessen Erben" ] ;
+    rf:concerns <urn:regesta:22809:burg-clerieux> , <urn:regesta:22809:charmagnieu> , <urn:regesta:22809:zoelle> , <urn:regesta:22809:andere-gueter> ;
+    rf:exception "unter Vorbehalt der Gerechtsame des Reiches" ;
+    rf:condition "gegen Erfüllung seiner Verpflichtungen zur Heeresfolge und zum Hofdienst" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22809:dienstpflicht> a rf:StateFactoid ;
+    rf:factoidType rv:Obligation ;
+    rf:source <urn:regesta:record:22809> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "gegen Erfüllung seiner Verpflichtungen zur Heeresfolge und zum Hofdienst (servitium tam in militia quam in curia, quale debent casati nostri, qui similia beneficia a nobis habent)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Silvius von Clerieux" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000784> ; rf:role rv:Obligor ; rf:nameInSource "Silvius von Clerieux" ] ;
+    rf:partOf <urn:regesta:22809:belehnung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22809:besitz-vom-reich> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22809> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den anderen Gütern, die er vom Reich besitzt" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Silvius von Clerieux" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000784> ; rf:role rv:Possessor ; rf:nameInSource "Silvius von Clerieux" ] ;
+    rf:concerns <urn:regesta:22809:andere-gueter> ;
+    rf:qualifier "vom Reich" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22809:mannschaft> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22809> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestimmt, daß die Mannschaft ausschließlich ihm und seinen Nachfolgenrn zu leisten sei" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich belehnt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Beneficiary ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22809:local:nachfolger> ; rf:role rv:Beneficiary ; rf:nameInSource "seinen Nachfolgenrn" ] ;
+    rf:qualifier "ausschließlich" ;
+    rf:partOf <urn:regesta:22809:belehnung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;
+    rf:verificationStatus rv:unchecked .

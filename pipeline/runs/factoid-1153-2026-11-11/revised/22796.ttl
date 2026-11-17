@@ -1,0 +1,66 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22796> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-E000589> a crm:E21_Person ;
+    rdfs:label "Papst Eugen (III.)" .
+
+<urn:regesta:actor:22796:local:unterhaendler> a rf:FunctionalActor ;
+    rdfs:label "beiderseitigen Unterhändlern" .
+
+<urn:regesta:actor:22796:local:reichsministeriale> a rf:FunctionalActor ;
+    rdfs:label "eines Reichsministerialen" .
+
+<urn:regesta:actor:22796:local:paepstlicher-legat> a rf:FunctionalActor ;
+    rdfs:label "des päpstlichen Legaten" .
+
+# The oath and the promise stand in the temporal clause 'nachdem ... vollzogen worden sind' as fulfilled
+# preconditions, not as objects of the charter; the contract has no relation for that, so no link is set.
+<urn:regesta:22796:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22796> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich verbrieft Papst Eugen (III.) den Wortlaut des von den beiderseitigen Unterhändlern formulierten Vertrages" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Recipient ; rf:nameInSource "Papst Eugen (III.)" ] ;
+    rf:refersToAct <urn:regesta:22796:treaty-negotiation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22796:treaty-negotiation> a rf:ActFactoid ;
+    rf:factoidType rv:Negotiation ;
+    rf:source <urn:regesta:record:22796> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "des von den beiderseitigen Unterhändlern formulierten Vertrages" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich verbrieft Papst Eugen (III.)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22796:local:unterhaendler> ; rf:role rv:Negotiator ; rf:nameInSource "beiderseitigen Unterhändlern" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Participant ; rf:nameInSource "Papst Eugen (III.)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22796:oath> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22796> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Eidesleistung eines Reichsministerialen in anima regis" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22796:local:reichsministeriale> ; rf:role rv:Representative ; rf:nameInSource "eines Reichsministerialen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "regis" ] ;
+    rf:qualifier "in anima regis" , "nachdem" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g9> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22796:promise> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:source <urn:regesta:record:22796> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die feierliche Zusage des Königs in die Hand des päpstlichen Legaten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "des Königs" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22796:local:paepstlicher-legat> ; rf:role rv:Recipient ; rf:nameInSource "des päpstlichen Legaten" ] ;
+    rf:qualifier "feierliche" , "nachdem" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-41> ;
+    rf:verificationStatus rv:unchecked .

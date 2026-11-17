@@ -1,0 +1,164 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22806> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 179" .
+
+# Earlier act: the donation of Baume-les-Messieurs. Cluny as its recipient rests on the
+# confirmation clause, hence the second selector.
+<urn:regesta:22806:schenkung-baume> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22806> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die durch Papst Eugen III., Erzbischof Humbert von Besançon und Graf Wilhelm von Burgund vollzogene Schenkung der Abtei Baume-les-Messieurs (Balmensis cenobii)" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Kloster Cluny" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-E000589> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Papst Eugen III." ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H001389> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Erzbischof Humbert von Besançon" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-W000568> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Graf Wilhelm von Burgund" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-C000772:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Kloster Cluny" ] ;
+    rf:concerns <urn:regesta:22806:abtei-baume> ;
+    rf:qualifier "vollzogene" .
+
+# Main act: Friedrich's confirmation, with the reservation of royal rights.
+<urn:regesta:22806:bestaetigung-baume> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22806> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Kloster Cluny auf Bitten des Abtes Peter die durch Papst Eugen III., Erzbischof Humbert von Besançon und Graf Wilhelm von Burgund vollzogene Schenkung der Abtei Baume-les-Messieurs" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-C000772:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Kloster Cluny" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-P000422> ;
+        rf:role rv:Petitioner ;
+        rf:nameInSource "Abtes Peter" ] ;
+    rf:concerns <urn:regesta:22806:abtei-baume> ;
+    rf:refersToAct <urn:regesta:22806:schenkung-baume> ;
+    rf:exception "mit Ausnahme der königlichen Rechte (salvo tamen iure, quo regno eadem Balmensis ęcclesia subiecta esse cognoscitur)" .
+
+# Provision: the vassals of the abbey shall do homage to the abbot of Cluny.
+<urn:regesta:22806:mannschaft-vasallen> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22806> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestimmt, daß die Vasallen der Abtei nunmehr dem Abt von Cluny die Mannschaft leisten sollen" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-B000298:community> ;
+        rf:role rv:Vassal ;
+        rf:nameInSource "Vasallen der Abtei" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22806:local:abt-von-cluny> ;
+        rf:role rv:Lord ;
+        rf:nameInSource "Abt von Cluny" ] ;
+    rf:partOf <urn:regesta:22806:bestaetigung-baume> ;
+    rf:qualifier "nunmehr" .
+
+# Provision: free election of the advocate by the abbot of Cluny.
+<urn:regesta:22806:freie-vogtwahl> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22806> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "verbrieft die freie Vogtwahl durch den Abt von Cluny" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22806:local:abt-von-cluny> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Abt von Cluny" ] ;
+    rf:concerns <urn:regesta:22806:recht-vogtwahl> ;
+    rf:partOf <urn:regesta:22806:bestaetigung-baume> .
+
+# Provision: royal protection. Whom the protection covers (Cluny or Baume) is not stated.
+<urn:regesta:22806:koeniglicher-schutz> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22806> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "verbrieft die freie Vogtwahl durch den Abt von Cluny, den königlichen Schutz" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22806:recht-schutz> ;
+    rf:partOf <urn:regesta:22806:bestaetigung-baume> .
+
+# Provision: the possessions of Baume-les-Messieurs.
+<urn:regesta:22806:besitzungen-baume> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22806> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "sowie die teilweise einzeln angeführten Besitzungen von Baume-les-Messieurs" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Kloster Cluny" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44> ;
+    rf:verificationStatus rv:unchecked ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-C000772:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Kloster Cluny" ] ;
+    rf:concerns <urn:regesta:22806:besitzungen-baume-sache> ;
+    rf:partOf <urn:regesta:22806:bestaetigung-baume> .
+
+<urn:regesta:22806:abtei-baume> a crm:E18_Physical_Thing ;
+    rdfs:label "Abtei Baume-les-Messieurs (Balmensis cenobii)" .
+<urn:regesta:22806:besitzungen-baume-sache> a crm:E18_Physical_Thing ;
+    rdfs:label "Besitzungen von Baume-les-Messieurs" .
+<urn:regesta:22806:recht-vogtwahl> a crm:E30_Right ;
+    crm:P2_has_type rv:Advocacy ;
+    rdfs:label "freie Vogtwahl" .
+<urn:regesta:22806:recht-schutz> a crm:E30_Right ;
+    crm:P2_has_type rv:Protection ;
+    rdfs:label "königlichen Schutz" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-E000589> a crm:E21_Person ;
+    rdfs:label "Papst Eugen III." .
+<urn:regesta:actor:RI004-002-H001389> a crm:E21_Person ;
+    rdfs:label "Erzbischof Humbert von Besançon" .
+<urn:regesta:actor:RI004-002-W000568> a crm:E21_Person ;
+    rdfs:label "Graf Wilhelm von Burgund" .
+<urn:regesta:actor:RI004-002-C000772:community> a crm:E74_Group ;
+    rdfs:label "Kloster Cluny" .
+<urn:regesta:actor:RI004-002-P000422> a crm:E21_Person ;
+    rdfs:label "Abtes Peter" .
+<urn:regesta:actor:RI004-002-B000298:community> a crm:E74_Group ;
+    rdfs:label "Vasallen der Abtei" .
+<urn:regesta:actor:22806:local:abt-von-cluny> a rf:FunctionalActor ;
+    rdfs:label "Abt von Cluny" .

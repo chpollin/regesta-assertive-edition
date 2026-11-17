@@ -1,0 +1,27 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22659> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 32" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "König Konrads III." .
+
+# The crusade participation itself is military movement and out of scope; only the stated kinship is extracted.
+
+<urn:regesta:22659:kinship-oheim> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22659> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt am Kreuzzug seines Oheims, König Konrads III." ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Kin ; rf:nameInSource "König Konrads III." ] ;
+    rf:qualifier "Oheims" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-8> ;
+    rf:verificationStatus rv:unchecked .

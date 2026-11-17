@@ -1,0 +1,18 @@
+@prefix reg: <https://example.org/regesta/ontology/> .
+@prefix v: <https://example.org/regesta/vocab/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix x: <urn:regesta:26099:> .
+<urn:regesta:record:26099> a crm:E31_Document .
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:26099:local:army> a crm:E74_Group ; rdfs:label "(Kreuz)heer" .
+<urn:regesta:actor:26099:local:judges> a crm:E74_Group ; rdfs:label "Ungenannte Richter" .
+x:law a crm:E7_Activity ; crm:P2_has_type v:LegalEnactment ; crm:P14_carried_out_by <urn:regesta:actor:RI004-002-F000471> ; crm:P3_has_note "Gesetz über die Aufrechterhaltung des Friedens im Lager, zu dessen Einhaltung das (Kreuz)heer durch Eid verpflichtet wird" .
+x:obligor a reg:Participation ; reg:context x:law ; reg:actor <urn:regesta:actor:26099:local:army> ; reg:role v:Obligor .
+x:appointment a crm:E7_Activity ; crm:P2_has_type v:Appointment ; crm:P14_carried_out_by <urn:regesta:actor:RI004-002-F000471> ; crm:P11_had_participant <urn:regesta:actor:26099:local:judges> ; crm:P3_has_note "für die einzelnen Zeltgenossenschaften Richter einsetzt" .
+x:a1 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:law ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:LegalEnactment ; reg:source <urn:regesta:record:26099> ; reg:evidence "Friedrich erlässt mit Rat der Fürsten ein Gesetz über die Aufrechterhaltung des Friedens im Lager" .
+x:a2 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:law ; crm:P177_assigned_property_of_type crm:P14_carried_out_by ; crm:P141_assigned <urn:regesta:actor:RI004-002-F000471> ; reg:source <urn:regesta:record:26099> ; reg:evidence "Friedrich erlässt mit Rat der Fürsten ein Gesetz über die Aufrechterhaltung des Friedens im Lager" .
+x:a3 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:obligor ; crm:P177_assigned_property_of_type reg:role ; crm:P141_assigned v:Obligor ; reg:source <urn:regesta:record:26099> ; reg:evidence "Gesetz über die Aufrechterhaltung des Friedens im Lager, zu dessen Einhaltung das (Kreuz)heer durch Eid verpflichtet wird" .
+x:a4 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:appointment ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:Appointment ; reg:source <urn:regesta:record:26099> ; reg:evidence "zu dessen Ausführung er für die einzelnen Zeltgenossenschaften Richter einsetzt" .
+x:a5 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:appointment ; crm:P177_assigned_property_of_type crm:P14_carried_out_by ; crm:P141_assigned <urn:regesta:actor:RI004-002-F000471> ; reg:source <urn:regesta:record:26099> ; reg:evidence "Friedrich erlässt mit Rat der Fürsten ein Gesetz über die Aufrechterhaltung des Friedens im Lager, zu dessen Einhaltung das (Kreuz)heer durch Eid verpflichtet wird und zu dessen Ausführung er für die einzelnen Zeltgenossenschaften Richter einsetzt" .
+x:a6 a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to x:appointment ; crm:P177_assigned_property_of_type crm:P11_had_participant ; crm:P141_assigned <urn:regesta:actor:26099:local:judges> ; reg:source <urn:regesta:record:26099> ; reg:evidence "zu dessen Ausführung er für die einzelnen Zeltgenossenschaften Richter einsetzt" .

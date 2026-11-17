@@ -1,0 +1,48 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# The validator merges the vocabulary into the data graph, so sh:class and scheme checks see
+# the concept declarations.
+
+rf:FactoidShape a sh:NodeShape ;
+    sh:targetClass rf:ActFactoid , rf:StateFactoid ;
+    sh:property [ sh:path rf:factoidType ; sh:minCount 1 ; sh:maxCount 1 ; sh:class skos:Concept ] ;
+    sh:property [ sh:path rf:source ; sh:minCount 1 ; sh:maxCount 1 ; sh:class crm:E31_Document ] ;
+    sh:property [ sh:path rf:evidence ; sh:minCount 1 ; sh:node rf:SelectorShape ] ;
+    sh:property [ sh:path prov:wasAttributedTo ; sh:minCount 1 ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path rf:verificationStatus ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( rv:unchecked ) ] ;
+    sh:property [ sh:path rf:reference ; sh:node rf:ReferenceShape ] ;
+    sh:property [ sh:path rf:partOf ; sh:class rf:ActFactoid ] .
+
+rf:ActTypeShape a sh:NodeShape ;
+    sh:targetClass rf:ActFactoid ;
+    sh:property [ sh:path ( rf:factoidType skos:inScheme ) ; sh:hasValue rv:ActTypes ] ;
+    sh:property [ sh:path rf:refersToAct ; sh:class rf:ActFactoid ] .
+
+rf:StateTypeShape a sh:NodeShape ;
+    sh:targetClass rf:StateFactoid ;
+    sh:property [ sh:path ( rf:factoidType skos:inScheme ) ; sh:hasValue rv:StateTypes ] .
+
+rf:SelectorShape a sh:NodeShape ;
+    sh:class oa:TextQuoteSelector ;
+    sh:property [ sh:path oa:exact ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ;
+        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ] .
+
+rf:ReferenceShape a sh:NodeShape ;
+    sh:class rf:Reference ;
+    sh:property [ sh:path rf:actor ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ;
+        sh:or ( [ sh:class crm:E21_Person ] [ sh:class crm:E74_Group ] [ sh:class rf:FunctionalActor ] ) ] ;
+    sh:property [ sh:path ( rf:role skos:inScheme ) ; sh:minCount 1 ; sh:hasValue rv:Roles ] ;
+    sh:property [ sh:path rf:role ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path rf:nameInSource ; sh:maxCount 1 ] .
+
+rf:RightShape a sh:NodeShape ;
+    sh:targetClass crm:E30_Right ;
+    sh:property [ sh:path ( crm:P2_has_type skos:inScheme ) ; sh:minCount 1 ; sh:hasValue rv:RightTypes ] .

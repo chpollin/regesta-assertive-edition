@@ -1,0 +1,73 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22773> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-E000011> a crm:E21_Person ; rdfs:label "Bischof Eberhard von Bamberg" .
+<urn:regesta:actor:RI004-002-H000397> a crm:E21_Person ; rdfs:label "Bischof Heinrich von Regensburg" .
+<urn:regesta:actor:RI004-002-B000730> a crm:E21_Person ; rdfs:label "(Graf) Berthold von Bogen" .
+<urn:regesta:actor:RI004-002-N000177:community> a crm:E74_Group ; rdfs:label "einiger Mönche" .
+<urn:regesta:actor:22773:local:reichsfuersten> a crm:E74_Group ; rdfs:label "der anwesenden Reichsfürsten" .
+
+<urn:regesta:22773:abtei-niederaltaich> a crm:E18_Physical_Thing ; rdfs:label "Abtei Niederaltaich" .
+<urn:regesta:22773:vogtei> a crm:E30_Right ; crm:P2_has_type rv:Advocacy ; rdfs:label "Klostervogt" .
+
+<urn:regesta:22773:dispute> a rf:ActFactoid ;
+    rf:factoidType rv:Dispute ;
+    rf:source <urn:regesta:record:22773> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "wegen der Unmutsäußerungen einiger Mönche, die sich aber dann dem Gericht nicht stellten" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-N000177:community> ; rf:role rv:Participant ; rf:nameInSource "einiger Mönche" ] ;
+    rf:qualifier "die sich aber dann dem Gericht nicht stellten" ;
+    rf:concerns <urn:regesta:22773:abtei-niederaltaich> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22773:judgment> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22773> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "von Bischof Heinrich von Regensburg unter Zustimmung der anwesenden Reichsfürsten ein diesbezüglicher Spruch gefällt worden ist" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H000397> ; rf:role rv:Judge ; rf:nameInSource "Bischof Heinrich von Regensburg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22773:local:reichsfuersten> ; rf:role rv:Participant ; rf:nameInSource "der anwesenden Reichsfürsten" ] ;
+    rf:ground "wegen der Unmutsäußerungen einiger Mönche" ;
+    rf:qualifier "nachdem" ;
+    rf:concerns <urn:regesta:22773:abtei-niederaltaich> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22773:enfeoffment> a rf:ActFactoid ;
+    rf:factoidType rv:Enfeoffment ;
+    rf:source <urn:regesta:record:22773> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich belehnt Bischof Eberhard von Bamberg erneut mit der Abtei Niederaltaich" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Recipient ; rf:nameInSource "Bischof Eberhard von Bamberg" ] ;
+    rf:qualifier "erneut" ;
+    rf:concerns <urn:regesta:22773:abtei-niederaltaich> ;
+    rf:refersToAct <urn:regesta:22773:judgment> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22773:induction-order> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22773> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "befiehlt, ihn in den Besitz des Klosters durch den Klostervogt, (Graf) Berthold von Bogen, einweisen zu lassen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Beneficiary ; rf:nameInSource "ihn" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000730> ; rf:role rv:Participant ; rf:nameInSource "(Graf) Berthold von Bogen" ] ;
+    rf:concerns <urn:regesta:22773:abtei-niederaltaich> ;
+    rf:partOf <urn:regesta:22773:enfeoffment> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22773:advocate-office> a rf:StateFactoid ;
+    rf:factoidType rv:OfficeHolding ;
+    rf:source <urn:regesta:record:22773> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "den Klostervogt, (Graf) Berthold von Bogen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000730> ; rf:role rv:Officeholder ; rf:nameInSource "(Graf) Berthold von Bogen" ] ;
+    rf:concerns <urn:regesta:22773:vogtei> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-36> ;
+    rf:verificationStatus rv:unchecked .

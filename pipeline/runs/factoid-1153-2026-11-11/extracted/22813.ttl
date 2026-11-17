@@ -1,0 +1,56 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22813> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-R000054> a crm:E21_Person ; rdfs:label "Erzbischof Raimund von Arles" .
+<urn:regesta:actor:RI004-002-L000818> a crm:E21_Person ; rdfs:label "Ludwigs (des Blinden)" .
+<urn:regesta:actor:RI004-002-M000298> a crm:E21_Person ; rdfs:label "Erzbischof Manasse" .
+
+<urn:regesta:22813:city-arles> a crm:E53_Place ; rdfs:label "die Stadt Arles" .
+<urn:regesta:22813:right-regalien> a crm:E30_Right ; crm:P2_has_type rv:LordshipRights ; rdfs:label "die Regalien des Erzbistums" .
+<urn:regesta:22813:right-zoelle> a crm:E30_Right ; crm:P2_has_type rv:Toll ; rdfs:label "Zölle" .
+<urn:regesta:22813:right-weggelder> a crm:E30_Right ; crm:P2_has_type rv:Toll ; rdfs:label "Weggelder" .
+<urn:regesta:22813:right-gerichtsbarkeit> a crm:E30_Right ; crm:P2_has_type rv:Jurisdiction ; rdfs:label "Gerichtsbarkeitsrechte" .
+<urn:regesta:22813:thing-hafenanlagen> a crm:E18_Physical_Thing ; rdfs:label "die Hafenanlagen sowohl der Griechen als auch anderer Völker" .
+<urn:regesta:22813:right-wasser-weide-crau> a crm:E30_Right ; crm:P2_has_type rv:UsageRights ; rdfs:label "alle Wasser- und Weiderechte auf der Plaine de la Crau" .
+<urn:regesta:22813:thing-kastell-fos> a crm:E18_Physical_Thing ; rdfs:label "Fos-sur-Mer (Fossis)" .
+<urn:regesta:22813:thing-kastell-albaron> a crm:E18_Physical_Thing ; rdfs:label "Albaron" .
+<urn:regesta:22813:thing-kastell-vernegues> a crm:E18_Physical_Thing ; rdfs:label "Vernègues (Aluernis)" .
+<urn:regesta:22813:thing-kastell-alleins> a crm:E18_Physical_Thing ; rdfs:label "Alleins (Aualone)" .
+<urn:regesta:22813:thing-kastell-mondragon> a crm:E18_Physical_Thing ; rdfs:label "Mondragon (Monte Draconis)" .
+<urn:regesta:22813:thing-kastell-salon> a crm:E18_Physical_Thing ; rdfs:label "Salon" .
+
+<urn:regesta:22813:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22813> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestätigt dem Erzbischof Raimund von Arles die Stadt Arles, die Regalien des Erzbistums, Zölle, Weggelder, Gerichtsbarkeitsrechte (regalia, tolonea [!], pedatica, iusticias), die Verleihungen Ludwigs (des Blinden) an Erzbischof Manasse" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R000054> ; rf:role rv:Recipient ; rf:nameInSource "Erzbischof Raimund von Arles" ] ;
+    rf:concerns <urn:regesta:22813:city-arles> , <urn:regesta:22813:right-regalien> , <urn:regesta:22813:right-zoelle> ,
+                <urn:regesta:22813:right-weggelder> , <urn:regesta:22813:right-gerichtsbarkeit> ,
+                <urn:regesta:22813:thing-hafenanlagen> , <urn:regesta:22813:right-wasser-weide-crau> ,
+                <urn:regesta:22813:thing-kastell-fos> , <urn:regesta:22813:thing-kastell-albaron> ,
+                <urn:regesta:22813:thing-kastell-vernegues> , <urn:regesta:22813:thing-kastell-alleins> ,
+                <urn:regesta:22813:thing-kastell-mondragon> , <urn:regesta:22813:thing-kastell-salon> ;
+    rf:refersToAct <urn:regesta:22813:grant-ludwig> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22813:grant-ludwig> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22813> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Verleihungen Ludwigs (des Blinden) an Erzbischof Manasse, nämlich die Hafenanlagen sowohl der Griechen als auch anderer Völker (tam portus Grecorum quam aliarum gentium ad civitatem tuam venientium), alle Wasser- und Weiderechte auf der Plaine de la Crau (de lapidoso agro, qui vulgari tuo Crau nuncupatur) und die Kastelle Fos-sur-Mer (Fossis), Albaron, Vernègues (Aluernis), Alleins (Aualone), Mondragon (Monte Draconis) und Salon" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000818> ; rf:role rv:Grantor ; rf:nameInSource "Ludwigs (des Blinden)" ] ,
+                 [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000298> ; rf:role rv:Recipient ; rf:nameInSource "Erzbischof Manasse" ] ;
+    rf:concerns <urn:regesta:22813:thing-hafenanlagen> , <urn:regesta:22813:right-wasser-weide-crau> ,
+                <urn:regesta:22813:thing-kastell-fos> , <urn:regesta:22813:thing-kastell-albaron> ,
+                <urn:regesta:22813:thing-kastell-vernegues> , <urn:regesta:22813:thing-kastell-alleins> ,
+                <urn:regesta:22813:thing-kastell-mondragon> , <urn:regesta:22813:thing-kastell-salon> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-46> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,59 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22761> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 134" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-W000417> a crm:E21_Person ;
+    rdfs:label "Wezel" .
+
+<urn:regesta:actor:RI004-002-R001192> a crm:E21_Person ;
+    rdfs:label "Rudolf von Ramsberg" .
+
+<urn:regesta:actor:RI004-002-U000179> a crm:E21_Person ;
+    rdfs:label "Ulrich von Lenzburg" .
+
+<urn:regesta:actor:RI004-002-E000052> a crm:E21_Person ;
+    rdfs:label "Eberhard von Bodman" .
+
+<urn:regesta:22761:letter> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22761> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Wezel gratuliert Friedrich zu seiner Wahl" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000417> ; rf:role rv:Participant ; rf:nameInSource "Wezel" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22761:election> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22761> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "gratuliert Friedrich zu seiner Wahl" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Recipient ; rf:nameInSource "Friedrich" ] ;
+    rf:qualifier "Wahl" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+# Advice to send envoys to Rome. The vocabulary has no advice type, so the advice is part of the
+# letter and keeps the verb as qualifier; the proposed envoys are Participants, since nobody is sent.
+<urn:regesta:22761:advice-envoys> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22761> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "rät ihm, die Grafen Rudolf von Ramsberg und Ulrich von Lenzburg sowie andere geeignete und rechtserfahrene Männer, wie Eberhard von Bodman, nach Rom zu entsenden" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Wezel gratuliert Friedrich" ] ;
+    rf:partOf <urn:regesta:22761:letter> ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000417> ; rf:role rv:Participant ; rf:nameInSource "Wezel" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Addressee ; rf:nameInSource "ihm" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-R001192> ; rf:role rv:Participant ; rf:nameInSource "Rudolf von Ramsberg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000179> ; rf:role rv:Participant ; rf:nameInSource "Ulrich von Lenzburg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000052> ; rf:role rv:Participant ; rf:nameInSource "Eberhard von Bodman" ] ;
+    rf:qualifier "rät" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;
+    rf:verificationStatus rv:unchecked .

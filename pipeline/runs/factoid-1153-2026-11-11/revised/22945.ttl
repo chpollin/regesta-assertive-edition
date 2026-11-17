@@ -1,0 +1,39 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22945> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. D†318" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-A000772> a crm:E21_Person ;
+    rdfs:label "Bischof Amadeus von Lausanne" .
+
+<urn:regesta:22945:dioezese-lausanne> a crm:E53_Place ;
+    rdfs:label "Diözese Lausanne" .
+
+<urn:regesta:22945:bestellung-vertreter> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22945> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich bestellt seinen Kanzler, Bischof Amadeus von Lausanne , zu seinem Vertreter in Regierungsgeschäften (in der Diözese Lausanne; in colligendis et dispensandis et revocandis oblatis, in confirmandis necessariis, in convocandis ad curiam ecclesiasticam personis atque baronibus vices nostras)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000772> ; rf:role rv:Recipient ; rf:nameInSource "Bischof Amadeus von Lausanne" ] ;
+    rf:concerns <urn:regesta:22945:dioezese-lausanne> ;
+    rf:qualifier "zu seinem Vertreter in Regierungsgeschäften" ,
+        "in colligendis et dispensandis et revocandis oblatis, in confirmandis necessariis, in convocandis ad curiam ecclesiasticam personis atque baronibus vices nostras" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-51> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22945:kanzler-amadeus> a rf:StateFactoid ;
+    rf:factoidType rv:OfficeHolding ;
+    rf:source <urn:regesta:record:22945> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "seinen Kanzler, Bischof Amadeus von Lausanne" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000772> ; rf:role rv:Officeholder ; rf:nameInSource "Bischof Amadeus von Lausanne" ] ;
+    rf:qualifier "seinen Kanzler" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-51> ;
+    rf:verificationStatus rv:unchecked .

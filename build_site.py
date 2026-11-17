@@ -988,7 +988,7 @@ def build(source: Path, run_id: str, out: Path, preview: bool = False) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--source", type=Path, default=HERE.parent / "regesta-rdf-demo")
+    parser.add_argument("--source", type=Path, default=HERE / "pipeline")
     parser.add_argument("--run", default="factoid-1153-2026-11-11")
     parser.add_argument("--out", type=Path, default=None)
     parser.add_argument(
@@ -1001,7 +1001,7 @@ def main() -> int:
         print("the preview build never goes to site/, which is published", file=sys.stderr)
         return 2
     if args.out.resolve().is_relative_to(args.source.resolve()):
-        print("refusing to write into the source repository", file=sys.stderr)
+        print("refusing to write into the pipeline folder", file=sys.stderr)
         return 2
     try:
         build(args.source, args.run, args.out.resolve(), preview=args.preview)

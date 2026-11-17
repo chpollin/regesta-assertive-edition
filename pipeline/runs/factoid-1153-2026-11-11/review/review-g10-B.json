@@ -1,0 +1,303 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g10-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22823",
+      "coverage_note": "Four factoids: the ducal dispute, the earlier divorce, the mission to Manuel with two grounds, and Roger as father of Wilhelm. Envoys, addressee and grounds are read correctly and the divorce stays an earlier act without date. The invitation to Regensburg and the failed peace are assembly or political context and rightly left out. Remaining points concern the sender role, the cautious local identity of the Bavarian duke and two Latin side clauses.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "warning",
+          "subject": "urn:regesta:22823:mission-manuel",
+          "description": "Friedrich, who sends the envoys, carries rv:Participant. The vocabulary has no sender role, but other records of this run give the sender of a letter or order rv:Grantor, so the sender role is handled inconsistently across the run.",
+          "evidence_quote": "sendet er deshalb und wegen eines Vorgehens gegen Sizilien",
+          "proposed_correction": "Keep rv:Participant as the contract-conformant reading and record the missing sender role as a model gap; harmonise the convention for senders across the run."
+        },
+        {
+          "category": "identity",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22823:local:heinrich-von-bayern",
+          "description": "Heinrich von Bayern is left regest-local although the passage distinguishes him from Heinrich von Sachsen (H000470) as the second of two dukes, which leaves H000498 (\"vorher von Bayern\") as the only remaining packet candidate. The caution is defensible; record 22829 of the same run assigns H000498 to the same wording, so the two records diverge.",
+          "evidence_quote": "Streites der beiden Herzoge (Heinrich von Bayern und Heinrich von Sachsen )",
+          "proposed_correction": "Either assign urn:regesta:actor:RI004-002-H000498 as in 22829 or keep both records local; decide one convention."
+        },
+        {
+          "category": "omission",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-W000509",
+          "description": "The clause states that Wilhelm succeeded his deceased father Roger; only the parenthood is extracted, not the succession. The contract could carry it only approximately (OfficeHolding with qualifier), and the office is not named in the passage.",
+          "evidence_quote": "qui patre suo Rogerio noviter defuncto successerat",
+          "proposed_correction": "Optionally add a StateFactoid rv:OfficeHolding for Wilhelm with rf:qualifier \"successerat\"; otherwise report as model gap (no succession act type)."
+        },
+        {
+          "category": "omission",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-A000625",
+          "description": "The Latin side clause reports that Alexander was driven out by Roger on suspicion of seeking lordship. This is a political expulsion without an act type in the vocabulary, and it is peripheral to the regest.",
+          "evidence_quote": "a Rogerio cum caeteris eiusdem provinciae nobilibus ob suspitionem dominandi propulsus",
+          "proposed_correction": "No change; record as model gap if expulsions are to be captured."
+        }
+      ],
+      "model_gaps": [
+        "No sender or initiator role for a Mission; the sender falls back to rv:Participant.",
+        "No act type for succession or for expulsion from a territory."
+      ]
+    },
+    {
+      "uid": "22824",
+      "coverage_note": "Four factoids: Konrad as Oheim, Konrad's designation of Friedrich as successor, Friedrich's assurance to Manuel, and the kinship of the unnamed relative with Manuel. The planned marriage is correctly not turned into a marriage. Manuel's earlier letter, the announcement of envoys and Friedrich's letter of thanks itself are not extracted; the planned Sicilian expedition is military and out of scope.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "warning",
+          "subject": "urn:regesta:22824:assurance-relations",
+          "description": "The unnamed relative of Manuel is referenced as rv:Participant of the assurance. The passage names her only as the intended partner of a planned marriage (\"befestigen will\"); she takes no part in the assurance, so the reference overstates her involvement.",
+          "evidence_quote": "die er durch seine Heirat mit einer Verwandten Manuels befestigen will",
+          "proposed_correction": "Remove the Participant reference from the assurance and keep the planned marriage only as rf:qualifier wording; the kinship factoid already carries her."
+        },
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "urn:regesta:actor:RI004-002-M000374",
+          "description": "Manuel's earlier letter, sent through a messenger, is an act the regest reports (Communication from Manuel to Friedrich, messenger unnamed) and is not extracted.",
+          "evidence_quote": "für dessen durch einen Boten übersandtes Schreiben",
+          "proposed_correction": "Add an ActFactoid rv:Communication with Manuel as sender (role per run convention), Friedrich as rv:Addressee and an unnamed local rv:Envoy, without date."
+        },
+        {
+          "category": "omission",
+          "severity": "note",
+          "subject": "urn:regesta:22824:assurance-relations",
+          "description": "Friedrich's own letter (thanks, announcement of a fast embassy) is not recorded as a Communication; the assurance covers the substantive content. The announced embassy is only announced and must not become a Mission.",
+          "evidence_quote": "kündigt ihm eine Eilbotschaft an (celeres et expeditos nuntios)",
+          "proposed_correction": "Optionally add a rv:Communication factoid for Friedrich's letter to Manuel and keep the announced embassy as qualifier wording."
+        },
+        {
+          "category": "type",
+          "severity": "note",
+          "subject": "urn:regesta:22824:designation-successor",
+          "description": "Designation as successor is typed rv:Appointment, defined as installation in an office. A designation for future succession is weaker than installation; the qualifier keeps the exact wording, which limits the risk.",
+          "evidence_quote": "der ihn zu seinem Nachfolger erklärt hat",
+          "proposed_correction": "Keep with qualifier; report the lack of a designation type as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for designation of a successor distinct from installation in office.",
+        "No sender role for letters and missions."
+      ]
+    },
+    {
+      "uid": "22825",
+      "coverage_note": "Abstention. The regest reports the cardinal legate's invitation of an archbishop, two bishops and Abbot Wibald to Worms and his intention to visit the king for leave-taking. No kinship, economic or legal relation is stated, and travel is out of scope. The invitation could formally be a rv:Communication, but the run treats comparable invitations to assemblies (22823, Regensburg) as out of scope, so the abstention is defensible.",
+      "findings": [
+        {
+          "category": "abstention",
+          "severity": "note",
+          "subject": "urn:regesta:record:22825",
+          "description": "The invitation is a letter-type act the contract could express as rv:Communication with four addressees; the abstention follows the travel exclusion. The intended visit to the king is only an intention and is rightly not extracted.",
+          "evidence_quote": "lädt den Erzbischof (Hartwig) von Bremen, die Bischöfe (Bruno) von Hildesheim und (Werner) von Minden sowie Abt Wibald von Corvey zum Fest des hl. Michael (29. September) nach Worms",
+          "proposed_correction": "No change unless the run decides that invitations and summonses are in scope as rv:Communication (compare 22829, where a summons was extracted)."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22826",
+      "coverage_note": "Two factoids: Friedrich's order to the count palatine to restore Nienstedt and the alienated fief, typed as enactment rather than restitution, and Friedrich's letter to Wibald referring to it. The order is not read as performed restitution. The beneficiaries of the restitution and the summons to Köln are not captured.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "urn:regesta:22826:restitution-order",
+          "description": "The order is in favour of Wibald's side: the fief was alienated from \"seinen Leuten\", most plausibly Wibald's people, and the letter is addressed to Wibald. No beneficiary reference is given, so the factoid loses for whom restitution is ordered.",
+          "evidence_quote": "das seinen Leuten entfremdete Lehen zurückzustellen",
+          "proposed_correction": "Add a local group for \"seinen Leuten\" (or Wibald, urn:regesta:actor:RI004-002-W000420) with rv:Beneficiary; label it in source wording because the possessive is not fully determinate."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22826:restitution-order",
+          "description": "The count palatine, who is ordered to restore, carries rv:Addressee. This matches the definition (to whom an order is directed) but loses that he is the party obliged to restore; rv:Obligor is a possible alternative.",
+          "evidence_quote": "er habe dem Pfalzgrafen (Friedrich) von Sommerschenburg befohlen",
+          "proposed_correction": "Keep rv:Addressee or switch to rv:Obligor by run convention."
+        },
+        {
+          "category": "omission",
+          "severity": "note",
+          "subject": "urn:regesta:record:22826",
+          "description": "The summons of Wibald to Köln for 1 November is not extracted. As travel to an assembly it falls under the exclusion, but 22829 extracts a royal summons as rv:Communication, so the run is inconsistent.",
+          "evidence_quote": "beruft ihn für den 1. November nach Köln",
+          "proposed_correction": "Decide one convention for summonses across the run."
+        },
+        {
+          "category": "type",
+          "severity": "note",
+          "subject": "urn:regesta:22826:entfremdetes-lehen",
+          "description": "The alienated fief is typed crm:E18_Physical_Thing; a Lehen is a tenure relation as much as a thing. Acceptable under the contract's thing and right split.",
+          "evidence_quote": "das seinen Leuten entfremdete Lehen",
+          "proposed_correction": "No change; vocabulary limit."
+        }
+      ],
+      "model_gaps": [
+        "No way to express the prior alienation (entfremdet) of a fief except as part of a thing label."
+      ]
+    },
+    {
+      "uid": "22827",
+      "coverage_note": "One factoid: the accusation and conviction of Bernhard by Duke Heinrich for the murder of Count Hermann. The execution ordered by Friedrich is left out and flagged in a comment as model gap; the reception in Köln is ceremonial and rightly out of scope. The murder victim is not referenced.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "urn:regesta:record:22827",
+          "description": "The central legal act of the regest, Friedrich having the convicted knight beheaded on his order, is absent. The contract has no punishment type, but rv:Enactment (an order) with Friedrich as rv:Grantor and Bernhard as a further reference could carry the order without asserting more than the passage says.",
+          "evidence_quote": "läßt den Ritter Bernhard, der von Herzog (Heinrich) von Sachsen wegen des Mordes an Graf Hermann von Winzenburg angeklagt und überführt worden war, enthaupten",
+          "proposed_correction": "Either add an ActFactoid for the order of execution with rf:qualifier \"enthaupten\" and rf:refersToAct to the accusation, or keep the omission as model gap (no punishment act type); the expert should decide."
+        },
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "urn:regesta:22827:accusation",
+          "description": "Count Hermann von Winzenburg, the murder victim and the ground of the charge, is not referenced although a matching packet candidate (H000860) exists. He appears only inside the rf:ground literal.",
+          "evidence_quote": "wegen des Mordes an Graf Hermann von Winzenburg",
+          "proposed_correction": "Add a reference to urn:regesta:actor:RI004-002-H000860 with rv:Participant and nameInSource \"Graf Hermann von Winzenburg\"."
+        },
+        {
+          "category": "collapse",
+          "severity": "note",
+          "subject": "urn:regesta:22827:accusation",
+          "description": "Accusation and conviction are one Dispute factoid; the conviction is a judgment by an unnamed authority. The qualifier keeps the wording, so nothing is asserted beyond the passage.",
+          "evidence_quote": "angeklagt und überführt worden war",
+          "proposed_correction": "Optionally split into rv:Dispute and rv:Judgment (judge unnamed) linked by rf:refersToAct."
+        }
+      ],
+      "model_gaps": [
+        "No act type for punishment or execution of a sentence.",
+        "No act type for a homicide reported as the ground of a charge."
+      ]
+    },
+    {
+      "uid": "22828",
+      "coverage_note": "One mission factoid: Manuel sends envoys to King Friedrich because of the planned marriage negotiations and the desired union of both realms. Envoys, addressee and ground are correct, and the planned negotiations are correctly not turned into a Negotiation or a marriage.",
+      "findings": [
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22828:mission",
+          "description": "Manuel as sender carries rv:Participant for lack of a sender role, which the extractor flags as model gap. The Latin wish for union of both realms stays inside the evidence, not in the ground literal, which is acceptable.",
+          "evidence_quote": "Der oströmische Kaiser Manuel schickt",
+          "proposed_correction": "No change; harmonise the sender convention across the run."
+        }
+      ],
+      "model_gaps": [
+        "No sender role for a Mission."
+      ]
+    },
+    {
+      "uid": "22829",
+      "coverage_note": "One factoid: Friedrich summons the two dukes to Speyer, typed rv:Communication with qualifier \"lädt\". The second sentence, Heinrich of Bavaria's renewed objection that he was not lawfully summoned and the adjournment of the matter, is not extracted.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "error",
+          "subject": "urn:regesta:record:22829",
+          "description": "The legal core of the regest is missing: Heinrich (von Bayern) again objects that he was not lawfully summoned, and the matter is adjourned. This is a dispute procedure with a stated legal ground, and the contract can express it as rv:Dispute with both dukes as parties, the king as rv:Judge, rf:ground for the objection and rf:qualifier for \"abermals\" and \"vertagt\".",
+          "evidence_quote": "Da sich Heinrich (von Bayern) abermals damit entschuldigt, nicht gesetzmäßig geladen zu sein, wird die Angelegenheit, die der König wegen des Italienzuges beenden wollte, vertagt.",
+          "proposed_correction": "Add an ActFactoid rv:Dispute with references H000498 (\"Heinrich (von Bayern)\", rv:Participant), H000470 (rv:Participant), Friedrich (\"der König\", rv:Judge), rf:ground \"nicht gesetzmäßig geladen zu sein\", rf:qualifier \"abermals\" and \"vertagt\"; link the summons to it with rf:partOf."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22829:summons",
+          "description": "Friedrich as summoning authority carries rv:Grantor, defined for transfer, confirmation or enactment. A summons is closer to an order; rv:Grantor is the nearest available role.",
+          "evidence_quote": "Friedrich lädt die beiden Herzoge",
+          "proposed_correction": "No change; record the absence of a summons type and summoner role as model gap."
+        },
+        {
+          "category": "identity",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-H000498",
+          "description": "Heinrich (von Bayern) is assigned H000498 (\"vorher von Bayern\"); the passage distinguishes him from Heinrich (von Sachsen), so the assignment is supported within the packet. Record 22823 left the same wording local.",
+          "evidence_quote": "die beiden Herzoge Heinrich (von Bayern ) und Heinrich (von Sachsen )",
+          "proposed_correction": "Harmonise with 22823."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a court summons or for adjournment of a case."
+      ]
+    },
+    {
+      "uid": "22830",
+      "coverage_note": "Two factoids: A.'s conditional request to Wibald and the king's earlier gift to A. The condition is kept in exact wording and the request is not read as fulfilment. Count Emicho, who withholds the gift and so gives the request its reason, is not referenced anywhere.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "urn:regesta:record:22830",
+          "description": "The withholding of the gift by Count Emicho von Leiningen is a reported legal-economic relation and the reason for the request. Emicho has a matching packet candidate (E000324) but is absent from the file.",
+          "evidence_quote": "das ihm Graf Emicho von Leiningen vorenthält",
+          "proposed_correction": "Add a StateFactoid rv:Possession with urn:regesta:actor:RI004-002-E000324 as rv:Possessor, rf:qualifier \"vorenthält\" and rf:concerns urn:regesta:22830:gift; at minimum add rf:ground \"das ihm Graf Emicho von Leiningen vorenthält\" to the request."
+        },
+        {
+          "category": "identity",
+          "severity": "note",
+          "subject": "urn:regesta:22830:royal-gift",
+          "description": "\"des Königs\" is identified with the shared ruler Friedrich. The regest does not say which king made the gift; the identification follows the packet convention but remains the producer's reading.",
+          "evidence_quote": "das Geschenk des Königs",
+          "proposed_correction": "Keep the shared ruler or use a rf:FunctionalActor \"des Königs\"; flag for the expert."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22830:request",
+          "description": "A. is also the beneficiary of the requested delivery; this is implicit in the Petitioner role and acceptable.",
+          "evidence_quote": "daß er ihm, wenn es möglich ist, das Geschenk des Königs zukommen lasse",
+          "proposed_correction": "No change."
+        }
+      ],
+      "model_gaps": [
+        "No act or state type for withholding a thing from its entitled recipient."
+      ]
+    },
+    {
+      "uid": "22831",
+      "coverage_note": "Two factoids: Wladislaw's marriage to an unnamed daughter of Margrave Albrecht and her parenthood. The unnamed daughter stays local, consistent with the identity rule. Wladislaw's reception into Friedrich's grace is not extracted.",
+      "findings": [
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "urn:regesta:record:22831",
+          "description": "The reception of Duke Wladislaw into Friedrich's grace is a legal-political relation between ruler and duke and the first statement of the regest. It is not extracted and not flagged in the file. The contract has no exact type; rv:ProtectionGrant comes closest but would overstate it.",
+          "evidence_quote": "Herzog Wladislaw (II. von Polen ) wird von Friedrich in Gnaden aufgenommen",
+          "proposed_correction": "Report as model gap (no type for reception into grace or reconciliation), or extract as rv:ProtectionGrant with rf:qualifier \"in Gnaden aufgenommen\" if the expert accepts that reading."
+        },
+        {
+          "category": "identity",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22831:local:tochter-albrecht",
+          "description": "The daughter is kept local although packet candidate C000666 (Christina) describes this person; the rule requires a name match, so the choice is correct and the unresolved identity belongs to the expert.",
+          "evidence_quote": "eine Tochter des Markgrafen Albrecht (des Bären) von Sachsen",
+          "proposed_correction": "No change."
+        }
+      ],
+      "model_gaps": [
+        "No act type for reception into the ruler's grace or reconciliation."
+      ]
+    },
+    {
+      "uid": "22844",
+      "coverage_note": "Two factoids: Friedrich's letter to the inhabitants of Tortona and the assurance of protection it contains, linked by rf:partOf, with a protection right as rf:concerns. The assurance is not read as exercised protection. Coverage is complete.",
+      "findings": [
+        {
+          "category": "structure",
+          "severity": "note",
+          "subject": "urn:regesta:22844:assurance",
+          "description": "The assurance is rf:partOf the Communication. rf:partOf is meant for provisions of a main act; using the letter as main act is defensible. The Latin clause also says the people were under his protection, a state the extractor leaves inside the evidence, which is appropriate for a narrative quotation.",
+          "evidence_quote": "homines, qui erant sub eius tutella et defensione, sicut in litteris suis mandaveraf",
+          "proposed_correction": "No change."
+        }
+      ],
+      "model_gaps": []
+    }
+  ]
+}

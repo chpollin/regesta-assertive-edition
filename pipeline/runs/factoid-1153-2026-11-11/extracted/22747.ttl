@@ -1,0 +1,40 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22747> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-H000470> a crm:E21_Person ; rdfs:label "Herzog (Heinrich ) von Sachsen" .
+<urn:regesta:actor:22747:local:folkwin> a crm:E21_Person ; rdfs:label "F(olkwins)" .
+<urn:regesta:actor:22747:local:widekind> a crm:E21_Person ; rdfs:label "W(idekinds von Schwalenberg)" .
+<urn:regesta:actor:RI004-002-C000961:community> a crm:E74_Group ; rdfs:label "Kloster Corvey" .
+
+# Mandate to Duke Heinrich to judge the violence against Corvey
+
+<urn:regesta:22747:mandate-judgment> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22747> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich befiehlt (intime rogat) Herzog (Heinrich ) von Sachsen , über die Gewalttaten F(olkwins) und W(idekinds von Schwalenberg) gegenüber dem Kloster Corvey zu richten" ] ;
+    rf:reference <urn:regesta:22747:mandate-judgment:ref-friedrich> ,
+                 <urn:regesta:22747:mandate-judgment:ref-heinrich> ,
+                 <urn:regesta:22747:mandate-judgment:ref-folkwin> ,
+                 <urn:regesta:22747:mandate-judgment:ref-widekind> ,
+                 <urn:regesta:22747:mandate-judgment:ref-corvey> ;
+    rf:qualifier "befiehlt (intime rogat)" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-29> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22747:mandate-judgment:ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" .
+<urn:regesta:22747:mandate-judgment:ref-heinrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-H000470> ; rf:role rv:Addressee ; rf:nameInSource "Herzog (Heinrich ) von Sachsen" .
+<urn:regesta:22747:mandate-judgment:ref-folkwin> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22747:local:folkwin> ; rf:role rv:Respondent ; rf:nameInSource "F(olkwins)" .
+<urn:regesta:22747:mandate-judgment:ref-widekind> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22747:local:widekind> ; rf:role rv:Respondent ; rf:nameInSource "W(idekinds von Schwalenberg)" .
+<urn:regesta:22747:mandate-judgment:ref-corvey> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-C000961:community> ; rf:role rv:Participant ; rf:nameInSource "Kloster Corvey" .

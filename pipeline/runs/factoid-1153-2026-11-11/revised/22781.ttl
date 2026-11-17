@@ -1,0 +1,45 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22781> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Kaiser (!) Friedrichs" .
+
+<urn:regesta:actor:RI004-002-S001143> a crm:E21_Person ;
+    rdfs:label "Bischof Stephan von Metz" .
+
+<urn:regesta:actor:RI004-002-M000670> a crm:E21_Person ;
+    rdfs:label "Herzog Matthäus von Lothringen" .
+
+# Acquisition of the castle. The regest names no transferring party; rv:Grant is the closest
+# act type and is reported as a model gap.
+<urn:regesta:22781:erwerb-homburg> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22781> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Bischof Stephan von Metz erwirbt mit Hilfe Kaiser (!) Friedrichs die Burg Homburg" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S001143> ; rf:role rv:Recipient ; rf:nameInSource "Bischof Stephan von Metz" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "Kaiser (!) Friedrichs" ] ;
+    rf:qualifier "erwirbt" , "mit Hilfe" ;
+    rf:concerns <urn:regesta:22781:burg-homburg> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-38> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22781:burg-homburg> a crm:E18_Physical_Thing ;
+    rdfs:label "die Burg Homburg" .
+
+# The contract has no act type for a usurpation (model gap). The resulting holding is recorded as
+# possession in the regest's words; the qualifier keeps that no lawful possession is asserted.
+<urn:regesta:22781:besitz-matthaeus> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22781> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Burg Homburg, die Herzog Matthäus von Lothringen unrechtmäßig usurpiert hat" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-M000670> ; rf:role rv:Possessor ; rf:nameInSource "Herzog Matthäus von Lothringen" ] ;
+    rf:qualifier "unrechtmäßig usurpiert" ;
+    rf:concerns <urn:regesta:22781:burg-homburg> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g8> ;
+    rf:verificationStatus rv:unchecked .

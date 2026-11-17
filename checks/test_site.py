@@ -28,7 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import build_site
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT.parent / "regesta-rdf-demo"
+SOURCE = ROOT / "pipeline"
 RUN = "factoid-2026-11-11"
 
 

@@ -1,0 +1,97 @@
+{
+  "group": 9,
+  "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g9",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22793",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Replaced every occurrence of <urn:regesta:actor:RI004-002-C000615> (actor node and Addressee reference of urn:regesta:22793:summons) with <urn:regesta:actor:RI004-002-C000615:community>; kept a crm:E74_Group, rdfs:label and rf:nameInSource \"die Vertreter von Chiavenna\".",
+        "Adjusted the comment above the actor node to name the community IRI convention.",
+        "urn:regesta:22793:summons now attributed to the corrector; urn:regesta:22793:dispute-chiavenna unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gaps adjudicated for this group and not corrected here: no purpose property for 'um dort ... zu klären' (kept as rf:ground); cross-record typing of the Grafschaft Chiavenna (place here, right in 22800) left to the expert."
+      ]
+    },
+    {
+      "uid": "22796",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "urn:regesta:22796:confirmation: rf:refersToAct reduced to <urn:regesta:22796:treaty-negotiation>; oath and promise removed; comment added explaining why.",
+        "urn:regesta:22796:treaty-negotiation: added selector \"Friedrich verbrieft Papst Eugen (III.)\" and two rv:Participant references (Friedrich, nameInSource \"Friedrich\"; RI004-002-E000589, nameInSource \"Papst Eugen (III.)\"); rv:Negotiation and the negotiators' reference kept.",
+        "urn:regesta:22796:oath: role of the reference to RI004-002-F000471 (nameInSource \"regis\") changed from rv:Grantor to rv:Participant; rf:qualifier \"in anima regis\" and \"nachdem\" kept.",
+        "The three changed factoids are attributed to the corrector; urn:regesta:22796:promise unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No relation for a fulfilled precondition between acts (oath and promise as preconditions of the confirmation); only rf:qualifier \"nachdem\" keeps the temporal relation.",
+        "No role for the principal on whose soul an oath is sworn by another ('in anima regis'); rv:Participant used.",
+        "No act type for a concluded agreement or treaty; rv:Negotiation kept (adjudicated model gap)."
+      ]
+    },
+    {
+      "uid": "22800",
+      "status_after": "extracted",
+      "factoids_after": 6,
+      "changes": [
+        "urn:regesta:22800:judgment: rf:qualifier \"entgegen\" replaced with \"entgegen seiner im Vorjahr zu Ulm getroffenen Verfügung\"; \"zu Ostern (April 19)\" and all three rf:refersToAct values kept; factoid attributed to the corrector."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No 'contrary to' relation between acts; the opposition to the Ulm disposition is kept only as exact wording in rf:qualifier.",
+        "Typing of the Grafschaft Chiavenna as a right here versus a place in 22792/22793 left to the expert (adjudicated not_required)."
+      ]
+    },
+    {
+      "uid": "22803",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "rdfs:label of <urn:regesta:22803:hufen> changed to \"zweier Hufen mit dem Ertrag von 20 Solidi\".",
+        "rdfs:label of <urn:regesta:22803:muehle> changed to \"einer Mühle mit 4 Solidi Ertrag\".",
+        "Factoid urn:regesta:22803:donation left unchanged, including both rf:amount literals and its producer, because only the labels of the concerned things changed and the instruction keeps the factoid unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "rf:amount attaches to the factoid and cannot be bound to a concerned thing; the binding of 20 Solidi to the hides and 4 Solidi to the mill lives only in the thing labels."
+      ]
+    },
+    {
+      "uid": "22807",
+      "status_after": "extracted",
+      "factoids_after": 9,
+      "changes": [
+        "urn:regesta:22807:urteil-tafelgueter: removed the Fürstenspruch selector and the references to RI004-002-H000498, RI004-002-G000825 and RI004-002-M000513; role of RI004-002-K000316 (nameInSource \"Konrad III.\") changed from rv:Judge to rv:Participant; added rf:qualifier \"unter Konrad III.\" beside \"(1151)\"; comment replaced to state the ambiguous attachment of the 'durch'-clause; factoid attributed to the corrector.",
+        "Added urn:regesta:22807:fuerstenspruch (rv:Judgment, undated, no partOf or refersToAct) with the Fürstenspruch selector, Herzog Heinrich von Bayern as rv:Participant and Gottfried von Arnsberg and Markward von Grumbach as rv:Witness, concerning the Tafelgüter.",
+        "Added actor <urn:regesta:actor:RI004-002-F000654> (crm:E21_Person, label \"Fredericus quondam Coloniensis archiepiscopus\") and thing <urn:regesta:22807:bona> (crm:E18_Physical_Thing, label \"omnia bona\").",
+        "Added urn:regesta:22807:belehnung-fredericus (rv:Enfeoffment, Fredericus as rv:Grantor, concerns bona, rf:qualifier \"quondam\", no date, recipients not identified).",
+        "Added urn:regesta:22807:urteil-bestimmung (rv:Enactment, rf:partOf urteil-tafelgueter, rf:refersToAct belehnung-fredericus, concerns bona, rf:condition \"que contra pacem regni facte dinoscuntur\").",
+        "All new factoids carry rf:source <urn:regesta:record:22807>, the corrector as producer and rv:unchecked; the other five factoids are unchanged."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Attachment ambiguity: the contract cannot record that the 'durch'-clause attaches either to the 1151 judgment or to the present charter; the Fürstenspruch stands as a separate unlinked factoid.",
+        "Konrad III.'s part ('unter Konrad III.') has no specific role; rv:Participant with the exact phrase as qualifier.",
+        "Herzog Heinrich von Bayern as formulator of the Fürstenspruch has no specific role; rv:Participant used.",
+        "The recipients of the enfeoffment by Fredericus are not stated and not identified."
+      ]
+    },
+    {
+      "uid": "22810",
+      "status_after": "extracted",
+      "factoids_after": 3,
+      "changes": [
+        "urn:regesta:22810:treuegeloebnis: added rf:qualifier \"gegen die Angriffe des Grafen von Barcelona (Barcinonensis)\" beside \"Treue\"; no reference to the count added; factoid attributed to the corrector."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "No role for the opponent against whom a pledge is directed; the Count of Barcelona (candidate RI004-002-B000184) stays unreferenced and appears only in the qualifier wording."
+      ]
+    }
+  ]
+}

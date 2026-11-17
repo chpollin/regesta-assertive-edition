@@ -1,0 +1,79 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:23963> a crm:E31_Document ;
+    rdfs:label "RI IV,2,2 n. 1334" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-R000076> a crm:E21_Person ;
+    rdfs:label "Elekt Rainald von Köln" .
+
+<urn:regesta:actor:RI004-002-U000014> a crm:E21_Person ;
+    rdfs:label "Abt Hubert von Tongerloo" .
+
+<urn:regesta:actor:RI004-002-H000392> a crm:E21_Person ;
+    rdfs:label "Bischof Heinrichs von Lüttich" .
+
+<urn:regesta:actor:RI004-002-T000335:community> a crm:E74_Group ;
+    rdfs:label "Abtei Tongerloo" .
+
+# Things
+
+<urn:regesta:23963:kirche-diest> a crm:E18_Physical_Thing ;
+    rdfs:label "der Kirche von Diest" .
+
+<urn:regesta:23963:gueter-diest> a crm:E18_Physical_Thing ;
+    rdfs:label "anderer Güter daselbst" .
+
+# Factoids
+
+<urn:regesta:23963:schenkung-diest> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:23963> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Schenkung der Kirche von Diest und anderer Güter daselbst" ] ;
+    rf:concerns <urn:regesta:23963:kirche-diest> , <urn:regesta:23963:gueter-diest> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23963:bestaetigung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:23963> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Elekt Rainald von Köln, Erzkanzler für Italien und Reichslegat, bestätigt dem Abt Hubert von Tongerloo" ] ,
+      [ a oa:TextQuoteSelector ; oa:exact "nach dem Zeugnis seines Freundes, Bischof Heinrichs von Lüttich, die Schenkung der Kirche von Diest und anderer Güter daselbst" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000076> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Elekt Rainald von Köln" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-U000014> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Abt Hubert von Tongerloo" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-H000392> ;
+        rf:role rv:Witness ;
+        rf:nameInSource "Bischof Heinrichs von Lüttich" ] ;
+    rf:concerns <urn:regesta:23963:kirche-diest> , <urn:regesta:23963:gueter-diest> ;
+    rf:ground "nach dem Zeugnis seines Freundes, Bischof Heinrichs von Lüttich" ;
+    rf:refersToAct <urn:regesta:23963:schenkung-diest> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:23963:schutznahme> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:23963> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nimmt die Abtei Tongerloo in seinen und den kaiserlichen Schutz" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-R000076> ;
+        rf:role rv:Grantor ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-T000335:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Abtei Tongerloo" ] ;
+    rf:qualifier "in seinen und den kaiserlichen Schutz" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-3> ;
+    rf:verificationStatus rv:unchecked .

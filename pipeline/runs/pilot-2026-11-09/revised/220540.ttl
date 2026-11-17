@@ -1,0 +1,86 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix reg: <https://example.org/regesta/ontology/> .
+@prefix v: <https://example.org/regesta/vocab/> .
+
+<urn:regesta:220540:a1> a crm:E13_Attribute_Assignment ;
+    crm:P140_assigned_attribute_to <urn:regesta:actor:RI004-002-H000344> ;
+    crm:P141_assigned <urn:regesta:actor:RI004-002-F000471> ;
+    crm:P177_assigned_property_of_type crm:P152_has_parent ;
+    reg:evidence "den Kaiser und dessen Sohn, König Heinrich (VI.)" ;
+    reg:source <urn:regesta:record:220540> .
+
+<urn:regesta:220540:a2> a crm:E13_Attribute_Assignment ;
+    crm:P140_assigned_attribute_to <urn:regesta:220540:dispute> ;
+    crm:P141_assigned v:Dispute ;
+    crm:P177_assigned_property_of_type crm:P2_has_type ;
+    reg:evidence "zur Beilegung des Trierer Wahlstreites" ;
+    reg:source <urn:regesta:record:220540> .
+
+<urn:regesta:220540:a3> a crm:E13_Attribute_Assignment ;
+    crm:P140_assigned_attribute_to <urn:regesta:220540:request> ;
+    crm:P141_assigned v:Communication ;
+    crm:P177_assigned_property_of_type crm:P2_has_type ;
+    reg:evidence "Papst Clemens (III.) entsendet die Kardinalpresbyter Peter von S. Pietro in Vincoli und Jordan von S. Pudenziana zur Beilegung des Trierer Wahlstreites an den Kaiser und dessen Sohn, König Heinrich (VI.), die er um Sicherheit für Erzbischof Folmar von Trier ersucht" ;
+    reg:source <urn:regesta:record:220540> .
+
+<urn:regesta:220540:a4> a crm:E13_Attribute_Assignment ;
+    crm:P140_assigned_attribute_to <urn:regesta:220540:mission> ;
+    crm:P141_assigned <urn:regesta:220540:dispute> ;
+    crm:P177_assigned_property_of_type reg:concerns ;
+    reg:evidence "Papst Clemens (III.) entsendet die Kardinalpresbyter Peter von S. Pietro in Vincoli und Jordan von S. Pudenziana zur Beilegung des Trierer Wahlstreites an den Kaiser und dessen Sohn, König Heinrich (VI.)" ;
+    reg:source <urn:regesta:record:220540> .
+
+<urn:regesta:220540:beneficiary> a reg:Participation ;
+    reg:actor <urn:regesta:actor:RI004-002-F000257> ;
+    reg:context <urn:regesta:220540:request> ;
+    reg:role v:Beneficiary .
+
+<urn:regesta:220540:envoy1> a reg:Participation ;
+    reg:actor <urn:regesta:actor:RI004-002-P000396> ;
+    reg:context <urn:regesta:220540:mission> ;
+    reg:role v:Representative .
+
+<urn:regesta:220540:envoy2> a reg:Participation ;
+    reg:actor <urn:regesta:actor:RI004-002-J000239> ;
+    reg:context <urn:regesta:220540:mission> ;
+    reg:role v:Representative .
+
+<urn:regesta:actor:RI004-002-F000257> a crm:E21_Person ;
+    rdfs:label "Erzbischof Folmar von Trier" .
+
+<urn:regesta:actor:RI004-002-H000344> a crm:E21_Person ;
+    rdfs:label "König Heinrich (VI.)" ;
+    crm:P152_has_parent <urn:regesta:actor:RI004-002-F000471> .
+
+<urn:regesta:220540:request> a crm:E7_Activity ;
+    crm:P14_carried_out_by <urn:regesta:actor:RI004-002-C000754> ;
+    crm:P2_has_type v:Communication ;
+    crm:P3_has_note "Ersuchen um Sicherheit für Erzbischof Folmar von Trier; keine gewährte Sicherheit belegt.",
+        "an den Kaiser und dessen Sohn, König Heinrich (VI.), die er um Sicherheit für Erzbischof Folmar von Trier ersucht" .
+
+<urn:regesta:actor:RI004-002-C000754> a crm:E21_Person ;
+    rdfs:label "Papst Clemens (III.)" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Kaiser" .
+
+<urn:regesta:actor:RI004-002-J000239> a crm:E21_Person ;
+    rdfs:label "Jordan von S. Pudenziana" .
+
+<urn:regesta:actor:RI004-002-P000396> a crm:E21_Person ;
+    rdfs:label "Peter von S. Pietro in Vincoli" .
+
+<urn:regesta:220540:dispute> a crm:E5_Event ;
+    rdfs:label "Trierer Wahlstreit" ;
+    crm:P2_has_type v:Dispute .
+
+<urn:regesta:220540:mission> a crm:E7_Activity ;
+    crm:P11_had_participant <urn:regesta:actor:RI004-002-J000239>,
+        <urn:regesta:actor:RI004-002-P000396> ;
+    crm:P14_carried_out_by <urn:regesta:actor:RI004-002-C000754> ;
+    crm:P3_has_note "Entsendung der Kardinalpresbyter an Kaiser und König zur Beilegung des Wahlstreits; eine Beilegung wird nicht behauptet." ;
+    reg:concerns <urn:regesta:220540:dispute> .
+
+<urn:regesta:record:220540> a crm:E31_Document .
+

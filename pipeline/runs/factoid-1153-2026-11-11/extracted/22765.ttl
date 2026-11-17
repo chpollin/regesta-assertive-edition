@@ -1,0 +1,234 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22765> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 138" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-E000589> a crm:E21_Person ;
+    rdfs:label "Papst Eugens III." .
+<urn:regesta:actor:RI004-002-A001203> a crm:E21_Person ;
+    rdfs:label "Kanzlers Arnold" .
+<urn:regesta:actor:22765:local:andere-reichsfuersten> a crm:E74_Group ;
+    rdfs:label "anderer Reichsfürsten" .
+<urn:regesta:actor:RI004-002-U000108> a crm:E21_Person ;
+    rdfs:label "Bischof Uguccio von Vercelli" .
+<urn:regesta:actor:22765:local:kirche-sancti-eusebii> a crm:E74_Group ;
+    rdfs:label "seiner Kirche (sancti Eusebii)" .
+<urn:regesta:actor:RI004-002-G000977> a crm:E21_Person ;
+    rdfs:label "Gregor von Verrua Savoia" .
+<urn:regesta:actor:RI004-002-L000486> a crm:E21_Person ;
+    rdfs:label "Liprand" .
+<urn:regesta:actor:RI004-002-S000674> a crm:E21_Person ;
+    rdfs:label "Sigifred" .
+<urn:regesta:actor:22765:local:ardicio> a crm:E21_Person ;
+    rdfs:label "Ardicio" .
+<urn:regesta:actor:RI004-002-A000939> a crm:E21_Person ;
+    rdfs:label "Bischof Anselm von Vercelli" .
+<urn:regesta:actor:RI004-002-G000640> a crm:E21_Person ;
+    rdfs:label "Bischof Gisulf" .
+<urn:regesta:actor:22765:local:domkirche> a crm:E74_Group ;
+    rdfs:label "der Domkirche" .
+<urn:regesta:actor:RI004-002-V000199:community> a crm:E74_Group ;
+    rdfs:label "der Kirche S. Maria" .
+
+# Things, places and rights
+
+<urn:regesta:22765:besitzstand-bistum> a crm:E18_Physical_Thing ;
+    rdfs:label "den angeführten Besitzstand des Bistums" .
+<urn:regesta:22765:veraeusserungen-gut> a crm:E18_Physical_Thing ;
+    rdfs:label "Veräußerungen der schismatischen Bischöfe" .
+<urn:regesta:22765:palazzolo> a crm:E53_Place ;
+    rdfs:label "Palazzolo Vercellese (Clauatiolo)" .
+<urn:regesta:22765:weg-faehrgeld-saluggia> a crm:E30_Right ;
+    crm:P2_has_type rv:Toll ;
+    rdfs:label "Weg- und Fährgeld zu Saluggia (de pedatico et naulo Salugie)" .
+<urn:regesta:22765:vercelleser-lehen> a crm:E18_Physical_Thing ;
+    rdfs:label "Vercelleser Lehen" .
+<urn:regesta:22765:recht-muehlen> a crm:E30_Right ;
+    crm:P2_has_type rv:UsageRights ;
+    rdfs:label "das Recht, Mühlen zu kaufen und zu verlegen" .
+<urn:regesta:22765:recht-trino> a crm:E30_Right ;
+    crm:P2_has_type rv:LordshipRights ;
+    rdfs:label "das Recht, die Burg Trino (montem V gitionis) auszubauen und zu befestigen" .
+<urn:regesta:22765:burg-trino> a crm:E18_Physical_Thing ;
+    rdfs:label "Burg Trino (montem V gitionis)" .
+
+# Protection grant, main act
+
+<urn:regesta:22765:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt auf Bitten Papst Eugens III. und auf Intervention des Kanzlers Arnold und anderer Reichsfürsten" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Bischof Uguccio von Vercelli mit seiner Kirche (sancti Eusebii) in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Petitioner ; rf:nameInSource "Papst Eugens III." ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001203> ; rf:role rv:Petitioner ; rf:nameInSource "Kanzlers Arnold" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22765:local:andere-reichsfuersten> ; rf:role rv:Petitioner ; rf:nameInSource "anderer Reichsfürsten" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000108> ; rf:role rv:Recipient ; rf:nameInSource "Bischof Uguccio von Vercelli" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22765:local:kirche-sancti-eusebii> ; rf:role rv:Recipient ; rf:nameInSource "seiner Kirche (sancti Eusebii)" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Confirmation of possessions
+
+<urn:regesta:22765:confirmation-besitz> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm den angeführten Besitzstand des Bistums" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000108> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22765:besitzstand-bistum> ;
+    rf:partOf <urn:regesta:22765:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Earlier alienations by the schismatic bishops and their cassation
+
+<urn:regesta:22765:alienations-schismatics> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Veräußerungen der schismatischen Bischöfe Gregor von Verrua Savoia, Liprand, Sigifred und Ardicio" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000977> ; rf:role rv:Grantor ; rf:nameInSource "Gregor von Verrua Savoia" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000486> ; rf:role rv:Grantor ; rf:nameInSource "Liprand" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000674> ; rf:role rv:Grantor ; rf:nameInSource "Sigifred" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22765:local:ardicio> ; rf:role rv:Grantor ; rf:nameInSource "Ardicio" ] ;
+    rf:concerns <urn:regesta:22765:veraeusserungen-gut> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22765:revocation-schismatics> a rf:ActFactoid ;
+    rf:factoidType rv:Revocation ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "kassiert die Veräußerungen der schismatischen Bischöfe Gregor von Verrua Savoia, Liprand, Sigifred und Ardicio (ab invasoribus sancti Eusebii factas, qui pontificalem benedictionem non obtinuerunt) gemäß der Vorgangsweise Konrads III." ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22765:veraeusserungen-gut> ;
+    rf:ground "gemäß der Vorgangsweise Konrads III." ;
+    rf:refersToAct <urn:regesta:22765:alienations-schismatics> ;
+    rf:partOf <urn:regesta:22765:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Enfeoffment of Palazzolo by Anselm and its invalidation
+
+<urn:regesta:22765:enfeoffment-anselm> a rf:ActFactoid ;
+    rf:factoidType rv:Enfeoffment ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Die gegen den Willen seiner Kirche von Bischof Anselm von Vercelli durchgeführte Verlehnung von Palazzolo Vercellese (Clauatiolo)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A000939> ; rf:role rv:Grantor ; rf:nameInSource "Bischof Anselm von Vercelli" ] ;
+    rf:concerns <urn:regesta:22765:palazzolo> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22765:revocation-anselm> a rf:ActFactoid ;
+    rf:factoidType rv:Revocation ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Die gegen den Willen seiner Kirche von Bischof Anselm von Vercelli durchgeführte Verlehnung von Palazzolo Vercellese (Clauatiolo)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "erklärt er für ungültig" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22765:palazzolo> ;
+    rf:ground "gegen den Willen seiner Kirche" ;
+    rf:refersToAct <urn:regesta:22765:enfeoffment-anselm> ;
+    rf:partOf <urn:regesta:22765:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Enfeoffment of the Saluggia tolls by Gisulf, the papal prohibition, and the invalidation
+
+<urn:regesta:22765:enfeoffment-gisulf> a rf:ActFactoid ;
+    rf:factoidType rv:Enfeoffment ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die von Bischof Gisulf gegen seinen Eid und das Verbot Papst Eugens unternommene Verlehnung von Weg- und Fährgeld zu Saluggia (de pedatico et naulo Salugie)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000640> ; rf:role rv:Grantor ; rf:nameInSource "Bischof Gisulf" ] ;
+    rf:concerns <urn:regesta:22765:weg-faehrgeld-saluggia> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22765:prohibition-eugen> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "das Verbot Papst Eugens" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000589> ; rf:role rv:Grantor ; rf:nameInSource "Papst Eugens" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22765:revocation-gisulf> a rf:ActFactoid ;
+    rf:factoidType rv:Revocation ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die von Bischof Gisulf gegen seinen Eid und das Verbot Papst Eugens unternommene Verlehnung von Weg- und Fährgeld zu Saluggia (de pedatico et naulo Salugie) erklärt er für ungültig" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22765:weg-faehrgeld-saluggia> ;
+    rf:ground "gegen seinen Eid und das Verbot Papst Eugens" ;
+    rf:refersToAct <urn:regesta:22765:enfeoffment-gisulf> ;
+    rf:partOf <urn:regesta:22765:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Sales of Vercelli fiefs and their invalidation; sellers unnamed
+
+<urn:regesta:22765:sales-lehen> a rf:ActFactoid ;
+    rf:factoidType rv:Sale ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die Verkäufe von Vercelleser Lehen" ] ;
+    rf:concerns <urn:regesta:22765:vercelleser-lehen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22765:revocation-sales> a rf:ActFactoid ;
+    rf:factoidType rv:Revocation ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "erklärt er für ungültig, ebenso die Verkäufe von Vercelleser Lehen gegen die Erlässe römischer Kaiser und zum Schaden der Kirche" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ;
+    rf:concerns <urn:regesta:22765:vercelleser-lehen> ;
+    rf:ground "gegen die Erlässe römischer Kaiser und zum Schaden der Kirche" ;
+    rf:refersToAct <urn:regesta:22765:sales-lehen> ;
+    rf:partOf <urn:regesta:22765:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Right grants to the bishop
+
+<urn:regesta:22765:grant-muehlen> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "er verleiht dem Bischof das Recht, Mühlen zu kaufen und zu verlegen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000108> ; rf:role rv:Recipient ; rf:nameInSource "dem Bischof" ] ;
+    rf:concerns <urn:regesta:22765:recht-muehlen> ;
+    rf:partOf <urn:regesta:22765:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22765:grant-trino> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "er verleiht dem Bischof das Recht, Mühlen zu kaufen und zu verlegen, die Burg Trino (montem V gitionis) auszubauen und zu befestigen" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000108> ; rf:role rv:Recipient ; rf:nameInSource "dem Bischof" ] ;
+    rf:concerns <urn:regesta:22765:recht-trino> , <urn:regesta:22765:burg-trino> ;
+    rf:partOf <urn:regesta:22765:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .
+
+# Prescription period; the vocabulary has no right type for it, so it stays a qualifier
+
+<urn:regesta:22765:grant-verjaehrung> a rf:ActFactoid ;
+    rf:factoidType rv:RightGrant ;
+    rf:source <urn:regesta:record:22765> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "er verleiht dem Bischof" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "sowie dem Bischof, der Domkirche und der Kirche S. Maria eine Verjährungszeit von hundert Jahren" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-U000108> ; rf:role rv:Recipient ; rf:nameInSource "dem Bischof" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22765:local:domkirche> ; rf:role rv:Recipient ; rf:nameInSource "der Domkirche" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000199:community> ; rf:role rv:Recipient ; rf:nameInSource "der Kirche S. Maria" ] ;
+    rf:qualifier "eine Verjährungszeit von hundert Jahren" ;
+    rf:partOf <urn:regesta:22765:protection> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-34> ;
+    rf:verificationStatus rv:unchecked .

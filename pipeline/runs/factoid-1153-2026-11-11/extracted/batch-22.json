@@ -1,0 +1,72 @@
+{
+  "batch": 22,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22",
+  "records": [
+    {
+      "uid": "22715",
+      "status": "extracted",
+      "files": ["22715.ttl"],
+      "factoids": 12,
+      "unresolved_identities": [
+        "'der Vornehmsten' recorded as a regest-local group without register candidate",
+        "Grantor of Knut's provinces and Waldemar's part of Denmark is not named in the passage; only the recipient is referenced",
+        "Feudal lord of the Königgrätz fief is not named; Bischof Daniel von Prag procures it and is referenced as Participant",
+        "Grafen Hermann von Winzenburg and Bernhard (von Plötzke) appear only in the label of the inheritance right, since no role fits a decedent"
+      ],
+      "model_gaps": [
+        "No act type for renunciation: Knut's 'verzichtet auf das Königreich' is encoded as rv:Grant to Friedrich with qualifier 'verzichtet'",
+        "No act type for homage and fealty or coronation: Treueid and Mannschaft kept only as qualifier of Sven's grant; no Enfeoffment or FeudalRelationship inferred",
+        "No symmetric party role for disputes: pretenders and contending parties are rv:Participant rather than Claimant/Respondent",
+        "No sender role for a mission: Vladislav as sender of Daniel is rv:Participant",
+        "No act type for prevention or frustration of an earlier promise ('Dies kann jedoch ... verhindern'); the link between the promise to Ulrich and the Königgrätz fief is not expressed",
+        "No act type for summons and non-appearance ('entgegen seiner Vorladung ... nicht erschienene'); not extracted",
+        "No act type for election or for Friedrich's intervention in the Magdeburg double election; only the dispute and the grant of regalia are extracted",
+        "No right type for regalia; 'die Regalien' typed rv:ChurchRights as nearest top concept",
+        "No role for a deceased person whose inheritance is disputed"
+      ]
+    },
+    {
+      "uid": "22716",
+      "status": "no_in_scope_claim",
+      "files": ["22716.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "The regest states only that Friedrich witnesses a charter of Herzog Heinrich for Stift Weißenau, without its legal content; formulaic witnessing is out of scope"
+      ]
+    },
+    {
+      "uid": "22717",
+      "status": "extracted",
+      "files": ["22717.ttl"],
+      "factoids": 3,
+      "unresolved_identities": [
+        "Recipient of the reported grant and assurance is referred to by pronoun ('ihm', 'er'); read as Erzbischof Arnold von Köln",
+        "Grantor of the castle assurance is not named in the passage; the king is implied but not referenced",
+        "Kanzler (Arnold), Notar (Heinrich), the lay princes and the Abt von Prüm are not extracted: their passages state no kinship, economic or legal relation"
+      ],
+      "model_gaps": [
+        "No way to mark a factoid as reported speech inside a letter: the Lothringen grant and castle assurance are tied to the letter only by rf:partOf",
+        "No sender role for a communication: Wibald is rv:Participant",
+        "'seiner Disposition überlasse' is not clearly a transfer of right; encoded as rv:Grant with the wording as qualifier"
+      ]
+    },
+    {
+      "uid": "22718",
+      "status": "extracted",
+      "files": ["22718.ttl"],
+      "factoids": 3,
+      "unresolved_identities": [
+        "Addressee named 'Herzog (Heinrich) von Sachsen' and corrected by the regest to 'Landgraf Ludwig II. von Thüringen'; the reading follows the correction (RI004-002-L000841) and does not reference Heinrich",
+        "'dem Herzog' in the kinship clause read as Herzog (Vladislav) von Böhmen",
+        "'den Fürsten' recorded as a regest-local group"
+      ],
+      "model_gaps": [
+        "No sender role for a communication: Friedrich is rv:Participant in the letter",
+        "No act type for an imperial order and non-appearance ('trotz kaiserlichen Befehls nicht ... erschienen'); kept only as rf:ground of the decision",
+        "Decision to punish encoded as rv:Enactment with Vladislav as rv:Respondent, though no dispute is narrated",
+        "Friendship ('sehr befreundet') has no state type and is not extracted"
+      ]
+    }
+  ]
+}

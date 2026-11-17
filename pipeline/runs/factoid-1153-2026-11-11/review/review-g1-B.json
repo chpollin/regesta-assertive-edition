@@ -1,0 +1,158 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g1-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22638",
+      "coverage_note": "One Parenthood state factoid (Herzog Friedrich II. von Schwaben as Parent, Friedrich as Child), supported by the passage. The witness mention in DK. III. 95 is correctly left out as a formulaic witness list. Actor identifications follow the packet's candidate and the shared ruler. Nothing else in scope.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22639",
+      "coverage_note": "One Parenthood state factoid, supported by the passage. The witness mention in DK. III. 98 is correctly left out. Identifications follow the packet. Nothing else in scope.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22640",
+      "coverage_note": "Three factoids: Parenthood, joint RightHolding of the Vogtei over Kloster Lorch by father and son, and the consent to the foundation of Lochgarten. Parenthood and Vogtei holding are supported and correctly attributed to both holders. The foundation is correctly not recorded as a performed act. The consent is forced into rv:Confirmation, which does not fit. The subject status of Konstantin and Giselbert is not expressible.",
+      "findings": [
+        {
+          "category": "act-type",
+          "severity": "warning",
+          "subject": "urn:regesta:22640:consent",
+          "description": "A consent to a foundation is typed rv:Confirmation. The vocabulary defines a confirmation as confirming possession, rights or an earlier act; the regest reports consent to an Errichtung, not the confirmation of an existing state or prior act. Querying confirmations would wrongly include this record. The extractor marked the choice as nearest type, and the qualifier \"Zustimmung\" preserves the wording, so the defect is partly mitigated.",
+          "evidence_quote": "seine Zustimmung zur Errichtung des Frauenstiftes Lochgarten",
+          "proposed_correction": "Keep the factoid with qualifier \"Zustimmung\" but flag the type as provisional, or add a consent act type to the vocabulary in a later contract revision; until then rv:Confirmation should be listed as a known misfit in the batch report."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22640:consent",
+          "description": "Konstantin and Giselbert are the founders of the Stift to which consent is given; rv:Beneficiary is defensible as the party in whose favour the consent is given, but loses that they are the actors of the consented act.",
+          "evidence_quote": "durch die Untertanen von Lorch, Konstantin und Giselbert",
+          "proposed_correction": "Acceptable under the current vocabulary; record the founder role as a model gap."
+        },
+        {
+          "category": "label",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-L000545:community",
+          "description": "The label keeps the genitive inflection \"Frauenstiftes Lochgarten\". It is the source wording, as required, but reads awkwardly as a label.",
+          "evidence_quote": "Frauenstiftes Lochgarten",
+          "proposed_correction": "No change required by the contract."
+        }
+      ],
+      "model_gaps": [
+        "No act type for consent (Zustimmung) to another party's act.",
+        "No act type for the foundation (Errichtung) of a church institution, and no founder role.",
+        "No state type for the dependency of Konstantin and Giselbert as Untertanen of Kloster Lorch."
+      ]
+    },
+    {
+      "uid": "22641",
+      "coverage_note": "One Parenthood state factoid, supported. The witness mention in DK. III. 128 is correctly excluded. Nothing else in scope.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22642",
+      "coverage_note": "One Parenthood state factoid, supported. The witness mention in DK. III. 130 is correctly excluded. Nothing else in scope.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22643",
+      "coverage_note": "Abstention. The regest reports a feud declaration, a surprise attack, the capture of Graf Konrad von Dachau and his release without ransom. Capture and military action are out of scope under the guidelines. The ransom is only advised and not demanded, so no payment or obligation is stated. The feud declaration has no fitting act type (rv:Dispute is defined as a dispute before a court or ruler). Graf Heinrich's planned tournament on the occasion of a market states no market right. The abstention is defensible; the batch file holds no comment explaining it, which is a matter of taste.",
+      "findings": [
+        {
+          "category": "abstention",
+          "severity": "note",
+          "subject": "22643",
+          "description": "Abstention is justified, but the release against the advice to demand ransom is a borderline economic statement; it records a decision not to demand payment, which the contract cannot express without paraphrase.",
+          "evidence_quote": "entgegen dem Rat, Lösegeld von ihm zu fordern, großzügig nach Hause zurückkehren läßt",
+          "proposed_correction": "Keep the abstention; record the gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a feud declaration (Fehde ansagen) outside a court or ruler's forum.",
+        "No act type for release of a captive and for a renounced ransom claim."
+      ]
+    },
+    {
+      "uid": "22644",
+      "coverage_note": "Abstention. The regest reports a feud declaration, the conquest of Zürich and a garrison. Conquest and garrison are military action without a stated possession, kinship or legal relation; the feud declaration has no act type. The abstention is correct.",
+      "findings": [],
+      "model_gaps": [
+        "No act type for a feud declaration (Fehde ansagen)."
+      ]
+    },
+    {
+      "uid": "22645",
+      "coverage_note": "Three factoids: Parenthood (Friedrich von Schwaben, Friedrich), Kinship Oheim (König Konrad III., Friedrich) and a Request for peace by Herzog Konrad von Zähringen with father and Oheim as addressees. The addressees are correctly not made participants, and the coercion is honestly marked as a gap. The two kinship factoids rest on a possessive whose antecedent is grammatically ambiguous, resolved through register labels. The castle of the duke, a stated possession, is omitted.",
+      "findings": [
+        {
+          "category": "actor-identification",
+          "severity": "warning",
+          "subject": "urn:regesta:22645:parenthood-friedrich",
+          "description": "After \"zwingt diesen\" the possessive \"seinem\" can grammatically refer to Herzog Konrad as well as to Friedrich. The Child reference to Friedrich is anchored by a second selector \"Friedrich dringt\", which names Friedrich but does not establish that he is the possessor. The decisive disambiguation comes from the register labels (\"Vater Friedrich Barbarossas\", \"Onkel Friedrich Barbarossas\"), which the guidelines admit only for identification, not as facts. The same applies to urn:regesta:22645:kinship-oheim. The reading is very probably right, and the extractor flagged it, but the factoids state more than the passage alone secures.",
+          "evidence_quote": "zwingt diesen, vor seinem Vater (Friedrich von Schwaben) und seinem Oheim (König Konrad III.) zu erscheinen",
+          "proposed_correction": "Keep both factoids but mark the antecedent ambiguity for expert review (for example in the batch report or a reviewer annotation), or replace the 'Friedrich dringt' selector by stating the reliance on the identification explicitly; do not treat the factoids as resting on the passage alone."
+        },
+        {
+          "category": "omission",
+          "severity": "warning",
+          "subject": "22645",
+          "description": "The regest states that the conquered castle belongs to the duke (\"Burg des Herzogs\", also \"dessen Stammburg\"). This is a possession relation, which the guidelines keep in scope even inside a military passage, and rv:Possession with Herzog Konrad as Possessor could express it with exact wording. It is not recorded.",
+          "evidence_quote": "eine für uneinnehmbar geltende Burg des Herzogs",
+          "proposed_correction": "Add a StateFactoid of type rv:Possession with a reference to RI004-002-K000398 as rv:Possessor (nameInSource \"Herzogs\" or via the Fehde passage) and rf:concerns a crm:E18_Physical_Thing labelled \"Burg des Herzogs\"; optionally a second one for \"Stammburg\"."
+        },
+        {
+          "category": "role",
+          "severity": "note",
+          "subject": "urn:regesta:22645:request-peace",
+          "description": "Friedrich is recorded as rv:Participant for compelling the request. This is the honest fallback, but Participant blurs that he is the coercing opponent, not a party to the request.",
+          "evidence_quote": "zwingt diesen",
+          "proposed_correction": "Acceptable under the current vocabulary; record the coercing-party role as a model gap."
+        }
+      ],
+      "model_gaps": [
+        "No role for a party who compels an act (coercion).",
+        "No act type for a feud (Fehde) as an extra-judicial conflict."
+      ]
+    },
+    {
+      "uid": "22646",
+      "coverage_note": "One Kinship factoid (Oheim) between Friedrich and König Konrad III., supported; here the antecedent of \"seinem\" is unambiguous because Friedrich is the only subject. Taking the cross at Bernhard von Clairvaux's urging is correctly left out as no kinship, economic or legal relation in the contract's sense.",
+      "findings": [],
+      "model_gaps": [
+        "No act type for a crusade vow (das Kreuz nehmen) and no role for an actor who moves another to an act (bewogen)."
+      ]
+    },
+    {
+      "uid": "22647",
+      "coverage_note": "One Dispute factoid between Erzbischof Adalbero von Trier and Graf Heinrich von Namur with both as Participants, correctly so since the regest names no claimant. Friedrich's witness mention is correctly excluded. The settlement (Beilegung) is the central act of the cited charter and is not recorded for lack of a type.",
+      "findings": [
+        {
+          "category": "act-type",
+          "severity": "note",
+          "subject": "urn:regesta:22647:dispute-adalbero-heinrich",
+          "description": "rv:Dispute is defined as a dispute before a court or ruler; the regest does not say before whom the dispute was carried, only that it was settled in a charter of Konrad III. The type fits the wording 'Streites zwischen' well enough, but the forum is not stated.",
+          "evidence_quote": "Streites zwischen Erzbischof Adalbero von Trier und Graf Heinrich von Namur",
+          "proposed_correction": "No change; the definition's forum clause should not be read into the record."
+        },
+        {
+          "category": "omission",
+          "severity": "note",
+          "subject": "22647",
+          "description": "The settlement of the dispute is omitted. rv:Judgment would overstate it (a Beilegung need not be a judgment), so the omission is a model gap rather than an extraction error.",
+          "evidence_quote": "Beilegung des Streites",
+          "proposed_correction": "Record as model gap; once a settlement type exists, add an act factoid with rf:refersToAct to the dispute."
+        }
+      ],
+      "model_gaps": [
+        "No act type for the settlement of a dispute (Beilegung, Vergleich) distinct from a judgment."
+      ]
+    }
+  ]
+}

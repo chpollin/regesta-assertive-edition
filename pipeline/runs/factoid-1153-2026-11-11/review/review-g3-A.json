@@ -1,0 +1,177 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g3-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22668",
+      "coverage_note": "Two act factoids, the earlier treaty and Friedrich's sworn confirmation joined by rf:refersToAct; the treaty carries no date and the confirmation keeps 'eidlich'. Actor identifications (shared ruler, K000316, M000374) match the packet. The treaty's provision against Roger is held only inside the treaty's evidence span, without Roger as a reference.",
+      "findings": [
+        {
+          "category": "vocabulary-limit",
+          "severity": "note",
+          "subject": "urn:regesta:22668:treaty",
+          "description": "A treaty between two rulers is typed rv:Enactment with both parties as rv:Participant. Enactment is defined as a determination the charter makes; a bilateral agreement has no act type or contracting-party role in the vocabulary. The reading is acceptable as a stopgap and is a model gap, not an extraction error.",
+          "evidence_quote": "den Vertrag zwischen König Konrad III. und Kaiser Manuel",
+          "proposed_correction": "Keep as is until the vocabulary offers an agreement type and a party role; then retype."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "urn:regesta:22668:treaty",
+          "description": "The treaty's provision of joint action against King Roger is not a separate provision factoid and Roger (candidate R000806) carries no reference. The vocabulary has no role for the party a provision is directed against, and joint military action is close to the out-of-scope military boundary, so the omission is defensible. The provision is correctly not read as performed.",
+          "evidence_quote": "der ein gemeinsames Vorgehen gegen König Roger von Sizilien vorsieht",
+          "proposed_correction": "Optionally add an rv:Enactment provision factoid with rf:partOf the treaty and the exact wording 'gemeinsames Vorgehen gegen König Roger von Sizilien' as rf:qualifier; leave Roger unreferenced until a target role exists."
+        }
+      ],
+      "model_gaps": [
+        "No act type for a treaty or agreement and no role for contracting parties.",
+        "No role for the actor against whom an agreed action or provision is directed (Roger)."
+      ]
+    },
+    {
+      "uid": "22669",
+      "coverage_note": "Abstention. The regest states a letter of King Roger, carried by Duke Welf's people, addressed to Duke Friedrich of Swabia and calling on him to support Welf against Konrad III. This is a communication and a request, both expressible with rv:Communication, rv:Request, rv:Envoy, rv:Addressee and rv:Beneficiary, and it is not military movement, travel or hostage taking. The abstention omits the central in-scope passage.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "error",
+          "subject": "22669",
+          "description": "The file holds only the source document node although the regest reports a letter and a request that the contract can express. Roger (R000806) issues the letter, Welf's people carry it, Herzog Friedrich von Schwaben is its addressee, and the letter asks for support of Welf (W000272). The request establishes neither the support nor any action against Konrad.",
+          "evidence_quote": "König Roger von Sizilien gibt den Leuten Herzog Welfs einen Brief an Herzog Friedrich von Schwaben mit, in dem dieser zur Unterstützung des Welfen gegen König Konrad III. aufgefordert wird",
+          "proposed_correction": "Add an rv:Communication act factoid (Roger <urn:regesta:actor:RI004-002-R000806> as rv:Grantor or rv:Participant with nameInSource 'König Roger von Sizilien'; a local group <urn:regesta:actor:22669:local:leute-welfs> 'den Leuten Herzog Welfs' as rv:Envoy; Herzog Friedrich von Schwaben as rv:Addressee) and an rv:Request act factoid with rf:partOf or the same evidence (Friedrich as rv:Addressee, Welf <urn:regesta:actor:RI004-002-W000272> 'Herzog Welfs' or 'des Welfen' as rv:Beneficiary). Herzog Friedrich has no register candidate in this packet; use the shared ruler IRI only as a flagged reading, otherwise a local IRI."
+        }
+      ],
+      "model_gaps": [
+        "No sender role for a letter distinct from Grantor.",
+        "No role for the party against whom requested support is directed (Konrad III.).",
+        "No way to state that the envoys are Welf's people without a dependency or retinue state type."
+      ]
+    },
+    {
+      "uid": "22670",
+      "coverage_note": "Abstention. The regest reports Friedrich's return from the crusade, sent ahead by Konrad III. The return is travel and out of scope. Being sent ahead could be read as an rv:Mission by Konrad, but it is part of the same travel and states no kinship, economic or legal relation, so the abstention is defensible.",
+      "findings": [
+        {
+          "category": "scope-judgement",
+          "severity": "note",
+          "subject": "22670",
+          "description": "'von Konrad III. vorausgeschickt' is the only passage that could carry an act (a sending by Konrad). Under the travel exclusion the abstention holds; an expert may decide whether such dispatches count as rv:Mission.",
+          "evidence_quote": "von Konrad III. vorausgeschickt",
+          "proposed_correction": "None required; record the scope question for expert decision."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22671",
+      "coverage_note": "One act factoid for the execution of ministeriales, with the ground 'wegen Störung des Landfriedens' in exact wording. The type and roles assume a judicial proceeding the regest does not report, and the lordship relation in 'seiner Ministerialen' is not captured.",
+      "findings": [
+        {
+          "category": "unsupported-type",
+          "severity": "warning",
+          "subject": "urn:regesta:22671:execution",
+          "description": "rv:Judgment is defined as deciding a dispute by sentence, and rv:Judge and rv:Respondent are litigation roles. The regest reports that Friedrich has ministeriales hanged for breach of the peace; it names no dispute, trial or sentence. The candidate thus asserts a judicial form the passage does not support. The extractor marked this as a model gap, but the chosen type overreaches rather than approximates.",
+          "evidence_quote": "Friedrich läßt einige seiner Ministerialen wegen Störung des Landfriedens am Galgen hinrichten",
+          "proposed_correction": "Either abstain from typing the execution and report the missing punishment type as a model gap, or, if kept, use rv:Participant for the ministeriales instead of rv:Respondent and record the execution type as an open model gap rather than rv:Judgment."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22671:local:ministerialen",
+          "description": "'seiner Ministerialen' states a dependency of the ministeriales on Friedrich. The vocabulary has no ministeriality or service-dependency state; rv:FeudalRelationship would overreach.",
+          "evidence_quote": "einige seiner Ministerialen",
+          "proposed_correction": "No change; report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No act type for punishment or execution.",
+        "No state type for ministeriality or unfree service dependency."
+      ]
+    },
+    {
+      "uid": "22672",
+      "coverage_note": "Abstention. The regest only names Friedrich as witness in DK. III. 210 for S. Remi; it reports no content of that charter. Charter witness mentions are excluded from rv:Witness, so no in-scope claim remains. The title 'Herzog von Schwaben und vom Elsaß' could give an rv:OfficeHolding, but the contract restricts that type to cases where the statement needs it.",
+      "findings": [],
+      "model_gaps": [
+        "No way to record that an actor attests a charter for a recipient, which these witness regesta consist of."
+      ]
+    },
+    {
+      "uid": "22674",
+      "coverage_note": "Abstention. Witness mention in DK. III. 220 for Hilwartshausen without stated charter content; no in-scope claim. The doubt on authenticity ('vielleicht verunechteten') concerns the cited charter, not a factoid of this regest.",
+      "findings": [],
+      "model_gaps": [
+        "No way to record that an actor attests a charter.",
+        "No way to record the editor's authenticity doubt on a cited charter."
+      ]
+    },
+    {
+      "uid": "22675",
+      "coverage_note": "Abstention. Witness mention in DK. III. 221 for Abbot Wibald of Corvey without stated charter content; no in-scope claim.",
+      "findings": [],
+      "model_gaps": [
+        "No way to record that an actor attests a charter for a recipient."
+      ]
+    },
+    {
+      "uid": "22676",
+      "coverage_note": "Abstention. Witness mention in DK. III. 235 for Bishop Bernhard and the church of Hildesheim without stated charter content; no in-scope claim.",
+      "findings": [],
+      "model_gaps": [
+        "No way to record that an actor attests a charter for a recipient."
+      ]
+    },
+    {
+      "uid": "22677",
+      "coverage_note": "One act factoid for the exchange between St. Blasien and Elchingen, both as community groups from packet candidates. Friedrich's witness mention is correctly left out. Konrad's colloquium with the princes is left out; it is the occasion of issue, not a stated act or relation, so the omission is defensible.",
+      "findings": [
+        {
+          "category": "vocabulary-limit",
+          "severity": "note",
+          "subject": "urn:regesta:22677:exchange",
+          "description": "An exchange is typed rv:Grant, which is defined as a one-directional transfer, with 'Tauschgeschäft' as qualifier and both monasteries as rv:Participant. The regest gives no object or direction, so the approximation is transparent and the roles do not overreach. Model gap.",
+          "evidence_quote": "Urkunde über ein Tauschgeschäft zwischen den Klöstern St. Blasien und Elchingen",
+          "proposed_correction": "Keep until the vocabulary offers an exchange type under rv:Grant or beside it."
+        }
+      ],
+      "model_gaps": [
+        "No act type for an exchange and no role for exchange parties.",
+        "No way to record the assembly at which a charter was issued (colloquium of the king with the princes)."
+      ]
+    },
+    {
+      "uid": "22678",
+      "coverage_note": "A request factoid (Ludwig petitioner, Friedrich addressee, Gebhard beneficiary) and a kinship state between Ludwig and Gebhard. The request is not read as performed and no elevation is asserted. The temporal limit of the alternative request is dropped, and the king carries no reference.",
+      "findings": [
+        {
+          "category": "lost-condition",
+          "severity": "warning",
+          "subject": "urn:regesta:22678:request",
+          "description": "The evidence ends before 'bis er den König gesprochen habe', which bounds the requested postponement. The limit belongs to the content of the request and is neither in the evidence nor in an exact-wording literal.",
+          "evidence_quote": "oder wenigstens eine Verschiebung der Entscheidung bewirken, bis er den König gesprochen habe",
+          "proposed_correction": "Extend the evidence selector to include ', bis er den König gesprochen habe' or add rf:condition \"bis er den König gesprochen habe\"."
+        },
+        {
+          "category": "ambiguous-reference",
+          "severity": "note",
+          "subject": "urn:regesta:22678:kinship-ludwig-gebhard",
+          "description": "The kinship is attached to Ludwig through 'seines'. The more natural reading of the sentence supports Ludwig, and the file flags the alternative reading (Friedrich) in a comment. Acceptable, but the uncertainty lives only in a Turtle comment, not in the data.",
+          "evidence_quote": "seines Verwandten Gebhard",
+          "proposed_correction": "No change to the factoid; carry the unresolved referent into the batch-level unresolved identities for expert review."
+        },
+        {
+          "category": "omitted-reference",
+          "severity": "note",
+          "subject": "urn:regesta:22678:request",
+          "description": "'beim König' (candidate K000316) is the target of the requested intercession and the one who decides; the vocabulary has no role for the target of an intercession, and making him an addressee would be wrong, so leaving him unreferenced is correct under the contract.",
+          "evidence_quote": "er möge sich beim König für die Erhebung seines Verwandten Gebhard auf den Würzburger Bischofsstuhl einsetzen",
+          "proposed_correction": "No change; report as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No role for the target of a requested intercession (the king).",
+        "No way to link the requested elevation as an intended, unperformed rv:Appointment with Gebhard and the Würzburg see."
+      ]
+    }
+  ]
+}

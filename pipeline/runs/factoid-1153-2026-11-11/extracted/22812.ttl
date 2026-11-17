@@ -1,0 +1,41 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22812> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-H001273> a crm:E21_Person ; rdfs:label "Erzbischof Hugo" .
+<urn:regesta:actor:RI004-002-W000540> a crm:E21_Person ; rdfs:label "Domdekan Wilhelm von Vienne" .
+
+<urn:regesta:22812:custodia> a crm:E30_Right ; crm:P2_has_type rv:LordshipRights ; rdfs:label "custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör" .
+<urn:regesta:22812:stadt-vienne> a crm:E53_Place ; rdfs:label "Stadt Vienne" .
+<urn:regesta:22812:burg-pipet> a crm:E18_Physical_Thing ; rdfs:label "Burg Pipet" .
+<urn:regesta:22812:zubehoer> a crm:E18_Physical_Thing ; rdfs:label "Zubehör" .
+
+<urn:regesta:22812:beauftragung> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22812> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich beauftragt den Erzbischof Hugo und den Domdekan Wilhelm von Vienne mit der custodia der ausschließlich dem Reich unterstehenden Stadt Vienne samt der Burg Pipet (Popetum) und Zubehör" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-H001273> ; rf:role rv:Recipient ; rf:nameInSource "Erzbischof Hugo" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000540> ; rf:role rv:Recipient ; rf:nameInSource "Domdekan Wilhelm von Vienne" ] ;
+    rf:concerns <urn:regesta:22812:custodia> , <urn:regesta:22812:stadt-vienne> , <urn:regesta:22812:burg-pipet> , <urn:regesta:22812:zubehoer> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22812:uebergabevorbehalt> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:22812> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "die nur ihm während seiner Anwesenheit übergeben werden darf" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich beauftragt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Beneficiary ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22812:custodia> ;
+    rf:condition "nur ihm während seiner Anwesenheit" ;
+    rf:partOf <urn:regesta:22812:beauftragung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45> ;
+    rf:verificationStatus rv:unchecked .

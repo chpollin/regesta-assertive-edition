@@ -1,0 +1,68 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22769> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 142" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-S000970:community> a crm:E74_Group ;
+    rdfs:label "bischöflichen Kirche von Speyer" .
+
+<urn:regesta:actor:RI004-002-G001306> a crm:E21_Person ;
+    rdfs:label "Bischof Gunthers" .
+
+<urn:regesta:actor:22769:local:eltern> a crm:E74_Group ;
+    rdfs:label "seine Eltern" .
+
+<urn:regesta:actor:22769:local:vorfahren> a crm:E74_Group ;
+    rdfs:label "seine königlichen und kaiserlichen Vorfahren" .
+
+<urn:regesta:actor:22769:local:regnum> a crm:E74_Group ;
+    rdfs:label "regno" .
+
+<urn:regesta:22769:berwartstein> a crm:E18_Physical_Thing ;
+    rdfs:label "Reichsburg Berwartstein" .
+
+<urn:regesta:22769:donation> a rf:ActFactoid ;
+    rf:factoidType rv:Donation ;
+    rf:source <urn:regesta:record:22769> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich schenkt als Seelgerät für seine Eltern und seine königlichen und kaiserlichen Vorfahren, aber auch wegen der treuen Dienste Bischof Gunthers der bischöflichen Kirche von Speyer (in honorem sancte dei genitricis Marię ... Spirensi ecclesię) die Reichsburg Berwartstein" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-S000970:community> ; rf:role rv:Recipient ; rf:nameInSource "bischöflichen Kirche von Speyer" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22769:local:eltern> ; rf:role rv:Beneficiary ; rf:nameInSource "seine Eltern" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22769:local:vorfahren> ; rf:role rv:Beneficiary ; rf:nameInSource "seine königlichen und kaiserlichen Vorfahren" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G001306> ; rf:role rv:Participant ; rf:nameInSource "Bischof Gunthers" ] ;
+    rf:concerns <urn:regesta:22769:berwartstein> ;
+    rf:ground "als Seelgerät für seine Eltern und seine königlichen und kaiserlichen Vorfahren" ,
+        "wegen der treuen Dienste Bischof Gunthers" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22769:possession-berwartstein> a rf:StateFactoid ;
+    rf:factoidType rv:Possession ;
+    rf:source <urn:regesta:record:22769> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "castrum Berwartstein, quod regno ac nobis attinet" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22769:local:regnum> ; rf:role rv:Possessor ; rf:nameInSource "regno" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Possessor ; rf:nameInSource "nobis" ] ;
+    rf:concerns <urn:regesta:22769:berwartstein> ;
+    rf:qualifier "attinet" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-35> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22769:parenthood> a rf:StateFactoid ;
+    rf:factoidType rv:Parenthood ;
+    rf:source <urn:regesta:record:22769> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich schenkt als Seelgerät für seine Eltern" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22769:local:eltern> ; rf:role rv:Parent ; rf:nameInSource "seine Eltern" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Child ; rf:nameInSource "Friedrich" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;
+    rf:verificationStatus rv:unchecked .

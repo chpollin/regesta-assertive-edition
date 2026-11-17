@@ -5,7 +5,7 @@
 """Build the whole-holdings layer of the edition from the delivery, without any LLM.
 
 Regime: single-file script, standard library only. It reads the sibling repository
-regesta-rdf-demo and never writes there.
+pipeline/ and never writes there.
 
 The edition shows two honest layers in the same views. This script builds the first: the
 whole delivery of RI IV,2 as the deterministic exploration and the register give it, so a
@@ -23,7 +23,7 @@ Data flow
 
 Usage
     python build_holdings.py
-    python build_holdings.py --source ../regesta-rdf-demo --out data
+    python build_holdings.py --source pipeline --out data
     python build_holdings.py --check        build into a temporary folder and assert
 
 Design decisions
@@ -91,7 +91,7 @@ def build(source: Path, out: Path) -> dict:
     register_path = source / "source-material" / "RI_004-002-RegisterBarbarossa.csv"
     for path in (regesta_path, register_path):
         if not path.exists():
-            sys.exit(f"Missing input {path}; run explore_regesta.py in regesta-rdf-demo first.")
+            sys.exit(f"Missing input {path}; run pipeline/explore_regesta.py first.")
 
     regesta = [json.loads(line) for line in regesta_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     by_identifier = {r["identifier"]: r for r in regesta}
@@ -232,7 +232,7 @@ def _check(source: Path) -> None:
 def main() -> None:
     here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--source", type=Path, default=here.parent / "regesta-rdf-demo")
+    parser.add_argument("--source", type=Path, default=here / "pipeline")
     parser.add_argument("--out", type=Path, default=here / "data")
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()

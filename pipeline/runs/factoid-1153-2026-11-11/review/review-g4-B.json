@@ -1,0 +1,280 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g4-B",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22701",
+      "coverage_note": "Both clauses of summary_plain are covered: the fine imposed on the citizens of Utrecht with its stated ground, and the confirmation of Hermann as bishop. Actor identifications use candidates of this packet. No unsupported factoid found.",
+      "findings": [
+        {
+          "category": "missing-reference",
+          "severity": "note",
+          "subject": "urn:regesta:22701:fine",
+          "description": "König Konrad (III.) is named in the ground of the fine and has a register candidate in this packet (RI004-002-K000316), but he appears only inside the rf:ground literal and not as a reference. The contract has no role for the party against whom the contumacia was directed; rv:Participant would be the closest fit.",
+          "evidence_quote": "wegen ihrer Aufsässigkeit (contumacia) gegen König Konrad (III.)",
+          "proposed_correction": "Optionally add a reference to urn:regesta:actor:RI004-002-K000316 with rf:nameInSource \"König Konrad (III.)\"; otherwise record the missing role as a model gap."
+        },
+        {
+          "category": "role-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22701:fine",
+          "description": "The citizens carry rv:Obligor, a role defined for an existing duty. For a fine imposed as a penalty this is defensible but not exact; the vocabulary has no role for the party sanctioned by an act.",
+          "evidence_quote": "Friedrich belegt die Bürger von Utrecht wegen ihrer Aufsässigkeit (contumacia) gegen König Konrad (III.) mit einer Geldbuße",
+          "proposed_correction": "Keep rv:Obligor and record the missing penalty role as a model gap."
+        },
+        {
+          "category": "evidence-selection",
+          "severity": "note",
+          "subject": "urn:regesta:22701:confirmation-bishop",
+          "description": "The second selector \"Friedrich belegt\" is used to anchor the grantor of the confirmation. It is a substring of the regest and Friedrich is the grammatical subject of both clauses, so the role is supported, but the selector quotes the verb of the other act.",
+          "evidence_quote": "Friedrich belegt",
+          "proposed_correction": "Acceptable as is; a reader should know that the selector anchors only the subject."
+        }
+      ],
+      "model_gaps": [
+        "No role for the party against whom an offence was committed or who is sanctioned by a penalty.",
+        "A confirmation in an office (bestätigt Hermann als Bischof) has no right or office node to point rf:concerns at; the office survives only in rf:qualifier."
+      ]
+    },
+    {
+      "uid": "22702",
+      "coverage_note": "The claim, the earlier rejection under Konrad III. and the renewed rejection before Friedrich under Hermann's presidency are all modelled as separate act factoids with refersToAct links. The earlier act carries no date. One actor identification is taken from a register candidate that does not belong to this packet.",
+      "findings": [
+        {
+          "category": "identity-from-other-packet",
+          "severity": "error",
+          "subject": "urn:regesta:22702:earlier-judgment",
+          "description": "König Konrad III. is identified as urn:regesta:actor:RI004-002-K000316, but this packet's identity_candidates contain no Konrad (they list B000861, G000786, H000820, I000267, U000329, U000334). The identification is carried over from another packet, which the guidelines forbid.",
+          "evidence_quote": "die bereits unter König Konrad III. abschlägig beschiedene Klage des Iwain von Gokesforde",
+          "proposed_correction": "Replace the actor with a regest-local IRI, e.g. urn:regesta:actor:22702:local:koenig-konrad-iii, typed crm:E21_Person with rdfs:label \"König Konrad III.\", and report the unresolved identity."
+        },
+        {
+          "category": "incomplete-roles",
+          "severity": "note",
+          "subject": "urn:regesta:22702:earlier-judgment",
+          "description": "The earlier rejection names the claimant but not the respondent, although the claim it decided is the same claim against the chapter. The link via rf:refersToAct to the claim factoid carries this indirectly.",
+          "evidence_quote": "Klage des Iwain von Gokesforde gegen das Kapitel von St. Johann zu Utrecht um den Hof zu Beusichem",
+          "proposed_correction": "Optional: add the chapter as rv:Respondent to the earlier judgment."
+        },
+        {
+          "category": "role-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22702:renewed-judgment",
+          "description": "Friedrich is rv:Participant (the court sits before him) and Bischof Hermann is rv:Judge (he presides). This follows the wording; the passive voice leaves open who pronounced the rejection, which the candidate does not overstate.",
+          "evidence_quote": "unter dem Vorsitz Bischof Hermanns von Utrecht erneut abgewiesen",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No role for the ruler in whose presence a court decides (Vor Friedrich) distinct from the presiding judge; rv:Participant is the fallback."
+      ]
+    },
+    {
+      "uid": "22703",
+      "coverage_note": "Abstention. summary_plain reports only that Friedrich goes to Deventer, a travel statement without kinship, economic or legal relation, which is out of scope. The abstention is correct.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22704",
+      "coverage_note": "Abstention. summary_plain reports only the celebration of Easter, without kinship, economic or legal relation. The abstention is correct.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22705",
+      "coverage_note": "The restitution, the earlier donation by Pfalzgraf Heinrich, the unlawful possession of Heinrich von Molsberg, the earlier court judgment under Konrad III., the compensation payment of 60 Mark, the Cologne church's ownership and Arnold's confirmation are all covered. The witness list and chancery notes are correctly skipped. All register identifications are present in this packet. Findings concern links and typing, not unsupported content.",
+      "findings": [
+        {
+          "category": "missing-link",
+          "severity": "warning",
+          "subject": "urn:regesta:22705:restitution",
+          "description": "The restitution returns the very estate that the earlier donation conveyed (den ihr ... geschenkten Hof), and it rests on the earlier judgment that had denied the estate to Heinrich von Molsberg. Neither the donation nor the judgment is linked to the restitution, so the dependency the regest states is lost; the donation and judgment float as unconnected acts.",
+          "evidence_quote": "Friedrich stellt der Abtei Laach (sancte Marię de Lacu) den ihr von ihrem Gründer, Pfalzgraf Heinrich, geschenkten Hof Bendorf (Bedendorf) zurück",
+          "proposed_correction": "Add rf:refersToAct from urn:regesta:22705:restitution to urn:regesta:22705:donation (and, if the reading is accepted, to urn:regesta:22705:judgment-hofgericht)."
+        },
+        {
+          "category": "typing",
+          "severity": "note",
+          "subject": "urn:regesta:22705:possession-kirche-koeln",
+          "description": "\"dessen Kirche dieses Gut gehört\" states ownership by the Cologne church while the abbey is the one receiving the estate. rv:Possession is the closest state type, but it flattens the distinction between ownership and holding that the regest implies; Arnold, through whom the church is introduced (dessen), is not referenced.",
+          "evidence_quote": "Erzbischof Arnold II. von Köln, dessen Kirche dieses Gut gehört",
+          "proposed_correction": "Keep rv:Possession, add the qualifier \"gehört\" in exact wording, and record ownership versus possession as a model gap."
+        },
+        {
+          "category": "literal-property",
+          "severity": "note",
+          "subject": "urn:regesta:22705:confirmation-arnold",
+          "description": "\"kraft seiner und der päpstlichen Gewalt\" names the authority on which the confirmation rests. It is stored as rf:qualifier; rf:ground would also fit. The papal authority is not linked to any actor, which is correct since the German text names no pope.",
+          "evidence_quote": "kraft seiner und der päpstlichen Gewalt bestätigt",
+          "proposed_correction": "Acceptable as rf:qualifier; consider rf:ground for consistency with other basis-of-authority phrases."
+        },
+        {
+          "category": "missing-claim",
+          "severity": "note",
+          "subject": "urn:regesta:22705:donation",
+          "description": "Pfalzgraf Heinrich is called the founder of the abbey (ihrem Gründer). The contract has no act or state type for foundation, so it cannot be expressed beyond the donation.",
+          "evidence_quote": "von ihrem Gründer, Pfalzgraf Heinrich,",
+          "proposed_correction": "Record as model gap; optionally add rf:qualifier \"ihrem Gründer\" to the donation."
+        }
+      ],
+      "model_gaps": [
+        "No state type distinguishing ownership (gehört) from possession or holding.",
+        "No act or state type for the foundation of an ecclesiastical institution (Gründer).",
+        "No role for presence at an act (in Gegenwart des Königs und der Fürsten); rv:Participant is the fallback."
+      ]
+    },
+    {
+      "uid": "22706",
+      "coverage_note": "The princes' judgment confirming the inalienability of the archiepiscopal table goods and the predecessor's alienations are covered. Friedrich is correctly only present (Vor Friedrich). The actor for the judging princes is labelled and named with a word that denotes the judgment, not the princes.",
+      "findings": [
+        {
+          "category": "actor-wording",
+          "severity": "warning",
+          "subject": "urn:regesta:actor:22706:local:fuersten",
+          "description": "The local actor for the judging princes carries rdfs:label and rf:nameInSource \"Fürstenspruch\". That word names the verdict, not a group of persons; the regest never names the princes as actors. Using it as the actor's name in source misrepresents the wording that identifies the actor.",
+          "evidence_quote": "Vor Friedrich wird ein Fürstenspruch gefällt",
+          "proposed_correction": "Either drop the princes' reference and keep \"Fürstenspruch\" as rf:qualifier of the judgment, or keep the local group but note in the batch report that it is inferred from the compound noun and give it no rf:nameInSource."
+        },
+        {
+          "category": "typing",
+          "severity": "note",
+          "subject": "urn:regesta:22706:alienations",
+          "description": "\"Veräußerungen\" is typed rv:Grant without a recipient. The regest states that the predecessor alienated goods but not to whom or in what form; rv:Grant is the closest act type and does not overstate.",
+          "evidence_quote": "entgegen den Veräußerungen seines Vorgängers Friedrich",
+          "proposed_correction": "None required; record that the vocabulary has no generic alienation type."
+        },
+        {
+          "category": "relation-semantics",
+          "severity": "note",
+          "subject": "urn:regesta:22706:judgment",
+          "description": "rf:refersToAct links the judgment to the alienations, but the judgment rules against them (entgegen). The link is correct in direction, but the oppositional relation is not expressible, and it must not be read as a confirmation of the alienations.",
+          "evidence_quote": "die Unveräußerlichkeit der erzbischöflichen Tafelgüter entgegen den Veräußerungen seines Vorgängers Friedrich bestätigt",
+          "proposed_correction": "Keep the link and add rf:qualifier \"entgegen den Veräußerungen\" to make the opposition explicit in the source's words."
+        }
+      ],
+      "model_gaps": [
+        "No property for an act that rules against or invalidates an earlier act without being a formal revocation.",
+        "No act type for alienation in general (Veräußerung) distinct from grant or sale.",
+        "Inalienability as a legal status of goods has no right or state type."
+      ]
+    },
+    {
+      "uid": "22707",
+      "coverage_note": "Friedrich's confirmation of the goods near Remagen to both monasteries is covered with both recipients and the three named places. The reference to König Konrad (III.) is modelled as an earlier act; its typing as a confirmation is an inference from \"in Nachahmung\". Witness list and chancery notes are correctly skipped.",
+      "findings": [
+        {
+          "category": "inferred-act",
+          "severity": "warning",
+          "subject": "urn:regesta:22707:earlier-act-konrad",
+          "description": "The passage says only that Friedrich acts in imitation of König Konrad (III.). Typing Konrad's act as rv:Confirmation is a plausible reading but not stated; the regest does not say what Konrad did. The qualifier \"in Nachahmung\" describes the relation of Friedrich's act to Konrad's, not Konrad's act itself, so it sits on the wrong factoid.",
+          "evidence_quote": "in Nachahmung König Konrads (III.)",
+          "proposed_correction": "Move rf:qualifier \"in Nachahmung\" to urn:regesta:22707:confirmation; keep the earlier act but type it with the most general act type the contract allows (rv:Confirmation is acceptable only if a reviewer accepts the inference), and record the gap that the earlier act's content is unstated."
+        },
+        {
+          "category": "missing-claim",
+          "severity": "note",
+          "subject": "urn:regesta:22707:confirmation",
+          "description": "\"ihre ... Güter\" states that the goods belong to the monasteries. A rv:Possession state factoid could record this; the confirmation covers it implicitly.",
+          "evidence_quote": "ihre im königlichen Gebiet um Remagen gelegenen Güter",
+          "proposed_correction": "Optional: add a rv:Possession factoid with both monasteries as rv:Possessor."
+        }
+      ],
+      "model_gaps": [
+        "No property for an act modelled on an earlier ruler's act (Nachahmung) without asserting what that earlier act was."
+      ]
+    },
+    {
+      "uid": "22708",
+      "coverage_note": "The confirmation of the Empire's rights in Meerssen, the envoys' written report, the abbey's ownership, the dispute with the advocate, Goswin's advocacy and the two regulating provisions are covered. Identifications of envoys and Goswin come from this packet. Witness list and chancery notes are correctly skipped. One link misstates the relation between the confirmation and the report.",
+      "findings": [
+        {
+          "category": "relation-semantics",
+          "severity": "warning",
+          "subject": "urn:regesta:22708:confirmation",
+          "description": "rf:refersToAct links the confirmation to the envoys' report. The contract defines refersToAct for a later act such as a confirmation referring to an earlier act; read that way, the candidate implies that Friedrich confirms the report. The regest says he confirms the rights on the basis of the report (nach dem schriftlichen Bericht), which is a basis, not the object of the confirmation.",
+          "evidence_quote": "nach dem schriftlichen Bericht (scripti attestatione) seiner Gesandten",
+          "proposed_correction": "Remove rf:refersToAct to urn:regesta:22708:envoy-report and add rf:qualifier \"nach dem schriftlichen Bericht (scripti attestatione) seiner Gesandten\" to the confirmation, or record the missing basis-of relation as a model gap."
+        },
+        {
+          "category": "missing-reference",
+          "severity": "note",
+          "subject": "urn:regesta:22708:envoy-report",
+          "description": "The envoys are Friedrich's (seiner Gesandten) and report to him; Friedrich is not referenced in the report factoid. The regest implies but does not state an addressee.",
+          "evidence_quote": "seiner Gesandten, des Dekans R(icher) von (St. Adalbert zu) Aachen, des Schultheißen A. und seines Marschalls Macelinus",
+          "proposed_correction": "Optional: add Friedrich as rv:Addressee with rf:nameInSource \"seiner\"; otherwise leave as is."
+        },
+        {
+          "category": "missing-reference",
+          "severity": "note",
+          "subject": "urn:regesta:22708:provision-abgaben",
+          "description": "The provisions are passive (werden ... geregelt) and carry no grantor. This is faithful to the wording; Friedrich as grantor follows only from the main act via rf:partOf.",
+          "evidence_quote": "im einzelnen werden die Abgaben und deren Aufteilung auf den König, den Grafen und den Hof bei den drei jährlichen Gerichtstagen sowie die Vogtei über diesen Hof geregelt",
+          "proposed_correction": "None required."
+        },
+        {
+          "category": "identity",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22708:local:koenig",
+          "description": "\"den König\" in the revenue division is modelled as a functional actor rather than the shared ruler. This is defensible, since the share belongs to the king as office; it avoids asserting identity with Friedrich. Likewise \"den Grafen\" is not identified with Goswin, which the passage does not support.",
+          "evidence_quote": "Aufteilung auf den König, den Grafen und den Hof",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No property for the evidentiary basis of an act (nach dem schriftlichen Bericht) distinct from refersToAct.",
+        "No role for the beneficiary share of a thing (den Hof) as opposed to an actor."
+      ]
+    },
+    {
+      "uid": "22709",
+      "coverage_note": "Abstention. summary_plain reports only Friedrich's visit to the imperial abbey of Corvey, without kinship, economic or legal relation. The abstention is correct.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22710",
+      "coverage_note": "Protection, descent, the grant to bear the eagle in the coat of arms and the appointment of the members as counts palatine are all covered with the actors of this packet. Descent is correctly modelled as rv:Kinship with the exact word, not as a parent chain. The record is marked spurious in its identifier (n. †83); summary_plain itself does not say so.",
+      "findings": [
+        {
+          "category": "source-status",
+          "severity": "note",
+          "subject": "22710",
+          "description": "The identifier carries a dagger (RI IV,2,1 n. †83), marking the charter as spurious. summary_plain does not state this, so the factoids correctly report only what the regest says, but a reader of the graph cannot see that the source charter is a forgery.",
+          "evidence_quote": "Friedrich nimmt die von seinem Vorgänger Didius Julianus abstammende Familie Giuliano in Triest in seinen Schutz",
+          "proposed_correction": "No change to the factoids; record the missing document-level authenticity status as a model gap."
+        },
+        {
+          "category": "identity",
+          "severity": "note",
+          "subject": "urn:regesta:actor:RI004-002-D000157",
+          "description": "The register candidate for Didius Julianus is typed \"ort\" in the packet, while the candidate types him crm:E21_Person. The regest's wording (seinem Vorgänger) supports a person; the register type is a register error, not an extraction error.",
+          "evidence_quote": "von seinem Vorgänger Didius Julianus",
+          "proposed_correction": "Keep crm:E21_Person; report the register type mismatch."
+        },
+        {
+          "category": "role-direction",
+          "severity": "note",
+          "subject": "urn:regesta:22710:descent",
+          "description": "Both parties carry rv:Kin, so the direction of descent (the family descends from Didius Julianus) is carried only by the qualifier \"abstammende\". This follows the guidelines.",
+          "evidence_quote": "von seinem Vorgänger Didius Julianus abstammende Familie Giuliano in Triest",
+          "proposed_correction": "None required."
+        },
+        {
+          "category": "missing-concerns",
+          "severity": "note",
+          "subject": "urn:regesta:22710:arms-grant",
+          "description": "The right to bear arms has no right type in rv:RightTypes, so the grant carries no crm:E30_Right node and the content survives only in rf:qualifier.",
+          "evidence_quote": "gestattet ihr, einen gekrönten schwarzen Adler im Wappen zu führen",
+          "proposed_correction": "None within the contract; record as model gap."
+        }
+      ],
+      "model_gaps": [
+        "No document-level marker for a spurious or forged charter.",
+        "No right type for heraldic rights (Wappen).",
+        "No directed descent role; rv:Kin is symmetric.",
+        "Predecessor in office (Vorgänger) between rulers is not expressible as a relation."
+      ]
+    }
+  ]
+}

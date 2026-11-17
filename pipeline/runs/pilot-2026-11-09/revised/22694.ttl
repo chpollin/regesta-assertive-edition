@@ -1,0 +1,25 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix reg: <https://example.org/regesta/ontology/> .
+@prefix v: <https://example.org/regesta/vocab/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22694> a crm:E31_Document .
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "Friedrich" .
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ; rdfs:label "Abt Wibald" .
+<urn:regesta:actor:RI004-002-S001047:community> a crm:E74_Group ; rdfs:label "Kloster Stablo" .
+<urn:regesta:22694:schutz> a crm:E7_Activity ; crm:P2_has_type v:ProtectionGrant ; crm:P14_carried_out_by <urn:regesta:actor:RI004-002-F000471> ; crm:P3_has_note "mit all seinen Besitzungen" .
+<urn:regesta:22694:schutz-beneficiary> a reg:Participation ; reg:context <urn:regesta:22694:schutz> ; reg:actor <urn:regesta:actor:RI004-002-S001047:community> ; reg:role v:Beneficiary .
+<urn:regesta:22694:schutz-petitioner> a reg:Participation ; reg:context <urn:regesta:22694:schutz> ; reg:actor <urn:regesta:actor:RI004-002-W000420> ; reg:role v:Petitioner .
+<urn:regesta:22694:confirmation> a crm:E7_Activity ; crm:P2_has_type v:RightConfirmation ; crm:P14_carried_out_by <urn:regesta:actor:RI004-002-F000471> ; reg:concerns <urn:regesta:22694:jurisdiction> ; crm:P3_has_note "alle Vorrechte und die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo" .
+<urn:regesta:22694:jurisdiction> a crm:E30_Right ; crm:P2_has_type v:JurisdictionRight .
+<urn:regesta:22694:grant> a crm:E7_Activity ; crm:P2_has_type v:RightGrant ; crm:P14_carried_out_by <urn:regesta:actor:RI004-002-F000471> ; reg:concerns <urn:regesta:22694:mint>, <urn:regesta:22694:toll>, <urn:regesta:22694:market> .
+<urn:regesta:22694:mint> a crm:E30_Right ; crm:P2_has_type v:MintingRight .
+<urn:regesta:22694:toll> a crm:E30_Right ; crm:P2_has_type v:TollRight .
+<urn:regesta:22694:market> a crm:E30_Right ; crm:P2_has_type v:MarketRight .
+<urn:regesta:22694:a1> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:22694:schutz> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:ProtectionGrant ; reg:source <urn:regesta:record:22694> ; reg:evidence "Friedrich nimmt auf Bitten Abt Wibalds dessen Kloster Stablo gemäß den Verfügungen seiner genannten Vorgänger mit all seinen Besitzungen in seinen Schutz" .
+<urn:regesta:22694:a2> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:22694:confirmation> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:RightConfirmation ; reg:source <urn:regesta:record:22694> ; reg:evidence "bestätigt dem Reichskloster (semper ad nostram successorumque nostrorum manum et servitium inconvulsa stabilitate permaneat et libertate sibi collata pacifice potiatur) alle Vorrechte und die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo" .
+<urn:regesta:22694:a3> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:22694:grant> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:RightGrant ; reg:source <urn:regesta:record:22694> ; reg:evidence "außerdem fügt er das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo hinzu" .
+<urn:regesta:22694:a4> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:22694:jurisdiction> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:JurisdictionRight ; reg:source <urn:regesta:record:22694> ; reg:evidence "die alleinige Gerichtsbarkeit des Abtes innerhalb der Bannmeile und der Stadt Stablo" .
+<urn:regesta:22694:a5> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:22694:mint> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:MintingRight ; reg:source <urn:regesta:record:22694> ; reg:evidence "das Recht der Münzprägung" .
+<urn:regesta:22694:a6> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:22694:toll> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:TollRight ; reg:source <urn:regesta:record:22694> ; reg:evidence "das Recht der Münzprägung, des Zolls" .
+<urn:regesta:22694:a7> a crm:E13_Attribute_Assignment ; crm:P140_assigned_attribute_to <urn:regesta:22694:market> ; crm:P177_assigned_property_of_type crm:P2_has_type ; crm:P141_assigned v:MarketRight ; reg:source <urn:regesta:record:22694> ; reg:evidence "das Recht der Münzprägung, des Zolls und des Abhaltens öffentlicher Märkte in Stablo" .

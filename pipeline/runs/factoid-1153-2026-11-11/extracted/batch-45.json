@@ -1,0 +1,62 @@
+{
+  "batch": 45,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-45",
+  "records": [
+    {
+      "uid": "22809",
+      "status": "extracted",
+      "files": ["22809.ttl"],
+      "factoids": 4,
+      "unresolved_identities": [
+        "'er' in 'die er vom Reich besitzt' read as Silvius, not Friedrich; the possession factoid rests on that reading",
+        "'dessen Erben' and 'seinen Nachfolgenrn' kept as regest-local functional actors"
+      ],
+      "model_gaps": [
+        "No right type or act concept for Mannschaft (homage, hominium); the enactment carries no rf:concerns for it, and the vassal who owes homage is implicit and not referenced",
+        "Holding goods 'vom Reich' has no actor for the Reich as lord; recorded as Possession with qualifier instead of FeudalRelationship",
+        "Kinship 'der Sohn Kaiser (!) Konrads III.' stands in the witness list and was skipped per guidelines"
+      ]
+    },
+    {
+      "uid": "22810",
+      "status": "extracted",
+      "files": ["22810.ttl"],
+      "factoids": 3,
+      "unresolved_identities": [
+        "'Kaiser (!)' identified with the shared ruler; the editorial (!) marks that the title is anachronistic"
+      ],
+      "model_gaps": [
+        "No role for an opponent: 'gegen die Angriffe des Grafen von Barcelona' is in the evidence but the count (candidate RI004-002-B000184) is not referenced",
+        "Fealty pledge (Treue geloben) typed as rv:Assurance; no dedicated act type for an oath of fealty",
+        "Thanks for Wibald's earlier efforts at court on behalf of Wilhelm not extracted; no act type fits an intercession reported only as past effort, and no legal or economic relation is stated"
+      ]
+    },
+    {
+      "uid": "22811",
+      "status": "extracted",
+      "files": ["22811.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "Domkapitel identified with register entry RI004-002-V000394 (typed 'ort' in the register, label 'Bischöfliche Kirche St. Maurice und Domkapitel') as a community IRI"
+      ],
+      "model_gaps": [
+        "No right type for custodia of a city; typed with the top concept rv:LordshipRights, rv:Protection would be the alternative",
+        "No role for an excluded party: 'alle Laien' excluded from the Stadtherrschaft is in the evidence only",
+        "The state 'ausschließlich dem Reich unterstehenden Stadt Vienne' has no actor for the Reich and was not modelled as a separate factoid",
+        "Kinship 'der Sohn König Konrads' stands in the witness list and was skipped per guidelines"
+      ]
+    },
+    {
+      "uid": "22812",
+      "status": "extracted",
+      "files": ["22812.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [],
+      "model_gaps": [
+        "Editorial cross-reference '(wie DF. I. 62, Reg. 184)' points to another regest; no cross-regest act link in the model, not recorded",
+        "Custody typed as rv:Appointment with the right typed rv:LordshipRights; the custodia is the same right as in 22811 but is not linked across regesta",
+        "Recommendation of the bearer of the mandate is out of scope and not extracted"
+      ]
+    }
+  ]
+}

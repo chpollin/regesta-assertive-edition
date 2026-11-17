@@ -1,0 +1,70 @@
+{
+  "group": 3,
+  "corrector": "urn:regesta:agent:factoid-1153-2026-11-11:correction-g3",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22669",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "Replaced the abstention with two act factoids per adjudication-g3, keeping <urn:regesta:record:22669> a crm:E31_Document.",
+        "Added <urn:regesta:22669:letter> (rv:Communication) with evidence 'König Roger von Sizilien gibt den Leuten Herzog Welfs einen Brief an Herzog Friedrich von Schwaben mit' and references Roger (RI004-002-R000806, rv:Participant), the local group 'den Leuten Herzog Welfs' (rv:Envoy) and the local person 'Herzog Friedrich von Schwaben' (rv:Addressee).",
+        "Added <urn:regesta:22669:request> (rv:Request, rf:partOf the letter) with the two evidence selectors of the instruction and references Herzog Friedrich von Schwaben (rv:Addressee, nameInSource 'dieser') and Welf (RI004-002-W000272, rv:Beneficiary, nameInSource 'des Welfen').",
+        "Added the four actor nodes with the labels the instruction gives; both factoids attributed to correction-g3 and rf:verificationStatus rv:unchecked."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Unresolved identity: Herzog Friedrich von Schwaben may be identical with the shared ruler (RI004-002-F000471); not asserted, because the packet has no candidate carrying the ducal title.",
+        "Model gap: no sender role for a letter; Roger is rv:Participant.",
+        "Model gap: no role for the party against whom requested support is directed; König Konrad III. stays unreferenced.",
+        "Neither the delivery of the letter nor the requested support is asserted."
+      ]
+    },
+    {
+      "uid": "22671",
+      "status_after": "no_in_scope_claim",
+      "factoids_after": 0,
+      "changes": [
+        "Removed <urn:regesta:22671:execution> (rv:Judgment), its references execution-ref-friedrich (rv:Judge) and execution-ref-ministerialen (rv:Respondent), and the then unused actor nodes <urn:regesta:actor:RI004-002-F000471> and <urn:regesta:actor:22671:local:ministerialen>.",
+        "Kept only <urn:regesta:record:22671> a crm:E31_Document, with a comment naming the model gap."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for a punishment or execution; the ground 'wegen Störung des Landfriedens' and the wording 'am Galgen hinrichten' are left unrecorded for that reason.",
+        "Model gap (adjudicated, not acted on): the service dependency in 'einige seiner Ministerialen' has no state type."
+      ]
+    },
+    {
+      "uid": "22678",
+      "status_after": "extracted",
+      "factoids_after": 2,
+      "changes": [
+        "In <urn:regesta:22678:request> extended the oa:exact of the evidence selector to end with ', bis er den König gesprochen habe' (now the whole of summary_plain without the final period).",
+        "Added rf:qualifier 'bis er den König gesprochen habe' beside 'brieflich'.",
+        "Attributed <urn:regesta:22678:request> to correction-g3 as a changed factoid; the kinship factoid keeps extraction-batch-13."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap (adjudicated, not acted on): no role for the king at whom the requested intercession aims; he stays unreferenced.",
+        "Unresolved reading carried over from extraction: the antecedent of 'seines' in 'seines Verwandten Gebhard'."
+      ]
+    },
+    {
+      "uid": "22682",
+      "status_after": "extracted",
+      "factoids_after": 4,
+      "changes": [
+        "In <urn:regesta:22682:peace> changed rf:factoidType rv:Negotiation to rv:Enactment and added rf:qualifier 'Frieden'; changed the roles of peace-ref-konrad and peace-ref-welf from rv:Negotiator to rv:Participant; kept Friedrich as rv:Mediator, the evidence and the provisions' rf:partOf; updated the Turtle comment.",
+        "In <urn:regesta:22682:revenues> changed rf:factoidType rv:Grant to rv:Enactment, kept rf:partOf the peace, the evidence and rf:concerns; changed revenues-ref-welf from rv:Recipient to rv:Beneficiary; rewrote the comment as a provision while keeping the separate-act reading of 'außerdem' open for expert review.",
+        "Attributed the two changed factoids to correction-g3; prisoners and no-fighting keep extraction-batch-14."
+      ],
+      "not_applied": [],
+      "remaining_gaps": [
+        "Model gap: no act type for a concluded peace settlement; rv:Enactment with qualifier 'Frieden' is used.",
+        "Open reading for expert review: whether 'außerdem erhält Welf auch Reichseinkünfte' is a term of the peace or a separate act; no grantor is asserted.",
+        "Model gap (adjudicated, not acted on): no property for the reciprocity 'dafür' between the two provisions; the word stays in the evidence."
+      ]
+    }
+  ]
+}

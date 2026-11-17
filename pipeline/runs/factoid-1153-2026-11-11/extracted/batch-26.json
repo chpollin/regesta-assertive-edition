@@ -1,0 +1,62 @@
+{
+  "batch": 26,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-26",
+  "records": [
+    {
+      "uid": "22732",
+      "status": "extracted",
+      "files": ["22732.ttl"],
+      "factoids": 1,
+      "unresolved_identities": [
+        "'(Friedrich?)': the regest itself marks the complainant as uncertain; mapped to the shared ruler IRI provisionally",
+        "'seines Gesandten': unnamed envoy, regest-local actor"
+      ],
+      "model_gaps": [
+        "Threat of war with condition 'falls der Gefangene nicht freigelassen werde' not recorded: no act type for a threat; military content otherwise out of scope",
+        "The capture of the envoy itself (hostage/prisoner taking) not recorded as out of scope; only the complaint about it"
+      ]
+    },
+    {
+      "uid": "22733",
+      "status": "extracted",
+      "files": ["22733.ttl"],
+      "factoids": 4,
+      "unresolved_identities": [
+        "'Stadt Augsburg': no community candidate in the packet, regest-local group",
+        "'der Geistlichen' and 'aller Stadtbewohner': regest-local groups",
+        "'Heinrich IV.': no candidate in the packet, regest-local person; 'unter Heinrich IV.' read as participation only, not as enactor",
+        "'Vögte' (RI004-002-A001455) and 'Domkanoniker' (RI004-002-A001444) are register entries typed person but denote collectives; mapped to :community IRIs typed E74_Group"
+      ],
+      "model_gaps": [
+        "No right type for town law ('Stadtrechte'); top concept rv:LordshipRights used provisionally",
+        "No right type for the delimitation of rights between advocates and cathedral canons; the Regensburg law has no concerns node",
+        "The Weistum is a declaration of law, not a right; confirmation targets it only via evidence and the Stadtrechte node",
+        "The Latin quotations of the regest (iuris ordine, gubernari deberent) carry no separate factoid"
+      ]
+    },
+    {
+      "uid": "22734",
+      "status": "no_in_scope_claim",
+      "files": ["22734.ttl"],
+      "factoids": 0,
+      "unresolved_identities": [],
+      "model_gaps": ["summary_plain is null; nothing extractable"]
+    },
+    {
+      "uid": "22735",
+      "status": "extracted",
+      "files": ["22735.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "'Dekans Konrad von Konstanz': two candidates for the same person (RI004-002-K000376 dean of Konstanz, RI004-002-K000322 bishop of Augsburg); not used because the intervention carries no factoid",
+        "'den Ministerialen' and 'den Kanonikern der Augsburger Kirche': no candidate in this packet, regest-local groups",
+        "Friedrich in the judgment named only as 'ihm'; role Participant because 'vor ihm' does not state that he judged"
+      ],
+      "model_gaps": [
+        "No act type for an intervention in an episcopal election ('interveniert bei der Augsburger Bischofswahl zugunsten des Dekans Konrad'); not recorded rather than forced into Request or Appointment",
+        "No right type or thing class for an episcopal election as object of a dispute; the dispute has no concerns node",
+        "No property linking a judgment to the dispute it decides"
+      ]
+    }
+  ]
+}

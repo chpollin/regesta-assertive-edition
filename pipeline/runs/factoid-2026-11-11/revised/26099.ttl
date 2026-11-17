@@ -1,0 +1,92 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:26099> a crm:E31_Document ;
+    rdfs:label "RI IV,2,4 n. 3276" .
+
+# Actors
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:26099:local:fuersten> a crm:E74_Group ;
+    rdfs:label "der Fürsten" .
+
+<urn:regesta:actor:26099:local:kreuzheer> a crm:E74_Group ;
+    rdfs:label "das (Kreuz)heer" .
+
+<urn:regesta:actor:26099:local:richter> a rf:FunctionalActor ;
+    rdfs:label "Richter" .
+
+<urn:regesta:actor:26099:local:zeltgenossenschaften> a crm:E74_Group ;
+    rdfs:label "die einzelnen Zeltgenossenschaften" .
+
+# Places and rights
+
+<urn:regesta:26099:place-lager> a crm:E53_Place ;
+    rdfs:label "Lager" .
+
+<urn:regesta:26099:right-richteramt> a crm:E30_Right ;
+    crm:P2_has_type rv:Jurisdiction ;
+    rdfs:label "qui transgressores legitime punirent" .
+
+# Enactment of the law on keeping the peace in the camp
+
+<urn:regesta:26099:gesetz-lagerfrieden> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:source <urn:regesta:record:26099> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich erlässt mit Rat der Fürsten ein Gesetz über die Aufrechterhaltung des Friedens im Lager" ] ;
+    rf:reference <urn:regesta:26099:ref-gesetz-friedrich> , <urn:regesta:26099:ref-gesetz-fuersten> ;
+    rf:concerns <urn:regesta:26099:place-lager> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:26099:ref-gesetz-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" .
+<urn:regesta:26099:ref-gesetz-fuersten> a rf:Reference ;
+    rf:actor <urn:regesta:actor:26099:local:fuersten> ; rf:role rv:Participant ; rf:nameInSource "der Fürsten" .
+
+# The (crusade) army is bound by oath to observe the law
+
+<urn:regesta:26099:eid-heer> a rf:StateFactoid ;
+    rf:factoidType rv:Obligation ;
+    rf:source <urn:regesta:record:26099> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "zu dessen Einhaltung das (Kreuz)heer durch Eid verpflichtet wird" ] ;
+    rf:reference <urn:regesta:26099:ref-eid-heer> ;
+    rf:qualifier "durch Eid" ;
+    rf:partOf <urn:regesta:26099:gesetz-lagerfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:26099:ref-eid-heer> a rf:Reference ;
+    rf:actor <urn:regesta:actor:26099:local:kreuzheer> ; rf:role rv:Obligor ; rf:nameInSource "das (Kreuz)heer" .
+
+# Appointment of judges for the individual tent fellowships
+
+<urn:regesta:26099:einsetzung-richter> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:26099> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "zu dessen Ausführung er für die einzelnen Zeltgenossenschaften Richter einsetzt" ] ,
+        [ a oa:TextQuoteSelector ;
+        oa:exact "per singulorum contubernia iudicibus designatis, qui transgressores legitime punirent" ] ;
+    rf:reference <urn:regesta:26099:ref-einsetzung-friedrich> ,
+        <urn:regesta:26099:ref-einsetzung-richter> ,
+        <urn:regesta:26099:ref-einsetzung-zeltgenossenschaften> ;
+    rf:concerns <urn:regesta:26099:right-richteramt> ;
+    rf:partOf <urn:regesta:26099:gesetz-lagerfrieden> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-2026-11-11:extraction-batch-4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:26099:ref-einsetzung-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "er" .
+<urn:regesta:26099:ref-einsetzung-richter> a rf:Reference ;
+    rf:actor <urn:regesta:actor:26099:local:richter> ; rf:role rv:Recipient ; rf:nameInSource "Richter" .
+<urn:regesta:26099:ref-einsetzung-zeltgenossenschaften> a rf:Reference ;
+    rf:actor <urn:regesta:actor:26099:local:zeltgenossenschaften> ; rf:role rv:Participant ; rf:nameInSource "die einzelnen Zeltgenossenschaften" .

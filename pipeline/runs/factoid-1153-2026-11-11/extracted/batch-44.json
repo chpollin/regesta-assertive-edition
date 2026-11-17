@@ -1,0 +1,69 @@
+{
+  "batch": 44,
+  "producer": "urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-44",
+  "records": [
+    {
+      "uid": "22805",
+      "status": "extracted",
+      "files": ["22805.ttl"],
+      "factoids": 2,
+      "unresolved_identities": [
+        "'Herzog Heinrich von Bayern' identified with RI004-002-H000498 (Jasomirgott) and 'Herzogs Heinrich von Sachsen' with RI004-002-H000470; both candidate labels mention Bavaria, the split follows the titles in the passage.",
+        "'anwesende Mitglieder des Klerus und des Volkes' has no candidate and is a regest-local group."
+      ],
+      "model_gaps": [
+        "No act type for a deposition from office: the deposition of Archbishop Heinrich of Mainz and the bishops Burchard of Eichstätt, Bernhard of Hildesheim and Heinrich of Minden by the cardinal legates was not extracted; the chronicle quotations giving reasons are commentary-like and were not used as rf:ground.",
+        "No act type or property for a respondent's refusal to negotiate a claim; the Dispute factoid keeps 'weigert sich' only in its evidence.",
+        "Election is typed rv:Appointment; Friedrich, who causes the election ('läßt ... wählen'), is given rv:Grantor and the electors rv:Participant, since no elector or initiator role exists.",
+        "The Hoftag is out of scope and not extracted."
+      ]
+    },
+    {
+      "uid": "22806",
+      "status": "extracted",
+      "files": ["22806.ttl"],
+      "factoids": 6,
+      "unresolved_identities": [
+        "'Abt von Cluny' in the provisions is modelled as a regest-local FunctionalActor, not identified with Abbot Peter (RI004-002-P000422).",
+        "'Vasallen der Abtei' identified with candidate RI004-002-B000298 as a group (:community, E74_Group), although the register types it as person."
+      ],
+      "model_gaps": [
+        "'verbrieft' is ambiguous between grant and confirmation: the free advocate election is typed rv:RightGrant, the possessions rv:Confirmation, the protection rv:ProtectionGrant; an expert should decide.",
+        "Whom the royal protection covers (Cluny or Baume-les-Messieurs) is not stated; the protection factoid carries no recipient.",
+        "Cluny as recipient of the earlier donation rests on the confirmation clause, not on the donation clause itself.",
+        "Homage (Mannschaft) is recorded as an Enactment with Lord/Vassal roles; no Obligation or FeudalRelationship state was inferred from the provision."
+      ]
+    },
+    {
+      "uid": "22807",
+      "status": "extracted",
+      "files": ["22807.ttl"],
+      "factoids": 6,
+      "unresolved_identities": [
+        "'Herzog Heinrich von Bayern' identified with RI004-002-H000498; the witness list separates him from Heinrich von Sachsen.",
+        "The acquirer of the recovered toll and of the purchases is not named; no buyer or recipient reference was set."
+      ],
+      "model_gaps": [
+        "Attachment of the 'durch einen ... Fürstenspruch' clause is ambiguous; read as the form of the 1151 judgment under Konrad III, so Heinrich von Bayern (Judge) and the witnesses Gottfried von Arnsberg and Markward von Grumbach sit in that judgment factoid. It could instead describe the 1153 confirmation.",
+        "The Latin content of the judgment (enfeoffed goods return to the archbishop, such donations void) is not modelled separately; no provision-of-judgment pattern exists.",
+        "'Wiedereinziehung' typed rv:Restitution, the nearest concept; recovery by the holder is not quite a return by another party.",
+        "Dates of earlier acts are kept only as rf:qualifier literals '(1151)' and '1152'."
+      ]
+    },
+    {
+      "uid": "22808",
+      "status": "extracted",
+      "files": ["22808.ttl"],
+      "factoids": 4,
+      "unresolved_identities": [
+        "'dessen Nachfolgern' is a regest-local FunctionalActor.",
+        "Count Gerhard the Younger of Jülich (candidate RI004-002-G000380) is kept only in a qualifier literal; 'erbenlos' asserts no kinship relation and no role was assigned."
+      ],
+      "model_gaps": [
+        "The content of King Konrad III's charter is not stated; it is typed rv:Communication with Konrad as Grantor, which may understate a confirmation.",
+        "The acquisition 'um 100 Mark Silber ... erworben' is typed rv:Sale; no separate Payment factoid was inferred.",
+        "The condition that only the respective cathedral provost shall be advocate is kept as rf:condition literal; no functional right holder was asserted."
+      ]
+    }
+  ]
+}

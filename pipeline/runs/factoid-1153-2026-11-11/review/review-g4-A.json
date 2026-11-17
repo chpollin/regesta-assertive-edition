@@ -1,0 +1,286 @@
+{
+  "reviewer": "urn:regesta:agent:factoid-1153-2026-11-11:review-g4-A",
+  "expert_accepted": false,
+  "records": [
+    {
+      "uid": "22689",
+      "coverage_note": "One Negotiation factoid with Wibald as participant covers the main clause. The embedded invitation by the princes, with its stated reason, is not extracted.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22689",
+          "description": "The invitation of Wibald by the princes is an act the passage states, and the regest gives its reason (his recently finished legation to Italy). The candidate folds it into the evidence of the Negotiation factoid without representing the inviting princes or the reason.",
+          "evidence_quote": "von den Fürsten (auch) wegen seiner erst neulich beendeten Legation nach Italien eingeladen",
+          "proposed_correction": "Add an ActFactoid of type rv:Request (invitation) with a local group 'den Fürsten' as Grantor-side requester (or Participant) and Wibald as rv:Addressee, rf:ground \"wegen seiner erst neulich beendeten Legation nach Italien\" and rf:qualifier \"eingeladen\" and \"(auch)\"."
+        },
+        {
+          "category": "literal-redundancy",
+          "severity": "note",
+          "subject": "urn:regesta:22689:negotiation-election",
+          "description": "rf:qualifier repeats the object of the negotiation, which the factoid type and evidence already carry; the election as subject of the negotiation would be better stated with rf:concerns or left to the evidence.",
+          "evidence_quote": "an mehreren Verhandlungen über die Wahl eines neuen Königs teil",
+          "proposed_correction": "Keep only \"mehreren\" as qualifier or drop the qualifier."
+        }
+      ],
+      "model_gaps": [
+        "No act type for an invitation; rv:Request is the nearest concept but its roles (Petitioner, Addressee) do not name the inviting party cleanly."
+      ]
+    },
+    {
+      "uid": "22690",
+      "coverage_note": "Abstention. The regest only names Friedrich and others as witnesses of a diploma for Kloster Alteburg; the issuer and content of the diploma are not stated. Witness lists are excluded by the guidelines and rv:Witness covers only testimony in narrated disputes, so the abstention is defensible.",
+      "findings": [
+        {
+          "category": "abstention-check",
+          "severity": "note",
+          "subject": "22690",
+          "description": "The only act is the witnessing of a diploma whose grantor and content the regest does not give. No in-scope act or state is stated beyond the formulaic witness function.",
+          "evidence_quote": "als Zeuge eines am 12. Dezember 1152 zu Mainz ausgefertigten Diploms für das Kloster Alteburg (Reg. 147) genannt",
+          "proposed_correction": "None; keep the abstention."
+        }
+      ],
+      "model_gaps": [
+        "Attestation of a charter by named witnesses cannot be expressed; rv:Witness is restricted to testimony in a narrated dispute."
+      ]
+    },
+    {
+      "uid": "22691",
+      "coverage_note": "Election, kinship with Staufer and Welfen, and the parenthood of the young son are extracted. The closing act of fealty and homage is missing, and the reason for the election loses its attribution to Otto of Freising.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22691",
+          "description": "The final sentence reports that all princes present swore fealty and did homage to Friedrich after the election. This establishes a lord-vassal relation and is in scope, but no factoid represents it.",
+          "evidence_quote": "Nach durchgeführter Wahl läßt sich Friedrich von allen anwesenden Fürsten Treueid und Mannschaft leisten.",
+          "proposed_correction": "Add a StateFactoid rv:FeudalRelationship (Friedrich rv:Lord, local group 'allen anwesenden Fürsten' rv:Vassal) with rf:qualifier \"Treueid und Mannschaft\" and \"Nach durchgeführter Wahl\", or report it as a model gap if an oath act type is wanted."
+        },
+        {
+          "category": "lost-attribution",
+          "severity": "warning",
+          "subject": "urn:regesta:22691:election",
+          "description": "The regest explicitly attributes the reason for the election to Otto of Freising. As rf:ground of the election the reason appears as the regest's own, and the attribution is lost. The kinship StateFactoid rests on the same attributed passage.",
+          "evidence_quote": "Als Grund für diese Wahl nennt Otto von Freising die Verwandtschaft Friedrichs mit Staufern und Welfen",
+          "proposed_correction": "Extend the rf:ground literal to start with \"Als Grund für diese Wahl nennt Otto von Freising\" or add rf:qualifier \"nennt Otto von Freising\" on both the election and the kinship factoid."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "urn:regesta:22691:election",
+          "description": "The preference of Friedrich over the young son of the deceased king, with the stated consideration of the common good, is not captured; only the parenthood is extracted from that clause.",
+          "evidence_quote": "unter Bedachtnahme auf das Gemeinwohl dem kleinen Sohn des verstorbenen Königs, Friedrich, vorgezogen haben",
+          "proposed_correction": "Add rf:ground \"unter Bedachtnahme auf das Gemeinwohl\" to the election and reference the son as a further participant, or record a model gap for a rival candidate role."
+        },
+        {
+          "category": "name-in-source",
+          "severity": "note",
+          "subject": "urn:regesta:22691:parenthood-king-son",
+          "description": "The child's nameInSource is the whole descriptive phrase rather than the naming wording.",
+          "evidence_quote": "dem kleinen Sohn des verstorbenen Königs, Friedrich",
+          "proposed_correction": "Use rf:nameInSource \"Friedrich\" (or \"dem kleinen Sohn\") for the Child reference."
+        }
+      ],
+      "model_gaps": [
+        "No act type for an oath of fealty or homage; only the resulting state rv:FeudalRelationship can be expressed.",
+        "No property for attributing a ground or statement to a narrative source named inside the regest (here Otto of Freising).",
+        "No role for supporters of a candidate in an election (Arnold and Hillin 'treten besonders für ihn ein') or for a passed-over rival."
+      ]
+    },
+    {
+      "uid": "22692",
+      "coverage_note": "Abstention. The regest reports travel only, which the guidelines exclude. The Latin designation 'villa regali' does not state an act or a possession relation strong enough for a factoid.",
+      "findings": [],
+      "model_gaps": []
+    },
+    {
+      "uid": "22693",
+      "coverage_note": "Coronation and consecration of the bishop of Münster are extracted. The decided legation to the pope, the negotiation with the princes and postponement of the Italian expedition, the coronation oath and the refused pardon are not.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "error",
+          "subject": "22693",
+          "description": "The decision to send a legation of Hillin, Eberhard and Adam to Pope Eugen, Rome and Italy to announce the election is a central in-scope act that rv:Mission with rv:Envoy and rv:Addressee expresses directly; all actors have candidates in this packet. It is missing.",
+          "evidence_quote": "Die Entsendung einer Legation, bestehend aus dem Elekten Hillin von Trier, Bischof Eberhard von Bamberg und Abt Adam von Ebrach (vgl. Reg. 72), an Papst Eugen (III.), die Stadt Rom und ganz Italien zur Anzeige der Wahl des neuen Königs wird beschlossen.",
+          "proposed_correction": "Add an ActFactoid rv:Mission with Hillin (RI004-002-H001017), Eberhard (RI004-002-E000011), Adam (RI004-002-A000294) as rv:Envoy, Eugen (RI004-002-E000589) and Rome as rv:Addressee, rf:qualifier \"wird beschlossen\" so the decision is not read as the departure."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22693",
+          "description": "The negotiation of Friedrich with the princes on the next day and its outcome, the provisional postponement of the Italian expedition for the imperial coronation on the objections of the lay princes, are not extracted. The predecessor's order of the expedition is an earlier act mentioned in the same clause.",
+          "evidence_quote": "Am nächsten Tag verhandelt Friedrich in den Gemächern der Pfalz mit den Fürsten",
+          "proposed_correction": "Add an rv:Negotiation factoid (Friedrich and local group 'den Fürsten' as rv:Negotiator) and an rv:Enactment for the postponement with rf:qualifier \"vorläufig aufgeschoben\" and rf:ground \"wegen der Einwände der Laienfürsten\"; optionally the advice of the spiritual princes as rv:Request."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "urn:regesta:22693:coronation",
+          "description": "The coronation oath sworn before the anointing is an act of Friedrich (a promise) that is only folded into the evidence of the coronation factoid.",
+          "evidence_quote": "nach Ablegung des herkömmlichen Krönungseides",
+          "proposed_correction": "Add an rv:Assurance factoid with Friedrich as Grantor and rf:qualifier \"herkömmlichen Krönungseides\", linked by rf:partOf to the coronation."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "note",
+          "subject": "22693",
+          "description": "The refusal to pardon a ministerial whom Friedrich had deprived of his favour because of his offences states a lordship relation and an earlier withdrawal of favour; the contract has no fitting act type.",
+          "evidence_quote": "vergibt er einem seiner Ministerialen, dem er wegen seiner Vergehen die Gunst entzogen hat und der sich ihm nun zu Füßen wirft, nicht",
+          "proposed_correction": "Record as a model gap, or extract the withdrawal of favour as rv:Revocation with rf:ground \"wegen seiner Vergehen\"."
+        }
+      ],
+      "model_gaps": [
+        "No act type for refusal of pardon or withdrawal of favour.",
+        "No act type for a decision or postponement distinct from a legal enactment."
+      ]
+    },
+    {
+      "uid": "22695",
+      "coverage_note": "Confirmation, the Leuth provision, the restitution by Duke Gottfried, the advocacy provisions, the prohibition of sub-advocates and the prebend provision with its condition are all extracted. The witness list is correctly skipped.",
+      "findings": [
+        {
+          "category": "role-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22695:restitution-leuth",
+          "description": "Duke Gottfried is given rv:Grantor for returning the estate and Konrad III rv:Participant for the admonition; the vocabulary has no restitutor or admonisher role, and the recipient of the restitution is only implicit.",
+          "evidence_quote": "das Herzog Gottfried von Löwen erst nach Ermahnung durch König Konrad (III.) zurückgestellt hat",
+          "proposed_correction": "None required; consider an rv:Request factoid for the admonition by Konrad with Gottfried as rv:Addressee."
+        }
+      ],
+      "model_gaps": [
+        "No role for the party returning a possession in a restitution or for the admonishing ruler."
+      ]
+    },
+    {
+      "uid": "22697",
+      "coverage_note": "The advocacy regulation, the Königsbann provision, the prohibition on exactions, the earlier renewal by the uncle with its confirmation and the kinship are extracted. The earlier court judgment is represented, but its original pronouncement and renewal under Konrad III are merged.",
+      "findings": [
+        {
+          "category": "collapsed-acts",
+          "severity": "warning",
+          "subject": "urn:regesta:22697:earlier-judgment",
+          "description": "The passage speaks of a court judgment renewed under Konrad III. The candidate types the renewed judgment as one rv:Judgment with Konrad as Participant, collapsing the original judgment and its renewal; the time of the original judgment is not under Konrad.",
+          "evidence_quote": "eines unter Konrad III. erneuerten Urteilsspruches des Hofgerichts",
+          "proposed_correction": "Split into an rv:Judgment by 'des Hofgerichts' without a ruler reference and an rv:Confirmation (renewal) with Konrad III and rf:qualifier \"erneuerten\", joined by rf:refersToAct."
+        },
+        {
+          "category": "identification-consistency",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22697:local:stift",
+          "description": "'der Stadt' is identified with the register entry Lüttich Stadt while 'des Stiftes' is left local, although the packet carries the Domkapitel Lüttich entry already used for 'Domkapitels zu Lüttich'. Either both are inferred from context or neither.",
+          "evidence_quote": "die Privilegien der Stadt und des Stiftes",
+          "proposed_correction": "Treat both consistently: identify 'des Stiftes' with RI004-002-L000934:community or keep 'der Stadt' local too."
+        },
+        {
+          "category": "role-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22697:enactment-voegte",
+          "description": "The Domkapitel is a Participant; it is the body whose advocates are regulated and would fit rv:Beneficiary. The 'Oheim' is correctly kept local rather than identified with Konrad III through the register label.",
+          "evidence_quote": "die Rechte der Vögte des Domkapitels zu Lüttich (ius advocatorum et terminum iuris eorum) fest",
+          "proposed_correction": "Optionally use rv:Beneficiary for the Domkapitel."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22698",
+      "coverage_note": "Abstention. The regest states that Wibald has the seal dies made on the king's commission. The commission is an administrative act that rv:Appointment ('Beauftragung mit einer Aufgabe') can express, so the abstention is questionable.",
+      "findings": [
+        {
+          "category": "questionable-abstention",
+          "severity": "warning",
+          "subject": "22698",
+          "description": "The king commissions Wibald with having the seal dies made. This is a commission with named parties, not a chancery note on the charter, and the contract's rv:Appointment covers commissioning with a task. The making of the dies itself is performance and need not be a factoid.",
+          "evidence_quote": "Wibald läßt im Auftrag des Königs die zur Besiegelung der Diplome nötigen Siegelstempel (für Wachssiegel und Goldbullen) herstellen.",
+          "proposed_correction": "Add an ActFactoid rv:Appointment with the shared ruler (nameInSource \"des Königs\") as Grantor and Wibald (RI004-002-W000420) as Recipient, rf:qualifier \"im Auftrag\"."
+        }
+      ],
+      "model_gaps": []
+    },
+    {
+      "uid": "22699",
+      "coverage_note": "The notification letter, the election and five promises are extracted. The anointing and enthronement, the promise to restore the empire, and the recommendation of the legates with the request to return the abbot of Ebrach are missing.",
+      "findings": [
+        {
+          "category": "omitted-passage",
+          "severity": "error",
+          "subject": "22699",
+          "description": "The promise to restore the former splendour of the empire under the two-powers principle is one of the listed promises; the candidate splits every other promise of the sentence into its own Assurance but drops this one, which the contract expresses in the same way.",
+          "evidence_quote": "den früheren Glanz des Reiches unter Beachtung des Grundsatzes von den zwei Gewalten wiederherzustellen",
+          "proposed_correction": "Add an rv:Assurance with Friedrich as Grantor, Eugen as Addressee, rf:qualifier \"unter Beachtung des Grundsatzes von den zwei Gewalten\", rf:partOf the communication."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22699",
+          "description": "The anointing and enthronement by Archbishop Arnold of Cologne and other bishops at Aachen, notified in the letter, is not extracted, although the election in the same sentence is. Arnold has a candidate in the packet.",
+          "evidence_quote": "durch Erzbischof A(rnold) von Köln und andere Bischöfe unter Akklamation des Volkes zu Aachen vorgenommene Königssalbung sowie die Thronsetzung",
+          "proposed_correction": "Add an rv:Appointment with Friedrich as Recipient, Arnold (RI004-002-A001202) as Grantor, 'andere Bischöfe' and 'des Volkes' as Participant, rf:qualifier \"Königssalbung sowie die Thronsetzung\"."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22699",
+          "description": "The recommendation of the legates and the request for the early return of the abbot of Ebrach are a request to the pope that rv:Request expresses.",
+          "evidence_quote": "Er empfiehlt ihm seine Legaten und bittet um baldige Rücksendung des Abtes von Ebrach.",
+          "proposed_correction": "Add an rv:Request with Friedrich as requester, Eugen as rv:Addressee and Adam (RI004-002-A000294, 'des Abtes von Ebrach') as Participant, rf:qualifier \"baldige\", rf:partOf the communication."
+        },
+        {
+          "category": "identification",
+          "severity": "note",
+          "subject": "urn:regesta:actor:22699:local:vorgaenger",
+          "description": "'seinem Vorgänger' denotes an individual, King Konrad III named earlier in the same regest, rather than an office-determined actor; rf:FunctionalActor is meant for 'der jeweilige' kinds. Keeping it local is cautious but the type is off.",
+          "evidence_quote": "die von seinem Vorgänger dem Papst gegenüber gemachten Zusagen",
+          "proposed_correction": "Type the local actor crm:E21_Person, or identify it with RI004-002-K000316 if the reviewer accepts the in-regest co-reference."
+        },
+        {
+          "category": "role-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22699:communication",
+          "description": "The sender of the letter carries rv:Participant because the vocabulary has no sender role; the pope is rv:Beneficiary in the enemies promise but rv:Addressee in the others.",
+          "evidence_quote": "Friedrich unterrichtet Papst Eugen (III.)",
+          "proposed_correction": "Use rv:Addressee for Eugen consistently and keep Participant for the sender until the vocabulary has a sender role."
+        }
+      ],
+      "model_gaps": [
+        "No role for the sender or author of a communication.",
+        "No act type for a recommendation."
+      ]
+    },
+    {
+      "uid": "22700",
+      "coverage_note": "The letter, the reported election and the advice to declare Friedrich king are extracted. The predecessor is not referenced in the election, and the reported outcome of the Aachen deliberations is missing.",
+      "findings": [
+        {
+          "category": "lost-reference",
+          "severity": "warning",
+          "subject": "urn:regesta:22700:election",
+          "description": "The election is to the succession of King Konrad III, who has a candidate in this packet. The qualifier 'zu dessen Nachfolger' keeps a pronoun whose referent is not represented, so the succession relation is lost.",
+          "evidence_quote": "nach dem Tode König Konrads (III.) erfolgte Wahl Herzog Friedrichs von Schwaben zu dessen Nachfolger",
+          "proposed_correction": "Add a reference to RI004-002-K000316 (nameInSource \"König Konrads (III.)\") as rv:Participant and keep rf:qualifier \"nach dem Tode\" and \"zu dessen Nachfolger\"."
+        },
+        {
+          "category": "omitted-passage",
+          "severity": "warning",
+          "subject": "22700",
+          "description": "The letter reports the Aachen deliberations, in which the lay princes rejected the immediate swearing of an Italian expedition. This is a reported collective decision not represented.",
+          "evidence_quote": "die eine Ablehnung der sofortigen Beschwörung eines Italienzuges durch die Laienfürsten brachten",
+          "proposed_correction": "Add an rv:Negotiation factoid with local group 'die Laienfürsten' as rv:Negotiator and rf:qualifier \"Ablehnung der sofortigen Beschwörung eines Italienzuges\", or report it as a model gap."
+        },
+        {
+          "category": "type-choice",
+          "severity": "note",
+          "subject": "urn:regesta:22700:advice-declare-king",
+          "description": "Advice is typed rv:Request; the vocabulary has no advice type, and the qualifier 'rät' preserves the wording. Wibald as author is rv:Participant for lack of a sender role.",
+          "evidence_quote": "rät ihm, Friedrich zum König und Verteidiger der Kirche zu erklären",
+          "proposed_correction": "None required."
+        }
+      ],
+      "model_gaps": [
+        "No act type for advice or counsel distinct from a request.",
+        "No role for the author or sender of a letter."
+      ]
+    }
+  ]
+}

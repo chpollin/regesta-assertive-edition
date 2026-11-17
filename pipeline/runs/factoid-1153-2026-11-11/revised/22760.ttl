@@ -1,0 +1,108 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22760> a crm:E31_Document ;
+    rdfs:label "RI IV,2,1 n. 133" .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-P000906:community> a crm:E74_Group ;
+    rdfs:label "Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm)" .
+
+<urn:regesta:actor:RI004-002-K000316> a crm:E21_Person ;
+    rdfs:label "Konrad (III.)" .
+
+<urn:regesta:actor:RI004-002-L000682> a crm:E21_Person ;
+    rdfs:label "Lothars (III.)" .
+
+<urn:regesta:actor:22760:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seine Vorgänger" .
+
+<urn:regesta:22760:besitzstand> a crm:E18_Physical_Thing ;
+    rdfs:label "den Besitzstand" .
+
+<urn:regesta:22760:gueter-paludano-gonzaga> a crm:E18_Physical_Thing ;
+    rdfs:label "Güter zu Paludano (Lectus Paludanus) und Gonzaga" .
+
+<urn:regesta:22760:pegognaga> a crm:E18_Physical_Thing ;
+    rdfs:label "Pegognaga (Pigugnaga)" .
+
+<urn:regesta:22760:protection> a rf:ActFactoid ;
+    rf:factoidType rv:ProtectionGrant ;
+    rf:source <urn:regesta:record:22760> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das Kloster S. Benedetto di Polirone (monasterium sancti Benedicti super Padum situm) in seinen Schutz" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:role rv:Recipient ; rf:nameInSource "Kloster S. Benedetto di Polirone" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22760:predecessors-confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22760> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm wie seine Vorgänger den Besitzstand" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:22760:local:vorgaenger> ; rf:role rv:Grantor ; rf:nameInSource "seine Vorgänger" ] ;
+    rf:concerns <urn:regesta:22760:besitzstand> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22760:confirmation> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22760> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "bestätigt ihm wie seine Vorgänger den Besitzstand" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22760:besitzstand> ;
+    rf:refersToAct <urn:regesta:22760:predecessors-confirmation> ;
+    rf:qualifier "wie seine Vorgänger" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22760:confirmation-paludano-gonzaga> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22760> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "darunter zum Seelenheil seines Oheims, Konrad (III.), namentlich Güter zu Paludano (Lectus Paludanus) und Gonzaga" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22760:gueter-paludano-gonzaga> ;
+    rf:ground "zum Seelenheil seines Oheims, Konrad (III.)" ;
+    rf:partOf <urn:regesta:22760:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22760:lothar-precedent> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22760> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "nach dem Vorgang Lothars (III.) Pegognaga (Pigugnaga)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000682> ; rf:role rv:Grantor ; rf:nameInSource "Lothars (III.)" ] ;
+    rf:concerns <urn:regesta:22760:pegognaga> ;
+    rf:qualifier "nach dem Vorgang" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22760:confirmation-pegognaga> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22760> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "sowie nach dem Vorgang Lothars (III.) Pegognaga (Pigugnaga)" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-P000906:community> ; rf:role rv:Recipient ; rf:nameInSource "ihm" ] ;
+    rf:concerns <urn:regesta:22760:pegognaga> ;
+    rf:refersToAct <urn:regesta:22760:lothar-precedent> ;
+    rf:partOf <urn:regesta:22760:confirmation> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-33> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22760:kinship-konrad> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:source <urn:regesta:record:22760> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "seines Oheims, Konrad (III.)" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "Friedrich nimmt das Kloster S. Benedetto di Polirone" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Kin ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-K000316> ; rf:role rv:Kin ; rf:nameInSource "Konrad (III.)" ] ;
+    rf:qualifier "Oheims" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g7> ;
+    rf:verificationStatus rv:unchecked .

@@ -1,0 +1,99 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22729> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-B000114:community> a crm:E74_Group ;
+    rdfs:label "Kirche von Bamberg" .
+
+<urn:regesta:actor:22729:local:vorgaenger> a rf:FunctionalActor ;
+    rdfs:label "seinen Vorgängern" .
+
+<urn:regesta:actor:22729:local:fuersten> a crm:E74_Group ;
+    rdfs:label "der Fürsten" .
+
+<urn:regesta:actor:RI004-002-B000726> a crm:E21_Person ;
+    rdfs:label "Graf Berthold von Andechs" .
+
+<urn:regesta:actor:RI004-002-N000175:community> a crm:E74_Group ;
+    rdfs:label "Reichsabtei Niederaltaich" .
+
+<urn:regesta:22729:verfuegungsgewalt> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "Verfügungsgewalt über die Reichsabtei Niederaltaich" .
+
+<urn:regesta:22729:rechte-an-abtei> a crm:E30_Right ;
+    crm:P2_has_type rv:ChurchRights ;
+    rdfs:label "ihre Rechte an der genannten Abtei" .
+
+<urn:regesta:22729:auszeichnung-vorgaenger> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22729> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "der Kirche von Bamberg , die schon von seinen Vorgängern durch die Verfügungsgewalt über die Reichsabtei Niederaltaich ausgezeichnet worden war" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22729:local:vorgaenger> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "seinen Vorgängern" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-B000114:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Kirche von Bamberg" ] ;
+    rf:concerns <urn:regesta:22729:verfuegungsgewalt> , <urn:regesta:actor:RI004-002-N000175:community> ;
+    rf:qualifier "schon" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22729:bestaetigung> a rf:ActFactoid ;
+    rf:factoidType rv:Confirmation ;
+    rf:source <urn:regesta:record:22729> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Friedrich bestätigt der Kirche von Bamberg" ] ,
+      [ a oa:TextQuoteSelector ;
+        oa:exact "auf Rat und mit Zustimmung der Fürsten durch den von ihm dazu erwählten Vogt, Graf Berthold von Andechs, auf einem feierlichen Hoftag zu Regensburg ihre Rechte an der genannten Abtei" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "Friedrich" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-B000114:community> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Kirche von Bamberg" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:22729:local:fuersten> ;
+        rf:role rv:Participant ;
+        rf:nameInSource "der Fürsten" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-B000726> ;
+        rf:role rv:Representative ;
+        rf:nameInSource "Graf Berthold von Andechs" ] ;
+    rf:concerns <urn:regesta:22729:rechte-an-abtei> , <urn:regesta:actor:RI004-002-N000175:community> ;
+    rf:qualifier "auf Rat und mit Zustimmung der Fürsten" ;
+    rf:refersToAct <urn:regesta:22729:auszeichnung-vorgaenger> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22729:wahl-vogt> a rf:ActFactoid ;
+    rf:factoidType rv:Appointment ;
+    rf:source <urn:regesta:record:22729> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "durch den von ihm dazu erwählten Vogt, Graf Berthold von Andechs" ] ;
+    rf:reference [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+        rf:role rv:Grantor ;
+        rf:nameInSource "ihm" ] ,
+      [ a rf:Reference ;
+        rf:actor <urn:regesta:actor:RI004-002-B000726> ;
+        rf:role rv:Recipient ;
+        rf:nameInSource "Graf Berthold von Andechs" ] ;
+    rf:qualifier "dazu erwählten Vogt" ;
+    rf:partOf <urn:regesta:22729:bestaetigung> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-25> ;
+    rf:verificationStatus rv:unchecked .

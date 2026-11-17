@@ -1,0 +1,59 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22688> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-G000209> a crm:E21_Person ;
+    rdfs:label "Gebhard von Würzburg" .
+
+<urn:regesta:actor:RI004-002-E000011> a crm:E21_Person ;
+    rdfs:label "Eberhard von Bamberg" .
+
+<urn:regesta:actor:RI004-002-B000726> a crm:E21_Person ;
+    rdfs:label "Graf Berthold von Plassenburg-Andechs" .
+
+<urn:regesta:actor:RI004-002-L000151:community> a crm:E74_Group ;
+    rdfs:label "Zisterzienserkloster Langheim" .
+
+# A consultation on the reorganisation of the realm; typed rv:Negotiation provisionally because the
+# vocabulary has no meeting or consultation act. It establishes no agreement.
+<urn:regesta:22688:colloquium> a rf:ActFactoid ;
+    rf:factoidType rv:Negotiation ;
+    rf:source <urn:regesta:record:22688> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Friedrich hat mit den Bischöfen Gebhard von Würzburg und Eberhard von Bamberg eine Besprechung über die Neuordnung des Reiches" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Negotiator ; rf:nameInSource "Friedrich" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-G000209> ; rf:role rv:Negotiator ; rf:nameInSource "Gebhard von Würzburg" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-E000011> ; rf:role rv:Negotiator ; rf:nameInSource "Eberhard von Bamberg" ] ;
+    rf:qualifier "Besprechung" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;
+    rf:verificationStatus rv:unchecked .
+
+# An exchange is typed rv:Grant with the qualifier Tauschgeschaeft, because the vocabulary has no
+# exchange act. The regest names neither the exchanged goods nor the direction of transfer, so both
+# parties carry rv:Participant.
+<urn:regesta:22688:exchange> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22688> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "per manum Friderici, tunc strenui ducis postea gloriosi Romanorum regis) an einem Tauschgeschäft zwischen Graf Berthold von Plassenburg-Andechs und dem Zisterzienserkloster Langheim mit" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-B000726> ; rf:role rv:Participant ; rf:nameInSource "Graf Berthold von Plassenburg-Andechs" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000151:community> ; rf:role rv:Participant ; rf:nameInSource "Zisterzienserkloster Langheim" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Mediator ; rf:nameInSource "Friderici" ] ;
+    rf:qualifier "Tauschgeschäft" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22688:office-duke> a rf:StateFactoid ;
+    rf:factoidType rv:OfficeHolding ;
+    rf:source <urn:regesta:record:22688> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "wirkt noch als Herzog von Schwaben (per manum Friderici, tunc strenui ducis" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Officeholder ; rf:nameInSource "Friderici" ] ;
+    rf:qualifier "noch" , "Herzog von Schwaben" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-15> ;
+    rf:verificationStatus rv:unchecked .

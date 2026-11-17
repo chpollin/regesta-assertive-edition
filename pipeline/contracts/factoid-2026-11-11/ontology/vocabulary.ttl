@@ -1,0 +1,211 @@
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix gnd:  <https://d-nb.info/gnd/> .
+
+# Every definition below is a draft written by an LLM agent on 2026-11-11 and is unchecked.
+# The hierarchy of right types is itself a historical judgement and belongs to expert review.
+# GND subject headings are linked with closeMatch only, because they index topics and do not
+# define legal types.
+
+rv:ActTypes a skos:ConceptScheme ;
+    skos:prefLabel "Akttypen"@de , "Act types"@en ;
+    skos:editorialNote "Definitionen: Entwurf eines LLM, ungeprüft."@de .
+rv:StateTypes a skos:ConceptScheme ;
+    skos:prefLabel "Zustandstypen"@de , "State types"@en ;
+    skos:editorialNote "Definitionen: Entwurf eines LLM, ungeprüft."@de .
+rv:Roles a skos:ConceptScheme ;
+    skos:prefLabel "Rollen"@de , "Roles"@en ;
+    skos:editorialNote "Definitionen: Entwurf eines LLM, ungeprüft."@de .
+rv:RightTypes a skos:ConceptScheme ;
+    skos:prefLabel "Rechtstypen"@de , "Right types"@en ;
+    skos:editorialNote "Definitionen und Hierarchie: Entwurf eines LLM, ungeprüft. Die Einordnung historischer Rechte verlangt fachliche Prüfung."@de .
+rv:Status a skos:ConceptScheme ;
+    skos:prefLabel "Prüfstatus"@de , "Verification status"@en .
+
+rv:unchecked a skos:Concept , crm:E55_Type ; skos:inScheme rv:Status ;
+    skos:prefLabel "ungeprüft"@de , "unchecked"@en ;
+    skos:definition "Von keiner Fachperson am Regest geprüft. Technische Prüfungen ändern diesen Status nicht."@de .
+
+# Act types
+
+rv:Grant a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Übertragung"@de , "Grant"@en ;
+    skos:definition "Ein Akteur überträgt einem anderen ein Recht, einen Besitz oder eine Einrichtung."@de .
+rv:Donation a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:broader rv:Grant ;
+    skos:prefLabel "Schenkung"@de , "Donation"@en ;
+    skos:definition "Unentgeltliche Übertragung, etwa an eine Kirche oder ein Kloster."@de .
+rv:RightGrant a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:broader rv:Grant ;
+    skos:prefLabel "Rechtsverleihung"@de , "Right grant"@en ;
+    skos:definition "Verleihung eines Rechts, etwa Markt, Zoll oder Münze."@de .
+rv:Enfeoffment a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:broader rv:Grant ;
+    skos:prefLabel "Belehnung"@de , "Enfeoffment"@en ;
+    skos:definition "Vergabe eines Gutes oder Rechts als Lehen."@de .
+rv:Sale a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:broader rv:Grant ;
+    skos:prefLabel "Verkauf"@de , "Sale"@en ;
+    skos:definition "Übertragung gegen Entgelt."@de .
+rv:Pledge a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:broader rv:Grant ;
+    skos:prefLabel "Verpfändung"@de , "Pledge"@en ;
+    skos:definition "Übertragung als Sicherheit bis zur Einlösung."@de .
+rv:Confirmation a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Bestätigung"@de , "Confirmation"@en ;
+    skos:definition "Ein Akteur bestätigt Besitz, Rechte oder einen früheren Akt. Die Bestätigung behauptet nicht, dass der frühere Akt rechtsgültig war."@de .
+rv:Assurance a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Zusicherung"@de , "Assurance"@en ;
+    skos:definition "Ein Akteur sichert für die Zukunft etwas zu, etwa freie Verfügung oder Schutz."@de .
+rv:ProtectionGrant a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Schutznahme"@de , "Protection grant"@en ;
+    skos:definition "Ein Akteur nimmt eine Person oder Einrichtung in seinen Schutz."@de .
+rv:Enactment a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Bestimmung"@de , "Enactment"@en ;
+    skos:definition "Eine rechtliche Festlegung oder ein Verbot, das die Urkunde trifft, ohne dass ihre Befolgung belegt ist."@de .
+rv:Appointment a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Einsetzung"@de , "Appointment"@en ;
+    skos:definition "Einsetzung in ein Amt oder Beauftragung mit einer Aufgabe."@de .
+rv:Request a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Bitte"@de , "Request"@en ;
+    skos:definition "Ein Akteur bittet oder ersucht einen anderen. Die Bitte belegt nicht ihre Erfüllung."@de .
+rv:Mission a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Entsendung"@de , "Mission"@en ;
+    skos:definition "Ein Akteur entsendet Gesandte zu einem Zweck. Die Entsendung belegt nicht ihr Ergebnis."@de .
+rv:Communication a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Schreiben"@de , "Communication"@en ;
+    skos:definition "Ein Schreiben oder eine Mitteilung wird ausgefertigt oder gerichtet. Die Zustellung ist damit nicht belegt."@de .
+rv:Negotiation a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Verhandlung"@de , "Negotiation"@en ;
+    skos:definition "Verhandlung über eine künftige Vereinbarung, etwa eine Ehe. Sie belegt keinen Abschluss."@de .
+rv:Dispute a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Streit oder Klage"@de , "Dispute"@en ;
+    skos:definition "Ein Streit oder eine Klage vor einem Gericht oder Herrscher."@de .
+rv:Judgment a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Urteil"@de , "Judgment"@en ;
+    skos:definition "Entscheidung eines Streits durch Spruch."@de .
+rv:Payment a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Zahlung"@de , "Payment"@en ;
+    skos:definition "Eine geleistete Zahlung. Eine Zahlungspflicht allein ist keine Zahlung."@de .
+rv:DebtRelease a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Schuldenerlass"@de , "Debt release"@en ;
+    skos:definition "Erlass einer Schuld oder Verpflichtung."@de .
+rv:Restitution a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Rückgabe"@de , "Restitution"@en ;
+    skos:definition "Rückgabe eines Besitzes oder Rechts."@de .
+rv:Revocation a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Widerruf"@de , "Revocation"@en ;
+    skos:definition "Aufhebung einer früheren Vergabe oder Bestimmung."@de .
+rv:MarriageConclusion a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Eheschließung"@de , "Marriage conclusion"@en ;
+    skos:definition "Schließung einer Ehe, wie das Regest sie berichtet."@de .
+rv:MarriageDissolution a skos:Concept , crm:E55_Type ; skos:inScheme rv:ActTypes ; skos:topConceptOf rv:ActTypes ;
+    skos:prefLabel "Ehescheidung"@de , "Marriage dissolution"@en ;
+    skos:definition "Auflösung einer Ehe, wie das Regest sie berichtet."@de .
+
+# State types
+
+rv:Parenthood a skos:Concept , crm:E55_Type ; skos:inScheme rv:StateTypes ; skos:topConceptOf rv:StateTypes ;
+    skos:prefLabel "Elternschaft"@de , "Parenthood"@en ;
+    skos:definition "Ein Akteur wird als Elternteil eines anderen genannt. Leibliche Abstammung ist damit nicht behauptet."@de .
+rv:Kinship a skos:Concept , crm:E55_Type ; skos:inScheme rv:StateTypes ; skos:topConceptOf rv:StateTypes ;
+    skos:prefLabel "Verwandtschaft"@de , "Kinship"@en ;
+    skos:definition "Eine andere genannte Verwandtschaft. Der Grad steht im Wortlaut, eine Abstammungskette wird nicht erschlossen."@de .
+rv:Marriage a skos:Concept , crm:E55_Type ; skos:inScheme rv:StateTypes ; skos:topConceptOf rv:StateTypes ;
+    skos:prefLabel "Ehe"@de , "Marriage"@en ;
+    skos:definition "Eine bestehende oder bestanden habende Ehe."@de .
+rv:RightHolding a skos:Concept , crm:E55_Type ; skos:inScheme rv:StateTypes ; skos:topConceptOf rv:StateTypes ;
+    skos:prefLabel "Rechtsinhaberschaft"@de , "Right holding"@en ;
+    skos:definition "Ein Akteur hat ein Recht inne, wie das Regest es sagt."@de .
+rv:Possession a skos:Concept , crm:E55_Type ; skos:inScheme rv:StateTypes ; skos:topConceptOf rv:StateTypes ;
+    skos:prefLabel "Besitz"@de , "Possession"@en ;
+    skos:definition "Ein Akteur besitzt Güter oder eine Einrichtung, wie das Regest es sagt."@de .
+rv:FeudalRelationship a skos:Concept , crm:E55_Type ; skos:inScheme rv:StateTypes ; skos:topConceptOf rv:StateTypes ;
+    skos:prefLabel "Lehnsverhältnis"@de , "Feudal relationship"@en ;
+    skos:definition "Ein Akteur trägt etwas von einem anderen zu Lehen."@de .
+rv:Obligation a skos:Concept , crm:E55_Type ; skos:inScheme rv:StateTypes ; skos:topConceptOf rv:StateTypes ;
+    skos:prefLabel "Verpflichtung"@de , "Obligation"@en ;
+    skos:definition "Eine bestehende Pflicht, etwa zu Zahlung, Dienst oder Fürsorge."@de .
+rv:OfficeHolding a skos:Concept , crm:E55_Type ; skos:inScheme rv:StateTypes ; skos:topConceptOf rv:StateTypes ;
+    skos:prefLabel "Amtsinhabe"@de , "Office holding"@en ;
+    skos:definition "Ein Akteur wird als Inhaber eines Amtes genannt, wo das für die Aussage nötig ist."@de .
+
+# Roles
+
+rv:Grantor a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Aussteller"@de , "Grantor"@en ;
+    skos:definition "Wer überträgt, bestätigt, verleiht oder bestimmt."@de .
+rv:Recipient a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Empfänger"@de , "Recipient"@en ;
+    skos:definition "Wem etwas übertragen, bestätigt oder verliehen wird."@de .
+rv:Beneficiary a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Begünstigter"@de , "Beneficiary"@en ;
+    skos:definition "Zu wessen Gunsten etwas geschieht, ohne selbst Empfänger zu sein."@de .
+rv:Petitioner a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Bittsteller"@de , "Petitioner"@en ;
+    skos:definition "Auf wessen Bitten ein Akt geschieht."@de .
+rv:Addressee a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Adressat"@de , "Addressee"@en ;
+    skos:definition "An wen eine Bitte, ein Schreiben oder eine Gesandtschaft gerichtet ist. Empfang oder Beteiligung ist damit nicht behauptet."@de .
+rv:Envoy a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Gesandter"@de , "Envoy"@en ;
+    skos:definition "Wer entsandt wird oder eine Botschaft überbringt."@de .
+rv:RightHolder a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Rechteinhaber"@de , "Right holder"@en ;
+    skos:definition "Wer ein Recht innehat."@de .
+rv:Possessor a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Besitzer"@de , "Possessor"@en ;
+    skos:definition "Wer einen Besitz innehat."@de .
+rv:Lord a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Lehnsherr"@de , "Lord"@en ;
+    skos:definition "Von wem etwas zu Lehen getragen wird."@de .
+rv:Vassal a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Lehnsmann"@de , "Vassal"@en ;
+    skos:definition "Wer etwas zu Lehen trägt."@de .
+rv:Officeholder a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Amtsinhaber"@de , "Officeholder"@en ;
+    skos:definition "Wer ein Amt innehat."@de .
+rv:Parent a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Elternteil"@de , "Parent"@en .
+rv:Child a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Kind"@de , "Child"@en .
+rv:Spouse a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Ehepartner"@de , "Spouse"@en .
+rv:Kin a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Verwandter"@de , "Kin"@en ;
+    skos:definition "Teil einer anderen Verwandtschaft, deren Grad im Wortlaut steht."@de .
+rv:Seller a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Verkäufer"@de , "Seller"@en .
+rv:Buyer a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Käufer"@de , "Buyer"@en .
+rv:Pledgor a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Verpfänder"@de , "Pledgor"@en .
+rv:Pledgee a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Pfandnehmer"@de , "Pledgee"@en .
+rv:Payer a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Zahler"@de , "Payer"@en .
+rv:Payee a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Zahlungsempfänger"@de , "Payee"@en .
+rv:Debtor a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Schuldner"@de , "Debtor"@en .
+rv:Creditor a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Gläubiger"@de , "Creditor"@en .
+rv:Obligor a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Verpflichteter"@de , "Obligor"@en .
+rv:Claimant a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Kläger"@de , "Claimant"@en .
+rv:Respondent a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Beklagter"@de , "Respondent"@en .
+rv:Judge a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Richter"@de , "Judge"@en .
+rv:Witness a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Zeuge"@de , "Witness"@en ;
+    skos:definition "Wer im erzählten Streit Zeugnis ablegt. Formelhafte Zeugenlisten der Urkunde gehören nicht dazu."@de .
+rv:Mediator a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Vermittler"@de , "Mediator"@en .
+rv:Representative a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Vertreter"@de , "Representative"@en .
+rv:Negotiator a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Verhandelnder"@de , "Negotiator"@en .
+rv:Participant a skos:Concept , crm:E55_Type ; skos:inScheme rv:Roles ; skos:prefLabel "Beteiligter"@de , "Participant"@en ;
+    skos:definition "Beteiligt, ohne dass das Regest eine bestimmtere Rolle trägt."@de .
+
+# Right types, grouped. The grouping is a draft for expert review.
+
+rv:LordshipRights a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:topConceptOf rv:RightTypes ;
+    skos:prefLabel "Herrschafts- und Schutzrechte"@de , "Lordship and protection rights"@en .
+rv:ChurchRights a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:topConceptOf rv:RightTypes ;
+    skos:prefLabel "Rechte an Kirchen und Ämtern"@de , "Rights over churches and offices"@en .
+rv:UsageRights a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:topConceptOf rv:RightTypes ;
+    skos:prefLabel "Nutzungs- und Einkünfterechte"@de , "Usage and revenue rights"@en .
+
+rv:Jurisdiction a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:LordshipRights ;
+    skos:prefLabel "Gerichtsbarkeit"@de , "Jurisdiction"@en .
+rv:Advocacy a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:LordshipRights ;
+    skos:prefLabel "Vogtei"@de , "Advocacy (advocatia)"@en ; skos:altLabel "advocatia"@la ;
+    skos:closeMatch gnd:4188497-8 ;
+    skos:definition "Schutz- und Herrschaftsrecht über eine Kirche oder ein Kloster und ihre Leute."@de ;
+    skos:editorialNote "Nicht auf LCSH Advowson abbilden, das das englische Patronatsrecht meint."@de .
+rv:Protection a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:LordshipRights ;
+    skos:prefLabel "Schutzrecht"@de , "Protection right"@en .
+rv:Investiture a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:ChurchRights ;
+    skos:prefLabel "Investiturrecht"@de , "Right of investiture"@en ;
+    skos:closeMatch gnd:4162259-5 ;
+    skos:definition "Recht, einen Amtsträger, etwa einen Abt, in sein Amt einzusetzen."@de .
+rv:Inheritance a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:UsageRights ;
+    skos:prefLabel "Erbrecht"@de , "Inheritance right"@en .
+rv:Market a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:UsageRights ;
+    skos:prefLabel "Marktrecht"@de , "Market right"@en .
+rv:Toll a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:UsageRights ;
+    skos:prefLabel "Zollrecht"@de , "Toll right"@en .
+rv:Minting a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:UsageRights ;
+    skos:prefLabel "Münzrecht"@de , "Minting right"@en .
+rv:Revenue a skos:Concept , crm:E55_Type ; skos:inScheme rv:RightTypes ; skos:broader rv:UsageRights ;
+    skos:prefLabel "Einkünfterecht"@de , "Revenue right"@en ;
+    skos:definition "Recht auf Einkünfte oder Abgaben."@de .

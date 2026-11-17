@@ -1,0 +1,51 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22717> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-W000420> a crm:E21_Person ; rdfs:label "Wibald" .
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ; rdfs:label "Erzbischof Arnold von Köln" .
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "der König" .
+
+<urn:regesta:22717:place-lothringen> a crm:E53_Place ; rdfs:label "Lothringen (regnum Lotharingiae)" .
+<urn:regesta:22717:thing-burg> a crm:E18_Physical_Thing ; rdfs:label "die neulich, allerdings ohne Wissen des Königs eroberte Burg" .
+
+# The letter. The grant and the assurance below are reported in it; partOf ties them to the letter.
+
+<urn:regesta:22717:f-letter> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22717> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Wibald schreibt an Erzbischof Arnold von Köln" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-W000420> ; rf:role rv:Participant ; rf:nameInSource "Wibald" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:role rv:Addressee ; rf:nameInSource "Erzbischof Arnold von Köln" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22717:f-lothringen-disposition> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:qualifier "seiner Disposition überlasse" ;
+    rf:partOf <urn:regesta:22717:f-letter> ;
+    rf:source <urn:regesta:record:22717> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Wibald schreibt an Erzbischof Arnold von Köln" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "daß ihm der König wegen seiner Verdienste um seine Wahl und der späteren Leistungen sehr dankbar sei, Lothringen (regnum Lotharingiae) seiner Disposition überlasse" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "der König" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:role rv:Recipient ; rf:nameInSource "Erzbischof Arnold von Köln" ] ;
+    rf:concerns <urn:regesta:22717:place-lothringen> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22717:f-castle-free-disposal> a rf:ActFactoid ;
+    rf:factoidType rv:Assurance ;
+    rf:qualifier "frei verfügen könne" ;
+    rf:partOf <urn:regesta:22717:f-letter> ;
+    rf:source <urn:regesta:record:22717> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "Wibald schreibt an Erzbischof Arnold von Köln" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "daß er über die neulich, allerdings ohne Wissen des Königs eroberte Burg frei verfügen könne" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-A001202> ; rf:role rv:Recipient ; rf:nameInSource "Erzbischof Arnold von Köln" ] ;
+    rf:concerns <urn:regesta:22717:thing-burg> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .

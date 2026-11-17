@@ -1,0 +1,48 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22718> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ; rdfs:label "(Friedrich)" .
+# The regest names the addressee as Herzog (Heinrich) von Sachsen and corrects it to Ludwig II.
+# This reading follows the correction; the identification is unresolved.
+<urn:regesta:actor:RI004-002-L000841> a crm:E21_Person ; rdfs:label "Landgraf Ludwig II. von Thüringen" .
+<urn:regesta:actor:RI004-002-V000532> a crm:E21_Person ; rdfs:label "Herzog (Vladislav) von Böhmen" .
+<urn:regesta:actor:22718:local:fuersten> a crm:E74_Group ; rdfs:label "den Fürsten" .
+
+<urn:regesta:22718:f-letter> a rf:ActFactoid ;
+    rf:factoidType rv:Communication ;
+    rf:source <urn:regesta:record:22718> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "(Friedrich) teilt Herzog (Heinrich) von Sachsen (richtig: Landgraf Ludwig II. von Thüringen ) mit" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Participant ; rf:nameInSource "(Friedrich)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:role rv:Addressee ; rf:nameInSource "Landgraf Ludwig II. von Thüringen" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22718:f-decision-to-punish> a rf:ActFactoid ;
+    rf:factoidType rv:Enactment ;
+    rf:partOf <urn:regesta:22718:f-letter> ;
+    rf:ground "Herzog (Vladislav) von Böhmen trotz kaiserlichen Befehls nicht auf dem Hoftag (zu Merseburg, vgl. Reg. 88) erschienen sei" ;
+    rf:condition "falls er nicht um des Empfängers willen, der mit dem Herzog verwandt und sehr befreundet ist, das Urteil abschwäche" ;
+    rf:source <urn:regesta:record:22718> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "(Friedrich) teilt" ] ,
+        [ a oa:TextQuoteSelector ; oa:exact "daß Herzog (Vladislav) von Böhmen trotz kaiserlichen Befehls nicht auf dem Hoftag (zu Merseburg, vgl. Reg. 88) erschienen sei und er dies nach Beratung mit den Fürsten zu ahnden beschlossen habe, falls er nicht um des Empfängers willen, der mit dem Herzog verwandt und sehr befreundet ist, das Urteil abschwäche" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-F000471> ; rf:role rv:Grantor ; rf:nameInSource "(Friedrich)" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000532> ; rf:role rv:Respondent ; rf:nameInSource "Herzog (Vladislav) von Böhmen" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:22718:local:fuersten> ; rf:role rv:Participant ; rf:nameInSource "den Fürsten" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22718:f-kinship> a rf:StateFactoid ;
+    rf:factoidType rv:Kinship ;
+    rf:qualifier "verwandt" ;
+    rf:source <urn:regesta:record:22718> ;
+    rf:evidence [ a oa:TextQuoteSelector ; oa:exact "des Empfängers willen, der mit dem Herzog verwandt" ] ;
+    rf:reference [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-L000841> ; rf:role rv:Kin ; rf:nameInSource "des Empfängers" ] ,
+        [ a rf:Reference ; rf:actor <urn:regesta:actor:RI004-002-V000532> ; rf:role rv:Kin ; rf:nameInSource "dem Herzog" ] ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-22> ;
+    rf:verificationStatus rv:unchecked .

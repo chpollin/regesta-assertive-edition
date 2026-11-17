@@ -1,0 +1,58 @@
+@prefix rf:   <https://example.org/regesta/factoid/> .
+@prefix rv:   <https://example.org/regesta/concept/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix oa:   <http://www.w3.org/ns/oa#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:regesta:record:22706> a crm:E31_Document .
+
+<urn:regesta:actor:RI004-002-F000471> a crm:E21_Person ;
+    rdfs:label "Friedrich" .
+
+<urn:regesta:actor:RI004-002-A001202> a crm:E21_Person ;
+    rdfs:label "Erzbischof Arnold II. von Köln" .
+
+<urn:regesta:actor:22706:local:vorgaenger-friedrich> a crm:E21_Person ;
+    rdfs:label "seines Vorgängers Friedrich" .
+
+<urn:regesta:22706:tafelgueter> a crm:E18_Physical_Thing ;
+    rdfs:label "erzbischöflichen Tafelgüter" .
+
+<urn:regesta:22706:judgment> a rf:ActFactoid ;
+    rf:factoidType rv:Judgment ;
+    rf:source <urn:regesta:record:22706> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "Vor Friedrich wird ein Fürstenspruch gefällt, der dem Erzbischof Arnold II. von Köln die Unveräußerlichkeit der erzbischöflichen Tafelgüter entgegen den Veräußerungen seines Vorgängers Friedrich bestätigt" ] ;
+    rf:reference <urn:regesta:22706:judgment-ref-friedrich> , <urn:regesta:22706:judgment-ref-arnold> ;
+    rf:concerns <urn:regesta:22706:tafelgueter> ;
+    rf:qualifier "Unveräußerlichkeit" , "Fürstenspruch" , "entgegen den Veräußerungen" ;
+    rf:refersToAct <urn:regesta:22706:alienations> ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:correction-g4> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22706:judgment-ref-friedrich> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-F000471> ;
+    rf:role rv:Participant ;
+    rf:nameInSource "Friedrich" .
+
+<urn:regesta:22706:judgment-ref-arnold> a rf:Reference ;
+    rf:actor <urn:regesta:actor:RI004-002-A001202> ;
+    rf:role rv:Recipient ;
+    rf:nameInSource "Erzbischof Arnold II. von Köln" .
+
+<urn:regesta:22706:alienations> a rf:ActFactoid ;
+    rf:factoidType rv:Grant ;
+    rf:source <urn:regesta:record:22706> ;
+    rf:evidence [ a oa:TextQuoteSelector ;
+        oa:exact "der erzbischöflichen Tafelgüter entgegen den Veräußerungen seines Vorgängers Friedrich" ] ;
+    rf:reference <urn:regesta:22706:alienations-ref-vorgaenger> ;
+    rf:concerns <urn:regesta:22706:tafelgueter> ;
+    rf:qualifier "Veräußerungen" ;
+    prov:wasAttributedTo <urn:regesta:agent:factoid-1153-2026-11-11:extraction-batch-19> ;
+    rf:verificationStatus rv:unchecked .
+
+<urn:regesta:22706:alienations-ref-vorgaenger> a rf:Reference ;
+    rf:actor <urn:regesta:actor:22706:local:vorgaenger-friedrich> ;
+    rf:role rv:Grantor ;
+    rf:nameInSource "seines Vorgängers Friedrich" .

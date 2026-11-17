@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import build_tei
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT.parent / "regesta-rdf-demo"
+SOURCE = ROOT / "pipeline"
 RUN = "factoid-2026-11-11"
 SCHEMA = ROOT / "schema" / "tei_all-4.12.0.rng"
 NS = {"t": "http://www.tei-c.org/ns/1.0"}
