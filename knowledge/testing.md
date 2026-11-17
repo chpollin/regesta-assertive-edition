@@ -28,7 +28,9 @@ Deterministic checks establish that a run conforms to its frozen contract and th
 - Explicit abstention and one result for every assigned UID.
 - With `--self-test`, mutations that must each be caught (fabricated evidence, state type on an act, unknown concept, actor outside the packet, missing status, role from the wrong scheme, empty extraction) and a valid minimal record that must pass.
 
-The exit code is 0 only if every record passes. In the run `factoid-2026-11-11` both the extracted and the revised stage pass, and the reviews still found errors in technically passing files ([adjudication](../pipeline/runs/factoid-2026-11-11/review/adjudication.json)). This is the gap between technical conformance and correctness that the edition makes visible by showing the revised stage with the extracted stage for comparison.
+The exit code is 0 only if every record passes. The reference is the shown run `factoid-1153-2026-11-11`: its extracted stage fails on one record and its revised stage passes, the reports of both stages and their known validator limits are recorded in its [manifest](../pipeline/runs/factoid-1153-2026-11-11/manifest.json) (validation), and the reviews found errors in technically passing files ([review overview](../pipeline/runs/factoid-1153-2026-11-11/review-overview.md)). This is the gap between technical conformance and correctness that the edition makes visible by showing the revised stage with the extracted stage for comparison. In the earlier run `factoid-2026-11-11`, whose six regesta the shown run reuses, both stages pass and its [adjudication](../pipeline/runs/factoid-2026-11-11/review/adjudication.json) records the same gap.
+
+`run.py validate` refuses a run whose validation reports record a validator hash other than that of the current `validate_factoid.py`, because validating would rewrite the frozen reports with a different validator; `--allow-validator-change` overrides this deliberately. The earlier run was validated with an older validator and is therefore refused by default.
 
 ## Semantic review and limits
 
@@ -54,9 +56,10 @@ These regesta lie in both runs and expose characteristic difficulties. Read the 
 ```powershell
 uv run run.py validate
 uv run run.py check
+uv run run.py export
 ```
 
-`run.py validate` checks both stages of `factoid-1153-2026-11-11` from inside `pipeline/`; `--run factoid-2026-11-11` checks the earlier run. Preparation refuses an existing run directory, and exploration overwrites its output only with `--force`. Extraction and review are recorded agent tasks and are not repeated by these commands.
+`run.py validate` checks both stages of `factoid-1153-2026-11-11` from inside `pipeline/` and leaves its reports byte-identical (checked on 2026-11-17). `--run factoid-2026-11-11` is refused, because that run's reports carry an older validator hash; `--allow-validator-change` would rewrite them. `run.py check` runs `uv run --locked pytest`, `ruff check` and `ruff format --check` from `uv.lock`. A check whose run is missing fails, since the pipeline lives in this repository. Preparation refuses an existing run directory, and exploration overwrites its output only with `--force`. Extraction and review are recorded agent tasks and are not repeated by these commands.
 
 ## Transfer checks
 
@@ -82,6 +85,21 @@ At the move on 2026-11-17 the validation reports and the `build_data.py` and `bu
 - Queries: every query in [queries/](../queries/) answers something on the merged graph. Mutation: an empty stage.
 
 The queries answer concrete questions over the merged graph, namely which acts name the ruler as grantor, which actors appear in more than one regest, which factoids concern a right of advocacy, and on which regesta the extraction abstained. The actor join across regesta rests only on the register ID in the actor IRI ([Factoid model](factoid-model.md#identity-across-regesta)).
+
+### Export checks
+
+[checks/test_export.py](../checks/test_export.py) builds the export of [build_graph.py](../build_graph.py) for the shown run three times into temporary folders and checks it in the same pattern.
+
+- Parsing: the TriG and the Turtle union parse. Mutation: a truncated Turtle file.
+- Nothing lost: each regest's named graph, with skolem IRIs turned back into blank nodes, `@de` removed and the namespaces mapped back, is isomorphic to its frozen file, so no statement is lost or added there; this also holds for an export under a sample namespace on the reserved `.test` domain, which keeps no IRI of the provisional namespaces. Mutations: a dropped statement, a sample export read without the namespace mapping.
+- No blank node remains. Mutation: an added blank node.
+- Every record has `rdfs:label`, `dcterms:identifier` and `rdfs:seeAlso`. Mutation: a removed persistent link.
+- A second export with the same inputs and date is byte-identical. Mutation: another export date.
+- Every query of [queries/](../queries/) gives as many rows on the Turtle union as on the merged stage. Mutation: the sample-namespace export, on which the queries answer nothing.
+
+### Delivery CSV reader
+
+[checks/test_edition_io.py](../checks/test_edition_io.py) reads both delivery files with the shared reader of `edition_io.py` and asserts that every row fits the header and that the register entries RI004-002-K000373 and RI004-002-P000183 stay person entries. Mutation: the default CSV dialect, which shifts the rows with backslash-escaped quotes. Until 2026-11-17 `build_holdings.py` and `check_itinerary.py` read the register that way, and Paschal III. (RI004-002-P000183) was missing from the person layer.
 
 ## Clean knowledge graph
 

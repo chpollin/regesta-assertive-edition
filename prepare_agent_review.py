@@ -1,14 +1,17 @@
 """Reader input for the agent review: per regest its text, per statement its complete Turtle.
 
-The statement is cut from the run's revised Turtle (the authoritative form, `runs/<run>/revised/
-<uid>.ttl` in the source repository): the factoid with every triple it carries, its references
+The statement is cut from the run's revised Turtle (the authoritative form, `pipeline/runs/<run>/
+revised/<uid>.ttl`): the factoid with every triple it carries, its references
 and its blank nodes, so qualifiers, exceptions and grounds stand as in the data. A first round
 on 2026-11-14 built the input from the edition JSON, whose literal lines carry no Turtle, and
 dropped 24 literals; its answers are kept under round1-incomplete-input/ and not used. Comments
 in the Turtle are the producing run's notes and do not reach the readers, since the subgraph is
 serialised anew. Embedded acts the statement points to stay out; they are statements of their own.
 
-Usage: python prepare_agent_review.py [--source pipeline] [--run factoid-1153-2026-11-11]
+The run defaults to the one the review's selection.json names, since the review belongs to that
+run whatever run the edition shows later.
+
+Usage: uv run prepare_agent_review.py [--source pipeline] [--run <run>]
 """
 
 from __future__ import annotations
@@ -20,6 +23,8 @@ from pathlib import Path
 
 from rdflib import BNode, Graph, Namespace, URIRef
 from rdflib.namespace import RDF
+
+from edition_io import load_json
 
 HERE = Path(__file__).resolve().parent
 RAW = HERE / "edition" / "agent-review-2026-11-14"
@@ -47,7 +52,7 @@ def _subgraph(g: Graph, factoid: URIRef) -> Graph:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--source", type=Path, default=HERE / "pipeline")
-    parser.add_argument("--run", default="factoid-1153-2026-11-11")
+    parser.add_argument("--run", default=load_json(RAW / "selection.json")["run"])
     args = parser.parse_args()
     revised = args.source / "runs" / args.run / "revised"
     texts = {

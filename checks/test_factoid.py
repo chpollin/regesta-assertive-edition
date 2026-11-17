@@ -1,12 +1,13 @@
 """Evidence check of the factoid path of build_data.py against the real factoid run.
 
-Builds runs/factoid-2026-11-11 of the sibling repository into a temporary folder, for both
-stages, and asserts that every evidence span of edition.json is verbatim regest text: a
+Builds the earlier run pipeline/runs/factoid-2026-11-11, whose six regesta the shown run
+reuses, into a temporary folder for both stages, and asserts that every evidence span of edition.json is verbatim regest text: a
 factoid span is exactly one oa:exact selector of the run's Turtle, a literal span is the
-literal's own wording. Skipped when the sibling repository or the run is missing.
+literal's own wording. A missing run fails the check, since the pipeline lives in this
+repository.
 
 Usage
-    python -m unittest discover -s checks -p "test_*.py"
+    uv run pytest -q checks/test_factoid.py
 """
 
 from __future__ import annotations
@@ -29,7 +30,6 @@ SOURCE = Path(__file__).resolve().parent.parent / "pipeline"
 RUN = "factoid-2026-11-11"
 
 
-@unittest.skipUnless((SOURCE / "runs" / RUN / "manifest.json").is_file(), "factoid run not available")
 class FactoidEvidence(unittest.TestCase):
     def _build(self, stage: str) -> dict:
         with tempfile.TemporaryDirectory() as tmp, redirect_stdout(StringIO()):

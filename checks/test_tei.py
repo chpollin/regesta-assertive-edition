@@ -1,13 +1,13 @@
 """Check of build_tei.py against the real factoid run.
 
-Builds the TEI of runs/factoid-2026-11-11 into a temporary folder and asserts that every
+Builds the TEI of the earlier run pipeline/runs/factoid-2026-11-11 into a temporary folder and asserts that every
 file validates against the vendored tei_all schema, that the regest paragraph gives back
 summary_plain character for character, and that every factoid points to evidence pieces
 whose joined text lies inside one of its oa:exact selectors. A paraphrased selector must
-abort the build. Skipped when the sibling repository or the run is missing.
+abort the build. A missing run fails the check, since the pipeline lives in this repository.
 
 Usage
-    python -m pytest -q checks/test_tei.py
+    uv run pytest -q checks/test_tei.py
 """
 
 from __future__ import annotations
@@ -32,7 +32,6 @@ NS = {"t": "http://www.tei-c.org/ns/1.0"}
 XML_ID = "{http://www.w3.org/XML/1998/namespace}id"
 
 
-@unittest.skipUnless((SOURCE / "runs" / RUN / "manifest.json").is_file(), "factoid run not available")
 class TeiBuild(unittest.TestCase):
     def test_valid_lossless_and_bound_to_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

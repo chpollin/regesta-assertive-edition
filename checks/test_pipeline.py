@@ -19,13 +19,12 @@ of the run is expert validated (manifest expert_accepted false).
    is verbatim regest text, and the TEI regest paragraph reads back as the regest text.
 
 Usage
-    python -m pytest -q checks/test_pipeline.py
+    uv run pytest -q checks/test_pipeline.py
 """
 
 from __future__ import annotations
 
 import copy
-import csv
 import importlib.util
 import json
 import sys
@@ -43,6 +42,7 @@ sys.path.insert(0, str(ROOT))
 
 import build_data  # noqa: E402
 import build_tei  # noqa: E402
+from edition_io import read_csv  # noqa: E402
 
 PIPELINE = ROOT / "pipeline"
 RUN = "factoid-1153-2026-11-11"
@@ -85,14 +85,12 @@ def load_world() -> dict:
         build_tei.build(PIPELINE, RUN, out / "tei", "revised", ROOT / "edition" / "texts.json", None)
         tei = {p.name: ET.parse(p).getroot() for p in (out / "tei").glob("*.xml")}
     wanted = set(selection)
-    with REGESTS_CSV.open(encoding="utf-8", newline="") as f:
-        rows = {r["uid"]: r for r in csv.DictReader(f) if r["uid"] in wanted}
+    rows = {r["uid"]: r for r in read_csv(REGESTS_CSV) if r["uid"] in wanted}
     identifiers = {packets[u]["identifier"] for u in selection if u in packets}
     register: dict[str, set[str]] = {}
-    with REGISTER_CSV.open(encoding="utf-8-sig", newline="") as f:
-        for r in csv.DictReader(f):
-            if r["regestaIdentifier"] in identifiers:
-                register.setdefault(r["regestaIdentifier"], set()).add(r["id"])
+    for r in read_csv(REGISTER_CSV):
+        if r["regestaIdentifier"] in identifiers:
+            register.setdefault(r["regestaIdentifier"], set()).add(r["id"])
     tei_by_uid = {}
     for root in tei.values():
         title = root.find(f".//{TEI}title[@type='main']").text
@@ -223,7 +221,6 @@ def check_quotes(w: dict) -> list[str]:
     return errors
 
 
-@unittest.skipUnless((RUN_DIR / "manifest.json").is_file(), "factoid run not available")
 class PipelineTransfer(unittest.TestCase):
     world: dict
 

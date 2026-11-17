@@ -1,5 +1,5 @@
 ---
-title: Data
+title: Source data
 project:
   name: Regesta Assertive Edition
   repository: https://github.com/chpollin/regesta-assertive-edition
@@ -9,10 +9,10 @@ method:
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-11
+updated: 2026-11-17
 ---
 
-# Data
+# Source data
 
 The material consists of the supplied Barbarossa regesta export and its register export. The register records occurrences associated with regesta, while its repeated IDs identify register entries. These counting units remain distinct throughout the analysis.
 
@@ -29,7 +29,7 @@ The exports describe historical information in the Barbarossa regesta and an ass
 | `source-material/RI_004-002-ReggBarbarossa.csv` | Regesta, dating fields, summaries, documentary details, commentary and references | Filename, column names, identifiers and original CSV bytes |
 | `source-material/RI_004-002-RegisterBarbarossa.csv` | Register entries associated with particular regesta, with role/context tokens, hierarchy and selective geodata | Filename, column names and original CSV bytes |
 
-The operator supplied the files on 2026-11-09. They are Regesta Imperii material by their names and internal identifiers, and the original editorial work belongs to the source project. The regesta database of Regesta Imperii is published under CC BY 4.0. The register file is byte-identical with the public file in the RI Lab repository, while for the regest file, which follows the documented export schema, no identical public copy was found. Attribution and the remaining check are in [Data interface](data.md#rights). This preparation performs parsing, profiling and aggregation.
+The operator supplied the files on 2026-11-09. They are Regesta Imperii material by their names and internal identifiers, and the original editorial work belongs to the source project. The regesta database of Regesta Imperii is published under CC BY 4.0. The register file is byte-identical with the public file in the RI Lab repository, while for the regest file, which follows the documented export schema, no identical public copy was found. Attribution and the remaining check are in [Edition data](data.md#rights). This preparation performs parsing, profiling and aggregation.
 
 The input fingerprints, byte sizes, encoding and dialect are recorded in `profile.json#inputs`. The working copies match the supplied files byte for byte.
 

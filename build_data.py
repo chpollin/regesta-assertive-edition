@@ -1,11 +1,8 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["rdflib==7.6.0", "numpy"]
-# ///
 """Build the JSON data of the assertive edition prototype from one regesta run.
 
-Regime: single-file script with inline dependencies. It reads one finished run of the
-pipeline folder and never writes there.
+Regime: script of the edition's script pipeline (pyproject.toml, uv.lock); it imports
+edition_io.py and register_names.py. It reads one finished run of the pipeline folder and
+never writes there.
 
 Data flow
     packets/<uid>.json            regest text, dating, locality, register candidates
@@ -27,9 +24,9 @@ evidence selectors and exact-wording literals. The model is detected from the RD
 run (rf: factoid classes present or not), never from the run name.
 
 Usage
-    python build_data.py
-    python build_data.py --source pipeline --run pilot-2026-11-09 --out data
-    python build_data.py --run factoid-2026-11-11 --stage extracted --out <dir>
+    uv run build_data.py                              the shown run (edition_io.SHOWN_RUN)
+    uv run build_data.py --stage extracted --out <dir>
+    uv run build_data.py --run <run> --out <dir>      another run, e.g. the archived pilot
 
 Design decisions
 - Every displayed statement comes from the run files. The script aborts when an
@@ -56,8 +53,6 @@ Design decisions
 from __future__ import annotations
 
 import argparse
-import csv
-import hashlib
 import html
 import json
 import re
@@ -68,6 +63,7 @@ from pathlib import Path
 import rdflib
 from rdflib import RDF, RDFS, SKOS, BNode, Dataset, Literal, URIRef
 
+from edition_io import REGESTA_CSV, REGISTER_CSV, SHOWN_RUN, BuildError, load_json, read_csv, sha256
 from register_names import register_names
 
 CRM = rdflib.Namespace("http://www.cidoc-crm.org/cidoc-crm/")
@@ -217,16 +213,6 @@ def _group_key(name: str) -> tuple[int, str]:
     return (int(match.group(1)) if match else 0, name)
 
 
-class BuildError(Exception):
-    """A violated contract between the run files and this interface."""
-
-
-def _load_json(path: Path) -> object:
-    if not path.is_file():
-        raise BuildError(f"missing input file {path}")
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
 def _vocab_label(iri: URIRef | None) -> str:
     if iri is None:
         return ""
@@ -332,11 +318,7 @@ def _markup_segments(raw: str | None, exchange_to_uid: dict[str, str]) -> list[d
 
 
 def _read_source_rows(csv_path: Path, uids: set[str]) -> dict[str, dict]:
-    rows = {}
-    with csv_path.open(encoding="utf-8", newline="") as handle:
-        for row in csv.DictReader(handle):
-            if row["uid"] in uids:
-                rows[row["uid"]] = row
+    rows = {row["uid"]: row for row in read_csv(csv_path) if row["uid"] in uids}
     missing = uids - rows.keys()
     if missing:
         raise BuildError(f"regest CSV lacks UIDs {sorted(missing)}")
@@ -346,11 +328,9 @@ def _read_source_rows(csv_path: Path, uids: set[str]) -> dict[str, dict]:
 def _read_register(csv_path: Path, identifiers: set[str]) -> dict[str, list[dict]]:
     """Register rows of the selected regesta; the register escapes quotes with a backslash."""
     by_identifier: dict[str, list[dict]] = defaultdict(list)
-    with csv_path.open(encoding="utf-8-sig", newline="") as handle:
-        reader = csv.DictReader(handle, escapechar="\\", strict=True)
-        for row in reader:
-            if row["regestaIdentifier"] in identifiers:
-                by_identifier[row["regestaIdentifier"]].append(row)
+    for row in read_csv(csv_path):
+        if row["regestaIdentifier"] in identifiers:
+            by_identifier[row["regestaIdentifier"]].append(row)
     return by_identifier
 
 
@@ -739,7 +719,7 @@ def _compose(blocks: list[dict]) -> None:
 def _agent_notes(run: Path) -> dict[str, dict]:
     notes: dict[str, dict] = defaultdict(lambda: {"unresolved": [], "gaps": [], "corrections": []})
     for path in sorted((run / "extracted").glob("batch-*.json")):
-        data = _load_json(path)
+        data = load_json(path)
         records = data["records"] if isinstance(data, dict) else data
         lang = LANG_BY_FILE[path.name]
         for rec in records:
@@ -748,7 +728,7 @@ def _agent_notes(run: Path) -> dict[str, dict]:
             entry["unresolved"] += [{"text": t, "lang": lang} for t in rec.get("unresolved_identities", [])]
             entry["gaps"] += [{"text": t, "lang": lang, "stage": "Extraktion"} for t in rec.get("ontology_gaps", [])]
     for path in sorted((run / "revised").glob("batch-*-corrections.json")):
-        data = _load_json(path)
+        data = load_json(path)
         records = data["records"] if isinstance(data, dict) else data
         lang = LANG_BY_FILE[path.name]
         for rec in records:
@@ -759,7 +739,7 @@ def _agent_notes(run: Path) -> dict[str, dict]:
             entry["corrections"] += [{"text": c, "lang": lang} for c in changed]
             gaps = rec.get("gaps", []) + rec.get("remaining_gaps", [])
             entry["gaps"] += [{"text": t, "lang": lang, "stage": "Korrektur"} for t in gaps]
-    root = _load_json(run / "revised" / "root-correction-220540.json")
+    root = load_json(run / "revised" / "root-correction-220540.json")
     notes[root["uid"]]["corrections"].append({"text": root["reason"], "lang": "en"})
     notes[root["uid"]]["corrected"] = True
     return notes
@@ -768,10 +748,10 @@ def _agent_notes(run: Path) -> dict[str, dict]:
 def _review_history(run: Path, texts: dict[str, str]) -> dict[str, dict]:
     history: dict[str, dict] = defaultdict(lambda: {"findings": [], "decisions": [], "revised": None, "final": None})
     for name in ("review-1.json", "review-2.json"):
-        for rec in _load_json(run / "review" / name)["records"]:
+        for rec in load_json(run / "review" / name)["records"]:
             for f in rec["findings"]:
                 history[rec["uid"]]["findings"].append(_finding(f, rec["uid"], texts))
-    for dec in _load_json(run / "review" / "adjudication.json")["decisions"]:
+    for dec in load_json(run / "review" / "adjudication.json")["decisions"]:
         for uid in dec["uids"]:
             history[uid]["decisions"].append(
                 {
@@ -781,13 +761,13 @@ def _review_history(run: Path, texts: dict[str, str]) -> dict[str, dict]:
                     "lang": "en",
                 }
             )
-    for rec in _load_json(run / "review" / "review-revised.json")["records"]:
+    for rec in load_json(run / "review" / "review-revised.json")["records"]:
         history[rec["uid"]]["revised"] = {
             "disposition": rec["previous_finding_disposition"],
             "remaining": [_finding(f, rec["uid"], texts) for f in rec["remaining_semantic_findings"]],
             "gaps": rec.get("model_gaps", []),
         }
-    root = _load_json(run / "review" / "root-correction-check.json")
+    root = load_json(run / "review" / "root-correction-check.json")
     history[root["uid"]]["final"] = {
         "disposition": root["previous_finding_disposition"],
         "remaining": [_finding(f, root["uid"], texts) for f in root["remaining_semantic_findings"]],
@@ -1188,14 +1168,13 @@ def _year_distribution(csv_path: Path) -> dict:
     counts: dict[int, int] = defaultdict(int)
     undated = 0
     total = 0
-    with csv_path.open(encoding="utf-8", newline="") as handle:
-        for row in csv.DictReader(handle):
-            total += 1
-            year = row["start_date"][:4]
-            if year.isdigit():
-                counts[int(year)] += 1
-            else:
-                undated += 1
+    for row in read_csv(csv_path):
+        total += 1
+        year = row["start_date"][:4]
+        if year.isdigit():
+            counts[int(year)] += 1
+        else:
+            undated += 1
     years = sorted(counts)
     return {
         "field": "start_date",
@@ -1377,17 +1356,13 @@ def _layout(nodes: list[dict], edges: list[dict]) -> None:
 # Factoid model: one factoid, one statement block.
 
 
-def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
 def _concept_labels(contract: Path, manifest: dict) -> dict[str, str]:
     """German prefLabels of the run's frozen SKOS vocabulary, checked against the manifest hash."""
     vocabulary = contract / "ontology" / "vocabulary.ttl"
     if not vocabulary.is_file():
         raise BuildError(f"missing input file {vocabulary}")
     expected = manifest.get("contract_sha256", {}).get("ontology/vocabulary.ttl")
-    if expected != _sha256(vocabulary):
+    if expected != sha256(vocabulary):
         raise BuildError(f"{vocabulary} does not match the contract hash of the manifest")
     g = rdflib.Graph().parse(vocabulary, format="turtle")
     labels = {}
@@ -1662,7 +1637,7 @@ def _factoid_notes(run: Path, stage: str) -> dict[str, dict]:
     """
     notes: dict[str, dict] = defaultdict(lambda: {"unresolved": [], "gaps": [], "corrections": []})
     for path in sorted((run / "extracted").glob("batch-*.json")):
-        for rec in _load_json(path)["records"]:
+        for rec in load_json(path)["records"]:
             entry = notes[rec["uid"]]
             entry["status"] = rec["status"]
             entry["unresolved"] += [{"text": t, "lang": "en"} for t in rec.get("unresolved_identities", [])]
@@ -1677,7 +1652,7 @@ def _factoid_notes(run: Path, stage: str) -> dict[str, dict]:
         )
         if unknown:
             raise BuildError(f"correction files this build does not read: {unknown}")
-        for rec in _load_json(run / "revised" / "corrections.json")["records"]:
+        for rec in load_json(run / "revised" / "corrections.json")["records"]:
             entry = notes[rec["uid"]]
             # The factoid run logs one change per record, the 1153 slice a list per record
             # and the outcome after correction.
@@ -1707,14 +1682,14 @@ def _factoid_history(run: Path, texts: dict[str, str], notes: dict[str, dict]) -
     for name in [*FACTOID_REVIEWS, *group_reviews]:
         if name not in present:
             continue
-        for rec in _load_json(review / name)["records"]:
+        for rec in load_json(review / name)["records"]:
             for f in rec["findings"]:
                 history[rec["uid"]]["findings"].append(_finding(f, rec["uid"], texts))
             notes[rec["uid"]]["gaps"] += [
                 {"text": t, "lang": "en", "stage": "Review"} for t in rec.get("model_gaps", [])
             ]
     for name in [n for n in ("adjudication.json", *group_adjudications) if n in present]:
-        for dec in _load_json(review / name)["decisions"]:
+        for dec in load_json(review / name)["decisions"]:
             if dec["decision"] not in DECISION_DE:
                 raise BuildError(f"adjudication decision without German label: {dec['decision']}")
             for uid in dec["uids"]:
@@ -2154,8 +2129,8 @@ def _build_factoid(
 def build(source: Path, run_id: str, out: Path, stage: str = "revised") -> None:
     """Read one run at one stage, detect its data model from the RDF and write both JSON files."""
     run = source / "runs" / run_id
-    manifest = _load_json(run / "manifest.json")
-    validation = _load_json(run / "validation" / f"{stage}.json")
+    manifest = load_json(run / "manifest.json")
+    validation = load_json(run / "validation" / f"{stage}.json")
     if validation["stage"] != stage:
         raise BuildError(f"validation report is not the {stage} stage")
     order = [s["uid"] for s in manifest["selection"]]
@@ -2209,9 +2184,9 @@ def build(source: Path, run_id: str, out: Path, stage: str = "revised") -> None:
 
 def _sources(source: Path, run: Path, order: list[str]) -> dict:
     """Packets, the two source CSVs and the short citations, shared by both data models."""
-    packets = {uid: _load_json(run / "packets" / f"{uid}.json") for uid in order}
-    regest_csv = source / "source-material" / "RI_004-002-ReggBarbarossa.csv"
-    register_csv = source / "source-material" / "RI_004-002-RegisterBarbarossa.csv"
+    packets = {uid: load_json(run / "packets" / f"{uid}.json") for uid in order}
+    regest_csv = source / REGESTA_CSV
+    register_csv = source / REGISTER_CSV
     rows = _read_source_rows(regest_csv, set(order))
     shorts = {uid: packets[uid]["identifier"].split(" ", 2)[-1] for uid in order}
     if len(set(shorts.values())) != len(shorts):
@@ -2403,7 +2378,7 @@ def main() -> int:
     here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--source", type=Path, default=here / "pipeline")
-    parser.add_argument("--run", default="factoid-1153-2026-11-11")
+    parser.add_argument("--run", default=SHOWN_RUN)
     parser.add_argument("--out", type=Path, default=here / "data")
     parser.add_argument("--stage", choices=("extracted", "revised"), default="revised")
     args = parser.parse_args()

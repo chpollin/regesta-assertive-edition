@@ -29,7 +29,7 @@ The pipeline produces the factoids the edition shows. It lives in `pipeline/` of
 7. Correction, agent task: accepted findings into `revised/`, then the technical check again.
 8. Build, `uv run run.py build`: `build_data.py` and `build_tei.py` read the revised stage; `uv run run.py check` runs the transfer checks of [Testing](testing.md#transfer-checks).
 
-Steps 1 and 2 refuse an existing output folder, so they start only a new run. The run shown is `factoid-1153-2026-11-11`, technically passing in its revised stage and not expert validated (manifest `expert_accepted` false).
+Steps 1 and 2 refuse an existing output folder, so they start only a new run. Step 5 refuses a run whose validation reports record a validator hash other than that of the current `validate_factoid.py`, since validating would rewrite frozen reports with another validator; `--allow-validator-change` overrides this deliberately. The run shown is `factoid-1153-2026-11-11` (`SHOWN_RUN` in `edition_io.py`), technically passing in its revised stage and not expert validated (manifest `expert_accepted` false). After the build, `uv run run.py export` derives the reusable graph ([Graph export](#graph-export)).
 
 ## Requirements
 
@@ -39,7 +39,7 @@ Steps 1 and 2 refuse an existing output folder, so they start only a new run. Th
 - Freeze each run's contract by hash in its manifest. Paths in manifests are relative to `pipeline/`, so the move into this repository left every hash valid. A model change needs a new recorded baseline, and earlier runs stay unchanged.
 - Keep extracted, review, revised and validation stages separate, including failures and abstentions.
 - Treat every statement as unchecked until human verification. A technical pass or an agent review never sets acceptance.
-- The pipeline scripts keep their own `pipeline/ruff.toml`, because the validator's hash is recorded in every validation report and reformatting would change it.
+- The pipeline scripts keep their own `pipeline/ruff.toml` and their PEP 723 blocks, because the validator's hash is recorded in every validation report and reformatting would change it. The root scripts form a script pipeline with one `pyproject.toml` and a committed `uv.lock`; they share `edition_io.py`, whose one CSV reader follows the observed dialect of both delivery files. `uv run run.py check` runs pytest and ruff from the lock.
 
 ## Data-generation pipeline
 
@@ -67,7 +67,18 @@ validate_factoid.py     revised stage
 human verification      of a subset, still pending
 ```
 
-The build of view data, TEI and the public site follows the revised stage and is described in [Data interface](data.md).
+The build of view data, TEI and the public site follows the revised stage and is described in [Edition data](data.md); the reusable graph export under [Graph export](#graph-export).
+
+## Graph export
+
+`build_graph.py` (`uv run run.py export`) reads the revised stage of the shown run and writes, without touching the run, one graph to the gitignored `data/graph/`: a TriG file with one named graph per regest plus an enrichment graph and a description graph, the Turtle union of all of them, and a report with counts and findings. The rewrites are documented in its module docstring and checked in [Testing](testing.md#export-checks):
+
+- Records get the RI identifier as `rdfs:label` and `dcterms:identifier`, the delivered start and end date as `xsd:date` where they parse, dating prose and place string as German literals and `rdfs:seeAlso` to the persistent link of Regesta Imperii. Invalid dates, reversed intervals and missing persistent identifiers are reported, never repaired.
+- Blank-node references and evidence selectors become `<factoid>:reference-<n>` and `<factoid>:evidence-<n>`, numbered in a canonical order (selectors by position in the regest text, references by role, actor and name in the source), so a later judgement can point at them.
+- Plain literals of the run are German regest text and get `@de`, except the RI identifier that labels a record.
+- Every producing agent is described as `prov:SoftwareAgent` with run, batch or group, stage, prompt and LLM from the manifests; register persons get a normalised `skos:prefLabel` from `register_names.py`.
+- A VoID description states licence, source and attribution, run, contract hashes, export date and that the statements are LLM-produced and unchecked.
+- The `rf:` and `rv:` namespaces are provisional example.org namespaces; `--rf-namespace` and `--rv-namespace` rewrite them, and the queries of `queries/` answer on the export only under the current ones.
 
 ## Responsibilities and artefacts
 

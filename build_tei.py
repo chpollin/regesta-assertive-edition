@@ -1,11 +1,7 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["rdflib==7.6.0", "lxml"]
-# ///
 """Generate one TEI P5 file per regest from the source CSV fields and the factoids of a run.
 
-Regime: single-file script with inline dependencies. It reads one run of the
-pipeline folder and never writes there.
+Regime: script of the edition's script pipeline (pyproject.toml, uv.lock); it imports
+edition_io.py. It reads one run of the pipeline folder and never writes there.
 
 Data flow
     runs/<run>/manifest.json            run id, LLM, selection, source and contract hashes
@@ -23,8 +19,8 @@ Data flow
         -> <out>/<slug>.xml             one TEI document per regest
 
 Usage
-    python build_tei.py --run factoid-2026-11-11 --out site/tei
-    python build_tei.py --run factoid-2026-11-11 --out site/tei --schema schema/tei_all-4.12.0.rng
+    uv run build_tei.py --out site/tei                the shown run (edition_io.SHOWN_RUN)
+    uv run build_tei.py --out site/tei --schema schema/tei_all-4.12.0.rng
 
 Encoding rules (the documented loss is recorded in knowledge/data.md)
 - The regest text is summary_plain, rendered losslessly in one <p>. The text is cut at every
@@ -47,9 +43,6 @@ Encoding rules (the documented loss is recorded in knowledge/data.md)
 from __future__ import annotations
 
 import argparse
-import csv
-import hashlib
-import json
 import re
 import sys
 from collections import defaultdict
@@ -60,6 +53,8 @@ from pathlib import Path
 import rdflib
 from lxml import etree
 from rdflib import RDF, RDFS, SKOS, BNode, Literal, URIRef
+
+from edition_io import REGESTA_CSV, SHOWN_RUN, BuildError, load_json, read_csv, sha256
 
 TEI_NS = "http://www.tei-c.org/ns/1.0"
 XML_NS = "http://www.w3.org/XML/1998/namespace"
@@ -81,10 +76,6 @@ LINKS = {RF.partOf: "partOf", RF.refersToAct: "refersToAct"}
 TAG_RE = re.compile(r"<[^>]+>")
 LINK_RE = re.compile(r"<link\s+(\S+)[^>]*>(.*?)</link>", re.S)
 RUN_DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})$")
-
-
-class BuildError(Exception):
-    """A violated input contract; the message names the regest and the step."""
 
 
 @dataclass(frozen=True)
@@ -150,16 +141,6 @@ def _plain(raw: str | None) -> str | None:
     return re.sub(r"\s+", " ", TAG_RE.sub("", raw)).strip()
 
 
-def _load_json(path: Path) -> dict:
-    if not path.is_file():
-        raise BuildError(f"missing input file {path}")
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
 def _labels(source: Path, manifest: dict) -> dict[str, str]:
     """German prefLabels of the frozen vocabulary, checked against the manifest hash."""
     # The contract a run names (contract_dir), else contracts/<run_id>, as in build_data.py.
@@ -168,7 +149,7 @@ def _labels(source: Path, manifest: dict) -> dict[str, str]:
     )
     if not vocabulary.is_file():
         raise BuildError(f"missing input file {vocabulary}")
-    if manifest.get("contract_sha256", {}).get("ontology/vocabulary.ttl") != _sha256(vocabulary):
+    if manifest.get("contract_sha256", {}).get("ontology/vocabulary.ttl") != sha256(vocabulary):
         raise BuildError(f"{vocabulary} does not match the contract hash of the manifest")
     g = rdflib.Graph().parse(vocabulary, format="turtle")
     return {
@@ -196,8 +177,8 @@ def _ncname(text: str) -> str:
 
 def _context(source: Path, run_id: str, stage: str, texts: dict) -> Context:
     run = source / "runs" / run_id
-    manifest = _load_json(run / "manifest.json")
-    validation = _load_json(run / "validation" / f"{stage}.json")
+    manifest = load_json(run / "manifest.json")
+    validation = load_json(run / "validation" / f"{stage}.json")
     if validation.get("stage") != stage:
         raise BuildError(f"validation report is not the {stage} stage")
     date = RUN_DATE_RE.search(run_id)
@@ -205,19 +186,19 @@ def _context(source: Path, run_id: str, stage: str, texts: dict) -> Context:
         raise BuildError(f"run id without a trailing date: {run_id}")
     reviewers, findings, decisions = [], defaultdict(int), defaultdict(int)
     for path in sorted((run / "review").glob("review-*.json")):
-        review = _load_json(path)
+        review = load_json(path)
         reviewers.append(review["reviewer"])
         for rec in review["records"]:
             findings[rec["uid"]] += len(rec["findings"])
     adjudication = run / "review" / "adjudication.json"
     if adjudication.is_file():
-        for dec in _load_json(adjudication)["decisions"]:
+        for dec in load_json(adjudication)["decisions"]:
             for uid in dec["uids"]:
                 decisions[uid] += 1
     corrections: dict[str, list[str]] = defaultdict(list)
     corrector = None
     if stage == "revised":
-        data = _load_json(run / "revised" / "corrections.json")
+        data = load_json(run / "revised" / "corrections.json")
         corrector = data.get("corrector")
         for rec in data["records"]:
             # One change per record in the factoid run, a list of changes in the 1153 slice.
@@ -475,7 +456,7 @@ def _header(tei: etree._Element, ctx: Context, packet: dict, row: dict, agents: 
 
 def build_regest(ctx: Context, run: Path, uid: str, row: dict) -> etree._Element:
     """One TEI document for one regest of the run."""
-    packet = _load_json(run / "packets" / f"{uid}.json")
+    packet = load_json(run / "packets" / f"{uid}.json")
     text = packet["summary_plain"] or ""  # n. 107 of the delivery has no summary
     ttl = run / ctx.stage / f"{uid}.ttl"
     if not ttl.is_file():
@@ -600,10 +581,7 @@ def _serialise(tei: etree._Element) -> bytes:
 
 
 def _read_rows(csv_path: Path, uids: set[str]) -> dict[str, dict]:
-    if not csv_path.is_file():
-        raise BuildError(f"missing input file {csv_path}")
-    with csv_path.open(encoding="utf-8-sig", newline="") as fh:
-        rows = {r["uid"]: r for r in csv.DictReader(fh) if r["uid"] in uids}
+    rows = {r["uid"]: r for r in read_csv(csv_path) if r["uid"] in uids}
     missing = uids - rows.keys()
     if missing:
         raise BuildError(f"regest CSV lacks rows for {sorted(missing)}")
@@ -612,11 +590,11 @@ def _read_rows(csv_path: Path, uids: set[str]) -> dict[str, dict]:
 
 def build(source: Path, run_id: str, out: Path, stage: str, texts_path: Path, schema: Path | None) -> list[str]:
     """Write every TEI file of the run; return the collected validation errors."""
-    texts = _load_json(texts_path)
+    texts = load_json(texts_path)
     ctx = _context(source, run_id, stage, texts)
     run = source / "runs" / run_id
     uids = [s["uid"] for s in ctx.manifest["selection"]]
-    rows = _read_rows(source / "source-material" / "RI_004-002-ReggBarbarossa.csv", set(uids))
+    rows = _read_rows(source / REGESTA_CSV, set(uids))
     validator = etree.RelaxNG(etree.parse(str(schema))) if schema else None
     out.mkdir(parents=True, exist_ok=True)
     errors = []
@@ -634,7 +612,7 @@ def main() -> int:
     here = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--source", type=Path, default=here / "pipeline")
-    parser.add_argument("--run", default="factoid-1153-2026-11-11")
+    parser.add_argument("--run", default=SHOWN_RUN)
     parser.add_argument("--stage", choices=("extracted", "revised"), default="revised")
     parser.add_argument("--out", type=Path, default=here / "site" / "tei")
     parser.add_argument("--texts", type=Path, default=here / "edition" / "texts.json")

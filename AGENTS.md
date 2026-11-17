@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Assertive edition of the Barbarossa regesta (RI IV,2) over the factoid runs of its own pipeline in `pipeline/`, with the whole delivery as a deterministic second layer. Read `knowledge/INDEX.md` and the ` `knowledge/plan.md` for the next steps, `knowledge/specification.md`, `knowledge/design.md`, `knowledge/ui-feedback.md` and `knowledge/data.md`. For the pipeline read `knowledge/pipeline.md`, `knowledge/factoid-model.md`, `knowledge/source-data.md` and `knowledge/testing.md`; `knowledge/annotation-guidelines.md`, `knowledge/domain-ontology.md` (pilot, archive), `knowledge/user-stories.md`, `knowledge/prompt-log.md` and `knowledge/ide-criteria.md` (snapshot of 2026-11-11) answer narrower questions. The pipeline came from the repository `regesta-rdf-demo` at f65887c on 2026-11-17; that repository stays as history and is no longer worked in.
+Assertive edition of the Barbarossa regesta (RI IV,2) over the factoid runs of its own pipeline in `pipeline/`, with the whole delivery as a deterministic second layer. Read `knowledge/INDEX.md` and `knowledge/plan.md` for the next steps, `knowledge/specification.md`, `knowledge/design.md`, `knowledge/ui-feedback.md` and `knowledge/data.md`. For the pipeline read `knowledge/pipeline.md`, `knowledge/factoid-model.md`, `knowledge/source-data.md` and `knowledge/testing.md`; `knowledge/annotation-guidelines.md` and `knowledge/domain-ontology.md` (pilot, archive; the factoid runs follow `pipeline/contracts/factoid-2026-11-11/knowledge/annotation-guidelines.md`), `knowledge/user-stories.md`, `knowledge/prompt-log.md` and `knowledge/ide-criteria.md` (snapshot of 2026-11-11) answer narrower questions. The pipeline came from the repository `regesta-rdf-demo` at f65887c on 2026-11-17; that repository stays as history and is no longer worked in.
 
 ## Boundaries
 
@@ -21,17 +21,19 @@ uv run run.py review
 uv run run.py build
 uv run run.py check
 uv run run.py graph
+uv run run.py export
+uv run run.py graph --export
 ```
 
-`graph` loads the revised Turtle of the run into one rdflib graph in memory and prints the answers of the SPARQL queries in `queries/`; no triple store and no merged graph file.
+The root scripts are one script pipeline with `pyproject.toml` and a committed `uv.lock`; `uv run` uses the locked environment, and `check` runs `uv run --locked pytest`, `ruff check` and `ruff format --check`. The shown run is `SHOWN_RUN` in `edition_io.py`, the default of every script. `validate` refuses a run whose reports were written by another validator unless `--allow-validator-change` is given. `graph` loads the revised Turtle of the run into one rdflib graph in memory and prints the answers of the SPARQL queries in `queries/`. `export` writes the reusable graph of the revised stage (TriG, Turtle union, report) into the gitignored `data/graph/` (knowledge/pipeline.md, Graph export); `graph --export` runs the queries on it.
 
-Build the interface data of a run, the whole-delivery layer, the itinerary check and the base map (Python 3.11 with rdflib 7.6.0, numpy and shapely, or `uv run`):
+Build the interface data of a run, the whole-delivery layer, the itinerary check and the base map:
 
 ```
-python build_data.py --run factoid-1153-2026-11-11
-python build_holdings.py
-python check_itinerary.py
-python build_basemap.py
+uv run build_data.py
+uv run build_holdings.py
+uv run check_itinerary.py
+python build_basemap.py <folder with the Natural Earth files>
 python build_realm.py
 ```
 
@@ -62,21 +64,21 @@ Checks:
 
 ```
 node --check js/*.js js/edition/*.js
-python -m ruff check .
-python -m ruff format --check .
-python -m pytest -q checks
+uv run run.py check
 ```
 
 The interface is checked on the rendered state: `node tools/check_ui_density.cjs --profile work <url>` from the repository `pruefansicht` at 1280 and 360 px, screenshots of every changed view, and a fresh reader who answers task questions from the rendered page alone. The browser check of the first slice (`checks/ui_check.py`) was retired on 2026-11-14.
 
 ## Layout
 
+- `edition_io.py` the shared CSV reader of both delivery files, JSON loader, hash and markup helpers and the shown run id, imported by every root script except `build_site.py`; `pyproject.toml` and `uv.lock` the locked environment
 - `build_data.py` run data into `data/edition.json` and `data/questions.json`; `build_holdings.py` the whole delivery into `data/holdings*.json`; `check_itinerary.py` into `data/itinerary-checks.json`; `build_basemap.py` into `js/basemap.json`
 - `prepare_agent_review.py` the reader input of the agent review from the run's revised Turtle; `build_agent_review.py` joins the two readers into `edition/agent-review-2026-11-14.json`, read by `build_site.py --preview` (knowledge/data.md, Agent review)
 - `build_realm.py` the Empire about 1190 from the trace `edition/realm-1190-trace.json` into `js/realm.json`; `publish_site.py` the publication on `gh-pages`
 - `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema
 - `build_site.py` curated static edition site into `site/`; `edition/texts.json` title, definition, licence and attribution; `js/edition/` its content pages
-- `checks/` contract tests and the transfer checks `test_pipeline.py`
+- `checks/` contract tests, the transfer checks `test_pipeline.py`, the graph checks `test_graph.py`, the export checks `test_export.py` and the CSV reader check `test_edition_io.py`
+- `build_graph.py` the graph export of the revised stage into `data/graph/`
 - `run.py` the entry point of the RDF workflow; `pipeline/` the pipeline with its scripts, `contracts/`, `runs/`, `source-material/` (Regesta Imperii CSV, CC BY 4.0), `generated/` and its own `ruff.toml`
-- `knowledge/` project knowledge
+- `knowledge/` project knowledge; `LICENSE` (MIT, code) and `LICENSE-DATA.md` (CC BY 4.0, texts and data)

@@ -9,10 +9,12 @@ method:
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-09
+updated: 2026-11-17
 ---
 
 # Annotation guidelines
+
+Pilot, archive. These are the guidelines of the pilot run `pilot-2026-11-09` and its CIDOC CRM profile. The factoid runs follow the contract's own guideline, [pipeline/contracts/factoid-2026-11-11/knowledge/annotation-guidelines.md](../pipeline/contracts/factoid-2026-11-11/knowledge/annotation-guidelines.md), which is frozen by hash in their manifests.
 
 This pilot applies the frozen [domain ontology](domain-ontology.md) to source-supported kinship, economic and legal information. The whole output is an unaccepted candidate graph. A source link does not make directly asserted triples epistemically neutral. No candidate is added to an accepted historical graph by this run.
 

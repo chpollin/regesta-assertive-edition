@@ -3,7 +3,7 @@ title: Specification
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-15
+updated: 2026-11-17
 ---
 
 # Specification
@@ -20,7 +20,7 @@ Each with the acceptance criterion he decides in front of the running preview; d
 4. Place view: a pointed or focused regest is readable beside its point; an opened regest is marked with what it depends on, the rest recedes; the sidebar is narrow. Criterion: the reader of RI IV,2,1 n. 135 tells from the view what it says and what it is connected to.
 5. Persons can be followed through the space-time cube. Criterion: choosing a person shows their regesta as a trace through places and years.
 
-## Requirements of the first slice
+## Requirements of the first slice (history)
 
 The list below describes the first slice of 2026-11-09. It is superseded in parts by the shell and its revisions (design.md): there is no timeline of that form, no paper ground and no red pen, and the apparatus is no longer closed. It stays as history until the operator adopts the proposals above.
 
@@ -40,6 +40,6 @@ The list below describes the first slice of 2026-11-09. It is superseded in part
 
 The interface has no executable browser check since the check of the first slice (`checks/ui_check.py`) was retired on 2026-11-14; it is checked on the rendered state by the density check of `pruefansicht`, screenshots at 1280 and 360 px and a fresh reader (AGENTS.md). `checks/test_build.py` asserts that paraphrased or case-changed evidence aborts the build. The operator's screen review remains a separate acceptance step.
 
-## Out of scope
+## Out of scope (first slice, history)
 
-Expert decisions and their persistence, the original-stage RDF, search, a cross-regest view of rights, references between acts and conditions, and any publication.
+For the first slice of 2026-11-09: expert decisions and their persistence, the original-stage RDF, search, a cross-regest view of rights, references between acts and conditions, and any publication. The last item is stale, since the curated build is published on GitHub Pages since 2026-11-12 (AGENTS.md, Boundaries), and the factoid model carries references between acts and conditions; the other items were not rechecked on 2026-11-17.

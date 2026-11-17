@@ -1,11 +1,8 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = []
-# ///
 """Check the itinerary of the whole delivery for implausible jumps, deterministically.
 
-Regime: single-file script, standard library only. It reads the sibling repository
-pipeline/, never writes there, and imports nothing from this repository.
+Regime: script of the edition's script pipeline (pyproject.toml), standard library only; it
+imports the shared CSV reader and helpers of edition_io.py. It reads the folder pipeline/
+and never writes there.
 
 The itinerary view (`#/itinerar`, built from data/holdings.json by build_holdings.py) draws
 one point per regest with a place of issue and joins the points in start_date order. This
@@ -21,15 +18,15 @@ Data flow
                                             by reason, flagged jumps with a class each
 
 Usage
-    python check_itinerary.py
-    python check_itinerary.py --source pipeline --out data/itinerary-checks.json
-    python check_itinerary.py --check       synthetic assertions, then a consistency run
+    uv run check_itinerary.py
+    uv run check_itinerary.py --source pipeline --out data/itinerary-checks.json
+    uv run check_itinerary.py --check       synthetic assertions, then a consistency run
 
 Design decisions
 - The place of issue follows build_holdings.py exactly: the first register row with the
   role token `austOrt` whose coordinates are numeric and inside the box latitude 30 to 62,
-  longitude -10 to 45. The rule is copied, not imported, so the script stays one file; a
-  change of the rule in build_holdings.py must be mirrored here by hand.
+  longitude -10 to 45. The rule is mirrored here because this script also records why a
+  regest stays unplaced; a change of the rule in build_holdings.py must be mirrored by hand.
 - Dating is read from the machine dates only. start == end is an exact day; 1 January to
   31 December of one year is a year; the 1st to the last day of one month is a month; any
   other start < end is a span; start > end is reversed; an unparsable date is undated.
@@ -60,8 +57,6 @@ Design decisions
 from __future__ import annotations
 
 import argparse
-import csv
-import html
 import json
 import math
 import re
@@ -74,10 +69,11 @@ from datetime import date
 from itertools import pairwise
 from pathlib import Path
 
+from edition_io import REGISTER_CSV, is_null, place_label, read_csv
+
 LAT = (30.0, 62.0)
 LON = (-10.0, 45.0)
 NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
-TAG = re.compile(r"<[^>]+>")
 FLOOR_KM = 150.0
 KM_PER_DAY = 60.0
 EARTH_KM = 6371.0
@@ -190,18 +186,6 @@ def _station_json(s: Station) -> dict:
     }
 
 
-def _clean(text: str) -> str:
-    return " ".join(html.unescape(TAG.sub("", text)).split())
-
-
-def _null(value: str | None) -> bool:
-    return value is None or value.strip().lower() in {"", "null", "none"}
-
-
-def _place_label(label: str) -> str:
-    return re.split(r"\s*\(|\s//|,", _clean(label))[0].strip()
-
-
 def _indicators(regest: dict, skipped: bool) -> tuple[str, ...]:
     number = regest["identifier"].split("n. ")[-1]
     transmission = regest.get("archival_history_plain") or ""
@@ -224,14 +208,13 @@ def _indicators(regest: dict, skipped: bool) -> tuple[str, ...]:
 
 def build(source: Path) -> dict:
     regesta_path = source / "generated" / "regesta.jsonl"
-    register_path = source / "source-material" / "RI_004-002-RegisterBarbarossa.csv"
+    register_path = source / REGISTER_CSV
     for path in (regesta_path, register_path):
         if not path.exists():
             sys.exit(f"Missing input {path}; run pipeline/explore_regesta.py first.")
     regesta = [json.loads(line) for line in regesta_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     by_identifier = {r["identifier"]: r for r in regesta}
-    with register_path.open(encoding="utf-8-sig", newline="") as handle:
-        register = list(csv.DictReader(handle))
+    register = read_csv(register_path)
 
     # Same rule as build_holdings.py; outcome per regest: placed, or why not.
     placed: dict[str, tuple[str, float, float, str]] = {}
@@ -244,7 +227,7 @@ def build(source: Path) -> dict:
             continue
         uid = regest["uid"]
         seen_austort.add(uid)
-        if uid in placed or _null(row["lat"]):
+        if uid in placed or is_null(row["lat"]):
             continue
         lat_text, lon_text = row["lat"].strip(), row["long"].strip()
         if not (NUMBER.fullmatch(lat_text) and NUMBER.fullmatch(lon_text)):
@@ -254,7 +237,7 @@ def build(source: Path) -> dict:
         if not (LAT[0] <= lat <= LAT[1] and LON[0] <= lon <= LON[1]):
             skipped.add(uid)
             continue
-        placed[uid] = (_place_label(row["label"]), lat, lon, row["id"])
+        placed[uid] = (place_label(row["label"]), lat, lon, row["id"])
         roles[row["role"]] += 1
 
     dating: Counter[str] = Counter()

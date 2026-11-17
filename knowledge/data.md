@@ -1,12 +1,12 @@
 ---
-title: Data interface
+title: Edition data
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-11
+updated: 2026-11-17
 ---
 
-# Data interface
+# Edition data
 
 `build_data.py` reads one run of `pipeline/` at one stage (`--stage revised`, the default, or `--stage extracted`) and writes two JSON files that the page loads once. The source of truth for every value is the run directory and the two source CSVs. The JSON is a derived, deterministic product, and the same inputs give byte-identical files.
 

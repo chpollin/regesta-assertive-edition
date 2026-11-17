@@ -1,12 +1,9 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = ["rdflib==7.6.0"]
-# ///
 """Load one stage of a factoid run into a single in-memory graph and run the queries of queries/.
 
-Single-file script regime with inline dependencies, run with uv (`uv run run.py graph`).
-checks/test_graph.py imports read_stage and merge, so the checks query the same graph this
-script prints from.
+Script of the edition's script pipeline (pyproject.toml), run with `uv run run.py graph`. It
+imports the shown run id from edition_io.py in the repository root. checks/test_graph.py
+imports read_stage and merge, so the checks query the same graph this script prints from;
+checks/test_export.py runs the same queries on the export of build_graph.py.
 
 Data flow: pipeline/runs/<run>/<stage>/*.ttl -> one rdflib graph per file -> one Dataset in
 which each file is a named graph and the default graph is the union of all files -> every
@@ -17,8 +14,13 @@ register ID, the same register entry becomes one node across regesta; no triple 
 no merged graph file are produced. The named graphs keep the file each triple came from,
 so a check can ask whether a factoid's source is declared in its own file.
 
+With --file the queries run on one RDF file instead, such as the Turtle union written by
+build_graph.py (`uv run run.py graph --export`). The queries name the provisional
+example.org namespaces, so they answer on an export only while it keeps them.
+
 Usage
-    uv run queries/run_queries.py [--run factoid-1153-2026-11-11] [--stage revised] [--limit 10]
+    uv run queries/run_queries.py [--run <run>] [--stage revised] [--limit 10]
+    uv run queries/run_queries.py --file data/graph/<run>.ttl
 """
 
 from __future__ import annotations
@@ -32,7 +34,10 @@ from rdflib.term import Node
 
 HERE = Path(__file__).resolve().parent
 RUNS = HERE.parent / "pipeline" / "runs"
-RUN = "factoid-1153-2026-11-11"
+# The shared constants live in the repository root, one level up from this folder.
+sys.path.insert(0, str(HERE.parent))
+
+from edition_io import SHOWN_RUN  # noqa: E402
 
 
 def read_stage(stage_dir: Path) -> dict[str, Graph]:
@@ -77,20 +82,30 @@ def _cell(dataset: Dataset, term: Node | None) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--run", default=RUN)
+    parser.add_argument("--run", default=SHOWN_RUN)
     parser.add_argument("--stage", default="revised")
+    parser.add_argument("--file", type=Path, help="one RDF file to query instead of a run stage")
     parser.add_argument("--limit", type=int, default=10, help="rows printed per query")
     args = parser.parse_args()
-    stage_dir = RUNS / args.run / args.stage
-    if not stage_dir.is_dir():
-        print(f"[FAIL] No stage folder {stage_dir}; run the pipeline steps first.", file=sys.stderr)
-        return 1
-    try:
-        dataset = merge(read_stage(stage_dir))
-    except ValueError as exc:
-        print(f"[FAIL] {exc}", file=sys.stderr)
-        return 1
-    print(f"{args.run}/{args.stage}: {len(dataset)} triples in one graph")
+    if args.file is not None:
+        if not args.file.is_file():
+            print(f"[FAIL] No file {args.file}; run `uv run run.py export` first.", file=sys.stderr)
+            return 1
+        dataset = Dataset(default_union=True)
+        dataset.graph(URIRef(args.file.resolve().as_uri())).parse(args.file)
+        source = args.file.name
+    else:
+        stage_dir = RUNS / args.run / args.stage
+        if not stage_dir.is_dir():
+            print(f"[FAIL] No stage folder {stage_dir}; run the pipeline steps first.", file=sys.stderr)
+            return 1
+        try:
+            dataset = merge(read_stage(stage_dir))
+        except ValueError as exc:
+            print(f"[FAIL] {exc}", file=sys.stderr)
+            return 1
+        source = f"{args.run}/{args.stage}"
+    print(f"{source}: {len(dataset)} triples in one graph")
     for name, text in queries().items():
         question = next((line.lstrip("# ") for line in text.splitlines() if line.startswith("#")), "")
         rows = list(dataset.query(text))

@@ -21,13 +21,13 @@ false).
 5. Queries: every query of queries/ answers something on the merged graph.
 
 Usage
-    python -m pytest -q checks/test_graph.py
+    uv run pytest -q checks/test_graph.py
 """
 
 from __future__ import annotations
 
-import csv
 import importlib.util
+import sys
 import unittest
 from pathlib import Path
 from types import ModuleType
@@ -36,6 +36,10 @@ import rdflib
 from rdflib.namespace import RDF
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+
+from edition_io import read_csv  # noqa: E402
+
 PIPELINE = ROOT / "pipeline"
 RUN_DIR = PIPELINE / "runs" / "factoid-1153-2026-11-11"
 STAGE = RUN_DIR / "revised"
@@ -68,8 +72,7 @@ run_queries = _module(ROOT / "queries" / "run_queries.py")
 
 def csv_slice() -> list[str]:
     """UIDs of the edition slice, read from the CSV as the pipeline reads it."""
-    with REGESTS_CSV.open(encoding="utf-8", newline="") as stream:
-        rows = list(csv.DictReader(stream, escapechar="\\", strict=True))
+    rows = read_csv(REGESTS_CSV)
     # The slice rule is select_slice.py's own, not a second implementation of it.
     chosen = select_slice.select(rows, reused={}, cutoff=CUTOFF, batch_size=4)
     return [entry["uid"] for entry in chosen]
@@ -173,7 +176,6 @@ def check_queries(w: dict) -> list[str]:
     return [f"queries/{name}.rq answers nothing" for name, rows in answers.items() if not rows]
 
 
-@unittest.skipUnless((RUN_DIR / "manifest.json").is_file(), "factoid run not available")
 class GraphChecks(unittest.TestCase):
     world: dict
 

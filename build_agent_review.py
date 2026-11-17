@@ -13,7 +13,7 @@ edition/agent-review-2026-11-14/; this script only joins them:
 It is agentic review: the result carries producer, model and date, and never a human status.
 Every quoted passage must stand verbatim in the regest text, otherwise the merge aborts.
 
-Usage: python build_agent_review.py
+Usage: uv run build_agent_review.py
 """
 
 from __future__ import annotations
@@ -22,6 +22,8 @@ import json
 import sys
 from collections import Counter
 from pathlib import Path
+
+from edition_io import load_json
 
 HERE = Path(__file__).resolve().parent
 RAW = HERE / "edition" / "agent-review-2026-11-14"
@@ -36,10 +38,6 @@ PRODUCER = {
 }
 
 
-def _load(path: Path) -> list | dict:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
 def _norm(text: str) -> str:
     """Whitespace folded, so a reader's „Corvey ,“ still matches the source spacing."""
     return " ".join(text.split())
@@ -49,8 +47,8 @@ def main() -> int:
     errors: list[str] = []
     items = []
     for part in ("part1", "part2"):
-        inputs = _load(RAW / f"input-{part}.json")
-        readers = [{(x["uid"], x["id"]): x for x in _load(RAW / f"reader-{r}-{part}.json")} for r in ("a", "b")]
+        inputs = load_json(RAW / f"input-{part}.json")
+        readers = [{(x["uid"], x["id"]): x for x in load_json(RAW / f"reader-{r}-{part}.json")} for r in ("a", "b")]
         for item in inputs:
             text = _norm(item["text"])
             statements = []
@@ -80,7 +78,7 @@ def main() -> int:
     if errors:
         print("agent review merge failed:\n" + "\n".join(errors), file=sys.stderr)
         return 1
-    selection = _load(RAW / "selection.json")
+    selection = load_json(RAW / "selection.json")
     result = {
         "review": "agent-review-2026-11-14",
         "run": selection["run"],

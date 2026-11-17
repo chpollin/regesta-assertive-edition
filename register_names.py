@@ -26,11 +26,11 @@ forms in the network, damaged and duplicate names in the time band):
 
 from __future__ import annotations
 
-import csv
-import html
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
+
+from edition_io import plain_text, read_csv
 
 LATIN_HEADS = {"Fredericus": "Friedrich"}
 _ORDINAL = re.compile(r"^\(?[IVXL]+\.(\)|\s|$)")
@@ -52,11 +52,6 @@ _TITLES = {
     "Kardinal",
     "Patriarch",
 }
-
-
-def plain_text(raw: str) -> str:
-    """Register markup as plain text with collapsed whitespace."""
-    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", raw))).strip()
 
 
 def _clauses(text: str) -> list[str]:
@@ -132,8 +127,7 @@ def _candidates(row: dict, heads: dict[str, str]) -> list[str]:
 
 def _read(csv_path: Path) -> tuple[dict[str, list[str]], dict[str, str]]:
     """Name candidates and plain full label per person id."""
-    with csv_path.open(encoding="utf-8-sig", newline="") as handle:
-        rows = list(csv.DictReader(handle, escapechar="\\", strict=True))
+    rows = read_csv(csv_path)
     # The head name of an entry whose own row omits it: the most frequent first variant of
     # its siblings.
     counts: dict[str, Counter] = defaultdict(Counter)

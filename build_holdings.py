@@ -1,11 +1,8 @@
-# /// script
-# requires-python = ">=3.11"
-# dependencies = []
-# ///
 """Build the whole-holdings layer of the edition from the delivery, without any LLM.
 
-Regime: single-file script, standard library only. It reads the sibling repository
-pipeline/ and never writes there.
+Regime: script of the edition's script pipeline (pyproject.toml), standard library only; it
+imports edition_io.py and register_names.py. It reads the folder pipeline/ and never writes
+there.
 
 The edition shows two honest layers in the same views. This script builds the first: the
 whole delivery of RI IV,2 as the deterministic exploration and the register give it, so a
@@ -22,9 +19,9 @@ Data flow
         -> data/holdings-texts.json         summary_plain per regest, loaded on demand
 
 Usage
-    python build_holdings.py
-    python build_holdings.py --source pipeline --out data
-    python build_holdings.py --check        build into a temporary folder and assert
+    uv run build_holdings.py
+    uv run build_holdings.py --source pipeline --out data
+    uv run build_holdings.py --check        build into a temporary folder and assert
 
 Design decisions
 - The place of issue is the register row with the role token `austOrt` for a regest; the
@@ -41,39 +38,19 @@ Design decisions
 from __future__ import annotations
 
 import argparse
-import csv
-import hashlib
-import html
 import json
 import re
 import sys
 import tempfile
 from pathlib import Path
 
+from edition_io import REGISTER_CSV, is_null, place_label, plain_text, read_csv, sha256
 from register_names import register_names
 
 MIN_REGESTA = 3
 LAT = (30.0, 62.0)
 LON = (-10.0, 45.0)
 NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
-TAG = re.compile(r"<[^>]+>")
-
-
-def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
-def _clean(text: str) -> str:
-    return " ".join(html.unescape(TAG.sub("", text)).split())
-
-
-def _null(value: str | None) -> bool:
-    return value is None or value.strip().lower() in {"", "null", "none"}
-
-
-def _plain_text(raw: str) -> str:
-    """Delivery markup as plain text with collapsed whitespace."""
-    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", raw))).strip()
 
 
 # Place labels the register delivery writes wrongly, corrected for display only; the register
@@ -81,22 +58,16 @@ def _plain_text(raw: str) -> str:
 PLACE_FIXES = {"RI004-002-C001005": "Crema"}
 
 
-def _place_label(label: str) -> str:
-    """„Pavia (am Ticino, ital. Prov.-…)“ becomes „Pavia“."""
-    return re.split(r"\s*\(|\s//|,", _clean(label))[0].strip()
-
-
 def build(source: Path, out: Path) -> dict:
     regesta_path = source / "generated" / "regesta.jsonl"
-    register_path = source / "source-material" / "RI_004-002-RegisterBarbarossa.csv"
+    register_path = source / REGISTER_CSV
     for path in (regesta_path, register_path):
         if not path.exists():
             sys.exit(f"Missing input {path}; run pipeline/explore_regesta.py first.")
 
     regesta = [json.loads(line) for line in regesta_path.read_text(encoding="utf-8").splitlines() if line.strip()]
     by_identifier = {r["identifier"]: r for r in regesta}
-    with register_path.open(encoding="utf-8-sig", newline="") as handle:
-        register = list(csv.DictReader(handle))
+    register = read_csv(register_path)
 
     errors: list[dict] = []
     places: dict[str, dict] = {}
@@ -112,7 +83,7 @@ def build(source: Path, out: Path) -> dict:
         uid = regest["uid"]
         roles = set(row["role"].split())
         kind = row["type"].strip()
-        if "austOrt" in roles and uid not in issue_place and not _null(row["lat"]):
+        if "austOrt" in roles and uid not in issue_place and not is_null(row["lat"]):
             lat_text, lon_text = row["lat"].strip(), row["long"].strip()
             if not (NUMBER.fullmatch(lat_text) and NUMBER.fullmatch(lon_text)):
                 errors.append(
@@ -139,7 +110,7 @@ def build(source: Path, out: Path) -> dict:
             place = places.setdefault(
                 row["id"],
                 {
-                    "l": PLACE_FIXES.get(row["id"]) or _place_label(row["label"]),
+                    "l": PLACE_FIXES.get(row["id"]) or place_label(row["label"]),
                     "la": round(lat, 4),
                     "lo": round(lon, 4),
                     "n": 0,
@@ -148,7 +119,7 @@ def build(source: Path, out: Path) -> dict:
             place["n"] += 1
         if kind == "person":
             person_regesta.setdefault(row["id"], set()).add(uid)
-            person_label[row["id"]] = _clean(row["label"])
+            person_label[row["id"]] = plain_text(row["label"])
             if roles & {"empfaenger", "adressat", "petent"}:
                 recipients.setdefault(uid, set()).add(row["id"])
 
@@ -165,10 +136,10 @@ def build(source: Path, out: Path) -> dict:
         "source": {
             "regesta": {
                 "file": "generated/regesta.jsonl",
-                "sha256": _sha256(regesta_path),
+                "sha256": sha256(regesta_path),
                 "producer": "explore_regesta.py, deterministic",
             },
-            "register": {"file": register_path.name, "sha256": _sha256(register_path)},
+            "register": {"file": register_path.name, "sha256": sha256(register_path)},
             "licence": "CC BY 4.0, Regesta Imperii Online, bearbeitet",
         },
         "counts": {
@@ -189,8 +160,8 @@ def build(source: Path, out: Path) -> dict:
                 "p": issue_place.get(r["uid"]),
                 # The delivery writes a missing value as the string "null" and some localities
                 # with markup; neither may reach a page.
-                "l": None if _null(r.get("locality_string")) else _plain_text(r["locality_string"]),
-                "pi": None if _null(r.get("persistent_identifier")) else r["persistent_identifier"],
+                "l": None if is_null(r.get("locality_string")) else plain_text(r["locality_string"]),
+                "pi": None if is_null(r.get("persistent_identifier")) else r["persistent_identifier"],
                 "rc": sorted(recipients.get(r["uid"], set()) & persons.keys()) or None,
             }
             for r in regesta

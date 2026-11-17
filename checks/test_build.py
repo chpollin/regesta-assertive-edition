@@ -1,7 +1,7 @@
 """Regression checks for the evidence contract of build_data.py.
 
 Usage
-    python -m unittest discover -s checks -p "test_*.py"
+    uv run pytest -q checks/test_build.py
 """
 
 from __future__ import annotations
