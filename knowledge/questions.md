@@ -10,7 +10,7 @@ updated: 2026-11-09
 
 These are the requirement side of the interface. Each question is phrased the way a historian would ask it, names the research task it stands for, and keeps the SPARQL that `build_data.py` actually executed with rdflib over the revised Turtle files of `pilot-2026-11-09`. The visualisations are the answer side. The operator decided on 2026-11-09 that the questions are no longer an interface of their own.
 
-The results below are a dated finding of the pilot run on 2026-11-09. The executed rows live in `data/questions.json`; the query texts here were copied from that file.
+The results below are a dated finding of the pilot run on 2026-11-09. The query texts here were copied from `data/questions.json` as it stood then. That file now holds the questions of the shown factoid run under the same ids, rewritten for the factoid vocabulary ([Edition data](data.md#factoid-model)), so the queries and findings below are the pilot's and differ from the file.
 
 ## Welche Ehen werden geschlossen, bestehen oder werden aufgelöst?
 

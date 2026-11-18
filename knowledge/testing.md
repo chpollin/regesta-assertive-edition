@@ -101,6 +101,16 @@ The queries answer concrete questions over the merged graph, namely which acts n
 
 [checks/test_edition_io.py](../checks/test_edition_io.py) reads both delivery files with the shared reader of `edition_io.py` and asserts that every row fits the header and that the register entries RI004-002-K000373 and RI004-002-P000183 stay person entries. Mutation: the default CSV dialect, which shifts the rows with backslash-escaped quotes. Until 2026-11-17 `build_holdings.py` and `check_itinerary.py` read the register that way, and Paschal III. (RI004-002-P000183) was missing from the person layer.
 
+### Whole-delivery layer and publication gate
+
+[checks/test_holdings.py](../checks/test_holdings.py) builds the whole-delivery layer and the itinerary check from the real delivery and holds them against each other, since the Atlas draws one and quotes the other.
+
+- Steps: every flagged pair of the itinerary check is one step of the line of placed regesta in the layer's order. Mutation: a view that orders same-day regesta by another rule. The check reads the layer; it does not run `js/selection.js`, which keeps that order by sorting on the date alone, so a second sort rule added there would pass unnoticed.
+- Place names: a flag names a place by a name the layer uses (compared by name, not by register id), and the layer says Saint-Jean-de-Losne where the register's label would give „Johannes“. Mutation: the uncorrected label of Crema.
+- Ambiguous identifier: RI IV,2,2 n. 1520a is reported with its two records and no person lists either. Mutation: the former join, which gave every row to the last record.
+
+[checks/test_publish.py](../checks/test_publish.py) runs the internal-material gate of `publish_site.py` on a small build folder: a clean build passes, and each kind of internal material placed into it aborts (a knowledge document, the agent review, view data of the preview build, pipeline material, a delivery CSV, a query file, a preview page with an upper-case suffix, a link into the knowledge folder). The gate checks names, suffixes, links in pages, the preview key in JSON and the file names inside a zip package; it does not read scripts for fetched paths.
+
 ## Clean knowledge graph
 
 A knowledge graph of this project counts as clean on four levels that build on one another. Each level names what establishes it, and a higher level presupposes the lower ones. The state given is that of the revised stage of `factoid-1153-2026-11-11`.

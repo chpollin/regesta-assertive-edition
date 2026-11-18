@@ -166,3 +166,9 @@ Follows: the start page carries the steps with their producers and notes, the ma
 Paraphrase by the main session of his verdict on a screenshot of RI IV,2,1 n. 7 at about 2000 × 870: he does not consider the regest pages good; the content fills the top 40 percent, the footer stands in the middle above an empty field, text and notes are narrow columns and most of the width stays empty.
 
 Follows: the footer at the bottom of the window on short pages; from 80rem of page width text, notes and the apparatus of Regesta Imperii side by side, the text kept at its reading measure. Status on 2026-11-18: built in the local preview (commit f5eb35a), seen on screenshots of n. 7, n. 94 and n. 103a at 1440, 2000 and 360 and of n. 94 at 1100; not seen by him.
+
+## 2026-11-18, acceptance of the site
+
+Relayed verbatim by the main session after the design round: „Also, ich denke, die Seite Barbarossa Regesten passt jetzt zu und ist damit abgenommen.“ On the published bilingual site he wrote the same day: „passt so“.
+
+Follows: the site as built on 2026-11-18, in German and English, is accepted for the guest unit of 20 November 2026; the entries above that end with „not seen by him“ are covered by it. Not covered: his remark on the Personen network („noch sehr schwach … Was ist jetzt der Mehrwert?“), settled by his decision of the same day to keep the page as built (journal). His feedback of that day on Atlas, Regesten and Zeitband stands in the journal entries and is not copied here. Status: accepted (journal, Operator acceptance of the site; Operator acceptance of the bilingual site).

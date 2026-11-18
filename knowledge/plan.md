@@ -8,7 +8,7 @@ updated: 2026-11-17
 
 # Plan
 
-Accepted next steps of the edition that are still open. Operator decisions behind them are tracked in the vault's ACTIVE-WORK anchors named per step; this document records only what the repository has to do. Finished steps and how they were settled are in the [journal](journal.md), among them the title „Agentic Edition“ (confirmed 2026-11-12, anchor op-thm-edition-titel), the publication on GitHub Pages (2026-11-12) and the agent review of twenty regesta (2026-11-14).
+Accepted next steps of the edition that are still open. Operator decisions behind them are tracked in the vault's ACTIVE-WORK anchors named per step; this document records only what the repository has to do. Finished steps and how they were settled are in the [journal](journal.md), among them the term and definition „Agentic Edition“; the TEI headers carry them, and the site's title is the working title „Barbarossa-Regesten“ since 2026-11-14 (term and definition confirmed 2026-11-12, anchor op-thm-edition-titel), the publication on GitHub Pages (2026-11-12) and the agent review of twenty regesta (2026-11-14).
 
 ## Agent review of twenty regesta
 

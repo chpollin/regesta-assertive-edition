@@ -21,7 +21,7 @@ The build reads two data models into the same schema. It detects the model from 
 | `runs/<run>/<stage>/<uid>.ttl` | candidate RDF, loaded as one named graph per file into an rdflib Dataset with union default graph |
 | `runs/<run>/validation/<stage>.json` | `technical_pass`, `expert_accepted`, per-record `issues` and claim list (pilot) or factoid count (factoid) |
 | `runs/<run>/extracted/batch-*.json` | `unresolved_identities`, `ontology_gaps` (pilot) or `model_gaps` (factoid) |
-| `runs/<run>/review/*.json` | pilot: review findings, adjudication, revised review and final check; factoid: `review-A.json`, `review-B.json`, `adjudication.json` |
+| `runs/<run>/review/*.json` | pilot: review findings, adjudication, revised review and final check; factoid: `review-A.json`, `review-B.json`, `adjudication.json`, or per group `review-gN-A.json`, `review-gN-B.json`, `adjudication-gN.json` as in the shown run |
 | `runs/<run>/revised/*corrections*.json` | corrections and remaining gaps; factoid: `corrections.json`, read for the revised stage only |
 | `contracts/<run>/ontology/vocabulary.ttl` | factoid only: German `skos:prefLabel` of every concept, checked against `contract_sha256` of the manifest |
 | `source-material/RI_004-002-ReggBarbarossa.csv` | `sorting` (edition order), `commentary`, `archival_history`, `external_links`, `exchange_identifier` |
@@ -31,6 +31,7 @@ The build reads two data models into the same schema. It detects the model from 
 
 ```
 run       id, model, scope, technical_pass, expert_accepted, validator
+vocabulary  factoid only: German and English prefLabel per concept, scheme and status of the frozen vocabulary
 regests[] in edition order
   uid, identifier, short, sort
   start, end           machine_start and machine_end of the packet (delivered start_date, end_date)
@@ -127,18 +128,19 @@ The factoid path fills the schema above with these mappings. `run` additionally 
 
 ```
 site/
-  index.html, regesten/, regesten/<slug>/, personen/, personen/<actor slug>/
+  index.html, atlas/, regesten/, regesten/<slug>/, personen/, personen/<actor slug>/
+  en/                   the same pages in English; data, files and scripts exist once at the root
   methode/, daten/, ueber/   forwards to the sections of the start page (since 2026-11-18)
   tei/<slug>.xml, ttl/<slug>.ttl, json/<slug>.json, LICENSE-DATA.txt, daten/<package>.zip
   data/routes.json      uid -> regest page, actor IRI -> person page, for the embedded views
-  css/, js/edition/, fonts/
+  css/, js/edition/, fonts/, img/
   ansicht/              the views app (index.html, js/, css/, fonts/, data/edition.json,
                         questions.json, holdings.json, holdings-texts.json, itinerary-checks.json)
 ```
 
 - The Turtle file is the run's Turtle of the shown stage with a comment header naming licence, source link and modification; the RDF itself is unchanged. The JSON file is the regest entry of edition.json with licence, attribution, source link and run. The zip holds all three folders and `LICENSE-DATA.txt` with a fixed file date.
 - With JavaScript the regest page shows the shared card of the views app (`js/regest-card.js`) and keeps citation, downloads and the `zurueck` link below and above it; its static content is the reading without JavaScript. That static reading compares the stages by factoid IRI: a factoid whose sentence differs in the extracted stage shows that sentence, a factoid of the extracted stage missing from the revised one is listed once.
-- Actor pages take the address from the IRI after `urn:regesta:actor:`, lower case. Persons with a register entry are named by a short nominative form built from the register (`_register_names` in `build_data.py`: the first name variant before "//", or the most frequent one of the entry's siblings where the register leaves it empty, plus the first part of the description, e.g. "Heinrich der Löwe" for the agents' "Heinrich dem Löwen"); the two nodes of the same-name case keep the agents' form, since their shared name is the case. Groups and regest-local actors keep the source form, and every source form stays listed on the person page.
+- Actor pages take the address from the IRI after `urn:regesta:actor:`, lower case. Persons with a register entry are named by a short nominative form built from the register (`register_names.py`, see Person names: the first name variant before "//", or the most frequent one of the entry's siblings where the register leaves it empty, plus the first part of the description, e.g. "Heinrich der Löwe" for the agents' "Heinrich dem Löwen"); the two nodes of the same-name case keep the agents' form, since their shared name is the case. Groups and regest-local actors keep the source form, and every source form stays listed on the person page.
 - The build never deletes a directory. It records every file it writes in `.edition-build` and removes, file by file, what the previous build wrote and this one did not. `knowledge/` is never copied.
 
 ## Publication
@@ -147,7 +149,11 @@ site/
 
 ## Person names
 
-`register_names.py` gives every register person one short name, used by `build_data.py` for the graph and by `build_holdings.py` for the time band and the person lists: first name variant and first clause of the description in the nominative, asides and cross references cut, ordinals joined („Friedrich I. Barbarossa“), a siglum with its office („Rainald G, Notar der Reichskanzlei“). A sub-entry after a second „//“ names the people around a person and is shown as such („Kinder (Friedrich I. Barbarossa)“). Names that coincide among the persons a view shows are lengthened by a clause; two pairs stay alike because the register describes them identically (Adalbert, Bischof von Trient; Friedrich, Graf von Beichlingen). Where the register gives only Latin variants the German head stands („Fredericus“ to „Friedrich“). `PLACE_FIXES` in `build_holdings.py` corrects one place label the delivery writes wrongly („Cremam“ for Crema).
+`register_names.py` gives every register person one short name, used by `build_data.py` for the graph and by `build_holdings.py` for the time band and the person lists: first name variant and first clause of the description in the nominative, asides and cross references cut, ordinals joined („Friedrich I. Barbarossa“), a siglum with its office („Rainald G, Notar der Reichskanzlei“). A sub-entry after a second „//“ names the people around a person and is shown as such („Kinder (Friedrich I. Barbarossa)“). Names that coincide among the persons a view shows are lengthened by a clause; two pairs stay alike because the register describes them identically (Adalbert, Bischof von Trient; Friedrich, Graf von Beichlingen). Where the register gives only Latin variants the German head stands („Fredericus“ to „Friedrich“). `PLACE_FIXES` in `edition_io.py` corrects, for display only, the two place labels that the label rule reads wrongly from the register: „Cremam“ for Crema, and „Johannes“ for Saint-Jean-de-Losne, which the register files under the name variants of the saint. `build_holdings.py` and `check_itinerary.py` both name places through it.
+
+## Order and join of the whole-delivery layer
+
+`build_holdings.py` and `check_itinerary.py` sort the delivery with one key (`regest_order` in `edition_io.py`): start date, then the identifier with its numbers read as numbers. The views keep that order and sort by date only, so the line the Atlas draws is the line whose steps the itinerary check judged (`checks/test_holdings.py`). Both scripts join the register on the display identifier and assign no row where the identifier names several records, as [Source data](source-data.md) requires: RI IV,2,2 n. 1520a names two records, `holdings.json` reports them under `ambiguous`, and neither record lists persons. Ten regesta carry no regest text in the delivery (RI IV,2,1 n. 107 among those of the run); card and regest page say „Kein Regesttext geliefert.“
 
 ## Identifier and sort key of n. 103a
 
@@ -173,4 +179,4 @@ On 2026-11-14 the operator gave up checking the twenty selected regesta himself 
 
 ## Rights
 
-The rights study of 2026-11-11 (summarised in the former edition plan of `regesta-rdf-demo` at f65887c, section Rights) found the regesta database of Regesta Imperii under CC BY 4.0 and the register file byte-identical with the public RI Lab file; for the regest export the licence follows from the database licence, without an identical public copy. The site therefore carries the attribution, the licence link, the persistent link per regest and the modification statement of `edition/texts.json`, and links third-party images only. The Research Coordination treats the rights as clarified for publishing the curated build (2026-11-11); the public repository is still to be created, and the export date of the regest file is still to be established.
+The rights study of 2026-11-11 (summarised in the former edition plan of `regesta-rdf-demo` at f65887c, section Rights) found the regesta database of Regesta Imperii under CC BY 4.0 and the register file byte-identical with the public RI Lab file; for the regest export the licence follows from the database licence, without an identical public copy. The site therefore carries the attribution, the licence link, the persistent link per regest and the modification statement of `edition/texts.json`, and links third-party images only. The Research Coordination treats the rights as clarified for publishing the curated build (2026-11-11); the repository exists and is private, making it public stays with the operator ([plan.md](plan.md), Public visibility), and the export date of the regest file is still to be established.

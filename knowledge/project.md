@@ -23,7 +23,7 @@ The edition shows the run `factoid-1153-2026-11-11`: all 224 regesta whose start
 
 ## Status
 
-The revised stage of the run passes the technical checks, and two agent reviews per group were adjudicated and corrected. That is conformance to the contract and agentic review, not scholarly validation: the manifest records `expert_accepted: false`, and the edition shows every statement as unchecked by a historian. The design is a draft not accepted by the operator; next steps are in [plan.md](plan.md). The earlier pilot run `pilot-2026-11-09` with its CIDOC CRM profile is kept in `pipeline/runs/` as archive ([Domain ontology](domain-ontology.md)).
+The revised stage of the run passes the technical checks, and two agent reviews per group were adjudicated and corrected. That is conformance to the contract and agentic review, not scholarly validation: the manifest records `expert_accepted: false`, and the edition shows every statement as unchecked by a historian. The operator accepted the site on 2026-11-18 for the guest unit, in German and in English ([journal](journal.md)); the acceptance covers the interface and no statement. Next steps are in [plan.md](plan.md). The earlier pilot run `pilot-2026-11-09` with its CIDOC CRM profile is kept in `pipeline/runs/` as archive ([Domain ontology](domain-ontology.md)).
 
 ## Pipeline
 

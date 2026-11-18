@@ -89,7 +89,7 @@ The build of view data, TEI and the public site follows the revised stage and is
 | Preparation | Verify input and derivative hashes, attach register candidates, hash the contract | `runs/<run>/packets/`, `runs/<run>/manifest.json` |
 | Extraction | Read the assigned summary within the frozen contract | `runs/<run>/extracted/*.ttl` and batch outcomes |
 | Validation | Syntax, allowed terms, SHACL, exact wording, actor policy, abstention and coverage | `runs/<run>/validation/extracted.json` and a German review sheet |
-| Review | Read source and graph, report unsupported claims and omissions | `runs/<run>/review/review-A.json`, `review-B.json` |
+| Review | Read source and graph, report unsupported claims and omissions | `runs/<run>/review/review-A.json`, `review-B.json`; per group `review-gN-A.json`, `review-gN-B.json` in the shown run |
 | Adjudication | Accept or reject each finding against the contract | `runs/<run>/review/adjudication.json` |
 | Correction | Address accepted findings while keeping the extracted stage | `runs/<run>/revised/*.ttl`, `revised/corrections.json` |
 | Revalidation | The same checks on the revised stage | `runs/<run>/validation/revised.json` and review sheet |

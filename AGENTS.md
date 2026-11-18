@@ -25,7 +25,7 @@ uv run run.py export
 uv run run.py graph --export
 ```
 
-The root scripts are one script pipeline with `pyproject.toml` and a committed `uv.lock`; `uv run` uses the locked environment, and `check` runs `uv run --locked pytest`, `ruff check` and `ruff format --check`. The shown run is `SHOWN_RUN` in `edition_io.py`, the default of every script. `validate` refuses a run whose reports were written by another validator unless `--allow-validator-change` is given. `graph` loads the revised Turtle of the run into one rdflib graph in memory and prints the answers of the SPARQL queries in `queries/`. `export` writes the reusable graph of the revised stage (TriG, Turtle union, report) into the gitignored `data/graph/` (knowledge/pipeline.md, Graph export); `graph --export` runs the queries on it.
+The root scripts are one script pipeline with `pyproject.toml` and a committed `uv.lock`; `uv run` uses the locked environment, and `check` runs `uv run --locked pytest`, `ruff check` and `ruff format --check`. The shown run is `SHOWN_RUN` in `edition_io.py`, the default of every script except `build_site.py`, which still names the run itself (knowledge/plan.md). `validate` refuses a run whose reports were written by another validator unless `--allow-validator-change` is given. `graph` loads the revised Turtle of the run into one rdflib graph in memory and prints the answers of the SPARQL queries in `queries/`. `export` writes the reusable graph of the revised stage (TriG, Turtle union, report) into the gitignored `data/graph/` (knowledge/pipeline.md, Graph export); `graph --export` runs the queries on it.
 
 Build the interface data of a run, the whole-delivery layer, the itinerary check and the base map:
 
@@ -78,7 +78,8 @@ The interface is checked on the rendered state: `node tools/check_ui_density.cjs
 - `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`; `img/` the vendored mark of Digital Humanities Craft for the footer (LICENSE-DATA.md)
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema
 - `build_site.py` curated static edition site into `site/`, German at the root and English under `en/`; `edition/texts.json` title, definition, licence and attribution; `js/i18n/de.json` and `en.json` every interface text per language, read by `js/i18n.js` and the build (knowledge/glossary.md); `js/edition/` its content pages
-- `checks/` contract tests, the transfer checks `test_pipeline.py`, the graph checks `test_graph.py`, the export checks `test_export.py` and the CSV reader check `test_edition_io.py`
+- `checks/` contract tests, the transfer checks `test_pipeline.py`, the graph checks `test_graph.py`, the export checks `test_export.py`, the CSV reader check `test_edition_io.py`, the layer checks `test_holdings.py` (itinerary order, place names, ambiguous identifier) and the publication gate check `test_publish.py`
 - `build_graph.py` the graph export of the revised stage into `data/graph/`
+- `register_names.py` the short name of every register person, imported by `build_data.py`, `build_holdings.py` and `build_graph.py`; `queries/` the SPARQL questions of `run.py graph` with their loader `run_queries.py`
 - `run.py` the entry point of the RDF workflow; `pipeline/` the pipeline with its scripts, `contracts/`, `runs/`, `source-material/` (Regesta Imperii CSV, CC BY 4.0), `generated/` and its own `ruff.toml`
 - `knowledge/` project knowledge; `LICENSE` (MIT, code) and `LICENSE-DATA.md` (CC BY 4.0, texts and data)
