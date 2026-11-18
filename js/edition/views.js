@@ -12,11 +12,20 @@ export function siteUrl(root, path) {
   return new URL(`${root}${path}`, document.baseURI).href;
 }
 
+/**
+ * The start of the page's language (data-home on <html>): the site root for German, en/ for
+ * English. Pages are addressed from here, data and the views' modules from the root.
+ */
+export const home = (root) => document.documentElement.dataset.home ?? root;
+
 /** The store the views expect: edition, whole-holdings layer and regests by UID, as in js/app.js. */
 export async function loadStore(root) {
   const response = await fetch(siteUrl(root, "ansicht/data/edition.json"));
   if (!response.ok) throw new Error(`edition.json: HTTP ${response.status}`);
   const edition = await response.json();
+  // The labels of the model in the page language (js/i18n.js), for every view this page mounts.
+  const { setVocabulary } = await import(siteUrl(root, "ansicht/js/i18n.js"));
+  setVocabulary(edition.vocabulary);
   // The whole-holdings layer is optional, as in js/app.js; only the itinerary needs it.
   const holdings = await fetch(siteUrl(root, "ansicht/data/holdings.json"))
     .then((r) => (r.ok ? r.json() : null))
@@ -35,18 +44,19 @@ export async function loadRoutes(root) {
  * set by script (location.hash = ...) by replacing the history entry.
  */
 export function bridge(root, routes) {
+  const base = home(root);
   const toUrl = (hash) => {
     const parts = hash.replace(/^#\/?/, "").split("/").filter(Boolean);
     if (parts[0] === "regest" && routes.regests[parts[1]]) {
       const back = encodeURIComponent(location.href);
-      return siteUrl(root, `${routes.regests[parts[1]]}?zurueck=${back}${parts[2] ? `#f-${parts[2]}` : ""}`);
+      return siteUrl(base, `${routes.regests[parts[1]]}?zurueck=${back}${parts[2] ? `#f-${parts[2]}` : ""}`);
     }
     if (parts[0] === "personen") {
       const iri = decodeURIComponent(parts.slice(1).join("/"));
-      return siteUrl(root, routes.persons[iri] ?? "personen/");
+      return siteUrl(base, routes.persons[iri] ?? "personen/");
     }
     // The Netz and the Zeitband live in the views app; the former Raum forwards there to the Netz.
-    if (["raum", "zeitband"].includes(parts[0]) || parts.length === 0) return siteUrl(root, `ansicht/${location.search}${hash || "#/"}`);
+    if (["raum", "zeitband"].includes(parts[0]) || parts.length === 0) return siteUrl(base, `ansicht/${location.search}${hash || "#/"}`);
     return null;
   };
   document.addEventListener(

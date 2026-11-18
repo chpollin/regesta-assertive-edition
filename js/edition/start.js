@@ -10,6 +10,6 @@ const ATLAS_QUERY = ["von", "bis", "ort", "person", "personen", "art", "familien
 export function init(root) {
   const query = new URLSearchParams(location.search);
   if (ATLAS_HASH.test(location.hash) || ATLAS_QUERY.some((k) => query.has(k))) {
-    location.replace(`${root}atlas/${location.search}${location.hash}`);
+    location.replace(`${document.documentElement.dataset.home ?? root}atlas/${location.search}${location.hash}`);
   }
 }

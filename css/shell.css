@@ -57,6 +57,9 @@
   .site-github, .footer-github { display: inline-grid; place-items: center; color: var(--muted); }
   .site-github { inline-size: 1.75rem; block-size: 1.75rem; }
   .site-github:hover, .footer-github:hover { color: var(--text); }
+  /* The language switch (2026-11-18): the code of the other language, beside the repository. */
+  .lang-switch { padding: 1px 6px; border: 1px solid var(--edge); border-radius: var(--radius); color: var(--muted); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.04em; text-decoration: none; }
+  .lang-switch:hover { color: var(--text); border-color: var(--text); }
   .site-footer { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-5); padding: var(--space-2) var(--space-4); border-block-start: 1px solid var(--hairline); background: var(--stage); color: var(--muted); font-size: var(--step--1); }
   .site-footer p { margin: 0; }
   .site-footer a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
@@ -68,7 +71,7 @@
   @media (max-width: 40rem) {
     .site-header .jump { display: none; }
     /* The repository mark stays on the title's line, the objects take the second. */
-    .site-github { order: 1; }
+    .site-github, .lang-switch { order: 1; }
     .site-nav { order: 2; }
   }
 

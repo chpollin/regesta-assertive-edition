@@ -9,21 +9,27 @@
  * named there, so nothing disappears.
  */
 
+import { t } from "./i18n.js";
+
 /** @typedef {{key: string, short: string, label: string, angle: number, types: string[]}} Family */
 
-/** Angles in degrees, clockwise from north, eight sectors of 45 degrees. */
+/**
+ * Angles in degrees, clockwise from north, eight sectors of 45 degrees. The types are the German
+ * labels of the data and stay German, since they are keys; short word and full name of a family
+ * come from the dictionary (family.<key>.short, family.<key>.label).
+ */
 export const FAMILIES = /** @type {Family[]} */ ([
-  { key: "kin", short: "Familie", label: "Verwandtschaft und Ehe", angle: 0, types: ["Elternschaft", "Verwandtschaft", "Ehe", "Eheschließung", "Ehescheidung", "Eheauflösung"] },
-  { key: "transfer", short: "Besitz", label: "Übertragung und Besitz", angle: 45, types: ["Übertragung", "Schenkung", "Rechtsverleihung", "Belehnung", "Verkauf", "Verpfändung", "Rechtsinhaberschaft", "Besitz", "Lehnsverhältnis"] },
-  { key: "confirm", short: "Zusage", label: "Bestätigung und Zusicherung", angle: 90, types: ["Bestätigung", "Rechtsbestätigung", "Zusicherung"] },
-  { key: "protect", short: "Schutz", label: "Schutz", angle: 135, types: ["Schutznahme", "Schutzverleihung"] },
-  { key: "dispute", short: "Streit", label: "Streit und Urteil", angle: 180, types: ["Streit", "Streit oder Klage", "Urteil"] },
-  { key: "contact", short: "Kontakt", label: "Bitte, Gesandtschaft, Verhandlung", angle: 225, types: ["Bitte", "Entsendung", "Schreiben", "Mitteilung", "Verhandlung"] },
-  { key: "money", short: "Zahlung", label: "Zahlung und Pflicht", angle: 270, types: ["Zahlung", "Schuldenerlass", "Rückgabe", "Rückerstattung", "Verpflichtung"] },
-  { key: "order", short: "Amt", label: "Amt und Bestimmung", angle: 315, types: ["Bestimmung", "Rechtssetzung", "Einsetzung", "Widerruf", "Amtsinhabe", "Handlung ohne Typ"] },
-]);
+  { key: "kin", angle: 0, types: ["Elternschaft", "Verwandtschaft", "Ehe", "Eheschließung", "Ehescheidung", "Eheauflösung"] },
+  { key: "transfer", angle: 45, types: ["Übertragung", "Schenkung", "Rechtsverleihung", "Belehnung", "Verkauf", "Verpfändung", "Rechtsinhaberschaft", "Besitz", "Lehnsverhältnis"] },
+  { key: "confirm", angle: 90, types: ["Bestätigung", "Rechtsbestätigung", "Zusicherung"] },
+  { key: "protect", angle: 135, types: ["Schutznahme", "Schutzverleihung"] },
+  { key: "dispute", angle: 180, types: ["Streit", "Streit oder Klage", "Urteil"] },
+  { key: "contact", angle: 225, types: ["Bitte", "Entsendung", "Schreiben", "Mitteilung", "Verhandlung"] },
+  { key: "money", angle: 270, types: ["Zahlung", "Schuldenerlass", "Rückgabe", "Rückerstattung", "Verpflichtung"] },
+  { key: "order", angle: 315, types: ["Bestimmung", "Rechtssetzung", "Einsetzung", "Widerruf", "Amtsinhabe", "Handlung ohne Typ"] },
+].map((f) => ({ ...f, short: t(`family.${f.key}.short`), label: t(`family.${f.key}.label`) })));
 
-const BY_TYPE = new Map(FAMILIES.flatMap((f) => f.types.map((t) => [t, f])));
+const BY_TYPE = new Map(FAMILIES.flatMap((f) => f.types.map((type) => [type, f])));
 
 /** Family of an act label; parent edges between persons count as kinship. */
 export function familyOf(label) {

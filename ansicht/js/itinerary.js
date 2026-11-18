@@ -33,17 +33,18 @@
  * and the shared persons.
  */
 import { h } from "./dom.js";
-import { statementsOf } from "./regest-card.js";
+import { statementsOf, verdictPlate } from "./regest-card.js";
 import { familyIcon, familyOf } from "./relations.js";
 import { s } from "./svg.js";
 import { mapProjection } from "./map.js";
+import { t } from "./i18n.js";
 
 const DEG = Math.PI / 180;
-/** The three camera positions; the Atlas adds Jahrzehnte as a fourth representation. */
+/** The three camera positions; the Atlas adds Jahrzehnte as a fourth representation and names them. */
 export const CAMERAS = Object.freeze({
-  wuerfel: { label: "Würfel", yaw: -28 * DEG, pitch: 20 * DEG },
-  karte: { label: "Karte", yaw: 0, pitch: 90 * DEG },
-  zeit: { label: "Zeit", yaw: 0, pitch: 0 },
+  wuerfel: { yaw: -28 * DEG, pitch: 20 * DEG },
+  karte: { yaw: 0, pitch: 90 * DEG },
+  zeit: { yaw: 0, pitch: 0 },
 });
 /** Bounds of the time height in map units (the core of the places spans about 2.5). */
 const HEIGHT_MIN = 1.1;
@@ -97,7 +98,7 @@ export function createCube(store, options) {
     class: "space-scene",
     tabindex: "0",
     role: "group",
-    "aria-label": "Raum-Zeit-Würfel der Regesten mit Ausstellungsort. Pfeiltasten drehen, Plus und Minus zoomen, Pos1 kehrt zur Ausgangslage zurück. Die Regesten der Auswahl stehen in der Liste links.",
+    "aria-label": t("cube.aria"),
   });
   const tip = h("div", { class: "it-tip", role: "tooltip", hidden: true });
   const element = h("div", { class: "cube" }, sceneHost, tip);
@@ -344,7 +345,7 @@ export function createCube(store, options) {
     // The key of the soft area stands at the area itself (figure rule: legend at the marks).
     if (realm && state.view.pitch > 10 * DEG) {
       const [lon, lat] = realm.label ?? [10.2, 51.4];
-      place("Reich um 1190", pt(lon, lat, first), "it-realm-label", -40, 4);
+      place(t("cube.realm"), pt(lon, lat, first), "it-realm-label", -40, 4);
     }
     scene.labels.replaceChildren(...out);
   }
@@ -374,11 +375,11 @@ export function createCube(store, options) {
       const j = state.pointed;
       if (j !== null && j !== o && related.all.has(j) && screen[j]) {
         const kinds = [];
-        if (j === related.before) kinds.push("Station davor");
-        if (j === related.after) kinds.push("Station danach");
-        if (related.place.has(j)) kinds.push("gleicher Ort");
+        if (j === related.before) kinds.push(t("cube.before"));
+        if (j === related.after) kinds.push(t("cube.after"));
+        if (related.place.has(j)) kinds.push(t("atlas.legend.place"));
         const names = (related.people.get(j) ?? []).map((id) => persons[id].l);
-        if (names.length) kinds.push(`gemeinsame Person: ${names.slice(0, 2).join(", ")}${names.length > 2 ? ` und ${names.length - 2} weitere` : ""}`);
+        if (names.length) kinds.push(`${t("atlas.legend.people")}: ${names.slice(0, 2).join(", ")}${names.length > 2 ? ` ${t("cube.more", { n: names.length - 2 })}` : ""}`);
         const q = screen[j];
         const text = s("text", { class: "it-rel-label", x: (q.x + 9).toFixed(1), y: (q.y - 8).toFixed(1), text: `${points[j].i}, ${kinds.join("; ")}` });
         scene.pointer.append(text);
@@ -451,18 +452,18 @@ export function createCube(store, options) {
     }
     const p = points[i];
     const regest = store.byUid.get(p.u);
-    const text = h("p", { class: "it-tip-text source", text: regest ? regest.text : "…" });
-    if (!regest) options.texts?.().then((t) => (text.textContent = t[p.u] || ""));
+    const text = h("p", { class: "it-tip-text source", lang: "de", text: regest ? regest.text : "…" });
+    if (!regest) options.texts?.().then((texts) => (text.textContent = texts[p.u] || ""));
     const sts = regest ? statementsOf(regest) : [];
     // replaceChildren writes a null child as the text „null“, so an empty part is dropped first.
     const parts = [
-      h("p", { class: "it-tip-head" }, h("span", { class: "card-id", text: p.i }), ` ${Math.floor(p.y)}, ${places[p.p].l}`, sts.length ? h("span", { class: "it-tip-state", text: " ungeprüft" }) : null),
+      h("p", { class: "it-tip-head" }, h("span", { class: "card-id", text: p.i }), ` ${Math.floor(p.y)}, `, h("span", { lang: "de", text: places[p.p].l }), sts.length ? h("span", { class: "it-tip-state", text: ` ${t("state.word")}` }) : null),
       text,
       sts.length
         ? h(
             "ul",
             { class: "it-tip-sts", role: "list" },
-            sts.map((st) => h("li", {}, h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 12 }), String(st.n)), ` ${st.kind}`, st.agent ? h("span", { class: `ann-verdict is-${st.agent.outcome.replace(/\s+/g, "-")}` }, `LLM: ${st.agent.outcome}`) : null)),
+            sts.map((st) => h("li", {}, h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 12 }), String(st.n)), ` ${st.kindLabel}`, st.agent ? verdictPlate(st.agent) : null)),
           )
         : null,
     ];

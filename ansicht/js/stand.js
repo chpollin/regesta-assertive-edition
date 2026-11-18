@@ -10,13 +10,11 @@
  * „missus König Konrads III.“ does not count) decides first; otherwise the estate word that
  * stands first, so „Richter und missus …“ is lay. Without a word the estate stays open. The
  * key under each drawing names the colours; knowledge/data.md, Estate, holds the rule.
+ * The estate words searched stay German, since the register descriptions are German.
  */
-export const STANDS = [
-  { key: "ruler", label: "Herrscher" },
-  { key: "church", label: "geistlich" },
-  { key: "lay", label: "weltlich" },
-  { key: "open", label: "ohne Angabe" },
-];
+import { t } from "./i18n.js";
+
+export const STANDS = ["ruler", "church", "lay", "open"].map((key) => ({ key, label: t(`stand.${key}`) }));
 
 const RULER = /\b(?:Kaiserin|Kaisers?|Königin|Königs?|Sultan|Doge)(?![\wäöüß])/g;
 // After a ruler's word in a register description, a capitalised genitive names someone else.

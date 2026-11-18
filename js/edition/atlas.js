@@ -9,7 +9,7 @@
  * rewrites #/itinerar/<place>, #/jahrzehnte and ?ansicht= into the Atlas address.
  */
 import { setAtlas } from "./jump.js";
-import { bridge, demoteHeadings, loadRoutes, loadStore, siteUrl } from "./views.js";
+import { bridge, demoteHeadings, home, loadRoutes, loadStore, siteUrl } from "./views.js";
 
 export async function init(root) {
   const host = document.getElementById("figure");
@@ -35,7 +35,7 @@ export async function init(root) {
     (textsPromise ??= fetch(siteUrl(root, "ansicht/data/holdings-texts.json"))
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({})));
-  const atlas = renderAtlas(store, { filters: createFilters(store), texts, about: siteUrl(root, "#daten") });
+  const atlas = renderAtlas(store, { filters: createFilters(store), texts, about: siteUrl(home(root), "#daten") });
   host.replaceChildren(atlas.element);
   host.classList.add("is-atlas");
   demoteHeadings(host);

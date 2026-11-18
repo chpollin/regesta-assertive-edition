@@ -16,6 +16,7 @@ import { createCount, createDetail, createFacets, createFrame, createList } from
 import { renderRegestCard } from "./regest-card.js";
 import { FAMILIES, familyIcon } from "./relations.js";
 import { createSelection } from "./selection.js";
+import { t } from "./i18n.js";
 
 function readUid() {
   const m = location.hash.match(/^#\/regesten\/regest\/([^/]+)/);
@@ -57,13 +58,13 @@ export function renderRegesten(store, options) {
   // delivery arrive after the list; a row drawn before fills in when they come.
   let texts = null;
   const textOf = (u) => store.byUid.get(u)?.text ?? texts?.[u] ?? "";
-  const lead = (r) => h("span", { class: "row-text", "data-text": r.u, "aria-hidden": "true", text: textOf(r.u) });
+  const lead = (r) => h("span", { class: "row-text", lang: "de", "data-text": r.u, "aria-hidden": "true", text: textOf(r.u) });
   options.texts().then((t) => {
     texts = t;
     for (const el of list.element.querySelectorAll(".row-text[data-text]")) if (!el.textContent) el.textContent = textOf(el.dataset.text);
   });
   const list = createList({
-    label: "Regesten der Auswahl",
+    label: t("list.label"),
     onOpen: (u) => detail.open(u),
     mark: (r) => (filters.persons.length ? selection.personMark(r.u) : r.stmt && !selection.familiesOf.has(r.u) ? "is-evidenced" : ""),
     // The dating prose stands in the opened regest; in the row the year says when (density
@@ -71,17 +72,18 @@ export function renderRegesten(store, options) {
     extra: (r) => [signs(r), lead(r)],
   });
   // Quiet column heads over the rows, for the eye only; each row names its parts itself.
-  const head = h("div", { class: "reg-head", "aria-hidden": "true" }, ["Jahr", "Nummer", "Ort", "Aussagen", "Regest"].map((w) => h("span", { text: w })));
+  const head = h("div", { class: "reg-head", "aria-hidden": "true" }, ["year", "number", "place", "statements", "regest"].map((w) => h("span", { text: t(`list.col.${w}`) })));
   const frame = createFrame(filters, {
     name: "regesten",
-    title: "Regesten der Lieferung",
+    title: t("regesten.title"),
     facets: facets.element,
     count: count.element,
     list: null,
     tools: [],
     main: h("div", { class: "reg-list" }, head, list.element),
     dock: true,
-    backLabel: "Zurück zur Liste",
+    backLabel: t("regesten.back"),
+    backShort: t("regesten.backShort"),
     onEscape: () => detail.close(),
   });
   const detail = createDetail(frame, {

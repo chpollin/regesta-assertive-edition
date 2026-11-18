@@ -24,10 +24,11 @@ import { createSelection } from "./selection.js";
 import { s } from "./svg.js";
 import { renderTimeband } from "./timeband.js";
 import { writeAddress } from "./url.js";
+import { t } from "./i18n.js";
 
 const ACTOR = "urn:regesta:actor:";
 const regOf = (iri) => iri?.match(/^urn:regesta:actor:(RI\d{3}-\d{3}-[A-Z]\d{6})$/)?.[1] ?? null;
-const TEXT_OFF = "Die Textsuche wirkt in der Liste Regesten, nicht bei den Personen.";
+const TEXT_OFF = t("persons.textOff");
 
 /**
  * @param {any} store  edition, holdings and byUid, as in js/app.js
@@ -107,13 +108,13 @@ export function renderPersons(store, options) {
 
   // The switch of the representations, at the place of the Atlas's switch.
   const switchLinks = [
-    ["netz", "Netz", "#/"],
-    ["zeitband", "Zeitband", "#/zeitband"],
+    ["netz", t("persons.mode.netz"), "#/"],
+    ["zeitband", t("persons.mode.zeitband"), "#/zeitband"],
   ].map(([key, label, href]) => h("a", { class: "seg", href, "aria-current": key === view ? "page" : null }, label));
-  const pageLink = h("a", { class: "tool person-page", hidden: true }, "Personenseite");
+  const pageLink = h("a", { class: "tool person-page", hidden: true }, t("persons.page"));
   const infoPanel = h("div", { class: "atlas-info", id: "persons-info", role: "note", hidden: true });
   const sign = (d) => s("svg", { viewBox: "0 0 16 16", class: "head-icon", "aria-hidden": "true" }, s("path", { d }));
-  const infoButton = h("button", { type: "button", class: "tool atlas-info-mark", "aria-label": "Lesehilfe", title: "Lesehilfe", "aria-expanded": "false", "aria-controls": "persons-info" }, sign("M8 7.2v4.6M8 4.4v.4"));
+  const infoButton = h("button", { type: "button", class: "tool atlas-info-mark", "aria-label": t("info.button"), title: t("info.button"), "aria-expanded": "false", "aria-controls": "persons-info" }, sign("M8 7.2v4.6M8 4.4v.4"));
   infoButton.addEventListener("click", () => {
     const on = infoPanel.hidden;
     infoPanel.hidden = !on;
@@ -122,8 +123,8 @@ export function renderPersons(store, options) {
       infoPanel.replaceChildren(
         ...(netz
           ? [
-              h("p", { text: "Kreis um eine Person: jede Richtung steht für eine Art von Aussage, ihr Zeichen am Rand. Ein Bündel fasst eine dichte Richtung mit ihrer Zahl an Regesten zusammen; ein Klick öffnet es." }),
-              h("p", { text: "Ohne gewählte Person: die vierzig in Aussagen meistgenannten Personen, verbunden, wenn sie gemeinsame Aussagen haben. Die Aussagen haben LLM-Agenten aus dem Regesttext gelesen." }),
+              h("p", { text: t("persons.info.circle") }),
+              h("p", { text: t("persons.info.overview") }),
             ]
           : figure.key()),
       );
@@ -131,27 +132,28 @@ export function renderPersons(store, options) {
 
   const facets = createFacets(store, filters, {
     prefix: "pers",
-    applies: netz ? { layer: "Das Netz besteht aus den Aussagen des Laufs und zeigt nur Regesten mit Aussagen.", text: TEXT_OFF } : { text: TEXT_OFF },
+    applies: netz ? { layer: t("persons.layerOff"), text: TEXT_OFF } : { text: TEXT_OFF },
     layer,
     persons,
     marks: () => (filters.any() ? new Set(shown.map((r) => r.year)) : new Set()),
   });
   const count = createCount(filters, { onReset: () => (local = null) });
   const list = createList({
-    label: "Regesten der Auswahl",
+    label: t("list.label"),
     onOpen: (u) => detail.open(u),
     mark: (r) => (filters.persons.length ? selection.personMark(r.u) : r.stmt ? "is-evidenced" : ""),
   });
   const frame = createFrame(filters, {
     name: "personen",
-    title: netz ? "Personen: Netz der belegten Beziehungen" : "Personen: Zeitband der Nennungen",
+    title: netz ? t("persons.title.netz") : t("persons.title.zeitband"),
     facets: facets.element,
     count: count.element,
     list: list.element,
-    tools: [h("div", { class: "segs", role: "group", "aria-label": "Darstellung der Personen" }, switchLinks), netz ? pageLink : figure.controls],
+    tools: [h("div", { class: "segs", role: "group", "aria-label": t("persons.modes") }, switchLinks), netz ? pageLink : figure.controls],
     toolsEnd: [infoButton, infoPanel],
     main: h("div", { class: "persons-figure" }, figure.element),
-    backLabel: netz ? "Zurück zum Netz" : "Zurück zum Zeitband",
+    backLabel: netz ? t("persons.back.netz") : t("persons.back.zeitband"),
+    backShort: netz ? t("persons.backShort.netz") : t("persons.backShort.zeitband"),
     onEscape: () => detail.close(),
   });
   const detail = createDetail(frame, {

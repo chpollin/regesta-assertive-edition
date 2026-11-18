@@ -11,6 +11,7 @@
  * computed from the filtered graph the view hands in.
  */
 import { s } from "./svg.js";
+import { t } from "./i18n.js";
 
 const TOP = 40;
 
@@ -134,7 +135,7 @@ export function drawPersonNetwork(host, net, { onSelect, onPoint, height: given,
     }
   }
   const nodeEls = net.nodes.map((n, i) => {
-    const a = s("a", { href: `#/personen/${encodeURIComponent(n.id)}`, class: "node po-node", "aria-label": `${n.label}, ${n.n} Aussagen` });
+    const a = s("a", { href: `#/personen/${encodeURIComponent(n.id)}`, class: "node po-node", "aria-label": t("po.nodeAria", { label: n.label, n: n.n }) });
     // A group is a square, as in the circle of a person, so the key means the same in both.
     const rr = r(n);
     a.append(n.group ? s("rect", { x: (pos[i].x - rr * 0.9).toFixed(1), y: (pos[i].y - rr * 0.9).toFixed(1), width: (rr * 1.8).toFixed(1), height: (rr * 1.8).toFixed(1), class: `po-dot st-${n.stand ?? "open"}` }) : s("circle", { cx: pos[i].x.toFixed(1), cy: pos[i].y.toFixed(1), r: rr.toFixed(1), class: `po-dot st-${n.stand ?? "open"}` }));
@@ -172,8 +173,8 @@ export function drawPersonNetwork(host, net, { onSelect, onPoint, height: given,
   if (centre) {
     const cx = 18;
     const cy = 18;
-    const a = s("a", { href: `#/personen/${encodeURIComponent(centre.id)}`, class: "node po-node po-centre", "aria-label": `${centre.label}, an ${centre.count} Regesten beteiligt, nicht im Bild; öffnet den Kreis` });
-    a.append(s("title", { text: "An fast allen Aussagen beteiligt und deshalb nicht im Bild; ein Klick öffnet den Kreis" }));
+    const a = s("a", { href: `#/personen/${encodeURIComponent(centre.id)}`, class: "node po-node po-centre", "aria-label": t("po.centreAria", { label: centre.label, n: centre.count }) });
+    a.append(s("title", { text: t("po.centreTitle") }));
     a.append(s("circle", { cx, cy, r: 10, class: "po-dot po-centre-dot" }));
     a.append(s("text", { x: cx + 16, y: cy + 4, class: "n-label", text: `${centre.label} (${centre.count})` }));
     a.addEventListener("click", (event) => {

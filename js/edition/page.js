@@ -6,6 +6,8 @@
 import { carryFilters } from "../url.js";
 // The jump by RI number in the header, on every page.
 import "./jump.js";
+// The language switch in the header, on every page.
+import "./lang.js";
 
 document.documentElement.classList.replace("no-js", "js");
 // A change of view keeps the chosen filters (knowledge/interface-plan.md, One filter model).
@@ -24,5 +26,5 @@ const load = loaders[document.body.dataset.page];
 if (load) {
   load()
     .then((module) => module.init(root))
-    .catch((error) => console.error("Erweiterung der Seite fehlgeschlagen:", error));
+    .catch((error) => console.error("page enhancement failed:", error));
 }

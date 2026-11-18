@@ -19,7 +19,8 @@ function fold(text) {
     .replace(/[^a-z0-9 ]/g, "");
 }
 
-export function init() {
+export async function init(root) {
+  const { t } = await import(new URL(`${root}ansicht/js/i18n.js`, document.baseURI).href);
   const box = document.querySelector(".list-filter");
   if (!box) return;
   const input = box.querySelector(".list-q");
@@ -46,7 +47,7 @@ export function init() {
     // A group heading stays only while a row of its group is shown.
     for (const g of groups) g.hidden = ![...g.closest("tbody").querySelectorAll("tr[data-q]")].some((r) => !r.hidden);
     // The empty state says what is and what helps (rule 16).
-    count.textContent = !q && !on.length ? "" : shown ? `${shown} von ${rows.length}` : "Keine Zeile passt. Suche kürzen oder Arten abwählen.";
+    count.textContent = !q && !on.length ? "" : shown ? t("listfilter.count", { n: shown, total: rows.length }) : t("listfilter.empty");
     writeAddress({ q: q ? input.value.trim() : null, art: on.join(",") });
   };
   input.addEventListener("input", apply);
