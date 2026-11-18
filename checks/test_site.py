@@ -61,6 +61,28 @@ class SiteBuild(unittest.TestCase):
                 para = re.search(r'<p class="regest-text">(.*?)</p>', doc, re.S).group(1)
                 self.assertEqual(html.unescape(re.sub(r"<[^>]+>", "", para)), r["text"], s)
             self.assertFalse(any("knowledge" in p.parts for p in out.rglob("*")))
+            # The Atlas is the start page: its header marks Atlas as current and it loads the
+            # module that mounts ansicht/js/atlas.js (knowledge/interface-plan.md, step 1).
+            start = (out / "index.html").read_text(encoding="utf-8")
+            self.assertRegex(start, r'<a href="\./" aria-current="page">Atlas</a>')
+            self.assertIn('data-page="start"', start)
+            self.assertTrue((out / "ansicht" / "js" / "atlas.js").is_file())
+
+
+class AtlasRoutes(unittest.TestCase):
+    def test_atlas_route_and_old_place_addresses(self) -> None:
+        # The views app routes #/atlas and forwards the former place views to it; the header
+        # has no item Orte any more.
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        self.assertRegex(app, r"\batlas: \{[^\n]*renderAtlas")
+        for old in ("itinerar", "jahrzehnte"):
+            self.assertRegex(app, rf"\b{old}: \{{[^\n]*toAtlas: true")
+        nav = json.loads((ROOT / "js" / "nav.json").read_text(encoding="utf-8"))["items"]
+        self.assertEqual([it["key"] for it in nav], ["atlas", "regesten", "personen", "ueber"])
+        # The start page rewrites #/itinerar/<place> of earlier links to the Atlas address.
+        start = (ROOT / "js" / "edition" / "start.js").read_text(encoding="utf-8")
+        self.assertIn("atlasAddress", start)
+        self.assertRegex(start, r"itinerar\|jahrzehnte")
 
 
 class HiddenAttribute(unittest.TestCase):

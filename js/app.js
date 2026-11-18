@@ -7,22 +7,22 @@
  * Routes (hash based, so every view is addressable and the browser history works):
  *   #/                         flat network (Zeit und Netz), whole network
  *   #/personen/<iri>           the same around one person
- *   #/itinerar[/<place>]       the whole delivery as a cube of the places of issue
+ *   #/atlas[/<repr.>][/regest/<uid>]  the Atlas (js/atlas.js); in the curated build it lives on
+ *                              the start page, and this address forwards there
+ *   #/itinerar[/<place>], #/jahrzehnte[/<place>]  the former place views, forwarded to the Atlas
  *   #/zeitband[/<register id>] persons of the register as rows over the years
- *   #/jahrzehnte[/<place>]     the same map once per decade, side by side
  *   #/raum[/<iri>]             space view, corpus or around one person
  *   #/regest/<uid>[/<claim>]   reading view, optionally with one statement selected
- * Filters (time range, families) and view settings live in the query string and survive
- * switching between the views.
+ * Filters (time range, place, persons, families, layer) and view settings live in the query
+ * string and survive switching between the views.
  */
 import { h } from "./dom.js";
 import { createFilters } from "./filters.js";
 import { renderOverview } from "./overview.js";
 import { renderRegestCard } from "./regest-card.js";
 import { renderSpace } from "./space.js";
-import { renderItinerary } from "./itinerary.js";
+import { atlasAddress, renderAtlas } from "./atlas.js";
 import { renderTimeband } from "./timeband.js";
-import { renderDecades } from "./decades.js";
 
 /** @typedef {{edition: any, holdings: any, byUid: Map<string, any>}} Store */
 
@@ -72,7 +72,10 @@ const reachable = (href) => inBuild || href.startsWith(VIEW_PREFIX);
 let navItems = [];
 function buildNav(items) {
   navItems = items;
-  nav.replaceChildren(...items.filter((it) => reachable(it.href)).map((it) => h("a", { href: hrefOf(it.href), "data-nav": it.key }, it.label)));
+  // An item with an address inside this app (`app`, the Atlas) keeps it in the repository,
+  // where the static start page does not exist.
+  const link = (it) => (inBuild || !it.app ? hrefOf(it.href) : it.app);
+  nav.replaceChildren(...items.filter((it) => reachable(it.href) || it.app).map((it) => h("a", { href: link(it), "data-nav": it.key }, it.label)));
 }
 
 /** The object a view belongs to, and the switch between its representations. */
@@ -103,15 +106,35 @@ let lastView = "#/";
  * The routes: the first part of the hash picks the entry, `subject` turns the rest of the
  * address into the view's subject (null when it names nothing known). `holdings` marks the
  * views that need the whole-delivery layer; without it their address falls to the notice.
+ * `toAtlas` marks the former place views: their address is rewritten to the Atlas.
  */
 const ROUTES = {
   "": { navKey: "zeit-netz", title: "Zeit und Netz", render: (store, rest, ctx) => renderOverview(store, { actor: null, ...ctx }) },
   personen: { navKey: "zeit-netz", title: "Zeit und Netz", render: (store, rest, ctx) => renderOverview(store, { actor: actorIn(store, rest), ...ctx }) },
-  itinerar: { navKey: "itinerar", title: "Itinerar", holdings: true, render: (store, rest, ctx) => renderItinerary(store, { place: keyIn(store.holdings.places, rest), ...ctx }) },
+  atlas: { navKey: "atlas", title: "Atlas", holdings: true, toAtlas: inBuild, render: (store, rest, ctx) => renderAtlas(store, { filters: ctx.filters, texts: ctx.texts, about: null }) },
+  itinerar: { navKey: "atlas", title: "Atlas", holdings: true, toAtlas: true },
+  jahrzehnte: { navKey: "atlas", title: "Atlas", holdings: true, toAtlas: true },
   zeitband: { navKey: "zeitband", title: "Zeitband", holdings: true, render: (store, rest, ctx) => renderTimeband(store, { person: keyIn(store.holdings.persons, rest), ...ctx }) },
-  jahrzehnte: { navKey: "jahrzehnte", title: "Jahrzehnte", holdings: true, render: (store, rest, ctx) => renderDecades(store, { place: keyIn(store.holdings.places, rest), ...ctx }) },
   raum: { navKey: "raum", title: "Raum", render: (store, rest, ctx) => renderSpace(store, { actor: actorIn(store, rest), ...ctx }) },
 };
+
+/**
+ * Forward a former place address (#/itinerar[/<place>], #/jahrzehnte[/<place>]) to the Atlas,
+ * replacing the history entry: in the curated build to the start page, which is the Atlas, in
+ * the repository to #/atlas of this app. The Atlas address in the build forwards the same way.
+ */
+function forwardToAtlas(view, rest) {
+  let place = null;
+  try {
+    place = rest.length ? decodeURIComponent(rest.join("/")) : null;
+  } catch {
+    // A malformed place opens the Atlas on all places.
+  }
+  const target = atlasAddress(view, place, location.search);
+  // In the build the Atlas address of this app keeps its own representation and regest.
+  const hash = view === "atlas" ? location.hash : target.hash;
+  location.replace(`${inBuild ? "../" : location.pathname}${target.search}${hash}`);
+}
 
 /** The rest of the address as one decoded id. */
 const idOf = (rest) => decodeURIComponent(rest.join("/"));
@@ -144,6 +167,12 @@ function route(store, filters) {
   const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
   const view = parts[0] ?? "";
   const entry = Object.hasOwn(ROUTES, view) ? ROUTES[view] : null;
+  if (entry?.toAtlas && store.holdings) {
+    forwardToAtlas(view, parts.slice(1));
+    return;
+  }
+  // The Atlas follows its own representation and opened regest in the hash.
+  if (view === "atlas" && main.dataset.view === "atlas") return;
   let content;
   let navKey = "zeit-netz";
   let title = "Zeit und Netz";
@@ -169,8 +198,9 @@ function route(store, filters) {
   detail.hide();
   dispose = content.dispose ?? null;
   const previousView = main.dataset.view;
-  main.dataset.view = view === "personen" ? "" : view === "raum" ? "raum" : `${view}/${parts[1] ?? ""}`;
-  document.body.dataset.layout = content.aside ? "view" : "page";
+  main.dataset.view = view === "personen" ? "" : view === "raum" || view === "atlas" ? view : `${view}/${parts[1] ?? ""}`;
+  // A view with its own bar and detail (the Atlas) fills the area under the header alone.
+  document.body.dataset.layout = content.aside ? "view" : content.full ? "full" : "page";
   main.replaceChildren(content.element);
   const switcher = content.aside ? viewSwitch(navKey) : null;
   aside.replaceChildren(...[switcher, content.aside].filter(Boolean));

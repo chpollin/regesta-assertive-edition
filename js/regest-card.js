@@ -28,7 +28,7 @@ import { familyIcon, familyOf } from "./relations.js";
 import { s } from "./svg.js";
 
 const REVIEW_WORD = "ungeprüft";
-const REVIEW_TIP = "Von LLM-basierten Agenten extrahiert, technisch geprüft, fachlich nicht abgenommen.";
+const REVIEW_TIP = "Die Aussagen haben LLM-basierte Agenten aus dem Regesttext extrahiert, technisch geprüft, fachlich nicht abgenommen.";
 
 // The agent review at a statement (knowledge/data.md, Agent review): a small word plate, no
 // glyph, since the family signs of the annotation system include a check mark (Bestätigung);
@@ -49,22 +49,25 @@ function icon(name) {
   return s("svg", { viewBox: "0 0 16 16", class: "head-icon", "aria-hidden": "true" }, s("path", { d: ICON[name] }));
 }
 
-/** The regest's review state in one word: ungeprüft, or read by agents with who and when. */
+/**
+ * The review state of the regest's statements, once in the head: the one word „ungeprüft“
+ * (interface plan of 2026-11-17), its tip naming the producer and, where it exists, the agents'
+ * reading with model and date. The tip opens on pointing, on focus and on a tap, so it is
+ * reachable without a mouse. A regest without statements has no state to name.
+ */
+let tipCount = 0;
 function reviewState(regest) {
   const heads = (regest.blocks ?? []).map((b) => b.head).filter((hd) => hd?.evidence);
+  if (!heads.length) return null;
   const read = heads.filter((hd) => hd.agentReview);
-  if (!read.length) return h("abbr", { class: "card-state", title: REVIEW_TIP, text: REVIEW_WORD });
-  const { model, date } = read[0].agentReview;
-  return h(
-    "abbr",
-    {
-      class: "card-state",
-      tabindex: "0",
-      title: `${read.length} von ${heads.length} Aussagen von zwei LLM-basierten Agenten unabhängig gegen den Regesttext gelesen (${model}, ${date}). Das Schild an einer Aussage nennt ihr Urteil, „strittig“, wenn sie verschieden urteilen. Keine Aussage ist menschlich verifiziert.`,
-    },
-    icon("agents"),
-    "von LLM-Agenten gelesen",
-  );
+  const agents = read.length
+    ? ` ${read.length} von ${heads.length} Aussagen von zwei LLM-basierten Agenten unabhängig gegen den Regesttext gelesen (${read[0].agentReview.model}, ${read[0].agentReview.date}); das Schild an einer Aussage nennt ihr Urteil.`
+    : "";
+  const id = `card-state-${(tipCount += 1)}`;
+  const button = h("button", { type: "button", class: "card-state", "aria-describedby": id, "aria-expanded": "false" }, read.length ? icon("agents") : null, REVIEW_WORD);
+  button.addEventListener("click", () => button.setAttribute("aria-expanded", String(button.getAttribute("aria-expanded") !== "true")));
+  button.addEventListener("blur", () => button.setAttribute("aria-expanded", "false"));
+  return h("span", { class: "card-state-wrap" }, button, h("span", { class: "card-state-tip", role: "tooltip", id, text: `${REVIEW_TIP}${agents} Kein Mensch hat sie geprüft.` }));
 }
 
 /** Short qualifiers for the tag, at most QUAL_MAX characters together; every other literal is glossed. */

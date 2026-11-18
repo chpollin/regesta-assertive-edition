@@ -1,0 +1,117 @@
+/* The Atlas (js/atlas.js): filter bar, graphic with its tool row, the opened regest.
+   Layout after knowledge/interface-plan.md: bar of 17rem on the left, the graphic on the rest,
+   the regest as an overlay of 28rem over the right edge of the graphic, docked beside it from
+   100rem (1600 px); below 56rem the graphic first at 60dvh, the facets in a sheet, the result
+   list below, the regest as a route of its own. Colours from tokens.css only. */
+
+@layer layout {
+  .atlas {
+    --atlas-bar: 17rem;
+    --atlas-detail: 28rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--atlas-bar) minmax(0, 1fr);
+    block-size: 100%;
+    min-block-size: 0;
+  }
+  .atlas[data-dock="true"][data-open] { grid-template-columns: var(--atlas-bar) minmax(0, 1fr) var(--atlas-detail); }
+  .atlas-bar { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; overflow: hidden; background: var(--side); border-inline-end: 1px solid var(--hairline); font-size: var(--step--1); }
+  .atlas-result { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; border-block-start: 1px solid var(--hairline); }
+  .atlas-list { overflow-y: auto; margin: 0; padding: 0 var(--space-3) var(--space-3); }
+  .atlas-stage { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr); min-inline-size: 0; min-block-size: 0; }
+  .atlas-figure { position: relative; min-block-size: 0; }
+  .atlas-figure > .cube, .atlas-figure > .decades { position: absolute; inset: 0; }
+  .cube .space-scene { position: absolute; inset: 0; }
+  .decades .dc-scene { position: absolute; inset: 0 var(--space-2) var(--space-2); }
+  /* Below the tool row (--atlas-top, measured in js/atlas.js), so switch and info mark stay. */
+  .atlas-detail { position: absolute; z-index: 5; inset-block: var(--atlas-top, 0) 0; inset-inline-end: 0; inline-size: min(var(--atlas-detail), 100%); overflow-y: auto; padding: var(--space-3) var(--space-4) var(--space-4); background: var(--stage); border-inline-start: 1px solid var(--hairline); box-shadow: -6px 0 22px rgb(0 0 0 / 0.08); }
+  .atlas[data-dock="true"] .atlas-detail { position: static; inline-size: auto; box-shadow: none; min-block-size: 0; }
+
+  @media (max-width: 56rem) {
+    .atlas { display: flex; flex-direction: column; block-size: auto; }
+    .atlas-stage { order: 1; }
+    .atlas-figure { block-size: 60dvh; }
+    .atlas-bar { order: 2; display: block; overflow: visible; background: var(--stage); border: 0; }
+    .atlas-result { border-block-start: 1px solid var(--hairline); }
+    .atlas-list { overflow: visible; }
+    /* The regest as a route of its own: graphic and list step aside, the back arrow leads back. */
+    .atlas[data-open] > .atlas-stage, .atlas[data-open] > .atlas-bar { display: none; }
+    .atlas[data-open] > .atlas-detail { order: 0; position: static; inline-size: auto; border: 0; box-shadow: none; padding: var(--space-3); }
+  }
+}
+
+@layer components {
+  /* Tool row above the graphic: the switch of the representations, camera tools, the info mark. */
+  .atlas-tools { position: relative; z-index: 6; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
+  .atlas-camera { display: inline-flex; gap: var(--space-1); }
+  .atlas-camera .tool { min-inline-size: 2rem; }
+  .atlas-tools-end { display: inline-flex; gap: var(--space-2); margin-inline-start: auto; }
+  .atlas-flags[aria-pressed="true"] { border-color: var(--warn); box-shadow: inset 0 -2px 0 var(--warn); }
+  .atlas-filter-open { display: none; }
+  .atlas-info-mark { inline-size: 1.75rem; block-size: 1.75rem; padding: 0; border-radius: 50%; font-family: var(--font-source); font-style: italic; font-weight: 600; }
+  .atlas-info-mark[aria-expanded="true"] { border-color: var(--accent-text); }
+  .atlas-info { position: absolute; inset-block-start: calc(100% - var(--space-1)); inset-inline-end: var(--space-3); display: grid; gap: var(--space-2); max-inline-size: min(24rem, calc(100% - 2 * var(--space-3))); padding: var(--space-2) var(--space-3); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); box-shadow: 0 6px 22px rgb(0 0 0 / 0.12); font-size: var(--step--1); }
+  .atlas-info p { margin: 0; }
+
+  /* The legend of the relations of an opened regest, at the graphic's lower edge. */
+  .atlas-legend { position: absolute; z-index: 2; inset-block-end: var(--space-2); inset-inline-start: var(--space-3); display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin: 0; padding: 0 var(--space-1); font-size: var(--step--1); color: var(--muted); background: color-mix(in srgb, var(--stage) 85%, transparent); }
+  .atlas-legend-item { display: inline-flex; align-items: center; gap: var(--space-1); white-space: nowrap; }
+  .atlas-legend b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .rel-key { display: inline-block; inline-size: 1.4em; }
+  .rel-key.is-step { border-block-start: 2.5px solid var(--accent); }
+  .rel-key.is-people { border-block-start: 1.2px solid var(--muted); }
+  .rel-key.is-place { inline-size: 0.7em; block-size: 0.7em; border: 1.5px solid var(--accent-text); border-radius: 50%; }
+
+  /* Facets: a word above each control; chips for the chosen place and persons. */
+  .atlas-facets { display: grid; gap: var(--space-3); padding: var(--space-3); }
+  .facet { display: grid; gap: var(--space-1); }
+  .facet.is-off { opacity: 0.55; }
+  .facet-label { font-weight: 600; }
+  .facet-input { inline-size: 100%; padding: var(--space-1) var(--space-2); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+  .chips:empty { display: none; }
+  .chip { display: inline-flex; align-items: center; gap: var(--space-1); max-inline-size: 100%; padding: 0 0 0 var(--space-2); background: var(--stage); border: 1px solid var(--accent-text); border-radius: var(--radius); }
+  .chip-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chip-x { padding: 0 var(--space-2); background: none; border: 0; color: var(--muted); cursor: pointer; font-size: var(--step-0); line-height: 1.4; }
+  .chip-x:hover, .chip-x:focus-visible { color: var(--text); }
+  .art-chips, .layer-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+  .art-chip, .layer-chip { display: inline-flex; align-items: center; gap: 0.3em; padding: 2px var(--space-2); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); color: var(--muted); cursor: pointer; }
+  .art-chip[aria-pressed="true"], .layer-chip[aria-pressed="true"] { color: var(--text); border-color: var(--accent-text); box-shadow: inset 0 -2px 0 var(--accent); }
+  .layer-chip .it-key { vertical-align: 0; }
+
+  /* The count line and the result list. */
+  .atlas-count { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-2); margin: 0; padding: var(--space-2) var(--space-3); }
+  .atlas-count b { font-variant-numeric: tabular-nums; }
+  .atlas-reset { margin-inline-start: auto; }
+  .atlas-list li { list-style: none; }
+  .atlas-row { display: grid; grid-template-columns: 2.6rem auto minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-2); inline-size: 100%; padding: 2px var(--space-1); background: none; border: 0; border-radius: var(--radius); color: var(--text); font-size: inherit; text-align: start; cursor: pointer; }
+  .atlas-row:hover .row-id, .atlas-row:focus-visible .row-id { text-decoration: underline; text-decoration-color: var(--accent); }
+  .atlas-row[aria-current] { background: var(--accent-faint); }
+  .row-year, .row-place { color: var(--muted); font-variant-numeric: tabular-nums; }
+  /* Fixed columns: the year stands only in the first row of its year (js/atlas.js). */
+  .row-id { grid-column: 2; white-space: nowrap; }
+  .row-place { grid-column: 3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .atlas-row .it-key, .atlas-row .it-pkey { grid-column: 4; align-self: center; }
+  .atlas-more { margin: var(--space-2) var(--space-1); }
+  .atlas-empty { padding: var(--space-2) var(--space-1); color: var(--muted); }
+
+  /* The opened regest: the back arrow only where the regest is a route of its own. */
+  .atlas-back { display: none; margin-block-end: var(--space-3); }
+  /* The card takes the focus on opening for screen readers; the ring would frame the whole card. */
+  .atlas-detail .regest-card:focus { outline: none; }
+  .it-tip-state { color: var(--muted); }
+
+  /* The filter sheet: a dialog from below on narrow screens. */
+  .atlas-sheet { inline-size: 100%; max-inline-size: 100%; max-block-size: 85dvh; margin: auto 0 0; padding: 0; border: 0; border-radius: 8px 8px 0 0; background: var(--side); color: var(--text); font-size: var(--step--1); }
+  .atlas-sheet::backdrop { background: rgb(0 0 0 / 0.3); }
+  .atlas-sheet-head { position: sticky; inset-block-start: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: var(--space-2) var(--space-3); background: var(--side); border-block-end: 1px solid var(--hairline); }
+
+  @media (max-width: 56rem) {
+    /* The facets live in the sheet; the bar keeps the count line and the list. */
+    .atlas-bar > .atlas-facets { display: none; }
+    .atlas-filter-open { display: inline-flex; }
+    .atlas-back { display: inline-flex; }
+    .atlas-tools { padding-inline: var(--space-2); }
+    .atlas-row { padding-block: var(--space-1); }
+  }
+}

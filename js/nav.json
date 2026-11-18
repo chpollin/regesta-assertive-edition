@@ -1,6 +1,7 @@
 {
-  "_comment": "Navigation of the edition by the objects readers work with (operator's rule 39 of 2026-11-14): one head item per object, and the representations of an object as a switch inside its view. One source for the static pages (build_site) and the interactive views (js/app.js). Paths are relative to the site root; the interactive views live under ansicht/. Every earlier address keeps working, since the views keep their routes.",
+  "_comment": "Navigation of the edition by the objects readers work with (operator's rule 39 of 2026-11-14; four objects since the interface plan of 2026-11-17): one head item per object, and the representations of an object as a switch inside its view. One source for the static pages (build_site) and the interactive views (js/app.js). Paths are relative to the site root; the interactive views live under ansicht/. The Atlas is the start page; `app` is its address inside the views app of the repository, where no start page exists. The former object Orte forwards to the Atlas.",
   "items": [
+    { "key": "atlas", "label": "Atlas", "href": "./", "app": "#/atlas" },
     { "key": "regesten", "label": "Regesten", "href": "regesten/" },
     {
       "key": "personen",
@@ -13,15 +14,6 @@
         { "key": "personen-liste", "label": "Liste", "href": "personen/" }
       ]
     },
-    {
-      "key": "orte",
-      "label": "Orte",
-      "href": "ansicht/#/itinerar",
-      "views": [
-        { "key": "itinerar", "label": "Itinerar", "href": "ansicht/#/itinerar" },
-        { "key": "jahrzehnte", "label": "Jahrzehnte", "href": "ansicht/#/jahrzehnte" }
-      ]
-    },
-    { "key": "ueber", "label": "Über die Edition", "href": "ueber/" }
+    { "key": "ueber", "label": "Über", "href": "ueber/" }
   ]
 }

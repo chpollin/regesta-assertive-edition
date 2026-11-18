@@ -9,7 +9,7 @@ method:
 status: draft
 language: en
 created: 2026-11-17
-updated: 2026-11-17
+updated: 2026-11-18
 ---
 
 # Interface plan
@@ -102,7 +102,7 @@ At 1280 × 800, 1440 × 900, 1920 × 1080 and 360 × 740, per view at rest, with
 
 ## Order of building
 
-1. Atlas at 1440 with filter bar and overlay detail, shown to the operator as a slice.
+1. Atlas at 1440 with filter bar and overlay detail, shown to the operator as a slice. Built on 2026-11-18 in the local preview, not yet seen by the operator (journal). Deviations: the visual labels Ort, Person, Zeitraum and Schicht are gone (placeholders, the band label and the chips say it; density limit of the work profile), only Art keeps its word; the person facet searches the register persons the Atlas can show, without a mark of origin; the greyed Text facet stands only when `?q=` arrives from a list; no tool Ausgangslage, since Würfel returns to it; the year and the place stand once per run of equal values in the result list; the jump by RI number stands in the header of the start page only and steps aside below 40rem; the detail state stays over the density limit by the regest text (open).
 2. The filter model carried to Regesten (whole delivery) and Personen.
 3. Regest page with the head line.
 4. Über with the process graphic.

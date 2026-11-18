@@ -53,13 +53,14 @@ export function createSidebar(store, filters, options) {
     element.replaceChildren(selectionPart(shown), familiesPart(inTime));
   }
 
-  /** The selected person's regesta of the whole delivery as a trace in the space-time cube. */
+  /** The selected person's regesta of the whole delivery as a trace in the Atlas. */
   function traceLink() {
     const reg = person?.match(/actor:(RI\d{3}-\d{3}-[A-Z]\d{6})$/)?.[1];
     const entry = reg ? store.holdings?.persons?.[reg] : null;
     if (!entry) return null;
+    // The views app forwards #/atlas to the start page in the curated build (js/app.js).
     const app = new URL("../", import.meta.url).pathname;
-    return h("a", { class: "side-trace", href: `${app}?personen=${reg}#/itinerar` }, `Spur im Itinerar, ${entry.r.length} Regesten`);
+    return h("a", { class: "side-trace", href: `${app}?person=${reg}#/atlas` }, `Spur im Atlas, ${entry.r.length} Regesten`);
   }
 
   /** Person, time band, and the line saying what applies only when something deviates. */
@@ -185,8 +186,10 @@ export function createSidebar(store, filters, options) {
  * The time filter shared by every view: regesta per year of the whole delivery as a quiet
  * ground, the years of the selection as accent marks on it, and two handles for the range.
  * @param {Set<number>|number[]} markYears
+ * @param {{ends?: boolean}} [options]  ends false: the first and last year stand only while the
+ *   range is narrowed, so at rest no year is said twice (the Atlas; figure check, each number once)
  */
-export function timeBand(store, filters, markYears) {
+export function timeBand(store, filters, markYears, { ends = true } = {}) {
   const { lo, hi } = filters;
   const W = 320;
   const H = 34;
@@ -235,10 +238,11 @@ export function timeBand(store, filters, markYears) {
       },
     });
   const label = h("span", { class: "band-label", text: `${filters.from} bis ${filters.to}` });
+  const showEnds = ends || filters.from !== lo || filters.to !== hi;
   return h(
     "div",
     { class: "band", role: "group", "aria-label": "Zeitraum" },
     h("div", { class: "band-track" }, svg, range("from"), range("to")),
-    h("div", { class: "band-scale" }, h("span", { text: String(lo) }), label, h("span", { text: String(hi) })),
+    h("div", { class: `band-scale${showEnds ? "" : " is-rest"}` }, showEnds ? h("span", { text: String(lo) }) : null, label, showEnds ? h("span", { text: String(hi) }) : null),
   );
 }

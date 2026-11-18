@@ -213,6 +213,7 @@ class Site:
         main: str,
         views: bool = False,
         description: str | None = None,
+        header_extra: str = "",
     ) -> None:
         """Write one page in the shared frame: header from nav.json, main, footer licence line."""
         root = "../" * (len(path.split("/")) if path else 0)
@@ -225,10 +226,10 @@ class Site:
         )
         css = [f"{root}css/tokens.css", f"{root}css/shell.css"]
         if views:
-            css += [f"{root}ansicht/css/app.css", f"{root}ansicht/css/space.css"]
+            css += [f"{root}ansicht/css/{name}" for name in ("app.css", "space.css", "views.css", "atlas.css")]
         css.append(f"{root}css/pages.css")
         links = "\n".join(f'  <link rel="stylesheet" href="{href}">' for href in css)
-        full_title = title if key == "start" else f"{title} | {self.texts['title']}"
+        full_title = title if key == "atlas" else f"{title} | {self.texts['title']}"
         meta = f'  <meta name="description" content="{esc(description)}">\n' if description else ""
         if self.preview:
             meta += f"  {PREVIEW_META}\n"
@@ -247,7 +248,7 @@ class Site:
 </head>
 <body data-page="{kind}" data-layout="page">
 <a class="skip" href="#main">Zum Inhalt</a>
-<header class="site-header"><a class="site-title" href="{root or "./"}">{esc(self.texts["title"])} <span class="site-tag">{esc(self.texts["tag"])}</span></a><nav class="site-nav" aria-label="Edition">{nav}</nav></header>
+<header class="site-header"><a class="site-title" href="{root or "./"}">{esc(self.texts["title"])} <span class="site-tag">{esc(self.texts["tag"])}</span></a><nav class="site-nav" aria-label="Edition">{nav}</nav>{header_extra}</header>
 <div class="site-body"><main class="site-main" id="main">
 {main}
 </main></div>
@@ -310,32 +311,35 @@ def marked_text(regest: dict) -> str:
 # Pages
 
 
-EXAMPLE = "RI IV,2,2 n. 103a"
-
-
 def start_page(site: Site) -> None:
-    """Title, the confirmed definition, the linked overview of time, places and persons, the
-    worked case n. 103a and the jump by RI number (operator's rule 42 of 2026-11-14)."""
+    """The Atlas, start page and place view in one (knowledge/interface-plan.md, part 1):
+    js/edition/start.js mounts ansicht/js/atlas.js into #figure; the jump by RI number stands
+    in the header. Without JavaScript the page says what it shows and leads to the list."""
     t = site.texts
     fallback = (
-        '<p class="figure-fallback">Hier stehen Orte, Personen und Jahre der Lieferung als Raum-Zeit-Würfel. '
+        '<p class="figure-fallback">Hier stehen Orte und Jahre der Regesten als Raum-Zeit-Würfel. '
         'Die Übersicht braucht JavaScript, die <a href="regesten/">Liste der Regesten</a> nicht.</p>'
     )
-    # The start page is the figure, one window high (operator, 2026-11-14: „Man soll nicht
-    # runterscrollen können“); the worked case is one entry in the sidebar's head.
-    example = next((r for r in site.regests if r["identifier"] == EXAMPLE), None)
-    example_link = (
-        f'<a class="start-example" href="regesten/{site.slugs[example["uid"]]}/">Beispiel {esc(EXAMPLE)}</a>'
-        if example
-        else ""
-    )
-    # The header already shows the title; the h1 stays for screen readers, and the subtitle
-    # opens the one sentence of description (measured subtractive pass of 2026-11-11).
+    # The figure is the page, one window high (operator, 2026-11-14: „Man soll nicht
+    # runterscrollen können“); the subtitle line and the worked case left it with the plan of
+    # 2026-11-17 (no prose in the view). The h1 stays for screen readers.
     main = f"""<h1 class="visually-hidden">{esc(t["title"])}. {esc(t["subtitle"])}</h1>
-<div class="start-head"><p class="start-lede">{esc(t["subtitle"])}. <a href="ueber/">Über die Edition</a></p>{example_link}
-<form class="jump" id="jump" hidden><label for="jump-n" class="visually-hidden">Regest nach RI-Nummer</label><input id="jump-n" name="n" inputmode="text" autocomplete="off" placeholder="RI-Nummer, z. B. 46" size="14"> <button type="submit">Öffnen</button> <span class="jump-msg" role="status"></span></form></div>
 <div class="figure" id="figure">{fallback}</div>"""
-    site.page(path="", key="start", kind="start", title=t["title"], main=main, views=True, description=t["description"])
+    jump = (
+        '<form class="jump" id="jump" hidden><label for="jump-n" class="visually-hidden">Regest nach RI-Nummer</label>'
+        '<input id="jump-n" name="n" type="search" autocomplete="off" placeholder="RI-Nummer" size="10">'
+        '<button type="submit">Öffnen</button><span class="jump-msg" role="status"></span></form>'
+    )
+    site.page(
+        path="",
+        key="atlas",
+        kind="start",
+        title=t["title"],
+        main=main,
+        views=True,
+        description=t["description"],
+        header_extra=jump,
+    )
 
 
 def status_marks(regest: dict) -> str:

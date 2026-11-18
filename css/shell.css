@@ -58,13 +58,18 @@
   .site-main { container: page / inline-size; min-inline-size: 0; }
   body[data-layout="view"] .site-main { padding: 0; overflow: hidden; }
   body[data-layout="page"] .site-main { padding: var(--space-6) var(--space-5) var(--space-7); max-inline-size: 104rem; margin-inline: auto; inline-size: 100%; }
+  /* A view with its own bar and detail (the Atlas, css/atlas.css) fills the window alone. */
+  body[data-layout="full"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
+  body[data-layout="full"] .site-body { min-block-size: 0; }
+  body[data-layout="full"] .site-main { padding: 0; overflow: hidden; min-block-size: 0; }
   .site-main:focus { outline: none; }
   .site-aside { min-inline-size: 0; overflow-y: auto; background: var(--side); border-inline-end: 1px solid var(--hairline); padding: var(--space-4); }
   .site-detail { min-inline-size: 0; overflow-y: auto; border-inline-start: 1px solid var(--hairline); padding: var(--space-4); background: var(--stage); }
 
   /* Narrow windows: the drawing first, the sidebar below it at its natural height. */
   @media (max-width: 56rem) {
-    body[data-layout="view"] { display: block; block-size: auto; overflow: visible; }
+    body[data-layout="view"], body[data-layout="full"] { display: block; block-size: auto; overflow: visible; }
+    body[data-layout="full"] .site-main { overflow: visible; }
     body[data-layout="view"] .site-body { grid-template-columns: minmax(0, 1fr); }
     body[data-layout="view"] .site-main { block-size: 70dvh; }
     body[data-layout="view"][data-detail="open"] .site-body { grid-template-columns: minmax(0, 1fr); }
@@ -98,6 +103,7 @@
   .band-range:focus-visible { outline: 2px solid var(--focus); }
   .band-scale { display: flex; justify-content: space-between; color: var(--muted); font-variant-numeric: tabular-nums; }
   .band-label { color: var(--text); font-weight: 600; }
+  .band-scale.is-rest { justify-content: center; }
 
   .fam-group { border-block-end: 1px solid var(--hairline); }
   .fam-group > summary { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: var(--space-2); list-style: none; }
@@ -140,7 +146,11 @@
   .card-meta, .card-state { display: inline-flex; align-items: center; gap: 0.3em; color: var(--muted); }
   a.card-meta { text-decoration: none; }
   a.card-meta:hover, a.card-meta:focus-visible { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); }
-  .card-state { cursor: help; }
+  /* „ungeprüft“ once in the head, its tip on pointing, focus and tap (js/regest-card.js). */
+  .card-state-wrap { position: relative; display: inline-flex; }
+  .card-state { padding: 0; background: none; border: 0; font: inherit; cursor: help; text-decoration: underline dotted; text-underline-offset: 0.2em; }
+  .card-state-tip { display: none; position: absolute; z-index: 7; inset-block-start: calc(100% + 4px); inset-inline-end: 0; inline-size: min(20rem, 80vw); padding: var(--space-2) var(--space-3); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); box-shadow: 0 6px 22px rgb(0 0 0 / 0.12); color: var(--text); font-size: var(--step--1); line-height: 1.45; }
+  .card-state:hover + .card-state-tip, .card-state:focus-visible + .card-state-tip, .card-state[aria-expanded="true"] + .card-state-tip { display: block; }
   .side-trace { color: var(--accent-text); text-decoration: none; font-size: var(--step--1); }
   .side-trace:hover, .side-trace:focus-visible { text-decoration: underline; }
   .head-icon { inline-size: 1em; block-size: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }

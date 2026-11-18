@@ -3,13 +3,14 @@ title: Journal
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-17
+updated: 2026-11-18
 ---
 
 # Journal
 
 ## Open
 
+- Atlas slice (interface-plan.md, step 1) built in the local preview on 2026-11-18 and not committed; it waits for the operator's look at http://127.0.0.1:8132/ after `python build_site.py --preview`. Open from it: the detail state breaches the density limits of the work profile (1280: 96 text elements, 267 words; 360: 40 and 171) through the annotated regest text, the same conflict as the regest pages; the map representation fills 71 percent of the width at 1440, since the map keeps its proportions; findings of the fresh reader not acted on: the list rows without a place where it repeats the row above read as missing, the colours of points and traces have no key in the figure beyond the Schicht and person chips, „Sprünge“, „Seite“ and „Reich um 1190“ were not understood.
 - The operator has not seen the pass of 2026-11-14 evening in the local preview (`python build_site.py --preview` into `site-preview/`, served with `python -m http.server 8132 --bind 127.0.0.1 --directory site-preview`): the regest page in three areas with the annotation system, the start page as the full-screen cube, the regest tooltip and relations in the cube, persons as traces in the cube, estate colours, header and footer. His next words go verbatim into ui-feedback.md.
 - Nothing of it is published. The agents' verdicts go public only on his word after he has seen the restructured regest page; the coordination read his „ja, aber“ as yes in principle. The public method text changes with the next publication to the agentic check of the twenty regesta, in both builds.
 - Itinerar and Jahrzehnte: put to the operator as a question with an example (the decade 1150 to 1159 chosen in the time band shows 433 regesta at 104 places, Würzburg and Crema with 28 each); the switch is not rebuilt before his answer.
@@ -25,6 +26,15 @@ updated: 2026-11-17
 - The graph export writes the `rf:` and `rv:` terms under the provisional example.org namespaces until the operator decides a stable namespace; `build_graph.py --rf-namespace --rv-namespace` takes it (plan.md, Pipeline after the guest unit).
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
+
+## 2026-11-18 Atlas slice: start page and place view in one
+
+- Trigger: step 1 of the accepted interface plan (interface-plan.md).
+- Found: the cube drew on 56 percent of its width at 1440 and 49 percent at 1920, because it was fitted to a fixed square floor; the legend counted 146 regesta „mit Aussagen“, all run regesta with a place, of which 119 carry a statement.
+- Decided: one module js/atlas.js owns filter bar, graphic and detail; the start page mounts it and the views app forwards #/atlas, #/itinerar and #/jahrzehnte to the start page (in the repository it mounts #/atlas itself). The filter state of js/filters.js gained ort, person, art (none means all) and schicht, and reads familien, personen, jahrzehnt, ansicht and the place in the hash once. The cube is fitted to the box of the places and the years, its time height to the area; Jahrzehnte is its fourth representation. The tooltip never shows while a regest is open; „ungeprüft“ stands once in the card head with a tip reachable by focus and tap. Year and place stand once per run in the result list.
+- Rejected: hiding the regest's statement marks to pass the density limit of the detail state; a disabled Text facet at rest.
+- Changed: js/atlas.js and css/atlas.css (new), js/itinerary.js and js/decades.js (drawings without sidebar), js/app.js, js/filters.js, js/nav.json, js/regest-card.js, js/sidebar.js, js/edition/start.js, css/shell.css, css/pages.css, index.html, build_site.py, checks/test_site.py; design.md and interface-plan.md where the built Atlas made them false.
+- Evidence: drawn width of the cube 0.981 of its area at 1440 and 0.936 at 1920 (0.982 docked), no SVG beyond the window, no horizontal scroll at 360; 47 task checks on the preview with answers computed from holdings.json pass (433 regesta for 1150 to 1159, Würzburg 70, a place survives a reload, the reset clears every facet, six old addresses rewritten, a keyboard path from place and year to n. 144 and its first statement with focus back on the row, the tooltip never over an opened regest, „ungeprüft“ once); density check of pruefansicht ok at rest, filtered, Karte and Jahrzehnte at 1280 and 360, over in the detail state; `uv run run.py check` passes. Screenshots and scripts lie in the session scratchpad (ui-atlas).
 
 ## 2026-11-17 Dry run of the four demonstration prompt chains
 
