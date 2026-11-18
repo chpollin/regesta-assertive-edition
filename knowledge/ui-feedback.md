@@ -3,7 +3,7 @@ title: Operator feedback on the interface
 status: active
 language: en
 created: 2026-11-11
-updated: 2026-11-11
+updated: 2026-11-18
 ---
 
 # Operator feedback on the interface
@@ -154,3 +154,15 @@ Relayed verbatim by the Research Coordination, with a screenshot of an earlier s
 
 Follows: the start page is the figure, full width and height under the header, no page scroll at desktop sizes; the introduction one line at most; the worked case leaves the start page with one visible entry. Status on 2026-11-15: built in the preview (one line with subtitle, example link and RI jump; the cube fills the rest; a regest opens in a panel over the figure's right edge; at narrow widths the page scrolls with the figure first); not seen by him. The three verdicts of this evening are treated as one pass over the shell (design.md).
 
+
+## 2026-11-18, Start and Über as one page
+
+Relayed verbatim by the main session: „Start und Über soll es nicht geben, sondern das soll zusammengeführt werden. Also, alles, was in Über steht, soll kompakter und besser formuliert in der Startseite integriert sein.“ With it his correction for the account of how the edition came about, relayed as paraphrase: his AI harness and his Obsidian vault are knowledge he has built up and curated over two years, never knowledge that „knew the project“ beforehand.
+
+Follows: the start page carries the steps with their producers and notes, the making of the edition, data and licence with the full attribution, the note on the mark and the imprint; Über leaves the header; `ueber/`, `methode/` and `daten/` forward to the sections. Status on 2026-11-18: built in the local preview (commit bc62bf2), seen on screenshots at 1440, 2000 and 360; not seen by him.
+
+## 2026-11-18, regest page uses the window
+
+Paraphrase by the main session of his verdict on a screenshot of RI IV,2,1 n. 7 at about 2000 × 870: he does not consider the regest pages good; the content fills the top 40 percent, the footer stands in the middle above an empty field, text and notes are narrow columns and most of the width stays empty.
+
+Follows: the footer at the bottom of the window on short pages; from 80rem of page width text, notes and the apparatus of Regesta Imperii side by side, the text kept at its reading measure. Status on 2026-11-18: built in the local preview (commit f5eb35a), seen on screenshots of n. 7, n. 94 and n. 103a at 1440, 2000 and 360 and of n. 94 at 1100; not seen by him.

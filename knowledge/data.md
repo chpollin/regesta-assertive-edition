@@ -127,7 +127,8 @@ The factoid path fills the schema above with these mappings. `run` additionally 
 
 ```
 site/
-  index.html, regesten/, regesten/<slug>/, personen/, personen/<actor slug>/, methode/, daten/, ueber/
+  index.html, regesten/, regesten/<slug>/, personen/, personen/<actor slug>/
+  methode/, daten/, ueber/   forwards to the sections of the start page (since 2026-11-18)
   tei/<slug>.xml, ttl/<slug>.ttl, json/<slug>.json, LICENSE-DATA.txt, daten/<package>.zip
   data/routes.json      uid -> regest page, actor IRI -> person page, for the embedded views
   css/, js/edition/, fonts/
