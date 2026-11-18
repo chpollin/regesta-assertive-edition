@@ -2,14 +2,14 @@
  * Atlas: start page and place view in one (knowledge/interface-plan.md, part 1). Where and when
  * were charters issued, and which regesta belong to it?
  *
- * One implementation for both former hosts (the start page with its own overlay and the place
- * view with the right panel of the shell): the Atlas owns its filter bar, its graphic and its
- * detail, and a host only gives it a place in the page (js/edition/start.js on the start page,
- * js/app.js in the repository's views app).
+ * One implementation for both hosts: the Atlas owns its filter bar, its graphic and its detail
+ * (the shared frame of js/filterbar.js), and a host only gives it a place in the page
+ * (js/edition/start.js on the start page, js/app.js in the repository's views app).
  *
  * - Filter bar on the left in the plan's order: Zeitraum, Ort, Person, Art, Schicht, the line
- *   „x von y Regesten“ with a reset that clears every facet, and the result list. The state
- *   lives in the query string (js/filters.js); on narrow screens the facets open as a sheet.
+ *   „x von y Regesten“ with a reset that clears every facet, and the result list. The count and
+ *   the list hold every regest of the delivery that passes the facets (js/selection.js), the
+ *   same number as in Regesten and Zeitband; the cube draws those with a place of issue.
  * - Graphic: the cube on the full area (js/itinerary.js) in four representations, one switch
  *   at the same place: Würfel, Karte, Zeit and Jahrzehnte (js/decades.js).
  * - Detail: the opened regest as an overlay over the right edge of the graphic, docked beside
@@ -20,22 +20,20 @@
  * [/regest/<uid>]. Opening a regest adds a history entry, so the back button closes it.
  */
 import { h } from "./dom.js";
-import { timeBand } from "./sidebar.js";
+import { createCount, createDetail, createFacets, createFrame, createList } from "./filterbar.js";
 import { renderRegestCard } from "./regest-card.js";
-import { FAMILIES, familyIcon, familyOf } from "./relations.js";
-import { s, yearOf } from "./svg.js";
-import { focusKey } from "./timeband.js";
+import { createSelection } from "./selection.js";
+import { s } from "./svg.js";
 import { CAMERAS, createCube } from "./itinerary.js";
 import { createDecades } from "./decades.js";
-import { param } from "./url.js";
 
 /** The representations of the Atlas in the order of the switch; the first is the default. */
 export const MODES = Object.freeze([...Object.entries(CAMERAS).map(([key, c]) => ({ key, label: c.label })), { key: "jahrzehnte", label: "Jahrzehnte" }]);
 const MODE_KEYS = new Set(MODES.map((m) => m.key));
-/** Rows of the result list shown at once; a button adds as many again. */
-const LIST_STEP = 100;
 /** Old camera names of the place view (?ansicht=) and their representation. */
 const OLD_CAMERA = { schraeg: "wuerfel", oben: "karte", seite: "zeit" };
+/** The Atlas evaluates every facet but the text search of the list. */
+const SKIP = new Set(["text"]);
 
 /**
  * The Atlas address for an old address of the place views, so earlier links keep working:
@@ -57,7 +55,6 @@ export function atlasAddress(view, place, search) {
     }
     q.delete("jahrzehnt");
   }
-  // ?ansicht= also belongs to the view Raum; it is the Atlas's only on an old place address.
   if (view !== "atlas" && q.has("ansicht")) {
     mode ??= OLD_CAMERA[q.get("ansicht")] ?? null;
     q.delete("ansicht");
@@ -80,18 +77,6 @@ function hashOf(mode, uid) {
   return `#/atlas${mode !== MODES[0].key ? `/${mode}` : ""}${uid ? `/regest/${encodeURIComponent(uid)}` : ""}`;
 }
 
-/** Search folding as in the lists: lower case, umlauts spelled out, other marks stripped. */
-function fold(text) {
-  return text
-    .toLowerCase()
-    .replaceAll("ä", "ae")
-    .replaceAll("ö", "oe")
-    .replaceAll("ü", "ue")
-    .replaceAll("ß", "ss")
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "");
-}
-
 /**
  * @param {any} store  edition, holdings and byUid, as in js/app.js
  * @param {{filters: any, texts?: () => Promise<Record<string, string>>, about?: string|null}} options
@@ -100,40 +85,16 @@ export function renderAtlas(store, options) {
   const { filters } = options;
   const H = store.holdings;
   const places = H.places;
-  const persons = H.persons ?? {};
-  // The regesta the Atlas can place: a place of issue with a coordinate, in time order.
-  const points = H.regesta
-    .filter((r) => r.p && places[r.p])
-    .map((r) => ({ u: r.u, i: r.i, p: r.p, y: yearOf(r.s) }))
-    .sort((a, b) => a.y - b.y);
+  const selection = createSelection(store, filters);
+  // The regesta the cube can place: a place of issue with a coordinate, in time order.
+  const points = selection.rows.filter((r) => r.p);
   const indexOf = new Map(points.map((p, i) => [p.u, i]));
-  // The second layer: regesta of the run with at least one statement, and their families.
-  const familiesOf = new Map();
-  for (const r of store.edition.regests) {
-    const keys = new Set((r.blocks ?? []).filter((b) => b.head?.evidence).map((b) => familyOf(b.title).key));
-    if (keys.size) familiesOf.set(r.uid, keys);
-  }
-  const withStatements = new Set(familiesOf.keys());
-  // Persons the Atlas can show: those of the register (holdings.json), counted by placed regesta.
-  const placedPersons = Object.entries(persons)
-    .map(([id, p]) => [id, p, p.r.filter((u) => indexOf.has(u)).length])
-    .filter(([, , n]) => n > 0)
+  const withStatements = new Set(selection.familiesOf.keys());
+  const isOn = (p) => selection.passes(p, { skip: SKIP });
+  const personMark = (p) => selection.personMark(p.u);
+  const persons = Object.entries(H.persons ?? {})
+    .map(([id, p]) => [id, p.l, p.r.length])
     .sort((a, b) => b[2] - a[2]);
-  let personSets = [];
-  const syncPersons = () => (personSets = filters.persons.map((id) => new Set(persons[id].r)));
-  syncPersons();
-
-  /** Whether a regest passes every facet of the Atlas. */
-  const isOn = (p) =>
-    filters.inYear(Math.floor(p.y)) &&
-    (!filters.place || p.p === filters.place) &&
-    (!personSets.length || personSets.some((set) => set.has(p.u))) &&
-    (filters.layer !== "aussagen" || withStatements.has(p.u)) &&
-    (!filters.familiesSet() || [...(familiesOf.get(p.u) ?? [])].some((k) => filters.familyOn(k)));
-  const personMark = (p) => {
-    const [a, b] = personSets.map((set) => set.has(p.u));
-    return a && b ? "is-pab" : a ? "is-pa" : b ? "is-pb" : "";
-  };
 
   // The plausibility check of check_itinerary.py, optional: flagged jumps between consecutive
   // stations, a switchable layer of the cube, named in the regest card.
@@ -149,20 +110,19 @@ export function renderAtlas(store, options) {
           [f.b, f.a],
         ])
           flagsOf.set(me.uid, [...(flagsOf.get(me.uid) ?? []), { ...f, other }]);
-      flagsButton.hidden = !checks || state.mode === "jahrzehnte";
-      flagsButton.title = checks ? `Auffällige Sprünge (${checks.flags.length}): mehr als ${checks.threshold.kmPerDay} km am Tag oder ${checks.threshold.floorKm} km zwischen zwei Stationen, eine Annahme, kein Befund` : "";
+      flagsButton.title = checks ? `${checks.flags.length} Wege zwischen zwei aufeinanderfolgenden Ausstellungsorten, die mehr als ${checks.threshold.kmPerDay} km am Tag oder ${checks.threshold.floorKm} km verlangen; eine Annahme, kein Befund` : "";
+      syncSwitch();
     })
     .catch(() => {});
 
-  const state = { mode: readHash().mode, opened: null, shown: LIST_STEP, pushed: false, returnTo: null };
-  const narrow = window.matchMedia("(max-width: 56rem)");
+  const state = { mode: readHash().mode };
 
   // Graphic
   const figure = h("div", { class: "atlas-figure" });
   const legend = h("p", { class: "atlas-legend", hidden: true });
   let cube = null;
   let decades = null;
-  const blocked = () => (detail.hidden || root.dataset.dock === "true" || narrow.matches ? null : detail.getBoundingClientRect());
+  const blocked = () => (frame.detail.hidden || frame.root.dataset.dock === "true" || frame.narrow.matches ? null : frame.detail.getBoundingClientRect());
   function cubeOf() {
     cube ??= createCube(store, {
       points,
@@ -173,7 +133,7 @@ export function renderAtlas(store, options) {
       checks: () => checks,
       texts: options.texts,
       blocked,
-      onOpen: (i) => open(points[i].u),
+      onOpen: (i) => detail.open(points[i].u),
       onFree: () => syncSwitch(),
       onHome: () => setMode(MODES[0].key),
     });
@@ -194,22 +154,17 @@ export function renderAtlas(store, options) {
     if (figure.firstChild !== view.element) figure.replaceChildren(view.element, legend);
     if (state.mode !== "jahrzehnte") cube.snapTo(state.mode);
     view.update();
-    if (state.opened) state.mode === "jahrzehnte" ? decades.open(state.opened) : cube.open(indexOf.get(state.opened) ?? null);
+    const opened = detail?.opened();
+    if (opened) state.mode === "jahrzehnte" ? decades.open(opened) : showLegend(cube.open(indexOf.get(opened) ?? null));
   }
 
-  // Tool row: the switch of the representations, camera tools, the flagged jumps, the info mark.
+  // Tool row: the switch of the representations, camera tools, the flagged ways, the info mark.
   const switchButtons = MODES.map((m) => h("button", { type: "button", class: "seg", "data-mode": m.key, "aria-pressed": "false", onclick: () => setMode(m.key) }, m.label));
   const freeMark = h("span", { class: "seg seg-note", text: "frei gedreht", hidden: true });
-  // Signs in the tool row carry their name as accessible name and tooltip (yardstick rule 29).
-  // „Würfel“ in the switch returns to the starting position, so no tool of its own does.
   const sign = (d) => s("svg", { viewBox: "0 0 16 16", class: "head-icon", "aria-hidden": "true" }, s("path", { d }));
   const tool = (label, d, onclick) => h("button", { type: "button", class: "tool", "aria-label": label, title: label, onclick }, sign(d));
-  const cameraTools = h(
-    "span",
-    { class: "atlas-camera" },
-    tool("Vergrößern", "M8 3v10M3 8h10", () => cube?.zoom(1.15)),
-    tool("Verkleinern", "M3 8h10", () => cube?.zoom(1 / 1.15)),
-  );
+  const cameraTools = h("span", { class: "atlas-camera" }, tool("Vergrößern", "M8 3v10M3 8h10", () => cube?.zoom(1.15)), tool("Verkleinern", "M3 8h10", () => cube?.zoom(1 / 1.15)));
+  // „Auffällige Wege“ replaces „Sprünge“, which a fresh reader did not understand (2026-11-18).
   const flagsButton = h(
     "button",
     {
@@ -223,9 +178,8 @@ export function renderAtlas(store, options) {
         cube?.setFlags(on);
       },
     },
-    "Sprünge",
+    "Auffällige Wege",
   );
-  const filterButton = h("button", { type: "button", class: "tool atlas-filter-open", "aria-haspopup": "dialog", onclick: () => openSheet() }, "Filter");
   const infoPanel = h("div", { class: "atlas-info", id: "atlas-info", role: "note", hidden: true });
   const infoButton = h("button", { type: "button", class: "tool atlas-info-mark", "aria-label": "Lesehilfe", title: "Lesehilfe", "aria-expanded": "false", "aria-controls": "atlas-info", onclick: () => toggleInfo() }, sign("M8 7.2v4.6M8 4.4v.4"));
   function toggleInfo(force) {
@@ -234,23 +188,29 @@ export function renderAtlas(store, options) {
     infoButton.setAttribute("aria-expanded", String(on));
     if (on) fillInfo();
   }
+  /** The key of the cube's points and lines, behind the info mark (finding of 2026-11-18). */
+  function cubeKey() {
+    const item = (cls, text) => h("li", {}, h("span", { class: cls, "aria-hidden": "true" }), text);
+    return h(
+      "ul",
+      { class: "atlas-key", "aria-label": "Zeichen im Würfel" },
+      item("it-key", "Regest mit Ausstellungsort"),
+      item("it-key is-evidenced", "Regest mit Aussagen der LLM-Agenten"),
+      item("rel-key is-route", "Weg von Ort zu Ort in der Zeitfolge"),
+      filters.persons.length ? item("it-pkey is-pa", "Regest der ersten Person, mit ihrer Spur") : null,
+      filters.persons.length > 1 ? item("it-pkey is-pb", "Regest der zweiten Person, Spur gestrichelt") : null,
+      item("rel-key is-flag", "auffälliger Weg (Schalter oben)"),
+      item("it-key is-realm", "Reich um 1190, grob nach Shepherd (1926)"),
+    );
+  }
   function fillInfo() {
     const lines =
       state.mode === "jahrzehnte"
-        ? ["Eine Karte je Jahrzehnt; die Kreisfläche zählt die Regesten eines Ortes. Ein Klick auf das Jahrzehnt setzt den Zeitraum, auf einen Ort den Ort."]
-        : ["Grundriss: Karte der Ausstellungsorte, ferne Orte zur Mitte gestaucht. Höhe: Zeit. Ziehen dreht den Würfel."];
-    lines.push("Orte und Daten aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM; Reich um 1190 grob nach Shepherd (1926).");
-    infoPanel.replaceChildren(...lines.map((t) => h("p", { text: t })), options.about ? h("p", {}, h("a", { href: options.about }, "Über die Edition")) : null);
+        ? [h("p", { text: "Eine Karte je Jahrzehnt; die Kreisfläche zählt die Regesten eines Ortes. Ein Klick auf das Jahrzehnt setzt den Zeitraum, auf einen Ort den Ort." })]
+        : [h("p", { text: "Grundriss: Karte der Ausstellungsorte, ferne Orte zur Mitte gestaucht. Höhe: Zeit. Ziehen dreht den Würfel. Regesten ohne Ort stehen nur in der Liste." }), cubeKey()];
+    lines.push(h("p", { text: "Orte und Daten aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM." }));
+    infoPanel.replaceChildren(...lines, options.about ? h("p", {}, h("a", { href: options.about }, "Über die Edition")) : null);
   }
-  const tools = h(
-    "div",
-    { class: "atlas-tools" },
-    h("div", { class: "segs", role: "group", "aria-label": "Darstellung" }, switchButtons, freeMark),
-    cameraTools,
-    flagsButton,
-    h("span", { class: "atlas-tools-end" }, filterButton, infoButton),
-    infoPanel,
-  );
   function syncSwitch() {
     const free = cube?.snap() === "frei" && state.mode !== "jahrzehnte";
     for (const b of switchButtons) b.setAttribute("aria-pressed", String(!free && b.dataset.mode === state.mode));
@@ -260,162 +220,38 @@ export function renderAtlas(store, options) {
   }
   function setMode(key) {
     state.mode = key;
-    history.replaceState(history.state, "", `${location.pathname}${location.search}${hashOf(key, state.opened)}`);
+    history.replaceState(history.state, "", `${location.pathname}${location.search}${hashOf(key, detail.opened())}`);
     mountMode();
     syncSwitch();
     if (!infoPanel.hidden) fillInfo();
   }
 
-  // Filter bar
-  const facetLabel = (id, text) => h("span", { class: "facet-label", id, text });
-  const bandSlot = h("div", { class: "facet-band" });
-  const placeLabels = new Map();
-  const placeList = h(
-    "datalist",
-    { id: "atlas-places" },
-    Object.entries(places)
-      .sort((a, b) => b[1].n - a[1].n)
-      .map(([id, p]) => {
-        const text = `${p.l} (${p.n})`;
-        placeLabels.set(text, id);
-        return h("option", { value: text });
-      }),
-  );
-  const personLabels = new Map();
-  const personList = h(
-    "datalist",
-    { id: "atlas-persons" },
-    placedPersons.map(([id, p, n]) => {
-      const text = `${p.l} (${n})`;
-      personLabels.set(text, id);
-      return h("option", { value: text });
-    }),
-  );
-  /** A typed name to an id: an option chosen, the exact name, else the first name it begins. */
-  function resolve(value, labels, nameOf) {
-    if (labels.has(value)) return labels.get(value);
-    const want = fold(value.trim());
-    if (!want) return null;
-    const ids = [...labels.values()];
-    return ids.find((id) => fold(nameOf(id)) === want) ?? ids.find((id) => fold(nameOf(id)).startsWith(want)) ?? null;
-  }
-  // The field says what it searches; a word above it would repeat its placeholder.
-  const searchField = (id, list, label, onPick) => {
-    const input = h("input", { type: "search", class: "facet-input", id, list, autocomplete: "off", placeholder: label, "aria-label": label });
-    const pick = () => {
-      const picked = onPick(input.value);
-      if (picked) input.value = "";
-    };
-    input.addEventListener("change", pick);
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        pick();
-      }
-    });
-    return input;
-  };
-  const placeInput = searchField("atlas-ort", "atlas-places", "Ort suchen", (value) => {
-    const id = resolve(value, placeLabels, (x) => places[x].l);
-    if (id) filters.set({ place: id });
-    return id;
+  // Filter bar, count line and result list.
+  const facets = createFacets(store, filters, {
+    prefix: "atlas",
+    applies: { text: "Die Textsuche wirkt in der Liste Regesten, nicht im Atlas." },
+    persons,
+    marks: () => (filters.place || filters.persons.length ? new Set(shown.map((r) => r.year)) : new Set()),
   });
-  const personInput = searchField("atlas-person", "atlas-persons", "Person suchen", (value) => {
-    const id = resolve(value, personLabels, (x) => persons[x].l);
-    if (id && !filters.persons.includes(id)) filters.set({ persons: [...filters.persons, id] });
-    return id;
+  const count = createCount(filters);
+  const list = createList({
+    label: "Regesten der Auswahl",
+    onOpen: (u) => detail.open(u),
+    onPoint: (u) => cube?.point(u && indexOf.has(u) ? indexOf.get(u) : null),
+    mark: (r) => (filters.persons.length ? selection.personMark(r.u) : r.stmt ? "is-evidenced" : ""),
   });
-  const placeChip = h("div", { class: "chips" });
-  const personChips = h("div", { class: "chips" });
-  const chip = (text, title, key, onRemove) =>
-    h("span", { class: "chip", title }, key ? h("span", { class: `it-pkey ${key}`, "aria-hidden": "true" }) : null, h("span", { class: "chip-name", text }), h("button", { type: "button", class: "chip-x", "aria-label": `${text} entfernen`, title: "Entfernen", onclick: onRemove }, "×"));
-  const artButtons = FAMILIES.map((f) =>
-    h(
-      "button",
-      {
-        type: "button",
-        class: "art-chip",
-        "aria-pressed": "false",
-        title: f.label,
-        "data-family": f.key,
-        onclick: () => {
-          const pressed = new Set(filters.familiesSet() ? filters.families : []);
-          if (pressed.has(f.key)) pressed.delete(f.key);
-          else pressed.add(f.key);
-          filters.set({ families: [...pressed] });
-        },
-      },
-      familyIcon(f, { size: 14 }),
-      h("span", { text: f.short }),
-    ),
-  );
-  const layerButtons = [
-    ["alle", "Alle Regesten", "it-key"],
-    ["aussagen", "mit Aussagen", "it-key is-evidenced"],
-  ].map(([key, text, sign]) => h("button", { type: "button", class: "layer-chip", "aria-pressed": "false", "data-layer": key, onclick: () => filters.set({ layer: key }) }, h("span", { class: sign, "aria-hidden": "true" }), text));
-  // The text search belongs to the lists (?q=); carried here from a list it stands greyed, so
-  // it does not vanish, and says where it applies.
-  const text = param("q");
-  const facets = h(
-    "div",
-    { class: "atlas-facets" },
-    // Band and chips say what they filter („1122 bis 1190“, „Alle Regesten“); only the kinds
-    // of statement need their word, Art (subtractive pass of the slice).
-    h("div", { class: "facet", role: "group", "aria-label": "Zeitraum" }, bandSlot),
-    h("div", { class: "facet" }, placeInput, placeList, placeChip),
-    h("div", { class: "facet" }, personInput, personList, personChips),
-    h("div", { class: "facet", role: "group", "aria-labelledby": "f-art" }, facetLabel("f-art", "Art"), h("div", { class: "art-chips" }, artButtons)),
-    h("div", { class: "facet", role: "group", "aria-label": "Schicht" }, h("div", { class: "layer-chips" }, layerButtons)),
-    text ? h("div", { class: "facet is-off", title: "Die Textsuche wirkt in der Liste Regesten, nicht im Atlas." }, facetLabel("f-text", "Text"), h("input", { type: "search", class: "facet-input", value: text, readonly: true, "aria-disabled": "true", "aria-labelledby": "f-text" })) : null,
-  );
-  const countLine = h("p", { class: "atlas-count", role: "status" });
-  const list = h("ul", { class: "atlas-list", role: "list", "aria-label": "Regesten der Auswahl" });
-  const bar = h("aside", { class: "atlas-bar", "aria-label": "Filter und Regesten der Auswahl" }, facets, h("div", { class: "atlas-result" }, countLine, list));
-
-  // The filter sheet on narrow screens: the same facets in a dialog from below.
-  const sheetDone = h("button", { type: "button", class: "tool", onclick: () => sheet.close() }, "Fertig");
-  const sheetBody = h("div", { class: "atlas-sheet-body" });
-  // The sheet keeps its own reset, since the count line stands behind it.
-  const sheetReset = h("button", { type: "button", class: "link-button", hidden: true, onclick: () => filters.reset() }, "Zurücksetzen");
-  const sheet = h("dialog", { class: "atlas-sheet", "aria-label": "Filter" }, h("div", { class: "atlas-sheet-head" }, h("span", { class: "facet-label", text: "Filter" }), sheetReset, sheetDone), sheetBody);
-  sheet.addEventListener("close", () => {
-    bar.prepend(facets);
-    filterButton.focus();
+  const frame = createFrame(filters, {
+    name: "atlas",
+    title: "Atlas: Regesten mit Ausstellungsort in Raum und Zeit",
+    facets: facets.element,
+    count: count.element,
+    list: list.element,
+    tools: [h("div", { class: "segs", role: "group", "aria-label": "Darstellung" }, switchButtons, freeMark), cameraTools, flagsButton],
+    toolsEnd: [infoButton, infoPanel],
+    main: figure,
+    backLabel: "Zurück zum Atlas",
+    onEscape: () => detail.close(),
   });
-  function openSheet() {
-    sheetBody.append(facets);
-    sheet.showModal();
-  }
-  narrow.addEventListener("change", () => {
-    if (!narrow.matches && sheet.open) sheet.close();
-    placeDetail();
-  });
-
-  // Detail
-  const back = h("button", { type: "button", class: "tool atlas-back", "aria-label": "Zurück zum Atlas", onclick: () => close() }, "← Atlas");
-  const detail = h("aside", { class: "atlas-detail", "aria-label": "Geöffnetes Regest", hidden: true });
-  detail.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      e.preventDefault();
-      close();
-    }
-  });
-  const stage = h(
-    "section",
-    { class: "atlas-stage", "aria-labelledby": "atlas-title" },
-    h("h1", { id: "atlas-title", class: "visually-hidden", text: "Atlas: Regesten mit Ausstellungsort in Raum und Zeit" }),
-    tools,
-    figure,
-  );
-  const root = h("div", { class: "atlas" }, bar, stage, detail, sheet);
-  function placeDetail() {
-    root.dataset.dock = String(!narrow.matches && window.matchMedia("(min-width: 100rem)").matches);
-  }
-  window.matchMedia("(min-width: 100rem)").addEventListener("change", placeDetail);
-  placeDetail();
-  // The overlay starts below the tool row, whose height follows its wrapping.
-  const toolsObserver = new ResizeObserver(() => root.style.setProperty("--atlas-top", `${tools.offsetHeight}px`));
-  toolsObserver.observe(tools);
 
   /** The legend of the three kinds of relation of an opened regest, each with its count. */
   function showLegend(counts) {
@@ -425,170 +261,67 @@ export function renderAtlas(store, options) {
     legend.replaceChildren(item("is-step", "Stationen davor und danach", counts.steps), item("is-place", "gleicher Ort", counts.place), item("is-people", "gemeinsame Person", counts.people));
   }
 
-  function writeHash(uid, push) {
-    const url = `${location.pathname}${location.search}${hashOf(state.mode, uid)}`;
-    if (push) history.pushState({ atlasRegest: uid }, "", url);
-    else history.replaceState(uid ? { atlasRegest: uid } : null, "", url);
-  }
-
-  /** Open a regest of the delivery: the card, its relations in the cube, the hash. */
-  function open(uid, { push = true } = {}) {
-    if (!uid) return;
-    const wasOpen = !!state.opened;
-    if (!wasOpen) state.returnTo = document.activeElement instanceof HTMLElement && !detail.contains(document.activeElement) ? document.activeElement : null;
-    state.opened = uid;
-    const i = indexOf.get(uid);
-    showLegend(state.mode !== "jahrzehnte" && i !== undefined ? cubeOf().open(i) : null);
-    if (state.mode === "jahrzehnte") decadesOf().open(uid);
-    const notes = (flagsOf.get(uid) ?? []).map((f) => `Auffällig: ${f.km} km in ${f.days} ${f.days === 1 ? "Tag" : "Tagen"} zu ${f.other.identifier} (${f.other.place}). Vermutlicher Grund: ${f.class}.`);
-    const card = renderRegestCard(store, uid, { notes, texts: options.texts, onClose: () => close() });
-    card.setAttribute("tabindex", "-1");
-    detail.replaceChildren(back, card);
-    detail.hidden = false;
-    root.dataset.open = "true";
-    // A further regest opened from an open one replaces the entry, so back leads to the Atlas.
-    writeHash(uid, push && !wasOpen);
-    if (push && !wasOpen) state.pushed = true;
-    for (const row of list.querySelectorAll("[data-uid]")) row.toggleAttribute("aria-current", row.dataset.uid === uid);
-    if (narrow.matches) window.scrollTo(0, 0);
-    card.focus({ preventScroll: true });
-  }
-
-  /** Close the regest: by the back button of the browser where opening added an entry. */
-  function close() {
-    if (!state.opened) return;
-    if (state.pushed && history.state?.atlasRegest === state.opened) {
-      history.back();
-      return;
-    }
-    shut();
-    writeHash(null, false);
-  }
-  function shut() {
-    state.opened = null;
-    state.pushed = false;
-    cube?.open(null);
-    decades?.open(null);
-    showLegend(null);
-    detail.hidden = true;
-    detail.replaceChildren();
-    delete root.dataset.open;
-    for (const row of list.querySelectorAll("[aria-current]")) row.removeAttribute("aria-current");
-    const target = state.returnTo;
-    state.returnTo = null;
-    if (target?.isConnected) target.focus();
-    else if (target?.dataset?.uid) list.querySelector(`[data-uid="${CSS.escape(target.dataset.uid)}"]`)?.focus();
-  }
-  const onPop = () => {
-    const { uid, mode } = readHash();
+  const detail = createDetail(frame, {
+    list,
+    hashOf: (u) => hashOf(state.mode, u),
+    readUid: () => (location.hash.startsWith("#/atlas") ? readHash().uid : null),
+    card: (u) => {
+      const notes = (flagsOf.get(u) ?? []).map((f) => `Auffällig: ${f.km} km in ${f.days} ${f.days === 1 ? "Tag" : "Tagen"} zu ${f.other.identifier} (${f.other.place}). Vermutlicher Grund: ${f.class}.`);
+      return renderRegestCard(store, u, { notes, texts: options.texts, onClose: () => detail.close() });
+    },
+    onOpen: (u) => {
+      const i = indexOf.get(u);
+      showLegend(state.mode !== "jahrzehnte" && i !== undefined ? cubeOf().open(i) : (cube?.open(null), null));
+      if (state.mode === "jahrzehnte") decadesOf().open(u);
+    },
+    onShut: () => {
+      cube?.open(null);
+      decades?.open(null);
+      showLegend(null);
+    },
+  });
+  const onMode = () => {
+    const { mode } = readHash();
     if (mode !== state.mode && location.hash.startsWith("#/atlas")) {
       state.mode = mode;
       mountMode();
       syncSwitch();
     }
-    if (!uid && state.opened) shut();
-    else if (uid && uid !== state.opened) open(uid, { push: false });
   };
-  window.addEventListener("popstate", onPop);
+  window.addEventListener("popstate", onMode);
 
-  // Rendering the bar on every change; the facets keep their elements, so focus stays.
+  let shown = [];
   function renderBar() {
-    syncPersons();
-    const restore = focusKey(bandSlot);
-    const shown = points.filter(isOn);
-    const marks = filters.place || filters.persons.length ? new Set(shown.map((p) => Math.floor(p.y))) : new Set();
-    bandSlot.replaceChildren(timeBand(store, filters, marks, { ends: false }));
-    restore();
-    placeChip.replaceChildren(filters.place ? chip(places[filters.place].l, `Ausstellungsort ${places[filters.place].l}`, null, () => filters.set({ place: null })) : "");
-    personChips.replaceChildren(...filters.persons.map((id, j) => chip(persons[id].l, persons[id].f, `is-p${j}`, () => filters.set({ persons: filters.persons.filter((x) => x !== id) }))));
-    personInput.hidden = filters.persons.length >= 2;
-    personInput.placeholder = filters.persons.length ? "Zweite Person" : "Person suchen";
-    personInput.setAttribute("aria-label", personInput.placeholder);
-    for (const b of artButtons) b.setAttribute("aria-pressed", String(filters.familiesSet() && filters.familyOn(b.dataset.family)));
-    for (const b of layerButtons) b.setAttribute("aria-pressed", String(b.dataset.layer === filters.layer));
-    const set = (filters.timeActive() ? 1 : 0) + (filters.place ? 1 : 0) + filters.persons.length + (filters.familiesSet() ? 1 : 0) + (filters.layer !== "alle" ? 1 : 0);
-    filterButton.textContent = set ? `Filter (${set})` : "Filter";
-    sheetDone.textContent = `${shown.length} Regesten zeigen`;
-    sheetReset.hidden = !filters.any();
-    // Each number once: at rest the total alone, narrowed the share of it.
-    countLine.replaceChildren(h("b", { text: String(shown.length) }), shown.length === points.length ? " Regesten" : ` von ${points.length} Regesten`);
-    if (filters.any()) countLine.append(h("button", { type: "button", class: "link-button atlas-reset", onclick: () => filters.reset() }, "Zurücksetzen"));
-    renderList(shown);
-  }
-  function renderList(shown) {
-    const restore = focusKey(list);
-    const rows = shown.slice(0, state.shown).map((p) => {
-      const mark = personSets.length ? personMark(p) : withStatements.has(p.u) ? "is-evidenced" : "";
-      // Year and place stand in every row: a reader took blank cells of a run for missing
-      // places (operator's decision of 2026-11-18).
-      const year = Math.floor(p.y);
-      const place = places[p.p].l;
-      return h(
-        "li",
-        {},
-        h(
-          "button",
-          {
-            type: "button",
-            class: "atlas-row",
-            "data-uid": p.u,
-            "aria-current": p.u === state.opened ? "true" : null,
-            onclick: () => open(p.u),
-            onmouseenter: () => cube && !state.opened && cube.point(indexOf.get(p.u)),
-            onmouseleave: () => cube?.point(null),
-            onfocus: () => cube && !state.opened && cube.point(indexOf.get(p.u)),
-            onblur: () => cube?.point(null),
-          },
-          h("span", { class: "row-year", text: String(year) }),
-          h("span", { class: "row-id", text: p.i }),
-          h("span", { class: "row-place", text: place }),
-          mark ? h("span", { class: mark.startsWith("is-p") ? `it-pkey ${mark}` : `it-key ${mark}`, title: mark === "is-evidenced" ? "mit Aussagen" : "Person", "aria-label": mark === "is-evidenced" ? "mit Aussagen" : null }) : null,
-        ),
-      );
-    });
-    const more =
-      shown.length > state.shown
-        ? h(
-            "li",
-            {},
-            h(
-              "button",
-              {
-                type: "button",
-                class: "link-button atlas-more",
-                onclick: () => {
-                  state.shown += LIST_STEP;
-                  renderList(points.filter(isOn));
-                },
-              },
-              `${Math.min(LIST_STEP, shown.length - state.shown)} weitere`,
-            ),
-          )
-        : null;
-    list.replaceChildren(...rows, more ?? "", shown.length ? "" : h("li", { class: "atlas-empty", text: "Keine Regesten in dieser Auswahl." }));
-    restore();
+    shown = selection.filter({ skip: SKIP });
+    facets.update();
+    count.update(shown.length, selection.rows.length);
+    frame.updateSheet(shown.length);
+    list.update(shown);
+    list.setOpened(detail.opened());
   }
 
   const unsubscribe = filters.onChange(() => {
-    state.shown = LIST_STEP;
     renderBar();
     (state.mode === "jahrzehnte" ? decades : cube)?.update();
+    if (!infoPanel.hidden) fillInfo();
   });
 
   renderBar();
   mountMode();
   syncSwitch();
   const first = readHash().uid;
-  if (first) requestAnimationFrame(() => open(first, { push: false }));
+  if (first) requestAnimationFrame(() => detail.open(first, { push: false }));
 
   return {
-    element: root,
+    element: frame.root,
     full: true,
-    open,
+    open: (u) => detail.open(u),
     dispose() {
       unsubscribe();
-      toolsObserver.disconnect();
-      window.removeEventListener("popstate", onPop);
+      frame.dispose();
+      list.dispose();
+      detail.dispose();
+      window.removeEventListener("popstate", onMode);
       cube?.dispose();
       decades?.dispose();
     },

@@ -1,12 +1,14 @@
 ---
 title: Space view
-status: named variant, draft, not accepted by the operator
+status: superseded
 language: en
 created: 2026-11-11
-updated: 2026-11-11
+updated: 2026-11-18
 ---
 
 # Space view
+
+Superseded on 2026-11-18. The operator decided on 2026-11-17 that the view Raum goes (interface plan, accepted with that point; journal of 2026-11-17), because the space-time cube of the Atlas carries places and time and the circle around a person carries the relations; the code (`js/space.js`) and its CSS were removed with step 2 of the interface plan, and its addresses `#/raum[/<actor>]` forward to Personen, Netz. The text below describes the removed view and stays as history.
 
 A named variant beside the holdings view of [design.md](design.md). It answers the operator's question of 2026-11-11, given at the person graph: „Könnte man dieses Netzwerk irgendwie auch in einer Raumzeit-Dimension drehbar machen? Vielleicht könnten die Richtungen hier auch etwas bedeuten: dass bestimmte Richtungen schon bestimmte Relationen darstellen. Dann kann ich quasi dieses Netzwerk in einem 3D-Bereich bewegen.“ The holdings view stays the canonical state and the fallback for keyboard and screen readers. Whether the variant stays, replaces a part of it or goes is the operator's decision at the screen.
 

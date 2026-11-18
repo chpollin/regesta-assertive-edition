@@ -104,15 +104,16 @@
   .fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--muted); margin-inline-end: var(--space-2); }
   .list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--muted); border-block-end: 1px solid var(--hairline); }
 
-  /* Start page: the Atlas (css/atlas.css) is the page, one window high under the header; at
-     narrow widths the page scrolls, the graphic first. The jump by RI number in the header. */
-  body[data-page="start"] .site-main { max-inline-size: none; padding: 0; }
-  body[data-page="start"] .site-footer { display: none; }
-  .figure.is-atlas { margin: 0; min-block-size: 0; }
-  /* The Atlas is a component, not page prose: no paragraph margins of the content pages. */
-  .figure.is-atlas p { margin: 0; }
+  /* Start page and regest list: a view (css/frame.css) is the page, one window high under the
+     header; at narrow widths the page scrolls, the main element first. The jump by RI number
+     in the header of the start page. */
+  body:is([data-page="start"], [data-view="regesten"]) .site-main { max-inline-size: none; padding: 0; }
+  body:is([data-page="start"], [data-view="regesten"]) .site-footer { display: none; }
+  .figure:is(.is-atlas, .is-view) { margin: 0; min-block-size: 0; }
+  /* A view is a component, not page prose: no paragraph margins of the content pages. */
+  .figure:is(.is-atlas, .is-view) p { margin: 0; }
   /* The opened card takes the focus for screen readers; the page's focus ring would frame it whole. */
-  .figure.is-atlas .regest-card:focus-visible { outline: none; }
+  .figure:is(.is-atlas, .is-view) .regest-card:focus-visible { outline: none; }
   .site-nav { margin-inline-start: auto; }
   .site-header .jump { display: inline-flex; align-items: center; gap: var(--space-1); margin: 0; font-size: var(--step--1); }
   .site-header .jump input { inline-size: 8.5rem; padding: 2px var(--space-2); }
@@ -124,11 +125,11 @@
     .site-header .jump { display: none; }
   }
   @media (min-width: 56.01rem) {
-    html:has(body[data-page="start"]) { overflow: hidden; }
-    body[data-page="start"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
-    body[data-page="start"] .site-body, body[data-page="start"] .site-main { min-block-size: 0; }
-    body[data-page="start"] .site-main { display: grid; grid-template-rows: minmax(0, 1fr); }
-    .figure.is-atlas { block-size: 100%; }
+    html:has(body:is([data-page="start"], [data-view="regesten"])) { overflow: hidden; }
+    body:is([data-page="start"], [data-view="regesten"]) { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
+    body:is([data-page="start"], [data-view="regesten"]) :is(.site-body, .site-main) { min-block-size: 0; }
+    body:is([data-page="start"], [data-view="regesten"]) .site-main { display: grid; grid-template-rows: minmax(0, 1fr); }
+    .figure:is(.is-atlas, .is-view) { block-size: 100%; }
   }
   /* Narrow: the regest list keeps number, date and the kinds of statements; the place stands
      on the regest page and in the Orte object, so a row stays within two lines at 360 px. */

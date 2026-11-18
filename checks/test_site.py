@@ -85,6 +85,26 @@ class AtlasRoutes(unittest.TestCase):
         self.assertRegex(start, r"itinerar\|jahrzehnte")
 
 
+class RegestenAndPersonen(unittest.TestCase):
+    def test_raum_redirect_and_whole_delivery_list(self) -> None:
+        # The view Raum is gone (operator, 2026-11-17): its route forwards to the Netz, its
+        # module and the navigation item are gone (knowledge/interface-plan.md, step 2).
+        app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
+        self.assertRegex(app, r"raum: \{[^}]*forward:")
+        self.assertNotIn("renderSpace", app)
+        self.assertFalse((ROOT / "js" / "space.js").exists())
+        nav = (ROOT / "js" / "nav.json").read_text(encoding="utf-8")
+        self.assertNotIn('"raum"', nav)
+        # The regest list is the whole delivery: it counts every regest of holdings.json and the
+        # list page mounts it.
+        regesten = (ROOT / "js" / "regesten.js").read_text(encoding="utf-8")
+        self.assertIn("selection.rows.length", regesten)
+        selection = (ROOT / "js" / "selection.js").read_text(encoding="utf-8")
+        self.assertIn("H.regesta", selection)
+        page = (ROOT / "js" / "edition" / "page.js").read_text(encoding="utf-8")
+        self.assertIn('regesten: () => import("./regesten.js")', page)
+
+
 class HiddenAttribute(unittest.TestCase):
     def test_global_hidden_rule(self) -> None:
         # css/shell.css is the one stylesheet every static page and the views load.

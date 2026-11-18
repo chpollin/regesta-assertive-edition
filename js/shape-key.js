@@ -1,5 +1,5 @@
 /**
- * The key of node shapes and line kinds for the network and the space view, missing until
+ * The key of node shapes and line kinds for the network, missing until
  * the reviewer's report of 2026-11-14 (knowledge/design.md). One quiet line at the lower edge
  * of the drawing, listing only the signs the current drawing contains, so it never explains
  * a sign the reader cannot see. The signs are drawn with the classes of the figures
@@ -21,7 +21,6 @@ const ENTRIES = {
   role: ["beteiligt", () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-role" }])],
   parent: ["Eltern und Kind", () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-parent" }])],
   same: ["gleicher Name, offene Frage", () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-same" }])],
-  years: ["ein Zeichen je Jahr", () => sign(["line", { x1: 9, y1: 1, x2: 9, y2: 11, class: "sp-column" }], ["circle", { cx: 9, cy: 2.5, r: 2.2, class: "n-person" }], ["circle", { cx: 9, cy: 9.5, r: 2.2, class: "n-person" }])],
   shared: ["Linie: gemeinsame Aussagen", () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "po-edge", "stroke-width": 2 }])],
   bundle: ["Aussagen einer Richtung, gebündelt", () => sign(["circle", { cx: 9, cy: 6, r: 4.5, class: "n-bundle" }])],
   ...Object.fromEntries(STANDS.map((st) => [st.key, [st.label, () => sign(["circle", { cx: 9, cy: 6, r: 4.5, class: `n-person st-${st.key}` }])]])),

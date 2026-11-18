@@ -1,0 +1,149 @@
+/* The frame of every view (js/filterbar.js): Atlas, Regesten, Personen. Filter bar, main
+   element with its tool row, the opened regest. Layout after knowledge/interface-plan.md: bar
+   of 17rem on the left, the main element on the rest, the regest as an overlay of 28rem over
+   the right edge of the main element, docked beside it from 100rem (1600 px); below 56rem the
+   main element first, the facets in a sheet, the result list below, the regest as a route of
+   its own. Colours from tokens.css only. */
+
+@layer layout {
+  .frame {
+    --fb-bar: 17rem;
+    --frame-detail-w: 28rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--fb-bar) minmax(0, 1fr);
+    block-size: 100%;
+    min-block-size: 0;
+  }
+  .frame[data-dock="true"][data-open] { grid-template-columns: var(--fb-bar) minmax(0, 1fr) var(--frame-detail-w); }
+  .fb-bar { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; overflow: hidden; background: var(--side); border-inline-end: 1px solid var(--hairline); font-size: var(--step--1); }
+  .fb-result { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; border-block-start: 1px solid var(--hairline); }
+  .fb-list { overflow-y: auto; margin: 0; padding: 0 var(--space-3) var(--space-3); }
+  .frame-stage { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr); min-inline-size: 0; min-block-size: 0; }
+  .atlas-figure { position: relative; min-block-size: 0; }
+  .atlas-figure > .cube, .atlas-figure > .decades { position: absolute; inset: 0; }
+  .cube .space-scene { position: absolute; inset: 0; }
+  .persons-figure { position: relative; min-block-size: 0; }
+  .persons-figure > .canvas { position: absolute; inset: 0; block-size: auto; }
+  .reg-list { display: grid; min-block-size: 0; }
+  .frame-regesten .fb-list { padding: 0 var(--space-4) var(--space-4); }
+  /* The tool row of the list holds only the filter button of narrow screens. */
+  .frame-regesten .frame-tools { display: none; }
+  .decades .dc-scene { position: absolute; inset: 0 var(--space-2) var(--space-2); }
+  /* Below the tool row (--frame-top, measured in js/atlas.js), so switch and info mark stay. */
+  .frame-detail { position: absolute; z-index: 5; inset-block: var(--frame-top, 0) 0; inset-inline-end: 0; inline-size: min(var(--frame-detail-w), 100%); overflow-y: auto; padding: var(--space-3) var(--space-4) var(--space-4); background: var(--stage); border-inline-start: 1px solid var(--hairline); box-shadow: -6px 0 22px rgb(0 0 0 / 0.08); }
+  .frame[data-dock="true"] .frame-detail { position: static; inline-size: auto; box-shadow: none; min-block-size: 0; }
+
+  @media (max-width: 56rem) {
+    .frame { display: flex; flex-direction: column; block-size: auto; }
+    .frame-stage { order: 1; }
+    .atlas-figure, .persons-figure { block-size: 60dvh; }
+    .frame-regesten .frame-tools { display: flex; }
+    /* In the list the count line stands above the rows. */
+    .frame-regesten .fb-bar { order: 0; }
+    .frame-regesten .fb-list { padding-inline: var(--space-3); }
+    .fb-bar { order: 2; display: block; overflow: visible; background: var(--stage); border: 0; }
+    .fb-result { border-block-start: 1px solid var(--hairline); }
+    .fb-list { overflow: visible; }
+    /* The regest as a route of its own: graphic and list step aside, the back arrow leads back. */
+    .frame[data-open] > .frame-stage, .frame[data-open] > .fb-bar { display: none; }
+    .frame[data-open] > .frame-detail { order: 0; position: static; inline-size: auto; border: 0; box-shadow: none; padding: var(--space-3); }
+  }
+}
+
+@layer components {
+  /* Tool row above the graphic: the switch of the representations, camera tools, the info mark. */
+  .frame-tools { position: relative; z-index: 6; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
+  .atlas-camera { display: inline-flex; gap: var(--space-1); }
+  .atlas-camera .tool { min-inline-size: 2rem; }
+  .frame-tools-end { display: inline-flex; gap: var(--space-2); margin-inline-start: auto; }
+  .atlas-flags[aria-pressed="true"] { border-color: var(--warn); box-shadow: inset 0 -2px 0 var(--warn); }
+  .fb-filter-open { display: none; }
+  /* The switch of Personen is a pair of links, styled as the Atlas's switch buttons. */
+  a.seg { display: inline-block; text-decoration: none; }
+  a.seg[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--accent); font-weight: 600; }
+  a.seg:hover, a.seg:focus-visible { text-decoration: underline; text-decoration-color: var(--accent); }
+  .person-page { text-decoration: none; color: var(--text); }
+  .atlas-info-mark { inline-size: 1.75rem; block-size: 1.75rem; padding: 0; border-radius: 50%; font-family: var(--font-source); font-style: italic; font-weight: 600; }
+  .atlas-info-mark[aria-expanded="true"] { border-color: var(--accent-text); }
+  .atlas-info { position: absolute; inset-block-start: calc(100% - var(--space-1)); inset-inline-end: var(--space-3); display: grid; gap: var(--space-2); max-inline-size: min(24rem, calc(100% - 2 * var(--space-3))); padding: var(--space-2) var(--space-3); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); box-shadow: 0 6px 22px rgb(0 0 0 / 0.12); font-size: var(--step--1); }
+  .atlas-info p { margin: 0; }
+
+  /* The legend of the relations of an opened regest, at the graphic's lower edge. */
+  .atlas-legend { position: absolute; z-index: 2; inset-block-end: var(--space-2); inset-inline-start: var(--space-3); display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin: 0; padding: 0 var(--space-1); font-size: var(--step--1); color: var(--muted); background: color-mix(in srgb, var(--stage) 85%, transparent); }
+  .atlas-legend-item { display: inline-flex; align-items: center; gap: var(--space-1); white-space: nowrap; }
+  .atlas-legend b { color: var(--text); font-variant-numeric: tabular-nums; }
+  .rel-key { display: inline-block; inline-size: 1.4em; }
+  .rel-key.is-step { border-block-start: 2.5px solid var(--accent); }
+  .rel-key.is-people { border-block-start: 1.2px solid var(--muted); }
+  .rel-key.is-place { inline-size: 0.7em; block-size: 0.7em; border: 1.5px solid var(--accent-text); border-radius: 50%; }
+  .rel-key.is-route { border-block-start: 1.2px solid var(--edge); }
+  .rel-key.is-flag { border-block-start: 1.5px solid var(--warn); }
+  /* The key of the cube behind the info mark. */
+  .atlas-key { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+  .atlas-key li { display: flex; align-items: center; gap: var(--space-2); }
+  .atlas-key li > span:first-child { flex: none; }
+
+  /* Facets: a word above each control; chips for the chosen place and persons. */
+  .fb-facets { display: grid; gap: var(--space-3); padding: var(--space-3); }
+  .facet { display: grid; gap: var(--space-1); }
+  .facet.is-off { opacity: 0.55; }
+  .facet-label { font-weight: 600; }
+  .facet-input { inline-size: 100%; padding: var(--space-1) var(--space-2); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+  .chips:empty { display: none; }
+  .chip { display: inline-flex; align-items: center; gap: var(--space-1); max-inline-size: 100%; padding: 0 0 0 var(--space-2); background: var(--stage); border: 1px solid var(--accent-text); border-radius: var(--radius); }
+  .chip-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chip-x { display: inline-grid; place-items: center; padding: 0 var(--space-2); background: none; border: 0; color: var(--muted); cursor: pointer; line-height: 1.4; }
+  /* A circle with a bar: the cross is the sign of Streit, so it never removes or closes. */
+  .chip-x-sign { inline-size: 0.95em; block-size: 0.95em; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
+  .chip-x:hover, .chip-x:focus-visible { color: var(--text); }
+  .art-chips, .layer-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+  .art-chip, .layer-chip { display: inline-flex; align-items: center; gap: 0.3em; padding: 2px var(--space-2); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); color: var(--muted); cursor: pointer; }
+  .art-chip[aria-pressed="true"], .layer-chip[aria-pressed="true"] { color: var(--text); border-color: var(--accent-text); box-shadow: inset 0 -2px 0 var(--accent); }
+  .layer-chip .it-key { vertical-align: 0; }
+
+  /* The count line and the result list. */
+  .fb-count { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-2); margin: 0; padding: var(--space-2) var(--space-3); }
+  .fb-count b { font-variant-numeric: tabular-nums; }
+  .fb-reset { margin-inline-start: auto; }
+  .fb-list li { list-style: none; }
+  .fb-row { display: grid; grid-template-columns: 2.6rem auto minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-2); inline-size: 100%; padding: 3px var(--space-1); background: none; border: 0; border-radius: var(--radius); color: var(--text); font-size: inherit; text-align: start; cursor: pointer; }
+  .fb-row:hover .row-id, .fb-row:focus-visible .row-id { text-decoration: underline; text-decoration-color: var(--accent); }
+  .fb-row[aria-current] { background: var(--accent-faint); }
+  .row-year, .row-place { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .row-id { grid-column: 2; white-space: nowrap; }
+  .row-place { grid-column: 3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fb-row .it-key, .fb-row .it-pkey { grid-column: -2; align-self: center; }
+  .row-place.is-none { font-style: italic; }
+  /* The list of Regesten: dating and the signs of the statements' kinds as a fifth column. */
+  .frame-regesten .fb-row { grid-template-columns: 3rem 10rem minmax(6rem, 16rem) minmax(0, 1fr) 0.8rem; padding-block: 0.65rem; border-block-end: 1px solid var(--hairline); border-radius: 0; }
+  .frame-regesten .fb-list { max-inline-size: 60rem; }
+  .row-fams { display: inline-flex; gap: 3px; flex: none; color: var(--muted); align-self: center; }
+  .fb-more-item { padding-block: var(--space-1); }
+  .fb-more { margin: var(--space-2) var(--space-1); }
+  .fb-empty { padding: var(--space-2) var(--space-1); color: var(--muted); }
+
+  /* The opened regest: the back arrow only where the regest is a route of its own. */
+  .frame-back { display: none; margin-block-end: var(--space-3); }
+  /* The card takes the focus on opening for screen readers; the ring would frame the whole card. */
+  .frame-detail .regest-card:focus { outline: none; }
+  .it-tip-state { color: var(--muted); }
+
+  /* The filter sheet: a dialog from below on narrow screens. */
+  .fb-sheet { inline-size: 100%; max-inline-size: 100%; max-block-size: 85dvh; margin: auto 0 0; padding: 0; border: 0; border-radius: 8px 8px 0 0; background: var(--side); color: var(--text); font-size: var(--step--1); }
+  .fb-sheet::backdrop { background: rgb(0 0 0 / 0.3); }
+  .fb-sheet-head { position: sticky; inset-block-start: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: var(--space-2) var(--space-3); background: var(--side); border-block-end: 1px solid var(--hairline); }
+
+  @media (max-width: 56rem) {
+    /* The facets live in the sheet; the bar keeps the count line and the list. */
+    .fb-bar > .fb-facets { display: none; }
+    .fb-filter-open { display: inline-flex; }
+    .frame-back { display: inline-flex; }
+    .frame-tools { padding-inline: var(--space-2); }
+    .fb-row { padding-block: var(--space-1); }
+    /* The list at narrow width: year, number and place; the signs on a second line. */
+    .frame-regesten .fb-row { grid-template-columns: 2.6rem auto minmax(0, 1fr) 0.8rem; padding-block: 0.85rem; }
+    .frame-regesten .row-fams { grid-column: 2 / -2; grid-row: 2; }
+  }
+}

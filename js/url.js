@@ -25,3 +25,35 @@ export function writeAddress(params, hash = location.hash) {
   const query = q.toString();
   history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${hash}`);
 }
+
+/** The parameters of the filter model (js/filters.js), carried from view to view. */
+const FILTER_KEYS = ["von", "bis", "ort", "person", "art", "schicht", "q"];
+
+/**
+ * Keep the chosen filters when the reader changes the view: a click on a link of the header
+ * navigation or of a view switch carries the filter parameters of the current address into the
+ * target, unless the target names its own. Without JavaScript the links lead to the views at rest.
+ */
+export function carryFilters() {
+  document.addEventListener(
+    "click",
+    (event) => {
+      const link = event.target instanceof Element ? event.target.closest(".site-nav a, a.seg, .view-switch a") : null;
+      if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
+      const here = new URLSearchParams(location.search);
+      const url = new URL(link.getAttribute("href"), location.href);
+      if (url.origin !== location.origin || FILTER_KEYS.some((k) => url.searchParams.has(k))) return;
+      let changed = false;
+      for (const k of FILTER_KEYS) {
+        if (here.has(k)) {
+          url.searchParams.set(k, here.get(k));
+          changed = true;
+        }
+      }
+      if (!changed) return;
+      event.preventDefault();
+      location.assign(url.href);
+    },
+    true,
+  );
+}

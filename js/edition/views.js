@@ -2,7 +2,7 @@
  * Embedding of the interactive views (ansicht/) in static pages.
  *
  * The views address their targets as hash routes of the single-page app (#/regest/<uid>,
- * #/personen/<iri>, #/raum). On a static page these routes are mapped to the static pages,
+ * #/personen/<iri>, #/zeitband). On a static page these routes are mapped to the static pages,
  * using data/routes.json written by build_site.py. A regest link carries the current address
  * as `zurueck`, so the regest page can lead back to the view with its state.
  */
@@ -45,7 +45,8 @@ export function bridge(root, routes) {
       const iri = decodeURIComponent(parts.slice(1).join("/"));
       return siteUrl(root, routes.persons[iri] ?? "personen/");
     }
-    if (parts[0] === "raum" || parts.length === 0) return siteUrl(root, `ansicht/${hash || "#/"}`);
+    // The Netz and the Zeitband live in the views app; the former Raum forwards there to the Netz.
+    if (["raum", "zeitband"].includes(parts[0]) || parts.length === 0) return siteUrl(root, `ansicht/${location.search}${hash || "#/"}`);
     return null;
   };
   document.addEventListener(

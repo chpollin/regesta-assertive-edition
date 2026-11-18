@@ -8,7 +8,8 @@
  * evaluate a facet leaves it in the address.
  *
  * Address: von, bis (years), ort (place id of the register), person (one or two register ids,
- * comma separated), art (relation families, OR; none means all), schicht (aussagen). The
+ * comma separated), art (relation families, OR; none means all), schicht (aussagen), q (the
+ * text search of the list, which the other views show greyed). The
  * names before the plan are read once and rewritten, so earlier links keep working:
  * familien to art, personen to person.
  */
@@ -49,6 +50,8 @@ export function createFilters(store) {
     persons: [...new Set((param("person") ?? param("personen") ?? "").split(",").filter(personOk))].slice(0, MAX_PERSONS),
     /** "alle" or "aussagen": every regest, or only those with statements of the run. */
     layer: param("schicht") === "aussagen" ? "aussagen" : "alle",
+    /** The text search of the list; the other views carry it in the address unevaluated. */
+    q: (param("q") ?? "").trim(),
     onChange(fn) {
       listeners.add(fn);
       return () => listeners.delete(fn);
@@ -61,12 +64,13 @@ export function createFilters(store) {
       if ("place" in change) state.place = placeOk(change.place) ? change.place : null;
       if ("persons" in change) state.persons = [...new Set(change.persons.filter(personOk))].slice(0, MAX_PERSONS);
       if ("layer" in change) state.layer = change.layer === "aussagen" ? "aussagen" : "alle";
+      if ("q" in change) state.q = String(change.q ?? "").trim();
       write();
       for (const fn of listeners) fn();
     },
     /** Clears every facet. */
     reset() {
-      state.set({ from: lo, to: hi, families: [...known], place: null, persons: [], layer: "alle" });
+      state.set({ from: lo, to: hi, families: [...known], place: null, persons: [], layer: "alle", q: "" });
     },
     inRange(uid) {
       const y = year.get(uid);
@@ -91,7 +95,7 @@ export function createFilters(store) {
     },
     /** Any facet deviates from the rest state. */
     any() {
-      return state.active() || !!state.place || state.persons.length > 0 || state.layer !== "alle";
+      return state.active() || !!state.place || state.persons.length > 0 || state.layer !== "alle" || !!state.q;
     },
   };
 
@@ -103,6 +107,7 @@ export function createFilters(store) {
       person: state.persons.join(","),
       art: state.familiesSet() ? [...state.families].join(",") : null,
       schicht: state.layer === "aussagen" ? "aussagen" : null,
+      q: state.q || null,
       familien: null,
       personen: null,
     });

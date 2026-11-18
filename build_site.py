@@ -192,17 +192,6 @@ class Site:
     def regest_href(self, root: str, uid: str, claim: str | None = None) -> str:
         return f"{root}regesten/{self.slugs[uid]}/" + (f"#f-{claim}" if claim else "")
 
-    def view_switch(self, key: str, root: str) -> str:
-        """The switch between the representations of the object a page belongs to."""
-        item = next((it for it in self.nav if any(v["key"] == key for v in it.get("views", []))), None)
-        if not item:
-            return ""
-        links = "".join(
-            f'<a href="{root}{esc(v["href"])}"{CURRENT if v["key"] == key else ""}>{esc(v["label"])}</a>'
-            for v in item["views"]
-        )
-        return f'<nav class="view-switch" aria-label="Darstellung der {esc(item["label"])}">{links}</nav>'
-
     def page(
         self,
         *,
@@ -218,7 +207,7 @@ class Site:
         """Write one page in the shared frame: header from nav.json, main, footer licence line."""
         root = "../" * (len(path.split("/")) if path else 0)
         # A page belongs to an object of the navigation either directly or as one of its
-        # representations (the person list is the Personen object's „Liste“).
+        # representations.
         owner = next((it["key"] for it in self.nav if any(v["key"] == key for v in it.get("views", []))), key)
         nav = "".join(
             f'<a href="{root}{esc(item["href"])}"{CURRENT if item["key"] == owner else ""}>{esc(item["label"])}</a>'
@@ -226,7 +215,7 @@ class Site:
         )
         css = [f"{root}css/tokens.css", f"{root}css/shell.css"]
         if views:
-            css += [f"{root}ansicht/css/{name}" for name in ("app.css", "space.css", "views.css", "atlas.css")]
+            css += [f"{root}ansicht/css/{name}" for name in ("app.css", "space.css", "views.css", "frame.css")]
         css.append(f"{root}css/pages.css")
         links = "\n".join(f'  <link rel="stylesheet" href="{href}">' for href in css)
         full_title = title if key == "atlas" else f"{title} | {self.texts['title']}"
@@ -403,26 +392,28 @@ def list_filter(placeholder: str) -> str:
 
 
 def regest_list_page(site: Site) -> None:
+    """Regesten (knowledge/interface-plan.md, part 2): js/edition/regesten.js mounts the list of
+    the whole delivery with the shared filter bar into #list. Without JavaScript the page keeps
+    the table of the run's regesta and a filter row that stays hidden."""
     rows = []
     for r in site.regests:
         date = segments_html(r["date"], site, "../") or '<span class="missing">ohne Datierung</span>'
         place = segments_html(r["place"], site, "../") if r["place"] and r["place"][0]["t"] != "null" else ""
         fams = {FAMILY_OF.get(b["title"], "order") for b in r["blocks"]}
         marks = status_marks(r)
-        q = re.sub(r"[^a-z0-9 ]", "", _fold(" ".join([r["identifier"], r["text"] or ""])))
         rows.append(
-            f'<tr data-q="{esc(q)}" data-f="{" ".join(sorted(fams))}"><th scope="row"><a href="{site.slugs[r["uid"]]}/">{esc(r["identifier"])}</a></th>'
+            f'<tr><th scope="row"><a href="{site.slugs[r["uid"]]}/">{esc(r["identifier"])}</a></th>'
             f"<td>{date}</td><td>{place or '<span class=missing>ohne Ort</span>'}</td>"
             f"<td>{family_cell(fams)}{f'<span class=row-mark>{esc(marks)}</span>' if marks else ''}</td></tr>"
         )
     main = f"""<h1 class="visually-hidden">Regesten</h1>
-{list_filter("Regesttext oder Nummer")}
+<div class="figure" id="list"><p class="figure-fallback">Ohne JavaScript stehen hier die Regesten mit Aussagen; die Liste der ganzen Lieferung mit ihren Filtern braucht JavaScript.</p>
 <div class="table-wrap"><table class="list regests">
 <thead><tr><th scope="col">Regest</th><th scope="col">Datierung</th><th scope="col">Ort</th><th scope="col">Aussagen</th></tr></thead>
 <tbody>
 {chr(10).join(rows)}
-</tbody></table></div>"""
-    site.page(path="regesten", key="regesten", kind="regesten", title="Regesten", main=main)
+</tbody></table></div></div>"""
+    site.page(path="regesten", key="regesten", kind="regesten", title="Regesten", main=main, views=True)
 
 
 def factoid_html(site: Site, regest: dict, block: dict, before: dict | None, root: str) -> str:
@@ -677,13 +668,12 @@ def persons_pages(site: Site) -> None:
             f'<tbody><tr class="group"><th scope="rowgroup" colspan="3">{esc(title)}</th></tr>\n{chr(10).join(rows)}</tbody>'
         )
     main = f"""<h1 class="visually-hidden">Personen und Gruppen</h1>
-{site.view_switch("personen-liste", "../")}
 {list_filter("Name")}
 <div class="table-wrap"><table class="list persons">
 <thead><tr><th scope="col">Name</th><th scope="col">Aussagen</th><th scope="col" class="num">Regesten mit Aussagen</th></tr></thead>
 {chr(10).join(groups)}
 </table></div>"""
-    site.page(path="personen", key="personen-liste", kind="personen", title="Personen und Gruppen", main=main)
+    site.page(path="personen", key="personen", kind="personen", title="Personen und Gruppen", main=main)
 
 
 def _fold(text: str) -> str:

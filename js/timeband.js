@@ -9,14 +9,14 @@
  * least three regesta, no LLM. A name in the accent also appears in the statements of the
  * run, matched by its register id.
  *
- * Filters on the left, the band in the middle, the regest on the right on demand, as in the
- * itinerary. The drawing is aria-hidden; every person and every regest is reachable through
- * the sidebar.
+ * The second representation of Personen (js/persons.js), which owns the filter bar, the list
+ * and the opened regest. A mention counts when its regest passes the facets (js/selection.js),
+ * so the rows are the persons named in the regesta of the selection; the chosen person (the
+ * Person facet) is the marked row. The drawing is aria-hidden; every regest is reachable
+ * through the list of the bar, every person through the Person facet.
  */
 import { h } from "./dom.js";
-import { timeBand } from "./sidebar.js";
 import { s, yearOf } from "./svg.js";
-import { renderRegestCard } from "./regest-card.js";
 import { param, writeAddress } from "./url.js";
 
 // Row height: 20 px with a pointer, 28 px on a narrow touch screen, where a row is a target.
@@ -32,24 +32,10 @@ const ITALY = { lat: 46.3, lon: 6.5 };
 // The first choice fits the first screen at 1280 x 800 without scrolling.
 const LIMITS = [30, 120, 400];
 const ACTOR = "urn:regesta:actor:";
-const NOTE = "Nennung aus dem Register der Regesta Imperii, ohne LLM.";
-
-/**
- * The sidebar is rebuilt on every change, so a keyboard user would lose the control in hand;
- * this finds the same control again by its name or text after the rebuild.
- * @param {HTMLElement} root
- */
-export function focusKey(root) {
-  const el = document.activeElement;
-  if (!el || !root.contains(el)) return () => {};
-  const key = (e) => `${e.tagName}|${e.getAttribute("aria-label") ?? e.textContent}`;
-  const wanted = key(el);
-  return () => [...root.querySelectorAll("select, button, input, summary")].find((e) => key(e) === wanted)?.focus();
-}
 
 /**
  * @param {import("./app.js").Store} store
- * @param {{person?: string|null, filters: any, detail?: {show: (el: Element) => void, hide: () => void}, texts?: () => Promise<Record<string, string>>}} options
+ * @param {{filters: any, mentionOn: (u: string) => boolean, onPerson: (id: string) => void, onOpen: (u: string) => void}} options
  */
 export function renderTimeband(store, options) {
   const { filters } = options;
@@ -89,14 +75,14 @@ export function renderTimeband(store, options) {
     return runs;
   })();
   const state = {
-    person: options.person && byId.has(options.person) ? options.person : null,
+    person: null,
     order: ["zeit", "name"].includes(param("ordnung")) ? param("ordnung") : "anzahl",
     limit: LIMITS.includes(Number(param("zeige"))) ? Number(param("zeige")) : LIMITS[0],
     pointed: null,
     opened: null,
   };
 
-  const inRange = (m) => filters.inYear(Math.floor(m.y));
+  const inRange = (m) => options.mentionOn(m.u);
   /** The rows in their order: the most named persons of the time range, then sorted. */
   function rows() {
     const named = persons.map((p) => ({ p, hits: p.mentions.filter(inRange) })).filter((r) => r.hits.length);
@@ -113,11 +99,10 @@ export function renderTimeband(store, options) {
 
   const status = h("p", { class: "canvas-status", role: "status", "aria-live": "polite" });
   const axisHost = h("div", { class: "tb-axis" });
-  const scroller = h("div", { class: "tb-scroll", tabindex: "0", role: "group", "aria-label": "Zeitband der Personen. Personen und Regesten sind in der Seitenleiste mit der Tastatur erreichbar." });
+  const scroller = h("div", { class: "tb-scroll", tabindex: "0", role: "group", "aria-label": "Zeitband der Personen. Die Regesten stehen in der Liste links, die Personen in der Personensuche." });
   const element = h(
     "section",
-    { class: "canvas views-tb", "aria-labelledby": "tb-title" },
-    h("h1", { id: "tb-title", class: "visually-hidden", text: "Zeitband: welche Personen wann in den Regesten genannt sind" }),
+    { class: "canvas views-tb" },
     axisHost,
     scroller,
     status,
@@ -243,15 +228,12 @@ export function renderTimeband(store, options) {
     mark();
   }
 
-  function select(id, { scroll = false } = {}) {
-    state.person = id;
-    writeAddress({}, `#/zeitband${id ? `/${encodeURIComponent(id)}` : ""}`);
-    const listed = shown.some((r) => r.p.id === id);
-    if (id && !listed) draw();
-    else mark();
-    renderSide();
-    if (scroll && id) {
-      const i = shown.findIndex((r) => r.p.id === id);
+  /** The chosen person of the Person facet is the marked row, scrolled into view. */
+  function sync() {
+    state.person = filters.persons.find((id) => byId.has(id)) ?? null;
+    draw();
+    if (state.person) {
+      const i = shown.findIndex((r) => r.p.id === state.person);
       if (i >= 0) scroller.scrollTo({ top: Math.max(0, i * ROW - scroller.clientHeight / 3) });
     }
   }
@@ -259,17 +241,7 @@ export function renderTimeband(store, options) {
   function openRegest(person, m) {
     state.opened = { person, m };
     mark();
-    options.detail?.show(
-      renderRegestCard(store, m.u, {
-        texts: options.texts,
-        notes: [NOTE],
-        onClose: () => {
-          state.opened = null;
-          mark();
-          options.detail?.hide();
-        },
-      }),
-    );
+    options.onOpen(m.u);
   }
 
   scroller.addEventListener("pointermove", (e) => point(hitAt(e)));
@@ -277,8 +249,8 @@ export function renderTimeband(store, options) {
   scroller.addEventListener("click", (e) => {
     const hit = hitAt(e);
     if (!hit) return;
-    if (hit.person !== state.person) select(hit.person);
     if (hit.m) openRegest(hit.person, hit.m);
+    else options.onPerson(hit.person);
   });
 
   function setting(key, value) {
@@ -286,94 +258,30 @@ export function renderTimeband(store, options) {
     if (key === "order") writeAddress({ ordnung: value !== "anzahl" ? value : null });
     else writeAddress({ zeige: value !== LIMITS[0] ? value : null });
     draw();
-    renderSide();
+    renderControls();
   }
 
-  // The sidebar: who is shown and in which order, the shared time band, the legend of the
-  // two layers, and the regesta of the selected person.
-  const aside = h("div", { class: "sidebar" });
-  function renderSide() {
-    const { named, top } = rows();
-    const person = state.person ? byId.get(state.person) : null;
-    const hits = person ? person.mentions.filter(inRange) : [];
-    const ordered = [...top].sort((a, b) => a.p.label.localeCompare(b.p.label, "de"));
-    const picker = h(
-      "select",
-      { class: "side-select", "aria-label": "Person", onchange: (e) => select(e.target.value || null, { scroll: true }) },
-      h("option", { value: "", text: "Alle gezeigten Personen", selected: !person }),
-      ordered.map(({ p, hits: n }) => h("option", { value: p.id, text: `${p.label} (${n.length})`, selected: p.id === state.person })),
-    );
-    const orderSegs = h(
-      "div",
-      { class: "segs", role: "group", "aria-label": "Reihenfolge" },
-      Object.entries(ORDERS).map(([key, label]) => h("button", { type: "button", class: "seg", "aria-pressed": String(state.order === key), onclick: () => setting("order", key) }, label)),
-    );
-    const limit = h(
-      "select",
-      { class: "tb-limit", "aria-label": "Anzahl der gezeigten Personen", onchange: (e) => setting("limit", Number(e.target.value)) },
-      LIMITS.filter((n, i) => i === 0 || LIMITS[i - 1] < named.length).map((n) => h("option", { value: String(n), text: n >= named.length ? `alle ${named.length}` : `${n} meistgenannte`, selected: n === state.limit })),
-    );
-    const applies = filters.active() ? `${filters.from === filters.to ? `nur ${filters.from}` : `${filters.from} bis ${filters.to}`}. ` : null;
-    const runShown = top.filter((r) => r.p.run).length;
-    const legend = h(
-      "div",
-      { class: "it-legend" },
-      h("p", {}, h("span", { class: "it-n", text: String(runShown) }), " ", h("span", { class: "tb-key-name", text: "Namen in Türkis" }), " auch in belegten Aussagen"),
-      italyYears.length ? h("p", {}, h("span", { class: "it-key tb-key-italy" }), h("span", { class: "it-n" }), "Jahre überwiegend in Italien") : null,
+  // Order and number of rows, in the tool row of Personen beside the switch.
+  const controls = h("div", { class: "tb-controls" });
+  function renderControls() {
+    const { named } = rows();
+    controls.replaceChildren(
       h(
-        "details",
-        { class: "it-notes" },
-        h("summary", { text: "Herkunft der Daten" }),
-        h("p", { text: "Personen aus dem Register der Regesta Imperii, die in mindestens drei Regesten genannt sind, ohne LLM. Hervorgehobene Namen stehen auch in den Aussagen, die LLM-basierte Agenten extrahiert haben; diese sind technisch geprüft und fachlich nicht abgenommen." }),
-        h("p", { text: `Eine Linie verbindet Nennungen, die höchstens ${GAP} Jahre auseinanderliegen; eine längere Pause bleibt offen. Als Jahre in Italien gelten Jahre mit mindestens drei Ausstellungsorten, von denen mehr als die Hälfte südlich der Alpen liegt, aus dem Bestand berechnet.` }),
+        "div",
+        { class: "segs", role: "group", "aria-label": "Reihenfolge" },
+        Object.entries(ORDERS).map(([key, label]) => h("button", { type: "button", class: "seg", "aria-pressed": String(state.order === key), onclick: () => setting("order", key) }, label)),
+      ),
+      h(
+        "select",
+        { class: "tb-limit", "aria-label": "Anzahl der gezeigten Personen", onchange: (e) => setting("limit", Number(e.target.value)) },
+        LIMITS.filter((n, i) => i === 0 || LIMITS[i - 1] < named.length).map((n) => h("option", { value: String(n), text: n >= named.length ? `alle ${named.length}` : `${n} meistgenannte`, selected: n === state.limit })),
       ),
     );
-    const list = person
-      ? h(
-          "ul",
-          { class: "act-rows it-rows", role: "list", "aria-label": `Regesten zu ${person.label}` },
-          hits.map((m) =>
-            h(
-              "li",
-              { class: "act-row" },
-              h(
-                "button",
-                {
-                  type: "button",
-                  class: "act-open",
-                  onclick: () => openRegest(person.id, m),
-                  onmouseenter: () => point({ person: person.id, m }),
-                  onmouseleave: () => point(null),
-                  onfocus: () => point({ person: person.id, m }),
-                  onblur: () => point(null),
-                },
-                h("span", { class: "act-year", text: String(Math.floor(m.y)) }),
-                h("span", { class: "act-name", text: m.i }),
-                h("span", { class: "act-short", text: m.place ?? "" }),
-              ),
-            ),
-          ),
-        )
-      : h("p", { class: "side-empty", text: "Wähle eine Person im Band oder in der Liste oben." });
-    const restore = focusKey(aside);
-    aside.replaceChildren(
-      h(
-        "section",
-        { class: "side-part side-selection", "aria-label": "Auswahl und Filter" },
-        picker,
-        h("div", { class: "tb-controls" }, orderSegs, limit),
-        timeBand(store, filters, new Set(hits.map((m) => Math.floor(m.y)))),
-        applies ? h("p", { class: "side-applies" }, applies, h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen")) : null,
-        legend,
-      ),
-      h("section", { class: "side-part side-acts", "aria-label": "Regesten der Person" }, list),
-    );
-    restore();
   }
 
   const unsubscribe = filters.onChange(() => {
-    draw();
-    renderSide();
+    sync();
+    renderControls();
   });
   let lastWidth = 0;
   const observer = new ResizeObserver(() => {
@@ -385,16 +293,27 @@ export function renderTimeband(store, options) {
   observer.observe(scroller);
   // Names are cut with the loaded face, so draw again once the fonts are there.
   document.fonts?.ready.then(() => scene && draw());
-  renderSide();
-  if (state.person) requestAnimationFrame(() => select(state.person, { scroll: true }));
+  renderControls();
+  requestAnimationFrame(sync);
+
+  /** The key of the band's two encodings, for the info mark of Personen. */
+  function key() {
+    const runShown = shown.filter((r) => r.p.run).length;
+    return [
+      h("p", {}, h("span", { class: "tb-key-name", text: "Namen in Türkis" }), ` stehen auch in Aussagen der LLM-Agenten (${runShown} der gezeigten).`),
+      italyYears.length ? h("p", {}, h("span", { class: "it-key tb-key-italy", "aria-hidden": "true" }), " Jahre mit mehr als der Hälfte der Ausstellungsorte südlich der Alpen.") : null,
+      h("p", { text: `Ein Strich je Nennung; eine Linie verbindet Nennungen, die höchstens ${GAP} Jahre auseinanderliegen. Personen aus dem Register der Regesta Imperii, in mindestens drei Regesten genannt, ohne LLM.` }),
+    ];
+  }
 
   return {
     element,
-    aside,
-    focus: null,
-    dispose: () => {
-      unsubscribe();
-      observer.disconnect();
+    controls,
+    key,
+    unmark() {
+      state.opened = null;
+      mark();
     },
+    dispose: () => observer.disconnect(),
   };
 }

@@ -44,7 +44,46 @@ const ICON = {
   place: "M8 14s4.5-4.2 4.5-7.5a4.5 4.5 0 0 0-9 0C3.5 9.8 8 14 8 14zM8 8.2a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4z",
   out: "M9 3h4v4M13 3 7.5 8.5M11 9.5V13H3V5h3.5",
   agents: "M5.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM10.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 13c0-2.2 1.6-4 3.5-4S9 10.8 9 13M7 13c0-2.2 1.6-4 3.5-4S14 10.8 14 13",
+  copy: "M5.5 5.5h7v8h-7zM3.5 10.5v-8h7",
+  file: "M4 2.5h5.5L12 5v8.5H4zM9.5 2.5V5H12",
+  book: "M3 3.5h4.5a1.5 1.5 0 0 1 1.5 1.5v8.5a1.5 1.5 0 0 0-1.5-1.5H3zM13 3.5H9.5A1.5 1.5 0 0 0 8 5v8.5a1.5 1.5 0 0 1 1.5-1.5H13z",
 };
+
+/** The persistent address of a regest in Regesta Imperii Online. */
+const riUri = (pi) => `https://www.regesta-imperii.de/id/${pi}`;
+/** The citation form of a regest of the delivery, as the citable page names it. */
+export const riCitation = (identifier, pi) => `${identifier}, in: Regesta Imperii Online, URI: ${riUri(pi)}, CC BY 4.0, bearbeitet.`;
+
+/**
+ * A button that copies a citation; it says „kopiert“ for a moment. The clipboard API where the
+ * page may use it, else the selection of a hidden field; where neither works the button says so
+ * and the citation stands in its tooltip to copy by hand.
+ */
+export function copyButton(text, cls = "card-meta card-copy") {
+  const word = h("span", { text: "Zitieren" });
+  const button = h("button", { type: "button", class: cls, title: text, "aria-label": `Zitierweise kopieren: ${text}` }, icon("copy"), word);
+  const say = (w) => {
+    word.textContent = w;
+    setTimeout(() => (word.textContent = "Zitieren"), 2200);
+  };
+  button.addEventListener("click", async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("no clipboard");
+      await navigator.clipboard.writeText(text);
+      say("kopiert");
+    } catch {
+      const field = h("textarea", { class: "visually-hidden", "aria-hidden": "true" });
+      field.value = text;
+      document.body.append(field);
+      field.select();
+      const ok = document.execCommand?.("copy");
+      field.remove();
+      button.focus();
+      say(ok ? "kopiert" : "nicht kopiert, Zitat im Tooltip");
+    }
+  });
+  return button;
+}
 function icon(name) {
   return s("svg", { viewBox: "0 0 16 16", class: "head-icon", "aria-hidden": "true" }, s("path", { d: ICON[name] }));
 }
@@ -248,10 +287,13 @@ export function renderRegestCard(store, uid, options = {}) {
     h("span", { class: "card-id", text: identifier }),
     date ? h("span", { class: "card-meta", title: "Datierung" }, icon("date"), date) : null,
     place ? h("span", { class: "card-meta", title: "Ausstellungsort" }, icon("place"), place) : null,
-    pi ? h("a", { class: "card-meta card-ri", href: `https://www.regesta-imperii.de/id/${pi}`, title: "Dieses Regest in Regesta Imperii Online" }, icon("out"), "RI Online") : null,
-    regest && !options.page ? h("a", { class: "card-meta", href: regestHref(uid), title: "Eigene Seite dieses Regests, zum Zitieren" }, icon("out"), "Seite") : null,
+    pi ? h("a", { class: "card-meta card-ri", href: riUri(pi), title: "Dieses Regest in Regesta Imperii Online" }, icon("out"), "RI Online") : null,
+    // „Regestseite“ replaces „Seite“, which a fresh reader did not understand (2026-11-18).
+    regest && !options.page ? h("a", { class: "card-meta", href: regestHref(uid), title: "Eigene, zitierbare Seite dieses Regests mit Apparat und Dateien" }, icon("file"), "Regestseite") : null,
+    pi ? copyButton(riCitation(identifier, pi)) : null,
     regest ? reviewState(regest) : null,
-    options.onClose ? h("button", { type: "button", class: "card-close", "aria-label": "Regest schließen", title: "Schließen", onclick: options.onClose }, "×") : null,
+    // A word, not the cross: the cross is the sign of Streit in the annotation (2026-11-18).
+    options.onClose ? h("button", { type: "button", class: "card-close", "aria-label": "Regest schließen", onclick: options.onClose }, "Schließen") : null,
   );
 
   const textEl = h("p", { class: "card-text source is-noted" });

@@ -12,24 +12,21 @@ import { h, regestHref } from "./dom.js";
 import { FAMILIES, familyIcon, familyOf } from "./relations.js";
 import { keyRoom, keysOf, shapeKey, standKeys } from "./shape-key.js";
 import { standOf } from "./stand.js";
-import { createSidebar } from "./sidebar.js";
-import { renderRegestCard } from "./regest-card.js";
 import { drawPersonNetwork, personNetwork } from "./person-overview.js";
 import { s } from "./svg.js";
-import { writeAddress } from "./url.js";
 
 const LABELLED_HUBS = 8;
 
 /**
- * The graph restricted by the shared filters: acts of a family that is switched on and of a
- * regest inside the time range, the role edges to them, kinship inside the range, and the
- * people that keep at least one relation. The selected person always stays.
+ * The graph restricted by the shared filters: acts of a pressed kind (none pressed: all) and of
+ * a regest that passes the other facets (js/selection.js), the role edges to them, kinship of
+ * such regesta, and the people that keep at least one relation. The selected person always stays.
  */
-function filteredGraph(graph, filters, keep) {
-  const acts = new Set(graph.nodes.filter((n) => n.kind === "act" && filters.inRange(n.regest) && filters.familyOn(familyOf(n.label).key)).map((n) => n.id));
+function filteredGraph(graph, filters, regestOn, keep) {
+  const acts = new Set(graph.nodes.filter((n) => n.kind === "act" && regestOn(n.regest) && filters.familyOn(familyOf(n.label).key)).map((n) => n.id));
   const edges = graph.edges.filter((e) => {
     if (e.kind === "role") return acts.has(e.source) || acts.has(e.target);
-    if (e.kind === "parent") return filters.familyOn("kin") && filters.inRange(e.regest);
+    if (e.kind === "parent") return filters.familyOn("kin") && regestOn(e.regest);
     return true;
   });
   const linked = new Set([keep].filter(Boolean));
@@ -97,8 +94,10 @@ function bundleSectors(graph, centre, openKey) {
 }
 
 /**
+ * The network as the main element of Personen (js/persons.js), which owns the filter bar, the
+ * list and the opened regest.
  * @param {import("./app.js").Store} store
- * @param {{actor?: string|null, filters: ReturnType<import("./filters.js").createFilters>}} options
+ * @param {{actor?: string|null, filters: any, regestOn: (uid: string) => boolean, onSelect: (id: string|null) => void, onOpen: (uid: string, claim: string|null) => void}} options
  */
 export function renderOverview(store, options) {
   const { filters } = options;
@@ -119,92 +118,56 @@ export function renderOverview(store, options) {
     if (keyRoom(key) !== usedRoom) requestAnimationFrame(draw);
   };
   // The person who takes part in most statements; the overview leaves this person out and
-  // says so in one line with the way to the person's circle.
+  // stands for them with a greyed node in its centre that leads to the person's circle
+  // (interface plan, Text replaced by elements).
   const roleCount = new Map();
   for (const e of graph.edges) if (e.kind === "role") roleCount.set(e.target, (roleCount.get(e.target) ?? 0) + 1);
   const centre = [...roleCount].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
-  const centreNode = graph.nodes.find((n) => n.id === centre);
-  const centreNote = h(
-    "p",
-    { class: "po-note" },
-    `${centreNode?.label ?? ""} ist an fast allen Aussagen beteiligt und steht deshalb nicht im Bild; `,
-    h("a", { href: `#/personen/${encodeURIComponent(centre ?? "")}`, onclick: (e) => (e.preventDefault(), select(centre)) }, "sein Kreis"),
-    " zeigt sie.",
-  );
-  const element = h(
-    "section",
-    { class: "canvas", "aria-labelledby": "net-title" },
-    h("h1", { id: "net-title", class: "visually-hidden", text: "Zeit und Netz: Personen und ihre belegten Beziehungen" }),
-    centreNote,
-    graphHost,
-    status,
-    key,
-  );
+  const centreNode = graph.nodes.find((n) => n.id === centre) ?? null;
+  const element = h("section", { class: "canvas" }, graphHost, status, key);
   let network = null;
-  const sidebar = createSidebar(store, filters, {
-    person: state.actor,
-    onPerson: (id) => select(id),
-    onPoint: (id) => network?.point(id),
-    onOpen: (uid, claim, actId) => open(uid, claim, actId),
-  });
-  /** The selected act stays marked in the drawing while its regest is open on the right. */
+  /** The selected act stays marked in the drawing while its regest is open. */
   let openAct = null;
-  function open(uid, claim, actId) {
-    openAct = actId ?? null;
-    network?.pin(openAct);
-    options.detail?.show(renderRegestCard(store, uid, { claim, texts: options.texts, onClose: closeDetail }));
-  }
-  function closeDetail() {
-    openAct = null;
-    network?.pin(null);
-    options.detail?.hide();
-  }
-
-  function select(id) {
-    state.actor = id;
-    state.open = null;
-    writeAddress({}, id ? `#/personen/${encodeURIComponent(id)}` : "#/");
-    sidebar.setPerson(id);
-    draw();
-    if (id) network?.focus(id);
-  }
 
   function draw() {
     const width = graphHost.clientWidth;
     usedRoom = keyRoom(key);
     const height = element.clientHeight - usedRoom;
     if (!width || height <= 0) return;
-    const filtered = filteredGraph(graph, filters, state.actor);
+    const filtered = filteredGraph(graph, filters, options.regestOn, state.actor);
     if (!state.actor) {
       // Overview first: without a selected person the persons network, the centre left out.
       const net = personNetwork(filtered, centre);
       for (const n of net.nodes) n.stand = standOf(store, graph.nodes.find((x) => x.id === n.id));
+      const centreCount = centreNode ? new Set(filtered.edges.filter((e) => e.target === centre || e.source === centre).map((e) => e.regest).filter(Boolean)).size : 0;
       drawPersonNetwork(graphHost, net, {
         height,
-        onSelect: (id) => select(id),
+        centre: centreNode ? { id: centre, label: centreNode.label, count: centreCount } : null,
+        onSelect: (id) => options.onSelect(id),
         onPoint: (label) => {
           status.textContent = label ?? "";
         },
       });
       network = { highlight() {}, pin() {}, point() {}, sector() {}, focus: (id) => graphHost.querySelector(`a[href$="${CSS.escape(encodeURIComponent(id))}"]`)?.focus() };
-      centreNote.hidden = false;
       setKey([...(net.nodes.some((n) => n.group) ? ["person", "group"] : []), ...standKeys(store, net.nodes.map((n) => graph.nodes.find((x) => x.id === n.id))), "size", "shared"]);
       return;
     }
-    centreNote.hidden = true;
     // A sector opens on a click, or when the family filter leaves it as the only one.
     const only = filters.families.size === 1 ? [...filters.families][0] : null;
-    const shown = state.actor ? bundleSectors(filtered, state.actor, state.open ?? only) : filtered;
+    const shown = bundleSectors(filtered, state.actor, state.open ?? only);
     network = drawGraph(graphHost, store, shown, height, state.actor, {
       onPoint: (id) => {
         const n = id ? shown.nodes.find((x) => x.id === id) : null;
         status.textContent = n ? n.label : "";
       },
-      onSelect: (id) => select(state.actor === id ? null : id),
-      onOpen: (uid, claim, actId) => open(uid, claim, actId),
-      onSector: (key) => {
-        sidebar.openFamily(key);
-        state.open = state.open === key ? null : key;
+      onSelect: (id) => options.onSelect(state.actor === id ? null : id),
+      onOpen: (uid, claim, actId) => {
+        openAct = actId ?? null;
+        network?.pin(openAct);
+        options.onOpen(uid, claim);
+      },
+      onSector: (k) => {
+        state.open = state.open === k ? null : k;
         draw();
       },
     });
@@ -213,7 +176,6 @@ export function renderOverview(store, options) {
     setKey(network.keys);
   }
 
-  const unsubscribe = filters.onChange(draw);
   // Draw once attached, so the SVG takes the real size; redraw on resize.
   let lastSize = "";
   const observer = new ResizeObserver(() => {
@@ -227,13 +189,20 @@ export function renderOverview(store, options) {
 
   return {
     element,
-    aside: sidebar.element,
-    focus: options.actor ? () => requestAnimationFrame(() => network?.focus(options.actor)) : null,
-    dispose: () => {
-      unsubscribe();
-      sidebar.dispose();
-      observer.disconnect();
+    draw,
+    /** Another centre person, or the whole network. */
+    setActor(id) {
+      if (id === state.actor) return;
+      state.actor = id;
+      state.open = null;
     },
+    actor: () => state.actor,
+    unpin() {
+      openAct = null;
+      network?.pin(null);
+    },
+    focus: () => state.actor && network?.focus(state.actor),
+    dispose: () => observer.disconnect(),
   };
 }
 
@@ -701,7 +670,7 @@ function drawGraph(host, store, graph, height, selected, handlers) {
     nodeEls.set(n.id, g);
     nodeLayer.append(g);
   }
-  nodeEls.get(order[0].id).setAttribute("tabindex", "0");
+  if (order.length) nodeEls.get(order[0].id).setAttribute("tabindex", "0");
   // SVG paints in document order: nodes with a standing name go last, so no later node covers
   // the name or its plate. Keyboard order follows `order`, not the DOM.
   for (const id of labelSpots.keys()) if (nodeEls.has(id)) nodeLayer.append(nodeEls.get(id));
