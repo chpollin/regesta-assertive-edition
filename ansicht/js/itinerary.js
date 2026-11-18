@@ -264,13 +264,14 @@ export function createCube(store, options) {
         if (on) lifted.push(dot);
       }
       if (p.line && inside(p.y)) path.push(fmt(q));
-      if (mark && inside(p.y)) {
+      // The trace follows the rule of the route: a regest without an exact day is a ring beside it.
+      if (mark && p.line && inside(p.y)) {
         if (mark !== "is-pb") trace[0]?.push(fmt(q));
         if (mark !== "is-pa") trace[filters.persons.length - 1]?.push(fmt(q));
       }
     });
     scene.line.setAttribute("points", path.join(" "));
-    // A person's trace: their regesta in time order, through the places of issue.
+    // A person's trace: their regesta of the line in time order, through the places of issue.
     scene.traces.replaceChildren(...trace.map((pts, j) => s("polyline", { class: `it-trace is-p${j}`, points: pts.join(" ") })));
     scene.line.classList.toggle("is-quiet", personsOn || !!related);
     // Marked points above the rest, so no faint point covers them.
