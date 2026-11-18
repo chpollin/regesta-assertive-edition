@@ -28,6 +28,13 @@ updated: 2026-11-18
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-18 Operator acceptance of the bilingual site
+
+- Trigger: after the publication of the English version (gh-pages commit 6937842), the operator wrote about https://chpollin.github.io/regesta-assertive-edition/: „passt so“.
+- Decided: the published site in German and English, with the language switch, the slides link and the credit of the space-time cube to Windhager et al. (2019), is accepted by the operator.
+- Open: the English names of the Academy and the Commission in the attribution, and the GitHub mark that wraps at 360 px, stay as they are until he says otherwise.
+- Evidence: `uv run run.py check` with 37 tests passed before publication; the English start, atlas, regesta and persons pages answered 200 after the deployment.
+
 ## 2026-11-18 English version with a language switch
 
 - Trigger: the operator's decision „erledige das alles“ on an English site, the slide link of the guest unit and the Windhager credit in English.
