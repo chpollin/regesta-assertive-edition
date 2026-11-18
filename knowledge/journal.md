@@ -44,6 +44,13 @@ Repository:
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 - Documents: two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; user-stories.md still names the specification of `regesta-rdf-demo` as authority; whether space-view.md, questions.md, user-stories.md and ide-criteria.md stay is the operator's decision.
 
+## 2026-11-18 CLAUDE.md as entry point
+
+- Trigger: the operator: „ja, leg die CLAUDE.md an“, on the question left open in the closing round.
+- Decided: a `CLAUDE.md` in the repository root with the three-line pointer of `regesta-rdf-demo` to AGENTS.md, knowledge/INDEX.md and `## Open` of this journal; it carries no rules of its own, so AGENTS.md stays the one instruction file.
+- Changed: CLAUDE.md, journal.md.
+- Evidence: the file is identical to the one in `regesta-rdf-demo`.
+
 ## 2026-11-18 Closing round: open list, plan and index
 
 - Trigger: the operator's closing round, relayed by the coordinating session in his words: „das wo wir uns sicher sind soll alles aufgelistet und erledigt werden! und dann wollen wir überall schauen ob es etwas zu refactoren und zu kuratieren gibt“, with five points found by a reading check, each checked here against the files.
