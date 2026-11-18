@@ -46,7 +46,9 @@ Design decisions
 - Factoid model: one factoid is one statement block, and every phrase of it is bound to the
   factoid's own evidence selectors, because the factoid carries the evidence. German labels
   come from skos:prefLabel@de of the run's frozen vocabulary, whose hash must match the
-  manifest. The same-name question compares parent names after stripping German inflection
+  manifest. Beside them edition.json carries `vocabulary`, the map from each German prefLabel
+  to the English prefLabel of the same concept, which the English interface shows
+  (knowledge/glossary.md); the frozen vocabulary itself carries both languages. The same-name question compares parent names after stripping German inflection
   endings, a deliberate interface heuristic that finds candidates and decides no identity.
 """
 
@@ -1372,6 +1374,18 @@ def _concept_labels(contract: Path, manifest: dict) -> dict[str, str]:
     return labels
 
 
+def _vocabulary_en(contract: Path) -> dict[str, str]:
+    """German prefLabel to English prefLabel per concept of the frozen vocabulary, for the
+    English interface. _concept_labels has checked the file against the manifest hash."""
+    g = rdflib.Graph().parse(contract / "ontology" / "vocabulary.ttl", format="turtle")
+    out: dict[str, str] = {}
+    for concept in sorted(set(g.subjects(SKOS.prefLabel, None)), key=str):
+        by_lang = {lab.language: str(lab) for lab in g.objects(concept, SKOS.prefLabel) if isinstance(lab, Literal)}
+        if "de" in by_lang and "en" in by_lang:
+            out[by_lang["de"]] = by_lang["en"]
+    return out
+
+
 def _concept(labels: dict[str, str], iri: object, where: str) -> str:
     if iri is None:
         raise BuildError(f"{where}: missing concept")
@@ -2172,6 +2186,9 @@ def build(source: Path, run_id: str, out: Path, stage: str = "revised") -> None:
         "delivery": _year_distribution(src["regest_csv"]),
         "graph": graph,
     }
+    contract = source / manifest.get("contract_dir", f"contracts/{manifest['run_id']}")
+    if (contract / "ontology" / "vocabulary.ttl").is_file():
+        edition["vocabulary"] = _vocabulary_en(contract)
     out.mkdir(parents=True, exist_ok=True)
     _write(out / "edition.json", edition)
     _write(out / "questions.json", {"run": manifest["run_id"], "rdflib": rdflib.__version__, "questions": questions})
