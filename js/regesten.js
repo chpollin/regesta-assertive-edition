@@ -44,21 +44,34 @@ export function renderRegesten(store, options) {
 
   const facets = createFacets(store, filters, { prefix: "reg", persons, onSearch: loadTexts, marks: () => (filters.any() ? new Set(shown.map((r) => r.year)) : new Set()) });
   const count = createCount(filters);
-  // The kinds of a regest's statements as their signs; the Art chips of the bar name them.
+  // The kinds of a regest's statements as their signs, in a column of their own after the place;
+  // the Art chips of the bar name them. The signs say „mit Aussagen“, so such a row carries no
+  // second mark (design round of 2026-11-18); the column stays empty in a row without them.
   const signs = (r) => {
     const keys = selection.familiesOf.get(r.u);
-    if (!keys) return null;
+    if (!keys) return h("span", { class: "row-fams" });
     const fams = FAMILIES.filter((f) => keys.has(f.key));
     return h("span", { class: "row-fams", title: fams.map((f) => f.label).join(", ") }, fams.map((f) => familyIcon(f, { size: 13 })), h("span", { class: "visually-hidden", text: fams.map((f) => f.label).join(", ") }));
   };
+  // The beginning of the regest text, so a row says what the regest is about. The texts of the
+  // delivery arrive after the list; a row drawn before fills in when they come.
+  let texts = null;
+  const textOf = (u) => store.byUid.get(u)?.text ?? texts?.[u] ?? "";
+  const lead = (r) => h("span", { class: "row-text", "data-text": r.u, "aria-hidden": "true", text: textOf(r.u) });
+  options.texts().then((t) => {
+    texts = t;
+    for (const el of list.element.querySelectorAll(".row-text[data-text]")) if (!el.textContent) el.textContent = textOf(el.dataset.text);
+  });
   const list = createList({
     label: "Regesten der Auswahl",
     onOpen: (u) => detail.open(u),
-    mark: (r) => (filters.persons.length ? selection.personMark(r.u) : r.stmt ? "is-evidenced" : ""),
+    mark: (r) => (filters.persons.length ? selection.personMark(r.u) : r.stmt && !selection.familiesOf.has(r.u) ? "is-evidenced" : ""),
     // The dating prose stands in the opened regest; in the row the year says when (density
     // check of the work profile, 2026-11-18).
-    extra: (r) => signs(r),
+    extra: (r) => [signs(r), lead(r)],
   });
+  // Quiet column heads over the rows, for the eye only; each row names its parts itself.
+  const head = h("div", { class: "reg-head", "aria-hidden": "true" }, ["Jahr", "Nummer", "Ort", "Aussagen", "Regest"].map((w) => h("span", { text: w })));
   const frame = createFrame(filters, {
     name: "regesten",
     title: "Regesten der Lieferung",
@@ -66,7 +79,8 @@ export function renderRegesten(store, options) {
     count: count.element,
     list: null,
     tools: [],
-    main: h("div", { class: "reg-list" }, list.element),
+    main: h("div", { class: "reg-list" }, head, list.element),
+    dock: true,
     backLabel: "Zurück zur Liste",
     onEscape: () => detail.close(),
   });

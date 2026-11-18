@@ -27,6 +27,14 @@ updated: 2026-11-18
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-18 Design round on the list Regesten
+
+- Trigger: the operator on a screenshot at about 2000 wide with RI IV,2,1 n. 5 opened: „Hier wird nicht die ganze Fläche sauber genutzt … Es ist ein bisschen unruhig.“ The list stopped at about 1180 px, rows were 46 px, the signs floated in the middle and the ochre dot far right, „ohne Ort“ repeated in italics, no column heads.
+- Decided: the regest docks beside the list at every width above 56rem (`dock` of createFrame), 28 to 40rem wide; one column template for heads and rows (Jahr, Nummer, Ort, Aussagen, Regest), rows of 35 px; the family signs after the place replace the ochre dot; a missing place a grey dash with the words as tooltip and screen-reader text (shared with the Atlas list); the beginning of the regest text in the free width, hidden where the list is narrower than 48rem (container query) and below 56rem. The card is the Atlas card already (17 px Junicode, line height 1.7).
+- Open: the density check of the work profile counts the text column, at rest at 1280 109 text elements and 778 words against 70 and 260 (before 68 and 126), with n. 5 opened 100 elements; the operator asked for the text column, so it stays until he decides; at 360 39 text elements against 35 (before 36).
+- Changed: js/regesten.js, js/filterbar.js, css/frame.css, design.md.
+- Evidence: rows 35 px at 1440; no ochre dot beside signs; keyboard path unchanged (row, Enter opens n. 5 with focus in the card, Escape closes with focus back on the row, Tab to the next row); no SVG beyond the window and no horizontal scroll at 1440, 2000 and 360. Before and after screenshots in the session scratchpad (ui-design-r1).
+
 ## 2026-11-18 Design round on the Atlas
 
 - Trigger: the operator likes the relations in the cube („deutlich besser“) and named six points on his screenshot at about 2000 × 1000 with n. 1430 (Bamberg) opened: bar padding, the missing name of the opened place, weak hierarchy, a pale floor, a flat tool row, truncated place names.

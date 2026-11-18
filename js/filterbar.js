@@ -348,7 +348,9 @@ export function createList(opts) {
         },
         h("span", { class: "row-year", text: String(r.year) }),
         h("span", { class: "row-id", text: r.i }),
-        h("span", { class: `row-place${r.place ? "" : " is-none"}`, text: r.place || "ohne Ort" }),
+        // A missing place as a quiet dash; the words stand in the tooltip and for screen readers
+        // (design round of 2026-11-18, the repeated „ohne Ort“ made the column restless).
+        r.place ? h("span", { class: "row-place", text: r.place }) : h("span", { class: "row-place is-none", title: "ohne Ort" }, h("span", { "aria-hidden": "true", text: "–" }), h("span", { class: "visually-hidden", text: "ohne Ort" })),
         opts.extra?.(r) ?? null,
         mark ? h("span", { class: mark.startsWith("is-p") ? `it-pkey ${mark}` : `it-key ${mark}`, title: mark === "is-evidenced" ? "mit Aussagen" : "Person", "aria-label": mark === "is-evidenced" ? "mit Aussagen" : null }) : null,
       ),
@@ -403,7 +405,9 @@ export function createList(opts) {
  * tool row and main element, the opened regest over the right edge of the stage (docked
  * beside it from 100rem, a route of its own with a back arrow below 56rem), and the filter
  * sheet of narrow screens.
- * @param {{name: string, title: string, facets: HTMLElement, count: HTMLElement, list?: HTMLElement|null, tools: HTMLElement[], main: HTMLElement, backLabel: string, onEscape: () => void}} opts
+ * @param {{name: string, title: string, facets: HTMLElement, count: HTMLElement, list?: HTMLElement|null, tools: HTMLElement[], main: HTMLElement, backLabel: string, onEscape: () => void, dock?: boolean}} opts
+ *   dock true: the regest docks beside the main element at every width above 56rem, as the list
+ *   needs, whose rows an overlay would cover; otherwise it docks from 100rem.
  */
 export function createFrame(filters, opts) {
   const narrow = window.matchMedia("(max-width: 56rem)");
@@ -435,7 +439,7 @@ export function createFrame(filters, opts) {
   const stage = h("section", { class: "frame-stage", "aria-labelledby": `${opts.name}-title` }, tools, opts.main);
   // The view's heading comes first in reading order, before its filter bar.
   const root = h("div", { class: `frame frame-${opts.name}` }, h("h1", { id: `${opts.name}-title`, class: "visually-hidden", text: opts.title }), bar, stage, detail, sheet);
-  const place = () => (root.dataset.dock = String(!narrow.matches && wide.matches));
+  const place = () => (root.dataset.dock = String(!narrow.matches && (opts.dock || wide.matches)));
   const onNarrow = () => {
     if (!narrow.matches && sheet.open) sheet.close();
     place();

@@ -28,7 +28,13 @@
   .cube .space-scene { position: absolute; inset: 0; }
   .persons-figure { position: relative; min-block-size: 0; }
   .persons-figure > .canvas { position: absolute; inset: 0; block-size: auto; }
-  .reg-list { display: grid; min-block-size: 0; }
+  /* The list of Regesten fills the width up to the docked regest; heads and rows share one
+     column template (design round of 2026-11-18). */
+  .frame-regesten {
+    --reg-cols: 3rem 9.5rem minmax(7rem, 12rem) 5.5rem minmax(0, 1fr) 0.8rem;
+    --frame-detail-w: clamp(28rem, 32vw, 40rem);
+  }
+  .reg-list { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; }
   .frame-regesten .fb-list { padding: 0 var(--space-4) var(--space-4); }
   /* The tool row of the list holds only the filter button of narrow screens. */
   .frame-regesten .frame-tools { display: none; }
@@ -129,11 +135,20 @@
   .row-id { grid-column: 2; white-space: nowrap; }
   .row-place { grid-column: 3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.92em; }
   .fb-row .it-key, .fb-row .it-pkey { grid-column: -2; align-self: center; }
-  .row-place.is-none { font-style: italic; }
-  /* The list of Regesten: dating and the signs of the statements' kinds as a fifth column. */
-  .frame-regesten .fb-row { grid-template-columns: 3rem 10rem minmax(6rem, 16rem) minmax(0, 1fr) 0.8rem; padding-block: 0.65rem; border-block-end: 1px solid var(--hairline); border-radius: 0; }
-  .frame-regesten .fb-list { max-inline-size: 60rem; }
+  .row-place.is-none { color: var(--muted); }
+  /* The list of Regesten: year, number, place, the signs of the statements' kinds and the
+     beginning of the text in aligned columns, rows of about 34 px under hairlines. */
+  .frame-regesten .fb-row { grid-template-columns: var(--reg-cols); column-gap: var(--space-3); padding: 0.25rem var(--space-2); border-block-end: 1px solid var(--hairline); border-radius: 0; }
+  .reg-head { display: grid; grid-template-columns: var(--reg-cols); column-gap: var(--space-3); margin-inline: var(--space-4); padding: var(--space-3) var(--space-2) var(--space-1); border-block-end: 1px solid var(--edge); color: var(--muted); font-size: var(--step--1); }
+  .reg-head > :last-child { grid-column: 5; }
   .row-fams { display: inline-flex; gap: 3px; flex: none; color: var(--muted); align-self: center; }
+  .row-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: var(--step--1); }
+  /* Where the opened regest leaves the list too narrow for the text, the text column steps aside. */
+  .reg-list { container: reglist / inline-size; }
+  @container reglist (max-width: 48rem) {
+    .reg-head, .frame-regesten .fb-row { grid-template-columns: 3rem 9.5rem minmax(7rem, 12rem) minmax(0, 1fr) 0.8rem; }
+    .row-text, .reg-head > :last-child { display: none; }
+  }
   .fb-more-item { padding-block: var(--space-1); }
   .fb-more { margin: var(--space-2) var(--space-1); }
   .fb-empty { padding: var(--space-2) var(--space-1); color: var(--muted); }
@@ -157,7 +172,8 @@
     .frame-tools { padding-inline: var(--space-2); }
     .fb-row { padding-block: var(--space-1); }
     /* The list at narrow width: year, number and place; the signs on a second line. */
-    .frame-regesten .fb-row { grid-template-columns: 2.6rem auto minmax(0, 1fr) 0.8rem; padding-block: 0.85rem; }
+    .frame-regesten .fb-row { grid-template-columns: 2.6rem auto minmax(0, 1fr) 0.8rem; padding-block: 0.55rem; }
     .frame-regesten .row-fams { grid-column: 2 / -2; grid-row: 2; }
+    .frame-regesten .row-fams:empty, .frame-regesten .row-text, .reg-head { display: none; }
   }
 }
