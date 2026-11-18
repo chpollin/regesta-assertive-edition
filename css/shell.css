@@ -83,6 +83,10 @@
   .site-main { container: page / inline-size; min-inline-size: 0; }
   body[data-layout="view"] .site-main { padding: 0; overflow: hidden; }
   body[data-layout="page"] .site-main { padding: var(--space-6) var(--space-5) var(--space-7); max-inline-size: 104rem; margin-inline: auto; inline-size: 100%; }
+  /* A short page keeps its footer at the bottom of the window (operator on the regest page,
+     2026-11-18: the footer stood in the middle with an empty field below). */
+  body[data-layout="page"] { display: flex; flex-direction: column; }
+  body[data-layout="page"] .site-body { flex: 1 0 auto; }
   /* A view with its own bar and detail (the Atlas, css/atlas.css) fills the window alone. */
   body[data-layout="full"] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; block-size: 100dvh; overflow: hidden; }
   body[data-layout="full"] .site-body { min-block-size: 0; }

@@ -46,6 +46,20 @@
   /* The regest page uses the width of the window (interface plan: at least 85 percent at 1920). */
   body[data-page="regest"] .site-main { max-inline-size: none; padding-inline: clamp(1rem, 3vw, 3rem); }
   body[data-page="regest"] .card-host { max-inline-size: none; }
+  /* Wide windows (2026-11-18, operator: the page used only a narrow text and a narrow notes
+     column of a 2000 px window): text, notes and the apparatus of Regesta Imperii stand side by
+     side. The text keeps its reading measure (at most 46rem), the apparatus takes a column of
+     its own that grows with the window up to 34rem, the notes take what remains. Below 80rem
+     of page width the apparatus stands under the text in two columns, as before. */
+  @container page (min-width: 80rem) {
+    .regest-card.is-page { grid-template-columns: minmax(0, 1fr) clamp(20rem, 46cqi - 13rem, 34rem); grid-template-rows: auto auto 1fr; grid-template-areas: "head head" "body app" "legend app"; column-gap: var(--space-7); align-items: start; }
+    .regest-card.is-page > .page-head { grid-area: head; }
+    .regest-card.is-page > .card-body { grid-area: body; }
+    .regest-card.is-page > .reg-legend { grid-area: legend; }
+    .regest-card.is-page > .reg-apparatus-block { grid-area: app; padding: 0 0 0 var(--space-5); border-block-start: 0; border-inline-start: 1px solid var(--hairline); }
+    .regest-card.is-page .reg-apparatus { columns: auto; }
+    .site-main .regest-card.is-page .reg-block-h { margin: 0; }
+  }
   .site-main .page-id { font-size: var(--step-1); margin: 0; }
   .paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
   .regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
