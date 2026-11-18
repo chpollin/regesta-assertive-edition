@@ -9,7 +9,8 @@ validate_pilot.py for the factoid model of contracts/factoid-2026-11-11; the pil
 stays unchanged so the pilot remains checkable against its own contract.
 
 Data flow: manifest -> contract and packet hashes -> one Turtle file per selected UID ->
-parse, allowed terms, SHACL (vocabulary merged into the data graph), exact-wording checks,
+closed status set, frozen hashes of reused records, parse, source node (also for empty
+files), allowed terms, SHACL (vocabulary merged into the data graph), exact-wording checks,
 actor identifier policy, abstention and coverage -> validation/<stage>.json and a German
 review sheet validation/<stage>-review-sheet.md. Checks are per record and collected; the
 exit code is 0 only if every record passes.
@@ -29,6 +30,7 @@ import hashlib
 import importlib.metadata
 import json
 import sys
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -57,6 +59,9 @@ ALLOWED_CLASSES = frozenset(
         CRM.E31_Document,
     }
 )
+# The only outcomes an extraction or correction may report; anything else, including the
+# "error" status of a failed batch, is a finding rather than a silent pass.
+VALID_STATUSES = frozenset({"extracted", "no_in_scope_claim"})
 EXACT_LITERALS = (
     RF.nameInSource,
     RF.condition,
@@ -206,6 +211,61 @@ def _issues(
     return found
 
 
+def _check_record(
+    path: Path,
+    packet: dict,
+    status: str,
+    frozen_sha: str | None,
+    ontology: Graph,
+    shapes: Graph,
+    vocabulary: Graph,
+) -> tuple[list[dict], Graph]:
+    """File-level and graph-level findings for one record, and the parsed graph.
+
+    Shared by main() and the self-test, so the self-test exercises the same gate the run
+    passes through. Every present, parseable file is checked, also when it holds no
+    triple: an emptied file must fail on its missing source node instead of passing.
+    frozen_sha is the hash a reused record must keep (manifest reused); None means no
+    frozen hash applies.
+    """
+    uid = packet["uid"]
+    issues: list[dict] = []
+    if status == "missing":
+        issues.append(
+            {
+                "code": "no_reported_outcome",
+                "subject": uid,
+                "detail": "No batch report lists this UID.",
+            }
+        )
+    elif status not in VALID_STATUSES:
+        issues.append(
+            {
+                "code": "invalid_status",
+                "subject": uid,
+                "detail": f"Reported status {status!r} is not one of {sorted(VALID_STATUSES)}.",
+            }
+        )
+    if not path.is_file():
+        issues.append({"code": "missing_file", "subject": uid, "detail": str(path)})
+        return issues, Graph()
+    if frozen_sha is not None and _sha(path) != frozen_sha:
+        issues.append(
+            {
+                "code": "reused_file_changed",
+                "subject": uid,
+                "detail": f"{path.name} differs from the hash frozen in manifest reused.",
+            }
+        )
+    try:
+        graph = Graph().parse(path, format="turtle")
+    except Exception as exc:  # A parse failure of one record must not stop the others.
+        issues.append({"code": "parse_error", "subject": uid, "detail": str(exc)[:300]})
+        return issues, Graph()
+    issues += _issues(graph, packet, status, ontology, shapes, vocabulary)
+    return issues, graph
+
+
 def _review_sheet(
     run: Path, uids: list[str], results: dict[str, dict], vocabulary: Graph, stage: str
 ) -> None:
@@ -301,64 +361,82 @@ def _self_test(
   prov:wasAttributedTo <urn:regesta:agent:self-test> ; rf:verificationStatus rv:unchecked ;
   rf:reference [ a rf:Reference ; rf:actor <{packet["shared_ruler"]["iri"]}> ; rf:role rv:Grantor ] .
 """
-    cases = {
-        "valid": (base, None),
+    base_sha = hashlib.sha256(base.encode("utf-8")).hexdigest()
+    # name: (Turtle text, reported status, frozen hash or None, expected finding or None)
+    cases: dict[str, tuple[str, str, str | None, str | None]] = {
+        "valid": (base, "extracted", None, None),
         "fabricated_evidence": (
             base.replace(
                 json.dumps(word, ensure_ascii=False),
                 '"Dieser Satz steht nicht im Regest"',
             ),
+            "extracted",
+            None,
             "wording_not_in_source",
         ),
         "state_type_on_act": (
             base.replace("rv:Grant ;", "rv:Marriage ;"),
+            "extracted",
+            None,
             "type_scheme_mismatch",
         ),
         "unknown_concept": (
             base.replace("rv:Grant ;", "rv:Conquest ;"),
+            "extracted",
+            None,
             "unknown_concept",
         ),
         "foreign_actor": (
             base.replace(
                 packet["shared_ruler"]["iri"], "urn:regesta:actor:RI999-999-X000001"
             ),
+            "extracted",
+            None,
             "actor_outside_packet",
         ),
         "missing_status": (
             base.replace("rf:verificationStatus rv:unchecked ;", ""),
+            "extracted",
+            None,
             "shacl_violation",
         ),
         "role_from_wrong_scheme": (
             base.replace("rv:Grantor", "rv:Donation"),
+            "extracted",
+            None,
             "shacl_violation",
         ),
         "empty_extraction": (
             f"<{packet['source_iri']}> a <http://www.cidoc-crm.org/cidoc-crm/E31_Document> .",
+            "extracted",
+            None,
             "empty_extraction",
         ),
+        "empty_file": ("", "extracted", None, "missing_source_node"),
+        "emptied_abstention": ("", "no_in_scope_claim", None, "missing_source_node"),
+        "error_status": (base, "error", None, "invalid_status"),
+        "unknown_status": (base, "foo", None, "invalid_status"),
+        "reused_unchanged": (base, "extracted", base_sha, None),
+        "reused_file_changed": (base, "extracted", "0" * 64, "reused_file_changed"),
     }
     results = []
-    for name, (ttl, expected) in cases.items():
-        codes = {
-            i["code"]
-            for i in _issues(
-                Graph().parse(data=ttl, format="turtle"),
-                packet,
-                "extracted",
-                ontology,
-                shapes,
-                vocabulary,
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / f"{uid}.ttl"
+        for name, (ttl, status, frozen_sha, expected) in cases.items():
+            path.write_bytes(ttl.encode("utf-8"))
+            issues, _ = _check_record(
+                path, packet, status, frozen_sha, ontology, shapes, vocabulary
             )
-        }
-        passed = not codes if expected is None else expected in codes
-        results.append(
-            {
-                "case": name,
-                "expected": expected,
-                "found": sorted(codes),
-                "passed": passed,
-            }
-        )
+            codes = {i["code"] for i in issues}
+            passed = not codes if expected is None else expected in codes
+            results.append(
+                {
+                    "case": name,
+                    "expected": expected,
+                    "found": sorted(codes),
+                    "passed": passed,
+                }
+            )
     return results
 
 
@@ -395,6 +473,11 @@ def main() -> None:
         for rec in _read(corrections).get("records", []):
             if rec.get("status_after"):
                 statuses[rec["uid"]] = rec["status_after"]
+    # Reused records are byte copies of an earlier run; their frozen hashes guard the copies.
+    reused = {
+        rec["uid"]: rec.get(f"{args.stage}_sha256")
+        for rec in manifest.get("reused", {}).get("records", [])
+    }
     uids = [s["uid"] for s in manifest["selection"]]
     results: dict[str, dict] = {}
     for sel in manifest["selection"]:
@@ -404,31 +487,10 @@ def main() -> None:
             raise ValueError(f"Packet changed: {uid}")
         packet = _read(packet_path)
         status = statuses.get(uid, "missing")
-        issues: list[dict] = []
         path = run / args.stage / f"{uid}.ttl"
-        if status == "missing":
-            issues.append(
-                {
-                    "code": "no_reported_outcome",
-                    "subject": uid,
-                    "detail": "No batch report lists this UID.",
-                }
-            )
-        if not path.is_file():
-            issues.append({"code": "missing_file", "subject": uid, "detail": str(path)})
-            graph = Graph()
-        else:
-            try:
-                graph = Graph().parse(path, format="turtle")
-            except (
-                Exception
-            ) as exc:  # A parse failure of one record must not stop the others.
-                issues.append(
-                    {"code": "parse_error", "subject": uid, "detail": str(exc)[:300]}
-                )
-                graph = Graph()
-        if len(graph):
-            issues += _issues(graph, packet, status, ontology, shapes, vocabulary)
+        issues, graph = _check_record(
+            path, packet, status, reused.get(uid), ontology, shapes, vocabulary
+        )
         factoids = len(
             set(graph.subjects(RDF.type, RF.ActFactoid))
             | set(graph.subjects(RDF.type, RF.StateFactoid))

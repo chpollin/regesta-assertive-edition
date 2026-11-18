@@ -43,6 +43,14 @@ Repository:
 - Decided on 2026-11-17 for the time after 20 November 2026 and not yet done: the move of the pilot into `pipeline/archive/` and the removal of the pilot path of `build_data.py` (plan.md). Still waiting for the operator: moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 - Documents: two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; whether ide-criteria.md stays is the operator's decision.
+- Validator gaps left after the fix of 2026-11-18 (entry below): targets of `rf:concerns` (foreign register IRIs, untyped nodes, labels), the producer named in `prov:wasAttributedTo`, `nameInSource` bound to its actor and its evidence, minimum length of evidence, `partOf` cycles, uniqueness of IRIs across files and files outside the selection. Binding `nameInSource` to the evidence would fail the current revised stage in several regesta and needs a decision whether it becomes a rule or a warning.
+
+## 2026-11-18 Validator closes empty files, open statuses and reused hashes
+
+- Trigger: the operator's go-ahead („Ja, Validator fixen“) after an adversarial review that ran 44 single-defect mutants of the revised stage of `factoid-1153-2026-11-11` against `validate_factoid.py`.
+- Changed: `pipeline/validate_factoid.py`. Every present, parseable file is now checked, also without triples, so an emptied file fails on its missing source node; before, files with no triple passed whatever their status. Only `extracted` and `no_in_scope_claim` count as outcomes, `error` and unknown statuses are a finding (`invalid_status`). The revised and extracted files of reused regesta are compared with their hashes in `manifest.json` (reused) (`reused_file_changed`). The per-record checks moved into `_check_record`, which `main()` and the self-test share; the self-test writes its cases to a temporary file and gains empty file, emptied abstention, error and unknown status, and a changed and an unchanged reused file.
+- Evidence: the mutants rerun against the new validator; the defects the fix targets are now rejected, the other gaps stay (Open, Repository). `run.py validate --allow-validator-change` rewrote both validation reports of the shown run; only the validator hash and the self-test entries changed, the per-record results and both review sheets are identical, the revised stage passes and the extracted stage fails on 22702 as before. `run.py review`, `build` and `check` pass, ruff is clean.
+- Not changed: the manifest's text on known validator limits, which describes the validator of the run's original validation.
 
 ## 2026-11-18 Three superseded knowledge documents deleted
 

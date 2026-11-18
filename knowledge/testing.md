@@ -9,7 +9,7 @@ method:
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-17
+updated: 2026-11-18
 ---
 
 # Testing
@@ -25,8 +25,12 @@ Deterministic checks establish that a run conforms to its frozen contract and th
 - SHACL with the vocabulary merged into the data graph.
 - Evidence as an exact, contiguous substring of `summary_plain`.
 - Actors only from the regest's own packet, the shared ruler or the declared local identifier policy.
-- Explicit abstention and one result for every assigned UID.
-- With `--self-test`, mutations that must each be caught (fabricated evidence, state type on an act, unknown concept, actor outside the packet, missing status, role from the wrong scheme, empty extraction) and a valid minimal record that must pass.
+- Explicit abstention and one result for every assigned UID, with `extracted` and `no_in_scope_claim` as the only accepted statuses.
+- Every present file, also one without triples, so an emptied file fails on its missing source node.
+- The extracted and revised files of reused regesta against their hashes in the manifest.
+- With `--self-test`, mutations that must each be caught (fabricated evidence, state type on an act, unknown concept, actor outside the packet, missing status, role from the wrong scheme, empty extraction, empty file, emptied abstention, error and unknown status, changed reused file) and a valid minimal record and an unchanged reused file that must pass. The cases run through the same per-record check as the run.
+
+Not checked: the targets of `rf:concerns`, the producer named in `prov:wasAttributedTo`, whether `nameInSource` belongs to its actor and lies in its evidence, a minimum length of evidence, `partOf` cycles, uniqueness of IRIs across files and files outside the selection ([Journal](journal.md#open), Repository).
 
 The exit code is 0 only if every record passes. The reference is the shown run `factoid-1153-2026-11-11`: its extracted stage fails on one record and its revised stage passes, the reports of both stages and their known validator limits are recorded in its [manifest](../pipeline/runs/factoid-1153-2026-11-11/manifest.json) (validation), and the reviews found errors in technically passing files ([review overview](../pipeline/runs/factoid-1153-2026-11-11/review-overview.md)). This is the gap between technical conformance and correctness that the edition makes visible by showing the revised stage with the extracted stage for comparison. In the earlier run `factoid-2026-11-11`, whose six regesta the shown run reuses, both stages pass and its [adjudication](../pipeline/runs/factoid-2026-11-11/review/adjudication.json) records the same gap.
 

@@ -3,7 +3,7 @@
   "stage": "revised",
   "expert_accepted": false,
   "technical_pass": true,
-  "validator_sha256": "c858501b908e0abb6975f976c9412084a15a4adbcb4ce5d4843b3b3f97cca63e",
+  "validator_sha256": "c3f63d7e10efae0331a855b837c347bc3e85fd0164af66d579ca0f92d4a7a572",
   "runtime": {
     "python": "3.11.9",
     "rdflib": "7.6.0",
@@ -1642,6 +1642,53 @@
       "expected": "empty_extraction",
       "found": [
         "empty_extraction"
+      ],
+      "passed": true
+    },
+    {
+      "case": "empty_file",
+      "expected": "missing_source_node",
+      "found": [
+        "empty_extraction",
+        "missing_source_node"
+      ],
+      "passed": true
+    },
+    {
+      "case": "emptied_abstention",
+      "expected": "missing_source_node",
+      "found": [
+        "missing_source_node"
+      ],
+      "passed": true
+    },
+    {
+      "case": "error_status",
+      "expected": "invalid_status",
+      "found": [
+        "invalid_status"
+      ],
+      "passed": true
+    },
+    {
+      "case": "unknown_status",
+      "expected": "invalid_status",
+      "found": [
+        "invalid_status"
+      ],
+      "passed": true
+    },
+    {
+      "case": "reused_unchanged",
+      "expected": null,
+      "found": [],
+      "passed": true
+    },
+    {
+      "case": "reused_file_changed",
+      "expected": "reused_file_changed",
+      "found": [
+        "reused_file_changed"
       ],
       "passed": true
     }
