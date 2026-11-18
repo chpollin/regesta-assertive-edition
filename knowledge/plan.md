@@ -44,5 +44,5 @@ Accepted on 2026-11-17 with the move of the pipeline; not before 20 November.
 - The borders after Shepherd show the Empire only. Kingdoms beside it (France, Hungary, Sicily) are not drawn.
 - An executable browser check of the current shell (tasks with computed answers, see Test tasks) replaces the retired check of the first slice.
 - The validator note of the pipeline (status after correction is read from the corrections log since 2026-11-11) is to be mentioned on the method page once the page lists the error logs per step.
-- Export date of the regest file, model of the adjudicating and correcting agent, imprint.
+- Export date of the regest file, model of the adjudicating and correcting agent.
 - Deletion candidates in the knowledge folder and the views are collected under op-thm-loeschkandidaten.

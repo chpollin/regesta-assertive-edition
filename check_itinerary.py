@@ -4,9 +4,9 @@ Regime: script of the edition's script pipeline (pyproject.toml), standard libra
 imports the shared CSV reader and helpers of edition_io.py. It reads the folder pipeline/
 and never writes there.
 
-The itinerary view (`#/itinerar`, built from data/holdings.json by build_holdings.py) draws
-one point per regest with a place of issue and joins the points in start_date order. This
-script asks how far that line can be trusted. It finds candidates for errors; it proves
+The Atlas (built from data/holdings.json by build_holdings.py) draws one point per regest
+with a place of issue and joins those dated to a day or to a span of at most a week by a
+line in time order. This script asks how far that line can be trusted. It finds candidates for errors; it proves
 nothing correct. A point is only as right as the delivered machine date and the register
 coordinate, and a plausible line can still be wrong.
 
@@ -30,10 +30,14 @@ Design decisions
 - Dating is read from the machine dates only. start == end is an exact day; 1 January to
   31 December of one year is a year; the 1st to the last day of one month is a month; any
   other start < end is a span; start > end is reversed; an unparsable date is undated.
-- Pairs are consecutive points of the line as the view draws it (all placed regesta in the
-  order of edition_io.regest_order: start_date, then the identifier with its numbers as
-  numbers), so a regest with a span sits at its start. Days between
-  two points are the difference of their start dates.
+- The line holds the placed regesta dated to a day or to a span of at most a week
+  (edition_io.in_line; knowledge/data.md, Line of the itinerary). A regest dated to a month, a
+  year or a longer span is a point outside the line and enters no pair, since its start date
+  is the beginning of a period and no day of a stay (operator's decision of 2026-11-18).
+- Pairs are consecutive stations of that line as the view draws it, in the order of
+  edition_io.regest_order: start_date, then the identifier with its numbers as numbers. Days
+  between two stations are the most their datings allow, from the start of one to the end of
+  the other, so a short span is never flagged for its own imprecision.
 - Threshold. A pair is flagged when its distance exceeds max(150 km, 60 km x days). This is
   a stated assumption, chosen generously so that only clearly impossible movements of a
   court with its following are flagged. 150 km allows one hard day's ride plus imprecise
@@ -41,8 +45,10 @@ Design decisions
   a read source; the research literature on the travel speed of the royal court (the
   itinerary monograph on Barbarossa and studies on the speed of the court in the 11th and
   12th centuries) should replace it once read.
-- Every flagged pair gets the first matching class, from the data alone: a member without
-  an exact day; a member with a skipped coordinate row; a forgery (identifier with †); a
+- Every flagged pair gets the first matching class, from the data alone: a member whose
+  dating prose hedges although the delivery writes a single day („nach März 27“, „um Juni
+  24“, „wohl“, „oder“; a lexical heuristic like the others below, which explains a flag
+  and removes no station); a member with a skipped coordinate row; a forgery (identifier with †); a
   deperditum (identifier with D, or „Deperditum“ in the transmission note); another actor
   (the summary does not name Friedrich among its first six words, as in a papal letter to
   him, so the place of issue is likely the other actor's, not Friedrich's stay; a heuristic);
@@ -63,14 +69,23 @@ import math
 import re
 import statistics
 import sys
-from calendar import monthrange
 from collections import Counter
 from dataclasses import dataclass, field
 from datetime import date
 from itertools import pairwise
 from pathlib import Path
 
-from edition_io import REGISTER_CSV, by_unique_identifier, is_null, place_name, read_csv, regest_order
+from edition_io import (
+    LINE_SPAN_DAYS,
+    REGISTER_CSV,
+    by_unique_identifier,
+    dating_class,
+    in_line,
+    is_null,
+    place_name,
+    read_csv,
+    regest_order,
+)
 
 LAT = (30.0, 62.0)
 LON = (-10.0, 45.0)
@@ -82,8 +97,9 @@ INDIRECT = re.compile(
     r"\b(erwähnt|verloren|Deperditum)\b|\bdurch\s+(?:\S+\s+){0,4}?(Legat|Boten|Bote|Gesandt)", re.IGNORECASE
 )
 FRIEDRICH = re.compile(r"F\(?riedrich")
+HEDGED = re.compile(r"\b(nach|vor|um|wohl|oder|vielleicht|wahrscheinlich|etwa|ca|Anfang|Mitte|Ende)\b|\?|/")
 CLASSES = (
-    "Datierung ohne genauen Tag",
+    "Datierung im Wortlaut unsicher",
     "Koordinate fraglich",
     "Fälschung",
     "Deperditum",
@@ -100,28 +116,12 @@ class Station:
     uid: str
     identifier: str
     start: str
+    end: str
     dating: str
     place: str
     lat: float
     lon: float
     indicators: tuple[str, ...] = field(default=())
-
-
-def dating_class(start: str, end: str) -> tuple[str, int | None]:
-    """Class of a machine dating and, for a span, its length in days."""
-    try:
-        s, e = date.fromisoformat(start), date.fromisoformat(end)
-    except (TypeError, ValueError):
-        return "undatiert", None
-    if s > e:
-        return "umgekehrt", None
-    if s == e:
-        return "Tag", None
-    if (s.month, s.day, e.month, e.day) == (1, 1, 12, 31) and s.year == e.year:
-        return "Jahr", None
-    if s.day == 1 and (s.year, s.month) == (e.year, e.month) and e.day == monthrange(e.year, e.month)[1]:
-        return "Monat", None
-    return "Spanne", (e - s).days
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -137,19 +137,23 @@ def limit_km(days: int) -> float:
 
 def _classify(a: Station, b: Station, days: int) -> str:
     both = set(a.indicators) | set(b.indicators)
-    if a.dating != "Tag" or b.dating != "Tag":
-        return CLASSES[0]
-    for name in CLASSES[1:7]:
+    for name in CLASSES[:7]:
         if name in both:
             return name
     return CLASSES[7] if days == 0 else CLASSES[8]
+
+
+def _days(a: Station, b: Station) -> int:
+    """The most days the two datings allow between two stations: from the start of one to the end of the other."""
+    a0, a1, b0, b1 = (date.fromisoformat(d) for d in (a.start, a.end, b.start, b.end))
+    return max((b1 - a0).days, (a1 - b0).days)
 
 
 def check_pairs(stations: list[Station]) -> tuple[list[dict], list[dict]]:
     """Flag consecutive stations whose distance exceeds the threshold, and find detours."""
     flags, flagged_at = [], set()
     for i, (a, b) in enumerate(pairwise(stations)):
-        days = (date.fromisoformat(b.start) - date.fromisoformat(a.start)).days
+        days = _days(a, b)
         km = haversine_km(a.lat, a.lon, b.lat, b.lon)
         if km <= limit_km(days):
             continue
@@ -168,7 +172,7 @@ def check_pairs(stations: list[Station]) -> tuple[list[dict], list[dict]]:
     for i in range(1, len(stations) - 1):
         if i - 1 in flagged_at and i in flagged_at:
             prev, here, nxt = stations[i - 1], stations[i], stations[i + 1]
-            days = (date.fromisoformat(nxt.start) - date.fromisoformat(prev.start)).days
+            days = _days(prev, nxt)
             if haversine_km(prev.lat, prev.lon, nxt.lat, nxt.lon) <= limit_km(days):
                 outliers.append(
                     {"uid": here.uid, "identifier": here.identifier, "start": here.start, "place": here.place}
@@ -181,6 +185,7 @@ def _station_json(s: Station) -> dict:
         "uid": s.uid,
         "identifier": s.identifier,
         "start": s.start,
+        "end": s.end,
         "dating": s.dating,
         "place": s.place,
         "indicators": list(s.indicators),
@@ -191,6 +196,8 @@ def _indicators(regest: dict, skipped: bool) -> tuple[str, ...]:
     number = regest["identifier"].split("n. ")[-1]
     transmission = regest.get("archival_history_plain") or ""
     found = []
+    if HEDGED.search(regest.get("date_string") or ""):
+        found.append("Datierung im Wortlaut unsicher")
     if skipped:
         found.append("Koordinate fraglich")
     if "†" in number:
@@ -245,6 +252,7 @@ def build(source: Path) -> dict:
     spans: list[int] = []
     missing: Counter[str] = Counter()
     placed_dating: Counter[str] = Counter()
+    outside: Counter[str] = Counter()
     indicator_hits: Counter[str] = Counter()
     stations = []
     for r in regesta:
@@ -264,9 +272,15 @@ def build(source: Path) -> dict:
                 missing["keine austOrt-Zeile"] += 1
             continue
         placed_dating[kind] += 1
+        if not in_line(r["start_date"], r["end_date"]):
+            outside[kind] += 1
+            continue
         label, lat, lon, _ = placed[uid]
         stations.append(
-            Station(uid, r["identifier"], r["start_date"], kind, label, lat, lon, _indicators(r, uid in skipped))
+            Station(
+                *(uid, r["identifier"], r["start_date"], r["end_date"], kind),
+                *(label, lat, lon, _indicators(r, uid in skipped)),
+            )
         )
     stations.sort(key=lambda s: regest_order({"start_date": s.start, "identifier": s.identifier}))
     flags, outliers = check_pairs(stations)
@@ -278,7 +292,7 @@ def build(source: Path) -> dict:
             "producer": "check_itinerary.py",
         },
         "threshold": {
-            "rule": "km > max(floorKm, kmPerDay * days), days between start dates of consecutive points",
+            "rule": "km > max(floorKm, kmPerDay * days), days from the start of a station to the end of the next",
             "floorKm": FLOOR_KM,
             "kmPerDay": KM_PER_DAY,
             "basis": "stated assumption, not taken from a read source",
@@ -296,7 +310,11 @@ def build(source: Path) -> dict:
                 "longer": sum(n > 366 for n in spans),
             },
             "placement": "a point stands at start_date; a span, month or year is not drawn as an interval",
-            "inView": len(stations),
+            "line": f"placed regesta dated to a day or to a span of at most {LINE_SPAN_DAYS} days",
+            "inView": sum(placed_dating.values()),
+            "inLine": len(stations),
+            "inLineByDating": dict(Counter(s.dating for s in stations).most_common()),
+            "outsideLine": dict(outside.most_common()),
             "inViewByDating": dict(placed_dating.most_common()),
             "missingFromView": dict(missing.most_common()),
             "placeRowRoles": dict(roles.most_common()),
@@ -329,8 +347,10 @@ def _check(source: Path) -> None:
     own = {"identifier": "RI IV,2,1 n. †4", "summary_plain": "Friedrich bestätigt", "locality_string": "(Ulm)"}
     assert _indicators(own, False) == ("Fälschung", "Ort erschlossen")
 
-    def st(uid: str, start: str, lat: float, lon: float, dating: str = "Tag", ind: tuple[str, ...] = ()) -> Station:
-        return Station(uid, f"n. {uid}", start, dating, uid, lat, lon, ind)
+    def st(
+        uid: str, start: str, lat: float, lon: float, dating: str = "Tag", ind: tuple[str, ...] = (), end: str = ""
+    ) -> Station:
+        return Station(uid, f"n. {uid}", start, end or start, dating, uid, lat, lon, ind)
 
     # About 500 km apart (4.5 degrees of latitude) on consecutive days.
     flags, _ = check_pairs([st("a", "1160-05-01", 45.0, 10.0), st("b", "1160-05-02", 49.5, 10.0)])
@@ -339,8 +359,17 @@ def _check(source: Path) -> None:
     assert flags == [], "20 km in a week is not flagged"
     flags, _ = check_pairs([st("a", "1160-05-01", 45.0, 10.0), st("b", "1160-05-01", 47.0, 10.0)])
     assert flags[0]["class"] == "gleicher Tag, zwei Orte" and flags[0]["kmPerDay"] is None
-    flags, _ = check_pairs([st("a", "1160-05-01", 45.0, 10.0, "Monat"), st("b", "1160-05-03", 49.5, 10.0)])
-    assert flags[0]["class"] == "Datierung ohne genauen Tag", "dating outranks other reasons"
+    # A short span is judged by the most days it allows: 500 km fit into nine days, not into three.
+    span = st("b", "1160-05-03", 49.5, 10.0, "Spanne", end="1160-05-10")
+    assert check_pairs([st("a", "1160-05-01", 45.0, 10.0), span])[0] == [], "the end of a span gives the time"
+    assert in_line("1147-09-07", "1147-09-09") and in_line("1189-05-18", "1189-05-18")
+    assert in_line("1141-04-06", "1141-04-13") and not in_line("1157-09-28", "1157-10-06"), "seven days, not eight"
+    hedged = {"identifier": "RI IV,2,2 n. 863", "summary_plain": "Friedrich", "date_string": "1160 (nach März 27)"}
+    assert _indicators(hedged, False) == ("Datierung im Wortlaut unsicher",)
+    late = st("a", "1160-05-01", 45.0, 10.0, "Spanne", end="1160-05-08")
+    assert _days(late, st("b", "1160-05-02", 45.0, 10.0)) == 6, "an earlier span that ends later gives the time too"
+    assert not in_line("1189-01-01", "1189-08-05"), "RI IV,2,4 n. 3270 lies outside the line"
+    assert not in_line("1152-07-01", "1152-07-31") and not in_line("1179-09-20", "1179-01-10")
     flags, _ = check_pairs([st("a", "1160-05-01", 45.0, 10.0), st("b", "1160-05-03", 49.5, 10.0, ind=("Fälschung",))])
     assert flags[0]["class"] == "Fälschung"
     flags, outliers = check_pairs(
@@ -352,8 +381,9 @@ def _check(source: Path) -> None:
     c = report["counts"]
     assert sum(c["dating"].values()) == c["regesta"], "every regest has one dating class"
     assert c["inView"] + sum(c["missingFromView"].values()) == c["regesta"], "placed or missing with a reason"
+    assert c["inLine"] + sum(c["outsideLine"].values()) == c["inView"], "in the line or outside with its dating"
     assert sum(c["flaggedByClass"].values()) == c["flagged"]
-    print("check passed", {k: c[k] for k in ("regesta", "inView", "flagged")})
+    print("check passed", {k: c[k] for k in ("regesta", "inView", "inLine", "flagged")})
 
 
 def main() -> None:
@@ -373,6 +403,7 @@ def main() -> None:
     print(f"{c['regesta']} regesta, dating {c['dating']}")
     print(f"spans {c['spanDays']}")
     print(f"in view {c['inView']}, missing {c['missingFromView']}")
+    print(f"in the line {c['inLine']} {c['inLineByDating']}, outside {c['outsideLine']}")
     print(f"threshold max({FLOOR_KM:.0f} km, {KM_PER_DAY:.0f} km x days), an assumption")
     print(f"{c['flagged']} of {c['pairs']} pairs flagged: {c['flaggedByClass']}; {c['outliers']} detours")
     print(f"indicator hits in all regesta {c['indicatorHits']}, in flagged {c['indicatorHitsInFlagged']}")

@@ -208,3 +208,15 @@ Follows: the footer at the bottom of the window on short pages; from 80rem of pa
 Relayed verbatim by the main session after the design round: „Also, ich denke, die Seite Barbarossa Regesten passt jetzt zu und ist damit abgenommen.“ On the published bilingual site he wrote the same day: „passt so“.
 
 Follows: the site as built on 2026-11-18, in German and English, is accepted for the guest unit of 20 November 2026; the entries above that end with „not seen by him“ are covered by it. Not covered: his remark on the Personen network, settled by his decision of the same day to keep the page as built (entry above). Status: accepted (journal, Operator acceptance of the site; Operator acceptance of the bilingual site).
+
+## 2026-11-18, Atlas: regesta without an exact day leave the route
+
+Relayed by the coordinating session, his words on the review's question whether such regesta should leave the line: „oder wir können das jetzt mit Subagents sauber fixen. gerne auch mehrere Sonnet bei Bedarf“. The commission that came with it is the coordination's wording: out of the line, visible as points, marked as dated imprecisely.
+
+Follows: the route joins the regesta dated to a day or to a span of at most a week; the others are rings with a sentence in the card and an entry in the key ([data.md](data.md#line-of-the-itinerary)). Status: built and published on 2026-11-18, not seen by him.
+
+## 2026-11-18, imprint as a link
+
+Paraphrase by the coordinating session: the imprint is not built into the edition but links the imprint of Digital Humanities Craft, https://dhcraft.org/imprint/.
+
+Follows: the section „Impressum“ of both start pages names Digital Humanities Craft OG with the written-out link. Status: built and published on 2026-11-18, not seen by him.

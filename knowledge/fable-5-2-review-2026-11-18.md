@@ -98,6 +98,8 @@ These are judgements, decisions of direction or matters outside the repository. 
 
 The operator's feedback of 2026-11-18 on Atlas, Regesten, Zeitband, the start page and the Personen network, first listed under point 12 as missing from ui-feedback.md, was entered there on his word after the review, in the wording the journal and design.md keep.
 
+Decided after the review on 2026-11-18: question 5, regesta without an exact day leave the line of the itinerary (rule in [Edition data](data.md#line-of-the-itinerary), figures in the journal entry of that day; the flags fell from 230 to 100), and question 1, the imprint is a link to https://dhcraft.org/imprint/. The other questions stand.
+
 ## What the review did not check
 
 - Whether a statement of the run is right, and whether its evidence supports it. That is scholarly validation and has no owner ([Plan](plan.md)).

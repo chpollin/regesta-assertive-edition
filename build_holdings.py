@@ -47,6 +47,8 @@ from pathlib import Path
 from edition_io import (
     REGISTER_CSV,
     by_unique_identifier,
+    dating_class,
+    in_line,
     is_null,
     place_name,
     plain_text,
@@ -161,6 +163,10 @@ def build(source: Path, out: Path) -> dict:
                 "u": r["uid"],
                 "i": r["identifier"],
                 "s": r["start_date"],
+                # Dating class from the two machine dates, and whether it is exact enough for the
+                # line of the itinerary (knowledge/data.md, Line of the itinerary).
+                "k": dating_class(r["start_date"], r["end_date"])[0],
+                "ln": in_line(r["start_date"], r["end_date"]),
                 # The dating prose of the delivery, shown in the card head like on run regesta.
                 "d": None if is_null(r.get("date_string")) else plain_text(r["date_string"]),
                 "p": issue_place.get(r["uid"]),

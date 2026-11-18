@@ -105,7 +105,8 @@ The queries answer concrete questions over the merged graph, namely which acts n
 
 [checks/test_holdings.py](../checks/test_holdings.py) builds the whole-delivery layer and the itinerary check from the real delivery and holds them against each other, since the Atlas draws one and quotes the other.
 
-- Steps: every flagged pair of the itinerary check is one step of the line of placed regesta in the layer's order. Mutation: a view that orders same-day regesta by another rule. The check reads the layer; it does not run `js/selection.js`, which keeps that order by sorting on the date alone, so a second sort rule added there would pass unnoticed.
+- Line: the line holds only regesta dated to a day or to a span of at most seven days, and no flag names a regest outside it. RI IV,2,4 n. 3270 (a span of months at Wien) lies outside, RI IV,2,4 n. 3269 („1189 Mai 18“, Wien) inside; RI IV,2,1 n. 5 with seven days is a station, RI IV,2,1 n. 486 with eight is not. Mutation: the former line through every placed regest.
+- Steps: every flagged pair of the itinerary check is one step of that line in the layer's order. Mutation: a view that orders same-day regesta by another rule. The check reads the layer; it does not run `js/selection.js`, which keeps that order by sorting on the date alone, so a second sort rule added there would pass unnoticed.
 - Place names: a flag names a place by a name the layer uses (compared by name, not by register id), and the layer says Saint-Jean-de-Losne where the register's label would give „Johannes“. Mutation: the uncorrected label of Crema.
 - Ambiguous identifier: RI IV,2,2 n. 1520a is reported with its two records and no person lists either. Mutation: the former join, which gave every row to the last record.
 

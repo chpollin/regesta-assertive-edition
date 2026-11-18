@@ -661,7 +661,7 @@ def start_page(site: Site, package: str) -> None:
 <p>{origin}</p>
 <p>{slides}</p></section>
 <section aria-labelledby="impressum" class="start-imprint"><h2 id="impressum">{esc(site.T("footer.imprint"))}</h2>
-<p class="placeholder">{esc(t["imprint"])}</p></section>
+<p>{esc(t["imprint"])}, <a href="{esc(t["imprintUrl"])}" rel="noopener">{esc(t["imprintUrl"])}</a></p></section>
 <section aria-labelledby="daten" class="start-files"><h2 id="daten">{esc(site.T("start.filesHeading"))}</h2>
 <p>{files}</p>
 <p id="lizenz" class="about-attribution">{esc(t["attribution"])}</p>

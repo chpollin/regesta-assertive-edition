@@ -25,6 +25,8 @@ import hashlib
 import html
 import json
 import re
+from calendar import monthrange
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -81,6 +83,34 @@ PLACE_FIXES = {"RI004-002-C001005": "Crema", "RI004-002-J000210": "Saint-Jean-de
 def place_name(entry_id: str, label: str) -> str:
     """The display name of a register place: its correction, or the head of its label."""
     return PLACE_FIXES.get(entry_id) or place_label(label)
+
+
+# The longest span, from start to end, that still places a regest in the line of the itinerary
+# (knowledge/data.md, Line of the itinerary): a stated assumption, like the check's threshold.
+LINE_SPAN_DAYS = 7
+
+
+def dating_class(start: str, end: str) -> tuple[str, int | None]:
+    """Class of a machine dating and, for a span, its length in days."""
+    try:
+        s, e = date.fromisoformat(start), date.fromisoformat(end)
+    except (TypeError, ValueError):
+        return "undatiert", None
+    if s > e:
+        return "umgekehrt", None
+    if s == e:
+        return "Tag", None
+    if (s.month, s.day, e.month, e.day) == (1, 1, 12, 31) and s.year == e.year:
+        return "Jahr", None
+    if s.day == 1 and (s.year, s.month) == (e.year, e.month) and e.day == monthrange(e.year, e.month)[1]:
+        return "Monat", None
+    return "Spanne", (e - s).days
+
+
+def in_line(start: str, end: str) -> bool:
+    """A dating exact enough for the line of the itinerary: a day, or a span of at most a week."""
+    kind, length = dating_class(start, end)
+    return kind == "Tag" or (kind == "Spanne" and length is not None and length <= LINE_SPAN_DAYS)
 
 
 def by_unique_identifier(regesta: list[dict]) -> tuple[dict[str, dict], dict[str, list[str]]]:
