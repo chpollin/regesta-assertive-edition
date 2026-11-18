@@ -5,10 +5,16 @@
  * page. The data load on the first jump, so a page without a jump stays light.
  *
  * The module initialises itself on import: js/edition/page.js imports it on every static page,
- * and index.html of the views app loads it with data-root="../".
+ * and index.html of the views app loads it with data-root="../" (en/ansicht/: "../../").
+ *
+ * data-root leads to the site root, where data and the views app lie; data-home to the start of
+ * the page's language, where its pages lie (the root itself for German, en/ for English).
  */
 const root = document.documentElement.dataset.root ?? "";
+const home = document.documentElement.dataset.home ?? root;
 const url = (path) => new URL(`${root}${path}`, document.baseURI).href;
+const page = (path) => new URL(`${home}${path}`, document.baseURI).href;
+const { t } = await import(url("ansicht/js/i18n.js"));
 let atlas = null;
 let data = null;
 
@@ -35,15 +41,15 @@ if (form) {
     const wanted = number(form.elements.n.value);
     message.textContent = "";
     if (!wanted) {
-      message.textContent = "Nummer eingeben";
+      message.textContent = t("jump.empty");
       return;
     }
     const [holdings, edition, routes] = await load();
     const placed = holdings?.regesta.find((r) => r.p && holdings.places[r.p] && number(r.i) === wanted);
     const regest = edition?.regests.find((r) => number(r.identifier) === wanted);
     if (placed && atlas) atlas.open(placed.u);
-    else if (placed) location.assign(url(`atlas/#/atlas/regest/${encodeURIComponent(placed.u)}`));
-    else if (regest && routes?.regests[regest.uid]) location.assign(url(routes.regests[regest.uid]));
-    else message.textContent = `n. ${wanted} nicht gefunden`;
+    else if (placed) location.assign(page(`atlas/#/atlas/regest/${encodeURIComponent(placed.u)}`));
+    else if (regest && routes?.regests[regest.uid]) location.assign(page(routes.regests[regest.uid]));
+    else message.textContent = t("jump.missing", { n: wanted });
   });
 }

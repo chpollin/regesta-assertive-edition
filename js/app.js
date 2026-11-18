@@ -25,6 +25,7 @@ import { atlasAddress, renderAtlas } from "./atlas.js";
 import { renderRegesten } from "./regesten.js";
 import { renderPersons } from "./persons.js";
 import { carryFilters, writeAddress } from "./url.js";
+import { setVocabulary, t } from "./i18n.js";
 
 /** @typedef {{edition: any, holdings: any, byUid: Map<string, any>}} Store */
 
@@ -33,10 +34,14 @@ const nav = /** @type {HTMLElement} */ (document.getElementById("site-nav"));
 
 /** Regest texts of the whole delivery, loaded once on first need. */
 let textsPromise = null;
-const texts = () => (textsPromise ??= loadJson("data/holdings-texts.json").catch(() => ({})));
+const texts = () => (textsPromise ??= loadJson("../data/holdings-texts.json").catch(() => ({})));
 
+/**
+ * A JSON file by its path relative to this module, so the app reads the one data folder of the
+ * build from its German address (ansicht/) and its English one (en/ansicht/) alike.
+ */
 async function loadJson(path) {
-  const response = await fetch(path);
+  const response = await fetch(new URL(path, import.meta.url));
   if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
   return response.json();
 }
@@ -53,7 +58,7 @@ const hrefOf = (href) => (href.startsWith(VIEW_PREFIX) ? href.slice(VIEW_PREFIX.
 const reachable = (href) => inBuild || href.startsWith(VIEW_PREFIX);
 function buildNav(items) {
   const link = (it) => (inBuild || !it.app ? hrefOf(it.href) : it.app);
-  nav.replaceChildren(...items.filter((it) => reachable(it.href) || it.app).map((it) => h("a", { href: link(it), "data-nav": it.key }, it.label)));
+  nav.replaceChildren(...items.filter((it) => reachable(it.href) || it.app).map((it) => h("a", { href: link(it), "data-nav": it.key }, t(`nav.${it.key}`))));
 }
 
 /** The address of a person page of the curated build, by the rule of build_site.person_slug. */
@@ -86,11 +91,11 @@ function idOf(rest) {
  * render(store, options) that returns {element, full, dispose?, focus?}.
  */
 const ROUTES = {
-  "": { nav: "personen", title: "Personen, Netz", render: (store, rest, ctx) => renderPersons(store, { view: "netz", actor: null, personPage, ...ctx }) },
-  personen: { nav: "personen", title: "Personen, Netz", render: (store, rest, ctx) => renderPersons(store, { view: "netz", actor: idOf(rest), personPage, ...ctx }) },
+  "": { nav: "personen", title: "persons.doc.netz", render: (store, rest, ctx) => renderPersons(store, { view: "netz", actor: null, personPage, ...ctx }) },
+  personen: { nav: "personen", title: "persons.doc.netz", render: (store, rest, ctx) => renderPersons(store, { view: "netz", actor: idOf(rest), personPage, ...ctx }) },
   zeitband: {
     nav: "personen",
-    title: "Personen, Zeitband",
+    title: "persons.doc.zeitband",
     render: (store, rest, ctx) => {
       // #/zeitband/<register id> of earlier links becomes the Person facet.
       const id = idOf(rest);
@@ -99,12 +104,12 @@ const ROUTES = {
       return renderPersons(store, { view: "zeitband", personPage, ...ctx });
     },
   },
-  atlas: { nav: "atlas", title: "Atlas", forward: (rest) => inBuild && forwardToAtlas("atlas", rest), render: (store, rest, ctx) => renderAtlas(store, { filters: ctx.filters, texts: ctx.texts, about: null }) },
-  itinerar: { nav: "atlas", title: "Atlas", forward: (rest) => forwardToAtlas("itinerar", rest) },
-  jahrzehnte: { nav: "atlas", title: "Atlas", forward: (rest) => forwardToAtlas("jahrzehnte", rest) },
+  atlas: { nav: "atlas", title: "nav.atlas", forward: (rest) => inBuild && forwardToAtlas("atlas", rest), render: (store, rest, ctx) => renderAtlas(store, { filters: ctx.filters, texts: ctx.texts, about: null }) },
+  itinerar: { nav: "atlas", title: "nav.atlas", forward: (rest) => forwardToAtlas("itinerar", rest) },
+  jahrzehnte: { nav: "atlas", title: "nav.atlas", forward: (rest) => forwardToAtlas("jahrzehnte", rest) },
   regesten: {
     nav: "regesten",
-    title: "Regesten",
+    title: "nav.regesten",
     forward: () => {
       if (!inBuild) return false;
       location.replace(`../regesten/${location.search}${location.hash}`);
@@ -116,7 +121,7 @@ const ROUTES = {
   // the circle around the same actor in the Netz, or to the persons overview.
   raum: {
     nav: "personen",
-    title: "Personen, Netz",
+    title: "persons.doc.netz",
     forward: (rest) => {
       const id = idOf(rest);
       const q = new URLSearchParams(location.search);
@@ -147,7 +152,7 @@ function regestPage(store, regest, claim) {
     element: h(
       "div",
       { class: "regest-page" },
-      h("p", { class: "back-link" }, h("a", { href: lastView }, "Zurück zur Ansicht")),
+      h("p", { class: "back-link" }, h("a", { href: lastView }, t("app.back"))),
       h("h1", { class: "visually-hidden", text: regest.identifier }),
       renderRegestCard(store, regest.uid, { claim, texts, page: true }),
     ),
@@ -164,19 +169,20 @@ function route(store, filters) {
   if ((view === "atlas" || view === "regesten") && main.dataset.view === view) return;
   let content;
   let navKey = "";
-  let title = "Barbarossa-Regesten";
+  let title = t("site.title");
   if (view === "regest" && store.byUid.has(parts[1])) {
     const regest = store.byUid.get(parts[1]);
     content = regestPage(store, regest, parts[2] ?? null);
     title = regest.identifier;
   } else if (entry?.render && store.holdings) {
     content = entry.render(store, parts.slice(1), { filters, texts });
-    ({ nav: navKey, title } = entry);
+    navKey = entry.nav;
+    title = t(entry.title);
   } else {
-    content = { element: h("p", { text: "Diese Adresse führt zu keiner Ansicht. Die Navigation oben führt zu Atlas, Regesten und Personen." }) };
+    content = { element: h("p", { text: t("app.noView") }) };
   }
   if (navKey) lastView = `${location.search}${location.hash}`;
-  document.title = `${title} | Barbarossa-Regesten`;
+  document.title = `${title} | ${t("site.title")}`;
   for (const link of nav.querySelectorAll("[data-nav]")) {
     if (link.getAttribute("data-nav") === navKey) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
@@ -204,7 +210,8 @@ function route(store, filters) {
 async function start() {
   try {
     // The whole-delivery layer carries every view; without it the views say so.
-    const [edition, navData, holdings] = await Promise.all([loadJson("data/edition.json"), loadJson("js/nav.json"), loadJson("data/holdings.json").catch(() => null)]);
+    const [edition, navData, holdings] = await Promise.all([loadJson("../data/edition.json"), loadJson("./nav.json"), loadJson("../data/holdings.json").catch(() => null)]);
+    setVocabulary(edition.vocabulary);
     buildNav(navData.items);
     /** @type {Store} */
     const store = { edition, holdings, byUid: new Map(edition.regests.map((r) => [r.uid, r])) };
@@ -213,7 +220,7 @@ async function start() {
     window.addEventListener("hashchange", () => route(store, filters));
     route(store, filters);
   } catch (error) {
-    main.replaceChildren(h("p", { class: "error", text: `Die Daten konnten nicht geladen werden (${error.message}).` }));
+    main.replaceChildren(h("p", { class: "error", text: t("app.loadError", { message: error.message }) }));
   }
 }
 

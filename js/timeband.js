@@ -26,6 +26,7 @@
 import { h } from "./dom.js";
 import { s, yearOf } from "./svg.js";
 import { param, writeAddress } from "./url.js";
+import { t } from "./i18n.js";
 
 // Row height: the rows share the available height, between 20 and 30 px with a pointer and
 // at least 28 px on a narrow touch screen, where a row is a target.
@@ -34,7 +35,7 @@ const rowHeight = (avail, n) => {
   return Math.max(min, Math.min(30, Math.floor(avail / Math.max(1, n))));
 };
 const AXIS = 34;
-const ORDERS = Object.freeze({ anzahl: "Häufigkeit", zeit: "Erste Nennung", name: "Name" });
+const ORDERS = Object.freeze(Object.fromEntries(["anzahl", "zeit", "name"].map((key) => [key, t(`tb.order.${key}`)])));
 // Two mentions further apart than GAP years are not joined: a line from the first to the
 // last mention claimed presence in between (Wibald from 1123 to 1150, reviewed 2026-11-12).
 const GAP = 3;
@@ -108,7 +109,7 @@ export function renderTimeband(store, options) {
 
   const status = h("p", { class: "canvas-status", role: "status", "aria-live": "polite" });
   const axisHost = h("div", { class: "tb-axis" });
-  const scroller = h("div", { class: "tb-scroll", tabindex: "0", role: "group", "aria-label": "Zeitband der Personen. Die Regesten stehen in der Liste links, die Personen in der Personensuche." });
+  const scroller = h("div", { class: "tb-scroll", tabindex: "0", role: "group", "aria-label": t("tb.aria") });
   const element = h(
     "section",
     { class: "canvas views-tb" },
@@ -176,7 +177,7 @@ export function renderTimeband(store, options) {
       const w = Math.max(1, g.x(Math.min(b + 1, g.hi)) - xa);
       grid.append(s("rect", { class: "tb-italy", x: xa, y: 0, width: w, height }));
       axis.append(s("rect", { class: "tb-italy", x: xa, y: 0, width: w, height: AXIS }));
-      if (w >= 44) axis.append(s("text", { class: "tb-italy-label", x: xa + w / 2, y: 11, "text-anchor": "middle", text: "Italien" }));
+      if (w >= 44) axis.append(s("text", { class: "tb-italy-label", x: xa + w / 2, y: 11, "text-anchor": "middle", text: t("tb.italy") }));
     }
     for (let y = Math.ceil(g.lo / step) * step; y < g.hi; y += step) {
       grid.append(s("line", { x1: g.x(y), x2: g.x(y), y1: 0, y2: height }));
@@ -195,7 +196,7 @@ export function renderTimeband(store, options) {
       const flush = () => from !== null && row.append(s("rect", { class: "tb-life", x: g.x(from), y: y - 2, width: Math.max(1, g.x(to) - g.x(from)), height: 4, rx: 2 }));
       const early = hits.filter((m) => m.y < g.lo);
       // A small chevron, drawn rather than written, so it stays a mark and not a label.
-      if (early.length) row.append(s("path", { class: "tb-early", d: `M${(g.x0 - 3).toFixed(1)} ${y - 3.5}l-3.5 3.5l3.5 3.5` }, s("title", { text: `${early.length} ${early.length === 1 ? "Nennung" : "Nennungen"} vor ${g.lo}` })));
+      if (early.length) row.append(s("path", { class: "tb-early", d: `M${(g.x0 - 3).toFixed(1)} ${y - 3.5}l-3.5 3.5l3.5 3.5` }, s("title", { text: t("tb.early", { n: early.length, year: g.lo }) })));
       for (const m of hits.filter((x) => x.y >= g.lo)) {
         if (to !== null && m.y - to <= GAP) to = m.y;
         else {
@@ -259,7 +260,7 @@ export function renderTimeband(store, options) {
     const p = byId.get(hit.person);
     if (hit.m) return `${hit.m.i}, ${Math.floor(hit.m.y)}${hit.m.place ? `, ${hit.m.place}` : ""}, ${p.label}`;
     const hits = p.mentions.filter(inRange);
-    return `${p.label}, ${hits.length} ${hits.length === 1 ? "Regest" : "Regesten"}, ${Math.floor(hits[0].y)} bis ${Math.floor(hits.at(-1).y)}`;
+    return `${p.label}, ${t("count.regesta", { n: hits.length })}, ${t("band.span", { from: Math.floor(hits[0].y), to: Math.floor(hits.at(-1).y) })}`;
   }
 
   function point(hit) {
@@ -310,7 +311,7 @@ export function renderTimeband(store, options) {
       h(
         "label",
         { class: "tb-control" },
-        h("span", { text: "Ordnen nach" }),
+        h("span", { text: t("tb.orderBy") }),
         h(
           "select",
           { class: "tb-limit", onchange: (e) => setting("order", e.target.value) },
@@ -319,8 +320,8 @@ export function renderTimeband(store, options) {
       ),
       h(
         "select",
-        { class: "tb-limit", "aria-label": "Anzahl der gezeigten Personen", onchange: (e) => setting("limit", Number(e.target.value)) },
-        LIMITS.filter((n, i) => i === 0 || LIMITS[i - 1] < named.length).map((n) => h("option", { value: String(n), text: n >= named.length ? `alle ${named.length}` : `${n} meistgenannte`, selected: n === state.limit })),
+        { class: "tb-limit", "aria-label": t("tb.limitAria"), onchange: (e) => setting("limit", Number(e.target.value)) },
+        LIMITS.filter((n, i) => i === 0 || LIMITS[i - 1] < named.length).map((n) => h("option", { value: String(n), text: n >= named.length ? t("tb.all", { n: named.length }) : t("tb.top", { n }), selected: n === state.limit })),
       ),
     );
   }
@@ -345,9 +346,9 @@ export function renderTimeband(store, options) {
   /** The key of the band's two encodings, for the info mark of Personen. */
   function key() {
     return [
-      h("p", { text: `Ein Quadrat je Jahr mit Nennungen, dunkler bei mehr Regesten; ein heller Balken verbindet Nennungen, die höchstens ${GAP} Jahre auseinanderliegen. Zeigen auf ein Quadrat nennt Regest, Jahr und Ort. Ein ‹ vor der Zeile steht für Nennungen vor dem Beginn der Achse.` }),
-      italyYears.length ? h("p", {}, h("span", { class: "it-key tb-key-italy", "aria-hidden": "true" }), " Italien: Jahre mit mehr als der Hälfte der Ausstellungsorte südlich der Alpen.") : null,
-      h("p", { text: "Personen aus dem Register der Regesta Imperii, in mindestens drei Regesten genannt, ohne LLM." }),
+      h("p", { text: t("tb.info.cells", { gap: GAP }) }),
+      italyYears.length ? h("p", {}, h("span", { class: "it-key tb-key-italy", "aria-hidden": "true" }), ` ${t("tb.info.italy")}`) : null,
+      h("p", { text: t("tb.info.source") }),
     ];
   }
 

@@ -6,6 +6,7 @@
  * themselves, so a change of colour in css/app.css reaches the key as well.
  */
 import { h } from "./dom.js";
+import { t } from "./i18n.js";
 import { STANDS, standOf } from "./stand.js";
 import { s } from "./svg.js";
 
@@ -14,17 +15,17 @@ function sign(...shapes) {
 }
 
 const ENTRIES = {
-  person: ["Person", () => sign(["circle", { cx: 9, cy: 6, r: 4.5, class: "n-person" }])],
-  local: ["nur im Wortlaut des Regests", () => sign(["circle", { cx: 9, cy: 6, r: 4, class: "n-person n-local" }])],
-  group: ["Gruppe", () => sign(["rect", { x: 4.5, y: 1.5, width: 9, height: 9, class: "n-group" }])],
-  act: ["Aussage", () => sign(["path", { d: "M9,1.5 L13.5,6 L9,10.5 L4.5,6 Z", class: "n-act" }])],
-  role: ["beteiligt", () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-role" }])],
-  parent: ["Eltern und Kind", () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-parent" }])],
-  same: ["gleicher Name, offene Frage", () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-same" }])],
-  shared: ["Linie: gemeinsame Aussagen", () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "po-edge", "stroke-width": 2 }])],
-  bundle: ["Aussagen einer Richtung, gebündelt", () => sign(["circle", { cx: 9, cy: 6, r: 4.5, class: "n-bundle" }])],
+  person: [t("key.person"), () => sign(["circle", { cx: 9, cy: 6, r: 4.5, class: "n-person" }])],
+  local: [t("key.local"), () => sign(["circle", { cx: 9, cy: 6, r: 4, class: "n-person n-local" }])],
+  group: [t("key.group"), () => sign(["rect", { x: 4.5, y: 1.5, width: 9, height: 9, class: "n-group" }])],
+  act: [t("key.act"), () => sign(["path", { d: "M9,1.5 L13.5,6 L9,10.5 L4.5,6 Z", class: "n-act" }])],
+  role: [t("key.role"), () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-role" }])],
+  parent: [t("key.parent"), () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-parent" }])],
+  same: [t("key.same"), () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "e-same" }])],
+  shared: [t("key.shared"), () => sign(["line", { x1: 1, y1: 6, x2: 17, y2: 6, class: "po-edge", "stroke-width": 2 }])],
+  bundle: [t("key.bundle"), () => sign(["circle", { cx: 9, cy: 6, r: 4.5, class: "n-bundle" }])],
   ...Object.fromEntries(STANDS.map((st) => [st.key, [st.label, () => sign(["circle", { cx: 9, cy: 6, r: 4.5, class: `n-person st-${st.key}` }])]])),
-  size: ["Größe: Zahl der Aussagen", () => sign(["circle", { cx: 4, cy: 6, r: 2.5, class: "n-person" }], ["circle", { cx: 12.5, cy: 6, r: 5, class: "n-person" }])],
+  size: [t("key.size"), () => sign(["circle", { cx: 4, cy: 6, r: 2.5, class: "n-person" }], ["circle", { cx: 12.5, cy: 6, r: 5, class: "n-person" }])],
 };
 
 /** @param {string[]} keys  entries in ENTRIES, in the order wanted */
@@ -32,7 +33,7 @@ export function shapeKey(keys) {
   const items = keys.filter((k) => ENTRIES[k]);
   return h(
     "ul",
-    { class: "shape-key", role: "list", "aria-label": "Zeichen der Zeichnung", hidden: items.length === 0 },
+    { class: "shape-key", role: "list", "aria-label": t("key.aria"), hidden: items.length === 0 },
     items.map((k) => h("li", {}, ENTRIES[k][1](), ENTRIES[k][0])),
   );
 }

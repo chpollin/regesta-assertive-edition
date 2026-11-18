@@ -8,7 +8,8 @@ import { bridge, loadRoutes, loadStore, siteUrl } from "./views.js";
 import { param } from "../url.js";
 
 export async function init(root) {
-  backLink();
+  const { t } = await import(siteUrl(root, "ansicht/js/i18n.js"));
+  backLink(t("app.back"));
   const host = document.getElementById("card");
   if (!host) return;
   const [store, routes, { renderRegestCard }] = await Promise.all([
@@ -47,7 +48,7 @@ export async function init(root) {
 }
 
 /** Validated return address: same origin, http or https, otherwise nothing is shown. */
-function backLink() {
+function backLink(word) {
   const raw = param("zurueck");
   const slot = document.querySelector(".back-slot");
   if (!raw || !slot) return;
@@ -60,7 +61,7 @@ function backLink() {
   if (url.origin !== location.origin || !/^https?:$/.test(url.protocol)) return;
   const link = document.createElement("a");
   link.href = url.href;
-  link.textContent = "Zurück zur Ansicht";
+  link.textContent = word;
   slot.append(link);
   // Paging keeps the way back.
   for (const a of document.querySelectorAll(".pager a[rel]")) {

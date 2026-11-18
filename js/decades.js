@@ -17,6 +17,7 @@
 import { h } from "./dom.js";
 import { s } from "./svg.js";
 import { mapProjection } from "./map.js";
+import { t } from "./i18n.js";
 
 // A decade with fewer regesta than MIN_PANEL joins its neighbour: the 1130s hold three, which
 // made an almost empty map (reviewed 2026-11-12).
@@ -51,7 +52,7 @@ export function createDecades(store, options) {
   }
   const points = raw.map((p) => ({ ...p, d: groupOf.get(p.d) }));
   const decades = [...new Set(points.map((p) => p.d))].sort((a, b) => a - b);
-  const decadeLabel = (d) => (span.get(d)[0] === span.get(d)[1] ? `${d}er` : `${span.get(d)[0]}er und ${span.get(d)[1]}er`);
+  const decadeLabel = (d) => (span.get(d)[0] === span.get(d)[1] ? t("decades.one", { d }) : t("decades.two", { a: span.get(d)[0], b: span.get(d)[1] }));
   // The panel in which a place first appears as a place of issue: its dot is dark there and
   // light in later panels, so new places stand apart from returns.
   const firstPanel = new Map();
@@ -82,7 +83,7 @@ export function createDecades(store, options) {
     return out;
   }
 
-  const host = h("div", { class: "dc-scene", role: "group", "aria-label": "Karten der Ausstellungsorte je Jahrzehnt. Orte und Regesten sind in der Liste links mit der Tastatur erreichbar." });
+  const host = h("div", { class: "dc-scene", role: "group", "aria-label": t("decades.aria") });
   const element = h("div", { class: "decades" }, host);
 
   let basemap = null;
@@ -237,13 +238,13 @@ export function createDecades(store, options) {
       key.append(s("text", { class: "tb-year", x: cx.toFixed(1), y: (base + 14).toFixed(1), "text-anchor": "middle", text: String(v) }));
       cx += Math.max(2 * r, 18) + 12;
     }
-    key.append(s("text", { class: "tb-year", x: kx, y: base + 30, text: "Regesten je Ort" }));
+    key.append(s("text", { class: "tb-year", x: kx, y: base + 30, text: t("decades.perPlace") }));
     // Lightness tells new places from returns; one line each, a dot as sign.
     const ly = base + 50;
     key.append(s("circle", { class: "dc-dot is-new", cx: (kx + 5).toFixed(1), cy: (ly - 4).toFixed(1), r: 5 }));
-    key.append(s("text", { class: "tb-year", x: kx + 16, y: ly, text: "Ort neu im Jahrzehnt" }));
+    key.append(s("text", { class: "tb-year", x: kx + 16, y: ly, text: t("decades.new") }));
     key.append(s("circle", { class: "dc-dot", cx: (kx + 5).toFixed(1), cy: (ly + 14).toFixed(1), r: 5 }));
-    key.append(s("text", { class: "tb-year", x: kx + 16, y: ly + 18, text: "Ort schon früher" }));
+    key.append(s("text", { class: "tb-year", x: kx + 16, y: ly + 18, text: t("decades.earlier") }));
     svg.append(key);
     host.replaceChildren(svg);
     scene = { svg, L, panels };

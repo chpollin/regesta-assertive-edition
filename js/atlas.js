@@ -26,9 +26,10 @@ import { createSelection } from "./selection.js";
 import { s } from "./svg.js";
 import { CAMERAS, createCube } from "./itinerary.js";
 import { createDecades } from "./decades.js";
+import { t, term } from "./i18n.js";
 
 /** The representations of the Atlas in the order of the switch; the first is the default. */
-export const MODES = Object.freeze([...Object.entries(CAMERAS).map(([key, c]) => ({ key, label: c.label })), { key: "jahrzehnte", label: "Jahrzehnte" }]);
+export const MODES = Object.freeze([...Object.keys(CAMERAS), "jahrzehnte"].map((key) => ({ key, label: t(`atlas.mode.${key}`) })));
 const MODE_KEYS = new Set(MODES.map((m) => m.key));
 /** Old camera names of the place view (?ansicht=) and their representation. */
 const OLD_CAMERA = { schraeg: "wuerfel", oben: "karte", seite: "zeit" };
@@ -110,7 +111,7 @@ export function renderAtlas(store, options) {
           [f.b, f.a],
         ])
           flagsOf.set(me.uid, [...(flagsOf.get(me.uid) ?? []), { ...f, other }]);
-      flagsButton.title = checks ? `${checks.flags.length} Wege zwischen zwei aufeinanderfolgenden Ausstellungsorten, die mehr als ${checks.threshold.kmPerDay} km am Tag oder ${checks.threshold.floorKm} km verlangen; eine Annahme, kein Befund` : "";
+      flagsButton.title = checks ? t("atlas.flagsTitle", { n: checks.flags.length, perDay: checks.threshold.kmPerDay, floor: checks.threshold.floorKm }) : "";
       syncSwitch();
     })
     .catch(() => {});
@@ -165,12 +166,12 @@ export function renderAtlas(store, options) {
   const freeMark = h(
     "span",
     { class: "atlas-free", hidden: true },
-    "frei gedreht",
-    h("button", { type: "button", class: "link-button atlas-free-reset", onclick: () => setMode(MODES[0].key) }, "Ausgangsansicht"),
+    t("atlas.free"),
+    h("button", { type: "button", class: "link-button atlas-free-reset", onclick: () => setMode(MODES[0].key) }, t("atlas.freeReset")),
   );
   const sign = (d) => s("svg", { viewBox: "0 0 16 16", class: "head-icon", "aria-hidden": "true" }, s("path", { d }));
   const tool = (label, d, onclick) => h("button", { type: "button", class: "tool", "aria-label": label, title: label, onclick }, sign(d));
-  const cameraTools = h("span", { class: "atlas-camera", role: "group", "aria-label": "Zoom" }, tool("Vergrößern", "M8 3v10M3 8h10", () => cube?.zoom(1.15)), tool("Verkleinern", "M3 8h10", () => cube?.zoom(1 / 1.15)));
+  const cameraTools = h("span", { class: "atlas-camera", role: "group", "aria-label": t("atlas.zoom") }, tool(t("atlas.zoomIn"), "M8 3v10M3 8h10", () => cube?.zoom(1.15)), tool(t("atlas.zoomOut"), "M3 8h10", () => cube?.zoom(1 / 1.15)));
   // „Auffällige Wege“ replaces „Sprünge“, which a fresh reader did not understand (2026-11-18).
   const flagsButton = h(
     "button",
@@ -186,10 +187,10 @@ export function renderAtlas(store, options) {
       },
     },
     h("span", { class: "toggle-track", "aria-hidden": "true" }),
-    "Auffällige Wege",
+    t("atlas.flags"),
   );
   const infoPanel = h("div", { class: "atlas-info", id: "atlas-info", role: "note", hidden: true });
-  const infoButton = h("button", { type: "button", class: "tool atlas-info-mark", "aria-label": "Lesehilfe", title: "Lesehilfe", "aria-expanded": "false", "aria-controls": "atlas-info", onclick: () => toggleInfo() }, sign("M8 7.2v4.6M8 4.4v.4"));
+  const infoButton = h("button", { type: "button", class: "tool atlas-info-mark", "aria-label": t("info.button"), title: t("info.button"), "aria-expanded": "false", "aria-controls": "atlas-info", onclick: () => toggleInfo() }, sign("M8 7.2v4.6M8 4.4v.4"));
   function toggleInfo(force) {
     const on = force ?? infoPanel.hidden;
     infoPanel.hidden = !on;
@@ -201,25 +202,25 @@ export function renderAtlas(store, options) {
     const item = (cls, text) => h("li", {}, h("span", { class: cls, "aria-hidden": "true" }), text);
     return h(
       "ul",
-      { class: "atlas-key", "aria-label": "Zeichen im Würfel" },
-      item("it-key", "Regest mit Ausstellungsort"),
-      item("it-key is-evidenced", "Regest mit Aussagen der LLM-Agenten"),
-      item("rel-key is-route", "Weg von Ort zu Ort in der Zeitfolge"),
-      filters.persons.length ? item("it-pkey is-pa", "Regest der ersten Person, mit ihrer Spur") : null,
-      filters.persons.length > 1 ? item("it-pkey is-pb", "Regest der zweiten Person, Spur gestrichelt") : null,
-      item("rel-key is-flag", "auffälliger Weg (Schalter oben)"),
-      item("it-key is-realm", "Reich um 1190, grob nach Shepherd (1926)"),
+      { class: "atlas-key", "aria-label": t("atlas.key.aria") },
+      item("it-key", t("atlas.key.placed")),
+      item("it-key is-evidenced", t("atlas.key.evidenced")),
+      item("rel-key is-route", t("atlas.key.route")),
+      filters.persons.length ? item("it-pkey is-pa", t("atlas.key.personA")) : null,
+      filters.persons.length > 1 ? item("it-pkey is-pb", t("atlas.key.personB")) : null,
+      item("rel-key is-flag", t("atlas.key.flag")),
+      item("it-key is-realm", t("atlas.key.realm")),
     );
   }
   function fillInfo() {
     const lines =
       state.mode === "jahrzehnte"
-        ? [h("p", { text: "Eine Karte je Jahrzehnt; die Kreisfläche zählt die Regesten eines Ortes. Ein Klick auf das Jahrzehnt setzt den Zeitraum, auf einen Ort den Ort." })]
-        : [h("p", { text: "Grundriss: Karte der Ausstellungsorte, ferne Orte zur Mitte gestaucht. Höhe: Zeit. Ziehen dreht den Würfel. Regesten ohne Ort stehen nur in der Liste." }), cubeKey()];
-    lines.push(h("p", { text: "Orte und Daten aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM." }));
+        ? [h("p", { text: t("atlas.info.decades") })]
+        : [h("p", { text: t("atlas.info.cube") }), cubeKey()];
+    lines.push(h("p", { text: t("atlas.info.source") }));
     // The cube follows the Space-Time Cube idea the operator took from Windhager et al. 2019.
-    lines.push(h("p", {}, "Idee des Raum-Zeit-Würfels nach ", h("a", { href: "https://doi.org/10.1109/TVCG.2018.2830759", rel: "noopener" }, "Windhager et al. (2019)"), "."));
-    if (options.about) lines.push(h("p", {}, h("a", { href: options.about }, "Daten und Lizenz")));
+    lines.push(h("p", {}, t("atlas.info.idea"), " ", h("a", { href: "https://doi.org/10.1109/TVCG.2018.2830759", rel: "noopener" }, "Windhager et al. (2019)"), "."));
+    if (options.about) lines.push(h("p", {}, h("a", { href: options.about }, t("atlas.info.about"))));
     infoPanel.replaceChildren(...lines);
   }
   function syncSwitch() {
@@ -240,27 +241,28 @@ export function renderAtlas(store, options) {
   // Filter bar, count line and result list.
   const facets = createFacets(store, filters, {
     prefix: "atlas",
-    applies: { text: "Die Textsuche wirkt in der Liste Regesten, nicht im Atlas." },
+    applies: { text: t("atlas.textOff") },
     persons,
     marks: () => (filters.place || filters.persons.length ? new Set(shown.map((r) => r.year)) : new Set()),
   });
   const count = createCount(filters);
   const list = createList({
-    label: "Regesten der Auswahl",
+    label: t("list.label"),
     onOpen: (u) => detail.open(u),
     onPoint: (u) => cube?.point(u && indexOf.has(u) ? indexOf.get(u) : null),
     mark: (r) => (filters.persons.length ? selection.personMark(r.u) : r.stmt ? "is-evidenced" : ""),
   });
   const frame = createFrame(filters, {
     name: "atlas",
-    title: "Atlas: Regesten mit Ausstellungsort in Raum und Zeit",
+    title: t("atlas.title"),
     facets: facets.element,
     count: count.element,
     list: list.element,
-    tools: [h("div", { class: "segs", role: "group", "aria-label": "Darstellung" }, switchButtons), cameraTools, freeMark],
+    tools: [h("div", { class: "segs", role: "group", "aria-label": t("atlas.modes") }, switchButtons), cameraTools, freeMark],
     toolsEnd: [flagsButton, infoButton, infoPanel],
     main: figure,
-    backLabel: "Zurück zum Atlas",
+    backLabel: t("atlas.back"),
+    backShort: t("atlas.backShort"),
     onEscape: () => detail.close(),
   });
 
@@ -273,18 +275,19 @@ export function renderAtlas(store, options) {
     legend.hidden = !counts;
     if (!counts) return legend.replaceChildren();
     const item = (cls, label, n) => h("span", { class: "atlas-legend-item" }, h("span", { class: `rel-key ${cls}`, "aria-hidden": "true" }), `${label} `, h("b", { text: String(n) }));
-    const people = item("is-people", "gemeinsame Person", counts.people);
+    const people = item("is-people", t("atlas.legend.people"), counts.people);
     if (counts.people > counts.drawn) {
-      const all = h("button", { type: "button", class: "atlas-legend-all", "aria-pressed": "false", title: `Gezeichnet sind die ${counts.drawn} zeitlich nächsten; ein Klick zeigt alle` }, `${counts.drawn} nächste`);
+      const nearest = t("atlas.legend.nearest", { n: counts.drawn });
+      const all = h("button", { type: "button", class: "atlas-legend-all", "aria-pressed": "false", title: t("atlas.legend.nearestTitle", { n: counts.drawn }) }, nearest);
       all.addEventListener("click", () => {
         const on = all.getAttribute("aria-pressed") !== "true";
         all.setAttribute("aria-pressed", String(on));
-        all.textContent = on ? "alle" : `${counts.drawn} nächste`;
+        all.textContent = on ? t("atlas.legend.all") : nearest;
         cube?.allPeople(on);
       });
       people.append(" ", all);
     }
-    legend.replaceChildren(item("is-step", "Station davor und danach", counts.steps), item("is-place", "gleicher Ort", counts.place), people);
+    legend.replaceChildren(item("is-step", t("atlas.legend.steps"), counts.steps), item("is-place", t("atlas.legend.place"), counts.place), people);
   }
 
   const detail = createDetail(frame, {
@@ -292,7 +295,8 @@ export function renderAtlas(store, options) {
     hashOf: (u) => hashOf(state.mode, u),
     readUid: () => (location.hash.startsWith("#/atlas") ? readHash().uid : null),
     card: (u) => {
-      const notes = (flagsOf.get(u) ?? []).map((f) => `Auffällig: ${f.km} km in ${f.days} ${f.days === 1 ? "Tag" : "Tagen"} zu ${f.other.identifier} (${f.other.place}). Vermutlicher Grund: ${f.class}.`);
+      // The class of a flag is a German label of check_itinerary.py, translated as a term.
+      const notes = (flagsOf.get(u) ?? []).map((f) => ({ flag: true, text: t("atlas.flagNote", { km: f.km, n: f.days, other: f.other.identifier, place: f.other.place, reason: term(f.class) }) }));
       return renderRegestCard(store, u, { notes, texts: options.texts, onClose: () => detail.close() });
     },
     onOpen: (u) => {

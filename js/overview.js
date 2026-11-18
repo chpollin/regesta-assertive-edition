@@ -14,6 +14,7 @@ import { keyRoom, keysOf, shapeKey, standKeys } from "./shape-key.js";
 import { standOf } from "./stand.js";
 import { drawPersonNetwork, personNetwork } from "./person-overview.js";
 import { s } from "./svg.js";
+import { t, term } from "./i18n.js";
 
 const LABELLED_HUBS = 8;
 
@@ -158,7 +159,7 @@ export function renderOverview(store, options) {
     network = drawGraph(graphHost, store, shown, height, state.actor, {
       onPoint: (id) => {
         const n = id ? shown.nodes.find((x) => x.id === id) : null;
-        status.textContent = n ? n.label : "";
+        status.textContent = n ? (n.kind === "act" ? term(n.label) : n.label) : "";
       },
       onSelect: (id) => options.onSelect(state.actor === id ? null : id),
       onOpen: (uid, claim, actId) => {
@@ -380,7 +381,7 @@ function placeEgoLabels(graph, ego, selectedId, px, py, width, height, sectorBox
 function caseLines(n) {
   const reg = n.case.register;
   const numeral = reg?.label.match(/\(([IVXLC]+\.)\)/)?.[1];
-  const entry = reg ? `Register ${numeral ?? reg.label}${reg.assigned ? "" : ", nicht zugeordnet"}` : "ohne Registereintrag";
+  const entry = reg ? `${t("graph.register", { entry: numeral ?? reg.label })}${reg.assigned ? "" : `, ${t("graph.unassigned")}`}` : t("graph.noRegister");
   return [n.label, `${n.case.short}, ${entry}`];
 }
 
@@ -571,9 +572,9 @@ function drawGraph(host, store, graph, height, selected, handlers) {
       // A bundled sector: one round mark sized by its count, the count inside, the sector's
       // name as accessible name; a click opens the sector, its sign at the rim does the same.
       const radius = Math.min(22, 9 + Math.sqrt(n.count) * 1.4);
-      const g = s("a", { href: "#", class: "node node-bundle", tabindex: "-1", role: "button", "aria-label": `${n.label}: ${n.count} Regesten, aufklappen`, "data-family": n.family });
+      const g = s("a", { href: "#", class: "node node-bundle", tabindex: "-1", role: "button", "aria-label": t("graph.bundleAria", { label: n.label, n: n.count }), "data-family": n.family });
       g.append(s("circle", { cx, cy, r: radius, class: "n-bundle" }), s("text", { x: cx, y: cy + 4, "text-anchor": "middle", class: "n-bundle-count", text: String(n.count) }));
-      const title = s("title", { text: `${n.label}: ${n.count} Regesten. Klick zeigt sie einzeln.` });
+      const title = s("title", { text: t("graph.bundleTitle", { label: n.label, n: n.count }) });
       g.append(title);
       g.addEventListener("click", (event) => {
         event.preventDefault();
@@ -605,11 +606,11 @@ function drawGraph(host, store, graph, height, selected, handlers) {
       continue;
     }
     const isAct = n.kind === "act";
-    const label = isAct ? `${n.label}, ${store.byUid.get(n.regest).short}` : n.label;
+    const label = isAct ? `${term(n.label)}, ${store.byUid.get(n.regest).short}` : n.label;
     // In the circle around a person an act is named by its relation type alone.
-    const shownLabel = isAct && ego ? n.label : label;
+    const shownLabel = isAct && ego ? term(n.label) : label;
     const caseText = n.case ? `, ${caseLines(n)[1]}` : "";
-    const g = s("a", isAct ? { href: regestHref(n.regest, n.claim), class: "node node-act", tabindex: "-1", "aria-label": label } : { href: `#/personen/${encodeURIComponent(n.id)}`, class: "node", tabindex: "-1", "aria-label": `${label}${n.local ? ", lokale Kennung" : ""}${caseText}` });
+    const g = s("a", isAct ? { href: regestHref(n.regest, n.claim), class: "node node-act", tabindex: "-1", "aria-label": label } : { href: `#/personen/${encodeURIComponent(n.id)}`, class: "node", tabindex: "-1", "aria-label": `${label}${n.local ? `, ${t("graph.local")}` : ""}${caseText}` });
     // An act is a small diamond, so it never reads as a group (square) or a person (circle).
     if (isAct) g.append(s("path", { d: `M${cx},${cy - 5} L${cx + 5},${cy} L${cx},${cy + 5} L${cx - 5},${cy} Z`, class: "n-act" }));
     else if (n.kind === "group") g.append(s("rect", { x: cx - 5, y: cy - 5, width: 10, height: 10, class: `n-group st-${standOf(store, n)}` }));

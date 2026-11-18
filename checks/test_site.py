@@ -24,6 +24,7 @@ import sys
 import tempfile
 import unittest
 from contextlib import redirect_stdout
+from html.parser import HTMLParser
 from io import StringIO
 from pathlib import Path
 
@@ -44,7 +45,8 @@ class SiteBuild(unittest.TestCase):
             out = Path(tmp) / "site"
             build_site.build(SOURCE, RUN, out)
             pages = sorted(out.glob("**/index.html"))
-            content = [p for p in pages if "ansicht" not in p.parts]
+            # The German pages; the English ones under en/ are checked in Languages.
+            content = [p for p in pages if "ansicht" not in p.parts and p.relative_to(out).parts[0] != "en"]
             self.assertTrue(content)
             for page in content:
                 doc = page.read_text(encoding="utf-8")
@@ -58,7 +60,7 @@ class SiteBuild(unittest.TestCase):
                 for path in (f"tei/{s}.xml", f"ttl/{s}.ttl", f"json/{s}.json", f"regesten/{s}/index.html"):
                     self.assertTrue((out / path).is_file(), path)
                 doc = (out / "regesten" / s / "index.html").read_text(encoding="utf-8")
-                para = re.search(r'<p class="regest-text">(.*?)</p>', doc, re.S).group(1)
+                para = re.search(r'<p class="regest-text" lang="de">(.*?)</p>', doc, re.S).group(1)
                 self.assertEqual(html.unescape(re.sub(r"<[^>]+>", "", para)), r["text"], s)
             self.assertFalse(any("knowledge" in p.parts for p in out.rglob("*")))
             # The start page is the entry to the edition, the Atlas lives at atlas/ and loads the
@@ -96,11 +98,13 @@ class SiteBuild(unittest.TestCase):
                     "Ein Promptotyping-Experiment",
                 ):
                     self.assertIn(needle, doc, page.relative_to(out).as_posix())
-            # The views app carries the same footer and header parts as the static pages.
+            # The views app of the repository carries the German footer and header parts of the
+            # static pages.
+            ui = json.loads((ROOT / "js" / "i18n" / "de.json").read_text(encoding="utf-8"))["ui"]
             app_page = (ROOT / "index.html").read_text(encoding="utf-8")
-            self.assertIn(build_site.footer_html(texts, "../"), app_page)
-            self.assertIn(build_site.JUMP, app_page)
-            self.assertIn(build_site.github_link(texts), app_page)
+            self.assertIn(build_site.footer_html(texts, ui, "../", "../"), app_page)
+            self.assertIn(build_site.jump_html(ui), app_page)
+            self.assertIn(build_site.github_link(texts, ui), app_page)
 
 
 class AtlasRoutes(unittest.TestCase):
@@ -159,6 +163,212 @@ class RegestPage(unittest.TestCase):
             self.assertIn(needle, page)
         self.assertNotIn("reg-meta", card)
         self.assertNotIn("Metadaten", card)
+
+
+# German function words and letters that betray German interface text in an English page; a
+# word counts only as a whole word. Source text is exempt where an element marks it lang="de".
+GERMAN_WORDS = frozenset(
+    [
+        "der",
+        "die",
+        "das",
+        "und",
+        "mit",
+        "ohne",
+        "nicht",
+        "von",
+        "bis",
+        "ein",
+        "eine",
+        "einer",
+        "zu",
+        "im",
+        "auf",
+        "für",
+        "oder",
+        "wird",
+        "sind",
+        "ist",
+        "dem",
+        "den",
+        "des",
+        "als",
+        "nach",
+        "bei",
+        "aus",
+        "über",
+        "zum",
+        "zur",
+        "sich",
+        "noch",
+        "auch",
+    ]
+)
+GERMAN_LETTERS = re.compile(r"[äöüÄÖÜß]")
+VOID = frozenset(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"])
+UI_ATTRS = ("aria-label", "title", "placeholder", "alt")
+
+
+class _LangText(HTMLParser):
+    """Text and interface attributes of a page's body with the language each stands in."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.stack: list[tuple[str, str | None, bool]] = []
+        self.parts: list[tuple[str, str]] = []
+
+    def _lang(self) -> str:
+        """The language an element states below <html>, empty where it inherits the page's."""
+        return next((lang for tag, lang, _ in reversed(self.stack) if lang and tag != "html"), "")
+
+    def _skipped(self) -> bool:
+        return any(skip for _, _, skip in self.stack)
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        a = dict(attrs)
+        lang = a.get("lang") or (a.get("hreflang") if tag == "a" else None)
+        if tag not in VOID:
+            self.stack.append((tag, lang, tag in ("script", "style", "head")))
+        if not self._skipped():
+            here = (lang if tag != "html" else None) or self._lang()
+            for name in UI_ATTRS:
+                if a.get(name):
+                    self.parts.append((here, a[name]))
+
+    def handle_endtag(self, tag: str) -> None:
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i][0] == tag:
+                del self.stack[i:]
+                break
+
+    def handle_data(self, data: str) -> None:
+        if data.strip() and not self._skipped():
+            self.parts.append((self._lang(), data))
+
+
+def german_outside(doc: str) -> list[str]:
+    """Every piece of an English page's interface text that reads as German. Interface text
+    inherits the language of the page; data that states its own language (source text with
+    lang="de", the agents' English notes with lang="en") is not interface text."""
+    parser = _LangText()
+    parser.feed(doc)
+    hits = []
+    for lang, text in parser.parts:
+        if lang:
+            continue
+        # Case-sensitive: German function words are lower case in running text, and "MIT" is a licence.
+        words = set(re.findall(r"[A-Za-zÄÖÜäöüß]+", text))
+        if GERMAN_LETTERS.search(text) or words & GERMAN_WORDS:
+            hits.append(text.strip()[:80])
+    return hits
+
+
+def _frame(doc: str, tag: str) -> str:
+    """Header or footer of a page with its relative prefixes, the current item and the target of
+    the language switch removed, so the frames of different page types can be compared."""
+    part = re.search(rf"<{tag}\b.*?</{tag}>", doc, re.S).group(0)
+    part = re.sub(r'(href|src)="(\./|\.\./)*', r'\1="', part)
+    part = part.replace(' aria-current="page"', "").replace(' id="site-nav"', "")
+    part = re.sub(r'<nav class="site-nav"[^>]*>.*?</nav>', "<nav/>", part, flags=re.S)
+    return re.sub(r'(class="lang-switch" href=")[^"]*', r"\1", part)
+
+
+class Languages(unittest.TestCase):
+    """The German site at the root and the English one under en/ (2026-11-18)."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.out = Path(cls.tmp.name) / "site"
+        with redirect_stdout(StringIO()):
+            build_site.build(SOURCE, RUN, cls.out)
+        cls.dicts = {
+            lang: json.loads((ROOT / "js" / "i18n" / f"{lang}.json").read_text(encoding="utf-8"))
+            for lang in build_site.LANGS
+        }
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        cls.tmp.cleanup()
+
+    def pages(self, lang: str) -> list[Path]:
+        base = self.out if lang == "de" else self.out / lang
+        found = [p for p in base.glob("**/index.html") if lang != "de" or "en" not in p.relative_to(self.out).parts[:1]]
+        # The forwarding stubs of former addresses leave at once and carry no frame.
+        return [p for p in found if 'http-equiv="refresh"' not in p.read_text(encoding="utf-8")]
+
+    def test_every_key_in_both_languages(self) -> None:
+        de, en = (self.dicts[lang]["ui"] for lang in ("de", "en"))
+        self.assertEqual(sorted(de), sorted(en))
+        for key in de:
+            self.assertEqual(isinstance(de[key], dict), isinstance(en[key], dict), key)
+            for value in (de[key], en[key]):
+                forms = value.values() if isinstance(value, dict) else [value]
+                self.assertTrue(all(isinstance(f, str) and f for f in forms), key)
+        texts = json.loads((ROOT / "edition" / "texts.json").read_text(encoding="utf-8"))
+        self.assertLessEqual(set(self.dicts["en"]["edition"]), set(texts))
+        # Every literal key the scripts and the build name stands in the dictionaries.
+        sources = [*(ROOT / "js").glob("*.js"), *(ROOT / "js" / "edition").glob("*.js"), ROOT / "build_site.py"]
+        call = re.compile(r"""\b(?:t|T|H|tr|tr_html|run_in)\((?:ui, )?["']([a-z][\w.-]*[\w-])["']""")
+        used = {key for path in sources for key in call.findall(path.read_text(encoding="utf-8"))}
+        self.assertTrue(used)
+        self.assertEqual(sorted(used - set(de)), [])
+        # The keys the scripts compose from a closed set.
+        families = re.findall(r'key: "(\w+)", angle', (ROOT / "js" / "relations.js").read_text(encoding="utf-8"))
+        composed = [f"family.{k}.{w}" for k in families for w in ("short", "label")]
+        composed += [f"atlas.mode.{k}" for k in ("wuerfel", "karte", "zeit", "jahrzehnte")]
+        composed += [f"stand.{k}" for k in ("ruler", "church", "lay", "open")]
+        composed += [f"tb.order.{k}" for k in ("anzahl", "zeit", "name")]
+        composed += [f"list.col.{k}" for k in ("year", "number", "place", "statements", "regest")]
+        composed += [f"verdict.{k}" for k in ("stimmt", "stimmt-nicht", "strittig", "unklar")]
+        composed += [f"app.{k}" for k in ("original", "literature", "footnotes")]
+        self.assertEqual(sorted(set(composed) - set(de)), [])
+
+    def test_english_pages_carry_no_german_interface_text(self) -> None:
+        pages = self.pages("en")
+        self.assertGreater(len(pages), 10)
+        for page in pages:
+            doc = page.read_text(encoding="utf-8")
+            self.assertEqual(german_outside(doc), [], page.relative_to(self.out).as_posix())
+        # The scan finds German where it is not marked.
+        self.assertTrue(german_outside('<html lang="en"><body><p>Zurück zur Liste</p></body></html>'))
+        self.assertFalse(german_outside('<html lang="en"><body><p lang="de">Zurück zur Liste</p></body></html>'))
+
+    def test_switch_lang_and_hreflang(self) -> None:
+        for lang in build_site.LANGS:
+            other = next(x for x in build_site.LANGS if x != lang)
+            for page in self.pages(lang):
+                doc = page.read_text(encoding="utf-8")
+                where = page.relative_to(self.out).as_posix()
+                self.assertIn(f'<html lang="{lang}"', doc, where)
+                switch = re.search(rf'<a class="lang-switch" href="([^"]+)" hreflang="{other}" lang="{other}"', doc)
+                self.assertIsNotNone(switch, where)
+                for code in build_site.LANGS:
+                    alt = re.search(rf'<link rel="alternate" hreflang="{code}" href="([^"]+)">', doc)
+                    self.assertIsNotNone(alt, f"{where} {code}")
+                    self.assertTrue((page.parent / alt.group(1) / "index.html").resolve().is_file(), f"{where} {code}")
+                self.assertTrue((page.parent / switch.group(1) / "index.html").resolve().is_file(), where)
+
+    def test_one_header_and_footer_per_language(self) -> None:
+        for lang in build_site.LANGS:
+            base = self.out if lang == "de" else self.out / lang
+            slug = next(p.parent.name for p in (base / "regesten").glob("*/index.html"))
+            person = next(p.parent.name for p in (base / "personen").glob("*/index.html"))
+            kinds = ["", "atlas", "regesten", f"regesten/{slug}", "personen", f"personen/{person}", "ansicht"]
+            docs = {k: (base / k / "index.html").read_text(encoding="utf-8") for k in kinds}
+            for tag in ("header", "footer"):
+                frames = {k: _frame(doc, tag) for k, doc in docs.items()}
+                for k, frame in frames.items():
+                    self.assertEqual(frame, frames[""], f"{lang} {tag} {k}")
+        # Data, files and scripts exist once, at the root.
+        for shared in ("ansicht/data", "ansicht/js", "tei", "ttl", "json", "daten"):
+            self.assertFalse((self.out / "en" / shared).exists(), shared)
+        # The slides of the guest unit stand on both start pages, under the intro and in Entstehung.
+        for lang, word in (("de", "Foliensatz der Gasteinheit"), ("en", "Slides of the guest unit")):
+            start = (self.out / ("" if lang == "de" else lang) / "index.html").read_text(encoding="utf-8")
+            self.assertEqual(start.count(build_site.SLIDES), 2, lang)
+            self.assertIn(word, start)
+            self.assertIn("Windhager et al. (2019)", start)
 
 
 class HiddenAttribute(unittest.TestCase):

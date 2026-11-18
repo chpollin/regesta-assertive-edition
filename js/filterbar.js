@@ -12,6 +12,7 @@
 import { h } from "./dom.js";
 import { FAMILIES, familyIcon } from "./relations.js";
 import { fold } from "./selection.js";
+import { t } from "./i18n.js";
 
 /** Rows of a result list shown at once; further rows follow on scrolling or on the button. */
 export const LIST_STEP = 100;
@@ -70,7 +71,8 @@ export function timeBand(store, filters, markYears, { ends = true } = {}) {
     rect({ x: x(y), y: H - bh, width: Math.max(1, bw - 0.5), height: bh, class: y >= filters.from && y <= filters.to ? "band-bar is-in" : "band-bar" });
   }
   for (const y of markYears) rect({ x: x(y), y: 0, width: Math.max(2, bw), height: 5, class: "band-mark" });
-  const label = h("span", { class: "band-label", text: `${filters.from} bis ${filters.to}` });
+  const span = (from, to) => t("band.span", { from, to });
+  const label = h("span", { class: "band-label", text: span(filters.from, filters.to) });
   const range = (which) =>
     h("input", {
       type: "range",
@@ -79,16 +81,16 @@ export function timeBand(store, filters, markYears, { ends = true } = {}) {
       max: String(hi),
       step: "1",
       value: String(which === "from" ? filters.from : filters.to),
-      "aria-label": which === "from" ? "Zeitraum ab" : "Zeitraum bis",
+      "aria-label": which === "from" ? t("band.from") : t("band.to"),
       onchange: (e) => filters.set({ [which]: Number(e.target.value) }),
       oninput: (e) => {
-        label.textContent = which === "from" ? `${e.target.value} bis ${filters.to}` : `${filters.from} bis ${e.target.value}`;
+        label.textContent = which === "from" ? span(e.target.value, filters.to) : span(filters.from, e.target.value);
       },
     });
   const showEnds = ends || filters.from !== lo || filters.to !== hi;
   return h(
     "div",
-    { class: "band", role: "group", "aria-label": "Zeitraum" },
+    { class: "band", role: "group", "aria-label": t("facet.time") },
     h("div", { class: "band-track" }, svg, range("from"), range("to")),
     h("div", { class: `band-scale${showEnds ? "" : " is-rest"}` }, showEnds ? h("span", { text: String(lo) }) : null, label, showEnds ? h("span", { text: String(hi) }) : null),
   );
@@ -156,7 +158,7 @@ export function createFacets(store, filters, opts) {
   const placeInput = searchField(
     `${prefix}-ort`,
     `${prefix}-places`,
-    "Ort suchen",
+    t("facet.place"),
     (value) => {
       const id = resolve(value, placeLabels, (x) => places[x].l);
       if (id) filters.set({ place: id });
@@ -167,7 +169,7 @@ export function createFacets(store, filters, opts) {
   const personInput = searchField(
     `${prefix}-person`,
     `${prefix}-persons`,
-    "Person suchen",
+    t("facet.person"),
     (value) => {
       const id = resolve(value, personLabels, (x) => persons[x].l);
       if (id && !filters.persons.includes(id)) filters.set({ persons: [...filters.persons, id] });
@@ -182,8 +184,8 @@ export function createFacets(store, filters, opts) {
       "span",
       { class: "chip", title },
       key ? h("span", { class: `it-pkey ${key}`, "aria-hidden": "true" }) : null,
-      h("span", { class: "chip-name", text }),
-      h("button", { type: "button", class: "chip-x", "aria-label": `${text} entfernen`, title: "Entfernen", onclick: onRemove }, removeSign()),
+      h("span", { class: "chip-name", lang: "de", text }),
+      h("button", { type: "button", class: "chip-x", "aria-label": t("chip.removeAria", { name: text }), title: t("chip.remove"), onclick: onRemove }, removeSign()),
     );
   const artButtons = FAMILIES.map((f) =>
     h(
@@ -208,8 +210,8 @@ export function createFacets(store, filters, opts) {
     ),
   );
   const layerButtons = [
-    ["alle", "Alle Regesten", "it-key"],
-    ["aussagen", "mit Aussagen", "it-key is-evidenced"],
+    ["alle", t("layer.all"), "it-key"],
+    ["aussagen", t("layer.statements"), "it-key is-evidenced"],
   ].map(([key, text, sign]) =>
     h(
       "button",
@@ -219,7 +221,7 @@ export function createFacets(store, filters, opts) {
     ),
   );
   // The text search: live in the list, greyed elsewhere while the address carries it.
-  const textInput = h("input", { type: "search", class: "facet-input", id: `${prefix}-q`, autocomplete: "off", placeholder: "Regesttext oder Nummer", "aria-label": "Regesttext oder Nummer", value: filters.q });
+  const textInput = h("input", { type: "search", class: "facet-input", id: `${prefix}-q`, autocomplete: "off", placeholder: t("facet.text"), "aria-label": t("facet.text"), value: filters.q });
   if (off("text")) {
     textInput.readOnly = true;
     textInput.setAttribute("aria-disabled", "true");
@@ -240,11 +242,11 @@ export function createFacets(store, filters, opts) {
     applies.text === true ? textFacet : null,
     // Band and chips say what they filter („1122 bis 1190“, „Alle Regesten“); only the kinds
     // of statement need their word, Art (subtractive pass of the Atlas slice).
-    facet("time", { role: "group", "aria-label": "Zeitraum" }, bandSlot),
+    facet("time", { role: "group", "aria-label": t("facet.time") }, bandSlot),
     facet("place", {}, placeInput, placeList, placeChip),
     facet("person", {}, personInput, personList, personChips),
-    facet("art", { role: "group", "aria-labelledby": `${prefix}-f-art` }, h("span", { class: "facet-label", id: `${prefix}-f-art`, text: "Art" }), h("div", { class: "art-chips" }, artButtons)),
-    facet("layer", { role: "group", "aria-label": "Schicht" }, h("div", { class: "layer-chips" }, layerButtons)),
+    facet("art", { role: "group", "aria-labelledby": `${prefix}-f-art` }, h("span", { class: "facet-label", id: `${prefix}-f-art`, text: t("facet.art") }), h("div", { class: "art-chips" }, artButtons)),
+    facet("layer", { role: "group", "aria-label": t("facet.layer") }, h("div", { class: "layer-chips" }, layerButtons)),
   );
   const textSlot = applies.text === true ? null : textFacet;
   if (textSlot) element.append(textSlot);
@@ -253,10 +255,10 @@ export function createFacets(store, filters, opts) {
     const restore = focusKey(bandSlot);
     bandSlot.replaceChildren(timeBand(store, filters, opts.marks?.() ?? new Set(), { ends: false }));
     restore();
-    placeChip.replaceChildren(filters.place && places[filters.place] ? chip(places[filters.place].l, `Ausstellungsort ${places[filters.place].l}`, null, () => filters.set({ place: null })) : "");
+    placeChip.replaceChildren(filters.place && places[filters.place] ? chip(places[filters.place].l, t("chip.placeTitle", { place: places[filters.place].l }), null, () => filters.set({ place: null })) : "");
     personChips.replaceChildren(...filters.persons.filter((id) => persons[id]).map((id, j) => chip(persons[id].l, persons[id].f, `is-p${j}`, () => filters.set({ persons: filters.persons.filter((x) => x !== id) }))));
     personInput.hidden = filters.persons.length >= 2;
-    personInput.placeholder = filters.persons.length ? "Zweite Person" : "Person suchen";
+    personInput.placeholder = filters.persons.length ? t("facet.person2") : t("facet.person");
     personInput.setAttribute("aria-label", personInput.placeholder);
     for (const b of artButtons) b.setAttribute("aria-pressed", String(filters.familiesSet() && filters.familyOn(b.dataset.family)));
     const layer = opts.layer ?? filters.layer;
@@ -279,7 +281,7 @@ export function facetsSet(filters) {
 export function createCount(filters, { onReset } = {}) {
   const element = h("p", { class: "fb-count", role: "status" });
   function update(n, total) {
-    element.replaceChildren(h("b", { text: String(n) }), n === total ? " Regesten" : ` von ${total} Regesten`);
+    element.replaceChildren(h("b", { text: String(n) }), n === total ? ` ${t("count.regesta", { n })}` : ` ${t("count.of", { total })}`);
     if (filters.any())
       element.append(
         h(
@@ -292,7 +294,7 @@ export function createCount(filters, { onReset } = {}) {
               filters.reset();
             },
           },
-          "Zurücksetzen",
+          t("count.reset"),
         ),
       );
   }
@@ -350,9 +352,9 @@ export function createList(opts) {
         h("span", { class: "row-id", text: r.i }),
         // A missing place as a quiet dash; the words stand in the tooltip and for screen readers
         // (design round of 2026-11-18, the repeated „ohne Ort“ made the column restless).
-        r.place ? h("span", { class: "row-place", text: r.place }) : h("span", { class: "row-place is-none", title: "ohne Ort" }, h("span", { "aria-hidden": "true", text: "–" }), h("span", { class: "visually-hidden", text: "ohne Ort" })),
+        r.place ? h("span", { class: "row-place", lang: "de", text: r.place }) : h("span", { class: "row-place is-none", title: t("list.noPlace") }, h("span", { "aria-hidden": "true", text: "–" }), h("span", { class: "visually-hidden", text: t("list.noPlace") })),
         opts.extra?.(r) ?? null,
-        mark ? h("span", { class: mark.startsWith("is-p") ? `it-pkey ${mark}` : `it-key ${mark}`, title: mark === "is-evidenced" ? "mit Aussagen" : "Person", "aria-label": mark === "is-evidenced" ? "mit Aussagen" : null }) : null,
+        mark ? h("span", { class: mark.startsWith("is-p") ? `it-pkey ${mark}` : `it-key ${mark}`, title: mark === "is-evidenced" ? t("layer.statements") : t("list.person"), "aria-label": mark === "is-evidenced" ? t("layer.statements") : null }) : null,
       ),
     );
   };
@@ -361,7 +363,7 @@ export function createList(opts) {
     moreItem.remove();
     element.append(...items);
     if (rows.length > shown) {
-      more.textContent = `${Math.min(LIST_STEP, rows.length - shown)} weitere`;
+      more.textContent = t("list.more", { n: Math.min(LIST_STEP, rows.length - shown) });
       element.append(moreItem);
     }
   }
@@ -379,7 +381,7 @@ export function createList(opts) {
       rows = next;
       shown = LIST_STEP;
       element.replaceChildren();
-      if (!rows.length) element.append(h("li", { class: "fb-empty", text: "Keine Regesten in dieser Auswahl. Ein Facettenchip oder Zurücksetzen erweitert sie." }));
+      if (!rows.length) element.append(h("li", { class: "fb-empty", text: t("list.empty") }));
       paint(0);
       restore();
     },
@@ -405,20 +407,20 @@ export function createList(opts) {
  * tool row and main element, the opened regest over the right edge of the stage (docked
  * beside it from 100rem, a route of its own with a back arrow below 56rem), and the filter
  * sheet of narrow screens.
- * @param {{name: string, title: string, facets: HTMLElement, count: HTMLElement, list?: HTMLElement|null, tools: HTMLElement[], main: HTMLElement, backLabel: string, onEscape: () => void, dock?: boolean}} opts
+ * @param {{name: string, title: string, facets: HTMLElement, count: HTMLElement, list?: HTMLElement|null, tools: HTMLElement[], main: HTMLElement, backLabel: string, backShort: string, onEscape: () => void, dock?: boolean}} opts
  *   dock true: the regest docks beside the main element at every width above 56rem, as the list
  *   needs, whose rows an overlay would cover; otherwise it docks from 100rem.
  */
 export function createFrame(filters, opts) {
   const narrow = window.matchMedia("(max-width: 56rem)");
   const wide = window.matchMedia("(min-width: 100rem)");
-  const filterButton = h("button", { type: "button", class: "tool fb-filter-open", "aria-haspopup": "dialog", onclick: () => openSheet() }, "Filter");
-  const sheetDone = h("button", { type: "button", class: "tool", onclick: () => sheet.close() }, "Fertig");
-  const sheetReset = h("button", { type: "button", class: "link-button", hidden: true, onclick: () => filters.reset() }, "Zurücksetzen");
+  const filterButton = h("button", { type: "button", class: "tool fb-filter-open", "aria-haspopup": "dialog", onclick: () => openSheet() }, t("sheet.filter"));
+  const sheetDone = h("button", { type: "button", class: "tool", onclick: () => sheet.close() }, t("sheet.done"));
+  const sheetReset = h("button", { type: "button", class: "link-button", hidden: true, onclick: () => filters.reset() }, t("count.reset"));
   const sheetBody = h("div", { class: "fb-sheet-body" });
-  const sheet = h("dialog", { class: "fb-sheet", "aria-label": "Filter" }, h("div", { class: "fb-sheet-head" }, h("span", { class: "facet-label", text: "Filter" }), sheetReset, sheetDone), sheetBody);
+  const sheet = h("dialog", { class: "fb-sheet", "aria-label": t("sheet.filter") }, h("div", { class: "fb-sheet-head" }, h("span", { class: "facet-label", text: t("sheet.filter") }), sheetReset, sheetDone), sheetBody);
   const result = h("div", { class: "fb-result" }, opts.count, opts.list ?? null);
-  const bar = h("aside", { class: "fb-bar", "aria-label": "Filter und Regesten der Auswahl" }, opts.facets, result);
+  const bar = h("aside", { class: "fb-bar", "aria-label": t("bar.aria") }, opts.facets, result);
   sheet.addEventListener("close", () => {
     bar.prepend(opts.facets);
     filterButton.focus();
@@ -428,8 +430,8 @@ export function createFrame(filters, opts) {
     sheet.showModal();
   }
   const tools = h("div", { class: "frame-tools" }, ...opts.tools, h("span", { class: "frame-tools-end" }, filterButton, ...(opts.toolsEnd ?? [])));
-  const back = h("button", { type: "button", class: "tool frame-back", "aria-label": opts.backLabel, onclick: () => opts.onEscape() }, `← ${opts.backLabel.replace(/^Zurück zu[rm]? /, "")}`);
-  const detail = h("aside", { class: "frame-detail", "aria-label": "Geöffnetes Regest", hidden: true });
+  const back = h("button", { type: "button", class: "tool frame-back", "aria-label": opts.backLabel, onclick: () => opts.onEscape() }, `← ${opts.backShort}`);
+  const detail = h("aside", { class: "frame-detail", "aria-label": t("detail.aria"), hidden: true });
   detail.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       e.preventDefault();
@@ -460,8 +462,8 @@ export function createFrame(filters, opts) {
     /** Facet count on the sheet button, the count of the selection on its close button. */
     updateSheet(n) {
       const set = facetsSet(filters);
-      filterButton.textContent = set ? `Filter (${set})` : "Filter";
-      sheetDone.textContent = `${n} Regesten zeigen`;
+      filterButton.textContent = set ? `${t("sheet.filter")} (${set})` : t("sheet.filter");
+      sheetDone.textContent = t("sheet.show", { n });
       sheetReset.hidden = !filters.any();
     },
     show(card) {

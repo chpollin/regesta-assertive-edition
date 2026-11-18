@@ -17,9 +17,12 @@ Data flow
     source CSVs                       -> persistent identifier, original dating, literature,
                                          footnotes, register entries
     edition/texts.json, js/nav.json   -> title, definition, licence, navigation
-        -> <out>/index.html, regesten/, regesten/<slug>/, personen/, personen/<id>/,
+    js/i18n/de.json, js/i18n/en.json  -> every interface text, per language
+        -> <out>/index.html, atlas/, regesten/, regesten/<slug>/, personen/, personen/<id>/,
            json/, daten/<package>.zip, ansicht/ (the views app), and methode/, daten/, ueber/,
            which forward to their sections of the start page
+        -> <out>/en/ with the same pages in English (start, atlas/, regesten/, personen/,
+           ansicht/), reading the same data, files and scripts at the site root
 
 Usage
     python build_site.py
@@ -31,6 +34,13 @@ Design decisions
   filter and the back link of the `zurueck` parameter.
 - All page text that names title, subtitle, definition or licence comes from
   edition/texts.json; the navigation comes from js/nav.json, shared with the views app.
+- Every interface text comes from the dictionary of the page language, js/i18n/<lang>.json,
+  which the views read as well (js/i18n.js); the English dictionary also carries the English
+  form of the language-bound fields of texts.json under `edition`. Source text (regest text,
+  apparatus, quotations, names of persons and places, the LLM agents' own wording) is never
+  translated and stands in English pages with lang="de" (knowledge/glossary.md).
+- German pages stay at their addresses; English pages mirror them under en/. Every page links
+  the same page in the other language and names both as hreflang alternates.
 - knowledge/ is never copied. Third-party images from external_links are linked only.
 - Output is deterministic for the same inputs: no build timestamps, sorted iteration, a
   fixed date in the zip package.
@@ -70,6 +80,11 @@ WRITTEN: set[Path] = set()
 # preview marks its pages with PREVIEW_META, and publish_site.py refuses them.
 AGENT_REVIEW = HERE / "edition" / "agent-review-2026-11-14.json"
 PREVIEW_META = '<meta name="edition-preview" content="agent-review-2026-11-14">'
+# The languages of the site; the first is the language of the root, the others mirror it under
+# <lang>/. The slides of the guest unit at Technische Hochschule Mittelhessen (operator, 2026-11-18).
+LANGS = ("de", "en")
+SLIDES = "https://docs.google.com/presentation/d/1Pzj4v6xl6nEl6z4PPMvvihy0yW11F9cH2Xmp8SrYXNU/edit?usp=sharing"
+PLACEHOLDER = re.compile(r"\{(\w+)\}")
 
 
 class BuildError(Exception):
@@ -78,6 +93,35 @@ class BuildError(Exception):
 
 def esc(text: object) -> str:
     return html.escape(str(text), quote=True)
+
+
+def _choose(ui: dict, key: str, values: dict) -> str:
+    value = ui.get(key)
+    if value is None:
+        raise BuildError(f"missing interface text {key}")
+    if isinstance(value, dict):
+        value = value["one"] if values.get("n") == 1 else value["other"]
+    return value
+
+
+def tr(ui: dict, key: str, **values: object) -> str:
+    """The interface text of a key with {name} placeholders filled, as js/i18n.js t() does."""
+    return PLACEHOLDER.sub(
+        lambda m: str(values[m.group(1)]) if m.group(1) in values else m.group(0), _choose(ui, key, values)
+    )
+
+
+def tr_html(ui: dict, key: str, **markup: object) -> str:
+    """The interface text of a key as HTML: the text escaped, the placeholders filled with ready
+    markup (links, source names marked lang="de")."""
+    return PLACEHOLDER.sub(
+        lambda m: str(markup[m.group(1)]) if m.group(1) in markup else m.group(0), esc(_choose(ui, key, markup))
+    )
+
+
+def de(text: object) -> str:
+    """Source text inside an interface sentence: escaped and marked German."""
+    return f'<span lang="de">{esc(text)}</span>'
 
 
 def slug(identifier: str) -> str:
@@ -148,7 +192,11 @@ class Site:
         self.source = source
         self.run_id = run_id
         self.out = out
-        self.texts = _load(HERE / "edition" / "texts.json")
+        self.base_texts = _load(HERE / "edition" / "texts.json")
+        self.dicts = {lang: _load(HERE / "js" / "i18n" / f"{lang}.json") for lang in LANGS}
+        self.lang = LANGS[0]
+        # German prefLabel to English prefLabel of the frozen vocabulary (build_data.py).
+        self.vocabulary = edition.get("vocabulary", {})
         self.nav = _load(HERE / "js" / "nav.json")["items"]
         self.manifest = _load(source / "runs" / run_id / "manifest.json")
         self.edition = edition
@@ -189,8 +237,71 @@ class Site:
                     out[row["id"]] = row
         return out
 
-    def regest_href(self, root: str, uid: str, claim: str | None = None) -> str:
-        return f"{root}regesten/{self.slugs[uid]}/" + (f"#f-{claim}" if claim else "")
+    @property
+    def texts(self) -> dict:
+        """texts.json with the language-bound fields of the page language (en.json, edition)."""
+        return {**self.base_texts, **self.dicts[self.lang].get("edition", {})}
+
+    @property
+    def ui(self) -> dict:
+        return self.dicts[self.lang]["ui"]
+
+    def prefix(self, lang: str | None = None) -> str:
+        """The folder of a language below the site root: none for the first, en/ for English."""
+        lang = lang or self.lang
+        return "" if lang == LANGS[0] else f"{lang}/"
+
+    def T(self, key: str, **values: object) -> str:
+        return tr(self.ui, key, **values)
+
+    def H(self, key: str, **markup: object) -> str:
+        return tr_html(self.ui, key, **markup)
+
+    def term(self, label: str) -> str:
+        """A label of the model in the page language: the English prefLabel of the frozen
+        vocabulary, else the dictionary's word for a label the build coins, else the label."""
+        if self.lang == LANGS[0] or not label:
+            return label
+        return self.vocabulary.get(label) or self.dicts[self.lang].get("terms", {}).get(label) or label
+
+    def rel(self, path: str) -> tuple[str, str]:
+        """root, the way to the site root (data, files, scripts), and home, the way to the start
+        of the page language (pages), from a page at path inside its language."""
+        depth = len([p for p in path.split("/") if p])
+        return "../" * (depth + len([p for p in self.prefix().split("/") if p])), "../" * depth
+
+    def regest_href(self, home: str, uid: str, claim: str | None = None) -> str:
+        return f"{home}regesten/{self.slugs[uid]}/" + (f"#f-{claim}" if claim else "")
+
+    def header(self, path: str, nav: str) -> str:
+        """The one header of every page: title, objects, the jump, the language switch and the
+        repository; nav is the markup of the objects (empty in the views app, which fills it)."""
+        _, home = self.rel(path)
+        return (
+            f'<a class="skip" href="#main">{esc(self.T("skip"))}</a>\n'
+            f'<header class="site-header"><a class="site-title" href="{home or "./"}">{esc(self.texts["title"])} '
+            f'<span class="site-tag">{esc(self.texts["tag"])}</span></a>{nav}{jump_html(self.ui)}'
+            f"{self.lang_switch(path)}{github_link(self.texts, self.ui)}</header>"
+        )
+
+    def lang_href(self, path: str, lang: str) -> str:
+        root, _ = self.rel(path)
+        return f"{root}{self.prefix(lang)}{path + '/' if path else ''}" or "./"
+
+    def lang_switch(self, path: str) -> str:
+        """The link to the same page in the other language; js/edition/lang.js carries query and
+        hash along. Its words come from the other language's dictionary, in that language."""
+        other = next(lang for lang in LANGS if lang != self.lang)
+        name = self.dicts[other]["ui"]["lang.name"]
+        return (
+            f'<a class="lang-switch" href="{self.lang_href(path, other)}" hreflang="{other}" lang="{other}" '
+            f'aria-label="{esc(name)}" title="{esc(name)}">{esc(self.dicts[other]["ui"]["lang.code"])}</a>'
+        )
+
+    def alternates(self, path: str) -> str:
+        return "".join(
+            f'  <link rel="alternate" hreflang="{lang}" href="{self.lang_href(path, lang)}">\n' for lang in LANGS
+        )
 
     def page(
         self,
@@ -202,17 +313,18 @@ class Site:
         main: str,
         views: bool = False,
         description: str | None = None,
-        header_extra: str = "",
     ) -> None:
-        """Write one page in the shared frame: header from nav.json, main, footer licence line."""
-        root = "../" * (len(path.split("/")) if path else 0)
+        """Write one page in the shared frame of its language: header from nav.json, main, footer.
+        path is the address inside the language; English pages go below en/."""
+        root, home = self.rel(path)
         # A page belongs to an object of the navigation either directly or as one of its
         # representations.
         owner = next((it["key"] for it in self.nav if any(v["key"] == key for v in it.get("views", []))), key)
         nav = "".join(
-            f'<a href="{root}{esc(item["href"])}" data-nav="{esc(item["key"])}"{CURRENT if item["key"] == owner else ""}>{esc(item["label"])}</a>'
+            f'<a href="{home}{esc(item["href"])}" data-nav="{esc(item["key"])}"{CURRENT if item["key"] == owner else ""}>{esc(self.T("nav." + item["key"]))}</a>'
             for item in self.nav
         )
+        nav = f'<nav class="site-nav" aria-label="{esc(self.T("nav.aria"))}">{nav}</nav>'
         css = [f"{root}css/tokens.css", f"{root}css/shell.css"]
         if views:
             css += [f"{root}ansicht/css/{name}" for name in ("app.css", "space.css", "views.css", "frame.css")]
@@ -222,19 +334,18 @@ class Site:
         meta = f'  <meta name="description" content="{esc(description)}">\n' if description else ""
         if self.preview:
             meta += f"  {PREVIEW_META}\n"
-        footer = footer_html(self.texts, root)
+        footer = footer_html(self.texts, self.ui, root, home)
         doc = f"""<!doctype html>
-<html lang="de" class="no-js" data-root="{root}">
+<html lang="{self.lang}" class="no-js" data-root="{root}" data-home="{home}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(full_title)}</title>
-{meta}{links}
+{meta}{self.alternates(path)}{links}
   <script type="module" src="{root}js/edition/page.js"></script>
 </head>
 <body data-page="{kind}" data-layout="page">
-<a class="skip" href="#main">Zum Inhalt</a>
-<header class="site-header"><a class="site-title" href="{root or "./"}">{esc(self.texts["title"])} <span class="site-tag">{esc(self.texts["tag"])}</span></a><nav class="site-nav" aria-label="Edition">{nav}</nav>{JUMP}{github_link(self.texts)}{header_extra}</header>
+{self.header(path, nav)}
 <div class="site-body"><main class="site-main" id="main">
 {main}
 </main></div>
@@ -242,18 +353,57 @@ class Site:
 </body>
 </html>
 """
-        _write(self.out / path / "index.html", doc)
+        _write(self.out / self.prefix() / path / "index.html", doc)
+
+    def app_page(self) -> None:
+        """The views app at ansicht/ in the page language: the shell of index.html of the
+        repository with this language's header and footer; js/app.js fills the navigation and
+        the main area. The English shell loads the same modules and data from ansicht/."""
+        path = "ansicht"
+        root, home = self.rel(path)
+        app = f"{root}ansicht/"
+        css = "\n".join(
+            f'  <link rel="stylesheet" href="{app}css/{name}">'
+            for name in ("tokens.css", "app.css", "shell.css", "space.css", "views.css", "frame.css")
+        )
+        nav = f'<nav class="site-nav" aria-label="{esc(self.T("nav.aria"))}" id="site-nav"></nav>'
+        doc = f"""<!doctype html>
+<html lang="{self.lang}" data-root="{root}" data-home="{home}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{esc(self.texts["title"])}</title>
+{"  " + PREVIEW_META + chr(10) if self.preview else ""}{self.alternates(path)}{css}
+  <script type="module" src="{app}js/app.js"></script>
+  <script type="module" src="{root}js/edition/jump.js"></script>
+  <script type="module" src="{root}js/edition/lang.js"></script>
+</head>
+<body>
+{self.header(path, nav)}
+<div class="site-body">
+<main class="site-main" id="main" tabindex="-1"><p class="loading">{esc(self.T("app.loading"))}</p></main>
+</div>
+{footer_html(self.texts, self.ui, root, home)}
+<p class="visually-hidden" aria-live="polite" id="announce"></p>
+</body>
+</html>
+"""
+        _write(self.out / self.prefix() / path / "index.html", doc)
 
 
 # Shared fragments
 
-# The jump by RI number in the header of every page (js/edition/jump.js); hidden until the
-# script runs, since it needs the data of the views.
-JUMP = (
-    '<form class="jump" id="jump" hidden><label for="jump-n" class="visually-hidden">Regest nach RI-Nummer</label>'
-    '<input id="jump-n" name="n" type="search" autocomplete="off" placeholder="RI-Nummer" size="10">'
-    '<button type="submit">Öffnen</button><span class="jump-msg" role="status"></span></form>'
-)
+
+def jump_html(ui: dict) -> str:
+    """The jump by RI number in the header of every page (js/edition/jump.js); hidden until the
+    script runs, since it needs the data of the views."""
+    return (
+        f'<form class="jump" id="jump" hidden><label for="jump-n" class="visually-hidden">{esc(tr(ui, "jump.label"))}</label>'
+        f'<input id="jump-n" name="n" type="search" autocomplete="off" placeholder="{esc(tr(ui, "jump.placeholder"))}" size="10">'
+        f'<button type="submit">{esc(tr(ui, "jump.open"))}</button><span class="jump-msg" role="status"></span></form>'
+    )
+
+
 # The GitHub mark of Primer Octicons (MIT); the repository is private until the operator
 # changes its visibility.
 GITHUB_PATH = (
@@ -266,38 +416,41 @@ GITHUB_PATH = (
 )
 
 
-def github_link(texts: dict, cls: str = "site-github") -> str:
+def github_link(texts: dict, ui: dict, cls: str = "site-github") -> str:
     repo = texts["repository"]
+    label = esc(tr(ui, "github"))
     return (
-        f'<a class="{cls}" href="{esc(repo)}" rel="noopener" aria-label="Quellcode auf GitHub" title="Quellcode auf GitHub">'
+        f'<a class="{cls}" href="{esc(repo)}" rel="noopener" aria-label="{label}" title="{label}">'
         f'<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="{GITHUB_PATH}"/></svg></a>'
     )
 
 
-def footer_html(texts: dict, root: str) -> str:
+def footer_html(texts: dict, ui: dict, root: str, home: str) -> str:
     """One footer for every page: the maker with the mark, the Promptotyping experiment, the
     licences with the short attribution of Regesta Imperii and the way to the full one, the
-    repository and the imprint, which stand on the start page (operator, 2026-11-18). index.html of the views app carries the
-    same markup with root ../, kept in step by checks/test_site.py."""
+    repository and the imprint, which stand on the start page of the language (operator,
+    2026-11-18). index.html of the repository's views app carries the German markup with root and
+    home ../, kept in step by checks/test_site.py."""
     maker = texts["maker"]
     return (
         '<footer class="site-footer">'
         f'<a class="footer-maker" href="{esc(maker["url"])}" rel="noopener">'
         f'<img src="{root}img/dhcraft-mark-watercolor-128.png" alt="" width="20" height="23">{esc(maker["name"])}</a>'
-        f'<a href="{esc(maker["promptotyping"])}" rel="noopener">Ein Promptotyping-Experiment</a>'
-        f'<p class="footer-licence">{esc(texts["licenceLine"])} <a href="{root or "./"}#lizenz">Namensnennung</a></p>'
-        f'<span class="footer-end">{github_link(texts, "footer-github")}<a href="{root or "./"}#impressum">Impressum</a></span>'
+        f'<a href="{esc(maker["promptotyping"])}" rel="noopener">{esc(tr(ui, "footer.experiment"))}</a>'
+        f'<p class="footer-licence">{esc(texts["licenceLine"])} <a href="{home or "./"}#lizenz">{esc(tr(ui, "footer.attribution"))}</a></p>'
+        f'<span class="footer-end">{github_link(texts, ui, "footer-github")}<a href="{home or "./"}#impressum">{esc(tr(ui, "footer.imprint"))}</a></span>'
         "</footer>"
     )
 
 
-def segments_html(segments: list[dict], site: Site, root: str) -> str:
-    """Markup segments of edition.json as HTML; a regest link becomes a page link inside the run."""
+def segments_html(segments: list[dict], site: Site, home: str) -> str:
+    """Markup segments of edition.json as HTML; a regest link becomes a page link inside the run.
+    The segments are source text; the caller marks their element lang="de"."""
     out = []
     for seg in segments:
         text = esc(seg["t"])
         if seg.get("regest") in site.by_uid:
-            text = f'<a href="{site.regest_href(root, seg["regest"])}">{text}</a>'
+            text = f'<a href="{site.regest_href(home, seg["regest"])}">{text}</a>'
         elif seg.get("href", "").startswith(("http://", "https://")):
             text = f'<a href="{esc(seg["href"])}" rel="noopener">{text}</a>'
         if seg.get("i"):
@@ -344,15 +497,13 @@ def atlas_page(site: Site) -> None:
     """The Atlas (knowledge/interface-plan.md, part 1) at atlas/ since 2026-11-18, when the start
     page became the entry to the whole edition: js/edition/atlas.js mounts ansicht/js/atlas.js
     into #figure. Without JavaScript the page says what it shows and leads to the list."""
-    fallback = (
-        '<p class="figure-fallback">Hier stehen Orte und Jahre der Regesten als Raum-Zeit-Würfel. '
-        'Die Übersicht braucht JavaScript, die <a href="../regesten/">Liste der Regesten</a> nicht.</p>'
-    )
+    list_link = f'<a href="../regesten/">{esc(site.T("atlas.fallbackList"))}</a>'
+    fallback = f'<p class="figure-fallback">{site.H("atlas.fallback", list=list_link)}</p>'
     # The figure is the page, one window high (operator, 2026-11-14: „Man soll nicht
     # runterscrollen können“). The h1 stays for screen readers.
-    main = f"""<h1 class="visually-hidden">Atlas: Regesten mit Ausstellungsort in Raum und Zeit</h1>
+    main = f"""<h1 class="visually-hidden">{esc(site.T("atlas.title"))}</h1>
 <div class="figure" id="figure">{fallback}</div>"""
-    site.page(path="atlas", key="atlas", kind="atlas", title="Atlas", main=main, views=True)
+    site.page(path="atlas", key="atlas", kind="atlas", title=site.T("nav.atlas"), main=main, views=True)
 
 
 def _thumb_map(holdings: dict, realm: dict | None, basemap: dict | None) -> str:
@@ -432,6 +583,7 @@ def start_page(site: Site, package: str) -> None:
     addresses of this page (#/atlas, #/itinerar, ?ort= and the other facets) forward to atlas/
     (js/edition/start.js)."""
     t = site.texts
+    root, _ = site.rel("")
     data = site.out / "ansicht" / "data"
     holdings = _load(data / "holdings.json")
     realm = _load(HERE / "js" / "realm.json") if (HERE / "js" / "realm.json").is_file() else None
@@ -441,23 +593,23 @@ def start_page(site: Site, package: str) -> None:
     cards = [
         (
             "atlas/",
-            "Atlas",
-            "Wo und wann Friedrichs Urkunden ausgestellt wurden",
-            f"{counts['withIssuePlace']} Regesten mit Ausstellungsort",
+            site.T("nav.atlas"),
+            site.T("start.card.atlas"),
+            site.T("start.card.atlasCount", n=counts["withIssuePlace"]),
             _thumb_map(holdings, realm, basemap),
         ),
         (
             "regesten/",
-            "Regesten",
-            "Alle Regesten, gefiltert nach Zeit, Ort, Person und Art",
-            f"{counts['regesta']} Regesten, {evidenced} mit Aussagen",
+            site.T("nav.regesten"),
+            site.T("start.card.regesten"),
+            site.T("start.card.regestenCount", n=counts["regesta"], m=evidenced),
             _thumb_years(holdings),
         ),
         (
             "ansicht/#/",
-            "Personen",
-            "Belegte Beziehungen als Netz, Nennungen als Zeitband",
-            f"{len(holdings['persons'])} Personen in mindestens drei Regesten",
+            site.T("nav.personen"),
+            site.T("start.card.personen"),
+            site.T("start.card.personenCount", n=len(holdings["persons"])),
             _thumb_band(holdings),
         ),
     ]
@@ -468,50 +620,78 @@ def start_page(site: Site, package: str) -> None:
     )
     maker = t["maker"]
     src = t["source"]
+    link = lambda href, text: f'<a href="{esc(href)}" rel="noopener">{esc(text)}</a>'  # noqa: E731
+    # The slides of the guest unit, under the intro and in the section on how the edition came
+    # about (operator, 2026-11-18).
+    slides = link(SLIDES, site.T("start.slides"))
     # Since 2026-11-18 (operator: „Start und Über soll es nicht geben, sondern das soll
     # zusammengeführt werden“) the start page carries everything Über carried: the steps with
     # their producers and notes, how the edition came about, data and licence with the full
     # attribution, the note on the mark and the imprint. The ids are the anchors of the former
-    # Über page, so ueber/, methode/ and daten/ forward to the same sections.
+    # Über page, so ueber/, methode/ and daten/ forward to the same sections. German names of
+    # the guest unit, the course and the university stay German on the English page.
+    origin = site.H(
+        "start.origin",
+        promptotyping=link(maker["promptotyping"], "Promptotyping"),
+        maker=esc(maker["name"]),
+        unit=site.H("start.origin.unit"),
+        course=de("Graphbasierte Systeme"),
+        university=f'<span lang="de">{site.H("start.origin.university")}</span>',
+        windhager=link("https://doi.org/10.1109/TVCG.2018.2830759", "Windhager et al. (2019)"),
+    )
+    files = site.H(
+        "start.files",
+        package=f'<a href="{root}daten/{esc(package)}" download>{esc(site.T("start.files.package"))}</a>',
+        ccby=link(t["licences"]["data"]["url"], "CC BY 4.0"),
+        mit=link(t["licences"]["code"]["url"], "MIT"),
+        version=esc(t["release"]["version"]),
+        date=esc(t["release"]["date"]),
+        rio=link(src["url"], "Regesta Imperii Online"),
+        lab=link(src["lab"], "RI Lab"),
+        github=link(t["repository"], "GitHub"),
+    )
     main = f"""<h1>{esc(t["title"])}</h1>
-<p class="intro">Die Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, die LLM-Agenten aus dem Regesttext gewonnen haben, jede an ihren Wortlaut gebunden. Daneben stehen alle {counts["regesta"]} Regesten der Lieferung mit Ort und Zeit.</p>
+<p class="intro">{site.H("start.intro", n=counts["regesta"])}</p>
+<p class="intro-slides">{slides}</p>
 <ul class="entry-cards" role="list">{entries}</ul>
-<section aria-labelledby="methode" class="process"><h2 id="methode">Wie die Aussagen entstehen</h2>
+<section aria-labelledby="methode" class="process"><h2 id="methode">{esc(site.T("start.process"))}</h2>
 {process_html(site, notes=True)}</section>
 <div class="start-about">
-<section aria-labelledby="entstehung" class="start-origin"><h2 id="entstehung">Entstehung</h2>
-<p>Die Edition ist ein <a href="{esc(maker["promptotyping"])}" rel="noopener">Promptotyping</a>-Experiment von {esc(maker["name"])}, entstanden als Lehrbeispiel für die Gasteinheit „Agentic Engineering für Forschungsdatenworkflows“ am 20. November 2026 in der Lehrveranstaltung „Graphbasierte Systeme“ der Technischen Hochschule Mittelhessen. LLM-Agenten in Claude Code haben Pipeline, Daten und Oberfläche erzeugt. Die Idee zum Raum-Zeit-Würfel im Atlas ist von <a href="https://doi.org/10.1109/TVCG.2018.2830759" rel="noopener">Windhager et al. (2019)</a> übernommen, die den Space-Time Cube für Sammlungsdaten des kulturellen Erbes beschreiben. Sie arbeiteten mit dem AI-Harness von {esc(maker["name"])}, also den Anweisungen, Arbeitsverfahren und Werkzeugen, mit denen die Agenten eingerichtet sind, und mit dessen Obsidian-Vault. Beide enthalten Wissen, das über zwei Jahre aufgebaut und kuratiert wurde. Ein Mensch gibt die Richtung vor und beurteilt jeden Zwischenstand. Keine Aussage der Edition hat bisher eine Person fachlich geprüft.</p></section>
-<section aria-labelledby="impressum" class="start-imprint"><h2 id="impressum">Impressum</h2>
+<section aria-labelledby="entstehung" class="start-origin"><h2 id="entstehung">{esc(site.T("start.originHeading"))}</h2>
+<p>{origin}</p>
+<p>{slides}</p></section>
+<section aria-labelledby="impressum" class="start-imprint"><h2 id="impressum">{esc(site.T("footer.imprint"))}</h2>
 <p class="placeholder">{esc(t["imprint"])}</p></section>
-<section aria-labelledby="daten" class="start-files"><h2 id="daten">Daten und Lizenz</h2>
-<p><a href="daten/{esc(package)}" download>Das Paket mit allen Regesten</a> enthält Turtle als maßgebliche Fassung der Aussagen, TEI (gegen tei_all geprüft) und JSON, jede Regestseite bietet ihre drei Dateien einzeln. Texte und Daten <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, Code <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>, Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}. Quellen sind <a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a> und das <a href="{esc(src["lab"])}" rel="noopener">RI Lab</a>, der Quellcode liegt auf <a href="{esc(t["repository"])}" rel="noopener">GitHub</a>.</p>
+<section aria-labelledby="daten" class="start-files"><h2 id="daten">{esc(site.T("start.filesHeading"))}</h2>
+<p>{files}</p>
 <p id="lizenz" class="about-attribution">{esc(t["attribution"])}</p>
 <p class="about-attribution">{esc(t["markNote"])}</p></section>
 </div>"""
     site.page(path="", key="start", kind="start", title=t["title"], main=main, description=t["description"])
 
 
-def status_marks(regest: dict) -> str:
+def status_marks(site: Site, regest: dict) -> str:
     marks = []
     if regest["claims"] == 0:
-        marks.append("ohne Aussage")
+        marks.append(site.T("mark.none"))
     if regest["notes"].get("corrected"):
-        marks.append("nach Review korrigiert")
+        marks.append(site.T("mark.corrected"))
     if not regest["technical"]:
-        marks.append("technisch nicht bestanden")
+        marks.append(site.T("mark.failed"))
     return ", ".join(marks)
 
 
-def _families() -> tuple[dict[str, str], list[tuple[str, str, str, str]]]:
+def _families() -> tuple[dict[str, str], list[tuple[str, str]]]:
     """The eight relation families of js/relations.js, the one definition shared with the views:
-    act type -> family key, and per family key, short word, full label and sign path."""
+    act type -> family key, and per family key its sign path; their words stand in the
+    dictionaries (family.<key>.short, family.<key>.label)."""
     src = (HERE / "js" / "relations.js").read_text(encoding="utf-8")
-    fams = re.findall(r'key: "(\w+)", short: "([^"]+)", label: "([^"]+)".*?types: \[([^\]]*)\]', src)
+    fams = re.findall(r'key: "(\w+)", angle: \d+, types: \[([^\]]*)\]', src)
     icons = dict(re.findall(r'^\s+(\w+): "(M[^"]+)",$', src, re.M))
     if len(fams) != 8 or set(icons) != {f[0] for f in fams}:
         raise BuildError("js/relations.js: eight families with a sign each expected")
-    by_type = {t: key for key, _, _, types in fams for t in re.findall(r'"([^"]+)"', types)}
-    return by_type, [(key, short, label, icons[key]) for key, short, label, _ in fams]
+    by_type = {t: key for key, types in fams for t in re.findall(r'"([^"]+)"', types)}
+    return by_type, [(key, icons[key]) for key, _ in fams]
 
 
 FAMILY_OF, FAMILIES = _families()
@@ -519,34 +699,34 @@ FAMILY_OF, FAMILIES = _families()
 
 def family_sign(key: str) -> str:
     """The family's sign as inline SVG, as js/relations.js draws it in the views."""
-    path = next(p for k, _, _, p in FAMILIES if k == key)
+    path = next(p for k, p in FAMILIES if k == key)
     return (
         '<svg class="fam-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" '
         f'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="{path}"/></svg>'
     )
 
 
-def family_cell(keys: set[str]) -> str:
+def family_cell(site: Site, keys: set[str]) -> str:
     """The signs of a row's families in the families' fixed order, with their names for screen readers."""
-    ordered = [(k, label) for k, _, label, _ in FAMILIES if k in keys]
+    ordered = [(k, site.T(f"family.{k}.label")) for k, _ in FAMILIES if k in keys]
     signs = "".join(family_sign(k) for k, _ in ordered)
     names = ", ".join(label for _, label in ordered)
     return f'<span class="fams">{signs}</span><span class="visually-hidden">{esc(names)}</span>' if ordered else ""
 
 
-def list_filter(placeholder: str) -> str:
+def list_filter(site: Site, placeholder: str) -> str:
     """Search field and one switch per relation family above a list; js/edition/listfilter.js
     shows and drives it, so without JavaScript the full list stands without dead controls.
     The switches carry sign and word, so they are the legend of the signs in the rows."""
     toggles = "".join(
         f'<button type="button" class="fam-toggle" aria-pressed="false" data-f="{k}">'
-        f"{family_sign(k)}<span>{esc(label)}</span></button>"
-        for k, _, label, _ in FAMILIES
+        f"{family_sign(k)}<span>{esc(site.T(f'family.{k}.label'))}</span></button>"
+        for k, _ in FAMILIES
     )
     return (
         f'<div class="list-filter" hidden><input type="search" class="list-q" aria-label="{esc(placeholder)}" '
         f'placeholder="{esc(placeholder)}" autocomplete="off">'
-        f'<span class="fam-toggles" role="group" aria-label="Art der Aussage">{toggles}</span>'
+        f'<span class="fam-toggles" role="group" aria-label="{esc(site.T("listfilter.kinds"))}">{toggles}</span>'
         '<span class="filter-count" role="status"></span></div>'
     )
 
@@ -556,38 +736,58 @@ def regest_list_page(site: Site) -> None:
     the whole delivery with the shared filter bar into #list. Without JavaScript the page keeps
     the table of the run's regesta and a filter row that stays hidden."""
     rows = []
+    missing_date = f'<span class="missing">{esc(site.T("list.noDate"))}</span>'
+    missing_place = f'<span class="missing">{esc(site.T("list.noPlace"))}</span>'
     for r in site.regests:
-        date = segments_html(r["date"], site, "../") or '<span class="missing">ohne Datierung</span>'
+        date = segments_html(r["date"], site, "../")
         place = segments_html(r["place"], site, "../") if r["place"] and r["place"][0]["t"] != "null" else ""
         fams = {FAMILY_OF.get(b["title"], "order") for b in r["blocks"]}
-        marks = status_marks(r)
+        marks = status_marks(site, r)
         rows.append(
             f'<tr><th scope="row"><a href="{site.slugs[r["uid"]]}/">{esc(r["identifier"])}</a></th>'
-            f"<td>{date}</td><td>{place or '<span class=missing>ohne Ort</span>'}</td>"
-            f"<td>{family_cell(fams)}{f'<span class=row-mark>{esc(marks)}</span>' if marks else ''}</td></tr>"
+            f"<td>{f'<span lang=de>{date}</span>' if date else missing_date}</td><td>{f'<span lang=de>{place}</span>' if place else missing_place}</td>"
+            f"<td>{family_cell(site, fams)}{f'<span class=row-mark>{esc(marks)}</span>' if marks else ''}</td></tr>"
         )
-    main = f"""<h1 class="visually-hidden">Regesten</h1>
-<div class="figure" id="list"><p class="figure-fallback">Ohne JavaScript stehen hier die Regesten mit Aussagen; die Liste der ganzen Lieferung mit ihren Filtern braucht JavaScript.</p>
+    heads = "".join(
+        f'<th scope="col">{esc(site.T(f"list.th.{k}"))}</th>' for k in ("regest", "dating", "place", "statements")
+    )
+    main = f"""<h1 class="visually-hidden">{esc(site.T("nav.regesten"))}</h1>
+<div class="figure" id="list"><p class="figure-fallback">{esc(site.T("regesten.fallback"))}</p>
 <div class="table-wrap"><table class="list regests">
-<thead><tr><th scope="col">Regest</th><th scope="col">Datierung</th><th scope="col">Ort</th><th scope="col">Aussagen</th></tr></thead>
+<thead><tr>{heads}</tr></thead>
 <tbody>
 {chr(10).join(rows)}
 </tbody></table></div></div>"""
-    site.page(path="regesten", key="regesten", kind="regesten", title="Regesten", main=main, views=True)
+    site.page(path="regesten", key="regesten", kind="regesten", title=site.T("nav.regesten"), main=main, views=True)
 
 
-def factoid_html(site: Site, regest: dict, block: dict, before: dict | None, root: str) -> str:
+def statement_html(site: Site, block: dict) -> str:
+    """The sentence of a statement. German pages keep the sentence build_data.py composes; an
+    English page names the kind in English and the participants by their English role, with the
+    regest's own words marked German."""
+    if site.lang == LANGS[0]:
+        parts = []
+        for p in block["sentence"]:
+            if isinstance(p, str):
+                parts.append(esc(p))
+            elif p is block["sentence"][0]:
+                parts.append(f'<span class="act-type">{esc(p["text"])}</span>')
+            else:
+                parts.append(esc(p["text"]))
+        return "".join(parts)
+    people = [
+        f"{esc(site.term(line['role']) if line.get('role') else site.T('role.concerns'))}: {de(line['phrase'])}"
+        for line in block["lines"]
+        if line.get("phrase") and line.get("rel") in ("role", "concerns")
+    ]
+    kind = f'<span class="act-type">{esc(site.term(block["title"]))}</span>'
+    return f"{kind}: {'; '.join(people)}" if people else kind
+
+
+def factoid_html(site: Site, regest: dict, block: dict, before: dict | None, home: str) -> str:
     """One factoid: its sentence, the wording it rests on, literals, case note, earlier stage."""
     claim = block["head"]["id"]
     ids = evidence_ids(block)
-    parts = []
-    for p in block["sentence"]:
-        if isinstance(p, str):
-            parts.append(esc(p))
-        elif p is block["sentence"][0]:
-            parts.append(f'<span class="act-type">{esc(p["text"])}</span>')
-        else:
-            parts.append(esc(p["text"]))
     text = regest["text"]
     quotes = []
     for line in [block["head"], *block["lines"]]:
@@ -598,50 +798,51 @@ def factoid_html(site: Site, regest: dict, block: dict, before: dict | None, roo
     for line in block["lines"]:
         if line["kind"] == "literal":
             wording = f"„{esc(line['text'])}“" if line.get("verbatim") else esc(line["text"])
-            extra.append(f'<p class="lit"><span class="run-in">{esc(line["label"])}</span> {wording}</p>')
+            extra.append(
+                f'<p class="lit"><span class="run-in">{esc(site.term(line["label"]))}</span> <span lang="de">{wording}</span></p>'
+            )
         for ref in line.get("crossrefs", []):
             other = ref["other"]
             reg = other.get("register") or {}
-            extra.append(
-                f'<p class="case-note">Gleicher Name in <a href="{site.regest_href(root, other["regest"], other["claim"])}">'
-                f"{esc(site.by_uid[other['regest']]['identifier'])}</a>, dort „{esc(other['name'])}“"
-                + (f", Registereintrag „{esc(plain(reg.get('label')))}“" if reg.get("label") else "")
-                + ". Ob es dieselbe Person ist, entscheidet die Fachprüfung.</p>"
-            )
+            regest_link = f'<a href="{site.regest_href(home, other["regest"], other["claim"])}">{esc(site.by_uid[other["regest"]]["identifier"])}</a>'
+            entry = site.H("case.entry", entry=de(f"„{plain(reg.get('label'))}“")) if reg.get("label") else ""
+            name = de(f"„{other['name']}“")
+            extra.append(f'<p class="case-note">{site.H("case.note", regest=regest_link, name=name, entry=entry)}</p>')
     if before is not None and sentence_text(before) != sentence_text(block):
         extra.append(
-            f'<p class="before"><span class="run-in">Vor der Korrektur</span> {esc(sentence_text(before))}</p>'
+            f'<p class="before"><span class="run-in">{esc(site.T("statement.before"))}</span> {statement_html(site, before)}</p>'
         )
     elif before is None and regest["uid"] in site.extracted and regest["notes"].get("corrected"):
-        extra.append('<p class="before">Nach dem Review hinzugekommen.</p>')
+        extra.append(f'<p class="before">{esc(site.T("statement.added"))}</p>')
     return (
         f'<li class="factoid" id="f-{esc(claim)}" data-ev="{esc(" ".join(ids))}">'
-        f'<p class="sentence">{"".join(parts)}</p>'
-        f'<p class="evq">{" … ".join(quotes)}</p>{"".join(extra)}</li>'
+        f'<p class="sentence">{statement_html(site, block)}</p>'
+        f'<p class="evq" lang="de">{" … ".join(quotes)}</p>{"".join(extra)}</li>'
     )
 
 
-def history_html(regest: dict) -> str:
+def history_html(site: Site, regest: dict) -> str:
     h, notes = regest["history"], regest["notes"]
+    run_in = lambda key, **v: f'<span class="run-in">{esc(site.T(key, **v))}</span>'  # noqa: E731
     items = []
     for f in h["findings"]:
-        items.append(f'<li lang="en"><span class="run-in" lang="de">Befund</span> {esc(f["description"])}</li>')
+        items.append(f'<li>{run_in("history.finding")} <span lang="en">{esc(f["description"])}</span></li>')
     for d in h["decisions"]:
         items.append(
-            f'<li><span class="run-in">Abwägung, {esc(d["decision"])}</span> <span lang="en">{esc(d["reason"])}</span></li>'
+            f'<li>{run_in("history.decision", decision=site.term(d["decision"]))} <span lang="en">{esc(d["reason"])}</span></li>'
         )
     for c in notes["corrections"]:
-        items.append(f'<li><span class="run-in">Korrektur</span> <span lang="en">{esc(c["text"])}</span></li>')
+        items.append(f'<li>{run_in("history.correction")} <span lang="en">{esc(c["text"])}</span></li>')
     for g in notes["gaps"]:
         items.append(
-            f'<li><span class="run-in">Lücke im Modell, {esc(g["stage"])}</span> <span lang="en">{esc(g["text"])}</span></li>'
+            f'<li>{run_in("history.gap", stage=site.term(g["stage"]))} <span lang="{esc(g.get("lang", "en"))}">{esc(g["text"])}</span></li>'
         )
     for u in notes["unresolved"]:
-        items.append(f'<li><span class="run-in">Offene Identität</span> <span lang="en">{esc(u["text"])}</span></li>')
+        items.append(f'<li>{run_in("history.open")} <span lang="en">{esc(u["text"])}</span></li>')
     if not items:
         return ""
     return (
-        '<details class="history"><summary>Prüfverlauf der LLM-basierten Agenten</summary>'
+        f'<details class="history"><summary>{esc(site.T("history.summary"))}</summary>'
         f'<ul role="list">{"".join(items)}</ul></details>'
     )
 
@@ -649,89 +850,96 @@ def history_html(regest: dict) -> str:
 def regest_page(site: Site, index: int) -> None:
     r = site.regests[index]
     uid, s = r["uid"], site.slugs[r["uid"]]
-    root = "../../"
+    root, home = site.rel(f"regesten/{s}")
     row = site.rows[uid]
 
     # Paging as two arrows in the head line of the card (operator, 2026-11-14: the line
     # „Nächstes, …“ above the regest „so überhaupt nicht gut“); the name is the accessible label.
-    def pager_link(i: int, rel: str, word: str, sign: str) -> str:
+    def pager_link(i: int, rel: str, sign: str) -> str:
         other = site.regests[i]
-        label = f"{word} Regest, {other['short']}"
+        label = site.T(f"pager.{rel}", short=other["short"])
         return f'<a href="../{site.slugs[other["uid"]]}/" rel="{rel}" aria-label="{esc(label)}" title="{esc(label)}">{sign}</a>'
 
-    prev_link = pager_link(index - 1, "prev", "Vorheriges", "←") if index else ""
-    next_link = pager_link(index + 1, "next", "Nächstes", "→") if index + 1 < len(site.regests) else ""
-    date = segments_html(r["date"], site, root) or '<span class="missing">ohne Datierung</span>'
-    place = segments_html(r["place"], site, root) if r["place"] and r["place"][0]["t"] != "null" else ""
+    prev_link = pager_link(index - 1, "prev", "←") if index else ""
+    next_link = pager_link(index + 1, "next", "→") if index + 1 < len(site.regests) else ""
+    date = segments_html(r["date"], site, home)
+    date = f'<span lang="de">{date}</span>' if date else f'<span class="missing">{esc(site.T("list.noDate"))}</span>'
+    place = segments_html(r["place"], site, home) if r["place"] and r["place"][0]["t"] != "null" else ""
+    run_in = lambda key: f'<span class="run-in">{esc(site.T(key))}</span>'  # noqa: E731
     fields = []
     original = plain(row.get("original_date"))
     if original:
-        fields.append(f'<p><span class="run-in">Originaldatierung</span> {esc(original)}</p>')
+        fields.append(f"<p>{run_in('app.original')} {de(original)}</p>")
     if r["apparatus"]["transmission"]:
         fields.append(
-            f'<p><span class="run-in">Überlieferung</span> {segments_html(r["apparatus"]["transmission"], site, root)}</p>'
+            f'<p>{run_in("app.transmission")} <span lang="de">{segments_html(r["apparatus"]["transmission"], site, home)}</span></p>'
         )
     literature = plain(row.get("literature"))
     if literature:
-        fields.append(f'<p><span class="run-in">Literatur</span> {esc(literature)}</p>')
+        fields.append(f"<p>{run_in('app.literature')} {de(literature)}</p>")
     if r["apparatus"]["commentary"]:
         fields.append(
-            f'<p><span class="run-in">Kommentar</span> {segments_html(r["apparatus"]["commentary"], site, root)}</p>'
+            f'<p>{run_in("app.commentary")} <span lang="de">{segments_html(r["apparatus"]["commentary"], site, home)}</span></p>'
         )
     footnotes = plain(row.get("footnotes"))
     if footnotes:
-        fields.append(f'<p><span class="run-in">Anmerkungen</span> {esc(footnotes)}</p>')
+        fields.append(f"<p>{run_in('app.footnotes')} {de(footnotes)}</p>")
     uri = ri_uri(site, uid)
     external = LINK_RE.findall(row.get("external_links") or "")
     book = "".join(
-        f'<li><a href="{esc(target)}" rel="noopener">{esc(plain(label))}</a> (Bayerische Staatsbibliothek, extern)</li>'
-        if "bsb" in target or "mdz" in target
-        else f'<li><a href="{esc(target)}" rel="noopener">{esc(plain(label))}</a> (extern)</li>'
+        f'<li><a href="{esc(target)}" rel="noopener" lang="de">{esc(plain(label))}</a> ({esc(site.T("ext.bsb") if "bsb" in target or "mdz" in target else site.T("ext.other"))})</li>'
         for target, label in external
     )
     t = site.texts
-    citation_ri = f"{r['identifier']}, in: Regesta Imperii Online, URI: {uri}, CC BY 4.0, bearbeitet."
-    citation_ed = (
-        f"{t['title']}. {t['subtitle']}, {r['identifier']}, Fassung {t['release']['version']} "
-        f"vom {t['release']['date']}, Aussagen aus dem Lauf {site.run_id}."
+    citation_ri = site.T("cite.ri", identifier=r["identifier"], uri=uri)
+    citation_ed = site.T(
+        "cite.edition",
+        title=t["title"],
+        subtitle=t["subtitle"],
+        identifier=r["identifier"],
+        version=t["release"]["version"],
+        date=t["release"]["date"],
+        run=site.run_id,
     )
     # What the page view of js/regest-card.js takes from the delivery beyond edition.json:
     # further fields (Originaldatierung to the metadata, Literatur and Anmerkungen to the
-    # apparatus), the external links and the citation forms; js/edition/regest.js reads it.
-    extra_fields = [("Originaldatierung", original, "meta"), ("Literatur", literature, "comment")]
-    extra_fields.append(("Anmerkungen", footnotes, "comment"))
+    # apparatus), the external links and the citation forms; js/edition/regest.js reads it and
+    # names a field by its key from the dictionary (app.<key>).
+    extra_fields = [
+        ("original", original, "meta"),
+        ("literature", literature, "comment"),
+        ("footnotes", footnotes, "comment"),
+    ]
     page_meta = {
-        "fields": [{"label": lb, "text": text, "where": where} for lb, text, where in extra_fields if text],
+        "fields": [{"key": key, "text": text, "where": where} for key, text, where in extra_fields if text],
         "citations": [
-            {"label": "Zitierweise des Regests", "text": citation_ri},
-            {"label": "Zitierweise dieser Edition", "text": citation_ed},
+            {"key": "regest", "text": citation_ri},
+            {"key": "edition", "text": citation_ed},
         ],
-        "links": [{"label": "Digitalisat", "text": str(plain(label)), "href": target} for target, label in external],
+        "links": [{"text": str(plain(label)), "href": target} for target, label in external],
     }
     # A JSON island: every "<" is escaped, so no value can close or comment out the script element.
     meta_json = json.dumps(page_meta, ensure_ascii=False).replace("<", "\\u003c")
 
     ext = site.extracted.get(uid)
     before_by_node = {b["node"]: b for b in ext["blocks"]} if ext else {}
-    factoids = [factoid_html(site, r, b, before_by_node.get(b["node"]), root) for b in r["blocks"]]
+    factoids = [factoid_html(site, r, b, before_by_node.get(b["node"]), home) for b in r["blocks"]]
     removed = [b for n, b in before_by_node.items() if n not in {x["node"] for x in r["blocks"]}]
     if removed:
         factoids.append(
-            '<li class="factoid removed"><p class="before"><span class="run-in">Vor der Korrektur außerdem</span> '
-            + " ".join(esc(sentence_text(b)) for b in removed)
+            f'<li class="factoid removed"><p class="before">{run_in("statement.removed")} '
+            + " ".join(statement_html(site, b) for b in removed)
             + "</p></li>"
         )
     if r["claims"]:
-        state = "Diese Aussagen hat ein LLM-basierter Agent aus dem Regesttext erzeugt. "
-        state += "Sie sind technisch geprüft" if r["technical"] else "Sie haben die technische Prüfung nicht bestanden"
-        state += " und fachlich nicht geprüft."
+        state = [site.T("review.made"), site.T("review.checked" if r["technical"] else "review.failed")]
         if r["notes"].get("corrected"):
-            state += " Nach zwei Reviews wurden sie korrigiert, der frühere Stand steht bei der geänderten Aussage."
+            state.append(site.T("review.corrected"))
         elif ext:
-            state += " Der extrahierte Stand vor den Reviews ist mit diesem gleich."
-        statements = f'<p class="review-state">{state}</p><ol class="factoid-list" role="list">{"".join(factoids)}</ol>'
+            state.append(site.T("review.same"))
+        statements = f'<p class="review-state">{esc(" ".join(state))}</p><ol class="factoid-list" role="list">{"".join(factoids)}</ol>'
     else:
-        statements = '<p class="review-state">Der LLM-basierte Agent hat aus diesem Regest keine Aussage im Rahmen des Modells gewonnen.</p>'
+        statements = f'<p class="review-state">{esc(site.T("review.none"))}</p>'
 
     # Without JavaScript the files stand in the static reading; the card puts them in its head.
     downloads = (
@@ -741,19 +949,19 @@ def regest_page(site: Site, index: int) -> None:
     # The page shows the shared regest card of the views app (js/regest-card.js), rendered by
     # js/edition/regest.js into #card. The static content of #card is the reading without
     # JavaScript; citation and downloads stand below it in both cases.
-    main = f"""<div class="title-row"><h1 class="visually-hidden">{esc(r["identifier"])}</h1><nav class="pager" aria-label="Blättern">{prev_link}{next_link}<span class="back-slot"></span></nav></div>
+    main = f"""<div class="title-row"><h1 class="visually-hidden">{esc(r["identifier"])}</h1><nav class="pager" aria-label="{esc(site.T("pager.aria"))}">{prev_link}{next_link}<span class="back-slot"></span></nav></div>
 <div class="card-host" id="card" data-uid="{esc(uid)}" data-slug="{esc(s)}">
-<p class="paper-meta"><span>{esc(r["identifier"])}</span><span>{date}</span>{f"<span>{place}</span>" if place else ""}</p>
+<p class="paper-meta"><span>{esc(r["identifier"])}</span><span>{date}</span>{f'<span lang="de">{place}</span>' if place else ""}</p>
 {downloads}
-<p class="regest-text">{marked_text(r)}</p>
-<h2>Aussagen</h2>
+<p class="regest-text" lang="de">{marked_text(r)}</p>
+<h2>{esc(site.T("list.th.statements"))}</h2>
 {statements}
 <div class="fields">{"".join(fields)}</div>
-{history_html(r)}
+{history_html(site, r)}
 </div>
 <div class="cite">{f'<ul class="ext" role="list">{book}</ul>' if book else ""}
-<p><span class="run-in">Zitierweise des Regests</span> {esc(citation_ri)}</p>
-<p><span class="run-in">Zitierweise dieser Edition</span> {esc(citation_ed)}</p></div>
+<p>{run_in("cite.regestLabel")} {esc(citation_ri)}</p>
+<p>{run_in("cite.editionLabel")} {esc(citation_ed)}</p></div>
 <script type="application/json" id="regest-meta">{meta_json}</script>"""
     site.page(
         path=f"regesten/{s}",
@@ -761,7 +969,7 @@ def regest_page(site: Site, index: int) -> None:
         kind="regest",
         title=r["identifier"],
         main=main,
-        description=r["lead"],
+        description=r["lead"] if site.lang == LANGS[0] else None,
     )
 
 
@@ -784,6 +992,7 @@ def _roles(site: Site) -> dict[str, list[dict]]:
                 {"role": e["label"], "act": act["label"], "regest": e["regest"], "claim": e["claim"]}
             )
         elif e["kind"] == "parent":
+            # German labels of the vocabulary, as the role edges carry them; pages show them through site.term.
             out[e["source"]].append({"role": "Kind", "act": "Elternschaft", "regest": e["regest"], "claim": e["claim"]})
             out[e["target"]].append(
                 {"role": "Elternteil", "act": "Elternschaft", "regest": e["regest"], "claim": e["claim"]}
@@ -808,7 +1017,7 @@ def persons_pages(site: Site) -> None:
     )
     local = sorted((n for n in site.actors if n["local"]), key=lambda n: (_sort_key(n["label"]), n["id"]))
     groups = []
-    for title, nodes in (("Im Register der Regesta Imperii", registered), ("Nur im Wortlaut eines Regests", local)):
+    for title, nodes in ((site.T("persons.group.register"), registered), (site.T("persons.group.local"), local)):
         rows = []
         for n in nodes:
             rels = roles.get(n["id"], [])
@@ -820,20 +1029,20 @@ def persons_pages(site: Site) -> None:
             )
             q = re.sub(r"[^a-z0-9 ]", "", _fold(" ".join([n["label"], *(lb["label"] for lb in n["labels"])])))
             rows.append(
-                f'<tr data-q="{esc(q)}" data-f="{" ".join(sorted(fams))}"><th scope="row"><a href="{site.pslugs[n["id"]]}/">{esc(n["label"])}</a>{where}</th>'
-                f'<td>{family_cell(fams)}</td><td class="num">{len(n["regests"])}</td></tr>'
+                f'<tr data-q="{esc(q)}" data-f="{" ".join(sorted(fams))}"><th scope="row"><a href="{site.pslugs[n["id"]]}/" lang="de">{esc(n["label"])}</a>{where}</th>'
+                f'<td>{family_cell(site, fams)}</td><td class="num">{len(n["regests"])}</td></tr>'
             )
             person_page(site, n, rels)
         groups.append(
             f'<tbody><tr class="group"><th scope="rowgroup" colspan="3">{esc(title)}</th></tr>\n{chr(10).join(rows)}</tbody>'
         )
-    main = f"""<h1 class="visually-hidden">Personen und Gruppen</h1>
-{list_filter("Name")}
+    main = f"""<h1 class="visually-hidden">{esc(site.T("persons.indexTitle"))}</h1>
+{list_filter(site, site.T("persons.th.name"))}
 <div class="table-wrap"><table class="list persons">
-<thead><tr><th scope="col">Name</th><th scope="col">Aussagen</th><th scope="col" class="num">Regesten mit Aussagen</th></tr></thead>
+<thead><tr><th scope="col">{esc(site.T("persons.th.name"))}</th><th scope="col">{esc(site.T("list.th.statements"))}</th><th scope="col" class="num">{esc(site.T("persons.th.regesta"))}</th></tr></thead>
 {chr(10).join(groups)}
 </table></div>"""
-    site.page(path="personen", key="personen", kind="personen", title="Personen und Gruppen", main=main)
+    site.page(path="personen", key="personen", kind="personen", title=site.T("persons.indexTitle"), main=main)
 
 
 def _fold(text: str) -> str:
@@ -848,16 +1057,17 @@ def _fold(text: str) -> str:
 
 
 def person_page(site: Site, node: dict, rels: list[dict]) -> None:
-    root = "../../"
+    path = f"personen/{site.pslugs[node['id']]}"
+    _, home = site.rel(path)
     reg_id = _register_id(node["id"])
     register = site.register.get(reg_id) if reg_id else None
     if register:
-        entry = f'<p class="register">Im Register der Regesta Imperii: <span class="source">{esc(plain(register["label"]))}</span></p>'
+        entry = f'<p class="register">{esc(site.T("person.register"))} <span class="source" lang="de">{esc(plain(register["label"]))}</span></p>'
     else:
-        entry = '<p class="register">Ohne Registereintrag. Die Kennung gilt nur innerhalb ihres Regests.</p>'
+        entry = f'<p class="register">{esc(site.T("person.noRegister"))}</p>'
     other_labels = [lb["label"] for lb in node["labels"] if lb["label"] != node["label"]]
     forms = (
-        f'<p class="forms"><span class="run-in">Weitere Namensformen</span> {esc(", ".join(other_labels))}</p>'
+        f'<p class="forms"><span class="run-in">{esc(site.T("person.forms"))}</span> {de(", ".join(other_labels))}</p>'
         if other_labels
         else ""
     )
@@ -868,7 +1078,11 @@ def person_page(site: Site, node: dict, rels: list[dict]) -> None:
     for uid in sorted(by_regest, key=lambda u: site.by_uid[u]["sort"]):
         r = site.by_uid[uid]
         acts = ", ".join(
-            f'<a href="{site.regest_href(root, uid, x["claim"])}">{esc(x["act"])}</a> als {esc(x["role"])}'
+            site.H(
+                "person.as",
+                act=f'<a href="{site.regest_href(home, uid, x["claim"])}">{esc(site.term(x["act"]))}</a>',
+                role=esc(site.term(x["role"])),
+            )
             for x in by_regest[uid]
         )
         items.append(f'<li><span class="mention-head">{esc(r["identifier"])}, {esc(r["start"][:4])}</span> {acts}</li>')
@@ -876,21 +1090,15 @@ def person_page(site: Site, node: dict, rels: list[dict]) -> None:
         r = site.by_uid[uid]
         items.append(
             f'<li><span class="mention-head">{esc(r["identifier"])}, {esc(r["start"][:4])}</span> '
-            f'<a href="{site.regest_href(root, uid)}">genannt ohne Rolle in einer Aussage</a></li>'
+            f'<a href="{site.regest_href(home, uid)}">{esc(site.T("person.noRole"))}</a></li>'
         )
-    main = f"""<h1>{esc(node["label"])}</h1>
+    main = f"""<h1 lang="de">{esc(node["label"])}</h1>
 {entry}
 {forms}
-<p><a href="{root}ansicht/#/personen/{quote(node["id"], safe="")}">Beziehungen im Netz ansehen</a></p>
-<section aria-labelledby="m-title"><h2 id="m-title">Nennungen in Aussagen</h2>
+<p><a href="{home}ansicht/#/personen/{quote(node["id"], safe="")}">{esc(site.T("person.network"))}</a></p>
+<section aria-labelledby="m-title"><h2 id="m-title">{esc(site.T("person.mentions"))}</h2>
 <ul class="mentions" role="list">{"".join(items)}</ul></section>"""
-    site.page(
-        path=f"personen/{site.pslugs[node['id']]}",
-        key="personen",
-        kind="person",
-        title=node["label"],
-        main=main,
-    )
+    site.page(path=path, key="personen", kind="person", title=node["label"], main=main)
 
 
 def redirect_page(out: Path, path: str, section: str, title: str, licence: str) -> None:
@@ -925,22 +1133,17 @@ def forward_pages(site: Site) -> None:
     redirect_page(site.out, "daten", "daten", "Startseite, Daten und Lizenz", licence)
 
 
-# The producers of the steps on the start page, with their sign (16 unit grid, current colour).
+# The producers of the steps on the start page, with their sign (16 unit grid, current colour);
+# their names stand in the dictionaries (producer.<kind>).
 PRODUCERS = {
-    "script": (
-        "Skript",
-        "M5.5 3C4 3 4 4.5 4 6s-1.5 2-1.5 2S4 8.5 4 10s0 3 1.5 3M10.5 3C12 3 12 4.5 12 6s1.5 2 1.5 2-1.5.5-1.5 2 0 3-1.5 3",
-    ),
-    "agent": (
-        "LLM-Agent",
-        "M5.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM10.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 13c0-2.2 1.6-4 3.5-4S9 10.8 9 13M7 13c0-2.2 1.6-4 3.5-4S14 10.8 14 13",
-    ),
-    "person": ("Person", "M8 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM3 14c0-2.8 2.2-5 5-5s5 2.2 5 5"),
+    "script": "M5.5 3C4 3 4 4.5 4 6s-1.5 2-1.5 2S4 8.5 4 10s0 3 1.5 3M10.5 3C12 3 12 4.5 12 6s1.5 2 1.5 2-1.5.5-1.5 2 0 3-1.5 3",
+    "agent": "M5.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM10.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 13c0-2.2 1.6-4 3.5-4S9 10.8 9 13M7 13c0-2.2 1.6-4 3.5-4S14 10.8 14 13",
+    "person": "M8 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM3 14c0-2.8 2.2-5 5-5s5 2.2 5 5",
 }
 
 
 def producer_sign(kind: str) -> str:
-    path = PRODUCERS[kind][1]
+    path = PRODUCERS[kind]
     return (
         f'<svg class="step-sign" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" fill="none" '
         f'stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="{path}"/></svg>'
@@ -957,28 +1160,28 @@ def process_html(site: Site, notes: bool) -> str:
     # reading of twenty regesta is the agent review of knowledge/data.md; the human
     # verification is pending (pipeline.md), so it is drawn open.
     steps = [
-        ("Auswahl und Pakete", "script", "Regesten aus dem CSV-Export, je Regest ein Paket"),
-        ("Extraktion", "agent", f"Aussagen als RDF, an ihren Wortlaut gebunden ({m['model']})"),
-        ("Technische Prüfung", "script", "Form, Vokabular und wörtlicher Beleg"),
-        ("Review und Korrektur", "agent", "zwei Reviews, Abwägung, Korrektur, neue Prüfung"),
-        ("Gegenlesung einer Auswahl", "agent", "zwanzig Regesten, je Aussage zwei unabhängige LLM-Lesungen"),
-        ("TEI und Website", "script", "nach Regeln, ohne neue Aussage"),
-        ("Fachliche Prüfung", "person", "steht aus"),
+        ("select", "script"),
+        ("extract", "agent"),
+        ("validate", "script"),
+        ("review", "agent"),
+        ("reading", "agent"),
+        ("build", "script"),
+        ("expert", "person"),
     ]
     items = "".join(
         f'<li class="step is-{kind}{" is-open" if kind == "person" else ""}">'
-        f'<span class="step-mark" title="{PRODUCERS[kind][0]}">{producer_sign(kind)}'
-        f'<span class="visually-hidden">{PRODUCERS[kind][0]}:</span></span>'
-        f'<span class="step-title">{esc(title)}</span> <span class="step-note{"" if notes or kind == "person" else " visually-hidden"}">{esc(note)}</span></li>'
-        for title, kind, note in steps
+        f'<span class="step-mark" title="{esc(site.T(f"producer.{kind}"))}">{producer_sign(kind)}'
+        f'<span class="visually-hidden">{esc(site.T(f"producer.{kind}"))}:</span></span>'
+        f'<span class="step-title">{esc(site.T(f"step.{step}"))}</span> <span class="step-note{"" if notes or kind == "person" else " visually-hidden"}">{esc(site.T(f"step.{step}.note", model=m["model"]))}</span></li>'
+        for step, kind in steps
     )
     key = "".join(
-        f'<li><span class="step-mark is-{k}">{producer_sign(k)}</span>{esc(label)}</li>'
-        for k, (label, _) in PRODUCERS.items()
+        f'<li><span class="step-mark is-{k}">{producer_sign(k)}</span>{esc(site.T(f"producer.{k}"))}</li>'
+        for k in PRODUCERS
     )
     return (
         f'<ol class="steps{" has-notes" if notes else ""}" role="list">{items}</ol>'
-        f'<ul class="step-key" role="list" aria-label="Wer einen Schritt ausführt">{key}</ul>'
+        f'<ul class="step-key" role="list" aria-label="{esc(site.T("step.keyAria"))}">{key}</ul>'
     )
 
 
@@ -1035,7 +1238,8 @@ def copy_assets(site: Site, edition_json: Path, questions_json: Path) -> None:
     _copytree(HERE / "fonts", out / "fonts")
     _copytree(HERE / "img", out / "img")
     app = out / "ansicht"
-    _copy(HERE / "index.html", app / "index.html")
+    # The shell of the views app is written per language by Site.app_page; the scripts, styles
+    # and data below exist once, for both languages.
     _copytree(HERE / "js", app / "js", ignore=shutil.ignore_patterns("edition"))
     _copytree(HERE / "css", app / "css")
     _copytree(HERE / "fonts", app / "fonts")
@@ -1076,6 +1280,8 @@ def _with_agent_review(edition: dict, preview: bool) -> dict:
 
 
 def build(source: Path, run_id: str, out: Path, preview: bool = False) -> None:
+    # A second build in the same process (the checks build twice) starts its own record.
+    WRITTEN.clear()
     marker = out / MARKER
     if out.exists() and any(out.iterdir()) and not marker.is_file():
         raise BuildError(f"{out} exists and is not a build folder of this script")
@@ -1109,12 +1315,18 @@ def build(source: Path, run_id: str, out: Path, preview: bool = False) -> None:
         site = Site(source, run_id, out, _load(rev / "edition.json"), _load(ext / "edition.json"), preview=preview)
         copy_assets(site, rev / "edition.json", rev / "questions.json")
     package = write_files(site, "revised")
-    start_page(site, package)
-    atlas_page(site)
-    regest_list_page(site)
-    for i in range(len(site.regests)):
-        regest_page(site, i)
-    persons_pages(site)
+    # Every page once per language: German at the root, English under en/, both reading the
+    # same data, files and scripts. The former addresses forward in German only.
+    for lang in LANGS:
+        site.lang = lang
+        start_page(site, package)
+        atlas_page(site)
+        regest_list_page(site)
+        for i in range(len(site.regests)):
+            regest_page(site, i)
+        persons_pages(site)
+        site.app_page()
+    site.lang = LANGS[0]
     forward_pages(site)
     # Only the TEI files of this run's regesta count as written; a TEI file of an earlier
     # run with other regesta is stale, even though it still lies in the folder.
