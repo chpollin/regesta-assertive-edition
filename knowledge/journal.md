@@ -10,8 +10,7 @@ updated: 2026-11-18
 
 ## Open
 
-- Interface plan steps 1 to 5 built and committed on 2026-11-18 (Atlas, Regesten and Personen with one filter model, the cube's relations, the regest page with the head line, Über, mobile layouts); none seen by the operator yet, at http://127.0.0.1:8132/ after `python build_site.py --preview`. Open from the acceptance check: density limits of the work profile in the states with a chosen person, the filtered list and the list at 360 by one to twenty text elements, the detail states by the regest text (accepted), Über against the page profile; the fresh reader's findings not acted on (journal entry of the acceptance check); RI IV,2,2 n. 103a stands in 1138 in every list and filter because its delivered start date says 1138 while its dating says 1152 (a question to the delivery).
-- The operator has not seen the pass of 2026-11-14 evening in the local preview (`python build_site.py --preview` into `site-preview/`, served with `python -m http.server 8132 --bind 127.0.0.1 --directory site-preview`): the regest page in three areas with the annotation system, the start page as the full-screen cube, the regest tooltip and relations in the cube, persons as traces in the cube, estate colours, header and footer. His next words go verbatim into ui-feedback.md.
+- The operator accepted the site on 2026-11-18 after the design round (journal entry of that day). Still open on the interface: his answer on replacing the Personen network overview by the ego view with a person list (proposed on 2026-11-18, not built), the density overshoots recorded in the acceptance check and the design round, and RI IV,2,2 n. 103a standing in 1138 in every list and filter because its delivered start date says 1138 while its dating says 1152 (a question to the delivery).
 - Nothing of it is published. The agents' verdicts go public only on his word after he has seen the restructured regest page; the coordination read his „ja, aber“ as yes in principle. The public method text changes with the next publication to the agentic check of the twenty regesta, in both builds.
 - Itinerar and Jahrzehnte: put to the operator as a question with an example (the decade 1150 to 1159 chosen in the time band shows 433 regesta at 104 places, Würzburg and Crema with 28 each); the switch is not rebuilt before his answer.
 - The specification carries five requirements derived from his verdicts as proposals with acceptance criteria; the older list of the first slice stays as history until he adopts them (specification.md).
@@ -26,6 +25,13 @@ updated: 2026-11-18
 - The graph export writes the `rf:` and `rv:` terms under the provisional example.org namespaces until the operator decides a stable namespace; `build_graph.py --rf-namespace --rv-namespace` takes it (plan.md, Pipeline after the guest unit).
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
+
+## 2026-11-18 Operator acceptance of the site
+
+- Trigger: after the design round (commits ed2dabb, efcee7c, 5a0ca57, b3c67ee) the operator wrote, relayed by the main session: „Also, ich denke, die Seite Barbarossa Regesten passt jetzt zu und ist damit abgenommen.“
+- Decided: the site as built on 2026-11-18 is accepted by the operator for the guest unit at Technische Hochschule Mittelhessen on 20 November 2026. The regest text column in the Regesten list stays, although it exceeds the density limits of the work profile, since the acceptance covers it.
+- Open: his earlier remark on the Personen network („noch sehr schwach … Was ist jetzt der Mehrwert?“) and the proposal to open the Personen page with the ego view he liked; publication and repository visibility remain his decisions.
+- Evidence: `uv run run.py check` with 33 tests passed, ruff check and format clean, before the push of 2026-11-18.
 
 ## 2026-11-18 Start page, one header and one footer
 
