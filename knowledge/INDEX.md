@@ -3,7 +3,7 @@ title: Index
 status: draft
 language: en
 created: 2026-11-17
-updated: 2026-11-17
+updated: 2026-11-18
 ---
 
 # Index
@@ -35,6 +35,7 @@ Read the `## Open` section of the [Journal](journal.md), then the document answe
 - Proposed research and teaching requirements: [User stories](user-stories.md)
 - User inputs behind each teaching step: [Prompt log](prompt-log.md)
 - The edition against the IDE criteria, state of 2026-11-11: [IDE criteria](ide-criteria.md)
+- What did the whole-project review with Claude Fable 5.2 find, correct and leave open? [Review of 2026-11-18](fable-5-2-review-2026-11-18.md)
 - What happened and why: [Journal](journal.md)
 
 The frozen contract is [pipeline/contracts/factoid-2026-11-11](../pipeline/contracts/factoid-2026-11-11/); the run the edition shows is [pipeline/runs/factoid-1153-2026-11-11](../pipeline/runs/factoid-1153-2026-11-11/).

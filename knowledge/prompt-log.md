@@ -9,7 +9,7 @@ method:
 status: active
 language: en
 created: 2026-11-09
-updated: 2026-11-11
+updated: 2026-11-18
 ---
 
 # Prompt log
@@ -422,3 +422,17 @@ Ich meinte: Kannst du all das Wissen zusammenführen in ein Wissensdokument, dam
 ```
 
 The clarification replaces the interrupted request for a compact system/project prompt. continuation-brief.md consolidates context and includes a German startup prompt. CLAUDE.md routes into the existing AGENTS.md instructions and detailed knowledge. This step performs documentation and routing, not the future independent audit or implementation.
+
+### P38 Whole-project review with Claude Fable 5.2
+
+```text
+Auftrag: Prüf das ganze Projekt regesta-assertive-edition daraufhin, ob alles sauber und korrekt ist. Behebe, was belegt falsch ist, und dokumentiere den Durchgang im Repository als Fable-5.2-Iteration.
+
+Prüfumfang
+1. Daten und Pipeline: Weicht die Ausgabe von den Quelldaten ab? Wie konsistent sind Regesten, Personen, Orte, Itinerar und TEI? Laufen `checks`, Tests, `ruff` und die Validatoren grün?
+2. Oberfläche: alle Ansichten der Seite gerendert im Browser, auf Desktop und in schmaler Breite. Prüfe Konsole, tote Links, Sprachfassungen de/en, Lizenzangaben und Barrierefreiheit in Grundzügen.
+3. Inhalt: Stimmen Aussagen auf der Seite und in `knowledge/` mit dem Code und den Daten überein? Gibt es veraltete Zahlen oder widersprüchliche Angaben?
+4. Veröffentlichung: Enthält der gebaute Output nur kuratierte Inhalte? `knowledge/`, Arbeitsstände und Entwürfe gehören nicht in die Auslieferung.
+```
+
+Input of 2026-11-18, written by the coordinating session on the operator's behalf and relayed to a session running Claude Fable 5.2 (model id `claude-fable-5-2`); the operator had named the Atlas view of RI IV,2,4 n. 3270 as the place to look first. The excerpt keeps the commission and its scope and leaves out the procedure and guardrails of the brief. The session checked, corrected what was evidenced as wrong and left judgements to the operator; its record is the [review report](fable-5-2-review-2026-11-18.md) and the journal entry of that day. The review is verification and agentic review, with two reading subagents and one counter-reader on Claude Opus 5.5. It validates no statement of the edition.
