@@ -1,13 +1,21 @@
 /**
- * Zeitband: who is named when. One row per person of the register, a thin line from the
- * first to the last mention and a tick per regest, over the years of the whole delivery.
+ * Zeitband: who is named when. One row per person of the register: a light span joins mentions
+ * at most GAP years apart, and a small square per year in one ink, darker the more regesta of
+ * that year name the person; the exact regest and year stand in the status line on pointing.
+ * The axis spans the years of the shown persons' mentions within the chosen time range.
+ *
+ * Design round of 2026-11-18 (operator: „nicht die ganze Fläche genutzt … unruhig“): rows
+ * follow the available height within a readable range, the axis is fitted to the data, the
+ * ticks and hairlines became spans and year squares, the name column is wider, the names keep
+ * one ink (the accent for names also found in the run's statements carried no visible meaning),
+ * the years south of the Alps are named at the axis, and order and number are two small
+ * labelled selects apart from the switch of the representations.
  *
  * Asked for by the operator on 2026-11-11 as one of several views on the same data
  * („Möglichkeitenräume, also mehrere Views“, verbatim in knowledge/ui-feedback.md); the
  * coordination's space-time cube study recommends it as the time projection of the persons.
  * The data is the deterministic layer of build_holdings.py: register persons named in at
- * least three regesta, no LLM. A name in the accent also appears in the statements of the
- * run, matched by its register id.
+ * least three regesta, no LLM.
  *
  * The second representation of Personen (js/persons.js), which owns the filter bar, the list
  * and the opened regest. A mention counts when its regest passes the facets (js/selection.js),
@@ -19,9 +27,13 @@ import { h } from "./dom.js";
 import { s, yearOf } from "./svg.js";
 import { param, writeAddress } from "./url.js";
 
-// Row height: 20 px with a pointer, 28 px on a narrow touch screen, where a row is a target.
-const rowHeight = () => (matchMedia("(max-width: 40rem)").matches ? 28 : 20);
-const AXIS = 22;
+// Row height: the rows share the available height, between 20 and 30 px with a pointer and
+// at least 28 px on a narrow touch screen, where a row is a target.
+const rowHeight = (avail, n) => {
+  const min = matchMedia("(max-width: 40rem)").matches ? 28 : 20;
+  return Math.max(min, Math.min(30, Math.floor(avail / Math.max(1, n))));
+};
+const AXIS = 34;
 const ORDERS = Object.freeze({ anzahl: "Häufigkeit", zeit: "Erste Nennung", name: "Name" });
 // Two mentions further apart than GAP years are not joined: a line from the first to the
 // last mention claimed presence in between (Wibald from 1123 to 1150, reviewed 2026-11-12).
@@ -31,7 +43,6 @@ const GAP = 3;
 const ITALY = { lat: 46.3, lon: 6.5 };
 // The first choice fits the first screen at 1280 x 800 without scrolling.
 const LIMITS = [30, 120, 400];
-const ACTOR = "urn:regesta:actor:";
 
 /**
  * @param {import("./app.js").Store} store
@@ -41,11 +52,9 @@ export function renderTimeband(store, options) {
   const { filters } = options;
   const H = store.holdings;
   const byUid = new Map(H.regesta.map((r) => [r.u, r]));
-  const inRun = new Set(store.edition.graph.nodes.filter((n) => n.kind !== "act" && n.id.startsWith(ACTOR)).map((n) => n.id.slice(ACTOR.length)));
   const persons = Object.entries(H.persons).map(([id, p]) => ({
     id,
     label: p.l,
-    run: inRun.has(id),
     mentions: p.r
       .map((u) => byUid.get(u))
       .filter(Boolean)
@@ -110,7 +119,7 @@ export function renderTimeband(store, options) {
 
   let scene = null;
   let shown = [];
-  let ROW = rowHeight();
+  let ROW = 20;
 
   /** Names are cut to the name column; the full name stays in the sidebar and the status line. */
   const measure = document.createElement("canvas").getContext("2d");
@@ -122,22 +131,33 @@ export function renderTimeband(store, options) {
     return `${t.trimEnd()}…`;
   }
 
-  /** The time axis spans the chosen range, so a narrow range is read at full width. */
-  function geometry(width) {
-    const nameW = Math.round(Math.min(210, Math.max(110, width * 0.3)));
-    const x0 = nameW + 10;
+  /**
+   * The time axis spans the years of the shown mentions within the chosen range, with a year of
+   * room on each side, so the empty decades before the first mention take no width. A few early
+   * outliers (Wibald and Konrad III. in the 1120s) would stretch it again, so it starts at the
+   * first percentile of the mentions, or at the chosen person's first mention if earlier; the
+   * mentions before stand as one mark at the row's start.
+   */
+  function geometry(width, top) {
+    const nameW = Math.round(Math.min(290, Math.max(120, width * 0.24)));
+    const x0 = nameW + 12;
     const x1 = width - 14;
-    const [lo, hi] = [filters.from, filters.to + 1];
+    const years = top.flatMap((r) => r.hits.map((m) => m.y)).sort((a, b) => a - b);
+    // The chosen person's own mentions are never cut off.
+    const chosen = top.find((r) => r.p.id === state.person);
+    const first = Math.min(years[Math.floor(years.length * 0.01)], chosen ? chosen.hits[0].y : Infinity);
+    const lo = years.length ? Math.max(filters.from, Math.floor(first) - 1) : filters.from;
+    const hi = years.length ? Math.min(filters.to + 1, Math.floor(years.at(-1)) + 2) : filters.to + 1;
     const x = (year) => x0 + ((Math.min(hi, Math.max(lo, year)) - lo) / (hi - lo)) * (x1 - x0);
-    return { nameW, x0, x1, x };
+    return { nameW, x0, x1, x, lo, hi };
   }
 
   function draw() {
     const width = Math.max(280, scroller.clientWidth);
-    const g = geometry(width);
     const { top } = rows();
+    const g = geometry(width, top);
     shown = top;
-    ROW = rowHeight();
+    ROW = rowHeight(scroller.clientHeight - 16, top.length);
     const height = top.length * ROW + 8;
     // The year axis stays above the scrolling rows.
     const axis = s("svg", { width, height: AXIS, class: "tb-svg", "aria-hidden": "true" });
@@ -147,28 +167,48 @@ export function renderTimeband(store, options) {
     const overlay = s("g", { class: "tb-overlay" });
     svg.append(grid, body, overlay);
     // About one year label per 70 pixels, on round years.
-    const span = filters.to + 1 - filters.from;
+    const span = g.hi - g.lo;
     const step = [1, 2, 5, 10, 20].find((n) => ((g.x1 - g.x0) / span) * n >= 70) ?? 20;
+    // The years south of the Alps as pale bands, named at the axis where a band has room.
     for (const [a, b] of italyYears) {
-      if (b < filters.from || a > filters.to) continue;
-      const xa = g.x(Math.max(a, filters.from));
-      grid.append(s("rect", { class: "tb-italy", x: xa, y: 0, width: Math.max(1, g.x(Math.min(b, filters.to) + 1) - xa), height }));
-      axis.append(s("rect", { class: "tb-italy", x: xa, y: 0, width: Math.max(1, g.x(Math.min(b, filters.to) + 1) - xa), height: AXIS }));
+      if (b < g.lo || a >= g.hi) continue;
+      const xa = g.x(Math.max(a, g.lo));
+      const w = Math.max(1, g.x(Math.min(b + 1, g.hi)) - xa);
+      grid.append(s("rect", { class: "tb-italy", x: xa, y: 0, width: w, height }));
+      axis.append(s("rect", { class: "tb-italy", x: xa, y: 0, width: w, height: AXIS }));
+      if (w >= 44) axis.append(s("text", { class: "tb-italy-label", x: xa + w / 2, y: 11, "text-anchor": "middle", text: "Italien" }));
     }
-    for (let y = Math.ceil(filters.from / step) * step; y <= filters.to; y += step) {
+    for (let y = Math.ceil(g.lo / step) * step; y < g.hi; y += step) {
       grid.append(s("line", { x1: g.x(y), x2: g.x(y), y1: 0, y2: height }));
       axis.append(s("text", { class: "tb-year", x: g.x(y), y: AXIS - 7, "text-anchor": "middle", text: String(y) }));
     }
+    const yearW = Math.max(2, (g.x1 - g.x0) / span - 1);
+    const cell = Math.min(8, ROW - 10);
     const rowEls = top.map(({ p, hits }, i) => {
       const y = i * ROW + ROW / 2 + 4;
       const row = s("g", { class: "tb-row", "data-id": p.id });
       row.append(s("rect", { class: "tb-row-bg", x: 0, y: y - ROW / 2, width, height: ROW }));
-      row.append(s("text", { class: p.run ? "tb-name is-run" : "tb-name", x: g.nameW, y: y + 4, "text-anchor": "end", text: fit(p.label, g.nameW - 6) }));
-      // Mentions closer than GAP years are joined; a longer silence stays open.
-      for (const [a, b] of p.mentions.slice(1).map((m, k) => [p.mentions[k].y, m.y])) {
-        if (b - a <= GAP) row.append(s("line", { class: "tb-life", x1: g.x(a), x2: Math.max(g.x(b), g.x(a) + 1), y1: y, y2: y }));
+      row.append(s("text", { class: "tb-name", x: g.nameW, y: y + 4, "text-anchor": "end", text: fit(p.label, g.nameW - 6) }, s("title", { text: p.label })));
+      // A light span joins mentions closer than GAP years; a longer silence stays open.
+      let from = null;
+      let to = null;
+      const flush = () => from !== null && row.append(s("rect", { class: "tb-life", x: g.x(from), y: y - 2, width: Math.max(1, g.x(to) - g.x(from)), height: 4, rx: 2 }));
+      const early = hits.filter((m) => m.y < g.lo);
+      // A small chevron, drawn rather than written, so it stays a mark and not a label.
+      if (early.length) row.append(s("path", { class: "tb-early", d: `M${(g.x0 - 3).toFixed(1)} ${y - 3.5}l-3.5 3.5l3.5 3.5` }, s("title", { text: `${early.length} ${early.length === 1 ? "Nennung" : "Nennungen"} vor ${g.lo}` })));
+      for (const m of hits.filter((x) => x.y >= g.lo)) {
+        if (to !== null && m.y - to <= GAP) to = m.y;
+        else {
+          flush();
+          from = to = m.y;
+        }
       }
-      for (const m of hits) row.append(s("line", { class: "tb-tick", x1: g.x(m.y), x2: g.x(m.y), y1: y - 4, y2: y + 4 }));
+      flush();
+      // One square per year with mentions, its ink darker the more regesta of the year.
+      const perYear = new Map();
+      for (const m of hits) if (m.y >= g.lo) perYear.set(Math.floor(m.y), (perYear.get(Math.floor(m.y)) ?? 0) + 1);
+      const w = Math.min(yearW, cell + 2);
+      for (const [yr, n] of perYear) row.append(s("rect", { class: `tb-cell is-${Math.min(4, n)}`, x: g.x(yr + 0.5) - w / 2, y: y - cell / 2, width: w, height: cell, rx: 1 }));
       body.append(row);
       return { row, y, hits };
     });
@@ -261,15 +301,21 @@ export function renderTimeband(store, options) {
     renderControls();
   }
 
-  // Order and number of rows, in the tool row of Personen beside the switch.
+  // Order and number of rows, in the tool row of Personen beside the switch: two small labelled
+  // selects, so they do not read as a second switch of the representations.
   const controls = h("div", { class: "tb-controls" });
   function renderControls() {
     const { named } = rows();
     controls.replaceChildren(
       h(
-        "div",
-        { class: "segs", role: "group", "aria-label": "Reihenfolge" },
-        Object.entries(ORDERS).map(([key, label]) => h("button", { type: "button", class: "seg", "aria-pressed": String(state.order === key), onclick: () => setting("order", key) }, label)),
+        "label",
+        { class: "tb-control" },
+        h("span", { text: "Ordnen nach" }),
+        h(
+          "select",
+          { class: "tb-limit", onchange: (e) => setting("order", e.target.value) },
+          Object.entries(ORDERS).map(([key, label]) => h("option", { value: key, text: label, selected: state.order === key })),
+        ),
       ),
       h(
         "select",
@@ -298,11 +344,10 @@ export function renderTimeband(store, options) {
 
   /** The key of the band's two encodings, for the info mark of Personen. */
   function key() {
-    const runShown = shown.filter((r) => r.p.run).length;
     return [
-      h("p", {}, h("span", { class: "tb-key-name", text: "Namen in Türkis" }), ` stehen auch in Aussagen der LLM-Agenten (${runShown} der gezeigten).`),
-      italyYears.length ? h("p", {}, h("span", { class: "it-key tb-key-italy", "aria-hidden": "true" }), " Jahre mit mehr als der Hälfte der Ausstellungsorte südlich der Alpen.") : null,
-      h("p", { text: `Ein Strich je Nennung; eine Linie verbindet Nennungen, die höchstens ${GAP} Jahre auseinanderliegen. Personen aus dem Register der Regesta Imperii, in mindestens drei Regesten genannt, ohne LLM.` }),
+      h("p", { text: `Ein Quadrat je Jahr mit Nennungen, dunkler bei mehr Regesten; ein heller Balken verbindet Nennungen, die höchstens ${GAP} Jahre auseinanderliegen. Zeigen auf ein Quadrat nennt Regest, Jahr und Ort. Ein ‹ vor der Zeile steht für Nennungen vor dem Beginn der Achse.` }),
+      italyYears.length ? h("p", {}, h("span", { class: "it-key tb-key-italy", "aria-hidden": "true" }), " Italien: Jahre mit mehr als der Hälfte der Ausstellungsorte südlich der Alpen.") : null,
+      h("p", { text: "Personen aus dem Register der Regesta Imperii, in mindestens drei Regesten genannt, ohne LLM." }),
     ];
   }
 

@@ -27,6 +27,14 @@ updated: 2026-11-18
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-18 Design round on the Zeitband
+
+- Trigger: the operator on a screenshot at about 2000 × 990: „Auch hier wird nicht die ganze Fläche genutzt, und es ist auch unruhig.“ The thirty rows ended at about 700 px, the axis began in 1122 for a few early mentions, ticks and hairlines in black, names cut, teal names and beige bands without visible meaning, order and representation switches alike.
+- Decided: rows fill the height; the axis from the first percentile of the shown mentions (Wibald and Konrad III. in the 1120s otherwise stretch it), never cutting the chosen person, earlier mentions as a chevron with a tooltip; spans and year squares in one ink; a wider name column with the full name as tooltip; the teal of the names dropped, the Italy bands lighter and named at the axis, both explained behind the info mark; „Ordnen nach“ as a labelled select beside the count select.
+- Open: the density check (work) passes at rest at 1280 (65 text elements) and 360, and stays over with Heinrich der Löwe chosen at 1280 (102 against 70, before 91), from the result list of the bar.
+- Changed: js/timeband.js, css/views.css, design.md.
+- Evidence: at 1440 and 2000 the rows reach the bottom of the area (28 px at 2000 × 990), the axis begins in 1149 at rest (chevrons in the rows with earlier mentions) and with Heinrich der Löwe a year before his first mention, so no row needs a chevron; the bar's controls stand 16 px from both edges; no SVG beyond the window, no horizontal scroll at 1440, 2000 and 360. Before and after screenshots in the session scratchpad (ui-design-r1).
+
 ## 2026-11-18 Design round on the list Regesten
 
 - Trigger: the operator on a screenshot at about 2000 wide with RI IV,2,1 n. 5 opened: „Hier wird nicht die ganze Fläche sauber genutzt … Es ist ein bisschen unruhig.“ The list stopped at about 1180 px, rows were 46 px, the signs floated in the middle and the ochre dot far right, „ohne Ort“ repeated in italics, no column heads.
