@@ -95,7 +95,7 @@ function icon(name) {
  * reachable without a mouse. A regest without statements has no state to name.
  */
 let tipCount = 0;
-function reviewState(regest) {
+function reviewState(regest, run) {
   const heads = (regest.blocks ?? []).map((b) => b.head).filter((hd) => hd?.evidence);
   if (!heads.length) return null;
   const read = heads.filter((hd) => hd.agentReview);
@@ -106,7 +106,10 @@ function reviewState(regest) {
   const button = h("button", { type: "button", class: "card-state", "aria-describedby": id, "aria-expanded": "false" }, read.length ? icon("agents") : null, REVIEW_WORD);
   button.addEventListener("click", () => button.setAttribute("aria-expanded", String(button.getAttribute("aria-expanded") !== "true")));
   button.addEventListener("blur", () => button.setAttribute("aria-expanded", "false"));
-  return h("span", { class: "card-state-wrap" }, button, h("span", { class: "card-state-tip", role: "tooltip", id, text: `${REVIEW_TIP}${agents} Kein Mensch hat sie geprüft.` }));
+  // Producer, LLM and date of the run, as its manifest names them (edition.json, run).
+  const when = run?.id?.match(/\d{4}-\d{2}-\d{2}/)?.[0];
+  const producer = run?.model ? `Die Aussagen haben LLM-basierte Agenten (${run.model}${when ? `, Lauf vom ${when}` : ""}) aus dem Regesttext extrahiert, ${regest.technical === false ? "die technische Prüfung haben sie nicht bestanden" : "technisch geprüft"}.` : REVIEW_TIP;
+  return h("span", { class: "card-state-wrap" }, button, h("span", { class: "card-state-tip", role: "tooltip", id, text: `${producer}${agents} Kein Mensch hat sie geprüft.` }));
 }
 
 /** Short qualifiers for the tag, at most QUAL_MAX characters together; every other literal is glossed. */
@@ -207,7 +210,7 @@ function linkStatements(textEl, notesEl, claim) {
  * One note per statement: kind and number, the short qualifiers, the human verdict as sign
  * and word, and below the participants with their roles in the regest's own words.
  */
-export function notesOf(statements) {
+export function notesOf(statements, { chips = false } = {}) {
   return h(
     "ol",
     { class: "card-notes", "aria-label": "Aussagen zu diesem Regest" },
@@ -221,7 +224,7 @@ export function notesOf(statements) {
         h(
           "p",
           { class: "note-head" },
-          h("span", { class: "note-n", text: String(st.n) }),
+          chips ? h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 13 }), String(st.n)) : h("span", { class: "note-n", text: String(st.n) }),
           h("span", { class: "note-kind", text: st.kind }),
           st.qualifiers?.length ? h("span", { class: "note-qual", text: ` (${st.qualifiers.join(", ")})` }) : null,
           agent ? verdictPlate(agent) : null,
@@ -291,7 +294,7 @@ export function renderRegestCard(store, uid, options = {}) {
     // „Regestseite“ replaces „Seite“, which a fresh reader did not understand (2026-11-18).
     regest && !options.page ? h("a", { class: "card-meta", href: regestHref(uid), title: "Eigene, zitierbare Seite dieses Regests mit Apparat und Dateien" }, icon("file"), "Regestseite") : null,
     pi ? copyButton(riCitation(identifier, pi)) : null,
-    regest ? reviewState(regest) : null,
+    regest ? reviewState(regest, store.edition.run) : null,
     // A word, not the cross: the cross is the sign of Streit in the annotation (2026-11-18).
     options.onClose ? h("button", { type: "button", class: "card-close", "aria-label": "Regest schließen", onclick: options.onClose }, "Schließen") : null,
   );
@@ -325,17 +328,17 @@ export function renderRegestCard(store, uid, options = {}) {
 }
 
 /**
- * The citable regest page in three areas that keep their place on every page (operator,
- * 2026-11-14: „einen richtigen Lesebereich“, „einen Bereich, wo alle Meta-Daten sind, und
- * einen Bereich, wo alle zusätzlichen Kommentare sind“; design.md, Regest page and Annotation
- * system):
- * - metadata: everything about the regest and its edition as labelled fields;
- * - reading: the regest text, each annotated passage opened by the sign of its family and its
- *   number, its extent shown when it or its statement is chosen;
- * - comments: what is said about the text, the agents' statements and the apparatus of the
- *   Regesta Imperii in two blocks named by their producer.
- * The static page hands in what only it knows (options.meta: citation forms, further fields
- * and links of the delivery).
+ * The citable regest page (interface plan of 2026-11-17, accepted with the head line in place of
+ * the metadata column): one head line of signs and short words, below it the regest text with
+ * its statement chips and the notes at the height of their passages, and the apparatus of the
+ * Regesta Imperii in two columns over the full width. Below 760 px of page width the notes follow
+ * the text as a numbered list (placeNotes).
+ *
+ * Head line: number, dating, place, the one word „ungeprüft“ with a popover (producer, LLM,
+ * date, that no person has checked), then the actions: Regesta Imperii Online, the files TEI,
+ * TTL and JSON, a copy button for the citation, one menu for the facsimile links, previous and
+ * next. The static page hands in what only it knows (options.meta: citation forms, further fields
+ * and links of the delivery; options.files; options.pager).
  */
 function pageView(store, regest, options) {
   const statements = statementsOf(regest);
@@ -344,112 +347,67 @@ function pageView(store, regest, options) {
   const date = regest.date.map((seg) => seg.t).join("");
   const place = regest.place?.map((seg) => seg.t).join("") || "";
   const files = options.files;
-
-  const textEl = h("p", { class: "card-text source is-noted" }, ...notedText(regest.text, statements));
-  const present = [...new Map(statements.map((st) => [familyOf(st.kind).key, familyOf(st.kind)])).values()];
-  const reading = h(
-    "section",
-    { class: "reg-reading", "aria-label": "Regesttext" },
-    h("p", { class: "reg-title" }, h("span", { class: "reg-id", text: regest.identifier }), options.pager ?? null),
-    textEl,
-    statements.length
-      ? h(
-          "p",
-          { class: "reg-legend" },
-          "Zeichen im Text: Beginn einer Aussage, nach ihrer Art. ",
-          present.map((f) => h("span", { class: "reg-legend-item" }, familyIcon(f, { size: 14 }), f.label)),
-        )
-      : h("p", { class: "reg-legend", text: "Zu diesem Regest gibt es keine Aussage im Rahmen des Laufs." }),
-  );
-
-  // Metadata: labelled fields, one per row.
-  const field = (label, ...value) => (value.flat().some((v) => v !== null && v !== "" && v !== undefined) ? [h("dt", { text: label }), h("dd", {}, ...value)] : []);
   const pi = delivered?.pi;
-  const read = statements.filter((st) => st.agent);
-  const metaEl = h(
-    "section",
-    { class: "reg-meta", "aria-labelledby": "reg-meta-h" },
-    h("h2", { id: "reg-meta-h", class: "reg-area", text: "Metadaten" }),
+  const forged = regest.identifier.includes("†");
+
+  // The facsimile links of the delivery in one menu, so their repeated labels stand once.
+  const links = meta.links ?? [];
+  const facsimiles = links.length
+    ? h(
+        "details",
+        { class: "card-menu" },
+        h("summary", { class: "card-meta" }, icon("book"), links.length > 1 ? `Digitalisate (${links.length})` : "Digitalisat"),
+        h("ul", { class: "card-menu-list", role: "list" }, links.map((l) => h("li", {}, h("a", { href: l.href, rel: "noopener" }, l.text)))),
+      )
+    : null;
+  const editionCitation = (meta.citations ?? []).find((c) => c.label === "Zitierweise dieser Edition")?.text;
+  const citation = editionCitation ? `${editionCitation} ${location.origin}${location.pathname}` : pi ? riCitation(regest.identifier, pi) : null;
+  const fileLinks = files ? h("span", { class: "card-files" }, icon("file"), ["TEI", "TTL", "JSON"].map((k) => h("a", { class: "card-meta", href: files[k], download: "", title: `${k}-Datei dieses Regests` }, k))) : null;
+  const head = h(
+    "div",
+    { class: "card-head page-head" },
+    h("h1", { class: "card-id page-id", text: regest.identifier, title: forged ? "Das Kreuz der Regesta Imperii kennzeichnet eine Fälschung." : null }),
+    forged ? h("span", { class: "card-meta", text: "Fälschung" }) : null,
+    date ? h("span", { class: "card-meta", title: "Datierung" }, icon("date"), date) : null,
+    place ? h("span", { class: "card-meta", title: "Ausstellungsort" }, icon("place"), place) : null,
+    reviewState(regest, store.edition.run),
     h(
-      "dl",
-      {},
-      field("Echtheit", regest.identifier.includes("†") ? "Fälschung (das Kreuz † der Regesta Imperii)" : ""),
-      field("Datierung", date),
-      field("Ausstellungsort", place),
-      ...(meta.fields ?? []).filter((f) => f.where === "meta").map((f) => field(f.label, f.text)),
-      field("Regesta Imperii", pi ? h("a", { href: `https://www.regesta-imperii.de/id/${pi}`, rel: "noopener" }, "Regest in RI Online") : ""),
-      field("Dateien", files ? ["TEI", "TTL", "JSON"].map((k, i) => [i ? " " : "", h("a", { href: files[k], download: "" }, k)]) : ""),
-      field(
-        "Prüfstand",
-        regest.technical ? "von LLM-Agenten erzeugt, technisch geprüft, keine Aussage menschlich verifiziert" : "von LLM-Agenten erzeugt, technische Prüfung nicht bestanden",
-        read.length ? `; ${read.length} von ${statements.length} Aussagen von zwei unabhängigen Lesungen desselben LLM gegen den Regesttext geprüft (${read[0].agent.model}, ${read[0].agent.date})` : "",
-      ),
-      ...(meta.links ?? []).map((l) => field(l.label, h("a", { href: l.href, rel: "noopener" }, l.text))),
-      ...(meta.citations ?? []).map((c) => field(c.label, h("span", { class: "reg-cite", text: c.text }))),
+      "span",
+      { class: "page-actions" },
+      pi ? h("a", { class: "card-meta", href: riUri(pi), rel: "noopener", title: "Dieses Regest in Regesta Imperii Online" }, icon("out"), "RI Online") : null,
+      fileLinks,
+      citation ? copyButton(citation) : null,
+      facsimiles,
+      options.pager ?? null,
     ),
   );
 
-  // Comments: the agents' statements, then the apparatus of the Regesta Imperii.
-  const notesEl = h(
-    "ol",
-    { class: "reg-notes", "aria-label": "Aussagen zu diesem Regest" },
-    statements.map((st) => {
-      const f = familyOf(st.kind);
-      const byRole = byRoleOf(st);
-      const agent = st.agent;
-      return h(
-        "li",
-        { "data-id": st.id, tabindex: "0" },
-        h(
-          "p",
-          { class: "note-head" },
-          h("span", { class: "ann-chip" }, familyIcon(f, { size: 13 }), String(st.n)),
-          h("span", { class: "note-kind", text: st.kind }),
-          agent ? verdictPlate(agent) : null,
-        ),
-        h(
-          "dl",
-          { class: "note-fields" },
-          st.qualifiers.length ? [h("dt", { text: "Wortlaut" }), h("dd", { text: st.qualifiers.map((q) => `„${q}“`).join(", ") })] : null,
-          [...byRole].map(([role, names]) => [h("dt", { text: role }), h("dd", { text: names.join(", ") })]),
-          st.literals.map((l) => [h("dt", { text: l.label }), h("dd", { text: regest.text.slice(l.start, l.end) })]),
-        ),
-        agent && agent.outcome !== "stimmt" ? agent.readers.map((r, i) => h("p", { class: "note-review" }, `LLM-Leser ${i + 1}, ${r.verdict}: ${r.reason}`)) : null,
-      );
-    }),
-  );
+  const textEl = h("p", { class: "card-text source is-noted" }, ...notedText(regest.text, statements));
+  const notesEl = statements.length ? notesOf(statements, { chips: true }) : null;
+  const body = h("div", { class: "card-body" }, textEl, notesEl);
+  const present = [...new Map(statements.map((st) => [familyOf(st.kind).key, familyOf(st.kind)])).values()];
+  const legend = statements.length
+    ? h("p", { class: "reg-legend" }, present.map((f) => h("span", { class: "reg-legend-item" }, familyIcon(f, { size: 14 }), f.label)))
+    : h("p", { class: "reg-legend", text: "Zu diesem Regest gibt es keine Aussage im Rahmen des Laufs." });
+
   const plain = (segments) => (segments ?? []).map((seg) => seg.t).join("");
   const apparatusRows = [
+    ...(meta.fields ?? []).filter((f) => f.where === "meta").map((f) => [f.label, f.text]),
     ["Überlieferung", plain(regest.apparatus?.transmission)],
     ["Kommentar", plain(regest.apparatus?.commentary)],
     ...(meta.fields ?? []).filter((f) => f.where === "comment").map((f) => [f.label, f.text]),
   ].filter(([, text]) => text);
-  const comments = h(
-    "section",
-    { class: "reg-comments", "aria-labelledby": "reg-comments-h" },
-    h("h2", { id: "reg-comments-h", class: "reg-area", text: "Kommentare und Aussagen" }),
-    statements.length
-      ? h(
-          "div",
-          { class: "reg-block" },
-          h("h3", { class: "reg-block-h", text: "Aussagen der LLM-Agenten" }),
-          h("p", { class: "reg-producer", text: "Von einem LLM aus dem Regesttext erzeugt, an ihren Wortlaut gebunden. Das Schild nennt das Urteil zweier unabhängiger Lesungen desselben LLM: stimmt, unklar, oder strittig, wenn sie verschieden urteilen. Kein Mensch hat die Aussagen geprüft." }),
-          notesEl,
-        )
-      : null,
-    apparatusRows.length
-      ? h(
-          "div",
-          { class: "reg-block" },
-          h("h3", { class: "reg-block-h", text: "Apparat der Regesta Imperii" }),
-          h("p", { class: "reg-producer", text: "Von den Bearbeitern der Regesta Imperii, unverändert." }),
-          h("dl", { class: "reg-apparatus" }, apparatusRows.map(([label, text]) => [h("dt", { text: label }), h("dd", { class: "source", text })])),
-        )
-      : null,
-  );
+  const apparatus = apparatusRows.length
+    ? h(
+        "section",
+        { class: "reg-apparatus-block", "aria-labelledby": "reg-app-h" },
+        h("h2", { id: "reg-app-h", class: "reg-block-h", text: "Apparat der Regesta Imperii, unverändert" }),
+        h("div", { class: "reg-apparatus" }, apparatusRows.map(([label, text]) => h("p", {}, h("span", { class: "reg-app-label", text: label }), " ", h("span", { class: "source", text })))),
+      )
+    : null;
 
-  const page = h("article", { class: "regest-page-grid", "aria-label": `Regest ${regest.identifier}` }, metaEl, reading, comments);
-  // One statement lit at a time: its passage extent in the text, its chip and its entry.
+  const page = h("article", { class: "regest-card is-page", "aria-label": `Regest ${regest.identifier}` }, head, body, legend, apparatus);
   linkStatements(textEl, notesEl, options.claim);
+  if (notesEl) placeNotes(page, textEl, notesEl);
   return page;
 }

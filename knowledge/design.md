@@ -184,25 +184,23 @@ Three verdicts of the operator within an hour (regest page, place view, start pa
 
 ## Regest page
 
-Three areas that keep their place on every regest page, labelled as areas:
+Since 2026-11-18 (interface-plan.md, step 3; the operator accepted on 2026-11-17 that the head line replaces the metadata column of 2026-11-14):
 
 ```
-+--------------+---------------------------+------------------+
-| METADATEN    | RI IV,2,2 n. 103a     ← → | KOMMENTARE       |
-| Datierung    |                           | Aussagen der     |
-| Ort          |  regest text, reading     |  LLM-Agenten     |
-| Original-    |  face; an opening chip    |  1 Urteil stimmt |
-|  datierung   |  (family sign + number)   |   Wortlaut, Rol- |
-| RI Online    |  where a statement's      |   len, Literale  |
-| Dateien      |  passage begins           |   reasons if not |
-| Prüfstand    |                           |   „stimmt“       |
-| Digitalisat  |  legend: the families     | Apparat der RI   |
-| Zitierweisen |  present on this page     |  Überlieferung,  |
-|              |                           |  Kommentar, Lit. |
-+--------------+---------------------------+------------------+
++-------------------------------------------------------------------------------------------+
+| RI IV,2,2 n. 103a  (1152 Juni/Juli)  Regensburg  ungeprüft    RI Online  TEI TTL JSON  Zitieren  Digitalisate ▾  ← → |
++-------------------------------------------------------------+-----------------------------+
+| regest text, reading face, a chip (family sign and number)  | 1 Urteil (erwählten Richters)|
+| where a statement's passage begins                          |   at the height of passage 1 |
+| legend: the families present                                | 2 Streit oder Klage ...      |
++-------------------------------------------------------------+-----------------------------+
+| Apparat der Regesta Imperii, unverändert: Originaldatierung, Überlieferung | Kommentar, Literatur, Anmerkungen |
++-------------------------------------------------------------------------------------------+
 ```
 
-From 72rem of page width the three stand side by side; from 48rem reading and comments, the metadata below the reading; narrower one column with the reading first, then comments, then metadata. The comment area names the producer of each block: the agents' statements („Aussagen der LLM-Agenten“, with the readers' verdict) and the apparatus of the Regesta Imperii („von den Bearbeitern der Regesta Imperii, unverändert“), so the editors' commentary and the agents' statements are never confused. The views keep the compact card in their detail panel.
+- Head line: the number is the page's heading, with the word „Fälschung“ where the dagger stands; dating, place; „ungeprüft“ once, its popover naming producer, LLM and date of the run, in the preview the agents' reading with model and date, and that no person has checked; then RI Online, the three files, „Zitieren“ (copies the citation of this edition with the page address; the card in the views copies the citation of Regesta Imperii), one menu for the facsimile links of the delivery, and the paging arrows with the way back to the view.
+- Below, the text (up to 46rem) and the notes at the height of their passages; a note shows chip, kind, qualifiers and, in the preview, the agents' verdict, its participants while it or its passage is pointed at or focused. Below 760 px of page width the notes follow the text as a numbered list.
+- The apparatus of Regesta Imperii in two columns over the full width, named by its producer in its heading. The former producer paragraphs, the field „Prüfstand“ and the citation forms as text are gone; the unchecked status stands once per screen.
 
 ## Annotation system
 

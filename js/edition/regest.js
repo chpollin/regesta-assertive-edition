@@ -40,6 +40,9 @@ export async function init(root) {
   const pager = document.querySelector(".pager");
   const card = renderRegestCard(store, uid, { claim, texts, page: true, files, pager, meta });
   host.replaceChildren(card);
+  // The head line of the card carries the number as the page's heading, the paging and the
+  // citation; the static title row and citation block go.
+  document.querySelector(".title-row")?.remove();
   document.querySelector(".cite")?.remove();
 }
 

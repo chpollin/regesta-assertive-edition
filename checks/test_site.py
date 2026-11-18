@@ -105,6 +105,24 @@ class RegestenAndPersonen(unittest.TestCase):
         self.assertIn('regesten: () => import("./regesten.js")', page)
 
 
+class RegestPage(unittest.TestCase):
+    def test_head_line_instead_of_metadata_column(self) -> None:
+        # The citable page has one head line (number, dating, place, „ungeprüft“, actions with
+        # the copy button and one facsimile menu) and no metadata column (interface-plan.md, step 3).
+        card = (ROOT / "js" / "regest-card.js").read_text(encoding="utf-8")
+        page = card[card.index("function pageView") :]
+        for needle in (
+            '"card-head page-head"',
+            "reviewState(regest, store.edition.run)",
+            "copyButton(citation)",
+            '"card-menu"',
+            "options.pager",
+        ):
+            self.assertIn(needle, page)
+        self.assertNotIn("reg-meta", card)
+        self.assertNotIn("Metadaten", card)
+
+
 class HiddenAttribute(unittest.TestCase):
     def test_global_hidden_rule(self) -> None:
         # css/shell.css is the one stylesheet every static page and the views load.

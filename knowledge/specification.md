@@ -14,7 +14,7 @@ The requirements come from the operator's commission and three rounds of his fee
 
 Each with the acceptance criterion he decides in front of the running preview; derived by the implementing agent from his verdicts in [ui-feedback.md](ui-feedback.md), not yet adopted by him.
 
-1. Regest page: a reading area, one area with all metadata and one with all further comments, in the same place on every page; the annotation follows one system ([design.md](design.md#annotation-system)). Criterion: a reader names from the page alone where the metadata are, what is annotated and by whom, and what the editors' commentary says.
+1. Regest page: one head line with all metadata and actions, a reading area with the notes beside the text, and the apparatus below, in the same place on every page; the annotation follows one system ([design.md](design.md#annotation-system)). Criterion: a reader names from the page alone what is annotated and by whom, who has checked it, and what the editors' commentary says. (The three areas of 2026-11-14 became the head line by the interface plan the operator accepted on 2026-11-17.)
 2. Agents' verdicts are named as the verdicts of LLM readings and never as a human check. Criterion: no page says or implies „menschlich geprüft“ for a statement.
 3. Start page: the figure fills the screen under the header and the page does not scroll at desktop sizes. Criterion: at 1440 × 900 the document is no higher than the window.
 4. Place view: a pointed or focused regest is readable beside its point; an opened regest is marked with what it depends on, the rest recedes; the sidebar is narrow. Criterion: the reader of RI IV,2,1 n. 135 tells from the view what it says and what it is connected to.

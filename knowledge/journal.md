@@ -27,6 +27,14 @@ updated: 2026-11-18
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-18 Regest page with the head line
+
+- Trigger: step 3 of the accepted interface plan.
+- Decided: `pageView` in js/regest-card.js builds one head line (number as heading, dating, place, „ungeprüft“ with the popover naming producer, LLM and date, RI Online, TEI, TTL, JSON, „Zitieren“, one facsimile menu, paging), the text with the notes at passage height (`notesOf` with chips, `placeNotes`) and the apparatus in two columns; the page uses the window width; the static title row and citation block step aside when the script runs.
+- Rejected: keeping „Prüfstand“ and the producer paragraphs, which said the unchecked status three times per screen.
+- Changed: js/regest-card.js, js/edition/regest.js, css/shell.css, css/pages.css, checks/test_site.py, design.md, specification.md.
+- Evidence: n. 103a and n. †193 at 1440, 1920 and 360 without horizontal scroll, no SVG beyond the window, „ungeprüft“ once per screen; keyboard path from the list to the page of n. 103a, popover on focus, first statement and its passage, the copied citation and back to the list (8 of 8); density check (work) within limits at 1280, over at 360 by the regest text only (112 and 117 words against 110), which the operator accepts.
+
 ## 2026-11-18 Relations of an opened regest in the cube
 
 - Trigger: the operator's words on the Atlas with n. 135 opened (design.md, Itinerar): the lines too thick, without meaning, perhaps arrows.
