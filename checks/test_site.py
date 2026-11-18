@@ -76,7 +76,7 @@ class AtlasRoutes(unittest.TestCase):
         app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
         self.assertRegex(app, r"\batlas: \{[^\n]*renderAtlas")
         for old in ("itinerar", "jahrzehnte"):
-            self.assertRegex(app, rf"\b{old}: \{{[^\n]*toAtlas: true")
+            self.assertRegex(app, rf"\b{old}: \{{[^\n]*forwardToAtlas\(\"{old}\"")
         nav = json.loads((ROOT / "js" / "nav.json").read_text(encoding="utf-8"))["items"]
         self.assertEqual([it["key"] for it in nav], ["atlas", "regesten", "personen", "ueber"])
         # The start page rewrites #/itinerar/<place> of earlier links to the Atlas address.

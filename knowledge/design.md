@@ -208,6 +208,6 @@ The rule for every annotated regest text in the edition, on the page, in the det
 
 - A statement opens where its evidence passage begins, with one chip: the sign of its relation family (js/relations.js, the same signs as at the rim of the circle and in the lists) and its number. Several statements opening at one place stand as several chips.
 - The passage itself carries no mark at rest, since passages nest and overlap (a judgment spans the whole sentence that contains its dispute); its extent appears, as a tint with an accent underline, while the passage, its chip or its statement is pointed at or focused.
-- The statement in the comment area repeats chip, kind and number, then the verbatim qualifier in quotation marks („Witwe“), the participants by role, further literals (Ausnahme, Begründung) with their wording, and a word plate with the readers' verdict (stimmt, unklar, strittig); the plate carries no glyph, because the family sign of Bestätigung is a check mark.
+- The statement in the comment area repeats chip, kind and number, then the verbatim qualifier in quotation marks („Witwe“), the participants by role, further literals (Ausnahme, Begründung) with their wording, and a word plate with the readers' verdict, named by its producer („LLM: stimmt“, „LLM: unklar“, „LLM: strittig“, since 2026-11-18 after a fresh reader could not tell who had said „stimmt“); the plate carries no glyph, because the family sign of Bestätigung is a check mark.
 - A legend under the text names the families present on the page with their signs.
 

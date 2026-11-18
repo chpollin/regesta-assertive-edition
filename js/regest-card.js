@@ -34,7 +34,9 @@ const REVIEW_TIP = "Die Aussagen haben LLM-basierte Agenten aus dem Regesttext e
 // glyph, since the family signs of the annotation system include a check mark (Bestätigung);
 // always named as the readers' verdict, since no person has verified it. „strittig“: the
 // two readers disagree, and both readings stay.
-const verdictPlate = (agent) => h("span", { class: `ann-verdict is-${slug(agent.outcome)}`, title: `Urteil zweier LLM-Leser: ${agent.outcome}` }, agent.outcome);
+// The plate names its producer, since a fresh reader could not tell who had said „stimmt“ beside
+// „ungeprüft“ (2026-11-18).
+const verdictPlate = (agent) => h("span", { class: `ann-verdict is-${slug(agent.outcome)}`, title: `Urteil zweier LLM-Leser: ${agent.outcome}; kein Mensch hat geprüft` }, `LLM: ${agent.outcome}`);
 const slug = (outcome) => outcome.replace(/\s+/g, "-");
 
 // Small line signs for the head, drawn in the text colour; the word beside or the accessible

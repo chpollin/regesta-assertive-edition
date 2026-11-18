@@ -429,7 +429,7 @@ export function createCube(store, options) {
         ? h(
             "ul",
             { class: "it-tip-sts", role: "list" },
-            sts.map((st) => h("li", {}, h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 12 }), String(st.n)), ` ${st.kind}`, st.agent ? h("span", { class: `ann-verdict is-${st.agent.outcome.replace(/\s+/g, "-")}` }, st.agent.outcome) : null)),
+            sts.map((st) => h("li", {}, h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 12 }), String(st.n)), ` ${st.kind}`, st.agent ? h("span", { class: `ann-verdict is-${st.agent.outcome.replace(/\s+/g, "-")}` }, `LLM: ${st.agent.outcome}`) : null)),
           )
         : null,
     );

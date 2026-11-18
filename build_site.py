@@ -798,7 +798,7 @@ def about_page(site: Site, package: str) -> None:
         ("Extraktion", "agent", f"Aussagen als RDF, an ihren Wortlaut gebunden ({m['model']})"),
         ("Technische Prüfung", "script", "Form, Vokabular und wörtlicher Beleg"),
         ("Review und Korrektur", "agent", "zwei Reviews, Abwägung, Korrektur, neue Prüfung"),
-        ("Lesung einer Auswahl", "agent", "zwanzig Regesten, zwei unabhängige Lesungen"),
+        ("Gegenlesung einer Auswahl", "agent", "zwanzig Regesten, je Aussage zwei unabhängige LLM-Lesungen"),
         ("TEI und Website", "script", "nach Regeln, ohne neue Aussage"),
         ("Fachliche Prüfung", "person", "steht aus"),
     ]
