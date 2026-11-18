@@ -63,7 +63,6 @@ CURRENT = ' aria-current="page"'
 # Every file this build writes, so a rebuild removes exactly the files of the previous build
 # it no longer produces. The house rule forbids recursive deletes inside repositories.
 WRITTEN: set[Path] = set()
-STEP_PRODUCERS = ("deterministischer Workflow", "unrevidierter LLM-basierter Agent", "menschlich verifiziert")
 # The agent review of twenty regesta (knowledge/data.md, Agent review): two LLM-based readers
 # per statement. It is agentic review, never a human verdict, and is shown only in the local
 # preview build (--preview, site-preview/) until the operator decides on publication; the
@@ -761,59 +760,70 @@ def data_page(site: Site) -> None:
     redirect_page(site.out, "daten", "../ueber/#daten", "Über die Edition, Daten", site.texts["licenceLine"])
 
 
+# The producers of the steps of Über, with their sign (16 unit grid, current colour).
+PRODUCERS = {
+    "script": (
+        "Skript",
+        "M5.5 3C4 3 4 4.5 4 6s-1.5 2-1.5 2S4 8.5 4 10s0 3 1.5 3M10.5 3C12 3 12 4.5 12 6s1.5 2 1.5 2-1.5.5-1.5 2 0 3-1.5 3",
+    ),
+    "agent": (
+        "LLM-Agent",
+        "M5.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM10.5 6.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 13c0-2.2 1.6-4 3.5-4S9 10.8 9 13M7 13c0-2.2 1.6-4 3.5-4S14 10.8 14 13",
+    ),
+    "person": ("Person", "M8 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM3 14c0-2.8 2.2-5 5-5s5 2.2 5 5"),
+}
+
+
+def producer_sign(kind: str) -> str:
+    path = PRODUCERS[kind][1]
+    return (
+        f'<svg class="step-sign" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" fill="none" '
+        f'stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="{path}"/></svg>'
+    )
+
+
 def about_page(site: Site, package: str) -> None:
-    """Method, data and the edition in one compact text, after the operator's wish of
-    2026-11-14 („methoden daten und über die edition in einen kompakten text zusammenführen
-    der dem readme entspricht“): what the edition is and is not, how its statements arise,
-    which files there are, and its sources and licences, each part short, in the order of
-    the project's README."""
+    """Über (knowledge/interface-plan.md, part 4): two sentences, a process graphic of the steps
+    of knowledge/pipeline.md with a mark for the producer of each (script, LLM agent, person),
+    and downloads and licence as a short block below. The anchors #methode and #daten stay, since
+    the former pages methode/ and daten/ forward to them."""
     t = site.texts
     m = site.manifest
-    reviewers = len(list((site.source / "runs" / site.run_id / "review").glob("review-*.json")))
+    # The steps of the pipeline (knowledge/pipeline.md, The eight steps and Responsibilities) and
+    # of the edition build, merged where one producer does two steps in a row; the agentic
+    # reading of twenty regesta is the agent review of knowledge/data.md; the human
+    # verification is pending (pipeline.md), so it is drawn open.
     steps = [
-        (
-            "Auswahl und Pakete",
-            0,
-            f"Ein Skript wählt {len(site.regests)} Regesten aus dem CSV-Export von RI IV,2 und schreibt je Regest ein Paket mit Text, Datierung, Ort und Registerkandidaten.",
-        ),
-        (
-            "Extraktion",
-            1,
-            f"LLM-basierte Agenten ({esc(m['model'])}) schreiben die Aussagen als RDF, jede an ihren Wortlaut gebunden.",
-        ),
-        ("Technische Prüfung", 0, "Ein Validator prüft Form, Vokabular und den wörtlichen Beleg jeder Aussage."),
-        (
-            "Review und Korrektur",
-            1,
-            f"{reviewers} Agenten prüfen unabhängig, ein weiterer wägt ab, ein dritter korrigiert; danach läuft die technische Prüfung erneut.",
-        ),
-        (
-            "Agentische Prüfung einer Auswahl",
-            1,
-            "Zwei unabhängige Lesungen desselben LLM prüfen zwanzig ausgewählte Regesten gegen den Regesttext und urteilen je Aussage. Keine Aussage ist menschlich verifiziert.",
-        ),
-        (
-            "TEI und Website",
-            0,
-            "Skripte erzeugen nach Regeln je Regest eine TEI-Datei und diese Seiten, ohne eine Aussage hinzuzufügen.",
-        ),
+        ("Auswahl und Pakete", "script", "Regesten aus dem CSV-Export, je Regest ein Paket"),
+        ("Extraktion", "agent", f"Aussagen als RDF, an ihren Wortlaut gebunden ({m['model']})"),
+        ("Technische Prüfung", "script", "Form, Vokabular und wörtlicher Beleg"),
+        ("Review und Korrektur", "agent", "zwei Reviews, Abwägung, Korrektur, neue Prüfung"),
+        ("Lesung einer Auswahl", "agent", "zwanzig Regesten, zwei unabhängige Lesungen"),
+        ("TEI und Website", "script", "nach Regeln, ohne neue Aussage"),
+        ("Fachliche Prüfung", "person", "steht aus"),
     ]
     items = "".join(
-        f'<li><span class="step-title">{esc(title)}</span> <span class="producer">({"Mensch" if who == 2 else STEP_PRODUCERS[who]})</span> {text}</li>'
-        for title, who, text in steps
+        f'<li class="step is-{kind}{" is-open" if kind == "person" else ""}">'
+        f'<span class="step-mark" title="{PRODUCERS[kind][0]}">{producer_sign(kind)}'
+        f'<span class="visually-hidden">{PRODUCERS[kind][0]}:</span></span>'
+        # The note of a step is read out; on screen only the open human check says „steht aus“
+        # (density limits of the page profile, 2026-11-18).
+        f'<span class="step-title">{esc(title)}</span> <span class="step-note{"" if kind == "person" else " visually-hidden"}">{esc(note)}</span></li>'
+        for title, kind, note in steps
+    )
+    key = "".join(
+        f'<li><span class="step-mark is-{k}">{producer_sign(k)}</span>{esc(label)}</li>'
+        for k, (label, _) in PRODUCERS.items()
     )
     src = t["source"]
-    ae = t["agenticEdition"]
     main = f"""<h1>Über die Edition</h1>
-<p class="intro">Diese Edition ist ein Experiment. Sie erprobt, wie weit LLM-basierte Agenten eine Edition erzeugen und prüfen können, und ist kein abgeschlossenes oder fachlich abgenommenes Werk. {esc(ae["definition"])} {esc(ae["provisionalNote"]) if ae["provisional"] else ""} Diese Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, jede an ihren Wortlaut gebunden und mit Urheber und Prüfstand. Die Aussagen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii; technisch geprüft heißt nicht historisch richtig oder vollständig.</p>
-<section aria-labelledby="methode"><h2 id="methode">Wie die Aussagen entstehen</h2>
-<ol class="steps" role="list">{items}</ol></section>
-<section aria-labelledby="daten"><h2 id="daten">Daten</h2>
-<p>Turtle ist die maßgebliche Fassung der Aussagen. TEI-XML gibt je Regest den Regesttext mit den Aussagen in Standoff wieder und ist gegen das Schema tei_all geprüft, JSON ist die Grundlage dieser Seiten. Jede Regestseite bietet ihre drei Dateien an.</p>
-<ul class="downloads" role="list"><li><a href="../daten/{esc(package)}" download>Alle Regesten als Paket</a></li></ul></section>
-<section aria-labelledby="lizenz"><h2 id="lizenz">Quellen und Lizenz</h2>
-<p>{esc(t["attribution"])} Texte und Daten der Edition stehen unter <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, der Code unter <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>. Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}.</p>
-<p class="link-row"><a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a> <a href="{esc(src["lab"])}" rel="noopener">RI Lab, Daten</a></p>
+<p class="intro">Diese Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, die LLM-basierte Agenten aus dem Regesttext gewonnen haben, jede an ihren Wortlaut gebunden. Sie ist ein Experiment: Skripte und Agenten haben die Aussagen geprüft, noch kein Mensch, und sie sind keine Aussagen der Regesta Imperii.</p>
+<section aria-labelledby="methode" class="process"><h2 id="methode" class="visually-hidden">Wie die Aussagen entstehen</h2>
+<ol class="steps" role="list">{items}</ol>
+<ul class="step-key" role="list" aria-label="Wer einen Schritt ausführt">{key}</ul></section>
+<section aria-labelledby="daten" class="about-files"><h2 id="daten">Daten und Lizenz</h2>
+<p><a href="../daten/{esc(package)}" download>Alle Regesten als Paket</a> (Turtle, die maßgebliche Fassung der Aussagen; TEI, gegen tei_all geprüft; JSON); jede Regestseite bietet ihre drei Dateien. Texte und Daten <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, Code <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>, Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}. Quelle: <a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a>, <a href="{esc(src["lab"])}" rel="noopener">RI Lab</a>.</p>
+<p id="lizenz" class="about-attribution">{esc(t["attribution"])}</p>
 <p class="placeholder">{esc(t["imprint"])}</p></section>"""
     site.page(path="ueber", key="ueber", kind="text", title="Über die Edition", main=main)
 

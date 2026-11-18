@@ -27,6 +27,14 @@ updated: 2026-11-18
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-18 Über with the process graphic
+
+- Trigger: step 4 of the accepted interface plan.
+- Decided: two sentences (what the layer is; that scripts and agents checked it, no person yet, and that it is no statement of Regesta Imperii); seven steps from pipeline.md with the producer's sign, the human check open; downloads and licence in one block with the attribution. The anchors #methode and #daten stay for the forwarding pages.
+- Rejected: one box per step, which the page profile counts as boxes; the step notes on screen, which put the first screen at 312 words.
+- Changed: build_site.py (about_page, PRODUCERS), css/pages.css, design.md.
+- Evidence: screenshots at 1440, 1920 and 360 without horizontal scroll; density check (page) over at 1280 (text styles 8 against 3, text elements 27 against 20, words 275 against 120) and at 360 (8, 19, 82), the styles from the shared header and the open step, the words from the attribution in the first screen.
+
 ## 2026-11-18 Regest page with the head line
 
 - Trigger: step 3 of the accepted interface plan.
