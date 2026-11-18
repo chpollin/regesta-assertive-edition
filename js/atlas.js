@@ -217,6 +217,8 @@ export function renderAtlas(store, options) {
         ? [h("p", { text: "Eine Karte je Jahrzehnt; die Kreisfläche zählt die Regesten eines Ortes. Ein Klick auf das Jahrzehnt setzt den Zeitraum, auf einen Ort den Ort." })]
         : [h("p", { text: "Grundriss: Karte der Ausstellungsorte, ferne Orte zur Mitte gestaucht. Höhe: Zeit. Ziehen dreht den Würfel. Regesten ohne Ort stehen nur in der Liste." }), cubeKey()];
     lines.push(h("p", { text: "Orte und Daten aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM." }));
+    // The cube follows the Space-Time Cube idea the operator took from Windhager et al. 2019.
+    lines.push(h("p", {}, "Idee des Raum-Zeit-Würfels nach ", h("a", { href: "https://doi.org/10.1109/TVCG.2018.2830759", rel: "noopener" }, "Windhager et al. (2019)"), "."));
     if (options.about) lines.push(h("p", {}, h("a", { href: options.about }, "Daten und Lizenz")));
     infoPanel.replaceChildren(...lines);
   }
