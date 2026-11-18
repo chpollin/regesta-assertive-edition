@@ -10,15 +10,9 @@
  * steps), so the same data give the same picture. It honours the shared filters, since it is
  * computed from the filtered graph the view hands in.
  */
-const SVG = "http://www.w3.org/2000/svg";
-const TOP = 40;
+import { s } from "./svg.js";
 
-function s(tag, attrs = {}) {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) if (k !== "text" && v !== null && v !== undefined) el.setAttribute(k, String(v));
-  if (attrs.text) el.textContent = attrs.text;
-  return el;
-}
+const TOP = 40;
 
 /**
  * @param {{nodes: any[], edges: any[]}} graph  the filtered graph of the view
@@ -107,7 +101,7 @@ function layout(net, width, height) {
  * Draw the overview into host. onSelect(id) opens a person's circle; onPoint(label|null)
  * names the pointed person in the view's status line.
  */
-export function drawPersonNetwork(host, net, { onSelect, onPoint, height: given }) {
+export function drawPersonNetwork(host, net, { onSelect, onPoint, height: given, centre = null }) {
   const width = Math.max(320, host.clientWidth);
   const height = Math.max(320, given || host.clientHeight || 600);
   const pos = layout(net, width, height);
@@ -143,7 +137,7 @@ export function drawPersonNetwork(host, net, { onSelect, onPoint, height: given 
     const a = s("a", { href: `#/personen/${encodeURIComponent(n.id)}`, class: "node po-node", "aria-label": `${n.label}, ${n.n} Aussagen` });
     // A group is a square, as in the circle of a person, so the key means the same in both.
     const rr = r(n);
-    a.append(n.group ? s("rect", { x: (pos[i].x - rr * 0.9).toFixed(1), y: (pos[i].y - rr * 0.9).toFixed(1), width: (rr * 1.8).toFixed(1), height: (rr * 1.8).toFixed(1), class: "po-dot" }) : s("circle", { cx: pos[i].x.toFixed(1), cy: pos[i].y.toFixed(1), r: rr.toFixed(1), class: "po-dot" }));
+    a.append(n.group ? s("rect", { x: (pos[i].x - rr * 0.9).toFixed(1), y: (pos[i].y - rr * 0.9).toFixed(1), width: (rr * 1.8).toFixed(1), height: (rr * 1.8).toFixed(1), class: `po-dot st-${n.stand ?? "open"}` }) : s("circle", { cx: pos[i].x.toFixed(1), cy: pos[i].y.toFixed(1), r: rr.toFixed(1), class: `po-dot st-${n.stand ?? "open"}` }));
     const spot = label.get(i);
     a.append(
       s("text", {
@@ -173,5 +167,21 @@ export function drawPersonNetwork(host, net, { onSelect, onPoint, height: given 
     return a;
   });
   svg.append(nodesG);
+  // The person left out because they take part in nearly every statement: a greyed node in
+  // the free corner with the number of their regesta, leading to their circle.
+  if (centre) {
+    const cx = 18;
+    const cy = 18;
+    const a = s("a", { href: `#/personen/${encodeURIComponent(centre.id)}`, class: "node po-node po-centre", "aria-label": `${centre.label}, an ${centre.count} Regesten beteiligt, nicht im Bild; öffnet den Kreis` });
+    a.append(s("title", { text: "An fast allen Aussagen beteiligt und deshalb nicht im Bild; ein Klick öffnet den Kreis" }));
+    a.append(s("circle", { cx, cy, r: 10, class: "po-dot po-centre-dot" }));
+    a.append(s("text", { x: cx + 16, y: cy + 4, class: "n-label", text: `${centre.label} (${centre.count})` }));
+    a.addEventListener("click", (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey) return;
+      event.preventDefault();
+      onSelect(centre.id);
+    });
+    svg.append(a);
+  }
   host.replaceChildren(svg);
 }

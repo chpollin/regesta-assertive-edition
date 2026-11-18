@@ -5,6 +5,7 @@
  * becomes a link back to the view the reader came from, same origin only.
  */
 import { bridge, loadRoutes, loadStore, siteUrl } from "./views.js";
+import { param } from "../url.js";
 
 export async function init(root) {
   backLink();
@@ -24,20 +25,30 @@ export async function init(root) {
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({})));
   const claim = location.hash.startsWith("#f-") ? decodeURIComponent(location.hash.slice(3)) : null;
-  const card = renderRegestCard(store, uid, { claim, texts, page: true });
-  host.replaceChildren(card);
-  // Local review build only: the verdict form under the card (js/edition/review.js).
-  if (document.querySelector('meta[name="edition-review"]')) {
-    const [{ loadReview, mountReview }, { statementsOf }] = await Promise.all([import("./review.js"), import(siteUrl(root, "ansicht/js/regest-card.js"))]);
-    const review = await loadReview(root);
-    const numbers = new Map(statementsOf(store.byUid.get(uid)).map((st) => [st.id, st.n]));
-    if (review) mountReview(review, uid, card, numbers, root);
+  const slug = host.dataset.slug;
+  const files = slug ? { TEI: siteUrl(root, `tei/${slug}.xml`), TTL: siteUrl(root, `ttl/${slug}.ttl`), JSON: siteUrl(root, `json/${slug}.json`) } : null;
+  // What only the static page knows moves into the areas of the page view: further fields of
+  // the delivery (Originaldatierung to the metadata, Literatur and Anmerkungen to the
+  // apparatus), the external links and the citation forms, as build_site.py writes them into
+  // the JSON island #regest-meta. The static citation block then goes.
+  let meta = {};
+  try {
+    meta = JSON.parse(document.getElementById("regest-meta")?.textContent ?? "{}");
+  } catch {
+    // Without the island the page view shows the regest's own fields only.
   }
+  const pager = document.querySelector(".pager");
+  const card = renderRegestCard(store, uid, { claim, texts, page: true, files, pager, meta });
+  host.replaceChildren(card);
+  // The head line of the card carries the number as the page's heading, the paging and the
+  // citation; the static title row and citation block go.
+  document.querySelector(".title-row")?.remove();
+  document.querySelector(".cite")?.remove();
 }
 
 /** Validated return address: same origin, http or https, otherwise nothing is shown. */
 function backLink() {
-  const raw = new URLSearchParams(location.search).get("zurueck");
+  const raw = param("zurueck");
   const slot = document.querySelector(".back-slot");
   if (!raw || !slot) return;
   let url;

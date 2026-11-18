@@ -2,7 +2,7 @@
  * Embedding of the interactive views (ansicht/) in static pages.
  *
  * The views address their targets as hash routes of the single-page app (#/regest/<uid>,
- * #/personen/<iri>, #/raum). On a static page these routes are mapped to the static pages,
+ * #/personen/<iri>, #/zeitband). On a static page these routes are mapped to the static pages,
  * using data/routes.json written by build_site.py. A regest link carries the current address
  * as `zurueck`, so the regest page can lead back to the view with its state.
  */
@@ -45,7 +45,8 @@ export function bridge(root, routes) {
       const iri = decodeURIComponent(parts.slice(1).join("/"));
       return siteUrl(root, routes.persons[iri] ?? "personen/");
     }
-    if (parts[0] === "raum" || parts.length === 0) return siteUrl(root, `ansicht/${hash || "#/"}`);
+    // The Netz and the Zeitband live in the views app; the former Raum forwards there to the Netz.
+    if (["raum", "zeitband"].includes(parts[0]) || parts.length === 0) return siteUrl(root, `ansicht/${location.search}${hash || "#/"}`);
     return null;
   };
   document.addEventListener(
@@ -79,45 +80,4 @@ export function demoteHeadings(element) {
     h2.append(...h1.childNodes);
     h1.replaceWith(h2);
   }
-}
-
-const MODULES = {
-  itinerary: { file: "ansicht/js/itinerary.js", render: "renderItinerary" },
-  space: { file: "ansicht/js/space.js", render: "renderSpace" },
-  overview: { file: "ansicht/js/overview.js", render: "renderOverview" },
-};
-
-/**
- * Render one view of the app ("itinerary", "space" or "overview") into a host: drawing area and its
- * sidebar side by side, as the shell places them. The views take the shared filter state
- * of ansicht/js/filters.js and return {element, aside, dispose}. The subject is the person
- * (overview, space) or the place of issue (itinerary) the view opens on, or null.
- */
-export async function mountView(root, host, store, kind, subject) {
-  const [{ createFilters }, module] = await Promise.all([
-    import(siteUrl(root, "ansicht/js/filters.js")),
-    import(siteUrl(root, MODULES[kind].file)),
-  ]);
-  const filters = createFilters(store);
-  const view = module[MODULES[kind].render](store, kind === "itinerary" ? { place: subject, filters } : { actor: subject, filters });
-  const drawing = document.createElement("div");
-  drawing.className = "embed-main";
-  drawing.append(view.element);
-  const parts = [drawing];
-  if (view.aside) {
-    const aside = document.createElement("aside");
-    aside.className = "embed-aside site-aside";
-    aside.setAttribute("aria-label", "Auswahl und Vorgänge");
-    aside.append(view.aside);
-    parts.push(aside);
-  }
-  host.classList.add("embed");
-  host.replaceChildren(...parts);
-  demoteHeadings(host);
-  return view;
-}
-
-/** A graph node of kind person or group with this IRI, or null. */
-export function actorOf(store, iri) {
-  return store.edition.graph.nodes.some((n) => n.id === iri && n.kind !== "act") ? iri : null;
 }

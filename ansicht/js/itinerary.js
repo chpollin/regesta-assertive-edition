@@ -1,240 +1,227 @@
 /**
- * Itinerar: the whole delivery as a space-time cube of the places of issue.
+ * The space-time cube of the Atlas (js/atlas.js): every regest of the whole delivery with a
+ * place of issue as one point, the ground plan the map of the places of issue, the height time.
  *
- * Task: see where the documents of Friedrich I. were issued, when, and how the court moved
- * between Germany and Italy over almost four decades; find a place and read its regesta.
- * Ground plan is the map (longitude, latitude of the place of issue from the register),
- * height is time. Every regest with a valid place of issue is one point; the itinerary line
- * joins them in time order. This is the first, deterministic layer of the edition (built by
- * build_holdings.py from the delivery and the register, no LLM). The regesta of the run with
- * evidenced statements are the second layer, set in the accent and named as such.
+ * Task: see where and when the documents of Friedrich I. were issued and how the court moved
+ * between Germany and Italy; point at a regest to read it, open it to see what it depends on.
+ * This is the deterministic layer of the edition (build_holdings.py, no LLM); the regesta
+ * with statements of the run are drawn larger in the ochre of the second layer.
  *
  * Movement data is the case for which the space-time cube is studied (Kristensson et al.
  * 2009, Amini et al. 2015, per the coordination's study of 2026-11-11): patterns over time
- * read faster, single points in time not; exact reading stays with the list in the sidebar.
- * Three snapping orthographic views as in the space view: the top view is the map of all
- * places, the side view is time against west and east.
+ * read faster, single points in time not; exact reading stays with the result list of the
+ * Atlas. Three snapping orthographic views: Würfel (oblique), Karte (top), Zeit (side).
+ *
+ * Fit (interface plan of 2026-11-17): the cube is fitted to the bounding box of its content,
+ * the box spanned by the places of issue and the years, not to a fixed square floor; its time
+ * height follows the proportions of the drawing area, so the oblique view fills the width.
+ *
+ * The regest beside its point (operator, 2026-11-14): a pointed or focused point shows the
+ * regest in a small card beside it, never while a regest is open, so it cannot stand over
+ * the opened one. An opened regest is marked with what it depends on: the stations before and
+ * after it on the itinerary, the other regesta of its place, and the regesta that share a
+ * person of the register with it (persons named in at most RELATED_MAX regesta, so the ruler
+ * and his chancellors do not join everything); the rest recedes.
+ *
+ * The relations of an opened regest (operator, 2026-11-18: „viel zu dick … den Relationen auch
+ * eine Bedeutung geben … kleine Pfeile“): three kinds, each in its own colour of one palette
+ * checked for colour-vision deficiency (css/tokens.css, --rel-*) and in its own form, so the
+ * kind reads without colour too: the stations before and after as solid lines in the accent
+ * with an arrowhead in time direction, the other regesta of the same place as rings without a
+ * line, the regesta sharing a person as dashed hairlines, only the PEOPLE_DRAWN nearest in
+ * time, all of them while the legend asks for it. Pointing at a related point names its kind
+ * and the shared persons.
  */
 import { h } from "./dom.js";
-import { timeBand } from "./sidebar.js";
-import { renderRegestCard } from "./regest-card.js";
+import { statementsOf } from "./regest-card.js";
+import { familyIcon, familyOf } from "./relations.js";
+import { s } from "./svg.js";
+import { mapProjection } from "./map.js";
 
-const SVG = "http://www.w3.org/2000/svg";
 const DEG = Math.PI / 180;
-const VIEWS = Object.freeze({
-  schraeg: { label: "Schräg", yaw: -20 * DEG, pitch: 24 * DEG },
-  oben: { label: "Karte", yaw: 0, pitch: 90 * DEG },
-  seite: { label: "Zeit", yaw: 0, pitch: 0 },
+/** The three camera positions; the Atlas adds Jahrzehnte as a fourth representation. */
+export const CAMERAS = Object.freeze({
+  wuerfel: { label: "Würfel", yaw: -28 * DEG, pitch: 20 * DEG },
+  karte: { label: "Karte", yaw: 0, pitch: 90 * DEG },
+  zeit: { label: "Zeit", yaw: 0, pitch: 0 },
 });
-const HEIGHT = 3.2;
-/** Half the width of the cube's floor; the core of the places fills radius 1.25 of it. */
-const BOX = 1.5;
+/** Bounds of the time height in map units (the core of the places spans about 2.5). */
+const HEIGHT_MIN = 1.1;
+const HEIGHT_MAX = 4;
+/** Room around the drawn box for the year scale on the left and labels elsewhere, in px. */
+const MARGIN = { left: 42, right: 14, top: 14, bottom: 34 };
 /** Standing place names on the floor: the places with most documents, as larger points. */
 const NAMED_PLACES = 5;
-
-/** @param {string} tag @param {Record<string, any>} [attrs] */
-function s(tag, attrs = {}) {
-  const el = document.createElementNS(SVG, tag);
-  for (const [k, v] of Object.entries(attrs)) if (k !== "text" && v !== null && v !== undefined) el.setAttribute(k, String(v));
-  if (attrs.text) el.textContent = attrs.text;
-  return el;
-}
-
-function yearOf(iso) {
-  const [y, m, d] = iso.split("-").map(Number);
-  return y + ((m - 1) * 30.4 + (d - 1)) / 365;
-}
+/** A person named in more regesta than this does not make two regesta related. */
+const RELATED_MAX = 60;
+/** Shared-person relations drawn at rest: the nearest in time; the legend shows all on demand. */
+const PEOPLE_DRAWN = 12;
 
 /**
- * @param {import("./app.js").Store & {holdings: any}} store
- * @param {{place?: string|null, filters: any}} options
+ * @param {any} store  the shared store with holdings
+ * @param {{points: Array<{u: string, i: string, p: string, y: number}>, filters: any,
+ *   isOn: (p: any) => boolean, personMark: (p: any) => string, withStatements: Set<string>,
+ *   flagsOf: Map<string, any[]>, checks: () => any, onOpen: (i: number) => void,
+ *   onFree: () => void, blocked: () => DOMRect|null}} options
  */
-export function renderItinerary(store, options) {
-  const { filters } = options;
-  const H = store.holdings;
-  const places = H.places;
-  const evidenced = new Set(store.edition.regests.map((r) => r.uid));
-  const points = H.regesta.filter((r) => r.p && places[r.p]).map((r) => ({ ...r, y: yearOf(r.s) }));
-  const params = new URLSearchParams(location.search);
-  const startView = VIEWS[params.get("ansicht")] ? params.get("ansicht") : "schraeg";
-  const state = { flags: false, place: options.place ?? null, view: { yaw: VIEWS[startView].yaw, pitch: VIEWS[startView].pitch, zoom: 1 }, snap: startView, pointed: null };
-
-  // The map: an equirectangular projection around the median place of issue. The core that
-  // holds 95 percent of the documents fills the cube; the far journeys (the crusades of 1147
-  // and 1189/90) are compressed beyond it, so they stay visible without shrinking the core.
-  // The legend says so.
-  const median = (values) => [...values].sort((a, b) => a - b)[Math.floor(values.length / 2)];
-  const midLat = median(points.map((p) => places[p.p].la));
-  const midLon = median(points.map((p) => places[p.p].lo));
-  const k = Math.cos(midLat * DEG);
-  const dist = points.map((p) => Math.hypot((places[p.p].lo - midLon) * k, places[p.p].la - midLat)).sort((a, b) => a - b);
-  const core = dist[Math.floor(dist.length * 0.95)] || 1;
-  const squeeze = (dx, dz) => {
-    const d = Math.hypot(dx, dz) / core;
-    const r = d <= 1 ? d : 1 + 0.45 * Math.tanh((d - 1) / 1.2);
-    return d ? r / d : 0;
-  };
-  const mapXZ = (lon, lat) => {
-    const dx = (lon - midLon) * k;
-    const dz = lat - midLat;
-    const f = (squeeze(dx, dz) / core) * 1.25;
-    return [dx * f, dz * f];
-  };
-  const mapX = (lon, lat) => mapXZ(lon, lat)[0];
-  const mapZ = (lon, lat) => mapXZ(lon, lat)[1];
-  // Height spans the years with a place of issue; earlier regesta have none.
+export function createCube(store, options) {
+  const { points, filters } = options;
+  const places = store.holdings.places;
+  const { midLat, midLon, k, core, mapXZ: unitXZ, inCore } = mapProjection(points, places);
+  const mapX = (lon, lat) => unitXZ(lon, lat)[0] * 1.25;
+  const mapZ = (lon, lat) => unitXZ(lon, lat)[1] * 1.25;
   const first = Math.floor(Math.min(...points.map((p) => p.y)));
   const last = Math.floor(Math.max(...points.map((p) => p.y)));
-  const toY = (year) => ((year - first) / (last + 1 - first) - 0.5) * HEIGHT;
+  // The content box: the places of issue on the floor, with a little room, so the floor is
+  // as large as the places it holds and no larger.
+  const xs = points.map((p) => mapX(places[p.p].lo, places[p.p].la));
+  const zs = points.map((p) => mapZ(places[p.p].lo, places[p.p].la));
+  const pad = 0.05;
+  const box = { x0: Math.min(...xs) - pad, x1: Math.max(...xs) + pad, z0: Math.min(...zs) - pad, z1: Math.max(...zs) + pad };
+  const corners = [
+    [box.x0, box.z0],
+    [box.x1, box.z0],
+    [box.x1, box.z1],
+    [box.x0, box.z1],
+  ];
+  let height = 3.2;
+  const toY = (year) => ((year - first) / (last + 1 - first) - 0.5) * height;
 
-  const status = h("p", { class: "canvas-status", role: "status", "aria-live": "polite" });
-  const sceneHost = h("div", { class: "space-scene", tabindex: "0", role: "group", "aria-label": "Itinerar als Raum-Zeit-Würfel. Pfeiltasten drehen, Plus und Minus zoomen, Pos1 kehrt zur Schrägansicht zurück. Orte und Regesten sind in der Seitenleiste mit der Tastatur erreichbar." });
-  const viewButtons = Object.entries(VIEWS).map(([key, v]) => h("button", { type: "button", class: "seg", "aria-pressed": "false", "data-view": key, onclick: () => snapTo(key) }, v.label));
-  const freeMark = h("span", { class: "seg seg-note", text: "frei gedreht" });
-  const element = h(
-    "section",
-    { class: "canvas space itinerary", "aria-labelledby": "it-title" },
-    h("h1", { id: "it-title", class: "visually-hidden", text: "Itinerar: alle Regesten mit Ausstellungsort in Raum und Zeit" }),
-    h(
-      "div",
-      { class: "canvas-bar" },
-      h("div", { class: "segs", role: "group", "aria-label": "Ansicht" }, viewButtons, freeMark),
-      h("button", { type: "button", class: "tool", onclick: () => snapTo("schraeg") }, "Ausgangslage"),
-      h("button", { type: "button", class: "tool", "aria-label": "Vergrößern", onclick: () => zoom(1.15) }, "+"),
-      h("button", { type: "button", class: "tool", "aria-label": "Verkleinern", onclick: () => zoom(1 / 1.15) }, "−"),
-    ),
-    sceneHost,
-    status,
-  );
+  const state = { view: { yaw: CAMERAS.wuerfel.yaw, pitch: CAMERAS.wuerfel.pitch, zoom: 1 }, snap: "wuerfel", pointed: null, opened: null, flags: false };
+  let related = null;
+  let allPeople = false;
+  /** The boxes of the names standing on the floor, so a pointed place name avoids them. */
+  let labelBoxes = [];
 
+  const sceneHost = h("div", {
+    class: "space-scene",
+    tabindex: "0",
+    role: "group",
+    "aria-label": "Raum-Zeit-Würfel der Regesten mit Ausstellungsort. Pfeiltasten drehen, Plus und Minus zoomen, Pos1 kehrt zur Ausgangslage zurück. Die Regesten der Auswahl stehen in der Liste links.",
+  });
+  const tip = h("div", { class: "it-tip", role: "tooltip", hidden: true });
+  const element = h("div", { class: "cube" }, sceneHost, tip);
   let scene = null;
   let screen = [];
-  // The plausibility check of check_itinerary.py, optional: flagged jumps between
-  // consecutive stations, shown as a switchable state and named in the regest card.
-  let checks = null;
-  const flagsOf = new Map();
-  fetch(new URL("../data/itinerary-checks.json", import.meta.url))
-    .then((r) => (r.ok ? r.json() : null))
-    .then((data) => {
-      checks = data;
-      for (const f of data?.flags ?? []) for (const [me, other] of [[f.a, f.b], [f.b, f.a]]) {
-        if (!flagsOf.has(me.uid)) flagsOf.set(me.uid, []);
-        flagsOf.get(me.uid).push({ ...f, other });
-      }
-      renderSide();
-      update();
-    })
-    .catch(() => {});
-  // The base map is a small local file; without it the cube still works.
+
   let basemap = null;
-  fetch(new URL("./basemap.json", import.meta.url))
-    .then((r) => (r.ok ? r.json() : null))
-    .then((data) => {
-      basemap = data;
-      update();
-    })
-    .catch(() => {});
-
-  // The Empire about 1190 as a soft area: a rough own digitisation after Shepherd's
-  // public-domain map (build_realm.py), named as this project's interpretation.
   let realm = null;
-  fetch(new URL("./realm.json", import.meta.url))
-    .then((r) => (r.ok ? r.json() : null))
-    .then((data) => {
-      realm = data;
-      renderSide();
-      update();
-    })
-    .catch(() => {});
+  const later = (file, set) =>
+    fetch(new URL(file, import.meta.url))
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        set(data);
+        update();
+      })
+      .catch(() => {});
+  // The base map and the Empire about 1190 are small local files; without them the cube works.
+  later("./basemap.json", (d) => (basemap = d));
+  later("./realm.json", (d) => (realm = d));
 
-  function build(width, height) {
-    const svg = s("svg", { width, height, viewBox: `0 0 ${width} ${height}`, class: "space-svg", "aria-hidden": "true" });
+  function build(width, height_) {
+    const svg = s("svg", { width, height: height_, viewBox: `0 0 ${width} ${height_}`, class: "space-svg", "aria-hidden": "true" });
     const frames = s("g", { class: "it-frames" });
+    const defs = s("defs");
+    const floorClip = s("clipPath", { id: "it-floor-clip" });
+    const floorShape = floorClip.appendChild(s("polygon"));
+    const coreClip = s("clipPath", { id: "it-core-clip" });
+    const coreShape = coreClip.appendChild(s("polygon"));
+    const blur = s("filter", { id: "it-realm-soft", x: "-5%", y: "-5%", width: "110%", height: "110%" });
+    blur.append(s("feGaussianBlur", { stdDeviation: 2.5 }));
+    // The arrowhead of the itinerary steps, in time direction; it takes the line's colour.
+    const arrow = s("marker", { id: "it-arrow", viewBox: "0 0 8 8", refX: 7, refY: 4, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse", markerUnits: "userSpaceOnUse" });
+    arrow.append(s("path", { d: "M0,0.5 L8,4 L0,7.5 z", class: "it-arrow" }));
+    defs.append(floorClip, coreClip, blur, arrow);
+    // The map lies on the floor and is cut to it; the realm also to the undistorted core.
+    const ground = s("g", { "clip-path": "url(#it-floor-clip)" });
+    const realmLayer = s("g", { class: "it-realm-layer", "clip-path": "url(#it-core-clip)" });
     const map = s("g", { class: "it-map" });
+    ground.append(realmLayer, map);
     const line = s("polyline", { class: "it-path" });
+    const traces = s("g", { class: "it-traces" });
     const dots = s("g", { class: "it-dots" });
     const marks = s("g", { class: "it-marks it-flags" });
     const labels = s("g", { class: "sp-labels" });
     const pointer = s("g", { class: "it-pointer" });
-    // The realm lies under the coast, softened by a blur and cut to the undistorted core.
-    const defs = s("defs");
-    const clip = s("clipPath", { id: "it-core-clip" });
-    const clipShape = clip.appendChild(s("polygon"));
-    const blur = s("filter", { id: "it-realm-soft", x: "-5%", y: "-5%", width: "110%", height: "110%" });
-    blur.append(s("feGaussianBlur", { stdDeviation: 2.5 }));
-    defs.append(clip, blur);
-    const realmLayer = s("g", { class: "it-realm-layer", "clip-path": "url(#it-core-clip)" });
-    svg.append(defs, frames, realmLayer, map, line, dots, marks, labels, pointer);
-    const dotEls = points.map((p) => dots.appendChild(s("circle", { class: evidenced.has(p.u) ? "it-dot is-evidenced" : "it-dot", r: evidenced.has(p.u) ? 3.6 : 2.2 })));
-    return { svg, width, height, frames, map, realmLayer, clipShape, line, dots: dotEls, marks, labels, pointer };
+    svg.append(defs, frames, ground, line, traces, dots, marks, labels, pointer);
+    const dotEls = points.map((p) => dots.appendChild(s("circle", { class: options.withStatements.has(p.u) ? "it-dot is-evidenced" : "it-dot" })));
+    return { svg, width, height: height_, frames, floorShape, coreShape, map, realmLayer, line, traces, dotsG: dots, dots: dotEls, marks, labels, pointer };
   }
 
-  function projector() {
-    const { width, height } = scene;
-    const { yaw, pitch, zoom: z } = state.view;
+  /** Projected corners of the content box for a camera, unscaled. */
+  function raw(yaw, pitch) {
     const [cy, sy, cp, sp] = [Math.cos(yaw), Math.sin(yaw), Math.cos(pitch), Math.sin(pitch)];
-    const raw = (x, y, zz) => {
+    return (x, y, zz) => {
       const xr = x * cy + zz * sy;
       const zr = -x * sy + zz * cy;
       return { x: xr, y: -(y * cp + zr * sp), depth: zr * cp - y * sp };
     };
-    // Fit the eight corners of the cube into the drawing for the current view, with room
-    // for the view bar above and the status line below.
-    const corners = [];
-    for (const x of [-BOX, BOX]) for (const y of [-HEIGHT / 2, HEIGHT / 2]) for (const zz of [-BOX, BOX]) corners.push(raw(x, y, zz));
-    const xs = corners.map((c) => c.x);
-    const ys = corners.map((c) => c.y);
-    const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
-    const top = 56;
-    const bottom = 28;
-    const base = Math.min((width - 80) / (x1 - x0), (height - top - bottom) / (y1 - y0)) * z;
-    const midX = width / 2 - base * ((x0 + x1) / 2);
-    const midY = top + (height - top - bottom) / 2 - base * ((y0 + y1) / 2);
+  }
+  function extent(project, h_) {
+    const pts = [];
+    for (const [x, zz] of corners) for (const y of [-h_ / 2, h_ / 2]) pts.push(project(x, y, zz));
+    const xs_ = pts.map((c) => c.x);
+    const ys_ = pts.map((c) => c.y);
+    return { x0: Math.min(...xs_), x1: Math.max(...xs_), y0: Math.min(...ys_), y1: Math.max(...ys_) };
+  }
+
+  /**
+   * The time height that gives the oblique view the proportions of the drawing area, so the
+   * cube fills the width; within bounds, so time never collapses or towers.
+   */
+  function fitHeight() {
+    const aw = scene.width - MARGIN.left - MARGIN.right;
+    const ah = scene.height - MARGIN.top - MARGIN.bottom;
+    const cam = CAMERAS.wuerfel;
+    const project = raw(cam.yaw, cam.pitch);
+    const flat = extent(project, 0);
+    const wide = flat.x1 - flat.x0;
+    const floorDepth = flat.y1 - flat.y0;
+    const want = (wide * ah) / aw - floorDepth;
+    height = Math.min(HEIGHT_MAX, Math.max(HEIGHT_MIN, want / Math.cos(cam.pitch)));
+  }
+
+  function projector() {
+    const { width, height: H } = scene;
+    const { yaw, pitch, zoom: z } = state.view;
+    const project = raw(yaw, pitch);
+    const e = extent(project, height);
+    const aw = width - MARGIN.left - MARGIN.right;
+    const ah = H - MARGIN.top - MARGIN.bottom;
+    const base = Math.min(aw / (e.x1 - e.x0), ah / (e.y1 - e.y0)) * z;
+    const midX = MARGIN.left + aw / 2 - base * ((e.x0 + e.x1) / 2);
+    const midY = MARGIN.top + ah / 2 - base * ((e.y0 + e.y1) / 2);
     return (x, y, zz) => {
-      const p = raw(x, y, zz);
+      const p = project(x, y, zz);
       return { x: midX + base * p.x, y: midY + base * p.y, depth: p.depth };
     };
   }
+
+  const fmt = (q) => `${q.x.toFixed(1)},${q.y.toFixed(1)}`;
 
   /** Recompute positions for the current view, filters and selection. */
   function update() {
     if (!scene) return;
     const P = projector();
-    // North is +z, which the projection draws upwards in the map view.
     const pt = (lon, lat, year) => P(mapX(lon, lat), toY(year), mapZ(lon, lat));
     const inside = (y) => filters.inYear(Math.floor(y));
-    // Frames: the floor and a frame every decade, quiet; the cube's edges at the ends.
     scene.frames.replaceChildren();
-    const box = [
-      [-BOX, -BOX],
-      [BOX, -BOX],
-      [BOX, BOX],
-      [-BOX, BOX],
-    ];
-    const frameAt = (year, cls) => {
-      const c = box.map(([x, z]) => P(x, toY(year), z));
-      scene.frames.append(s("polygon", { class: cls, points: c.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ") }));
-    };
+    const frameAt = (year, cls) => scene.frames.append(s("polygon", { class: cls, points: corners.map(([x, zz]) => fmt(P(x, toY(year), zz))).join(" ") }));
     for (let y = Math.ceil(first / 10) * 10; y <= last; y += 10) frameAt(y, "it-frame");
     frameAt(first, "it-floor");
-    // The quiet base map on the floor: coastlines and the large rivers (Natural Earth).
+    frameAt(last + 1, "it-frame");
+    scene.floorShape.setAttribute("points", corners.map(([x, zz]) => fmt(P(x, toY(first), zz))).join(" "));
     scene.map.replaceChildren();
     scene.realmLayer.replaceChildren();
     if (realm) {
       const ring = [];
-      for (let a = 0; a < 360; a += 5) {
-        const rad = (a * Math.PI) / 180;
-        const q = pt(midLon + (Math.cos(rad) * core) / k, midLat + Math.sin(rad) * core, first);
-        ring.push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`);
-      }
-      scene.clipShape.setAttribute("points", ring.join(" "));
-      const outline = realm.ring.map(([lon, lat]) => pt(lon, lat, first)).map((q) => `${q.x.toFixed(1)},${q.y.toFixed(1)}`);
-      scene.realmLayer.append(s("polygon", { class: "it-realm", points: outline.join(" "), filter: "url(#it-realm-soft)" }));
+      for (let a = 0; a < 360; a += 5) ring.push(fmt(pt(midLon + (Math.cos(a * DEG) * core) / k, midLat + Math.sin(a * DEG) * core, first)));
+      scene.coreShape.setAttribute("points", ring.join(" "));
+      scene.realmLayer.append(s("polygon", { class: "it-realm", points: realm.ring.map(([lon, lat]) => fmt(pt(lon, lat, first))).join(" "), filter: "url(#it-realm-soft)" }));
     }
     if (basemap) {
       // The map is drawn only inside the undistorted core; beyond it the projection
       // compresses, and a compressed coastline would read as a false shape.
-      const inCore = (lon, lat) => Math.hypot((lon - midLon) * k, lat - midLat) <= core;
       const draw = (coords, cls) => {
         let run = [];
         const flush = () => {
@@ -242,36 +229,52 @@ export function renderItinerary(store, options) {
           run = [];
         };
         for (const [lon, lat] of coords) {
-          if (!inCore(lon, lat)) {
-            flush();
-            continue;
-          }
-          const q = pt(lon, lat, first);
-          run.push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`);
+          if (!inCore(lon, lat)) flush();
+          else run.push(fmt(pt(lon, lat, first)));
         }
         flush();
       };
       for (const c of basemap.coast) draw(c, "it-coast");
       for (const r of basemap.rivers) draw(r, "it-river");
     }
-    if (filters.active()) {
+    if (filters.timeActive()) {
       frameAt(Math.min(last + 1, Math.max(first, filters.from)), "it-slice");
       frameAt(Math.min(last + 1, Math.max(first, filters.to + 1)), "it-slice");
     }
     screen = points.map((p) => pt(places[p.p].lo, places[p.p].la, p.y));
     const path = [];
+    const personsOn = filters.persons.length > 0;
+    const trace = filters.persons.map(() => []);
+    const lifted = [];
     points.forEach((p, i) => {
       const q = screen[i];
-      const on = inside(p.y) && (!state.place || p.p === state.place);
+      const on = options.isOn(p) && (!related || related.all.has(i));
       const dot = scene.dots[i];
       dot.setAttribute("cx", q.x.toFixed(1));
       dot.setAttribute("cy", q.y.toFixed(1));
-      dot.setAttribute("opacity", on ? "1" : "0.12");
-      if (inside(p.y)) path.push(`${q.x.toFixed(1)},${q.y.toFixed(1)}`);
+      // While a regest is open the unrelated points recede furthest, so the opened one and its
+      // relations lead (design round of 2026-11-18); at rest the faint state stays as it was.
+      dot.setAttribute("opacity", on ? "1" : related ? "0.035" : filters.any() ? "0.07" : "0.12");
+      dot.classList.remove("is-pa", "is-pb", "is-pab");
+      const mark = personsOn ? options.personMark(p) : "";
+      if (mark) {
+        dot.classList.add(mark);
+        if (on) lifted.push(dot);
+      }
+      if (inside(p.y)) path.push(fmt(q));
+      if (mark && inside(p.y)) {
+        if (mark !== "is-pb") trace[0]?.push(fmt(q));
+        if (mark !== "is-pa") trace[filters.persons.length - 1]?.push(fmt(q));
+      }
     });
     scene.line.setAttribute("points", path.join(" "));
-    // Flagged jumps, when switched on: a line between the two stations in the warning ink.
+    // A person's trace: their regesta in time order, through the places of issue.
+    scene.traces.replaceChildren(...trace.map((pts, j) => s("polyline", { class: `it-trace is-p${j}`, points: pts.join(" ") })));
+    scene.line.classList.toggle("is-quiet", personsOn || !!related);
+    // Marked points above the rest, so no faint point covers them.
+    for (const dot of lifted) scene.dotsG.append(dot);
     scene.marks.replaceChildren();
+    const checks = options.checks();
     if (state.flags && checks) {
       const at = new Map(points.map((p, i) => [p.u, i]));
       for (const f of checks.flags) {
@@ -281,60 +284,133 @@ export function renderItinerary(store, options) {
       }
     }
     // The route stays faint over the whole time; a chosen time range draws it strongly.
-    scene.line.classList.toggle("is-on", filters.active());
-    labels(pt);
+    scene.line.classList.toggle("is-on", filters.timeActive());
+    labels(pt, P);
     pointer();
   }
 
-  /** Year scale at the west edge, place names on the floor, a label for the selection. */
-  function labels(pt) {
+  /**
+   * Year scale at the west edge, place names on the floor, the realm named at its area. At rest
+   * the places with most documents stand named; while a regest is open its place and the places
+   * of its related points are named instead, in that order, so a collision drops the least
+   * related name (design round of 2026-11-18). Any other place is named while pointed at.
+   */
+  function labels(pt, P) {
     const out = [];
-    const boxes = [];
-    const place = (text, p, cls, dx = 6, dy = 4) => {
+    const boxes = (labelBoxes = []);
+    const place = (text, p, cls, dx = 6, dy = 4, id = null) => {
       const w = text.length * 6.6;
       const b = { x0: p.x + dx, x1: p.x + dx + w, y0: p.y + dy - 12, y1: p.y + dy + 3 };
-      if (b.x0 < 0 || b.x1 > scene.width || b.y0 < 0 || b.y1 > scene.height) return;
-      if (boxes.some((o) => o.x0 < b.x1 && b.x0 < o.x1 && o.y0 < b.y1 && b.y0 < o.y1)) return;
+      if (b.x0 < 0 || b.x1 > scene.width || b.y0 < 0 || b.y1 > scene.height) return false;
+      if (boxes.some((o) => o.x0 < b.x1 && b.x0 < o.x1 && o.y0 < b.y1 && b.y0 < o.y1)) return false;
       boxes.push(b);
-      out.push(s("text", { x: b.x0, y: p.y + dy, class: `sp-label ${cls}`, text }));
+      out.push(s("text", { x: b.x0, y: p.y + dy, class: `sp-label ${cls}`, "data-place": id, text }));
+      return true;
     };
-    if (state.place) {
-      const p = places[state.place];
-      place(p.l, pt(p.lo, p.la, first), "sp-case-label");
+    if (filters.place) {
+      const p = places[filters.place];
+      place(p.l, pt(p.lo, p.la, first), "sp-case-label", 6, 4, filters.place);
     }
     if (state.view.pitch < 70 * DEG) {
       for (let y = Math.ceil(first / 10) * 10; y <= last; y += 10) {
         // The number hangs at the leftmost corner of its decade frame.
-        const P = projector();
-        const corner = [-BOX, BOX].flatMap((x) => [-BOX, BOX].map((zz) => P(x, toY(y), zz))).sort((a, b) => a.x - b.x)[0];
+        const corner = corners.map(([x, zz]) => P(x, toY(y), zz)).sort((a, b) => a.x - b.x)[0];
         place(String(y), corner, "sp-year", -34, 4);
       }
     }
-    const ranked = Object.entries(places).sort((a, b) => b[1].n - a[1].n).slice(0, NAMED_PLACES);
-    for (const [id, p] of ranked) {
-      if (id === state.place) continue;
-      const q = pt(p.lo, p.la, first);
-      out.push(s("circle", { class: "it-place", cx: q.x.toFixed(1), cy: q.y.toFixed(1), r: 3.5 }));
-      place(p.l, q, "it-place-label", 8, -6);
+    const o = state.opened;
+    if (related && o !== null) {
+      const ids = [points[o].p];
+      for (const j of [related.before, related.after, ...peopleShown()]) if (j !== null && j !== undefined) ids.push(points[j].p);
+      for (const id of new Set(ids)) {
+        if (id === filters.place) continue;
+        const p = places[id];
+        const q = pt(p.lo, p.la, first);
+        const own = id === points[o].p;
+        out.push(s("circle", { class: own ? "it-place is-opened" : "it-place is-related", cx: q.x.toFixed(1), cy: q.y.toFixed(1), r: own ? 3.5 : 2.5 }));
+        place(p.l, q, own ? "it-place-label sp-case-label" : "it-place-label is-related", 8, -6, id);
+      }
+    } else {
+      const ranked = Object.entries(places)
+        .sort((a, b) => b[1].n - a[1].n)
+        .slice(0, NAMED_PLACES);
+      for (const [id, p] of ranked) {
+        if (id === filters.place) continue;
+        const q = pt(p.lo, p.la, first);
+        out.push(s("circle", { class: "it-place", cx: q.x.toFixed(1), cy: q.y.toFixed(1), r: 3.5 }));
+        place(p.l, q, "it-place-label", 8, -6, id);
+      }
+    }
+    // The key of the soft area stands at the area itself (figure rule: legend at the marks).
+    if (realm && state.view.pitch > 10 * DEG) {
+      const [lon, lat] = realm.label ?? [10.2, 51.4];
+      place("Reich um 1190", pt(lon, lat, first), "it-realm-label", -40, 4);
     }
     scene.labels.replaceChildren(...out);
   }
 
-  /** The pointed regest: drop line to its place on the floor, its place and year named. */
+  /** The pointed and the opened regest, the relations of the opened one. */
   function pointer() {
     if (!scene) return;
     scene.pointer.replaceChildren();
     const P = projector();
-    // The regest whose card is open keeps a ring and its drop line; pointing adds another.
+    const o = state.opened;
+    if (related && o !== null && screen[o]) {
+      const from = screen[o];
+      const line = (a, b, cls, attrs = {}) => scene.pointer.append(s("line", { class: cls, x1: a.x.toFixed(1), y1: a.y.toFixed(1), x2: b.x.toFixed(1), y2: b.y.toFixed(1), ...attrs }));
+      // Shared persons: dashed hairlines to the nearest in time, the pointed one stronger.
+      for (const j of peopleShown()) if (screen[j]) line(from, screen[j], j === state.pointed ? "it-link is-on" : "it-link");
+      for (const j of related.place) screen[j] && scene.pointer.append(s("circle", { class: j === state.pointed ? "it-same-place is-on" : "it-same-place", cx: screen[j].x.toFixed(1), cy: screen[j].y.toFixed(1), r: 4 }));
+      // The steps: from the station before to the opened one, from it to the station after,
+      // the arrowhead stopping short of the later point.
+      const shortened = (a, b) => {
+        const d = Math.hypot(b.x - a.x, b.y - a.y);
+        const k = d > 14 ? (d - 7) / d : 1;
+        return { x: a.x + (b.x - a.x) * k, y: a.y + (b.y - a.y) * k };
+      };
+      if (related.before !== null && screen[related.before]) line(screen[related.before], shortened(screen[related.before], from), "it-step", { "marker-end": "url(#it-arrow)" });
+      if (related.after !== null && screen[related.after]) line(from, shortened(from, screen[related.after]), "it-step", { "marker-end": "url(#it-arrow)" });
+      // What a pointed related point is to the opened regest, beside it.
+      const j = state.pointed;
+      if (j !== null && j !== o && related.all.has(j) && screen[j]) {
+        const kinds = [];
+        if (j === related.before) kinds.push("Station davor");
+        if (j === related.after) kinds.push("Station danach");
+        if (related.place.has(j)) kinds.push("gleicher Ort");
+        const names = (related.people.get(j) ?? []).map((id) => persons[id].l);
+        if (names.length) kinds.push(`gemeinsame Person: ${names.slice(0, 2).join(", ")}${names.length > 2 ? ` und ${names.length - 2} weitere` : ""}`);
+        const q = screen[j];
+        const text = s("text", { class: "it-rel-label", x: (q.x + 9).toFixed(1), y: (q.y - 8).toFixed(1), text: `${points[j].i}, ${kinds.join("; ")}` });
+        scene.pointer.append(text);
+        // Keep the label inside the drawing.
+        const box = text.getBBox();
+        // Keep the label inside the drawing and clear of the opened regest over its right edge.
+        const cover = options.blocked();
+        const right = cover ? cover.left - scene.svg.getBoundingClientRect().left : scene.width;
+        if (box.x + box.width > right - 4) {
+          text.setAttribute("x", (q.x - 9).toFixed(1));
+          text.setAttribute("text-anchor", "end");
+        }
+      }
+    }
     for (const [i, cls] of [
-      [opened, "it-opened"],
+      [o, "it-opened"],
       [state.pointed, "it-pointed"],
     ]) {
       if (i === null || i === undefined || !screen[i]) continue;
       const p = points[i];
       const top = screen[i];
       const floor = P(mapX(places[p.p].lo, places[p.p].la), toY(first), mapZ(places[p.p].lo, places[p.p].la));
-      scene.pointer.append(s("line", { class: "it-drop", x1: top.x, y1: top.y, x2: floor.x, y2: floor.y }), s("circle", { class: cls, cx: top.x, cy: top.y, r: 5.5 }));
+      scene.pointer.append(s("line", { class: "it-drop", x1: top.x, y1: top.y, x2: floor.x, y2: floor.y }), s("circle", { class: cls, cx: top.x, cy: top.y, r: cls === "it-opened" ? 7 : 5.5 }));
+      if (cls === "it-opened") scene.pointer.append(s("circle", { class: "it-opened-ring", cx: top.x, cy: top.y, r: 10.5 }));
+      // The place of a pointed point on the floor, unless it already stands named there.
+      if (cls === "it-pointed" && !scene.labels.querySelector(`[data-place="${CSS.escape(p.p)}"]`)) {
+        const name = places[p.p].l;
+        const w = name.length * 6.6;
+        const x = floor.x + 8 + w > scene.width ? floor.x - 8 - w : floor.x + 8;
+        const free = !labelBoxes.some((b) => b.x0 < x + w && x < b.x1 && b.y0 < floor.y + 1 && floor.y - 14 < b.y1);
+        if (free) scene.pointer.append(s("text", { class: "sp-label it-place-label", x: x.toFixed(1), y: (floor.y - 2).toFixed(1), text: name }));
+      }
     }
   }
 
@@ -342,10 +418,13 @@ export function renderItinerary(store, options) {
     const r = scene.svg.getBoundingClientRect();
     const x = event.clientX - r.left;
     const y = event.clientY - r.top;
+    // A point under the opened regest is out of reach (the overlay covers it).
+    const cover = options.blocked();
+    if (cover && event.clientX >= cover.left && event.clientX <= cover.right && event.clientY >= cover.top && event.clientY <= cover.bottom) return null;
     let best = null;
     let dist = 64;
     points.forEach((p, i) => {
-      if (!filters.inYear(Math.floor(p.y)) || (state.place && p.p !== state.place)) return;
+      if (!options.isOn(p)) return;
       const d = (screen[i].x - x) ** 2 + (screen[i].y - y) ** 2;
       if (d < dist) {
         dist = d;
@@ -357,49 +436,96 @@ export function renderItinerary(store, options) {
 
   function point(i) {
     state.pointed = i;
-    if (i === null) status.textContent = "";
-    else {
-      const p = points[i];
-      status.textContent = `${Math.floor(p.y)}, ${places[p.p].l}, ${p.i}${evidenced.has(p.u) ? ", mit belegten Aussagen" : ""}`;
-    }
+    showTip(i);
     pointer();
   }
 
-  function select(placeId) {
-    state.place = placeId;
-    history.replaceState(null, "", `${location.search}#/itinerar${placeId ? `/${encodeURIComponent(placeId)}` : ""}`);
-    renderSide();
-    update();
+  /**
+   * The regest beside its point: head line, text, statements in the annotation system, with
+   * „ungeprüft“ once where statements stand. Never while a regest is open.
+   */
+  function showTip(i) {
+    if (i === null || i === undefined || !screen[i] || state.opened !== null) {
+      tip.hidden = true;
+      return;
+    }
+    const p = points[i];
+    const regest = store.byUid.get(p.u);
+    const text = h("p", { class: "it-tip-text source", text: regest ? regest.text : "…" });
+    if (!regest) options.texts?.().then((t) => (text.textContent = t[p.u] || ""));
+    const sts = regest ? statementsOf(regest) : [];
+    // replaceChildren writes a null child as the text „null“, so an empty part is dropped first.
+    const parts = [
+      h("p", { class: "it-tip-head" }, h("span", { class: "card-id", text: p.i }), ` ${Math.floor(p.y)}, ${places[p.p].l}`, sts.length ? h("span", { class: "it-tip-state", text: " ungeprüft" }) : null),
+      text,
+      sts.length
+        ? h(
+            "ul",
+            { class: "it-tip-sts", role: "list" },
+            sts.map((st) => h("li", {}, h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 12 }), String(st.n)), ` ${st.kind}`, st.agent ? h("span", { class: `ann-verdict is-${st.agent.outcome.replace(/\s+/g, "-")}` }, `LLM: ${st.agent.outcome}`) : null)),
+          )
+        : null,
+    ];
+    tip.replaceChildren(...parts.filter(Boolean));
+    tip.hidden = false;
+    // Beside the point, inside the drawing, on the side with more room.
+    const q = screen[i];
+    const width = element.clientWidth;
+    const w = Math.min(340, width - 24);
+    const left = q.x + 18 + w < width ? q.x + 18 : Math.max(8, q.x - 18 - w);
+    tip.style.inlineSize = `${w}px`;
+    tip.style.left = `${left}px`;
+    tip.style.top = `${Math.max(8, Math.min(q.y - 40, element.clientHeight - tip.offsetHeight - 8))}px`;
   }
+
+  /** What a regest depends on: stations before and after, its place, shared persons. */
+  const personsOf = new Map();
+  for (const [id, pp] of Object.entries(store.holdings.persons ?? {})) for (const u of pp.r) personsOf.set(u, [...(personsOf.get(u) ?? []), id]);
+  const indexOf = new Map(points.map((x, j) => [x.u, j]));
+  const persons = store.holdings.persons ?? {};
+  function relate(i) {
+    const p = points[i];
+    const place = new Set();
+    points.forEach((x, j) => x.p === p.p && j !== i && place.add(j));
+    const before = i > 0 ? i - 1 : null;
+    const after = i + 1 < points.length ? i + 1 : null;
+    /** Related index to the shared persons. */
+    const people = new Map();
+    for (const id of (personsOf.get(p.u) ?? []).filter((x) => persons[x].r.length <= RELATED_MAX))
+      for (const u of persons[id].r)
+        if (u !== p.u && indexOf.has(u)) {
+          const j = indexOf.get(u);
+          people.set(j, [...(people.get(j) ?? []), id]);
+        }
+    // The nearest in time first, so the drawn ones are the direct context.
+    const byTime = [...people.keys()].sort((a, b) => Math.abs(points[a].y - p.y) - Math.abs(points[b].y - p.y));
+    const steps = new Set([before, after].filter((j) => j !== null));
+    return { place, before, after, steps, people, byTime, all: new Set([i, ...place, ...steps, ...people.keys()]) };
+  }
+  /** The shared-person relations drawn: the nearest in time, or all on demand. */
+  const peopleShown = () => (related ? (allPeople ? related.byTime : related.byTime.slice(0, PEOPLE_DRAWN)) : []);
 
   function draw() {
-    scene = build(Math.max(280, element.clientWidth), Math.max(320, element.clientHeight));
+    // Rounded down: clientHeight rounds a fractional height up, and the drawing then stood
+    // one pixel below its area.
+    const r = sceneHost.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    scene = build(Math.max(240, Math.floor(r.width)), Math.max(200, Math.floor(r.height)));
     sceneHost.replaceChildren(scene.svg);
-    sync();
+    fitHeight();
     update();
-  }
-
-  function sync() {
-    for (const b of viewButtons) b.setAttribute("aria-pressed", String(b.dataset.view === state.snap));
-    freeMark.hidden = state.snap !== "frei";
-    const q = new URLSearchParams(location.search);
-    q.delete("ansicht");
-    if (state.snap !== "schraeg" && state.snap !== "frei") q.set("ansicht", state.snap);
-    const query = q.toString();
-    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
   }
 
   let animation = {};
   function snapTo(key) {
-    const target = VIEWS[key];
+    const target = CAMERAS[key];
     state.snap = key;
-    state.view.zoom = key === "schraeg" ? 1 : state.view.zoom;
-    sync();
-    const from = { ...state.view };
-    let dYaw = (target.yaw - from.yaw) % (2 * Math.PI);
+    state.view.zoom = 1;
+    let dYaw = (target.yaw - state.view.yaw) % (2 * Math.PI);
     if (dYaw > Math.PI) dYaw -= 2 * Math.PI;
     if (dYaw < -Math.PI) dYaw += 2 * Math.PI;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const from = { ...state.view };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !scene) {
       state.view = { ...state.view, yaw: from.yaw + dYaw, pitch: target.pitch };
       update();
       return;
@@ -422,7 +548,7 @@ export function renderItinerary(store, options) {
     animation = {};
     if (state.snap !== "frei") {
       state.snap = "frei";
-      sync();
+      options.onFree();
     }
     state.view.yaw += dYaw;
     state.view.pitch = Math.min(90 * DEG, Math.max(-10 * DEG, state.view.pitch + dPitch));
@@ -436,7 +562,7 @@ export function renderItinerary(store, options) {
 
   sceneHost.addEventListener("keydown", (event) => {
     const step = 10 * DEG;
-    const act = { ArrowLeft: () => rotate(step, 0), ArrowRight: () => rotate(-step, 0), ArrowUp: () => rotate(0, step * 0.75), ArrowDown: () => rotate(0, -step * 0.75), "+": () => zoom(1.15), "-": () => zoom(1 / 1.15), Home: () => snapTo("schraeg") }[event.key];
+    const act = { ArrowLeft: () => rotate(step, 0), ArrowRight: () => rotate(-step, 0), ArrowUp: () => rotate(0, step * 0.75), ArrowDown: () => rotate(0, -step * 0.75), "+": () => zoom(1.15), "-": () => zoom(1 / 1.15), Home: () => options.onHome() }[event.key];
     if (act) {
       event.preventDefault();
       act();
@@ -464,147 +590,48 @@ export function renderItinerary(store, options) {
   sceneHost.addEventListener("pointerup", (e) => {
     if (drag && !drag.moved && scene) {
       const i = nearest(e);
-      if (i !== null) {
-        select(points[i].p);
-        openRegest(i);
-      }
+      if (i !== null) options.onOpen(i);
     }
     drag = null;
   });
 
-  // The sidebar: a place picker, the time band, the legend of the two layers, and the
-  // regesta of the selected place; a regest opens as the detail on demand on the right.
-  const aside = h("div", { class: "sidebar" });
-  /** The regest whose card is open, marked in the cube. */
-  let opened = null;
-  function openRegest(i) {
-    opened = i;
-    pointer();
-    // Where the point comes from, and what the plausibility check says about it.
-    const notes = ["Ort und Datum aus der Lieferung der Regesta Imperii, Koordinate aus ihrem Register, ohne LLM."];
-    for (const f of flagsOf.get(points[i].u) ?? []) notes.push(`Auffällig: ${f.km} km in ${f.days} ${f.days === 1 ? "Tag" : "Tagen"} zu ${f.other.identifier} (${f.other.place}). Vermutlicher Grund: ${f.class}.`);
-    options.detail?.show(
-      renderRegestCard(store, points[i].u, {
-        notes,
-        texts: options.texts,
-        onClose: () => {
-          opened = null;
-          pointer();
-          options.detail?.hide();
-        },
-      }),
-    );
-  }
-
-  function renderSide() {
-    const inRange = points.filter((p) => filters.inYear(Math.floor(p.y)));
-    const atPlace = state.place ? inRange.filter((p) => p.p === state.place) : [];
-    const picker = h(
-      "select",
-      { class: "side-select", "aria-label": "Ausstellungsort", onchange: (e) => select(e.target.value || null) },
-      h("option", { value: "", text: "Alle Ausstellungsorte", selected: !state.place }),
-      Object.entries(places)
-        .sort((a, b) => b[1].n - a[1].n)
-        .map(([id, p]) => h("option", { value: id, text: `${p.l} (${p.n})`, selected: id === state.place })),
-    );
-    const evidencedCount = inRange.filter((p) => evidenced.has(p.u)).length;
-    const markYears = new Set((state.place ? atPlace : []).map((p) => Math.floor(p.y)));
-    const applies = filters.active() ? `${filters.from === filters.to ? `nur ${filters.from}` : `${filters.from} bis ${filters.to}`}. ` : null;
-    // The two layers as two lines with sign and count, each count said once and for the
-    // current selection; how they arose and what the map simplifies unfolds on demand.
-    const shown = state.place ? atPlace : inRange;
-    const shownEvidenced = state.place ? atPlace.filter((p) => evidenced.has(p.u)).length : evidencedCount;
-    const legend = h(
-      "div",
-      { class: "it-legend" },
-      h("p", {}, h("span", { class: "it-key" }), h("span", { class: "it-n", text: String(shown.length) }), " Regesten mit Ausstellungsort"),
-      h("p", {}, h("span", { class: "it-key is-evidenced" }), h("span", { class: "it-n", text: String(shownEvidenced) }), " davon mit belegten Aussagen"),
-      realm ? h("p", { title: "Grobe eigene Digitalisierung nach der gemeinfreien Karte von W. R. Shepherd (1926)" }, h("span", { class: "it-key is-realm" }), h("span", { class: "it-n" }), "Reich um 1190 nach Shepherd") : null,
-      checks
-        ? h(
-            "p",
-            {},
-            h("button", {
-              type: "button",
-              class: "fam-check it-flag-toggle",
-              "aria-pressed": String(state.flags),
-              "aria-label": `Auffällige Sprünge ${state.flags ? "ausblenden" : "zeigen"}`,
-              title: `Mehr als ${checks.threshold.kmPerDay} km am Tag oder ${checks.threshold.floorKm} km zwischen zwei Stationen, Annahme ohne gelesene Quelle`,
-              onclick: () => {
-                state.flags = !state.flags;
-                renderSide();
-                update();
-              },
-            }),
-            h("span", { class: "it-n", text: String(checks.flags.length) }),
-            " auffällige Sprünge",
-          )
-        : null,
-      h(
-        "details",
-        { class: "it-notes" },
-        h("summary", { text: "Herkunft der Daten" }),
-        h("p", { text: "Orte und Daten stammen aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM. Die belegten Aussagen haben LLM-basierte Agenten extrahiert; sie sind technisch geprüft und fachlich nicht abgenommen." }),
-        h("p", { text: "Ein Skript prüft aufeinanderfolgende Stationen auf unmögliche Reisen. Es findet Kandidaten für falsche Koordinaten, Datierungen ohne Tag, Fälschungen und Urkunden anderer Aussteller; dass ein Punkt stimmt, beweist es nicht." }),
-        h("p", { text: "Die Fernreisen nach Osten sind zur Mitte hin gestaucht. Die Grundkarte zeigt Küsten und große Flüsse nach Natural Earth (gemeinfrei)." }),
-        realm ? h("p", { text: "Die Fläche des Reichs um 1190 ist eine grobe eigene Digitalisierung dieses Projekts nach der gemeinfreien Karte „Europe and the Mediterranean Lands about 1190“ in W. R. Shepherds Historical Atlas (1926). Grenzen waren damals keine scharfen Linien; die Fläche zeigt eine Deutung, keinen Befund." }) : null,
-      ),
-    );
-    const list = state.place
-      ? h(
-          "ul",
-          { class: "act-rows it-rows", role: "list" },
-          atPlace.map((p) => {
-            const i = points.indexOf(p);
-            return h(
-              "li",
-              { class: "act-row" },
-              h(
-                "button",
-                { type: "button", class: "act-open", onclick: () => openRegest(i), onmouseenter: () => point(i), onmouseleave: () => point(null), onfocus: () => point(i), onblur: () => point(null) },
-                h("span", { class: "act-year", text: String(Math.floor(p.y)) }),
-                h("span", { class: "act-name", text: p.i }),
-                evidenced.has(p.u) ? h("span", { class: "it-key is-evidenced", title: "mit belegten Aussagen" }) : h("span"),
-              ),
-            );
-          }),
-        )
-      : h("p", { class: "side-empty", text: "Wähle einen Ort im Würfel oder in der Liste oben, um seine Regesten zu lesen." });
-    aside.replaceChildren(
-      h(
-        "section",
-        { class: "side-part side-selection", "aria-label": "Auswahl und Filter" },
-        picker,
-        timeBand(store, filters, markYears),
-        applies ? h("p", { class: "side-applies" }, applies, h("button", { type: "button", class: "link-button", onclick: () => filters.reset() }, "Zurücksetzen")) : null,
-        legend,
-      ),
-      h("section", { class: "side-part side-acts", "aria-label": "Regesten des Ortes" }, list),
-    );
-  }
-
-  const unsubscribe = filters.onChange(() => {
-    renderSide();
-    update();
-  });
   let lastSize = "";
   const observer = new ResizeObserver(() => {
-    const size = `${element.clientWidth}x${element.clientHeight}`;
-    if (element.clientWidth && size !== lastSize) {
+    const size = `${sceneHost.clientWidth}x${sceneHost.clientHeight}`;
+    if (sceneHost.clientWidth && size !== lastSize) {
       lastSize = size;
       draw();
     }
   });
-  observer.observe(element);
-  renderSide();
+  observer.observe(sceneHost);
 
   return {
     element,
-    aside,
-    focus: null,
-    dispose: () => {
+    update,
+    snapTo,
+    zoom,
+    snap: () => state.snap,
+    point,
+    setFlags(on) {
+      state.flags = on;
+      update();
+    },
+    /** Open a point (index) or close (null); returns the counts of its relations. */
+    open(i) {
+      state.opened = i;
+      related = i === null ? null : relate(i);
+      allPeople = false;
+      tip.hidden = true;
+      update();
+      return related ? { steps: related.steps.size, place: related.place.size, people: related.people.size, drawn: Math.min(PEOPLE_DRAWN, related.people.size) } : null;
+    },
+    /** Draw every shared-person relation of the opened regest, or only the nearest in time. */
+    allPeople(on) {
+      allPeople = on;
+      update();
+    },
+    dispose() {
       animation = {};
-      unsubscribe();
       observer.disconnect();
     },
   };

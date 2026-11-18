@@ -1,219 +1,194 @@
-/* Content pages of the static edition: start text, regest list, single regest, persons,
-   method, data, about. The frame (header, navigation, footer) belongs to css/shell.css and
-   colours to css/tokens.css; the --pg names below only alias those tokens for this file.
-   The accent marks underlines, rules and focus; text in the accent hue uses --accent-text.
-   Every page loads tokens.css first, so the aliases need no fallback values. */
+/* Content pages of the static edition: start, regest list, single regest, persons, about.
+   The frame (header, navigation) and the base every page shares belong to css/shell.css,
+   colours to css/tokens.css, which every page loads first. The layer `pages` comes after the
+   components (tokens.css), so a rule here wins over a shared component rule. The accent
+   marks underlines, rules and focus; text in the accent hue uses --accent-text. */
 
-:root {
-  --pg-ground: var(--stage);
-  --pg-ink: var(--text);
-  --pg-muted: var(--muted);
-  --pg-line: var(--hairline);
-  --pg-accent: var(--accent);
-  --pg-tint: var(--accent-faint);
+@layer pages {
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .site-main { max-inline-size: 76rem; margin-inline: auto; inline-size: 100%; }
+  .site-main h1 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); font-weight: 600; line-height: 1.2; margin: 0 0 0.75rem; }
+  .site-main h2 { font-size: var(--step-0); font-weight: 600; margin: 2rem 0 0.5rem; }
+  .site-main p { margin: 0 0 0.75rem; }
+  .site-main a { color: var(--text); text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .site-main a:hover { text-decoration-thickness: 2px; }
+  .site-main code, .site-main pre { font-family: var(--font-code); font-size: 0.8125rem; }
+  .intro, .site-main section > p { max-inline-size: 72ch; }
+  .link-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+  .run-in { font-weight: 600; margin-inline-end: 0.35em; }
+  .missing { font-style: italic; }
+  /* A short note after a list entry: status of a regest, the regest of a local name. */
+  .row-mark { font-weight: 400; margin-inline-start: 0.35em; }
+  .regest-text { font-family: var(--font-source); }
+
+  /* Start */
+  .figure { margin-block: 1rem 1.5rem; min-block-size: 4rem; }
+  .figure-fallback { color: var(--muted); max-inline-size: 72ch; }
+
+  /* Tables of regesta and persons */
+  .table-wrap { overflow-x: auto; max-inline-size: 100%; }
+  .list { border-collapse: collapse; inline-size: 100%; max-inline-size: 64rem; }
+  .list th, .list td { text-align: start; vertical-align: baseline; padding: 0.4rem 1rem 0.4rem 0; border-block-end: 1px solid var(--hairline); }
+  .list thead th { font-weight: 600; }
+  .list tbody th { font-weight: 600; }
+  .list:not(.persons) tbody th, .list td:last-child { white-space: nowrap; }
+  .persons td:last-child { inline-size: 6rem; }
+  .list .num { text-align: end; font-variant-numeric: tabular-nums; }
+
+  /* Single regest, the reading without JavaScript */
+  .title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; margin-block-end: 1rem; }
+  .title-row h1 { margin: 0; }
+  .pager { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+  .pager a { white-space: nowrap; text-decoration: none; color: var(--muted); }
+  .pager a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
+  .back-slot:empty { display: none; }
+  .card-host { max-inline-size: 72rem; }
+  /* The regest page uses the width of the window (interface plan: at least 85 percent at 1920). */
+  body[data-page="regest"] .site-main { max-inline-size: none; padding-inline: clamp(1rem, 3vw, 3rem); }
+  body[data-page="regest"] .card-host { max-inline-size: none; }
+  .site-main .page-id { font-size: var(--step-1); margin: 0; }
+  .paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
+  .regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
+  .fields, .cite { margin-block-start: 1.5rem; max-inline-size: 72ch; }
+  .cite { padding-block-start: 0.75rem; border-block-start: 1px solid var(--hairline); overflow-wrap: anywhere; }
+  .ext { list-style: none; padding: 0; margin: 0 0 0.75rem; }
+
+  .review-state { max-inline-size: 64ch; }
+  .factoid-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
+  .sentence { margin: 0; max-inline-size: 64ch; }
+  .act-type { font-weight: 600; }
+  .evq, .lit, .case-note, .before { margin: 0.25rem 0 0; max-inline-size: 64ch; }
+  .evq { font-family: var(--font-source); }
+  .history { margin-block-start: 1.5rem; }
+  .history summary { cursor: pointer; font-weight: 600; }
+  .history ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; margin-block-start: 0.75rem; max-inline-size: 72ch; }
+
+  .downloads { margin-block-start: 2rem; padding: 0.75rem 1rem; background: var(--accent-faint); border-radius: 2px; max-inline-size: 40rem; }
+  .downloads h2 { margin: 0 0 0.5rem; }
+  .downloads ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+  .downloads a { font-weight: 600; }
+
+  /* Persons */
+  .register, .forms { max-inline-size: 72ch; }
+  .mentions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; max-inline-size: 72ch; }
+  .mention-head { font-weight: 600; margin-inline-end: 0.35em; }
+
+  /* About: the process graphic, the steps on one line with the producer's sign on it, the
+     open human check dashed; below 48rem the line runs down the left. */
+  .process { margin-block: 1.5rem 2rem; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0 0.75rem; position: relative; }
+  .steps::before { content: ""; position: absolute; inset-inline: 0.9rem; inset-block-start: 0.9rem; border-block-start: 1px solid var(--edge); }
+  .step { position: relative; display: grid; align-content: start; gap: 0.25rem; }
+  .step-mark { position: relative; display: inline-grid; place-items: center; inline-size: 1.8rem; block-size: 1.8rem; border-radius: 50%; background: var(--stage); color: var(--text); }
+  .step.is-agent .step-mark, .step-key .is-agent { color: var(--accent-text); }
+  .step.is-open .step-mark { outline: 1px dashed var(--edge); color: var(--muted); }
+  .step-sign { display: block; }
+  .step-title { font-weight: 600; line-height: 1.3; }
+  .step-note { color: var(--muted); font-size: var(--step--1); line-height: 1.4; }
+  .step-key { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; color: var(--muted); font-size: var(--step--1); }
+  .step-key li { display: inline-flex; align-items: center; gap: 0.25rem; }
+  .step-key .step-mark { inline-size: 1.4rem; block-size: 1.4rem; }
+  @media (max-width: 48rem) {
+    .steps { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+    .steps::before { inset-inline: auto; inset-inline-start: 0.9rem; inset-block: 0.9rem 0.9rem; border-block-start: 0; border-inline-start: 1px solid var(--edge); }
+    .step { grid-template-columns: 1.8rem minmax(0, 1fr); column-gap: 0.75rem; }
+    .step-mark { grid-row: 1 / span 2; }
+  }
+  .steps.has-notes .step-note { margin-block-start: 0.15rem; }
+
+  /* Start page (2026-11-18): three entries with a small figure of their view, then the process,
+     how the edition came about, data and licence. */
+  body[data-page="start"] .site-main { max-inline-size: 76rem; }
+  .entry-cards { list-style: none; margin: 1.75rem 0 0.5rem; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+  .entry-card { display: grid; align-content: start; gap: var(--space-1); block-size: 100%; padding: var(--space-3) var(--space-4) var(--space-4); border: 1px solid var(--hairline); border-radius: var(--radius); color: var(--text); text-decoration: none; }
+  .site-main a.entry-card { color: var(--text); text-decoration: none; }
+  .entry-card:hover { border-color: var(--edge); }
+  .entry-card:hover .entry-title { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .entry-thumb { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 8 / 5; margin-block-end: var(--space-2); background: var(--side); border-radius: var(--radius); }
+  .entry-title { font-size: var(--step-1); font-weight: 600; }
+  .entry-purpose { line-height: 1.45; }
+  .entry-count { color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+  .th-realm { fill: var(--map-realm); }
+  .th-coast { fill: none; stroke: var(--map-coast); stroke-width: 0.8; }
+  .th-dot { fill: var(--muted); fill-opacity: 0.55; }
+  .th-bar { fill: var(--edge); }
+  .th-span { fill: var(--bars); }
+  .th-cell { fill: var(--muted); fill-opacity: 0.85; }
+  .th-cell.is-1 { fill-opacity: 0.35; }
+  .th-cell.is-2 { fill-opacity: 0.55; }
+  .th-cell.is-3 { fill-opacity: 0.75; }
+  .start-origin p, .start-files p { max-inline-size: 72ch; }
+  @media (max-width: 48rem) {
+    .entry-cards { grid-template-columns: minmax(0, 1fr); }
+    .entry-thumb { aspect-ratio: 8 / 3; }
+  }
+  .about-files { max-inline-size: 72ch; font-size: var(--step--1); }
+  .about-files h2 { margin-block-start: 0; }
+  .about-attribution { color: var(--muted); }
+  .placeholder { padding: 0.5rem 0.75rem; border: 1px dashed var(--edge); max-inline-size: 64ch; }
+
+  @media (max-width: 40rem) {
+    .list tbody th { white-space: normal; }
+  }
+
+  /* Skip link and footer of the static pages. */
+  .skip { position: absolute; inset-inline-start: -999rem; }
+  .skip:focus { inset-inline-start: 0.5rem; inset-block-start: 0.5rem; background: var(--stage); padding: 0.5rem; z-index: 6; }
+
+  /* Filter row of the lists: search and the eight family switches with sign and word; the
+     switches are the legend of the signs in the rows (rule 7). */
+  .list-filter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0 0 var(--space-3); }
+  .list-q { font: inherit; inline-size: min(100%, 16rem); padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--text); }
+  .fam-toggles { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+  .fam-toggle { display: inline-flex; align-items: center; gap: 0.3em; font: inherit; font-size: var(--step--1); padding: 2px var(--space-2); border: 1px solid var(--hairline); border-radius: 2px; background: var(--stage); color: var(--muted); cursor: pointer; }
+  .fam-toggle[aria-pressed="true"] { border-color: var(--accent-text); color: var(--text); box-shadow: inset 0 -2px 0 var(--accent); }
+  .filter-count { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--muted); margin-inline-end: var(--space-2); }
+  .list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--muted); border-block-end: 1px solid var(--hairline); }
+
+  /* Atlas and regest list: a view (css/frame.css) is the page, one window high between header
+     and footer; at narrow widths the page scrolls, the main element first. */
+  body:is([data-page="atlas"], [data-view="regesten"]) .site-main { max-inline-size: none; padding: 0; }
+  .figure:is(.is-atlas, .is-view) { margin: 0; min-block-size: 0; }
+  /* A view is a component, not page prose: no paragraph margins of the content pages. */
+  .figure:is(.is-atlas, .is-view) p { margin: 0; }
+  /* The opened card takes the focus for screen readers; the page's focus ring would frame it whole. */
+  .figure:is(.is-atlas, .is-view) .regest-card:focus-visible { outline: none; }
+  @media (min-width: 56.01rem) {
+    html:has(body:is([data-page="atlas"], [data-view="regesten"])) { overflow: hidden; }
+    body:is([data-page="atlas"], [data-view="regesten"]) { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; block-size: 100dvh; overflow: hidden; }
+    body:is([data-page="atlas"], [data-view="regesten"]) :is(.site-body, .site-main) { min-block-size: 0; }
+    body:is([data-page="atlas"], [data-view="regesten"]) .site-main { display: grid; grid-template-rows: minmax(0, 1fr); }
+    .figure:is(.is-atlas, .is-view) { block-size: 100%; }
+  }
+  /* Narrow: the regest list keeps number, date and the kinds of statements; the place stands
+     on the regest page and in the Orte object, so a row stays within two lines at 360 px. */
+  @media (max-width: 40rem) {
+    .list.regests thead { display: none; }
+    .list.regests, .list.regests tbody { display: block; }
+    .list.regests td:last-child { white-space: normal; text-align: end; }
+    .list.regests tr { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--hairline); }
+    .list.regests th, .list.regests td { padding: 0; border: 0; }
+    .list.regests td:nth-child(3) { display: none; }
+    .list.regests td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--muted); }
+    .list.regests td:nth-child(4) { justify-self: end; }
+    .table-wrap:has(.list.regests) { overflow: visible; }
+  }
+  @media (max-width: 40rem) {
+    .list.persons, .list.persons tbody { display: block; }
+    .list.persons thead { display: none; }
+    .list.persons tr { display: grid; grid-template-columns: 1fr auto; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--hairline); }
+    .list.persons th, .list.persons td { padding: 0; border: 0; white-space: normal; }
+    .list.persons tr.group { display: block; }
+    .list.persons td:nth-child(2) { grid-row: 2; grid-column: 1 / -1; }
+    .list.persons td.num { grid-row: 1; grid-column: 2; }
+  }
+  /* Links in list rows rest without underline and underline on pointing and focus (rule 10);
+     the semibold weight of the first column tells them from the text beside. */
+  .list tbody th a { text-decoration: none; }
+  .list tbody th a:hover, .list tbody th a:focus-visible { text-decoration: underline; }
+
+  @media (min-width: 40.01rem) {
+    .list.persons thead th.num { white-space: nowrap; }
+  }
 }
-
-/* Base for the static pages, which do not load the views' app.css. */
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; background: var(--pg-ground); color: var(--pg-ink); font-family: var(--font-ui, system-ui, sans-serif); font-size: var(--step-0, 1rem); line-height: 1.5; }
-:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.site-main { max-inline-size: 76rem; margin-inline: auto; inline-size: 100%; }
-.site-main h1 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem); font-weight: 600; line-height: 1.2; margin: 0 0 0.75rem; }
-.site-main h2 { font-size: var(--step-0, 1rem); font-weight: 600; margin: 2rem 0 0.5rem; }
-.site-main p { margin: 0 0 0.75rem; }
-.site-main a { color: var(--pg-ink); text-decoration-color: var(--pg-accent); text-underline-offset: 0.2em; }
-.site-main a:hover { text-decoration-thickness: 2px; }
-.site-main code, .site-main pre { font-family: var(--font-code, ui-monospace, monospace); font-size: 0.8125rem; }
-.intro, .lede, .site-main section > p { max-inline-size: 72ch; }
-.link-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
-.run-in { font-weight: 600; margin-inline-end: 0.35em; }
-.missing { font-style: italic; }
-.mark { font-weight: 400; margin-inline-start: 0.35em; }
-.source, .regest-text { font-family: var(--font-source, Georgia, serif); }
-
-.visually-hidden { position: absolute !important; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-
-/* Start */
-.lede { font-size: var(--step-0, 1rem); }
-.figure { margin-block: 1rem 1.5rem; min-block-size: 4rem; }
-.figure-fallback { color: var(--pg-muted); max-inline-size: 72ch; }
-.entries { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 2rem; list-style: none; padding: 0; margin: 0; }
-.entries > li > a { font-weight: 600; }
-.jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.jump[hidden] { display: none; }
-.jump input, .filter input { font: inherit; padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--pg-ink); }
-.jump button { font: inherit; padding: 0.25rem 0.75rem; border: 1px solid var(--pg-ink); border-radius: 2px; background: var(--stage); color: var(--pg-ink); cursor: pointer; }
-.jump-msg { color: var(--pg-muted); }
-
-/* Tables of regesta, persons and files */
-.table-wrap { overflow-x: auto; max-inline-size: 100%; }
-.list { border-collapse: collapse; inline-size: 100%; max-inline-size: 64rem; }
-.list th, .list td { text-align: start; vertical-align: baseline; padding: 0.4rem 1rem 0.4rem 0; border-block-end: 1px solid var(--pg-line); }
-.list thead th { font-weight: 600; }
-.list tbody th { font-weight: 600; }
-.list:not(.persons) tbody th, .list td:last-child { white-space: nowrap; }
-.persons td:last-child { inline-size: 6rem; }
-.list .num { text-align: end; font-variant-numeric: tabular-nums; }
-.list.data { max-inline-size: 40rem; }
-.filter { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.filter[hidden] { display: none; }
-.filter-count { color: var(--pg-muted); }
-
-/* Single regest */
-.title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; margin-block-end: 1rem; }
-.title-row h1 { margin: 0; }
-.pager { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
-.pager a { white-space: nowrap; text-decoration: none; color: var(--pg-muted); }
-.pager a:hover { text-decoration: underline; text-decoration-color: var(--pg-accent); }
-.back-slot:empty { display: none; }
-.card-host { max-inline-size: 72ch; }
-.paper-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block-end: 0.5rem; }
-.regest-text { font-size: 1.1875rem; line-height: 1.7; max-inline-size: 66ch; }
-.fields, .cite { margin-block-start: 1.5rem; max-inline-size: 72ch; }
-.cite { padding-block-start: 0.75rem; border-block-start: 1px solid var(--pg-line); overflow-wrap: anywhere; }
-.ext { list-style: none; padding: 0; margin: 0 0 0.75rem; }
-
-.review-state { max-inline-size: 64ch; }
-.factoid-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; }
-.sentence { margin: 0; max-inline-size: 64ch; }
-.act-type { font-weight: 600; }
-.evq, .lit, .case-note, .before { margin: 0.25rem 0 0; max-inline-size: 64ch; }
-.evq { font-family: var(--font-source, Georgia, serif); }
-.history { margin-block-start: 1.5rem; }
-.history summary { cursor: pointer; font-weight: 600; }
-.history ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; margin-block-start: 0.75rem; max-inline-size: 72ch; }
-
-.downloads { margin-block-start: 2rem; padding: 0.75rem 1rem; background: var(--pg-tint); border-radius: 2px; max-inline-size: 40rem; }
-.downloads h2 { margin: 0 0 0.5rem; }
-.downloads ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
-.downloads a { font-weight: 600; }
-
-/* Persons */
-.register, .forms { max-inline-size: 72ch; }
-.mentions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; max-inline-size: 72ch; }
-.mention-head { font-weight: 600; margin-inline-end: 0.35em; }
-
-/* Method and about */
-.steps { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; max-inline-size: 72ch; counter-reset: step; }
-.steps li { counter-increment: step; }
-.step-head { margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; }
-.step-title { font-weight: 600; }
-.step-title::before { content: counter(step) ". "; }
-.steps li > p:last-child { margin: 0.25rem 0 0; }
-.code { white-space: pre-wrap; overflow-wrap: anywhere; padding: 0.75rem; border: 1px solid var(--pg-line); border-radius: 2px; max-inline-size: 80ch; }
-.placeholder { padding: 0.5rem 0.75rem; border: 1px dashed var(--edge); max-inline-size: 64ch; }
-
-@media (max-width: 40rem) {
-  .list tbody th { white-space: normal; }
-}
-
-/* Embedded views (start and person pages): drawing area and its sidebar side by side, one
-   window high at wide widths, stacked below 56rem as in the shell. */
-.embed { display: grid; grid-template-columns: minmax(0, 1fr); }
-.embed-main { container: page / inline-size; min-inline-size: 0; block-size: 70dvh; }
-.embed-aside { border-inline-start: 0; }
-@media (min-width: 56.01rem) {
-  .embed { grid-template-columns: minmax(0, 1fr) var(--aside-width, 22rem); block-size: min(78dvh, 46rem); }
-  .embed-main { block-size: auto; }
-  .embed-main, .embed-aside { min-block-size: 0; overflow: hidden; }
-  .embed-aside { border-inline-start: 1px solid var(--pg-line); }
-  .embed-aside { overflow-y: auto; }
-}
-
-/* Footer and skip link of the static pages; shell.css does not style them yet. */
-.skip { position: absolute; inset-inline-start: -999rem; }
-.skip:focus { inset-inline-start: 0.5rem; inset-block-start: 0.5rem; background: var(--pg-ground); padding: 0.5rem; z-index: 6; }
-.site-footer { max-inline-size: 76rem; margin-inline: auto; padding: 1rem 1.5rem 2rem; border-block-start: 1px solid var(--pg-line); color: var(--pg-muted); font-size: var(--step--1, 0.875rem); }
-.site-footer p { margin: 0 0 0.25rem; max-inline-size: 80ch; }
-.site-footer a { color: inherit; text-decoration-color: var(--pg-accent); margin-inline-end: 1rem; }
-
-/* Review on the product, local review build only (js/edition/review.js): one row per
-   statement under the annotated card, numbered as in the text, and the Prüfliste. */
-.review { display: grid; gap: var(--space-3); max-inline-size: 48rem; margin-block: var(--space-5) 0; padding-block-start: var(--space-4); border-block-start: 2px solid var(--accent); }
-.review-head { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: 0; color: var(--muted); }
-.review-rows { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
-.review-rows > li { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-4); padding-block: var(--space-1); border-block-end: 1px solid var(--hairline); }
-.review-kind { min-inline-size: 11rem; font-weight: 600; color: var(--accent-text); }
-.review-verdict { display: inline-flex; flex-wrap: wrap; gap: var(--space-3); margin: 0; padding: 0; border: 0; }
-.review-verdict label { display: inline-flex; align-items: center; gap: var(--space-1); cursor: pointer; }
-.review-verdict input { accent-color: var(--accent-text); inline-size: 1.05rem; block-size: 1.05rem; margin: 0; }
-.review-note { font: inherit; inline-size: min(100%, 22rem); padding: 2px var(--space-2); border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--text); }
-.review-regest { display: block; inline-size: 100%; resize: vertical; }
-.review-files { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: 0; }
-.review-files button { font: inherit; padding: var(--space-1) var(--space-3); border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--text); cursor: pointer; }
-.review-status, .review-progress { margin: 0; color: var(--muted); font-variant-numeric: tabular-nums; }
-.review-list { display: grid; gap: 2px; margin: var(--space-3) 0; padding: 0; list-style: none; max-inline-size: 30rem; }
-.review-list li { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: 2px; border-block-end: 1px solid var(--hairline); }
-.review-list li[data-state="done"] .review-count { color: var(--accent-text); font-weight: 600; }
-.review-count { color: var(--muted); font-variant-numeric: tabular-nums; }
-
-/* Filter row of the lists: search and the eight family switches with sign and word; the
-   switches are the legend of the signs in the rows (rule 7). */
-.list-filter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0 0 var(--space-3); }
-.list-q { font: inherit; inline-size: min(100%, 16rem); padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--pg-ink); }
-.fam-toggles { display: flex; flex-wrap: wrap; gap: var(--space-1); }
-.fam-toggle { display: inline-flex; align-items: center; gap: 0.3em; font: inherit; font-size: var(--step--1); padding: 2px var(--space-2); border: 1px solid var(--hairline); border-radius: 2px; background: var(--stage); color: var(--pg-muted); cursor: pointer; }
-.fam-toggle[aria-pressed="true"] { border-color: var(--accent-text); color: var(--pg-ink); box-shadow: inset 0 -2px 0 var(--pg-accent); }
-.filter-count { color: var(--pg-muted); font-variant-numeric: tabular-nums; }
-.fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--pg-muted); margin-inline-end: var(--space-2); }
-.list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--pg-muted); border-block-end: 1px solid var(--pg-line); }
-
-/* Start overview (operator's rule 42): filters left as in the views, the map to the right;
-   the page grows with the map instead of clipping it. */
-.embed-start .embed-aside { padding: var(--space-3); background: var(--side); }
-.so-band { margin-block-end: var(--space-4); }
-.so-label { display: flex; justify-content: space-between; margin: 0 0 var(--space-1); color: var(--pg-muted); }
-.so-persons, .so-places { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
-.so-persons li, .so-places li { display: flex; justify-content: space-between; gap: var(--space-3); }
-.so-persons a, .so-places a { text-decoration: none; }
-.so-persons a:hover, .so-places a:hover, .so-persons a:focus-visible, .so-places a:focus-visible { text-decoration: underline; }
-.so-n { color: var(--pg-muted); font-variant-numeric: tabular-nums; }
-.so-canvas { padding: var(--space-2) var(--space-3); }
-.so-svg { display: block; max-inline-size: 100%; }
-.so-place { cursor: pointer; }
-
-.so-caption { margin: var(--space-1) 0 var(--space-2); color: var(--pg-muted); }
-.so-places { grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); column-gap: var(--space-5); }
-.example { max-inline-size: 48rem; margin-block: var(--space-6) var(--space-4); }
-.example-lead { margin: 0 0 var(--space-2); color: var(--pg-muted); }
-@media (min-width: 56rem) {
-  .embed.embed-start { grid-template-columns: var(--aside-width, 21rem) minmax(0, 1fr); block-size: auto; }
-  .embed-start .embed-main, .embed-start .embed-aside { overflow: visible; }
-  .embed-start .embed-aside { border-inline-start: 0; border-inline-end: 1px solid var(--pg-line); }
-}
-.so-side.sidebar { gap: 0; align-content: start; }
-.so-place circle { fill: var(--edge); fill-opacity: 0.6; stroke: var(--stage); stroke-width: 0.8; }
-.so-place:hover circle, .so-place:focus-visible circle { fill: var(--accent); fill-opacity: 0.9; }
-/* Narrow: the regest list keeps number, date and the kinds of statements; the place stands
-   on the regest page and in the Orte object, so a row stays within two lines at 360 px. */
-@media (max-width: 40rem) {
-  .list.regests thead { display: none; }
-  .list.regests, .list.regests tbody { display: block; }
-  .list.regests td:last-child { white-space: normal; text-align: end; }
-  .list.regests tr { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--pg-line); }
-  .list.regests th, .list.regests td { padding: 0; border: 0; }
-  .list.regests td:nth-child(3) { display: none; }
-  .list.regests td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--pg-muted); }
-  .list.regests td:nth-child(4) { justify-self: end; }
-  .table-wrap:has(.list.regests) { overflow: visible; }
-}
-@media (max-width: 40rem) {
-  .list.persons, .list.persons tbody { display: block; }
-  .list.persons thead { display: none; }
-  .list.persons tr { display: grid; grid-template-columns: 1fr auto; gap: 0 var(--space-3); padding-block: var(--space-2); border-block-end: 1px solid var(--pg-line); }
-  .list.persons th, .list.persons td { padding: 0; border: 0; white-space: normal; }
-  .list.persons tr.group { display: block; }
-  .list.persons td:nth-child(2) { grid-row: 2; grid-column: 1 / -1; }
-  .list.persons td.num { grid-row: 1; grid-column: 2; }
-}
-/* Links in list rows rest without underline and underline on pointing and focus (rule 10);
-   the semibold weight of the first column tells them from the text beside. */
-.list tbody th a { text-decoration: none; }
-.list tbody th a:hover, .list tbody th a:focus-visible { text-decoration: underline; }
-
-@media (min-width: 40.01rem) {
-  .list.persons thead th.num { white-space: nowrap; }
-}
-
-.so-svg polygon, .so-svg polyline, .so-svg text { pointer-events: none; }
-.so-place:focus-visible circle { stroke: var(--focus); stroke-width: 2; }

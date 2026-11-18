@@ -5,6 +5,7 @@
  * the search and, with families switched on, carries at least one of them. The filter row is
  * hidden in the static page and shown here, so without JavaScript no dead control stands.
  */
+import { param, writeAddress } from "../url.js";
 
 function fold(text) {
   return text
@@ -27,9 +28,8 @@ export function init() {
   const rows = [...document.querySelectorAll("tr[data-q]")];
   const groups = [...document.querySelectorAll("tr.group")];
   // Address state: ?q=...&art=dispute,kin, so a filtered list can be linked and survives back.
-  const params = new URLSearchParams(location.search);
-  input.value = params.get("q") ?? "";
-  const wanted = new Set((params.get("art") ?? "").split(",").filter(Boolean));
+  input.value = param("q") ?? "";
+  const wanted = new Set((param("art") ?? "").split(",").filter(Boolean));
   for (const t of toggles) t.setAttribute("aria-pressed", String(wanted.has(t.dataset.f)));
   box.hidden = false;
 
@@ -47,13 +47,7 @@ export function init() {
     for (const g of groups) g.hidden = ![...g.closest("tbody").querySelectorAll("tr[data-q]")].some((r) => !r.hidden);
     // The empty state says what is and what helps (rule 16).
     count.textContent = !q && !on.length ? "" : shown ? `${shown} von ${rows.length}` : "Keine Zeile passt. Suche kürzen oder Arten abwählen.";
-    const next = new URLSearchParams(location.search);
-    if (q) next.set("q", input.value.trim());
-    else next.delete("q");
-    if (on.length) next.set("art", on.join(","));
-    else next.delete("art");
-    const query = next.toString();
-    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    writeAddress({ q: q ? input.value.trim() : null, art: on.join(",") });
   };
   input.addEventListener("input", apply);
   for (const t of toggles) {

@@ -1,27 +1,18 @@
 {
-  "_comment": "Navigation of the edition by the objects readers work with (operator's rule 39 of 2026-11-14): one head item per object, and the representations of an object as a switch inside its view. One source for the static pages (build_site) and the interactive views (js/app.js). Paths are relative to the site root; the interactive views live under ansicht/. Every earlier address keeps working, since the views keep their routes.",
+  "_comment": "Navigation of the edition by the objects readers work with (operator's rule 39 of 2026-11-14; four objects since the interface plan of 2026-11-17): one head item per object, and the representations of an object as a switch inside its view. One source for the static pages (build_site) and the interactive views (js/app.js). Paths are relative to the site root; the interactive views live under ansicht/. Start is the entry page (2026-11-18); Atlas and Regesten are static pages that mount their view; `app` is their address inside the views app of the repository, where no static page exists. The former object Orte forwards to the Atlas; the view Raum and the switch item Liste of Personen are gone since 2026-11-18 (Raum on the operator's decision of 2026-11-17; the person index stays as a page without JavaScript and is reached from the person pages).",
   "items": [
-    { "key": "regesten", "label": "Regesten", "href": "regesten/" },
+    { "key": "start", "label": "Start", "href": "./" },
+    { "key": "atlas", "label": "Atlas", "href": "atlas/", "app": "#/atlas" },
+    { "key": "regesten", "label": "Regesten", "href": "regesten/", "app": "#/regesten" },
     {
       "key": "personen",
       "label": "Personen",
       "href": "ansicht/#/",
       "views": [
         { "key": "zeit-netz", "label": "Netz", "href": "ansicht/#/" },
-        { "key": "zeitband", "label": "Zeitband", "href": "ansicht/#/zeitband" },
-        { "key": "raum", "label": "Raum", "href": "ansicht/#/raum" },
-        { "key": "personen-liste", "label": "Liste", "href": "personen/" }
+        { "key": "zeitband", "label": "Zeitband", "href": "ansicht/#/zeitband" }
       ]
     },
-    {
-      "key": "orte",
-      "label": "Orte",
-      "href": "ansicht/#/itinerar",
-      "views": [
-        { "key": "itinerar", "label": "Itinerar", "href": "ansicht/#/itinerar" },
-        { "key": "jahrzehnte", "label": "Jahrzehnte", "href": "ansicht/#/jahrzehnte" }
-      ]
-    },
-    { "key": "ueber", "label": "Über die Edition", "href": "ueber/" }
+    { "key": "ueber", "label": "Über", "href": "ueber/" }
   ]
 }

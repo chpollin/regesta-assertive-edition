@@ -1,6 +1,24 @@
 /* The shell of the edition: header with navigation, drawing area, one sidebar. The same
    class names are used by the static pages of the curated build. Colours from tokens.css. */
 
+/* The hidden attribute always hides: a component's display rule (.it-tip { display: grid })
+   otherwise overrides it. Important in the first layer, so no later layer can undo it. This
+   file is the one stylesheet every page and the views load. */
+@layer reset {
+  [hidden] { display: none !important; }
+  *, *::before, *::after { box-sizing: border-box; }
+}
+
+/* The base every page and the views share. */
+@layer base {
+  body { margin: 0; background: var(--stage); color: var(--text); font-family: var(--font-ui); font-size: var(--step-0); line-height: 1.5; }
+  .source { font-family: var(--font-source); }
+}
+
+@layer utilities {
+  .visually-hidden { position: absolute !important; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
 @layer layout {
   body { min-block-size: 100dvh; }
 
@@ -10,14 +28,17 @@
     z-index: 5;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: var(--space-2) var(--space-5);
+    gap: var(--space-1) var(--space-5);
     min-block-size: var(--header-height);
     padding: var(--space-1) var(--space-4);
     background: var(--stage);
     border-block-end: 1px solid var(--hairline);
   }
-  .site-title { color: var(--text); font-weight: 600; text-decoration: none; font-size: var(--step--1); }
+  .site-title { display: inline-flex; align-items: baseline; gap: var(--space-2); color: var(--text); font-weight: 600; text-decoration: none; font-size: var(--step-0); letter-spacing: 0.01em; }
+  .site-title { white-space: nowrap; }
+  .site-tag { padding: 1px 6px; border: 1px solid var(--accent); border-radius: 2px; color: var(--accent-text); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
   .site-title:hover { text-decoration: underline; }
   .site-nav { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); font-size: var(--step--1); }
   .site-nav a { color: var(--muted); text-decoration: none; padding-block: var(--space-1); border-block-end: 2px solid transparent; }
@@ -25,11 +46,36 @@
   /* Base weight of names in drawings and lists; stronger states in the components layer win. */
   .sp-label, .n-label, .act-name { font-weight: var(--label-weight); }
   .site-nav a[aria-current="page"] { color: var(--text); font-weight: 600; border-block-end-color: var(--accent); }
+  /* One header for every page (2026-11-18): title, objects, the jump by RI number, the
+     repository; one footer: maker, experiment, licences, repository, imprint. */
+  .site-nav { margin-inline-start: auto; }
+  .site-header .jump { display: inline-flex; align-items: center; gap: var(--space-1); margin: 0; font-size: var(--step--1); }
+  .site-header .jump input { inline-size: 8.5rem; padding: 2px var(--space-2); font: inherit; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--stage); color: var(--text); }
+  .site-header .jump button { padding: 2px var(--space-2); font: inherit; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--stage); color: var(--text); cursor: pointer; }
+  .site-header .jump-msg { color: var(--muted); }
+  .site-header .jump-msg:empty { display: none; }
+  .site-github, .footer-github { display: inline-grid; place-items: center; color: var(--muted); }
+  .site-github { inline-size: 1.75rem; block-size: 1.75rem; }
+  .site-github:hover, .footer-github:hover { color: var(--text); }
+  .site-footer { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-5); padding: var(--space-2) var(--space-4); border-block-start: 1px solid var(--hairline); background: var(--stage); color: var(--muted); font-size: var(--step--1); }
+  .site-footer p { margin: 0; }
+  .site-footer a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .footer-maker { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--text) !important; font-weight: 600; text-decoration: none; }
+  .footer-maker:hover { text-decoration: underline; }
+  .footer-maker img { display: block; inline-size: 20px; block-size: auto; }
+  .footer-licence { flex: 1 1 24rem; }
+  .footer-end { display: inline-flex; align-items: center; gap: var(--space-3); }
+  @media (max-width: 40rem) {
+    .site-header .jump { display: none; }
+    /* The repository mark stays on the title's line, the objects take the second. */
+    .site-github { order: 1; }
+    .site-nav { order: 2; }
+  }
 
   /* Views: drawing area and sidebar fill the window below the header. */
   .site-body { display: grid; grid-template-columns: minmax(0, 1fr); }
   /* A view is exactly one window high: header, then drawing area and sidebar. */
-  body[data-layout="view"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
+  body[data-layout="view"] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; block-size: 100dvh; overflow: hidden; }
   /* Shneiderman: filters on the left, the drawing in the middle, the detail on the right
      only while something is selected. */
   body[data-layout="view"] .site-body { grid-template-columns: var(--aside-width) minmax(0, 1fr); min-block-size: 0; }
@@ -37,14 +83,18 @@
   .site-main { container: page / inline-size; min-inline-size: 0; }
   body[data-layout="view"] .site-main { padding: 0; overflow: hidden; }
   body[data-layout="page"] .site-main { padding: var(--space-6) var(--space-5) var(--space-7); max-inline-size: 104rem; margin-inline: auto; inline-size: 100%; }
+  /* A view with its own bar and detail (the Atlas, css/atlas.css) fills the window alone. */
+  body[data-layout="full"] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; block-size: 100dvh; overflow: hidden; }
+  body[data-layout="full"] .site-body { min-block-size: 0; }
+  body[data-layout="full"] .site-main { padding: 0; overflow: hidden; min-block-size: 0; }
   .site-main:focus { outline: none; }
   .site-aside { min-inline-size: 0; overflow-y: auto; background: var(--side); border-inline-end: 1px solid var(--hairline); padding: var(--space-4); }
-  .site-aside[hidden], .site-detail[hidden] { display: none; }
   .site-detail { min-inline-size: 0; overflow-y: auto; border-inline-start: 1px solid var(--hairline); padding: var(--space-4); background: var(--stage); }
 
   /* Narrow windows: the drawing first, the sidebar below it at its natural height. */
   @media (max-width: 56rem) {
-    body[data-layout="view"] { display: block; block-size: auto; overflow: visible; }
+    body[data-layout="view"], body[data-layout="full"] { display: block; block-size: auto; overflow: visible; }
+    body[data-layout="full"] .site-main { overflow: visible; }
     body[data-layout="view"] .site-body { grid-template-columns: minmax(0, 1fr); }
     body[data-layout="view"] .site-main { block-size: 70dvh; }
     body[data-layout="view"][data-detail="open"] .site-body { grid-template-columns: minmax(0, 1fr); }
@@ -78,12 +128,7 @@
   .band-range:focus-visible { outline: 2px solid var(--focus); }
   .band-scale { display: flex; justify-content: space-between; color: var(--muted); font-variant-numeric: tabular-nums; }
   .band-label { color: var(--text); font-weight: 600; }
-
-  .fam-toggles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-1); }
-  .fam-toggle { display: flex; justify-content: space-between; gap: var(--space-1); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); padding: var(--space-1) var(--space-2); cursor: pointer; font-size: 0.8125rem; color: var(--muted); }
-  .fam-toggle[aria-pressed="true"] { color: var(--text); border-color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
-  .fam-count { font-variant-numeric: tabular-nums; }
-  .fam-toggle:disabled { opacity: 0.45; cursor: default; box-shadow: none; border-color: var(--hairline); }
+  .band-scale.is-rest { justify-content: center; }
 
   .fam-group { border-block-end: 1px solid var(--hairline); }
   .fam-group > summary { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: var(--space-2); list-style: none; }
@@ -94,14 +139,7 @@
   .fam-group > summary .fam-icon { flex: none; align-self: center; color: var(--muted); }
   .fam-n { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .act-rows { display: grid; gap: var(--space-1); padding: 0 0 var(--space-2) calc(1em + var(--space-2)); margin: 0; }
-  .act-row summary { display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: var(--space-2); list-style: none; padding-block: 2px; }
-  .act-row summary::-webkit-details-marker { display: none; }
-  .act-row summary:hover .act-name { text-decoration: underline; }
   .act-year, .act-short { color: var(--muted); font-variant-numeric: tabular-nums; }
-  .act-regest { display: grid; gap: var(--space-2); margin: var(--space-1) 0 var(--space-2) 3.5rem; padding: var(--space-2) var(--space-3); background: var(--stage); border-inline-start: 2px solid var(--accent); }
-  .act-text { line-height: 1.55; }
-  .act-text mark { background: var(--accent-faint); color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
-  .act-link { color: var(--accent-text); font-weight: 600; }
 
   /* A small view bar placed on the drawing area. */
   .canvas { position: relative; block-size: 100%; }
@@ -127,29 +165,34 @@
 
   /* The regest component, the same in the detail panel and on the citable page. */
   .regest-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); font-size: var(--step--1); }
-  .card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
+  /* The head: one line of signs and short words, the same in the views and on the page. */
+  .card-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-4); }
   .card-id { font-weight: 600; }
-  .card-meta { color: var(--muted); }
-  .card-ri { text-decoration-color: var(--accent); }
-  .card-state { color: var(--muted); text-decoration: underline dotted; cursor: help; }
-  .card-close { margin-inline-start: auto; background: none; border: 0; font-size: inherit; line-height: 1; cursor: pointer; color: var(--muted); padding: 0 var(--space-1); }
+  .card-meta, .card-state { display: inline-flex; align-items: center; gap: 0.3em; color: var(--muted); }
+  a.card-meta { text-decoration: none; }
+  a.card-meta:hover, a.card-meta:focus-visible { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); }
+  /* „ungeprüft“ once in the head, its tip on pointing, focus and tap (js/regest-card.js). */
+  .card-state-wrap { position: relative; display: inline-flex; }
+  .card-state { padding: 0; background: none; border: 0; font: inherit; cursor: help; text-decoration: underline dotted; text-underline-offset: 0.2em; }
+  .card-state-tip { display: none; position: absolute; z-index: 7; inset-block-start: calc(100% + 4px); inset-inline-end: 0; inline-size: min(20rem, 80vw); padding: var(--space-2) var(--space-3); background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); box-shadow: 0 6px 22px rgb(0 0 0 / 0.12); color: var(--text); font-size: var(--step--1); line-height: 1.45; }
+  .card-state:hover + .card-state-tip, .card-state:focus-visible + .card-state-tip, .card-state[aria-expanded="true"] + .card-state-tip { display: block; }
+  .side-trace { color: var(--accent-text); text-decoration: none; font-size: var(--step--1); }
+  .side-trace:hover, .side-trace:focus-visible { text-decoration: underline; }
+  .head-icon { inline-size: 1em; block-size: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+  .card-close { margin-inline-start: auto; background: none; border: 0; font-size: inherit; line-height: 1; cursor: pointer; color: var(--muted); padding: var(--space-1); text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 0.2em; }
+  .card-close:hover, .card-close:focus-visible { color: var(--text); text-decoration-color: currentColor; }
+  button.card-meta { padding: 0; background: none; border: 0; font: inherit; cursor: pointer; }
+  button.card-meta:hover, button.card-meta:focus-visible { color: var(--text); text-decoration: underline; text-decoration-color: var(--accent); }
   .card-text { font-size: var(--step-0); line-height: 1.6; }
-  .card-text .ev { text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 0.2em; }
-  .card-text .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
-  /* The annotated text: tags and brackets in the accent text colour of the interface face,
-     roles as a small muted gloss under the name; the line height leaves room for the glosses. */
-  /* Tags take the style of the regest number in the head (interface face, semibold, text
-     colour), so the page keeps six text styles; the accent bar and bracket mark the layer. */
   /* The regest with its statements as notes (since 2026-11-14): the text reads as text, a
      small number marks where a statement's passage begins, and the note beside or below
      names kind, participants and roles; pointing at either lights the other. */
   .card-text.is-noted { line-height: 1.7; }
-  .card-text.is-noted .ev { text-decoration: underline; text-decoration-color: var(--hairline); text-underline-offset: 0.2em; }
-  .card-text.is-noted .ev.is-on { background: var(--accent-faint); text-decoration-color: var(--accent); }
-  .ann-n { font-family: var(--font-ui); font-size: 0.62em; font-weight: 600; color: var(--accent-text); margin-inline: 0.05em 0.15em; }
+  .ann-n { white-space: nowrap; }
   .ann-n.is-on { background: var(--accent-faint); }
   .card-body { position: relative; }
   .regest-card.has-margin .card-body { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: var(--space-5); align-items: start; }
+  .regest-card.is-page.has-margin .card-body { grid-template-columns: minmax(0, 44rem) minmax(16rem, 24rem); gap: var(--space-6); }
   .card-notes { display: grid; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
   .regest-card.has-margin .card-notes { display: block; position: relative; }
   .regest-card.has-margin .card-notes > li { position: absolute; inset-inline: 0; }
@@ -159,26 +202,66 @@
   .note-n { color: var(--accent-text); font-weight: 600; margin-inline-end: 0.4em; }
   .note-kind { font-weight: 600; }
   .note-people { margin: 0; color: var(--muted); font-size: var(--step--1); }
-  .ann-verdict { margin-inline-start: 0.4em; }
+  /* Participants and the agents' reasons only while the note is active: in the margin as a
+     layer over what follows, in the narrow list in place. */
+  .note-detail { display: none; }
+  .card-notes > li.is-on .note-detail, .card-notes > li:hover .note-detail, .card-notes > li:focus-within .note-detail { display: grid; gap: var(--space-1); padding-block: var(--space-1); }
+  .regest-card.has-margin .card-notes > li.is-on, .regest-card.has-margin .card-notes > li:hover, .regest-card.has-margin .card-notes > li:focus-within { z-index: 3; background: var(--stage); box-shadow: 0 0 0 1px var(--hairline); }
+  .ann-verdict { margin-inline-start: 0.4em; padding: 0 0.4em; border: 1px solid var(--hairline); border-radius: 2px; font-size: 0.85em; color: var(--muted); white-space: nowrap; }
 
   /* The persons overview of the whole network (js/person-overview.js): circles by number of
      statements, lines by shared statements, the centre person named in one line above. */
   .po-note { position: absolute; inset-block-start: var(--space-2); inset-inline-start: var(--space-3); z-index: 1; margin: 0; max-inline-size: 40rem; color: var(--muted); font-size: var(--step--1); background: color-mix(in srgb, var(--stage) 85%, transparent); }
   .po-edge { stroke: var(--edge); stroke-opacity: 0.55; stroke-linecap: round; }
   .po-edge.is-on { stroke: var(--accent); stroke-opacity: 1; }
-  .po-dot { fill: var(--text); stroke: var(--stage); stroke-width: 1.5; }
+  .po-dot { fill: var(--st, var(--text)); stroke: var(--stage); stroke-width: 1.5; }
   .po-node:hover .po-dot, .po-node:focus-visible .po-dot { fill: var(--accent); }
   .po-node.is-dim { opacity: 0.25; }
+  /* The person left out of the overview: greyed, dashed, in the free corner. */
+  .po-centre-dot { fill: var(--stage); stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 3 2; }
+  .po-centre .n-label { fill: var(--muted); }
   .po-node .n-label.on-demand { display: none; }
   .po-node:hover .n-label.on-demand, .po-node:focus-visible .n-label.on-demand { display: inline; }
-  .ann-verdict.is-falsch { color: var(--warn); }
-  .claim-flag { color: var(--warn); font-weight: 600; margin-inline-start: var(--space-1); }
+  .ann-verdict.is-stimmt-nicht, .ann-verdict.is-strittig, .ann-verdict.is-unklar { color: var(--warn); border-color: currentColor; }
+  .note-review { margin: 0; color: var(--muted); font-size: var(--step--1); }
   .card-none, .card-note { color: var(--muted); }
   .card-note.is-flag { color: var(--warn); }
-  .card-more summary { color: var(--muted); }
-  .card-more h3 { font-size: inherit; font-weight: 600; margin-block: var(--space-3) var(--space-1); }
-  .card-rdf { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.75rem; }
   .regest-page { max-inline-size: 46rem; }
+
+  /* The regest page (design.md, Regest page, since 2026-11-18): the head line, text and notes
+     side by side, the apparatus in two columns over the full width. */
+  .regest-card.is-page { gap: var(--space-4); }
+  .page-head { gap: var(--space-2) var(--space-4); padding-block-end: var(--space-3); border-block-end: 1px solid var(--hairline); }
+  .page-id { margin: 0; font-size: var(--step-1); font-weight: 600; line-height: 1.3; }
+  .page-actions { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-4); margin-inline-start: auto; }
+  .card-files { display: inline-flex; align-items: center; gap: 0.5em; color: var(--muted); }
+  .card-menu { position: relative; }
+  .card-menu > summary { cursor: pointer; list-style: none; }
+  .card-menu > summary::-webkit-details-marker { display: none; }
+  .card-menu > summary::after { content: " ▾"; }
+  .card-menu-list { position: absolute; z-index: 7; inset-inline-end: 0; inset-block-start: calc(100% + 4px); display: grid; gap: var(--space-1); min-inline-size: 16rem; margin: 0; padding: var(--space-2) var(--space-3); list-style: none; background: var(--stage); border: 1px solid var(--hairline); border-radius: var(--radius); box-shadow: 0 6px 22px rgb(0 0 0 / 0.12); }
+  .page-actions .pager { display: inline-flex; gap: var(--space-1); }
+  .page-actions .pager a { display: inline-grid; place-items: center; inline-size: 2rem; block-size: 2rem; border-radius: 2px; color: var(--muted); text-decoration: none; }
+  .page-actions .pager a:hover, .page-actions .pager a:focus-visible { color: var(--text); background: var(--accent-faint); }
+  .regest-card.is-page.has-margin .card-body { grid-template-columns: minmax(0, 46rem) minmax(16rem, 1fr); gap: var(--space-6); }
+  .regest-card.is-page .card-notes { font-size: var(--step--1); }
+  .reg-legend { margin: 0; color: var(--muted); font-size: var(--step--1); display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); align-items: center; }
+  .reg-legend-item { display: inline-flex; align-items: center; gap: 0.3em; }
+  .reg-apparatus-block { display: grid; gap: var(--space-2); padding-block-start: var(--space-3); border-block-start: 1px solid var(--hairline); }
+  .reg-block-h { margin: 0; font-size: var(--step-0); font-weight: 600; }
+  .reg-apparatus { columns: 2 24rem; column-gap: var(--space-6); font-size: var(--step--1); }
+  .reg-apparatus p { margin: 0 0 var(--space-2); break-inside: avoid-column; }
+  .reg-app-label { font-weight: 600; }
+  .reg-apparatus .source { color: var(--muted); }
+  /* Annotation system: an opening chip (family sign and number) where a statement's passage
+     begins; the passage itself is unmarked until it or its statement is chosen. */
+  .ann-chip { display: inline-flex; align-items: center; gap: 1px; font-family: var(--font-ui); font-size: 0.6em; font-weight: 600; color: var(--accent-text); vertical-align: 0.45em; margin-inline-end: 0.1em; }
+  .ann-chip .fam-icon { stroke: currentColor; }
+  .note-head .ann-chip { font-size: 0.9em; vertical-align: baseline; margin-inline-end: 0.35em; }
+  .ann-n { cursor: default; }
+  .ann-n.is-on .ann-chip { background: var(--accent-faint); }
+  .card-text.is-noted .ev { text-decoration: none; }
+  .card-text.is-noted .ev.is-on { background: var(--accent-faint); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
   .regest-card.is-page { font-size: var(--step-0); gap: var(--space-4); }
   .regest-card.is-page .card-text { font-size: var(--step-1); }
 
