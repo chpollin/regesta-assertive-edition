@@ -145,7 +145,8 @@ export function createCube(store, options) {
     const labels = s("g", { class: "sp-labels" });
     const pointer = s("g", { class: "it-pointer" });
     svg.append(defs, frames, ground, line, traces, dots, marks, labels, pointer);
-    const dotEls = points.map((p) => dots.appendChild(s("circle", { class: options.withStatements.has(p.u) ? "it-dot is-evidenced" : "it-dot" })));
+    // A regest without an exact day is a ring: a point outside the line (data.md, Line of the itinerary).
+    const dotEls = points.map((p) => dots.appendChild(s("circle", { class: `it-dot${options.withStatements.has(p.u) ? " is-evidenced" : ""}${p.line ? "" : " is-vague"}` })));
     return { svg, width, height: height_, frames, floorShape, coreShape, map, realmLayer, line, traces, dotsG: dots, dots: dotEls, marks, labels, pointer };
   }
 
@@ -262,7 +263,7 @@ export function createCube(store, options) {
         dot.classList.add(mark);
         if (on) lifted.push(dot);
       }
-      if (inside(p.y)) path.push(fmt(q));
+      if (p.line && inside(p.y)) path.push(fmt(q));
       if (mark && inside(p.y)) {
         if (mark !== "is-pb") trace[0]?.push(fmt(q));
         if (mark !== "is-pa") trace[filters.persons.length - 1]?.push(fmt(q));
@@ -488,8 +489,13 @@ export function createCube(store, options) {
     const p = points[i];
     const place = new Set();
     points.forEach((x, j) => x.p === p.p && j !== i && place.add(j));
-    const before = i > 0 ? i - 1 : null;
-    const after = i + 1 < points.length ? i + 1 : null;
+    // The stations before and after are the neighbours in the line; a regest outside it has none.
+    const near = (step) => {
+      for (let j = i + step; j >= 0 && j < points.length; j += step) if (points[j].line) return j;
+      return null;
+    };
+    const before = p.line ? near(-1) : null;
+    const after = p.line ? near(1) : null;
     /** Related index to the shared persons. */
     const people = new Map();
     for (const id of (personsOf.get(p.u) ?? []).filter((x) => persons[x].r.length <= RELATED_MAX))

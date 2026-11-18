@@ -51,7 +51,7 @@ export function createSelection(store, filters) {
     .map((r) => {
       const y = yearOf(r.s);
       const placed = !!(r.p && places[r.p]);
-      return { u: r.u, i: r.i, y, year: Math.floor(y), p: placed ? r.p : null, place: placed ? places[r.p].l : r.l || "", dating: r.d || "", run: store.byUid.has(r.u), stmt: familiesOf.has(r.u) };
+      return { u: r.u, i: r.i, y, year: Math.floor(y), p: placed ? r.p : null, place: placed ? places[r.p].l : r.l || "", dating: r.d || "", kind: r.k, line: !!r.ln, run: store.byUid.has(r.u), stmt: familiesOf.has(r.u) };
     })
     // By date only: the sort is stable and the holdings arrive in the order of
     // edition_io.regest_order, the order check_itinerary.py checked the steps in. A second

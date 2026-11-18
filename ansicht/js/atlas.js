@@ -205,6 +205,7 @@ export function renderAtlas(store, options) {
       { class: "atlas-key", "aria-label": t("atlas.key.aria") },
       item("it-key", t("atlas.key.placed")),
       item("it-key is-evidenced", t("atlas.key.evidenced")),
+      item("it-key is-vague", t("atlas.key.vague")),
       item("rel-key is-route", t("atlas.key.route")),
       filters.persons.length ? item("it-pkey is-pa", t("atlas.key.personA")) : null,
       filters.persons.length > 1 ? item("it-pkey is-pb", t("atlas.key.personB")) : null,
@@ -296,7 +297,10 @@ export function renderAtlas(store, options) {
     readUid: () => (location.hash.startsWith("#/atlas") ? readHash().uid : null),
     card: (u) => {
       // The class of a flag is a German label of check_itinerary.py, translated as a term.
-      const notes = (flagsOf.get(u) ?? []).map((f) => ({ flag: true, text: t("atlas.flagNote", { km: f.km, n: f.days, other: f.other.identifier, place: f.other.place, reason: term(f.class) }) }));
+      // A placed regest without an exact day says how it is dated and that the line passes it by.
+      const row = selection.byUid.get(u);
+      const vague = row?.p && !row.line ? [{ text: t(`atlas.vague.${row.kind}`) }] : [];
+      const notes = vague.concat((flagsOf.get(u) ?? []).map((f) => ({ flag: true, text: t("atlas.flagNote", { km: f.km, n: f.days, other: f.other.identifier, place: f.other.place, reason: term(f.class) }) })));
       return renderRegestCard(store, u, { notes, texts: options.texts, onClose: () => detail.close() });
     },
     onOpen: (u) => {
