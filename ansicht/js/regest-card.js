@@ -315,7 +315,12 @@ export function renderRegestCard(store, uid, options = {}) {
 
   if (regest) {
     const statements = statementsOf(regest);
-    textEl.append(...notedText(regest.text, statements));
+    // The delivery writes no text for some regesta (RI IV,2,1 n. 107 in the run); say so, as below.
+    if (regest.text) textEl.append(...notedText(regest.text, statements));
+    else {
+      textEl.removeAttribute("lang");
+      textEl.textContent = t("card.noText");
+    }
     const notesEl = statements.length ? notesOf(statements) : null;
     linkStatements(textEl, notesEl, options.claim);
     if (notesEl) {
@@ -396,7 +401,10 @@ function pageView(store, regest, options) {
     ),
   );
 
-  const textEl = h("p", { class: "card-text source is-noted", lang: "de" }, ...notedText(regest.text, statements));
+  // As in the card above: a regest the delivery gives no text for says so.
+  const textEl = regest.text
+    ? h("p", { class: "card-text source is-noted", lang: "de" }, ...notedText(regest.text, statements))
+    : h("p", { class: "card-text source is-noted", text: t("card.noText") });
   const notesEl = statements.length ? notesOf(statements, { chips: true }) : null;
   const body = h("div", { class: "card-body" }, textEl, notesEl);
   const present = [...new Map(statements.map((st) => [familyOf(st.kind).key, familyOf(st.kind)])).values()];

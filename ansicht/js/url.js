@@ -28,6 +28,10 @@ export function writeAddress(params, hash = location.hash) {
 
 /** The parameters of the filter model (js/filters.js), carried from view to view. */
 const FILTER_KEYS = ["von", "bis", "ort", "person", "art", "schicht", "q"];
+// The person index filters its rows by name and kind under its own q and art (listfilter.js);
+// carried to a view they would become a full-text search and a kind filter nobody chose.
+const OWN_KEYS = ["q", "art"];
+const ownFilters = () => !!document.querySelector(".list-filter");
 
 /**
  * Keep the chosen filters when the reader changes the view: a click on a link of the header
@@ -45,8 +49,9 @@ export function carryFilters() {
       const url = new URL(link.getAttribute("href"), location.href);
       if (url.origin !== location.origin || FILTER_KEYS.some((k) => url.searchParams.has(k))) return;
       let changed = false;
+      const own = ownFilters();
       for (const k of FILTER_KEYS) {
-        if (here.has(k)) {
+        if (here.has(k) && !(own && OWN_KEYS.includes(k))) {
           url.searchParams.set(k, here.get(k));
           changed = true;
         }

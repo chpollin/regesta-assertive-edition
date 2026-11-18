@@ -39,11 +39,13 @@ export function createFilters(store) {
   const listeners = new Set();
   const year = new Map(store.edition.regests.map((r) => [r.uid, Math.floor(yearOf(r.start))]));
 
+  // A reversed range in the address (?von=1180&bis=1160) is read as the range it spans, as set() does.
+  const [from, to] = [clampYear(Number(param("von")), lo), clampYear(Number(param("bis")), hi)].sort((a, b) => a - b);
   const state = {
     lo,
     hi,
-    from: clampYear(Number(param("von")), lo),
-    to: clampYear(Number(param("bis")), hi),
+    from,
+    to,
     /** The families shown; all eight is the rest state, written as no art at all. */
     families: new Set(listed.length ? listed : known),
     place: placeOk(param("ort")) ? param("ort") : null,

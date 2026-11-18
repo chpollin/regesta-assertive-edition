@@ -101,7 +101,7 @@ export function renderAtlas(store, options) {
   // stations, a switchable layer of the cube, named in the regest card.
   let checks = null;
   const flagsOf = new Map();
-  fetch(new URL("../data/itinerary-checks.json", import.meta.url))
+  const checksLoaded = fetch(new URL("../data/itinerary-checks.json", import.meta.url))
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => {
       checks = data;
@@ -340,7 +340,9 @@ export function renderAtlas(store, options) {
   mountMode();
   syncSwitch();
   const first = readHash().uid;
-  if (first) requestAnimationFrame(() => detail.open(first, { push: false }));
+  // A regest named in the address opens once the checks are read (or have failed), so its card
+  // carries the flagged steps like one opened later; the card is rendered once.
+  if (first) checksLoaded.then(() => requestAnimationFrame(() => detail.open(first, { push: false })));
 
   return {
     element: frame.root,

@@ -53,7 +53,10 @@ export function createSelection(store, filters) {
       const placed = !!(r.p && places[r.p]);
       return { u: r.u, i: r.i, y, year: Math.floor(y), p: placed ? r.p : null, place: placed ? places[r.p].l : r.l || "", dating: r.d || "", run: store.byUid.has(r.u), stmt: familiesOf.has(r.u) };
     })
-    .sort((a, b) => a.y - b.y || a.i.localeCompare(b.i, "de", { numeric: true }));
+    // By date only: the sort is stable and the holdings arrive in the order of
+    // edition_io.regest_order, the order check_itinerary.py checked the steps in. A second
+    // rule here once moved same-day regesta, so flags named steps the cube did not draw.
+    .sort((a, b) => a.y - b.y);
   const byUid = new Map(rows.map((r) => [r.u, r]));
 
   let personSets = [];
