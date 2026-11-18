@@ -27,6 +27,14 @@ updated: 2026-11-18
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-18 Design round on the Atlas
+
+- Trigger: the operator likes the relations in the cube („deutlich besser“) and named six points on his screenshot at about 2000 × 1000 with n. 1430 (Bamberg) opened: bar padding, the missing name of the opened place, weak hierarchy, a pale floor, a flat tool row, truncated place names.
+- Decided: one inner padding of 1rem for every part of the bar and the filter sheet, the bar 19rem with the place in 0.92em; the floor names the opened place and the places of its related points instead of the five busiest places, a pointed point names its place; the opened point filled and larger with a ring, unrelated points at 0.035; darker coast, rivers and realm; the tool row in groups with „frei gedreht“ and „Ausgangsansicht“ only after rotating and „Auffällige Wege“ as a toggle at the right (design.md, Itinerar). Found and fixed on the way: the cube's tooltip and the info panel showed the word „null“ where a part was empty, since `replaceChildren` writes null as text.
+- Rejected: a crisp border for the realm about 1190, which would claim a precision the rough digitisation lacks.
+- Changed: js/atlas.js, js/itinerary.js, css/frame.css, css/space.css, css/tokens.css, design.md.
+- Evidence: on the preview at 1280, 1440, 1920 and 2000 the nearest control or text in the bar stands 16 px from both edges of the bar (before 12 px by the CSS), at 360 16 px in the list and the sheet; 3 of 70 place names in the first rows still truncated (Tauberbischofsheim, Freiburg (im Breisgau) and a damaged place string), before Regensburg, Memmingen and „ohne Ort“ were cut; with n. 1430 the floor names Bamberg, Cesena, Pescia, Viterbo, Pavia, Fulda, Vienne, with n. 135 Würzburg, Rom, Speyer, Segni, Ulm, Regensburg, Besançon; no SVG beyond the window, no horizontal scroll; keyboard order Würfel, Karte, Zeit, Jahrzehnte, Vergrößern, Verkleinern, Auffällige Wege, Lesehilfe, cube, each with a 2 px focus outline; the hint appears after a drag and goes with „Ausgangsansicht“. Before and after screenshots in the session scratchpad (ui-design-r1).
+
 ## 2026-11-18 Mobile layouts and acceptance check of the interface plan
 
 - Trigger: step 5 of the accepted interface plan.

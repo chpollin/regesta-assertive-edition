@@ -90,6 +90,8 @@ export function createCube(store, options) {
   const state = { view: { yaw: CAMERAS.wuerfel.yaw, pitch: CAMERAS.wuerfel.pitch, zoom: 1 }, snap: "wuerfel", pointed: null, opened: null, flags: false };
   let related = null;
   let allPeople = false;
+  /** The boxes of the names standing on the floor, so a pointed place name avoids them. */
+  let labelBoxes = [];
 
   const sceneHost = h("div", {
     class: "space-scene",
@@ -250,7 +252,9 @@ export function createCube(store, options) {
       const dot = scene.dots[i];
       dot.setAttribute("cx", q.x.toFixed(1));
       dot.setAttribute("cy", q.y.toFixed(1));
-      dot.setAttribute("opacity", on ? "1" : filters.any() || related ? "0.07" : "0.12");
+      // While a regest is open the unrelated points recede furthest, so the opened one and its
+      // relations lead (design round of 2026-11-18); at rest the faint state stays as it was.
+      dot.setAttribute("opacity", on ? "1" : related ? "0.035" : filters.any() ? "0.07" : "0.12");
       dot.classList.remove("is-pa", "is-pb", "is-pab");
       const mark = personsOn ? options.personMark(p) : "";
       if (mark) {
@@ -285,22 +289,27 @@ export function createCube(store, options) {
     pointer();
   }
 
-  /** Year scale at the west edge, place names on the floor, the realm named at its area. */
+  /**
+   * Year scale at the west edge, place names on the floor, the realm named at its area. At rest
+   * the places with most documents stand named; while a regest is open its place and the places
+   * of its related points are named instead, in that order, so a collision drops the least
+   * related name (design round of 2026-11-18). Any other place is named while pointed at.
+   */
   function labels(pt, P) {
     const out = [];
-    const boxes = [];
-    const place = (text, p, cls, dx = 6, dy = 4) => {
+    const boxes = (labelBoxes = []);
+    const place = (text, p, cls, dx = 6, dy = 4, id = null) => {
       const w = text.length * 6.6;
       const b = { x0: p.x + dx, x1: p.x + dx + w, y0: p.y + dy - 12, y1: p.y + dy + 3 };
       if (b.x0 < 0 || b.x1 > scene.width || b.y0 < 0 || b.y1 > scene.height) return false;
       if (boxes.some((o) => o.x0 < b.x1 && b.x0 < o.x1 && o.y0 < b.y1 && b.y0 < o.y1)) return false;
       boxes.push(b);
-      out.push(s("text", { x: b.x0, y: p.y + dy, class: `sp-label ${cls}`, text }));
+      out.push(s("text", { x: b.x0, y: p.y + dy, class: `sp-label ${cls}`, "data-place": id, text }));
       return true;
     };
     if (filters.place) {
       const p = places[filters.place];
-      place(p.l, pt(p.lo, p.la, first), "sp-case-label");
+      place(p.l, pt(p.lo, p.la, first), "sp-case-label", 6, 4, filters.place);
     }
     if (state.view.pitch < 70 * DEG) {
       for (let y = Math.ceil(first / 10) * 10; y <= last; y += 10) {
@@ -309,14 +318,28 @@ export function createCube(store, options) {
         place(String(y), corner, "sp-year", -34, 4);
       }
     }
-    const ranked = Object.entries(places)
-      .sort((a, b) => b[1].n - a[1].n)
-      .slice(0, NAMED_PLACES);
-    for (const [id, p] of ranked) {
-      if (id === filters.place) continue;
-      const q = pt(p.lo, p.la, first);
-      out.push(s("circle", { class: "it-place", cx: q.x.toFixed(1), cy: q.y.toFixed(1), r: 3.5 }));
-      place(p.l, q, "it-place-label", 8, -6);
+    const o = state.opened;
+    if (related && o !== null) {
+      const ids = [points[o].p];
+      for (const j of [related.before, related.after, ...peopleShown()]) if (j !== null && j !== undefined) ids.push(points[j].p);
+      for (const id of new Set(ids)) {
+        if (id === filters.place) continue;
+        const p = places[id];
+        const q = pt(p.lo, p.la, first);
+        const own = id === points[o].p;
+        out.push(s("circle", { class: own ? "it-place is-opened" : "it-place is-related", cx: q.x.toFixed(1), cy: q.y.toFixed(1), r: own ? 3.5 : 2.5 }));
+        place(p.l, q, own ? "it-place-label sp-case-label" : "it-place-label is-related", 8, -6, id);
+      }
+    } else {
+      const ranked = Object.entries(places)
+        .sort((a, b) => b[1].n - a[1].n)
+        .slice(0, NAMED_PLACES);
+      for (const [id, p] of ranked) {
+        if (id === filters.place) continue;
+        const q = pt(p.lo, p.la, first);
+        out.push(s("circle", { class: "it-place", cx: q.x.toFixed(1), cy: q.y.toFixed(1), r: 3.5 }));
+        place(p.l, q, "it-place-label", 8, -6, id);
+      }
     }
     // The key of the soft area stands at the area itself (figure rule: legend at the marks).
     if (realm && state.view.pitch > 10 * DEG) {
@@ -378,7 +401,16 @@ export function createCube(store, options) {
       const p = points[i];
       const top = screen[i];
       const floor = P(mapX(places[p.p].lo, places[p.p].la), toY(first), mapZ(places[p.p].lo, places[p.p].la));
-      scene.pointer.append(s("line", { class: "it-drop", x1: top.x, y1: top.y, x2: floor.x, y2: floor.y }), s("circle", { class: cls, cx: top.x, cy: top.y, r: 5.5 }));
+      scene.pointer.append(s("line", { class: "it-drop", x1: top.x, y1: top.y, x2: floor.x, y2: floor.y }), s("circle", { class: cls, cx: top.x, cy: top.y, r: cls === "it-opened" ? 7 : 5.5 }));
+      if (cls === "it-opened") scene.pointer.append(s("circle", { class: "it-opened-ring", cx: top.x, cy: top.y, r: 10.5 }));
+      // The place of a pointed point on the floor, unless it already stands named there.
+      if (cls === "it-pointed" && !scene.labels.querySelector(`[data-place="${CSS.escape(p.p)}"]`)) {
+        const name = places[p.p].l;
+        const w = name.length * 6.6;
+        const x = floor.x + 8 + w > scene.width ? floor.x - 8 - w : floor.x + 8;
+        const free = !labelBoxes.some((b) => b.x0 < x + w && x < b.x1 && b.y0 < floor.y + 1 && floor.y - 14 < b.y1);
+        if (free) scene.pointer.append(s("text", { class: "sp-label it-place-label", x: x.toFixed(1), y: (floor.y - 2).toFixed(1), text: name }));
+      }
     }
   }
 
@@ -422,7 +454,8 @@ export function createCube(store, options) {
     const text = h("p", { class: "it-tip-text source", text: regest ? regest.text : "…" });
     if (!regest) options.texts?.().then((t) => (text.textContent = t[p.u] || ""));
     const sts = regest ? statementsOf(regest) : [];
-    tip.replaceChildren(
+    // replaceChildren writes a null child as the text „null“, so an empty part is dropped first.
+    const parts = [
       h("p", { class: "it-tip-head" }, h("span", { class: "card-id", text: p.i }), ` ${Math.floor(p.y)}, ${places[p.p].l}`, sts.length ? h("span", { class: "it-tip-state", text: " ungeprüft" }) : null),
       text,
       sts.length
@@ -432,7 +465,8 @@ export function createCube(store, options) {
             sts.map((st) => h("li", {}, h("span", { class: "ann-chip" }, familyIcon(familyOf(st.kind), { size: 12 }), String(st.n)), ` ${st.kind}`, st.agent ? h("span", { class: `ann-verdict is-${st.agent.outcome.replace(/\s+/g, "-")}` }, `LLM: ${st.agent.outcome}`) : null)),
           )
         : null,
-    );
+    ];
+    tip.replaceChildren(...parts.filter(Boolean));
     tip.hidden = false;
     // Beside the point, inside the drawing, on the side with more room.
     const q = screen[i];
@@ -594,7 +628,7 @@ export function createCube(store, options) {
     /** Draw every shared-person relation of the opened regest, or only the nearest in time. */
     allPeople(on) {
       allPeople = on;
-      pointer();
+      update();
     },
     dispose() {
       animation = {};

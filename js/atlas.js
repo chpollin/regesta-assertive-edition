@@ -158,18 +158,25 @@ export function renderAtlas(store, options) {
     if (opened) state.mode === "jahrzehnte" ? decades.open(opened) : showLegend(cube.open(indexOf.get(opened) ?? null));
   }
 
-  // Tool row: the switch of the representations, camera tools, the flagged ways, the info mark.
+  // Tool row in three groups (design round of 2026-11-18): the representations as one segmented
+  // switch, zoom as two small sign buttons and, only after the reader rotated the cube, a quiet
+  // state hint with the way back; at the right end the flagged ways as a toggle and the info mark.
   const switchButtons = MODES.map((m) => h("button", { type: "button", class: "seg", "data-mode": m.key, "aria-pressed": "false", onclick: () => setMode(m.key) }, m.label));
-  const freeMark = h("span", { class: "seg seg-note", text: "frei gedreht", hidden: true });
+  const freeMark = h(
+    "span",
+    { class: "atlas-free", hidden: true },
+    "frei gedreht",
+    h("button", { type: "button", class: "link-button atlas-free-reset", onclick: () => setMode(MODES[0].key) }, "Ausgangsansicht"),
+  );
   const sign = (d) => s("svg", { viewBox: "0 0 16 16", class: "head-icon", "aria-hidden": "true" }, s("path", { d }));
   const tool = (label, d, onclick) => h("button", { type: "button", class: "tool", "aria-label": label, title: label, onclick }, sign(d));
-  const cameraTools = h("span", { class: "atlas-camera" }, tool("Vergrößern", "M8 3v10M3 8h10", () => cube?.zoom(1.15)), tool("Verkleinern", "M3 8h10", () => cube?.zoom(1 / 1.15)));
+  const cameraTools = h("span", { class: "atlas-camera", role: "group", "aria-label": "Zoom" }, tool("Vergrößern", "M8 3v10M3 8h10", () => cube?.zoom(1.15)), tool("Verkleinern", "M3 8h10", () => cube?.zoom(1 / 1.15)));
   // „Auffällige Wege“ replaces „Sprünge“, which a fresh reader did not understand (2026-11-18).
   const flagsButton = h(
     "button",
     {
       type: "button",
-      class: "tool atlas-flags",
+      class: "atlas-flags",
       "aria-pressed": "false",
       hidden: true,
       onclick: () => {
@@ -178,6 +185,7 @@ export function renderAtlas(store, options) {
         cube?.setFlags(on);
       },
     },
+    h("span", { class: "toggle-track", "aria-hidden": "true" }),
     "Auffällige Wege",
   );
   const infoPanel = h("div", { class: "atlas-info", id: "atlas-info", role: "note", hidden: true });
@@ -209,7 +217,8 @@ export function renderAtlas(store, options) {
         ? [h("p", { text: "Eine Karte je Jahrzehnt; die Kreisfläche zählt die Regesten eines Ortes. Ein Klick auf das Jahrzehnt setzt den Zeitraum, auf einen Ort den Ort." })]
         : [h("p", { text: "Grundriss: Karte der Ausstellungsorte, ferne Orte zur Mitte gestaucht. Höhe: Zeit. Ziehen dreht den Würfel. Regesten ohne Ort stehen nur in der Liste." }), cubeKey()];
     lines.push(h("p", { text: "Orte und Daten aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM." }));
-    infoPanel.replaceChildren(...lines, options.about ? h("p", {}, h("a", { href: options.about }, "Über die Edition")) : null);
+    if (options.about) lines.push(h("p", {}, h("a", { href: options.about }, "Über die Edition")));
+    infoPanel.replaceChildren(...lines);
   }
   function syncSwitch() {
     const free = cube?.snap() === "frei" && state.mode !== "jahrzehnte";
@@ -246,8 +255,8 @@ export function renderAtlas(store, options) {
     facets: facets.element,
     count: count.element,
     list: list.element,
-    tools: [h("div", { class: "segs", role: "group", "aria-label": "Darstellung" }, switchButtons, freeMark), cameraTools, flagsButton],
-    toolsEnd: [infoButton, infoPanel],
+    tools: [h("div", { class: "segs", role: "group", "aria-label": "Darstellung" }, switchButtons), cameraTools, freeMark],
+    toolsEnd: [flagsButton, infoButton, infoPanel],
     main: figure,
     backLabel: "Zurück zum Atlas",
     onEscape: () => detail.close(),

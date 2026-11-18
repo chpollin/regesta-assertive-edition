@@ -8,7 +8,7 @@
   .seg { background: none; border: 0; color: var(--text); padding: var(--space-1) var(--space-3); font-size: var(--step--1); cursor: pointer; }
   .seg + .seg { border-inline-start: 1px solid var(--hairline); }
   .seg[aria-pressed="true"] { box-shadow: inset 0 -2px 0 var(--accent); font-weight: 600; }
-  .seg-note { color: var(--muted); cursor: default; font-style: italic; }
+  
   .space-scene { overflow: hidden; cursor: grab; touch-action: none; border-radius: var(--radius); user-select: none; }
   .space-scene:active { cursor: grabbing; }
   .space-scene:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
@@ -25,13 +25,17 @@
   .it-slice { fill: none; stroke: var(--accent); stroke-width: 1.6; }
   .it-path { fill: none; stroke: var(--edge); stroke-width: 0.8; opacity: 0.18; stroke-linejoin: round; }
   .it-path.is-on { opacity: 0.7; stroke: var(--text); }
-  .it-coast { fill: none; stroke: var(--map-coast); stroke-width: 0.9; stroke-linejoin: round; }
-  .it-river { fill: none; stroke: var(--map-river); stroke-width: 0.8; stroke-linejoin: round; }
+  .it-coast { fill: none; stroke: var(--map-coast); stroke-width: 1; stroke-linejoin: round; }
+  .it-river { fill: none; stroke: var(--map-river); stroke-width: 0.9; stroke-linejoin: round; }
   .it-realm { fill: var(--map-realm); stroke: none; }
   .it-dot { fill: var(--muted); r: var(--dot-r); }
   .it-dot.is-evidenced { fill: var(--layer2); stroke: var(--stage); stroke-width: 1; r: calc(var(--dot-r) * 1.6); }
   .it-place { fill: var(--text); }
   .it-place-label { font-size: 12.5px; font-weight: 600; fill: var(--text); }
+  /* While a regest is open: its place in the accent text, the places of related points quieter. */
+  .it-place.is-opened { fill: var(--accent-text); }
+  .it-place.is-related { fill: var(--muted); }
+  .it-place-label.is-related { font-weight: var(--label-weight); fill: var(--muted); }
   .it-flag { stroke: var(--warn); stroke-width: 0.9; opacity: 0.55; }
   .it-flag-toggle { display: inline-block; vertical-align: -0.2em; margin: 0; }
   .it-flag-toggle[aria-pressed="true"] { background: var(--warn); border-color: var(--warn); }
@@ -71,7 +75,9 @@
   .it-pkey.is-p0, .it-pkey.is-pa { background: var(--accent); }
   .it-pkey.is-p1, .it-pkey.is-pb { background: var(--text); }
   .it-pkey.is-pab { background: var(--accent); box-shadow: 0 0 0 2px var(--text); }
-  .it-opened { fill: none; stroke: var(--accent-text); stroke-width: 2.5; }
+  /* The opened regest: a filled point clearly larger than every other, with a ring around it. */
+  .it-opened { fill: var(--accent-text); stroke: var(--stage); stroke-width: 2; }
+  .it-opened-ring { fill: none; stroke: var(--accent-text); stroke-width: 1.5; }
   .it-legend { display: grid; gap: var(--space-1); }
   .it-legend .it-n { display: inline-block; min-inline-size: 3.5ch; margin-inline: var(--space-2) var(--space-1); text-align: end; font-variant-numeric: tabular-nums; font-weight: 600; }
   .it-notes { color: var(--muted); }

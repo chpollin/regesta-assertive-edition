@@ -7,7 +7,10 @@
 
 @layer layout {
   .frame {
-    --fb-bar: 17rem;
+    /* 19rem since the design round of 2026-11-18, so common place names fit the result rows;
+       one inner padding for every part of the bar. */
+    --fb-bar: 19rem;
+    --fb-pad: var(--space-4);
     --frame-detail-w: 28rem;
     position: relative;
     display: grid;
@@ -18,7 +21,7 @@
   .frame[data-dock="true"][data-open] { grid-template-columns: var(--fb-bar) minmax(0, 1fr) var(--frame-detail-w); }
   .fb-bar { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; overflow: hidden; background: var(--side); border-inline-end: 1px solid var(--hairline); font-size: var(--step--1); }
   .fb-result { display: grid; grid-template-rows: auto minmax(0, 1fr); min-block-size: 0; border-block-start: 1px solid var(--hairline); }
-  .fb-list { overflow-y: auto; margin: 0; padding: 0 var(--space-3) var(--space-3); }
+  .fb-list { overflow-y: auto; margin: 0; padding: 0 var(--fb-pad) var(--space-3); }
   .frame-stage { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr); min-inline-size: 0; min-block-size: 0; }
   .atlas-figure { position: relative; min-block-size: 0; }
   .atlas-figure > .cube, .atlas-figure > .decades { position: absolute; inset: 0; }
@@ -41,7 +44,6 @@
     .frame-regesten .frame-tools { display: flex; }
     /* In the list the count line stands above the rows. */
     .frame-regesten .fb-bar { order: 0; }
-    .frame-regesten .fb-list { padding-inline: var(--space-3); }
     .fb-bar { order: 2; display: block; overflow: visible; background: var(--stage); border: 0; }
     .fb-result { border-block-start: 1px solid var(--hairline); }
     .fb-list { overflow: visible; }
@@ -53,11 +55,20 @@
 
 @layer components {
   /* Tool row above the graphic: the switch of the representations, camera tools, the info mark. */
-  .frame-tools { position: relative; z-index: 6; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
-  .atlas-camera { display: inline-flex; gap: var(--space-1); }
-  .atlas-camera .tool { min-inline-size: 2rem; }
-  .frame-tools-end { display: inline-flex; gap: var(--space-2); margin-inline-start: auto; }
-  .atlas-flags[aria-pressed="true"] { border-color: var(--warn); box-shadow: inset 0 -2px 0 var(--warn); }
+  /* Groups of the tool row stand apart by space, the controls inside a group close together. */
+  .frame-tools { position: relative; z-index: 6; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); padding: var(--space-2) var(--space-3); }
+  .atlas-camera { display: inline-flex; gap: 2px; }
+  .atlas-camera .tool { display: inline-grid; place-items: center; inline-size: 1.85rem; block-size: 1.85rem; padding: 0; }
+  .atlas-free { display: inline-flex; align-items: baseline; gap: var(--space-2); color: var(--muted); font-size: var(--step--1); }
+  .atlas-free-reset { font-weight: var(--label-weight); }
+  .frame-tools-end { display: inline-flex; align-items: center; gap: var(--space-3); margin-inline-start: auto; }
+  /* The flagged ways as a toggle: a small track whose knob moves when it is on. */
+  .atlas-flags { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-1) 0; background: none; border: 0; color: var(--text); font-size: var(--step--1); cursor: pointer; }
+  .toggle-track { position: relative; flex: none; inline-size: 1.9rem; block-size: 1.05rem; border-radius: 999px; background: var(--hairline); box-shadow: inset 0 0 0 1px var(--edge); }
+  .toggle-track::after { content: ""; position: absolute; inset-block-start: 2px; inset-inline-start: 2px; inline-size: calc(1.05rem - 4px); block-size: calc(1.05rem - 4px); border-radius: 50%; background: var(--stage); box-shadow: 0 0 0 1px var(--edge); }
+  .atlas-flags[aria-pressed="true"] .toggle-track { background: var(--warn); box-shadow: none; }
+  .atlas-flags[aria-pressed="true"] .toggle-track::after { inset-inline-start: calc(100% - 1.05rem + 2px); box-shadow: none; }
+  .atlas-flags:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius); }
   .fb-filter-open { display: none; }
   /* The switch of Personen is a pair of links, styled as the Atlas's switch buttons. */
   a.seg { display: inline-block; text-decoration: none; }
@@ -88,7 +99,7 @@
   .atlas-key li > span:first-child { flex: none; }
 
   /* Facets: a word above each control; chips for the chosen place and persons. */
-  .fb-facets { display: grid; gap: var(--space-3); padding: var(--space-3); }
+  .fb-facets { display: grid; gap: var(--space-3); padding: var(--space-4) var(--fb-pad); min-inline-size: 0; }
   .facet { display: grid; gap: var(--space-1); }
   .facet.is-off { opacity: 0.55; }
   .facet-label { font-weight: 600; }
@@ -107,16 +118,16 @@
   .layer-chip .it-key { vertical-align: 0; }
 
   /* The count line and the result list. */
-  .fb-count { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-2); margin: 0; padding: var(--space-2) var(--space-3); }
+  .fb-count { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-2); margin: 0; padding: var(--space-2) var(--fb-pad); }
   .fb-count b { font-variant-numeric: tabular-nums; }
   .fb-reset { margin-inline-start: auto; }
   .fb-list li { list-style: none; }
-  .fb-row { display: grid; grid-template-columns: 2.6rem auto minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-2); inline-size: 100%; padding: 3px var(--space-1); background: none; border: 0; border-radius: var(--radius); color: var(--text); font-size: inherit; text-align: start; cursor: pointer; }
+  .fb-row { display: grid; grid-template-columns: 2.4rem auto minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-2); inline-size: 100%; padding: 3px 0; background: none; border: 0; border-radius: var(--radius); color: var(--text); font-size: inherit; text-align: start; cursor: pointer; }
   .fb-row:hover .row-id, .fb-row:focus-visible .row-id { text-decoration: underline; text-decoration-color: var(--accent); }
   .fb-row[aria-current] { background: var(--accent-faint); }
   .row-year, .row-place { color: var(--muted); font-variant-numeric: tabular-nums; }
   .row-id { grid-column: 2; white-space: nowrap; }
-  .row-place { grid-column: 3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .row-place { grid-column: 3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.92em; }
   .fb-row .it-key, .fb-row .it-pkey { grid-column: -2; align-self: center; }
   .row-place.is-none { font-style: italic; }
   /* The list of Regesten: dating and the signs of the statements' kinds as a fifth column. */
@@ -136,7 +147,7 @@
   /* The filter sheet: a dialog from below on narrow screens. */
   .fb-sheet { inline-size: 100%; max-inline-size: 100%; max-block-size: 85dvh; margin: auto 0 0; padding: 0; border: 0; border-radius: 8px 8px 0 0; background: var(--side); color: var(--text); font-size: var(--step--1); }
   .fb-sheet::backdrop { background: rgb(0 0 0 / 0.3); }
-  .fb-sheet-head { position: sticky; inset-block-start: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: var(--space-2) var(--space-3); background: var(--side); border-block-end: 1px solid var(--hairline); }
+  .fb-sheet-head { position: sticky; inset-block-start: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; padding: var(--space-2) var(--space-4); background: var(--side); border-block-end: 1px solid var(--hairline); }
 
   @media (max-width: 56rem) {
     /* The facets live in the sheet; the bar keeps the count line and the list. */
