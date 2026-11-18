@@ -42,7 +42,16 @@ Repository:
 
 - Decided on 2026-11-17 for the time after 20 November 2026 and not yet done: the move of the pilot into `pipeline/archive/` and the removal of the pilot path of `build_data.py` (plan.md). Still waiting for the operator: moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
-- Documents: two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; user-stories.md still names the specification of `regesta-rdf-demo` as authority; whether space-view.md, questions.md, user-stories.md and ide-criteria.md stay is the operator's decision.
+- Documents: two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; whether ide-criteria.md stays is the operator's decision.
+
+## 2026-11-18 Three superseded knowledge documents deleted
+
+- Trigger: the operator: „ja, die drei Löschkandidaten dürfen weg“, on space-view.md, questions.md and user-stories.md.
+- Harvested before deleting: the user stories the edition serves (US03 to US08, US10, US11, US13) with their criteria into specification.md, Research tasks, which the test tasks of plan.md now name; the open point of a view across regesta for rights, references between acts and conditions into plan.md beside the research question; data.md and project.md point to the executed questions in `build_data.py`. The space view was already harvested: the operator's words of 2026-11-11 stand in ui-feedback.md, the removal in the entry of 2026-11-17.
+- Not harvested, left to the Git history: the pilot's SPARQL and findings of 2026-11-09, the interface plan and design decisions of the removed space view, and the stories on literature grounding, expert feedback, reference readings and teaching (US01, US02, US09, US12, US14) with the epic and interview tables.
+- Not deleted: ide-criteria.md, which was not among the three.
+- Changed: specification.md, plan.md, data.md, project.md, design.md, INDEX.md, AGENTS.md; links in prompt-log.md, ide-criteria.md, the review report and an older journal entry made plain names.
+- Evidence: no link to the three files is left in the repository.
 
 ## 2026-11-18 CLAUDE.md as entry point
 
@@ -386,7 +395,7 @@ After the operator's third feedback (verbatim in design.md). Reproduced in Chrom
 
 ## 2026-11-11 Relation sectors and the space view
 
-After the operator's second feedback (verbatim in design.md): acts are diamonds; a selected person gets a circle with eight fixed relation sectors from `js/relations.js`, named at the frame, the other people of each act further out on its bearing; the panel groups a person's relations by the same families; labels avoid nodes, edges and other labels in both modes, and a label that finds no clean place sits on a plate or appears on pointing. Measured in Chromium at 1280 and 360 px around Adela, around Friedrich and on the whole network: no label on a label, none on a node; one act label ("Verhandlung") still touches an edge around Friedrich at 1280. In the whole network only a few names stand, the rest appear on pointing. A separate agent built the rotatable space view at `#/raum` (js/space.js, css/space.css, plan in [space-view.md](space-view.md)): time upwards, the same relation directions, keyboard and mouse rotation, reset button. Draft, not accepted, not committed.
+After the operator's second feedback (verbatim in design.md): acts are diamonds; a selected person gets a circle with eight fixed relation sectors from `js/relations.js`, named at the frame, the other people of each act further out on its bearing; the panel groups a person's relations by the same families; labels avoid nodes, edges and other labels in both modes, and a label that finds no clean place sits on a plate or appears on pointing. Measured in Chromium at 1280 and 360 px around Adela, around Friedrich and on the whole network: no label on a label, none on a node; one act label ("Verhandlung") still touches an edge around Friedrich at 1280. In the whole network only a few names stand, the rest appear on pointing. A separate agent built the rotatable space view at `#/raum` (js/space.js, css/space.css, plan in `space-view.md`, deleted 2026-11-18): time upwards, the same relation directions, keyboard and mouse rotation, reset button. Draft, not accepted, not committed.
 
 ## 2026-11-11 Holdings view as one screen
 

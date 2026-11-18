@@ -24,7 +24,7 @@ Making the repository itself public, a tag or a release stay with the operator. 
 
 ## Test tasks with computed answers
 
-Each user story of [user-stories.md](user-stories.md) that the edition serves gets one test task whose correct answer a script computes from the data, independent of the interface; RI IV,2,2 n. 103a is a fixed task in every round (which statements, which evidence, which roles). Per round one fresh subagent receives only task and address, solves it in the browser and records path, wrong turns and answer, which is compared with the computed one; the same task set runs again after every rebuild, and each finding is assigned to the story, the design or the data. The rule check and the recount of shown numbers stay with the existing density check, figure check and independent reviewer. Limit: an agent finds dead ends and wrong numbers, not whether a view feels slow or the question is the right one. Taken up on 2026-11-14, not built.
+Each research task of [specification.md](specification.md#research-tasks) gets one test task whose correct answer a script computes from the data, independent of the interface; RI IV,2,2 n. 103a is a fixed task in every round (which statements, which evidence, which roles). Per round one fresh subagent receives only task and address, solves it in the browser and records path, wrong turns and answer, which is compared with the computed one; the same task set runs again after every rebuild, and each finding is assigned to the story, the design or the data. The rule check and the recount of shown numbers stay with the existing density check, figure check and independent reviewer. Limit: an agent finds dead ends and wrong numbers, not whether a view feels slow or the question is the right one. Taken up on 2026-11-14, not built.
 
 ## Pipeline after the guest unit
 
@@ -36,7 +36,7 @@ Accepted on 2026-11-17 with the move of the pipeline; not before 20 November.
 - `build_site.py` onto the shared helpers of `edition_io.py` (BuildError, JSON loader, CSV reader, shown run).
 - A stable namespace for the `rf:` and `rv:` terms, an open decision of the operator; `build_graph.py` takes it as a parameter.
 - A reference set verified by a historian, with precision and recall measured against it. It has no owner (Review of the regesta above).
-- Open from the former edition plan: the historical research question and the primary audience, and with them the selection principle beyond the demonstration slice (ide-criteria.md, 2.1, 3.2, 3.3).
+- Open from the former edition plan: the historical research question and the primary audience, and with them the selection principle beyond the demonstration slice (ide-criteria.md, 2.1, 3.2, 3.3). On that decision also waits a view across regesta for rights and the acts that concern them, for references between acts, and for conditions and exceptions, which so far stand only on the single regest page.
 
 ## Smaller open points
 
@@ -45,4 +45,4 @@ Accepted on 2026-11-17 with the move of the pipeline; not before 20 November.
 - An executable browser check of the current shell (tasks with computed answers, see Test tasks) replaces the retired check of the first slice.
 - The validator note of the pipeline (status after correction is read from the corrections log since 2026-11-11) is to be mentioned on the method page once the page lists the error logs per step.
 - Export date of the regest file, model of the adjudicating and correcting agent.
-- Deletion candidates in the knowledge folder (space-view.md, questions.md, user-stories.md, ide-criteria.md) wait for the operator's decision (journal, `## Open`).
+- Whether ide-criteria.md stays is the operator's decision (journal, `## Open`).

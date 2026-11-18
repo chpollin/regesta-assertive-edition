@@ -80,7 +80,7 @@ Markup segments are `{t, i?, sup?, regest?, href?}`. The client renders them wit
 
 ## questions.json
 
-The executed questions. The interface does not read this file; the timeline arc, the graph's same-name edge and the reading-view cross references are derived from it at build time, and [questions.md](questions.md) documents it.
+The executed questions. The interface does not read this file; the timeline arc, the graph's same-name edge and the reading-view cross references are derived from it at build time. The questions and their SPARQL stand in `build_data.py` (`_run_factoid_questions`); the pilot's questions and their findings of 2026-11-09 are in the Git history of the deleted `questions.md`.
 
 ```
 run, rdflib

@@ -3,12 +3,26 @@ title: Specification
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-17
+updated: 2026-11-18
 ---
 
 # Specification
 
-The requirements come from the operator's commission and three rounds of his feedback on 2026-11-09, and from the proposed user stories US03 to US08 and US11 of [user-stories.md](user-stories.md). The research questions that the interface answers are kept in [questions.md](questions.md). None of the requirements records an expert acceptance.
+The requirements come from the operator's commission and three rounds of his feedback on 2026-11-09, and from the proposed user stories of 2026-11-09, condensed under Research tasks. The questions to the data that the build executes are described in [data.md](data.md#questionsjson). None of the requirements records an expert acceptance.
+
+## Research tasks
+
+Condensed on 2026-11-18 from the proposed user stories of 2026-11-09 that the edition serves; the document `user-stories.md` was deleted on the operator's word and its full text, with the stories on literature grounding, expert feedback, reference readings and teaching, stays in the Git history. Each task names the criteria a test task checks ([plan.md](plan.md#test-tasks-with-computed-answers)); none records an expert acceptance.
+
+- US03, find an actor and its identity candidates. Register identifiers, labels and regesta stay apart; an unresolved identity stays unresolved and search never merges persons of similar name; a community is distinct from its place; empty and ambiguous results are explicit.
+- US04, inspect attested relationships in context. Each result names actors, relation or role, context and regest, with its conditions, exceptions and evidence; shared mention creates no relation, and a missing statement is no evidence that no relation existed.
+- US05, check the evidence behind a statement. A statement opens its regest with the exact evidence marked; a readable statement and its Turtle are both available; candidate, machine review and expert acceptance stay distinct; broken evidence is reported and never approximated.
+- US06, tell earlier acts, confirmations and promises apart. Related acts stay individually inspectable with their evidence and actors, a promise is never shown as a completed transfer, and an unresolved link between acts stays qualified (development case: the pledge of UID 24821).
+- US07, inspect uncertain and alternative dates. Alternative years stay alternatives (UID 22673), events of one regest need not share its date, the dating prose stays beside the machine date, and no chronological display orders unresolved alternatives.
+- US08, accept, correct or defer a single statement. A decision names run, graph version, regest and statement, carries a reason, concerns the statement and not the model or its completeness, keeps its history when the statement changes, and is never created by a technical check or an LLM review. The decision format is not specified.
+- US10, compare the extracted and the revised stage. Both stay separately accessible, accepted and rejected review findings keep their rationale, a correction names what changed, and remaining gaps of the model stay visible after validation.
+- US11, see technical validation apart from interpretation. Results name input, contract and graph versions; parsing, SHACL, evidence matching, identifier policy and record coverage have inspectable outcomes; every assigned record ends in an extraction, an abstention or an error; a conforming candidate stays marked as awaiting expert acceptance.
+- US13, open a concrete historical task. The start leads to a case with a question, an inspectable result and its evidence, and shows at least one decision of modelling or interpretation; public output holds only material cleared for it.
 
 ## Requirements from the operator's verdicts of 2026-11-14 (proposal)
 

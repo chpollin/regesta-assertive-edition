@@ -387,7 +387,7 @@ The opener and speech-to-text account are operator-supplied descriptions. Wordin
 
 The Grounded Vault repository was resolved through the vault project overview as https://github.com/DigitalHumanitiesCraft/grounded-vault. The domain-research response performed a preliminary web orientation and proposed a literature workflow. It did not complete a literature review or create a Grounded Vault instance. The expert interview questions have not yet been answered.
 
-P34 produces [User stories](user-stories.md), with epics, proposed tasks, acceptance criteria and open expert decisions. The criteria describe future behaviour. They establish no completed feature or expert approval.
+P34 produces the user stories (`user-stories.md`, deleted 2026-11-18, condensed in specification.md), with epics, proposed tasks, acceptance criteria and open expert decisions. The criteria describe future behaviour. They establish no completed feature or expert approval.
 
 ### Condensed teaching prompt for P34
 

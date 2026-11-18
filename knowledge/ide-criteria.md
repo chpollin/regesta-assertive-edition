@@ -131,7 +131,7 @@ The catalogue names three necessary conditions of a digital edition (Sahle et al
 
 ### 3.2. Scholarly objectives
 
-1. Seven questions of a historian are recorded with executed SPARQL, on marriages, parent-child relations, parents of the same name, roles, rights, relations between acts and conditions (`questions.md`). Epics and user stories exist as proposals ([User stories](user-stories.md)).
+1. Seven questions of a historian are recorded with executed SPARQL, on marriages, parent-child relations, parents of the same name, roles, rights, relations between acts and conditions (`questions.md`). Epics and user stories exist as proposals (`user-stories.md`).
 2. A decided historical research question and a primary audience are missing ([Edition plan](https://github.com/chpollin/regesta-rdf-demo/blob/f65887c/knowledge/edition-plan.md), Open points).
 3. The edition should name a research question, for example the evidenced legal and kinship situation around Friedrich I, and present the seven questions as its subtasks.
 4. Applies without restriction.

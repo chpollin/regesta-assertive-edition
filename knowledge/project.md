@@ -10,7 +10,7 @@ updated: 2026-11-17
 
 Regesta Assertive Edition is a first, inspectable interface prototype for the regesta of Friedrich Barbarossa (Regesta Imperii IV,2) together with the pipeline in `pipeline/` that turns them into evidenced statements of the factoid model. LLM agents extract the statements, deterministic scripts check them, two independent agent reviews and a correction follow, and the edition shows the result beside the regest. No statement is validated by a historian (`expert_accepted: false`).
 
-The idea of an assertive edition follows Vogeler (2019): the edition shows the regest text, the statements formalised from it, each bound to its exact wording, and for each statement what is asserted by an LLM agent, what passed the technical checks and what a historian has accepted. The edition offers a page per regest with its text, statements and evidence, and views of persons and places over time and space, beside a deterministic layer of the whole delivery. Named SPARQL questions that fit the research data model are kept as requirements in [questions.md](questions.md) and feed the visualisations at build time.
+The idea of an assertive edition follows Vogeler (2019): the edition shows the regest text, the statements formalised from it, each bound to its exact wording, and for each statement what is asserted by an LLM agent, what passed the technical checks and what a historian has accepted. The edition offers a page per regest with its text, statements and evidence, and views of persons and places over time and space, beside a deterministic layer of the whole delivery. Named SPARQL questions that fit the research data model feed the visualisations at build time ([data.md](data.md#questionsjson)).
 
 ## Audience
 

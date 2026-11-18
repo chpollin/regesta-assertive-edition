@@ -176,7 +176,7 @@ Measurements and screenshots of 2026-11-11 are recorded in `journal.md`; screens
 
 ## Sources
 
-Vault notes read for the first states: "Daten- und Task-Abstraktion", "Nested Model der Visualisierungsgestaltung", "Graphical Perception und Kanalrangfolge", "Fehlende und unsichere Daten visualisieren", "Visualisierung von Kulturerbe-Sammlungen", "Barrierefreie Datenvisualisierung", "Evaluation von Visualisierungen", and the yardstick "UI-Praxis für agentisch erzeugte Frontends" with its section "Messung statt Selbstauskunft". The space-time cube study of the coordination (seven sources read in full) grounds the itinerary and the space view, see [space-view.md](space-view.md). Following the Nested Model, none of this validates the abstraction; that needs historians working on their own questions.
+Vault notes read for the first states: "Daten- und Task-Abstraktion", "Nested Model der Visualisierungsgestaltung", "Graphical Perception und Kanalrangfolge", "Fehlende und unsichere Daten visualisieren", "Visualisierung von Kulturerbe-Sammlungen", "Barrierefreie Datenvisualisierung", "Evaluation von Visualisierungen", and the yardstick "UI-Praxis für agentisch erzeugte Frontends" with its section "Messung statt Selbstauskunft". The space-time cube study of the coordination (seven sources read in full) grounds the itinerary; the space view built on it was removed on 2026-11-17 (ui-feedback.md, entries of 2026-11-11). Following the Nested Model, none of this validates the abstraction; that needs historians working on their own questions.
 
 ## Persons in the space-time cube
 

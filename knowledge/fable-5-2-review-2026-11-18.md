@@ -57,7 +57,7 @@ Knowledge base, commit c3fb3ba:
 - [Project](project.md), [Interface plan](interface-plan.md) and [UI feedback](ui-feedback.md) still said the operator had not seen or accepted the site; they now record his acceptance of 2026-11-18.
 - [Edition data](data.md) and [Pipeline](pipeline.md) named review files the shown run does not have, a function that does not exist, a site tree without `atlas/`, `en/` and `img/`, and a repository „still to be created“.
 - [Factoid model](factoid-model.md) counted the ruler four times as participant in judgments; the revised stage has five (regesta 134441, 135064, 22702, 22706, 22735).
-- [Design](design.md) described the header with Über, the switch „Sprünge“ and the „Mehr“ disclosure as current; [Plan](plan.md) named „Agentic Edition“ as the title; [Questions](questions.md) said its pilot queries were those of `data/questions.json`.
+- [Design](design.md) described the header with Über, the switch „Sprünge“ and the „Mehr“ disclosure as current; [Plan](plan.md) named „Agentic Edition“ as the title; `questions.md` said its pilot queries were those of `data/questions.json`.
 - AGENTS.md lacked `register_names.py`, `queries/` and the new checks in its layout and called `SHOWN_RUN` the default of every script, which `build_site.py` is not yet.
 - The `## Open` list of the journal carried two settled points (publication of the method text, the question of Itinerar and Jahrzehnte) and missed the points listed below.
 
