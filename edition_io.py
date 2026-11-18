@@ -69,3 +69,40 @@ def is_null(value: str | None) -> bool:
 def place_label(label: str) -> str:
     """„Pavia (am Ticino, ital. Prov.-…)“ becomes „Pavia“."""
     return re.split(r"\s*\(|\s//|,", plain_text(label))[0].strip()
+
+
+# Place labels the rule above reads wrongly from the register, corrected for display only; the
+# register id stays, so the correction is traceable. "Cremam(am Serio, östl. Lodi ...)" is
+# Crema; "Johannes, Iohannes, ... Jean // Saint J.- de-Losne (an der Saône ...)" files the town
+# under the saint's name variants, and the rule would call it Johannes.
+PLACE_FIXES = {"RI004-002-C001005": "Crema", "RI004-002-J000210": "Saint-Jean-de-Losne"}
+
+
+def place_name(entry_id: str, label: str) -> str:
+    """The display name of a register place: its correction, or the head of its label."""
+    return PLACE_FIXES.get(entry_id) or place_label(label)
+
+
+def by_unique_identifier(regesta: list[dict]) -> tuple[dict[str, dict], dict[str, list[str]]]:
+    """Regesta by display identifier for the register join, and the identifiers naming several records.
+
+    The register joins on the identifier, and the join holds only where exactly one record
+    matches (knowledge/source-data.md): RI IV,2,2 n. 1520a names two records. Their register
+    rows are assigned to neither; the second value reports them (identifier -> uids).
+    """
+    uids: dict[str, list[str]] = {}
+    for r in regesta:
+        uids.setdefault(r["identifier"], []).append(r["uid"])
+    ambiguous = {i: u for i, u in uids.items() if len(u) > 1}
+    return {r["identifier"]: r for r in regesta if r["identifier"] not in ambiguous}, ambiguous
+
+
+def regest_order(regest: dict[str, str]) -> tuple:
+    """Sort key of the delivery in time: start date, then the identifier with its numbers as numbers.
+
+    One key for build_holdings.py and check_itinerary.py, so the line the views draw (they keep
+    this order and sort by date only) is the line whose steps were checked. Until 2026-11-18 the
+    views re-sorted same-day regesta by a locale rule that the check did not share.
+    """
+    parts = re.split(r"(\d+)", regest["identifier"])
+    return (regest["start_date"], [int(p) if p.isdigit() else p for p in parts])

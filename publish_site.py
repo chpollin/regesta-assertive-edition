@@ -25,18 +25,28 @@ import re
 import subprocess
 import sys
 import tempfile
+import zipfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SITE = HERE / "site"
 BRANCH = "gh-pages"
 # Path parts that only internal material carries; any of them in the build aborts publication.
-INTERNAL_PARTS = {"knowledge", "runs", "review", "checks", "handoff", "journal", ".git", "__pycache__"}
-INTERNAL_SUFFIXES = {".md", ".py", ".pyc", ".jsonl"}
+INTERNAL_PARTS = {
+    *("knowledge", "runs", "review", "checks", "handoff", "journal", ".git", "__pycache__"),
+    *("pipeline", "contracts", "source-material", "generated", "site-preview", "site-review"),
+}
+INTERNAL_SUFFIXES = {".md", ".py", ".pyc", ".jsonl", ".csv", ".rq"}
+# The agent review is shown only in the preview build: its folder and result file, and the key
+# the preview writes into the view data.
+INTERNAL_NAME = re.compile(r"agent-review", re.IGNORECASE)
+PREVIEW_DATA = '"agentReview"'
 # Links into internal material inside served pages.
 # The local preview build (agent review) marks its pages; such a build is never published.
 PREVIEW_MARK = 'name="edition-preview"'
-INTERNAL_LINK = re.compile(r"""(?:href|src)=["'][^"']*(?:knowledge/|runs/|review/)""")
+INTERNAL_LINK = re.compile(
+    r"""(?:href|src)=["'][^"']*(?:knowledge|runs|review|pipeline|contracts|source-material|generated)/"""
+)
 EXCLUDE = {".edition-build"}
 
 
@@ -53,6 +63,15 @@ def _git(*args: str, env: dict[str, str] | None = None, stdin: str | None = None
     return result.stdout.strip()
 
 
+def _internal_name(rel: Path) -> bool:
+    """A path inside the build, or inside a package of it, that only internal material carries."""
+    return bool(
+        INTERNAL_PARTS & {part.lower() for part in rel.parts}
+        or rel.suffix.lower() in INTERNAL_SUFFIXES
+        or INTERNAL_NAME.search(rel.as_posix())
+    )
+
+
 def _check_site() -> list[Path]:
     """Every file to publish, after the internal-material check."""
     if not (SITE / "index.html").is_file():
@@ -61,12 +80,21 @@ def _check_site() -> list[Path]:
     problems: list[str] = []
     for path in files:
         rel = path.relative_to(SITE)
-        if INTERNAL_PARTS & {part.lower() for part in rel.parts} or path.suffix.lower() in INTERNAL_SUFFIXES:
+        suffix = path.suffix.lower()
+        if _internal_name(rel):
             problems.append(f"internal file: {rel.as_posix()}")
-        elif path.suffix == ".html" and INTERNAL_LINK.search(path.read_text(encoding="utf-8")):
-            problems.append(f"link into internal material: {rel.as_posix()}")
-        elif path.suffix == ".html" and PREVIEW_MARK in path.read_text(encoding="utf-8"):
-            problems.append(f"page of the preview build: {rel.as_posix()}")
+        elif suffix == ".zip":
+            with zipfile.ZipFile(path) as package:
+                inside = [name for name in package.namelist() if _internal_name(Path(name))]
+            problems += [f"internal file in {rel.as_posix()}: {name}" for name in inside]
+        elif suffix in {".html", ".htm"}:
+            text = path.read_text(encoding="utf-8")
+            if INTERNAL_LINK.search(text):
+                problems.append(f"link into internal material: {rel.as_posix()}")
+            elif PREVIEW_MARK in text:
+                problems.append(f"page of the preview build: {rel.as_posix()}")
+        elif suffix == ".json" and PREVIEW_DATA in path.read_text(encoding="utf-8"):
+            problems.append(f"view data of the preview build: {rel.as_posix()}")
     if problems:
         raise PublishError("build carries internal material:\n" + "\n".join(problems))
     return files

@@ -44,18 +44,22 @@ import sys
 import tempfile
 from pathlib import Path
 
-from edition_io import REGISTER_CSV, is_null, place_label, plain_text, read_csv, sha256
+from edition_io import (
+    REGISTER_CSV,
+    by_unique_identifier,
+    is_null,
+    place_name,
+    plain_text,
+    read_csv,
+    regest_order,
+    sha256,
+)
 from register_names import register_names
 
 MIN_REGESTA = 3
 LAT = (30.0, 62.0)
 LON = (-10.0, 45.0)
 NUMBER = re.compile(r"-?\d+(?:\.\d+)?")
-
-
-# Place labels the register delivery writes wrongly, corrected for display only; the register
-# id stays, so the correction is traceable. "Cremam(am Serio, östl. Lodi ...)" is Crema.
-PLACE_FIXES = {"RI004-002-C001005": "Crema"}
 
 
 def build(source: Path, out: Path) -> dict:
@@ -66,7 +70,7 @@ def build(source: Path, out: Path) -> dict:
             sys.exit(f"Missing input {path}; run pipeline/explore_regesta.py first.")
 
     regesta = [json.loads(line) for line in regesta_path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    by_identifier = {r["identifier"]: r for r in regesta}
+    by_identifier, ambiguous = by_unique_identifier(regesta)
     register = read_csv(register_path)
 
     errors: list[dict] = []
@@ -110,7 +114,7 @@ def build(source: Path, out: Path) -> dict:
             place = places.setdefault(
                 row["id"],
                 {
-                    "l": PLACE_FIXES.get(row["id"]) or place_label(row["label"]),
+                    "l": place_name(row["id"], row["label"]),
                     "la": round(lat, 4),
                     "lo": round(lon, 4),
                     "n": 0,
@@ -124,7 +128,7 @@ def build(source: Path, out: Path) -> dict:
                 recipients.setdefault(uid, set()).add(row["id"])
 
     year = lambda r: int(r["start_date"][:4])  # noqa: E731 - one-line key, read once
-    regesta.sort(key=lambda r: (r["start_date"], r["identifier"]))
+    regesta.sort(key=regest_order)
     persons = {pid: uids for pid, uids in person_regesta.items() if len(uids) >= MIN_REGESTA}
     # One naming rule with the run's graph (register_names.py), unique among the persons written.
     short = register_names(register_path, set(persons))
@@ -174,6 +178,8 @@ def build(source: Path, out: Path) -> dict:
             for pid, uids in persons.items()
         },
         "errors": errors,
+        # Identifiers that name several records; their register rows are assigned to none of them.
+        "ambiguous": ambiguous,
     }
     texts = {r["uid"]: r.get("summary_plain") or "" for r in regesta}
     out.mkdir(parents=True, exist_ok=True)
@@ -214,6 +220,8 @@ def main() -> None:
         return
     h = build(args.source, args.out)
     print(json.dumps(h["counts"], ensure_ascii=False))
+    for identifier, uids in h["ambiguous"].items():
+        print("register rows not assigned:", identifier, "names the records", ", ".join(uids))
     for error in h["errors"]:
         print("skipped:", error["regest"], error["check"], error["value"])
 

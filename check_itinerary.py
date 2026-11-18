@@ -30,8 +30,9 @@ Design decisions
 - Dating is read from the machine dates only. start == end is an exact day; 1 January to
   31 December of one year is a year; the 1st to the last day of one month is a month; any
   other start < end is a span; start > end is reversed; an unparsable date is undated.
-- Pairs are consecutive points of the line as the view draws it (all placed regesta by
-  start_date, then identifier), so a regest with a span sits at its start. Days between
+- Pairs are consecutive points of the line as the view draws it (all placed regesta in the
+  order of edition_io.regest_order: start_date, then the identifier with its numbers as
+  numbers), so a regest with a span sits at its start. Days between
   two points are the difference of their start dates.
 - Threshold. A pair is flagged when its distance exceeds max(150 km, 60 km x days). This is
   a stated assumption, chosen generously so that only clearly impossible movements of a
@@ -69,7 +70,7 @@ from datetime import date
 from itertools import pairwise
 from pathlib import Path
 
-from edition_io import REGISTER_CSV, is_null, place_label, read_csv
+from edition_io import REGISTER_CSV, by_unique_identifier, is_null, place_name, read_csv, regest_order
 
 LAT = (30.0, 62.0)
 LON = (-10.0, 45.0)
@@ -213,7 +214,7 @@ def build(source: Path) -> dict:
         if not path.exists():
             sys.exit(f"Missing input {path}; run pipeline/explore_regesta.py first.")
     regesta = [json.loads(line) for line in regesta_path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    by_identifier = {r["identifier"]: r for r in regesta}
+    by_identifier, _ = by_unique_identifier(regesta)
     register = read_csv(register_path)
 
     # Same rule as build_holdings.py; outcome per regest: placed, or why not.
@@ -237,7 +238,7 @@ def build(source: Path) -> dict:
         if not (LAT[0] <= lat <= LAT[1] and LON[0] <= lon <= LON[1]):
             skipped.add(uid)
             continue
-        placed[uid] = (place_label(row["label"]), lat, lon, row["id"])
+        placed[uid] = (place_name(row["id"], row["label"]), lat, lon, row["id"])
         roles[row["role"]] += 1
 
     dating: Counter[str] = Counter()
@@ -267,7 +268,7 @@ def build(source: Path) -> dict:
         stations.append(
             Station(uid, r["identifier"], r["start_date"], kind, label, lat, lon, _indicators(r, uid in skipped))
         )
-    stations.sort(key=lambda s: (s.start, s.identifier))
+    stations.sort(key=lambda s: regest_order({"start_date": s.start, "identifier": s.identifier}))
     flags, outliers = check_pairs(stations)
     involved = {s["uid"] for f in flags for s in (f["a"], f["b"])}
     return {

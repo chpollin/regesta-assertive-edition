@@ -4,9 +4,9 @@
 # ///
 """Build the curated static site of the public edition from one factoid run.
 
-Regime: single-file script with inline dependencies. It calls build_data.py (once per stage)
-and build_tei.py as subprocesses, so each of the three scripts stays runnable on its own and
-none imports another; this script only reads their output. It writes nothing outside --out
+Regime: single-file script with inline dependencies. It calls build_data.py (once per stage),
+build_tei.py, build_holdings.py and check_itinerary.py as subprocesses, so each script stays
+runnable on its own and none imports another; this script only reads their output. It writes nothing outside --out
 and never into the source repository. The output folder is gitignored and never committed.
 
 Data flow
@@ -946,6 +946,8 @@ def regest_page(site: Site, index: int) -> None:
         f'<p class="paper-meta"><a href="{root}tei/{s}.xml" download>TEI</a> '
         f'<a href="{root}ttl/{s}.ttl" download>Turtle</a> <a href="{root}json/{s}.json" download>JSON</a></p>'
     )
+    # The delivery writes no text for some regesta (RI IV,2,1 n. 107); the page says so.
+    no_text = "" if r["text"] else f"<p>{esc(site.T('card.noText'))}</p>"
     # The page shows the shared regest card of the views app (js/regest-card.js), rendered by
     # js/edition/regest.js into #card. The static content of #card is the reading without
     # JavaScript; citation and downloads stand below it in both cases.
@@ -953,7 +955,7 @@ def regest_page(site: Site, index: int) -> None:
 <div class="card-host" id="card" data-uid="{esc(uid)}" data-slug="{esc(s)}">
 <p class="paper-meta"><span>{esc(r["identifier"])}</span><span>{date}</span>{f'<span lang="de">{place}</span>' if place else ""}</p>
 {downloads}
-<p class="regest-text" lang="de">{marked_text(r)}</p>
+<p class="regest-text" lang="de">{marked_text(r)}</p>{no_text}
 <h2>{esc(site.T("list.th.statements"))}</h2>
 {statements}
 <div class="fields">{"".join(fields)}</div>

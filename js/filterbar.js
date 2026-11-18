@@ -51,7 +51,6 @@ export function timeBand(store, filters, markYears, { ends = true } = {}) {
   const { lo, hi } = filters;
   const W = 320;
   const H = 34;
-  const x = (y) => ((y - lo) / Math.max(1, hi - lo)) * W;
   const years = store.edition.delivery.years.filter(([y]) => y >= lo && y <= hi);
   const max = Math.max(1, ...years.map(([, c]) => c));
   const ns = "http://www.w3.org/2000/svg";
@@ -61,6 +60,9 @@ export function timeBand(store, filters, markYears, { ends = true } = {}) {
   svg.setAttribute("class", "band-svg");
   svg.setAttribute("aria-hidden", "true");
   const bw = W / Math.max(1, hi - lo + 1);
+  // The first bar starts at the left edge and the last one ends at the right edge; measured
+  // over the full width, the bar of the last year stood outside the drawing.
+  const x = (y) => ((y - lo) / Math.max(1, hi - lo)) * (W - bw);
   const rect = (attrs) => {
     const r = document.createElementNS(ns, "rect");
     for (const [k, v] of Object.entries(attrs)) r.setAttribute(k, String(v));
