@@ -1,8 +1,8 @@
 """Check of build_site.py against the factoid run the edition shows.
 
 Builds the curated site into a temporary folder and asserts the contract of the build:
-every content page carries exactly one h1, the licence line and links to the about and
-method pages, every regest has its TEI, Turtle and JSON file and a page that holds its
+every content page carries exactly one h1, the licence line and a link to the full
+attribution on the start page, every regest has its TEI, Turtle and JSON file and a page that holds its
 regest text, the evidence pieces of a regest page give back the regest text, and nothing
 from knowledge/ is part of the build. The shown run must be present: a missing run fails
 the check instead of skipping it, so a renamed or moved run cannot pass unnoticed.
@@ -51,7 +51,7 @@ class SiteBuild(unittest.TestCase):
                 where = page.relative_to(out).as_posix()
                 self.assertEqual(doc.count("<h1"), 1, where)
                 self.assertIn(html.escape(texts["licenceLine"]), doc, where)
-                self.assertRegex(doc, r'href="[./]*ueber/"', where)
+                self.assertRegex(doc, r'href="(\.\./)*(\./)?#lizenz"', where)
             edition = json.loads((out / "ansicht" / "data" / "edition.json").read_text(encoding="utf-8"))
             for r in edition["regests"]:
                 s = build_site.slug(r["identifier"])
@@ -67,6 +67,17 @@ class SiteBuild(unittest.TestCase):
             self.assertRegex(start, r'<a href="\./" data-nav="start" aria-current="page">Start</a>')
             self.assertIn('data-page="start"', start)
             self.assertEqual(start.count('class="entry-card"'), 3)
+            # Start and Über are one page (operator, 2026-11-18): the start page carries the
+            # sections of Über under their former anchors, and ueber/, methode/ and daten/
+            # forward there, carrying a fragment of the old address.
+            for anchor in ("methode", "entstehung", "daten", "lizenz", "impressum"):
+                self.assertIn(f'id="{anchor}"', start)
+            self.assertIn(html.escape(texts["attribution"]), start)
+            self.assertNotIn('data-nav="ueber"', start)
+            for old, section in (("ueber", "methode"), ("methode", "methode"), ("daten", "daten")):
+                stub = (out / old / "index.html").read_text(encoding="utf-8")
+                self.assertIn(f'content="0; url=../#{section}"', stub, old)
+                self.assertIn('location.replace("../" + location.hash)', stub, old)
             atlas = (out / "atlas" / "index.html").read_text(encoding="utf-8")
             self.assertRegex(atlas, r'<a href="\.\./atlas/" data-nav="atlas" aria-current="page">Atlas</a>')
             self.assertIn('data-page="atlas"', atlas)
@@ -101,7 +112,7 @@ class AtlasRoutes(unittest.TestCase):
         for old in ("itinerar", "jahrzehnte"):
             self.assertRegex(app, rf"\b{old}: \{{[^\n]*forwardToAtlas\(\"{old}\"")
         nav = json.loads((ROOT / "js" / "nav.json").read_text(encoding="utf-8"))["items"]
-        self.assertEqual([it["key"] for it in nav], ["start", "atlas", "regesten", "personen", "ueber"])
+        self.assertEqual([it["key"] for it in nav], ["start", "atlas", "regesten", "personen"])
         # The start page forwards the Atlas addresses of earlier links to atlas/, which rewrites
         # #/itinerar/<place> into the Atlas address.
         start = (ROOT / "js" / "edition" / "start.js").read_text(encoding="utf-8")

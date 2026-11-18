@@ -35,7 +35,7 @@ export async function init(root) {
     (textsPromise ??= fetch(siteUrl(root, "ansicht/data/holdings-texts.json"))
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({})));
-  const atlas = renderAtlas(store, { filters: createFilters(store), texts, about: siteUrl(root, "ueber/#daten") });
+  const atlas = renderAtlas(store, { filters: createFilters(store), texts, about: siteUrl(root, "#daten") });
   host.replaceChildren(atlas.element);
   host.classList.add("is-atlas");
   demoteHeadings(host);

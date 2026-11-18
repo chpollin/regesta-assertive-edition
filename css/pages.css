@@ -1,4 +1,4 @@
-/* Content pages of the static edition: start, regest list, single regest, persons, about.
+/* Content pages of the static edition: start, regest list, single regest, persons.
    The frame (header, navigation) and the base every page shares belong to css/shell.css,
    colours to css/tokens.css, which every page loads first. The layer `pages` comes after the
    components (tokens.css), so a rule here wins over a shared component rule. The accent
@@ -73,7 +73,7 @@
   .mentions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; max-inline-size: 72ch; }
   .mention-head { font-weight: 600; margin-inline-end: 0.35em; }
 
-  /* About: the process graphic, the steps on one line with the producer's sign on it, the
+  /* The process graphic of the start page: the steps on one line with the producer's sign on it, the
      open human check dashed; below 48rem the line runs down the left. */
   .process { margin-block: 1.5rem 2rem; }
   .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0 0.75rem; position: relative; }
@@ -117,13 +117,22 @@
   .th-cell.is-1 { fill-opacity: 0.35; }
   .th-cell.is-2 { fill-opacity: 0.55; }
   .th-cell.is-3 { fill-opacity: 0.75; }
+  /* What Über carried (2026-11-18): how the edition came about beside data and licence with the
+     full attribution in the small muted size, the imprint under the first. */
+  .start-about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "origin files" "imprint files"; gap: 0 var(--space-7); align-items: start; }
+  .start-origin { grid-area: origin; }
+  .start-files { grid-area: files; }
+  .start-imprint { grid-area: imprint; }
   .start-origin p, .start-files p { max-inline-size: 72ch; }
+  .start-files p + p { font-size: var(--step--1); }
+  .start-imprint { font-size: var(--step--1); }
+  @media (max-width: 56rem) {
+    .start-about { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "origin" "files" "imprint"; }
+  }
   @media (max-width: 48rem) {
     .entry-cards { grid-template-columns: minmax(0, 1fr); }
     .entry-thumb { aspect-ratio: 8 / 3; }
   }
-  .about-files { max-inline-size: 72ch; font-size: var(--step--1); }
-  .about-files h2 { margin-block-start: 0; }
   .about-attribution { color: var(--muted); }
   .placeholder { padding: 0.5rem 0.75rem; border: 1px dashed var(--edge); max-inline-size: 64ch; }
 

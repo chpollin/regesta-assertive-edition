@@ -217,7 +217,7 @@ export function renderAtlas(store, options) {
         ? [h("p", { text: "Eine Karte je Jahrzehnt; die Kreisfläche zählt die Regesten eines Ortes. Ein Klick auf das Jahrzehnt setzt den Zeitraum, auf einen Ort den Ort." })]
         : [h("p", { text: "Grundriss: Karte der Ausstellungsorte, ferne Orte zur Mitte gestaucht. Höhe: Zeit. Ziehen dreht den Würfel. Regesten ohne Ort stehen nur in der Liste." }), cubeKey()];
     lines.push(h("p", { text: "Orte und Daten aus der Lieferung der Regesta Imperii und ihrem Register, ohne LLM." }));
-    if (options.about) lines.push(h("p", {}, h("a", { href: options.about }, "Über die Edition")));
+    if (options.about) lines.push(h("p", {}, h("a", { href: options.about }, "Daten und Lizenz")));
     infoPanel.replaceChildren(...lines);
   }
   function syncSwitch() {

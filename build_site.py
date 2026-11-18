@@ -18,7 +18,8 @@ Data flow
                                          footnotes, register entries
     edition/texts.json, js/nav.json   -> title, definition, licence, navigation
         -> <out>/index.html, regesten/, regesten/<slug>/, personen/, personen/<id>/,
-           methode/, daten/, ueber/, json/, daten/<package>.zip, ansicht/ (the views app)
+           json/, daten/<package>.zip, ansicht/ (the views app), and methode/, daten/, ueber/,
+           which forward to their sections of the start page
 
 Usage
     python build_site.py
@@ -276,7 +277,7 @@ def github_link(texts: dict, cls: str = "site-github") -> str:
 def footer_html(texts: dict, root: str) -> str:
     """One footer for every page: the maker with the mark, the Promptotyping experiment, the
     licences with the short attribution of Regesta Imperii and the way to the full one, the
-    repository and the imprint (operator, 2026-11-18). index.html of the views app carries the
+    repository and the imprint, which stand on the start page (operator, 2026-11-18). index.html of the views app carries the
     same markup with root ../, kept in step by checks/test_site.py."""
     maker = texts["maker"]
     return (
@@ -284,8 +285,8 @@ def footer_html(texts: dict, root: str) -> str:
         f'<a class="footer-maker" href="{esc(maker["url"])}" rel="noopener">'
         f'<img src="{root}img/dhcraft-mark-watercolor-128.png" alt="" width="20" height="23">{esc(maker["name"])}</a>'
         f'<a href="{esc(maker["promptotyping"])}" rel="noopener">Ein Promptotyping-Experiment</a>'
-        f'<p class="footer-licence">{esc(texts["licenceLine"])} <a href="{root}ueber/#lizenz">Namensnennung</a></p>'
-        f'<span class="footer-end">{github_link(texts, "footer-github")}<a href="{root}ueber/#impressum">Impressum</a></span>'
+        f'<p class="footer-licence">{esc(texts["licenceLine"])} <a href="{root or "./"}#lizenz">Namensnennung</a></p>'
+        f'<span class="footer-end">{github_link(texts, "footer-github")}<a href="{root or "./"}#impressum">Impressum</a></span>'
         "</footer>"
     )
 
@@ -426,9 +427,10 @@ def _thumb_band(holdings: dict) -> str:
 def start_page(site: Site, package: str) -> None:
     """The start page (operator, 2026-11-18; knowledge/interface-plan.md, Parts): what the edition
     is, three entries to Atlas, Regesten and Personen with a small figure from each view, the
-    process with its producers, how the edition came about, data and licence in short. The
-    former Atlas addresses of this page (#/atlas, #/itinerar, ?ort= and the other facets)
-    forward to atlas/ (js/edition/start.js)."""
+    process with its producers, how the edition came about, data and licence, the full
+    attribution and the imprint (since 2026-11-18 also what Über carried). The former Atlas
+    addresses of this page (#/atlas, #/itinerar, ?ort= and the other facets) forward to atlas/
+    (js/edition/start.js)."""
     t = site.texts
     data = site.out / "ansicht" / "data"
     holdings = _load(data / "holdings.json")
@@ -465,16 +467,27 @@ def start_page(site: Site, package: str) -> None:
         for href, title, purpose, count, thumb in cards
     )
     maker = t["maker"]
+    src = t["source"]
+    # Since 2026-11-18 (operator: „Start und Über soll es nicht geben, sondern das soll
+    # zusammengeführt werden“) the start page carries everything Über carried: the steps with
+    # their producers and notes, how the edition came about, data and licence with the full
+    # attribution, the note on the mark and the imprint. The ids are the anchors of the former
+    # Über page, so ueber/, methode/ and daten/ forward to the same sections.
     main = f"""<h1>{esc(t["title"])}</h1>
 <p class="intro">Die Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, die LLM-Agenten aus dem Regesttext gewonnen haben, jede an ihren Wortlaut gebunden. Daneben stehen alle {counts["regesta"]} Regesten der Lieferung mit Ort und Zeit.</p>
 <ul class="entry-cards" role="list">{entries}</ul>
-<section aria-labelledby="ablauf" class="process"><h2 id="ablauf">Wie die Aussagen entstehen</h2>
-{process_html(site, notes=False)}
-<p><a href="ueber/#methode">Die Schritte im Einzelnen</a></p></section>
+<section aria-labelledby="methode" class="process"><h2 id="methode">Wie die Aussagen entstehen</h2>
+{process_html(site, notes=True)}</section>
+<div class="start-about">
 <section aria-labelledby="entstehung" class="start-origin"><h2 id="entstehung">Entstehung</h2>
-<p>Die Edition ist als Lehrbeispiel für die Gasteinheit „Agentic Engineering für Forschungsdatenworkflows“ am 20. November 2026 in der Lehrveranstaltung „Graphbasierte Systeme“ der Technischen Hochschule Mittelhessen entstanden. {esc(maker["name"])} hat sie mit <a href="{esc(maker["promptotyping"])}" rel="noopener">Promptotyping</a> gebaut. LLM-Agenten in Claude Code haben Pipeline, Daten und Oberfläche erzeugt, im Austausch mit einem Menschen, der die Richtung vorgibt und jeden Zwischenstand beurteilt. Die Edition ist ein Experiment, und keine ihrer Aussagen hat bisher eine Person fachlich geprüft.</p></section>
-<section aria-labelledby="daten-kurz" class="start-files"><h2 id="daten-kurz">Daten und Lizenz</h2>
-<p><a href="daten/{esc(package)}" download>Alle Regesten der Edition als Paket</a> mit Turtle, TEI und JSON. Texte und Daten <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, Code <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>. Regesten und Register stammen aus <a href="{esc(t["source"]["url"])}" rel="noopener">Regesta Imperii Online</a> und sind bearbeitet. Die Aussagen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. <a href="ueber/#methode">Methode</a>, <a href="ueber/#daten">Daten</a> und die vollständige Namensnennung stehen unter <a href="ueber/">Über die Edition</a>.</p></section>"""
+<p>Die Edition ist ein <a href="{esc(maker["promptotyping"])}" rel="noopener">Promptotyping</a>-Experiment von {esc(maker["name"])}, entstanden als Lehrbeispiel für die Gasteinheit „Agentic Engineering für Forschungsdatenworkflows“ am 20. November 2026 in der Lehrveranstaltung „Graphbasierte Systeme“ der Technischen Hochschule Mittelhessen. LLM-Agenten in Claude Code haben Pipeline, Daten und Oberfläche erzeugt. Sie arbeiteten mit dem AI-Harness von {esc(maker["name"])}, also den Anweisungen, Arbeitsverfahren und Werkzeugen, mit denen die Agenten eingerichtet sind, und mit dessen Obsidian-Vault. Beide enthalten Wissen, das über zwei Jahre aufgebaut und kuratiert wurde. Ein Mensch gibt die Richtung vor und beurteilt jeden Zwischenstand. Keine Aussage der Edition hat bisher eine Person fachlich geprüft.</p></section>
+<section aria-labelledby="impressum" class="start-imprint"><h2 id="impressum">Impressum</h2>
+<p class="placeholder">{esc(t["imprint"])}</p></section>
+<section aria-labelledby="daten" class="start-files"><h2 id="daten">Daten und Lizenz</h2>
+<p><a href="daten/{esc(package)}" download>Das Paket mit allen Regesten</a> enthält Turtle als maßgebliche Fassung der Aussagen, TEI (gegen tei_all geprüft) und JSON, jede Regestseite bietet ihre drei Dateien einzeln. Texte und Daten <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, Code <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>, Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}. Quellen sind <a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a> und das <a href="{esc(src["lab"])}" rel="noopener">RI Lab</a>, der Quellcode liegt auf <a href="{esc(t["repository"])}" rel="noopener">GitHub</a>.</p>
+<p id="lizenz" class="about-attribution">{esc(t["attribution"])}</p>
+<p class="about-attribution">{esc(t["markNote"])}</p></section>
+</div>"""
     site.page(path="", key="start", kind="start", title=t["title"], main=main, description=t["description"])
 
 
@@ -880,35 +893,39 @@ def person_page(site: Site, node: dict, rels: list[dict]) -> None:
     )
 
 
-def redirect_page(out: Path, path: str, target: str, title: str, licence: str) -> None:
-    """An earlier address that now lives as a section of another page: a short page that
-    forwards at once and keeps a link for readers without automatic forwarding."""
+def redirect_page(out: Path, path: str, section: str, title: str, licence: str) -> None:
+    """An earlier address that now lives as a section of the start page: a short page that
+    forwards at once and keeps a link for readers without automatic forwarding. A fragment of
+    the old address (ueber/#impressum) names the same section on the start page, since the
+    start page keeps the anchors of the former Über page; the one inline line carries it, the
+    refresh goes to the section of the address itself."""
+    target = f"../#{section}"
     doc = f"""<!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>if (location.hash) location.replace("../" + location.hash);</script>
   <meta http-equiv="refresh" content="0; url={esc(target)}">
-  <link rel="canonical" href="{esc(target)}">
+  <link rel="canonical" href="../">
   <title>{esc(title)}</title>
 </head>
-<body><h1>{esc(title)}</h1><p><a href="{esc(target)}">Weiter zu {esc(title)}</a></p><p>{esc(licence)} <a href="../ueber/">Über die Edition</a></p></body>
+<body><h1>{esc(title)}</h1><p><a href="{esc(target)}">Weiter zu {esc(title)}</a></p><p>{esc(licence)} <a href="../#lizenz">Namensnennung</a></p></body>
 </html>
 """
     _write(out / path / "index.html", doc)
 
 
-def method_page(site: Site) -> None:
-    """Method, data and about stand on one page since 2026-11-14; this address forwards."""
-    redirect_page(site.out, "methode", "../ueber/#methode", "Über die Edition, Methode", site.texts["licenceLine"])
+def forward_pages(site: Site) -> None:
+    """The former pages Über (2026-11-14 to 2026-11-18), Methode and Daten forward to their
+    sections of the start page (operator, 2026-11-18: Start and Über become one page)."""
+    licence = site.texts["licenceLine"]
+    redirect_page(site.out, "ueber", "methode", "Startseite, Wie die Aussagen entstehen", licence)
+    redirect_page(site.out, "methode", "methode", "Startseite, Wie die Aussagen entstehen", licence)
+    redirect_page(site.out, "daten", "daten", "Startseite, Daten und Lizenz", licence)
 
 
-def data_page(site: Site) -> None:
-    """The address of the former data page forwards to the data section of the one page."""
-    redirect_page(site.out, "daten", "../ueber/#daten", "Über die Edition, Daten", site.texts["licenceLine"])
-
-
-# The producers of the steps of Über, with their sign (16 unit grid, current colour).
+# The producers of the steps on the start page, with their sign (16 unit grid, current colour).
 PRODUCERS = {
     "script": (
         "Skript",
@@ -932,7 +949,7 @@ def producer_sign(kind: str) -> str:
 
 def process_html(site: Site, notes: bool) -> str:
     """The steps of knowledge/pipeline.md with the producer of each (script, LLM agent, person),
-    shared by the start page and Über. notes False reads the note of a step out only (density
+    on the start page. notes False reads the note of a step out only (density
     limits of the page profile, 2026-11-18); the open human check says „steht aus“ on screen."""
     m = site.manifest
     # The steps of the pipeline (knowledge/pipeline.md, The eight steps and Responsibilities) and
@@ -963,25 +980,6 @@ def process_html(site: Site, notes: bool) -> str:
         f'<ol class="steps{" has-notes" if notes else ""}" role="list">{items}</ol>'
         f'<ul class="step-key" role="list" aria-label="Wer einen Schritt ausführt">{key}</ul>'
     )
-
-
-def about_page(site: Site, package: str) -> None:
-    """Über, the detailed page the start page links to (since 2026-11-18): the steps with their
-    notes, the data with the full attribution of Regesta Imperii, the mark of Digital
-    Humanities Craft and the imprint. What the edition is and how it came about stands on the
-    start page only. The anchors #methode and #daten stay, since methode/ and daten/ forward."""
-    t = site.texts
-    src = t["source"]
-    main = f"""<h1>Über die Edition</h1>
-<section aria-labelledby="methode" class="process"><h2 id="methode">Wie die Aussagen entstehen</h2>
-{process_html(site, notes=True)}</section>
-<section aria-labelledby="daten" class="about-files"><h2 id="daten">Daten und Lizenz</h2>
-<p><a href="../daten/{esc(package)}" download>Alle Regesten als Paket</a> (Turtle, die maßgebliche Fassung der Aussagen; TEI, gegen tei_all geprüft; JSON); jede Regestseite bietet ihre drei Dateien. Texte und Daten <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, Code <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>, Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}. Quelle: <a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a>, <a href="{esc(src["lab"])}" rel="noopener">RI Lab</a>. Der Quellcode liegt auf <a href="{esc(t["repository"])}" rel="noopener">GitHub</a>.</p>
-<p id="lizenz" class="about-attribution">{esc(t["attribution"])}</p>
-<p class="about-attribution">{esc(t["markNote"])}</p></section>
-<section aria-labelledby="impressum"><h2 id="impressum">Impressum</h2>
-<p class="placeholder">{esc(t["imprint"])}</p></section>"""
-    site.page(path="ueber", key="ueber", kind="text", title="Über die Edition", main=main)
 
 
 # Files
@@ -1117,9 +1115,7 @@ def build(source: Path, run_id: str, out: Path, preview: bool = False) -> None:
     for i in range(len(site.regests)):
         regest_page(site, i)
     persons_pages(site)
-    method_page(site)
-    about_page(site, package)
-    data_page(site)
+    forward_pages(site)
     # Only the TEI files of this run's regesta count as written; a TEI file of an earlier
     # run with other regesta is stale, even though it still lies in the folder.
     current = set(site.slugs.values())
