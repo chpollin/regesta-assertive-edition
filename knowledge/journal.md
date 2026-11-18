@@ -27,6 +27,15 @@ updated: 2026-11-18
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 
+## 2026-11-18 Relations of an opened regest in the cube
+
+- Trigger: the operator's words on the Atlas with n. 135 opened (design.md, Itinerar): the lines too thick, without meaning, perhaps arrows.
+- Found: around n. 135 the cube drew 46 shared-person lines of 1.2 px in grey at 0.7 opacity, two accent steps of 2.5 px and 69 rings, over the full route at 0.25; the steps of n. 135 lie at Würzburg on neighbouring days and are short.
+- Decided: three kinds in one validated palette and three forms (accent arrows in time direction, berry rings, blue dashed hairlines), the twelve shared-person relations nearest in time drawn, all on a legend click; a label beside a pointed related point names number, kind and shared persons, kept clear of the opened card; the route recedes while a regest is open.
+- Rejected: capping by number of shared persons, since time nearness keeps the direct context; arrows on the undirected kinds.
+- Changed: js/itinerary.js, js/atlas.js, css/space.css, css/frame.css, css/tokens.css, design.md.
+- Evidence: on the preview at 1440 and 1920 with n. 135: 12 dashed lines, 69 rings, 2 steps with arrowheads, 46 lines after the legend click; pointing at n. 138 names „gleicher Ort; gemeinsame Person: Eugen III.“; no SVG beyond the window. Palette validator run for accent, berry, blue, ochre. Before and after screenshots in the session scratchpad (ui-step2-5/rel-before, rel-after).
+
 ## 2026-11-18 Filter model in Regesten and Personen, Raum removed
 
 - Trigger: step 2 of the accepted interface plan (interface-plan.md), and the cheap findings of the fresh reader of the Atlas slice.

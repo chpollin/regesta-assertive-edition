@@ -74,9 +74,12 @@
   .atlas-legend-item { display: inline-flex; align-items: center; gap: var(--space-1); white-space: nowrap; }
   .atlas-legend b { color: var(--text); font-variant-numeric: tabular-nums; }
   .rel-key { display: inline-block; inline-size: 1.4em; }
-  .rel-key.is-step { border-block-start: 2.5px solid var(--accent); }
-  .rel-key.is-people { border-block-start: 1.2px solid var(--muted); }
-  .rel-key.is-place { inline-size: 0.7em; block-size: 0.7em; border: 1.5px solid var(--accent-text); border-radius: 50%; }
+  .rel-key.is-step { position: relative; border-block-start: 1.5px solid var(--accent); }
+  .rel-key.is-step::after { content: ""; position: absolute; inset-inline-end: -1px; inset-block-start: -4.5px; border-block: 3.5px solid transparent; border-inline-start: 6px solid var(--accent); }
+  .rel-key.is-people { border-block-start: 1.5px dashed var(--rel-person); }
+  .rel-key.is-place { inline-size: 0.7em; block-size: 0.7em; border: 1.5px solid var(--rel-place); border-radius: 50%; }
+  .atlas-legend-all { padding: 0; background: none; border: 0; font: inherit; color: inherit; cursor: pointer; text-decoration: underline dotted; text-underline-offset: 0.2em; }
+  .atlas-legend-all[aria-pressed="true"] { color: var(--text); }
   .rel-key.is-route { border-block-start: 1.2px solid var(--edge); }
   .rel-key.is-flag { border-block-start: 1.5px solid var(--warn); }
   /* The key of the cube behind the info mark. */

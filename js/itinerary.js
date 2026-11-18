@@ -22,6 +22,15 @@
  * after it on the itinerary, the other regesta of its place, and the regesta that share a
  * person of the register with it (persons named in at most RELATED_MAX regesta, so the ruler
  * and his chancellors do not join everything); the rest recedes.
+ *
+ * The relations of an opened regest (operator, 2026-11-18: „viel zu dick … den Relationen auch
+ * eine Bedeutung geben … kleine Pfeile“): three kinds, each in its own colour of one palette
+ * checked for colour-vision deficiency (css/tokens.css, --rel-*) and in its own form, so the
+ * kind reads without colour too: the stations before and after as solid lines in the accent
+ * with an arrowhead in time direction, the other regesta of the same place as rings without a
+ * line, the regesta sharing a person as dashed hairlines, only the PEOPLE_DRAWN nearest in
+ * time, all of them while the legend asks for it. Pointing at a related point names its kind
+ * and the shared persons.
  */
 import { h } from "./dom.js";
 import { statementsOf } from "./regest-card.js";
@@ -45,6 +54,8 @@ const MARGIN = { left: 42, right: 14, top: 14, bottom: 34 };
 const NAMED_PLACES = 5;
 /** A person named in more regesta than this does not make two regesta related. */
 const RELATED_MAX = 60;
+/** Shared-person relations drawn at rest: the nearest in time; the legend shows all on demand. */
+const PEOPLE_DRAWN = 12;
 
 /**
  * @param {any} store  the shared store with holdings
@@ -78,6 +89,7 @@ export function createCube(store, options) {
 
   const state = { view: { yaw: CAMERAS.wuerfel.yaw, pitch: CAMERAS.wuerfel.pitch, zoom: 1 }, snap: "wuerfel", pointed: null, opened: null, flags: false };
   let related = null;
+  let allPeople = false;
 
   const sceneHost = h("div", {
     class: "space-scene",
@@ -114,7 +126,10 @@ export function createCube(store, options) {
     const coreShape = coreClip.appendChild(s("polygon"));
     const blur = s("filter", { id: "it-realm-soft", x: "-5%", y: "-5%", width: "110%", height: "110%" });
     blur.append(s("feGaussianBlur", { stdDeviation: 2.5 }));
-    defs.append(floorClip, coreClip, blur);
+    // The arrowhead of the itinerary steps, in time direction; it takes the line's colour.
+    const arrow = s("marker", { id: "it-arrow", viewBox: "0 0 8 8", refX: 7, refY: 4, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse", markerUnits: "userSpaceOnUse" });
+    arrow.append(s("path", { d: "M0,0.5 L8,4 L0,7.5 z", class: "it-arrow" }));
+    defs.append(floorClip, coreClip, blur, arrow);
     // The map lies on the floor and is cut to it; the realm also to the undistorted core.
     const ground = s("g", { "clip-path": "url(#it-floor-clip)" });
     const realmLayer = s("g", { class: "it-realm-layer", "clip-path": "url(#it-core-clip)" });
@@ -251,7 +266,7 @@ export function createCube(store, options) {
     scene.line.setAttribute("points", path.join(" "));
     // A person's trace: their regesta in time order, through the places of issue.
     scene.traces.replaceChildren(...trace.map((pts, j) => s("polyline", { class: `it-trace is-p${j}`, points: pts.join(" ") })));
-    scene.line.classList.toggle("is-quiet", personsOn);
+    scene.line.classList.toggle("is-quiet", personsOn || !!related);
     // Marked points above the rest, so no faint point covers them.
     for (const dot of lifted) scene.dotsG.append(dot);
     scene.marks.replaceChildren();
@@ -319,10 +334,41 @@ export function createCube(store, options) {
     const o = state.opened;
     if (related && o !== null && screen[o]) {
       const from = screen[o];
-      const seg = (i, cls) => screen[i] && scene.pointer.append(s("line", { class: cls, x1: from.x, y1: from.y, x2: screen[i].x, y2: screen[i].y }));
-      for (const i of related.people) seg(i, "it-link");
-      for (const i of related.steps) seg(i, "it-step");
-      for (const i of related.place) screen[i] && scene.pointer.append(s("circle", { class: "it-same-place", cx: screen[i].x, cy: screen[i].y, r: 4.5 }));
+      const line = (a, b, cls, attrs = {}) => scene.pointer.append(s("line", { class: cls, x1: a.x.toFixed(1), y1: a.y.toFixed(1), x2: b.x.toFixed(1), y2: b.y.toFixed(1), ...attrs }));
+      // Shared persons: dashed hairlines to the nearest in time, the pointed one stronger.
+      for (const j of peopleShown()) if (screen[j]) line(from, screen[j], j === state.pointed ? "it-link is-on" : "it-link");
+      for (const j of related.place) screen[j] && scene.pointer.append(s("circle", { class: j === state.pointed ? "it-same-place is-on" : "it-same-place", cx: screen[j].x.toFixed(1), cy: screen[j].y.toFixed(1), r: 4 }));
+      // The steps: from the station before to the opened one, from it to the station after,
+      // the arrowhead stopping short of the later point.
+      const shortened = (a, b) => {
+        const d = Math.hypot(b.x - a.x, b.y - a.y);
+        const k = d > 14 ? (d - 7) / d : 1;
+        return { x: a.x + (b.x - a.x) * k, y: a.y + (b.y - a.y) * k };
+      };
+      if (related.before !== null && screen[related.before]) line(screen[related.before], shortened(screen[related.before], from), "it-step", { "marker-end": "url(#it-arrow)" });
+      if (related.after !== null && screen[related.after]) line(from, shortened(from, screen[related.after]), "it-step", { "marker-end": "url(#it-arrow)" });
+      // What a pointed related point is to the opened regest, beside it.
+      const j = state.pointed;
+      if (j !== null && j !== o && related.all.has(j) && screen[j]) {
+        const kinds = [];
+        if (j === related.before) kinds.push("Station davor");
+        if (j === related.after) kinds.push("Station danach");
+        if (related.place.has(j)) kinds.push("gleicher Ort");
+        const names = (related.people.get(j) ?? []).map((id) => persons[id].l);
+        if (names.length) kinds.push(`gemeinsame Person: ${names.slice(0, 2).join(", ")}${names.length > 2 ? ` und ${names.length - 2} weitere` : ""}`);
+        const q = screen[j];
+        const text = s("text", { class: "it-rel-label", x: (q.x + 9).toFixed(1), y: (q.y - 8).toFixed(1), text: `${points[j].i}, ${kinds.join("; ")}` });
+        scene.pointer.append(text);
+        // Keep the label inside the drawing.
+        const box = text.getBBox();
+        // Keep the label inside the drawing and clear of the opened regest over its right edge.
+        const cover = options.blocked();
+        const right = cover ? cover.left - scene.svg.getBoundingClientRect().left : scene.width;
+        if (box.x + box.width > right - 4) {
+          text.setAttribute("x", (q.x - 9).toFixed(1));
+          text.setAttribute("text-anchor", "end");
+        }
+      }
     }
     for (const [i, cls] of [
       [o, "it-opened"],
@@ -402,16 +448,28 @@ export function createCube(store, options) {
   const personsOf = new Map();
   for (const [id, pp] of Object.entries(store.holdings.persons ?? {})) for (const u of pp.r) personsOf.set(u, [...(personsOf.get(u) ?? []), id]);
   const indexOf = new Map(points.map((x, j) => [x.u, j]));
+  const persons = store.holdings.persons ?? {};
   function relate(i) {
     const p = points[i];
     const place = new Set();
     points.forEach((x, j) => x.p === p.p && j !== i && place.add(j));
-    const steps = new Set([i - 1, i + 1].filter((j) => j >= 0 && j < points.length));
-    const persons = store.holdings.persons;
-    const people = new Set();
-    for (const id of (personsOf.get(p.u) ?? []).filter((x) => persons[x].r.length <= RELATED_MAX)) for (const u of persons[id].r) if (u !== p.u && indexOf.has(u)) people.add(indexOf.get(u));
-    return { place, steps, people, all: new Set([i, ...place, ...steps, ...people]) };
+    const before = i > 0 ? i - 1 : null;
+    const after = i + 1 < points.length ? i + 1 : null;
+    /** Related index to the shared persons. */
+    const people = new Map();
+    for (const id of (personsOf.get(p.u) ?? []).filter((x) => persons[x].r.length <= RELATED_MAX))
+      for (const u of persons[id].r)
+        if (u !== p.u && indexOf.has(u)) {
+          const j = indexOf.get(u);
+          people.set(j, [...(people.get(j) ?? []), id]);
+        }
+    // The nearest in time first, so the drawn ones are the direct context.
+    const byTime = [...people.keys()].sort((a, b) => Math.abs(points[a].y - p.y) - Math.abs(points[b].y - p.y));
+    const steps = new Set([before, after].filter((j) => j !== null));
+    return { place, before, after, steps, people, byTime, all: new Set([i, ...place, ...steps, ...people.keys()]) };
   }
+  /** The shared-person relations drawn: the nearest in time, or all on demand. */
+  const peopleShown = () => (related ? (allPeople ? related.byTime : related.byTime.slice(0, PEOPLE_DRAWN)) : []);
 
   function draw() {
     // Rounded down: clientHeight rounds a fractional height up, and the drawing then stood
@@ -528,9 +586,15 @@ export function createCube(store, options) {
     open(i) {
       state.opened = i;
       related = i === null ? null : relate(i);
+      allPeople = false;
       tip.hidden = true;
       update();
-      return related ? { steps: related.steps.size, place: related.place.size, people: related.people.size } : null;
+      return related ? { steps: related.steps.size, place: related.place.size, people: related.people.size, drawn: Math.min(PEOPLE_DRAWN, related.people.size) } : null;
+    },
+    /** Draw every shared-person relation of the opened regest, or only the nearest in time. */
+    allPeople(on) {
+      allPeople = on;
+      pointer();
     },
     dispose() {
       animation = {};

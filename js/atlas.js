@@ -253,12 +253,27 @@ export function renderAtlas(store, options) {
     onEscape: () => detail.close(),
   });
 
-  /** The legend of the three kinds of relation of an opened regest, each with its count. */
+  /**
+   * The legend of the three kinds of relation of an opened regest, each with its count, in the
+   * colours and forms of the cube. Of the shared persons the cube draws the nearest in time; the
+   * legend says how many and shows all on demand.
+   */
   function showLegend(counts) {
     legend.hidden = !counts;
     if (!counts) return legend.replaceChildren();
     const item = (cls, label, n) => h("span", { class: "atlas-legend-item" }, h("span", { class: `rel-key ${cls}`, "aria-hidden": "true" }), `${label} `, h("b", { text: String(n) }));
-    legend.replaceChildren(item("is-step", "Stationen davor und danach", counts.steps), item("is-place", "gleicher Ort", counts.place), item("is-people", "gemeinsame Person", counts.people));
+    const people = item("is-people", "gemeinsame Person", counts.people);
+    if (counts.people > counts.drawn) {
+      const all = h("button", { type: "button", class: "atlas-legend-all", "aria-pressed": "false", title: `Gezeichnet sind die ${counts.drawn} zeitlich nächsten; ein Klick zeigt alle` }, `${counts.drawn} nächste`);
+      all.addEventListener("click", () => {
+        const on = all.getAttribute("aria-pressed") !== "true";
+        all.setAttribute("aria-pressed", String(on));
+        all.textContent = on ? "alle" : `${counts.drawn} nächste`;
+        cube?.allPeople(on);
+      });
+      people.append(" ", all);
+    }
+    legend.replaceChildren(item("is-step", "Station davor und danach", counts.steps), item("is-place", "gleicher Ort", counts.place), people);
   }
 
   const detail = createDetail(frame, {
