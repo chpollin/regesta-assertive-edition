@@ -3,12 +3,12 @@ title: Plan
 status: draft
 language: en
 created: 2026-11-11
-updated: 2026-11-17
+updated: 2026-11-18
 ---
 
 # Plan
 
-Accepted next steps of the edition that are still open. Operator decisions behind them are tracked in the vault's ACTIVE-WORK anchors named per step; this document records only what the repository has to do. Finished steps and how they were settled are in the [journal](journal.md), among them the term and definition „Agentic Edition“; the TEI headers carry them, and the site's title is the working title „Barbarossa-Regesten“ since 2026-11-14 (term and definition confirmed 2026-11-12, anchor op-thm-edition-titel), the publication on GitHub Pages (2026-11-12) and the agent review of twenty regesta (2026-11-14).
+Accepted next steps of the edition that are still open. The operator's decisions behind them and what waits for him stand in the [journal](journal.md), in its entries and under `## Open`; this document records only what the repository has to do. Finished steps and how they were settled are in the [journal](journal.md), among them the term and definition „Agentic Edition“; the TEI headers carry them, and the site's title is the working title „Barbarossa-Regesten“ since 2026-11-14 (term and definition confirmed 2026-11-12, journal), the publication on GitHub Pages (2026-11-12) and the agent review of twenty regesta (2026-11-14).
 
 ## Agent review of twenty regesta
 
@@ -20,7 +20,7 @@ The 224 regesta of `factoid-1153-2026-11-11` are technically checked (agent revi
 
 ## Public visibility
 
-Making the repository itself public, a tag or a release stay with the operator. Anchor: op-thm-edition-oeffentlich.
+Making the repository itself public, a tag or a release stay with the operator. It is listed under `## Open` of the journal.
 
 ## Test tasks with computed answers
 
@@ -45,4 +45,4 @@ Accepted on 2026-11-17 with the move of the pipeline; not before 20 November.
 - An executable browser check of the current shell (tasks with computed answers, see Test tasks) replaces the retired check of the first slice.
 - The validator note of the pipeline (status after correction is read from the corrections log since 2026-11-11) is to be mentioned on the method page once the page lists the error logs per step.
 - Export date of the regest file, model of the adjudicating and correcting agent.
-- Deletion candidates in the knowledge folder and the views are collected under op-thm-loeschkandidaten.
+- Deletion candidates in the knowledge folder (space-view.md, questions.md, user-stories.md, ide-criteria.md) wait for the operator's decision (journal, `## Open`).

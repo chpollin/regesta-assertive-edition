@@ -10,33 +10,47 @@ updated: 2026-11-18
 
 ## Open
 
-- English version: the operator accepted the published bilingual site on 2026-11-18; the English names of the Academy and the Commission in the attribution and the German statement labels of the agents stay as they are until he says otherwise. The density check and a fresh reader of the English pages have not run.
-- Findings of the fresh reader of the merged start page and the three-column regest page, not acted on and covered by the acceptance: the head actions stand far from the number at 2000 px; the notes column carries no producer label of its own (the popover of „ungeprüft“ names it); „Bestimmung“ and the bracketed qualifiers are not explained on the page; the broken glyph in „H?rnunge“ of n. 94 comes from the delivered text; terms of the start page such as „Lieferung“, „Pakete“ and „Prüfstände“.
-- The operator accepted the site on 2026-11-18 after the design round (journal entry of that day). Still open on the interface: the density overshoots recorded in the acceptance check and the design round, and RI IV,2,2 n. 103a standing in 1138 in every list and filter because its delivered start date says 1138 while its dating says 1152 (a question to the delivery).
-- The agents' verdicts of the review of twenty regesta go public only on the operator's word after he has seen the restructured regest page; the coordination read his „ja, aber“ as yes in principle. The public method text already names the agentic reading as a step.
-- Open from the review with Claude Fable 5.2 of 2026-11-18 ([report](fable-5-2-review-2026-11-18.md), Open questions), all for the operator:
-  - The edition names itself version 0.1 of 2026-11-11 on every page and in every citation while it is rebuilt and published daily.
-  - The site says the source code is on GitHub and links the repository, which is private.
-  - LICENSE-DATA.md names Christopher Pollin as copyright holder, the site names Digital Humanities Craft as maker.
-  - The flag sentence reads „646 km in 1 Tag zu …“ also on the later station and „in 0 Tagen“ for the same day; since 2026-11-18 its days are the most the two datings allow, which the sentence does not say.
-  - Whether the points outside the route should be checked for fitting between the stations around their period (data.md, Line of the itinerary).
-  - Requirement 3 of the specification (no page scroll at 1440 × 900) describes the former start page; whether it moves to the Atlas, and whether the five proposals count as adopted with the acceptance of 2026-11-18.
-  - AGENTS.md runs `build_site.py`, `build_realm.py` and `build_basemap.py` with plain `python`, outside `uv.lock`.
-  - `run.py prepare` passes no LLM, so a new run would record the default of `prepare_pilot.py`; the sender of an embassy has no role in the vocabulary (both from the dry run of 2026-11-17, never listed here).
-  - To the Regesta Imperii delivery: ten regesta without regest text, the place string „Würzburg-1150 Juli 30, -“ of RI IV,2,1 n. 49, and the book-page link of RI IV,2,1 n. 135 without a page number.
-  - Two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; user-stories.md still names the specification of `regesta-rdf-demo` as authority.
-- The specification carries five requirements derived from his verdicts as proposals with acceptance criteria; the older list of the first slice stays as history until he adopts them (specification.md).
-- Findings of the fresh reader not yet acted on: the statement „Urteil“ of n. 103a bundles king, witnesses, judge and beneficiary; statements of a forged regest (n. †193) read like facts, the metadata now say „Fälschung“ but the statements carry no mark; the place picker lists register entries that are regions, rivers or a person (Italien, Po).
-- The regest pages exceed the word budget of the work profile by their source text alone (regest, transmission, commentary).
-- No executable browser check covers the shell since `checks/ui_check.py` was retired; test tasks with computed answers per user story are planned and not built (plan.md, Test tasks).
+For the operator, from the review with Claude Fable 5.2 of 2026-11-18 ([report](fable-5-2-review-2026-11-18.md), Open questions; questions 1 and 5 are answered, entries below):
+
+- Version (2). The edition names itself version 0.1 of 2026-11-11 on every page and in every citation while it is rebuilt and published.
+- Repository link (3). The site says the source code is on GitHub and links the repository, which is private. Making it public, a tag or a release stay with him (plan.md).
+- Copyright holder (4). LICENSE-DATA.md names Christopher Pollin, the site names Digital Humanities Craft as maker.
+- Flag sentence (6). It reads „646 km in 1 Tag zu …“ also on the later station and „in 0 Tagen“ for the same day; its days are the most the two datings allow, which the sentence does not say.
+- Threshold (7). 150 km and 60 km per day in `check_itinerary.py` are a stated assumption without a read source; the literature that should replace it is named in design.md and not read. The seven days of the line are an assumption of the same kind (data.md, Line of the itinerary).
+- Specification (8). Requirement 3 (no page scroll at 1440 × 900) describes the former start page; the five requirements derived from his verdicts stand as proposals until he adopts them, the list of the first slice as history (specification.md).
+- Commands (9). AGENTS.md runs `build_site.py`, `build_realm.py` and `build_basemap.py` with plain `python`, outside `uv.lock`.
+- Pipeline (10). `run.py prepare` passes no LLM, so a new run would record the default of `prepare_pilot.py`; the sender of an embassy has no role in the vocabulary.
+- Agent review. The agents' verdicts on the twenty regesta go public only on his word after he has seen the restructured regest page; the coordination read his „ja, aber“ as yes in principle.
+- English version. The English names of the Academy and the Commission in the attribution and the German statement labels of the agents stay as they are until he says otherwise.
+- Namespace. The graph export writes the `rf:` and `rv:` terms under the provisional example.org namespaces until he decides a stable one; `build_graph.py --rf-namespace --rv-namespace` takes it (plan.md, Pipeline after the guest unit).
+- Not seen by him: the rings of the regesta without an exact day, the person trace that skips them, and the imprint link (ui-feedback.md).
+
+For Regesta Imperii, questions to the delivery (11): RI IV,2,2 n. 103a with the sort key of RI IV,1,2 and a start date of 1138 against its dating of 1152, so it stands in 1138 in every list and filter; the identifier RI IV,2,2 n. 1520a for two records; three reversed date ranges (RI IV,2,2 n. 1637 and n. D1717, RI IV,2,3 n. 2522); ten regesta without regest text; the place string „Würzburg-1150 Juli 30, -“ of RI IV,2,1 n. 49; the book-page link of RI IV,2,1 n. 135 without a page number; the broken glyph in „H?rnunge“ of n. 94 (data.md, source-data.md).
+
+For experts: the model questions in factoid-model.md (Open questions for experts), including the cases of the agent review of 2026-11-14: grants beside a confirmation as part of it or separate (n. †193), predecessors' acts typed as Grant (n. 145, n. 116), an exchange without a vocabulary term (n. 96), a complaint without a forum (n. 191). The two assertion extensions (Proposed extensions) are agreed in principle; inside the runs they need a new contract and run. No statement is validated, and a scholarly review has no owner (plan.md).
+
+Interface, known and not acted on:
+
+- Density. The overshoots recorded in the acceptance check and the design round stay; the regest pages exceed the word budget of the work profile by their source text alone. The density check and a fresh reader have not run on the English pages nor on the changes of the review.
+- Fresh readers' findings, covered by the acceptance: the head actions stand far from the number at 2000 px; the notes column carries no producer label of its own (the popover of „ungeprüft“ names it); „Bestimmung“ and the bracketed qualifiers are not explained on the page; terms of the start page such as „Lieferung“, „Pakete“ and „Prüfstände“; the statement „Urteil“ of n. 103a bundles king, witnesses, judge and beneficiary; statements of a forged regest (n. †193) read like facts, the metadata say „Fälschung“ but the statements carry no mark; the place picker lists register entries that are regions or rivers (Italien, Po).
+- Small findings of the review (13): the regest card at `ansicht/#/regest/<uid>` has two `h1`, and an unknown address of the views app shows its message without a heading.
+- The points outside the route are not checked for fitting between the stations around their period (data.md, Line of the itinerary).
 - The estate rule (js/stand.js, data.md Estate) errs on name forms without a title (Konrad III. as a regest-local node) and on forms that name a ruler in passing.
-- The model questions in factoid-model.md (Open questions for experts) wait for the operator and for experts, including the cases of the agent review of 2026-11-14: grants beside a confirmation as part of it or separate (n. †193), predecessors' acts typed as Grant (n. 145, n. 116), an exchange without a vocabulary term (n. 96), a complaint without a forum (n. 191).
-- The demonstration slides Demo 1 to Demo 4 of the THM deck still name paths of `regesta-rdf-demo`; the new paths went to the Research Coordination on 2026-11-17.
-- The two assertion extensions in factoid-model.md (Proposed extensions) are agreed in principle; the described producer is served by the graph export from the manifests, while both extensions inside the runs need a new contract and run.
-- Questions outside this repository: whether „RI IV,2,2 n. 103a“ or its sort key of RI IV,1,2 is right is a question to the Regesta Imperii delivery (data.md).
-- The graph export writes the `rf:` and `rv:` terms under the provisional example.org namespaces until the operator decides a stable namespace; `build_graph.py --rf-namespace --rv-namespace` takes it (plan.md, Pipeline after the guest unit).
-- Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
+- No executable browser check covers the shell since `checks/ui_check.py` was retired; test tasks with computed answers per user story are planned and not built (plan.md, Test tasks).
+
+Repository:
+
+- Decided on 2026-11-17 for the time after 20 November 2026 and not yet done: the move of the pilot into `pipeline/archive/` and the removal of the pilot path of `build_data.py` (plan.md). Still waiting for the operator: moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
+- Documents: two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; user-stories.md still names the specification of `regesta-rdf-demo` as authority; whether space-view.md, questions.md, user-stories.md and ide-criteria.md stay is the operator's decision.
+
+## 2026-11-18 Closing round: open list, plan and index
+
+- Trigger: the operator's closing round, relayed by the coordinating session in his words: „das wo wir uns sicher sind soll alles aufgelistet und erledigt werden! und dann wollen wir überall schauen ob es etwas zu refactoren und zu kuratieren gibt“, with five points found by a reading check, each checked here against the files.
+- Decided: `## Open` rewritten by addressee, doubles merged (the acceptance and the English version, the specification, n. 103a and the delivery, the density, the two lists of fresh readers); the questions of the review that were missing added (threshold, small interface findings, reversed date ranges); the pilot point says what is decided and what waits. The point on the paths in the slides left the list on the coordination's word that the slide PDF names `pipeline/` paths; the slides lie outside this repository and were not read here. plan.md no longer names the anchors op-thm-edition-titel, op-thm-edition-oeffentlich and op-thm-loeschkandidaten, which ACTIVE-WORK in the vault does not carry (searched on 2026-11-18), and points to the journal. INDEX.md lists space-view.md as history. The `## Open` of `regesta-rdf-demo` now only says that the work continues here.
+- Not done: a `CLAUDE.md` for this repository, an instruction file that waits for the operator's own word; deleting knowledge documents, which is his decision.
+- Changed: journal.md, plan.md, INDEX.md; in `regesta-rdf-demo` knowledge/journal.md.
+- Evidence: every former point of `## Open` is in the new list, settled by a named entry, or named above as removed; no code changed.
 
 ## 2026-11-18 The person trace skips regesta without an exact day
 
