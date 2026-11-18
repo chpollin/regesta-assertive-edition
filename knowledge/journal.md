@@ -10,6 +10,7 @@ updated: 2026-11-18
 
 ## Open
 
+- English version (2026-11-18, local preview, not yet seen by the operator): his decision on the English names of the Academy and the Commission in the attribution (glossary.md, Not decided here), and whether the short German statement labels of the agents are to be translated later. The density check and a fresh reader of the English pages have not run.
 - Not yet seen by the operator: the start page with Über merged into it (bc62bf2) and the regest page in three columns with the footer at the bottom (f5eb35a), both of 2026-11-18 in the local preview. Findings of the fresh reader of these pages not acted on: the head actions stand far from the number at 2000 px; the notes column carries no producer label of its own (the popover of „ungeprüft“ names it); „Bestimmung“ and the bracketed qualifiers are not explained on the page; the broken glyph in „H?rnunge“ of n. 94 comes from the delivered text; terms of the start page such as „Lieferung“, „Pakete“ and „Prüfstände“.
 - The operator accepted the site on 2026-11-18 after the design round (journal entry of that day). Still open on the interface: his answer on replacing the Personen network overview by the ego view with a person list (proposed on 2026-11-18, not built), the density overshoots recorded in the acceptance check and the design round, and RI IV,2,2 n. 103a standing in 1138 in every list and filter because its delivered start date says 1138 while its dating says 1152 (a question to the delivery).
 - Nothing of it is published. The agents' verdicts go public only on his word after he has seen the restructured regest page; the coordination read his „ja, aber“ as yes in principle. The public method text changes with the next publication to the agentic check of the twenty regesta, in both builds.
@@ -26,6 +27,16 @@ updated: 2026-11-18
 - The graph export writes the `rf:` and `rv:` terms under the provisional example.org namespaces until the operator decides a stable namespace; `build_graph.py --rf-namespace --rv-namespace` takes it (plan.md, Pipeline after the guest unit).
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
+
+## 2026-11-18 English version with a language switch
+
+- Trigger: the operator's decision „erledige das alles“ on an English site, the slide link of the guest unit and the Windhager credit in English.
+- Decided: the German site stays at its addresses, the English one mirrors it under `en/` with shared data, files and scripts; one dictionary per language (`js/i18n/de.json`, `en.json`) keyed for every interface text, read by `js/i18n.js` and `build_site.py`; act types and roles through the English prefLabels of the frozen vocabulary, which `build_data.py` now writes into `edition.json` as `vocabulary`; source text stays German and is marked `lang="de"`; British spelling with -ise (glossary.md). A DE/EN switch keeps path, query and hash, stores the choice and never redirects by it; every page names both languages as hreflang alternates. Query parameters and hash routes stay German, so state and old links survive the switch.
+- Rejected: translating the statement sentences of `build_data.py` word by word (English pages compose kind and roles instead), translated URL parameters, a redirect by browser language.
+- Corrected: `build_site.build` kept the record of written files across two builds in one process; it now starts each build with an empty record (the checks build twice).
+- Found by a Sonnet check reader of the rendered English pages: no German interface text left; external link labels („Digitalisat der RI-Buchseite“) are Regesta Imperii's own labels and stay German with `lang="de"`; several English words read as calques and were changed (Timeline, View, Reading guide, Type, Date, the intro sentence and the description).
+- Changed: build_site.py, build_data.py, js/i18n.js, js/i18n/, js/edition/lang.js, the views and static page modules, js/nav.json, css/shell.css, checks/test_site.py, knowledge/glossary.md, interface-plan.md, AGENTS.md.
+- Evidence: checks/test_site.py (Languages: keys in both languages, no unmarked German in the English build, switch, lang and hreflang on every page, one header and footer per language) passes; `publish_site.py --dry-run` checks the build with `en/`; screenshots at 360, 1440 and 2000 in both languages, no console error, the switch keeps `?von=1150&bis=1159#/atlas/karte`.
 
 ## 2026-11-18 Regest page uses the window
 

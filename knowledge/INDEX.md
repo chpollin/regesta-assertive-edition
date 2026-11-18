@@ -19,6 +19,7 @@ Read the `## Open` section of the [Journal](journal.md), then the document answe
 - What do the view data, TEI and site contain? [Edition data](data.md)
 - Which questions do the views answer? [Questions](questions.md)
 - How is the whole interface to be rebuilt? [Interface plan](interface-plan.md), accepted 2026-11-17, built slice by slice
+- Which English term stands for which German one, and what stays German? [Glossary](glossary.md)
 
 ## Pipeline
 

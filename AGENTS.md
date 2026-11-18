@@ -77,7 +77,7 @@ The interface is checked on the rendered state: `node tools/check_ui_density.cjs
 - `build_realm.py` the Empire about 1190 from the trace `edition/realm-1190-trace.json` into `js/realm.json`; `publish_site.py` the publication on `gh-pages`
 - `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`; `img/` the vendored mark of Digital Humanities Craft for the footer (LICENSE-DATA.md)
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema
-- `build_site.py` curated static edition site into `site/`; `edition/texts.json` title, definition, licence and attribution; `js/edition/` its content pages
+- `build_site.py` curated static edition site into `site/`, German at the root and English under `en/`; `edition/texts.json` title, definition, licence and attribution; `js/i18n/de.json` and `en.json` every interface text per language, read by `js/i18n.js` and the build (knowledge/glossary.md); `js/edition/` its content pages
 - `checks/` contract tests, the transfer checks `test_pipeline.py`, the graph checks `test_graph.py`, the export checks `test_export.py` and the CSV reader check `test_edition_io.py`
 - `build_graph.py` the graph export of the revised stage into `data/graph/`
 - `run.py` the entry point of the RDF workflow; `pipeline/` the pipeline with its scripts, `contracts/`, `runs/`, `source-material/` (Regesta Imperii CSV, CC BY 4.0), `generated/` and its own `ruff.toml`
