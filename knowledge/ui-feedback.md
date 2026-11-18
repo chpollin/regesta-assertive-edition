@@ -155,6 +155,42 @@ Relayed verbatim by the Research Coordination, with a screenshot of an earlier s
 Follows: the start page is the figure, full width and height under the header, no page scroll at desktop sizes; the introduction one line at most; the worked case leaves the start page with one visible entry. Status on 2026-11-15: built in the preview (one line with subtitle, example link and RI jump; the cube fills the rest; a regest opens in a panel over the figure's right edge; at narrow widths the page scrolls with the figure first); not seen by him. The three verdicts of this evening are treated as one pass over the shell (design.md).
 
 
+## 2026-11-18, Atlas: relations of an opened regest
+
+Relayed verbatim by the main session, on the cube with RI IV,2,1 n. 135 opened: „Hier sind diese Verbindungen noch viel zu dick. Können wir hier feinere Verbindungen machen und den Relationen auch eine Bedeutung geben? Gibt es ein Farbschema, wie man Bedeutung zwischen den Verknüpfungen ausdrücken kann? Vielleicht würden auch kleine Pfeile Sinn machen. Kann man das noch deutlich besser machen?“
+
+Follows: three kinds of relation, each with a colour and a form of its own (the stations before and after as accent arrows in time direction, the regesta of the same place as rings, the regesta sharing a person as dashed hairlines, the twelve nearest in time and all on a click in the legend); a pointed related point names number, kind and shared persons; the route recedes while a regest is open ([design.md](design.md), Itinerar). Status: done on screen (commit 695bb44); he called the relations „deutlich besser“ in the design round below, and the acceptance of 2026-11-18 covers the view.
+
+## 2026-11-18, Atlas: six points of the design round
+
+Paraphrase by the main session of his remarks on a screenshot at about 2000 × 1000 with RI IV,2,2 n. 1430 (Bamberg) opened; verbatim only „deutlich besser“ on the relations. The six points: the padding of the bar, the missing name of the opened place, a weak hierarchy, a pale floor, a flat tool row, truncated place names.
+
+Follows: one inner padding of 1rem in the bar and the filter sheet; the floor names the opened place and the places of its related points; the opened point filled and larger with a ring, unrelated points receding; darker coast, rivers and realm; the tool row in groups, with „Auffällige Wege“ as a toggle at the right; a wider bar for the place names. Status: done on screen (commit ed2dabb), covered by the acceptance of 2026-11-18; three place names in the first rows stayed truncated (journal, Design round on the Atlas).
+
+## 2026-11-18, Regesten: the list uses the width
+
+Relayed by the main session, on a screenshot at about 2000 wide with RI IV,2,1 n. 5 opened, verbatim in the two parts the journal keeps: „Hier wird nicht die ganze Fläche sauber genutzt … Es ist ein bisschen unruhig.“
+
+Follows: the regest docks beside the list above 56rem; one column template for heads and rows (Jahr, Nummer, Ort, Aussagen, Regest) with lower rows; the family signs after the place replace the ochre dot; a missing place is a grey dash; the beginning of the regest text stands in the free width. Status: done on screen (commit efcee7c), accepted on 2026-11-18 with the regest text column, which exceeds the density limits of the work profile (journal, Operator acceptance of the site).
+
+## 2026-11-18, Zeitband: area and calm
+
+Relayed verbatim by the main session, on a screenshot at about 2000 × 990: „Auch hier wird nicht die ganze Fläche genutzt, und es ist auch unruhig.“
+
+Follows: the rows fill the height; the axis starts where the shown mentions start, earlier mentions as a chevron; spans and year squares in one ink; a wider name column; the teal of the names dropped and the Italy bands lighter and named at the axis; „Ordnen nach“ as a labelled select. Status: done on screen (commit 5a0ca57), covered by the acceptance of 2026-11-18; the density check stays over with a person chosen (journal, Design round on the Zeitband).
+
+## 2026-11-18, a start page for the whole edition
+
+Paraphrase by the main session: he wants a start page that brings together everything about the edition, with three cards to Atlas, Regesten and Personen, a clean header and footer, Digital Humanities Craft and the Promptotyping experiment named, a GitHub link, and the processing and the context of its making (teaching example for the guest unit at Technische Hochschule Mittelhessen on 20 November 2026) stated precisely.
+
+Follows: a start page at the site root with three entry cards, the Atlas at `atlas/` with its old addresses forwarded, one header and one footer on every page. Status: done on screen (commit b3c67ee), changed the same day by the merge of Über into it (next entry), covered by the acceptance of 2026-11-18. The GitHub link leads to a private repository.
+
+## 2026-11-18, Personen: the network overview
+
+Relayed by the main session, verbatim in the parts the journal keeps: the network overview is „noch sehr schwach … Was ist jetzt der Mehrwert?“; he liked the ego view behind a click. On the recommendation to leave the page as it is, since nobody works with it and no use has reported a lack: „ja, halt das so fest“.
+
+Follows: nothing is rebuilt; the page stays as accepted and is reopened only when someone wants to work with the persons for a real question (journal, Personen page stays as built). Status: decided by the operator on 2026-11-18, no change on screen.
+
 ## 2026-11-18, Start and Über as one page
 
 Relayed verbatim by the main session: „Start und Über soll es nicht geben, sondern das soll zusammengeführt werden. Also, alles, was in Über steht, soll kompakter und besser formuliert in der Startseite integriert sein.“ With it his correction for the account of how the edition came about, relayed as paraphrase: his AI harness and his Obsidian vault are knowledge he has built up and curated over two years, never knowledge that „knew the project“ beforehand.
@@ -171,4 +207,4 @@ Follows: the footer at the bottom of the window on short pages; from 80rem of pa
 
 Relayed verbatim by the main session after the design round: „Also, ich denke, die Seite Barbarossa Regesten passt jetzt zu und ist damit abgenommen.“ On the published bilingual site he wrote the same day: „passt so“.
 
-Follows: the site as built on 2026-11-18, in German and English, is accepted for the guest unit of 20 November 2026; the entries above that end with „not seen by him“ are covered by it. Not covered: his remark on the Personen network („noch sehr schwach … Was ist jetzt der Mehrwert?“), settled by his decision of the same day to keep the page as built (journal). His feedback of that day on Atlas, Regesten and Zeitband stands in the journal entries and is not copied here. Status: accepted (journal, Operator acceptance of the site; Operator acceptance of the bilingual site).
+Follows: the site as built on 2026-11-18, in German and English, is accepted for the guest unit of 20 November 2026; the entries above that end with „not seen by him“ are covered by it. Not covered: his remark on the Personen network, settled by his decision of the same day to keep the page as built (entry above). Status: accepted (journal, Operator acceptance of the site; Operator acceptance of the bilingual site).

@@ -93,8 +93,10 @@ These are judgements, decisions of direction or matters outside the repository. 
 9. Commands. AGENTS.md runs three build scripts with plain `python`, outside the locked environment.
 10. Pipeline. `run.py prepare` passes no LLM; the sender of an embassy has no role in the vocabulary.
 11. Delivery, for Regesta Imperii: ten regesta without regest text (RI IV,2,1 n. 107; IV,2,2 n. 622 and n. 1094; IV,2,3 n. 2047a, n. 2058a and n. 2495a; IV,2,4 n. 2740, n. 3048, n. 3198a and n. 3294), the place string „Würzburg-1150 Juli 30, -“ of RI IV,2,1 n. 49, the book-page link of RI IV,2,1 n. 135 without a page number, and the three reversed date ranges already known.
-12. Documents left as they are: the operator's feedback of 2026-11-18 on Atlas, Regesten, Zeitband and the Personen network is missing from ui-feedback.md and stands only in the journal; two journal entries link the removed section `data.md#review-sheet`; user-stories.md names the specification of `regesta-rdf-demo` as authority.
+12. Documents left as they are: two journal entries link the removed section `data.md#review-sheet`; user-stories.md names the specification of `regesta-rdf-demo` as authority.
 13. Smaller interface findings, not changed: the regest card at `ansicht/#/regest/<uid>` has two `h1`, and an unknown address of the views app shows its message without a heading.
+
+The operator's feedback of 2026-11-18 on Atlas, Regesten, Zeitband, the start page and the Personen network, first listed under point 12 as missing from ui-feedback.md, was entered there on his word after the review, in the wording the journal and design.md keep.
 
 ## What the review did not check
 

@@ -24,7 +24,7 @@ updated: 2026-11-18
   - AGENTS.md runs `build_site.py`, `build_realm.py` and `build_basemap.py` with plain `python`, outside `uv.lock`.
   - `run.py prepare` passes no LLM, so a new run would record the default of `prepare_pilot.py`; the sender of an embassy has no role in the vocabulary (both from the dry run of 2026-11-17, never listed here).
   - To the Regesta Imperii delivery: ten regesta without regest text, the place string „Würzburg-1150 Juli 30, -“ of RI IV,2,1 n. 49, and the book-page link of RI IV,2,1 n. 135 without a page number.
-  - ui-feedback.md lacks the operator's feedback of 2026-11-18 on Atlas, Regesten and Zeitband, which stands only in the journal entries of that day; two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; user-stories.md still names the specification of `regesta-rdf-demo` as authority.
+  - Two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; user-stories.md still names the specification of `regesta-rdf-demo` as authority.
 - The specification carries five requirements derived from his verdicts as proposals with acceptance criteria; the older list of the first slice stays as history until he adopts them (specification.md).
 - Findings of the fresh reader not yet acted on: the statement „Urteil“ of n. 103a bundles king, witnesses, judge and beneficiary; statements of a forged regest (n. †193) read like facts, the metadata now say „Fälschung“ but the statements carry no mark; the place picker lists register entries that are regions, rivers or a person (Italien, Po).
 - The regest pages exceed the word budget of the work profile by their source text alone (regest, transmission, commentary).
