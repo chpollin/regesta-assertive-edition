@@ -16,6 +16,7 @@ Attribution: Regesta Imperii Online, https://www.regesta-imperii.de, CC BY 4.0. 
 
 ## Other material
 
+- The mark of Digital Humanities Craft in `img/dhcraft-mark-watercolor-128.png` comes from the public repository DigitalHumanitiesCraft/brand-assets (`web/`). Its licence file excludes the mark from the MIT licence of that folder: it stays proprietary to Digital Humanities Craft OG and may be shown on DHCraft sites, which this edition is. It is not covered by CC BY 4.0 or MIT here.
 - Fonts in `fonts/` keep the SIL Open Font License of their authors, with the texts beside them (`*-OFL.txt`).
 - The base map `js/basemap.json` is cut from Natural Earth (public domain). The border in `js/realm.json` is this project's rough trace of W. R. Shepherd's map of 1926, whose scan the Perry-Castañeda Library states as public domain ([knowledge/data.md](knowledge/data.md#empire-about-1190)).
 - The TEI schema `schema/tei_all-4.12.0.rng` is from the TEI Consortium under CC BY and BSD-2, as its header states.

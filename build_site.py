@@ -209,7 +209,7 @@ class Site:
         # representations.
         owner = next((it["key"] for it in self.nav if any(v["key"] == key for v in it.get("views", []))), key)
         nav = "".join(
-            f'<a href="{root}{esc(item["href"])}"{CURRENT if item["key"] == owner else ""}>{esc(item["label"])}</a>'
+            f'<a href="{root}{esc(item["href"])}" data-nav="{esc(item["key"])}"{CURRENT if item["key"] == owner else ""}>{esc(item["label"])}</a>'
             for item in self.nav
         )
         css = [f"{root}css/tokens.css", f"{root}css/shell.css"]
@@ -217,14 +217,11 @@ class Site:
             css += [f"{root}ansicht/css/{name}" for name in ("app.css", "space.css", "views.css", "frame.css")]
         css.append(f"{root}css/pages.css")
         links = "\n".join(f'  <link rel="stylesheet" href="{href}">' for href in css)
-        full_title = title if key == "atlas" else f"{title} | {self.texts['title']}"
+        full_title = title if key == "start" else f"{title} | {self.texts['title']}"
         meta = f'  <meta name="description" content="{esc(description)}">\n' if description else ""
         if self.preview:
             meta += f"  {PREVIEW_META}\n"
-        footer = (
-            f'<footer class="site-footer"><p>{esc(self.texts["licenceLine"])}</p>'
-            f'<a href="{root}ueber/">Über die Edition</a></footer>'
-        )
+        footer = footer_html(self.texts, root)
         doc = f"""<!doctype html>
 <html lang="de" class="no-js" data-root="{root}">
 <head>
@@ -236,7 +233,7 @@ class Site:
 </head>
 <body data-page="{kind}" data-layout="page">
 <a class="skip" href="#main">Zum Inhalt</a>
-<header class="site-header"><a class="site-title" href="{root or "./"}">{esc(self.texts["title"])} <span class="site-tag">{esc(self.texts["tag"])}</span></a><nav class="site-nav" aria-label="Edition">{nav}</nav>{header_extra}</header>
+<header class="site-header"><a class="site-title" href="{root or "./"}">{esc(self.texts["title"])} <span class="site-tag">{esc(self.texts["tag"])}</span></a><nav class="site-nav" aria-label="Edition">{nav}</nav>{JUMP}{github_link(self.texts)}{header_extra}</header>
 <div class="site-body"><main class="site-main" id="main">
 {main}
 </main></div>
@@ -248,6 +245,49 @@ class Site:
 
 
 # Shared fragments
+
+# The jump by RI number in the header of every page (js/edition/jump.js); hidden until the
+# script runs, since it needs the data of the views.
+JUMP = (
+    '<form class="jump" id="jump" hidden><label for="jump-n" class="visually-hidden">Regest nach RI-Nummer</label>'
+    '<input id="jump-n" name="n" type="search" autocomplete="off" placeholder="RI-Nummer" size="10">'
+    '<button type="submit">Öffnen</button><span class="jump-msg" role="status"></span></form>'
+)
+# The GitHub mark of Primer Octicons (MIT); the repository is private until the operator
+# changes its visibility.
+GITHUB_PATH = (
+    "M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 "
+    "0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 "
+    "0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 "
+    "1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55"
+    "-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 "
+    "1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
+)
+
+
+def github_link(texts: dict, cls: str = "site-github") -> str:
+    repo = texts["repository"]
+    return (
+        f'<a class="{cls}" href="{esc(repo)}" rel="noopener" aria-label="Quellcode auf GitHub" title="Quellcode auf GitHub">'
+        f'<svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="{GITHUB_PATH}"/></svg></a>'
+    )
+
+
+def footer_html(texts: dict, root: str) -> str:
+    """One footer for every page: the maker with the mark, the Promptotyping experiment, the
+    licences with the short attribution of Regesta Imperii and the way to the full one, the
+    repository and the imprint (operator, 2026-11-18). index.html of the views app carries the
+    same markup with root ../, kept in step by checks/test_site.py."""
+    maker = texts["maker"]
+    return (
+        '<footer class="site-footer">'
+        f'<a class="footer-maker" href="{esc(maker["url"])}" rel="noopener">'
+        f'<img src="{root}img/dhcraft-mark-watercolor-128.png" alt="" width="20" height="23">{esc(maker["name"])}</a>'
+        f'<a href="{esc(maker["promptotyping"])}" rel="noopener">Ein Promptotyping-Experiment</a>'
+        f'<p class="footer-licence">{esc(texts["licenceLine"])} <a href="{root}ueber/#lizenz">Namensnennung</a></p>'
+        f'<span class="footer-end">{github_link(texts, "footer-github")}<a href="{root}ueber/#impressum">Impressum</a></span>'
+        "</footer>"
+    )
 
 
 def segments_html(segments: list[dict], site: Site, root: str) -> str:
@@ -299,35 +339,143 @@ def marked_text(regest: dict) -> str:
 # Pages
 
 
-def start_page(site: Site) -> None:
-    """The Atlas, start page and place view in one (knowledge/interface-plan.md, part 1):
-    js/edition/start.js mounts ansicht/js/atlas.js into #figure; the jump by RI number stands
-    in the header. Without JavaScript the page says what it shows and leads to the list."""
-    t = site.texts
+def atlas_page(site: Site) -> None:
+    """The Atlas (knowledge/interface-plan.md, part 1) at atlas/ since 2026-11-18, when the start
+    page became the entry to the whole edition: js/edition/atlas.js mounts ansicht/js/atlas.js
+    into #figure. Without JavaScript the page says what it shows and leads to the list."""
     fallback = (
         '<p class="figure-fallback">Hier stehen Orte und Jahre der Regesten als Raum-Zeit-Würfel. '
-        'Die Übersicht braucht JavaScript, die <a href="regesten/">Liste der Regesten</a> nicht.</p>'
+        'Die Übersicht braucht JavaScript, die <a href="../regesten/">Liste der Regesten</a> nicht.</p>'
     )
     # The figure is the page, one window high (operator, 2026-11-14: „Man soll nicht
-    # runterscrollen können“); the subtitle line and the worked case left it with the plan of
-    # 2026-11-17 (no prose in the view). The h1 stays for screen readers.
-    main = f"""<h1 class="visually-hidden">{esc(t["title"])}. {esc(t["subtitle"])}</h1>
+    # runterscrollen können“). The h1 stays for screen readers.
+    main = f"""<h1 class="visually-hidden">Atlas: Regesten mit Ausstellungsort in Raum und Zeit</h1>
 <div class="figure" id="figure">{fallback}</div>"""
-    jump = (
-        '<form class="jump" id="jump" hidden><label for="jump-n" class="visually-hidden">Regest nach RI-Nummer</label>'
-        '<input id="jump-n" name="n" type="search" autocomplete="off" placeholder="RI-Nummer" size="10">'
-        '<button type="submit">Öffnen</button><span class="jump-msg" role="status"></span></form>'
+    site.page(path="atlas", key="atlas", kind="atlas", title="Atlas", main=main, views=True)
+
+
+def _thumb_map(holdings: dict, realm: dict | None, basemap: dict | None) -> str:
+    """The Atlas card: the places of issue on a small map of the core, sized by their regesta,
+    over the Empire about 1190 and the coast, as the floor of the cube draws them."""
+    lon0, lon1, lat0, lat1 = 3.5, 17.5, 41.0, 55.5
+    k = 0.66  # cos of about 48.5 degrees north, so the map keeps its proportions
+    w, h = 240, 150
+    sx = w / ((lon1 - lon0) * k)
+    sy = h / (lat1 - lat0)
+    s = min(sx, sy)
+    ox = (w - (lon1 - lon0) * k * s) / 2
+
+    def xy(lon: float, lat: float) -> str:
+        return f"{ox + (lon - lon0) * k * s:.1f},{(lat1 - lat) * s:.1f}"
+
+    def inside(lon: float, lat: float) -> bool:
+        return lon0 <= lon <= lon1 and lat0 <= lat <= lat1
+
+    parts = []
+    if realm:
+        parts.append(f'<polygon class="th-realm" points="{" ".join(xy(lo, la) for lo, la in realm["ring"])}"/>')
+    for line in (basemap or {}).get("coast", []):
+        run = [xy(lo, la) for lo, la in line if inside(lo, la)]
+        if len(run) > 1:
+            parts.append(f'<polyline class="th-coast" points="{" ".join(run)}"/>')
+    places = sorted(holdings["places"].values(), key=lambda pl: pl["n"])
+    for pl in places:
+        if inside(pl["lo"], pl["la"]):
+            x, y = xy(pl["lo"], pl["la"]).split(",")
+            parts.append(f'<circle class="th-dot" cx="{x}" cy="{y}" r="{min(6.0, 1.2 + pl["n"] ** 0.5 * 0.55):.1f}"/>')
+    return f'<svg class="entry-thumb" viewBox="0 0 {w} {h}" aria-hidden="true">{"".join(parts)}</svg>'
+
+
+def _thumb_years(holdings: dict) -> str:
+    """The Regesten card: regesta per year of the whole delivery, the ground of the time band."""
+    years = holdings["years"]
+    lo, hi = years[0][0], years[-1][0]
+    peak = max(c for _, c in years)
+    w, h = 240, 150
+    bw = w / (hi - lo + 1)
+    bars = "".join(
+        f'<rect class="th-bar" x="{(y - lo) * bw:.1f}" y="{h - c / peak * (h - 10):.1f}" width="{max(1.0, bw - 1):.1f}" height="{c / peak * (h - 10):.1f}"/>'
+        for y, c in years
     )
-    site.page(
-        path="",
-        key="atlas",
-        kind="start",
-        title=t["title"],
-        main=main,
-        views=True,
-        description=t["description"],
-        header_extra=jump,
+    return f'<svg class="entry-thumb" viewBox="0 0 {w} {h}" preserveAspectRatio="none" aria-hidden="true">{bars}</svg>'
+
+
+def _thumb_band(holdings: dict) -> str:
+    """The Personen card: the six most named persons as rows of the Zeitband, a square per year."""
+    year_of = {r["u"]: int(r["s"][:4]) for r in holdings["regesta"]}
+    top = sorted(holdings["persons"].values(), key=lambda pr: -len(pr["r"]))[:6]
+    lo, hi = 1146, 1191
+    w, h = 240, 150
+    row = h / len(top)
+    cell = (w - 8) / (hi - lo)
+    parts = []
+    for i, pr in enumerate(top):
+        per: dict[int, int] = defaultdict(int)
+        for u in pr["r"]:
+            if u in year_of and lo <= year_of[u] < hi:
+                per[year_of[u]] += 1
+        y = i * row + row / 2
+        parts.append(f'<rect class="th-span" x="4" y="{y - 1.5:.1f}" width="{w - 8}" height="3" rx="1.5"/>')
+        for yr, n in sorted(per.items()):
+            parts.append(
+                f'<rect class="th-cell is-{min(4, n)}" x="{4 + (yr - lo) * cell:.1f}" y="{y - 5:.1f}" width="{max(1.0, cell - 1):.1f}" height="10" rx="1"/>'
+            )
+    return f'<svg class="entry-thumb" viewBox="0 0 {w} {h}" aria-hidden="true">{"".join(parts)}</svg>'
+
+
+def start_page(site: Site, package: str) -> None:
+    """The start page (operator, 2026-11-18; knowledge/interface-plan.md, Parts): what the edition
+    is, three entries to Atlas, Regesten and Personen with a small figure from each view, the
+    process with its producers, how the edition came about, data and licence in short. The
+    former Atlas addresses of this page (#/atlas, #/itinerar, ?ort= and the other facets)
+    forward to atlas/ (js/edition/start.js)."""
+    t = site.texts
+    data = site.out / "ansicht" / "data"
+    holdings = _load(data / "holdings.json")
+    realm = _load(HERE / "js" / "realm.json") if (HERE / "js" / "realm.json").is_file() else None
+    basemap = _load(HERE / "js" / "basemap.json") if (HERE / "js" / "basemap.json").is_file() else None
+    counts = holdings["counts"]
+    evidenced = sum(1 for r in site.regests if r["claims"] > 0)
+    cards = [
+        (
+            "atlas/",
+            "Atlas",
+            "Wo und wann Friedrichs Urkunden ausgestellt wurden",
+            f"{counts['withIssuePlace']} Regesten mit Ausstellungsort",
+            _thumb_map(holdings, realm, basemap),
+        ),
+        (
+            "regesten/",
+            "Regesten",
+            "Alle Regesten, gefiltert nach Zeit, Ort, Person und Art",
+            f"{counts['regesta']} Regesten, {evidenced} mit Aussagen",
+            _thumb_years(holdings),
+        ),
+        (
+            "ansicht/#/",
+            "Personen",
+            "Belegte Beziehungen als Netz, Nennungen als Zeitband",
+            f"{len(holdings['persons'])} Personen in mindestens drei Regesten",
+            _thumb_band(holdings),
+        ),
+    ]
+    entries = "".join(
+        f'<li><a class="entry-card" href="{href}">{thumb}<span class="entry-title">{esc(title)}</span>'
+        f'<span class="entry-purpose">{esc(purpose)}</span><span class="entry-count">{esc(count)}</span></a></li>'
+        for href, title, purpose, count, thumb in cards
     )
+    maker = t["maker"]
+    main = f"""<h1>{esc(t["title"])}</h1>
+<p class="intro">Die Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, die LLM-Agenten aus dem Regesttext gewonnen haben, jede an ihren Wortlaut gebunden. Daneben stehen alle {counts["regesta"]} Regesten der Lieferung mit Ort und Zeit.</p>
+<ul class="entry-cards" role="list">{entries}</ul>
+<section aria-labelledby="ablauf" class="process"><h2 id="ablauf">Wie die Aussagen entstehen</h2>
+{process_html(site, notes=False)}
+<p><a href="ueber/#methode">Die Schritte im Einzelnen</a></p></section>
+<section aria-labelledby="entstehung" class="start-origin"><h2 id="entstehung">Entstehung</h2>
+<p>Die Edition ist als Lehrbeispiel für die Gasteinheit „Agentic Engineering für Forschungsdatenworkflows“ am 20. November 2026 in der Lehrveranstaltung „Graphbasierte Systeme“ der Technischen Hochschule Mittelhessen entstanden. {esc(maker["name"])} hat sie mit <a href="{esc(maker["promptotyping"])}" rel="noopener">Promptotyping</a> gebaut. LLM-Agenten in Claude Code haben Pipeline, Daten und Oberfläche erzeugt, im Austausch mit einem Menschen, der die Richtung vorgibt und jeden Zwischenstand beurteilt. Die Edition ist ein Experiment, und keine ihrer Aussagen hat bisher eine Person fachlich geprüft.</p></section>
+<section aria-labelledby="daten-kurz" class="start-files"><h2 id="daten-kurz">Daten und Lizenz</h2>
+<p><a href="daten/{esc(package)}" download>Alle Regesten der Edition als Paket</a> mit Turtle, TEI und JSON. Texte und Daten <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, Code <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>. Regesten und Register stammen aus <a href="{esc(t["source"]["url"])}" rel="noopener">Regesta Imperii Online</a> und sind bearbeitet. Die Aussagen sind Ergebnisse dieses Projekts und keine Aussagen der Regesta Imperii. <a href="ueber/#methode">Methode</a>, <a href="ueber/#daten">Daten</a> und die vollständige Namensnennung stehen unter <a href="ueber/">Über die Edition</a>.</p></section>"""
+    site.page(path="", key="start", kind="start", title=t["title"], main=main, description=t["description"])
 
 
 def status_marks(regest: dict) -> str:
@@ -782,12 +930,10 @@ def producer_sign(kind: str) -> str:
     )
 
 
-def about_page(site: Site, package: str) -> None:
-    """Über (knowledge/interface-plan.md, part 4): two sentences, a process graphic of the steps
-    of knowledge/pipeline.md with a mark for the producer of each (script, LLM agent, person),
-    and downloads and licence as a short block below. The anchors #methode and #daten stay, since
-    the former pages methode/ and daten/ forward to them."""
-    t = site.texts
+def process_html(site: Site, notes: bool) -> str:
+    """The steps of knowledge/pipeline.md with the producer of each (script, LLM agent, person),
+    shared by the start page and Über. notes False reads the note of a step out only (density
+    limits of the page profile, 2026-11-18); the open human check says „steht aus“ on screen."""
     m = site.manifest
     # The steps of the pipeline (knowledge/pipeline.md, The eight steps and Responsibilities) and
     # of the edition build, merged where one producer does two steps in a row; the agentic
@@ -806,24 +952,34 @@ def about_page(site: Site, package: str) -> None:
         f'<li class="step is-{kind}{" is-open" if kind == "person" else ""}">'
         f'<span class="step-mark" title="{PRODUCERS[kind][0]}">{producer_sign(kind)}'
         f'<span class="visually-hidden">{PRODUCERS[kind][0]}:</span></span>'
-        # The note of a step is read out; on screen only the open human check says „steht aus“
-        # (density limits of the page profile, 2026-11-18).
-        f'<span class="step-title">{esc(title)}</span> <span class="step-note{"" if kind == "person" else " visually-hidden"}">{esc(note)}</span></li>'
+        f'<span class="step-title">{esc(title)}</span> <span class="step-note{"" if notes or kind == "person" else " visually-hidden"}">{esc(note)}</span></li>'
         for title, kind, note in steps
     )
     key = "".join(
         f'<li><span class="step-mark is-{k}">{producer_sign(k)}</span>{esc(label)}</li>'
         for k, (label, _) in PRODUCERS.items()
     )
+    return (
+        f'<ol class="steps{" has-notes" if notes else ""}" role="list">{items}</ol>'
+        f'<ul class="step-key" role="list" aria-label="Wer einen Schritt ausführt">{key}</ul>'
+    )
+
+
+def about_page(site: Site, package: str) -> None:
+    """Über, the detailed page the start page links to (since 2026-11-18): the steps with their
+    notes, the data with the full attribution of Regesta Imperii, the mark of Digital
+    Humanities Craft and the imprint. What the edition is and how it came about stands on the
+    start page only. The anchors #methode and #daten stay, since methode/ and daten/ forward."""
+    t = site.texts
     src = t["source"]
     main = f"""<h1>Über die Edition</h1>
-<p class="intro">Diese Edition legt über die Regesten Friedrich Barbarossas aus den Regesta Imperii eine Schicht von Aussagen, die LLM-basierte Agenten aus dem Regesttext gewonnen haben, jede an ihren Wortlaut gebunden. Sie ist ein Experiment: Skripte und Agenten haben die Aussagen geprüft, noch kein Mensch, und sie sind keine Aussagen der Regesta Imperii.</p>
-<section aria-labelledby="methode" class="process"><h2 id="methode" class="visually-hidden">Wie die Aussagen entstehen</h2>
-<ol class="steps" role="list">{items}</ol>
-<ul class="step-key" role="list" aria-label="Wer einen Schritt ausführt">{key}</ul></section>
+<section aria-labelledby="methode" class="process"><h2 id="methode">Wie die Aussagen entstehen</h2>
+{process_html(site, notes=True)}</section>
 <section aria-labelledby="daten" class="about-files"><h2 id="daten">Daten und Lizenz</h2>
-<p><a href="../daten/{esc(package)}" download>Alle Regesten als Paket</a> (Turtle, die maßgebliche Fassung der Aussagen; TEI, gegen tei_all geprüft; JSON); jede Regestseite bietet ihre drei Dateien. Texte und Daten <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, Code <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>, Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}. Quelle: <a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a>, <a href="{esc(src["lab"])}" rel="noopener">RI Lab</a>.</p>
+<p><a href="../daten/{esc(package)}" download>Alle Regesten als Paket</a> (Turtle, die maßgebliche Fassung der Aussagen; TEI, gegen tei_all geprüft; JSON); jede Regestseite bietet ihre drei Dateien. Texte und Daten <a href="{esc(t["licences"]["data"]["url"])}" rel="noopener">CC BY 4.0</a>, Code <a href="{esc(t["licences"]["code"]["url"])}" rel="noopener">MIT</a>, Fassung {esc(t["release"]["version"])} vom {esc(t["release"]["date"])}. Quelle: <a href="{esc(src["url"])}" rel="noopener">Regesta Imperii Online</a>, <a href="{esc(src["lab"])}" rel="noopener">RI Lab</a>. Der Quellcode liegt auf <a href="{esc(t["repository"])}" rel="noopener">GitHub</a>.</p>
 <p id="lizenz" class="about-attribution">{esc(t["attribution"])}</p>
+<p class="about-attribution">{esc(t["markNote"])}</p></section>
+<section aria-labelledby="impressum"><h2 id="impressum">Impressum</h2>
 <p class="placeholder">{esc(t["imprint"])}</p></section>"""
     site.page(path="ueber", key="ueber", kind="text", title="Über die Edition", main=main)
 
@@ -840,7 +996,8 @@ def write_files(site: Site, stage: str) -> str:
         f"# Lauf {site.run_id}, Stand {stage}. {t['modification']}\n"
     )
     licence = (
-        f"{t['title']}\n{t['subtitle']}\n\n{t['licenceLine']}\n\n{t['attribution']}\n\n{t['licences']['data']['url']}\n"
+        f"{t['title']}\n{t['subtitle']}\n\n{t['licenceLine']}\n\n{t['attribution']}\n\n{t['licences']['data']['url']}\n\n"
+        f"{t['markNote']}\n"
     )
     _write(site.out / "LICENSE-DATA.txt", licence)
     for r in site.regests:
@@ -878,6 +1035,7 @@ def copy_assets(site: Site, edition_json: Path, questions_json: Path) -> None:
     # The address helper the static pages import as ../url.js, as the views app does.
     _copy(HERE / "js" / "url.js", out / "js" / "url.js")
     _copytree(HERE / "fonts", out / "fonts")
+    _copytree(HERE / "img", out / "img")
     app = out / "ansicht"
     _copy(HERE / "index.html", app / "index.html")
     _copytree(HERE / "js", app / "js", ignore=shutil.ignore_patterns("edition"))
@@ -953,7 +1111,8 @@ def build(source: Path, run_id: str, out: Path, preview: bool = False) -> None:
         site = Site(source, run_id, out, _load(rev / "edition.json"), _load(ext / "edition.json"), preview=preview)
         copy_assets(site, rev / "edition.json", rev / "questions.json")
     package = write_files(site, "revised")
-    start_page(site)
+    start_page(site, package)
+    atlas_page(site)
     regest_list_page(site)
     for i in range(len(site.regests)):
         regest_page(site, i)

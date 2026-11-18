@@ -130,14 +130,14 @@ const ROUTES = {
 
 /**
  * Forward a former place address (#/itinerar[/<place>], #/jahrzehnte[/<place>]) to the Atlas,
- * replacing the history entry: in the curated build to the start page, which is the Atlas, in
- * the repository to #/atlas of this app. The Atlas address in the build forwards the same way.
+ * replacing the history entry: in the curated build to the Atlas page atlas/ (the start page
+ * until 2026-11-18), in the repository to #/atlas of this app. The Atlas address in the build forwards the same way.
  */
 function forwardToAtlas(view, rest) {
   const target = atlasAddress(view, idOf(rest), location.search);
   // In the build the Atlas address of this app keeps its own representation and regest.
   const hash = view === "atlas" ? location.hash : target.hash;
-  location.replace(`${inBuild ? "../" : location.pathname}${target.search}${hash}`);
+  location.replace(`${inBuild ? "../atlas/" : location.pathname}${target.search}${hash}`);
   return true;
 }
 

@@ -24,10 +24,6 @@
   /* Start */
   .figure { margin-block: 1rem 1.5rem; min-block-size: 4rem; }
   .figure-fallback { color: var(--muted); max-inline-size: 72ch; }
-  .jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-  .jump input { font: inherit; padding: 0.25rem 0.5rem; border: 1px solid var(--edge); border-radius: 2px; background: var(--stage); color: var(--text); }
-  .jump button { font: inherit; padding: 0.25rem 0.75rem; border: 1px solid var(--text); border-radius: 2px; background: var(--stage); color: var(--text); cursor: pointer; }
-  .jump-msg { color: var(--muted); }
 
   /* Tables of regesta and persons */
   .table-wrap { overflow-x: auto; max-inline-size: 100%; }
@@ -98,6 +94,34 @@
     .step { grid-template-columns: 1.8rem minmax(0, 1fr); column-gap: 0.75rem; }
     .step-mark { grid-row: 1 / span 2; }
   }
+  .steps.has-notes .step-note { margin-block-start: 0.15rem; }
+
+  /* Start page (2026-11-18): three entries with a small figure of their view, then the process,
+     how the edition came about, data and licence. */
+  body[data-page="start"] .site-main { max-inline-size: 76rem; }
+  .entry-cards { list-style: none; margin: 1.75rem 0 0.5rem; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+  .entry-card { display: grid; align-content: start; gap: var(--space-1); block-size: 100%; padding: var(--space-3) var(--space-4) var(--space-4); border: 1px solid var(--hairline); border-radius: var(--radius); color: var(--text); text-decoration: none; }
+  .site-main a.entry-card { color: var(--text); text-decoration: none; }
+  .entry-card:hover { border-color: var(--edge); }
+  .entry-card:hover .entry-title { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .entry-thumb { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 8 / 5; margin-block-end: var(--space-2); background: var(--side); border-radius: var(--radius); }
+  .entry-title { font-size: var(--step-1); font-weight: 600; }
+  .entry-purpose { line-height: 1.45; }
+  .entry-count { color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+  .th-realm { fill: var(--map-realm); }
+  .th-coast { fill: none; stroke: var(--map-coast); stroke-width: 0.8; }
+  .th-dot { fill: var(--muted); fill-opacity: 0.55; }
+  .th-bar { fill: var(--edge); }
+  .th-span { fill: var(--bars); }
+  .th-cell { fill: var(--muted); fill-opacity: 0.85; }
+  .th-cell.is-1 { fill-opacity: 0.35; }
+  .th-cell.is-2 { fill-opacity: 0.55; }
+  .th-cell.is-3 { fill-opacity: 0.75; }
+  .start-origin p, .start-files p { max-inline-size: 72ch; }
+  @media (max-width: 48rem) {
+    .entry-cards { grid-template-columns: minmax(0, 1fr); }
+    .entry-thumb { aspect-ratio: 8 / 3; }
+  }
   .about-files { max-inline-size: 72ch; font-size: var(--step--1); }
   .about-files h2 { margin-block-start: 0; }
   .about-attribution { color: var(--muted); }
@@ -110,10 +134,6 @@
   /* Skip link and footer of the static pages. */
   .skip { position: absolute; inset-inline-start: -999rem; }
   .skip:focus { inset-inline-start: 0.5rem; inset-block-start: 0.5rem; background: var(--stage); padding: 0.5rem; z-index: 6; }
-  /* The footer: one quiet line, licence on the left, the page about the edition on the right. */
-  .site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1.5rem; max-inline-size: 76rem; margin-inline: auto; padding: 0.75rem 1.5rem 1.25rem; border-block-start: 1px solid var(--hairline); color: var(--muted); font-size: var(--step--1); }
-  .site-footer p { margin: 0; }
-  .site-footer a { color: inherit; text-decoration-color: var(--accent); }
 
   /* Filter row of the lists: search and the eight family switches with sign and word; the
      switches are the legend of the signs in the rows (rule 7). */
@@ -126,31 +146,19 @@
   .fams { display: inline-flex; gap: 4px; vertical-align: -0.15em; color: var(--muted); margin-inline-end: var(--space-2); }
   .list tr.group th { padding-block: var(--space-4) var(--space-1); font-weight: 600; color: var(--muted); border-block-end: 1px solid var(--hairline); }
 
-  /* Start page and regest list: a view (css/frame.css) is the page, one window high under the
-     header; at narrow widths the page scrolls, the main element first. The jump by RI number
-     in the header of the start page. */
-  body:is([data-page="start"], [data-view="regesten"]) .site-main { max-inline-size: none; padding: 0; }
-  body:is([data-page="start"], [data-view="regesten"]) .site-footer { display: none; }
+  /* Atlas and regest list: a view (css/frame.css) is the page, one window high between header
+     and footer; at narrow widths the page scrolls, the main element first. */
+  body:is([data-page="atlas"], [data-view="regesten"]) .site-main { max-inline-size: none; padding: 0; }
   .figure:is(.is-atlas, .is-view) { margin: 0; min-block-size: 0; }
   /* A view is a component, not page prose: no paragraph margins of the content pages. */
   .figure:is(.is-atlas, .is-view) p { margin: 0; }
   /* The opened card takes the focus for screen readers; the page's focus ring would frame it whole. */
   .figure:is(.is-atlas, .is-view) .regest-card:focus-visible { outline: none; }
-  .site-nav { margin-inline-start: auto; }
-  .site-header .jump { display: inline-flex; align-items: center; gap: var(--space-1); margin: 0; font-size: var(--step--1); }
-  .site-header .jump input { inline-size: 8.5rem; padding: 2px var(--space-2); }
-  .site-header .jump button { padding: 2px var(--space-2); border-color: var(--edge); }
-  .site-header .jump-msg:empty { display: none; }
-  /* On a phone the header keeps title and objects in two rows; the result list of the Atlas
-     leads to a regest there, so the jump steps aside. */
-  @media (max-width: 40rem) {
-    .site-header .jump { display: none; }
-  }
   @media (min-width: 56.01rem) {
-    html:has(body:is([data-page="start"], [data-view="regesten"])) { overflow: hidden; }
-    body:is([data-page="start"], [data-view="regesten"]) { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
-    body:is([data-page="start"], [data-view="regesten"]) :is(.site-body, .site-main) { min-block-size: 0; }
-    body:is([data-page="start"], [data-view="regesten"]) .site-main { display: grid; grid-template-rows: minmax(0, 1fr); }
+    html:has(body:is([data-page="atlas"], [data-view="regesten"])) { overflow: hidden; }
+    body:is([data-page="atlas"], [data-view="regesten"]) { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; block-size: 100dvh; overflow: hidden; }
+    body:is([data-page="atlas"], [data-view="regesten"]) :is(.site-body, .site-main) { min-block-size: 0; }
+    body:is([data-page="atlas"], [data-view="regesten"]) .site-main { display: grid; grid-template-rows: minmax(0, 1fr); }
     .figure:is(.is-atlas, .is-view) { block-size: 100%; }
   }
   /* Narrow: the regest list keeps number, date and the kinds of statements; the place stands

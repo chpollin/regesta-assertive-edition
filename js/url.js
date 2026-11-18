@@ -39,7 +39,8 @@ export function carryFilters() {
     "click",
     (event) => {
       const link = event.target instanceof Element ? event.target.closest(".site-nav a, a.seg, .view-switch a") : null;
-      if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
+      // The start page takes no facets: it would forward them to the Atlas (js/edition/start.js).
+      if (!link || link.dataset.nav === "start" || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
       const here = new URLSearchParams(location.search);
       const url = new URL(link.getAttribute("href"), location.href);
       if (url.origin !== location.origin || FILTER_KEYS.some((k) => url.searchParams.has(k))) return;

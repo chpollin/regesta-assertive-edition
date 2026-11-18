@@ -25,12 +25,13 @@ The plan for rebuilding the whole interface. The operator accepted it on 2026-11
 
 ## Parts
 
-Four objects in the header, each with one question.
+A start page and four objects in the header, each with one question. The start page was added before the Atlas on the operator's decision of 2026-11-18 („eine Startseite, die alles zur Edition zusammenführt“, relayed by the main session): what the edition is, three entry cards to Atlas, Regesten and Personen with a small figure of their view, the process with its producers, how the edition came about (teaching example for the guest unit at Technische Hochschule Mittelhessen, Promptotyping by Digital Humanities Craft), data and licence in short. The Atlas moved to `atlas/`; the start page forwards its former Atlas addresses there. One header (title, Start, Atlas, Regesten, Personen, Über, the jump by RI number, the repository) and one footer (Digital Humanities Craft with its mark, „Ein Promptotyping-Experiment“, licences with the short attribution, repository, imprint) on every page.
 
-1. Atlas (start and places in one). Where and when were charters issued, and which regesta belong to it? Main element: the space-time cube on the full area; decades is a representation mode of the cube, beside oblique, map and time.
+0. Start. What is this edition, how did it come about, and where do I begin? Main element: the three entry cards.
+1. Atlas (places in space and time, at `atlas/` since 2026-11-18). Where and when were charters issued, and which regesta belong to it? Main element: the space-time cube on the full area; decades is a representation mode of the cube, beside oblique, map and time.
 2. Regesten. Which regesta match my selection, and what does one say? Main element: the list of the whole delivery, run regesta marked; the regest page is the detail.
 3. Personen. With whom does a person stand in an attested relation, and when is the person named? Main element: the circle around the person (Netz); second representation: Zeitband.
-4. Über. What is this edition and how do its statements come about? Main element: a process graphic of the steps with a mark for the producer of each (script, LLM agent, person), under two sentences.
+4. Über. How do the statements come about in detail, and under which terms are the data used? Main element: the process graphic with the note of each step; then data, the full attribution and the imprint. What the edition is and how it came about stand on the start page only (2026-11-18).
 
 Subpages: the regest page and the person page, both citable.
 

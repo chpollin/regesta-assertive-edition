@@ -75,7 +75,7 @@ The interface is checked on the rendered state: `node tools/check_ui_density.cjs
 - `build_data.py` run data into `data/edition.json` and `data/questions.json`; `build_holdings.py` the whole delivery into `data/holdings*.json`; `check_itinerary.py` into `data/itinerary-checks.json`; `build_basemap.py` into `js/basemap.json`
 - `prepare_agent_review.py` the reader input of the agent review from the run's revised Turtle; `build_agent_review.py` joins the two readers into `edition/agent-review-2026-11-14.json`, read by `build_site.py --preview` (knowledge/data.md, Agent review)
 - `build_realm.py` the Empire about 1190 from the trace `edition/realm-1190-trace.json` into `js/realm.json`; `publish_site.py` the publication on `gh-pages`
-- `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`
+- `index.html`, `css/`, `js/*.js` the no-build views (native ES modules); routes in `js/app.js`, navigation in `js/nav.json`; `img/` the vendored mark of Digital Humanities Craft for the footer (LICENSE-DATA.md)
 - `build_tei.py` TEI per regest by rule; `schema/tei_all-4.12.0.rng` the vendored TEI schema
 - `build_site.py` curated static edition site into `site/`; `edition/texts.json` title, definition, licence and attribution; `js/edition/` its content pages
 - `checks/` contract tests, the transfer checks `test_pipeline.py`, the graph checks `test_graph.py`, the export checks `test_export.py` and the CSV reader check `test_edition_io.py`

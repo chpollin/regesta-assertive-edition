@@ -61,12 +61,35 @@ class SiteBuild(unittest.TestCase):
                 para = re.search(r'<p class="regest-text">(.*?)</p>', doc, re.S).group(1)
                 self.assertEqual(html.unescape(re.sub(r"<[^>]+>", "", para)), r["text"], s)
             self.assertFalse(any("knowledge" in p.parts for p in out.rglob("*")))
-            # The Atlas is the start page: its header marks Atlas as current and it loads the
-            # module that mounts ansicht/js/atlas.js (knowledge/interface-plan.md, step 1).
+            # The start page is the entry to the edition, the Atlas lives at atlas/ and loads the
+            # module that mounts ansicht/js/atlas.js (knowledge/interface-plan.md, Parts).
             start = (out / "index.html").read_text(encoding="utf-8")
-            self.assertRegex(start, r'<a href="\./" aria-current="page">Atlas</a>')
+            self.assertRegex(start, r'<a href="\./" data-nav="start" aria-current="page">Start</a>')
             self.assertIn('data-page="start"', start)
+            self.assertEqual(start.count('class="entry-card"'), 3)
+            atlas = (out / "atlas" / "index.html").read_text(encoding="utf-8")
+            self.assertRegex(atlas, r'<a href="\.\./atlas/" data-nav="atlas" aria-current="page">Atlas</a>')
+            self.assertIn('data-page="atlas"', atlas)
             self.assertTrue((out / "ansicht" / "js" / "atlas.js").is_file())
+            self.assertTrue((out / "img" / "dhcraft-mark-watercolor-128.png").is_file())
+            # One header and one footer on every page: the jump, the repository, the maker. The
+            # forwarding stubs of former addresses (methode/, daten/) leave at once and carry none.
+            for page in content:
+                doc = page.read_text(encoding="utf-8")
+                if 'http-equiv="refresh"' in doc:
+                    continue
+                for needle in (
+                    'id="jump"',
+                    'class="site-github"',
+                    'class="site-footer"',
+                    "Ein Promptotyping-Experiment",
+                ):
+                    self.assertIn(needle, doc, page.relative_to(out).as_posix())
+            # The views app carries the same footer and header parts as the static pages.
+            app_page = (ROOT / "index.html").read_text(encoding="utf-8")
+            self.assertIn(build_site.footer_html(texts, "../"), app_page)
+            self.assertIn(build_site.JUMP, app_page)
+            self.assertIn(build_site.github_link(texts), app_page)
 
 
 class AtlasRoutes(unittest.TestCase):
@@ -78,11 +101,15 @@ class AtlasRoutes(unittest.TestCase):
         for old in ("itinerar", "jahrzehnte"):
             self.assertRegex(app, rf"\b{old}: \{{[^\n]*forwardToAtlas\(\"{old}\"")
         nav = json.loads((ROOT / "js" / "nav.json").read_text(encoding="utf-8"))["items"]
-        self.assertEqual([it["key"] for it in nav], ["atlas", "regesten", "personen", "ueber"])
-        # The start page rewrites #/itinerar/<place> of earlier links to the Atlas address.
+        self.assertEqual([it["key"] for it in nav], ["start", "atlas", "regesten", "personen", "ueber"])
+        # The start page forwards the Atlas addresses of earlier links to atlas/, which rewrites
+        # #/itinerar/<place> into the Atlas address.
         start = (ROOT / "js" / "edition" / "start.js").read_text(encoding="utf-8")
-        self.assertIn("atlasAddress", start)
-        self.assertRegex(start, r"itinerar\|jahrzehnte")
+        self.assertIn("atlas/", start)
+        self.assertRegex(start, r"atlas\|itinerar\|jahrzehnte")
+        atlas = (ROOT / "js" / "edition" / "atlas.js").read_text(encoding="utf-8")
+        self.assertIn("atlasAddress", atlas)
+        self.assertRegex(atlas, r"itinerar\|jahrzehnte")
 
 
 class RegestenAndPersonen(unittest.TestCase):

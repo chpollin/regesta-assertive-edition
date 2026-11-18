@@ -46,11 +46,36 @@
   /* Base weight of names in drawings and lists; stronger states in the components layer win. */
   .sp-label, .n-label, .act-name { font-weight: var(--label-weight); }
   .site-nav a[aria-current="page"] { color: var(--text); font-weight: 600; border-block-end-color: var(--accent); }
+  /* One header for every page (2026-11-18): title, objects, the jump by RI number, the
+     repository; one footer: maker, experiment, licences, repository, imprint. */
+  .site-nav { margin-inline-start: auto; }
+  .site-header .jump { display: inline-flex; align-items: center; gap: var(--space-1); margin: 0; font-size: var(--step--1); }
+  .site-header .jump input { inline-size: 8.5rem; padding: 2px var(--space-2); font: inherit; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--stage); color: var(--text); }
+  .site-header .jump button { padding: 2px var(--space-2); font: inherit; border: 1px solid var(--edge); border-radius: var(--radius); background: var(--stage); color: var(--text); cursor: pointer; }
+  .site-header .jump-msg { color: var(--muted); }
+  .site-header .jump-msg:empty { display: none; }
+  .site-github, .footer-github { display: inline-grid; place-items: center; color: var(--muted); }
+  .site-github { inline-size: 1.75rem; block-size: 1.75rem; }
+  .site-github:hover, .footer-github:hover { color: var(--text); }
+  .site-footer { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-5); padding: var(--space-2) var(--space-4); border-block-start: 1px solid var(--hairline); background: var(--stage); color: var(--muted); font-size: var(--step--1); }
+  .site-footer p { margin: 0; }
+  .site-footer a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+  .footer-maker { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--text) !important; font-weight: 600; text-decoration: none; }
+  .footer-maker:hover { text-decoration: underline; }
+  .footer-maker img { display: block; inline-size: 20px; block-size: auto; }
+  .footer-licence { flex: 1 1 24rem; }
+  .footer-end { display: inline-flex; align-items: center; gap: var(--space-3); }
+  @media (max-width: 40rem) {
+    .site-header .jump { display: none; }
+    /* The repository mark stays on the title's line, the objects take the second. */
+    .site-github { order: 1; }
+    .site-nav { order: 2; }
+  }
 
   /* Views: drawing area and sidebar fill the window below the header. */
   .site-body { display: grid; grid-template-columns: minmax(0, 1fr); }
   /* A view is exactly one window high: header, then drawing area and sidebar. */
-  body[data-layout="view"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
+  body[data-layout="view"] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; block-size: 100dvh; overflow: hidden; }
   /* Shneiderman: filters on the left, the drawing in the middle, the detail on the right
      only while something is selected. */
   body[data-layout="view"] .site-body { grid-template-columns: var(--aside-width) minmax(0, 1fr); min-block-size: 0; }
@@ -59,7 +84,7 @@
   body[data-layout="view"] .site-main { padding: 0; overflow: hidden; }
   body[data-layout="page"] .site-main { padding: var(--space-6) var(--space-5) var(--space-7); max-inline-size: 104rem; margin-inline: auto; inline-size: 100%; }
   /* A view with its own bar and detail (the Atlas, css/atlas.css) fills the window alone. */
-  body[data-layout="full"] { display: grid; grid-template-rows: auto minmax(0, 1fr); block-size: 100dvh; overflow: hidden; }
+  body[data-layout="full"] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; block-size: 100dvh; overflow: hidden; }
   body[data-layout="full"] .site-body { min-block-size: 0; }
   body[data-layout="full"] .site-main { padding: 0; overflow: hidden; min-block-size: 0; }
   .site-main:focus { outline: none; }
