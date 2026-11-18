@@ -10,9 +10,9 @@ updated: 2026-11-18
 
 ## Open
 
-- English version (2026-11-18, local preview, not yet seen by the operator): his decision on the English names of the Academy and the Commission in the attribution (glossary.md, Not decided here), and whether the short German statement labels of the agents are to be translated later. The density check and a fresh reader of the English pages have not run.
-- Not yet seen by the operator: the start page with Über merged into it (bc62bf2) and the regest page in three columns with the footer at the bottom (f5eb35a), both of 2026-11-18 in the local preview. Findings of the fresh reader of these pages not acted on: the head actions stand far from the number at 2000 px; the notes column carries no producer label of its own (the popover of „ungeprüft“ names it); „Bestimmung“ and the bracketed qualifiers are not explained on the page; the broken glyph in „H?rnunge“ of n. 94 comes from the delivered text; terms of the start page such as „Lieferung“, „Pakete“ and „Prüfstände“.
-- The operator accepted the site on 2026-11-18 after the design round (journal entry of that day). Still open on the interface: his answer on replacing the Personen network overview by the ego view with a person list (proposed on 2026-11-18, not built), the density overshoots recorded in the acceptance check and the design round, and RI IV,2,2 n. 103a standing in 1138 in every list and filter because its delivered start date says 1138 while its dating says 1152 (a question to the delivery).
+- English version: the operator accepted the published bilingual site on 2026-11-18; the English names of the Academy and the Commission in the attribution and the German statement labels of the agents stay as they are until he says otherwise. The density check and a fresh reader of the English pages have not run.
+- Findings of the fresh reader of the merged start page and the three-column regest page, not acted on and covered by the acceptance: the head actions stand far from the number at 2000 px; the notes column carries no producer label of its own (the popover of „ungeprüft“ names it); „Bestimmung“ and the bracketed qualifiers are not explained on the page; the broken glyph in „H?rnunge“ of n. 94 comes from the delivered text; terms of the start page such as „Lieferung“, „Pakete“ and „Prüfstände“.
+- The operator accepted the site on 2026-11-18 after the design round (journal entry of that day). Still open on the interface: the density overshoots recorded in the acceptance check and the design round, and RI IV,2,2 n. 103a standing in 1138 in every list and filter because its delivered start date says 1138 while its dating says 1152 (a question to the delivery).
 - Nothing of it is published. The agents' verdicts go public only on his word after he has seen the restructured regest page; the coordination read his „ja, aber“ as yes in principle. The public method text changes with the next publication to the agentic check of the twenty regesta, in both builds.
 - Itinerar and Jahrzehnte: put to the operator as a question with an example (the decade 1150 to 1159 chosen in the time band shows 433 regesta at 104 places, Würzburg and Crema with 28 each); the switch is not rebuilt before his answer.
 - The specification carries five requirements derived from his verdicts as proposals with acceptance criteria; the older list of the first slice stays as history until he adopts them (specification.md).
@@ -27,6 +27,13 @@ updated: 2026-11-18
 - The graph export writes the `rf:` and `rv:` terms under the provisional example.org namespaces until the operator decides a stable namespace; `build_graph.py --rf-namespace --rv-namespace` takes it (plan.md, Pipeline after the guest unit).
 - Waiting for the operator: removing the pilot path of `build_data.py`, the move of the pilot into `pipeline/archive/` (accepted for after 20 November), moving the two agent-review scripts, and the local ignored folder `site-review/`.
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
+
+## 2026-11-18 Personen page stays as built
+
+- Trigger: the operator had called the Personen network overview weak („noch sehr schwach … Was ist jetzt der Mehrwert?“) and liked the ego view behind a click; the main session proposed opening the page with a person list and the ego view instead of the overview.
+- Decided: not built, by the operator's word of 2026-11-18 („ja, halt das so fest“ on the recommendation to drop it). The page stays as accepted. Reason: the edition is a Promptotyping experiment and the teaching example for 20 November 2026; nobody works with the person page regularly and no use has reported a lack, so the change would improve a view that limits neither the course nor the experiment nor a research question.
+- Reopen only when someone wants to work with the persons for a real question; the page then follows that question.
+- Evidence: the operator's answer in the main session; no code changed.
 
 ## 2026-11-18 Operator acceptance of the bilingual site
 
