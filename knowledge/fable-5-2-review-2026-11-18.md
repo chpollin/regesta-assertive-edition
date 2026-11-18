@@ -10,7 +10,7 @@ updated: 2026-11-18
 
 A whole-project review, commissioned by the operator through the coordinating session ([prompt log](prompt-log.md), P38) and carried out by one session running Claude Fable 5.2 (`claude-fable-5-2`). Two read-only subagents on Claude Opus 5.5 read the knowledge base against the code and the code for correctness bugs, and a third counter-read the corrections. Every finding of a subagent that led to a change was checked against the code or the data before the change. The review is verification by executable checks and agentic review. It validates no statement of the edition, and no historian took part.
 
-The document is a snapshot of that day and carries its figures. The reviewed state was commit 7f8a4b7, published as gh-pages ee39317.
+The document is a snapshot of that day and carries its figures. The reviewed state was commit 7f8a4b7, published as gh-pages ee39317. The corrected state is commit 5b9d692, published as gh-pages 625d2be and checked at the public address.
 
 ## Scope
 
