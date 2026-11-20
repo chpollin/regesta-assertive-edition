@@ -9,7 +9,7 @@ method:
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-17
+updated: 2026-11-20
 ---
 
 # Pipeline
@@ -79,6 +79,30 @@ The build of view data, TEI and the public site follows the revised stage and is
 - Every producing agent is described as `prov:SoftwareAgent` with run, batch or group, stage, prompt and LLM from the manifests; register persons get a normalised `skos:prefLabel` from `register_names.py`.
 - A VoID description states licence, source and attribution, run, contract hashes, export date and that the statements are LLM-produced and unchecked.
 - The `rf:` and `rv:` namespaces are provisional example.org namespaces; `--rf-namespace` and `--rv-namespace` rewrite them, and the queries of `queries/` answer on the export only under the current ones.
+
+## Register graph export
+
+`build_register_graph.py` reads the regest CSV and the register CSV of `pipeline/source-material/`, the revised Turtle and the packets of the frozen runs `factoid-1153-2026-11-11` and `factoid-2026-11-11` with their manifests and contracts, and `edition/texts.json`. Without touching `pipeline/`, it writes into the gitignored `demo/registernetz/data/` one TriG file `ri-iv-2.trig` with a named graph per layer, the hand-written JSON-LD context `context.jsonld`, one JSON-LD file per regest in `record/` and per register entry in `entry/`, `roles.jsonld`, `dataset.jsonld`, the search index `index.json` and `report.json` with the counts per graph and per finding type. Its decisions are recorded in its module docstring, and [Architecture](architecture.md#register-graph-export) describes the layers.
+
+```powershell
+uv run build_register_graph.py
+uv run build_register_graph.py --out <folder> --date 2026-11-20
+```
+
+`--source` and `--texts` name other inputs, and an output path inside the source folder is refused. The step belongs to no command of `run.py` and to no site build.
+
+- Scope. `build_graph.py` exports the revised stage of one run with an enrichment for that run's regesta. The register export maps the whole delivery and the Register by rule, without an LLM, into the layers records, roles, register, findings and description, and adds the revised stage of each frozen run as one graph per regest, the shown run winning where both runs hold a regest.
+- Reuse. Skolemisation, the `@de` tags, the description of the producing agents with the contract hashes verified against the manifests, and the Turtle writer are the functions of `build_graph.py`. A namespace option is missing, so `rf:` and `rv:` stay on the provisional namespaces, and `rr:` and `rrole:` are placeholders of the same kind.
+- Defects. An export defect of the delivery becomes an `rr:ExportFinding` with type, concerned node, field and delivered value and is never repaired. A proposal graph with a verification status other than `rv:unchecked` aborts the export.
+- Determinism. The same inputs and `--date` give identical files.
+
+[checks/test_register_graph.py](../checks/test_register_graph.py) builds the export once into a temporary folder and reads the written TriG back. It checks the number of records and register rows against the CSV, every register row's entry, regest, roles and comment against the CSV one by one for RI IV,2,3 n. 2077 and as a multiset over all rows, a set of known cases (the one witness row of n. 2077, the implausible coordinate of Kaiserslautern, Beatrix as petent with the comment Vermittlung, the missing URN of n. 3166a, the duplicated identifier n. 1520a, the duplicated register rows and the unchecked LLM graph of n. 3166a), and that the JSON-LD files parse, state no triple the TriG lacks, give each LLM graph exactly and keep `@set` keys as arrays. Each check also fails on a named mutation. `uv run run.py check` runs the JSON-LD check on a sample of the files. The full round trip over every file and the determinism of two runs under different hash seeds take a few minutes and start with this command:
+
+```powershell
+$env:REGISTER_GRAPH_FULL = "1"; uv run pytest -q checks/test_register_graph.py
+```
+
+What the checks establish is a faithful export of the delivery and the runs. Whether a register entry or an LLM statement is right stays open.
 
 ## Responsibilities and artefacts
 

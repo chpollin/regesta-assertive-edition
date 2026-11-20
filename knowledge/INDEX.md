@@ -3,7 +3,7 @@ title: Index
 status: draft
 language: en
 created: 2026-11-17
-updated: 2026-11-18
+updated: 2026-11-20
 ---
 
 # Index
@@ -26,6 +26,8 @@ Read the `## Open` section of the [Journal](journal.md), then the document answe
 - What are the source CSV files, their joins and limits? [Source data](source-data.md)
 - How are statements modelled, and what is open for experts? [Factoid model](factoid-model.md); the binding guideline is the contract's own [annotation guidelines](../pipeline/contracts/factoid-2026-11-11/knowledge/annotation-guidelines.md)
 - How is the reusable graph exported? [Pipeline](pipeline.md#graph-export)
+- How are the whole delivery and the Register exported for the register network? [Pipeline](pipeline.md#register-graph-export), [Architecture](architecture.md#register-graph-export)
+- How is the system built from the CSV files and the runs to the published site, and which check guards each boundary? [Architecture](architecture.md)
 - What is checked, and what remains unverified? [Testing](testing.md)
 - The archived pilot: [Domain ontology](domain-ontology.md) and its [annotation guidelines](../pipeline/knowledge/annotation-guidelines.md) (pilot, archive)
 
