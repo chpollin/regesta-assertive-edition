@@ -1,0 +1,73 @@
+/* Design tokens of the Registernetz: the values of the edition's css/tokens.css (accepted
+   design system, knowledge/design.md#design-system-since-2026-11-11), copied so this demo
+   stays self-contained. Light only, white ground, teal accent only for selection and pointing,
+   ochre for the second layer (LLM statements), no red. Fonts from the repository's fonts/. */
+@layer reset, tokens, base, layout, components, utilities;
+
+@font-face {
+  font-family: "Junicode";
+  src: url("../../../fonts/Junicode-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../../../fonts/InstrumentSans-500.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../../../fonts/InstrumentSans-600.woff2") format("woff2");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("../../../fonts/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+
+    --font-source: "Junicode", "Iowan Old Style", Georgia, serif;
+    --font-ui: "Instrument Sans", system-ui, sans-serif;
+    --font-code: "Space Mono", ui-monospace, "Cascadia Mono", monospace;
+
+    --stage: #ffffff;
+    --side: #f7f5f1;
+    --text: #22201c;
+    --muted: #4d4741;
+    --hairline: #e0dad1;
+    --edge: #8f877c;
+
+    --accent: #0097a7;
+    --accent-text: #005c64;
+    --accent-faint: #e3f4f6;
+
+    --warn: #6b4a00;
+    --focus: #005c64;
+    --layer2: #9c7a2e;
+
+    --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+    --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+    --step-1: clamp(1.125rem, 1.07rem + 0.3vw, 1.3125rem);
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2.25rem;
+
+    --radius: 2px;
+    --measure: 46rem;
+  }
+}
