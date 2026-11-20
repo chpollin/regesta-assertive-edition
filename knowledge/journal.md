@@ -27,6 +27,8 @@ For the operator, from the review with Claude Fable 5.2 of 2026-11-18 ([report](
 
 For Regesta Imperii, questions to the delivery (11): RI IV,2,2 n. 103a with the sort key of RI IV,1,2 and a start date of 1138 against its dating of 1152, so it stands in 1138 in every list and filter; the identifier RI IV,2,2 n. 1520a for two records; three reversed date ranges (RI IV,2,2 n. 1637 and n. D1717, RI IV,2,3 n. 2522); ten regesta without regest text; the place string „Würzburg-1150 Juli 30, -“ of RI IV,2,1 n. 49; the book-page link of RI IV,2,1 n. 135 without a page number; the broken glyph in „H?rnunge“ of n. 94 (data.md, source-data.md).
 
+Volume introductions. The lecturer of the guest unit of 2026-11-20 pointed out that marks and formatting inside the regesta are explained in the introductions of the printed volumes, which are not online. None of them is read. The edition reads the prefixes `†`, `D` and `D†` from the delivery alone (specification.md, US23).
+
 For experts: the model questions in factoid-model.md (Open questions for experts), including the cases of the agent review of 2026-11-14: grants beside a confirmation as part of it or separate (n. †193), predecessors' acts typed as Grant (n. 145, n. 116), an exchange without a vocabulary term (n. 96), a complaint without a forum (n. 191). The two assertion extensions (Proposed extensions) are agreed in principle; inside the runs they need a new contract and run. No statement is validated, and a scholarly review has no owner (plan.md).
 
 Interface, known and not acted on:
