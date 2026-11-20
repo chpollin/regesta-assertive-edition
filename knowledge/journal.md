@@ -3,7 +3,7 @@ title: Journal
 status: draft
 language: en
 created: 2026-11-09
-updated: 2026-11-18
+updated: 2026-11-20
 ---
 
 # Journal
@@ -44,6 +44,25 @@ Repository:
 - `build_site.py` and `checks/test_site.py` still carry their own BuildError, JSON loader, CSV reading and run id; they are to move onto `edition_io.py`.
 - Documents: two journal entries of 2026-11-12 link the removed section `data.md#review-sheet`; whether ide-criteria.md stays is the operator's decision.
 - Validator gaps left after the fix of 2026-11-18 (entry below): targets of `rf:concerns` (foreign register IRIs, untyped nodes, labels), the producer named in `prov:wasAttributedTo`, `nameInSource` bound to its actor and its evidence, minimum length of evidence, `partOf` cycles, uniqueness of IRIs across files and files outside the selection. Binding `nameInSource` to the evidence would fail the current revised stage in several regesta and needs a decision whether it becomes a rule or a warning.
+
+Registernetz, from the session of 2026-11-20 (entry below):
+
+- The operator has seen the first slice of `demo/registernetz/` on the local server and has not yet confirmed its pattern (entry in the centre, regesta in sectors by delivered role tokens, co-named entries in a column). Further views wait for that word. A correction pass after the fresh-reader test (key of the marks, labels at 360 px) is in work and uncommitted until checked.
+- The user stories US15 to US23 in specification.md are proposals. The operator confirms, changes or strikes each as scholarly validator. The same holds for the glosses of the role tokens, which the view therefore shows only as delivered.
+- Open model questions of the register export: a class for `sache`, a class or type for parents without a row, the plausibility box for coordinates, whether the rows of n. 1520a point to both records, stable namespaces for `rr:` and `rrole:`.
+- The register export and the whole-delivery layer disagree in two rules. The coordinate box is latitude 25 to 60 in `build_register_graph.py` and 30 to 62 in `build_holdings.py` and `check_itinerary.py`. The rows of n. 1520a go to both records in the export and to neither in the holdings layer. One rule each has to be decided.
+- Knowledge found stale against the code while writing architecture.md: testing.md and the layout list of AGENTS.md lack `test_register_graph.py`, `test_site.py`, `test_tei.py`, `test_factoid.py`, `test_build.py`, `build_register_graph.py` and `demo/`. The docstring of `edition_io.py` lacks the new importer. `build_site.py` carries its own inline dependency block against the locked pipeline. The holdings layer reads `pipeline/generated/regesta.jsonl` and not the regest CSV, which data.md does not say.
+- The findings on the Register's practice (`petent` for intervenors, selective `zeuge`, `austOrt` for stations, Friedrich indexed in selection) live in the workshop folder outside this repository (`research.md` and `data.md` under Downloads). They have to be harvested into source-data.md and a domain knowledge document here. The docstring of `build_register_graph.py` points to that `research.md`.
+- Nothing of this session is pushed.
+
+## 2026-11-20 Register graph export, Registernetz slice, user stories and architecture
+
+- Trigger: the operator's commission in the session after the guest lecture at TH Mittelhessen, CSV to RDF to JSON-LD and from there a static graph view, with the knowledge documents for it, carried out by subagents.
+- Decided by the operator in the chat: a standalone folder `demo/`, the Register for the whole delivery with LLM statements only where frozen runs exist, the entry point is the network around one entry and no picture of all nodes, an own property for the index hierarchy and `crm:E39_Actor` for register persons.
+- Changed: `build_register_graph.py` and `checks/test_register_graph.py` (13775b9), the user stories US15 to US23 in specification.md (4bee4c3), architecture.md, the section Register graph export in pipeline.md and two lines in INDEX.md (6d34a5c), the first slice of the view under `demo/registernetz/` (ff6f279).
+- Found: the export writes every regest and every register row, and its findings mark the defects of the delivery without repairing them. A second agent with a fresh context read the story draft against the CSV and refuted two statements taken from the workshop documents. The Register mostly marks intervenors `petent` (n. 2532, n. 220), and `austOrt` also marks stations of the itinerary (n. 82, n. 288). The stories and the workshop documents were corrected.
+- Rejected: one JSON-LD file for the whole graph, because of its size in the browser, and a force layout library, because the network around one entry is small and its layout is computed by rule.
+- Evidence: `uv run run.py check` green in the export agent's run. The default run of `checks/test_register_graph.py` repeated by the main agent with 5 passed and 1 skipped, the skipped one being the full round trip, which the export agent ran once with 6 passed. `node demo/registernetz/checks/check_figure_data.mjs` exits 0. Density check within limits at 1280 and 360 px in eight states and thirteen interaction tasks passed, both in the frontend agent's run. Two screenshots read by the main agent. A fresh reader named the entry, the role groups and the open regest correctly and listed unexplained marks and overlaps at 360 px, which led to the correction pass. No scholarly validation and no acceptance by the operator.
 
 ## 2026-11-18 Validator closes empty files, open statuses and reused hashes
 
