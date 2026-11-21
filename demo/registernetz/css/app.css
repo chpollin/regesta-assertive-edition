@@ -92,13 +92,21 @@
   .figure text { font-size: 12.5px; fill: var(--text); paint-order: stroke; stroke: var(--stage); stroke-width: 3px; stroke-linejoin: round; }
   .figure .centre-label { font-weight: 600; }
   .figure .centre-mark { fill: var(--text); }
-  .figure .sector-label { fill: var(--text); }
+  .figure .sector-label { fill: var(--text); font-weight: 600; }
+  .figure .unit-label { fill: var(--muted); }
   .figure .sector-label.quiet, .figure .token.quiet { fill: var(--muted); }
   .figure .sector-label.toggle { cursor: pointer; text-decoration: underline dotted; }
-  .figure .token, .figure .key { font-size: 11px; fill: var(--muted); }
+  .figure .key { font-size: 11px; fill: var(--muted); }
+  /* Roles of the co-named entries: small italic, so they read apart from the entry's own
+     sector labels in semibold. */
+  .figure .token { font-size: 11px; font-style: italic; fill: var(--muted); }
   .figure .selected-label { fill: var(--accent-text); cursor: pointer; text-decoration: underline; }
   .figure .figure-note { fill: var(--muted); }
   .figure .key-mark { fill: var(--muted); }
+  .figure .key-mark.selected { fill: var(--accent); stroke: var(--accent-text); stroke-width: 1.5; }
+  .figure .key-mark.quiet { fill: var(--stage); stroke: var(--edge); stroke-width: 1; }
+  .figure .key-mark.bundle path { fill: var(--stage); stroke: var(--muted); stroke-width: 1.1; }
+  .figure .key-dash { stroke: var(--edge); stroke-width: 1; stroke-dasharray: 3 3; }
 
   .figure .regest path { fill: var(--muted); }
   .figure .regest.quiet path { fill: var(--stage); stroke: var(--edge); stroke-width: 1; }
@@ -192,10 +200,11 @@
   }
 }
 
-/* Narrow: two-line regest lines, no column heads, the detail at full width. */
+/* Narrow: two-line regest lines under one line of column words, the detail at full width. */
 @media (max-width: 40rem) {
   main { padding: var(--space-3) var(--space-4); }
-  .heads { display: none; }
+  /* The column words in the order the two-line entry reads them. */
+  .heads { display: flex; flex-wrap: wrap; column-gap: var(--space-3); }
   .line { display: flex; flex-wrap: wrap; column-gap: var(--space-3); }
   .line .c-place { margin-inline-end: auto; }
   .line .c-rolecell { display: contents; }
